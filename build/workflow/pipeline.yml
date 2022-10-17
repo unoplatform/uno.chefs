@@ -34,6 +34,7 @@ jobs:
   
   steps:
   - checkout: self
+    fetchDepth: 0
     clean: true
 
   - template: templates/gitversion.yml

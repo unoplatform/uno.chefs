@@ -11,6 +11,7 @@ jobs:
 
   steps:
   - checkout: self
+    fetchDepth: 0
     clean: true
 
   - task: UseDotNet@2
