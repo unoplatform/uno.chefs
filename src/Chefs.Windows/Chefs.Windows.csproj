@@ -24,7 +24,7 @@
 		<DefaultLanguage>en</DefaultLanguage>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(CI)'!=''">
+	<PropertyGroup Condition="'$(CI)'!='' or '$(TF_BUILD)'!=''">
 		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
