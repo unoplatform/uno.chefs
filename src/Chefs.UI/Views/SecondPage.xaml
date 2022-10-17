@@ -9,7 +9,7 @@
       xmlns:runtimetests="using:Uno.UI.RuntimeTests"
 	  Background="{ThemeResource BackgroundBrush}">
 
-	<Grid>
+	<Grid Grid.RowDefinitions="Auto,*">
 		<utu:NavigationBar Content="Second Page">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
@@ -20,6 +20,6 @@
 			</utu:NavigationBar.MainCommand>
 		</utu:NavigationBar>
 
-        <runtimetests:UnitTestsControl />
+        <runtimetests:UnitTestsControl Grid.Row="1" />
     </Grid>
 </Page>

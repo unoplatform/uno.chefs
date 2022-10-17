@@ -2,7 +2,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
-		<LangVersion>8.0</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,4 +13,27 @@
 		<PackageReference Include="Uno.UITest.Helpers" Version="1.1.0-dev.32" />
 		<PackageReference Include="Xamarin.UITest" Version="3.2.6" />
 	</ItemGroup>
+
+	
+	<!-- Override the compiler version for linux build on mono's msbuild -->
+	<PropertyGroup>
+		<MicrosoftNetCompilerVersionOverride>4.4.0-2.final</MicrosoftNetCompilerVersionOverride>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!--
+	    Disable shared compilation for the override to take place
+	    https://github.com/dotnet/roslyn/blob/315c2e149ba7889b0937d872274c33fcbfe9af5f/src/NuGet/Microsoft.Net.Compilers/build/Microsoft.Net.Compilers.props#L36
+	-->
+		<UseSharedCompilation>false</UseSharedCompilation>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!--This override is used to validate the use of specific version of the C# Compiler-->
+		<PackageReference Include="Microsoft.Net.Compilers.Toolset" Version="$(MicrosoftNetCompilerVersionOverride)">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
 </Project>
