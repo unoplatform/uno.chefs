@@ -17,7 +17,7 @@ jobs:
 
   - powershell: |
       cd src
-      dotnet build -c Release "/p:PackageOutputPath=$(build.artifactstagingdirectory)\nuget" "/p:PackageVersion=%GITVERSION_FullSemVer%" "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /detailedsummary /bl:$(build.artifactstagingdirectory)\msbuild.binlog
+      dotnet build -c Release "/p:PackageOutputPath=$(build.artifactstagingdirectory)\nuget" "/p:PackageVersion=$env:GITVERSION_FullSemVer" "/p:InformationalVersion==$env:GITVERSION_InformationalVersion" /detailedsummary /bl:$(build.artifactstagingdirectory)\msbuild.binlog
     displayName: Build apps
 
   - task: PublishBuildArtifacts@1
