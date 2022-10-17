@@ -24,6 +24,10 @@
 		<DefaultLanguage>en</DefaultLanguage>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(CI)'!=''">
+		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <Content Include="Images\LockScreenLogo.scale-200.png" />
 	  <Content Include="Images\SplashScreen.scale-100.png" />
