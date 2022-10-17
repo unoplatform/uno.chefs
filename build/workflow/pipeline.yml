@@ -33,6 +33,9 @@ jobs:
     vmImage: windows-2022
   
   steps:
+  - checkout: self
+    clean: true
+
   - template: templates/gitversion.yml
   - template: templates/dotnet6-install-windows.yml
 
