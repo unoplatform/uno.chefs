@@ -15,7 +15,7 @@ jobs:
   - powershell: .\build\Install-WindowsSdkISO.ps1 18362
     displayName: Install Windows SDK 18362
 
-  - run: |
+  - powershell: |
       dotnet build -c Release "/p:PackageOutputPath=$(build.artifactstagingdirectory)\nuget" "/p:PackageVersion=%GITVERSION_FullSemVer%" "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /detailedsummary /bl:$(build.artifactstagingdirectory)\msbuild.binlog
     displayName: Build apps
 
