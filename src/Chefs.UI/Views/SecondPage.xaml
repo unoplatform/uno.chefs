@@ -6,6 +6,7 @@
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:runtimetests="using:Uno.UI.RuntimeTests"
 	  Background="{ThemeResource BackgroundBrush}">
 
 	<Grid>
@@ -18,5 +19,7 @@
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 		</utu:NavigationBar>
-	</Grid>
+
+        <runtimetests:UnitTestsControl />
+    </Grid>
 </Page>

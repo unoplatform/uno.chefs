@@ -11,7 +11,11 @@
 		<UseWinUI>true</UseWinUI>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 	</PropertyGroup>
-
+	
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);WINDOWS_WINUI</DefineConstants>
+	</PropertyGroup>
+	
 	<PropertyGroup>
 		<!-- Bundles the WinAppSDK binaries (Uncomment for unpackaged builds) -->
 		<!-- <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained> -->
@@ -42,6 +46,7 @@
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
+		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Uno.WinUI" Version="4.4.13" />
