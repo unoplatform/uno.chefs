@@ -2,7 +2,7 @@
 
 public enum OrganizeCategories
 {
-    Recommended = 1,
-    Popular = 2,
-    Recent = 3
+    Recommended,
+    Popular,
+    Recent
 }

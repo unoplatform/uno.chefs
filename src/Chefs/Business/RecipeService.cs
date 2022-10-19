@@ -12,57 +12,38 @@ public class RecipeService : IRecipeService
         _recipeEndpoint = recipeEndpoint;
     }
 
-    public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct)
-    {
-        return (await _recipeEndpoint.GetAll(ct))
+    public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) => (await _recipeEndpoint.GetAll(ct))
                    .Select(r => new Recipe(r))
                    .ToImmutableList();
-    }
+    
 
-    public async ValueTask<IImmutableList<Recipe>> GetByCategory(Category category, CancellationToken ct)
-    {
-        return (await _recipeEndpoint.GetAll(ct))
+    public async ValueTask<IImmutableList<Recipe>> GetByCategory(Category category, CancellationToken ct) => (await _recipeEndpoint.GetAll(ct))
                    .Select(r => new Recipe(r))
                    .Where(r => r.Category?.Id == category.Id)
                    .ToImmutableList();
-    }
 
-    public async ValueTask<IImmutableList<Category>> GetCategories(CancellationToken ct)
-    {
-        return (await _recipeEndpoint.GetCategories(ct))
+    public async ValueTask<IImmutableList<Category>> GetCategories(CancellationToken ct) => (await _recipeEndpoint.GetCategories(ct))
                    .Select(c => new Category(c))
                    .ToImmutableList();
-    }
+    
 
-    public async ValueTask<IImmutableList<Cookbook>> GetCookbooks(CancellationToken ct)
-    {
-        return (await _recipeEndpoint.GetCookbooks(ct))
+    public async ValueTask<IImmutableList<Cookbook>> GetCookbooks(CancellationToken ct)=> (await _recipeEndpoint.GetCookbooks(ct))
                    .Select(c => new Cookbook(c))
                    .ToImmutableList();
-    }
 
-    public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
-    {
-        return (await _recipeEndpoint.GetPopularCreators(ct))
+    public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _recipeEndpoint.GetPopularCreators(ct))
                    .Select(u => new User(u))
                    .ToImmutableList();
-    }
 
-    public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct)
-    {
-        return (await _recipeEndpoint.GetAll(ct))
+    public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct) => (await _recipeEndpoint.GetAll(ct))
                    .Select(r => new Recipe(r))
                    .Where(r => r.Date == DateTime.Now)
                    .ToImmutableList();
-    }
 
-    public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct)
-    {
-        return (await _recipeEndpoint.GetAll(ct))
+    public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct) => (await _recipeEndpoint.GetAll(ct))
                    .Select(r => new Recipe(r))
                    .Where(r => r.Date == DateTime.Now && r.Reviews?.Count > 0)
                    .ToImmutableList();
-    }
 
     public async ValueTask<IImmutableList<Recipe>> Search(SearchFilter search, CancellationToken ct)
     {
@@ -75,63 +56,45 @@ public class RecipeService : IRecipeService
     private IImmutableList<Recipe> GetFilterRecipes(List<Recipe> recipes, SearchFilter searchFilter)
     {
         TimeSpan? time = GetTime(searchFilter.Times);
-        if (searchFilter.OrganizeCategories > 0)
-        {
-            switch (searchFilter.OrganizeCategories)
-            {
-                case OrganizeCategories.Recommended:
-                    return GetRecipesByText(recipes
-                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
-                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
-                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
-                case OrganizeCategories.Popular:
-                    return GetRecipesByText(recipes
-                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
-                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
-                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
-                case OrganizeCategories.Recent:
-                    return GetRecipesByText(recipes
-                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
-                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
-                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
-                default:
-                    return GetRecipesByText(recipes
-                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
-                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
-                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
-            }
 
+        var filteredResults = recipes
+                        .Where(r => (searchFilter.Category == null || searchFilter.Category?.Id == r.Category?.Id)
+                        && (searchFilter.Difficulty == null || searchFilter.Difficulty == r.Difficulty)
+                        && (time == null || r.CookTime == time)).ToList();
+
+        var results = GetRecipesByText(filteredResults, searchFilter.TextFilter);
+
+        //Todo: Implementation for recommended and popular?
+        switch (searchFilter.OrganizeCategories)
+        {
+            case OrganizeCategories.Recommended:
+                return results;
+            case OrganizeCategories.Popular:
+                return results;
+            case OrganizeCategories.Recent:
+                return results.Where(r => r.Date == DateTime.Now).ToImmutableList();
+            default:
+                return results;
         }
-        return GetRecipesByText(recipes
-                    .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
-                    && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
-                    && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
     }
 
-    private TimeSpan? GetTime(Times time)
+    private TimeSpan? GetTime(Times? time)
     {
-        if (time > 0)
+        switch (time)
         {
-            switch (time)
-            {
-                case Times.Under15min:
-                        return new TimeSpan(0, 15, 00);
-                case Times.Under30min:
-                    return new TimeSpan(0, 30, 00);
-                case Times.Under60min:
-                    return new TimeSpan(0, 60, 00);
-                default:
-                    return null;
-            }
+            case Times.Under15min:
+                    return new TimeSpan(0, 15, 00);
+            case Times.Under30min:
+                return new TimeSpan(0, 30, 00);
+            case Times.Under60min:
+                return new TimeSpan(0, 60, 00);
+            default:
+                return null;
         }
-        return null;
     }
 
-    private IImmutableList<Recipe> GetRecipesByText(List<Recipe> recipes, string? text)
-    {
-        return recipes
+    private IImmutableList<Recipe> GetRecipesByText(List<Recipe> recipes, string? text) => recipes
             .Where(r => text == null 
             || r.Name?.ToLower() == text.ToLower() 
             || r.Category?.Name?.ToLower() == text.ToLower()).ToImmutableList();
-    }
 }

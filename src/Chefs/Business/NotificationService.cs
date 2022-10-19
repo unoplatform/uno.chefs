@@ -12,10 +12,7 @@ public class NotificationService : INotificationService
         _notificationEndpoint = notificationEndpoint;
     }
 
-    public async ValueTask<IImmutableList<Notification>> GetAll(CancellationToken ct)
-    {
-        return (await _notificationEndpoint.GetAll(ct))
+    public async ValueTask<IImmutableList<Notification>> GetAll(CancellationToken ct) => (await _notificationEndpoint.GetAll(ct))
             .Select(n => new Notification(n))
             .ToImmutableList();
-    }
 }

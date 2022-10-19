@@ -15,10 +15,7 @@ public class UserService : IUserService
         _chefAppOptions = chefAppOptions;
     }
 
-    public async ValueTask<ChefApp> GetChefSettings(CancellationToken ct)
-    {
-        return _chefAppOptions.Value;
-    }
+    public async ValueTask<ChefApp> GetChefSettings(CancellationToken ct) => _chefAppOptions.Value;
 
     public async ValueTask<User> GetUser(CancellationToken ct)
     {
@@ -27,13 +24,10 @@ public class UserService : IUserService
         return user;
     }
 
-    public async Task SetCheffSettings(ChefApp chefSettings, CancellationToken ct)
-    {
-        await _chefAppOptions.UpdateAsync(_ => new ChefApp()
+    public async Task SetCheffSettings(ChefApp chefSettings, CancellationToken ct) => await _chefAppOptions.UpdateAsync(_ => new ChefApp()
         {
             IsDark = chefSettings.IsDark,
             Notification = chefSettings.Notification,
             AccentColor = chefSettings.AccentColor,
         });
-    }
 }
