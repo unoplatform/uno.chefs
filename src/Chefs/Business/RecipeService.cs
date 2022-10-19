@@ -95,11 +95,17 @@ public class RecipeService : IRecipeService
                         && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
                         && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
                 default:
-                    return ImmutableList<Recipe>.Empty;
+                    return GetRecipesByText(recipes
+                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
+                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
+                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
             }
 
         }
-        return ImmutableList<Recipe>.Empty;
+        return GetRecipesByText(recipes
+                    .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
+                    && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
+                    && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
     }
 
     private TimeSpan? GetTime(Times time)
