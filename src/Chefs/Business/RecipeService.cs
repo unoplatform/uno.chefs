@@ -124,7 +124,8 @@ public class RecipeService : IRecipeService
     private IImmutableList<Recipe> GetRecipesByText(List<Recipe> recipes, string? text)
     {
         return recipes
-            .Where(r => (text == null || r.Name?.ToLower() == text.ToLower()) 
-            && (text == null || r.Category?.Name?.ToLower() == text.ToLower())).ToImmutableList();
+            .Where(r => text == null 
+            || r.Name?.ToLower() == text.ToLower() 
+            || r.Category?.Name?.ToLower() == text.ToLower()).ToImmutableList();
     }
 }
