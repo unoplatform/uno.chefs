@@ -55,19 +55,41 @@ public sealed partial class App : Application
 	}
 	private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
 	{
-		views.Register(
-			new ViewMap<ShellControl, ShellViewModel>(),
-			new ViewMap<MainPage, MainViewModel>(),
-			new ViewMap<SecondPage, SecondViewModel>()
-			);
+        views.Register(
+            new ViewMap<ShellControl, ShellViewModel>(),
+            new ViewMap<MainPage, MainViewModel>(),
+            new ViewMap<SecondPage, SecondViewModel>(),
+            new ViewMap<FilterPage, FilterViewModel>(),
+            new ViewMap<HomePage, HomeViewModel>(),
+            new ViewMap<IngredientsPage, IngredientsViewModel>(),
+            new ViewMap<LoginPage, LoginViewModel>(),
+            new ViewMap<NotificationsPage, NotificationsViewModel>(),
+            new ViewMap<ProfilePage, ProfileViewModel>(),
+            new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(),
+            new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
+            new ViewMap<SearchPage, SearchViewModel>(),
+            new ViewMap<SettingsPage, SettingsViewModel>(),
+            new ViewMap<StartCookingPage, StartCookingViewModel>()
+            );
 
-		routes
-			.Register(
-				new RouteMap("", View: views.FindByViewModel<ShellViewModel>(),
-						Nested: new RouteMap[]
-						{
-										new RouteMap("Main", View: views.FindByViewModel<MainViewModel>()),
-										new RouteMap("Second", View: views.FindByViewModel<SecondViewModel>()),
-						}));
-	}
+        routes
+            .Register(
+                new RouteMap("", View: views.FindByViewModel<ShellViewModel>(),
+                        Nested: new RouteMap[]
+                        {
+                            new RouteMap("Main", View: views.FindByViewModel<MainViewModel>()),
+                            new RouteMap("Second", View: views.FindByViewModel<SecondViewModel>()),
+                            new RouteMap("Filter", View: views.FindByViewModel<FilterViewModel>()),
+                            new RouteMap("Home", View: views.FindByViewModel<HomeViewModel>()),
+                            new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>()),
+                            new RouteMap("Login", View: views.FindByViewModel<LoginViewModel>()),
+                            new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
+                            new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>()),
+                            new RouteMap("Recipe", View: views.FindByViewModel<RecipeDetailsViewModel>()),
+                            new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>()),
+                            new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>()),
+                            new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>()),
+                            new RouteMap("StartCooking", View: views.FindByViewModel<StartCookingViewModel>())
+                        }));
+    }
 }
