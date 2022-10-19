@@ -2,7 +2,7 @@
 
 public enum Times
 {
-    Under15min,
-    Under30min,
-    Under60min
+    Under15min = 1,
+    Under30min = 2,
+    Under60min = 3
 }

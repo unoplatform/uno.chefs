@@ -64,8 +64,67 @@ public class RecipeService : IRecipeService
                    .ToImmutableList();
     }
 
-    public ValueTask<IImmutableList<Recipe>> Search(SearchFilter search, CancellationToken ct)
+    public async ValueTask<IImmutableList<Recipe>> Search(SearchFilter search, CancellationToken ct)
     {
-        throw new NotImplementedException();
+        var recipes = (await _recipeEndpoint.GetAll(ct))
+                   .Select(r => new Recipe(r))
+                   .ToImmutableList();
+        return GetFilterRecipes(recipes.ToList(), search);
+    }
+
+    private IImmutableList<Recipe> GetFilterRecipes(List<Recipe> recipes, SearchFilter searchFilter)
+    {
+        TimeSpan? time = GetTime(searchFilter.Times);
+        if (searchFilter.OrganizeCategories > 0)
+        {
+            switch (searchFilter.OrganizeCategories)
+            {
+                case OrganizeCategories.Recommended:
+                    return GetRecipesByText(recipes
+                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
+                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
+                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
+                case OrganizeCategories.Popular:
+                    return GetRecipesByText(recipes
+                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
+                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
+                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
+                case OrganizeCategories.Recent:
+                    return GetRecipesByText(recipes
+                        .Where(r => (r.Category == null || r.Category?.Id == searchFilter.Category?.Id)
+                        && (r.Difficulty == 0 || r.Difficulty == searchFilter.Difficulty)
+                        && (time == null || r.CookTime == time)).ToList(), searchFilter.TextFilter);
+                default:
+                    return ImmutableList<Recipe>.Empty;
+            }
+
+        }
+        return ImmutableList<Recipe>.Empty;
+    }
+
+    private TimeSpan? GetTime(Times time)
+    {
+        if (time > 0)
+        {
+            switch (time)
+            {
+                case Times.Under15min:
+                        return new TimeSpan(0, 15, 00);
+                case Times.Under30min:
+                    return new TimeSpan(0, 30, 00);
+                case Times.Under60min:
+                    return new TimeSpan(0, 60, 00);
+                default:
+                    return null;
+            }
+        }
+        return null;
+    }
+
+    private IImmutableList<Recipe> GetRecipesByText(List<Recipe> recipes, string? text)
+    {
+        return recipes
+            .Where(r => (text == null || r.Name?.ToLower() == text.ToLower()) 
+            && (text == null || r.Category?.Name?.ToLower() == text.ToLower())).ToImmutableList();
     }
 }
