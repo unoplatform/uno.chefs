@@ -4,5 +4,5 @@ namespace Chefs.Data;
 
 public interface IUserEndpoint
 {
-    ValueTask<IImmutableList<UserData>> GetUser(CancellationToken ct);
+    ValueTask<UserData> GetUser(string email, CancellationToken ct);
 }

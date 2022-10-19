@@ -16,10 +16,11 @@ public class UserEndpoint : IUserEndpoint
         _serializer = serializer;
     }
 
-    public async ValueTask<IImmutableList<UserData>> GetUser(CancellationToken ct)
+    public async ValueTask<UserData> GetUser(string email, CancellationToken ct)
     {
-        var users = await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, UserDataFile);
+        var user = (await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, UserDataFile))?
+            .Where(u => u.Email == email).FirstOrDefault();
 
-        return users ?? ImmutableList<UserData>.Empty;
+        return user ?? new UserData();
     }
 }
