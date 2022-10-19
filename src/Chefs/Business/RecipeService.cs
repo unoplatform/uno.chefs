@@ -7,10 +7,8 @@ public class RecipeService : IRecipeService
 {
     private readonly IRecipeEndpoint _recipeEndpoint;
 
-    public RecipeService(IRecipeEndpoint recipeEndpoint)
-    {
-        _recipeEndpoint = recipeEndpoint;
-    }
+    public RecipeService(IRecipeEndpoint recipeEndpoint) 
+        => _recipeEndpoint = recipeEndpoint;
 
     public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) => (await _recipeEndpoint.GetAll(ct))
                    .Select(r => new Recipe(r))
@@ -83,7 +81,7 @@ public class RecipeService : IRecipeService
         switch (time)
         {
             case Times.Under15min:
-                    return new TimeSpan(0, 15, 00);
+                return new TimeSpan(0, 15, 00);
             case Times.Under30min:
                 return new TimeSpan(0, 30, 00);
             case Times.Under60min:

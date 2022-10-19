@@ -12,15 +12,9 @@ public class NotificationEndpoint : INotificationEndpoint
     private readonly ISerializer _serializer;
 
     public NotificationEndpoint(IStorage dataService, ISerializer serializer)
-    {
-        _dataService = dataService;
-        _serializer = serializer;
-    }
+        => (_dataService, _serializer) = (dataService, serializer);
 
-    public async ValueTask<IImmutableList<NotificationData>> GetAll(CancellationToken ct)
-    {
-        var notifications = await _dataService.ReadFileAsync<IImmutableList<NotificationData>>(_serializer, NotifacationDataFile);
-
-        return notifications ?? ImmutableList<NotificationData>.Empty;
-    }
+    public async ValueTask<IImmutableList<NotificationData>> GetAll(CancellationToken ct) => await _dataService
+        .ReadFileAsync<IImmutableList<NotificationData>>(_serializer, NotifacationDataFile) 
+        ?? ImmutableList<NotificationData>.Empty;
 }

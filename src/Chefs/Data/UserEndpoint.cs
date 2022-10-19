@@ -10,17 +10,10 @@ public class UserEndpoint : IUserEndpoint
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
 
-    public UserEndpoint(IStorage dataService, ISerializer serializer)
-    {
-        _dataService = dataService;
-        _serializer = serializer;
-    }
+    public UserEndpoint(IStorage dataService, ISerializer serializer) 
+        => (_dataService, _serializer) = (dataService, serializer);
 
-    public async ValueTask<UserData> GetUser(string email, CancellationToken ct)
-    {
-        var user = (await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, UserDataFile))?
-            .Where(u => u.Email == email).FirstOrDefault();
-
-        return user ?? new UserData();
-    }
+    public async ValueTask<UserData> GetUser(string email, CancellationToken ct) => (await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, UserDataFile))?
+            .Where(u => u.Email == email).FirstOrDefault()
+            ?? new UserData();
 }

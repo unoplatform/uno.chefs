@@ -11,14 +11,10 @@ public class UserService : IUserService
     private readonly IWritableOptions<AuthenticationOptions> _authenticationOptions;
     private User? _user;
 
-    public UserService(IUserEndpoint userEndpoint, 
-        IWritableOptions<ChefApp> chefAppOptions, 
+    public UserService(IUserEndpoint userEndpoint,
+        IWritableOptions<ChefApp> chefAppOptions,
         IWritableOptions<AuthenticationOptions> authenticationOptions)
-    {
-        _userEndpoint = userEndpoint;
-        _chefAppOptions = chefAppOptions;
-        _authenticationOptions = authenticationOptions;
-    }
+        => (_userEndpoint, _chefAppOptions, _authenticationOptions) = (userEndpoint, chefAppOptions, authenticationOptions);
 
     public async ValueTask<User?> Auth(string email, CancellationToken ct)
     {
@@ -28,7 +24,7 @@ public class UserService : IUserService
             _user = new User(user);
             await _authenticationOptions.UpdateAsync(_ => new AuthenticationOptions()
             {
-                UserName = email,
+                Email = email,
                 SaveCredentials = true
             });
 

@@ -15,36 +15,21 @@ public class RecipeEndpoint : IRecipeEndpoint
     private readonly ISerializer _serializer;
 
     public RecipeEndpoint(IStorage dataService, ISerializer serializer)
-    {
-        _dataService = dataService;
-        _serializer = serializer;
-    }
+        => (_dataService, _serializer) = (dataService, serializer);
 
-    public async ValueTask<IImmutableList<RecipeData>> GetAll(CancellationToken ct)
-    {
-        var recipes = await _dataService.ReadFileAsync<IImmutableList<RecipeData>>(_serializer, RecipeDataFile);
+    public async ValueTask<IImmutableList<RecipeData>> GetAll(CancellationToken ct) => await _dataService
+        .ReadFileAsync<IImmutableList<RecipeData>>(_serializer, RecipeDataFile) 
+        ?? ImmutableList<RecipeData>.Empty;
 
-        return recipes ?? ImmutableList<RecipeData>.Empty;
-    }
+    public async ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct) => await _dataService
+        .ReadFileAsync<IImmutableList<CategoryData>>(_serializer, CategoryDataFile)
+        ?? ImmutableList<CategoryData>.Empty;
 
-    public async ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct)
-    {
-        var categories = await _dataService.ReadFileAsync<IImmutableList<CategoryData>>(_serializer, CategoryDataFile);
+    public async ValueTask<IImmutableList<CookbookData>> GetCookbooks(CancellationToken ct) => await _dataService
+        .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, CookbookDataFile)
+        ?? ImmutableList<CookbookData>.Empty;
 
-        return categories ?? ImmutableList<CategoryData>.Empty;
-    }
-
-    public async ValueTask<IImmutableList<CookbookData>> GetCookbooks(CancellationToken ct)
-    {
-        var cookbooks = await _dataService.ReadFileAsync<IImmutableList<CookbookData>>(_serializer, CookbookDataFile);
-
-        return cookbooks ?? ImmutableList<CookbookData>.Empty;
-    }
-
-    public async ValueTask<IImmutableList<PopularCreatorData>> GetPopularCreators(CancellationToken ct)
-    {
-        var popularCreators = await _dataService.ReadFileAsync<IImmutableList<PopularCreatorData>>(_serializer, PopularCreatorDataFile);
-
-        return popularCreators ?? ImmutableList<PopularCreatorData>.Empty;
-    }
+    public async ValueTask<IImmutableList<PopularCreatorData>> GetPopularCreators(CancellationToken ct) => 
+        await _dataService.ReadFileAsync<IImmutableList<PopularCreatorData>>(_serializer, PopularCreatorDataFile)
+        ?? ImmutableList<PopularCreatorData>.Empty;
 }
