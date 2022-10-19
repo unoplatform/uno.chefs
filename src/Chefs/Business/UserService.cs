@@ -4,7 +4,7 @@ namespace Chefs.Business;
 
 public class UserService : IUserService
 {
-    public ValueTask<ChefSettings> GetChefSettings(CancellationToken ct)
+    public ValueTask<ChefApp> GetChefSettings(CancellationToken ct)
     {
         throw new NotImplementedException();
     }
@@ -14,7 +14,7 @@ public class UserService : IUserService
         throw new NotImplementedException();
     }
 
-    public Task SetCheffSettings(ChefSettings chefSettings, CancellationToken ct)
+    public Task SetCheffSettings(ChefApp chefSettings, CancellationToken ct)
     {
         throw new NotImplementedException();
     }
