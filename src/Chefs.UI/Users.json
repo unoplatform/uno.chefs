@@ -18,7 +18,11 @@
       "Calories": "268 kcal",
       "Review": {},
       "Details": "",
-      "Category": "Breakfast",
+      "Category": {
+        "Id": 1,
+        "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
+        "Name": "Breakfast"
+      },
       "Date": "10/15/2022",
       "Save": false
     }
