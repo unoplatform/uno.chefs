@@ -1,4 +1,6 @@
 
+using Chefs.Presentation;
+
 namespace Chefs;
 
 public sealed partial class App : Application
@@ -59,6 +61,7 @@ public sealed partial class App : Application
             new ViewMap<ShellControl, ShellViewModel>(),
             new ViewMap<MainPage, MainViewModel>(),
             new ViewMap<SecondPage, SecondViewModel>(),
+            new ViewMap<WelcomePage, WelcomeViewModel>(),
             new ViewMap<FilterPage, FilterViewModel>(),
             new ViewMap<HomePage, HomeViewModel>(),
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
@@ -79,6 +82,7 @@ public sealed partial class App : Application
                         {
                             new RouteMap("Main", View: views.FindByViewModel<MainViewModel>()),
                             new RouteMap("Second", View: views.FindByViewModel<SecondViewModel>()),
+                            new RouteMap("Welcome", View: views.FindByViewModel<WelcomeViewModel>()),
                             new RouteMap("Filter", View: views.FindByViewModel<FilterViewModel>()),
                             new RouteMap("Home", View: views.FindByViewModel<HomeViewModel>()),
                             new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>()),
