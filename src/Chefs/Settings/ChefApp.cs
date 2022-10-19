@@ -1,6 +1,6 @@
 ﻿namespace Chefs.Settings;
 
-public record ChefSettings
+public record ChefApp
 {
     public bool? IsDark { get; init; }
     public bool? Notification { get; init; }

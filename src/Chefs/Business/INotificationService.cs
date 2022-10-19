@@ -4,5 +4,5 @@ namespace Chefs.Business;
 
 public interface INotificationService
 {
-    ValueTask<IImmutableList<Notification>> GetAll();
+    ValueTask<IImmutableList<Notification>> GetAll(CancellationToken ct);
 }

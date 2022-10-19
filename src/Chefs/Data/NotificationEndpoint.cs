@@ -17,7 +17,7 @@ public class NotificationEndpoint : INotificationEndpoint
         _serializer = serializer;
     }
 
-    public async ValueTask<IImmutableList<NotificationData>> GetAll()
+    public async ValueTask<IImmutableList<NotificationData>> GetAll(CancellationToken ct)
     {
         var notifications = await _dataService.ReadFileAsync<IImmutableList<NotificationData>>(_serializer, NotifacationDataFile);
 

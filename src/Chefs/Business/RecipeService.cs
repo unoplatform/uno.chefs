@@ -1,42 +1,67 @@
-﻿using System.Collections.Immutable;
+﻿using Chefs.Data;
+using System.Collections.Immutable;
 
 namespace Chefs.Business;
 
 public class RecipeService : IRecipeService
 {
-    public ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct)
+    private readonly IRecipeEndpoint _recipeEndpoint;
+
+    public RecipeService(IRecipeEndpoint recipeEndpoint)
     {
-        throw new NotImplementedException();
+        _recipeEndpoint = recipeEndpoint;
     }
 
-    public ValueTask<IImmutableList<Recipe>> GetByCategory(Category category, CancellationToken ct)
+    public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct)
     {
-        throw new NotImplementedException();
+        return (await _recipeEndpoint.GetAll(ct))
+                   .Select(r => new Recipe(r))
+                   .ToImmutableList();
     }
 
-    public ValueTask<Category> GetCategories(CancellationToken ct)
+    public async ValueTask<IImmutableList<Recipe>> GetByCategory(Category category, CancellationToken ct)
     {
-        throw new NotImplementedException();
+        return (await _recipeEndpoint.GetAll(ct))
+                   .Select(r => new Recipe(r))
+                   .Where(r => r.Category?.Id == category.Id)
+                   .ToImmutableList();
     }
 
-    public ValueTask<IImmutableList<Cookbook>> GetCookbooks(CancellationToken ct)
+    public async ValueTask<IImmutableList<Category>> GetCategories(CancellationToken ct)
     {
-        throw new NotImplementedException();
+        return (await _recipeEndpoint.GetCategories(ct))
+                   .Select(c => new Category(c))
+                   .ToImmutableList();
     }
 
-    public ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
+    public async ValueTask<IImmutableList<Cookbook>> GetCookbooks(CancellationToken ct)
     {
-        throw new NotImplementedException();
+        return (await _recipeEndpoint.GetCookbooks(ct))
+                   .Select(c => new Cookbook(c))
+                   .ToImmutableList();
     }
 
-    public ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct)
+    public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
     {
-        throw new NotImplementedException();
+        return (await _recipeEndpoint.GetPopularCreators(ct))
+                   .Select(u => new User(u))
+                   .ToImmutableList();
     }
 
-    public ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct)
+    public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct)
     {
-        throw new NotImplementedException();
+        return (await _recipeEndpoint.GetAll(ct))
+                   .Select(r => new Recipe(r))
+                   .Where(r => r.Date == DateTime.Now)
+                   .ToImmutableList();
+    }
+
+    public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct)
+    {
+        return (await _recipeEndpoint.GetAll(ct))
+                   .Select(r => new Recipe(r))
+                   .Where(r => r.Date == DateTime.Now && r.Reviews?.Count > 0)
+                   .ToImmutableList();
     }
 
     public ValueTask<IImmutableList<Recipe>> Search(SearchFilter search, CancellationToken ct)
