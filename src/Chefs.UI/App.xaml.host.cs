@@ -1,5 +1,7 @@
 
+using Chefs.Business;
 using Chefs.Presentation;
+using Chefs.Settings;
 
 namespace Chefs;
 
@@ -62,10 +64,10 @@ public sealed partial class App : Application
             new ViewMap<MainPage, MainViewModel>(),
             new ViewMap<SecondPage, SecondViewModel>(),
             new ViewMap<WelcomePage, WelcomeViewModel>(),
-            new ViewMap<FilterPage, FilterViewModel>(),
-            new ViewMap<HomePage, HomeViewModel>(),
+            new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
+            new ViewMap<HomePage, HomeViewModel>(Data: new DataMap<Credentials>()),
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
-            new ViewMap<LoginPage, LoginViewModel>(),
+            new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
             new ViewMap<ProfilePage, ProfileViewModel>(),
             new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(),
