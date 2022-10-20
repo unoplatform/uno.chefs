@@ -1,45 +1,49 @@
-﻿{
-  "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
-  "FullName": "James Bondi",
-  "Description": "Passionate about food and life",
-  "Email": "james.bondi@gmail.com",
-  "PhoneNumber": "",
-  "Password": "",
-  "Recipes": [
-    {
-      "Name": "Super Duper Oatmeal",
-      "Id": 8,
-      "Steps": [],
-      "ImageUrl": "ms-appx:///Assets/Recipes/recipe-eight.png",
-      "Serves": 1,
-      "CookTime": "60:00",
-      "Difficulty": 0,
-      "Ingredients": [],
-      "Calories": "268 kcal",
-      "Review": {},
-      "Details": "",
-      "Category": {
-        "Id": 1,
-        "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
-        "Name": "Breakfast"
+﻿[
+  {
+    "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+    "FullName": "James Bondi",
+    "Description": "Passionate about food and life",
+    "Email": "james.bondi@gmail.com",
+    "PhoneNumber": "",
+    "Password": "",
+    "Followers": 450,
+    "Following": 124,
+    "Recipes": [
+      {
+        "Name": "Super Duper Oatmeal",
+        "Id": 8,
+        "Steps": [],
+        "ImageUrl": "ms-appx:///Assets/Recipes/recipe-eight.png",
+        "Serves": 1,
+        "CookTime": "60:00",
+        "Difficulty": 0,
+        "Ingredients": [],
+        "Calories": "268 kcal",
+        "Review": {},
+        "Details": "",
+        "Category": {
+          "Id": 1,
+          "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
+          "Name": "Breakfast"
+        },
+        "Date": "10/15/2022",
+        "Save": false
+      }
+    ],
+    "Cookbooks": [
+      {
+        "Name": "Breakfast",
+        "PinsNumber": 3,
+        "Recipes": [],
+        "Save": true
       },
-      "Date": "10/15/2022",
-      "Save": false
-    }
-  ],
-  "Cookbooks": [
-    {
-      "Name": "Breakfast",
-      "PinsNumber": 3,
-      "Recipes": [],
-      "Save": true
-    },
-    {
-      "Name": "Easy",
-      "PinsNumber": 10,
-      "Recipes": [],
-      "Save": true
-    }
-  ]
-}
+      {
+        "Name": "Easy",
+        "PinsNumber": 10,
+        "Recipes": [],
+        "Save": true
+      }
+    ]
+  }
+]
 
