@@ -35,7 +35,27 @@ public record Recipe
     public string? Calories { get; init; }
     public IImmutableList<Review>? Reviews { get; init; }
     public string? Details { get; init; }
-    public Category? Category { get; init; }
+    public Category Category { get; init; }
     public DateTime Date { get; init; }
     public bool Save { get; init; }
+
+    internal RecipeData ToData() => new()
+    {
+        Steps = Steps?
+            .Select(s => s.ToData())
+            .ToImmutableList(),
+        ImageUrl = ImageUrl,
+        Name = Name,
+        Serves = Serves,
+        CookTime = CookTime,
+        Difficulty = Difficulty,
+        Ingredients = Ingredients?
+            .Select(i => i.ToData())
+            .ToImmutableList(),
+        Calories = Calories,
+        Reviews = Reviews,
+        Details = Details,
+        Category = Category.ToData(),
+        Date = Date
+    };
 }

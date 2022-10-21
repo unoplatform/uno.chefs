@@ -16,9 +16,9 @@ public class UserService : IUserService
         IWritableOptions<AuthenticationOptions> authenticationOptions)
         => (_userEndpoint, _chefAppOptions, _authenticationOptions) = (userEndpoint, chefAppOptions, authenticationOptions);
 
-    public async ValueTask<User?> Auth(string email, CancellationToken ct)
+    public async ValueTask<User?> BasicAuthenticate(string email, string password, CancellationToken ct)
     {
-        var user = await _userEndpoint.GetUser(email, ct);
+        var user = await _userEndpoint.GetUser(ct);
         if (user != null)
         {
             _user = new User(user);
@@ -37,7 +37,7 @@ public class UserService : IUserService
 
     public async ValueTask<User> GetUser(CancellationToken ct)
     {
-        var userData = await _userEndpoint.GetUser(_user!.Email!, ct);
+        var userData = await _userEndpoint.GetUser(ct);
         var user = new User(userData);
         return user;
     }

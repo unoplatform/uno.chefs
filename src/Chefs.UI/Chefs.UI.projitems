@@ -31,6 +31,12 @@
 		 explicitly included in the projitem, so files can be added from vscode
 		 without manipulating the projitem file.
 	-->
+    <Content Include="$(MSBuildThisFileDirectory)categories.json" />
+    <Content Include="$(MSBuildThisFileDirectory)Cookbooks.json" />
+    <Content Include="$(MSBuildThisFileDirectory)Notifications.json" />
+    <Content Include="$(MSBuildThisFileDirectory)PopularCreators.json" />
+    <Content Include="$(MSBuildThisFileDirectory)Recipes.json" />
+    <Content Include="$(MSBuildThisFileDirectory)Users.json" />
     <_Globbled_Page Include="$(MSBuildThisFileDirectory)**/*.xaml" Exclude="@(Page);@(ApplicationDefinition)">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

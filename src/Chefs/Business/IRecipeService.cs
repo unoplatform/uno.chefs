@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using Chefs.Data;
+using System.Collections.Immutable;
 
 namespace Chefs.Business;
 
@@ -24,7 +25,7 @@ public interface IRecipeService
     /// <returns>
     /// Get each recipe from api filter by a category
     /// </returns>
-    ValueTask<IImmutableList<Recipe>> GetByCategory(Category category, CancellationToken ct);
+    ValueTask<IImmutableList<Recipe>> GetByCategory(int categoryId, CancellationToken ct);
 
     /// <summary>
     /// Categories from api
@@ -69,7 +70,7 @@ public interface IRecipeService
     /// <returns>
     /// Get each cookbook from api that was saved
     /// </returns>
-    ValueTask<IImmutableList<Cookbook>> GetCookbooks(CancellationToken ct);
+    ValueTask<IImmutableList<Cookbook>> GetSavedCookbooks(CancellationToken ct);
 
     /// <summary>
     /// Filter recipes from api
@@ -79,5 +80,13 @@ public interface IRecipeService
     /// <returns>
     /// Get recipes filter by different options selected by the user
     /// </returns>
-    ValueTask<IImmutableList<Recipe>> Search(SearchFilter search, CancellationToken ct);
+    ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct);
+
+    /// <summary>
+    /// Add cookbook
+    /// </summary>
+    /// <param name="cookbook">Cookbook to add</param>
+    /// <param name="ct"></param>
+    /// <returns></returns>
+    ValueTask AddCookbook(Cookbook cookbook, CancellationToken ct);
 }

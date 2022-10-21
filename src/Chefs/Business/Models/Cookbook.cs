@@ -18,4 +18,14 @@ public record Cookbook
     public int PinsNumber { get; init; }
     public IImmutableList<Recipe>? Recipes { get; init; }
     public bool Save { get; init; }
+
+    internal CookbookData ToData() => new()
+    {
+        Name = Name,
+        PinsNumber = PinsNumber,
+        Recipes = Recipes?
+            .Select(c => c.ToData())
+            .ToImmutableList(),
+        Save = Save
+    };
 }

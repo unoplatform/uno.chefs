@@ -1,4 +1,5 @@
 ﻿using Chefs.Data;
+using System.Net;
 
 namespace Chefs.Business;
 
@@ -11,7 +12,14 @@ public record Category
         Name = category?.Name;
     }
 
-    public string? Id { get; init; }
+    public int? Id { get; init; }
     public string? UrlIcon { get; init; }
     public string? Name { get; init; }
+
+    internal CategoryData ToData() => new()
+    {
+        Id = Id,
+        UrlIcon = UrlIcon,
+        Name = Name
+    };
 }

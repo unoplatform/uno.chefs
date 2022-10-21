@@ -25,11 +25,26 @@ public class RecipeEndpoint : IRecipeEndpoint
         .ReadFileAsync<IImmutableList<CategoryData>>(_serializer, CategoryDataFile)
         ?? ImmutableList<CategoryData>.Empty;
 
-    public async ValueTask<IImmutableList<CookbookData>> GetCookbooks(CancellationToken ct) => await _dataService
+    public async ValueTask<IImmutableList<CookbookData>> GetSavedCookbooks(CancellationToken ct) => await _dataService
         .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, CookbookDataFile)
         ?? ImmutableList<CookbookData>.Empty;
 
     public async ValueTask<IImmutableList<PopularCreatorData>> GetPopularCreators(CancellationToken ct) => 
         await _dataService.ReadFileAsync<IImmutableList<PopularCreatorData>>(_serializer, PopularCreatorDataFile)
         ?? ImmutableList<PopularCreatorData>.Empty;
+
+    public ValueTask<IImmutableList<RecipeData>> GetTrending(CancellationToken ct)
+    {
+        throw new NotImplementedException();
+    }
+
+    ValueTask<IImmutableList<UserData>> IRecipeEndpoint.GetPopularCreators(CancellationToken ct)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ValueTask AddCookbook(CookbookData cookbook, CancellationToken ct)
+    {
+        throw new NotImplementedException();
+    }
 }

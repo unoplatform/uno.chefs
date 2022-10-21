@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Xml.Linq;
 using Chefs.Data;
 
 namespace Chefs.Business;
@@ -21,4 +22,15 @@ public record Step
     public IImmutableList<string>? Cookware { get; init; }
     public IImmutableList<Ingredient>? Ingredients { get; init; }
     public string? Description { get; init; }
+
+    internal StepData ToData() => new()
+    {
+        Number = Number,
+        CookTime = CookTime,
+        Cookware = Cookware,
+        Ingredients = Ingredients?
+            .Select(i => i.ToData())
+            .ToImmutableList(),
+        Description = Description
+    };
 }
