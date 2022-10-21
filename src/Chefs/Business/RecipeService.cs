@@ -38,9 +38,8 @@ public class RecipeService : IRecipeService
                    .Where(r => r.Date == DateTime.Now)
                    .ToImmutableList();
 
-    public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct) => (await _recipeEndpoint.GetAll(ct))
+    public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct) => (await _recipeEndpoint.GetTrending(ct))
                    .Select(r => new Recipe(r))
-                   .Where(r => r.Date == DateTime.Now && r.Reviews?.Count > 0)
                    .ToImmutableList();
 
     public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)

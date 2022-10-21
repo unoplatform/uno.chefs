@@ -9,28 +9,26 @@ public class UserService : IUserService
     private readonly IUserEndpoint _userEndpoint;
     private readonly IWritableOptions<ChefApp> _chefAppOptions;
     private readonly IWritableOptions<AuthenticationOptions> _authenticationOptions;
-    private User? _user;
 
     public UserService(IUserEndpoint userEndpoint,
         IWritableOptions<ChefApp> chefAppOptions,
         IWritableOptions<AuthenticationOptions> authenticationOptions)
         => (_userEndpoint, _chefAppOptions, _authenticationOptions) = (userEndpoint, chefAppOptions, authenticationOptions);
 
-    public async ValueTask<User?> BasicAuthenticate(string email, string password, CancellationToken ct)
+    public async ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct)
     {
-        var user = await _userEndpoint.GetUser(ct);
-        if (user != null)
+        var autentication = await _userEndpoint.Authenticate(email, password, ct);
+        if (autentication)
         {
-            _user = new User(user);
             await _authenticationOptions.UpdateAsync(_ => new AuthenticationOptions()
             {
                 Email = email,
                 SaveCredentials = true
             });
 
-            return _user;
+            return true;
         }
-        return null;
+        return false;
     }
 
     public async ValueTask<ChefApp> GetChefSettings(CancellationToken ct) => _chefAppOptions.Value;

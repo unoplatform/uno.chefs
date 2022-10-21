@@ -24,8 +24,8 @@ public record User
     public string? Description { get; init; }
     public string? Email { get; init; }
     public string? PhoneNumber { get; init; }
-    public int Followers { get; init; }
-    public int Following { get; init; }
+    public long? Followers { get; init; }
+    public long? Following { get; init; }
     public IImmutableList<Recipe>? Recipes { get; init; }
     public IImmutableList<Cookbook>? Cookbooks { get; init; }
 }

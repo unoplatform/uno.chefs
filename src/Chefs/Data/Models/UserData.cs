@@ -10,8 +10,8 @@ public record UserData
     public string? Email { get; init; }
     public string? PhoneNumber { get; init; }
     public string? Password { get; init; }
-    public int Followers { get; init; }
-    public int Following { get; init; }
+    public long? Followers { get; init; }
+    public long? Following { get; init; }
     public IImmutableList<RecipeData>? Recipes { get; init; }
     public IImmutableList<CookbookData>? Cookbooks { get; init; }
 }

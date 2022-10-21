@@ -15,7 +15,7 @@ public interface IUserService
     /// <returns>
     /// User logged in
     /// </returns>
-    ValueTask<User?> BasicAuthenticate(string email, string password, CancellationToken ct);
+    ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct);
 
     /// <summary>
     /// Current user data
