@@ -10,6 +10,7 @@ public class RecipeEndpoint : IRecipeEndpoint
     public const string CategoryDataFile = "categories.json";
     public const string CookbookDataFile = "cookbooks.json";
     public const string PopularCreatorDataFile = "popularcreators.json";
+    public const string TrendingDataFile = "trendingrecipes.json";
 
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
@@ -17,7 +18,7 @@ public class RecipeEndpoint : IRecipeEndpoint
     public RecipeEndpoint(IStorage dataService, ISerializer serializer)
         => (_dataService, _serializer) = (dataService, serializer);
 
-    public async ValueTask<IImmutableList<RecipeData>> GetAll(CancellationToken ct) => await _dataService
+    public async ValueTask<IImmutableList<RecipeData>> GetAll(int userId, CancellationToken ct) => (await _dataService
         .ReadFileAsync<IImmutableList<RecipeData>>(_serializer, RecipeDataFile) 
         ?? ImmutableList<RecipeData>.Empty;
 
@@ -25,26 +26,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         .ReadFileAsync<IImmutableList<CategoryData>>(_serializer, CategoryDataFile)
         ?? ImmutableList<CategoryData>.Empty;
 
-    public async ValueTask<IImmutableList<CookbookData>> GetSavedCookbooks(CancellationToken ct) => await _dataService
-        .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, CookbookDataFile)
-        ?? ImmutableList<CookbookData>.Empty;
-
-    public async ValueTask<IImmutableList<PopularCreatorData>> GetPopularCreators(CancellationToken ct) => 
-        await _dataService.ReadFileAsync<IImmutableList<PopularCreatorData>>(_serializer, PopularCreatorDataFile)
-        ?? ImmutableList<PopularCreatorData>.Empty;
-
-    public ValueTask<IImmutableList<RecipeData>> GetTrending(CancellationToken ct)
-    {
-        throw new NotImplementedException();
-    }
-
-    ValueTask<IImmutableList<UserData>> IRecipeEndpoint.GetPopularCreators(CancellationToken ct)
-    {
-        throw new NotImplementedException();
-    }
-
-    public ValueTask AddCookbook(CookbookData cookbook, CancellationToken ct)
-    {
-        throw new NotImplementedException();
-    }
+    public async ValueTask<IImmutableList<RecipeData>> GetTrending(int userId, CancellationToken ct) => await _dataService
+        .ReadFileAsync<IImmutableList<RecipeData>>(_serializer, TrendingDataFile)
+        ?? ImmutableList<RecipeData>.Empty;
 }

@@ -55,24 +55,6 @@ public interface IRecipeService
     ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct);
 
     /// <summary>
-    /// Porpular creators related with the recipes
-    /// </summary>
-    /// <param name="ct"></param>
-    /// <returns>
-    /// Return users that they are popular by their recipes
-    /// </returns>
-    ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct);
-
-    /// <summary>
-    /// Cookbooks from api
-    /// </summary>
-    /// <param name="ct"></param>
-    /// <returns>
-    /// Get each cookbook from api that was saved
-    /// </returns>
-    ValueTask<IImmutableList<Cookbook>> GetSavedCookbooks(CancellationToken ct);
-
-    /// <summary>
     /// Filter recipes from api
     /// </summary>
     /// <param name="search">This is an object with attributes to filter recipes</param>
@@ -81,12 +63,4 @@ public interface IRecipeService
     /// Get recipes filter by different options selected by the user
     /// </returns>
     ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct);
-
-    /// <summary>
-    /// Add cookbook
-    /// </summary>
-    /// <param name="cookbook">Cookbook to add</param>
-    /// <param name="ct"></param>
-    /// <returns></returns>
-    ValueTask AddCookbook(Cookbook cookbook, CancellationToken ct);
 }

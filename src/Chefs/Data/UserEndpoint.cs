@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using Uno.Extensions.Serialization;
+using Uno.Extensions.Specialized;
 using Uno.Extensions.Storage;
 
 namespace Chefs.Data;
@@ -28,6 +29,13 @@ public class UserEndpoint : IUserEndpoint
         _user = user;
         return true;
     }
+
+    public async ValueTask<IImmutableList<UserData>> GetPopularCreators(CancellationToken ct) =>
+        (await _dataService
+        .ReadFileAsync<IImmutableList<UserData>>(_serializer, UserDataFile))?
+        .Where(u => u?.Email != _user?.Email)
+        .ToImmutableList()
+        ?? ImmutableList<UserData>.Empty;
 
     public async ValueTask<UserData> GetUser(CancellationToken ct) => (await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, UserDataFile))?
             .Where(u => u.Email == _user?.Email).FirstOrDefault()

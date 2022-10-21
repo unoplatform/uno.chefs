@@ -1,4 +1,5 @@
 ﻿using Chefs.Settings;
+using System.Collections.Immutable;
 
 namespace Chefs.Business;
 
@@ -34,6 +35,15 @@ public interface IUserService
     /// App settings from the phone
     /// </returns>
     ValueTask<ChefApp> GetChefSettings(CancellationToken ct);
+
+    /// <summary>
+    /// Porpular creators related with the recipes
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// Return users that they are popular by their recipes
+    /// </returns>
+    ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct);
 
     ///<summary>
     /// Update app settings

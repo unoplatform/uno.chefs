@@ -7,6 +7,8 @@ public record Recipe
 {
     internal Recipe(RecipeData recipeData)
     {
+        Id = recipeData.Id;
+        UserId = recipeData.UserId;
         Steps = recipeData.Steps?
             .Select(s => new Step(s))
             .ToImmutableList();
@@ -24,7 +26,8 @@ public record Recipe
         Category = new Category(recipeData.Category);
         Date = recipeData.Date;
     }
-    public int Id { get; init; }
+    public int? Id { get; init; }
+    public int? UserId { get; init; }
     public IImmutableList<Step>? Steps { get; init; }
     public string? ImageUrl { get; init; }
     public string? Name { get; init; }
@@ -41,6 +44,8 @@ public record Recipe
 
     internal RecipeData ToData() => new()
     {
+        Id = Id,
+        UserId = UserId,
         Steps = Steps?
             .Select(s => s.ToData())
             .ToImmutableList(),

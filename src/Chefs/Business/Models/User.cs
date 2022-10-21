@@ -7,6 +7,7 @@ public record User
 {
     internal User(UserData user)
     {
+        Id = user.Id;
         UrlProfileImage = user.UrlProfileImage;
         FullName = user.FullName;
         Email = user.Email;
@@ -19,6 +20,7 @@ public record User
             .ToImmutableList();
     }
 
+    public int? Id { get; init; }
     public string? UrlProfileImage { get; init; }
     public string? FullName { get; init; }
     public string? Description { get; init; }

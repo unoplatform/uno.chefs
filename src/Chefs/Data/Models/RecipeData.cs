@@ -5,6 +5,8 @@ namespace Chefs.Data;
 
 public record RecipeData
 {
+    public int? Id { get; init; }
+    public int? UserId { get; init; }
     public IImmutableList<StepData>? Steps { get; init; }
     public string? ImageUrl { get; init; }
     public string? Name { get; init; }
