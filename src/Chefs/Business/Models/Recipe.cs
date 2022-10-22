@@ -26,7 +26,7 @@ public record Recipe
         Category = new Category(recipeData.Category);
         Date = recipeData.Date;
     }
-    public int? Id { get; init; }
+    public Guid? Id { get; init; }
     public int? UserId { get; init; }
     public IImmutableList<Step>? Steps { get; init; }
     public string? ImageUrl { get; init; }

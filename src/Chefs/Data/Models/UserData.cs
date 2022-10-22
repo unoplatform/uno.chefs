@@ -2,17 +2,17 @@
 
 namespace Chefs.Data;
 
-public record UserData
+public class UserData
 {
-    public int Id { get; init; }
-    public string? UrlProfileImage { get; init; }
-    public string? FullName { get; init; }
-    public string? Description { get; init; }
-    public string? Email { get; init; }
-    public string? PhoneNumber { get; init; }
-    public string? Password { get; init; }
-    public long? Followers { get; init; }
-    public long? Following { get; init; }
-    public IImmutableList<RecipeData>? Recipes { get; init; }
-    public IImmutableList<CookbookData>? Cookbooks { get; init; }
+    public int Id { get; set; }
+    public string? UrlProfileImage { get; set; }
+    public string? FullName { get; set; }
+    public string? Description { get; set; }
+    public string? Email { get; set; }
+    public string? PhoneNumber { get; set; }
+    public string? Password { get; set; }
+    public long? Followers { get; set; }
+    public long? Following { get; set; }
+    public ImmutableList<CookbookData>? SavedCookBooks { get; set; }
+    public ImmutableList<RecipeData>? SavedRecipes { get; set; }
 }

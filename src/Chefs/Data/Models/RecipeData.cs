@@ -3,21 +3,20 @@ using Chefs.Business;
 
 namespace Chefs.Data;
 
-public record RecipeData
+public class RecipeData
 {
-    public int? Id { get; init; }
-    public int? UserId { get; init; }
-    public IImmutableList<StepData>? Steps { get; init; }
-    public string? ImageUrl { get; init; }
-    public string? Name { get; init; }
+    public Guid? Id { get; set; }
+    public int? UserId { get; set; }
+    public IImmutableList<StepData>? Steps { get; set; }
+    public string? ImageUrl { get; set; }
+    public string? Name { get; set; }
     public int Serves { get; init; }
-    public TimeSpan CookTime { get; init; }
-    public Difficulties Difficulty { get; init; }
-    public IImmutableList<IngredientData>? Ingredients { get; init; }
-    public string? Calories { get; init; }
-    public IImmutableList<Review>? Reviews { get; init; }
-    public string? Details { get; init; }
-    public CategoryData? Category { get; init; }
-    public DateTime Date { get; init; }
-    public bool Save { get; init; }
+    public TimeSpan CookTime { get; set; }
+    public Difficulties Difficulty { get; set; }
+    public IImmutableList<IngredientData>? Ingredients { get; set; }
+    public string? Calories { get; set; }
+    public IImmutableList<Review>? Reviews { get; set; }
+    public string? Details { get; set; }
+    public CategoryData? Category { get; set; }
+    public DateTime Date { get; set; }
 }

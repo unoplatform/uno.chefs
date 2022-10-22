@@ -2,12 +2,12 @@
 
 namespace Chefs.Data;
 
-public record PopularCreatorData
+public class PopularCreatorData
 {
-    public string? UrlProfileImage { get; init; }
-    public string? FullName { get; init; }
-    public long? Followers { get; init; }
-    public long? Following { get; init; }
-    public IImmutableList<RecipeData>? Recipes { get; init; }
-    public IImmutableList<CookbookData>? Cookbooks { get; init; }
+    public string? UrlProfileImage { get; set; }
+    public string? FullName { get; set; }
+    public long? Followers { get; set; }
+    public long? Following { get; set; }
+    public IImmutableList<RecipeData>? Recipes { get; set; }
+    public IImmutableList<CookbookData>? Cookbooks { get; set; }
 }

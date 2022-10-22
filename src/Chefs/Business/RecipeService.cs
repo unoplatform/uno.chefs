@@ -6,10 +6,11 @@ namespace Chefs.Business;
 public class RecipeService : IRecipeService
 {
     private readonly IRecipeEndpoint _recipeEndpoint;
+    private readonly ICookbookEndpoint _cookbookEndpoint;
     private readonly IUserEndpoint _userEndpoint;
 
-    public RecipeService(IRecipeEndpoint recipeEndpoint, IUserEndpoint userEndpoint) 
-        => (_recipeEndpoint, _userEndpoint) = (recipeEndpoint, userEndpoint);
+    public RecipeService(IRecipeEndpoint recipeEndpoint, IUserEndpoint userEndpoint, ICookbookEndpoint cookbookEndpoint) 
+        => (_recipeEndpoint, _userEndpoint, _cookbookEndpoint) = (recipeEndpoint, userEndpoint, cookbookEndpoint);
 
     public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) => (await _recipeEndpoint
                    .GetAll((await _userEndpoint.GetUser(ct)).Id, ct))
@@ -28,11 +29,11 @@ public class RecipeService : IRecipeService
                    .ToImmutableList();
     
 
-    public async ValueTask<IImmutableList<Cookbook>> GetSavedCookbooks(CancellationToken ct)=> (await _recipeEndpoint.GetSavedCookbooks(ct))
+    public async ValueTask<IImmutableList<Cookbook>> GetSavedCookbooks(CancellationToken ct)=> (await _cookbookEndpoint.GetSavedCookbooks(ct))
                    .Select(c => new Cookbook(c))
                    .ToImmutableList();
 
-    public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _recipeEndpoint.GetPopularCreators(ct))
+    public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _userEndpoint.GetPopularCreators(ct))
                    .Select(u => new User(u))
                    .ToImmutableList();
 

@@ -16,7 +16,7 @@ public record Cookbook
             .ToImmutableList();
     }
 
-    public int? Id { get; init; }
+    public Guid Id { get; init; }
     public int? UserId { get; init; }
     public string? Name { get; init; }
     public int PinsNumber { get; init; }

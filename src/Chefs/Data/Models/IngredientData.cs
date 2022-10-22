@@ -1,7 +1,7 @@
 ﻿namespace Chefs.Data;
 
-public record IngredientData
+public class IngredientData
 {
-    public string? Name { get; init; }
-    public string? Quantity { get; init; }
+    public string? Name { get; set; }
+    public string? Quantity { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿using Chefs.Data;
 using Chefs.Settings;
+using System.Collections.Immutable;
 using Uno.Extensions.Configuration;
 
 namespace Chefs.Business;
@@ -32,6 +33,11 @@ public class UserService : IUserService
     }
 
     public async ValueTask<ChefApp> GetChefSettings(CancellationToken ct) => _chefAppOptions.Value;
+
+    public ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
+    {
+        throw new NotImplementedException();
+    }
 
     public async ValueTask<User> GetUser(CancellationToken ct)
     {

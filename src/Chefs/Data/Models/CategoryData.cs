@@ -1,8 +1,8 @@
 ﻿namespace Chefs.Data;
 
-public record CategoryData
+public class CategoryData
 {
-    public int? Id { get; init; }
-    public string? UrlIcon { get; init; }
-    public string? Name { get; init; }
+    public int? Id { get; set; }
+    public string? UrlIcon { get; set; }
+    public string? Name { get; set; }
 }

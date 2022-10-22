@@ -18,7 +18,7 @@ public class RecipeEndpoint : IRecipeEndpoint
     public RecipeEndpoint(IStorage dataService, ISerializer serializer)
         => (_dataService, _serializer) = (dataService, serializer);
 
-    public async ValueTask<IImmutableList<RecipeData>> GetAll(int userId, CancellationToken ct) => (await _dataService
+    public async ValueTask<IImmutableList<RecipeData>> GetAll(int userId, CancellationToken ct) => await _dataService
         .ReadFileAsync<IImmutableList<RecipeData>>(_serializer, RecipeDataFile) 
         ?? ImmutableList<RecipeData>.Empty;
 

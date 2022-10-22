@@ -2,13 +2,13 @@
 
 namespace Chefs.Data;
 
-public record StepData
+public class StepData
 {
-    public int RecipeId { get; init; }
-    public string? UrlVideo { get; init; }
-    public int Number { get; init; }
-    public TimeSpan CookTime { get; init; }
-    public IImmutableList<string>? Cookware { get; init; }
-    public IImmutableList<IngredientData>? Ingredients { get; init; }
-    public string? Description { get; init; }
+    public int RecipeId { get; set; }
+    public string? UrlVideo { get; set; }
+    public int Number { get; set; }
+    public TimeSpan CookTime { get; set; }
+    public IImmutableList<string>? Cookware { get; set; }
+    public IImmutableList<IngredientData>? Ingredients { get; set; }
+    public string? Description { get; set; }
 }

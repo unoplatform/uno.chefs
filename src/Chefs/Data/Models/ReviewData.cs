@@ -1,7 +1,7 @@
 ﻿namespace Chefs.Data;
 
-public record ReviewData
+public class ReviewData
 {
-    public int Score { get; init; }
-    public string? Description { get; init; }
+    public int Score { get; set; }
+    public string? Description { get; set; }
 }

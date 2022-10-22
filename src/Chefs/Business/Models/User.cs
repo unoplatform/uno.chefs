@@ -12,10 +12,10 @@ public record User
         FullName = user.FullName;
         Email = user.Email;
         PhoneNumber = user.PhoneNumber;
-        Recipes = user.Recipes?
+        Recipes = user.SavedRecipes?
             .Select(r => new Recipe(r))
             .ToImmutableList();
-        Cookbooks = user.Cookbooks?
+        Cookbooks = user.SavedCookBooks?
             .Select(c => new Cookbook(c))
             .ToImmutableList();
     }

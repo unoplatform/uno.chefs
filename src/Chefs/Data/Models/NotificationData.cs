@@ -1,9 +1,9 @@
 ﻿namespace Chefs.Data;
 
-public record  NotificationData
+public class NotificationData
 {
-    public string? Title { get; init; }
-    public string? Description { get; init; }
-    public bool Read { get; init; }
-    public DateTime Date { get; init; }
+    public string? Title { get; set; }
+    public string? Description { get; set; }
+    public bool Read { get; set; }
+    public DateTime Date { get; set; }
 }

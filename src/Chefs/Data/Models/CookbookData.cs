@@ -2,11 +2,11 @@
 
 namespace Chefs.Data;
 
-public record CookbookData
+public class CookbookData
 {
-    public int? Id { get; init; } 
-    public int? UserId { get; init; }
-    public string? Name { get; init; }
-    public int PinsNumber { get; init; }
-    public IImmutableList<RecipeData>? Recipes { get; init; }
+    public Guid Id { get; set; } 
+    public int? UserId { get; set; }
+    public string? Name { get; set; }
+    public int PinsNumber { get; set; }
+    public IImmutableList<RecipeData>? Recipes { get; set; }
 }
