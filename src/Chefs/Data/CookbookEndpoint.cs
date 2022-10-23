@@ -15,7 +15,7 @@ public class CookbookEndpoint : ICookbookEndpoint
     public CookbookEndpoint(IStorage dataService, ISerializer serializer, IUserEndpoint userEndpoint)
         => (_dataService, _serializer, _userEndpoint) = (dataService, serializer, userEndpoint);
 
-    public async ValueTask CreateCookbook(CookbookData cookbook, CancellationToken ct)
+    public async ValueTask Create(CookbookData cookbook, CancellationToken ct)
     {
         var cookbooks = (await _dataService
             .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, Constants.CookbooksDataFile))?
@@ -35,7 +35,7 @@ public class CookbookEndpoint : ICookbookEndpoint
         await _dataService.WriteFileAsync(Constants.CookbooksDataFile, _serializer.ToString(cookbooks!));
     }
 
-    public async ValueTask SaveCookbook(CookbookData cookbook, CancellationToken ct)
+    public async ValueTask Save(CookbookData cookbook, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetUser(ct);
 
@@ -56,7 +56,7 @@ public class CookbookEndpoint : ICookbookEndpoint
         await _dataService.WriteFileAsync(Constants.SavedItemsDataFile, _serializer.ToString(savedCookbooks!));
     }
 
-    public async ValueTask<IImmutableList<CookbookData>> GetSavedCookbooks(CancellationToken ct)
+    public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetUser(ct);
 

@@ -5,24 +5,18 @@ namespace Chefs.Business;
 public class CookbookService : ICookbookService
 {
     private readonly ICookbookEndpoint _cookbookEndpoint;
-    private readonly IUserEndpoint _userEndpoint;
 
-    public CookbookService(ICookbookEndpoint cookEndpoint, IUserEndpoint userEndpoint)
-        => (_cookbookEndpoint, _userEndpoint) = (cookEndpoint, userEndpoint);
+    public CookbookService(ICookbookEndpoint cookEndpoint)
+        => _cookbookEndpoint = cookEndpoint;
 
-    public async ValueTask AddUserCookbook(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
-        .CreateCookbook(cookbook.ToData(), ct);
+    public async ValueTask Create(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
+        .Create(cookbook.ToData(), ct);
 
-    public async ValueTask SaveCookbook(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
-        .SaveCookbook(cookbook.ToData(), ct);
+    public async ValueTask Save(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
+        .Save(cookbook.ToData(), ct);
 
-    public async ValueTask<IImmutableList<Cookbook>> GetSavedCookbooks(CancellationToken ct) => (await _cookbookEndpoint
-        .GetSavedCookbooks(ct))
-        .Select(c => new Cookbook(c))
-        .ToImmutableList();
-
-    public async ValueTask<IImmutableList<Cookbook>> GetUserCookbooks(CancellationToken ct) => (await _cookbookEndpoint
-        .GetSavedCookbooks(ct))
+    public async ValueTask<IImmutableList<Cookbook>> GetSaved(CancellationToken ct) => (await _cookbookEndpoint
+        .GetSaved(ct))
         .Select(c => new Cookbook(c))
         .ToImmutableList();
 }
