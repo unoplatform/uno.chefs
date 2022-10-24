@@ -4,7 +4,7 @@ namespace Chefs.Data;
 
 public class UserData
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string? UrlProfileImage { get; set; }
     public string? FullName { get; set; }
     public string? Description { get; set; }

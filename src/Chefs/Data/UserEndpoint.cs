@@ -10,7 +10,7 @@ public class UserEndpoint : IUserEndpoint
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
 
-    private int? _user;
+    private Guid? _user;
 
     public UserEndpoint(IStorage dataService, ISerializer serializer) 
         => (_dataService, _serializer) = (dataService, serializer);
