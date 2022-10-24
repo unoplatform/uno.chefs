@@ -1,4 +1,7 @@
 ﻿using Chefs.Data;
+using System.Net;
+using System.Xml.Linq;
+using Windows.System;
 
 namespace Chefs.Business;
 
@@ -12,5 +15,11 @@ public record Review
 
     public int Score { get; init; }
     public string? Description { get; init; }
+
+    internal ReviewData ToData() => new()
+    {
+        Score = Score,
+        Description = Description
+    };
 }
 

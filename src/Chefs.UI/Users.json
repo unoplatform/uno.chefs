@@ -1,49 +1,61 @@
 ﻿[
   {
-    "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+    "Id": "3c896419-e280-40e7-8552-240635566fed",
+    "UrlProfileImage": "ms-appx:///Assets/Users/user-1.png",
     "FullName": "James Bondi",
     "Description": "Passionate about food and life",
     "Email": "james.bondi@gmail.com",
     "PhoneNumber": "",
-    "Password": "",
+    "Password": "123",
     "Followers": 450,
-    "Following": 124,
-    "Recipes": [
-      {
-        "Name": "Super Duper Oatmeal",
-        "Id": 8,
-        "Steps": [],
-        "ImageUrl": "ms-appx:///Assets/Recipes/recipe-eight.png",
-        "Serves": 1,
-        "CookTime": "60:00",
-        "Difficulty": 0,
-        "Ingredients": [],
-        "Calories": "268 kcal",
-        "Review": {},
-        "Details": "",
-        "Category": {
-          "Id": 1,
-          "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
-          "Name": "Breakfast"
-        },
-        "Date": "10/15/2022",
-        "Save": false
-      }
-    ],
-    "Cookbooks": [
-      {
-        "Name": "Breakfast",
-        "PinsNumber": 3,
-        "Recipes": [],
-        "Save": true
-      },
-      {
-        "Name": "Easy",
-        "PinsNumber": 10,
-        "Recipes": [],
-        "Save": true
-      }
-    ]
+    "Following": 124
+  },
+  {
+    "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UrlProfileImage": "ms-appx:///Assets/Users/user-2.png",
+    "FullName": "Gill Bates",
+    "Description": "Passionate about food and life",
+    "Email": "gill.bates@gmail.com",
+    "PhoneNumber": "",
+    "Password": "123",
+    "Followers": 147,
+    "Following": 259
+  },
+
+  {
+    "Id": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+    "UrlProfileImage": "ms-appx:///Assets/Users/user-3.png",
+    "FullName": "Roberta Any",
+    "Description": "Passionate about food and life",
+    "Email": "roberta.any@gmail.com",
+    "PhoneNumber": "",
+    "Password": "123",
+    "Followers": 314,
+    "Following": 734
+  },
+
+  {
+    "Id": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
+    "UrlProfileImage": "ms-appx:///Assets/Users/user-4.png",
+    "FullName": "James Wolden",
+    "Description": "Passionate about food and life",
+    "Email": "james.wolden@gmail.com",
+    "PhoneNumber": "",
+    "Password": "123",
+    "Followers": 12,
+    "Following": 34
+  },
+  {
+    "Id": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+    "UrlProfileImage": "ms-appx:///Assets/Users/user-5.png",
+    "FullName": "Niki Samantha",
+    "Description": "Passionate about food and life",
+    "Email": "niki.samantha@gmail.com",
+    "PhoneNumber": "",
+    "Password": "123",
+    "Followers": 234,
+    "Following": 983
   }
+
 ]
 

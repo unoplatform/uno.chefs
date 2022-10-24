@@ -21,13 +21,15 @@ public record Recipe
             .Select(i => new Ingredient(i))
             .ToImmutableList();
         Calories = recipeData.Calories;
-        Reviews = recipeData.Reviews;
+        Reviews = recipeData.Reviews?
+            .Select(r => new Review(r))
+            .ToImmutableList();
         Details = recipeData.Details;
         Category = new Category(recipeData.Category);
         Date = recipeData.Date;
     }
-    public Guid? Id { get; init; }
-    public int? UserId { get; init; }
+    public Guid Id { get; init; }
+    public Guid UserId { get; init; }
     public IImmutableList<Step>? Steps { get; init; }
     public string? ImageUrl { get; init; }
     public string? Name { get; init; }
@@ -58,7 +60,9 @@ public record Recipe
             .Select(i => i.ToData())
             .ToImmutableList(),
         Calories = Calories,
-        Reviews = Reviews,
+        Reviews = Reviews?
+            .Select(r => r.ToData())
+            .ToImmutableList(),
         Details = Details,
         Category = Category.ToData(),
         Date = Date

@@ -1,7 +1,7 @@
 ﻿[
   {
     "Name": "Avocado Toast",
-    "Id": 1,
+    "Id": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
     "Steps": [
       {
         "CookTime": "05:00",
@@ -86,9 +86,26 @@
       }
     ],
     "Calories": "268 kcal",
-    "Reviews": [],
-    "Details": "",
-    "Creator": {},
+    "Reviews": [
+      {
+        "Score": 4,
+        "Description": "Good"
+      },
+      {
+        "Score": 3,
+        "Description": "Not so good"
+      }
+    ],
+    "Details": "Details",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "Followers": 450,
+      "Following": 124
+    },
     "Category": {
       "Id": 1,
       "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
@@ -99,7 +116,7 @@
   },
   {
     "Name": "Fresh Salad Thaid",
-    "Id": 2,
+    "Id": "0007e65f-3d5c-4ca3-842f-134b7f4a8b52",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-two.png",
     "Serves": 1,
@@ -107,9 +124,28 @@
     "Difficulty": 0,
     "Ingredients": [],
     "Calories": "268 kcal",
-    "Reviews": [],
+    "Reviews": [
+      {
+        "Score": 5,
+        "Description": "Excelent"
+      },
+      {
+        "Score": 4,
+        "Description": "Good"
+      }
+    ],
     "Details": "",
-    "Creator": {},
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124
+    },
     "Category": {
       "Id": 2,
       "UrlIcon": "ms-appx:///Assets/Categories/category-two.png",
@@ -120,7 +156,7 @@
   },
   {
     "Name": "Salmon Tomato Sauce",
-    "Id": 3,
+    "Id": "5ad60d30-2891-4c4b-99a7-e138e6477191",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-three.png",
     "Serves": 1,
@@ -128,9 +164,28 @@
     "Difficulty": 0,
     "Ingredients": [],
     "Calories": "267 kcal",
-    "Reviews": [],
+    "Reviews": [
+      {
+        "Score": 2,
+        "Description": "Bad"
+      },
+      {
+        "Score": 1,
+        "Description": "Very bad"
+      }
+    ],
     "Details": "",
-    "Creator": {},
+    "Creator": {
+      "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
+      "FullName": "Gill Bates",
+      "Description": "Passionate about food and life",
+      "Email": "gill.bates@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 147,
+      "Following": 259
+    },
     "Category": {
       "Id": 2,
       "UrlIcon": "ms-appx:///Assets/Categories/category-two.png",
@@ -141,7 +196,7 @@
   },
   {
     "Name": "Fresh Salad Pasta",
-    "Id": 4,
+    "Id": "b9e6502b-b373-4fcf-86b2-89379667aa5c",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-four.png",
     "Serves": 1,
@@ -149,9 +204,28 @@
     "Difficulty": 0,
     "Ingredients": [],
     "Calories": "267 kcal",
-    "Reviews": [],
+    "Reviews": [
+      {
+        "Score": 3,
+        "Description": "Good"
+      },
+      {
+        "Score": 3,
+        "Description": "Good"
+      }
+    ],
     "Details": "",
-    "Creator": {},
+    "Creator": {
+      "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
+      "FullName": "Gill Bates",
+      "Description": "Passionate about food and life",
+      "Email": "gill.bates@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 147,
+      "Following": 259
+    },
     "Category": {
       "Id": 3,
       "UrlIcon": "ms-appx:///Assets/Categories/category-three.png",
@@ -162,7 +236,7 @@
   },
   {
     "Name": "Circle Cake",
-    "Id": 5,
+    "Id": "1dc0e330-ab16-43cc-9b84-fdaf2c5e83cd",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-five.png",
     "Serves": 1,
@@ -172,7 +246,17 @@
     "Calories": "267 kcal",
     "Reviews": [],
     "Details": "",
-    "Creator": {},
+    "Creator": {
+      "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
+      "FullName": "Gill Bates",
+      "Description": "Passionate about food and life",
+      "Email": "gill.bates@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 147,
+      "Following": 259
+    },
     "Category": {
       "Id": 4,
       "UrlIcon": "ms-appx:///Assets/Categories/category-four.png",
@@ -183,7 +267,7 @@
   },
   {
     "Name": "Mom's Cheesecake",
-    "Id": 6,
+    "Id": "f89a5305-4d77-4f66-a97c-65adba6b36ff",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-six.png",
     "Serves": 1,
@@ -191,9 +275,24 @@
     "Difficulty": 0,
     "Ingredients": [],
     "Calories": "268 kcal",
-    "Reviews": [],
+    "Reviews": [
+      {
+        "Score": 1,
+        "Description": "Bad"
+      }
+    ],
     "Details": "",
-    "Creator": {},
+    "Creator": {
+      "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
+      "FullName": "Gill Bates",
+      "Description": "Passionate about food and life",
+      "Email": "gill.bates@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 147,
+      "Following": 259
+    },
     "Category": {
       "Id": 1,
       "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
@@ -204,7 +303,7 @@
   },
   {
     "Name": "Fluffy French Toast",
-    "Id": 7,
+    "Id": "4761a59b-80bc-4910-b443-8ecc74565719",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-seven.png",
     "Serves": 1,
@@ -214,7 +313,17 @@
     "Calories": "268 kcal",
     "Reviews": [],
     "Details": "",
-    "Creator": {},
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124
+    },
     "Category": {
       "Id": 1,
       "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
@@ -225,7 +334,7 @@
   },
   {
     "Name": "Super Duper Oatmeal",
-    "Id": 8,
+    "Id": "63e275f8-9222-48b2-83cb-df6c0961a1eb",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-eight.png",
     "Serves": 1,
@@ -235,6 +344,17 @@
     "Calories": "268 kcal",
     "Reviews": [],
     "Details": "",
+    "Creator": {
+      "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
+      "FullName": "Gill Bates",
+      "Description": "Passionate about food and life",
+      "Email": "gill.bates@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 147,
+      "Following": 259
+    }
     "Category": {
       "Id": 1,
       "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
@@ -245,7 +365,7 @@
   },
   {
     "Name": "Walnut and nuts",
-    "Id": 9,
+    "Id": "f649eefe-93cb-4bca-93a2-af707966d217",
     "Steps": [],
     "ImageUrl": "ms-appx:///Assets/Recipes/recipe-nine.png",
     "Serves": 1,
@@ -260,7 +380,17 @@
       }
     ],
     "Details": "",
-    "Creator": {},
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124
+    },
     "Category": {
       "Id": 1,
       "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",

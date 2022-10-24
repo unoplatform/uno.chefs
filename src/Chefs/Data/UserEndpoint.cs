@@ -32,6 +32,7 @@ public class UserEndpoint : IUserEndpoint
     public async ValueTask<IImmutableList<UserData>> GetPopularCreators(CancellationToken ct) =>
         (await _dataService
         .ReadFileAsync<IImmutableList<UserData>>(_serializer, Constants.UserDataFile))?
+        .RemoveAll(x=> x.Id == _user)
         .ToImmutableList()
         ?? ImmutableList<UserData>.Empty;
 
