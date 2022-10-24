@@ -27,14 +27,10 @@ public class RecipeService : IRecipeService
                    .Select(c => new Category(c))
                    .ToImmutableList();
 
-    public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _userEndpoint.GetPopularCreators(ct))
-                   .Select(u => new User(u))
-                   .ToImmutableList();
-
     public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct) => (await _recipeEndpoint
                    .GetAll(ct))
                    .Select(r => new Recipe(r))
-                   .Where(r => r.Date == DateTime.Now)
+                   .Where(r => r.Date > DateTime.Now.AddDays(7))
                    .ToImmutableList();
 
     public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct) => (await _recipeEndpoint
@@ -42,16 +38,12 @@ public class RecipeService : IRecipeService
                    .Select(r => new Recipe(r))
                    .ToImmutableList();
 
-    public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)
-    {
-        var recipes = (await _recipeEndpoint
+    public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct) => GetRecipesByText((await _recipeEndpoint
                    .GetAll(ct))
-                   .Select(r => new Recipe(r))
-                   .ToImmutableList();
-        return GetRecipesByText(recipes.ToList(), term);
-    }
+                   .Select(r => new Recipe(r)), term);
 
-    private IImmutableList<Recipe> GetRecipesByText(List<Recipe> recipes, string? text) => recipes
+
+    private IImmutableList<Recipe> GetRecipesByText(IEnumerable<Recipe> recipes, string? text) => recipes
             .Where(r => text == null 
             || r.Name?.ToLower() == text.ToLower() 
             || r.Category?.Name?.ToLower() == text.ToLower()).ToImmutableList();

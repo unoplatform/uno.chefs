@@ -29,22 +29,15 @@ public class UserService : IUserService
 
             return true;
         }
+
         return false;
     }
 
     public async ValueTask<ChefApp> GetChefSettings(CancellationToken ct) => _chefAppOptions.Value;
 
-    public ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
-    {
-        throw new NotImplementedException();
-    }
+    public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _userEndpoint.GetPopularCreators(ct)).Select(data => new User(data)).ToImmutableList();
 
-    public async ValueTask<User> GetUser(CancellationToken ct)
-    {
-        var userData = await _userEndpoint.GetUser(ct);
-        var user = new User(userData);
-        return user;
-    }
+    public async ValueTask<User> GetUser(CancellationToken ct) => new User(await _userEndpoint.GetUser(ct));
 
     public async Task SetCheffSettings(ChefApp chefSettings, CancellationToken ct) => await _chefAppOptions.UpdateAsync(_ => new ChefApp()
         {
