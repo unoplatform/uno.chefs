@@ -28,4 +28,13 @@ public interface ICookbookService
     /// Get each cookbook from api that was saved
     /// </returns>
     ValueTask<IImmutableList<Cookbook>> GetSaved(CancellationToken ct);
+
+    /// <summary>
+    /// Cookbooks by user
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// User's cookbooks
+    /// </returns>
+    ValueTask<IImmutableList<Cookbook>> GetByUser(Guid userId, CancellationToken ct);
 }

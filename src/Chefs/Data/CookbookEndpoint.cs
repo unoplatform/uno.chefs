@@ -15,6 +15,10 @@ public class CookbookEndpoint : ICookbookEndpoint
     public CookbookEndpoint(IStorage dataService, ISerializer serializer, IUserEndpoint userEndpoint)
         => (_dataService, _serializer, _userEndpoint) = (dataService, serializer, userEndpoint);
 
+    public async ValueTask<IImmutableList<CookbookData>> GetAll(CancellationToken ct) => 
+        await _dataService
+            .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, Constants.CookbooksDataFile) ?? ImmutableList<CookbookData>.Empty;
+
     public async ValueTask Create(CookbookData cookbook, CancellationToken ct)
     {
         var cookbooks = (await _dataService

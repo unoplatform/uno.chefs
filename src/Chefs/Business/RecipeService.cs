@@ -15,7 +15,6 @@ public class RecipeService : IRecipeService
                    .GetAll(ct))
                    .Select(r => new Recipe(r))
                    .ToImmutableList();
-    
 
     public async ValueTask<IImmutableList<Recipe>> GetByCategory(int categoryId, CancellationToken ct) => (await _recipeEndpoint
                    .GetAll(ct))
@@ -48,4 +47,22 @@ public class RecipeService : IRecipeService
             || r.Name?.ToLower() == text.ToLower() 
             || r.Category?.Name?.ToLower() == text.ToLower()).ToImmutableList();
 
+    public async ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct) => 
+        (await _recipeEndpoint.GetAll(ct))
+        .FirstOrDefault(r => r.Id == recipeId)?.Reviews?
+        .Select(x => new Review(x))
+        .ToImmutableList() ?? ImmutableList<Review>.Empty;
+    
+
+    public async ValueTask<IImmutableList<Step>> GetSteps(Guid recipeId, CancellationToken ct) =>
+        (await _recipeEndpoint.GetAll(ct))
+        .FirstOrDefault(r => r.Id == recipeId)?.Steps?
+        .Select(x => new Step(x))
+        .ToImmutableList() ?? ImmutableList<Step>.Empty;
+
+    public async ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct) =>
+        (await _recipeEndpoint.GetAll(ct))
+        .Where(r=>r.UserId == userId)
+        .Select(x => new Recipe(x))
+        .ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 }

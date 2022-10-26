@@ -63,4 +63,31 @@ public interface IRecipeService
     /// Get recipes filter by different options selected by the user
     /// </returns>
     ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct);
+
+    /// <summary>
+    /// Get recipe's reviews
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// Recipe's reviews
+    /// </returns>
+    ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct);
+
+    /// <summary>
+    /// Get review's steps
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// Recipe's steps
+    /// </returns>
+    ValueTask<IImmutableList<Step>> GetSteps(Guid recipeId, CancellationToken ct);
+
+    /// <summary>
+    /// Recipes by user
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// User's recipes
+    /// </returns>
+    ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct);
 }

@@ -9,9 +9,6 @@ public record Recipe
     {
         Id = recipeData.Id;
         UserId = recipeData.UserId;
-        Steps = recipeData.Steps?
-            .Select(s => new Step(s))
-            .ToImmutableList();
         ImageUrl = recipeData.ImageUrl;
         Name = recipeData.Name;
         Serves = recipeData.Serves;
@@ -21,16 +18,12 @@ public record Recipe
             .Select(i => new Ingredient(i))
             .ToImmutableList();
         Calories = recipeData.Calories;
-        Reviews = recipeData.Reviews?
-            .Select(r => new Review(r))
-            .ToImmutableList();
         Details = recipeData.Details;
         Category = new Category(recipeData.Category);
         Date = recipeData.Date;
     }
     public Guid Id { get; init; }
     public Guid UserId { get; init; }
-    public IImmutableList<Step>? Steps { get; init; }
     public string? ImageUrl { get; init; }
     public string? Name { get; init; }
     public int Serves { get; init; }
@@ -38,7 +31,6 @@ public record Recipe
     public Difficulties Difficulty { get; init; }
     public IImmutableList<Ingredient>? Ingredients { get; init; }
     public string? Calories { get; init; }
-    public IImmutableList<Review>? Reviews { get; init; }
     public string? Details { get; init; }
     public Category Category { get; init; }
     public DateTime Date { get; init; }
@@ -48,9 +40,6 @@ public record Recipe
     {
         Id = Id,
         UserId = UserId,
-        Steps = Steps?
-            .Select(s => s.ToData())
-            .ToImmutableList(),
         ImageUrl = ImageUrl,
         Name = Name,
         Serves = Serves,
@@ -60,9 +49,6 @@ public record Recipe
             .Select(i => i.ToData())
             .ToImmutableList(),
         Calories = Calories,
-        Reviews = Reviews?
-            .Select(r => r.ToData())
-            .ToImmutableList(),
         Details = Details,
         Category = Category.ToData(),
         Date = Date
