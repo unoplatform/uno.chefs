@@ -2,6 +2,7 @@
 using Chefs.Business;
 using Chefs.Presentation;
 using Chefs.Settings;
+using Uno.Extensions.Configuration;
 
 namespace Chefs;
 
@@ -32,6 +33,7 @@ public sealed partial class App : Application
 					configBuilder
 						.EmbeddedSource<App>()
 						.Section<AppConfig>()
+						.Section<Credentials>()
 				)
 
 				// Enable localization (see appsettings.json for supported languages)
