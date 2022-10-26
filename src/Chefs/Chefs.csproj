@@ -3,5 +3,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 	<Import Project="..\Extensions.props" />
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+	</ItemGroup>
 
 </Project>

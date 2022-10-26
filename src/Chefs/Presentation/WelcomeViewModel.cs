@@ -9,7 +9,7 @@ public partial class WelcomeViewModel
 
     public WelcomeViewModel(INavigator navigator)
     {
-        _navigator= navigator;
+        _navigator = navigator;
     }
 
     private async ValueTask GoToLogin(CancellationToken ct)
