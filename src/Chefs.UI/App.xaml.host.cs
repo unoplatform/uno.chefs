@@ -84,7 +84,7 @@ public sealed partial class App : Application
             new ViewMap<ProfilePage, ProfileViewModel>(),
             new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(),
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
-            new ViewMap<SearchPage, SearchViewModel>(),
+            new ViewMap<SearchPage, SearchViewModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<SettingsPage, SettingsViewModel>(),
             new ViewMap<LiveCookingPage, LiveCookingViewModel>()
             );
