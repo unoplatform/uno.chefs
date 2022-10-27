@@ -10,7 +10,7 @@ public class RecipeData
     public IImmutableList<StepData>? Steps { get; set; }
     public string? ImageUrl { get; set; }
     public string? Name { get; set; }
-    public int Serves { get; init; }
+    public int Serves { get; set; }
     public TimeSpan CookTime { get; set; }
     public Difficulties Difficulty { get; set; }
     public IImmutableList<IngredientData>? Ingredients { get; set; }

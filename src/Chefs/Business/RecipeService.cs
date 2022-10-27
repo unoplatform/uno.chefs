@@ -42,10 +42,9 @@ public class RecipeService : IRecipeService
                    .Select(r => new Recipe(r)), term);
 
 
-    private IImmutableList<Recipe> GetRecipesByText(IEnumerable<Recipe> recipes, string? text) => recipes
-            .Where(r => text == null 
-            || r.Name?.ToLower() == text.ToLower() 
-            || r.Category?.Name?.ToLower() == text.ToLower()).ToImmutableList();
+    private IImmutableList<Recipe> GetRecipesByText(IEnumerable<Recipe> recipes, string text) => recipes
+            .Where(r => r.Name!.ToLower().Contains(text.ToLower())
+            || r.Category!.Name!.ToLower().Contains(text.ToLower())).ToImmutableList();
 
     public async ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct) => 
         (await _recipeEndpoint.GetAll(ct))

@@ -4,7 +4,6 @@ namespace Chefs.Data;
 
 public class StepData
 {
-    public int RecipeId { get; set; }
     public string? UrlVideo { get; set; }
     public int Number { get; set; }
     public TimeSpan CookTime { get; set; }
