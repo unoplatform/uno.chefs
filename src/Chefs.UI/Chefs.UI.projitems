@@ -51,8 +51,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\StartCookingPage.xaml.cs">
-      <DependentUpon>StartCookingPage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LiveCookingPage.xaml.cs">
+      <DependentUpon>LiveCookingPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -112,7 +112,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\StartCookingPage.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\LiveCookingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
