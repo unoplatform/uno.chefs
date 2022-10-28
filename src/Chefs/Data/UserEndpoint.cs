@@ -43,7 +43,10 @@ public class UserEndpoint : IUserEndpoint
 
         if(user is not null)
         {
-            var savedItems = (await _dataService.ReadFileAsync<List<SavedItemsData>>(_serializer, Constants.SavedItemsDataFile))?
+            var savedCookbooks = (await _dataService.ReadFileAsync<List<SavedCookbooksData>>(_serializer, Constants.SavedCookbooksDataFile))?
+            .Where(u => u.UserId == _user).FirstOrDefault();
+
+            var savedRecipes = (await _dataService.ReadFileAsync<List<SavedRecipesData>>(_serializer, Constants.SavedRecipesDataFile))?
             .Where(u => u.UserId == _user).FirstOrDefault();
 
             var cookBooks = (await _dataService
@@ -52,13 +55,13 @@ public class UserEndpoint : IUserEndpoint
             var recipes = (await _dataService
             .ReadFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
 
-            if (savedItems?.SavedCookbooks is not null)
+            if (savedCookbooks?.SavedCookbooks is not null)
             {
-                user.SavedCookBooks = cookBooks?.Where(x => savedItems.SavedCookbooks.Any(y => y == x.Id)).ToImmutableList();
+                user.SavedCookBooks = cookBooks?.Where(x => savedCookbooks.SavedCookbooks.Any(y => y == x.Id)).ToImmutableList();
             }
-            if (savedItems?.SavedRecipes is not null)
+            if (savedRecipes?.SavedRecipes is not null)
             {
-                user.SavedRecipes = recipes?.Where(x => savedItems.SavedRecipes.Any(y => y == x.Id)).ToImmutableList();
+                user.SavedRecipes = recipes?.Where(x => savedRecipes.SavedRecipes.Any(y => y == x.Id)).ToImmutableList();
             }
 
             return user;

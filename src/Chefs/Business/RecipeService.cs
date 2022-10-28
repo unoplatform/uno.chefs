@@ -64,4 +64,14 @@ public class RecipeService : IRecipeService
         .Where(r=>r.UserId == userId)
         .Select(x => new Recipe(x))
         .ToImmutableList() ?? ImmutableList<Recipe>.Empty;
+
+    public async ValueTask Save(Recipe recipe, CancellationToken ct)
+    {
+        await _recipeEndpoint.Save(recipe.ToData(), ct);
+    }
+
+    public async ValueTask CreateReview(Review review, CancellationToken ct)
+    {
+        await _recipeEndpoint.CreateReview(review.ToData(), ct);
+    }
 }

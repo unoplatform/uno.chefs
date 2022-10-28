@@ -14,7 +14,7 @@ public class CookbookEndpoint : ICookbookEndpoint
     private readonly IUserEndpoint _userEndpoint;
 
     private IImmutableList<CookbookData>? _cookbooks;
-    private IImmutableList<SavedItemsData>? _savedItems;
+    private IImmutableList<SavedCookbooksData>? _savedCookbooks;
 
     public CookbookEndpoint(IStorage dataService, ISerializer serializer, IUserEndpoint userEndpoint)
         => (_dataService, _serializer, _userEndpoint) = (dataService, serializer, userEndpoint);
@@ -44,7 +44,7 @@ public class CookbookEndpoint : ICookbookEndpoint
     {
         var currentUser = await _userEndpoint.GetUser(ct);
 
-        var savedCookbooks = (await LoadSavedItems()).ToList();
+        var savedCookbooks = (await LoadSavedCookbooks()).ToList();
 
         var userSavedCookbook = savedCookbooks?.Where(x => x.UserId == currentUser.Id).FirstOrDefault();
 
@@ -54,10 +54,10 @@ public class CookbookEndpoint : ICookbookEndpoint
         }
         else
         {
-            savedCookbooks?.Add(new SavedItemsData { UserId = currentUser.Id, SavedCookbooks = new Guid[] { cookbook.Id } });
+            savedCookbooks?.Add(new SavedCookbooksData { UserId = currentUser.Id, SavedCookbooks = new Guid[] { cookbook.Id } });
         }
 
-        _savedItems = savedCookbooks!.ToImmutableList();
+        _savedCookbooks = savedCookbooks!.ToImmutableList();
     }
 
     public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct)
@@ -66,7 +66,7 @@ public class CookbookEndpoint : ICookbookEndpoint
 
         var cookBooks = await LoadCookbooks();
 
-        var savedCookbooks = (await LoadSavedItems())?
+        var savedCookbooks = (await LoadSavedCookbooks())?
             .Where(x => x.UserId == currentUser.Id).FirstOrDefault();
 
         if (savedCookbooks is not null && savedCookbooks.SavedCookbooks is not null)
@@ -89,13 +89,13 @@ public class CookbookEndpoint : ICookbookEndpoint
     }
 
     //Implementation to update saved cookbooks and recipes in memory 
-    private async Task<IImmutableList<SavedItemsData>> LoadSavedItems()
+    private async Task<IImmutableList<SavedCookbooksData>> LoadSavedCookbooks()
     {
-        if(_savedItems == null)
+        if(_savedCookbooks == null)
         {
-            _savedItems = (await _dataService
-                .ReadFileAsync<IImmutableList<SavedItemsData>>(_serializer, Constants.SavedItemsDataFile));
+            _savedCookbooks = (await _dataService
+                .ReadFileAsync<IImmutableList<SavedCookbooksData>>(_serializer, Constants.SavedCookbooksDataFile));
         }
-        return _savedItems ?? ImmutableList<SavedItemsData>.Empty;
+        return _savedCookbooks ?? ImmutableList<SavedCookbooksData>.Empty;
     }
 }

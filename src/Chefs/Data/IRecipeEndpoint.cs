@@ -10,5 +10,9 @@ public interface IRecipeEndpoint
 
     ValueTask<IImmutableList<RecipeData>> GetSaved(CancellationToken ct);
 
+    ValueTask Save(RecipeData recipe, CancellationToken ct);
+
+    ValueTask CreateReview(ReviewData reviewData, CancellationToken ct);
+
     ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct);
 }

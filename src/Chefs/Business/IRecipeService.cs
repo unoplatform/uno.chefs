@@ -74,6 +74,24 @@ public interface IRecipeService
     ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct);
 
     /// <summary>
+    /// Save recipe 
+    /// </summary>
+    /// <param name="recipe"> recipe to save </param>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// </returns>
+    ValueTask Save(Recipe recipe, CancellationToken ct);
+
+    /// <summary>
+    /// Create review for a recipe
+    /// </summary>
+    /// <param name="review"> review to create </param>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// </returns>
+    ValueTask CreateReview(Review review, CancellationToken ct);
+
+    /// <summary>
     /// Get review's steps
     /// </summary>
     /// <param name="ct"></param>
