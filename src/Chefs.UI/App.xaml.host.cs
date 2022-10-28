@@ -4,6 +4,7 @@ using Chefs.Data;
 using Chefs.Presentation;
 using Chefs.Settings;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Immutable;
 using Uno.Extensions.Configuration;
 
 namespace Chefs;
@@ -82,11 +83,11 @@ public sealed partial class App : Application
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
             new ViewMap<ProfilePage, ProfileViewModel>(),
-            new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(),
+            new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
-            new ViewMap<SearchPage, SearchViewModel>(Data: new DataMap<SearchFilter>()),
+            new ViewMap<SearchPage, SearchViewModel>(Data: new DataMap<SearchFilter>(), ResultData: typeof(SearchFilter)),
             new ViewMap<SettingsPage, SettingsViewModel>(),
-            new ViewMap<LiveCookingPage, LiveCookingViewModel>()
+            new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>())
             );
 
         routes

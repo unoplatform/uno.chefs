@@ -34,7 +34,7 @@
     <_Globbed_Compile Remove="Views\SavedRecipesPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SearchPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SettingsPage.xaml.cs" />
-    <_Globbed_Compile Remove="Views\StartCookingPage.xaml.cs" />
+    <_Globbed_Compile Remove="Views\LiveCookingPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <_Globbled_Page Remove="Views\FilterPage.xaml" />
@@ -47,6 +47,6 @@
     <_Globbled_Page Remove="Views\SavedRecipesPage.xaml" />
     <_Globbled_Page Remove="Views\SearchPage.xaml" />
     <_Globbled_Page Remove="Views\SettingsPage.xaml" />
-    <_Globbled_Page Remove="Views\StartCookingPage.xaml" />
+    <_Globbled_Page Remove="Views\LiveCookingPage.xaml" />
   </ItemGroup>
 </Project>
