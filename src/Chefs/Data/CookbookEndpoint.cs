@@ -1,4 +1,5 @@
-﻿using Chefs.Data.Models;
+﻿using Chefs.Business;
+using Chefs.Data.Models;
 using System.Collections.Immutable;
 using Uno.Extensions;
 using Uno.Extensions.Serialization;
@@ -12,18 +13,18 @@ public class CookbookEndpoint : ICookbookEndpoint
     private readonly ISerializer _serializer;
     private readonly IUserEndpoint _userEndpoint;
 
+    private IImmutableList<CookbookData>? _cookbooks;
+    private IImmutableList<SavedItemsData>? _savedItems;
+
     public CookbookEndpoint(IStorage dataService, ISerializer serializer, IUserEndpoint userEndpoint)
         => (_dataService, _serializer, _userEndpoint) = (dataService, serializer, userEndpoint);
 
     public async ValueTask<IImmutableList<CookbookData>> GetAll(CancellationToken ct) => 
-        await _dataService
-            .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, Constants.CookbooksDataFile) ?? ImmutableList<CookbookData>.Empty;
+        await LoadCookbooks() ?? ImmutableList<CookbookData>.Empty;
 
     public async ValueTask Create(CookbookData cookbook, CancellationToken ct)
     {
-        var cookbooks = (await _dataService
-            .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, Constants.CookbooksDataFile))?
-            .ToList();
+        var cookbooks = (await LoadCookbooks()).ToList();
 
         var currentUser = await _userEndpoint.GetUser(ct);
 
@@ -36,15 +37,14 @@ public class CookbookEndpoint : ICookbookEndpoint
             Recipes = cookbook.Recipes,
         });
 
-        await _dataService.WriteFileAsync(Constants.CookbooksDataFile, _serializer.ToString(cookbooks!));
+        _cookbooks = cookbooks!.ToImmutableList();
     }
 
     public async ValueTask Save(CookbookData cookbook, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetUser(ct);
 
-        var savedCookbooks = await _dataService
-            .ReadFileAsync<List<SavedItemsData>>(_serializer, Constants.SavedItemsDataFile);
+        var savedCookbooks = (await LoadSavedItems()).ToList();
 
         var userSavedCookbook = savedCookbooks?.Where(x => x.UserId == currentUser.Id).FirstOrDefault();
 
@@ -57,18 +57,16 @@ public class CookbookEndpoint : ICookbookEndpoint
             savedCookbooks?.Add(new SavedItemsData { UserId = currentUser.Id, SavedCookbooks = new Guid[] { cookbook.Id } });
         }
 
-        await _dataService.WriteFileAsync(Constants.SavedItemsDataFile, _serializer.ToString(savedCookbooks!));
+        _savedItems = savedCookbooks!.ToImmutableList();
     }
 
     public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetUser(ct);
 
-        var cookBooks = (await _dataService
-            .ReadFileAsync<List<CookbookData>>(_serializer, Constants.CookbooksDataFile));
+        var cookBooks = await LoadCookbooks();
 
-        var savedCookbooks = (await _dataService
-            .ReadFileAsync<List<SavedItemsData>>(_serializer, Constants.SavedItemsDataFile))?
+        var savedCookbooks = (await LoadSavedItems())?
             .Where(x => x.UserId == currentUser.Id).FirstOrDefault();
 
         if (savedCookbooks is not null && savedCookbooks.SavedCookbooks is not null)
@@ -77,5 +75,27 @@ public class CookbookEndpoint : ICookbookEndpoint
         }
 
         return ImmutableList<CookbookData>.Empty;
+    }
+
+    //Implementation to update cookbooks in memory 
+    private async Task<IImmutableList<CookbookData>> LoadCookbooks()
+    {
+        if(_cookbooks == null)
+        {
+            _cookbooks = (await _dataService
+                .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, Constants.CookbooksDataFile));
+        }
+        return _cookbooks ?? ImmutableList<CookbookData>.Empty;
+    }
+
+    //Implementation to update saved cookbooks and recipes in memory 
+    private async Task<IImmutableList<SavedItemsData>> LoadSavedItems()
+    {
+        if(_savedItems == null)
+        {
+            _savedItems = (await _dataService
+                .ReadFileAsync<IImmutableList<SavedItemsData>>(_serializer, Constants.SavedItemsDataFile));
+        }
+        return _savedItems ?? ImmutableList<SavedItemsData>.Empty;
     }
 }
