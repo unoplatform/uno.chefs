@@ -6,10 +6,9 @@ namespace Chefs.Business;
 public class RecipeService : IRecipeService
 {
     private readonly IRecipeEndpoint _recipeEndpoint;
-    private readonly IUserEndpoint _userEndpoint;
 
     public RecipeService(IRecipeEndpoint recipeEndpoint, IUserEndpoint userEndpoint) 
-        => (_recipeEndpoint, _userEndpoint) = (recipeEndpoint, userEndpoint);
+        => _recipeEndpoint = recipeEndpoint;
 
     public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) => (await _recipeEndpoint
                    .GetAll(ct))
@@ -65,13 +64,15 @@ public class RecipeService : IRecipeService
         .Select(x => new Recipe(x))
         .ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 
-    public async ValueTask Save(Recipe recipe, CancellationToken ct)
-    {
-        await _recipeEndpoint.Save(recipe.ToData(), ct);
-    }
+    public async ValueTask Save(Recipe recipe, CancellationToken ct) => await _recipeEndpoint
+        .Save(recipe.ToData(), ct);
+    
 
-    public async ValueTask CreateReview(Review review, CancellationToken ct)
-    {
-        await _recipeEndpoint.CreateReview(review.ToData(), ct);
-    }
+    public async ValueTask CreateReview(Review review, CancellationToken ct) =>  await _recipeEndpoint
+        .CreateReview(review.ToData(), ct);
+
+    public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct) => (await _recipeEndpoint
+        .GetSaved(ct))
+        .Select(r => new Recipe(r))
+        .ToImmutableList();
 }

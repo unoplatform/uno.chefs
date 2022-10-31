@@ -108,4 +108,14 @@ public interface IRecipeService
     /// User's recipes
     /// </returns>
     ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct);
+
+
+    /// <summary>
+    /// Recipes saved from current user
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// Current user's recipes
+    /// </returns>
+    ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct);
 }
