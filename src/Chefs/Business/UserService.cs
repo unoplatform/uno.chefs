@@ -45,4 +45,9 @@ public class UserService : IUserService
             Notification = chefSettings.Notification,
             AccentColor = chefSettings.AccentColor,
         });
+
+    public async ValueTask UpdateUserInfo(User user, CancellationToken ct)
+    {
+        await _userEndpoint.UpdateUserInfo(user.ToData(), ct);
+    }
 }

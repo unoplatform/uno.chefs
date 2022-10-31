@@ -10,14 +10,15 @@ public class UserEndpoint : IUserEndpoint
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
 
-    private Guid? _user;
+    private Guid? _userId;
+    private IImmutableList<UserData>? _users;
 
     public UserEndpoint(IStorage dataService, ISerializer serializer) 
         => (_dataService, _serializer) = (dataService, serializer);
 
     public async ValueTask<bool> Authenticate(string email, string password, CancellationToken ct)
     {
-       var user = (await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, Constants.UserDataFile))?
+       var user = (await Load())?
             .Where(u => u.Email == email && u.Password == password).FirstOrDefault();
 
         if (user is null)
@@ -25,29 +26,27 @@ public class UserEndpoint : IUserEndpoint
             return false;
         }
 
-        _user = user.Id;
+        _userId = user.Id;
         return true;
     }
 
     public async ValueTask<IImmutableList<UserData>> GetPopularCreators(CancellationToken ct) =>
-        (await _dataService
-        .ReadFileAsync<IImmutableList<UserData>>(_serializer, Constants.UserDataFile))?
-        .RemoveAll(x=> x.Id == _user)
+        (await Load())?
+        .RemoveAll(x=> x.Id == _userId)
         .ToImmutableList()
         ?? ImmutableList<UserData>.Empty;
 
     public async ValueTask<UserData> GetUser(CancellationToken ct)
     {
-        var user = (await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, Constants.UserDataFile))?
-             .Where(u => u.Id == _user).FirstOrDefault();
+        var user = (await Load())?.Where(u => u.Id == _userId).FirstOrDefault();
 
         if(user is not null)
         {
             var savedCookbooks = (await _dataService.ReadFileAsync<List<SavedCookbooksData>>(_serializer, Constants.SavedCookbooksDataFile))?
-            .Where(u => u.UserId == _user).FirstOrDefault();
+            .Where(u => u.UserId == _userId).FirstOrDefault();
 
             var savedRecipes = (await _dataService.ReadFileAsync<List<SavedRecipesData>>(_serializer, Constants.SavedRecipesDataFile))?
-            .Where(u => u.UserId == _user).FirstOrDefault();
+            .Where(u => u.UserId == _userId).FirstOrDefault();
 
             var cookBooks = (await _dataService
             .ReadFileAsync<List<CookbookData>>(_serializer, Constants.CookbooksDataFile));
@@ -68,5 +67,39 @@ public class UserEndpoint : IUserEndpoint
         }
 
         throw new Exception();
+    }
+
+    public async ValueTask UpdateUserInfo(UserData user, CancellationToken ct)
+    {
+        var users = (await Load())?.ToList();
+        var oldUser = users?.Where(u => u.Id == _userId)?.FirstOrDefault();
+
+        if(oldUser is not null)
+        {
+            oldUser = new UserData()
+            {
+                Id = user.Id,
+                UrlProfileImage = user.UrlProfileImage,
+                FullName = user.FullName,
+                Description = user.Description,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Password = user.Password,
+                Followers = user.Followers,
+                Following = user.Following,
+            };
+            _users = users?.ToImmutableList()!;
+        }
+
+        throw new Exception();
+    }
+
+    private async ValueTask<IImmutableList<UserData>> Load()
+    {
+        if(_users == null)
+        {
+            _users = (await _dataService.ReadFileAsync<IImmutableList<UserData>>(_serializer, Constants.UserDataFile))!;
+        }
+        return _users!;
     }
 }

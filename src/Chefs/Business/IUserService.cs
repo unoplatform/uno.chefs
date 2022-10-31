@@ -27,6 +27,15 @@ public interface IUserService
     /// </returns>
     ValueTask<User> GetUser(CancellationToken ct);
 
+    /// <summary>
+    /// Update user information
+    /// </summary>
+    /// <param name="user">user with information to update</param>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// </returns>
+    ValueTask UpdateUserInfo(User user, CancellationToken ct);
+
     ///<summary>
     /// Gets chef settings
     /// </summary>
