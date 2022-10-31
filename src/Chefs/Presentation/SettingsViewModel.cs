@@ -1,37 +1,34 @@
 ﻿using Chefs.Business;
-using Uno.Extensions.Configuration;
 
 namespace Chefs.Presentation;
 
 public partial class SettingsViewModel
 {
-    private readonly IUserService _userService;
     private readonly INavigator _navigator;
+    private readonly IUserService _userService;
 
-    public SettingsViewModel(INavigator navigator,
-        IUserService userService)
+    public SettingsViewModel(INavigator navigator, IUserService userService)
     {
         _navigator = navigator;
         _userService = userService;
     }
 
-    IState<User> Profile => State<User>.Async(this, async (ct) => await _userService.GetUser(ct));
+    IState<User> Profile => State<User>.Async(this, async ct => await _userService.GetUser(ct));
 
-    IState<ChefApp> Settings => State<ChefApp>.Async(this, async (ct) => await _userService.GetChefSettings(ct));
-
-    public async ValueTask DoExist(CancellationToken ct)
-    {
-        await _navigator.NavigateBackAsync(ct);
-    }
+    IState<ChefApp> Settings => State<ChefApp>.Async(this, async (ct) => await _userService.GetSettings(ct));
 
     public async ValueTask DoUpdate(CancellationToken ct)
     {
-
         var settings = await Settings;
         var user = await Profile;
 
         await _userService.UpdateUserInfo(user!, ct);
         await _userService.SetCheffSettings(settings!, ct);
+    }
+
+    public async ValueTask DoExit(CancellationToken ct)
+    {
+        await _navigator.NavigateBackAsync(ct);
     }
 
 
