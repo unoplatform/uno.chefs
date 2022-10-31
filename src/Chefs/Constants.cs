@@ -7,6 +7,5 @@ public static class Constants
     public const string UserDataFile = "Users.json";
     public const string RecipeDataFile = "Recipes.json";
     public const string CategoryDataFile = "categories.json";
-    public const string PopularCreatorDataFile = "Popularcreators.json";
     public const string SavedCookbooksDataFile = "SavedCookbooks.json";
 }
