@@ -3,6 +3,8 @@
 namespace Chefs.Data;
 public interface ICookbookEndpoint
 {
+    ValueTask<IImmutableList<CookbookData>> GetAll(CancellationToken ct);
+
     ValueTask Create(CookbookData cookbook, CancellationToken ct);
 
     ValueTask Save(CookbookData cookbook, CancellationToken ct);

@@ -19,4 +19,10 @@ public class CookbookService : ICookbookService
         .GetSaved(ct))
         .Select(c => new Cookbook(c))
         .ToImmutableList();
+
+    public async ValueTask<IImmutableList<Cookbook>> GetByUser(Guid userId, CancellationToken ct) =>
+        (await _cookbookEndpoint.GetAll(ct))
+        .Where(r => r.UserId == userId)
+        .Select(x => new Cookbook(x))
+        .ToImmutableList() ?? ImmutableList<Cookbook>.Empty;
 }

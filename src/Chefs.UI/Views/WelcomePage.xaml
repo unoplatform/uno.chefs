@@ -1,0 +1,48 @@
+﻿<Page x:Class="Chefs.Views.WelcomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Chefs.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      xmlns:msui="using:Microsoft.UI.Xaml.Controls"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="Red">
+        
+        <!--<FlipView x:Name="flipView"
+                  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
+                  Background="Blue">
+            <FlipView.Items>
+                <Grid Background="Azure">
+
+                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. Enjoy it." />
+                    
+                    <Button HorizontalAlignment="Right"
+                            utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
+                            Content="Next" />
+                </Grid>
+                <Grid Background="Blue">
+                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. Enjoy it." />
+
+                    <Button HorizontalAlignment="Right"
+                            utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
+                            Content="Next" />
+                </Grid>
+                <Grid Background="Yellow">
+                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. Enjoy it." />
+
+                    <Button HorizontalAlignment="Right"
+                            utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
+                            Content="Next" />
+                </Grid>
+            </FlipView.Items>
+        </FlipView>
+
+        <msui:PipsPager x:Name="pipsPager"
+                        MinHeight="100"
+                        HorizontalAlignment="Center"
+                        MaxVisiblePips="10" />-->
+    </Grid>
+</Page>
