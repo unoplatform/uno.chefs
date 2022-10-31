@@ -1,5 +1,4 @@
-﻿using Chefs.Business;
-using Chefs.Data.Models;
+﻿using Chefs.Data.Models;
 using System.Collections.Immutable;
 using Uno.Extensions;
 using Uno.Extensions.Serialization;
@@ -33,7 +32,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
     public async ValueTask<IImmutableList<RecipeData>> GetSaved(CancellationToken ct)
     {
-        var currentUser = await _userEndpoint.GetUser(ct);
+        var currentUser = await _userEndpoint.GetCurrent(ct);
 
         var recipes = await LoadRecipes();
 
@@ -50,7 +49,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
     public async ValueTask Save(RecipeData recipe, CancellationToken ct)
     {
-        var currentUser = await _userEndpoint.GetUser(ct);
+        var currentUser = await _userEndpoint.GetCurrent(ct);
 
         var savedRecipes = (await LoadSavedRecipes()).ToList();
 
@@ -70,7 +69,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
     public async ValueTask CreateReview(ReviewData reviewData, CancellationToken ct)
     {
-        var currentUser = await _userEndpoint.GetUser(ct);
+        var currentUser = await _userEndpoint.GetCurrent(ct);
 
         var recipes = (await LoadRecipes()).ToList();
 

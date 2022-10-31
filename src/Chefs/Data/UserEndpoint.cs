@@ -36,7 +36,7 @@ public class UserEndpoint : IUserEndpoint
         .ToImmutableList()
         ?? ImmutableList<UserData>.Empty;
 
-    public async ValueTask<UserData> GetUser(CancellationToken ct)
+    public async ValueTask<UserData> GetCurrent(CancellationToken ct)
     {
         var user = (await Load())?.Where(u => u.Id == _userId).FirstOrDefault();
 
@@ -69,7 +69,7 @@ public class UserEndpoint : IUserEndpoint
         throw new Exception();
     }
 
-    public async ValueTask UpdateUserInfo(UserData user, CancellationToken ct)
+    public async ValueTask Update(UserData user, CancellationToken ct)
     {
         var users = (await Load())?.ToList();
         var oldUser = users?.Where(u => u.Id == _userId)?.FirstOrDefault();

@@ -33,21 +33,21 @@ public class UserService : IUserService
         return false;
     }
 
-    public async ValueTask<ChefApp> GetChefSettings(CancellationToken ct) => _chefAppOptions.Value;
+    public async ValueTask<ChefApp> GetSettings(CancellationToken ct) => _chefAppOptions.Value;
 
     public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _userEndpoint.GetPopularCreators(ct)).Select(data => new User(data)).ToImmutableList();
 
-    public async ValueTask<User> GetUser(CancellationToken ct) => new User(await _userEndpoint.GetUser(ct));
+    public async ValueTask<User> GetCurrent(CancellationToken ct) => new User(await _userEndpoint.GetCurrent(ct));
 
-    public async Task SetCheffSettings(ChefApp chefSettings, CancellationToken ct) => await _chefAppOptions.UpdateAsync(_ => new ChefApp()
+    public async Task SetSettings(ChefApp chefSettings, CancellationToken ct) => await _chefAppOptions.UpdateAsync(_ => new ChefApp()
         {
             IsDark = chefSettings.IsDark,
             Notification = chefSettings.Notification,
             AccentColor = chefSettings.AccentColor,
         });
 
-    public async ValueTask UpdateUserInfo(User user, CancellationToken ct)
+    public async ValueTask Update(User user, CancellationToken ct)
     {
-        await _userEndpoint.UpdateUserInfo(user.ToData(), ct);
+        await _userEndpoint.Update(user.ToData(), ct);
     }
 }

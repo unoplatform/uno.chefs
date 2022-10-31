@@ -26,7 +26,7 @@ public class CookbookEndpoint : ICookbookEndpoint
     {
         var cookbooks = (await LoadCookbooks()).ToList();
 
-        var currentUser = await _userEndpoint.GetUser(ct);
+        var currentUser = await _userEndpoint.GetCurrent(ct);
 
         cookbooks?.Add(new CookbookData()
         {
@@ -42,7 +42,7 @@ public class CookbookEndpoint : ICookbookEndpoint
 
     public async ValueTask Save(CookbookData cookbook, CancellationToken ct)
     {
-        var currentUser = await _userEndpoint.GetUser(ct);
+        var currentUser = await _userEndpoint.GetCurrent(ct);
 
         var savedCookbooks = (await LoadSavedCookbooks()).ToList();
 
@@ -62,7 +62,7 @@ public class CookbookEndpoint : ICookbookEndpoint
 
     public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct)
     {
-        var currentUser = await _userEndpoint.GetUser(ct);
+        var currentUser = await _userEndpoint.GetCurrent(ct);
 
         var cookBooks = await LoadCookbooks();
 
