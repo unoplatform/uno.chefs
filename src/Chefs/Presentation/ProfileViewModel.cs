@@ -1,9 +1,56 @@
-﻿namespace Chefs.Presentation;
+﻿using Chefs.Business;
+using Uno.Extensions.Configuration;
+
+namespace Chefs.Presentation;
 
 public partial class ProfileViewModel
 {
-    public ProfileViewModel()
-    {
+    private readonly IUserService _userService;
+    private readonly ICookbookService _cookbookService;
+    private readonly IRecipeService _recipeService;
+    private readonly INavigator _navigator;
+    private User? _user;
 
+    public ProfileViewModel(INavigator navigator,
+        ICookbookService cookbookService,
+        IRecipeService recipeService,
+        IUserService userService,
+        User user)
+    {
+        _navigator = navigator;
+        _cookbookService = cookbookService;
+        _recipeService = recipeService;
+        _userService = userService;
+        _user = user;
+    }
+
+    IState<bool> _myState => State<bool>.Async(this, async (ct) => _user is null);
+
+    IState<bool> IsMyProfile => _myState;
+
+    IState<User> Profile => State<User>.Async(this, async (ct) => _user ?? await _userService.GetUser(ct));
+
+    IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetSaved(ct));
+
+    IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetSaved(ct));
+
+    public async ValueTask DoExist(CancellationToken ct)
+    {
+        await _navigator.NavigateBackAsync(ct);
+    }
+
+    public async ValueTask DoSettingsNavigation(CancellationToken ct)
+    {
+        await _navigator.NavigateViewModelAsync<SettingsViewModel>(this, cancellation: ct);
+    }
+
+    public async ValueTask DoRecipeNavigation(Recipe recipe, CancellationToken ct)
+    {
+        await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe, cancellation: ct);
+    }
+
+    public async ValueTask DoCookbookNavigation(Cookbook cookbook, CancellationToken ct)
+    {
+        await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: cookbook, cancellation: ct);
     }
 }

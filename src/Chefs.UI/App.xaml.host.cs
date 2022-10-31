@@ -82,7 +82,7 @@ public sealed partial class App : Application
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
-            new ViewMap<ProfilePage, ProfileViewModel>(),
+            new ViewMap<ProfilePage, ProfileViewModel>(Data: new DataMap<User>()),
             new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
             new ViewMap<SearchPage, SearchViewModel>(Data: new DataMap<SearchFilter>(), ResultData: typeof(SearchFilter)),
