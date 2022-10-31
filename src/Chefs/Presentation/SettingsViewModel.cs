@@ -13,7 +13,7 @@ public partial class SettingsViewModel
         _userService = userService;
     }
 
-    IState<User> Profile => State<User>.Async(this, async ct => await _userService.GetUser(ct));
+    IState<User> Profile => State<User>.Async(this, async ct => await _userService.GetCurrent(ct));
 
     IState<ChefApp> Settings => State<ChefApp>.Async(this, async (ct) => await _userService.GetSettings(ct));
 
@@ -22,8 +22,8 @@ public partial class SettingsViewModel
         var settings = await Settings;
         var user = await Profile;
 
-        await _userService.UpdateUserInfo(user!, ct);
-        await _userService.SetCheffSettings(settings!, ct);
+        await _userService.Update(user!, ct);
+        await _userService.SetSettings(settings!, ct);
     }
 
     public async ValueTask DoExit(CancellationToken ct)

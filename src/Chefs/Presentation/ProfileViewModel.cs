@@ -29,7 +29,7 @@ public partial class ProfileViewModel
     [Value]
     IFeed<bool> IsMyProfile => _myProfile;
 
-    IState<User> Profile => State<User>.Async(this, async ct => _user ?? await _userService.GetUser(ct));
+    IState<User> Profile => State<User>.Async(this, async ct => _user ?? await _userService.GetCurrent(ct));
 
     IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetSaved(ct));
 
