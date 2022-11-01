@@ -1,5 +1,6 @@
 
 using Uno.Extensions.Configuration;
+using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
@@ -24,9 +25,12 @@ public class ShellViewModel
 
         if (currentCredentials is null || !currentCredentials.SkipWelcome)
         {
-            await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
+            var response = await _navigator
+                .NavigateViewModelForResultAsync<WelcomeViewModel, bool>(this, Qualifiers.ClearBackStack);
 
-            await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = true});
+            var isSkipWelcome = await response!.Result;
+
+            await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = isSkipWelcome!.SomeOrDefault() });
         }
 
         if (currentCredentials?.Email is { Length: > 0 })
@@ -53,5 +57,5 @@ public class ShellViewModel
         }
 
         await _navigator.NavigateViewModelAsync<MainViewModel>(this);
-	}
+    }
 }

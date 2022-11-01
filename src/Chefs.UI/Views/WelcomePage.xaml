@@ -9,15 +9,44 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="Red">
-        
+    <Grid 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Bottom">
+        <Grid RowSpacing="70">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" 
+                        HorizontalAlignment="Center" 
+                        Orientation="Horizontal">
+                <Image VerticalAlignment="Center" 
+                       Height="20" 
+                       Width="20" 
+                       Source="ms-appx:///Assets/Icons/close.png"/>
+                <TextBlock VerticalAlignment="Center" 
+                           Text="Uno Chefs" />
+            </StackPanel>
+            <TextBlock Grid.Row="1" 
+                       TextAlignment="Center"
+                       Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. Enjoy it." />
+            <Button Grid.Row="2" 
+                    Command="{Binding GoToLogin}"
+                    Width="207"
+                    Height="56"
+                    Background="#ED3F64" 
+                    Margin="0, 0, 0, 200" 
+                    HorizontalAlignment="Center" 
+                    Content="Let's cook!" />
+        </Grid>
         <!--<FlipView x:Name="flipView"
                   utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
                   Background="Blue">
             <FlipView.Items>
                 <Grid Background="Azure">
 
-                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. Enjoy it." />
+                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. Enjoy it." />
                     
                     <Button HorizontalAlignment="Right"
                             utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
