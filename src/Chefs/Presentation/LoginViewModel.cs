@@ -33,4 +33,9 @@ public partial class LoginViewModel
     {
         await _navigator.NavigateViewModelAsync<RegisterViewModel>(this, cancellation: ct);
     }
+
+    public async ValueTask DoRegisterNavigation(CancellationToken ct)
+    {
+        await _navigator.NavigateViewModelAsync<RegisterViewModel>(this, cancellation: ct);
+    }
 }
