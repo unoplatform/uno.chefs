@@ -25,7 +25,8 @@ public class ShellViewModel
 
         if (currentCredentials is null || !currentCredentials.SkipWelcome)
         {
-            await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
+            var response = await _navigator
+                .NavigateViewModelForResultAsync<WelcomeViewModel, bool>(this, Qualifiers.ClearBackStack);
 
             await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = true });
         }
