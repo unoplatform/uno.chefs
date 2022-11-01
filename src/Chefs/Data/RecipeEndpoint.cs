@@ -73,11 +73,12 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         var recipes = await Load();
 
-        var userRecipes = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
+        var recipe = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
 
-        if(userRecipes is not null)
+        if(recipe is not null)
         {
-            userRecipes.Reviews?.Add(reviewData);
+            reviewData.CreatedBy = currentUser.Id;
+            recipe.Reviews?.Add(reviewData);
         }
         else
         {

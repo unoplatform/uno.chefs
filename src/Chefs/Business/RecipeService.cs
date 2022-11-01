@@ -66,10 +66,10 @@ public class RecipeService : IRecipeService
 
     public async ValueTask Save(Recipe recipe, CancellationToken ct) => await _recipeEndpoint
         .Save(recipe.ToData(), ct);
-    
 
-    public async ValueTask CreateReview(Review review, CancellationToken ct) =>  await _recipeEndpoint
-        .CreateReview(review.ToData(), ct);
+
+    public async ValueTask CreateReview(Guid recipeId, string review, CancellationToken ct) =>  await _recipeEndpoint
+        .CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct);
 
     public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct) => (await _recipeEndpoint
         .GetSaved(ct))
