@@ -16,7 +16,7 @@ public partial class SettingsViewModel
 
     IState<User> Profile { get; }
 
-    IState<ChefApp> Settings => State<ChefApp>.Async(this, async (ct) => await _userService.GetSettings(ct));
+    IState<AppConfig> Settings => State<AppConfig>.Async(this, async (ct) => await _userService.GetSettings(ct));
 
     public async ValueTask DoUpdate(CancellationToken ct)
     {

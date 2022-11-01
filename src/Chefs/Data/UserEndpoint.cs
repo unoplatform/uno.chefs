@@ -9,23 +9,14 @@ public class UserEndpoint : IUserEndpoint
 {
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
-    private readonly IRecipeEndpoint _recipeEndpoint;
-    private readonly ICookbookEndpoint _cookbookEndpoint;
 
     private Guid? _userId;
     private List<UserData>? _users;
 
     public UserEndpoint(IStorage dataService, 
-        ISerializer serializer, 
-        IRecipeEndpoint recipeEndpoint, 
-        ICookbookEndpoint cookbookEndpoint) 
-        => (_dataService, 
-        _serializer, 
-        _recipeEndpoint, 
-        _cookbookEndpoint) = (dataService, 
-        serializer, 
-        recipeEndpoint, 
-        cookbookEndpoint);
+        ISerializer serializer) => 
+        (_dataService,  _serializer) = 
+        (dataService, serializer);
 
     public async ValueTask<bool> Authenticate(string email, string password, CancellationToken ct)
     {
@@ -53,25 +44,6 @@ public class UserEndpoint : IUserEndpoint
 
         if(user is not null)
         {
-            var savedCookbooks = (await _cookbookEndpoint.GetSaved(ct))?
-            .Where(u => u.UserId == _userId);
-
-            var savedRecipes = (await _recipeEndpoint.GetSaved(ct))?
-            .Where(u => u.UserId == _userId);
-
-            var cookBooks = (await _cookbookEndpoint.GetAll(ct));
-
-            var recipes = (await _recipeEndpoint.GetAll(ct));
-
-            if (savedCookbooks is not null)
-            {
-                user.SavedCookBooks = cookBooks?.Where(x => savedCookbooks.Any(y => y.Id == x.Id)).ToImmutableList();
-            }
-            if (savedRecipes is not null)
-            {
-                user.SavedRecipes = recipes?.Where(x => savedRecipes.Any(y => y.Id == x.Id)).ToImmutableList();
-            }
-
             return user;
         }
 

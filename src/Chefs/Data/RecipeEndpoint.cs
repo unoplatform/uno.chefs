@@ -50,7 +50,7 @@ public class RecipeEndpoint : IRecipeEndpoint
     public async ValueTask Save(RecipeData recipe, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetCurrent(ct);
-
+        
         var savedRecipes = await LoadSaved();
 
         var userSavedRecipe = savedRecipes?.Where(x => x.UserId == currentUser.Id).FirstOrDefault();

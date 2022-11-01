@@ -43,7 +43,7 @@ public interface IUserService
     /// <returns>
     /// App settings from the phone
     /// </returns>
-    ValueTask<ChefApp> GetSettings(CancellationToken ct);
+    ValueTask<AppConfig> GetSettings(CancellationToken ct);
 
     /// <summary>
     /// Porpular creators related with the recipes
@@ -61,5 +61,5 @@ public interface IUserService
     /// <param name="ct"></param>
     /// <returns>
     /// </returns>
-    Task SetSettings(ChefApp chefSettings, CancellationToken ct);
+    Task SetSettings(AppConfig chefSettings, CancellationToken ct);
 }

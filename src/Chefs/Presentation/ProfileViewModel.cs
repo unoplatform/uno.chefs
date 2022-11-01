@@ -9,7 +9,7 @@ public partial class ProfileViewModel
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
     private readonly INavigator _navigator;
-    private User? _user;
+    private User _user;
 
     public ProfileViewModel(INavigator navigator,
         ICookbookService cookbookService,
@@ -28,9 +28,9 @@ public partial class ProfileViewModel
 
     IState<User> Profile => State<User>.Async(this, async ct => _user ?? await _userService.GetCurrent(ct));
 
-    IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetSaved(ct));
+    IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetByUser(_user.Id, ct));
 
-    IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetSaved(ct));
+    IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetByUser(_user.Id, ct));
 
     public async ValueTask DoExist(CancellationToken ct)
     {
