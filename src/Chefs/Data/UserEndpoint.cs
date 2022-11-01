@@ -65,11 +65,11 @@ public class UserEndpoint : IUserEndpoint
 
             if (savedCookbooks is not null)
             {
-                user.SavedCookBooks = cookBooks?.Where(x => savedCookbooks.Any(y => y == x.Id)).ToImmutableList();
+                user.SavedCookBooks = cookBooks?.Where(x => savedCookbooks.Any(y => y.Id == x.Id)).ToImmutableList();
             }
             if (savedRecipes is not null)
             {
-                user.SavedRecipes = recipes?.Where(x => savedRecipes.Any(y => y == x.Id)).ToImmutableList();
+                user.SavedRecipes = recipes?.Where(x => savedRecipes.Any(y => y.Id == x.Id)).ToImmutableList();
             }
 
             return user;
@@ -97,7 +97,7 @@ public class UserEndpoint : IUserEndpoint
                 Followers = user.Followers,
                 Following = user.Following,
             };
-            _users = users?.ToImmutableList()!;
+            _users = users!;
         }
 
         throw new Exception();

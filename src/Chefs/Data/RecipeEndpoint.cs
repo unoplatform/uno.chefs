@@ -36,7 +36,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         var recipes = await Load();
 
-        var savedRecipes = await LoadSaved()?
+        var savedRecipes = (await LoadSaved())?
             .Where(x => x.UserId == currentUser.Id).FirstOrDefault();
 
         if (savedRecipes is not null && savedRecipes.SavedRecipes is not null)
