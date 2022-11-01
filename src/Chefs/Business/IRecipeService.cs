@@ -89,7 +89,7 @@ public interface IRecipeService
     /// <param name="ct"></param>
     /// <returns>
     /// </returns>
-    ValueTask CreateReview(Review review, CancellationToken ct);
+    ValueTask CreateReview(Guid recipeId, string review, CancellationToken ct);
 
     /// <summary>
     /// Get review's steps

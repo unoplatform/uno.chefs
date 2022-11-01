@@ -87,7 +87,8 @@ public sealed partial class App : Application
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
             new ViewMap<SearchPage, SearchViewModel>(Data: new DataMap<SearchFilter>(), ResultData: typeof(SearchFilter)),
             new ViewMap<SettingsPage, SettingsViewModel>(),
-            new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>())
+            new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>()),
+            new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>())
             );
 
         routes

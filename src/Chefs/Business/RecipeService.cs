@@ -70,8 +70,8 @@ public class RecipeService : IRecipeService
         await _recipeEndpoint.Save(recipe.ToData(), ct);
     }
 
-    public async ValueTask CreateReview(Review review, CancellationToken ct)
+    public async ValueTask CreateReview(Guid recipeId, string review, CancellationToken ct)
     {
-        await _recipeEndpoint.CreateReview(review.ToData(), ct);
+        await _recipeEndpoint.CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct);
     }
 }
