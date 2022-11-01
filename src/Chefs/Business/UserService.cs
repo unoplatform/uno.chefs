@@ -8,11 +8,11 @@ namespace Chefs.Business;
 public class UserService : IUserService
 {
     private readonly IUserEndpoint _userEndpoint;
-    private readonly IWritableOptions<ChefApp> _chefAppOptions;
+    private readonly IWritableOptions<AppConfig> _chefAppOptions;
     private readonly IWritableOptions<AuthenticationOptions> _authenticationOptions;
 
     public UserService(IUserEndpoint userEndpoint,
-        IWritableOptions<ChefApp> chefAppOptions,
+        IWritableOptions<AppConfig> chefAppOptions,
         IWritableOptions<AuthenticationOptions> authenticationOptions)
         => (_userEndpoint, _chefAppOptions, _authenticationOptions) = (userEndpoint, chefAppOptions, authenticationOptions);
 
@@ -33,16 +33,21 @@ public class UserService : IUserService
         return false;
     }
 
-    public async ValueTask<ChefApp> GetChefSettings(CancellationToken ct) => _chefAppOptions.Value;
+    public async ValueTask<AppConfig> GetSettings(CancellationToken ct) => _chefAppOptions.Value;
 
     public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _userEndpoint.GetPopularCreators(ct)).Select(data => new User(data)).ToImmutableList();
 
-    public async ValueTask<User> GetUser(CancellationToken ct) => new User(await _userEndpoint.GetUser(ct));
+    public async ValueTask<User> GetCurrent(CancellationToken ct) => new User(await _userEndpoint.GetCurrent(ct));
 
-    public async Task SetCheffSettings(ChefApp chefSettings, CancellationToken ct) => await _chefAppOptions.UpdateAsync(_ => new ChefApp()
+    public async Task SetSettings(AppConfig chefSettings, CancellationToken ct) => await _chefAppOptions.UpdateAsync(_ => new AppConfig()
         {
             IsDark = chefSettings.IsDark,
             Notification = chefSettings.Notification,
             AccentColor = chefSettings.AccentColor,
         });
+
+    public async ValueTask Update(User user, CancellationToken ct)
+    {
+        await _userEndpoint.Update(user.ToData(), ct);
+    }
 }

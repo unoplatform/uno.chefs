@@ -66,10 +66,10 @@
 	-->
     <Content Include="$(MSBuildThisFileDirectory)categories.json" />
     <Content Include="$(MSBuildThisFileDirectory)Notifications.json" />
-    <Content Include="$(MSBuildThisFileDirectory)PopularCreators.json" />
     <Content Include="$(MSBuildThisFileDirectory)Recipes.json" />
     <Content Include="$(MSBuildThisFileDirectory)Cookbooks.json" />
-    <Content Include="$(MSBuildThisFileDirectory)SavedItems.json" />
+    <Content Include="$(MSBuildThisFileDirectory)SavedCookbooks.json" />
+    <Content Include="$(MSBuildThisFileDirectory)SavedRecipes.json" />
     <Content Include="$(MSBuildThisFileDirectory)Users.json" />
     <Page Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml">
       <SubType>Designer</SubType>

@@ -25,7 +25,16 @@ public interface IUserService
     /// <returns>
     /// User logged in
     /// </returns>
-    ValueTask<User> GetUser(CancellationToken ct);
+    ValueTask<User> GetCurrent(CancellationToken ct);
+
+    /// <summary>
+    /// Update user information
+    /// </summary>
+    /// <param name="user">user with information to update</param>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// </returns>
+    ValueTask Update(User user, CancellationToken ct);
 
     ///<summary>
     /// Gets chef settings
@@ -34,7 +43,7 @@ public interface IUserService
     /// <returns>
     /// App settings from the phone
     /// </returns>
-    ValueTask<ChefApp> GetChefSettings(CancellationToken ct);
+    ValueTask<AppConfig> GetSettings(CancellationToken ct);
 
     /// <summary>
     /// Porpular creators related with the recipes
@@ -52,5 +61,5 @@ public interface IUserService
     /// <param name="ct"></param>
     /// <returns>
     /// </returns>
-    Task SetCheffSettings(ChefApp chefSettings, CancellationToken ct);
+    Task SetSettings(AppConfig chefSettings, CancellationToken ct);
 }

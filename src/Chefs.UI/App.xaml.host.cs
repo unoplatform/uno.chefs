@@ -37,7 +37,8 @@ public sealed partial class App : Application
 						.EmbeddedSource<App>()
 						.Section<AppConfig>()
 						.Section<Credentials>()
-				)
+                        .Section<AuthenticationOptions>()
+                )
 
 				// Enable localization (see appsettings.json for supported languages)
 				.UseLocalization()
@@ -82,13 +83,14 @@ public sealed partial class App : Application
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
-            new ViewMap<ProfilePage, ProfileViewModel>(),
+            new ViewMap<ProfilePage, ProfileViewModel>(Data: new DataMap<User>()),
             new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
             new ViewMap<SearchPage, SearchViewModel>(Data: new DataMap<SearchFilter>(), ResultData: typeof(SearchFilter)),
-            new ViewMap<SettingsPage, SettingsViewModel>(),
-            new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>())
-            );
+            new ViewMap<SettingsPage, SettingsViewModel>(Data: new DataMap<User>()),
+            new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>()),
+			 new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>())		            
+	            );
 
         routes
             .Register(

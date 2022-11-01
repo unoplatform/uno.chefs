@@ -1,17 +1,22 @@
-﻿using Chefs.Settings;
+﻿using Chefs.Business;
+using Chefs.Settings;
 using System.Windows.Input;
 using Uno.Extensions;
+using Windows.Media.Protection.PlayReady;
 
 namespace Chefs.Presentation;
 
 public partial class LoginViewModel
 {
     private readonly INavigator _navigator;
+    private readonly IUserService _userService;
 
     private LoginViewModel(
-        INavigator navigator)
+        INavigator navigator, 
+        IUserService userService)
     {
         _navigator = navigator;
+        _userService = userService;
     }
 
     public IState<Credentials> Credentials => State<Credentials>.Empty(this);
@@ -22,5 +27,13 @@ public partial class LoginViewModel
         => credentials is { Email.Length: > 0 } and { Password.Length: > 0 };
 
     private async ValueTask DoLogin(Credentials credentials, CancellationToken ct)
-        => await _navigator.NavigateViewModelAsync<HomeViewModel>(this, data: Option.Some(credentials), cancellation: ct);
+    {
+        if(await _userService.BasicAuthenticate(
+            credentials.Email ?? String.Empty, 
+            credentials.Password ?? String.Empty, 
+            ct))
+        {
+            await _navigator.NavigateViewModelAsync<HomeViewModel>(this, data: Option.Some(credentials), cancellation: ct);
+        }
+    }
 }

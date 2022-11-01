@@ -1,7 +1,4 @@
 ﻿using Chefs.Data;
-using System.Net;
-using System.Xml.Linq;
-using Windows.System;
 
 namespace Chefs.Business;
 
@@ -9,16 +6,34 @@ public record Review
 {
     public Review(ReviewData reviewData)
     {
-        Score = reviewData.Score;
+        RecipeId = reviewData.RecipeId;
+        CreatedBy = reviewData.CreatedBy; 
+        Date = reviewData.Date;
+        Likes = reviewData.Likes;
+        Dislikes = reviewData.Dislikes;
         Description = reviewData.Description;
     }
 
-    public int Score { get; init; }
-    public string? Description { get; init; }
+    public Review(Guid recipeId, string text)
+    {
+        RecipeId = recipeId;
+        Description = text;
+    }
+
+    public Guid RecipeId { get; set; }
+    public Guid CreatedBy { get; set; }
+    public DateTime Date { get; set; }
+    public string? Description { get; set; }
+    public int Likes { get; set; }
+    public int Dislikes { get; set; }
 
     internal ReviewData ToData() => new()
     {
-        Score = Score,
+        RecipeId = RecipeId,
+        CreatedBy = CreatedBy, 
+        Date = Date,
+        Likes = Likes,
+        Dislikes = Dislikes,
         Description = Description
     };
 }
