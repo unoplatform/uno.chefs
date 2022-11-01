@@ -24,10 +24,7 @@ public partial class ProfileViewModel
         _user = user;
     }
 
-    IState<bool> _myProfile => State<bool>.Value(this, () => _user is null);
-
-    [Value]
-    IFeed<bool> IsMyProfile => _myProfile;
+    IState<bool> IsMyProfile => State<bool>.Value(this, () => _user is null);
 
     IState<User> Profile => State<User>.Async(this, async ct => _user ?? await _userService.GetCurrent(ct));
 
