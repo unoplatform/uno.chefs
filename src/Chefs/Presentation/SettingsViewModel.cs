@@ -7,13 +7,14 @@ public partial class SettingsViewModel
     private readonly INavigator _navigator;
     private readonly IUserService _userService;
 
-    public SettingsViewModel(INavigator navigator, IUserService userService)
+    public SettingsViewModel(INavigator navigator, IUserService userService, User user)
     {
         _navigator = navigator;
         _userService = userService;
+        Profile = State.Value(this, () => user);
     }
 
-    IState<User> Profile => State<User>.Async(this, async ct => await _userService.GetCurrent(ct));
+    IState<User> Profile { get; }
 
     IState<ChefApp> Settings => State<ChefApp>.Async(this, async (ct) => await _userService.GetSettings(ct));
 
