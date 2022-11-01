@@ -7,7 +7,132 @@
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid RowSpacing="30"
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Bottom">
         
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" 
+                    HorizontalAlignment="Center" 
+                    Orientation="Horizontal">
+            <Image VerticalAlignment="Center" 
+                Height="20" Width="20" 
+                Source="ms-appx:///Assets/Icons/close.png"/>
+            <TextBlock VerticalAlignment="Center" 
+                       Text="Uno Chefs" />
+        </StackPanel>
+        <TextBox Grid.Row="1"
+                 PlaceholderText="Email"
+                 Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <PasswordBox Grid.Row="2"
+					PlaceholderText="Password"
+					Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Grid Grid.Row="3"
+              ColumnSpacing="60">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" 
+                        Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Credentials.SkipWelcome, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+				      Padding="0" />
+
+                <TextBlock Text="Remember me"
+					   VerticalAlignment="Center" />
+            </StackPanel>
+
+            <HyperlinkButton Grid.Column="1"
+                             Content="Forgot Password?"
+                             Foreground="#ED3F64"
+					         VerticalAlignment="Center"
+                             HorizontalAlignment="Right" />
+        </Grid>
+        <Grid  RowSpacing="10"
+               Grid.Row="4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Row="0" 
+                    Content="Sign In"
+				    Command="{Binding Login}"
+				    VerticalAlignment="Top"
+				    HorizontalAlignment="Stretch"
+				    Height="56"
+                    Background="#ED3F64" />
+
+            <Grid Grid.Row="1"  
+                  ColumnSpacing="10"
+                  HorizontalAlignment="Stretch">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Grid.Column="0"
+                           HorizontalAlignment="Stretch" 
+                           Fill="#D3D3D3" 
+                           Height="2" 
+                           Width="140"/>
+
+                <TextBlock Grid.Column="1"
+                           Foreground="#D3D3D3"
+                           HorizontalAlignment="Center"
+                           Text="OR" />
+
+                <Rectangle Grid.Column="2"
+                           HorizontalAlignment="Stretch" 
+                           Fill="#D3D3D3" 
+                           Height="2" 
+                           Width="140"/>
+            </Grid>
+
+            <Button Grid.Row="2" 
+                    Content="Sign in with Apple"
+				    VerticalAlignment="Top"
+				    HorizontalAlignment="Stretch"
+				    Height="56"
+                    Background="#D3D3D3" 
+                    Foreground="Black" />
+            
+            <Button Grid.Row="3" 
+                    Content="Sign in with Google"
+				    VerticalAlignment="Top"
+				    HorizontalAlignment="Stretch"
+				    Height="56"
+                    Background="#D3D3D3"
+                    Foreground="Black" />
+        </Grid>
+
+        <StackPanel Grid.Row="5"
+                    Spacing="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0, 0, 0, 20">
+            <TextBlock Text="Not a member?" />
+            <HyperlinkButton Grid.Column="1"
+                             Command="{Binding DoRegisterNavigation}"
+                             Content="Register Now"
+                             Foreground="#ED3F64"
+					         VerticalAlignment="Center"
+                             HorizontalAlignment="Right" />
+        </StackPanel>
     </Grid>
 </Page>

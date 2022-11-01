@@ -1,5 +1,6 @@
 
 using Uno.Extensions.Configuration;
+using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
@@ -53,5 +54,5 @@ public class ShellViewModel
         //}
 
         await _navigator.NavigateViewModelAsync<MainViewModel>(this);
-	}
+    }
 }

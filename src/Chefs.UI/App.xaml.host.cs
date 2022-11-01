@@ -78,6 +78,7 @@ public sealed partial class App : Application
             new ViewMap<ShellControl, ShellViewModel>(),
             new ViewMap<MainPage, MainViewModel>(),
             new ViewMap<WelcomePage, WelcomeViewModel>(),
+            new ViewMap<RegisterPage, RegisterViewModel>(),
             new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeViewModel>(),
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
@@ -99,6 +100,7 @@ public sealed partial class App : Application
                         {
                             new RouteMap("Welcome", View: views.FindByViewModel<WelcomeViewModel>()),
                             new RouteMap("Login", View: views.FindByViewModel<LoginViewModel>()),
+                            new RouteMap("Register", View: views.FindByViewModel<RegisterViewModel>()),
                             new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>(), Nested: new RouteMap[]
                             {
                                 new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>()),
