@@ -8,7 +8,89 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock Text="Register!!" />
+    <Grid RowSpacing="150"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Bottom">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              RowSpacing="20"
+              HorizontalAlignment="Center">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" 
+                    HorizontalAlignment="Center" 
+                    Orientation="Horizontal">
+                <Image VerticalAlignment="Center" 
+                Height="20" Width="20" 
+                Source="ms-appx:///Assets/Icons/close.png"/>
+                <TextBlock VerticalAlignment="Center" 
+                       Text="Uno Chefs" />
+            </StackPanel>
+
+            <TextBox Grid.Row="1"
+                 PlaceholderText="FullName" />
+            <TextBox Grid.Row="2"
+                 PlaceholderText="Email" />
+            <PasswordBox Grid.Row="3"
+					PlaceholderText="Password" />
+
+            <Grid Grid.Row="4"
+              ColumnSpacing="60">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" 
+                        Orientation="Horizontal">
+                    <CheckBox Padding="0" />
+
+                    <TextBlock Text="Remember me"
+					   VerticalAlignment="Center" />
+                </StackPanel>
+
+                <HyperlinkButton Grid.Column="1"
+                             Content="Forgot Password?"
+                             Foreground="#ED3F64"
+					         VerticalAlignment="Center"
+                             HorizontalAlignment="Right" />
+            </Grid>
+
+            <Button Grid.Row="5" 
+                    Content="Sign up"
+				    Command="{Binding DoNavigateBack}"
+				    VerticalAlignment="Top"
+				    HorizontalAlignment="Stretch"
+				    Height="56"
+                    Background="#ED3F64" />
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                    Spacing="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Margin="0, 0, 0, 20">
+            <TextBlock Text="Already a user?" />
+            <HyperlinkButton Grid.Column="1"
+                             Command="{Binding DoNavigateBack}"
+                             Content="Login Now"
+                             Foreground="#ED3F64"
+					         VerticalAlignment="Center"
+                             HorizontalAlignment="Right" />
+        </StackPanel>
     </Grid>
 </Page>

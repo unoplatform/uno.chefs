@@ -69,7 +69,7 @@
             </Grid.RowDefinitions>
             
             <Button Grid.Row="0" 
-                    Content="Sign In"
+                    Content="Sign in"
 				    Command="{Binding Login}"
 				    VerticalAlignment="Top"
 				    HorizontalAlignment="Stretch"
