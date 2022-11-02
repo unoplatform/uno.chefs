@@ -35,6 +35,9 @@ public record Recipe
     public Category Category { get; init; }
     public DateTime Date { get; init; }
     public bool Save { get; init; }
+    public string TimeCal => CookTime > TimeSpan.FromHours(1) ?
+        String.Format("{0:%h} hour {0:%m} mins • {1}", CookTime, Calories) :
+        String.Format("{0:%m} mins • {1}", CookTime, Calories);
 
     internal RecipeData ToData() => new()
     {

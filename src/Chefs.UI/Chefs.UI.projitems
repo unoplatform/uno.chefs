@@ -71,6 +71,10 @@
     <Content Include="$(MSBuildThisFileDirectory)SavedCookbooks.json" />
     <Content Include="$(MSBuildThisFileDirectory)SavedRecipes.json" />
     <Content Include="$(MSBuildThisFileDirectory)Users.json" />
+    <Page Include="$(MSBuildThisFileDirectory)Styles\FeedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
