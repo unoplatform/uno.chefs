@@ -11,6 +11,7 @@
   <Import Project="Chefs.UI.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
   <ItemGroup>
+    <UpToDateCheckInput Remove="Converters\Converters.xaml" />
     <UpToDateCheckInput Remove="Styles\FeedView.xaml" />
     <UpToDateCheckInput Remove="Views\FilterPage.xaml" />
     <UpToDateCheckInput Remove="Views\HomePage.xaml" />
@@ -26,6 +27,8 @@
     <UpToDateCheckInput Remove="Views\StartCookingPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Converters\NullToBoolConverter.cs" />
+    <_Globbed_Compile Remove="Converters\StringFormatter.cs" />
     <_Globbed_Compile Remove="Views\FilterPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\HomePage.xaml.cs" />
     <_Globbed_Compile Remove="Views\IngredientsPage.xaml.cs" />
@@ -40,6 +43,7 @@
     <_Globbed_Compile Remove="Views\LiveCookingPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbled_Page Remove="Converters\Converters.xaml" />
     <_Globbled_Page Remove="Styles\FeedView.xaml" />
     <_Globbled_Page Remove="Views\FilterPage.xaml" />
     <_Globbled_Page Remove="Views\HomePage.xaml" />

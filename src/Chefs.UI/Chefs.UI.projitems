@@ -21,6 +21,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
@@ -74,6 +76,10 @@
     <Content Include="$(MSBuildThisFileDirectory)SavedCookbooks.json" />
     <Content Include="$(MSBuildThisFileDirectory)SavedRecipes.json" />
     <Content Include="$(MSBuildThisFileDirectory)Users.json" />
+    <Page Include="$(MSBuildThisFileDirectory)Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\FeedView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

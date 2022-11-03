@@ -20,7 +20,7 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
-		<PackageReference Include="Uno.WinUI" Version="4.4.13" />
+		<PackageReference Include="Uno.WinUI" Version="4.6.19" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.4.13" Condition="'$(Configuration)'=='Debug'" />
 	</ItemGroup>
 	<Choose>
@@ -65,6 +65,11 @@
 	</Choose>
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.3.0" />
+	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.109" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.109" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />

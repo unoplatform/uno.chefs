@@ -13,12 +13,12 @@ public partial class SearchViewModel
         _navigator = navigator;
         _recipeService = recipeService;
 
-        Filter = State.Value(this, () => filters);
+        Filter = State.Value(this, () => filters ?? new SearchFilter(null, null, null, null));
     }
 
     public IState<string> Term => State<string>.Value(this, () => string.Empty);
 
-    public IState<SearchFilter?> Filter { get; }
+    public IState<SearchFilter> Filter { get; }
 
     public IListFeed<Recipe> Items => Feed
         .Combine(Results, Filter)
@@ -31,6 +31,15 @@ public partial class SearchViewModel
     private IFeed<IImmutableList<Recipe>> Results => Term
         .SelectAsync(_recipeService.Search);
 
-    private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter? filter) inputs) =>
-        inputs.recipes.Where(p => inputs.filter?.Match(p) ?? true).ToImmutableList();
+    private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) =>
+        inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
+
+    public async ValueTask GoBack(CancellationToken ct) =>
+        await _navigator.GoBack(this);
+
+    public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
+        await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
+
+    public async ValueTask GoToFilter(CancellationToken ct) =>
+        await _navigator.NavigateViewModelAsync<FilterViewModel>(this, data: Filter);
 }
