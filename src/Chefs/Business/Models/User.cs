@@ -13,8 +13,11 @@ public record User
         Id = user.Id;
         UrlProfileImage = user.UrlProfileImage;
         FullName = user.FullName;
+        Description = user.Description;
         Email = user.Email;
         PhoneNumber = user.PhoneNumber;
+        Followers = user.Followers;
+        Following = user.Following;
     }
 
     public Guid Id { get; init; }
