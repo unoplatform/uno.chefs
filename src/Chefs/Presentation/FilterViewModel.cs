@@ -7,7 +7,7 @@ public partial class FilterViewModel
     private INavigator _navigator;
     private IRecipeService _recipeService;
 
-    public FilterViewModel(SearchFilter? filters, INavigator navigator, IRecipeService recipeService)
+    public FilterViewModel(SearchFilter filters, INavigator navigator, IRecipeService recipeService)
     {
         _navigator = navigator;
         _recipeService = recipeService;
@@ -15,7 +15,7 @@ public partial class FilterViewModel
         Filter = State.Value(this, () => filters);
     }
 
-    public IState<SearchFilter?> Filter;
+    public IState<SearchFilter> Filter;
 
     public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
 

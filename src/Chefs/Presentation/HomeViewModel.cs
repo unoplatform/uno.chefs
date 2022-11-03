@@ -33,7 +33,7 @@ public partial class HomeViewModel
         await _navigator.NavigateViewModelAsync<NotificationsViewModel>(this);
 
     public async ValueTask Search(CancellationToken ct) => 
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this);
+        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, qualifier: Qualifiers.Separator);
 
     public async ValueTask ShowAll (CancellationToken ct, SearchFilter filter) =>
         await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
