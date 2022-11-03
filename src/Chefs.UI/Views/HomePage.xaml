@@ -6,6 +6,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -37,7 +38,7 @@
                 </utu:AutoLayout>
                 <Button utu:AutoLayout.CounterAlignment="Start"
                         Style="{StaticResource IconButtonStyle}"
-                        Command="{Binding Search}">
+                        uen:Navigation.Request="Search">
                     <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
                               Foreground="{ThemeResource OnSurfaceBrush}" />
                 </Button>

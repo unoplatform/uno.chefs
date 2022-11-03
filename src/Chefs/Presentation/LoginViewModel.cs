@@ -27,7 +27,7 @@ public partial class LoginViewModel
         => credentials is { Email.Length: > 0 } and { Password.Length: > 0 };
 
     private async ValueTask DoLogin(Credentials credentials, CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<MainViewModel>(this, data: Option.Some(credentials), cancellation: ct);
+        await _navigator.NavigateViewModelAsync<MainViewModel>(this, Qualifiers.ClearBackStack, Option.Some(credentials), ct);
         
     public async ValueTask RegisterNavigation(CancellationToken ct)
     {
