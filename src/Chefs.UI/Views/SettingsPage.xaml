@@ -22,7 +22,7 @@
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar Style="{StaticResource NavigationBarStyle}">
                 <utu:NavigationBar.PrimaryCommands>
-                    <AppBarButton Command="{Binding DoExit}">
+                    <AppBarButton Command="{Binding Exit}">
                         <AppBarButton.Icon>
                             <PathIcon Data="{StaticResource BitmapIcon_Close}">
                                 <PathIcon.Resources>
@@ -121,7 +121,7 @@
             </ScrollViewer>
         </utu:AutoLayout>
         <utu:AutoLayout Padding="18,30">
-            <Button Command="{Binding DoUpdate}" Background="{ThemeResource PrimaryBrush}" Content="Update" utu:AutoLayout.PrimaryLength="56" />
+            <Button Command="{Binding Update}" Background="{ThemeResource PrimaryBrush}" Content="Update" utu:AutoLayout.PrimaryLength="56" />
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
