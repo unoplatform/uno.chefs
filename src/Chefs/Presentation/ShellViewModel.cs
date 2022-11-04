@@ -31,7 +31,7 @@ public class ShellViewModel
         }
         else
         {
-            await _navigator.NavigateForResultAsync<Credentials>(this, Qualifiers.ClearBackStack);
+            await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
         }
     }
 }
