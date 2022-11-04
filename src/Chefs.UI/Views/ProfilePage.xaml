@@ -91,6 +91,14 @@
                                    uen:Region.Navigator="Visibility"
                                    utu:AutoLayout.CounterAlignment="Start">
 
+                                <!--
+									TODO: Both FeedView should be set to collapsed by default
+									However, currently setting them to Collapsed by default results
+									in no data being shown. ActiveTasks is in XAML second, to position
+									it over the top of the CompletedTasks, since they're currently
+									both visible by default
+								-->
+
                                 <uer:FeedView uen:Region.Name="MyRecipes"
                                               Visibility="Visible"
                                               Source="{Binding Recipes}">
