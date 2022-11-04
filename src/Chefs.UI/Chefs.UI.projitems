@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolInverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToIntConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EnumBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToBoolConverter.cs" />

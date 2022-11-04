@@ -10,6 +10,7 @@
     xmlns:uen="using:Uno.Extensions.Navigation.UI"
     xmlns:um="using:Uno.Material"
     mc:Ignorable="d"
+    x:Name="Root"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
@@ -21,14 +22,16 @@
             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}">
                     <utu:NavigationBar.MainCommand>
-                        <AppBarButton>
+                        <AppBarButton Command="{Binding DoSettingsNavigation}" 
+                                      Visibility="{Binding IsMyProfile}" 
+                                      Foreground="{ThemeResource OnSurfaceInverseBrush}">
                             <AppBarButton.Icon>
-                                <SymbolIcon Symbol="Setting" />
+                                <SymbolIcon Symbol="Back" />
                             </AppBarButton.Icon>
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                     <utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton>
+                        <AppBarButton Command="{Binding DoExit}">
                             <AppBarButton.Icon>
                                 <PathIcon Data="{StaticResource BitmapIcon_Close}">
                                     <PathIcon.Resources>
@@ -93,7 +96,10 @@
                                               Source="{Binding Recipes}">
                                     <DataTemplate>
                                         <ListView ItemsSource="{Binding Data}" 
+                                                  IsItemClickEnabled="True"
                                                   Style="{StaticResource ListViewStyle}">
+                                                  <!--utu:ControlExtensions.Command="{Binding DataContext.DoRecipeNavigation, ElementName=Root}"-->
+                                                  
                                             <ListView.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <ItemsStackPanel Orientation="Horizontal" />
@@ -126,7 +132,11 @@
                                               Source="{Binding Cookbooks}">
                                     <DataTemplate>
                                         <ListView ItemsSource="{Binding Data}"
+                                                  IsItemClickEnabled="True"
+											      SelectionMode="None"
                                                   Style="{StaticResource ListViewStyle}">
+                                                  <!--utu:ControlExtensions.Command="{Binding DataContext.DoCookbookNavigation, ElementName=Root}"-->
+                                                  
                                             <ListView.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <ItemsStackPanel Orientation="Horizontal" />
@@ -158,11 +168,6 @@
                     </utu:AutoLayout>
                 </ScrollViewer>
             </utu:AutoLayout>
-            <Button Background="{ThemeResource PrimaryContainerBrush}" Margin="18,20" utu:AutoLayout.CounterAlignment="End" Style="{StaticResource FabStyle}">
-                <um:ControlExtensions.Icon>
-                    <PathIcon Data="{StaticResource Icon_Add}" Foreground="{ThemeResource SurfaceBrush}" />
-                </um:ControlExtensions.Icon>
-            </Button>
         </utu:AutoLayout>
     </Grid>
 </Page>
