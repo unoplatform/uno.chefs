@@ -26,7 +26,7 @@ public partial class ProfileViewModel
         _user = user;
     }
 
-    public IState<bool> IsMyProfile => State<bool>.Value(this, () => _user is null);
+    public IState<bool> IsMyProfile => State<bool>.Value(this, () => _user is not null);
 
     public IFeed<User> Profile => Feed<User>.Async(async ct => await Task.Run(() => new User(new UserData()
     {
