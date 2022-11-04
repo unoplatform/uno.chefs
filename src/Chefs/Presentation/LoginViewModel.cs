@@ -29,9 +29,7 @@ public partial class LoginViewModel
     private async ValueTask DoLogin(Credentials credentials, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<MainViewModel>(this, data: Option.Some(credentials), cancellation: ct);
         
-    
-
-    public async ValueTask DoRegisterNavigation(CancellationToken ct)
+    public async ValueTask RegisterNavigation(CancellationToken ct)
     {
         await _navigator.NavigateViewModelAsync<RegisterViewModel>(this, cancellation: ct);
     }
