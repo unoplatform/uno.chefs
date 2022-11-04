@@ -9,7 +9,7 @@ public partial class RegisterViewModel
         _navigator = navigator;
     }
 
-    public async ValueTask DoNavigateBack(CancellationToken ct)
+    public async ValueTask NavigateBack(CancellationToken ct)
     {
         await _navigator.NavigateBackAsync(this, cancellation: ct);
     }
