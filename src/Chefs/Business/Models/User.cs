@@ -18,6 +18,7 @@ public record User
         PhoneNumber = user.PhoneNumber;
         Followers = user.Followers;
         Following = user.Following;
+        Recipes = user.Recipes;
     }
 
     public Guid Id { get; init; }
@@ -28,6 +29,7 @@ public record User
     public string? PhoneNumber { get; init; }
     public long? Followers { get; init; }
     public long? Following { get; init; }
+    public long? Recipes { get; init; }
 
     internal UserData ToData() => new()
     {
@@ -38,6 +40,7 @@ public record User
         Email = Email,
         PhoneNumber = PhoneNumber,
         Followers = Followers,
-        Following = Following
+        Following = Following,
+        Recipes = Recipes
     };
 }

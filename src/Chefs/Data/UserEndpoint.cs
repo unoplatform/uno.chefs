@@ -10,7 +10,7 @@ public class UserEndpoint : IUserEndpoint
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
 
-    private Guid? _userId;
+    private Guid? _userId = new Guid("3c896419-e280-40e7-8552-240635566fed");
     private List<UserData>? _users;
 
     public UserEndpoint(IStorage dataService, 
@@ -71,8 +71,10 @@ public class UserEndpoint : IUserEndpoint
             };
             _users = users!;
         }
-
-        throw new Exception();
+        else
+        {
+            throw new Exception();
+        }
     }
 
     //Implementation to update users in memory 

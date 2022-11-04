@@ -22,7 +22,7 @@
             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}">
                     <utu:NavigationBar.MainCommand>
-                        <AppBarButton Command="{Binding DoSettingsNavigation}" 
+                        <AppBarButton Command="{Binding SettingsNavigation}" 
                                       Visibility="{Binding IsMyProfile}" 
                                       Foreground="{ThemeResource OnSurfaceInverseBrush}">
                             <AppBarButton.Icon>
@@ -31,7 +31,7 @@
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                     <utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton Command="{Binding DoExit}">
+                        <AppBarButton Command="{Binding SettingsNavigation}">
                             <AppBarButton.Icon>
                                 <PathIcon Data="{StaticResource BitmapIcon_Close}">
                                     <PathIcon.Resources>
@@ -58,7 +58,7 @@
                             </utu:AutoLayout>
                             <utu:AutoLayout Spacing="50" Padding="50,0" PrimaryAxisAlignment="Center" Orientation="Horizontal">
                                 <utu:AutoLayout Padding="5" CornerRadius="12" utu:AutoLayout.CounterAlignment="Start">
-                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" Text="55" utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource HeadlineMedium}" />
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" Text="{Binding Data.Recipes}" utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" Text="Recipes" utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource LabelSmall}" />
                                 </utu:AutoLayout>
                                 <utu:AutoLayout Padding="5" CornerRadius="12" utu:AutoLayout.CounterAlignment="Start">
