@@ -11,12 +11,14 @@ public partial class SettingsViewModel
     {
         _navigator = navigator;
         _userService = userService;
-        Profile = State.Value(this, () => user);
+        UserInfo = State.Value(this, () => user);
     }
 
-    IState<User> Profile { get; }
+    public IState<User> UserInfo { get; }
 
-    IState<AppConfig> Settings => State<AppConfig>.Async(this, async (ct) => await _userService.GetSettings(ct));
+    public IFeed<User> Profile => UserInfo;
+
+    public IState<AppConfig> Settings => State<AppConfig>.Async(this, async (ct) => await _userService.GetSettings(ct));
 
     public async ValueTask DoUpdate(CancellationToken ct)
     {
