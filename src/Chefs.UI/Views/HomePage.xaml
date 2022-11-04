@@ -22,9 +22,12 @@
             <utu:AutoLayout Spacing="8"
                             Padding="18,0"
                             Orientation="Horizontal">
-                <PersonPicture utu:AutoLayout.CounterAlignment="Start"
-                               utu:AutoLayout.PrimaryLength="40"
-                               utu:AutoLayout.CounterLength="40" />
+                <Button utu:AutoLayout.CounterAlignment="Start" 
+                        utu:AutoLayout.PrimaryLength="40" 
+                        utu:AutoLayout.CounterLength="40"
+                        Command="{Binding Profile}">
+                    <PersonPicture />
+                </Button>
                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
