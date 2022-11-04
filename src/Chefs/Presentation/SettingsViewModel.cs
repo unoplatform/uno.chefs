@@ -20,7 +20,7 @@ public partial class SettingsViewModel
 
     public IState<AppConfig> Settings => State<AppConfig>.Async(this, async (ct) => await _userService.GetSettings(ct));
 
-    public async ValueTask DoUpdate(CancellationToken ct)
+    public async ValueTask Update(CancellationToken ct)
     {
         var settings = await Settings;
         var user = await Profile;
@@ -29,7 +29,7 @@ public partial class SettingsViewModel
         await _userService.SetSettings(settings!, ct);
     }
 
-    public async ValueTask DoExit(CancellationToken ct)
+    public async ValueTask Exit(CancellationToken ct)
     {
         await _navigator.NavigateBackAsync(ct);
     }
