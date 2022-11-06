@@ -4,5 +4,5 @@
     xmlns:converters="using:Chefs.Converters">
     
     <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
-    
+    <converters:EnumBooleanConverter x:Key="EnumBooleanConverter" />
 </ResourceDictionary>
