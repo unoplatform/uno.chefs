@@ -27,8 +27,10 @@
     <UpToDateCheckInput Remove="Views\StartCookingPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Converters\EnumBooleanConverter.cs" />
     <_Globbed_Compile Remove="Converters\NullToBoolConverter.cs" />
     <_Globbed_Compile Remove="Converters\StringFormatter.cs" />
+    <_Globbed_Compile Remove="Helpers\ChipsExtensions.cs" />
     <_Globbed_Compile Remove="Views\FilterPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\HomePage.xaml.cs" />
     <_Globbed_Compile Remove="Views\IngredientsPage.xaml.cs" />

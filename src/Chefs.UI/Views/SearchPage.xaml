@@ -36,7 +36,7 @@
                              BorderBrush="{ThemeResource OnSurfaceLowBrush}"
                              BorderThickness="1"
                              Style="{StaticResource OutlinedTextBoxStyle}"
-                             Text="{Binding Term, Mode=TwoWay}">
+                             Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <um:ControlExtensions.Icon>
                             <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
                                       Foreground="{ThemeResource OnSurfaceMediumBrush}" />
@@ -48,7 +48,7 @@
                                     utu:AutoLayout.CounterAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Text="{Binding Items.Count}"
+                                   Text="{Binding Items.Count, UpdateSourceTrigger=PropertyChanged}"
                                    utu:AutoLayout.CounterAlignment="Center"
                                    Style="{StaticResource TitleLarge}" />
                     </utu:AutoLayout>
