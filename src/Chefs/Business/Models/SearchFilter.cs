@@ -8,6 +8,9 @@ public record SearchFilter(
     Difficulties? Difficulty, 
     Category? Category)
 {
+    public bool HasFilter => OrganizeCategories != null ||
+        Time != null || Difficulty != null || Category != null; 
+
     public bool Match(Recipe recipe)
     {
         TimeSpan time = TimeSpan.Zero;

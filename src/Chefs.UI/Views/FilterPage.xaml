@@ -48,7 +48,7 @@
                                     <ItemsStackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </utu:ChipGroup.ItemsPanel>
-                            <utu:Chip Content="⭐️   Popular"
+                            <!--<utu:Chip Content="⭐️   Popular"
                                       utu:AutoLayout.CounterAlignment="Start"
                                       utu:AutoLayout.PrimaryAlignment="Stretch"
                                       Style="{StaticResource FilterChipStyle}" />
@@ -59,7 +59,22 @@
                             <utu:Chip Content="🕓️   Recent"
                                       utu:AutoLayout.CounterAlignment="Start"
                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                      Style="{StaticResource FilterChipStyle}" />
+                                      Style="{StaticResource FilterChipStyle}"/>-->
+                            <utu:Chip Content="⭐️   Popular"
+                                      utu:AutoLayout.CounterAlignment="Start"
+                                      utu:AutoLayout.PrimaryAlignment="Stretch"
+                                      Style="{StaticResource FilterChipStyle}"
+                                      IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Recommended, Mode=TwoWay}"/>
+                            <utu:Chip Content="👍️   Trending"
+                                      utu:AutoLayout.CounterAlignment="Start"
+                                      utu:AutoLayout.PrimaryAlignment="Stretch"
+                                      Style="{StaticResource FilterChipStyle}"
+                                      IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Popular, Mode=TwoWay}"/>
+                            <utu:Chip Content="🕓️   Recent"
+                                      utu:AutoLayout.CounterAlignment="Start"
+                                      utu:AutoLayout.PrimaryAlignment="Stretch"
+                                      Style="{StaticResource FilterChipStyle}"
+                                      IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Recent, Mode=TwoWay}"/>
                         </utu:ChipGroup>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
@@ -170,44 +185,22 @@
                                     Orientation="Horizontal">
                         <controls:WrapPanel>
                             <utu:ChipGroup CanRemove="False"
-                                       SelectionMode="Single"
-                                       HorizontalAlignment="Stretch">
-                            <utu:ChipGroup.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsStackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </utu:ChipGroup.ItemsPanel>
-                            <utu:Chip Content="All"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🥞 Breakfast"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🍜 Chinese"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🍔 Fast Food"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🥖 French"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🍰 Dessert"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🍽 Local Dish"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🌮 Mexican"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🍝 Pasta"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                            <utu:Chip Content="🥗 Veggie"
-                                      utu:AutoLayout.CounterAlignment="Start"
-                                      Style="{StaticResource FilterChipStyle}" />
-                        </utu:ChipGroup>
+                                           SelectionMode="Single"
+                                           HorizontalAlignment="Stretch"
+                                           ItemsSource="{Binding Categories}"
+                                           Style="{StaticResource FilterChipGroupStyle}"
+                                           SelectedItem="{Binding Filter.Category, Mode=TwoWay}">
+                                <utu:ChipGroup.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsStackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </utu:ChipGroup.ItemsPanel>
+                                <utu:ChipGroup.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </utu:ChipGroup.ItemTemplate>
+                            </utu:ChipGroup>
                         </controls:WrapPanel>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
@@ -219,11 +212,13 @@
                         Content="Reset"
                         utu:AutoLayout.CounterAlignment="Start"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
-                        Style="{StaticResource ElevatedButtonStyle}" />
+                        Style="{StaticResource ElevatedButtonStyle}"
+                        Command="{Binding ResetFilter}" />
                 <Button Background="{ThemeResource PrimaryBrush}"
                         Content="Apply"
                         utu:AutoLayout.CounterAlignment="Start"
-                        utu:AutoLayout.PrimaryAlignment="Stretch" />
+                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                        Command="{Binding SearchFilter}" />
             </utu:AutoLayout>
         </utu:AutoLayout>
     </utu:AutoLayout>

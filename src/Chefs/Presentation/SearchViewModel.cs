@@ -8,12 +8,12 @@ public partial class SearchViewModel
     private INavigator _navigator;
     private IRecipeService _recipeService;
 
-    public SearchViewModel(SearchFilter? filters, INavigator navigator, IRecipeService recipeService)
+    public SearchViewModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
     {
         _navigator = navigator;
         _recipeService = recipeService;
 
-        Filter = State.Value(this, () => filters ?? new SearchFilter(null, null, null, null));
+        Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null));
     }
 
     public IState<string> Term => State<string>.Value(this, () => string.Empty);
@@ -24,9 +24,6 @@ public partial class SearchViewModel
         .Combine(Results, Filter)
         .Select(ApplyFilter)
         .AsListFeed();
-
-    public async ValueTask SearchFilter(CancellationToken ct) =>
-        await _navigator.GetDataAsync<FilterViewModel>(this, data: Filter, cancellation: ct);
 
     private IFeed<IImmutableList<Recipe>> Results => Term
         .SelectAsync(_recipeService.Search);
@@ -40,6 +37,13 @@ public partial class SearchViewModel
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
 
-    public async ValueTask GoToFilter(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<FilterViewModel>(this, data: Filter);
+    public async ValueTask GoToFilter(CancellationToken ct) 
+    {
+        var response = await _navigator.GetDataAsync<FilterViewModel, SearchFilter>(this, data: await Filter, cancellation: ct);
+
+        if (response is not null)
+        {
+            await Filter.Update(current => response, ct);
+        }
+    }
 }
