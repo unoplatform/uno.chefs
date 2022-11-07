@@ -53,11 +53,11 @@ public class UserEndpoint : IUserEndpoint
     public async ValueTask Update(UserData user, CancellationToken ct)
     {
         var users = await Load();
-        var oldUser = users?.Where(u => u.Id == _userId)?.FirstOrDefault();
+        int userIndex = users?.FindIndex(u => u.Id == _userId) ?? 0;
 
-        if(oldUser is not null)
+        if(userIndex is not -1)
         {
-            oldUser = new UserData()
+            users![userIndex] = new UserData()
             {
                 Id = user.Id,
                 UrlProfileImage = user.UrlProfileImage,
@@ -68,6 +68,7 @@ public class UserEndpoint : IUserEndpoint
                 Password = user.Password,
                 Followers = user.Followers,
                 Following = user.Following,
+                Recipes = user.Recipes
             };
             _users = users!;
         }

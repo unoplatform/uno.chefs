@@ -14,6 +14,4 @@ public class UserData
     public long? Followers { get; set; }
     public long? Following { get; set; }
     public long? Recipes { get; set; }
-    public ImmutableList<CookbookData>? SavedCookBooks { get; set; }
-    public ImmutableList<RecipeData>? SavedRecipes { get; set; }
 }
