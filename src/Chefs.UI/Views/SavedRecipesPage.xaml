@@ -55,24 +55,25 @@
                                             IsItemClickEnabled="True"
                                             SelectionMode="None"
                                             Style="{StaticResource ListViewStyle}">
+                                            <!--utu:ControlExtensions.Command="{Binding DataContext.RecipeNavigation, ElementName=Root}"-->
                                     <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <utu:CardContentControl utu:AutoLayout.CounterLength="170" 
-                                                                            Style="{StaticResource OutlinedCardContentControlStyle}">
-                                                <utu:CardContentControl.ContentTemplate>
-                                                    <DataTemplate>
-                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                                            <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
-                                                            <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
-                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
-                                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding TimeCal}" Style="{StaticResource BodySmall}" />
-                                                            </utu:AutoLayout>
+                                    <DataTemplate>
+                                        <utu:CardContentControl utu:AutoLayout.CounterLength="170" 
+                                                                        Style="{StaticResource OutlinedCardContentControlStyle}">
+                                            <utu:CardContentControl.ContentTemplate>
+                                                <DataTemplate>
+                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
+                                                        <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
+                                                        <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding TimeCal}" Style="{StaticResource BodySmall}" />
                                                         </utu:AutoLayout>
-                                                    </DataTemplate>
-                                                </utu:CardContentControl.ContentTemplate>
-                                            </utu:CardContentControl>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
+                                                    </utu:AutoLayout>
+                                                </DataTemplate>
+                                            </utu:CardContentControl.ContentTemplate>
+                                        </utu:CardContentControl>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
                                 </ListView>
                             </DataTemplate>
                             </uer:FeedView>
@@ -84,6 +85,7 @@
                                               IsItemClickEnabled="True"
                                               SelectionMode="None"
                                               Style="{StaticResource ListViewStyle}">
+                                              <!--utu:ControlExtensions.Command="{Binding DataContext.CookbookNavigation, ElementName=Root}"-->
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterLength="170"

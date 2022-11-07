@@ -82,6 +82,7 @@ public sealed partial class App : Application
             new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeViewModel>(),
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
+            new ViewMap<CreateCookbookPage, CreateCookbookViewModel>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
             new DataViewMap<ProfilePage, ProfileViewModel, User>(),
@@ -90,8 +91,8 @@ public sealed partial class App : Application
             new DataViewMap<SearchPage, SearchViewModel, SearchFilter>(),
             new ViewMap<SettingsPage, SettingsViewModel>(Data: new DataMap<User>()),
             new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>()),
-			 new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>())		            
-	            );
+			new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>())		            
+	    );
 
         routes
             .Register(
@@ -120,7 +121,10 @@ public sealed partial class App : Application
                                         new RouteMap("Filter", View: views.FindByViewModel<FilterViewModel>())
                                     })
                                 }),
-                                new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>())
+                                new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>(), Nested: new RouteMap[]
+                                {
+                                    new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>())
+                                })
                             })
                         }));
     }
