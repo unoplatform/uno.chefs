@@ -20,28 +20,27 @@
                 <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
             </utu:AutoLayout.Resources>
             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:NavigationBar Style="{StaticResource NavigationBarStyle}">
-                    <utu:NavigationBar.MainCommand>
-                        <AppBarButton Command="{Binding SettingsNavigation}" 
-                                      Visibility="{Binding IsMyProfile}" 
-                                      Foreground="{ThemeResource OnSurfaceInverseBrush}">
-                            <AppBarButton.Icon>
-                                <SymbolIcon Symbol="Back" />
-                            </AppBarButton.Icon>
-                        </AppBarButton>
-                    </utu:NavigationBar.MainCommand>
-                    <utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton Command="{Binding SettingsNavigation}">
-                            <AppBarButton.Icon>
-                                <PathIcon Data="{StaticResource BitmapIcon_Close}">
-                                    <PathIcon.Resources>
-                                        <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
-                                    </PathIcon.Resources>
-                                </PathIcon>
-                            </AppBarButton.Icon>
-                        </AppBarButton>
-                    </utu:NavigationBar.PrimaryCommands>
-                </utu:NavigationBar>
+                <utu:AutoLayout Orientation="Horizontal">
+                    <utu:AutoLayout Foreground="Black"  
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <Button utu:AutoLayout.CounterAlignment="Start"  
+                                Foreground="Black" 
+                                Background="{ThemeResource BackgroundBrush}" 
+                                Command="{Binding SettingsNavigation}"
+                            Visibility="{Binding IsMyProfile}">
+                            <SymbolIcon Symbol="Setting" />
+                        </Button>
+                    </utu:AutoLayout>
+                    <Button Background="{ThemeResource BackgroundBrush}" 
+                            Foreground="Black" 
+                            Command="{Binding Exit}">
+                        <PathIcon Data="{StaticResource BitmapIcon_Close}">
+                            <PathIcon.Resources>
+                                <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+                            </PathIcon.Resources>
+                        </PathIcon>
+                    </Button>
+                </utu:AutoLayout>
                 <uer:FeedView Source="{Binding Profile}">
                     <DataTemplate>
                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="16" Padding="0,0,0,24" CornerRadius="0,0,30,30" PrimaryAxisAlignment="Center">
@@ -107,12 +106,6 @@
                                                   IsItemClickEnabled="True"
                                                   Style="{StaticResource ListViewStyle}">
                                                   <!--utu:ControlExtensions.Command="{Binding DataContext.DoRecipeNavigation, ElementName=Root}"-->
-                                                  
-                                            <ListView.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <ItemsStackPanel Orientation="Horizontal" />
-                                                </ItemsPanelTemplate>
-                                            </ListView.ItemsPanel>
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <utu:CardContentControl utu:AutoLayout.CounterLength="170" 
@@ -144,12 +137,6 @@
 											      SelectionMode="None"
                                                   Style="{StaticResource ListViewStyle}">
                                                   <!--utu:ControlExtensions.Command="{Binding DataContext.DoCookbookNavigation, ElementName=Root}"-->
-                                                  
-                                            <ListView.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <ItemsStackPanel Orientation="Horizontal" />
-                                                </ItemsPanelTemplate>
-                                            </ListView.ItemsPanel>
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <utu:CardContentControl utu:AutoLayout.CounterLength="170"
