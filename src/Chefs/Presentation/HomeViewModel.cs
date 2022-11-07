@@ -41,7 +41,7 @@ public partial class HomeViewModel
     public async ValueTask ShowAll (CancellationToken ct, SearchFilter filter) =>
         await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
 
-    public async ValueTask RecipeDetails(CancellationToken ct, Recipe recipe) =>
+    public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
 
     public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
