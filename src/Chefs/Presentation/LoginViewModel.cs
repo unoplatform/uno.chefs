@@ -26,14 +26,11 @@ public partial class LoginViewModel
     private bool CanLogin(Credentials credentials)
         => credentials is { Email.Length: > 0 } and { Password.Length: > 0 };
 
-    private async ValueTask DoLogin(Credentials credentials, CancellationToken ct)
+    private async ValueTask DoLogin(Credentials credentials, CancellationToken ct) =>
+        await _navigator.NavigateViewModelAsync<MainViewModel>(this, data: Option.Some(credentials), cancellation: ct);
+        
+    public async ValueTask RegisterNavigation(CancellationToken ct)
     {
-        if(await _userService.BasicAuthenticate(
-            credentials.Email ?? String.Empty, 
-            credentials.Password ?? String.Empty, 
-            ct))
-        {
-            await _navigator.NavigateViewModelAsync<HomeViewModel>(this, data: Option.Some(credentials), cancellation: ct);
-        }
+        await _navigator.NavigateViewModelAsync<RegisterViewModel>(this, cancellation: ct);
     }
 }

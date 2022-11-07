@@ -1,5 +1,6 @@
 
 using Uno.Extensions.Configuration;
+using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
@@ -26,32 +27,11 @@ public class ShellViewModel
         {
             await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
 
-            await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = true});
-        }
-
-        if (currentCredentials?.Email is { Length: > 0 })
-        {
-            await _navigator.NavigateDataAsync(this, currentCredentials, Qualifiers.ClearBackStack);
+            await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = true });
         }
         else
         {
-            var response = await _navigator.NavigateForResultAsync<Credentials>(this, Qualifiers.ClearBackStack);
-
-            if (response?.Result is null)
-            {
-                _ = Start();
-                return;
-            }
-
-            var loginResult = await response.Result;
-            if (loginResult.IsSome(out var creds) && creds?.Email is { Length: > 0 })
-            {
-                await _credentialsSettings.UpdateAsync(c => creds);
-
-                _ = Start();
-            }
+            await _navigator.NavigateViewModelAsync<LoginViewModel>(this, Qualifiers.ClearBackStack);
         }
-
-        await _navigator.NavigateViewModelAsync<MainViewModel>(this);
-	}
+    }
 }

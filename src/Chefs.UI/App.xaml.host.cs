@@ -68,7 +68,7 @@ public sealed partial class App : Application
 
 				// Add navigation support for toolkit controls such as TabBar and NavigationView
 				.UseToolkitNavigation()
-
+                
 				.Build(enableUnoLogging: true);
 
 	}
@@ -78,8 +78,9 @@ public sealed partial class App : Application
             new ViewMap<ShellControl, ShellViewModel>(),
             new ViewMap<MainPage, MainViewModel>(),
             new ViewMap<WelcomePage, WelcomeViewModel>(),
+            new ViewMap<RegisterPage, RegisterViewModel>(),
             new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
-            new ViewMap<HomePage, HomeViewModel>(Data: new DataMap<Credentials>()),
+            new ViewMap<HomePage, HomeViewModel>(),
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
@@ -99,6 +100,7 @@ public sealed partial class App : Application
                         {
                             new RouteMap("Welcome", View: views.FindByViewModel<WelcomeViewModel>()),
                             new RouteMap("Login", View: views.FindByViewModel<LoginViewModel>()),
+                            new RouteMap("Register", View: views.FindByViewModel<RegisterViewModel>()),
                             new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>(), Nested: new RouteMap[]
                             {
                                 new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>()),
@@ -106,7 +108,7 @@ public sealed partial class App : Application
                             }),
                             new RouteMap("Main", View: views.FindByViewModel<MainViewModel>(), Nested: new RouteMap[]
                             {
-                                new RouteMap("Home", View: views.FindByViewModel<HomeViewModel>(), Nested: new RouteMap[]
+                                new RouteMap("Home", View: views.FindByViewModel<HomeViewModel>(), IsDefault: true, Nested: new RouteMap[]
                                 {
                                     new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), Nested: new RouteMap[]
                                     {

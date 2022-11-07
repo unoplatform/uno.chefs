@@ -12,6 +12,6 @@ public partial class WelcomeViewModel
         _navigator = navigator;
     }
 
-    private async ValueTask GoToLogin(CancellationToken ct)
-        => await _navigator.GoBack(this);
+    public async ValueTask GoToLogin(CancellationToken ct)
+        => await _navigator.NavigateViewModelAsync<LoginViewModel>(this, Qualifiers.ClearBackStack);
 }

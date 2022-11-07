@@ -23,7 +23,9 @@
 
 				<MaterialToolkitResources xmlns="using:Uno.Toolkit.UI.Material" />
 
-			</ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/FeedView.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Application.Resources>
 

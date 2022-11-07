@@ -28,7 +28,8 @@ public class RecipeService : IRecipeService
     public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct) => (await _recipeEndpoint
                    .GetAll(ct))
                    .Select(r => new Recipe(r))
-                   .Where(r => r.Date > DateTime.Now.AddDays(7))
+                   .OrderBy(x=>x.Date)
+                   .Take(5)
                    .ToImmutableList();
 
     public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct) => (await _recipeEndpoint

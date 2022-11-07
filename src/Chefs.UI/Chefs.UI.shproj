@@ -11,6 +11,7 @@
   <Import Project="Chefs.UI.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
   <ItemGroup>
+    <UpToDateCheckInput Remove="Styles\FeedView.xaml" />
     <UpToDateCheckInput Remove="Views\FilterPage.xaml" />
     <UpToDateCheckInput Remove="Views\HomePage.xaml" />
     <UpToDateCheckInput Remove="Views\IngredientsPage.xaml" />
@@ -18,6 +19,7 @@
     <UpToDateCheckInput Remove="Views\NotificationsPage.xaml" />
     <UpToDateCheckInput Remove="Views\ProfilePage.xaml" />
     <UpToDateCheckInput Remove="Views\RecipeDetailsPage.xaml" />
+    <UpToDateCheckInput Remove="Views\RegisterPage.xaml" />
     <UpToDateCheckInput Remove="Views\SavedRecipesPage.xaml" />
     <UpToDateCheckInput Remove="Views\SearchPage.xaml" />
     <UpToDateCheckInput Remove="Views\SettingsPage.xaml" />
@@ -31,12 +33,14 @@
     <_Globbed_Compile Remove="Views\NotificationsPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\ProfilePage.xaml.cs" />
     <_Globbed_Compile Remove="Views\RecipeDetailsPage.xaml.cs" />
+    <_Globbed_Compile Remove="Views\RegisterPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SavedRecipesPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SearchPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SettingsPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\LiveCookingPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbled_Page Remove="Styles\FeedView.xaml" />
     <_Globbled_Page Remove="Views\FilterPage.xaml" />
     <_Globbled_Page Remove="Views\HomePage.xaml" />
     <_Globbled_Page Remove="Views\IngredientsPage.xaml" />
@@ -44,6 +48,7 @@
     <_Globbled_Page Remove="Views\NotificationsPage.xaml" />
     <_Globbled_Page Remove="Views\ProfilePage.xaml" />
     <_Globbled_Page Remove="Views\RecipeDetailsPage.xaml" />
+    <_Globbled_Page Remove="Views\RegisterPage.xaml" />
     <_Globbled_Page Remove="Views\SavedRecipesPage.xaml" />
     <_Globbled_Page Remove="Views\SearchPage.xaml" />
     <_Globbled_Page Remove="Views\SettingsPage.xaml" />

@@ -6,5 +6,8 @@
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 	</ItemGroup>
+	<ItemGroup>
+	  <SourceGeneratorInput Remove="Presentation\RegisterViewModel.cs" />
+	</ItemGroup>
 
 </Project>
