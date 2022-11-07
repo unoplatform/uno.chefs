@@ -20,8 +20,8 @@ public class UserEndpoint : IUserEndpoint
 
     public async ValueTask<bool> Authenticate(string email, string password, CancellationToken ct)
     {
-       var user = (await Load())?
-            .Where(u => u.Email == email && u.Password == password).FirstOrDefault();
+        var user = (await Load())?
+             .Where(u => u.Email == email && u.Password == password).FirstOrDefault();
 
         if (user is null)
         {
@@ -40,11 +40,12 @@ public class UserEndpoint : IUserEndpoint
 
     public async ValueTask<UserData> GetCurrent(CancellationToken ct)
     {
-        var user = (await Load())?.Where(u => u.Id == _userId).FirstOrDefault();
+        int userIndex = (await Load())?.FindIndex(u => u.Id == _userId) ?? 0;
 
-        if(user is not null)
+        if (userIndex is not -1)
         {
-            return user;
+            if (!(_users![userIndex].IsCurrent)) _users![userIndex].IsCurrent = true;
+            return _users![userIndex];
         }
 
         throw new Exception();

@@ -19,6 +19,7 @@ public record User
         Followers = user.Followers;
         Following = user.Following;
         Recipes = user.Recipes;
+        IsCurrent = user.IsCurrent;
     }
 
     public Guid Id { get; init; }
@@ -30,6 +31,7 @@ public record User
     public long? Followers { get; init; }
     public long? Following { get; init; }
     public long? Recipes { get; init; }
+    public bool IsCurrent { get; init; }
 
     internal UserData ToData() => new()
     {
@@ -41,6 +43,7 @@ public record User
         PhoneNumber = PhoneNumber,
         Followers = Followers,
         Following = Following,
-        Recipes = Recipes
+        Recipes = Recipes,
+        IsCurrent = IsCurrent
     };
 }
