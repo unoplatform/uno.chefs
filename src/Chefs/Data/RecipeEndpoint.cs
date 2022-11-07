@@ -14,7 +14,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
     private List<SavedRecipesData>? _savedRecipes;
     private List<RecipeData>? _recipes;
-    private IImmutableList<CategoryData>? _categories;
+    private List<CategoryData>? _categories;
 
     public RecipeEndpoint(IStorage dataService, ISerializer serializer, IUserEndpoint userEndpoint)
         => (_dataService, _serializer, _userEndpoint) = (dataService, serializer, userEndpoint);
@@ -22,7 +22,9 @@ public class RecipeEndpoint : IRecipeEndpoint
     public async ValueTask<IImmutableList<RecipeData>> GetAll(CancellationToken ct) => (await Load()).ToImmutableList()
         ?? ImmutableList<RecipeData>.Empty;
 
-    public async ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct) => await LoadCategories();
+    public async ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct) => (await LoadCategories())
+        .ToImmutableList()
+        ?? ImmutableList<CategoryData>.Empty;
 
     public async ValueTask<IImmutableList<RecipeData>> GetTrending(CancellationToken ct) => (await Load())?
         .Take(10)
@@ -107,14 +109,14 @@ public class RecipeEndpoint : IRecipeEndpoint
         return _savedRecipes ?? new List<SavedRecipesData>();
     }
 
-    //Implementation to update saved cookbooks and recipes in memory 
-    private async ValueTask<IImmutableList<CategoryData>> LoadCategories()
+    //Implementation categories to keep in memory 
+    private async ValueTask<List<CategoryData>> LoadCategories()
     {
         if (_categories == null)
         {
             _categories = (await _dataService
-                .ReadFileAsync<List<CategoryData>>(_serializer, Constants.CategoryDataFile))?.ToImmutableList();
+                .ReadFileAsync<List<CategoryData>>(_serializer, Constants.CategoryDataFile));
         }
-        return _categories ?? ImmutableList<CategoryData>.Empty;
+        return _categories ?? new List<CategoryData>();
     }
 }

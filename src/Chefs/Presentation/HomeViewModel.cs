@@ -30,6 +30,8 @@ public partial class HomeViewModel
 
     public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
+    public IFeed<User> UserProfile => Feed<User>.Async(async ct => await _userService.GetCurrent(ct));
+
     public async ValueTask Notifications(CancellationToken ct) => 
         await _navigator.NavigateViewModelAsync<NotificationsViewModel>(this);
 
@@ -42,8 +44,8 @@ public partial class HomeViewModel
     public async ValueTask RecipeDetails(CancellationToken ct, Recipe recipe) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
 
-    public async ValueTask Profile(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<ProfileViewModel>(this, data: null);
+    public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
+        await _navigator.NavigateViewModelAsync<ProfileViewModel>(this, data: user, cancellation: ct);
 
     public async ValueTask SaveRecipe(CancellationToken ct, Recipe recipe) =>
         await _recipeService.Save(recipe, ct);

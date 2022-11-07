@@ -7,43 +7,38 @@ namespace Chefs.Presentation;
 
 public partial class ProfileViewModel
 {
-    private readonly IUserService _userService;
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
     private readonly INavigator _navigator;
-    private User? _user;
+    private User _user;
 
     public ProfileViewModel(INavigator navigator,
         ICookbookService cookbookService,
         IRecipeService recipeService,
-        IUserService userService,
         User user)
     {
         _navigator = navigator;
         _cookbookService = cookbookService;
         _recipeService = recipeService;
-        _userService = userService;
         _user = user;
     }
 
-    public IState<bool> IsMyProfile => State<bool>.Value(this, () => _user is null);
+    public IState<bool> IsMyProfile => State<bool>.Value(this, () => _user?.IsCurrent ?? false);
 
-    public IFeed<User> Profile => Feed<User>.Async(async ct => _user ?? await _userService.GetCurrent(ct));
+    public IFeed<User> Profile => Feed<User>.Async(async ct => _user);
 
-    public IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetByUser(_user?.Id 
-        ?? (await _userService.GetCurrent(ct)).Id, ct));
+    public IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetByUser(_user.Id, ct));
 
-    public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetByUser(_user?.Id
-        ?? (await _userService.GetCurrent(ct)).Id, ct));
+    public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetByUser(_user.Id, ct));
 
     public async ValueTask Exit(CancellationToken ct)
     {
-        await _navigator.NavigateBackAsync(ct);
+        await _navigator.NavigateBackAsync(this, cancellation: ct);
     }
 
     public async ValueTask SettingsNavigation(CancellationToken ct)
     {
-        var user = _user ?? (await _userService.GetCurrent(ct));
+        var user = _user;
         await _navigator.NavigateViewModelAsync<SettingsViewModel>(this, data: user, cancellation: ct);
     }
 

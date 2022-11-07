@@ -19,33 +19,39 @@
         </utu:AutoLayout.Resources>
         <utu:AutoLayout Padding="0,12,0,0"
                         utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:AutoLayout Spacing="8"
+            <uer:FeedView x:Name="UserFeedView"
+                          Source="{Binding UserProfile}" >
+                <DataTemplate>
+                    <utu:AutoLayout Spacing="8"
                             Padding="18,0"
                             Orientation="Horizontal">
-                <Button utu:AutoLayout.CounterAlignment="Start" 
+                        <Button utu:AutoLayout.CounterAlignment="Start" 
                         utu:AutoLayout.PrimaryLength="40" 
                         utu:AutoLayout.CounterLength="40"
-                        Command="{Binding Profile}">
-                    <PersonPicture />
-                </Button>
-                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                        Command="{Binding DataContext.ProfileCreator, ElementName=UserFeedView}"
+                        CommandParameter="{Binding Data}">
+                            <PersonPicture />
+                        </Button>
+                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                               Text="James Bondi"
+                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                               Text="{Binding Data.FullName}"
                                utu:AutoLayout.CounterAlignment="Start"
                                Style="{StaticResource TitleMedium}" />
-                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                               Text="@jamesBondi"
+                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                               Text="{Binding Data.Email}"
                                utu:AutoLayout.CounterAlignment="Start"
                                Style="{StaticResource CaptionMedium}" />
-                </utu:AutoLayout>
-                <Button utu:AutoLayout.CounterAlignment="Start"
+                        </utu:AutoLayout>
+                        <Button utu:AutoLayout.CounterAlignment="Start"
                         Style="{StaticResource IconButtonStyle}"
                         uen:Navigation.Request="Search">
                     <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
                               Foreground="{ThemeResource OnSurfaceBrush}" />
-                </Button>
-            </utu:AutoLayout>
+                        </Button>
+                    </utu:AutoLayout>
+                </DataTemplate>
+            </uer:FeedView>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="38"
                                 Padding="18,38">
@@ -243,25 +249,27 @@
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:AutoLayout Spacing="8"
+                                            <Button Command="{Binding DataContext.ProfileCreator, ElementName=PopularCreatorsFeedView}" CommandParameter="{Binding}">
+                                                <utu:AutoLayout Spacing="8"
                                                             utu:AutoLayout.CounterAlignment="Start">
-                                                <utu:AutoLayout CornerRadius="30"
+                                                    <utu:AutoLayout CornerRadius="30"
                                                                 Orientation="Horizontal"
                                                                 utu:AutoLayout.CounterAlignment="Center"
                                                                 utu:AutoLayout.PrimaryLength="75"
                                                                 utu:AutoLayout.CounterLength="75">
-                                                    <Border CornerRadius="25"
+                                                        <Border CornerRadius="25"
                                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                        <Image Source="https://picsum.photos/75/75"
+                                                            <Image Source="{Binding UrlProfileImage}"
                                                                Stretch="UniformToFill" />
-                                                    </Border>
-                                                </utu:AutoLayout>
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                        </Border>
+                                                    </utu:AutoLayout>
+                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                            TextAlignment="Center"
                                                            Text="{Binding FullName}"
                                                            utu:AutoLayout.CounterAlignment="Center"
                                                            Style="{StaticResource BodySmall}" />
-                                            </utu:AutoLayout>
+                                                </utu:AutoLayout>
+                                            </Button>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>

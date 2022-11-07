@@ -1,4 +1,5 @@
 ﻿using Chefs.Business;
+using Uno.Extensions.Navigation;
 
 namespace Chefs.Presentation;
 
@@ -31,7 +32,7 @@ public partial class SettingsViewModel
 
     public async ValueTask Exit(CancellationToken ct)
     {
-        await _navigator.NavigateBackAsync(ct);
+        await _navigator.NavigateBackAsync(this, qualifier: Qualifiers.ClearBackStack + "Home" , cancellation: ct);
     }
 
 
