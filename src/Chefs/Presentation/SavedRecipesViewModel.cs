@@ -22,4 +22,14 @@ public partial class SavedRecipesViewModel
     public IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetSaved(ct));
 
     public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetSaved(ct));
+
+    public async ValueTask RecipeNavigation(Recipe recipe, CancellationToken ct)
+    {
+        await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe, cancellation: ct);
+    }
+
+    public async ValueTask CookbookNavigation(Cookbook cookbook, CancellationToken ct)
+    {
+        await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: cookbook, cancellation: ct);
+    }
 }
