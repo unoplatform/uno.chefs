@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:utu="using:Uno.Toolkit.UI"
+    xmlns:uen="using:Uno.Extensions.Navigation.UI"
+    xmlns:uer="using:Uno.Extensions.Reactive.UI"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -30,64 +32,61 @@
                                 Content="Cookbooks" />
             </utu:TabBar>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Padding="18,0">
-                    <utu:AutoLayout Spacing="12" utu:AutoLayout.CounterAlignment="Start">
-                        <utu:AutoLayout Spacing="14" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.CounterLength="354">
-                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch" Style="{StaticResource OutlinedCardContentControlStyle}">
-                                <utu:CardContentControl.ContentTemplate>
-                                    <DataTemplate>
-                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                            <Image Source="https://picsum.photos/170/144" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" />
-                                            <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Avocado Toast" Style="{StaticResource TitleMedium}" />
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="10 mins • 267 Kcal" Style="{StaticResource BodySmall}" />
-                                            </utu:AutoLayout>
-                                        </utu:AutoLayout>
-                                    </DataTemplate>
-                                </utu:CardContentControl.ContentTemplate>
-                            </utu:CardContentControl>
-                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch" Style="{StaticResource OutlinedCardContentControlStyle}">
-                                <utu:CardContentControl.ContentTemplate>
-                                    <DataTemplate>
-                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                            <Image Source="https://picsum.photos/170/144" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" />
-                                            <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Mom's Cheesecake" Style="{StaticResource TitleMedium}" />
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="60 mins • 300 Kcal" Style="{StaticResource BodySmall}" />
-                                            </utu:AutoLayout>
-                                        </utu:AutoLayout>
-                                    </DataTemplate>
-                                </utu:CardContentControl.ContentTemplate>
-                            </utu:CardContentControl>
-                        </utu:AutoLayout>
-                        <utu:AutoLayout Spacing="14" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.CounterLength="354">
-                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch" Style="{StaticResource OutlinedCardContentControlStyle}">
-                                <utu:CardContentControl.ContentTemplate>
-                                    <DataTemplate>
-                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                            <Image Source="https://picsum.photos/170/144" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" />
-                                            <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Fluffy French Toast" Style="{StaticResource TitleMedium}" />
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="20 mins • 268 Kcal" Style="{StaticResource BodySmall}" />
-                                            </utu:AutoLayout>
-                                        </utu:AutoLayout>
-                                    </DataTemplate>
-                                </utu:CardContentControl.ContentTemplate>
-                            </utu:CardContentControl>
-                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch" Style="{StaticResource OutlinedCardContentControlStyle}">
-                                <utu:CardContentControl.ContentTemplate>
-                                    <DataTemplate>
-                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                            <Image Source="https://picsum.photos/170/144" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" />
-                                            <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Mom's Cheesecake" Style="{StaticResource TitleMedium}" />
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="10 mins • 268 Kcal" Style="{StaticResource BodySmall}" />
-                                            </utu:AutoLayout>
-                                        </utu:AutoLayout>
-                                    </DataTemplate>
-                                </utu:CardContentControl.ContentTemplate>
-                            </utu:CardContentControl>
-                        </utu:AutoLayout>
+                <utu:AutoLayout  Padding="18,0">
+                    <utu:AutoLayout uen:Region.Attached="True"  
+                                    uen:Region.Navigator="Visibility"
+                                    Spacing="12" 
+                                    utu:AutoLayout.CounterAlignment="Start">
+                        <uer:FeedView Source="{Binding Recipes}"
+                                      uen:Region.Name="MyRecipes" 
+                                      Visibility="Visible">
+                            <DataTemplate>
+                                <ListView ItemsSource="{Binding Data}"
+                                          IsItemClickEnabled="True"
+                                          SelectionMode="None"
+                                          Style="{StaticResource ListViewStyle}">
+                                    <utu:CardContentControl utu:AutoLayout.CounterLength="170" 
+                                                                            Style="{StaticResource OutlinedCardContentControlStyle}">
+                                        <utu:CardContentControl.ContentTemplate>
+                                            <DataTemplate>
+                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
+                                                    <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="70" MaxHeight="144" />
+                                                    <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding TimeCal}" Style="{StaticResource BodySmall}" />
+                                                    </utu:AutoLayout>
+                                                </utu:AutoLayout>
+                                            </DataTemplate>
+                                        </utu:CardContentControl.ContentTemplate>
+                                    </utu:CardContentControl>
+                                </ListView>
+                            </DataTemplate>
+                        </uer:FeedView>
+                        <uer:FeedView Source="{Binding Cookbooks}"
+                                      uen:Region.Name="Cookbooks" 
+                                      Visibility="Visible">
+                            <DataTemplate>
+                                <ListView ItemsSource="{Binding Data}"
+                                          IsItemClickEnabled="True"
+                                          SelectionMode="None"
+                                          Style="{StaticResource ListViewStyle}">
+                                    <utu:CardContentControl utu:AutoLayout.CounterLength="170"
+                                                        Style="{StaticResource OutlinedCardContentControlStyle}">
+                                        <utu:CardContentControl.ContentTemplate>
+                                            <DataTemplate>
+                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
+                                                    <Image Source="https://picsum.photos/70/145" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
+                                                    <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding PinsNumber}" Style="{StaticResource BodySmall}" />
+                                                    </utu:AutoLayout>
+                                                </utu:AutoLayout>
+                                            </DataTemplate>
+                                        </utu:CardContentControl.ContentTemplate>
+                                    </utu:CardContentControl>
+                                </ListView>
+                            </DataTemplate>
+                        </uer:FeedView>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
