@@ -103,7 +103,7 @@
                                         <ListView ItemsSource="{Binding Data}" 
                                                   IsItemClickEnabled="True"
                                                   Style="{StaticResource ListViewStyle}">
-                                                  <!--utu:ControlExtensions.Command="{Binding DataContext.DoRecipeNavigation, ElementName=Root}"-->
+                                                  <!--utu:ControlExtensions.Command="{Binding DataContext.RecipeNavigation, ElementName=Root}"-->
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <utu:CardContentControl utu:AutoLayout.CounterLength="170" 
@@ -134,7 +134,7 @@
                                                   IsItemClickEnabled="True"
 											      SelectionMode="None"
                                                   Style="{StaticResource ListViewStyle}">
-                                                  <!--utu:ControlExtensions.Command="{Binding DataContext.DoCookbookNavigation, ElementName=Root}"-->
+                                                  <!--utu:ControlExtensions.Command="{Binding DataContext.CookbookNavigation, ElementName=Root}"-->
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <utu:CardContentControl utu:AutoLayout.CounterLength="170"
