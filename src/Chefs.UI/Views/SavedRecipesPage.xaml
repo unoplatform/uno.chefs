@@ -29,7 +29,7 @@
                         <utu:TabBar uen:Region.Attached="True"
                         Margin="18" 
                         Style="{StaticResource TopTabBarStyle}">
-                            <utu:TabBarItem Foreground="{ThemeResource SurfaceBrush}" 
+                            <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                 uen:Region.Name="MyRecipes"
                                 IsSelectable="True"
                                 Content="All Recipes" />

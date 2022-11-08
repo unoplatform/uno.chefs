@@ -123,7 +123,7 @@ public sealed partial class App : Application
                                 }),
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>(), Nested: new RouteMap[]
                                 {
-                                    new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>())
+                                    new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes")
                                 })
                             })
                         }));
