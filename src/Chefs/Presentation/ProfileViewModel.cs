@@ -25,30 +25,29 @@ public partial class ProfileViewModel
 
     public IState<bool> IsMyProfile => State<bool>.Value(this, () => _user?.IsCurrent ?? false);
 
-    public IFeed<User> Profile => Feed<User>.Async(async ct => _user);
+    public IState<User> Profile => State.Value(this, () => _user);
 
     public IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetByUser(_user.Id, ct));
 
     public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetByUser(_user.Id, ct));
 
-    public async ValueTask Exit(CancellationToken ct)
-    {
+    public async ValueTask Exit(CancellationToken ct) =>
         await _navigator.NavigateBackAsync(this, cancellation: ct);
-    }
 
     public async ValueTask SettingsNavigation(CancellationToken ct)
     {
-        var user = _user;
-        await _navigator.NavigateViewModelAsync<SettingsViewModel>(this, data: user, cancellation: ct);
-    }
+        var result = await _navigator.GetDataAsync<SettingsViewModel, User>(this, data: _user, cancellation: ct);
 
-    public async ValueTask RecipeNavigation(Recipe recipe, CancellationToken ct)
-    {
+        if(result is not null)
+        {
+            await Profile.Update(c => result, ct);
+        }
+    }
+    
+    public async ValueTask RecipeNavigation(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe, cancellation: ct);
-    }
 
-    public async ValueTask CookbookNavigation(Cookbook cookbook, CancellationToken ct)
-    {
+    public async ValueTask CookbookNavigation(Cookbook cookbook, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: cookbook, cancellation: ct);
-    }
+    
 }
