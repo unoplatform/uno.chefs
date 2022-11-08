@@ -34,7 +34,13 @@ namespace Chefs.Converters
                 if (parameterString == null)
                     return DependencyProperty.UnsetValue;
 
-                return Enum.Parse(targetType, parameterString);
+                if (!targetType.IsEnum)
+					return DependencyProperty.UnsetValue;
+
+				if (Enum.TryParse(targetType, parameterString, out var enumValue))
+				{
+					return enumValue!;
+				}
             }
 
             return false;

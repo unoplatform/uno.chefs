@@ -16,7 +16,6 @@ public partial class FilterViewModel
         _filter = filters;
     }
 
-    [Value]
     public IState<SearchFilter> Filter => State.Value(this, () => _filter);
 
     public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
