@@ -84,7 +84,7 @@ public sealed partial class App : Application
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
-            new ViewMap<ProfilePage, ProfileViewModel>(Data: new DataMap<User>()),
+            new DataViewMap<ProfilePage, ProfileViewModel, User>(),
             new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
             new DataViewMap<SearchPage, SearchViewModel, SearchFilter>(),
@@ -110,14 +110,16 @@ public sealed partial class App : Application
                             {
                                 new RouteMap("Home", View: views.FindByViewModel<HomeViewModel>(), IsDefault: true, Nested: new RouteMap[]
                                 {
-                                    new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home"),
+                                    new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home", Nested: new RouteMap[]
+                                    {
+                                        new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile")
+                                    }),
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
                                     new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>(), DependsOn:"Home", Nested: new RouteMap[]
                                     {
                                         new RouteMap("Filter", View: views.FindByViewModel<FilterViewModel>())
                                     })
                                 }),
-                                new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Home"),
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>())
                             })
                         }));
