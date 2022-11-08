@@ -16,6 +16,8 @@ public record Cookbook
             .ToImmutableList();
     }
 
+    internal Cookbook() { }
+
     public Guid Id { get; init; }
     public Guid UserId { get; init; }
     public string? Name { get; init; }
