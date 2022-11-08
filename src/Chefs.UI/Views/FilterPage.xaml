@@ -189,7 +189,7 @@
                                            HorizontalAlignment="Stretch"
                                            ItemsSource="{Binding Categories}"
                                            Style="{StaticResource FilterChipGroupStyle}"
-                                           SelectedItem="{Binding Filter.Category, Mode=TwoWay}">
+                                           SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <ItemsStackPanel Orientation="Horizontal" />
