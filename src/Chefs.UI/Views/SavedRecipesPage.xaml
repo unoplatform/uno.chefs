@@ -9,6 +9,7 @@
     xmlns:uen="using:Uno.Extensions.Navigation.UI"
     xmlns:uer="using:Uno.Extensions.Reactive.UI"
     xmlns:um="using:Uno.Material"
+    x:Name="Root"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -27,86 +28,92 @@
                                     Spacing="12" 
                                     utu:AutoLayout.CounterAlignment="Start">
                         <utu:TabBar uen:Region.Attached="True"
-                        Margin="18" 
-                        Style="{StaticResource TopTabBarStyle}">
+                                    Margin="18" 
+                                    SelectedItem="{Binding ElementName=TabBarRecipeItem}"
+                                    Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                uen:Region.Name="MyRecipes"
-                                IsSelectable="True"
-                                Content="All Recipes" />
+                                            x:Name="TabBarRecipeItem"
+                                            IsSelectable="True"
+                                            uen:Region.Name="MyRecipes"
+                                            Content="All Recipes" />
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                uen:Region.Name="Cookbooks"
-                                IsSelectable="True"
-                                Content="Cookbooks" />
+                                            uen:Region.Name="Cookbooks"
+                                            IsSelectable="True"
+                                            Content="Cookbooks" />
                         </utu:TabBar>
                         <Grid  uen:Region.Attached="True"
                                uen:Region.Navigator="Visibility"
                                utu:AutoLayout.CounterAlignment="Start">
 
-                            <!--
-									TODO: Both FeedView should be set to collapsed by default
-									However, currently setting them to Collapsed by default results
-									in no data being shown.
-							-->
-                            <uer:FeedView Source="{Binding Recipes}"
-                                        uen:Region.Name="MyRecipes" 
-                                        Visibility="Visible">
-                            <DataTemplate>
-                                <ListView ItemsSource="{Binding Data}"
-                                            IsItemClickEnabled="True"
-                                            SelectionMode="None"
-                                            Style="{StaticResource ListViewStyle}">
-                                            <!--utu:ControlExtensions.Command="{Binding DataContext.RecipeNavigation, ElementName=Root}"-->
-                                    <ListView.ItemTemplate>
+                            <utu:AutoLayout Visibility="Visible"
+                                            uen:Region.Name="MyRecipes">
+                                <uer:FeedView Source="{Binding Recipes}">
                                     <DataTemplate>
-                                        <utu:CardContentControl utu:AutoLayout.CounterLength="170" 
-                                                                        Style="{StaticResource OutlinedCardContentControlStyle}">
-                                            <utu:CardContentControl.ContentTemplate>
+                                        <ListView ItemsSource="{Binding Data}"
+                                                IsItemClickEnabled="True"
+                                                SelectionMode="None"
+                                                Style="{StaticResource ListViewStyle}">
+                                            <!--utu:ControlExtensions.Command="{Binding DataContext.RecipeNavigation, ElementName=Root}"-->
+                                            <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                                        <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
-                                                        <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding TimeCal}" Style="{StaticResource BodySmall}" />
-                                                        </utu:AutoLayout>
-                                                    </utu:AutoLayout>
+                                                    <utu:CardContentControl utu:AutoLayout.CounterLength="170" 
+                                                                            Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                        <utu:CardContentControl.ContentTemplate>
+                                                            <DataTemplate>
+                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
+                                                                    <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
+                                                                    <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding TimeCal}" Style="{StaticResource BodySmall}" />
+                                                                    </utu:AutoLayout>
+                                                                </utu:AutoLayout>
+                                                            </DataTemplate>
+                                                        </utu:CardContentControl.ContentTemplate>
+                                                    </utu:CardContentControl>
                                                 </DataTemplate>
-                                            </utu:CardContentControl.ContentTemplate>
-                                        </utu:CardContentControl>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
                                     </DataTemplate>
-                                </ListView.ItemTemplate>
-                                </ListView>
-                            </DataTemplate>
-                            </uer:FeedView>
-                            <uer:FeedView Source="{Binding Cookbooks}"
-                                          uen:Region.Name="Cookbooks" 
-                                          Visibility="Visible">
-                                <DataTemplate>
-                                    <ListView ItemsSource="{Binding Data}"
+                                </uer:FeedView>
+                            </utu:AutoLayout>
+                            
+                            <utu:AutoLayout Visibility="Collapsed"
+                                            uen:Region.Name="Cookbooks">
+                                <uer:FeedView Source="{Binding Cookbooks}">
+                                    <DataTemplate>
+                                        <ListView ItemsSource="{Binding Data}"
                                               IsItemClickEnabled="True"
                                               SelectionMode="None"
                                               Style="{StaticResource ListViewStyle}">
-                                              <!--utu:ControlExtensions.Command="{Binding DataContext.CookbookNavigation, ElementName=Root}"-->
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <utu:CardContentControl utu:AutoLayout.CounterLength="170"
+                                            <!--utu:ControlExtensions.Command="{Binding DataContext.CookbookNavigation, ElementName=Root}"-->
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <utu:CardContentControl utu:AutoLayout.CounterLength="170"
                                                             Style="{StaticResource OutlinedCardContentControlStyle}">
-                                                    <utu:CardContentControl.ContentTemplate>
-                                                        <DataTemplate>
-                                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                                                <Image Source="https://picsum.photos/70/145" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
-                                                                <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
-                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
-                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding PinsNumber}" Style="{StaticResource BodySmall}" />
-                                                                </utu:AutoLayout>
-                                                            </utu:AutoLayout>
-                                                        </DataTemplate>
-                                                    </utu:CardContentControl.ContentTemplate>
-                                                </utu:CardContentControl>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </DataTemplate>
-                            </uer:FeedView>
+                                                        <utu:CardContentControl.ContentTemplate>
+                                                            <DataTemplate>
+                                                                <Button Command="{Binding DataContext.CookbookDetailNavigation, ElementName=Root}"
+                                                                        Background="{ThemeResource BackgroundBrush}"
+                                                                        CommandParameter="{Binding}">
+                                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
+                                                                        <Image Source="https://picsum.photos/70/145" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
+                                                                        <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
+                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
+                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding PinsNumber}" Style="{StaticResource BodySmall}" />
+                                                                        </utu:AutoLayout>
+                                                                    </utu:AutoLayout>
+                                                                </Button>
+                                                            </DataTemplate>
+                                                        </utu:CardContentControl.ContentTemplate>
+                                                    </utu:CardContentControl>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </DataTemplate>
+                                </uer:FeedView>
+                            </utu:AutoLayout>
+                            
                         </Grid>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
