@@ -111,7 +111,11 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
-            <Button Background="{ThemeResource PrimaryContainerBrush}" Margin="18,20" utu:AutoLayout.CounterAlignment="End" Style="{StaticResource FabStyle}">
+            <Button Command="{Binding CreateCookbookNavigation}" 
+                    Background="{ThemeResource PrimaryContainerBrush}" 
+                    Margin="18,20" 
+                    utu:AutoLayout.CounterAlignment="End" 
+                    Style="{StaticResource FabStyle}">
                 <um:ControlExtensions.Icon>
                     <PathIcon Data="{StaticResource Icon_Add}" Foreground="{ThemeResource SurfaceBrush}" />
                 </um:ControlExtensions.Icon>
