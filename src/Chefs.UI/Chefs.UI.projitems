@@ -21,21 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolInverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\FromNullToVisibilityConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToIntConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\EnumBooleanConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToBoolConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\AddRecipesCookbookPage.xaml.cs">
-      <DependentUpon>AddRecipesCookbookPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CookbookDetailPage.xaml.cs">
-      <DependentUpon>CookbookDetailPage.xaml</DependentUpon>
-    </Compile>
-=======
->>>>>>> 28920bb (feat: recipe details tabs xaml)
     <Compile Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
@@ -72,9 +57,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\LiveCookingPage.xaml.cs">
       <DependentUpon>LiveCookingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\UpdateCookbookPage.xaml.cs">
-      <DependentUpon>UpdateCookbookPage.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
@@ -93,10 +75,6 @@
     <Content Include="$(MSBuildThisFileDirectory)SavedRecipes.json" />
     <Content Include="$(MSBuildThisFileDirectory)Users.json" />
     <Page Include="$(MSBuildThisFileDirectory)Styles\FeedView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\CookbookDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,10 +123,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\LiveCookingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\UpdateCookbookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
