@@ -11,4 +11,6 @@ public interface IUserEndpoint
     ValueTask Update(UserData user, CancellationToken ct);
 
     ValueTask<bool> Authenticate(string email, string password, CancellationToken ct);
+
+    ValueTask<UserData> GetById(Guid userId, CancellationToken ct);
 }

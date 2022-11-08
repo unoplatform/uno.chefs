@@ -45,11 +45,11 @@
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    TextWrapping="Wrap"
-                                   Text="Avocado Toast"
+                                   Text="{Binding Recipe.Name}"
                                    Margin="18,0,18,5"
                                    Style="{StaticResource HeadlineLarge}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                   Text="By Niki Samantha "
+                                   Text="{Binding User.FullName}"
                                    Margin="18,0,18,20"
                                    Style="{StaticResource TitleSmall}" />
                         <utu:AutoLayout PrimaryAxisAlignment="Center"
@@ -72,7 +72,7 @@
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Text="10 mins"
+                                               Text="{Binding Recipe.Cooktime}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource TitleSmall}" />
                                 </utu:AutoLayout>
@@ -84,7 +84,7 @@
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Text="1 serves"
+                                               Text="{Binding Recipe.Serves}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource TitleSmall}" />
                                 </utu:AutoLayout>
@@ -94,7 +94,7 @@
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Text="Easy"
+                                               Text="{Binding Recipe.Difficulty}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource TitleSmall}" />
                                 </utu:AutoLayout>
@@ -102,25 +102,25 @@
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout uen:Region.Attached="True"
-                        Spacing="16"
+                                    Spacing="16"
                                     Padding="18,30"
                                     utu:AutoLayout.PrimaryLength="675">
                         <utu:TabBar uen:Region.Attached="True"
                                     SelectedItem="{Binding ElementName=IngredientsTabItem}"
-                            Style="{StaticResource TopTabBarStyle}">
+                                    Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem x:Name="IngredientsTabItem"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                            Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Ingredients"
-                                            uen:Region.Name="IngredientsTab"/>
+                                            uen:Region.Name="IngredientsTab" />
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Details"
                                             uen:Region.Name="DetailsTab" />
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Reviews"
-                                            uen:Region.Name="ReviewsTab"/>
+                                            uen:Region.Name="ReviewsTab" />
                         </utu:TabBar>
                         <Grid uen:Region.Attached="True"
-                                        uen:Region.Navigator="Visibility">
+                              uen:Region.Navigator="Visibility">
 
                             <utu:AutoLayout uen:Region.Name="IngredientsTab"
                                             Visibility="Visible">
