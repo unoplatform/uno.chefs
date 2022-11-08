@@ -172,7 +172,6 @@
                                            Text="{Binding Steps.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
                                            Style="{StaticResource HeadlineMedium}" />
                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-
                                     <uer:FeedView x:Name="StepsFeed"
                                                   Source="{Binding Steps}">
                                         <DataTemplate>
@@ -199,7 +198,6 @@
                                             </ListView>
                                         </DataTemplate>
                                     </uer:FeedView>
-
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                             <utu:AutoLayout uen:Region.Name="ReviewsTab"
@@ -252,10 +250,10 @@
                                                                             Padding="0,16,0,0"
                                                                             Orientation="Horizontal">
                                                                 <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                                                        Content="👍  7"
+                                                                        Content="{Binding Likes, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
                                                                         utu:AutoLayout.CounterAlignment="Start" />
                                                                 <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                                                        Content="👎  5"
+                                                                        Content="{Binding Dislikes, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
                                                                         utu:AutoLayout.CounterAlignment="Start" />
                                                             </utu:AutoLayout>
                                                         </utu:AutoLayout>
