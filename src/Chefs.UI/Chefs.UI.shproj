@@ -13,6 +13,7 @@
   <ItemGroup>
     <UpToDateCheckInput Remove="Converters\Converters.xaml" />
     <UpToDateCheckInput Remove="Styles\FeedView.xaml" />
+    <UpToDateCheckInput Remove="Views\CookbookDetailPage.xaml" />
     <UpToDateCheckInput Remove="Views\FilterPage.xaml" />
     <UpToDateCheckInput Remove="Views\HomePage.xaml" />
     <UpToDateCheckInput Remove="Views\IngredientsPage.xaml" />
@@ -27,6 +28,7 @@
     <UpToDateCheckInput Remove="Views\StartCookingPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Views\CookbookDetailPage.xaml.cs" />
     <_Globbed_Compile Remove="Converters\EnumBooleanConverter.cs" />
     <_Globbed_Compile Remove="Converters\NullToBoolConverter.cs" />
     <_Globbed_Compile Remove="Converters\StringFormatter.cs" />
@@ -47,6 +49,7 @@
   <ItemGroup>
     <_Globbled_Page Remove="Converters\Converters.xaml" />
     <_Globbled_Page Remove="Styles\FeedView.xaml" />
+    <_Globbled_Page Remove="Views\CookbookDetailPage.xaml" />
     <_Globbled_Page Remove="Views\FilterPage.xaml" />
     <_Globbled_Page Remove="Views\HomePage.xaml" />
     <_Globbled_Page Remove="Views\IngredientsPage.xaml" />

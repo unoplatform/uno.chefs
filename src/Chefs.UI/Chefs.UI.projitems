@@ -26,6 +26,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EnumBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringFormatter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CookbookDetailPage.xaml.cs">
+      <DependentUpon>CookbookDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\FeedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\CookbookDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

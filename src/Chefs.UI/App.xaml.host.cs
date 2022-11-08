@@ -91,8 +91,11 @@ public sealed partial class App : Application
             new DataViewMap<SearchPage, SearchViewModel, SearchFilter>(),
             new ViewMap<SettingsPage, SettingsViewModel>(Data: new DataMap<User>()),
             new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>()),
-			new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>())		            
-	    );
+			new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>()),
+            new ViewMap<CookbookDetailPage, CookbookDetailSavedViewModel>(Data: new DataMap<Cookbook>()),
+            new ViewMap<CookbookDetailPage, CookbookDetailProfileViewModel>(Data: new DataMap<Cookbook>())
+
+        );
 
         routes
             .Register(
@@ -113,7 +116,8 @@ public sealed partial class App : Application
                                 {
                                     new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home", Nested: new RouteMap[]
                                     {
-                                        new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile")
+                                        new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
+                                        new RouteMap("CookbookDetailProfile", View: views.FindByViewModel<CookbookDetailProfileViewModel>(), DependsOn: "Profile")
                                     }),
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
                                     new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>(), DependsOn:"Home", Nested: new RouteMap[]
@@ -123,7 +127,8 @@ public sealed partial class App : Application
                                 }),
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>(), Nested: new RouteMap[]
                                 {
-                                    new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes")
+                                    new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes"),
+                                    new RouteMap("CookbookSavedProfile", View: views.FindByViewModel<CookbookDetailSavedViewModel>(), DependsOn: "SavedRecipes")
                                 })
                             })
                         }));
