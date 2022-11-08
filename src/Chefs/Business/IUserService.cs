@@ -1,5 +1,6 @@
 ﻿using Chefs.Settings;
 using System.Collections.Immutable;
+using System.Threading.Tasks;
 
 namespace Chefs.Business;
 
@@ -53,6 +54,15 @@ public interface IUserService
     /// Return users that they are popular by their recipes
     /// </returns>
     ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct);
+
+    /// <summary>
+    /// Returns specific user
+    /// </summary>
+    /// <param name="userId">User GUID</param>
+    /// <returns>
+    /// User
+    /// </returns>
+    ValueTask<User> GetById(Guid userId, CancellationToken ct);
 
     ///<summary>
     /// Update app settings
