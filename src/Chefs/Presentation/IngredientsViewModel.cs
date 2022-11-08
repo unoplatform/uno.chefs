@@ -7,11 +7,11 @@ public partial class IngredientsViewModel
 {
     private INavigator _navigator;
 
-    public IngredientsViewModel(Recipe recipe, INavigator navigator)
+    public IngredientsViewModel(IImmutableList<Ingredient> ingredients, INavigator navigator)
     {
         _navigator = navigator;
 
-        Steps = ListState.Value(this, () => recipe.Ingredients ?? ImmutableList<Ingredient>.Empty);
+        Steps = ListState.Value(this, () => ingredients ?? ImmutableList<Ingredient>.Empty);
     }
 
     public IListState<Ingredient> Steps { get; }

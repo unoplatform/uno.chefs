@@ -1,5 +1,4 @@
-﻿using Chefs.Data;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 
 namespace Chefs.Business;
 
@@ -72,6 +71,15 @@ public interface IRecipeService
     /// Recipe's reviews
     /// </returns>
     ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct);
+
+    /// <summary>
+    /// Get recipe's ingredients
+    /// </summary>
+    /// <param name="ct">Recipe Guid</param>
+    /// <returns>
+    /// Recipe's ingredients
+    /// </returns>
+    ValueTask<IImmutableList<Ingredient>> GetIngredients(Guid recipeId, CancellationToken ct);
 
     /// <summary>
     /// Save recipe 
