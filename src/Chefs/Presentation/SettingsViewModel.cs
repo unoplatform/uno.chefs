@@ -28,12 +28,11 @@ public partial class SettingsViewModel
 
         await _userService.Update(user!, ct);
         await _userService.SetSettings(settings!, ct);
+
+        await Exit(ct);
     }
 
-    public async ValueTask Exit(CancellationToken ct)
-    {
-        await _navigator.NavigateBackAsync(this, qualifier: Qualifiers.ClearBackStack + "Home" , cancellation: ct);
-    }
-
-
+    public async ValueTask Exit(CancellationToken ct) =>
+        await _navigator.NavigateBackWithResultAsync(this, data: await UserInfo);
+    
 }
