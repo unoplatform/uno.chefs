@@ -8,17 +8,21 @@ public partial class RecipeDetailsViewModel
 {
     private INavigator _navigator;
     private IRecipeService _recipeService;
+    private IUserService _userService;
     private readonly Recipe _recipe;
 
-    public RecipeDetailsViewModel(Recipe recipe, INavigator navigator, IRecipeService recipeService)
+    public RecipeDetailsViewModel(Recipe recipe, INavigator navigator, IRecipeService recipeService, IUserService userService)
     {
         _navigator = navigator;
         _recipeService = recipeService;
+        _userService = userService;
 
         _recipe = recipe;
     }
 
     public IState<Recipe> Recipe => State.Value(this, () => _recipe);
+
+    public IState<User> User => State.Async(this, async ct => await _userService.GetById(_recipe.Id, ct));
 
     public IListFeed<Review> Reviews => ListFeed.Async(async ct => await _recipeService.GetReviews(_recipe.Id, ct));
     public IListFeed<Step> Steps => ListFeed.Async(async ct => await _recipeService.GetSteps(_recipe.Id, ct));

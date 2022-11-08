@@ -79,6 +79,8 @@ public class UserEndpoint : IUserEndpoint
         }
     }
 
+    public async ValueTask<UserData> GetById(Guid userId, CancellationToken ct) => (await Load())?.Where(u => u.Id == userId).FirstOrDefault() ?? throw new Exception();
+
     //Implementation to update users in memory 
     private async ValueTask<List<UserData>> Load()
     {
