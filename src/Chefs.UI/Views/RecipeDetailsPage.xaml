@@ -84,7 +84,7 @@
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Text="{Binding Recipe.Serves}"
+                                               Text="{Binding Recipe.Serves, Converter={StaticResource StringFormatter},ConverterParameter='Serves {0}'}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource TitleSmall}" />
                                 </utu:AutoLayout>
@@ -126,137 +126,156 @@
                                             Visibility="Visible">
                                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                            TextWrapping="Wrap"
-                                           Text="5 items"
+                                           Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
                                            Style="{StaticResource HeadlineMedium}" />
-                                <utu:AutoLayout Spacing="16"
-                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                    CornerRadius="15"
-                                                    PrimaryAxisAlignment="Center">
-                                        <utu:AutoLayout Spacing="16"
-                                                        Padding="16,18"
-                                                        Orientation="Horizontal">
-                                            <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                            Orientation="Horizontal"
-                                                            utu:AutoLayout.CounterAlignment="Center" />
-                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                           TextWrapping="Wrap"
-                                                           Text="Avocado"
-                                                           Style="{StaticResource TitleMedium}" />
-                                            </utu:AutoLayout>
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                       TextAlignment="End"
-                                                       Text="750g"
-                                                       utu:AutoLayout.CounterAlignment="Center" />
-                                        </utu:AutoLayout>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                    CornerRadius="15"
-                                                    PrimaryAxisAlignment="Center">
-                                        <utu:AutoLayout Spacing="16"
-                                                        Padding="16,18"
-                                                        Orientation="Horizontal">
-                                            <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                            Orientation="Horizontal"
-                                                            utu:AutoLayout.CounterAlignment="Center" />
-                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                           TextWrapping="Wrap"
-                                                           Text="Eggs"
-                                                           Style="{StaticResource TitleMedium}" />
-                                            </utu:AutoLayout>
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                       TextAlignment="End"
-                                                       Text="2"
-                                                       utu:AutoLayout.CounterAlignment="Center" />
-                                        </utu:AutoLayout>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                    CornerRadius="15"
-                                                    PrimaryAxisAlignment="Center">
-                                        <utu:AutoLayout Spacing="16"
-                                                        Padding="16,18"
-                                                        Orientation="Horizontal">
-                                            <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                            Orientation="Horizontal"
-                                                            utu:AutoLayout.CounterAlignment="Center" />
-                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                           TextWrapping="Wrap"
-                                                           Text="Bread"
-                                                           Style="{StaticResource TitleMedium}" />
-                                            </utu:AutoLayout>
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                       TextAlignment="End"
-                                                       Text="300g"
-                                                       utu:AutoLayout.CounterAlignment="Center" />
-                                        </utu:AutoLayout>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                    CornerRadius="15"
-                                                    PrimaryAxisAlignment="Center">
-                                        <utu:AutoLayout Spacing="16"
-                                                        Padding="16,18"
-                                                        Orientation="Horizontal">
-                                            <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                            Orientation="Horizontal"
-                                                            utu:AutoLayout.CounterAlignment="Center" />
-                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                           TextWrapping="Wrap"
-                                                           Text="Lemon juice"
-                                                           Style="{StaticResource TitleMedium}" />
-                                            </utu:AutoLayout>
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                       TextAlignment="End"
-                                                       Text="80ml"
-                                                       utu:AutoLayout.CounterAlignment="Center" />
-                                        </utu:AutoLayout>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                    CornerRadius="15"
-                                                    PrimaryAxisAlignment="Center">
-                                        <utu:AutoLayout Spacing="16"
-                                                        Padding="16,18"
-                                                        Orientation="Horizontal">
-                                            <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                            Orientation="Horizontal"
-                                                            utu:AutoLayout.CounterAlignment="Center" />
-                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                           TextWrapping="Wrap"
-                                                           Text="Olive oil"
-                                                           Style="{StaticResource TitleMedium}" />
-                                            </utu:AutoLayout>
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                       TextAlignment="End"
-                                                       Text="50ml"
-                                                       utu:AutoLayout.CounterAlignment="Center" />
-                                        </utu:AutoLayout>
-                                    </utu:AutoLayout>
+                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+
+                                    <uer:FeedView x:Name="IngredientsFeed"
+                                                  Source="{Binding Ingredients}">
+                                        <DataTemplate>
+                                            <ListView ItemsSource="{Binding Data}"
+                                                      Style="{StaticResource ListViewStyle}">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                        CornerRadius="15"
+                                                                        PrimaryAxisAlignment="Center"
+                                                                        Margin="0,8,0,8">
+                                                            <utu:AutoLayout Spacing="16"
+                                                                            Padding="16,18"
+                                                                            Orientation="Horizontal">
+                                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                               TextWrapping="Wrap"
+                                                                               Text="{Binding Name}"
+                                                                               Style="{StaticResource TitleMedium}" />
+                                                                </utu:AutoLayout>
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                           TextAlignment="End"
+                                                                           Text="{Binding Quantity}"
+                                                                           utu:AutoLayout.CounterAlignment="Center" />
+                                                            </utu:AutoLayout>
+                                                        </utu:AutoLayout>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </DataTemplate>
+                                    </uer:FeedView>
                                 </utu:AutoLayout>
-                                <Button Content="Get the Ingredients"
-                                        utu:AutoLayout.PrimaryLength="56"
-                                        Style="{StaticResource TextButtonStyle}" />
-                                <Button Background="{ThemeResource PrimaryBrush}"
-                                        Content="Start cooking!"
-                                        utu:AutoLayout.PrimaryLength="56" />
                             </utu:AutoLayout>
+
                             <utu:AutoLayout uen:Region.Name="DetailsTab"
                                             Visibility="Collapsed">
-                                <TextBlock Text="Details" />
+                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           TextWrapping="Wrap"
+                                           Text="{Binding Steps.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
+                                           Style="{StaticResource HeadlineMedium}" />
+                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+
+                                    <uer:FeedView x:Name="StepsFeed"
+                                                  Source="{Binding Steps}">
+                                        <DataTemplate>
+                                            <ListView ItemsSource="{Binding Data}"
+                                                      Style="{StaticResource ListViewStyle}">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                        CornerRadius="15">
+                                                            <utu:AutoLayout Padding="16,18"
+                                                                            PrimaryAxisAlignment="Center">
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                           TextWrapping="Wrap"
+                                                                           Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
+                                                                           Style="{StaticResource TitleMedium}" />
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                                           TextWrapping="Wrap"
+                                                                           Text="{Binding Description}"
+                                                                           Style="{StaticResource LabelSmall}" />
+                                                            </utu:AutoLayout>
+                                                        </utu:AutoLayout>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </DataTemplate>
+                                    </uer:FeedView>
+
+                                </utu:AutoLayout>
                             </utu:AutoLayout>
                             <utu:AutoLayout uen:Region.Name="ReviewsTab"
                                             Visibility="Collapsed">
-                                <TextBlock Text="Reviews" />
+                                <utu:AutoLayout Spacing="10"
+                                                Orientation="Horizontal">
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextWrapping="Wrap"
+                                               Text="30 comments"
+                                               utu:AutoLayout.CounterAlignment="Start"
+                                               utu:AutoLayout.PrimaryAlignment="Stretch"
+                                               Style="{StaticResource HeadlineMedium}" />
+                                    <HyperlinkButton Content="Add comment"
+                                                     utu:AutoLayout.CounterAlignment="Start" />
+                                </utu:AutoLayout>
+                                <uer:FeedView x:Name="ReviewsFeed"
+                                              Source="{Binding Reviews}">
+                                    <DataTemplate>
+                                        <ListView ItemsSource="{Binding Data}"
+                                                  Style="{StaticResource ListViewStyle}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <utu:AutoLayout Spacing="16"
+                                                                    Padding="16,18"
+                                                                    Orientation="Horizontal">
+                                                        <Border CornerRadius="20"
+                                                                utu:AutoLayout.CounterAlignment="Start"
+                                                                utu:AutoLayout.PrimaryLength="60"
+                                                                utu:AutoLayout.CounterLength="60">
+                                                            <Image Source="https://picsum.photos/60/60"
+                                                                   Stretch="UniformToFill" />
+                                                        </Border>
+                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                            <utu:AutoLayout PrimaryAxisAlignment="Center">
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                                           TextWrapping="Wrap"
+                                                                           Text="{Binding Date, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:MMM dd, yyy}'}"
+                                                                           Style="{StaticResource CaptionSmall}" />
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                           TextWrapping="Wrap"
+                                                                           Text="{Binding PublisherName}"
+                                                                           Style="{StaticResource TitleMedium}" />
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                                           TextWrapping="Wrap"
+                                                                           Text="{Binding Description}"
+                                                                           Style="{StaticResource LabelSmall}" />
+                                                            </utu:AutoLayout>
+                                                            <utu:AutoLayout Spacing="8"
+                                                                            Padding="0,16,0,0"
+                                                                            Orientation="Horizontal">
+                                                                <Button Background="{ThemeResource PrimaryInverseBrush}"
+                                                                        Content="👍  7"
+                                                                        utu:AutoLayout.CounterAlignment="Start" />
+                                                                <Button Background="{ThemeResource PrimaryInverseBrush}"
+                                                                        Content="👎  5"
+                                                                        utu:AutoLayout.CounterAlignment="Start" />
+                                                            </utu:AutoLayout>
+                                                        </utu:AutoLayout>
+                                                    </utu:AutoLayout>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </DataTemplate>
+                                </uer:FeedView>
                             </utu:AutoLayout>
                         </Grid>
+
+
+
+                        <Button Content="Get the Ingredients"
+                                utu:AutoLayout.PrimaryLength="56"
+                                Style="{StaticResource TextButtonStyle}" />
+                        <Button Background="{ThemeResource PrimaryBrush}"
+                                Content="Start cooking!"
+                                utu:AutoLayout.PrimaryLength="56" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
