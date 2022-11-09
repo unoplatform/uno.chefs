@@ -81,7 +81,7 @@ public sealed partial class App : Application
             new ViewMap<RegisterPage, RegisterViewModel>(),
             new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeViewModel>(),
-            new ViewMap<IngredientsPage, IngredientsViewModel>(),
+            new ViewMap<IngredientsPage, IngredientsViewModel>(Data: new DataMap<IImmutableList<Ingredient>>()),
             new ViewMap<CreateCookbookPage, CreateCookbookViewModel>(),
             new DataViewMap<UpdateCookbookPage, UpdateCookbookViewModel, Cookbook>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
@@ -104,15 +104,16 @@ public sealed partial class App : Application
                             new RouteMap("Welcome", View: views.FindByViewModel<WelcomeViewModel>()),
                             new RouteMap("Login", View: views.FindByViewModel<LoginViewModel>()),
                             new RouteMap("Register", View: views.FindByViewModel<RegisterViewModel>()),
-                            new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>(), Nested: new RouteMap[]
-                            {
-                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>()),
-                                new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingViewModel>())
-                            }),
                             new RouteMap("Main", View: views.FindByViewModel<MainViewModel>(), Nested: new RouteMap[]
                             {
                                 new RouteMap("Home", View: views.FindByViewModel<HomeViewModel>(), IsDefault: true, Nested: new RouteMap[]
                                 {
+                                    new RouteMap("HomeRecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>(), DependsOn:"Home", Nested: new RouteMap[]
+                                    {
+                                        new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>(), DependsOn:"HomeRecipeDetails"),
+                                        new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingViewModel>(), DependsOn:"HomeRecipeDetails"),
+                                        new RouteMap("Reviews", View: views.FindByViewModel<ReviewsViewModel>(), DependsOn:"HomeRecipeDetails")
+                                    }),
                                     new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home", Nested: new RouteMap[]
                                     {
                                         new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),

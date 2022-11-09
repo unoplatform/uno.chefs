@@ -13,6 +13,7 @@ public record Ingredient
     //Todo: Icon?
     public string? Name { get; init; }
     public string? Quantity { get; init; }
+    public string? NameQuantity => string.Concat(Name, " - ", Quantity);
 
     internal IngredientData ToData() => new()
     {

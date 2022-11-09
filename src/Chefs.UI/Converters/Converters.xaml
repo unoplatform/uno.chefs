@@ -7,4 +7,6 @@
     <converters:EnumBooleanConverter x:Key="EnumBooleanConverter" />
     <converters:BoolToIntConverter x:Key="BoolToIntConverter" />
     <converters:StringFormatter x:Key="StringFormatter" />
+    <converters:StringSeparatorConverter x:Key="DotStringSeparator"
+                                        Separator="∙"/>
 </ResourceDictionary>
