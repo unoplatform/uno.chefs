@@ -11,10 +11,10 @@ public partial class IngredientsViewModel
     {
         _navigator = navigator;
 
-        Steps = ListState.Value(this, () => ingredients ?? ImmutableList<Ingredient>.Empty);
+        Ingredients = ListState.Value(this, () => ingredients ?? ImmutableList<Ingredient>.Empty);
     }
 
-    public IListState<Ingredient> Steps { get; }
+    public IListState<Ingredient> Ingredients { get; }
 
     private async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);

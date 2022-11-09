@@ -90,7 +90,7 @@
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                         Style="{StaticResource OutlinedCardContentControlStyle}"
-                                                                        uen:Navigation.Request="RecipeDetails"
+                                                                        uen:Navigation.Request="HomeRecipeDetails"
                                                                         uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
