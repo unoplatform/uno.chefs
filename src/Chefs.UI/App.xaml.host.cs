@@ -82,7 +82,7 @@ public sealed partial class App : Application
             new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeViewModel>(),
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
-            new ViewMap<CreateCookbookPage, CreateCookbookViewModel>(),
+            new ViewMap<CreateCookbookPage, CreateCookbookViewModel>(Data: new DataMap<Cookbook>()),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
             new DataViewMap<ProfilePage, ProfileViewModel, User>(),
@@ -93,8 +93,9 @@ public sealed partial class App : Application
             new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>()),
 			new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>()),
             new ViewMap<CookbookDetailPage, CookbookDetailSavedViewModel>(Data: new DataMap<Cookbook>()),
-            new ViewMap<CookbookDetailPage, CookbookDetailProfileViewModel>(Data: new DataMap<Cookbook>())
-
+            new ViewMap<CookbookDetailPage, CookbookDetailProfileViewModel>(Data: new DataMap<Cookbook>()),
+            new DataViewMap<AddRecipesCookbookPage, AddRecipesProfileCookbookViewModel, Cookbook>(),
+            new DataViewMap<AddRecipesCookbookPage, AddRecipesSavedCookbookViewModel, Cookbook>()
         );
 
         routes
@@ -117,7 +118,11 @@ public sealed partial class App : Application
                                     new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home", Nested: new RouteMap[]
                                     {
                                         new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
-                                        new RouteMap("CookbookDetailProfile", View: views.FindByViewModel<CookbookDetailProfileViewModel>(), DependsOn: "Profile")
+                                        new RouteMap("CookbookDetailProfile", View: views.FindByViewModel<CookbookDetailProfileViewModel>(), Nested: new RouteMap[]
+                                        {
+                                            new RouteMap("AddRecipesProfileCookbook", View: views.FindByViewModel<AddRecipesProfileCookbookViewModel>(), DependsOn: "CookbookDetailProfile"),
+                                        },
+                                        DependsOn: "Profile")
                                     }),
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
                                     new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>(), DependsOn:"Home", Nested: new RouteMap[]
@@ -128,7 +133,11 @@ public sealed partial class App : Application
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>(), Nested: new RouteMap[]
                                 {
                                     new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes"),
-                                    new RouteMap("CookbookSavedProfile", View: views.FindByViewModel<CookbookDetailSavedViewModel>(), DependsOn: "SavedRecipes")
+                                    new RouteMap("CookbookDetailSaved", View: views.FindByViewModel<CookbookDetailSavedViewModel>(), Nested: new RouteMap[]
+                                    {
+                                        new RouteMap("AddRecipesSavedCookbook", View: views.FindByViewModel<AddRecipesSavedCookbookViewModel>(), DependsOn: "CookbookDetailSaved"),
+                                    }, 
+                                    DependsOn: "SavedRecipes")
                                 })
                             })
                         }));
