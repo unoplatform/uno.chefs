@@ -13,7 +13,7 @@ public partial class SearchViewModel
         _navigator = navigator;
         _recipeService = recipeService;
 
-        Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null));
+        Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null, null));
     }
 
     public IState<string> Term => State<string>.Value(this, () => string.Empty);
