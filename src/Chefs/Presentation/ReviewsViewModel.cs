@@ -20,7 +20,7 @@ public partial class ReviewsViewModel
         Reviews = ListState.Value(this, () => reviewParameter.reviews);
     }
 
-    public IListState<Review> Reviews;
+    public IListState<Review> Reviews { get; }
 
     public IState<string> Comment => State<string>.Empty(this);
 
@@ -34,7 +34,7 @@ public partial class ReviewsViewModel
     private async ValueTask Review(string comment, CancellationToken ct)
     { 
         await _recipeService.CreateReview(_recipeId, comment, ct);
-        await Comment.Set(string.Empty, ct);
+        await Comment.Update(current => string.Empty, ct);
     }
 
 }
