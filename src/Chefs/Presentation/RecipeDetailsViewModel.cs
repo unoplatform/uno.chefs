@@ -34,7 +34,7 @@ public partial class RecipeDetailsViewModel
         await _navigator.NavigateViewModelAsync<IngredientsViewModel>(this, data: await Ingredients);
 
     public async ValueTask Review(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<ReviewsViewModel>(this, data: _recipe);
+        await _navigator.NavigateViewModelAsync<ReviewsViewModel>(this, data: new ReviewParameter((await Recipe)?.Id ?? Guid.Empty, await Reviews));
 
     public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
         await _recipeService.Save(recipe, ct);

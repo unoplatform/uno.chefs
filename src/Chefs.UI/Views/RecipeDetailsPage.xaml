@@ -205,12 +205,13 @@
                                                 Orientation="Horizontal">
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                TextWrapping="Wrap"
-                                               Text="30 comments"
+                                               Text="{Binding Reviews.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Comments'}"
                                                utu:AutoLayout.CounterAlignment="Start"
                                                utu:AutoLayout.PrimaryAlignment="Stretch"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <HyperlinkButton Content="Add comment"
-                                                     utu:AutoLayout.CounterAlignment="Start" />
+                                                     utu:AutoLayout.CounterAlignment="Start"
+                                                     Command="{Binding Review}"/>
                                 </utu:AutoLayout>
                                 <uer:FeedView x:Name="ReviewsFeed"
                                               Source="{Binding Reviews}">
