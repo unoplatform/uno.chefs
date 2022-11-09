@@ -11,16 +11,14 @@ public record Step
         Number = stepData.Number;
         CookTime = stepData.CookTime;
         Cookware = stepData.Cookware;
-        Ingredients = stepData.Ingredients?
-            .Select(i => new Ingredient(i))
-            .ToImmutableList();
+        Ingredients = stepData.Ingredients;
         Description = stepData.Description;
     }
 
     public int Number { get; init; }
     public TimeSpan CookTime { get; init; }
     public IImmutableList<string>? Cookware { get; init; }
-    public IImmutableList<Ingredient>? Ingredients { get; init; }
+    public IImmutableList<string>? Ingredients { get; init; }
     public string? Description { get; init; }
 
     internal StepData ToData() => new()
@@ -28,9 +26,7 @@ public record Step
         Number = Number,
         CookTime = CookTime,
         Cookware = Cookware,
-        Ingredients = Ingredients?
-            .Select(i => i.ToData())
-            .ToImmutableList(),
+        Ingredients = Ingredients,
         Description = Description
     };
 }

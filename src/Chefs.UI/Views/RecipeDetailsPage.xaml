@@ -273,7 +273,8 @@
                                 Style="{StaticResource TextButtonStyle}" />
                         <Button Background="{ThemeResource PrimaryBrush}"
                                 Content="Start cooking!"
-                                utu:AutoLayout.PrimaryLength="56" />
+                                utu:AutoLayout.PrimaryLength="56"
+                                Command="{Binding LiveCooking}"/>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
