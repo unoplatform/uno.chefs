@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Chefs.Views.CreateCookbookPage"
+    x:Class="Chefs.Views.AddRecipesCookbookPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Chefs.Views"
@@ -21,9 +21,9 @@
             <x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:NavigationBar Content="Create Cookbook" Background="{ThemeResource BackgroundBrush}" Style="{StaticResource NavigationBarStyle}">
+            <utu:NavigationBar Content="Add recipes" Background="{ThemeResource BackgroundBrush}" Style="{StaticResource NavigationBarStyle}">
                 <utu:NavigationBar.PrimaryCommands>
-                    <AppBarButton>
+                    <AppBarButton Command="{Binding Exit}">
                         <AppBarButton.Icon>
                             <PathIcon Data="{StaticResource BitmapIcon_Close}">
                                 <PathIcon.Resources>
@@ -34,12 +34,6 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>
-            <TextBox Background="{ThemeResource SurfaceBrush}" 
-                     Text="{Binding CookbookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}" 
-                     PlaceholderText="Cookbook name" 
-                     Margin="18,24" 
-                     Style="{StaticResource OutlinedTextBoxStyle}" />
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="18" Padding="18,0">
                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Add pin" Style="{StaticResource LabelLarge}" />

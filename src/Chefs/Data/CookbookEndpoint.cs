@@ -28,6 +28,11 @@ public class CookbookEndpoint : ICookbookEndpoint
 
         var currentUser = await _userEndpoint.GetCurrent(ct);
 
+        if(cookbooks.Where(c => c.Id == cookbook.Id).Any())
+        {
+            cookbooks.Remove(c => c.Id == cookbook.Id);
+        }
+
         cookbooks?.Add(new CookbookData()
         {
             Id = cookbook.Id,
