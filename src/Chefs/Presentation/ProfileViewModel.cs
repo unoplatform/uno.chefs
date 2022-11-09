@@ -49,5 +49,7 @@ public partial class ProfileViewModel
 
     public async ValueTask CookbookNavigation(Cookbook cookbook, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: cookbook, cancellation: ct);
-    
+
+    public async ValueTask CookbookDetailNavigation(Cookbook cookbook, CancellationToken ct) =>
+        await _navigator.GetDataAsync<CookbookDetailProfileViewModel>(this, data: cookbook, cancellation: ct);
 }

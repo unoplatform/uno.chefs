@@ -1,21 +1,32 @@
 ﻿using Chefs.Business;
+using Microsoft.UI.Xaml;
 
 namespace Chefs.Presentation;
 
 public partial class CookbookDetailProfileViewModel
 {
-    public CookbookDetailProfileViewModel(Cookbook cookbook)
+    private readonly INavigator _navigator;
+
+    public CookbookDetailProfileViewModel(INavigator navigator, Cookbook cookbook)
     {
-        PinNumbers = State.Value(this, () => cookbook.PinsNumber);
-        Recipes = State.Value(this, () => cookbook.Recipes!).AsListFeed();
+        _navigator = navigator;
+        Cookbook = State.Value(this, () => cookbook);
+    }
+    public IState<Cookbook> Cookbook { get; set; }
+
+    public async ValueTask CreateCookbookNavigation(CancellationToken ct)
+    {
+        var cookbook = await Cookbook.Value(ct);
+        var result = await _navigator.GetDataAsync<AddRecipesProfileCookbookViewModel, Cookbook>(this, data: cookbook, cancellation: ct);
+
+        if(result is not null)
+        {
+            await Cookbook.Update(_ => result, ct);
+        }
     }
 
-    public IState<int> PinNumbers { get; }
-
-    public IListFeed<Recipe> Recipes { get; }
-
-    public async ValueTask CreateCookbookNavigation(Cookbook cookbook, CancellationToken ct)
+    public async ValueTask Exit(CancellationToken ct)
     {
-
+        await _navigator.NavigateBackAsync(this, cancellation: ct);
     }
 }

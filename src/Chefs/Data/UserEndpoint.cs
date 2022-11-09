@@ -56,7 +56,7 @@ public class UserEndpoint : IUserEndpoint
         var users = await Load();
         int userIndex = users?.FindIndex(u => u.Id == _userId) ?? 0;
 
-        if(userIndex is not -1)
+        if (userIndex is not -1)
         {
             users![userIndex] = new UserData()
             {

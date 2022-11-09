@@ -17,69 +17,67 @@
             <x:String x:Key="Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
         </utu:AutoLayout.Resources>
 
-        <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-            <uer:FeedView Source="{Binding Cookbook}">
-                <DataTemplate>
-                    <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:NavigationBar  Content="{Binding Data.Name}" 
+
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+            <utu:NavigationBar  Content="{Binding Cookbook.Name}" 
                                         ScrollViewer.IsScrollInertiaEnabled="true"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         IsDynamicOverflowEnabled="False"
                                         HorizontalContentAlignment="Center"
                                         Background="{ThemeResource BackgroundBrush}" 
                                         Style="{StaticResource NavigationBarStyle}">
-                            <utu:NavigationBar.MainCommand>
-                                <AppBarButton Label=""
-								            Foreground="Black">
-                                    <!-- Back symbol icon is a workaround until we have a resource into the uno toolkit extension. -->
-                                    <win:AppBarButton.Icon>
-                                        <SymbolIcon Symbol="Back" />
-                                    </win:AppBarButton.Icon>
-                                </AppBarButton>
-                            </utu:NavigationBar.MainCommand>
-                        </utu:NavigationBar>
-                        <utu:AutoLayout Spacing="12" Padding="20, 0, 0, 0">
-                            <StackPanel Spacing="3"
-                                        Padding="20, 0, 0, 0"
-                                        Orientation="Horizontal" 
-                                        utu:AutoLayout.CounterAlignment="Start" 
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="{Binding Data.PinsNumber}" Style="{StaticResource LabelLarge}" />
-                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Pins" Style="{StaticResource LabelLarge}" />
-                            </StackPanel>
+                <utu:NavigationBar.MainCommand>
+                    <AppBarButton Label=""
+                                              Command="{Binding Exit}"
+								              Foreground="Black">
+                        <!-- Back symbol icon is a workaround until we have a resource into the uno toolkit extension. -->
+                        <win:AppBarButton.Icon>
+                            <SymbolIcon Symbol="Back" />
+                        </win:AppBarButton.Icon>
+                    </AppBarButton>
+                </utu:NavigationBar.MainCommand>
+            </utu:NavigationBar>
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+                <utu:AutoLayout Spacing="12" Padding="20, 0, 0, 0">
+                    <StackPanel Spacing="3"
+                                            Padding="20, 0, 0, 0"
+                                            Orientation="Horizontal" 
+                                            utu:AutoLayout.CounterAlignment="Start" 
+                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="{Binding Cookbook.PinsNumber}" Style="{StaticResource LabelLarge}" />
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Pins" Style="{StaticResource LabelLarge}" />
+                    </StackPanel>
 
-                            <utu:AutoLayout Spacing="22" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <ListView ItemsSource="{Binding Data.Recipes}"
-                                              IsItemClickEnabled="True"
-                                              SelectionMode="None"
-                                              Style="{StaticResource ListViewStyle}">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="166" Style="{StaticResource OutlinedCardContentControlStyle}">
-                                                <utu:CardContentControl.ContentTemplate>
-                                                    <DataTemplate>
-                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                                            <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" />
-                                                            <utu:AutoLayout Spacing="2" Padding="10" Orientation="Horizontal">
-                                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
-                                                                </utu:AutoLayout>
-                                                                <utu:AutoLayout PrimaryAxisAlignment="End" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Start" />
-                                                            </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="22" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <ListView ItemsSource="{Binding Cookbook.Recipes}"
+                                                  IsItemClickEnabled="True"
+                                                  SelectionMode="None"
+                                                  Style="{StaticResource ListViewStyle}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="166" Style="{StaticResource OutlinedCardContentControlStyle}">
+                                        <utu:CardContentControl.ContentTemplate>
+                                            <DataTemplate>
+                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
+                                                    <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" />
+                                                    <utu:AutoLayout Spacing="2" Padding="10" Orientation="Horizontal">
+                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
                                                         </utu:AutoLayout>
-                                                    </DataTemplate>
-                                                </utu:CardContentControl.ContentTemplate>
-                                            </utu:CardContentControl>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
+                                                        <utu:AutoLayout PrimaryAxisAlignment="End" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Start" />
+                                                    </utu:AutoLayout>
+                                                </utu:AutoLayout>
+                                            </DataTemplate>
+                                        </utu:CardContentControl.ContentTemplate>
+                                    </utu:CardContentControl>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </utu:AutoLayout>
-                </DataTemplate>
-            </uer:FeedView>
-        </ScrollViewer>
+                </utu:AutoLayout>
 
+            </ScrollViewer>
+        </utu:AutoLayout>
         <Button Command="{Binding CreateCookbookNavigation}" 
                 Background="{ThemeResource PrimaryContainerBrush}" 
                 Margin="18,20" utu:AutoLayout.CounterAlignment="End" 
