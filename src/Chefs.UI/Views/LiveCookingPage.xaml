@@ -11,19 +11,28 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
+        <utu:AutoLayout.Resources>
+            <x:String x:Key="Icon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+        </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout>
-                <utu:AutoLayout Padding="18,0"
-                                Orientation="Horizontal"
-                                utu:AutoLayout.CounterAlignment="End" />
+                <Button Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                        Background="{ThemeResource SurfaceBrush}"
+                        Margin="18,0"
+                        utu:AutoLayout.CounterAlignment="End"
+                        CornerRadius="12"
+                        Style="{StaticResource IconButtonStyle}"
+                        uen:Navigation.Request="-">
+                    <PathIcon Data="{StaticResource Icon_Close}"
+                              Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                </Button>
                 <utu:AutoLayout Padding="0,20,0,0"
                                 PrimaryAxisAlignment="Center">
                     <Image Source="https://picsum.photos/390/219"
                            Stretch="UniformToFill"
                            utu:AutoLayout.PrimaryLength="219" />
-                    <utu:AutoLayout Orientation="Horizontal"
-                                    Background="Green">
-                        <uer:FeedView x:Name="IngredientsFeed"
+                    <utu:AutoLayout Orientation="Horizontal">
+                        <uer:FeedView x:Name="StepsFeed"
                                       utu:AutoLayout.CounterAlignment="Stretch"
                                       Source="{Binding Steps}">
                             <DataTemplate>
@@ -45,7 +54,7 @@
                                                             Padding="10">
                                                 <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                            TextAlignment="Center"
-                                                           Text="Step 1"
+                                                           Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
                                                            utu:AutoLayout.CounterAlignment="Center" />
                                             </utu:AutoLayout>
                                         </DataTemplate>
@@ -57,53 +66,60 @@
                 </utu:AutoLayout>
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Spacing="16"
-                                Padding="18,30">
-                    <utu:AutoLayout Spacing="16"
-                                    Orientation="Horizontal">
-                        <utu:AutoLayout Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Center"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       TextAlignment="Center"
-                                       Text="Getting started"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource HeadlineMedium}" />
-                        </utu:AutoLayout>
-                        <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
-                                        Padding="10,6"
-                                        CornerRadius="15"
-                                        Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Center">
-                            <TextBlock Foreground="{ThemeResource SurfaceBrush}"
-                                       TextAlignment="Center"
-                                       Text="5 Minutes"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource CaptionSmall}" />
-                        </utu:AutoLayout>
-                    </utu:AutoLayout>
-                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                    CornerRadius="15">
-                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                   Text="Fork ∙ Knife ∙ Skillet ∙ Spatula"
-                                   Margin="10"
-                                   Style="{StaticResource LabelSmall}" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                   Text="Eggs ∙ Olive oil "
-                                   Margin="10"
-                                   Style="{StaticResource LabelSmall}" />
-                    </utu:AutoLayout>
-                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                    Padding="20"
-                                    CornerRadius="15"
-                                    Orientation="Horizontal">
-                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   TextWrapping="Wrap"
-                                   Text="Melt butter in a skillet over medium-low heat. &#xA;&#xA;Crack eggs into the skillet side by side and cook until eggs are white on the bottom layer and firm enough to flip, 2 to 3 minutes. &#xA;&#xA;Flip eggs, trying not to crack the yolk, and cook until the egg reaches desired doneness, 2 to 5 minutes more."
-                                   utu:AutoLayout.CounterAlignment="Start"
-                                   Style="{StaticResource LabelMedium}" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
+                <FlipView ItemsSource="{Binding Steps}">
+                    <FlipView.ItemTemplate>
+                        <DataTemplate>
+                            <utu:AutoLayout Spacing="16"
+                                            Padding="18,30">
+                                <utu:AutoLayout Spacing="16"
+                                                Orientation="Horizontal">
+                                    <utu:AutoLayout Orientation="Horizontal"
+                                                    utu:AutoLayout.CounterAlignment="Center"
+                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                   TextAlignment="Center"
+                                                   Text="Getting started"
+                                                   utu:AutoLayout.CounterAlignment="Start"
+                                                   Style="{StaticResource HeadlineMedium}" />
+                                    </utu:AutoLayout>
+                                    <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
+                                                    Padding="10,6"
+                                                    CornerRadius="15"
+                                                    Orientation="Horizontal"
+                                                    utu:AutoLayout.CounterAlignment="Center">
+                                        <TextBlock Foreground="{ThemeResource SurfaceBrush}"
+                                                   TextAlignment="Center"
+                                                   Text="{Binding CookTime}"
+                                                   utu:AutoLayout.CounterAlignment="Start"
+                                                   Style="{StaticResource CaptionSmall}" />
+                                    </utu:AutoLayout>
+                                </utu:AutoLayout>
+                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                CornerRadius="15">
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                               Text="{Binding Cookware, Converter={StaticResource DotStringSeparator}}"
+                                               Margin="10"
+                                               Style="{StaticResource LabelSmall}" />
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                               Text="{Binding Ingredients, Converter={StaticResource DotStringSeparator}}"
+                                               Margin="10"
+                                               Style="{StaticResource LabelSmall}" />
+                                </utu:AutoLayout>
+                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                Padding="20"
+                                                CornerRadius="15"
+                                                Orientation="Horizontal">
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding Description}"
+                                               utu:AutoLayout.CounterAlignment="Start"
+                                               Style="{StaticResource LabelMedium}" />
+                                </utu:AutoLayout>
+                            </utu:AutoLayout>
+                        </DataTemplate>
+                    </FlipView.ItemTemplate>
+                </FlipView>
+
             </ScrollViewer>
         </utu:AutoLayout>
     </utu:AutoLayout>

@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringSeparatorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>

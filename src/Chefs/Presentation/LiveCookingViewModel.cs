@@ -1,4 +1,5 @@
 ﻿using Chefs.Business;
+using Chefs.Data;
 using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
@@ -6,6 +7,7 @@ namespace Chefs.Presentation;
 public partial class LiveCookingViewModel
 {
     private INavigator _navigator;
+    private int _index = 0;
 
     public LiveCookingViewModel(IImmutableList<Step> steps, INavigator navigator)
     {
@@ -15,11 +17,8 @@ public partial class LiveCookingViewModel
 
     public IListState<Step> Steps { get; }
 
-    public IState<int> StepIndex => State.Value(this, () => 0);
+    public IState<Step> CurrentStep => State.Async(this, async ct => (await Steps)[_index]);
 
-    private async ValueTask NextStep(CancellationToken ct) =>
-       await StepIndex.Update(x => x++, ct);
-
-    private async ValueTask GoBack(CancellationToken ct) =>
+    public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);
 }
