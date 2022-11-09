@@ -24,5 +24,5 @@ public partial class FilterViewModel
         await _navigator.NavigateBackWithResultAsync(this, data: await Filter, cancellation: ct);
 
     public async ValueTask ResetFilter(CancellationToken ct) =>
-       await Filter.Update(current => new SearchFilter(null, null, null, null), ct);
+       await Filter.Update(current => new SearchFilter(null, null, null, null, null), ct);
 }

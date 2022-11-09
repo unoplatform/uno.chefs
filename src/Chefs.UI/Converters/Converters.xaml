@@ -5,4 +5,5 @@
     
     <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
     <converters:EnumBooleanConverter x:Key="EnumBooleanConverter" />
+    <converters:BoolToIntConverter x:Key="BoolToIntConverter" />
 </ResourceDictionary>
