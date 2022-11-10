@@ -1,5 +1,6 @@
 ﻿using Chefs.Business;
 using Microsoft.UI.Xaml;
+using Uno.Extensions.Navigation;
 
 namespace Chefs.Presentation;
 
