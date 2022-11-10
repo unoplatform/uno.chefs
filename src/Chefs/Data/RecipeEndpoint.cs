@@ -92,7 +92,7 @@ public class RecipeEndpoint : IRecipeEndpoint
     }
 
     //Implementation to update saved recipes in memory 
-    private async ValueTask<List<RecipeData>> Load()
+    private async ValueTask<IList<RecipeData>> Load()
     {
         if(_recipes == null)
         {
@@ -103,7 +103,7 @@ public class RecipeEndpoint : IRecipeEndpoint
     }
 
     //Implementation to update saved cookbooks and recipes in memory 
-    private async ValueTask<List<SavedRecipesData>> LoadSaved()
+    private async ValueTask<IList<SavedRecipesData>> LoadSaved()
     {
         if (_savedRecipes == null)
         {
