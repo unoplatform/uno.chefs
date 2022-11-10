@@ -7,7 +7,7 @@ public interface ICookbookEndpoint
 
     ValueTask Create(CookbookData cookbook, CancellationToken ct);
 
-    ValueTask Update(CookbookData cookbook, CancellationToken ct);
+    ValueTask<CookbookData> Update(CookbookData cookbook, CancellationToken ct);
 
     ValueTask Save(CookbookData cookbook, CancellationToken ct);
 

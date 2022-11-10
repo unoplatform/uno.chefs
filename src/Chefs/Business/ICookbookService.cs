@@ -18,7 +18,7 @@ public interface ICookbookService
     /// <param name="cookbook">Cookbook to add</param>
     /// <param name="ct"></param>
     /// <returns></returns>
-    ValueTask Update(Cookbook cookbook, CancellationToken ct);
+    ValueTask<Cookbook> Update(Cookbook cookbook, IImmutableList<Recipe> recipes, CancellationToken ct);
 
     /// <summary>
     /// Add cookbook that the user wants to save

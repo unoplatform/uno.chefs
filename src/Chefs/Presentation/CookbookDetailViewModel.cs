@@ -13,7 +13,8 @@ public partial class CookbookDetailViewModel
         _navigator = navigator;
         Cookbook = State.Value(this, () => cookbook);
     }
-    public IState<Cookbook> Cookbook { get; set; }
+
+    public IState<Cookbook> Cookbook { get; }
 
     public async ValueTask CreateCookbookNavigation(CancellationToken ct)
     {

@@ -17,8 +17,8 @@ public class CookbookService : ICookbookService
             .Select(i => i.ToData())
             .ToList() }, ct);
 
-    public async ValueTask Update(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
-        .Update(cookbook.ToData(), ct);
+    public async ValueTask<Cookbook> Update(Cookbook cookbook, IImmutableList<Recipe> recipes, CancellationToken ct) => new Cookbook(await _cookbookEndpoint
+        .Update(cookbook.ToData(recipes), ct));
 
     public async ValueTask Save(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
         .Save(cookbook.ToData(), ct);

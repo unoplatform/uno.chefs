@@ -30,7 +30,7 @@ public class CookbookEndpoint : ICookbookEndpoint
         _cookbooks?.Add(cookbook);
     }
 
-    public async ValueTask Update(CookbookData cookbook, CancellationToken ct)
+    public async ValueTask<CookbookData> Update(CookbookData cookbook, CancellationToken ct)
     {
         await LoadCookbooks();
 
@@ -38,7 +38,11 @@ public class CookbookEndpoint : ICookbookEndpoint
         if (cookbookItem is not null)
         {
             cookbookItem.Recipes = cookbook.Recipes;
+
+            return cookbookItem;
         }
+
+        throw new Exception();
     }
 
     public async ValueTask Save(CookbookData cookbook, CancellationToken ct)
@@ -74,23 +78,6 @@ public class CookbookEndpoint : ICookbookEndpoint
         .Where(x => x.UserId == userId)
         .ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
     }
-
-    //public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct)
-    //{
-    //    var currentUser = await _userEndpoint.GetCurrent(ct);
-
-    //    var cookBooks = await LoadCookbooks();
-
-    //    var savedCookbooks = (await LoadSavedCookbooks())?
-    //        .Where(x => x.UserId == currentUser.Id).FirstOrDefault();
-
-    //    if (savedCookbooks is not null && savedCookbooks.SavedCookbooks is not null)
-    //    {
-    //        return cookBooks?.Where(x => savedCookbooks.SavedCookbooks.Any(y => y == x.Id)).ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
-    //    }
-
-    //    return ImmutableList<CookbookData>.Empty;
-    //}
 
     //Implementation to update cookbooks in memory 
     private async Task<List<CookbookData>> LoadCookbooks()
