@@ -15,7 +15,7 @@ public class RecipeData
     public Difficulties Difficulty { get; set; }
     public IImmutableList<IngredientData>? Ingredients { get; set; }
     public string? Calories { get; set; }
-    public IImmutableList<ReviewData>? Reviews { get; set; }
+    public List<ReviewData>? Reviews { get; set; }
     public string? Details { get; set; }
     public CategoryData? Category { get; set; }
     public DateTime Date { get; set; }
