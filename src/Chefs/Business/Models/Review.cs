@@ -8,6 +8,7 @@ public record Review
     {
         RecipeId = reviewData.RecipeId;
         CreatedBy = reviewData.CreatedBy; 
+        PublisherName = reviewData.PublisherName;
         Date = reviewData.Date;
         Likes = reviewData.Likes;
         Dislikes = reviewData.Dislikes;
