@@ -8,5 +8,5 @@ public class CookbookData
     public Guid UserId { get; set; }
     public string? Name { get; set; }
     public int PinsNumber { get; set; }
-    public IImmutableList<RecipeData>? Recipes { get; set; }
+    public List<RecipeData>? Recipes { get; set; }
 }
