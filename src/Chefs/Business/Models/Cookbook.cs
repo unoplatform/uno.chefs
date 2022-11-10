@@ -32,6 +32,6 @@ public record Cookbook
         PinsNumber = PinsNumber,
         Recipes = Recipes?
             .Select(c => c.ToData())
-            .ToImmutableList()
+            .ToList()
     };
 }
