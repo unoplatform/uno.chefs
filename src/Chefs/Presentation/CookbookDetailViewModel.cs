@@ -18,7 +18,7 @@ public partial class CookbookDetailViewModel
     public async ValueTask CreateCookbookNavigation(CancellationToken ct)
     {
         var cookbook = await Cookbook.Value(ct);
-        var result = await _navigator.GetDataAsync<CreateCookbookViewModel, Cookbook>(this, data: cookbook, cancellation: ct);
+        var result = await _navigator.GetDataAsync<UpdateCookbookViewModel, Cookbook>(this, data: cookbook, cancellation: ct);
 
         if(result is not null)
         {

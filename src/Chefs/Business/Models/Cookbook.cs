@@ -10,18 +10,17 @@ public record Cookbook
         Id = cookbookData.Id;
         UserId = cookbookData.UserId;
         Name = cookbookData.Name;
-        PinsNumber = cookbookData.PinsNumber;
         Recipes = cookbookData.Recipes?
             .Select(c => new Recipe(c))
             .ToImmutableList();
     }
 
-    internal Cookbook() { }
+    internal Cookbook() { Recipes = ImmutableList<Recipe>.Empty; }
 
     public Guid Id { get; init; }
     public Guid UserId { get; init; }
     public string? Name { get; init; }
-    public int PinsNumber { get; init; }
+    public int PinsNumber => Recipes?.Count ?? 0;
     public IImmutableList<Recipe>? Recipes { get; init; }
 
     internal CookbookData ToData() => new()
@@ -29,7 +28,6 @@ public record Cookbook
         Id = Id,
         UserId = UserId,
         Name = Name,
-        PinsNumber = PinsNumber,
         Recipes = Recipes?
             .Select(c => c.ToData())
             .ToList()
