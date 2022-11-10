@@ -48,7 +48,7 @@
                                     utu:AutoLayout.CounterAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Text="{Binding Items.Count, UpdateSourceTrigger=PropertyChanged}"
+                                   Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
                                    utu:AutoLayout.CounterAlignment="Center"
                                    Style="{StaticResource TitleLarge}" />
                     </utu:AutoLayout>
@@ -73,6 +73,11 @@
                             <ListView ItemsSource="{Binding Data}"
                                       IsItemClickEnabled="True"
                                       uen:Navigation.Request="RecipeDetails">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <utu:CardContentControl utu:AutoLayout.PrimaryAlignment="Stretch"
