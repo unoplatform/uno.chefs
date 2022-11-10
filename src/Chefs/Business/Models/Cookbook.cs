@@ -32,4 +32,15 @@ public record Cookbook
             .Select(c => c.ToData())
             .ToList()
     };
+
+    internal CookbookData ToData(IImmutableList<Recipe> recipes) => new()
+    {
+        Id = Id,
+        UserId = UserId,
+        Name = Name,
+        Recipes = Recipes?
+            .AddRange(recipes)
+            .Select(c => c.ToData())
+            .ToList()
+    };
 }

@@ -31,6 +31,7 @@ public partial class CreateCookbookViewModel
     public async ValueTask Done(CancellationToken ct)
     {
         var cookbookName = await CookbookName;
+
         var selectedRecipes = (await Recipes).Where(x => x.Selected);
         if (!string.IsNullOrEmpty(cookbookName)
             && selectedRecipes is not null)

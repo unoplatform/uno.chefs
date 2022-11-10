@@ -25,7 +25,7 @@ public partial class UpdateCookbookViewModel
 
     public IState<Cookbook> Cookbook { get; }
 
-    public IListFeed<Recipe> Recipes => ListFeed.Async(async ct =>
+    public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
     {
         var cookbook = await Cookbook;
         return (await _recipeService.GetSaved(ct))
@@ -35,37 +35,21 @@ public partial class UpdateCookbookViewModel
 
     public async ValueTask Exit(CancellationToken ct) =>
         await _navigator.NavigateBackAsync(this, cancellation: ct);
-    
-
-    public async ValueTask SelectedRecipient(Recipe recipe, CancellationToken ct)
-    {
-        var cookbook = await Cookbook;
-
-        var containRecipient = cookbook?
-        .Recipes?
-        .Where(r => r.Id == recipe.Id)
-        .ToList().Count > 0;
-
-        var cookbookRecipes = cookbook?.Recipes?.ToList();
-
-        if (containRecipient) cookbookRecipes?.Remove(r => r.Id == recipe.Id);
-        else cookbookRecipes?.Add(recipe);
-    }
 
     public async ValueTask Done(CancellationToken ct)
     {
+        var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
         var cookbook = await Cookbook;
 
-        if (String.IsNullOrEmpty(cookbook?.Name)
-            || cookbook?.PinsNumber == 0)
+        if (selectedRecipes is not null)
         {
-            await _navigator
-                .ShowMessageDialogAsync(this, content: "Please select a cookbook name or select recipe", title: "Error");
+            var response = await _cookbookService.Update(cookbook!, selectedRecipes, ct);
+            await _navigator.NavigateBackWithResultAsync(this, data: response);
         }
         else
         {
-            await _cookbookService.Update(cookbook!, ct);
-            await _navigator.NavigateBackWithResultAsync(this, data: cookbook);
+            await _navigator
+                .ShowMessageDialogAsync(this, content: "Please write a cookbook name and select one recipe", title: "Error");
         }
     }
 }
