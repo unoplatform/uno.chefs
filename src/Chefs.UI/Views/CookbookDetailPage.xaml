@@ -9,6 +9,7 @@
     xmlns:um="using:Uno.Material"
     xmlns:uer="using:Uno.Extensions.Reactive.UI"
     xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    NavigationCacheMode="Enabled"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -28,8 +29,8 @@
                                         Style="{StaticResource NavigationBarStyle}">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton Label=""
-                                              Command="{Binding Exit}"
-								              Foreground="Black">
+                                  Command="{Binding Exit}"
+								  Foreground="Black">
                         <!-- Back symbol icon is a workaround until we have a resource into the uno toolkit extension. -->
                         <win:AppBarButton.Icon>
                             <SymbolIcon Symbol="Back" />
@@ -40,10 +41,10 @@
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="12" Padding="20, 0, 0, 0">
                     <StackPanel Spacing="3"
-                                            Padding="20, 0, 0, 0"
-                                            Orientation="Horizontal" 
-                                            utu:AutoLayout.CounterAlignment="Start" 
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                Padding="20, 0, 0, 0"
+                                Orientation="Horizontal" 
+                                utu:AutoLayout.CounterAlignment="Start" 
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="{Binding Cookbook.PinsNumber}" Style="{StaticResource LabelLarge}" />
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Pins" Style="{StaticResource LabelLarge}" />
                     </StackPanel>
@@ -75,7 +76,6 @@
                         </ListView>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
-
             </ScrollViewer>
         </utu:AutoLayout>
         <Button Command="{Binding CreateCookbookNavigation}" 
