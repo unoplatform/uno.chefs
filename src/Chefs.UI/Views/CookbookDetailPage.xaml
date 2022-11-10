@@ -24,11 +24,11 @@
                                Style="{StaticResource NavigationBarStyle}">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton Label=""
-								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+								  Foreground="Black">
                         <!-- Back symbol icon is a workaround until we have a resource into the uno toolkit extension. -->
-                        <win:AppBarButton.Icon>
+                        <AppBarButton.Icon>
                             <SymbolIcon Symbol="Back" />
-                        </win:AppBarButton.Icon>
+                        </AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
             </utu:NavigationBar>
