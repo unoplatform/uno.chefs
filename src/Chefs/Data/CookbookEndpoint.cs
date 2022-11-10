@@ -79,6 +79,23 @@ public class CookbookEndpoint : ICookbookEndpoint
         .ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
     }
 
+    //public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct)
+    //{
+    //    var currentUser = await _userEndpoint.GetCurrent(ct);
+
+    //    var cookBooks = await LoadCookbooks();
+
+    //    var savedCookbooks = (await LoadSavedCookbooks())?
+    //        .Where(x => x.UserId == currentUser.Id).FirstOrDefault();
+
+    //    if (savedCookbooks is not null && savedCookbooks.SavedCookbooks is not null)
+    //    {
+    //        return cookBooks?.Where(x => savedCookbooks.SavedCookbooks.Any(y => y == x.Id)).ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
+    //    }
+
+    //    return ImmutableList<CookbookData>.Empty;
+    //}
+
     //Implementation to update cookbooks in memory 
     private async Task<List<CookbookData>> LoadCookbooks()
     {
