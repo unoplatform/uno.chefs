@@ -40,6 +40,6 @@ public partial class SavedRecipesViewModel
 
     public async ValueTask CookbookDetailNavigation(Cookbook cookbook, CancellationToken ct)
     {
-        await _navigator.NavigateViewModelAsync<CookbookDetailSavedViewModel>(this, data: cookbook, cancellation: ct);
+        await _navigator.NavigateViewModelAsync<CookbookDetailViewModel>(this, data: cookbook, cancellation: ct);
     }
 }

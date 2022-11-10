@@ -1,24 +1,24 @@
 ﻿using Chefs.Business;
-using Windows.Devices.Input.Preview;
+using Microsoft.UI.Xaml;
+using Uno.Extensions.Navigation;
 
 namespace Chefs.Presentation;
 
-public partial class CookbookDetailSavedViewModel
+public partial class CookbookDetailViewModel
 {
     private readonly INavigator _navigator;
-    private Cookbook _cookbook;
 
-    public CookbookDetailSavedViewModel(INavigator navigator, Cookbook cookbook)
+    public CookbookDetailViewModel(INavigator navigator, Cookbook cookbook)
     {
         _navigator = navigator;
-        _cookbook = cookbook;
+        Cookbook = State.Value(this, () => cookbook);
     }
-    public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook);
+    public IState<Cookbook> Cookbook { get; set; }
 
     public async ValueTask CreateCookbookNavigation(CancellationToken ct)
     {
         var cookbook = await Cookbook.Value(ct);
-        var result = await _navigator.GetDataAsync<AddRecipesSavedCookbookViewModel, Cookbook>(this, data: cookbook, cancellation: ct);
+        var result = await _navigator.GetDataAsync<CreateCookbookViewModel, Cookbook>(this, data: cookbook, cancellation: ct);
 
         if(result is not null)
         {
