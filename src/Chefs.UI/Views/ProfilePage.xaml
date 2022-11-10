@@ -8,6 +8,7 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:um="using:Uno.Material"
+      NavigationCacheMode="Enabled"
       mc:Ignorable="d"
       x:Name="Root"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

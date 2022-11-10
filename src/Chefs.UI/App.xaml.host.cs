@@ -85,7 +85,7 @@ public sealed partial class App : Application
             new ViewMap<CreateCookbookPage, CreateCookbookViewModel>(Data: new DataMap<Cookbook>()),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
-            new DataViewMap<ProfilePage, ProfileViewModel, User>(),
+            new ViewMap<ProfilePage, ProfileViewModel>(Data: new DataMap<User>()),
             new ViewMap<RecipeDetailsPage, RecipeDetailsViewModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
             new DataViewMap<SearchPage, SearchViewModel, SearchFilter>(),
