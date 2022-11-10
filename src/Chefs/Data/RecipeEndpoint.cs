@@ -68,7 +68,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         _savedRecipes= savedRecipes!;
     }
 
-    public async ValueTask CreateReview(ReviewData reviewData, CancellationToken ct)
+    public async ValueTask<ReviewData> CreateReview(ReviewData reviewData, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetCurrent(ct);
 
@@ -78,8 +78,12 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         if(recipe is not null)
         {
+            reviewData.PublisherName = currentUser.FullName;
             reviewData.CreatedBy = currentUser.Id;
+            reviewData.Date = DateTime.Now;
             recipe.Reviews?.Add(reviewData);
+
+            return reviewData;
         }
         else
         {

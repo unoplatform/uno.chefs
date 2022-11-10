@@ -32,9 +32,9 @@ public partial class ReviewsViewModel
         !string.IsNullOrEmpty(comment);
 
     private async ValueTask Review(string comment, CancellationToken ct)
-    { 
-        await _recipeService.CreateReview(_recipeId, comment, ct);
-        await Comment.Update(current => string.Empty, ct);
+    {
+        var review = await _recipeService.CreateReview(_recipeId, comment, ct);
+        await Reviews.InsertAsync(review, ct);
+        await Comment.Set(string.Empty, ct);
     }
-
 }

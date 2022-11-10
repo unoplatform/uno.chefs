@@ -21,7 +21,7 @@ public partial class RecipeDetailsViewModel
     }
 
     public IState<Recipe> Recipe => State.Value(this, () => _recipe);
-    public IState<User> User => State.Async(this, async ct => await _userService.GetById(_recipe.Id, ct));
+    public IState<User> User => State.Async(this, async ct => await _userService.GetById(_recipe.UserId, ct));
 
     public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(_recipe.Id, ct));
     public IListFeed<Review> Reviews => ListFeed.Async(async ct => await _recipeService.GetReviews(_recipe.Id, ct));
