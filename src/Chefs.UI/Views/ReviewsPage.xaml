@@ -96,7 +96,7 @@
                      PlaceholderText="Write a comment"
                      utu:AutoLayout.PrimaryAlignment="Stretch"
                      Style="{StaticResource OutlinedTextBoxStyle}"
-                     Text="{Binding Comment, Mode=TwoWay}"/>
+                     Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Background="{ThemeResource PrimaryBrush}"
                     Content="Send"
                     utu:AutoLayout.CounterAlignment="Center"
