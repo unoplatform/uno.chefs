@@ -82,7 +82,8 @@ public sealed partial class App : Application
             new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeViewModel>(),
             new ViewMap<IngredientsPage, IngredientsViewModel>(),
-            new DataViewMap<CreateCookbookPage, CreateCookbookViewModel, Cookbook>(),
+            new ViewMap<CreateCookbookPage, CreateCookbookViewModel>(),
+            new DataViewMap<UpdateCookbookPage, UpdateCookbookViewModel, Cookbook>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsViewModel>(),
             new ViewMap<ProfilePage, ProfileViewModel>(Data: new DataMap<User>()),
@@ -117,7 +118,7 @@ public sealed partial class App : Application
                                         new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
                                         new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), Nested: new RouteMap[]
                                         {
-                                           new RouteMap("ProfileCreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "ProfileCookbookDetail"),
+                                           new RouteMap("UpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "ProfileCookbookDetail"),
                                         },
                                         DependsOn: "Profile")
                                     }),
@@ -132,7 +133,7 @@ public sealed partial class App : Application
                                     new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes"),
                                     new RouteMap("SavedCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), Nested: new RouteMap[]
                                     {
-                                         new RouteMap("SavedCreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedCookbookDetail"),
+                                         new RouteMap("UpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "SavedCookbookDetail"),
                                     }, 
                                     DependsOn: "SavedRecipes")
                                 })

@@ -12,80 +12,36 @@ public partial class CreateCookbookViewModel
     private readonly IRecipeService _recipeService;
     private readonly ICookbookService _cookbookService;
 
-    private Cookbook? _cookbook;
-
     public CreateCookbookViewModel(INavigator navigator, 
                                    IRecipeService recipeService,
-                                   ICookbookService cookbookService,
-                                   Cookbook? cookbook) 
+                                   ICookbookService cookbookService) 
     {
         _navigator = navigator;
         _recipeService = recipeService;
         _cookbookService = cookbookService;
-
-        _cookbook = cookbook;
     }
 
-    public IState<Cookbook?> Cookbook => State.Value(this, () => _cookbook);
+    public IState<string> CookbookName =>  State<string>.Empty(this);
 
-    public IState<string> CookbookName => _cookbook == null 
-        ? State<string>.Empty(this) 
-        : State.Value(this, () => _cookbook?.Name!);
+    public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetSaved);
 
-    public IListFeed<Recipe> Recipes => ListFeed.Async(async ct => _cookbook == null 
-        ? await _recipeService.GetAll(ct)
-        : (await _recipeService
-        .GetAll(ct)).RemoveAll(r1 => _cookbook?.Recipes!.ToList().Exists(r2 => r1.Id == r2.Id) 
-        ?? false));
-
-    public async ValueTask Exit(CancellationToken ct)
-    {
+    public async ValueTask Exit(CancellationToken ct) =>
        await _navigator.NavigateBackAsync(this, cancellation: ct);
-    }
-
-    public async ValueTask SelectedRecipient(Recipe recipe, CancellationToken ct)
-    {
-        if (_cookbook is null) await CreateCookbook(ct: ct);
-
-        var containRecipient =  _cookbook?
-        .Recipes?
-        .Where(r => r.Id == recipe.Id)
-        .ToList().Count > 0;
-
-        var cookbookRecipes = _cookbook?.Recipes?.ToList();
-
-        if (containRecipient) cookbookRecipes?.Remove(r => r.Id == recipe.Id);
-        else cookbookRecipes?.Add(recipe);
-
-        await CreateCookbook(cookbookRecipes, ct);
-    }
-
-    private async Task CreateCookbook([Optional] List<Recipe>? cookbookRecipes, CancellationToken ct)
-    {
-        var cookbookName = await CookbookName.Value(ct);
-        _cookbook = new Cookbook()
-        {
-            Id = _cookbook?.Id ?? Guid.NewGuid(),
-            UserId = _cookbook?.UserId ?? Guid.NewGuid(),
-            Name = cookbookName,
-            PinsNumber = cookbookRecipes?.Count() ?? 0,
-            Recipes = cookbookRecipes?.ToImmutableList() ?? (new List<Recipe>()).ToImmutableList()
-        };
-    }
 
     public async ValueTask Done(CancellationToken ct)
     {
-        var cookbookName = await CookbookName.Value(ct);
-        if (String.IsNullOrEmpty(cookbookName) 
-            || _cookbook?.PinsNumber == 0 ) 
+        var cookbookName = await CookbookName;
+        var selectedRecipes = (await Recipes).Where(x => x.Selected);
+        if (!string.IsNullOrEmpty(cookbookName)
+            && selectedRecipes is not null)
         {
-            await _navigator
-                .ShowMessageDialogAsync(this, content: "Please select a cookbook name or select recipe", title: "Error");
+            await _cookbookService.Create(cookbookName, selectedRecipes.ToImmutableList(), ct);
+            await _navigator.NavigateBackAsync(this);
         } 
         else
         {
-            await _cookbookService.Create(_cookbook!, ct);
-            await _navigator.NavigateBackWithResultAsync(this, data: _cookbook);
+            await _navigator
+                .ShowMessageDialogAsync(this, content: "Please write a cookbook name and select one recipe", title: "Error");
         }
     }
 }
