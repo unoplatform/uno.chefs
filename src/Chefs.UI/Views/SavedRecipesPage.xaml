@@ -9,6 +9,7 @@
     xmlns:uen="using:Uno.Extensions.Navigation.UI"
     xmlns:uer="using:Uno.Extensions.Reactive.UI"
     xmlns:um="using:Uno.Material"
+    NavigationCacheMode="Enabled"
     x:Name="Root"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -131,6 +132,7 @@
                     Background="{ThemeResource PrimaryContainerBrush}" 
                     Margin="18,20" 
                     utu:AutoLayout.CounterAlignment="End" 
+                    CornerRadius="60" 
                     Style="{StaticResource FabStyle}">
                 <um:ControlExtensions.Icon>
                     <PathIcon Data="{StaticResource Icon_Add}" Foreground="{ThemeResource SurfaceBrush}" />

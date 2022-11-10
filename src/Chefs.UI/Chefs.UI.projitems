@@ -22,6 +22,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolInverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\FromNullToVisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToIntConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\EnumBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\NullToBoolConverter.cs" />
@@ -90,10 +91,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\FeedView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\AddRecipesCookbookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
