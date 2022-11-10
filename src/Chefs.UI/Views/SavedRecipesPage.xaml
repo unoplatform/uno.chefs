@@ -9,6 +9,7 @@
     xmlns:uen="using:Uno.Extensions.Navigation.UI"
     xmlns:uer="using:Uno.Extensions.Reactive.UI"
     xmlns:um="using:Uno.Material"
+    NavigationCacheMode="Enabled"
     x:Name="Root"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
