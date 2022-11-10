@@ -70,5 +70,4 @@ public partial class AddRecipesSavedCookbookViewModel
     {
         await _navigator.NavigateBackWithResultAsync(this, data: _cookbook);
     }
-
 }
