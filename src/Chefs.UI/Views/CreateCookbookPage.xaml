@@ -8,8 +8,15 @@
     xmlns:utu="using:Uno.Toolkit.UI"
     xmlns:um="using:Uno.Material"
     xmlns:uer="using:Uno.Extensions.Reactive.UI"
+    xmlns:converters="using:Chefs.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
+        <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
+                                              Invert="True" />
+    </Page.Resources>
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
@@ -21,25 +28,48 @@
             <x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:NavigationBar Content="Create Cookbook" Background="{ThemeResource BackgroundBrush}" Style="{StaticResource NavigationBarStyle}">
-                <utu:NavigationBar.PrimaryCommands>
-                    <AppBarButton>
-                        <AppBarButton.Icon>
-                            <PathIcon Data="{StaticResource BitmapIcon_Close}">
-                                <PathIcon.Resources>
-                                    <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
-                                </PathIcon.Resources>
-                            </PathIcon>
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                </utu:NavigationBar.PrimaryCommands>
-            </utu:NavigationBar>
-            <TextBox Background="{ThemeResource SurfaceBrush}" 
-                     Text="{Binding CookbookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            <utu:AutoLayout Visibility="{Binding Cookbook.Name, Converter={StaticResource NullToVisible}}" >
+                <utu:NavigationBar  
+                                Content="Create Cookbook" 
+                                Background="{ThemeResource BackgroundBrush}" 
+                                Style="{StaticResource NavigationBarStyle}">
+                    <utu:NavigationBar.PrimaryCommands>
+                        <AppBarButton>
+                            <AppBarButton.Icon>
+                                <PathIcon Data="{StaticResource BitmapIcon_Close}">
+                                    <PathIcon.Resources>
+                                        <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+                                    </PathIcon.Resources>
+                                </PathIcon>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.PrimaryCommands>
+                </utu:NavigationBar>
+                <TextBox Background="{ThemeResource SurfaceBrush}" 
+                     Text="{Binding Cookbook.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}" 
                      PlaceholderText="Cookbook name" 
                      Margin="18,24" 
                      Style="{StaticResource OutlinedTextBoxStyle}" />
+            </utu:AutoLayout>
+            <utu:AutoLayout Visibility="{Binding Cookbook.Name, Converter={StaticResource NullToCollapsed}}" >
+                <utu:NavigationBar  
+                                Content="Add Cookbook" 
+                                Background="{ThemeResource BackgroundBrush}" 
+                                Style="{StaticResource NavigationBarStyle}">
+                    <utu:NavigationBar.PrimaryCommands>
+                        <AppBarButton>
+                            <AppBarButton.Icon>
+                                <PathIcon Data="{StaticResource BitmapIcon_Close}">
+                                    <PathIcon.Resources>
+                                        <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+                                    </PathIcon.Resources>
+                                </PathIcon>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.PrimaryCommands>
+                </utu:NavigationBar>
+            </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="18" Padding="18,0">
                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Add pin" Style="{StaticResource LabelLarge}" />
@@ -72,6 +102,7 @@
                                                                                   CommandParameter="{Binding}"
                                                                                   Background="#ED3F64" 
                                                                                   utu:AutoLayout.CounterAlignment="Center" 
+                                                                                  CornerRadius="60"
                                                                                   Style="{StaticResource IconToggleButtonStyle}">
                                                                         <ToggleButton.Content>
                                                                             <PathIcon Data="{StaticResource Icon_Add}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />

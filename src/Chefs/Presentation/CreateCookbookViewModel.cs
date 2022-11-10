@@ -16,18 +16,27 @@ public partial class CreateCookbookViewModel
 
     public CreateCookbookViewModel(INavigator navigator, 
                                    IRecipeService recipeService,
-                                   ICookbookService cookbookService) 
+                                   ICookbookService cookbookService,
+                                   Cookbook? cookbook) 
     {
         _navigator = navigator;
         _recipeService = recipeService;
         _cookbookService = cookbookService;
 
-        _ = CreateCookbook(ct: CancellationToken.None);
+        _cookbook = cookbook;
     }
 
-    public IState<string> CookbookName => State<string>.Empty(this);
+    public IState<Cookbook?> Cookbook => State.Value(this, () => _cookbook);
 
-    public IListFeed<Recipe> Recipes => ListFeed.Async(async ct => await _recipeService.GetAll(ct));
+    public IState<string> CookbookName => _cookbook == null 
+        ? State<string>.Empty(this) 
+        : State.Value(this, () => _cookbook?.Name!);
+
+    public IListFeed<Recipe> Recipes => ListFeed.Async(async ct => _cookbook == null 
+        ? await _recipeService.GetAll(ct)
+        : (await _recipeService
+        .GetAll(ct)).RemoveAll(r1 => _cookbook?.Recipes!.ToList().Exists(r2 => r1.Id == r2.Id) 
+        ?? false));
 
     public async ValueTask Exit(CancellationToken ct)
     {
@@ -36,23 +45,19 @@ public partial class CreateCookbookViewModel
 
     public async ValueTask SelectedRecipient(Recipe recipe, CancellationToken ct)
     {
-        var containRecipient = _cookbook is not null ? _cookbook?
-            .Recipes?
-            .Where(r => r.Id == recipe.Id)
-            .ToList().Count > 0 : false;
+        if (_cookbook is null) await CreateCookbook(ct: ct);
 
-        if (containRecipient)
-        {
-            var cookbookRecipes = _cookbook?.Recipes?.ToList();
-            cookbookRecipes?.Remove(r => r.Id == recipe.Id);
-            await CreateCookbook(cookbookRecipes, ct);
-        }
-        else
-        {
-            var cookbookRecipes = _cookbook?.Recipes?.ToList();
-            cookbookRecipes?.Add(recipe);
-            await CreateCookbook(cookbookRecipes, ct);
-        }
+        var containRecipient =  _cookbook?
+        .Recipes?
+        .Where(r => r.Id == recipe.Id)
+        .ToList().Count > 0;
+
+        var cookbookRecipes = _cookbook?.Recipes?.ToList();
+
+        if (containRecipient) cookbookRecipes?.Remove(r => r.Id == recipe.Id);
+        else cookbookRecipes?.Add(recipe);
+
+        await CreateCookbook(cookbookRecipes, ct);
     }
 
     private async Task CreateCookbook([Optional] List<Recipe>? cookbookRecipes, CancellationToken ct)
@@ -80,7 +85,7 @@ public partial class CreateCookbookViewModel
         else
         {
             await _cookbookService.Create(_cookbook!, ct);
-            await _navigator.NavigateBackAsync(this, cancellation: ct);
+            await _navigator.NavigateBackWithResultAsync(this, data: _cookbook);
         }
     }
 }
