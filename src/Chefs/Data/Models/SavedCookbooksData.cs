@@ -3,5 +3,5 @@
 public class SavedCookbooksData
 {
     public Guid UserId { get; set; }
-    public Guid[]? SavedCookbooks { get; set; }
+    public List<Guid>? SavedCookbooks { get; set; }
 }

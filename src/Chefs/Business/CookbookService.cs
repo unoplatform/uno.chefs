@@ -12,6 +12,9 @@ public class CookbookService : ICookbookService
     public async ValueTask Create(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
         .Create(cookbook.ToData(), ct);
 
+    public async ValueTask Update(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
+        .Update(cookbook.ToData(), ct);
+
     public async ValueTask Save(Cookbook cookbook, CancellationToken ct) => await _cookbookEndpoint
         .Save(cookbook.ToData(), ct);
 
