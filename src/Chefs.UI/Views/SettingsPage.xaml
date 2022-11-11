@@ -55,6 +55,9 @@
                     <utu:AutoLayout Spacing="18" Padding="0,20">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" Text="Personal information" utu:AutoLayout.CounterAlignment="Start" Style="{StaticResource BodyLarge}" />
                         <utu:AutoLayout Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
+                            <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
+                                <Image Source="ms-appx:///Assets/Icons/leading_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                            </utu:AutoLayout>
                             <TextBox PlaceholderText="Full Name"
                                      Text="{Binding UserInfo.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                      Background="{ThemeResource SurfaceBrush}" 
@@ -63,6 +66,9 @@
                                      utu:AutoLayout.PrimaryAlignment="Stretch" />
                         </utu:AutoLayout>
                         <utu:AutoLayout Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
+                            <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
+                                <Image Source="ms-appx:///Assets/Icons/email_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                            </utu:AutoLayout>
                             <TextBox PlaceholderText="Email"
                                      Text="{Binding UserInfo.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                      Background="{ThemeResource SurfaceBrush}" 
@@ -71,6 +77,9 @@
                                      utu:AutoLayout.PrimaryAlignment="Stretch" />
                         </utu:AutoLayout>
                         <utu:AutoLayout Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
+                            <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
+                                <Image Source="ms-appx:///Assets/Icons/mobile_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                            </utu:AutoLayout>
                             <TextBox PlaceholderText="Mobile Number"
                                      Text="{Binding UserInfo.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                      Background="{ThemeResource SurfaceBrush}" 
@@ -82,7 +91,9 @@
                     <utu:AutoLayout Spacing="18" Padding="0,20">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" Text="Notification" utu:AutoLayout.CounterAlignment="Start" Style="{StaticResource BodyLarge}" />
                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
-                            <utu:AutoLayout PrimaryAxisAlignment="Center" Orientation="Horizontal" utu:AutoLayout.CounterLength="60" />
+                            <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
+                                <Image Source="ms-appx:///Assets/Icons/bell_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                            </utu:AutoLayout>
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="App notifications" Style="{StaticResource TitleMedium}" />
                             </utu:AutoLayout>
@@ -93,7 +104,7 @@
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" Text="Theming" utu:AutoLayout.CounterAlignment="Start" Style="{StaticResource BodyLarge}" />
                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
                             <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
-                                <Image Source="https://picsum.photos/24/24" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                                <Image Source="ms-appx:///Assets/Icons/sun_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
                             </utu:AutoLayout>
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Light mode" Style="{StaticResource TitleMedium}" />
@@ -105,7 +116,7 @@
                         </utu:AutoLayout>
                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
                             <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
-                                <Image Source="https://picsum.photos/24/24" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                                <Image Source="ms-appx:///Assets/Icons/moon_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
                             </utu:AutoLayout>
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Night mode" Style="{StaticResource TitleMedium}" />

@@ -13,6 +13,7 @@ public record Review
         Likes = reviewData.Likes;
         Dislikes = reviewData.Dislikes;
         Description = reviewData.Description;
+        UrlAuthorImage = reviewData.UrlAuthorImage;
     }
 
     public Review(Guid recipeId, string text)
@@ -22,6 +23,7 @@ public record Review
     }
 
     public Guid RecipeId { get; set; }
+    public string? UrlAuthorImage { get; set; }
     public Guid CreatedBy { get; set; }
     public string? PublisherName { get; set; }
     public DateTime Date { get; set; }
@@ -36,7 +38,8 @@ public record Review
         Date = Date,
         Likes = Likes,
         Dislikes = Dislikes,
-        Description = Description
+        Description = Description,
+        UrlAuthorImage = UrlAuthorImage,
     };
 }
 
