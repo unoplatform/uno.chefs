@@ -21,34 +21,34 @@
         <utu:AutoLayout Padding="0,12,0,0"
                         utu:AutoLayout.PrimaryAlignment="Stretch">
             <uer:FeedView x:Name="UserFeedView"
-                          Source="{Binding UserProfile}" >
+                          Source="{Binding UserProfile}">
                 <DataTemplate>
                     <utu:AutoLayout Spacing="8"
-                            Padding="18,0"
-                            Orientation="Horizontal">
-                        <Button utu:AutoLayout.CounterAlignment="Start" 
-                        utu:AutoLayout.PrimaryLength="40" 
-                        utu:AutoLayout.CounterLength="40"
-                        Command="{Binding DataContext.ProfileCreator, ElementName=UserFeedView}"
-                        CommandParameter="{Binding Data}">
+                                    Padding="18,0"
+                                    Orientation="Horizontal">
+                        <Button utu:AutoLayout.CounterAlignment="Start"
+                                utu:AutoLayout.PrimaryLength="40"
+                                utu:AutoLayout.CounterLength="40"
+                                Command="{Binding DataContext.ProfileCreator, ElementName=UserFeedView}"
+                                CommandParameter="{Binding Data}">
                             <PersonPicture />
                         </Button>
                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                               Text="{Binding Data.FullName}"
-                               utu:AutoLayout.CounterAlignment="Start"
-                               Style="{StaticResource TitleMedium}" />
+                                       Text="{Binding Data.FullName}"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       Style="{StaticResource TitleMedium}" />
                             <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                               Text="{Binding Data.Email}"
-                               utu:AutoLayout.CounterAlignment="Start"
-                               Style="{StaticResource CaptionMedium}" />
+                                       Text="{Binding Data.Email}"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       Style="{StaticResource CaptionMedium}" />
                         </utu:AutoLayout>
                         <Button utu:AutoLayout.CounterAlignment="Start"
-                        Style="{StaticResource IconButtonStyle}"
-                        uen:Navigation.Request="Search">
-                    <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
-                              Foreground="{ThemeResource OnSurfaceBrush}" />
+                                Style="{StaticResource IconButtonStyle}"
+                                uen:Navigation.Request="Search">
+                            <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
+                                      Foreground="{ThemeResource OnSurfaceBrush}" />
                         </Button>
                     </utu:AutoLayout>
                 </DataTemplate>
@@ -67,21 +67,23 @@
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
                             </utu:AutoLayout>
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       TextAlignment="End"
-                                       TextWrapping="Wrap"
-                                       Text="Show me all"
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                       Style="{StaticResource TitleSmall}" />
+                            <Button Command="{Binding ShowAll}"
+                                    Background="Transparent">
+                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                           TextAlignment="End"
+                                           TextWrapping="Wrap"
+                                           Text="Show me all"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
+                                           Style="{StaticResource TitleSmall}" />
+                            </Button>
                         </utu:AutoLayout>
                         <Grid>
                             <uer:FeedView x:Name="TrendingNowFeed"
                                           Source="{Binding TrendingNow}">
                                 <DataTemplate>
                                     <ListView ItemsSource="{Binding Data}"
-                                              Style="{StaticResource ListViewStyle}"
-                                              >
+                                              Style="{StaticResource ListViewStyle}">
                                         <ListView.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <ItemsStackPanel Orientation="Horizontal" />
@@ -91,7 +93,7 @@
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                         Style="{StaticResource OutlinedCardContentControlStyle}"
-                                                                        uen:Navigation.Request="HomeRecipeDetails"
+                                                                        uen:Navigation.Request="!RecipeDetails"
                                                                         uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
@@ -184,13 +186,16 @@
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
                             </utu:AutoLayout>
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       TextAlignment="End"
-                                       TextWrapping="Wrap"
-                                       Text="Show me all"
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                       Style="{StaticResource TitleSmall}" />
+                            <Button Command="{Binding ShowAll}"
+                                    Background="Transparent">
+                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                           TextAlignment="End"
+                                           TextWrapping="Wrap"
+                                           Text="Show me all"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
+                                           Style="{StaticResource TitleSmall}" />
+                            </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="RecentlyAddedFeedView"
                                       Source="{Binding RecentlyAdded}">
@@ -204,7 +209,9 @@
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
+                                            <utu:CardContentControl uen:Navigation.Request="!RecipeDetails"
+                                                                    uen:Navigation.Data="{Binding}"
+                                                                    utu:AutoLayout.CounterAlignment="Start"
                                                                     utu:AutoLayout.PrimaryLength="170"
                                                                     Style="{StaticResource OutlinedCardContentControlStyle}">
                                                 <utu:CardContentControl.ContentTemplate>
@@ -253,25 +260,26 @@
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Button Command="{Binding DataContext.ProfileCreator, ElementName=PopularCreatorsFeedView}" CommandParameter="{Binding}">
+                                            <Button Command="{Binding DataContext.ProfileCreator, ElementName=PopularCreatorsFeedView}"
+                                                    CommandParameter="{Binding}">
                                                 <utu:AutoLayout Spacing="8"
-                                                            utu:AutoLayout.CounterAlignment="Start">
+                                                                utu:AutoLayout.CounterAlignment="Start">
                                                     <utu:AutoLayout CornerRadius="30"
-                                                                Orientation="Horizontal"
-                                                                utu:AutoLayout.CounterAlignment="Center"
-                                                                utu:AutoLayout.PrimaryLength="75"
-                                                                utu:AutoLayout.CounterLength="75">
+                                                                    Orientation="Horizontal"
+                                                                    utu:AutoLayout.CounterAlignment="Center"
+                                                                    utu:AutoLayout.PrimaryLength="75"
+                                                                    utu:AutoLayout.CounterLength="75">
                                                         <Border CornerRadius="25"
-                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
                                                             <Image Source="{Binding UrlProfileImage}"
-                                                               Stretch="UniformToFill" />
+                                                                   Stretch="UniformToFill" />
                                                         </Border>
                                                     </utu:AutoLayout>
                                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                           TextAlignment="Center"
-                                                           Text="{Binding FullName}"
-                                                           utu:AutoLayout.CounterAlignment="Center"
-                                                           Style="{StaticResource BodySmall}" />
+                                                               TextAlignment="Center"
+                                                               Text="{Binding FullName}"
+                                                               utu:AutoLayout.CounterAlignment="Center"
+                                                               Style="{StaticResource BodySmall}" />
                                                 </utu:AutoLayout>
                                             </Button>
                                         </DataTemplate>
@@ -291,13 +299,16 @@
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
                             </utu:AutoLayout>
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       TextAlignment="End"
-                                       TextWrapping="Wrap"
-                                       Text="Show me all"
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                       Style="{StaticResource TitleSmall}" />
+                            <Button Command="{Binding ShowAll}"
+                                    Background="Transparent">
+                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                           TextAlignment="End"
+                                           TextWrapping="Wrap"
+                                           Text="Show me all"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
+                                           Style="{StaticResource TitleSmall}" />
+                            </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="LunchRecipesFeedView"
                                       Source="{Binding LunchRecipes}">
@@ -311,7 +322,9 @@
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
+                                            <utu:CardContentControl uen:Navigation.Request="!RecipeDetails"
+                                                                    uen:Navigation.Data="{Binding}"
+                                                                    utu:AutoLayout.CounterAlignment="Start"
                                                                     Style="{StaticResource OutlinedCardContentControlStyle}">
                                                 <utu:CardContentControl.ContentTemplate>
                                                     <DataTemplate>
@@ -362,13 +375,15 @@
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
                             </utu:AutoLayout>
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       TextAlignment="End"
-                                       TextWrapping="Wrap"
-                                       Text="Show me all"
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                       Style="{StaticResource TitleSmall}" />
+                            <Button Command="{Binding ShowAll}" Background="Transparent">
+                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                           TextAlignment="End"
+                                           TextWrapping="Wrap"
+                                           Text="Show me all"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
+                                           Style="{StaticResource TitleSmall}" />
+                            </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="DinnerRecipesFeedView"
                                       Source="{Binding DinnerRecipes}">
@@ -382,7 +397,9 @@
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
+                                            <utu:CardContentControl uen:Navigation.Request="!RecipeDetails"
+                                                                    uen:Navigation.Data="{Binding}"
+                                                                    utu:AutoLayout.CounterAlignment="Start"
                                                                     Style="{StaticResource OutlinedCardContentControlStyle}">
                                                 <utu:CardContentControl.ContentTemplate>
                                                     <DataTemplate>
@@ -433,13 +450,16 @@
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
                             </utu:AutoLayout>
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       TextAlignment="End"
-                                       TextWrapping="Wrap"
-                                       Text="Show me all"
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                       Style="{StaticResource TitleSmall}" />
+                            <Button Command="{Binding ShowAll}"
+                                    Background="Transparent">
+                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                           TextAlignment="End"
+                                           TextWrapping="Wrap"
+                                           Text="Show me all"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
+                                           Style="{StaticResource TitleSmall}" />
+                            </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="SnackRecipesFeedView"
                                       Source="{Binding SnackRecipes}">
@@ -453,7 +473,9 @@
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
+                                            <utu:CardContentControl uen:Navigation.Request="!RecipeDetails"
+                                                                    uen:Navigation.Data="{Binding}"
+                                                                    utu:AutoLayout.CounterAlignment="Start"
                                                                     Style="{StaticResource OutlinedCardContentControlStyle}">
                                                 <utu:CardContentControl.ContentTemplate>
                                                     <DataTemplate>

@@ -38,8 +38,11 @@ public partial class HomeViewModel
     public async ValueTask Search(CancellationToken ct) => 
         await _navigator.NavigateViewModelAsync<SearchViewModel>(this, qualifier: Qualifiers.Separator);
 
-    public async ValueTask ShowAll (CancellationToken ct, SearchFilter filter) =>
+    public async ValueTask ShowAll(CancellationToken ct)
+    {
+        var filter = new SearchFilter(null, null, null, null, null);
         await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+    }
 
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
