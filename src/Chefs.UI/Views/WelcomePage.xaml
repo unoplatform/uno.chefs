@@ -13,88 +13,22 @@
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <Button Command="{Binding GoToLogin}" utu:AutoLayout.CounterAlignment="End" Foreground="{ThemeResource SurfaceBrush}" Background="{ThemeResource PrimaryInverseBrush}" Content="Skip" Margin="24,0" Style="{StaticResource FilledTonalButtonStyle}" />
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-          <utu:AutoLayout Spacing="8" utu:AutoLayout.PrimaryLength="320">
-                <Image Source="https://picsum.photos/390/295" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
-          </utu:AutoLayout>
-          <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="20" Padding="80,40" utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:AutoLayout Spacing="6"  Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Center" >
-                <Image Source="https://picsum.photos/189/57" utu:AutoLayout.PrimaryLength="57.5" utu:AutoLayout.CounterLength="129" />
-                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextWrapping="Wrap" Text="Uno Chefs" utu:AutoLayout.CounterAlignment="Center" />
+            <utu:AutoLayout Spacing="8" utu:AutoLayout.PrimaryLength="320">
+                <Image Source="ms-appx:///Assets/Welcome/welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
             </utu:AutoLayout>
-            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" TextWrapping="Wrap" Text="Easy recipes for busy devs.&#xA;UNO Platform and UXDivers joined forces &#xA;to create this beautyful inspiring demo app. &#xA;Enjoy it." utu:AutoLayout.CounterAlignment="Center" />
-            <Button Command="{Binding GoToLogin}" Background="{ThemeResource PrimaryBrush}" Content="Next" utu:AutoLayout.PrimaryLength="56" />
-            <utu:AutoLayout Spacing="4" PrimaryAxisAlignment="Center" Orientation="Horizontal">
-              <Ellipse Fill="{ThemeResource PrimaryBrush}" Width="8" Height="8" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="8" utu:AutoLayout.CounterLength="8" />
-              <Ellipse Fill="{ThemeResource SurfaceVariantBrush}" Width="8" Height="8" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="8" utu:AutoLayout.CounterLength="8" />
-              <Ellipse Fill="{ThemeResource SurfaceVariantBrush}" Width="8" Height="8" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="8" utu:AutoLayout.CounterLength="8" />
+            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="20" Padding="80,40" utu:AutoLayout.PrimaryAlignment="Stretch">
+                <utu:AutoLayout Spacing="6"  Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Center" >
+                    <Image Source="ms-appx:///Assets/Icons/uno_logo.png" utu:AutoLayout.PrimaryLength="57.5" utu:AutoLayout.CounterLength="129" />
+                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextWrapping="Wrap" Text="Uno Chefs" utu:AutoLayout.CounterAlignment="Center" />
+                </utu:AutoLayout>
+                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" TextWrapping="Wrap" Text="Easy recipes for busy devs.&#xA;UNO Platform and UXDivers joined forces &#xA;to create this beautyful inspiring demo app. &#xA;Enjoy it." utu:AutoLayout.CounterAlignment="Center" />
+                <Button Command="{Binding GoToLogin}" Background="{ThemeResource PrimaryBrush}" Content="Next" utu:AutoLayout.PrimaryLength="56" />
+                <utu:AutoLayout Spacing="4" PrimaryAxisAlignment="Center" Orientation="Horizontal">
+                    <Ellipse Fill="{ThemeResource PrimaryBrush}" Width="8" Height="8" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="8" utu:AutoLayout.CounterLength="8" />
+                    <Ellipse Fill="{ThemeResource SurfaceVariantBrush}" Width="8" Height="8" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="8" utu:AutoLayout.CounterLength="8" />
+                    <Ellipse Fill="{ThemeResource SurfaceVariantBrush}" Width="8" Height="8" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="8" utu:AutoLayout.CounterLength="8" />
+                </utu:AutoLayout>
             </utu:AutoLayout>
-          </utu:AutoLayout>
         </utu:AutoLayout>
-  </utu:AutoLayout>
-
-    <!--<Grid 
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Bottom">
-        <Grid RowSpacing="70">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" 
-                        HorizontalAlignment="Center" 
-                        Orientation="Horizontal">
-                <Image VerticalAlignment="Center" 
-                       Height="20" 
-                       Width="20" 
-                       Source="ms-appx:///Assets/Icons/close.png"/>
-                <TextBlock VerticalAlignment="Center" 
-                           Text="Uno Chefs" />
-            </StackPanel>
-            <TextBlock Grid.Row="1" 
-                       TextAlignment="Center"
-                       Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. Enjoy it." />
-            <Button Grid.Row="2" 
-                    Command="{Binding GoToLogin}"
-                    Width="207"
-                    Height="56"
-                    Background="#ED3F64" 
-                    Margin="0, 0, 0, 200" 
-                    HorizontalAlignment="Center" 
-                    Content="Let's cook!" />
-        </Grid>
-        --><!--<FlipView x:Name="flipView"
-                  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
-                  Background="Blue">
-            <FlipView.Items>
-                <Grid Background="Azure">
-
-                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. Enjoy it." />
-                    
-                    <Button HorizontalAlignment="Right"
-                            utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
-                            Content="Next" />
-                </Grid>
-                <Grid Background="Blue">
-                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. Enjoy it." />
-
-                    <Button HorizontalAlignment="Right"
-                            utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
-                            Content="Next" />
-                </Grid>
-                <Grid Background="Yellow">
-                    <TextBlock Text="Easy recipes for busy devs. UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. Enjoy it." />
-
-                    <Button HorizontalAlignment="Right"
-                            utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
-                            Content="Next" />
-                </Grid>
-            </FlipView.Items>
-        </FlipView>
-
-        <msui:PipsPager x:Name="pipsPager"
-                        MinHeight="100"
-                        HorizontalAlignment="Center"
-                        MaxVisiblePips="10" />--><!--
-    </Grid>-->
+    </utu:AutoLayout>
 </Page>

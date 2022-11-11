@@ -108,7 +108,7 @@
                                                                         Background="{ThemeResource BackgroundBrush}"
                                                                         CommandParameter="{Binding}">
                                                                     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" CornerRadius="12">
-                                                                        <Image Source="https://picsum.photos/70/145" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
+                                                                        <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="144" MaxHeight="144" />
                                                                         <utu:AutoLayout Spacing="2" Padding="16,10" PrimaryAxisAlignment="Center">
                                                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
                                                                             <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" TextWrapping="Wrap" Text="{Binding PinsNumber}" Style="{StaticResource BodySmall}" />

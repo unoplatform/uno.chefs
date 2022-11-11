@@ -29,7 +29,7 @@
         "UrlVideo": ""
       }
     ],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/avocado_toast.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 1,
@@ -63,7 +63,9 @@
     "Reviews": [
       {
         "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
-        "PublisherName": "Bella Throne",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 7,
@@ -71,7 +73,9 @@
       },
       {
         "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
-        "PublisherName": "Kevin Edinson",
+        "PublisherName": "James Wolden",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/james_wolden.png",
+        "CreatedBy": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 2,
@@ -81,17 +85,19 @@
     "Details": "Details",
     "Creator": {
       "Id": "3c896419-e280-40e7-8552-240635566fed",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
       "FullName": "James Bondi",
       "Description": "Passionate about food and life",
       "Email": "james.bondi@gmail.com",
       "Followers": 450,
-      "Following": 124
+      "Following": 124,
+      "Recipes": 45
     },
     "Category": {
       "Id": 1,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
-      "Name": "Breakfast"
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Breakfast",
+      "Color": "#7A67F8"
     },
     "Date": "2022-10-18T00:00:00Z",
     "Save": true
@@ -101,7 +107,7 @@
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "0007e65f-3d5c-4ca3-842f-134b7f4a8b52",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/fresh_salad_thaid.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 0,
@@ -109,16 +115,20 @@
     "Calories": "268 kcal",
     "Reviews": [
       {
-        "RecipeId": "0007e65f-3d5c-4ca3-842f-134b7f4a8b52",
-        "PublisherName": "Bella Throne",
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 7,
         "Dislikes": 5
       },
       {
-        "RecipeId": "0007e65f-3d5c-4ca3-842f-134b7f4a8b52",
-        "PublisherName": "Kevin Edinson",
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "PublisherName": "James Wolden",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/james_wolden.png",
+        "CreatedBy": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 2,
@@ -128,19 +138,21 @@
     "Details": "",
     "Creator": {
       "Id": "3c896419-e280-40e7-8552-240635566fed",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
       "FullName": "James Bondi",
       "Description": "Passionate about food and life",
       "Email": "james.bondi@gmail.com",
       "PhoneNumber": "",
       "Password": "123",
       "Followers": 450,
-      "Following": 124
+      "Following": 124,
+      "Recipes": 45
     },
     "Category": {
       "Id": 2,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-two.png",
-      "Name": "Lunch"
+      "UrlIcon": "ms-appx:///Assets/Icons/hamburger.png",
+      "Name": "Lunch",
+      "Color": "#507FF7"
     },
     "Date": "2022-10-18T00:00:00Z",
     "Save": false
@@ -150,7 +162,7 @@
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "5ad60d30-2891-4c4b-99a7-e138e6477191",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/salmon_tomato_sauce.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 0,
@@ -158,16 +170,20 @@
     "Calories": "267 kcal",
     "Reviews": [
       {
-        "RecipeId": "5ad60d30-2891-4c4b-99a7-e138e6477191",
-        "PublisherName": "Bella Throne",
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 7,
         "Dislikes": 5
       },
       {
-        "RecipeId": "5ad60d30-2891-4c4b-99a7-e138e6477191",
-        "PublisherName": "Kevin Edinson",
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "PublisherName": "James Wolden",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/james_wolden.png",
+        "CreatedBy": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 2,
@@ -177,19 +193,21 @@
     "Details": "",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
-      "FullName": "Gill Bates",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
+      "FullName": "Troyan Smith",
       "Description": "Passionate about food and life",
-      "Email": "gill.bates@gmail.com",
+      "Email": "troyan.smith@gmail.com",
       "PhoneNumber": "",
       "Password": "123",
       "Followers": 147,
-      "Following": 259
+      "Following": 259,
+      "Recipes": 45
     },
     "Category": {
       "Id": 2,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-two.png",
-      "Name": "Lunch"
+      "UrlIcon": "ms-appx:///Assets/Icons/hamburger.png",
+      "Name": "Lunch",
+      "Color": "#507FF7"
     },
     "Date": "2022-10-15T00:00:00Z",
     "Save": false
@@ -199,7 +217,7 @@
     "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
     "Id": "b9e6502b-b373-4fcf-86b2-89379667aa5c",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/fresh_salad_pasta.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 0,
@@ -207,16 +225,20 @@
     "Calories": "267 kcal",
     "Reviews": [
       {
-        "RecipeId": "b9e6502b-b373-4fcf-86b2-89379667aa5c",
-        "PublisherName": "Bella Throne",
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 7,
         "Dislikes": 5
       },
       {
-        "RecipeId": "b9e6502b-b373-4fcf-86b2-89379667aa5c",
-        "PublisherName": "Kevin Edinson",
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "PublisherName": "James Wolden",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/james_wolden.png",
+        "CreatedBy": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 2,
@@ -226,19 +248,21 @@
     "Details": "",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
-      "FullName": "Gill Bates",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
+      "FullName": "Troyan Smith",
       "Description": "Passionate about food and life",
-      "Email": "gill.bates@gmail.com",
+      "Email": "troyan.smith@gmail.com",
       "PhoneNumber": "",
       "Password": "123",
       "Followers": 147,
-      "Following": 259
+      "Following": 259,
+      "Recipes": 45
     },
     "Category": {
       "Id": 3,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-three.png",
-      "Name": "Dinner"
+      "UrlIcon": "ms-appx:///Assets/Icons/Fork_And_Knife_With_Plate.png",
+      "Name": "Dinner",
+      "Color": "#F16583"
     },
     "Date": "2022-10-15T00:00:00Z",
     "Save": false
@@ -248,7 +272,7 @@
     "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
     "Id": "1dc0e330-ab16-43cc-9b84-fdaf2c5e83cd",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/circle_cake.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 0,
@@ -258,19 +282,21 @@
     "Details": "",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
-      "FullName": "Gill Bates",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
+      "FullName": "Troyan Smith",
       "Description": "Passionate about food and life",
-      "Email": "gill.bates@gmail.com",
+      "Email": "troyan.smith@gmail.com",
       "PhoneNumber": "",
       "Password": "123",
       "Followers": 147,
-      "Following": 259
+      "Following": 259,
+      "Recipes": 45
     },
     "Category": {
       "Id": 4,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-four.png",
-      "Name": "Snack"
+      "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+      "Name": "Snack",
+      "Color": "#CAC2FC"
     },
     "Date": "2022-10-15T00:00:00Z",
     "Save": false
@@ -280,7 +306,7 @@
     "UserId": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
     "Id": "f89a5305-4d77-4f66-a97c-65adba6b36ff",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/mom's_cheesecake.png",
     "Serves": 1,
     "CookTime": "01:00:00",
     "Difficulty": 0,
@@ -288,10 +314,12 @@
     "Calories": "268 kcal",
     "Reviews": [
       {
-        "RecipeId": "f89a5305-4d77-4f66-a97c-65adba6b36ff",
-        "PublisherName": "Bella Throne",
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
         "Date": "2022-07-12T00:00:00Z",
-        "Description": "It's not the best recipe'",
+        "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": 7,
         "Dislikes": 5
       }
@@ -299,19 +327,21 @@
     "Details": "",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
-      "FullName": "Gill Bates",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
+      "FullName": "Troyan Smith",
       "Description": "Passionate about food and life",
-      "Email": "gill.bates@gmail.com",
+      "Email": "troyan.smith@gmail.com",
       "PhoneNumber": "",
       "Password": "123",
       "Followers": 147,
-      "Following": 259
+      "Following": 259,
+      "Recipes": 45
     },
     "Category": {
       "Id": 1,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
-      "Name": "Breakfast"
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Breakfast",
+      "Color": "#7A67F8"
     },
     "Date": "2022-10-15T00:00:00Z",
     "Save": true
@@ -321,7 +351,7 @@
     "UserId": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
     "Id": "4761a59b-80bc-4910-b443-8ecc74565719",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/fluffy_french_toast.png",
     "Serves": 1,
     "CookTime": "00:20:00",
     "Difficulty": 0,
@@ -330,20 +360,22 @@
     "Reviews": [],
     "Details": "",
     "Creator": {
-      "Id": "3c896419-e280-40e7-8552-240635566fed",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
-      "FullName": "James Bondi",
-      "Description": "Passionate about food and life",
-      "Email": "james.bondi@gmail.com",
-      "PhoneNumber": "",
-      "Password": "123",
-      "Followers": 450,
-      "Following": 124
+     "Id": "3c896419-e280-40e7-8552-240635566fed",
+     "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+     "FullName": "James Bondi",
+     "Description": "Passionate about food and life",
+     "Email": "james.bondi@gmail.com",
+     "PhoneNumber": "",
+     "Password": "123",
+     "Followers": 450,
+     "Following": 124,
+     "Recipes": 45
     },
     "Category": {
       "Id": 1,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
-      "Name": "Breakfast"
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Breakfast",
+      "Color": "#7A67F8"
     },
     "Date": "2022-10-15T00:00:00Z",
     "Save": true
@@ -353,7 +385,7 @@
     "UserId": "3c896419-e280-40e7-8552-240635566fed",
     "Id": "63e275f8-9222-48b2-83cb-df6c0961a1eb",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/70/145",
+    "ImageUrl": "ms-appx:///Assets/Recipes/super_duper_oatmeal.png",
     "Serves": 1,
     "CookTime": "01:00:00",
     "Difficulty": 0,
@@ -362,20 +394,22 @@
     "Reviews": [],
     "Details": "",
     "Creator": {
-      "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-two.png",
-      "FullName": "Gill Bates",
-      "Description": "Passionate about food and life",
-      "Email": "gill.bates@gmail.com",
-      "PhoneNumber": "",
-      "Password": "123",
-      "Followers": 147,
-      "Following": 259
+        "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+        "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
+        "FullName": "Troyan Smith",
+        "Description": "Passionate about food and life",
+        "Email": "troyan.smith@gmail.com",
+        "PhoneNumber": "",
+        "Password": "123",
+        "Followers": 147,
+        "Following": 259,
+        "Recipes": 45
     },
     "Category": {
       "Id": 1,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
-      "Name": "Breakfast"
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Breakfast",
+      "Color": "#7A67F8"
     },
     "Date": "2022-10-15T00:00:00Z",
     "Save": false
@@ -385,7 +419,7 @@
     "UserId": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
     "Id": "f649eefe-93cb-4bca-93a2-af707966d217",
     "Steps": [],
-    "ImageUrl": "https://picsum.photos/166/144",
+    "ImageUrl": "ms-appx:///Assets/Recipes/walnut_and_nuts.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 0,
@@ -394,7 +428,9 @@
     "Reviews": [
       {
         "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
-        "PublisherName": "Jessica Evlieb",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Awesome recipe",
         "Likes": 7,
@@ -404,19 +440,21 @@
     "Details": "",
     "Creator": {
       "Id": "3c896419-e280-40e7-8552-240635566fed",
-      "UrlProfileImage": "ms-appx:///Assets/Users/user-one.png",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
       "FullName": "James Bondi",
       "Description": "Passionate about food and life",
       "Email": "james.bondi@gmail.com",
       "PhoneNumber": "",
       "Password": "123",
       "Followers": 450,
-      "Following": 124
+      "Following": 124,
+      "Recipes": 45
     },
     "Category": {
       "Id": 1,
-      "UrlIcon": "ms-appx:///Assets/Categories/category-one.png",
-      "Name": "Breakfast"
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Breakfast",
+      "Color": "#7A67F8"
     },
     "Date": "2022-10-15T00:00:00Z",
     "Save": false

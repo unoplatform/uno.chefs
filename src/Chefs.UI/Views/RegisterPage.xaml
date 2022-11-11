@@ -19,10 +19,10 @@
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.PrimaryLength="150">
-                <Image Source="https://picsum.photos/390/150" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
+                <Image Source="ms-appx:///Assets/Welcome/welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
             </utu:AutoLayout>
             <utu:AutoLayout Spacing="20" Padding="30,30,30,10" CornerRadius="40,40,0,0" PrimaryAxisAlignment="End" utu:AutoLayout.PrimaryAlignment="Stretch">
-                <Image Source="https://picsum.photos/189/57" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="57.5" utu:AutoLayout.CounterLength="189" />
+                <Image Source="ms-appx:///Assets/Icons/uno_logo.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="57.5" utu:AutoLayout.CounterLength="189" />
                 <utu:AutoLayout Spacing="14" PrimaryAxisAlignment="Center">
                     <TextBox PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}" PlaceholderText="Full name" Style="{StaticResource OutlinedTextBoxStyle}">
                         <um:ControlExtensions.Icon>

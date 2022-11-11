@@ -86,7 +86,7 @@
                                         <DataTemplate>
                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                             CornerRadius="12">
-                                                <Image Source="https://picsum.photos/170/144"
+                                                <Image Source="{Binding ImageUrl}"
                                                        Stretch="UniformToFill"
                                                        utu:AutoLayout.PrimaryLength="144" />
                                                 <utu:AutoLayout Spacing="2"
