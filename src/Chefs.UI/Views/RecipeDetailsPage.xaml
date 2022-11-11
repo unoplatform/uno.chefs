@@ -9,7 +9,9 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       mc:Ignorable="d"
       NavigationCacheMode="Enabled"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      VerticalAlignment="Stretch"
+      HorizontalAlignment="Stretch">
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
