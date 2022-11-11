@@ -3,6 +3,7 @@
 public class ReviewData
 {
     public Guid RecipeId { get; set; }
+    public string? UrlAuthorImage { get; set; }
     public Guid CreatedBy { get; set; }
     public string? PublisherName { get; set; }
     public DateTime Date { get; set; }

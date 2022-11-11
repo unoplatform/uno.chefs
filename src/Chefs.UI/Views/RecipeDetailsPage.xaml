@@ -56,7 +56,7 @@
                                    Style="{StaticResource TitleSmall}" />
                         <utu:AutoLayout PrimaryAxisAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <Image Source="https://picsum.photos/390/200"
+                            <Image Source="{Binding Recipe.ImageUrl}"
                                    Stretch="UniformToFill"
                                    utu:AutoLayout.CounterAlignment="Center"
                                    utu:AutoLayout.PrimaryLength="200"

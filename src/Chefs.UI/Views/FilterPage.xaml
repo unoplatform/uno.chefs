@@ -196,7 +196,10 @@
                                 </utu:ChipGroup.ItemsPanel>
                                 <utu:ChipGroup.ItemTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" />
+                                        <StackPanel Orientation="Horizontal" Spacing="3">
+                                            <ImageIcon Source="{Binding UrlIcon}" />
+                                            <TextBlock Text="{Binding Name}" />
+                                        </StackPanel>
                                     </DataTemplate>
                                 </utu:ChipGroup.ItemTemplate>
                             </utu:ChipGroup>
