@@ -158,7 +158,9 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <utu:CardContentControl utu:AutoLayout.CounterLength="170"
-                                                                                Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                                                Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                                uen:Navigation.Request="!RecipeDetails"
+                                                                                uen:Navigation.Data="{Binding}">
                                                             <utu:CardContentControl.ContentTemplate>
                                                                 <DataTemplate>
                                                                     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
