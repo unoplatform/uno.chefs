@@ -28,7 +28,7 @@
                 </Button>
                 <utu:AutoLayout Padding="0,20,0,0"
                                 PrimaryAxisAlignment="Center">
-                    <Image Source="https://picsum.photos/390/219"
+                    <Image Source="{Binding Recipe.ImageUrl}"
                            Stretch="UniformToFill"
                            utu:AutoLayout.PrimaryLength="219" />
                     <utu:AutoLayout Orientation="Horizontal">

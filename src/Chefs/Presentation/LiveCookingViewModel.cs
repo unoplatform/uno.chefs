@@ -4,20 +4,22 @@ using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
 
+public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
+
 public partial class LiveCookingViewModel
 {
     private INavigator _navigator;
-    private int _index = 0;
 
-    public LiveCookingViewModel(IImmutableList<Step> steps, INavigator navigator)
+    public LiveCookingViewModel(LiveCookingParameter parameter, INavigator navigator)
     {
         _navigator = navigator;
-        Steps = ListState.Value(this, () => steps);
+        Steps = ListState.Value(this, () => parameter.Steps);
+        Recipe = State.Value(this, () => parameter.Recipe);
     }
 
-    public IListState<Step> Steps { get; }
+    public IListFeed<Step> Steps { get; }
 
-    public IState<Step> CurrentStep => State.Async(this, async ct => (await Steps)[_index]);
+    public IState<Recipe> Recipe { get; }
 
     public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);
