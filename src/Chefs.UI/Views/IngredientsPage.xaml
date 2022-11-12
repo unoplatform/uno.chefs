@@ -1,16 +1,15 @@
-﻿<Page
-    x:Class="Chefs.Views.IngredientsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Chefs.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+﻿<Page x:Class="Chefs.Views.IngredientsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Chefs.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
             <x:String x:Key="BitmapIcon_Outline_Share_ChefsApp">F0 M 11 3.25 C 11 1.4550745487213135 12.455074310302734 0 14.25 0 C 16.044925689697266 0 17.5 1.4550745487213135 17.5 3.25 C 17.5 5.044925212860107 16.044925689697266 6.5 14.25 6.5 C 13.290374755859375 6.5 12.427888870239258 6.08409309387207 11.832966804504395 5.422702312469482 L 9.1156644821167 6.904867172241211 L 6.07514762878418 8.642305374145508 C 6.345523357391357 9.116405487060547 6.5 9.665163040161133 6.5 10.25 C 6.5 10.54634952545166 6.4603352546691895 10.833434104919434 6.386025905609131 11.106236457824707 L 11.832967758178711 14.077296257019043 C 12.427889823913574 13.415905952453613 13.290374755859375 13 14.25 13 C 16.044925689697266 13 17.5 14.455074310302734 17.5 16.25 C 17.5 18.044925689697266 16.044925689697266 19.5 14.25 19.5 C 12.455074310302734 19.5 11 18.044925689697266 11 16.25 C 11 15.953645706176758 11.039665222167969 15.666556358337402 11.113977432250977 15.393750190734863 L 5.667040824890137 12.422694206237793 C 5.072118282318115 13.084090232849121 4.209629535675049 13.5 3.25 13.5 C 1.4550745487213135 13.5 0 12.044925689697266 0 10.25 C 0 8.455074310302734 1.4550745487213135 7 3.25 7 C 3.9006779193878174 7 4.50669527053833 7.191215991973877 5.014923572540283 7.5205206871032715 L 8.38434886932373 5.59513521194458 L 11.11397647857666 4.106247425079346 C 11.039665222167969 3.833442211151123 11 3.546353340148926 11 3.25 Z M 14.25 1.5 C 13.283501625061035 1.5 12.5 2.283501625061035 12.5 3.25 C 12.5 4.216498374938965 13.283501625061035 5 14.25 5 C 15.216498374938965 5 16 4.216498374938965 16 3.25 C 16 2.283501625061035 15.216498374938965 1.5 14.25 1.5 Z M 3.25 8.5 C 2.283501625061035 8.5 1.5 9.283501625061035 1.5 10.25 C 1.5 11.216498374938965 2.283501625061035 12 3.25 12 C 4.216498374938965 12 5 11.216498374938965 5 10.25 C 5 9.283501625061035 4.216498374938965 8.5 3.25 8.5 Z M 12.5 16.25 C 12.5 15.283501625061035 13.283501625061035 14.5 14.25 14.5 C 15.216498374938965 14.5 16 15.283501625061035 16 16.25 C 16 17.21649932861328 15.216498374938965 18 14.25 18 C 13.283501625061035 18 12.5 17.21649932861328 12.5 16.25 Z</x:String>
@@ -44,14 +43,14 @@
                             utu:AutoLayout.PrimaryLength="327">
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                            TextWrapping="Wrap"
-                           Text="Avocado Toast"
+                           Text="{Binding Recipe.Name}"
                            Margin="18,0,18,5"
                            Style="{StaticResource HeadlineLarge}" />
                 <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                           Text="By Niki Samantha "
+                           Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                            Margin="18,0,18,20"
                            Style="{StaticResource TitleSmall}" />
-                <Image Source="https://picsum.photos/390/200"
+                <Image Source="{Binding Recipe.ImageUrl}"
                        Stretch="UniformToFill"
                        utu:AutoLayout.PrimaryLength="200"
                        utu:AutoLayout.CounterLength="390" />
@@ -79,7 +78,7 @@
                                         utu:AutoLayout.CounterAlignment="Center">
                             <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                        TextAlignment="Center"
-                                       Text="1 serves"
+                                       Text="{Binding Recipe.Serves,Converter={StaticResource StringFormatter}, ConverterParameter='Serves {0}'}"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Style="{StaticResource BodySmall}" />
                         </utu:AutoLayout>
@@ -117,7 +116,7 @@
             <Button Background="{ThemeResource PrimaryBrush}"
                     Content="Done!"
                     utu:AutoLayout.PrimaryLength="56"
-                    uen:Navigation.Request="-"/>
+                    uen:Navigation.Request="-" />
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>

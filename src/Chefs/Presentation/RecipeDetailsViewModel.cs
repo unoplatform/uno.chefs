@@ -29,10 +29,10 @@ public partial class RecipeDetailsViewModel
     public IListFeed<Step> Steps => ListFeed.Async(async ct => await _recipeService.GetSteps(_recipe.Id, ct));
 
     public async ValueTask LiveCooking(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: await Steps);
+        await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: new LiveCookingParameter((await Recipe)!, await Steps));
     
     public async ValueTask IngredientsNavigation(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<IngredientsViewModel>(this, data: await Ingredients);
+        await _navigator.NavigateViewModelAsync<IngredientsViewModel>(this, data: new IngredientsParameter((await Recipe)!, await Ingredients));
 
     public async ValueTask Review(CancellationToken ct)
     {

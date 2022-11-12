@@ -81,7 +81,7 @@ public sealed partial class App : Application
             new ViewMap<RegisterPage, RegisterViewModel>(),
             new ViewMap<FilterPage, FilterViewModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeViewModel>(),
-            new ViewMap<IngredientsPage, IngredientsViewModel>(Data: new DataMap<IImmutableList<Ingredient>>()),
+            new ViewMap<IngredientsPage, IngredientsViewModel>(Data: new DataMap<IngredientsParameter>()),
             new ViewMap<CreateCookbookPage, CreateCookbookViewModel>(),
             new DataViewMap<UpdateCookbookPage, UpdateCookbookViewModel, Cookbook>(),
             new ViewMap<LoginPage, LoginViewModel>(ResultData: typeof(Credentials)),
@@ -91,7 +91,7 @@ public sealed partial class App : Application
             new ViewMap<SavedRecipesPage, SavedRecipesViewModel>(),
             new DataViewMap<SearchPage, SearchViewModel, SearchFilter>(),
             new ViewMap<SettingsPage, SettingsViewModel>(Data: new DataMap<User>()),
-            new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<IImmutableList<Step>>()),
+            new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<LiveCookingParameter>()),
 			new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>()),
             new ViewMap<CookbookDetailPage, CookbookDetailViewModel>(Data: new DataMap<Cookbook>())
         );
