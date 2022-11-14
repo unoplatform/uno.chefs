@@ -230,7 +230,7 @@
                                                                 utu:AutoLayout.CounterAlignment="Start"
                                                                 utu:AutoLayout.PrimaryLength="60"
                                                                 utu:AutoLayout.CounterLength="60">
-                                                            <Image Source="https://picsum.photos/60/60"
+                                                            <Image Source="{Binding UrlAuthorImage}"
                                                                    Stretch="UniformToFill" />
                                                         </Border>
                                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
