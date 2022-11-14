@@ -91,7 +91,9 @@
                                             <muxc:ItemsRepeater.ItemTemplate>
                                                 <DataTemplate>
                                                     <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                        Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                            uen:Navigation.Request="!RecipeDetails"
+                                                                            uen:Navigation.Data="{Binding}">
                                                         <utu:CardContentControl.ContentTemplate>
                                                             <DataTemplate>
                                                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -206,7 +208,9 @@
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                     utu:AutoLayout.PrimaryLength="170"
-                                                                    Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        uen:Navigation.Request="!RecipeDetails"
+                                                                        uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -253,7 +257,9 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:AutoLayout Spacing="8"
-                                                            utu:AutoLayout.CounterAlignment="Start">
+                                                                utu:AutoLayout.CounterAlignment="Start"
+                                                                uen:Navigation.Request="Profile"
+                                                                uen:Navigation.Data="{Binding}">
                                                     <utu:AutoLayout CornerRadius="30"
                                                                 Orientation="Horizontal"
                                                                 utu:AutoLayout.CounterAlignment="Center"
@@ -311,7 +317,9 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                    Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        uen:Navigation.Request="!RecipeDetails"
+                                                                        uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -383,7 +391,9 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                    Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        uen:Navigation.Request="!RecipeDetails"
+                                                                        uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -456,7 +466,9 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                    Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        uen:Navigation.Request="!RecipeDetails"
+                                                                        uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"

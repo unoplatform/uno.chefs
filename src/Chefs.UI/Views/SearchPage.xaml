@@ -71,8 +71,7 @@
                                   Source="{Binding Items}">
                         <DataTemplate>
                             <ListView ItemsSource="{Binding Data}"
-                                      IsItemClickEnabled="True"
-                                      uen:Navigation.Request="RecipeDetails">
+                                      IsItemClickEnabled="True">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
@@ -81,7 +80,9 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <utu:CardContentControl utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                                Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                uen:Navigation.Request="!RecipeDetails"
+                                                                uen:Navigation.Data="{Binding}">
                                     <utu:CardContentControl.ContentTemplate>
                                         <DataTemplate>
                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
