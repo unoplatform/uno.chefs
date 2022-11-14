@@ -219,7 +219,7 @@
                                                                     CommandParameter="{Binding}">
                                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                             CornerRadius="12">
-                                                                            <Image Source="https://picsum.photos/70/145"
+                                                                            <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png"
                                                                            Stretch="UniformToFill"
                                                                            utu:AutoLayout.PrimaryLength="144"
                                                                            MaxHeight="144" />

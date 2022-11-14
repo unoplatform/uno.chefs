@@ -14,12 +14,11 @@
         <Button Command="{Binding GoToLogin}" utu:AutoLayout.CounterAlignment="End" Foreground="{ThemeResource SurfaceBrush}" Background="{ThemeResource PrimaryInverseBrush}" Content="Skip" Margin="24,0" Style="{StaticResource FilledTonalButtonStyle}" />
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout Spacing="8" utu:AutoLayout.PrimaryLength="320">
-                <Image Source="ms-appx:///Assets/Welcome/welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
+                <Image Source="ms-appx:///Assets/Welcome/chef_welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
             </utu:AutoLayout>
             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="20" Padding="80,40" utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="6"  Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Center" >
-                    <Image Source="ms-appx:///Assets/Icons/uno_logo.png" utu:AutoLayout.PrimaryLength="57.5" utu:AutoLayout.CounterLength="129" />
-                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextWrapping="Wrap" Text="Uno Chefs" utu:AutoLayout.CounterAlignment="Center" />
+                    <Image Source="ms-appx:///Assets/Icons/uno_logo.png" />
                 </utu:AutoLayout>
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" TextWrapping="Wrap" Text="Easy recipes for busy devs.&#xA;UNO Platform and UXDivers joined forces &#xA;to create this beautyful inspiring demo app. &#xA;Enjoy it." utu:AutoLayout.CounterAlignment="Center" />
                 <Button Command="{Binding GoToLogin}" Background="{ThemeResource PrimaryBrush}" Content="Next" utu:AutoLayout.PrimaryLength="56" />

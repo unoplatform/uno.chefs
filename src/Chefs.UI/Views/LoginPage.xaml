@@ -19,7 +19,7 @@
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.PrimaryLength="150">
-                <Image Source="ms-appx:///Assets/Welcome/welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
+                <Image Source="ms-appx:///Assets/Welcome/chef_welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
             </utu:AutoLayout>
             <utu:AutoLayout Spacing="20" Padding="30,30,30,10" CornerRadius="40,40,0,0" PrimaryAxisAlignment="End" utu:AutoLayout.PrimaryAlignment="Stretch">
                 <Image Source="ms-appx:///Assets/Icons/uno_logo.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="58" utu:AutoLayout.CounterLength="190" />
