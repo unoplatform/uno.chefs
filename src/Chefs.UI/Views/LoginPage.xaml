@@ -20,7 +20,7 @@
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                         Background="{ThemeResource SurfaceBrush}">
             <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.PrimaryLength="150">
-                <Image Source="https://picsum.photos/390/150" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" Margin="0,0,0,-40" />
+                <Image Source="ms-appx:///Assets/Welcome/chef_welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
             </utu:AutoLayout>
             <Grid
                 Padding="30,30,30,10"
