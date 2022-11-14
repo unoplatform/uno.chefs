@@ -260,28 +260,27 @@
                                     </ListView.ItemsPanel>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Button Command="{Binding DataContext.ProfileCreator, ElementName=PopularCreatorsFeedView}"
-                                                    CommandParameter="{Binding}">
-                                                <utu:AutoLayout Spacing="8"
-                                                                utu:AutoLayout.CounterAlignment="Start">
-                                                    <utu:AutoLayout CornerRadius="30"
-                                                                    Orientation="Horizontal"
-                                                                    utu:AutoLayout.CounterAlignment="Center"
-                                                                    utu:AutoLayout.PrimaryLength="75"
-                                                                    utu:AutoLayout.CounterLength="75">
-                                                        <Border CornerRadius="25"
-                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                            <Image Source="{Binding UrlProfileImage}"
-                                                                   Stretch="UniformToFill" />
-                                                        </Border>
-                                                    </utu:AutoLayout>
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                               TextAlignment="Center"
-                                                               Text="{Binding FullName}"
-                                                               utu:AutoLayout.CounterAlignment="Center"
-                                                               Style="{StaticResource BodySmall}" />
+                                            <utu:AutoLayout Spacing="8"
+                                                            utu:AutoLayout.CounterAlignment="Start"
+                                                            uen:Navigation.Request="Profile"
+                                                            uen:Navigation.Data="{Binding}">
+                                                <utu:AutoLayout CornerRadius="30"
+                                                                Orientation="Horizontal"
+                                                                utu:AutoLayout.CounterAlignment="Center"
+                                                                utu:AutoLayout.PrimaryLength="75"
+                                                                utu:AutoLayout.CounterLength="75">
+                                                    <Border CornerRadius="25"
+                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                        <Image Source="{Binding UrlProfileImage}"
+                                                               Stretch="UniformToFill" />
+                                                    </Border>
                                                 </utu:AutoLayout>
-                                            </Button>
+                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                           TextAlignment="Center"
+                                                           Text="{Binding FullName}"
+                                                           utu:AutoLayout.CounterAlignment="Center"
+                                                           Style="{StaticResource BodySmall}" />
+                                            </utu:AutoLayout>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
