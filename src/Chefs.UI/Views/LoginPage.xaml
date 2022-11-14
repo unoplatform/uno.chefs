@@ -19,52 +19,94 @@
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                         Background="{ThemeResource SurfaceBrush}">
-            <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.PrimaryLength="150">
-                <Image Source="ms-appx:///Assets/Welcome/chef_welcome.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryAlignment="Stretch" />
+            <utu:AutoLayout PrimaryAxisAlignment="Center"
+                            utu:AutoLayout.PrimaryLength="150">
+                <Image Source="ms-appx:///Assets/Welcome/chef_welcome.png"
+                       Stretch="UniformToFill"
+                       utu:AutoLayout.PrimaryAlignment="Stretch"
+                       Margin="0,0,0,-40" />
             </utu:AutoLayout>
-            <Grid
-                Padding="30,30,30,10"
+            <Grid Padding="30,30,30,10"
                   CornerRadius="40,40,0,0"
                   Background="{ThemeResource SurfaceBrush}">
                 <utu:AutoLayout  PrimaryAxisAlignment="End"
                                  utu:AutoLayout.PrimaryAlignment="Stretch"
                                  Spacing="20">
-                <Image Source="https://picsum.photos/190/58" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="58" utu:AutoLayout.CounterLength="190" />
-                <utu:AutoLayout Spacing="14" PrimaryAxisAlignment="Center">
-                    <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Email" Style="{StaticResource OutlinedTextBoxStyle}">
+                    <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
+                           Stretch="UniformToFill"
+                           utu:AutoLayout.CounterAlignment="Center"
+                           utu:AutoLayout.PrimaryLength="58"
+                           utu:AutoLayout.CounterLength="190" />
+                    <utu:AutoLayout Spacing="14"
+                                    PrimaryAxisAlignment="Center">
+                        <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 PlaceholderText="Email"
+                                 Style="{StaticResource OutlinedTextBoxStyle}">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </TextBox>
+                        <PasswordBox Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     PlaceholderText="Password"
+                                     Style="{StaticResource OutlinedPasswordBoxStyle}">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </PasswordBox>
+                        <utu:AutoLayout Spacing="24"
+                                        PrimaryAxisAlignment="Center"
+                                        Orientation="Horizontal">
+                            <CheckBox Content="Remember me"
+                                      utu:AutoLayout.CounterAlignment="Center"
+                                      utu:AutoLayout.PrimaryAlignment="Stretch" />
+                            <TextBlock Foreground="{ThemeResource PrimaryBrush}"
+                                       Text="Forgot password?"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Style="{StaticResource LabelLarge}" />
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+                    <Button Command="{Binding Login}"
+                            Background="{ThemeResource PrimaryBrush}"
+                            Content="Sign in"
+                            utu:AutoLayout.PrimaryLength="56" />
+                    <utu:Divider Style="{StaticResource DividerStyle}" />
+                    <Button Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                            Content="Sign in with Apple"
+                            utu:AutoLayout.PrimaryLength="56"
+                            Style="{StaticResource FilledTonalButtonStyle}">
                         <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                            <PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}"
+                                      Foreground="{ThemeResource OnSurfaceMediumBrush}" />
                         </um:ControlExtensions.Icon>
-                    </TextBox>
-                    <PasswordBox Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Password" Style="{StaticResource OutlinedPasswordBoxStyle}">
+                    </Button>
+                    <Button Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                            Content="Sign in with Google"
+                            utu:AutoLayout.PrimaryLength="56"
+                            Style="{StaticResource FilledTonalButtonStyle}">
                         <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                            <PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}"
+                                      Foreground="{ThemeResource OnSurfaceMediumBrush}" />
                         </um:ControlExtensions.Icon>
-                    </PasswordBox>
-                    <utu:AutoLayout Spacing="24" PrimaryAxisAlignment="Center" Orientation="Horizontal">
-                        <CheckBox Content="Remember me" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch" />
-                        <TextBlock Foreground="{ThemeResource PrimaryBrush}" Text="Forgot password?" utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource LabelLarge}" />
+                    </Button>
+                    <utu:AutoLayout Spacing="5"
+                                    PrimaryAxisAlignment="Center"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <utu:AutoLayout PrimaryAxisAlignment="End"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Center">
+                            <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                       TextAlignment="Center"
+                                       Text="Not a member?"
+                                       Style="{StaticResource LabelMedium}" />
+                        </utu:AutoLayout>
+                        <HyperlinkButton Command="{Binding RegisterNavigation}"
+                                         Content="Register Now"
+                                         utu:AutoLayout.CounterAlignment="Center" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
-                <Button Command="{Binding Login}" Background="{ThemeResource PrimaryBrush}" Content="Sign in" utu:AutoLayout.PrimaryLength="56" />
-                <utu:Divider Style="{StaticResource DividerStyle}" />
-                <Button Foreground="{ThemeResource OnSurfaceMediumBrush}" Content="Sign in with Apple" utu:AutoLayout.PrimaryLength="56" Style="{StaticResource FilledTonalButtonStyle}">
-                    <um:ControlExtensions.Icon>
-                        <PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-                    </um:ControlExtensions.Icon>
-                </Button>
-                <Button Foreground="{ThemeResource OnSurfaceMediumBrush}" Content="Sign in with Google" utu:AutoLayout.PrimaryLength="56" Style="{StaticResource FilledTonalButtonStyle}">
-                    <um:ControlExtensions.Icon>
-                        <PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-                    </um:ControlExtensions.Icon>
-                </Button>
-                <utu:AutoLayout Spacing="5" PrimaryAxisAlignment="Center" Orientation="Horizontal" utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout PrimaryAxisAlignment="End" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Center">
-                        <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}" TextAlignment="Center" Text="Not a member?" Style="{StaticResource LabelMedium}" />
-                    </utu:AutoLayout>
-                    <HyperlinkButton Command="{Binding RegisterNavigation}" Content="Register Now" utu:AutoLayout.CounterAlignment="Center" />
-                </utu:AutoLayout>
-            </utu:AutoLayout>
             </Grid>
         </utu:AutoLayout>
     </utu:AutoLayout>
