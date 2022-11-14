@@ -21,18 +21,19 @@ public class ShellViewModel
 
 	public async Task Start()
 	{
-        var currentCredentials = _credentialsSettings.Value;
+        await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
 
-        if (currentCredentials is null || !currentCredentials.SkipWelcome)
-        {
-            var response = await _navigator
-                .NavigateViewModelForResultAsync<WelcomeViewModel, bool>(this, Qualifiers.ClearBackStack);
+        //var currentCredentials = _credentialsSettings.Value;
 
-            await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = true });
-        }
-        else
-        {
-            await _navigator.NavigateViewModelAsync<LoginViewModel>(this, Qualifiers.ClearBackStack);
-        }
+        //if (currentCredentials is null || !currentCredentials.SkipWelcome)
+        //{
+        //    await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
+
+        //    await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = true });
+        //}
+        //else
+        //{
+        //    await _navigator.NavigateViewModelAsync<LoginViewModel>(this, Qualifiers.ClearBackStack);
+        //}
     }
 }
