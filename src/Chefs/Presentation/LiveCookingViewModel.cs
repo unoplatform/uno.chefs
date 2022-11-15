@@ -1,25 +1,26 @@
 ﻿using Chefs.Business;
+using Chefs.Data;
 using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
+
+public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
 public partial class LiveCookingViewModel
 {
     private INavigator _navigator;
 
-    public LiveCookingViewModel(IImmutableList<Step> steps, INavigator navigator)
+    public LiveCookingViewModel(LiveCookingParameter parameter, INavigator navigator)
     {
         _navigator = navigator;
-        Steps = ListState.Value(this, () => steps);
+        Steps = ListState.Value(this, () => parameter.Steps);
+        Recipe = State.Value(this, () => parameter.Recipe);
     }
 
-    public IListState<Step> Steps { get; }
+    public IListFeed<Step> Steps { get; }
 
-    public IState<int> StepIndex => State.Value(this, () => 0);
+    public IState<Recipe> Recipe { get; }
 
-    private async ValueTask NextStep(CancellationToken ct) =>
-       await StepIndex.Update(x => x++, ct);
-
-    private async ValueTask GoBack(CancellationToken ct) =>
+    public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);
 }

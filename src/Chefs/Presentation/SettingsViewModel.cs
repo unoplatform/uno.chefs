@@ -1,4 +1,5 @@
 ﻿using Chefs.Business;
+using Uno.Extensions.Navigation;
 
 namespace Chefs.Presentation;
 
@@ -11,26 +12,27 @@ public partial class SettingsViewModel
     {
         _navigator = navigator;
         _userService = userService;
-        Profile = State.Value(this, () => user);
+        UserInfo = State.Value(this, () => user);
     }
 
-    IState<User> Profile { get; }
+    public IState<User> UserInfo { get; }
 
-    IState<AppConfig> Settings => State<AppConfig>.Async(this, async (ct) => await _userService.GetSettings(ct));
+    public IFeed<User> Profile => UserInfo;
 
-    public async ValueTask DoUpdate(CancellationToken ct)
+    public IState<AppConfig> Settings => State<AppConfig>.Async(this, async (ct) => await _userService.GetSettings(ct));
+
+    public async ValueTask Update(CancellationToken ct)
     {
         var settings = await Settings;
         var user = await Profile;
 
         await _userService.Update(user!, ct);
         await _userService.SetSettings(settings!, ct);
+
+        await Exit(ct);
     }
 
-    public async ValueTask DoExit(CancellationToken ct)
-    {
-        await _navigator.NavigateBackAsync(ct);
-    }
-
-
+    public async ValueTask Exit(CancellationToken ct) =>
+        await _navigator.NavigateBackWithResultAsync(this, data: await UserInfo);
+    
 }

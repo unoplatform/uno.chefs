@@ -18,9 +18,16 @@
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
 		<PackageReference Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="4.4.13" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.4.13" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.1-preview.79" />
+		<PackageReference Include="SkiaSharp.Skottie" Version="2.88.1-preview.79" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.3.0" />
+	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.109" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.109" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />

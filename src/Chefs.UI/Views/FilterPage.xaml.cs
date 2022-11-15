@@ -1,6 +1,8 @@
-﻿namespace Chefs.Views;
+﻿using Uno.Toolkit.UI;
 
-public sealed partial class FilterPage : Page
+namespace Chefs.Views;
+
+public sealed partial class FilterPage : ContentDialog
 {
     public FilterPage()
     {

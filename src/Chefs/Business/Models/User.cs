@@ -13,8 +13,13 @@ public record User
         Id = user.Id;
         UrlProfileImage = user.UrlProfileImage;
         FullName = user.FullName;
+        Description = user.Description;
         Email = user.Email;
         PhoneNumber = user.PhoneNumber;
+        Followers = user.Followers;
+        Following = user.Following;
+        Recipes = user.Recipes;
+        IsCurrent = user.IsCurrent;
     }
 
     public Guid Id { get; init; }
@@ -25,6 +30,8 @@ public record User
     public string? PhoneNumber { get; init; }
     public long? Followers { get; init; }
     public long? Following { get; init; }
+    public long? Recipes { get; init; }
+    public bool IsCurrent { get; init; }
 
     internal UserData ToData() => new()
     {
@@ -35,6 +42,8 @@ public record User
         Email = Email,
         PhoneNumber = PhoneNumber,
         Followers = Followers,
-        Following = Following
+        Following = Following,
+        Recipes = Recipes,
+        IsCurrent = IsCurrent
     };
 }

@@ -13,89 +13,91 @@ public class CookbookEndpoint : ICookbookEndpoint
     private readonly ISerializer _serializer;
     private readonly IUserEndpoint _userEndpoint;
 
-    private IImmutableList<CookbookData>? _cookbooks;
-    private IImmutableList<SavedCookbooksData>? _savedCookbooks;
+    private List<CookbookData>? _cookbooks;
+    private List<SavedCookbooksData>? _savedCookbooks;
 
     public CookbookEndpoint(IStorage dataService, ISerializer serializer, IUserEndpoint userEndpoint)
         => (_dataService, _serializer, _userEndpoint) = (dataService, serializer, userEndpoint);
 
-    public async ValueTask<IImmutableList<CookbookData>> GetAll(CancellationToken ct) => 
-        await LoadCookbooks() ?? ImmutableList<CookbookData>.Empty;
+    public async ValueTask<IImmutableList<CookbookData>> GetAll(CancellationToken ct) =>
+        (await LoadCookbooks()).ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
 
     public async ValueTask Create(CookbookData cookbook, CancellationToken ct)
     {
-        var cookbooks = (await LoadCookbooks()).ToList();
+        await LoadCookbooks();
+        var user = await _userEndpoint.GetCurrent(ct);
+        cookbook.UserId = user.Id;
+        _cookbooks?.Add(cookbook);
+    }
 
-        var currentUser = await _userEndpoint.GetCurrent(ct);
+    public async ValueTask<CookbookData> Update(CookbookData cookbook, CancellationToken ct)
+    {
+        await LoadCookbooks();
 
-        cookbooks?.Add(new CookbookData()
+        var cookbookItem = _cookbooks?.Where(c => c.Id == cookbook.Id).FirstOrDefault();
+        if (cookbookItem is not null)
         {
-            Id = cookbook.Id,
-            UserId = currentUser.Id,
-            Name = cookbook.Name,
-            PinsNumber = cookbook.PinsNumber,
-            Recipes = cookbook.Recipes,
-        });
+            cookbookItem.Recipes = cookbook.Recipes;
 
-        _cookbooks = cookbooks!.ToImmutableList();
+            return cookbookItem;
+        }
+
+        throw new Exception();
     }
 
     public async ValueTask Save(CookbookData cookbook, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetCurrent(ct);
 
-        var savedCookbooks = (await LoadSavedCookbooks()).ToList();
+        await LoadSavedCookbooks();
 
-        var userSavedCookbook = savedCookbooks?.Where(x => x.UserId == currentUser.Id).FirstOrDefault();
+        var userSavedCookbooks = _savedCookbooks?.Where(x => x.UserId == currentUser.Id).FirstOrDefault();
 
-        if (userSavedCookbook is not null)
+        if (userSavedCookbooks?.SavedCookbooks is not null)
         {
-            userSavedCookbook.SavedCookbooks = userSavedCookbook.SavedCookbooks.Concat(cookbook.Id).ToArray();
+            if (userSavedCookbooks.SavedCookbooks.Contains(cookbook.Id))
+            {
+                userSavedCookbooks.SavedCookbooks.Remove(cookbook.Id);
+            }
+            else
+            {
+                userSavedCookbooks.SavedCookbooks.Add(cookbook.Id);
+            }
         }
         else
         {
-            savedCookbooks?.Add(new SavedCookbooksData { UserId = currentUser.Id, SavedCookbooks = new Guid[] { cookbook.Id } });
+            _savedCookbooks?.Add(new SavedCookbooksData { UserId = currentUser.Id, SavedCookbooks = new List<Guid> { cookbook.Id } });
         }
-
-        _savedCookbooks = savedCookbooks!.ToImmutableList();
     }
 
-    public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct)
+    public async ValueTask<IImmutableList<CookbookData>> GetSaved(CancellationToken ct) 
     {
-        var currentUser = await _userEndpoint.GetCurrent(ct);
+        var userId = (await _userEndpoint.GetCurrent(ct)).Id;
 
-        var cookBooks = await LoadCookbooks();
-
-        var savedCookbooks = (await LoadSavedCookbooks())?
-            .Where(x => x.UserId == currentUser.Id).FirstOrDefault();
-
-        if (savedCookbooks is not null && savedCookbooks.SavedCookbooks is not null)
-        {
-            return cookBooks?.Where(x => savedCookbooks.SavedCookbooks.Any(y => y == x.Id)).ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
-        }
-
-        return ImmutableList<CookbookData>.Empty;
+        return (await LoadCookbooks())
+        .Where(x => x.UserId == userId)
+        .ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
     }
 
     //Implementation to update cookbooks in memory 
-    private async Task<IImmutableList<CookbookData>> LoadCookbooks()
+    private async Task<List<CookbookData>> LoadCookbooks()
     {
         if(_cookbooks == null)
         {
             _cookbooks = (await _dataService
-                .ReadFileAsync<IImmutableList<CookbookData>>(_serializer, Constants.CookbooksDataFile));
+                .ReadFileAsync<List<CookbookData>>(_serializer, Constants.CookbooksDataFile));
         }
-        return _cookbooks ?? ImmutableList<CookbookData>.Empty;
+        return _cookbooks ?? new List<CookbookData>();
     }
 
     //Implementation to update saved cookbooks and recipes in memory 
-    private async Task<IImmutableList<SavedCookbooksData>> LoadSavedCookbooks()
+    private async Task<List<SavedCookbooksData>> LoadSavedCookbooks()
     {
         if(_savedCookbooks == null)
         {
             _savedCookbooks = (await _dataService
-                .ReadFileAsync<IImmutableList<SavedCookbooksData>>(_serializer, Constants.SavedCookbooksDataFile));
+                .ReadFileAsync<List<SavedCookbooksData>>(_serializer, Constants.SavedCookbooksDataFile));
         }
-        return _savedCookbooks ?? ImmutableList<SavedCookbooksData>.Empty;
+        return _savedCookbooks ?? new List<SavedCookbooksData>();
     }
 }

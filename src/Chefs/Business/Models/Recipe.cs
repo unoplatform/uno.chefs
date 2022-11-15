@@ -14,9 +14,6 @@ public record Recipe
         Serves = recipeData.Serves;
         CookTime = recipeData.CookTime;
         Difficulty = recipeData.Difficulty;
-        Ingredients = recipeData.Ingredients?
-            .Select(i => new Ingredient(i))
-            .ToImmutableList();
         Calories = recipeData.Calories;
         Details = recipeData.Details;
         Category = new Category(recipeData.Category);
@@ -29,12 +26,12 @@ public record Recipe
     public int Serves { get; init; }
     public TimeSpan CookTime { get; init; }
     public Difficulties Difficulty { get; init; }
-    public IImmutableList<Ingredient>? Ingredients { get; init; }
     public string? Calories { get; init; }
     public string? Details { get; init; }
     public Category Category { get; init; }
     public DateTime Date { get; init; }
     public bool Save { get; init; }
+    public bool Selected { get; init; }
     public string TimeCal => CookTime > TimeSpan.FromHours(1) ?
         String.Format("{0:%h} hour {0:%m} mins • {1}", CookTime, Calories) :
         String.Format("{0:%m} mins • {1}", CookTime, Calories);
@@ -48,9 +45,6 @@ public record Recipe
         Serves = Serves,
         CookTime = CookTime,
         Difficulty = Difficulty,
-        Ingredients = Ingredients?
-            .Select(i => i.ToData())
-            .ToImmutableList(),
         Calories = Calories,
         Details = Details,
         Category = Category.ToData(),

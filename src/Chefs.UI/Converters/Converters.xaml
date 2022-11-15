@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:Chefs.Converters">
+    
+    <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
+    <converters:EnumBooleanConverter x:Key="EnumBooleanConverter" />
+    <converters:BoolToIntConverter x:Key="BoolToIntConverter" />
+    <converters:StringFormatter x:Key="StringFormatter" />
+    <converters:StringSeparatorConverter x:Key="DotStringSeparator"
+                                        Separator="∙"/>
+</ResourceDictionary>

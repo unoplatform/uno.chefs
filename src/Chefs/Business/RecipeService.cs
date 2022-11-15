@@ -59,6 +59,12 @@ public class RecipeService : IRecipeService
         .Select(x => new Step(x))
         .ToImmutableList() ?? ImmutableList<Step>.Empty;
 
+    public async ValueTask<IImmutableList<Ingredient>> GetIngredients(Guid recipeId, CancellationToken ct) =>
+        (await _recipeEndpoint.GetAll(ct))
+        .FirstOrDefault(r => r.Id == recipeId)?.Ingredients?
+        .Select(x => new Ingredient(x))
+        .ToImmutableList() ?? ImmutableList<Ingredient>.Empty;
+
     public async ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct) =>
         (await _recipeEndpoint.GetAll(ct))
         .Where(r=>r.UserId == userId)
@@ -69,8 +75,8 @@ public class RecipeService : IRecipeService
         .Save(recipe.ToData(), ct);
 
 
-    public async ValueTask CreateReview(Guid recipeId, string review, CancellationToken ct) =>  await _recipeEndpoint
-        .CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct);
+    public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct) => new Review(await _recipeEndpoint
+        .CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct));
 
     public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct) => (await _recipeEndpoint
         .GetSaved(ct))

@@ -10,7 +10,7 @@ public class UserEndpoint : IUserEndpoint
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
 
-    private Guid? _userId;
+    private Guid? _userId = new Guid("3c896419-e280-40e7-8552-240635566fed");
     private List<UserData>? _users;
 
     public UserEndpoint(IStorage dataService, 
@@ -20,8 +20,8 @@ public class UserEndpoint : IUserEndpoint
 
     public async ValueTask<bool> Authenticate(string email, string password, CancellationToken ct)
     {
-       var user = (await Load())?
-            .Where(u => u.Email == email && u.Password == password).FirstOrDefault();
+        var user = (await Load())?
+             .Where(u => u.Email == email && u.Password == password).FirstOrDefault();
 
         if (user is null)
         {
@@ -40,11 +40,12 @@ public class UserEndpoint : IUserEndpoint
 
     public async ValueTask<UserData> GetCurrent(CancellationToken ct)
     {
-        var user = (await Load())?.Where(u => u.Id == _userId).FirstOrDefault();
+        int userIndex = (await Load())?.FindIndex(u => u.Id == _userId) ?? 0;
 
-        if(user is not null)
+        if (userIndex is not -1)
         {
-            return user;
+            if (!(_users![userIndex].IsCurrent)) _users![userIndex].IsCurrent = true;
+            return _users![userIndex];
         }
 
         throw new Exception();
@@ -53,11 +54,11 @@ public class UserEndpoint : IUserEndpoint
     public async ValueTask Update(UserData user, CancellationToken ct)
     {
         var users = await Load();
-        var oldUser = users?.Where(u => u.Id == _userId)?.FirstOrDefault();
+        int userIndex = users?.FindIndex(u => u.Id == _userId) ?? 0;
 
-        if(oldUser is not null)
+        if (userIndex is not -1)
         {
-            oldUser = new UserData()
+            users![userIndex] = new UserData()
             {
                 Id = user.Id,
                 UrlProfileImage = user.UrlProfileImage,
@@ -68,12 +69,17 @@ public class UserEndpoint : IUserEndpoint
                 Password = user.Password,
                 Followers = user.Followers,
                 Following = user.Following,
+                Recipes = user.Recipes
             };
             _users = users!;
         }
-
-        throw new Exception();
+        else
+        {
+            throw new Exception();
+        }
     }
+
+    public async ValueTask<UserData> GetById(Guid userId, CancellationToken ct) => (await Load())?.Where(u => u.Id == userId).FirstOrDefault() ?? throw new Exception();
 
     //Implementation to update users in memory 
     private async ValueTask<List<UserData>> Load()

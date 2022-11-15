@@ -6,8 +6,12 @@ public record SearchFilter(
     OrganizeCategories? OrganizeCategories, 
     Times? Time, 
     Difficulties? Difficulty, 
+    int? Serves,
     Category? Category)
 {
+    public bool HasFilter => OrganizeCategories != null ||
+        Time != null || Difficulty != null || Category != null; 
+
     public bool Match(Recipe recipe)
     {
         TimeSpan time = TimeSpan.Zero;
@@ -30,7 +34,7 @@ public record SearchFilter(
 
         if ((Difficulty == null || recipe.Difficulty == Difficulty) &&
             (Time == null || recipe.CookTime < time) &&
-            (Category == null || recipe.Category.Id == Category.Id))
+            (Category == null || recipe.Category.Id == Category.Id) && (Serves == null || Serves == recipe.Serves))
         {
             return true;
         }

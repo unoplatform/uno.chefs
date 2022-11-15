@@ -14,6 +14,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
     private List<SavedRecipesData>? _savedRecipes;
     private List<RecipeData>? _recipes;
+    private List<CategoryData>? _categories;
 
     public RecipeEndpoint(IStorage dataService, ISerializer serializer, IUserEndpoint userEndpoint)
         => (_dataService, _serializer, _userEndpoint) = (dataService, serializer, userEndpoint);
@@ -21,8 +22,8 @@ public class RecipeEndpoint : IRecipeEndpoint
     public async ValueTask<IImmutableList<RecipeData>> GetAll(CancellationToken ct) => (await Load()).ToImmutableList()
         ?? ImmutableList<RecipeData>.Empty;
 
-    public async ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct) => await _dataService
-        .ReadFileAsync<IImmutableList<CategoryData>>(_serializer, Constants.CategoryDataFile)
+    public async ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct) => (await LoadCategories())
+        .ToImmutableList()
         ?? ImmutableList<CategoryData>.Empty;
 
     public async ValueTask<IImmutableList<RecipeData>> GetTrending(CancellationToken ct) => (await Load())?
@@ -67,7 +68,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         _savedRecipes= savedRecipes!;
     }
 
-    public async ValueTask CreateReview(ReviewData reviewData, CancellationToken ct)
+    public async ValueTask<ReviewData> CreateReview(ReviewData reviewData, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetCurrent(ct);
 
@@ -77,8 +78,12 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         if(recipe is not null)
         {
+            reviewData.PublisherName = currentUser.FullName;
             reviewData.CreatedBy = currentUser.Id;
+            reviewData.Date = DateTime.Now;
             recipe.Reviews?.Add(reviewData);
+
+            return reviewData;
         }
         else
         {
@@ -87,7 +92,7 @@ public class RecipeEndpoint : IRecipeEndpoint
     }
 
     //Implementation to update saved recipes in memory 
-    private async ValueTask<List<RecipeData>> Load()
+    private async ValueTask<IList<RecipeData>> Load()
     {
         if(_recipes == null)
         {
@@ -106,5 +111,16 @@ public class RecipeEndpoint : IRecipeEndpoint
                 .ReadFileAsync<List<SavedRecipesData>>(_serializer, Constants.SavedRecipesDataFile));
         }
         return _savedRecipes ?? new List<SavedRecipesData>();
+    }
+
+    //Implementation categories to keep in memory 
+    private async ValueTask<List<CategoryData>> LoadCategories()
+    {
+        if (_categories == null)
+        {
+            _categories = (await _dataService
+                .ReadFileAsync<List<CategoryData>>(_serializer, Constants.CategoryDataFile));
+        }
+        return _categories ?? new List<CategoryData>();
     }
 }

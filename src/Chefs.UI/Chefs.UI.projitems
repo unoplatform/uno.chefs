@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringSeparatorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
@@ -56,6 +57,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LiveCookingPage.xaml.cs">
       <DependentUpon>LiveCookingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\UpdateCookbookPage.xaml.cs">
+      <DependentUpon>UpdateCookbookPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Views\LiveCookingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\UpdateCookbookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

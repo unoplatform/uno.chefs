@@ -1,0 +1,153 @@
+﻿<Page x:Class="Chefs.Views.UpdateCookbookPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Chefs.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:um="using:Uno.Material"
+      xmlns:uer="using:Uno.Extensions.Reactive.UI"
+      xmlns:converters="using:Chefs.Converters"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
+        <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
+                                                  Invert="True" />
+    </Page.Resources>
+
+    <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
+        <utu:AutoLayout.Resources>
+            <x:String x:Key="Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
+            <x:String x:Key="Icon_Bookmark">F1 M 12 0 L 2 0 C 0.8999999761581421 0 0.010000228881835938 0.8999999761581421 0.010000228881835938 2 L 0 18 L 7 15 L 14 18 L 14 2 C 14 0.8999999761581421 13.100000023841858 0 12 0 Z</x:String>
+            <x:String x:Key="Icon_Bookmark_Border">F1 M 12 0 L 2 0 C 0.8999999761581421 0 0.010000228881835938 0.8999999761581421 0.010000228881835938 2 L 0 18 L 7 15 L 14 18 L 14 2 C 14 0.8999999761581421 13.100000023841858 0 12 0 Z M 12 15 L 7 12.819999694824219 L 2 15 L 2 2 L 12 2 L 12 15 Z</x:String>
+            <x:String x:Key="Icon_Check">F1 M 5.590000152587891 10.579999923706055 L 1.4199998378753662 6.409999847412109 L 0 7.819999694824219 L 5.590000152587891 13.40999984741211 L 17.59000015258789 1.4099998474121094 L 16.18000030517578 0 L 5.590000152587891 10.579999923706055 Z</x:String>
+            <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+            <x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
+        </utu:AutoLayout.Resources>
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+            <utu:AutoLayout Visibility="{Binding Cookbook.Name, Converter={StaticResource NullToVisible}}">
+                <utu:NavigationBar Content="Create Cookbook"
+                                   Background="{ThemeResource BackgroundBrush}"
+                                   Style="{StaticResource NavigationBarStyle}">
+                    <utu:NavigationBar.PrimaryCommands>
+                        <AppBarButton>
+                            <AppBarButton.Icon>
+                                <PathIcon Data="{StaticResource BitmapIcon_Close}">
+                                    <PathIcon.Resources>
+                                        <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+                                    </PathIcon.Resources>
+                                </PathIcon>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.PrimaryCommands>
+                </utu:NavigationBar>
+                <TextBox Background="{ThemeResource SurfaceBrush}"
+                         Text="{Binding Cookbook.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+                         PlaceholderText="Cookbook name"
+                         Margin="18,24"
+                         Style="{StaticResource OutlinedTextBoxStyle}" />
+            </utu:AutoLayout>
+            <utu:AutoLayout Visibility="{Binding Cookbook.Name, Converter={StaticResource NullToCollapsed}}">
+                <utu:NavigationBar Content="Add Cookbook"
+                                   Background="{ThemeResource BackgroundBrush}"
+                                   Style="{StaticResource NavigationBarStyle}">
+                    <utu:NavigationBar.PrimaryCommands>
+                        <AppBarButton>
+                            <AppBarButton.Icon>
+                                <PathIcon Data="{StaticResource BitmapIcon_Close}">
+                                    <PathIcon.Resources>
+                                        <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+                                    </PathIcon.Resources>
+                                </PathIcon>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.PrimaryCommands>
+                </utu:NavigationBar>
+            </utu:AutoLayout>
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+                <utu:AutoLayout Spacing="18"
+                                Padding="18,0">
+                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                               Text="Add pin"
+                               Style="{StaticResource LabelLarge}" />
+                    <utu:AutoLayout Spacing="18"
+                                    utu:AutoLayout.CounterAlignment="Start">
+                        <utu:AutoLayout Spacing="22"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Stretch">
+                            <uer:FeedView Source="{Binding Recipes}"
+                                          x:Name="RecipentsFeedView">
+                                <DataTemplate>
+                                    <ListView ItemsSource="{Binding Data}"
+                                              IsItemClickEnabled="True"
+                                              SelectionMode="None"
+                                              Style="{StaticResource ListViewStyle}">
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <ItemsWrapGrid  MaximumRowsOrColumns="2"
+                                                                Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
+                                                                        utu:AutoLayout.PrimaryLength="166"
+                                                                        Style="{StaticResource OutlinedCardContentControlStyle}">
+                                                    <utu:CardContentControl.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                            CornerRadius="12">
+                                                                <Image Source="{Binding ImageUrl}"
+                                                                       Stretch="UniformToFill"
+                                                                       utu:AutoLayout.PrimaryLength="144" />
+                                                                <utu:AutoLayout Spacing="2"
+                                                                                Padding="10"
+                                                                                Orientation="Horizontal">
+                                                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                                   TextWrapping="Wrap"
+                                                                                   Text="{Binding Name}"
+                                                                                   Style="{StaticResource TitleMedium}" />
+                                                                    </utu:AutoLayout>
+                                                                    <ToggleButton IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                                  CommandParameter="{Binding}"
+                                                                                  Background="#ED3F64"
+                                                                                  utu:AutoLayout.CounterAlignment="Center"
+                                                                                  CornerRadius="60"
+                                                                                  Style="{StaticResource IconToggleButtonStyle}">
+                                                                        <ToggleButton.Content>
+                                                                            <PathIcon Data="{StaticResource Icon_Add}"
+                                                                                      Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                                                        </ToggleButton.Content>
+                                                                        <um:ControlExtensions.AlternateContent>
+                                                                            <PathIcon Data="{StaticResource Icon_Check}"
+                                                                                      Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                                                        </um:ControlExtensions.AlternateContent>
+                                                                    </ToggleButton>
+                                                                </utu:AutoLayout>
+                                                            </utu:AutoLayout>
+                                                        </DataTemplate>
+                                                    </utu:CardContentControl.ContentTemplate>
+                                                </utu:CardContentControl>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </DataTemplate>
+                            </uer:FeedView>
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </ScrollViewer>
+        </utu:AutoLayout>
+        <utu:AutoLayout Padding="18,30">
+            <Button Command="{Binding Done}"
+                    Background="{ThemeResource PrimaryBrush}"
+                    Content="Done"
+                    utu:AutoLayout.PrimaryLength="56" />
+        </utu:AutoLayout>
+    </utu:AutoLayout>
+</Page>

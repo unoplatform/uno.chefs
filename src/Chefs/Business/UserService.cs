@@ -46,6 +46,8 @@ public class UserService : IUserService
             AccentColor = chefSettings.AccentColor,
         });
 
+    public async ValueTask<User> GetById(Guid userId, CancellationToken ct) => new User(await _userEndpoint.GetById(userId, ct));
+
     public async ValueTask Update(User user, CancellationToken ct)
     {
         await _userEndpoint.Update(user.ToData(), ct);

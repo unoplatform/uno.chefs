@@ -13,6 +13,6 @@ public class UserData
     public string? Password { get; set; }
     public long? Followers { get; set; }
     public long? Following { get; set; }
-    public ImmutableList<CookbookData>? SavedCookBooks { get; set; }
-    public ImmutableList<RecipeData>? SavedRecipes { get; set; }
+    public long? Recipes { get; set; }
+    public bool IsCurrent { get; set; }
 }

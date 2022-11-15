@@ -1,4 +1,5 @@
 ﻿using Chefs.Business;
+using Chefs.Data;
 using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
@@ -29,20 +30,25 @@ public partial class HomeViewModel
 
     public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
+    public IFeed<User> UserProfile => Feed<User>.Async(async ct => await _userService.GetCurrent(ct));
+
     public async ValueTask Notifications(CancellationToken ct) => 
         await _navigator.NavigateViewModelAsync<NotificationsViewModel>(this);
 
     public async ValueTask Search(CancellationToken ct) => 
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this);
+        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, qualifier: Qualifiers.Separator);
 
-    public async ValueTask ShowAll (CancellationToken ct, SearchFilter filter) =>
+    public async ValueTask ShowAll(CancellationToken ct)
+    {
+        var filter = new SearchFilter(null, null, null, null, null);
         await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+    }
 
-    public async ValueTask RecipeDetails(CancellationToken ct, Recipe recipe) =>
+    public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
 
-    public async ValueTask Profile(CancellationToken ct, Recipe recipe) =>
-        await _navigator.NavigateViewModelAsync<ProfileViewModel>(this);
+    public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
+        await _navigator.NavigateViewModelAsync<ProfileViewModel>(this, data: user, cancellation: ct);
 
     public async ValueTask SaveRecipe(CancellationToken ct, Recipe recipe) =>
         await _recipeService.Save(recipe, ct);

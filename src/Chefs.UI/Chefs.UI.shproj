@@ -11,7 +11,10 @@
   <Import Project="Chefs.UI.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
   <ItemGroup>
+    <UpToDateCheckInput Remove="Converters\Converters.xaml" />
     <UpToDateCheckInput Remove="Styles\FeedView.xaml" />
+    <UpToDateCheckInput Remove="Views\AddRecipesCookbookPage.xaml" />
+    <UpToDateCheckInput Remove="Views\CookbookDetailPage.xaml" />
     <UpToDateCheckInput Remove="Views\FilterPage.xaml" />
     <UpToDateCheckInput Remove="Views\HomePage.xaml" />
     <UpToDateCheckInput Remove="Views\IngredientsPage.xaml" />
@@ -24,8 +27,17 @@
     <UpToDateCheckInput Remove="Views\SearchPage.xaml" />
     <UpToDateCheckInput Remove="Views\SettingsPage.xaml" />
     <UpToDateCheckInput Remove="Views\StartCookingPage.xaml" />
+    <UpToDateCheckInput Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Views\AddRecipesCookbookPage.xaml.cs" />
+    <_Globbed_Compile Remove="Views\CookbookDetailPage.xaml.cs" />
+    <_Globbed_Compile Remove="Converters\EnumBooleanConverter.cs" />
+    <_Globbed_Compile Remove="Converters\MultiStringFormatter.cs" />
+    <_Globbed_Compile Remove="Converters\NullToBoolConverter.cs" />
+    <_Globbed_Compile Remove="Converters\StringFormatter.cs" />
+    <_Globbed_Compile Remove="Converters\StringSeparatorConverter.cs" />
+    <_Globbed_Compile Remove="Helpers\ChipsExtensions.cs" />
     <_Globbed_Compile Remove="Views\FilterPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\HomePage.xaml.cs" />
     <_Globbed_Compile Remove="Views\IngredientsPage.xaml.cs" />
@@ -38,9 +50,13 @@
     <_Globbed_Compile Remove="Views\SearchPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SettingsPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\LiveCookingPage.xaml.cs" />
+    <_Globbed_Compile Remove="Views\UpdateCookbookPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbled_Page Remove="Converters\Converters.xaml" />
     <_Globbled_Page Remove="Styles\FeedView.xaml" />
+    <_Globbled_Page Remove="Views\AddRecipesCookbookPage.xaml" />
+    <_Globbled_Page Remove="Views\CookbookDetailPage.xaml" />
     <_Globbled_Page Remove="Views\FilterPage.xaml" />
     <_Globbled_Page Remove="Views\HomePage.xaml" />
     <_Globbled_Page Remove="Views\IngredientsPage.xaml" />
@@ -53,5 +69,6 @@
     <_Globbled_Page Remove="Views\SearchPage.xaml" />
     <_Globbled_Page Remove="Views\SettingsPage.xaml" />
     <_Globbled_Page Remove="Views\LiveCookingPage.xaml" />
+    <_Globbled_Page Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
 </Project>
