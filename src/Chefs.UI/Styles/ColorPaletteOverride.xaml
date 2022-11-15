@@ -40,6 +40,7 @@
             <Color x:Key="OnTertiaryColor">#FFFFFF</Color>
             <Color x:Key="TertiaryContainerColor">#507FF7</Color>
             <Color x:Key="OnTertiaryContainerColor">#FFFFFF</Color>
+            <Color x:Key="PipsPagerSelectionIndicatorForegroundSelected">#ED3F64</Color> 
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="PrimaryColor">#ED3F64</Color>
@@ -70,6 +71,7 @@
             <Color x:Key="OnTertiaryColor">#002A76</Color>
             <Color x:Key="OnTertiaryContainerColor">#DBE1FF</Color>
             <Color x:Key="TertiaryContainerColor">#507FF7</Color>
+            <Color x:Key="PipsPagerSelectionIndicatorForegroundSelected">#ED3F64</Color>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

@@ -66,7 +66,7 @@
                 </utu:AutoLayout>
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Padding="18,12">
+                <utu:AutoLayout Padding="0,12">
                     <uer:FeedView x:Name="TrendingNowFeed"
                                   Source="{Binding Items}">
                         <DataTemplate>
@@ -74,38 +74,45 @@
                                       IsItemClickEnabled="True">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
+                                        <ItemsWrapGrid MaximumRowsOrColumns="2"
+                                                       Orientation="Horizontal"
+                                                       />
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <utu:CardContentControl utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                utu:AutoLayout.CounterAlignment="Stretch"
+                                                                Style="{StaticResource FilledCardContentControlStyle}"
                                                                 uen:Navigation.Request="!RecipeDetails"
-                                                                uen:Navigation.Data="{Binding}">
-                                    <utu:CardContentControl.ContentTemplate>
-                                        <DataTemplate>
-                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                            CornerRadius="12">
-                                                <Image Source="{Binding ImageUrl}"
-                                                       Stretch="UniformToFill"
-                                                       utu:AutoLayout.PrimaryLength="144" />
-                                                <utu:AutoLayout Spacing="2"
-                                                                Padding="16,10"
-                                                                PrimaryAxisAlignment="Center">
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                               TextWrapping="Wrap"
-                                                               Text="{Binding Name}"
-                                                               Style="{StaticResource TitleMedium}" />
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                               TextWrapping="Wrap"
-                                                               Text="{Binding TimeCal}"
-                                                               Style="{StaticResource BodySmall}" />
-                                                </utu:AutoLayout>
-                                            </utu:AutoLayout>
-                                        </DataTemplate>
-                                    </utu:CardContentControl.ContentTemplate>
-                                </utu:CardContentControl>
+                                                                uen:Navigation.Data="{Binding}"
+                                                                Width="162"
+                                                                Margin="0">
+                                            <utu:CardContentControl.ContentTemplate>
+                                                <DataTemplate>
+                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                    CornerRadius="12">
+                                                        <Image Source="{Binding ImageUrl}"
+                                                               Stretch="Uniform"
+                                                               MaxHeight="144"
+                                                               />
+                                                        <utu:AutoLayout Spacing="2"
+                                                                        Padding="16,10"
+                                                                        PrimaryAxisAlignment="Center">
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                       TextWrapping="Wrap"
+                                                                       MaxLines="1"
+                                                                       Text="{Binding Name}"
+                                                                       Style="{StaticResource TitleMedium}" />
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                       TextWrapping="Wrap"
+                                                                       Text="{Binding TimeCal}"
+                                                                       Style="{StaticResource BodySmall}" />
+                                                        </utu:AutoLayout>
+                                                    </utu:AutoLayout>
+                                                </DataTemplate>
+                                            </utu:CardContentControl.ContentTemplate>
+                                        </utu:CardContentControl>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>

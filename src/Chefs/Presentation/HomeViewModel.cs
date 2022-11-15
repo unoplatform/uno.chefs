@@ -50,6 +50,6 @@ public partial class HomeViewModel
     public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<ProfileViewModel>(this, data: user, cancellation: ct);
 
-    public async ValueTask SaveRecipe(CancellationToken ct, Recipe recipe) =>
+    public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
         await _recipeService.Save(recipe, ct);
 }
