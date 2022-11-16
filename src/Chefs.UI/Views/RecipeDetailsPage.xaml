@@ -54,27 +54,27 @@
                                    Text="{Binding User.FullName}"
                                    Margin="18,0,18,20"
                                    Style="{StaticResource TitleSmall}" />
-                        <utu:AutoLayout PrimaryAxisAlignment="Center"
+                        <Grid
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <Image Source="{Binding Recipe.ImageUrl}"
                                    Stretch="UniformToFill"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   utu:AutoLayout.PrimaryLength="200"
-                                   utu:AutoLayout.CounterLength="390" />
+                                   utu:AutoLayout.CounterAlignment="Center" 
+                                   Margin="0,0,0,36"/>
                             <utu:AutoLayout Background="{ThemeResource OnPrimaryBrush}"
                                             Spacing="60"
                                             Padding="50,14"
+                                            Margin="20,0"
                                             CornerRadius="16"
                                             PrimaryAxisAlignment="Center"
                                             Orientation="Horizontal"
-                                            utu:AutoLayout.CounterAlignment="Center">
+                                            VerticalAlignment="Bottom">
                                 <utu:AutoLayout Spacing="6"
                                                 utu:AutoLayout.CounterAlignment="Center">
                                     <TextBlock Text="🕓"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Text="{Binding Recipe.CookTime}"
+                                               Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource TitleSmall}" />
                                 </utu:AutoLayout>
@@ -101,7 +101,7 @@
                                                Style="{StaticResource TitleSmall}" />
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
-                        </utu:AutoLayout>
+                        </Grid>
                     </utu:AutoLayout>
                     <utu:AutoLayout uen:Region.Attached="True"
                                     Spacing="16"
@@ -142,7 +142,7 @@
                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="15"
                                                                         PrimaryAxisAlignment="Center"
-                                                                        Margin="0,8,0,8">
+                                                                        Margin="0,8">
                                                             <utu:AutoLayout Spacing="16"
                                                                             Padding="16,18"
                                                                             Orientation="Horizontal">
@@ -185,7 +185,8 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                        CornerRadius="15">
+                                                                        CornerRadius="15"
+                                                                        Margin="0,8">
                                                             <utu:AutoLayout Padding="16,18"
                                                                             PrimaryAxisAlignment="Center">
                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
@@ -228,7 +229,10 @@
                                                 <DataTemplate>
                                                     <utu:AutoLayout Spacing="16"
                                                                     Padding="16,18"
-                                                                    Orientation="Horizontal">
+                                                                    Orientation="Horizontal"
+                                                                    Margin="0,8"
+                                                                    CornerRadius="15"
+                                                                    Background="{ThemeResource SurfaceBrush}">
                                                         <Border CornerRadius="20"
                                                                 utu:AutoLayout.CounterAlignment="Start"
                                                                 utu:AutoLayout.PrimaryLength="60"
@@ -253,14 +257,14 @@
                                                                            Style="{StaticResource LabelSmall}" />
                                                             </utu:AutoLayout>
                                                             <utu:AutoLayout Spacing="8"
-                                                                            Padding="0,16,0,0"
+                                                                            Margin="0,8"
                                                                             Orientation="Horizontal">
                                                                 <Button Background="{ThemeResource PrimaryInverseBrush}"
                                                                         Content="{Binding Likes, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
-                                                                        utu:AutoLayout.CounterAlignment="Start" />
+                                                                        utu:AutoLayout.CounterAlignment="Center" />
                                                                 <Button Background="{ThemeResource PrimaryInverseBrush}"
                                                                         Content="{Binding Dislikes, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
-                                                                        utu:AutoLayout.CounterAlignment="Start" />
+                                                                        utu:AutoLayout.CounterAlignment="Center" />
                                                             </utu:AutoLayout>
                                                         </utu:AutoLayout>
                                                     </utu:AutoLayout>
