@@ -86,7 +86,7 @@ public class UserEndpoint : IUserEndpoint
     {
         if(_users == null)
         {
-            _users = (await _dataService.ReadFileAsync<List<UserData>>(_serializer, Constants.UserDataFile))!;
+            _users = (await _dataService.ReadPackageFileAsync<List<UserData>>(_serializer, Constants.UserDataFile))!;
         }
         return _users!;
     }

@@ -85,7 +85,7 @@ public class CookbookEndpoint : ICookbookEndpoint
         if(_cookbooks == null)
         {
             _cookbooks = (await _dataService
-                .ReadFileAsync<List<CookbookData>>(_serializer, Constants.CookbooksDataFile));
+                .ReadPackageFileAsync<List<CookbookData>>(_serializer, Constants.CookbooksDataFile));
         }
         return _cookbooks ?? new List<CookbookData>();
     }
@@ -96,7 +96,7 @@ public class CookbookEndpoint : ICookbookEndpoint
         if(_savedCookbooks == null)
         {
             _savedCookbooks = (await _dataService
-                .ReadFileAsync<List<SavedCookbooksData>>(_serializer, Constants.SavedCookbooksDataFile));
+                .ReadPackageFileAsync<List<SavedCookbooksData>>(_serializer, Constants.SavedCookbooksDataFile));
         }
         return _savedCookbooks ?? new List<SavedCookbooksData>();
     }

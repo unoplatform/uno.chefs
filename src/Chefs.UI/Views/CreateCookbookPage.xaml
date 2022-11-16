@@ -48,7 +48,7 @@
                     </utu:NavigationBar.PrimaryCommands>
                 </utu:NavigationBar>
                 <TextBox Background="{ThemeResource SurfaceBrush}"
-                         Text="{Binding Cookbook.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding CookbookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
                          PlaceholderText="Cookbook name"
                          Margin="18,24"
