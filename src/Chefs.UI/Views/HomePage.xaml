@@ -32,7 +32,7 @@
                                 utu:AutoLayout.CounterLength="40"
                                 Command="{Binding DataContext.ProfileCreator, ElementName=UserFeedView}"
                                 CommandParameter="{Binding Data}">
-                            <PersonPicture />
+                            <PersonPicture BadgeImageSource="ms-appx:///Assets/Profiles/james_bondi.png"/>
                         </Button>
                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -83,7 +83,8 @@
                             <uer:FeedView x:Name="TrendingNowFeed"
                                           Source="{Binding TrendingNow}">
                                 <DataTemplate>
-                                    <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                    <ScrollViewer HorizontalScrollMode="Enabled"
+                                                  HorizontalScrollBarVisibility="Hidden">
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                             <muxc:ItemsRepeater.Layout>
                                                 <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
@@ -91,7 +92,7 @@
                                             <muxc:ItemsRepeater.ItemTemplate>
                                                 <DataTemplate>
                                                     <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        Style="{StaticResource FilledCardContentControlStyle}"
                                                                             uen:Navigation.Request="!RecipeDetails"
                                                                             uen:Navigation.Data="{Binding}">
                                                         <utu:CardContentControl.ContentTemplate>
@@ -144,7 +145,8 @@
                         <uer:FeedView x:Name="CategoriesFeedView"
                                       Source="{Binding Categories}">
                             <DataTemplate>
-                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                <ScrollViewer HorizontalScrollMode="Enabled"
+                                              HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
@@ -199,7 +201,8 @@
                         <uer:FeedView x:Name="RecentlyAddedFeedView"
                                       Source="{Binding RecentlyAdded}">
                             <DataTemplate>
-                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                <ScrollViewer HorizontalScrollMode="Enabled"
+                                              HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
@@ -208,7 +211,7 @@
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                     utu:AutoLayout.PrimaryLength="170"
-                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        Style="{StaticResource FilledCardContentControlStyle}"
                                                                         uen:Navigation.Request="!RecipeDetails"
                                                                         uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
@@ -249,7 +252,8 @@
                         <uer:FeedView x:Name="PopularCreatorsFeedView"
                                       Source="{Binding PopularCreators}">
                             <DataTemplate>
-                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                <ScrollViewer HorizontalScrollMode="Enabled"
+                                              HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
@@ -309,7 +313,8 @@
                         <uer:FeedView x:Name="LunchRecipesFeedView"
                                       Source="{Binding LunchRecipes}">
                             <DataTemplate>
-                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                <ScrollViewer HorizontalScrollMode="Enabled"
+                                              HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
@@ -317,7 +322,7 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        Style="{StaticResource FilledCardContentControlStyle}"
                                                                         uen:Navigation.Request="!RecipeDetails"
                                                                         uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
@@ -383,7 +388,8 @@
                         <uer:FeedView x:Name="DinnerRecipesFeedView"
                                       Source="{Binding DinnerRecipes}">
                             <DataTemplate>
-                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                <ScrollViewer HorizontalScrollMode="Enabled"
+                                              HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
@@ -391,7 +397,7 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        Style="{StaticResource FilledCardContentControlStyle}"
                                                                         uen:Navigation.Request="!RecipeDetails"
                                                                         uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
@@ -458,7 +464,8 @@
                         <uer:FeedView x:Name="SnackRecipesFeedView"
                                       Source="{Binding SnackRecipes}">
                             <DataTemplate>
-                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                <ScrollViewer HorizontalScrollMode="Enabled"
+                                              HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" Spacing="8" />
@@ -466,7 +473,7 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                        Style="{StaticResource OutlinedCardContentControlStyle}"
+                                                                        Style="{StaticResource FilledCardContentControlStyle}"
                                                                         uen:Navigation.Request="!RecipeDetails"
                                                                         uen:Navigation.Data="{Binding}">
                                                     <utu:CardContentControl.ContentTemplate>
