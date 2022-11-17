@@ -17,7 +17,7 @@
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.32" />
 		<PackageReference Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="4.7.0-dev.214" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.0-dev.214" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.0-dev.240" Condition="'$(Configuration)'=='Debug'" />
 		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.3" />
 		<PackageReference Include="SkiaSharp.Skottie" Version="2.88.1-preview.79" />
 	</ItemGroup>
@@ -49,6 +49,6 @@
 	 <PackageReference Include="Uno.Extensions.Serialization" Version="2.3.0-dev.300" />
 	 <PackageReference Include="Uno.Extensions.Serialization.Http" Version="2.3.0-dev.300" />
 	 <PackageReference Include="Uno.Extensions.Serialization.Refit" Version="2.3.0-dev.300" />
-	 <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.214" />
+	 <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.240" />
 	</ItemGroup>
 </Project>
