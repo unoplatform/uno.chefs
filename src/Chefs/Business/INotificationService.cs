@@ -1,6 +1,4 @@
-﻿using System.Collections.Immutable;
-
-namespace Chefs.Business;
+﻿namespace Chefs.Business;
 
 /// <summary>
 /// Implements notification related methods

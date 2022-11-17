@@ -1,10 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Net;
-using System.Xml.Linq;
-using Chefs.Data;
-using Windows.System;
-
-namespace Chefs.Business;
+﻿namespace Chefs.Business;
 
 public partial record User
 {

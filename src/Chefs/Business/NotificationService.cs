@@ -1,7 +1,4 @@
-﻿using Chefs.Data;
-using System.Collections.Immutable;
-
-namespace Chefs.Business;
+﻿namespace Chefs.Business;
 
 public class NotificationService : INotificationService
 {

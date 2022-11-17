@@ -1,9 +1,4 @@
-﻿
-using System.Collections.Immutable;
-using Chefs.Business;
-using Chefs.Data;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public partial class ProfileViewModel
 {
