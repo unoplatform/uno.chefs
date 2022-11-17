@@ -92,7 +92,8 @@
                         utu:AutoLayout.PrimaryLength="56"
                         Grid.Row="3"
                         HorizontalAlignment="Stretch"
-                        Height="56" />
+						Command="{Binding GoToLogin}"
+						Height="56" />
                 <HyperlinkButton Content="Skip"
                                  Command="{Binding GoToLogin}"
                                  Grid.Row="4"

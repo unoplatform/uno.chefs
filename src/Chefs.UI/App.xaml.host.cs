@@ -6,52 +6,53 @@ using Chefs.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Immutable;
 using Uno.Extensions.Configuration;
+using Uno.Extensions.Hosting;
 
 namespace Chefs;
 
 public sealed partial class App : Application
 {
-	private IHost Host { get; } = BuildAppHost();
+    private IHost Host { get; } = BuildAppHost();
 
-	private static IHost BuildAppHost()
-	{
-		return UnoHost
-				.CreateDefaultBuilder()
+    private static IHost BuildAppHost()
+    {
+        return UnoHost
+                .CreateDefaultBuilder()
 #if DEBUG
-				// Switch to Development environment when running in DEBUG
-				.UseEnvironment(Environments.Development)
+                // Switch to Development environment when running in DEBUG
+                .UseEnvironment(Environments.Development)
 #endif
-				// Add platform specific log providers
-				.UseLogging(configure: (context, logBuilder) =>
-				{
-					// Configure log levels for different categories of logging
-					logBuilder
-							.SetMinimumLevel(
-								context.HostingEnvironment.IsDevelopment() ?
-									LogLevel.Information :
-									LogLevel.Warning);
-				})
+                // Add platform specific log providers
+                .UseLogging(configure: (context, logBuilder) =>
+                {
+                    // Configure log levels for different categories of logging
+                    logBuilder
+                            .SetMinimumLevel(
+                                context.HostingEnvironment.IsDevelopment() ?
+                                    LogLevel.Information :
+                                    LogLevel.Warning);
+                })
 
-				.UseConfiguration(configure: configBuilder =>
-					configBuilder
-						.EmbeddedSource<App>()
-						.Section<AppConfig>()
-						.Section<Credentials>()
+                .UseConfiguration(configure: configBuilder =>
+                    configBuilder
+                        .EmbeddedSource<App>()
+                        .Section<AppConfig>()
+                        .Section<Credentials>()
                         .Section<AuthenticationOptions>()
                 )
 
-				// Enable localization (see appsettings.json for supported languages)
-				.UseLocalization()
+                // Enable localization (see appsettings.json for supported languages)
+                .UseLocalization()
 
-				// Register Json serializers (ISerializer and ISerializer)
-				.UseSerialization()
+                // Register Json serializers (ISerializer and ISerializer)
+                .UseSerialization()
 
-				// Register services for the application
-				.ConfigureServices(services =>
-				{
-					// TODO: Register your services
-					services
-					.AddSingleton<INotificationService, NotificationService>()
+                // Register services for the application
+                .ConfigureServices(services =>
+                {
+                    // TODO: Register your services
+                    services
+                    .AddSingleton<INotificationService, NotificationService>()
                     .AddSingleton<IRecipeService, RecipeService>()
                     .AddSingleton<IUserService, UserService>()
                     .AddSingleton<ICookbookService, CookbookService>()
@@ -63,19 +64,19 @@ public sealed partial class App : Application
                 })
 
 
-				// Enable navigation, including registering views and viewmodels
-				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes)
+                // Enable navigation, including registering views and viewmodels
+                .UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes)
 
-				// Add navigation support for toolkit controls such as TabBar and NavigationView
-				.UseToolkitNavigation()
-                
-				.Build(enableUnoLogging: true);
+                // Add navigation support for toolkit controls such as TabBar and NavigationView
+                .UseToolkitNavigation()
 
-	}
-	private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
-	{
+                .Build(enableUnoLogging: true);
+
+    }
+    private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
+    {
         views.Register(
-            new ViewMap<ShellControl, ShellViewModel>(),
+            new ViewMap(ViewModel: typeof(ShellViewModel)),
             new ViewMap<MainPage, MainViewModel>(),
             new ViewMap<WelcomePage, WelcomeViewModel>(),
             new ViewMap<RegisterPage, RegisterViewModel>(),
@@ -92,7 +93,7 @@ public sealed partial class App : Application
             new DataViewMap<SearchPage, SearchViewModel, SearchFilter>(),
             new ViewMap<SettingsPage, SettingsViewModel>(Data: new DataMap<User>()),
             new ViewMap<LiveCookingPage, LiveCookingViewModel>(Data: new DataMap<LiveCookingParameter>()),
-			new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>()),
+            new ViewMap<ReviewsPage, ReviewsViewModel>(Data: new DataMap<ReviewParameter>()),
             new ViewMap<CookbookDetailPage, CookbookDetailViewModel>(Data: new DataMap<Cookbook>())
         );
 
@@ -108,34 +109,26 @@ public sealed partial class App : Application
                             {
                                 new RouteMap("Home", View: views.FindByViewModel<HomeViewModel>(), IsDefault: true, Nested: new RouteMap[]
                                 {
-                                    new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home", Nested: new RouteMap[]
-                                    {
-                                        new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
-                                        new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "Profile", Nested: new RouteMap[]
-                                        {
-                                           new RouteMap("UpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "ProfileCookbookDetail"),
-                                        })
-                                    }),
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
-                                    new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>(), DependsOn:"Home", Nested: new RouteMap[]
-                                    {
-                                        new RouteMap("Filter", View: views.FindByViewModel<FilterViewModel>())
-                                    })
                                 }),
-                                new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>(), Nested: new RouteMap[]
+                                new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home", Nested: new RouteMap[]
                                 {
-                                    new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes"),
-                                    new RouteMap("SavedCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "SavedRecipes", Nested: new RouteMap[]
-                                    {
-                                         new RouteMap("UpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "SavedCookbookDetail"),
-                                    })
                                 }),
-                                new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>(), Nested: new RouteMap[]
+                                new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
+                                new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "Profile"),
+                                new RouteMap("ProfileUpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "ProfileCookbookDetail"),
+                                new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>(), DependsOn:"Home", Nested: new RouteMap[]
                                 {
-                                    new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>(), DependsOn:"RecipeDetails"),
-                                    new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingViewModel>(), DependsOn:"RecipeDetails"),
-                                    new RouteMap("Reviews", View: views.FindByViewModel<ReviewsViewModel>(), DependsOn:"RecipeDetails")
+                                    new RouteMap("Filter", View: views.FindByViewModel<FilterViewModel>())
                                 }),
+                                new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesViewModel>()),
+                                new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes"),
+                                new RouteMap("SavedCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "SavedRecipes"),
+                                new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "SavedCookbookDetail"),
+                                new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>()),
+                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>(), DependsOn:"RecipeDetails"),
+                                new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingViewModel>(), DependsOn:"RecipeDetails"),
+                                new RouteMap("Reviews", View: views.FindByViewModel<ReviewsViewModel>(), DependsOn:"RecipeDetails"),
                             })
                         }));
     }
