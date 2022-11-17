@@ -1,8 +1,4 @@
-﻿using Chefs.Business;
-using Microsoft.UI.Xaml.Controls;
-using Uno.Extensions.Navigation;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public partial class RecipeDetailsViewModel
 {

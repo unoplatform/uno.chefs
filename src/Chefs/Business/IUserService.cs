@@ -1,8 +1,4 @@
-﻿using Chefs.Settings;
-using System.Collections.Immutable;
-using System.Threading.Tasks;
-
-namespace Chefs.Business;
+﻿namespace Chefs.Business;
 
 /// <summary>
 /// Implements user related methods

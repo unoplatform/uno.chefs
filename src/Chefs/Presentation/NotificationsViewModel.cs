@@ -1,6 +1,4 @@
-﻿using Chefs.Business;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public partial class NotificationsViewModel
 {

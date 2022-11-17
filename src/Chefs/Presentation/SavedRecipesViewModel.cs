@@ -1,7 +1,4 @@
-﻿using Chefs.Business;
-using Windows.System;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public partial class SavedRecipesViewModel
 {

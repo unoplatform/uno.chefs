@@ -1,8 +1,4 @@
-﻿using Chefs.Business;
-using Chefs.Settings;
-using System.Windows.Input;
-using Uno.Extensions;
-using Windows.Media.Protection.PlayReady;
+﻿using Uno.Extensions;
 
 namespace Chefs.Presentation;
 

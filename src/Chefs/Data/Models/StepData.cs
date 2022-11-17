@@ -1,6 +1,4 @@
-﻿using System.Collections.Immutable;
-
-namespace Chefs.Data;
+﻿namespace Chefs.Data;
 
 public class StepData
 {

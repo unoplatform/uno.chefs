@@ -1,7 +1,4 @@
-﻿using System.Net;
-using Uno.Extensions.Navigation;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public partial class WelcomeViewModel
 {

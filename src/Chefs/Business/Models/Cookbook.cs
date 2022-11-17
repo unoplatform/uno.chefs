@@ -1,9 +1,7 @@
-﻿using System.Collections.Immutable;
-using Chefs.Data;
-
+﻿
 namespace Chefs.Business;
 
-public record Cookbook
+public partial record Cookbook
 {
     internal Cookbook(CookbookData cookbookData)
     {

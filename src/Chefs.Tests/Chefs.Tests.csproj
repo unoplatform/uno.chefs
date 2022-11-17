@@ -19,8 +19,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.3.0" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.62" />
 	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.115" />
 	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.115" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.214" />
 	</ItemGroup>
 </Project>

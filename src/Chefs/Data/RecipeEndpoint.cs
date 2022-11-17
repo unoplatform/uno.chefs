@@ -97,7 +97,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         if(_recipes == null)
         {
             _recipes = (await _dataService
-                .ReadFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
+                .ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
         }
         return _recipes ?? new List<RecipeData>();
     }
@@ -108,7 +108,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         if (_savedRecipes == null)
         {
             _savedRecipes = (await _dataService
-                .ReadFileAsync<List<SavedRecipesData>>(_serializer, Constants.SavedRecipesDataFile));
+                .ReadPackageFileAsync<List<SavedRecipesData>>(_serializer, Constants.SavedRecipesDataFile));
         }
         return _savedRecipes ?? new List<SavedRecipesData>();
     }
@@ -119,7 +119,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         if (_categories == null)
         {
             _categories = (await _dataService
-                .ReadFileAsync<List<CategoryData>>(_serializer, Constants.CategoryDataFile));
+                .ReadPackageFileAsync<List<CategoryData>>(_serializer, Constants.CategoryDataFile));
         }
         return _categories ?? new List<CategoryData>();
     }

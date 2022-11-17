@@ -1,7 +1,4 @@
-﻿using Chefs.Business;
-using System.Collections.Immutable;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public record IngredientsParameter(Recipe Recipe, IImmutableList<Ingredient> Ingredients);
 

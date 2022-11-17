@@ -1,7 +1,4 @@
-﻿using System.Collections.Immutable;
-using Chefs.Business;
-
-namespace Chefs.Data;
+﻿namespace Chefs.Data;
 
 public class RecipeData
 {

@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Runtime.InteropServices;
-using Chefs.Business;
-using Uno.Extensions.Reactive;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public partial class CreateCookbookViewModel
 {

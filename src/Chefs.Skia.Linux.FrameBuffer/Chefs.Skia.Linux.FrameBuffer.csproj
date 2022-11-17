@@ -15,20 +15,40 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
-		<PackageReference Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="4.4.13" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.4.13" Condition="'$(Configuration)'=='Debug'" />
-		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.1-preview.79" />
+		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.32" />
+		<PackageReference Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="4.7.0-dev.214" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.0-dev.214" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.3" />
 		<PackageReference Include="SkiaSharp.Skottie" Version="2.88.1-preview.79" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.3.0" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.115" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.115" />
+	 <PackageReference Include="Uno.Material.WinUI" Version="2.4.0-dev.62" />
+	 <PackageReference Include="Uno.Toolkit.WinUI" Version="2.4.0-dev.115" />
+	 <PackageReference Include="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.115" />
 	</ItemGroup>
-	<Import Project="..\Extensions.props" />
+	
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />
+	<ItemGroup>
+	 <PackageReference Include="Uno.Extensions.Configuration" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Core" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Hosting" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Http" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Http.Refit" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Localization.WinUI" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Logging.Serilog" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Logging.WinUI" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Navigation" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Reactive" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Serialization" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Serialization.Http" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.Extensions.Serialization.Refit" Version="2.3.0-dev.300" />
+	 <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.214" />
+	</ItemGroup>
 </Project>

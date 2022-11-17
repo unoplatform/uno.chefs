@@ -1,9 +1,8 @@
-﻿using Chefs.Data;
-using System.Net;
+﻿
 
 namespace Chefs.Business;
 
-public record Category
+public partial record Category
 {
     internal Category(CategoryData? category)
     {

@@ -1,8 +1,4 @@
-﻿using Chefs.Business;
-using Chefs.Data;
-using System.Collections.Immutable;
-
-namespace Chefs.Presentation;
+﻿namespace Chefs.Presentation;
 
 public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
