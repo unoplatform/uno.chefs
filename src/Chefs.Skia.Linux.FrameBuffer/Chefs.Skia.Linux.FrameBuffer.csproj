@@ -14,7 +14,6 @@
 		<UpToDateCheckInput Include="..\Chefs.UI\**\*.xaml" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.32" />
 		<PackageReference Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="4.7.0-dev.214" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.0-dev.240" Condition="'$(Configuration)'=='Debug'" />
