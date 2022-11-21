@@ -18,7 +18,7 @@
 	
 	<!-- Override the compiler version for linux build on mono's msbuild -->
 	<PropertyGroup>
-		<MicrosoftNetCompilerVersionOverride>4.4.0-2.final</MicrosoftNetCompilerVersionOverride>
+		<MicrosoftNetCompilerVersionOverride>4.4.0</MicrosoftNetCompilerVersionOverride>
 	</PropertyGroup>
 
 	<PropertyGroup>
