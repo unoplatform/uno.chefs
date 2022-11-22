@@ -1,4 +1,6 @@
-﻿namespace Chefs.Presentation;
+﻿using Chefs.Business;
+
+namespace Chefs.Presentation;
 
 public partial class SettingsViewModel
 {

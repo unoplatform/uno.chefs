@@ -1,4 +1,6 @@
-﻿namespace Chefs.Presentation;
+﻿
+
+namespace Chefs.Presentation;
 
 public partial class FilterViewModel
 {

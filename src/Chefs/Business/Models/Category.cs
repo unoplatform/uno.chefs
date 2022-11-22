@@ -1,5 +1,7 @@
 ﻿
 
+using Chefs.Data;
+
 namespace Chefs.Business;
 
 public partial record Category

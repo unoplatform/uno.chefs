@@ -1,3 +1,5 @@
+using Uno.Extensions.Configuration;
+
 namespace Chefs.Presentation;
 
 public class ShellViewModel

@@ -1,4 +1,6 @@
-﻿namespace Chefs.Business;
+﻿using Chefs.Data;
+
+namespace Chefs.Business;
 
 public record SearchFilter(
     OrganizeCategories? OrganizeCategories, 
