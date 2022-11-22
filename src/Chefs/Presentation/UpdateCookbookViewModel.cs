@@ -1,4 +1,6 @@
-﻿namespace Chefs.Presentation;
+﻿using System.Collections.Immutable;
+
+namespace Chefs.Presentation;
 
 public partial class UpdateCookbookViewModel
 {

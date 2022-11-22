@@ -1,6 +1,3 @@
-
-
-
 namespace Chefs.Presentation;
 
 public class ShellViewModel

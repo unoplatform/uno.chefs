@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Immutable;
+
 namespace Chefs.Business;
 
 public partial record Cookbook

@@ -1,4 +1,6 @@
-﻿namespace Chefs.Data;
+﻿using System.Collections.Immutable;
+
+namespace Chefs.Data;
 
 public class StepData
 {

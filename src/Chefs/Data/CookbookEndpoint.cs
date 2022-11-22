@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Immutable;
+
 namespace Chefs.Data;
 
 public class CookbookEndpoint : ICookbookEndpoint

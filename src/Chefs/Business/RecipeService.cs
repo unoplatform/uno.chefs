@@ -1,4 +1,6 @@
-﻿namespace Chefs.Business;
+﻿using System.Collections.Immutable;
+
+namespace Chefs.Business;
 
 public class RecipeService : IRecipeService
 {

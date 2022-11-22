@@ -1,4 +1,6 @@
-﻿namespace Chefs.Presentation;
+﻿using System.Collections.Immutable;
+
+namespace Chefs.Presentation;
 
 public record ReviewParameter(Guid recipeId, IImmutableList<Review> reviews);
 
