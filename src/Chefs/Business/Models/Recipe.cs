@@ -3,7 +3,7 @@ using Chefs.Data;
 
 namespace Chefs.Business;
 
-public record Recipe
+public partial record Recipe
 {
     internal Recipe(RecipeData recipeData)
     {

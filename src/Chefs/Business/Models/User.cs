@@ -6,7 +6,7 @@ using Windows.System;
 
 namespace Chefs.Business;
 
-public record User
+public partial record User
 {
     internal User(UserData user)
     {

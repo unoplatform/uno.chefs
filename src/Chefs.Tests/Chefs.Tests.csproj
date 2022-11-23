@@ -11,7 +11,10 @@
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
 		<PackageReference Include="NUnit" Version="3.13.2" />
 		<PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-		<PackageReference Include="coverlet.collector" Version="3.1.0" />
+		<PackageReference Include="coverlet.collector" Version="3.2.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -19,9 +22,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.3.0" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.109" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.109" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.64" />
+	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.117" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.117" />
 	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
 	</ItemGroup>
 </Project>
