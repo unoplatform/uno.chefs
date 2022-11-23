@@ -84,6 +84,7 @@
 	  <PackageReference Update="Uno.Material.WinUI" Version="2.3.0" />
 	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.109" />
 	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.109" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />
