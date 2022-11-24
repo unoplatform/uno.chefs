@@ -11,7 +11,7 @@ public partial class LoginViewModel
     private readonly INavigator _navigator;
     private readonly IUserService _userService;
 
-    private LoginViewModel(
+    public LoginViewModel(
         INavigator navigator, 
         IUserService userService)
     {
