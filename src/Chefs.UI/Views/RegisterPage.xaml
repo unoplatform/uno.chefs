@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:utu="using:Uno.Toolkit.UI"
     xmlns:um="using:Uno.Material"
-    mc:Ignorable="d"
+    xmlns:ios="http://uno.ui/ios"
+    xmlns:android="http://uno.ui/android"
+    mc:Ignorable="d android ios"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
@@ -24,17 +26,36 @@
             <utu:AutoLayout Spacing="20" Padding="30,30,30,10" CornerRadius="40,40,0,0" PrimaryAxisAlignment="End" utu:AutoLayout.PrimaryAlignment="Stretch">
                 <Image Source="ms-appx:///Assets/Icons/uno_logo.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="57.5" utu:AutoLayout.CounterLength="189" />
                 <utu:AutoLayout Spacing="14" PrimaryAxisAlignment="Center">
-                    <TextBox PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}" PlaceholderText="Full name" Style="{StaticResource OutlinedTextBoxStyle}">
+                    <TextBox PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}" 
+                             PlaceholderText="Full name" 
+                             Style="{StaticResource OutlinedTextBoxStyle}"
+                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Email}"
+                             ios:ReturnKeyType="Next"
+					         android:ImeOptions="Next"
+						     IsSpellCheckEnabled="False"
+						     InputScope="Text">
                         <um:ControlExtensions.Icon>
                             <PathIcon Data="{StaticResource Icon_Outline_Person_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                         </um:ControlExtensions.Icon>
                     </TextBox>
-                    <TextBox PlaceholderText="Email" Style="{StaticResource OutlinedTextBoxStyle}">
+                    <TextBox PlaceholderText="Email" 
+                             Style="{StaticResource OutlinedTextBoxStyle}"
+                             x:Name="Email"
+                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
+                             ios:ReturnKeyType="Next"
+					         android:ImeOptions="Next"
+						     IsSpellCheckEnabled="False"
+						     InputScope="Text">
                         <um:ControlExtensions.Icon>
                             <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                         </um:ControlExtensions.Icon>
                     </TextBox>
-                    <PasswordBox PlaceholderText="Password" Style="{StaticResource OutlinedPasswordBoxStyle}">
+                    <PasswordBox PlaceholderText="Password" 
+                                 x:Name="Password"
+                                 Style="{StaticResource OutlinedPasswordBoxStyle}"
+                                 ios:ReturnKeyType="Done"
+							     android:ImeOptions="Done"
+                                 utu:ControlExtensions.Command="{Binding NavigateBack}">
                         <um:ControlExtensions.Icon>
                             <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />
                         </um:ControlExtensions.Icon>
