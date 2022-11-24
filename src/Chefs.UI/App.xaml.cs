@@ -39,7 +39,7 @@ public sealed partial class App : Application
         await Task.Run(() => host.StartAsync());
 
         var appSettings = Host.Services.GetRequiredService<IWritableOptions<AppConfig>>();
-        var isDark = true;
+        var isDark = appSettings.Value?.IsDark ?? false;
         SystemThemeHelper.SetRootTheme(_window.Content.XamlRoot, isDark);
 
     }
