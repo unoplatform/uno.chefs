@@ -54,8 +54,7 @@
                                  x:Name="Password"
                                  Style="{StaticResource OutlinedPasswordBoxStyle}"
                                  ios:ReturnKeyType="Done"
-							     android:ImeOptions="Done"
-                                 utu:ControlExtensions.Command="{Binding NavigateBack}">
+							     android:ImeOptions="Done">
                         <um:ControlExtensions.Icon>
                             <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />
                         </um:ControlExtensions.Icon>
