@@ -34,7 +34,8 @@ public record SearchFilter(
 
         if ((Difficulty == null || recipe.Difficulty == Difficulty) &&
             (Time == null || recipe.CookTime < time) &&
-            (Category == null || recipe.Category.Id == Category.Id) && (Serves == null || Serves == recipe.Serves))
+            (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) && 
+            (Serves == null || Serves == recipe.Serves))
         {
             return true;
         }
