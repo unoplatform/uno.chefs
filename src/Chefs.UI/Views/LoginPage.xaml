@@ -7,6 +7,8 @@
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
+      xmlns:ios="http://uno.ui/ios"
+      xmlns:android="http://uno.ui/android"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -41,7 +43,12 @@
                                     PrimaryAxisAlignment="Center">
                         <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  PlaceholderText="Email"
-                                 Style="{StaticResource OutlinedTextBoxStyle}">
+                                 Style="{StaticResource OutlinedTextBoxStyle}"
+                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
+                                 ios:ReturnKeyType="Next"
+							     android:ImeOptions="Next"
+							     IsSpellCheckEnabled="False"
+							     InputScope="Text">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}"
                                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
@@ -49,7 +56,11 @@
                         </TextBox>
                         <PasswordBox Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      PlaceholderText="Password"
-                                     Style="{StaticResource OutlinedPasswordBoxStyle}">
+                                     x:Name="Password"
+                                     Style="{StaticResource OutlinedPasswordBoxStyle}"
+                                     ios:ReturnKeyType="Done"
+							         android:ImeOptions="Done"
+                                     utu:ControlExtensions.Command="{Binding Login}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
                                           Foreground="{ThemeResource OnSurfaceMediumBrush}" />
