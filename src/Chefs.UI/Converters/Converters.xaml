@@ -9,4 +9,5 @@
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
                                         Separator="∙"/>
+    <converters:CustomBackgroundColorConverter x:Key="CustomBackgroundColor" />
 </ResourceDictionary>

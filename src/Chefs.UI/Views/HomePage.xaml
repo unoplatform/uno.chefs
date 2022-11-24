@@ -27,13 +27,20 @@
                     <utu:AutoLayout Spacing="8"
                                     Padding="18,0"
                                     Orientation="Horizontal">
-                        <Button utu:AutoLayout.CounterAlignment="Start"
-                                utu:AutoLayout.PrimaryLength="40"
-                                utu:AutoLayout.CounterLength="40"
-                                Command="{Binding DataContext.ProfileCreator, ElementName=UserFeedView}"
-                                CommandParameter="{Binding Data}">
-                            <PersonPicture />
-                        </Button>
+                        <utu:AutoLayout CornerRadius="30"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Center"
+                                        utu:AutoLayout.PrimaryLength="40"
+                                        utu:AutoLayout.CounterLength="40"
+                                        uen:Navigation.Request="Profile"
+                                        uen:Navigation.Data="{Binding Data}">
+                            <Border CornerRadius="15"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <Image Source="{Binding Data.UrlProfileImage}"
+                                       Stretch="UniformToFill" />
+                            </Border>
+                        </utu:AutoLayout>
+
                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
@@ -98,7 +105,7 @@
                                                             <DataTemplate>
                                                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                             CornerRadius="12">
-                                                                <Image Source="{Binding ImageUrl}"
+                                                                    <Image Source="{Binding ImageUrl}"
                                                                        Stretch="UniformToFill"
                                                                        utu:AutoLayout.PrimaryLength="144" />
                                                                     <utu:AutoLayout Spacing="16"
@@ -158,10 +165,10 @@
                                                             PrimaryAxisAlignment="Center"
                                                             Orientation="Horizontal"
                                                             utu:AutoLayout.CounterAlignment="Start">
-                                                <ImageIcon Source="{Binding UrlIcon}"
+                                                    <ImageIcon Source="{Binding UrlIcon}"
                                                            utu:AutoLayout.CounterAlignment="Center"
                                                            Margin="0, 0, 0, 3" />
-                                                <TextBlock Foreground="{ThemeResource SurfaceBrush}"
+                                                    <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                            Text="{Binding Name}"
                                                            utu:AutoLayout.CounterAlignment="Center"
                                                            Style="{StaticResource LabelLarge}" />
@@ -215,7 +222,7 @@
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="12">
-                                                            <Image Source="{Binding ImageUrl}"
+                                                                <Image Source="{Binding ImageUrl}"
                                                                    Stretch="UniformToFill"
                                                                    utu:AutoLayout.PrimaryLength="144" />
                                                                 <utu:AutoLayout Spacing="2"
@@ -267,7 +274,7 @@
                                                                 utu:AutoLayout.CounterLength="75">
                                                         <Border CornerRadius="25"
                                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                        <Image Source="{Binding UrlProfileImage}"
+                                                            <Image Source="{Binding UrlProfileImage}"
                                                                Stretch="UniformToFill" />
                                                         </Border>
                                                     </utu:AutoLayout>
@@ -324,7 +331,7 @@
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="12">
-                                                            <Image Source="{Binding ImageUrl}"
+                                                                <Image Source="{Binding ImageUrl}"
                                                                    Stretch="UniformToFill"
                                                                    utu:AutoLayout.PrimaryLength="144" />
                                                                 <utu:AutoLayout Spacing="16"
@@ -398,7 +405,7 @@
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="12">
-                                                            <Image Source="{Binding ImageUrl}"
+                                                                <Image Source="{Binding ImageUrl}"
                                                                    Stretch="UniformToFill"
                                                                    utu:AutoLayout.PrimaryLength="144" />
                                                                 <utu:AutoLayout Spacing="16"
@@ -473,7 +480,7 @@
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="12">
-                                                            <Image Source="{Binding ImageUrl}"
+                                                                <Image Source="{Binding ImageUrl}"
                                                                    Stretch="UniformToFill"
                                                                    utu:AutoLayout.PrimaryLength="144" />
                                                                 <utu:AutoLayout Spacing="16"
@@ -511,6 +518,5 @@
                 </utu:AutoLayout>
             </ScrollViewer>
         </utu:AutoLayout>
-
     </utu:AutoLayout>
 </Page>
