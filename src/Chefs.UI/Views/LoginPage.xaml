@@ -9,7 +9,7 @@
       xmlns:um="using:Uno.Material"
       xmlns:ios="http://uno.ui/ios"
       xmlns:android="http://uno.ui/android"
-      mc:Ignorable="d"
+      mc:Ignorable="d android ios"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <utu:AutoLayout>
@@ -59,8 +59,7 @@
                                      x:Name="Password"
                                      Style="{StaticResource OutlinedPasswordBoxStyle}"
                                      ios:ReturnKeyType="Done"
-							         android:ImeOptions="Done"
-                                     utu:ControlExtensions.Command="{Binding Login}">
+							         android:ImeOptions="Done">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
                                           Foreground="{ThemeResource OnSurfaceMediumBrush}" />
