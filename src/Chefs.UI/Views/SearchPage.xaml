@@ -10,6 +10,7 @@
       xmlns:ios="http://uno.ui/ios"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:android="http://uno.ui/android"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d android ios"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -66,15 +67,17 @@
                 </utu:AutoLayout>
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Padding="18,12">
-                    <uer:FeedView x:Name="TrendingNowFeed"
-                                  Source="{Binding Items}">
+                <Grid Padding="18,12">
+                    <uer:FeedView x:Name="SearchFeed"
+                                  Source="{Binding Items}"
+                                  Visibility="{Binding Searched, Converter={StaticResource TrueToCollapsed}}">
                         <DataTemplate>
                             <ListView ItemsSource="{Binding Data}"
                                       IsItemClickEnabled="True">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
+                                        <ItemsWrapGrid MaximumRowsOrColumns="2"
+                                                       Orientation="Horizontal" />
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
@@ -83,35 +86,68 @@
                                                                 Style="{StaticResource OutlinedCardContentControlStyle}"
                                                                 uen:Navigation.Request="!RecipeDetails"
                                                                 uen:Navigation.Data="{Binding}">
-                                    <utu:CardContentControl.ContentTemplate>
-                                        <DataTemplate>
-                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                            CornerRadius="12">
-                                                <Image Source="{Binding ImageUrl}"
-                                                       Stretch="UniformToFill"
-                                                       utu:AutoLayout.PrimaryLength="144" />
-                                                <utu:AutoLayout Spacing="2"
-                                                                Padding="16,10"
-                                                                PrimaryAxisAlignment="Center">
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                               TextWrapping="Wrap"
-                                                               Text="{Binding Name}"
-                                                               Style="{StaticResource TitleMedium}" />
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                               TextWrapping="Wrap"
-                                                               Text="{Binding TimeCal}"
-                                                               Style="{StaticResource BodySmall}" />
-                                                </utu:AutoLayout>
-                                            </utu:AutoLayout>
-                                        </DataTemplate>
-                                    </utu:CardContentControl.ContentTemplate>
-                                </utu:CardContentControl>
+                                            <utu:CardContentControl.ContentTemplate>
+                                                <DataTemplate>
+                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                    CornerRadius="12">
+                                                        <Image Source="{Binding ImageUrl}"
+                                                               Stretch="UniformToFill"
+                                                               utu:AutoLayout.PrimaryLength="144" />
+                                                        <utu:AutoLayout Spacing="2"
+                                                                        Padding="16,10"
+                                                                        PrimaryAxisAlignment="Center">
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                       TextWrapping="Wrap"
+                                                                       Text="{Binding Name}"
+                                                                       Style="{StaticResource TitleMedium}" />
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                       TextWrapping="Wrap"
+                                                                       Text="{Binding TimeCal}"
+                                                                       Style="{StaticResource BodySmall}" />
+                                                        </utu:AutoLayout>
+                                                    </utu:AutoLayout>
+                                                </DataTemplate>
+                                            </utu:CardContentControl.ContentTemplate>
+                                        </utu:CardContentControl>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </DataTemplate>
                     </uer:FeedView>
-                </utu:AutoLayout>
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start">
+                        <uer:FeedView x:Name="RecommendedFeedView"
+                                      Source="{Binding Recommended}"
+                                      Visibility="{Binding Searched, Converter={StaticResource TrueToVisible}}">
+                            <DataTemplate>
+                                <ScrollViewer HorizontalScrollMode="Enabled"
+                                              HorizontalScrollBarVisibility="Hidden">
+                                    <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                        <muxc:ItemsRepeater.Layout>
+                                            <muxc:StackLayout Orientation="Horizontal"
+                                                              Spacing="8" />
+                                        </muxc:ItemsRepeater.Layout>
+                                        <muxc:ItemsRepeater.ItemTemplate>
+                                            <DataTemplate>
+                                                <utu:AutoLayout Spacing="8"
+                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                    <Border utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                            CornerRadius="12">
+                                                        <Image Source="{Binding ImageUrl}"
+                                                               Stretch="UniformToFill" />
+                                                    </Border>
+                                                    <TextBlock Text="{Binding Name}"
+                                                               utu:AutoLayout.CounterAlignment="Center"
+                                                               Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                               Style="{StaticResource TitleSmall}" />
+                                                </utu:AutoLayout>
+                                            </DataTemplate>
+                                        </muxc:ItemsRepeater.ItemTemplate>
+                                    </muxc:ItemsRepeater>
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </uer:FeedView>
+                    </utu:AutoLayout>
+                </Grid>
             </ScrollViewer>
         </utu:AutoLayout>
     </utu:AutoLayout>

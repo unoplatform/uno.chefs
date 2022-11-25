@@ -119,7 +119,7 @@
                                                                         </utu:AutoLayout>
                                                                         <Button utu:AutoLayout.CounterAlignment="Center"
                                                                                 Style="{StaticResource IconButtonStyle}"
-                                                                                Command="{Binding DataContext.SaveRecipe, ElementName=TrendingNowFeed}"
+                                                                                Command="{utu:AncestorBinding Path=DataContext.SaveRecipe, AncestorType=uer:FeedView}"
                                                                                 CommandParameter="{Binding}">
                                                                             <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
                                                                                       Foreground="{ThemeResource OnBackgroundBrush}" />
@@ -353,7 +353,7 @@
                                                                     </utu:AutoLayout>
                                                                     <Button utu:AutoLayout.CounterAlignment="Center"
                                                                             Style="{StaticResource IconButtonStyle}"
-                                                                            Command="{Binding DataContext.SaveRecipe, ElementName=TrendingNowFeed}"
+                                                                            Command="{utu:AncestorBinding Path=DataContext.SaveRecipe, AncestorType=uer:FeedView}"
                                                                             CommandParameter="{Binding}">
                                                                         <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
                                                                                   Foreground="{ThemeResource OnBackgroundBrush}" />
@@ -432,7 +432,7 @@
                                                                     </utu:AutoLayout>
                                                                     <Button utu:AutoLayout.CounterAlignment="Center"
                                                                             Style="{StaticResource IconButtonStyle}"
-                                                                            Command="{Binding DataContext.SaveRecipe, ElementName=TrendingNowFeed}"
+                                                                            Command="{utu:AncestorBinding Path=DataContext.SaveRecipe, AncestorType=uer:FeedView}"
                                                                             CommandParameter="{Binding}">
                                                                         <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
                                                                                   Foreground="{ThemeResource OnBackgroundBrush}" />
@@ -511,7 +511,7 @@
                                                                     </utu:AutoLayout>
                                                                     <Button utu:AutoLayout.CounterAlignment="Center"
                                                                             Style="{StaticResource IconButtonStyle}"
-                                                                            Command="{Binding DataContext.SaveRecipe, ElementName=TrendingNowFeed}"
+                                                                            Command="{utu:AncestorBinding Path=DataContext.SaveRecipe, AncestorType=uer:FeedView}"
                                                                             CommandParameter="{Binding}">
                                                                         <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
                                                                                   Foreground="{ThemeResource OnBackgroundBrush}" />

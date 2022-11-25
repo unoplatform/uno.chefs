@@ -25,11 +25,17 @@ public partial class SearchViewModel
         .Select(ApplyFilter)
         .AsListFeed();
 
+    public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
+
+    public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
+
     private IFeed<IImmutableList<Recipe>> Results => Term
         .SelectAsync(_recipeService.Search);
 
     private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) =>
         inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
+
+    private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter?.HasFilter != null || !string.IsNullOrEmpty(inputs.term);
 
     public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);
