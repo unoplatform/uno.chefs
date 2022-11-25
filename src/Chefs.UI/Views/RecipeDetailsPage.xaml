@@ -58,9 +58,7 @@
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <Image Source="{Binding Recipe.ImageUrl}"
                                    Stretch="UniformToFill"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   utu:AutoLayout.PrimaryLength="200"
-                                   utu:AutoLayout.CounterLength="390" />
+                                   utu:AutoLayout.CounterAlignment="Stretch" />
                             <utu:AutoLayout Background="{ThemeResource OnPrimaryBrush}"
                                             Spacing="60"
                                             Padding="50,14"
@@ -74,7 +72,7 @@
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Text="{Binding Recipe.CookTime}"
+                                               Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource TitleSmall}" />
                                 </utu:AutoLayout>
@@ -105,8 +103,7 @@
                     </utu:AutoLayout>
                     <utu:AutoLayout uen:Region.Attached="True"
                                     Spacing="16"
-                                    Padding="18,30"
-                                    utu:AutoLayout.PrimaryLength="675">
+                                    Padding="18,30">
                         <utu:TabBar uen:Region.Attached="True"
                                     SelectedItem="{Binding ElementName=IngredientsTabItem}"
                                     Style="{StaticResource TopTabBarStyle}">
@@ -185,7 +182,8 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                        CornerRadius="15">
+                                                                        CornerRadius="15"
+                                                                        Margin="0,8">
                                                             <utu:AutoLayout Padding="16,18"
                                                                             PrimaryAxisAlignment="Center">
                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
@@ -205,10 +203,10 @@
                                     </uer:FeedView>
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
+                            
                             <utu:AutoLayout uen:Region.Name="ReviewsTab"
                                             Visibility="Collapsed">
-                                <utu:AutoLayout Spacing="10"
-                                                Orientation="Horizontal">
+                                <utu:AutoLayout Orientation="Horizontal" Spacing="10">
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                TextWrapping="Wrap"
                                                Text="{Binding Reviews.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Comments'}"
@@ -216,70 +214,30 @@
                                                utu:AutoLayout.PrimaryAlignment="Stretch"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <HyperlinkButton Content="Add comment"
-                                                     utu:AutoLayout.CounterAlignment="Start"
+                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                      Command="{Binding Review}"/>
                                 </utu:AutoLayout>
                                 <uer:FeedView x:Name="ReviewsFeed"
                                               Source="{Binding Reviews}">
                                     <DataTemplate>
                                         <ListView ItemsSource="{Binding Data}"
-                                                  Style="{StaticResource ListViewStyle}">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <utu:AutoLayout Spacing="16"
-                                                                    Padding="16,18"
-                                                                    Orientation="Horizontal">
-                                                        <Border CornerRadius="20"
-                                                                utu:AutoLayout.CounterAlignment="Start"
-                                                                utu:AutoLayout.PrimaryLength="60"
-                                                                utu:AutoLayout.CounterLength="60">
-                                                            <Image Source="{Binding UrlAuthorImage}"
-                                                                   Stretch="UniformToFill" />
-                                                        </Border>
-                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                            <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                                                           TextWrapping="Wrap"
-                                                                           Text="{Binding Date, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:MMM dd, yyy}'}"
-                                                                           Style="{StaticResource CaptionSmall}" />
-                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                           TextWrapping="Wrap"
-                                                                           Text="{Binding PublisherName}"
-                                                                           Style="{StaticResource TitleMedium}" />
-                                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                                                           TextWrapping="Wrap"
-                                                                           Text="{Binding Description}"
-                                                                           Style="{StaticResource LabelSmall}" />
-                                                            </utu:AutoLayout>
-                                                            <utu:AutoLayout Spacing="8"
-                                                                            Padding="0,16,0,0"
-                                                                            Orientation="Horizontal">
-                                                                <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                                                        Content="{Binding Likes, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
-                                                                        utu:AutoLayout.CounterAlignment="Start" />
-                                                                <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                                                        Content="{Binding Dislikes, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
-                                                                        utu:AutoLayout.CounterAlignment="Start" />
-                                                            </utu:AutoLayout>
-                                                        </utu:AutoLayout>
-                                                    </utu:AutoLayout>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
+                                                  Style="{StaticResource ListViewStyle}"
+                                                  ItemTemplate="{StaticResource ReviewDataTemplate}"/>
                                     </DataTemplate>
                                 </uer:FeedView>
                             </utu:AutoLayout>
                         </Grid>
-
+                        
                         <Button Content="Get the Ingredients"
                                 utu:AutoLayout.PrimaryLength="56"
                                 Style="{StaticResource TextButtonStyle}"
                                 Command="{Binding IngredientsNavigation}"/>
+
                         <Button Background="{ThemeResource PrimaryBrush}"
                                 Content="Start cooking!"
                                 utu:AutoLayout.PrimaryLength="56"
-                                Command="{Binding LiveCooking}"/>
+                                Command="{Binding LiveCooking}" />
+
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>

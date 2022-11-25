@@ -39,8 +39,7 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>
-            <utu:AutoLayout PrimaryAxisAlignment="Center"
-                            utu:AutoLayout.PrimaryLength="327">
+            <utu:AutoLayout PrimaryAxisAlignment="Center">
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                            TextWrapping="Wrap"
                            Text="{Binding Recipe.Name}"
@@ -51,9 +50,7 @@
                            Margin="18,0,18,20"
                            Style="{StaticResource TitleSmall}" />
                 <Image Source="{Binding Recipe.ImageUrl}"
-                       Stretch="UniformToFill"
-                       utu:AutoLayout.PrimaryLength="200"
-                       utu:AutoLayout.CounterLength="390" />
+                       Stretch="UniformToFill"/>
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="16"
@@ -78,29 +75,28 @@
                                         utu:AutoLayout.CounterAlignment="Center">
                             <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                        TextAlignment="Center"
-                                       Text="{Binding Recipe.Serves,Converter={StaticResource StringFormatter}, ConverterParameter='Serves {0}'}"
+                                       Text="{Binding Recipe.Serves,Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Serves'}"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Style="{StaticResource BodySmall}" />
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="12"
-                                    utu:AutoLayout.CounterAlignment="Start">
+                                    utu:AutoLayout.CounterAlignment="Stretch">
                         <uer:FeedView x:Name="IngredientsFeed"
-                                      Source="{Binding Ingredients}">
+                                      Source="{Binding Ingredients}"
+                                      utu:AutoLayout.CounterAlignment="Stretch">
                             <DataTemplate>
                                 <ListView ItemsSource="{Binding Data}"
                                           Style="{StaticResource ListViewStyle}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                            CornerRadius="15"
+                                            <utu:AutoLayout
                                                             PrimaryAxisAlignment="Center"
-                                                            Margin="0,8,0,8">
+                                                            Margin="0,8">
                                                 <CheckBox Content="{Binding NameQuantity}"
                                                           utu:AutoLayout.CounterAlignment="Start" />
                                                 <utu:Divider Foreground="Gray"
-                                                             utu:AutoLayout.CounterAlignment="Start"
-                                                             utu:AutoLayout.CounterLength="354"
+                                                             utu:AutoLayout.CounterAlignment="Stretch"
                                                              Style="{StaticResource DividerStyle}" />
                                             </utu:AutoLayout>
                                         </DataTemplate>

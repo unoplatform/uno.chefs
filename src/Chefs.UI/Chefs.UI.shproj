@@ -27,9 +27,11 @@
     <UpToDateCheckInput Remove="Views\SearchPage.xaml" />
     <UpToDateCheckInput Remove="Views\SettingsPage.xaml" />
     <UpToDateCheckInput Remove="Views\StartCookingPage.xaml" />
+    <UpToDateCheckInput Remove="Views\Templates\ItemTemplates.xaml" />
     <UpToDateCheckInput Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Converters\TimeSpanToStringConverter.cs" />
     <_Globbed_Compile Remove="Views\AddRecipesCookbookPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\CookbookDetailPage.xaml.cs" />
     <_Globbed_Compile Remove="Converters\EnumBooleanConverter.cs" />
@@ -69,6 +71,7 @@
     <_Globbled_Page Remove="Views\SearchPage.xaml" />
     <_Globbled_Page Remove="Views\SettingsPage.xaml" />
     <_Globbled_Page Remove="Views\LiveCookingPage.xaml" />
+    <_Globbled_Page Remove="Views\Templates\ItemTemplates.xaml" />
     <_Globbled_Page Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
 </Project>

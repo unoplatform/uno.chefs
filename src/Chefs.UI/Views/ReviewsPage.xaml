@@ -35,53 +35,8 @@
                                   Source="{Binding Reviews}">
                         <DataTemplate>
                             <ListView ItemsSource="{Binding Data}"
-                                      Style="{StaticResource ListViewStyle}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                        CornerRadius="15">
-                                            <utu:AutoLayout Spacing="16"
-                                                            Padding="16,18"
-                                                            Orientation="Horizontal">
-                                                <Border CornerRadius="20"
-                                                        utu:AutoLayout.CounterAlignment="Start"
-                                                        utu:AutoLayout.PrimaryLength="60"
-                                                        utu:AutoLayout.CounterLength="60">
-                                                    <Image Source="{Binding UrlProfileImage}"
-                                                           Stretch="UniformToFill" />
-                                                </Border>
-                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                    <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                                                   TextWrapping="Wrap"
-                                                                   Text="{Binding Date, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:MMM dd, yyy}'}"
-                                                                   Style="{StaticResource CaptionSmall}" />
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                   TextWrapping="Wrap"
-                                                                   Text="{Binding PublisherName}"
-                                                                   Style="{StaticResource TitleMedium}" />
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                                                   TextWrapping="Wrap"
-                                                                   Text="{Binding Description}"
-                                                                   Style="{StaticResource LabelSmall}" />
-                                                    </utu:AutoLayout>
-                                                    <utu:AutoLayout Spacing="8"
-                                                                    Padding="0,16,0,0"
-                                                                    Orientation="Horizontal">
-                                                        <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                                                Content="{Binding Likes, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
-                                                                utu:AutoLayout.CounterAlignment="Start" />
-                                                        <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                                                Content="{Binding Dislikes, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
-                                                                utu:AutoLayout.CounterAlignment="Start" />
-                                                    </utu:AutoLayout>
-                                                </utu:AutoLayout>
-                                            </utu:AutoLayout>
-                                        </utu:AutoLayout>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                                      Style="{StaticResource ListViewStyle}"
+                                      ItemTemplate="{StaticResource ReviewDataTemplate}" />
                         </DataTemplate>
                     </uer:FeedView>
                 </utu:AutoLayout>
