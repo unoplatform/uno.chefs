@@ -56,9 +56,11 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         var userSavedRecipe = savedRecipes?.Where(x => x.UserId == currentUser.Id).FirstOrDefault();
 
-        if (userSavedRecipe is not null)
+        if (userSavedRecipe is not null && userSavedRecipe.SavedRecipes is not null)
         {
-            userSavedRecipe.SavedRecipes = userSavedRecipe.SavedRecipes.Concat(recipe.Id).ToArray();
+            userSavedRecipe.SavedRecipes = !userSavedRecipe.SavedRecipes.Contains(recipe.Id) ? 
+                userSavedRecipe.SavedRecipes.Concat(recipe.Id).ToArray() :
+                userSavedRecipe.SavedRecipes;
         }
         else
         {
