@@ -37,7 +37,8 @@
                 <Image Source="{Binding Recipe.ImageUrl}"
                        Stretch="UniformToFill"/>
             </utu:AutoLayout>
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                          HorizontalScrollMode="Disabled">
                 <utu:AutoLayout Spacing="16"
                                 Padding="18,30">
                     <utu:AutoLayout Spacing="16"

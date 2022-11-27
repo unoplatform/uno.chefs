@@ -34,7 +34,8 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                          HorizontalScrollMode="Disabled">
                 <utu:AutoLayout>
                     <utu:AutoLayout PrimaryAxisAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
