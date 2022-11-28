@@ -7,7 +7,7 @@ namespace Chefs.Converters
 {
     public class BoolToIntConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, string language) => value.Equals(parameter);
+        public object Convert(object value, Type targetType, object parameter, string language) => value is null ? false : value.Equals(parameter);
 
         public object ConvertBack(object value, Type targetType, object parameter, string language) 
         {

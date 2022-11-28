@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <_Globbed_Compile Remove="Converters\TimeSpanToStringConverter.cs" />
+    <_Globbed_Compile Remove="Converters\BoolToVisibilityConverter.cs" />
     <_Globbed_Compile Remove="Views\AddRecipesCookbookPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\CookbookDetailPage.xaml.cs" />
     <_Globbed_Compile Remove="Converters\EnumBooleanConverter.cs" />

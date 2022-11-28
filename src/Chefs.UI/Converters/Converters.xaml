@@ -10,4 +10,7 @@
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
                                         Separator="∙"/>
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
+    <converters:BoolToVisibilityConverter x:Key="TrueToVisible" />
+    <converters:BoolToVisibilityConverter x:Key="TrueToCollapsed"
+                                          Invert="True"/>
 </ResourceDictionary>
