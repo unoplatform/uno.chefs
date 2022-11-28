@@ -94,11 +94,11 @@
                                             <muxc:ItemsRepeater.ItemTemplate>
                                                 <DataTemplate>
                                                     <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                            Style="{StaticResource FilledCardContentControlStyle}">
+                                                                            Style="{StaticResource FilledCardContentControlStyle}"
+                                                                            Margin="0,0,0,12">
                                                         <utu:CardContentControl.ContentTemplate>
                                                             <DataTemplate>
-                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                                CornerRadius="12">
+                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                                                     <Image Source="{Binding ImageUrl}"
                                                                            Stretch="UniformToFill"
                                                                            utu:AutoLayout.PrimaryLength="144" />
@@ -215,7 +215,8 @@
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                         utu:AutoLayout.PrimaryLength="170"
-                                                                        Style="{StaticResource FilledCardContentControlStyle}">
+                                                                        Style="{StaticResource FilledCardContentControlStyle}"
+                                                                        Margin="0,0,0,12">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -328,7 +329,8 @@
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                         Style="{StaticResource FilledCardContentControlStyle}"
                                                                         uen:Navigation.Request="!RecipeDetails"
-                                                                        uen:Navigation.Data="{Binding}">
+                                                                        uen:Navigation.Data="{Binding}"
+                                                                        Margin="0,0,0,12">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -407,7 +409,8 @@
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                         Style="{StaticResource FilledCardContentControlStyle}"
                                                                         uen:Navigation.Request="!RecipeDetails"
-                                                                        uen:Navigation.Data="{Binding}">
+                                                                        uen:Navigation.Data="{Binding}"
+                                                                        Margin="0,0,0,12">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -486,7 +489,8 @@
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                         Style="{StaticResource FilledCardContentControlStyle}"
                                                                         uen:Navigation.Request="!RecipeDetails"
-                                                                        uen:Navigation.Data="{Binding}">
+                                                                        uen:Navigation.Data="{Binding}"
+                                                                        Margin="0,0,0,12">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
