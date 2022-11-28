@@ -61,6 +61,7 @@
                                  PlaceholderText="Password" 
                                  ios:ReturnKeyType="Done"
                                  android:ImeOptions="Done"
+                                 utu:CommandExtensions.Command="{Binding Login}"
                                  CornerRadius="16"
                                  Style="{StaticResource OutlinedPasswordBoxStyle}">
                         <um:ControlExtensions.Icon>
