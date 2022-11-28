@@ -5,20 +5,18 @@ namespace Chefs.Business;
 
 public class AppTheme : IAppTheme
 {
-    private readonly Window _window;
     private readonly IDispatcher _dispatcher;
-    public AppTheme(Window window, IDispatcher dispatcher)
+    public AppTheme(IDispatcher dispatcher)
     {
-        _window = window;
         _dispatcher = dispatcher;
     }
-    public bool IsDark => SystemThemeHelper.IsRootInDarkMode(_window.Content.XamlRoot!);
+    public bool IsDark => SystemThemeHelper.IsRootInDarkMode(Microsoft.UI.Xaml.Window.Current.Content.XamlRoot!);
 
     public async Task SetThemeAsync(bool darkMode)
     {
         await _dispatcher.ExecuteAsync(() =>
         {
-            SystemThemeHelper.SetRootTheme(_window.Content.XamlRoot, darkMode);
+            SystemThemeHelper.SetRootTheme(Microsoft.UI.Xaml.Window.Current.Content.XamlRoot!, darkMode);
         });
     }
 }
