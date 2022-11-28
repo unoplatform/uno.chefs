@@ -9,7 +9,6 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       mc:Ignorable="d"
-      NavigationCacheMode="Enabled"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
@@ -27,13 +26,20 @@
                     <utu:AutoLayout Spacing="8"
                                     Padding="18,0"
                                     Orientation="Horizontal">
-                        <Button utu:AutoLayout.CounterAlignment="Start"
-                                utu:AutoLayout.PrimaryLength="40"
-                                utu:AutoLayout.CounterLength="40"
-                                Command="{Binding DataContext.ProfileCreator, ElementName=UserFeedView}"
-                                CommandParameter="{Binding Data}">
-                            <PersonPicture />
-                        </Button>
+                        <utu:AutoLayout CornerRadius="30"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Center"
+                                        utu:AutoLayout.PrimaryLength="40"
+                                        utu:AutoLayout.CounterLength="40"
+                                        uen:Navigation.Request="!Profile"
+                                        uen:Navigation.Data="{Binding Data}">
+                            <Border CornerRadius="15"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <Image Source="{Binding Data.UrlProfileImage}"
+                                       Stretch="UniformToFill" />
+                            </Border>
+                        </utu:AutoLayout>
+
                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
@@ -535,6 +541,5 @@
                 </utu:AutoLayout>
             </ScrollViewer>
         </utu:AutoLayout>
-
     </utu:AutoLayout>
 </Page>
