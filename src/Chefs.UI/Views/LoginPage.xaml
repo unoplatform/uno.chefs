@@ -41,7 +41,7 @@
                            Width="220" 
                            Height="65" />
                 </utu:AutoLayout>
-                <utu:AutoLayout Spacing="4" 
+                <utu:AutoLayout Spacing="10" 
                                 PrimaryAxisAlignment="End">
                     <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              PlaceholderText="Email" 
@@ -59,9 +59,6 @@
                     <PasswordBox Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  x:Name="Password"
                                  PlaceholderText="Password" 
-                                 utu:AutoLayout.CounterAlignment="Center" 
-                                 Width="328" 
-                                 utu:CommandExtensions.Command="{Binding Login}"
                                  ios:ReturnKeyType="Done"
                                  android:ImeOptions="Done"
                                  CornerRadius="16"
@@ -91,7 +88,7 @@
                 <utu:Divider Style="{StaticResource DividerStyle}" />
                 <Button HorizontalContentAlignment="Center" 
                         VerticalContentAlignment="Center" 
-                        Background="{ThemeResource OnSurfaceVariantHoveredBrush}" 
+                        Background="#E2E8F0"  
                         Content="Sign in with Apple" 
                         Height="56" 
                         Foreground="{ThemeResource OnSurfaceMediumBrush}" 
@@ -102,7 +99,7 @@
                 </Button>
                 <Button HorizontalContentAlignment="Center" 
                         VerticalContentAlignment="Center" 
-                        Background="{ThemeResource OnSurfaceVariantHoveredBrush}" 
+                        Background="#E2E8F0" 
                         Content="Sign in with Google" 
                         Height="56" 
                         Foreground="{ThemeResource OnSurfaceMediumBrush}" 
