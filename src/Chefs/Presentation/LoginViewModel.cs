@@ -29,7 +29,13 @@ public partial class LoginViewModel
         SaveCredentials = _authenticationOptions.Value?.SaveCredentials ?? false
     });
 
-    public IState<Credentials> Credentials => State<Credentials>.Empty(this);
+    public IState<Credentials> Credentials => State<Credentials>.Async(this, async _ => new Credentials()
+    {
+        Email = _authenticationOptions.Value != null ? _authenticationOptions.Value.Email! : string.Empty,
+        Password = string.Empty,
+        SkipWelcome = false
+    });
+
 
     public ICommand Login => Command.Create(b => b.Given(Credentials).When(CanLogin).Then(DoLogin));
 
