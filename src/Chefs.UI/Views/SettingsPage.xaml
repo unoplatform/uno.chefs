@@ -25,6 +25,7 @@
                                Background="{ThemeResource SurfaceBrush}" >
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton Label="" 
+                                  Foreground="Transparent"
                                   IsEnabled="False"  />
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>

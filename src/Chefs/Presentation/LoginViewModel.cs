@@ -2,6 +2,7 @@
 using Chefs.Settings;
 using System.Windows.Input;
 using Uno.Extensions;
+using Uno.Extensions.Configuration;
 using Windows.Media.Protection.PlayReady;
 
 namespace Chefs.Presentation;
@@ -10,14 +11,23 @@ public partial class LoginViewModel
 {
     private readonly INavigator _navigator;
     private readonly IUserService _userService;
+    private readonly IWritableOptions<AuthenticationOptions> _authenticationOptions;
 
     public LoginViewModel(
         INavigator navigator, 
-        IUserService userService)
+        IUserService userService,
+        IWritableOptions<AuthenticationOptions> authenticationOptions)
     {
         _navigator = navigator;
         _userService = userService;
+        _authenticationOptions = authenticationOptions;
     }
+
+    public IState<AuthenticationOptions> AuthOptions => State<AuthenticationOptions>.Async(this, async _ => new AuthenticationOptions()
+    {
+        Email = _authenticationOptions.Value?.Email ?? string.Empty,
+        SaveCredentials = _authenticationOptions.Value?.SaveCredentials ?? false
+    });
 
     public IState<Credentials> Credentials => State<Credentials>.Empty(this);
 
@@ -26,8 +36,14 @@ public partial class LoginViewModel
     private bool CanLogin(Credentials credentials)
         => credentials is { Email.Length: > 0 } and { Password.Length: > 0 };
 
-    private async ValueTask DoLogin(Credentials credentials, CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<MainViewModel>(this, Qualifiers.ClearBackStack, Option.Some(credentials), ct);
+    private async ValueTask DoLogin(Credentials credentials, CancellationToken ct)
+    {
+        if(await _userService.BasicAuthenticate(credentials?.Email ?? "", credentials?.Password ?? "", ct))
+        {
+            await _navigator.NavigateViewModelAsync<MainViewModel>(this, Qualifiers.ClearBackStack, Option.Some(credentials), ct);
+        }
+    }
+        
         
     public async ValueTask RegisterNavigation(CancellationToken ct)
     {

@@ -43,7 +43,7 @@
                 </utu:AutoLayout>
                 <utu:AutoLayout Spacing="10" 
                                 PrimaryAxisAlignment="End">
-                    <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    <TextBox Text="{Binding AuthOptions.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              PlaceholderText="Email" 
                              PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}" 
                              CornerRadius="16" 
@@ -56,8 +56,7 @@
                             <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                         </um:ControlExtensions.Icon>
                     </TextBox>
-                    <PasswordBox Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 x:Name="Password"
+                    <PasswordBox x:Name="Password"
                                  PlaceholderText="Password" 
                                  ios:ReturnKeyType="Done"
                                  android:ImeOptions="Done"
@@ -72,6 +71,7 @@
                                     PrimaryAxisAlignment="Center" 
                                     Orientation="Horizontal">
                         <CheckBox Content="Remember me" 
+                                  IsChecked="{Binding AuthOptions.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   utu:AutoLayout.CounterAlignment="Center" 
                                   utu:AutoLayout.PrimaryAlignment="Stretch" />
                         <TextBlock Text="Forgot password?" 
