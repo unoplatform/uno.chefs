@@ -37,7 +37,7 @@
                     <Button Background="{ThemeResource BackgroundBrush}"
                             Foreground="Black"
                             Height="40"
-                            uen:Navigation.Request="-">
+                            Command="{Binding Exit}">
                         <PathIcon Data="{StaticResource BitmapIcon_Close}">
                             <PathIcon.Resources>
                                 <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
@@ -152,12 +152,12 @@
                                         <DataTemplate>
                                             <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}">
-                                                    <muxc:ItemsRepeater.Layout>
+                                                    <!--<muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns ="2"
                                                                             ItemsJustification="SpaceAround" 
                                                                             MinColumnSpacing="10" 
                                                                             MinRowSpacing="10" />
-                                                    </muxc:ItemsRepeater.Layout>
+                                                    </muxc:ItemsRepeater.Layout>-->
                                                     <muxc:ItemsRepeater.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"

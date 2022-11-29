@@ -44,12 +44,12 @@
                         <utu:AutoLayout Spacing="22" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Stretch">
                             <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
                                 <muxc:ItemsRepeater ItemsSource="{Binding Cookbook.Recipes}">
-                                    <muxc:ItemsRepeater.Layout>
+                                    <!--<muxc:ItemsRepeater.Layout>
                                         <muxc:UniformGridLayout MaximumRowsOrColumns ="2"
                                                                 ItemsJustification="SpaceAround" 
                                                                 MinColumnSpacing="10" 
                                                                 MinRowSpacing="10" />
-                                    </muxc:ItemsRepeater.Layout>
+                                    </muxc:ItemsRepeater.Layout>-->
                                     <muxc:ItemsRepeater.ItemTemplate>
                                         <DataTemplate>
                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
