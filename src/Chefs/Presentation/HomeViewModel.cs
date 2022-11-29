@@ -44,12 +44,42 @@ public partial class HomeViewModel
         await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
     }
 
+    public async ValueTask ShowAllRecentlyAdded(CancellationToken ct)
+    {
+        var filter = new SearchFilter(OrganizeCategories.Recent, null, null, null, null);
+        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+    }
+
+    public async ValueTask ShowAllLunch(CancellationToken ct)
+    {
+        var filter = new SearchFilter(null, null, null, null, (await Categories.Where(x=> x.Name == "Lunch")).FirstOrDefault());
+        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+    }
+
+    public async ValueTask ShowAllDinner(CancellationToken ct)
+    {
+        var filter = new SearchFilter(null, null, null, null, (await Categories.Where(x => x.Name == "Dinner")).FirstOrDefault());
+        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+    }
+
+    public async ValueTask ShowAllSnack(CancellationToken ct)
+    {
+        var filter = new SearchFilter(null, null, null, null, (await Categories.Where(x => x.Name == "Dinner")).FirstOrDefault());
+        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+    }
+
+    public async ValueTask CategorySearch(Category category, CancellationToken ct)
+    {
+        var filter = new SearchFilter(null, null, null, null, category);
+        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+    }
+
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
 
     public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<ProfileViewModel>(this, data: user, cancellation: ct);
 
-    public async ValueTask SaveRecipe(CancellationToken ct, Recipe recipe) =>
+    public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
         await _recipeService.Save(recipe, ct);
 }

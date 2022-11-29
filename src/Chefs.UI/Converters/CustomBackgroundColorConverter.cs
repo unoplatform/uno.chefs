@@ -2,20 +2,20 @@
 
 namespace Chefs.Converters;
 
-public class BoolInverter : IValueConverter
+public class CustomBackgroundColorConverter : IValueConverter
 {
 
     public object? Convert(object value, Type targetType, object parameter, string language) => GetConversion(value);
 
     public object ConvertBack(object value, Type targetType, object parameter, string language) => GetConversion(value);
 
-    private bool GetConversion(object value)
+    private string GetConversion(object value)
     {
         if (value is bool)
         {
-            return !(bool)value;
+            return (bool)value ? "#FFFFFF" : "#ED3F64";
         }
 
-        return true;
+        return "#ED3F64";
     }
 }

@@ -111,9 +111,7 @@ public sealed partial class App : Application
                                 {
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
                                 }),
-                                new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>(), DependsOn: "Home", Nested: new RouteMap[]
-                                {
-                                }),
+                                new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>()),
                                 new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
                                 new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "Profile"),
                                 new RouteMap("ProfileUpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "ProfileCookbookDetail"),

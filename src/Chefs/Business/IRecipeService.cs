@@ -126,4 +126,6 @@ public interface IRecipeService
     /// Current user's recipes
     /// </returns>
     ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct);
+
+    ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct);
 }

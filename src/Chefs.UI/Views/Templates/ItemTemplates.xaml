@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:utu="using:Uno.Toolkit.UI">
+    <DataTemplate x:Key="ReviewDataTemplate">
+        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                        CornerRadius="15"
+                        Margin="0,8">
+            <utu:AutoLayout Spacing="16"
+                            Orientation="Horizontal">
+                <Border utu:AutoLayout.CounterAlignment="Start"
+                        Width="60"
+                        Height="60"
+                        CornerRadius="20"
+                        Margin="16,18,0,18">
+                    <Image Source="{Binding UrlAuthorImage}"
+                           Stretch="UniformToFill" />
+                </Border>
+                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                Padding="0,18,16,18"
+                                Spacing="16">
+                    <utu:AutoLayout PrimaryAxisAlignment="Center">
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="{Binding Date, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:MMM dd, yyy}'}"
+                                   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                   Style="{StaticResource CaptionSmall}" />
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="{Binding PublisherName}"
+                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Style="{StaticResource TitleMedium}" />
+                        <TextBlock TextWrapping="Wrap"
+                                   Text="{Binding Description}"
+                                   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                   Style="{StaticResource LabelSmall}" />
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="8"
+                                    Orientation="Horizontal">
+                        <Button Background="{ThemeResource PrimaryInverseBrush}"
+                                Content="👍  7"
+                                utu:AutoLayout.CounterAlignment="Start" />
+                        <Button Background="{ThemeResource PrimaryInverseBrush}"
+                                Content="👎  5"
+                                utu:AutoLayout.CounterAlignment="Start" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </utu:AutoLayout>
+        </utu:AutoLayout>
+    </DataTemplate>
+</ResourceDictionary>
