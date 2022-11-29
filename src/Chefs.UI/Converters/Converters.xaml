@@ -13,5 +13,7 @@
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
     <converters:BoolToVisibilityConverter x:Key="TrueToVisible" />
     <converters:BoolToVisibilityConverter x:Key="TrueToCollapsed"
-                                          Invert="True"/>
+                                          Invert="True" />
+    <converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
+                                       Number="2" />
 </ResourceDictionary>

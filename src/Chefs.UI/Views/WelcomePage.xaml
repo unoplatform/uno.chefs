@@ -16,10 +16,28 @@
                     Margin="24, 10, 24, 10"
                     utu:AutoLayout.CounterAlignment="End"
 					Height="37" />
-            <Image Source="ms-appx:///Assets/Welcome/chef_welcome.png"
-                   Stretch="UniformToFill"
-                   utu:AutoLayout.PrimaryLength="340"
-                   Margin="0,0,0,-40" />
+            <FlipView x:Name="ImageFilpView"
+                          VerticalAlignment="Top"
+                          Background="Transparent"
+                          SelectedIndex="{Binding NextPage}"
+                          utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
+                <FlipViewItem>
+                    <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                           Stretch="UniformToFill"
+                           utu:AutoLayout.PrimaryLength="340"
+                           Margin="0,0,0,-40" />
+                </FlipViewItem>
+                <FlipViewItem>
+                    <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
+                           Stretch="UniformToFill"
+                           utu:AutoLayout.PrimaryLength="340" />
+                </FlipViewItem>
+                <FlipViewItem>
+                    <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
+                           Stretch="UniformToFill"
+                           utu:AutoLayout.PrimaryLength="340" />
+                </FlipViewItem>
+            </FlipView>
             <Grid Background="{ThemeResource SurfaceBrush}"
                   Padding="60,40"
                   utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -58,7 +76,7 @@
                                        Text="Easy recipes for busy devs.&#xA;UNO Platform and UXDivers joined forces &#xA;to create this beautyful inspiring demo app. &#xA;Enjoy it."
                                        utu:AutoLayout.CounterAlignment="Center" />
                         </FlipViewItem>
-                        <FlipViewItem utu:CommandExtensions.Command="{Binding GoToLogin}">
+                        <FlipViewItem>
                             <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"
@@ -78,12 +96,21 @@
                         Grid.Row="3"
                         HorizontalAlignment="Stretch"
 						Command="{Binding Next}"
+                        Visibility="{Binding Visibility, Converter={StaticResource TrueToCollapsed}, ElementName=LetButton}"
+						Height="56" />
+                <Button Background="{ThemeResource PrimaryBrush}"
+                        Content="Let's cook!"
+                        x:Name="LetButton"
+                        utu:AutoLayout.PrimaryLength="56"
+                        Grid.Row="3"
+                        HorizontalAlignment="Stretch"
+						Command="{Binding Next}"
+                        Visibility="{Binding NextPage, Converter={StaticResource CertainNumberToVisibleConverter}}"
 						Height="56" />
                 <HyperlinkButton 
-                                 
-                                 Grid.Row="4"
-                                 HorizontalAlignment="Center"
-                                 FontWeight="SemiBold" />
+                            Grid.Row="4"
+                            HorizontalAlignment="Center"
+                            FontWeight="SemiBold" />
             </Grid>
         </utu:AutoLayout>
     </utu:AutoLayout>
