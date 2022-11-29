@@ -17,10 +17,16 @@
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar Content="Reviews"
                                Style="{StaticResource ModalNavigationBarStyle}">
+                <utu:NavigationBar.MainCommand>
+                    <AppBarButton Label=""
+                                  Foreground="Transparent"
+                                  IsEnabled="False" />
+                </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
                     <AppBarButton uen:Navigation.Request="-">
                         <AppBarButton.Icon>
-                            <PathIcon Data="{StaticResource BitmapIcon_Close}" />
+                            <BitmapIcon ShowAsMonochrome="False"
+                                        UriSource="ms-appx:///Assets/Icons/close.png" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>

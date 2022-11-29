@@ -7,6 +7,7 @@
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
@@ -17,6 +18,11 @@
             <utu:AutoLayout>
                 <utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
                                    Style="{StaticResource ModalNavigationBarStyle}">
+                    <utu:NavigationBar.MainCommand>
+                        <AppBarButton Label=""
+                                      Foreground="Transparent"
+                                      IsEnabled="False" />
+                    </utu:NavigationBar.MainCommand>
                     <utu:NavigationBar.PrimaryCommands>
                         <AppBarButton uen:Navigation.Request="-">
                             <AppBarButton.Icon>

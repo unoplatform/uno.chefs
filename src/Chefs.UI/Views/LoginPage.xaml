@@ -57,7 +57,7 @@
                         </um:ControlExtensions.Icon>
                     </TextBox>
                     <PasswordBox x:Name="Password"
-                                 Text="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  PlaceholderText="Password" 
                                  ios:ReturnKeyType="Done"
                                  android:ImeOptions="Done"
