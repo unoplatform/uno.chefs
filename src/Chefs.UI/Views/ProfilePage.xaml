@@ -124,10 +124,11 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout Padding="18,0">
+                    <utu:AutoLayout Padding="18,0"
+                                    utu:AutoLayout.CounterAlignment="Center">
                         <utu:AutoLayout uen:Region.Attached="True"
                                         Spacing="18"
-                                        Padding="0,20">
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
                             <utu:TabBar uen:Region.Attached="True"
                                         Style="{StaticResource TopTabBarStyle}"
                                         SelectedItem="{Binding ElementName=RecipesTab}">

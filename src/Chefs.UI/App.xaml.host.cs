@@ -38,7 +38,6 @@ public sealed partial class App : Application
                         .EmbeddedSource<App>()
                         .Section<AppConfig>()
                         .Section<Credentials>()
-                        .Section<AuthenticationOptions>()
                 )
 
                 // Enable localization (see appsettings.json for supported languages)
