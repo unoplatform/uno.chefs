@@ -26,7 +26,8 @@
                     <utu:NavigationBar.PrimaryCommands>
                         <AppBarButton uen:Navigation.Request="-">
                             <AppBarButton.Icon>
-                                <PathIcon Data="{StaticResource Icon_Close}" />
+                                <BitmapIcon ShowAsMonochrome="False"
+                                            UriSource="ms-appx:///Assets/Icons/close.png" />
                             </AppBarButton.Icon>
                         </AppBarButton>
                     </utu:NavigationBar.PrimaryCommands>
@@ -38,8 +39,7 @@
                     <DataTemplate>
                         <ScrollViewer HorizontalScrollMode="Enabled"
                                       HorizontalScrollBarVisibility="Hidden">
-                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                uen:Navigation.Request="!RecipeDetails">
+                            <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                 <muxc:ItemsRepeater.Layout>
                                     <muxc:StackLayout Orientation="Horizontal"
                                                        />

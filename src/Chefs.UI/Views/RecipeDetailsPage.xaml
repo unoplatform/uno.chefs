@@ -136,7 +136,7 @@
                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="15"
                                                                         PrimaryAxisAlignment="Center"
-                                                                        Margin="0,8,0,8">
+                                                                        Margin="-10,8">
                                                             <utu:AutoLayout Spacing="16"
                                                                             Padding="16,18"
                                                                             Orientation="Horizontal">
@@ -180,7 +180,7 @@
                                                     <DataTemplate>
                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="15"
-                                                                        Margin="0,8">
+                                                                        Margin="-10,8">
                                                             <utu:AutoLayout Padding="16,18"
                                                                             PrimaryAxisAlignment="Center">
                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"

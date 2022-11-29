@@ -4,7 +4,7 @@
     <DataTemplate x:Key="ReviewDataTemplate">
         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                         CornerRadius="15"
-                        Margin="0,8">
+                        Margin="-10,8">
             <utu:AutoLayout Spacing="16"
                             Orientation="Horizontal">
                 <Border utu:AutoLayout.CounterAlignment="Start"

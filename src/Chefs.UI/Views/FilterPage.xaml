@@ -47,7 +47,7 @@
                                            HorizontalAlignment="Stretch">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ItemsStackPanel Orientation="Vertical" />
+                                        <controls:WrapPanel Orientation="Horizontal" />
                                     </ItemsPanelTemplate>
                                 </utu:ChipGroup.ItemsPanel>
                                 <utu:Chip Content="⭐️   Popular"
@@ -79,10 +79,10 @@
                         <utu:AutoLayout Spacing="16">
                             <utu:ChipGroup CanRemove="False"
                                            SelectionMode="Single"
-                                           HorizontalAlignment="Stretch">
+                                           utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ItemsStackPanel Orientation="Horizontal" />
+                                        <controls:WrapPanel Orientation="Horizontal" />
                                     </ItemsPanelTemplate>
                                 </utu:ChipGroup.ItemsPanel>
                                 <utu:Chip Content="under 15 min"
@@ -118,7 +118,7 @@
                                            HorizontalAlignment="Stretch">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ItemsStackPanel Orientation="Horizontal" />
+                                        <controls:WrapPanel Orientation="Horizontal" />
                                     </ItemsPanelTemplate>
                                 </utu:ChipGroup.ItemsPanel>
                                 <utu:Chip Content="Easy"
@@ -154,7 +154,7 @@
                                            HorizontalAlignment="Stretch">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ItemsStackPanel Orientation="Horizontal" />
+                                        <controls:WrapPanel Orientation="Horizontal" />
                                     </ItemsPanelTemplate>
                                 </utu:ChipGroup.ItemsPanel>
                                 <utu:Chip Content="01"
