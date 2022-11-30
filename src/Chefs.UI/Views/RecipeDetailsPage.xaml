@@ -37,7 +37,8 @@
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-                          HorizontalScrollMode="Disabled">
+                          HorizontalScrollMode="Disabled"
+                          >
                 <utu:AutoLayout>
                     <utu:AutoLayout PrimaryAxisAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -46,10 +47,17 @@
                                    Margin="18,0,18,5"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Style="{StaticResource HeadlineLarge}" />
-                        <TextBlock Text="{Binding User.FullName}"
-                                   Margin="18,0,18,20"
-                                   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                   Style="{StaticResource TitleSmall}" />
+                        <utu:AutoLayout Spacing="6"
+                                        Padding="18,0,18,20"
+                                        Orientation="Horizontal">
+                            <PersonPicture utu:AutoLayout.CounterAlignment="Center"
+                                           Width="32"
+                                           Height="32" />
+                            <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                       Style="{StaticResource TitleSmall}" />
+                        </utu:AutoLayout>
                         <utu:AutoLayout Spacing="-35"
                                         PrimaryAxisAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -103,17 +111,17 @@
                                     Padding="18,30">
                         <utu:TabBar uen:Region.Attached="True"
                                     SelectedItem="{Binding ElementName=IngredientsTabItem}"
-                                    Style="{StaticResource TopTabBarStyle}">
+                                    Style="{StaticResource SlidingTabBarStyle}">
                             <utu:TabBarItem x:Name="IngredientsTabItem"
                                             Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Ingredients"
-                                            uen:Region.Name="IngredientsTab" />
+                                            uen:Region.Name="IngredientsTab"/>
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Details"
-                                            uen:Region.Name="DetailsTab" />
+                                            uen:Region.Name="DetailsTab"/>
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Reviews"
-                                            uen:Region.Name="ReviewsTab" />
+                                            uen:Region.Name="ReviewsTab"/>
                         </utu:TabBar>
                         <Grid uen:Region.Attached="True"
                               uen:Region.Navigator="Visibility">

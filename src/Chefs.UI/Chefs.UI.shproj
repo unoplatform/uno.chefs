@@ -13,6 +13,7 @@
   <ItemGroup>
     <UpToDateCheckInput Remove="Converters\Converters.xaml" />
     <UpToDateCheckInput Remove="Styles\FeedView.xaml" />
+    <UpToDateCheckInput Remove="Styles\TabBar.xaml" />
     <UpToDateCheckInput Remove="Views\AddRecipesCookbookPage.xaml" />
     <UpToDateCheckInput Remove="Views\CookbookDetailPage.xaml" />
     <UpToDateCheckInput Remove="Views\FilterPage.xaml" />
@@ -31,8 +32,10 @@
     <UpToDateCheckInput Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Converters\InflateDimensionConverter.cs" />
     <_Globbed_Compile Remove="Converters\TimeSpanToStringConverter.cs" />
     <_Globbed_Compile Remove="Converters\BoolToVisibilityConverter.cs" />
+    <_Globbed_Compile Remove="Styles\TabBar.xaml.cs" />
     <_Globbed_Compile Remove="Views\AddRecipesCookbookPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\CookbookDetailPage.xaml.cs" />
     <_Globbed_Compile Remove="Converters\EnumBooleanConverter.cs" />
@@ -58,6 +61,7 @@
   <ItemGroup>
     <_Globbled_Page Remove="Converters\Converters.xaml" />
     <_Globbled_Page Remove="Styles\FeedView.xaml" />
+    <_Globbled_Page Remove="Styles\TabBar.xaml" />
     <_Globbled_Page Remove="Views\AddRecipesCookbookPage.xaml" />
     <_Globbled_Page Remove="Views\CookbookDetailPage.xaml" />
     <_Globbled_Page Remove="Views\FilterPage.xaml" />
