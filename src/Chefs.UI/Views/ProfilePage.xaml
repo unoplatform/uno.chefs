@@ -132,6 +132,7 @@
                             <utu:TabBar uen:Region.Attached="True"
                                         Margin="0, 29, 0, -8"
                                         Style="{StaticResource TopTabBarStyle}"
+                                        Margin="0, 29, 0, 0"
                                         SelectedItem="{Binding ElementName=RecipesTab}">
                                 <utu:TabBarItem x:Name="RecipesTab"
                                                 Foreground="{ThemeResource OnSurfaceMediumBrush}"
