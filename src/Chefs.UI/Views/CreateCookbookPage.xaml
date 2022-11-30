@@ -52,12 +52,12 @@
                          Text="{Binding CookbookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
                          PlaceholderText="Cookbook name"
-                         Margin="18,24"
+                         Margin="21,24"
                          Style="{StaticResource OutlinedTextBoxStyle}" />
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="18" Padding="18,0">
-                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Add pin" Style="{StaticResource LabelLarge}" />
+                    <TextBlock Margin="5, 0, 0, 0" Foreground="{ThemeResource SurfaceInverseBrush}" Text="Add pin" Style="{StaticResource LabelLarge}" />
                     <utu:AutoLayout Spacing="18" utu:AutoLayout.CounterAlignment="Start">
                         <utu:AutoLayout Spacing="22" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Stretch">
                             <uer:FeedView Source="{Binding Recipes}"
