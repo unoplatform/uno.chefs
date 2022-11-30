@@ -9,19 +9,19 @@ public class UserService : IUserService
 {
     private readonly IUserEndpoint _userEndpoint;
     private readonly IWritableOptions<AppConfig> _chefAppOptions;
-    private readonly IWritableOptions<AuthenticationOptions> _authenticationOptions;
+    private readonly IWritableOptions<Credentials> _credentialOptions;
 
     public UserService(IUserEndpoint userEndpoint,
         IWritableOptions<AppConfig> chefAppOptions,
-        IWritableOptions<AuthenticationOptions> authenticationOptions)
-        => (_userEndpoint, _chefAppOptions, _authenticationOptions) = (userEndpoint, chefAppOptions, authenticationOptions);
+        IWritableOptions<Credentials> credentialOptions)
+        => (_userEndpoint, _chefAppOptions, _credentialOptions) = (userEndpoint, chefAppOptions, credentialOptions);
 
     public async ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct)
     {
         var autentication = await _userEndpoint.Authenticate(email, password, ct);
         if (autentication)
         {
-            await _authenticationOptions.UpdateAsync(_ => new AuthenticationOptions()
+            await _credentialOptions.UpdateAsync(_ => new Credentials()
             {
                 Email = email,
                 SaveCredentials = true

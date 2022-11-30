@@ -38,7 +38,6 @@ public sealed partial class App : Application
                         .EmbeddedSource<App>()
                         .Section<AppConfig>()
                         .Section<Credentials>()
-                        .Section<AuthenticationOptions>()
                 )
 
                 // Enable localization (see appsettings.json for supported languages)
@@ -112,7 +111,7 @@ public sealed partial class App : Application
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
                                 }),
                                 new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>()),
-                                new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
+                                new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>()),
                                 new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "Profile"),
                                 new RouteMap("ProfileUpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "ProfileCookbookDetail"),
                                 new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>(), DependsOn:"Home", Nested: new RouteMap[]

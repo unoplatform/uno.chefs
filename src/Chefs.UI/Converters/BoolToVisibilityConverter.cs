@@ -13,6 +13,10 @@ namespace Chefs.Converters
         {
             if (value == null) return Visibility.Collapsed;
 
+            if (value.GetType() == typeof(Visibility)) return (Visibility)value == Visibility.Visible 
+                    ? Visibility.Collapsed 
+                    : Visibility.Visible;
+
             return Invert ?
             (bool)value ? Visibility.Collapsed : Visibility.Visible :
             (bool)value ? Visibility.Visible : Visibility.Collapsed;

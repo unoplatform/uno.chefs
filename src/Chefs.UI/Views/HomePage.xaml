@@ -60,7 +60,8 @@
                     </utu:AutoLayout>
                 </DataTemplate>
             </uer:FeedView>
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                          HorizontalScrollMode="Disabled">
                 <utu:AutoLayout Spacing="38"
                                 Padding="18,38">
                     <utu:AutoLayout Spacing="24">

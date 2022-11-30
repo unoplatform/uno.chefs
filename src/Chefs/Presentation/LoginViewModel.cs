@@ -11,29 +11,28 @@ public partial class LoginViewModel
 {
     private readonly INavigator _navigator;
     private readonly IUserService _userService;
-    private readonly IWritableOptions<AuthenticationOptions> _authenticationOptions;
+    private readonly IWritableOptions<Credentials> _credentialOptions;
 
     public LoginViewModel(
         INavigator navigator, 
         IUserService userService,
-        IWritableOptions<AuthenticationOptions> authenticationOptions)
+        IWritableOptions<Credentials> credentialOptions)
     {
         _navigator = navigator;
         _userService = userService;
-        _authenticationOptions = authenticationOptions;
+        _credentialOptions = credentialOptions;
     }
-
-    public IState<AuthenticationOptions> AuthOptions => State<AuthenticationOptions>.Async(this, async _ => new AuthenticationOptions()
-    {
-        Email = _authenticationOptions.Value?.Email ?? string.Empty,
-        SaveCredentials = _authenticationOptions.Value?.SaveCredentials ?? false
-    });
 
     public IState<Credentials> Credentials => State<Credentials>.Async(this, async _ => new Credentials()
     {
-        Email = _authenticationOptions.Value != null ? _authenticationOptions.Value.Email! : string.Empty,
+        Email = _credentialOptions.Value != null 
+            ? _credentialOptions.Value.Email! 
+            : string.Empty,
         Password = string.Empty,
-        SkipWelcome = false
+        SkipWelcome = false,
+        SaveCredentials = _credentialOptions.Value != null
+            ? _credentialOptions.Value.SaveCredentials!
+            : false,
     });
 
 
