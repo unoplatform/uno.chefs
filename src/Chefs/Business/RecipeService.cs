@@ -86,6 +86,6 @@ public class RecipeService : IRecipeService
     public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct) => (await _recipeEndpoint
        .GetAll(ct))
        .Select(r => new Recipe(r)).OrderBy(x => (new Random()).Next())
-       .Take(3)
+       .Take(4)
        .ToImmutableList();
 }
