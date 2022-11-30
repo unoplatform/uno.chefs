@@ -1,26 +1,26 @@
 ﻿<Page x:Class="Chefs.Views.FilterPage"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:local="using:Chefs.Views"
-               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-               xmlns:uer="using:Uno.Extensions.Reactive.UI"
-               xmlns:utu="using:Uno.Toolkit.UI"
-               xmlns:uen="using:Uno.Extensions.Navigation.UI"
-               xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-               mc:Ignorable="d"
-               Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Chefs.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:uer="using:Uno.Extensions.Reactive.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <ScrollViewer
-        HorizontalScrollMode="Disabled">
+    <ScrollViewer HorizontalScrollMode="Disabled">
         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-        <utu:AutoLayout.Resources>
-            <x:String x:Key="Icon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
-        </utu:AutoLayout.Resources>
-        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                        utu:AutoLayout.CounterAlignment="Stretch">
-            <utu:AutoLayout Spacing="16"
-                                Padding="18,30"
+            <utu:AutoLayout.Resources>
+                <x:String x:Key="Icon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+            </utu:AutoLayout.Resources>
+            <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                            utu:AutoLayout.CounterAlignment="Stretch"
+                            Padding="18,20"
+                            Spacing="20">
+                <utu:AutoLayout Spacing="16"
                                 PrimaryAxisAlignment="Center">
                     <utu:AutoLayout Spacing="10"
                                     Orientation="Horizontal">
@@ -55,19 +55,19 @@
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Recommended, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="👍️   Trending"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Popular, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="🕓️   Recent"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Recent, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                             </utu:ChipGroup>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
@@ -90,19 +90,19 @@
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Time, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Under15min, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="under 30 min"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Time, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Under30min, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="under 60 min"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Time, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Under60min, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                             </utu:ChipGroup>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
@@ -126,19 +126,19 @@
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Difficulty, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Easy, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="Medium"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Difficulty, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Medium, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="Hard"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Difficulty, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Hard, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                             </utu:ChipGroup>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
@@ -162,31 +162,31 @@
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="02"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="03"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=3, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="04"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=4, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                                 <utu:Chip Content="+ 05"
                                           utu:AutoLayout.CounterAlignment="Start"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           Style="{StaticResource FilterChipStyle}"
                                           IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=5, Mode=TwoWay}"
-                                          Foreground="{ThemeResource PrimaryBrush}"/>
+                                          Foreground="{ThemeResource PrimaryBrush}" />
                             </utu:ChipGroup>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
@@ -214,7 +214,7 @@
                                             <ImageIcon Source="{Binding UrlIcon}" />
                                             <TextBlock Text="{Binding Name}"
                                                        Foreground="{ThemeResource PrimaryBrush}"
-                                                       VerticalAlignment="Center"/>
+                                                       VerticalAlignment="Center" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </utu:ChipGroup.ItemTemplate>
@@ -223,23 +223,24 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
 
-            <utu:AutoLayout Spacing="20"
-                                Padding="18,20"
+                <utu:AutoLayout Spacing="20"
                                 Orientation="Horizontal">
                     <Button Background="{ThemeResource SurfaceBrush}"
                             Content="Reset"
-                            utu:AutoLayout.CounterAlignment="Start"
+                            utu:AutoLayout.CounterAlignment="Stretch"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             Style="{StaticResource ElevatedButtonStyle}"
-                            Command="{Binding ResetFilter}" />
+                            Command="{Binding ResetFilter}" 
+                            MinHeight="56"/>
                     <Button Background="{ThemeResource PrimaryBrush}"
                             Content="Apply"
-                            utu:AutoLayout.CounterAlignment="Start"
+                            utu:AutoLayout.CounterAlignment="Stretch"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
-                            Command="{Binding SearchFilter}" />
+                            Command="{Binding SearchFilter}"
+                            MinHeight="56"/>
                 </utu:AutoLayout>
 
+            </utu:AutoLayout>
         </utu:AutoLayout>
-    </utu:AutoLayout>
     </ScrollViewer>
 </Page>

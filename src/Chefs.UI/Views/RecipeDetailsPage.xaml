@@ -52,7 +52,8 @@
                                         Orientation="Horizontal">
                             <PersonPicture utu:AutoLayout.CounterAlignment="Center"
                                            Width="32"
-                                           Height="32" />
+                                           Height="32"
+                                           ProfilePicture="{Binding User.UrlProfileImage}"/>
                             <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource OnSurfaceMediumBrush}"
