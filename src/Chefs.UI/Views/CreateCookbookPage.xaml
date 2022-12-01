@@ -52,21 +52,28 @@
                          Text="{Binding CookbookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
                          PlaceholderText="Cookbook name"
-                         Margin="18,24"
+                         Margin="20,24"
                          Style="{StaticResource OutlinedTextBoxStyle}" />
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Spacing="18" Padding="18,0">
-                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Add pin" Style="{StaticResource LabelLarge}" />
-                    <utu:AutoLayout Spacing="18" utu:AutoLayout.CounterAlignment="Start">
-                        <utu:AutoLayout Spacing="22" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Stretch">
+                <utu:AutoLayout Spacing="18" 
+                                Padding="18,0">
+                    <TextBlock Margin="4, 0, 0, 0" 
+                               Foreground="{ThemeResource SurfaceInverseBrush}" 
+                               Text="Add pin" 
+                               Style="{StaticResource LabelLarge}" />
+                    <utu:AutoLayout Spacing="18" 
+                                    utu:AutoLayout.CounterAlignment="Start">
+                        <utu:AutoLayout Spacing="22" 
+                                        Orientation="Horizontal" 
+                                        utu:AutoLayout.CounterAlignment="Stretch">
                             <uer:FeedView Source="{Binding Recipes}"
                                           x:Name="RecipentsFeedView">
                                 <DataTemplate>
                                     <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                             <muxc:ItemsRepeater.Layout>
-                                                <muxc:UniformGridLayout MaximumRowsOrColumns ="2"
+                                                <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                         ItemsJustification="SpaceAround" 
                                                                         MinColumnSpacing="10" 
                                                                         MinRowSpacing="10" />
@@ -76,14 +83,24 @@
                                                     <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                             Style="{StaticResource FilledCardContentControlStyle}"
                                                                             Background="{ThemeResource SurfaceBrush}"
-                                                                            Margin="2">
+                                                                            Margin="1.5, 0, 0, 0">
                                                         <utu:CardContentControl.ContentTemplate>
                                                             <DataTemplate>
-                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"  MaxWidth="160" CornerRadius="12">
-                                                                    <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="160" />
-                                                                    <utu:AutoLayout Spacing="2" Padding="10" Orientation="Horizontal">
-                                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
+                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"  
+                                                                                MaxWidth="171" 
+                                                                                CornerRadius="12">
+                                                                    <Image Source="{Binding ImageUrl}" 
+                                                                           Stretch="UniformToFill" 
+                                                                           utu:AutoLayout.PrimaryLength="150" />
+                                                                    <utu:AutoLayout Spacing="2" 
+                                                                                    Padding="10" 
+                                                                                    Orientation="Horizontal">
+                                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" 
+                                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" 
+                                                                                       TextWrapping="NoWrap" 
+                                                                                       Text="{Binding Name}" 
+                                                                                       Style="{StaticResource TitleMedium}" />
                                                                         </utu:AutoLayout>
                                                                         <ToggleButton IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                                       x:Name="toggleButton"
@@ -97,10 +114,12 @@
                                                                                       CornerRadius="60"
                                                                                       MaxWidth="60">
                                                                             <ToggleButton.Content>
-                                                                                <PathIcon Data="{StaticResource Icon_Add}" Foreground="{ThemeResource SurfaceBrush}" />
+                                                                                <PathIcon Data="{StaticResource Icon_Add}" 
+                                                                                          Foreground="{ThemeResource SurfaceBrush}" />
                                                                             </ToggleButton.Content>
                                                                             <um:ControlExtensions.AlternateContent>
-                                                                                <PathIcon Data="{StaticResource Icon_Check}" Foreground="{ThemeResource PrimaryBrush}" />
+                                                                                <PathIcon Data="{StaticResource Icon_Check}" 
+                                                                                          Foreground="{ThemeResource PrimaryBrush}" />
                                                                             </um:ControlExtensions.AlternateContent>
                                                                         </ToggleButton>
                                                                     </utu:AutoLayout>
@@ -120,7 +139,10 @@
             </ScrollViewer>
         </utu:AutoLayout>
         <utu:AutoLayout Padding="18,30">
-            <Button Command="{Binding Done}" Background="{ThemeResource PrimaryBrush}" Content="Done" utu:AutoLayout.PrimaryLength="56" />
+            <Button Command="{Binding Done}" 
+                    Background="{ThemeResource PrimaryBrush}" 
+                    Content="Done" 
+                    utu:AutoLayout.PrimaryLength="56" />
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
