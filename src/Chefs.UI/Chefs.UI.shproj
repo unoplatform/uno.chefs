@@ -58,6 +58,17 @@
     <_Globbed_Compile Remove="Views\UpdateCookbookPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-100.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-125.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-150.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-200.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-400.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-16.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-24.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-32.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-48.png" />
+  </ItemGroup>
+  <ItemGroup>
     <_Globbled_Page Remove="Converters\Converters.xaml" />
     <_Globbled_Page Remove="Styles\FeedView.xaml" />
     <_Globbled_Page Remove="Styles\TabBar.xaml" />

@@ -10,6 +10,7 @@ public class UserService : IUserService
     private readonly IUserEndpoint _userEndpoint;
     private readonly IWritableOptions<AppConfig> _chefAppOptions;
     private readonly IWritableOptions<Credentials> _credentialOptions;
+    private Signal _userSignal = new();
 
     public UserService(IUserEndpoint userEndpoint,
         IWritableOptions<AppConfig> chefAppOptions,
@@ -37,6 +38,8 @@ public class UserService : IUserService
 
     public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct) => (await _userEndpoint.GetPopularCreators(ct)).Select(data => new User(data)).ToImmutableList();
 
+    public IFeed<User> UserFeed => Feed<User>.Async(async (ct) => await GetCurrent(ct) is { } user ? user : Option.Undefined<User>(), _userSignal);
+
     public async ValueTask<User> GetCurrent(CancellationToken ct) => new User(await _userEndpoint.GetCurrent(ct));
 
     public async Task SetSettings(AppConfig chefSettings, CancellationToken ct) => await _chefAppOptions.UpdateAsync(_ => new AppConfig()
@@ -51,5 +54,6 @@ public class UserService : IUserService
     public async ValueTask Update(User user, CancellationToken ct)
     {
         await _userEndpoint.Update(user.ToData(), ct);
+        _userSignal.Raise();
     }
 }
