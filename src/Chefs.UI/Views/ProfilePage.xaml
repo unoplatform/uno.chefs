@@ -220,7 +220,7 @@
                                                                                        Text="{Binding PinsNumber, 
                                                                                                       Converter={StaticResource StringFormatter}, 
                                                                                                       ConverterParameter='{}{0} pins'}" 
-                                                                                                      Style="{StaticResource BodySmall}" />
+                                                                                       Style="{StaticResource BodySmall}" />
                                                                             </utu:AutoLayout>
                                                                         </utu:AutoLayout>
                                                                     </DataTemplate>

@@ -35,14 +35,18 @@
             </utu:NavigationBar>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Padding="18,0">
-                    <utu:AutoLayout Spacing="12" Padding="0,20">
-                        <StackPanel Spacing="3"
-                                    Orientation="Horizontal" >
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="{Binding Cookbook.PinsNumber}" Style="{StaticResource LabelLarge}" />
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" Text="Pins" Style="{StaticResource LabelLarge}" />
-                        </StackPanel>
-                        <utu:AutoLayout Spacing="22" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Stretch">
-                            <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                    <utu:AutoLayout Spacing="12" 
+                                    Padding="0,20">
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" 
+                                   Text="{Binding PinsNumber, 
+                                                  Converter={StaticResource StringFormatter}, 
+                                                  ConverterParameter='{}{0} pins'}" 
+                                   Style="{StaticResource LabelLarge}" />
+                        <utu:AutoLayout Spacing="22" 
+                                        Orientation="Horizontal" 
+                                        utu:AutoLayout.CounterAlignment="Stretch">
+                            <ScrollViewer HorizontalScrollMode="Enabled" 
+                                          HorizontalScrollBarVisibility="Visible">
                                 <muxc:ItemsRepeater ItemsSource="{Binding Cookbook.Recipes}">
                                     <!--<muxc:ItemsRepeater.Layout>
                                         <muxc:UniformGridLayout MaximumRowsOrColumns ="2"
@@ -55,16 +59,28 @@
                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                     Style="{StaticResource FilledCardContentControlStyle}"
                                                                     Background="{ThemeResource SurfaceBrush}"
-                                                                    Margin="2">
+                                                                    Margin="1.5, 0, 0, 0">
                                                 <utu:CardContentControl.ContentTemplate>
                                                     <DataTemplate>
-                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"  MaxWidth="160" CornerRadius="12">
-                                                            <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="160" />
-                                                            <utu:AutoLayout Spacing="2" Padding="10" Orientation="Horizontal">
-                                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
+                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"  
+                                                                        MaxWidth="171" 
+                                                                        CornerRadius="12">
+                                                            <Image Source="{Binding ImageUrl}" 
+                                                                   Stretch="UniformToFill" 
+                                                                   utu:AutoLayout.PrimaryLength="150" />
+                                                            <utu:AutoLayout Spacing="2" 
+                                                                            Padding="11,10" 
+                                                                            Orientation="Horizontal">
+                                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start" 
+                                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" 
+                                                                               TextWrapping="NoWrap" 
+                                                                               Text="{Binding Name}" 
+                                                                               Style="{StaticResource TitleMedium}" />
                                                                 </utu:AutoLayout>
-                                                                <utu:AutoLayout PrimaryAxisAlignment="End" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Start" />
+                                                                <utu:AutoLayout PrimaryAxisAlignment="End" 
+                                                                                Orientation="Horizontal" 
+                                                                                utu:AutoLayout.CounterAlignment="Start" />
                                                             </utu:AutoLayout>
                                                         </utu:AutoLayout>
                                                     </DataTemplate>
