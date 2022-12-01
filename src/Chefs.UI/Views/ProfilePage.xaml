@@ -130,7 +130,7 @@
                                         Spacing="18"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <utu:TabBar uen:Region.Attached="True"
-                                        Margin="0, 29, 0, 0"
+                                        Margin="0, 29, 0, -8"
                                         Style="{StaticResource SlidingTabBarStyle}"
                                         SelectedItem="{Binding ElementName=RecipesTab}">
                                 <utu:TabBarItem x:Name="RecipesTab"
@@ -158,7 +158,7 @@
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns ="2"
                                                                             ItemsJustification="SpaceAround" 
                                                                             MinColumnSpacing="10" 
-                                                                            MinRowSpacing="10" />
+                                                                            MinRowSpacing="10"/>
                                                     </muxc:ItemsRepeater.Layout>
                                                     <muxc:ItemsRepeater.ItemTemplate>
                                                         <DataTemplate>

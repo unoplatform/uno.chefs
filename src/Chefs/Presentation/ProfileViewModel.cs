@@ -29,7 +29,7 @@ public partial class ProfileViewModel
 
     public IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetByUser((Guid)(Profile?.Value(ct).Result!.Id)!, ct), _pageRefresh);
 
-    public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetByUser((Guid)(Profile?.Value(ct).Result!.Id)!, ct), _pageRefresh);
+    public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetSaved(ct), _pageRefresh);
 
     public async ValueTask Exit(CancellationToken ct) => await _navigator
         .NavigateViewModelAsync<MainViewModel>(sender: this, Qualifiers.ClearBackStack, cancellation: ct);
