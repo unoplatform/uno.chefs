@@ -29,10 +29,8 @@ public partial class HomeViewModel
     public IListFeed<Recipe> SnackRecipes => Recipes.Where(x => x.Category.Name == "Snack");
 
     public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
-
-    public IState<User> _profile => State<User>.Async(this, async ct => await _userService.GetCurrent(ct));
     
-    public IFeed<User> UserProfile => _profile;
+    public IFeed<User> UserProfile => _userService.UserFeed;
 
     public async ValueTask Notifications(CancellationToken ct) => 
         await _navigator.NavigateViewModelAsync<NotificationsViewModel>(this);
