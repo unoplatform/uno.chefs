@@ -202,7 +202,7 @@
                                                     <muxc:ItemsRepeater.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                                uen:Navigation.Request="SavedCookbookDetail"
+                                                                                uen:Navigation.Request="!SavedCookbookDetail"
                                                                                 Style="{StaticResource FilledCardContentControlStyle}"
                                                                                 Background="{ThemeResource SurfaceBrush}"
                                                                                 Margin="1.5, 0, 0, 0"
