@@ -112,7 +112,7 @@
                                     Padding="18,30">
                         <utu:TabBar uen:Region.Attached="True"
                                     SelectedItem="{Binding ElementName=IngredientsTabItem}"
-                                    Style="{StaticResource SlidingTabBarStyle}">
+                                    Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem x:Name="IngredientsTabItem"
                                             Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Ingredients"

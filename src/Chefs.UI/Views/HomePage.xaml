@@ -217,12 +217,44 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!RecipeDetails"
-                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}"
-                                                        >
+                                                        uen:Navigation.Request="!RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
+                                        <muxc:ItemsRepeater.ItemTemplate>
+                                            <DataTemplate>
+                                                <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
+                                                                        uen:Navigation.Request="!RecipeDetails"
+                                                                        Style="{StaticResource FilledCardContentControlStyle}"
+                                                                        Background="{ThemeResource SurfaceBrush}"
+                                                                        Margin="18, 0, 0, 0"
+                                                                        uen:Navigation.Data="{Binding}"
+                                                                        MaxWidth="171">
+                                                    <utu:CardContentControl.ContentTemplate>
+                                                        <DataTemplate>
+                                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                            CornerRadius="12">
+                                                                <Image Source="{Binding ImageUrl}"
+                                                                       Stretch="UniformToFill"
+                                                                       utu:AutoLayout.PrimaryLength="150" />
+                                                                <utu:AutoLayout Spacing="2"
+                                                                                Padding="11, 10"
+                                                                                PrimaryAxisAlignment="Center">
+                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                               TextWrapping="NoWrap"
+                                                                               Text="{Binding Name}"
+                                                                               Style="{StaticResource TitleMedium}" />
+                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                               TextWrapping="NoWrap"
+                                                                               Text="{Binding TimeCal}"
+                                                                               Style="{StaticResource BodySmall}" />
+                                                                </utu:AutoLayout>
+                                                            </utu:AutoLayout>
+                                                        </DataTemplate>
+                                                    </utu:CardContentControl.ContentTemplate>
+                                                </utu:CardContentControl>
+                                            </DataTemplate>
+                                        </muxc:ItemsRepeater.ItemTemplate>
                                     </muxc:ItemsRepeater>
                                 </ScrollViewer>
                             </DataTemplate>

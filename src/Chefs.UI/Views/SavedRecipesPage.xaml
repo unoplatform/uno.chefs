@@ -31,7 +31,7 @@
                         <utu:TabBar uen:Region.Attached="True"
                                     Margin="0, 0, 0, 29"
                                     SelectedItem="{Binding ElementName=TabBarRecipeItem}"
-                                    Style="{StaticResource SlidingTabBarStyle}">
+                                    Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             x:Name="TabBarRecipeItem"
                                             IsSelectable="True"
