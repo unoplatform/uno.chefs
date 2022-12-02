@@ -38,8 +38,9 @@
                 <utu:AutoLayout Padding="18,0">
                     <utu:AutoLayout Spacing="12" 
                                     Padding="0,20">
-                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}" 
+                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                    Text="3 pins"
+                                   Margin="3.5, 0, 0, 0" 
                                    Style="{StaticResource LabelLarge}" />
                                     <!--Text="{Binding PinsNumber, 
                                                   Converter={StaticResource StringFormatter}, 
