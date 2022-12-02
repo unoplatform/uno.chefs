@@ -29,7 +29,7 @@
                                   IsEnabled="False"  />
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
-                    <AppBarButton Command="{Binding Exit}"
+                    <AppBarButton Navigation.Request="-"
                                   Background="{ThemeResource BackgroundBrush}"
                                   Foreground="Black">
                         <AppBarButton.Icon>

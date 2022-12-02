@@ -10,6 +10,7 @@ public partial class UpdateCookbookViewModel
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
     private readonly ICookbookService _cookbookService;
+    private Cookbook? _cookbook;
 
     public UpdateCookbookViewModel(INavigator navigator,
                                    IRecipeService recipeService,
@@ -19,15 +20,14 @@ public partial class UpdateCookbookViewModel
         _navigator = navigator;
         _recipeService = recipeService;
         _cookbookService = cookbookService;
-
-        Cookbook = State.Value(this, () => cookbook);
+        _cookbook = cookbook;
     }
 
-    public IState<Cookbook> Cookbook { get; }
+    //public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook);
 
     public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
     {
-        var cookbook = await Cookbook;
+        var cookbook = _cookbook;
         return (await _recipeService.GetSaved(ct))
         .RemoveAll(r1 => cookbook?.Recipes!.ToList()
         .Exists(r2 => r1.Id == r2.Id) ?? false);
@@ -39,7 +39,7 @@ public partial class UpdateCookbookViewModel
     public async ValueTask Done(CancellationToken ct)
     {
         var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
-        var cookbook = await Cookbook;
+        var cookbook = _cookbook;
 
         if (selectedRecipes is not null)
         {

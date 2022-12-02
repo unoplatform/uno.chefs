@@ -24,12 +24,12 @@ public partial class CookbookDetailViewModel
 
     public async ValueTask CreateCookbookNavigation(CancellationToken ct)
     {
-        var cookbook = _cookbook;
         var result = await _navigator.GetDataAsync<UpdateCookbookViewModel, Cookbook>(this, data: _cookbook, cancellation: ct);
 
         if(result is not null)
         {
-            //await Cookbook.Update(_ => result, ct);
+            _cookbook = result;
+            //await Cookbook.Update(_ => _cookbook, ct);
         }
     }
 
