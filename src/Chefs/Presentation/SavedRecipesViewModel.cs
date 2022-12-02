@@ -15,7 +15,6 @@ public partial class SavedRecipesViewModel
     {
         _navigator = navigator;
         _recipeService = recipeService;
-        _cookbookService = 
         _cookbookService = cookbookService;
     }
 
