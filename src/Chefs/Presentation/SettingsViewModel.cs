@@ -33,6 +33,6 @@ public partial class SettingsViewModel
     }
 
     public async ValueTask Exit(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<ProfileViewModel>(this, data: await Profile, cancellation: ct);
+        await _navigator.GoBack(this);
     
 }
