@@ -128,4 +128,6 @@ public interface IRecipeService
     ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct);
 
     ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct);
+
+    IImmutableList<string> GetSearchHistory();
 }
