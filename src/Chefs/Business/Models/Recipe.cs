@@ -18,6 +18,7 @@ public partial record Recipe
         Details = recipeData.Details;
         Category = new Category(recipeData.Category);
         Date = recipeData.Date;
+        Save = recipeData.Save;
     }
     public Guid Id { get; init; }
     public Guid UserId { get; init; }

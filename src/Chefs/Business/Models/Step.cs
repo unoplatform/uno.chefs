@@ -9,6 +9,7 @@ public record Step
     public Step(StepData stepData)
     {
         Number = stepData.Number;
+        Name = stepData.Name;
         CookTime = stepData.CookTime;
         Cookware = stepData.Cookware;
         Ingredients = stepData.Ingredients;
@@ -16,6 +17,7 @@ public record Step
     }
 
     public int Number { get; init; }
+    public string? Name { get; init; }
     public TimeSpan CookTime { get; init; }
     public IImmutableList<string>? Cookware { get; init; }
     public IImmutableList<string>? Ingredients { get; init; }
@@ -24,6 +26,7 @@ public record Step
     internal StepData ToData() => new()
     {
         Number = Number,
+        Name = Name,
         CookTime = CookTime,
         Cookware = Cookware,
         Ingredients = Ingredients,

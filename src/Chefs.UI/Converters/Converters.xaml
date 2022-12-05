@@ -8,12 +8,15 @@
     <converters:BoolToIntConverter x:Key="BoolToIntConverter" />
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
-                                        Separator="∙"/>
+                                        Separator=" ∙ "/>
     <converters:CustomBackgroundColorConverter x:Key="CustomBackgroundColor" />
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
-    <converters:BoolToVisibilityConverter x:Key="TrueToVisible" />
-    <converters:BoolToVisibilityConverter x:Key="TrueToCollapsed"
-                                          Invert="True" />
+    <converters:BoolInverter x:Key="InvertBool" />
+
     <converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
                                        Number="2" />
+
+    <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
+                                      TrueValue="{StaticResource SurfaceBrush}"
+                                      FalseValue="{StaticResource OnSurfaceLowBrush}" />
 </ResourceDictionary>

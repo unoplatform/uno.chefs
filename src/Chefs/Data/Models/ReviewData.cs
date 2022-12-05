@@ -2,6 +2,7 @@
 
 public class ReviewData
 {
+    public Guid Id { get; set; }
     public Guid RecipeId { get; set; }
     public string? UrlAuthorImage { get; set; }
     public Guid CreatedBy { get; set; }

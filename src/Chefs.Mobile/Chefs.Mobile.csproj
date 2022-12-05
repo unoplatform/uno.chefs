@@ -24,8 +24,11 @@
 	  <AdditionalArgs>--registrar:static</AdditionalArgs>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Android\Resources\drawable\splash.xml" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
+		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.14.0-dev.54" />
 		<PackageReference Include="Uno.WinUI" Version="4.6.19" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.6.19" Condition="'$(Configuration)'=='Debug'" />
 	</ItemGroup>
@@ -37,6 +40,7 @@
 			</ItemGroup>
 			<ItemGroup>
 				<AndroidEnvironment Include="Android/environment.conf" />
+				<AndroidResource Include="Android\Resources\drawable\splash.xml" />
 			</ItemGroup>
 		</When>
 		<When Condition="'$(TargetFramework)'=='net6.0-ios'">
@@ -74,10 +78,10 @@
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.64" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.117" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.117" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.6" />
+	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.5.0-dev.8" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.8" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.783" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />

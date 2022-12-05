@@ -10,7 +10,7 @@ public interface ICookbookService
     /// <param name="cookbook">Cookbook to add</param>
     /// <param name="ct"></param>
     /// <returns></returns>
-    ValueTask Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct);
+    ValueTask<Cookbook> Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct);
 
     /// <summary>
     /// Add cookbook created by the user
@@ -44,6 +44,11 @@ public interface ICookbookService
     /// Get each cookbook from api that was saved
     /// </returns>
     ValueTask<IImmutableList<Cookbook>> GetSaved(CancellationToken ct);
+
+    /// <summary>
+    /// Current cookbook.
+    /// </summary>
+    IListFeed<Cookbook> SavedCookbooks { get; }
 
     /// <summary>
     /// Cookbooks by user

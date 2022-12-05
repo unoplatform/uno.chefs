@@ -33,7 +33,7 @@ public sealed partial class App : Application
 
         var host = await _window.InitializeNavigationAsync(async () => Host);
         _window.Activate();
-
+        
         await Task.Run(() => host.StartAsync());
 
     }

@@ -21,10 +21,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CertainNumberToVisible.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringSeparatorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TimeSpanToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Dialogs\CompletedDialog.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
@@ -74,6 +75,11 @@
 		 explicitly included in the projitem, so files can be added from vscode
 		 without manipulating the projitem file.
 	-->
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-300.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\settings.scale-200.png" />
     <Content Include="$(MSBuildThisFileDirectory)categories.json" />
     <Content Include="$(MSBuildThisFileDirectory)Notifications.json" />
     <Content Include="$(MSBuildThisFileDirectory)Recipes.json" />
@@ -82,6 +88,14 @@
     <Content Include="$(MSBuildThisFileDirectory)SavedRecipes.json" />
     <Content Include="$(MSBuildThisFileDirectory)Users.json" />
     <Page Include="$(MSBuildThisFileDirectory)Styles\FeedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Flyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\Dialogs\CompletedDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,5 +175,15 @@
     <!-- Make sure XAML files force reevaluation of up-to-date checks -->
     <UpToDateCheckInput Include="$(MSBuildThisFileDirectory)**/*.xaml" />
     <_Globbed_Embedded_Resource Include="$(MSBuildThisFileDirectory)*.json" Exclude="@(EmbeddedResource)" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\settings.scale-100.png" />
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\settings.scale-125.png" />
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\settings.scale-150.png" />
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\settings.scale-400.png" />
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\SettingsLogo.targetsize-16.png" />
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\SettingsLogo.targetsize-24.png" />
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\SettingsLogo.targetsize-32.png" />
+    <None Include="$(MSBuildThisFileDirectory)Assets\Icons\SettingsLogo.targetsize-48.png" />
   </ItemGroup>
 </Project>

@@ -81,6 +81,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         if(recipe is not null)
         {
             reviewData.PublisherName = currentUser.FullName;
+            reviewData.UrlAuthorImage = currentUser.UrlProfileImage;
             reviewData.CreatedBy = currentUser.Id;
             reviewData.Date = DateTime.Now;
             recipe.Reviews?.Add(reviewData);
@@ -100,7 +101,11 @@ public class RecipeEndpoint : IRecipeEndpoint
         {
             _recipes = (await _dataService
                 .ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
+            var saved = await GetSaved(CancellationToken.None);
+
+            _recipes?.ForEach(x => x.Save = saved.Contains(x));
         }
+
         return _recipes ?? new List<RecipeData>();
     }
 
