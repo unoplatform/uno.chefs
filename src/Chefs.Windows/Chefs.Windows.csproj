@@ -55,11 +55,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.4" />
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221116.1" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
-		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
+		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.32" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Uno.WinUI" Version="4.6.19" />
@@ -89,10 +89,27 @@
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.25" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.64" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.117" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.117" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.68" />
+	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.135" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.135" />
 	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
+    <PackageReference Update="Uno.Extensions.Configuration" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Core" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Hosting" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Hosting.WinUI" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Http" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Http.Refit" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Localization.WinUI" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Logging.Serilog" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Logging.WinUI" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Navigation" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Navigation.Toolkit.WinUI" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Navigation.WinUI" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Reactive" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Reactive.WinUI" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Serialization" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Serialization.Http" Version="2.3.0-dev.376" />
+    <PackageReference Update="Uno.Extensions.Serialization.Refit" Version="2.3.0-dev.376" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />
