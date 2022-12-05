@@ -15,7 +15,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
+		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.32" />
 		<PackageReference Include="Uno.WinUI.Skia.Linux.FrameBuffer" Version="4.4.13" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.6.19" Condition="'$(Configuration)'=='Debug'" />
 		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.1-preview.79" />
