@@ -15,12 +15,13 @@ public partial class ProfileViewModel
     public ProfileViewModel(INavigator navigator,
         ICookbookService cookbookService,
         IRecipeService recipeService,
+        IUserService userService,
         User user)
     {
         _navigator = navigator;
         _cookbookService = cookbookService;
         _recipeService = recipeService;
-        Profile = State.Value(this, () => user);
+        Profile = State.Async(this, async ct => await userService.GetCurrent(ct) ?? user);
     }
 
     public IState<User> Profile { get; }
@@ -31,11 +32,8 @@ public partial class ProfileViewModel
 
     public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetByUser((Guid)(Profile?.Value(ct).Result!.Id)!, ct), _pageRefresh);
 
-    public async ValueTask Exit(CancellationToken ct) => await _navigator
-        .NavigateViewModelAsync<MainViewModel>(sender: this, Qualifiers.ClearBackStack, cancellation: ct);
-
     public async ValueTask SettingsNavigation(CancellationToken ct) => await _navigator
-        .NavigateViewModelAsync<SettingsViewModel>(sender: this, Qualifiers.ClearBackStack, data: await Profile, cancellation: ct);
+        .NavigateViewModelAsync<SettingsViewModel>(sender: this, qualifier: "!", data: await Profile, cancellation: ct);
     
     public async ValueTask RecipeNavigation(Recipe recipe, CancellationToken ct) => await _navigator
         .NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe, cancellation: ct);

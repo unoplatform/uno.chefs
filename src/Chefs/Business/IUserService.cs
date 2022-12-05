@@ -29,6 +29,11 @@ public interface IUserService
     ValueTask<User> GetCurrent(CancellationToken ct);
 
     /// <summary>
+    /// Feed of the current user.
+    /// </summary>
+    IFeed<User> UserFeed { get; }
+
+    /// <summary>
     /// Update user information
     /// </summary>
     /// <param name="user">user with information to update</param>

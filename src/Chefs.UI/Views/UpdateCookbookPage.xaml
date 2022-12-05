@@ -22,7 +22,7 @@
             <x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:AutoLayout Visibility="{Binding Cookbook.Name, Converter={StaticResource NullToVisible}}">
+            <utu:AutoLayout>
                 <utu:NavigationBar Content="Update Cookbook"
                                    Background="{ThemeResource BackgroundBrush}"
                                    Style="{StaticResource NavigationBarStyle}">
@@ -42,11 +42,12 @@
                     </utu:NavigationBar.PrimaryCommands>
                 </utu:NavigationBar>
                 <TextBox Background="{ThemeResource SurfaceBrush}"
-                         Text="{Binding Cookbook.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Text="Cookbook"
                          PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
                          PlaceholderText="Cookbook name"
                          Margin="20,24"
                          Style="{StaticResource OutlinedTextBoxStyle}" />
+                         <!--Text="{Binding Cookbook.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="18"
