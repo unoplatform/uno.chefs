@@ -32,6 +32,14 @@ public partial class SearchViewModel
 
     public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetRecommended);
 
+    public IListState<string> SearchHistory => ListState.Value(this, () => _recipeService.GetSearchHistory());
+
+    public async ValueTask ApplySearchHistory(string term, CancellationToken ct)
+    {
+        await Term.Update(s => term, ct);
+        await Search(ct);
+    }
+
     private IFeed<IImmutableList<Recipe>> Results => Feed.Async(async ct => 
     {
         var term = await Term;

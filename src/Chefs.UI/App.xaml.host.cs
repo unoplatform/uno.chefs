@@ -38,6 +38,7 @@ public sealed partial class App : Application
                         .EmbeddedSource<App>()
                         .Section<AppConfig>()
                         .Section<Credentials>()
+                        .Section<SearchHistory>()
                 )
 
                 // Enable localization (see appsettings.json for supported languages)
