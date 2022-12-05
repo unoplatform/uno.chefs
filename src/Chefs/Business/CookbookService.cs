@@ -9,13 +9,22 @@ public class CookbookService : ICookbookService
     public CookbookService(ICookbookEndpoint cookEndpoint)
         => _cookbookEndpoint = cookEndpoint;
 
-    public async ValueTask Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct) => await _cookbookEndpoint
-        .Create(new CookbookData { 
-            Id = Guid.NewGuid(), 
-            Name = name, 
+    public async ValueTask<Cookbook> Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct)
+    {
+        var cookbookData = new CookbookData
+        {
+            Id = Guid.NewGuid(),
+            Name = name,
             Recipes = recipes?
             .Select(i => i.ToData())
-            .ToList() }, ct);
+            .ToList()
+        };
+
+        await _cookbookEndpoint
+        .Create(cookbookData, ct);
+
+        return new Cookbook(cookbookData);
+    }
 
     public async ValueTask<Cookbook> Update(Cookbook cookbook, IImmutableList<Recipe> recipes, CancellationToken ct) => new Cookbook(await _cookbookEndpoint
         .Update(cookbook.ToData(recipes), ct));
