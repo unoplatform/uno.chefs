@@ -18,7 +18,7 @@ public partial class SavedRecipesViewModel
         _cookbookService = cookbookService;
     }
 
-    public IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetSaved(ct));
+    public IListState<Cookbook> Cookbooks => ListState<Cookbook>.Async(this, async ct => await _cookbookService.GetSaved(ct));
 
     public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetSaved(ct));
 
@@ -29,12 +29,12 @@ public partial class SavedRecipesViewModel
 
     public async ValueTask CreateCookbookNavigation(CancellationToken ct)
     {
-        await _navigator.NavigateViewModelAsync<CreateCookbookViewModel>(this, cancellation: ct);
-    }
+        var result = await _navigator.GetDataAsync<CreateCookbookViewModel, Cookbook>(this, cancellation: ct);
 
-    public async ValueTask CookbookNavigation(Cookbook cookbook, CancellationToken ct)
-    {
-        await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: cookbook, cancellation: ct);
+        if (result is not null)
+        {
+            await Cookbooks.AddAsync(result, ct);
+        }
     }
 
     public async ValueTask CookbookDetailNavigation(Cookbook cookbook, CancellationToken ct)
