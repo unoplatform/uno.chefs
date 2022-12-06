@@ -96,7 +96,7 @@
                         Grid.Row="3"
                         HorizontalAlignment="Stretch"
 						Command="{Binding Next}"
-                        Visibility="{Binding Visibility, Converter={StaticResource TrueToCollapsed}, ElementName=LetButton}"
+                        Visibility="{Binding Visibility, Converter={StaticResource InvertBool}, ElementName=LetButton}"
 						Height="56" />
                 <Button Background="{ThemeResource PrimaryBrush}"
                         Content="Let's cook!"

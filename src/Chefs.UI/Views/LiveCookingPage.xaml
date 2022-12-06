@@ -16,7 +16,9 @@
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout>
-                <utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
+                <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
+                                   Background="{ThemeResource SurfaceBrush}" />
+                <!--<utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
                                    Style="{StaticResource ModalNavigationBarStyle}">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton Label=""
@@ -31,7 +33,7 @@
                             </AppBarButton.Icon>
                         </AppBarButton>
                     </utu:NavigationBar.PrimaryCommands>
-                </utu:NavigationBar>
+                </utu:NavigationBar>-->
                 <utu:AutoLayout Padding="0">
                     <Image Source="{Binding Recipe.ImageUrl}"
                            Stretch="UniformToFill" />

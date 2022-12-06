@@ -50,7 +50,7 @@
                     <utu:AutoLayout Orientation="Horizontal">
 
                         <utu:AutoLayout Orientation="Horizontal"
-                                        Visibility="{Binding Searched, Converter={StaticResource TrueToCollapsed}}">
+                                        Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
                             <TextBlock Text="recent searches "
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
@@ -67,7 +67,7 @@
                                    utu:AutoLayout.CounterAlignment="Center"
                                    utu:AutoLayout.PrimaryAlignment="Stretch"
                                    Style="{StaticResource TitleLarge}"
-                                   Visibility="{Binding Searched, Converter={StaticResource TrueToVisible}}" />
+                                   Visibility="{Binding Searched}" />
 
                         <utu:AutoLayout Padding="10"
                                         PrimaryAxisAlignment="Center"
@@ -89,7 +89,7 @@
                     <muxc:ItemsRepeater x:Name="HistoryRepeater"
                                         utu:AutoLayout.CounterAlignment="Start"
                                         ItemsSource="{Binding SearchHistory}"
-                                        Visibility="{Binding Searched, Converter={StaticResource TrueToCollapsed}}">
+                                        Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
                         <muxc:ItemsRepeater.Layout>
                             <muxc:StackLayout Orientation="Horizontal" />
                         </muxc:ItemsRepeater.Layout>
@@ -111,7 +111,7 @@
                     <utu:AutoLayout Orientation="Horizontal"
                                     utu:AutoLayout.CounterAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    Visibility="{Binding Searched, Converter={StaticResource TrueToVisible}}">
+                                    Visibility="{Binding Searched}}">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
                                    utu:AutoLayout.CounterAlignment="Center"
@@ -134,10 +134,10 @@
             <Grid Padding="18,12">
                 <ScrollViewer HorizontalScrollMode="Enabled"
                               HorizontalScrollBarVisibility="Visible"
-                              Visibility="{Binding Searched, Converter={StaticResource TrueToVisible}}">
+                              Visibility="{Binding Searched}">
                     <uer:FeedView x:Name="SearchFeed"
                                   Source="{Binding Items}">
-                        <!--Visibility="{Binding Searched, Converter={StaticResource TrueToCollapsed}}"-->
+                        <!--Visibility="{Binding Searched, Converter={StaticResource InvertBool}}"-->
                         <DataTemplate>
                             <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                 uen:Navigation.Request="!RecipeDetails">
@@ -189,7 +189,7 @@
                 </ScrollViewer>
                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                 Spacing="8"
-                                Visibility="{Binding Searched, Converter={StaticResource TrueToCollapsed}}">
+                                Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
                     <TextBlock Text="Recipes for you"
                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                Style="{StaticResource TitleLarge}" />

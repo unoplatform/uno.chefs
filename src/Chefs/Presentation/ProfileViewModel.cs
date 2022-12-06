@@ -21,7 +21,7 @@ public partial class ProfileViewModel
         _navigator = navigator;
         _cookbookService = cookbookService;
         _recipeService = recipeService;
-        Profile = State.Async(this, async ct => await userService.GetCurrent(ct) ?? user);
+        Profile = State.Async(this, async ct => user ?? await userService.GetCurrent(ct));
     }
 
     public IState<User> Profile { get; }

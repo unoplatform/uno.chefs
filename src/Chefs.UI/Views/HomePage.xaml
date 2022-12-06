@@ -226,11 +226,9 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                        uen:Navigation.Request="!RecipeDetails"
                                                                         Style="{StaticResource FilledCardContentControlStyle}"
                                                                         Background="{ThemeResource SurfaceBrush}"
                                                                         Margin="18, 0, 0, 0"
-                                                                        uen:Navigation.Data="{Binding}"
                                                                         MaxWidth="171">
                                                     <utu:CardContentControl.ContentTemplate>
                                                         <DataTemplate>
@@ -272,7 +270,8 @@
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
-                                    <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                    <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                        uen:Navigation.Request="!Profile">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal"
                                                               Spacing="8" />
@@ -280,9 +279,7 @@
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:AutoLayout Spacing="8"
-                                                                utu:AutoLayout.CounterAlignment="Start"
-                                                                uen:Navigation.Request="Profile"
-                                                                uen:Navigation.Data="{Binding}">
+                                                                utu:AutoLayout.CounterAlignment="Start">
                                                     <utu:AutoLayout CornerRadius="30"
                                                                     Orientation="Horizontal"
                                                                     utu:AutoLayout.CounterAlignment="Center"
