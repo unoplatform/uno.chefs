@@ -22,6 +22,8 @@
         </utu:AutoLayout.Resources>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
+                               Background="{ThemeResource SurfaceBrush}" />
+            <!--<utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                Background="{ThemeResource SurfaceBrush}" >
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton Label="" 
@@ -37,7 +39,7 @@
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
-            </utu:NavigationBar>
+            </utu:NavigationBar>-->
 
             <uer:FeedView Source="{Binding Profile}">
                 <DataTemplate>

@@ -35,7 +35,8 @@
                     <utu:NavigationBar.PrimaryCommands>
                         <AppBarButton Command="{Binding SettingsNavigation}"
                                       Background="{ThemeResource BackgroundBrush}"
-                                      Foreground="Black">
+                                      Foreground="Black"
+                                      Visibility="{Binding IsMyProfile}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Icons/settings.png" />
                             </AppBarButton.Icon>
