@@ -1,14 +1,121 @@
-﻿<Page
-    x:Class="Chefs.Views.NotificationsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Chefs.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+﻿<Page x:Class="Chefs.Views.NotificationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Chefs.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:uer="using:Uno.Extensions.Reactive.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="NotificationTemplate">
+            <utu:AutoLayout Background="{Binding Read, Converter={StaticResource BoolToNotificationColor}}"
+                            CornerRadius="15"
+                            PrimaryAxisAlignment="Center">
+                <utu:AutoLayout Spacing="16"
+                                Padding="16"
+                                Orientation="Horizontal">
+                    <utu:AutoLayout CornerRadius="5"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.CounterAlignment="Start">
+                        <PathIcon Data="{StaticResource Icon_Outline_Refresh_ChefsApp}"
+                                  utu:AutoLayout.CounterAlignment="Start"
+                                  Foreground="{ThemeResource PrimaryBrush}" />
+                    </utu:AutoLayout>
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <utu:AutoLayout PrimaryAxisAlignment="Center">
+                            <TextBlock TextWrapping="Wrap"
+                                       Text="{Binding Title}"
+                                       Foreground="{ThemeResource OnSurfaceBrush}"
+                                       Style="{StaticResource LabelMedium}" />
+                            <TextBlock TextWrapping="Wrap"
+                                       Text="{Binding Description}"
+                                       Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                       Style="{StaticResource CaptionMedium}" />
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </utu:AutoLayout>
+        </DataTemplate>
+    </Page.Resources>
+    <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                        uen:Region.Attached="True">
+            <utu:NavigationBar Content="Notifications"
+                               Background="{ThemeResource BackgroundBrush}"
+                               Style="{StaticResource NavigationBarStyle}" />
+            <utu:TabBar Margin="18,24"
+                        Style="{StaticResource TopTabBarStyle}"
+                        uen:Region.Attached="True"
+                        SelectedItem="{Binding ElementName=AllTabItem}">
+                <utu:TabBarItem x:Name="AllTabItem"
+                                uen:Region.Name="AllTab"
+                                Content="All"
+                                Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                <utu:TabBarItem uen:Region.Name="UnreadTab"
+                                Content="Unread"
+                                Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                <utu:TabBarItem uen:Region.Name="OpenedTab"
+                                Content="Opened"
+                                Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+            </utu:TabBar>
 
-    <Grid>
+            <Grid uen:Region.Attached="True"
+                  uen:Region.Navigator="Visibility"
+                  Padding="18,0">
 
-    </Grid>
+                <utu:AutoLayout uen:Region.Name="AllTab"
+                                Visibility="Visible">
+                    <uer:FeedView x:Name="AllFeed"
+                                  Source="{Binding Notifications}">
+                        <DataTemplate>
+                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                ItemTemplate="{StaticResource NotificationTemplate}">
+                                <muxc:ItemsRepeater.Layout>
+                                    <muxc:StackLayout Orientation="Vertical"
+                                                      Spacing="8" />
+                                </muxc:ItemsRepeater.Layout>
+                            </muxc:ItemsRepeater>
+                        </DataTemplate>
+                    </uer:FeedView>
+                </utu:AutoLayout>
+
+                <utu:AutoLayout uen:Region.Name="UnreadTab"
+                                Visibility="Collapsed">
+                    <uer:FeedView x:Name="UnreadFeed"
+                                  Source="{Binding Unread}">
+                        <DataTemplate>
+                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                ItemTemplate="{StaticResource NotificationTemplate}">
+                                <muxc:ItemsRepeater.Layout>
+                                    <muxc:StackLayout Orientation="Vertical"
+                                                      Spacing="8" />
+                                </muxc:ItemsRepeater.Layout>
+                            </muxc:ItemsRepeater>
+                        </DataTemplate>
+                    </uer:FeedView>
+                </utu:AutoLayout>
+
+                <utu:AutoLayout uen:Region.Name="OpenedTab"
+                                Visibility="Collapsed">
+                    <uer:FeedView x:Name="ReadFeed"
+                                  Source="{Binding Read}">
+                        <DataTemplate>
+                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                ItemTemplate="{StaticResource NotificationTemplate}">
+                                <muxc:ItemsRepeater.Layout>
+                                    <muxc:StackLayout Orientation="Vertical"
+                                                      Spacing="8" />
+                                </muxc:ItemsRepeater.Layout>
+                            </muxc:ItemsRepeater>
+                        </DataTemplate>
+                    </uer:FeedView>
+                </utu:AutoLayout>
+            </Grid>
+        </utu:AutoLayout>
+    </utu:AutoLayout>
 </Page>
