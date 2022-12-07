@@ -32,6 +32,7 @@
     <UpToDateCheckInput Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Converters\BoolToObjectConverter.cs" />
     <_Globbed_Compile Remove="Converters\InvertBoolConverter.cs" />
     <_Globbed_Compile Remove="Converters\TimeSpanToStringConverter.cs" />
     <_Globbed_Compile Remove="Converters\BoolToVisibilityConverter.cs" />
