@@ -8,24 +8,25 @@
       xmlns:msui="using:Microsoft.UI.Xaml.Controls"
       xmlns:utu="using:Uno.Toolkit.UI"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
+    <utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
+                    utu:SafeArea.Insets="Top">
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <Button Background="{ThemeResource PrimaryBrush}"
                     Command="{Binding GoToLogin}"
                     Content="Skip"
                     Margin="24, 10, 24, 10"
                     utu:AutoLayout.CounterAlignment="End"
-					Height="37" />
+                    Height="37" />
             <FlipView x:Name="ImageFilpView"
-                          VerticalAlignment="Top"
-                          Background="Transparent"
-                          SelectedIndex="{Binding NextPage}"
-                          utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
+                      VerticalAlignment="Top"
+                      Background="Transparent"
+                      utu:AutoLayout.PrimaryLength="340"
+                      SelectedIndex="{Binding NextPage}"
+                      utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
                 <FlipViewItem>
                     <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
                            Stretch="UniformToFill"
-                           utu:AutoLayout.PrimaryLength="340"
-                           Margin="0,0,0,-40" />
+                           utu:AutoLayout.PrimaryLength="340" />
                 </FlipViewItem>
                 <FlipViewItem>
                     <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
@@ -44,7 +45,7 @@
                   RowSpacing="25">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="56" />
-                    <RowDefinition Height="96" />
+                    <RowDefinition Height="90" />
                     <RowDefinition Height="20" />
                     <RowDefinition Height="56" />
                     <RowDefinition Height="56" />
@@ -60,27 +61,28 @@
                           Background="Transparent"
                           Grid.Row="1"
                           SelectedIndex="{Binding NextPage}"
-                          utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
+                          utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
+                          Margin="-40,0">
                     <FlipView.Items>
                         <FlipViewItem>
                             <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"
-                                       Text="Easy recipes for busy devs.&#xA;UNO Platform and UXDivers joined forces &#xA;to create this beautyful inspiring demo app. &#xA;Enjoy it."
+                                       Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
                                        utu:AutoLayout.CounterAlignment="Center" />
                         </FlipViewItem>
                         <FlipViewItem>
                             <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"
-                                       Text="Easy recipes for busy devs.&#xA;UNO Platform and UXDivers joined forces &#xA;to create this beautyful inspiring demo app. &#xA;Enjoy it."
+                                       Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
                                        utu:AutoLayout.CounterAlignment="Center" />
                         </FlipViewItem>
                         <FlipViewItem>
                             <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"
-                                       Text="Easy recipes for busy devs.&#xA;UNO Platform and UXDivers joined forces &#xA;to create this beautyful inspiring demo app. &#xA;Enjoy it."
+                                       Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
                                        utu:AutoLayout.CounterAlignment="Center" />
                         </FlipViewItem>
                     </FlipView.Items>
@@ -95,22 +97,21 @@
                         utu:AutoLayout.PrimaryLength="56"
                         Grid.Row="3"
                         HorizontalAlignment="Stretch"
-						Command="{Binding Next}"
+                        Command="{Binding Next}"
                         Visibility="{Binding Visibility, Converter={StaticResource InvertBool}, ElementName=LetButton}"
-						Height="56" />
+                        Height="56" />
                 <Button Background="{ThemeResource PrimaryBrush}"
                         Content="Let's cook!"
                         x:Name="LetButton"
                         utu:AutoLayout.PrimaryLength="56"
                         Grid.Row="3"
                         HorizontalAlignment="Stretch"
-						Command="{Binding Next}"
+                        Command="{Binding Next}"
                         Visibility="{Binding NextPage, Converter={StaticResource CertainNumberToVisibleConverter}}"
-						Height="56" />
-                <HyperlinkButton 
-                            Grid.Row="4"
-                            HorizontalAlignment="Center"
-                            FontWeight="SemiBold" />
+                        Height="56" />
+                <HyperlinkButton Grid.Row="4"
+                                 HorizontalAlignment="Center"
+                                 FontWeight="SemiBold" />
             </Grid>
         </utu:AutoLayout>
     </utu:AutoLayout>
