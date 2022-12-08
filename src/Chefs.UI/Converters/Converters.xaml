@@ -11,7 +11,7 @@
                                         Separator="∙"/>
     <converters:CustomBackgroundColorConverter x:Key="CustomBackgroundColor" />
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
-    <converters:InvertBoolConverter x:Key="InvertBool" />
+    <converters:BoolInverter x:Key="InvertBool" />
 
     <converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
                                        Number="2" />

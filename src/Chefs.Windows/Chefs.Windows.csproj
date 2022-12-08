@@ -29,12 +29,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\SplashScreen.scale-100.png" />
+	  <None Remove="Images\SplashScreen.scale-125.png" />
+	  <None Remove="Images\SplashScreen.scale-150.png" />
+	  <None Remove="Images\SplashScreen.scale-200.png" />
+	  <None Remove="Images\SplashScreen.scale-400.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include="Images\LockScreenLogo.scale-200.png" />
-	  <Content Include="Images\ThirdSplashScreen.scale-100.png" />
-	  <Content Include="Images\ThridSplashScreen.scale-125.png" />
-	  <Content Include="Images\ThirdSplashScreen.scale-150.png" />
-	  <Content Include="Images\ThirdSplashScreen.scale-200.png" />
-	  <Content Include="Images\ThridSplashScreen.scale-400.png" />
+	  <Content Include="Images\SplashScreen.scale-100.png" />
+	  <Content Include="Images\SplashScreen.scale-125.png" />
+	  <Content Include="Images\SplashScreen.scale-150.png" />
+	  <Content Include="Images\SplashScreen.scale-200.png" />
+	  <Content Include="Images\SplashScreen.scale-400.png" />
 	  <Content Include="Images\Square150x150Logo.scale-200.png" />
 	  <Content Include="Images\settings.scale-200.png" />
 	  <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
@@ -77,8 +85,8 @@
 		the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
 		must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
 		-->
-		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22000.25" />
-		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.25" />
+		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22000.27" />
+		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.27" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.68" />
