@@ -23,7 +23,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CertainNumberToVisible.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Converters\InvertBoolConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringSeparatorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TimeSpanToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Dialogs\CompletedDialog.xaml.cs" />
