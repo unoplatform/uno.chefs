@@ -225,7 +225,6 @@
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         uen:Navigation.Request="!RecipeDetails"
-                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}"
                                                         >
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
