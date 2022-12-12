@@ -8,7 +8,7 @@
     <converters:BoolToIntConverter x:Key="BoolToIntConverter" />
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
-                                        Separator="∙"/>
+                                        Separator=" ∙ "/>
     <converters:CustomBackgroundColorConverter x:Key="CustomBackgroundColor" />
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
     <converters:BoolInverter x:Key="InvertBool" />
