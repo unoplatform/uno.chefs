@@ -20,12 +20,7 @@
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="Narrow">
-                    <VisualState.Setters>
-                        <Setter Target="ImageFilpView.Visibility"
-                                Value="Visible" />
-                    </VisualState.Setters>
-                </VisualState>
+                <VisualState x:Name="Narrow" />
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -33,6 +28,16 @@
                     <VisualState.Setters>
                         <Setter Target="ContentLayout.Orientation"
                                 Value="Horizontal" />
+                        <Setter Target="ButtonsLayout.Orientation"
+                                Value="Horizontal" />
+                        <Setter Target="ButtonsLayout.PrimaryAxisAlignment"
+                                Value="End" />
+                        <Setter Target="ButtonsLayout.Padding"
+                                Value="40,18" />
+                        <Setter Target="ButtonsLayout.Spacing"
+                                Value="40" />
+                        <Setter Target="ButtonsLayout.Background"
+                                Value="{ThemeResource SurfaceColor}" />
                         <Setter Target="DetailsTab.Visibility"
                                 Value="Collapsed" />
                         <Setter Target="WideDetailsLayout.Visibility"
@@ -47,6 +52,18 @@
                                 Value="40" />
                         <Setter Target="TabsLayout.Padding"
                                 Value="20,0,40,20" />
+                        <Setter Target="IngredientsButton.(utu:AutoLayout.PrimaryLength)"
+                                Value="190" />
+                        <Setter Target="IngredientsButton.(utu:AutoLayout.CounterLength)"
+                                Value="56" />
+                        <Setter Target="IngredientsButton.Foreground"
+                                Value="{ThemeResource OnSurfaceMediumBrush}" />
+                        <Setter Target="IngredientsButton.Style"
+                                Value="{StaticResource OutlinedButtonStyle}" />
+                        <Setter Target="LiveCookingButton.(utu:AutoLayout.PrimaryLength)"
+                                Value="190" />
+                        <Setter Target="LiveCookingButton.(utu:AutoLayout.CounterLength)"
+                                Value="56" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -95,8 +112,7 @@
                                         PrimaryAxisAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <utu:AutoLayout x:Name="RecipeImage">
-                                <Image 
-                                       Source="{Binding Recipe.ImageUrl}"
+                                <Image Source="{Binding Recipe.ImageUrl}"
                                        Stretch="UniformToFill"
                                        utu:AutoLayout.CounterAlignment="Stretch" />
                             </utu:AutoLayout>
@@ -191,7 +207,7 @@
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout x:Name="TabsLayout"
-                        uen:Region.Attached="True"
+                                    uen:Region.Attached="True"
                                     Spacing="16"
                                     Padding="18,30"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -322,20 +338,25 @@
                             </utu:AutoLayout>
                         </Grid>
 
-                        <Button Content="Get the Ingredients"
-                                utu:AutoLayout.PrimaryLength="56"
-                                Style="{StaticResource TextButtonStyle}"
-                                Command="{Binding IngredientsNavigation}" />
-
-                        <Button Background="{ThemeResource PrimaryBrush}"
-                                Content="Start cooking!"
-                                utu:AutoLayout.PrimaryLength="56"
-                                Command="{Binding LiveCooking}" />
-
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
         </utu:AutoLayout>
 
+        <utu:AutoLayout x:Name="ButtonsLayout"
+                        Padding="18"
+                        Spacing="16">
+            <Button x:Name="IngredientsButton"
+                    Content="Get the Ingredients"
+                    utu:AutoLayout.PrimaryLength="56"
+                    Style="{StaticResource TextButtonStyle}"
+                    Command="{Binding IngredientsNavigation}" />
+
+            <Button x:Name="LiveCookingButton"
+                    Background="{ThemeResource PrimaryBrush}"
+                    Content="Start cooking!"
+                    utu:AutoLayout.PrimaryLength="56"
+                    Command="{Binding LiveCooking}" />
+        </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
