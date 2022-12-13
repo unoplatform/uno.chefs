@@ -5,12 +5,12 @@ using Chefs.Data;
 
 namespace Chefs.Presentation;
 
-public partial class ProfileViewModel
+public partial class ProfileViewModel // DR_REV: Use Model suffix instead of ViewModel
 {
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
     private readonly INavigator _navigator;
-    private User _user;
+    private readonly User _user;
 
     public ProfileViewModel(INavigator navigator,
         ICookbookService cookbookService,
@@ -23,18 +23,28 @@ public partial class ProfileViewModel
         _user = user;
     }
 
-    public IState<bool> IsMyProfile => State<bool>.Value(this, () => _user?.IsCurrent ?? false);
+	// DR_REV: This seems to be used only to display the snapshot received in ctor. There is no need to wrap it into a State, use a simple property instead:
+	//          public bool IsMyProfile { get; }
+	//      OR
+	//          As this seems to be inferred from the current 'Profile', make this value a projection of the `Profile`
+	//          public IFee<bool> IsMyProfile => Profile.Select(profile => profile.IsCurrent);
+    //      OR
+    //          For the same reason as above, remove this property and change your binding to `Profile.IsCurrent`.
+	public IState<bool> IsMyProfile => State<bool>.Value(this, () => _user?.IsCurrent ?? false);
 
     public IState<User> Profile => State.Value(this, () => _user);
 
-    public IListFeed<Cookbook> Cookbooks => ListFeed<Cookbook>.Async(async ct => await _cookbookService.GetByUser(_user.Id, ct));
+	// DR_REV: This is a projection of the current user, use async projection instead:
+	public IListFeed<Cookbook> Cookbooks => Profile.SelectAsync((user, ct) => _cookbookService.GetByUser(user.Id, ct)).AsListFeed();
 
-    public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetByUser(_user.Id, ct));
+	// DR_REV: This is a projection of the current user, use async projection instead:
+	public IListFeed<Recipe> Recipes => Profile.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct)).AsListFeed();
 
-    public async ValueTask Exit(CancellationToken ct) =>
+    // DR_REV: XAML only nav
+	public async ValueTask Exit(CancellationToken ct) =>
         await _navigator.NavigateBackAsync(this, cancellation: ct);
 
-    public async ValueTask SettingsNavigation(CancellationToken ct)
+	public async ValueTask SettingsNavigation(CancellationToken ct)
     {
         var result = await _navigator.GetDataAsync<SettingsViewModel, User>(this, data: _user, cancellation: ct);
 

@@ -4,10 +4,10 @@ using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
-public class ShellViewModel
+public class ShellViewModel // DR_REV: Use Model suffix instead of ViewModel
 {
-    private INavigator _navigator;
-    private IWritableOptions<Credentials> _credentialsSettings;
+    private readonly INavigator _navigator;
+    private readonly IWritableOptions<Credentials> _credentialsSettings;
 
     public ShellViewModel(
 		INavigator navigator,
@@ -23,6 +23,7 @@ public class ShellViewModel
 	{
         await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
 
+        // DR_REV: Dead code
         //var currentCredentials = _credentialsSettings.Value;
 
         //if (currentCredentials is null || !currentCredentials.SkipWelcome)

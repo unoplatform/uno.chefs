@@ -1,8 +1,10 @@
 
 namespace Chefs.Presentation;
 
-public partial class MainViewModel
+public partial class MainViewModel // DR_REV: Use Model suffix instead of ViewModel
 {
+	private readonly INavigator _navigator;
+
 	public string? Title { get; }
 
 	public MainViewModel(
@@ -18,6 +20,4 @@ public partial class MainViewModel
 	{
 		await _navigator.NavigateViewModelAsync<SecondViewModel>(this, cancellation: cancellation);
 	}
-
-	private INavigator _navigator;
 }

@@ -5,16 +5,18 @@ using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
-public partial class UpdateCookbookViewModel
+public partial class UpdateCookbookViewModel // DR_REV: Use Model suffix instead of ViewModel
 {
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
     private readonly ICookbookService _cookbookService;
 
-    public UpdateCookbookViewModel(INavigator navigator,
-                                   IRecipeService recipeService,
-                                   ICookbookService cookbookService,
-                                   Cookbook cookbook)
+    // DR_DEV: Alignment: at most one tab on new lines
+    public UpdateCookbookViewModel(
+		INavigator navigator,
+        IRecipeService recipeService,
+        ICookbookService cookbookService,
+        Cookbook cookbook)
     {
         _navigator = navigator;
         _recipeService = recipeService;
@@ -28,11 +30,17 @@ public partial class UpdateCookbookViewModel
     public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
     {
         var cookbook = await Cookbook;
-        return (await _recipeService.GetSaved(ct))
-        .RemoveAll(r1 => cookbook?.Recipes!.ToList()
-        .Exists(r2 => r1.Id == r2.Id) ?? false);
+        // DR_REV: Alignment: the code was miss-aligned making it are to read ... re-aligning it shows that you are doing a cookbook.Recipes.ToList() **for each** recipe
+
+		var recipes = await _recipeService.GetSaved(ct);
+		var recipesExceptCookbook = cookbook?.Recipes is null 
+			? recipes
+			: recipes.RemoveAll(r => cookbook.Recipes.Any(cbR => r.Id == cbR.Id));
+
+		return recipesExceptCookbook;
     });
 
+    // DR_REV: XAML only nav
     public async ValueTask Exit(CancellationToken ct) =>
         await _navigator.NavigateBackAsync(this, cancellation: ct);
 

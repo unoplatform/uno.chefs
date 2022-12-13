@@ -3,7 +3,7 @@ using Uno.Extensions.Navigation;
 
 namespace Chefs.Presentation;
 
-public partial class SettingsViewModel
+public partial class SettingsViewModel // DR_REV: Use Model suffix instead of ViewModel
 {
     private readonly INavigator _navigator;
     private readonly IUserService _userService;
@@ -15,19 +15,18 @@ public partial class SettingsViewModel
         UserInfo = State.Value(this, () => user);
     }
 
-    public IState<User> UserInfo { get; }
+	public IState<User> UserInfo { get; }
 
+    // DR_REV: Useless, keep only one UserInfo or Profile
     public IFeed<User> Profile => UserInfo;
 
     public IState<AppConfig> Settings => State<AppConfig>.Async(this, async (ct) => await _userService.GetSettings(ct));
 
-    public async ValueTask Update(CancellationToken ct)
+    // DR_REV: Use implicit command parameters
+    public async ValueTask Update(AppConfig settings, User profile, CancellationToken ct)
     {
-        var settings = await Settings;
-        var user = await Profile;
-
-        await _userService.Update(user!, ct);
-        await _userService.SetSettings(settings!, ct);
+        await _userService.Update(profile, ct);
+        await _userService.SetSettings(settings, ct);
 
         await Exit(ct);
     }

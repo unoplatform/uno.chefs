@@ -11,7 +11,9 @@
                                         Separator="∙"/>
     <converters:CustomBackgroundColorConverter x:Key="CustomBackgroundColor" />
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
-    <converters:BoolToVisibilityConverter x:Key="TrueToVisible" />
+
+	<!--DR_REV: There is an implicit converter from bool to visibility, this explicit bool to visibility converters below are useless.-->
+	<converters:BoolToVisibilityConverter x:Key="TrueToVisible" />
     <converters:BoolToVisibilityConverter x:Key="TrueToCollapsed"
                                           Invert="True"/>
 </ResourceDictionary>

@@ -3,10 +3,10 @@ using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
 
-public partial class SearchViewModel
+public partial class SearchViewModel // DR_REV: Use Model suffix instead of ViewModel
 {
-    private INavigator _navigator;
-    private IRecipeService _recipeService;
+    private readonly INavigator _navigator;
+    private readonly IRecipeService _recipeService;
 
     public SearchViewModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
     {
@@ -29,13 +29,13 @@ public partial class SearchViewModel
 
     public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
 
+    // DR_REV: Duplicate with property above
     public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetRecommended);
 
-    private IFeed<IImmutableList<Recipe>> Results => Term
-        .SelectAsync(_recipeService.Search);
+    private IFeed<IImmutableList<Recipe>> Results => Term.SelectAsync(_recipeService.Search);
 
-    private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) =>
-        inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
+    private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) 
+		=> inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
 
     private bool GetSearched((SearchFilter filter, string term) inputs) 
     {
@@ -47,9 +47,10 @@ public partial class SearchViewModel
         {
             return !string.IsNullOrEmpty(inputs.term);
         }
-    } 
+    }
 
-    public async ValueTask GoBack(CancellationToken ct) =>
+	// DR_REV: XAML only nav
+	public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);
 
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
