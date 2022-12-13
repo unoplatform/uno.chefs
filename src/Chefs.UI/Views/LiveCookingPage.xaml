@@ -90,7 +90,14 @@
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Narrow">
+                    <VisualState.Setters>
+                        <Setter Target="StepsFeedLayout.MaxHeight"
+                                Value="56" />
+                        <Setter Target="RecipeImage.MaxHeight"
+                                Value="220" />
+                    </VisualState.Setters>
+                </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -118,8 +125,6 @@
                                 Value="{Binding SelectedStep.Name}" />
                         <Setter Target="WideCooktime.Visibility"
                                 Value="Visible" />
-                        <Setter Target="StepsFeed.MinHeight"
-                                Value="63" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -130,7 +135,7 @@
                             utu:AutoLayout.CounterAlignment="Stretch">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
-                                   x:Name="NavBar" />
+                                   x:Name="NavBar"/>
                 <!--<utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
                                    Style="{StaticResource ModalNavigationBarStyle}">
                     <utu:NavigationBar.MainCommand>
@@ -201,7 +206,7 @@
                                    Style="{StaticResource CaptionSmall}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
-                
+
                 <utu:AutoLayout x:Name="StepsFeedLayout">
                     <uer:FeedView x:Name="StepsFeed"
                                   Source="{Binding Steps}">
@@ -217,8 +222,7 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
-                                                        PrimaryAxisAlignment="Center"
-                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                        PrimaryAxisAlignment="Center">
                                             <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                        TextAlignment="Center"
                                                        Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
@@ -237,7 +241,7 @@
                               SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                               ItemsSource="{Binding Steps}"
                               ItemTemplate="{StaticResource NarrowTemplate}"
-                              Background="Transparent"/>
+                              Background="Transparent" />
 
                 </ScrollViewer>
             </utu:AutoLayout>
