@@ -118,8 +118,8 @@
                                 Value="{Binding SelectedStep.Name}" />
                         <Setter Target="WideCooktime.Visibility"
                                 Value="Visible" />
-                        <Setter Target="StepsLayout.Spacing"
-                                Value="30" />
+                        <Setter Target="StepsFeed.MinHeight"
+                                Value="63" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -185,8 +185,9 @@
                             x:Name="StepsLayout">
                 <utu:AutoLayout x:Name="WideCooktime"
                                 Visibility="Collapsed"
-                                Padding="20"
-                                PrimaryAxisAlignment="End">
+                                PrimaryAxisAlignment="Center"
+                                MinHeight="{Binding ElementName=NavBar, Path=Height}"
+                                Padding="20,0">
                     <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
                                     Padding="10,6"
                                     CornerRadius="15"
@@ -216,7 +217,8 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
-                                                        PrimaryAxisAlignment="Center">
+                                                        PrimaryAxisAlignment="Center"
+                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
                                             <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                        TextAlignment="Center"
                                                        Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
