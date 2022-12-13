@@ -44,7 +44,8 @@
                         <utu:AutoLayout Spacing="8">
                             <utu:ChipGroup CanRemove="False"
                                            SelectionMode="Single"
-                                           HorizontalAlignment="Stretch">
+                                           HorizontalAlignment="Stretch"
+                                           Style="{StaticResource FilterChipGroupStyle}">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <controls:WrapPanel Orientation="Horizontal" />
@@ -79,7 +80,8 @@
                         <utu:AutoLayout Spacing="16">
                             <utu:ChipGroup CanRemove="False"
                                            SelectionMode="Single"
-                                           utu:AutoLayout.PrimaryAlignment="Stretch">
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
+                                           Style="{StaticResource FilterChipGroupStyle}">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <controls:WrapPanel Orientation="Horizontal" />
@@ -115,7 +117,8 @@
                                         Orientation="Horizontal">
                             <utu:ChipGroup CanRemove="False"
                                            SelectionMode="Single"
-                                           HorizontalAlignment="Stretch">
+                                           HorizontalAlignment="Stretch"
+                                           Style="{StaticResource FilterChipGroupStyle}">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <controls:WrapPanel Orientation="Horizontal" />
@@ -151,7 +154,8 @@
                                         Orientation="Horizontal">
                             <utu:ChipGroup CanRemove="False"
                                            SelectionMode="Single"
-                                           HorizontalAlignment="Stretch">
+                                           HorizontalAlignment="Stretch"
+                                           Style="{StaticResource FilterChipGroupStyle}">
                                 <utu:ChipGroup.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <controls:WrapPanel Orientation="Horizontal" />

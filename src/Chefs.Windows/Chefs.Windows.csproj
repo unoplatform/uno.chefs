@@ -29,7 +29,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\SplashScreen.scale-100.png" />
+	  <None Remove="Images\SplashScreen.scale-125.png" />
+	  <None Remove="Images\SplashScreen.scale-150.png" />
+	  <None Remove="Images\SplashScreen.scale-200.png" />
+	  <None Remove="Images\SplashScreen.scale-400.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Content Include="Images\LockScreenLogo.scale-200.png" />
+	  <Content Include="Images\SplashScreen.scale-100.png" />
+	  <Content Include="Images\SplashScreen.scale-125.png" />
+	  <Content Include="Images\SplashScreen.scale-150.png" />
+	  <Content Include="Images\SplashScreen.scale-200.png" />
+	  <Content Include="Images\SplashScreen.scale-400.png" />
 	  <Content Include="Images\Square150x150Logo.scale-200.png" />
 	  <Content Include="Images\Square44x44Logo.scale-200.png" />
 	  <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
