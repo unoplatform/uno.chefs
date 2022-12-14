@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
 
-public record IngredientsParameter(Recipe Recipe, IImmutableList<Ingredient> Ingredients);
+public record IngredientsParameter(Recipe Recipe, IImmutableList<Ingredient> Ingredients, IImmutableList<Step> Steps);
 
 public partial class IngredientsViewModel
 {
@@ -16,10 +16,13 @@ public partial class IngredientsViewModel
         _userService = userService;
 
         Ingredients = ListState.Value(this, () => parameter.Ingredients);
+        Steps = ListState.Value(this, () => parameter.Steps);
         Recipe = State.Value(this, () => parameter.Recipe);
     }
 
     public IListState<Ingredient> Ingredients { get; }
+
+    public IListState<Step> Steps { get; }
 
     public IState<Recipe> Recipe { get; }
 

@@ -97,7 +97,7 @@
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <utu:AutoLayout x:Name="CreatorLayout"
                                         Spacing="6"
-                                        Padding="18,0,18,20"
+                                        Padding="18,20"
                                         Orientation="Horizontal">
                             <PersonPicture utu:AutoLayout.CounterAlignment="Center"
                                            Width="32"
