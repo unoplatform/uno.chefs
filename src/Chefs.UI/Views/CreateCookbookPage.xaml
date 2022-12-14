@@ -28,9 +28,33 @@
             <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
             <x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
         </utu:AutoLayout.Resources>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow">
+                    <VisualState.Setters>
+                        <Setter Target="AddPinLabel.Style"
+                                Value="{ThemeResource SurfaceInverseBrush}" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="AddPinLabel.Style"
+                                Value="{StaticResource HeadlineLarge}" />
+                        <Setter Target="WideButtons.Visibility"
+                                Value="Visible" />
+                        <Setter Target="NarrowButtons.Visibility"
+                                Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout>
                 <utu:NavigationBar Content="Create Cookbook"
+                                   x:Name="CreateCookbookTitle"
                                    Background="{ThemeResource BackgroundBrush}"
                                    Style="{StaticResource NavigationBarStyle}">
                     <utu:NavigationBar.MainCommand>
@@ -53,12 +77,14 @@
                          PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
                          PlaceholderText="Cookbook name"
                          Margin="20,24"
+                         CornerRadius="15"
                          Style="{StaticResource OutlinedTextBoxStyle}" />
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="18" 
                                 Padding="18,0">
                     <TextBlock Margin="4, 0, 0, 0" 
+                               x:Name="AddPinLabel"
                                Foreground="{ThemeResource SurfaceInverseBrush}" 
                                Text="Add pin" 
                                Style="{StaticResource LabelLarge}" />
@@ -73,10 +99,10 @@
                                     <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}">
                                             <muxc:ItemsRepeater.Layout>
-                                                <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                <!--<muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                         ItemsJustification="SpaceAround" 
                                                                         MinColumnSpacing="10" 
-                                                                        MinRowSpacing="10" />
+                                                                        MinRowSpacing="10" />-->
                                             </muxc:ItemsRepeater.Layout>
                                             <muxc:ItemsRepeater.ItemTemplate>
                                                 <DataTemplate>
@@ -138,11 +164,35 @@
                 </utu:AutoLayout>
             </ScrollViewer>
         </utu:AutoLayout>
-        <utu:AutoLayout Padding="18,30">
+        <utu:AutoLayout x:Name="NarrowButtons" 
+                        Padding="18,30">
             <Button Command="{Binding Done}" 
                     Background="{ThemeResource PrimaryBrush}" 
                     Content="Done" 
                     utu:AutoLayout.PrimaryLength="56" />
+        </utu:AutoLayout>
+        <utu:AutoLayout x:Name="WideButtons"
+                        Visibility="Collapsed"
+                        Background="{ThemeResource SurfaceBrush}" 
+                        Spacing="40" 
+                        Padding="40,0" 
+                        CornerRadius="0,0,0,40" 
+                        PrimaryAxisAlignment="End" 
+                        Orientation="Horizontal" 
+                        Height="120">
+            <Button Content="Cancel" 
+                    Command="{Binding Exit}"
+                    utu:AutoLayout.CounterAlignment="Center" 
+                    Width="190" 
+                    Height="64" 
+                    Foreground="{ThemeResource OnSurfaceMediumBrush}" 
+                    Style="{StaticResource OutlinedButtonStyle}" />
+            <Button Background="{ThemeResource PrimaryBrush}" 
+                    Content="Done" 
+                    Command="{Binding Done}"
+                    utu:AutoLayout.CounterAlignment="Center" 
+                    Width="190" 
+                    Height="64" />
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
