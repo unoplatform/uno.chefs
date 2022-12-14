@@ -39,7 +39,7 @@
                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="{Binding Name}"
-                                                       Style="{StaticResource TitleMedium}" />
+                                                       Style="{StaticResource CustomTitleMedium}" />
                                             <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="{Binding TimeCal}" />
@@ -86,11 +86,11 @@
                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                        Text="{Binding Data.FullName}"
                                        utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource TitleMedium}" />
+                                       Style="{StaticResource CustomTitleMedium}" />
                             <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                        Text="{Binding Data.Email}"
                                        utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource CaptionMedium}" />
+                                       Style="{StaticResource CustomCaptionMedium}" />
                         </utu:AutoLayout>
                         <Button utu:AutoLayout.CounterAlignment="Start"
                                 Style="{StaticResource IconButtonStyle}"
@@ -120,7 +120,7 @@
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Trending now"
                                            utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
+                                           Style="{StaticResource CustomTitleLarge}" />
                             </utu:AutoLayout>
                             <Button Command="{Binding ShowAll}"
                                     Background="Transparent"
@@ -131,7 +131,7 @@
                                            Text="Show me all"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                           Style="{StaticResource TitleSmall}" />
+                                           Style="{StaticResource CustomTitleSmall}" />
                             </Button>
                         </utu:AutoLayout>
                         <Grid>
@@ -157,7 +157,7 @@
                                     utu:AutoLayout.CounterAlignment="Start">
                         <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                    Text="Categories"
-                                   Style="{StaticResource TitleLarge}" />
+                                   Style="{StaticResource CustomTitleLarge}" />
                         <uer:FeedView x:Name="CategoriesFeedView"
                                       Source="{Binding Categories}">
                             <DataTemplate>
@@ -184,7 +184,7 @@
                                                     <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                                Text="{Binding Name}"
                                                                utu:AutoLayout.CounterAlignment="Center"
-                                                               Style="{StaticResource LabelLarge}" />
+                                                               Style="{StaticResource CustomLabelLarge}" />
                                                 </utu:AutoLayout>
                                             </DataTemplate>
                                         </muxc:ItemsRepeater.ItemTemplate>
@@ -203,7 +203,7 @@
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Recently Added"
                                            utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
+                                           Style="{StaticResource CustomTitleLarge}" />
                             </utu:AutoLayout>
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllRecentlyAdded}"
@@ -214,7 +214,7 @@
                                            Text="Show me all"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                           Style="{StaticResource TitleSmall}" />
+                                           Style="{StaticResource CustomTitleSmall}" />
                             </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="RecentlyAddedFeedView"
@@ -249,11 +249,11 @@
                                                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                                TextWrapping="NoWrap"
                                                                                Text="{Binding Name}"
-                                                                               Style="{StaticResource TitleMedium}" />
+                                                                               Style="{StaticResource CustomTitleMedium}" />
                                                                     <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                                TextWrapping="NoWrap"
                                                                                Text="{Binding TimeCal}"
-                                                                               Style="{StaticResource BodySmall}" />
+                                                                               Style="{StaticResource CustomBodySmall}" />
                                                                 </utu:AutoLayout>
                                                             </utu:AutoLayout>
                                                         </DataTemplate>
@@ -270,7 +270,7 @@
                     <utu:AutoLayout Spacing="24">
                         <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                    Text="Popular Creators"
-                                   Style="{StaticResource TitleLarge}" />
+                                   Style="{StaticResource CustomTitleLarge}" />
                         <uer:FeedView x:Name="PopularCreatorsFeedView"
                                       Source="{Binding PopularCreators}">
                             <DataTemplate>
@@ -301,7 +301,7 @@
                                                                TextAlignment="Center"
                                                                Text="{Binding FullName}"
                                                                utu:AutoLayout.CounterAlignment="Center"
-                                                               Style="{StaticResource BodySmall}" />
+                                                               Style="{StaticResource CustomBodySmall}" />
                                                 </utu:AutoLayout>
                                             </DataTemplate>
                                         </muxc:ItemsRepeater.ItemTemplate>
@@ -319,7 +319,7 @@
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Lunch"
                                            utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
+                                           Style="{StaticResource CustomTitleLarge}" />
                             </utu:AutoLayout>
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllLunch}"
@@ -330,7 +330,7 @@
                                            Text="Show me all"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                           Style="{StaticResource TitleSmall}" />
+                                           Style="{StaticResource CustomTitleSmall}" />
                             </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="LunchRecipesFeedView"
@@ -358,7 +358,7 @@
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Dinner"
                                            utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
+                                           Style="{StaticResource CustomTitleLarge}" />
                             </utu:AutoLayout>
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllDinner}"
@@ -369,7 +369,7 @@
                                            Text="Show me all"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                           Style="{StaticResource TitleSmall}" />
+                                           Style="{StaticResource CustomTitleSmall}" />
                             </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="DinnerRecipesFeedView"
@@ -397,7 +397,7 @@
                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Snack"
                                            utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
+                                           Style="{StaticResource CustomTitleLarge}" />
                             </utu:AutoLayout>
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllSnack}"
@@ -408,7 +408,7 @@
                                            Text="Show me all"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                           Style="{StaticResource TitleSmall}" />
+                                           Style="{StaticResource CustomTitleSmall}" />
                             </Button>
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="SnackRecipesFeedView"

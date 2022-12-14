@@ -25,7 +25,7 @@
                                        TextAlignment="Center"
                                        Text="Getting started"
                                        utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource HeadlineMedium}" />
+                                       Style="{StaticResource CustomHeadlineMedium}" />
                         </utu:AutoLayout>
 
                         <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
@@ -37,7 +37,7 @@
                                        TextAlignment="Center"
                                        Text="{Binding CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
                                        utu:AutoLayout.CounterAlignment="Center"
-                                       Style="{StaticResource CaptionSmall}" />
+                                       Style="{StaticResource CustomCaptionSmall}" />
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout x:Name="DataTemplateDetails"
@@ -50,7 +50,7 @@
                             <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                        Text="{Binding Cookware, Converter={StaticResource DotStringSeparator}}"
                                        Margin="10"
-                                       Style="{StaticResource LabelSmall}" />
+                                       Style="{StaticResource CustomLabelSmall}" />
                         </utu:AutoLayout>
                         <utu:Divider Foreground="#E8EEF7"
                                      utu:AutoLayout.CounterAlignment="Stretch"
@@ -61,7 +61,7 @@
                             <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                        Text="{Binding Ingredients, Converter={StaticResource DotStringSeparator}}"
                                        Margin="10"
-                                       Style="{StaticResource LabelSmall}" />
+                                       Style="{StaticResource CustomLabelSmall}" />
 
                         </utu:AutoLayout>
                     </utu:AutoLayout>
@@ -71,7 +71,7 @@
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    TextWrapping="Wrap"
                                    Text="{Binding Description}"
-                                   Style="{StaticResource LabelMedium}" />
+                                   Style="{StaticResource CustomLabelMedium}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </DataTemplate>
@@ -83,7 +83,7 @@
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    TextWrapping="Wrap"
                                    Text="{Binding Description}"
-                                   Style="{StaticResource HeadlineMedium}" />
+                                   Style="{StaticResource CustomHeadlineMedium}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </DataTemplate>
@@ -169,7 +169,7 @@
                         <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                    Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
                                    Margin="10"
-                                   Style="{StaticResource LabelSmall}" />
+                                   Style="{StaticResource CustomLabelSmall}" />
                     </utu:AutoLayout>
                     <utu:Divider Foreground="#E8EEF7"
                                  utu:AutoLayout.CounterAlignment="Stretch"
@@ -180,7 +180,7 @@
                         <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                    Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
                                    Margin="10"
-                                   Style="{StaticResource LabelSmall}" />
+                                   Style="{StaticResource CustomLabelSmall}" />
 
                     </utu:AutoLayout>
                 </utu:AutoLayout>
@@ -203,7 +203,7 @@
                                    TextAlignment="Center"
                                    Text="{Binding SelectedStep.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
                                    utu:AutoLayout.CounterAlignment="End"
-                                   Style="{StaticResource CaptionSmall}" />
+                                   Style="{StaticResource CustomCaptionSmall}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
 
