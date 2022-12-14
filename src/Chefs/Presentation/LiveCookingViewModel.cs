@@ -21,6 +21,8 @@ public partial class LiveCookingViewModel
 
     public IState<Recipe> Recipe { get; }
 
+    public IState<int> SelectedIndex => State.Value(this, () => 0);
+
     public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);
 }

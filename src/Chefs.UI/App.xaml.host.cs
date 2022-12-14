@@ -38,7 +38,6 @@ public sealed partial class App : Application
                         .EmbeddedSource<App>()
                         .Section<AppConfig>()
                         .Section<Credentials>()
-                        .Section<AuthenticationOptions>()
                 )
 
                 // Enable localization (see appsettings.json for supported languages)
@@ -112,7 +111,7 @@ public sealed partial class App : Application
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsViewModel>()),
                                 }),
                                 new RouteMap("Profile", View: views.FindByViewModel<ProfileViewModel>()),
-                                new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>(), DependsOn: "Profile"),
+                                new RouteMap("Settings", View: views.FindByViewModel<SettingsViewModel>()),
                                 new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "Profile"),
                                 new RouteMap("ProfileUpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "ProfileCookbookDetail"),
                                 new RouteMap("Search", View: views.FindByViewModel<SearchViewModel>(), DependsOn:"Home", Nested: new RouteMap[]
@@ -123,10 +122,12 @@ public sealed partial class App : Application
                                 new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookViewModel>(), DependsOn: "SavedRecipes"),
                                 new RouteMap("SavedCookbookDetail", View: views.FindByViewModel<CookbookDetailViewModel>(), DependsOn: "SavedRecipes"),
                                 new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookViewModel>(), DependsOn: "SavedCookbookDetail"),
-                                new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>()),
-                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>(), DependsOn:"RecipeDetails"),
-                                new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingViewModel>(), DependsOn:"RecipeDetails"),
-                                new RouteMap("Reviews", View: views.FindByViewModel<ReviewsViewModel>(), DependsOn:"RecipeDetails"),
+                                new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsViewModel>(), Nested: new RouteMap[]
+                                {
+                                    new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsViewModel>(), DependsOn:"RecipeDetails"),
+                                    new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingViewModel>(), DependsOn:"RecipeDetails"),
+                                    new RouteMap("Reviews", View: views.FindByViewModel<ReviewsViewModel>(), DependsOn:"RecipeDetails"),
+                                }),
                             })
                         }));
     }

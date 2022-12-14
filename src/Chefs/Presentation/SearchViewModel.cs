@@ -7,6 +7,7 @@ public partial class SearchViewModel
 {
     private INavigator _navigator;
     private IRecipeService _recipeService;
+    private Signal _searchSignal = new();
 
     public SearchViewModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
     {
@@ -25,30 +26,23 @@ public partial class SearchViewModel
         .Select(ApplyFilter)
         .AsListFeed();
 
-    public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
+    public IFeed<bool> Searched => Feed.Combine(Filter, Results).Select(GetSearched);
 
     public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
 
     public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetRecommended);
 
-    private IFeed<IImmutableList<Recipe>> Results => Term
-        .SelectAsync(_recipeService.Search);
+    private IFeed<IImmutableList<Recipe>> Results => Feed.Async(async ct => 
+    {
+        var term = await Term;
+        return term.IsNullOrEmpty() ? ImmutableList<Recipe>.Empty : await _recipeService.Search(term ?? string.Empty, ct);
+    }, _searchSignal);
 
     private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) =>
         inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
 
-    private bool GetSearched((SearchFilter filter, string term) inputs) 
-    {
-        if (inputs.filter is not null)
-        {
-            return inputs.filter.HasFilter || !string.IsNullOrEmpty(inputs.term);
-        }
-        else
-        {
-            return !string.IsNullOrEmpty(inputs.term);
-        }
-    } 
-
+    private bool GetSearched((SearchFilter filter, IImmutableList<Recipe> recipes) inputs) => inputs.filter.HasFilter ? true : inputs.recipes.Count > 0;
+     
     public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);
 
@@ -64,4 +58,7 @@ public partial class SearchViewModel
             await Filter.Update(current => response, ct);
         }
     }
+
+    public async ValueTask Search(CancellationToken ct) => _searchSignal.Raise();
+
 }

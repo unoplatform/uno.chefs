@@ -31,6 +31,8 @@ public partial class ReviewsViewModel
     private bool CanComment(string comment) =>
         !string.IsNullOrEmpty(comment);
 
+    public async ValueTask Exit(CancellationToken ct) => await _navigator.NavigateBackWithResultAsync(this);
+
     private async ValueTask Review(string comment, CancellationToken ct)
     {
         var review = await _recipeService.CreateReview(_recipeId, comment, ct);

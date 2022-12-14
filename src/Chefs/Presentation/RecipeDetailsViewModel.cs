@@ -32,11 +32,11 @@ public partial class RecipeDetailsViewModel
         await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: new LiveCookingParameter((await Recipe)!, await Steps));
     
     public async ValueTask IngredientsNavigation(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<IngredientsViewModel>(this, data: new IngredientsParameter((await Recipe)!, await Ingredients));
+        await _navigator.NavigateViewModelAsync<IngredientsViewModel>(this, qualifier: Qualifiers.Dialog, data: new IngredientsParameter((await Recipe)!, await Ingredients));
 
     public async ValueTask Review(CancellationToken ct)
     {
-        _ = await _navigator.GetDataAsync<ReviewsViewModel>(this, data: new ReviewParameter((await Recipe)?.Id ?? Guid.Empty, await Reviews));
+        _ = await _navigator.GetDataAsync<ReviewsViewModel>(this, qualifier: Qualifiers.Dialog, data: new ReviewParameter((await Recipe)?.Id ?? Guid.Empty, await Reviews));
         _refresh.Raise();
     }
 
@@ -47,6 +47,6 @@ public partial class RecipeDetailsViewModel
         throw new NotImplementedException();
 
     public async ValueTask GoBack(CancellationToken ct) =>
-        await _navigator.GoBack(this);
+        await _navigator.NavigateBackAsync(this, cancellation: ct);
 
 }

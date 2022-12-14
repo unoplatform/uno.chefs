@@ -23,7 +23,7 @@
                                   IsEnabled="False" />
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
-                    <AppBarButton uen:Navigation.Request="-">
+                    <AppBarButton Command="{Binding Exit}">
                         <AppBarButton.Icon>
                             <BitmapIcon ShowAsMonochrome="False"
                                         UriSource="ms-appx:///Assets/Icons/close.png" />

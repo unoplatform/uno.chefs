@@ -37,20 +37,29 @@
                            Text="{Binding Recipe.Name}"
                            Margin="18,0,18,5"
                            Style="{StaticResource HeadlineLarge}" />
-                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                           Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
-                           Margin="18,0,18,20"
-                           Style="{StaticResource TitleSmall}" />
+                <utu:AutoLayout Spacing="6"
+                                Padding="18,0,18,20"
+                                Orientation="Horizontal">
+                    <PersonPicture utu:AutoLayout.CounterAlignment="Center"
+                                   Width="32"
+                                   Height="32"
+                                   ProfilePicture="{Binding User.UrlProfileImage}" />
+                    <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
+                               utu:AutoLayout.CounterAlignment="Center"
+                               Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                               Style="{StaticResource TitleSmall}" />
+                </utu:AutoLayout>
                 <Image Source="{Binding Recipe.ImageUrl}"
-                       Stretch="UniformToFill"/>
+                       Stretch="UniformToFill" />
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                           HorizontalScrollMode="Disabled">
                 <utu:AutoLayout Spacing="16"
-                                Padding="18,30">
+                                Padding="0,30">
                     <utu:AutoLayout Spacing="16"
                                     PrimaryAxisAlignment="Center"
-                                    Orientation="Horizontal">
+                                    Orientation="Horizontal"
+                                    Padding="18,0">
                         <utu:AutoLayout Orientation="Horizontal"
                                         utu:AutoLayout.CounterAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -74,7 +83,8 @@
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="12"
-                                    utu:AutoLayout.CounterAlignment="Stretch">
+                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                    Padding="4,0">
                         <uer:FeedView x:Name="IngredientsFeed"
                                       Source="{Binding Ingredients}"
                                       utu:AutoLayout.CounterAlignment="Stretch">
@@ -83,12 +93,11 @@
                                           Style="{StaticResource ListViewStyle}">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:AutoLayout
-                                                            PrimaryAxisAlignment="Center"
-                                                            Margin="0,8">
+                                            <utu:AutoLayout PrimaryAxisAlignment="Center">
                                                 <CheckBox Content="{Binding NameQuantity}"
-                                                          utu:AutoLayout.CounterAlignment="Start" />
-                                                <utu:Divider Foreground="Gray"
+                                                          utu:AutoLayout.CounterAlignment="Start"
+                                                          Height="54" />
+                                                <utu:Divider Foreground="#E8EEF7"
                                                              utu:AutoLayout.CounterAlignment="Stretch"
                                                              Style="{StaticResource DividerStyle}" />
                                             </utu:AutoLayout>
@@ -101,7 +110,7 @@
                 </utu:AutoLayout>
             </ScrollViewer>
         </utu:AutoLayout>
-        <utu:AutoLayout Padding="10">
+        <utu:AutoLayout Padding="18,10">
             <Button Background="{ThemeResource PrimaryBrush}"
                     Content="Done!"
                     utu:AutoLayout.PrimaryLength="56"

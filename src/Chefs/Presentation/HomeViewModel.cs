@@ -30,7 +30,9 @@ public partial class HomeViewModel
 
     public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
-    public IFeed<User> UserProfile => Feed<User>.Async(async ct => await _userService.GetCurrent(ct));
+    public IState<User> _profile => State<User>.Async(this, async ct => await _userService.GetCurrent(ct));
+    
+    public IFeed<User> UserProfile => _profile;
 
     public async ValueTask Notifications(CancellationToken ct) => 
         await _navigator.NavigateViewModelAsync<NotificationsViewModel>(this);
