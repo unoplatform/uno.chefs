@@ -26,29 +26,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.68" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.135" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.135" />
+	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.138" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.138" />
 	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />
-	<ItemGroup>
-	  <PackageReference Update="Uno.Extensions.Configuration" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Core" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Hosting" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Hosting.WinUI" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Http" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Http.Refit" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Localization.WinUI" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Logging.Serilog" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Logging.WinUI" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Navigation" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Navigation.Toolkit.WinUI" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Navigation.WinUI" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Reactive" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Reactive.WinUI" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Serialization" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Serialization.Http" Version="2.3.0-dev.376" />
-	  <PackageReference Update="Uno.Extensions.Serialization.Refit" Version="2.3.0-dev.376" />
-	</ItemGroup>
 </Project>

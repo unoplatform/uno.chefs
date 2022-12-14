@@ -106,7 +106,7 @@
                             <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                       Style="{StaticResource TitleSmall}" />
+                                       Style="{StaticResource CustomTitleSmall}" />
                         </utu:AutoLayout>
                         <utu:AutoLayout Spacing="-35"
                                         PrimaryAxisAlignment="Center"
@@ -127,11 +127,11 @@
                                                 utu:AutoLayout.CounterAlignment="Center">
                                     <TextBlock Text="🕓"
                                                utu:AutoLayout.CounterAlignment="Center"
-                                               Style="{StaticResource HeadlineMedium}" />
+                                               Style="{StaticResource CustomHeadlineMedium}" />
                                     <TextBlock Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Style="{StaticResource TitleSmall}" />
+                                               Style="{StaticResource CustomTitleSmall}" />
                                 </utu:AutoLayout>
                                 <utu:AutoLayout Spacing="6"
                                                 PrimaryAxisAlignment="Center"
@@ -139,21 +139,21 @@
                                     <TextBlock Text="👥"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Style="{StaticResource HeadlineMedium}" />
+                                               Style="{StaticResource CustomHeadlineMedium}" />
                                     <TextBlock Text="{Binding Recipe.Serves, Converter={StaticResource StringFormatter},ConverterParameter='Serves {0}'}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Style="{StaticResource TitleSmall}" />
+                                               Style="{StaticResource CustomTitleSmall}" />
                                 </utu:AutoLayout>
                                 <utu:AutoLayout Spacing="6"
                                                 utu:AutoLayout.CounterAlignment="Center">
                                     <TextBlock Text="🔥"
                                                utu:AutoLayout.CounterAlignment="Center"
-                                               Style="{StaticResource HeadlineMedium}" />
+                                               Style="{StaticResource CustomHeadlineMedium}" />
                                     <TextBlock Text="{Binding Recipe.Difficulty}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Style="{StaticResource TitleSmall}" />
+                                               Style="{StaticResource CustomTitleSmall}" />
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -170,12 +170,12 @@
                                 <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                           Style="{StaticResource TitleSmall}" />
+                                           Style="{StaticResource CustomTitleSmall}" />
                             </utu:AutoLayout>
                             <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
                                        Text="{Binding Steps.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
-                                       Style="{StaticResource HeadlineMedium}" />
+                                       Style="{StaticResource CustomHeadlineMedium}" />
                             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <uer:FeedView Source="{Binding Steps}">
                                     <DataTemplate>
@@ -191,11 +191,11 @@
                                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                        TextWrapping="Wrap"
                                                                        Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                                       Style="{StaticResource TitleMedium}" />
+                                                                       Style="{StaticResource CustomTitleMedium}" />
                                                             <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                                        TextWrapping="Wrap"
                                                                        Text="{Binding Description}"
-                                                                       Style="{StaticResource LabelSmall}" />
+                                                                       Style="{StaticResource CustomLabelSmall}" />
                                                         </utu:AutoLayout>
                                                     </utu:AutoLayout>
                                                 </DataTemplate>
@@ -235,7 +235,7 @@
                                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                            TextWrapping="Wrap"
                                            Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
-                                           Style="{StaticResource HeadlineMedium}" />
+                                           Style="{StaticResource CustomHeadlineMedium}"/>
                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 
                                     <uer:FeedView x:Name="IngredientsFeed"
@@ -260,7 +260,7 @@
                                                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                                TextWrapping="Wrap"
                                                                                Text="{Binding Name}"
-                                                                               Style="{StaticResource TitleMedium}" />
+                                                                               Style="{StaticResource CustomTitleMedium}" />
                                                                 </utu:AutoLayout>
                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                            TextAlignment="End"
@@ -281,7 +281,7 @@
                                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                            TextWrapping="Wrap"
                                            Text="{Binding Steps.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
-                                           Style="{StaticResource HeadlineMedium}" />
+                                           Style="{StaticResource CustomHeadlineMedium}" />
                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                                     <uer:FeedView x:Name="StepsFeed"
                                                   Source="{Binding Steps}">
@@ -298,11 +298,11 @@
                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                            TextWrapping="Wrap"
                                                                            Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                                           Style="{StaticResource TitleMedium}" />
+                                                                           Style="{StaticResource CustomTitleMedium}" />
                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                                            TextWrapping="Wrap"
                                                                            Text="{Binding Description}"
-                                                                           Style="{StaticResource LabelSmall}" />
+                                                                           Style="{StaticResource CustomLabelSmall}" />
                                                             </utu:AutoLayout>
                                                         </utu:AutoLayout>
                                                     </DataTemplate>
@@ -322,7 +322,7 @@
                                                Text="{Binding Reviews.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Comments'}"
                                                utu:AutoLayout.CounterAlignment="Start"
                                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                               Style="{StaticResource HeadlineMedium}" />
+                                               Style="{StaticResource CustomHeadlineMedium}" />
                                     <HyperlinkButton Content="Add comment"
                                                      utu:AutoLayout.CounterAlignment="Stretch"
                                                      Command="{Binding Review}" />
