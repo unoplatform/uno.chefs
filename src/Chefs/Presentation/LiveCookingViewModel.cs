@@ -20,7 +20,7 @@ public partial class LiveCookingViewModel
 
     public IState<Recipe> Recipe { get; }
 
-    public IFeed<Step> SelectedStep => Feed.Combine(Steps, SelectedIndex).Select(param => param.Item1[param.Item2]);
+    public IFeed<Step?> SelectedStep => Feed.Combine(Steps, SelectedIndex).Select(param => param.Item2 < 0 ? param.Item1[param.Item2] : param.Item1.FirstOrDefault());
 
     public IState<int> SelectedIndex => State.Value(this, () => 0);
 
