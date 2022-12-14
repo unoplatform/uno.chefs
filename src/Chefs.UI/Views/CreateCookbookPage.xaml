@@ -146,7 +146,7 @@
                                 Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="AddPinLabel.Margin"
                                 Value="23, 0, 0, 0" />
-                            <Setter Target="WideButtons.Visibility"
+                        <Setter Target="WideButtons.Visibility"
                                 Value="Visible" />
                         <Setter Target="NarrowButtons.Visibility"
                                 Value="Collapsed" />
