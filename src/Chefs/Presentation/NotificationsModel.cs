@@ -2,12 +2,12 @@
 
 namespace Chefs.Presentation;
 
-public partial class NotificationsViewModel
+public partial class NotificationsModel // DR_REV: Use Model suffix instead of ViewModel
 {
     private readonly INotificationService _notificationService;
     private readonly INavigator _navigator;
 
-    public NotificationsViewModel(INavigator navigator, INotificationService notificationService) 
+    public NotificationsModel(INavigator navigator, INotificationService notificationService) 
     {
         _navigator = navigator;
         _notificationService = notificationService;
@@ -19,6 +19,7 @@ public partial class NotificationsViewModel
 
     public IListFeed<Notification> Read => Notifications.Where(x => x.Read);
 
+    // DR_REV: Do not prefix public method with "Do"
     public async ValueTask DoExist(CancellationToken ct)
     {
         await _navigator.NavigateBackAsync(ct);

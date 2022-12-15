@@ -7,13 +7,13 @@ using Windows.Media.Protection.PlayReady;
 
 namespace Chefs.Presentation;
 
-public partial class LoginViewModel
+public partial class LoginModel // DR_REV: Use Model suffix instead of ViewModel
 {
     private readonly INavigator _navigator;
     private readonly IUserService _userService;
     private readonly IWritableOptions<Credentials> _credentialOptions;
 
-    public LoginViewModel(
+    public LoginModel(
         INavigator navigator, 
         IUserService userService,
         IWritableOptions<Credentials> credentialOptions)
@@ -43,22 +43,22 @@ public partial class LoginViewModel
 
     private async ValueTask DoLogin(Credentials credentials, CancellationToken ct)
     {
+        // DR_REV: Dead code
         //if(await _userService.BasicAuthenticate(credentials?.Email ?? "", credentials?.Password ?? "", ct))
         //{
         //    await _navigator.NavigateViewModelAsync<MainViewModel>(this, Qualifiers.ClearBackStack, Option.Some(credentials), ct);
         //}
 
-        await _navigator.NavigateViewModelAsync<MainViewModel>(this, Qualifiers.ClearBackStack, Option.Some(credentials), ct);
+        await _navigator.NavigateViewModelAsync<MainModel>(this, Qualifiers.ClearBackStack, Option.Some(credentials), ct);
     }
         
-        
+	// DR_REV: XAML only nav
     public async ValueTask RegisterNavigation(CancellationToken ct)
-    {
-        await _navigator.NavigateViewModelAsync<RegisterViewModel>(this, cancellation: ct);
-    }
+		=> await _navigator.NavigateViewModelAsync<RegisterModel>(this, cancellation: ct);
 
-    public async ValueTask DoRegisterNavigation(CancellationToken ct)
+	// DR_REV: Duplicate method
+	public async ValueTask DoRegisterNavigation(CancellationToken ct)
     {
-        await _navigator.NavigateViewModelAsync<RegisterViewModel>(this, cancellation: ct);
+        await _navigator.NavigateViewModelAsync<RegisterModel>(this, cancellation: ct);
     }
 }

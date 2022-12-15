@@ -4,13 +4,13 @@ using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
 
-public partial class HomeViewModel
+public partial class HomeModel // DR_REV: Use Model suffix instead of ViewModel
 {
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
     private readonly IUserService _userService;
 
-    public HomeViewModel(INavigator navigator, IRecipeService recipe, IUserService userService)
+    public HomeModel(INavigator navigator, IRecipeService recipe, IUserService userService)
     {
         _navigator = navigator;
         _recipeService = recipe;
@@ -32,53 +32,55 @@ public partial class HomeViewModel
     
     public IFeed<User> UserProfile => _userService.UserFeed;
 
-    public async ValueTask Notifications(CancellationToken ct) => 
-        await _navigator.NavigateViewModelAsync<NotificationsViewModel>(this);
+	// DR_REV: XAML only nav
+	public async ValueTask Notifications(CancellationToken ct) => 
+        await _navigator.NavigateViewModelAsync<NotificationsModel>(this);
 
     public async ValueTask Search(CancellationToken ct) => 
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, qualifier: Qualifiers.Separator);
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
 
     public async ValueTask ShowAll(CancellationToken ct)
     {
         var filter = new SearchFilter(null, null, null, null, null);
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, data: filter);
     }
 
     public async ValueTask ShowAllRecentlyAdded(CancellationToken ct)
     {
         var filter = new SearchFilter(OrganizeCategories.Recent, null, null, null, null);
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, data: filter);
     }
 
-    public async ValueTask ShowAllLunch(CancellationToken ct)
+    // DR_REV: Use implicit parameters
+    public async ValueTask ShowAllLunch(IImmutableList<Category> categories, CancellationToken ct)
     {
-        var filter = new SearchFilter(null, null, null, null, (await Categories.Where(x=> x.Name == "Lunch")).FirstOrDefault());
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+        var filter = new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Lunch"));
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, data: filter);
     }
 
-    public async ValueTask ShowAllDinner(CancellationToken ct)
+    public async ValueTask ShowAllDinner(IImmutableList<Category> categories, CancellationToken ct)
     {
-        var filter = new SearchFilter(null, null, null, null, (await Categories.Where(x => x.Name == "Dinner")).FirstOrDefault());
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+        var filter = new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Dinner"));
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, data: filter);
     }
 
-    public async ValueTask ShowAllSnack(CancellationToken ct)
+    public async ValueTask ShowAllSnack(IImmutableList<Category> categories, CancellationToken ct)
     {
-        var filter = new SearchFilter(null, null, null, null, (await Categories.Where(x => x.Name == "Dinner")).FirstOrDefault());
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+        var filter = new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Snack"));
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, data: filter);
     }
 
     public async ValueTask CategorySearch(Category category, CancellationToken ct)
     {
         var filter = new SearchFilter(null, null, null, null, category);
-        await _navigator.NavigateViewModelAsync<SearchViewModel>(this, data: filter);
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, data: filter);
     }
 
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
+        await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
 
     public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<ProfileViewModel>(this, data: user, cancellation: ct);
+        await _navigator.NavigateViewModelAsync<ProfileModel>(this, data: user, cancellation: ct);
 
     public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
         await _recipeService.Save(recipe, ct);

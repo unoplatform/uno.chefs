@@ -208,32 +208,27 @@
                 </utu:AutoLayout>
 
                 <utu:AutoLayout x:Name="StepsFeedLayout">
-                    <uer:FeedView x:Name="StepsFeed"
-                                  Source="{Binding Steps}">
-                        <DataTemplate>
-                            <ListView ItemsSource="{Binding Data}"
-                                      Style="{StaticResource ListViewStyle}"
-                                      Background="{ThemeResource PrimaryBrush}">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <ItemsStackPanel Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
-                                                        PrimaryAxisAlignment="Center">
-                                            <TextBlock Foreground="{ThemeResource SurfaceBrush}"
-                                                       TextAlignment="Center"
-                                                       Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                       utu:AutoLayout.CounterAlignment="Center"
-                                                       Width="128" />
-                                        </utu:AutoLayout>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </DataTemplate>
-                    </uer:FeedView>
+                    <ListView ItemsSource="{Binding Steps}"
+                              Style="{StaticResource ListViewStyle}"
+                              Background="{ThemeResource PrimaryBrush}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsStackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
+                                                PrimaryAxisAlignment="Center">
+                                    <TextBlock Foreground="{ThemeResource SurfaceBrush}"
+                                               TextAlignment="Center"
+                                               Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
+                                               utu:AutoLayout.CounterAlignment="Center"
+                                               Width="128" />
+                                </utu:AutoLayout>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </utu:AutoLayout>
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                               HorizontalScrollMode="Disabled">

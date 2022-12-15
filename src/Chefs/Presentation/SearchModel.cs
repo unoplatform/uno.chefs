@@ -3,13 +3,13 @@ using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
 
-public partial class SearchViewModel
+public partial class SearchModel // DR_REV: Use Model suffix instead of ViewModel
 {
-    private INavigator _navigator;
-    private IRecipeService _recipeService;
+    private readonly INavigator _navigator;
+    private readonly IRecipeService _recipeService;
     private Signal _searchSignal = new();
 
-    public SearchViewModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
+    public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
     {
         _navigator = navigator;
         _recipeService = recipeService;
@@ -30,7 +30,10 @@ public partial class SearchViewModel
 
     public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
 
+    // DR_REV: Duplicate with property above
     public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetRecommended);
+
+    //private IFeed<IImmutableList<Recipe>> Results => Term.SelectAsync(_recipeService.Search);
 
     public IListState<string> SearchHistory => ListState.Value(this, () => _recipeService.GetSearchHistory());
 
@@ -46,8 +49,8 @@ public partial class SearchViewModel
         return term.IsNullOrEmpty() ? ImmutableList<Recipe>.Empty : await _recipeService.Search(term ?? string.Empty, ct);
     }, _searchSignal);
 
-    private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) =>
-        inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
+    private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) 
+		=> inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
 
     private bool GetSearched((SearchFilter filter, IImmutableList<Recipe> recipes) inputs) => inputs.filter.HasFilter ? true : inputs.recipes.Count > 0;
      
@@ -55,11 +58,11 @@ public partial class SearchViewModel
         await _navigator.GoBack(this);
 
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<RecipeDetailsViewModel>(this, data: recipe);
+        await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
 
     public async ValueTask GoToFilter(CancellationToken ct) 
     {
-        var response = await _navigator.GetDataAsync<FilterViewModel, SearchFilter>(this, data: await Filter, qualifier: Qualifiers.Dialog, cancellation: ct);
+        var response = await _navigator.GetDataAsync<FilterModel, SearchFilter>(this, data: await Filter, qualifier: Qualifiers.Dialog, cancellation: ct);
 
         if (response is not null)
         {

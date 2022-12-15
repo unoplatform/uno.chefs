@@ -4,12 +4,12 @@ using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
-public class ShellViewModel
+public class ShellModel // DR_REV: Use Model suffix instead of ViewModel
 {
-    private INavigator _navigator;
-    private IWritableOptions<Credentials> _credentialsSettings;
+    private readonly INavigator _navigator;
+    private readonly IWritableOptions<Credentials> _credentialsSettings;
 
-    public ShellViewModel(
+    public ShellModel(
 		INavigator navigator,
         IWritableOptions<Credentials> credentials)
 	{
@@ -21,13 +21,14 @@ public class ShellViewModel
 
 	public async Task Start()
 	{
-        await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
+        await _navigator.NavigateViewModelAsync<WelcomeModel>(this, Qualifiers.ClearBackStack);
 
+        // DR_REV: Dead code
         //var currentCredentials = _credentialsSettings.Value;
 
         //if (currentCredentials is null || !currentCredentials.SkipWelcome)
         //{
-        //    await _navigator.NavigateViewModelAsync<WelcomeViewModel>(this, Qualifiers.ClearBackStack);
+        //    await _navigator.NavigateViewModelAsync<WelcomeModel>(this, Qualifiers.ClearBackStack);
 
         //    await _credentialsSettings.UpdateAsync(c => c with { SkipWelcome = true });
         //}
