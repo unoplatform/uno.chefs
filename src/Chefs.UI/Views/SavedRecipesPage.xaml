@@ -204,7 +204,7 @@
                                                                                 uen:Navigation.Data="{Binding}">
                                                         <utu:CardContentControl.ContentTemplate>
                                                             <DataTemplate>
-                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" MaxWidth="171" CornerRadius="12">
+                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" MaxWidth="200" CornerRadius="12">
                                                                     <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="150" />
                                                                     <utu:AutoLayout Spacing="2" Padding="11, 10" PrimaryAxisAlignment="Center">
                                                                         <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="NoWrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
@@ -252,7 +252,7 @@
                                                                                 uen:Navigation.Data="{Binding}">
                                                         <utu:CardContentControl.ContentTemplate>
                                                             <DataTemplate>
-                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"  MaxWidth="171" CornerRadius="12">
+                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"  MaxWidth="200" CornerRadius="12">
                                                                     <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png" Stretch="UniformToFill" utu:AutoLayout.PrimaryLength="150" />
                                                                     <utu:AutoLayout Spacing="2" Padding="11,10" PrimaryAxisAlignment="Center">
                                                                         <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="NoWrap" Text="{Binding Name}" Style="{StaticResource TitleMedium}" />
