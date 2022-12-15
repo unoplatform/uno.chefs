@@ -16,3 +16,4 @@ global using Uno.Extensions.Localization;
 global using Uno.Extensions.Navigation;
 global using Windows.ApplicationModel;
 global using Application = Microsoft.UI.Xaml.Application;
+global using ListView = Microsoft.UI.Xaml.Controls.ListView;
