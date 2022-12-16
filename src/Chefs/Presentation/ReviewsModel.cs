@@ -1,7 +1,6 @@
 ﻿using Chefs.Business;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.Immutable;
-using Uno.Extensions.Reactive;
 using Uno.Extensions.Reactive.Messaging;
 
 namespace Chefs.Presentation;

@@ -208,6 +208,27 @@
                 </utu:AutoLayout>
 
                 <utu:AutoLayout x:Name="StepsFeedLayout">
+                    <!--<ScrollViewer HorizontalScrollMode="Enabled"
+                                  HorizontalScrollBarVisibility="Hidden">
+                        <muxc:ItemsRepeater ItemsSource="{Binding Steps}">
+                            <muxc:ItemsRepeater.Layout>
+                                <muxc:UniformGridLayout MinItemWidth="150"
+                                                        Orientation="Horizontal"/>
+                            </muxc:ItemsRepeater.Layout>
+                            <muxc:ItemsRepeater.ItemTemplate>
+                                <DataTemplate>
+                                    <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
+                                                    PrimaryAxisAlignment="Center"
+                                                    Padding="18">
+                                        <TextBlock Foreground="{ThemeResource SurfaceBrush}"
+                                                   TextAlignment="Center"
+                                                   Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
+                                                   utu:AutoLayout.CounterAlignment="Center" />
+                                    </utu:AutoLayout>
+                                </DataTemplate>
+                            </muxc:ItemsRepeater.ItemTemplate>
+                        </muxc:ItemsRepeater>
+                    </ScrollViewer>-->
                     <ListView ItemsSource="{Binding Steps}"
                               Style="{StaticResource ListViewStyle}"
                               Background="{ThemeResource PrimaryBrush}">
