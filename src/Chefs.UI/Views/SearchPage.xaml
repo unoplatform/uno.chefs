@@ -7,8 +7,8 @@
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
-      xmlns:ios="http://uno.ui/ios"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:ios="http://uno.ui/ios"
       xmlns:android="http://uno.ui/android"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d android ios"
@@ -40,7 +40,7 @@
                                 Orientation="Horizontal">
                     <Button utu:AutoLayout.CounterAlignment="Center"
                             Style="{StaticResource IconButtonStyle}"
-                            Command="{Binding GoBack}">
+                            uen:Navigation.Request="-">
                         <PathIcon Data="{StaticResource Icon_Outline_Arrow_Left_ChefsApp}"
                                   Foreground="{ThemeResource SurfaceInverseBrush}" />
                     </Button>

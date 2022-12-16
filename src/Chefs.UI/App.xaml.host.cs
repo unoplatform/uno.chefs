@@ -1,12 +1,8 @@
-
 using Chefs.Business;
 using Chefs.Data;
-using Chefs.Presentation;
+using CommunityToolkit.Mvvm.Messaging;
 using Chefs.Settings;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Immutable;
-using Uno.Extensions.Configuration;
-using Uno.Extensions.Hosting;
 
 namespace Chefs;
 
@@ -56,7 +52,7 @@ public sealed partial class App : Application
                     .AddSingleton<IRecipeService, RecipeService>()
                     .AddSingleton<IUserService, UserService>()
                     .AddSingleton<ICookbookService, CookbookService>()
-
+                    .AddSingleton<IMessenger, WeakReferenceMessenger>()
                     .AddSingleton<INotificationEndpoint, NotificationEndpoint>()
                     .AddSingleton<IRecipeEndpoint, RecipeEndpoint>()
                     .AddSingleton<IUserEndpoint, UserEndpoint>()

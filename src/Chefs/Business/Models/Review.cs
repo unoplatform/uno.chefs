@@ -2,10 +2,11 @@
 
 namespace Chefs.Business;
 
-public record Review
+public partial record Review
 {
     public Review(ReviewData reviewData)
     {
+        Id = reviewData.Id;
         RecipeId = reviewData.RecipeId;
         CreatedBy = reviewData.CreatedBy; 
         PublisherName = reviewData.PublisherName;
@@ -18,10 +19,12 @@ public record Review
 
     public Review(Guid recipeId, string text)
     {
+        Id = Guid.NewGuid();
         RecipeId = recipeId;
         Description = text;
     }
 
+    public Guid Id { get; set; }
     public Guid RecipeId { get; set; }
     public string? UrlAuthorImage { get; set; }
     public Guid CreatedBy { get; set; }
@@ -33,6 +36,7 @@ public record Review
 
     internal ReviewData ToData() => new()
     {
+        Id = Id,
         RecipeId = RecipeId,
         CreatedBy = CreatedBy, 
         Date = Date,

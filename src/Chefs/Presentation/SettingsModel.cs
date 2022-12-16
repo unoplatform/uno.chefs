@@ -1,9 +1,8 @@
 ﻿using Chefs.Business;
-using Uno.Extensions.Navigation;
 
 namespace Chefs.Presentation;
 
-public partial class SettingsModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class SettingsModel
 {
     private readonly INavigator _navigator;
     private readonly IUserService _userService;

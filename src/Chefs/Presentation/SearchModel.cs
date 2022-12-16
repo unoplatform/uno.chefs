@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
 
-public partial class SearchModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class SearchModel
 {
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
@@ -30,10 +30,7 @@ public partial class SearchModel // DR_REV: Use Model suffix instead of ViewMode
 
     public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
 
-    // DR_REV: Duplicate with property above
-    public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetRecommended);
-
-    //private IFeed<IImmutableList<Recipe>> Results => Term.SelectAsync(_recipeService.Search);
+    public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetFromChefs);
 
     public IListState<string> SearchHistory => ListState.Value(this, () => _recipeService.GetSearchHistory());
 

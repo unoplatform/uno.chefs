@@ -81,6 +81,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         if(recipe is not null)
         {
             reviewData.PublisherName = currentUser.FullName;
+            reviewData.UrlAuthorImage = currentUser.UrlProfileImage;
             reviewData.CreatedBy = currentUser.Id;
             reviewData.Date = DateTime.Now;
             recipe.Reviews?.Add(reviewData);

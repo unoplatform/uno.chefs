@@ -5,7 +5,7 @@ using Chefs.Data;
 
 namespace Chefs.Presentation;
 
-public partial class ProfileModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class ProfileModel
 {
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
@@ -29,11 +29,8 @@ public partial class ProfileModel // DR_REV: Use Model suffix instead of ViewMod
 
 	public IListFeed<Recipe> Recipes => Profile.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct)).AsListFeed();
 
-    // DR_REV: XAML only nav
-	public async ValueTask Exit(CancellationToken ct) =>
-        await _navigator.NavigateBackAsync(this, cancellation: ct);
-
-	public async ValueTask SettingsNavigation(CancellationToken ct)
+    //We kept this navigation as workaround for issue: https://github.com/unoplatform/uno.chefs/issues/103
+    public async ValueTask SettingsNavigation(CancellationToken ct)
     {
         var result = await _navigator.GetDataAsync<SettingsModel, User>(this, data: await Profile, cancellation: ct);
 
@@ -42,13 +39,4 @@ public partial class ProfileModel // DR_REV: Use Model suffix instead of ViewMod
             await Profile.Update(c => result, ct);
         }
     }
-    
-    public async ValueTask RecipeNavigation(Recipe recipe, CancellationToken ct) => await _navigator
-        .NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe, cancellation: ct);
-
-    public async ValueTask CookbookNavigation(Cookbook cookbook, CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<LiveCookingModel>(this, data: cookbook, cancellation: ct);
-
-    public async ValueTask CookbookDetailNavigation(Cookbook cookbook, CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook, cancellation: ct);
 }

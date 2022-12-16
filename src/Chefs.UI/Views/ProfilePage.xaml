@@ -33,11 +33,16 @@
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                     <utu:NavigationBar.PrimaryCommands>
+                        <!--<AppBarButton Background="{ThemeResource BackgroundBrush}"
+                                          Foreground="Black"
+                                          Visibility="{Binding Profile.IsCurrent}"
+                                          uen:Navigation.Request="!Settings"
+                                          uen:Navigation.Data="{Binding Profile.Value}">-->
                         <AppBarButton Command="{Binding SettingsNavigation}"
                                       Background="{ThemeResource BackgroundBrush}"
                                       Foreground="Black"
                                       Visibility="{Binding Profile.IsCurrent}">
-                            <AppBarButton.Icon>
+                                <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Icons/settings.png" />
                             </AppBarButton.Icon>
                         </AppBarButton>

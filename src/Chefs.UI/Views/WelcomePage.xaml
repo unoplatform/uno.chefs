@@ -7,6 +7,7 @@
       mc:Ignorable="d"
       xmlns:msui="using:Microsoft.UI.Xaml.Controls"
       xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid Background="{ThemeResource BackgroundBrush}"
           utu:SafeArea.Insets="Top">
@@ -67,7 +68,7 @@
                                 Padding="50,20">
 
                     <Button Background="{ThemeResource PrimaryBrush}"
-                            Command="{Binding GoToLogin}"
+                            uen:Navigation.Request="-/Login"
                             Content="Skip"
                             utu:AutoLayout.CounterAlignment="End"
                             Height="37"

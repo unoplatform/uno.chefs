@@ -5,7 +5,7 @@ using Uno.Extensions.Navigation;
 
 namespace Chefs.Presentation;
 
-public partial class CookbookDetailModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class CookbookDetailModel
 {
     private readonly INavigator _navigator;
     private Cookbook? _cookbook;
