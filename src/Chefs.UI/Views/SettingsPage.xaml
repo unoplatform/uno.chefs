@@ -49,8 +49,9 @@
                 </utu:AutoLayout>
             </DataTemplate>
             <DataTemplate x:Key="WideProfileTemplate">
-                <utu:AutoLayout Spacing="16"
-                                PrimaryAxisAlignment="Center">
+                <utu:AutoLayout Spacing="20"
+                                PrimaryAxisAlignment="Center"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
                     <utu:AutoLayout CornerRadius="60"
                                     utu:AutoLayout.CounterAlignment="Center">
                         <utu:AutoLayout CornerRadius="60"
@@ -58,8 +59,8 @@
                                         utu:AutoLayout.CounterAlignment="Start">
                             <Border CornerRadius="60"
                                     utu:AutoLayout.CounterAlignment="Start"
-                                    utu:AutoLayout.PrimaryLength="124"
-                                    utu:AutoLayout.CounterLength="124">
+                                    utu:AutoLayout.PrimaryLength="120"
+                                    utu:AutoLayout.CounterLength="120">
                                 <Image Source="{Binding Data.UrlProfileImage}"
                                        Stretch="UniformToFill" />
                             </Border>
@@ -83,7 +84,12 @@
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Narrow">
+                    <VisualState.Setters>
+                        <Setter Target="ProfileLayout.Height"
+                                Value="141" />
+                    </VisualState.Setters>
+                </VisualState>
 
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
@@ -92,6 +98,10 @@
                     <VisualState.Setters>
                         <Setter Target="ContentLayout.Orientation"
                                 Value="Horizontal" />
+                        <Setter Target="ContentLayout.Spacing"
+                                Value="40" />
+                        <Setter Target="ContentLayout.Padding"
+                                Value="40, 8" />
                         <Setter Target="ProfileLayout.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
                         <Setter Target="BackButton.Visibility"
@@ -116,6 +126,34 @@
                                 Value="80" />
                         <Setter Target="ProfilePhoneNumber.Padding"
                                 Value="16, 30.5, 16, 30.5" />
+                        <Setter Target="NarrowProfileLayout.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="WideProfileLayout.Visibility"
+                                Value="Visible" />
+                        <Setter Target="ProfileLayout.Height"
+                                Value="198" />
+                        <Setter Target="NightModeLayout.MinWidth"
+                                Value="543" />
+                        <Setter Target="NightModeLayout.MinHeight"
+                                Value="80" />
+                        <Setter Target="NightModeLayout.Padding"
+                                Value="16, 15.2, 16, 15.2" />
+                        <Setter Target="LightModeLayout.MinWidth"
+                                Value="543" />
+                        <Setter Target="LightModeLayout.MinHeight"
+                                Value="80" />
+                        <Setter Target="LightModeLayout.Padding"
+                                Value="16, 15.2, 16, 15.2" />
+                        <Setter Target="NotificationLayout.MinWidth"
+                                Value="543" />
+                        <Setter Target="NotificationLayout.MinHeight"
+                                Value="80" />
+                        <Setter Target="NotificationLayout.Padding"
+                                Value="16, 15.2, 16, 15.2" />
+                        <Setter Target="WideButtons.Visibility"
+                                Value="Visible" />
+                        <Setter Target="NarrowButtons.Visibility"
+                                Value="Collapsed" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -129,11 +167,7 @@
                     <AppBarButton x:Name="BackButton"
                                   Label="Settings" 
                                   Background="{ThemeResource BackgroundBrush}"
-                                  Foreground="Black">
-                        <AppBarButton.Icon>
-                            <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Icons/close.png" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
+                                  Foreground="Black" />
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
                     <AppBarButton x:Name="SettingsButton"
@@ -164,55 +198,35 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>-->
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-                          utu:AutoLayout.PrimaryLength="639">
-                <utu:AutoLayout x:Name="ContentLayout">
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+                <utu:AutoLayout x:Name="ContentLayout"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
                     
-                    <utu:AutoLayout>
+                    <utu:AutoLayout Spacing="20">
                         <utu:AutoLayout x:Name="ProfileLayout"
                                         Background="{ThemeResource SurfaceBrush}"
                                         CornerRadius="0,0,30,30"
-                                        Padding="0, 0, 0, 24"
-                                        utu:AutoLayout.PrimaryLength="142">
-                            <uer:FeedView Source="{Binding Profile}">
-                                <DataTemplate>
-                                    <utu:AutoLayout Spacing="16"
-                                                    PrimaryAxisAlignment="Center">
-                                        <utu:AutoLayout CornerRadius="15"
-                                            utu:AutoLayout.CounterAlignment="Center">
-                                            <utu:AutoLayout CornerRadius="15"
-                                                Orientation="Horizontal"
-                                                utu:AutoLayout.CounterAlignment="Start">
-                                                <Border CornerRadius="15"
-                                            utu:AutoLayout.CounterAlignment="Start"
-                                            utu:AutoLayout.PrimaryLength="60"
-                                            utu:AutoLayout.CounterLength="60">
-                                                    <Image Source="{Binding Data.UrlProfileImage}"
-                                               Stretch="UniformToFill" />
-                                                </Border>
-                                            </utu:AutoLayout>
-                                        </utu:AutoLayout>
-                                        <utu:AutoLayout Spacing="5"
-                                            PrimaryAxisAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Text="{Binding Data.FullName}"
-                                           utu:AutoLayout.CounterAlignment="Center"
-                                           Style="{StaticResource HeadlineMedium}" />
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                       TextAlignment="Center"
-                                                       Text="{Binding Data.Description}"
-                                                       utu:AutoLayout.CounterAlignment="Center"
-                                                       Style="{StaticResource TitleSmall}" />
-                                        </utu:AutoLayout>
-                                    </utu:AutoLayout>
-                                </DataTemplate>
-                            </uer:FeedView>
+                                        Padding="0, 0, 0, 24">
+                            <utu:AutoLayout x:Name="NarrowProfileLayout">
+                                <uer:FeedView Source="{Binding Profile}">
+                                    <DataTemplate>
+                                        <ContentPresenter ContentTemplate="{StaticResource NarrowProfileTemplate}" />
+                                    </DataTemplate>
+                                </uer:FeedView>
+                            </utu:AutoLayout>
+                            <utu:AutoLayout x:Name="WideProfileLayout"
+                                            Visibility="Collapsed">
+                                <uer:FeedView Source="{Binding Profile}">
+                                    <DataTemplate>
+                                        <ContentPresenter ContentTemplate="{StaticResource WideProfileTemplate}" />
+                                    </DataTemplate>
+                                </uer:FeedView>
+                            </utu:AutoLayout>
                         </utu:AutoLayout >
                         
 
                         <utu:AutoLayout Spacing="18"
-                                        Padding="20, 0, 20, 21"
+                                        Padding="20, 0, 20, 25"
                                         Margin="0, 38, 0, 0"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <TextBlock x:Name="PersonalInformationTitle"
@@ -284,14 +298,37 @@
                     
 
                     <utu:AutoLayout Padding="18,0">
-                        <utu:AutoLayout Spacing="18" Padding="0,20">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" Text="Notification" utu:AutoLayout.CounterAlignment="Start" Style="{StaticResource BodyLarge}" />
-                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
-                                <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
-                                    <Image Source="ms-appx:///Assets/Icons/bell_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                        <utu:AutoLayout Spacing="18" 
+                                        Padding="0,20">
+                            <TextBlock x:Name="NotificationTitle"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}" 
+                                       TextAlignment="Center" 
+                                       Text="Notification" 
+                                       utu:AutoLayout.CounterAlignment="Start" 
+                                       Style="{StaticResource BodyLarge}" />
+                            <utu:AutoLayout x:Name="NotificationLayout"
+                                            Background="{ThemeResource SurfaceBrush}" 
+                                            Spacing="16" 
+                                            Padding="16,0" 
+                                            CornerRadius="16" 
+                                            PrimaryAxisAlignment="Center" 
+                                            Orientation="Horizontal">
+                                <utu:AutoLayout PrimaryAxisAlignment="Center" 
+                                                utu:AutoLayout.CounterAlignment="Center" 
+                                                utu:AutoLayout.PrimaryLength="24" 
+                                                utu:AutoLayout.CounterLength="60">
+                                    <Image Source="ms-appx:///Assets/Icons/bell_icon.png" 
+                                           Stretch="UniformToFill" 
+                                           utu:AutoLayout.CounterAlignment="Start" 
+                                           utu:AutoLayout.PrimaryLength="24" 
+                                           utu:AutoLayout.CounterLength="24" />
                                 </utu:AutoLayout>
-                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="App notifications" Style="{StaticResource TitleMedium}" />
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" 
+                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" 
+                                               TextWrapping="Wrap" 
+                                               Text="App notifications" 
+                                               Style="{StaticResource TitleMedium}" />
                                 </utu:AutoLayout>
                                 <ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                           Background="{ThemeResource PrimaryBrush}" 
@@ -300,14 +337,38 @@
                                           utu:AutoLayout.PrimaryLength="70" />
                             </utu:AutoLayout>
                         </utu:AutoLayout>
-                        <utu:AutoLayout Spacing="18" Padding="0,20">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}" TextAlignment="Center" Text="Theming" utu:AutoLayout.CounterAlignment="Start" Style="{StaticResource BodyLarge}" />
-                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
-                                <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
-                                    <Image Source="ms-appx:///Assets/Icons/sun_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                        <utu:AutoLayout Spacing="18" 
+                                        Padding="0,20"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <TextBlock x:Name="ThemingTitle"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}" 
+                                       TextAlignment="Center" 
+                                       Text="Theming" 
+                                       utu:AutoLayout.CounterAlignment="Start" 
+                                       Style="{StaticResource BodyLarge}" />
+                            <utu:AutoLayout x:Name="LightModeLayout"
+                                            Background="{ThemeResource SurfaceBrush}" 
+                                            Spacing="16" 
+                                            Padding="16,0" 
+                                            CornerRadius="16" 
+                                            PrimaryAxisAlignment="Center" 
+                                            Orientation="Horizontal">
+                                <utu:AutoLayout PrimaryAxisAlignment="Center" 
+                                                utu:AutoLayout.CounterAlignment="Center" 
+                                                utu:AutoLayout.PrimaryLength="24" 
+                                                utu:AutoLayout.CounterLength="60">
+                                    <Image Source="ms-appx:///Assets/Icons/sun_icon.png" 
+                                           Stretch="UniformToFill" 
+                                           utu:AutoLayout.CounterAlignment="Start" 
+                                           utu:AutoLayout.PrimaryLength="24" 
+                                           utu:AutoLayout.CounterLength="24" />
                                 </utu:AutoLayout>
-                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Light mode" Style="{StaticResource TitleMedium}" />
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" 
+                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" 
+                                               TextWrapping="Wrap" 
+                                               Text="Light mode" 
+                                               Style="{StaticResource TitleMedium}" />
                                 </utu:AutoLayout>
                                 <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                          Mode=TwoWay, 
@@ -318,12 +379,29 @@
                                                          utu:AutoLayout.CounterAlignment="Center" 
                                                          utu:AutoLayout.PrimaryLength="70" />
                             </utu:AutoLayout>
-                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}" Spacing="16" Padding="16,0" CornerRadius="16" PrimaryAxisAlignment="Center" Orientation="Horizontal">
-                                <utu:AutoLayout PrimaryAxisAlignment="Center" utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="60">
-                                    <Image Source="ms-appx:///Assets/Icons/moon_icon.png" Stretch="UniformToFill" utu:AutoLayout.CounterAlignment="Start" utu:AutoLayout.PrimaryLength="24" utu:AutoLayout.CounterLength="24" />
+                            <utu:AutoLayout x:Name="NightModeLayout"
+                                            Background="{ThemeResource SurfaceBrush}" 
+                                            Spacing="16" 
+                                            Padding="16,0" 
+                                            CornerRadius="16" 
+                                            PrimaryAxisAlignment="Center" 
+                                            Orientation="Horizontal">
+                                <utu:AutoLayout PrimaryAxisAlignment="Center" 
+                                                utu:AutoLayout.CounterAlignment="Center" 
+                                                utu:AutoLayout.PrimaryLength="24" 
+                                                utu:AutoLayout.CounterLength="60">
+                                    <Image Source="ms-appx:///Assets/Icons/moon_icon.png" 
+                                           Stretch="UniformToFill" 
+                                           utu:AutoLayout.CounterAlignment="Start" 
+                                           utu:AutoLayout.PrimaryLength="24" 
+                                           utu:AutoLayout.CounterLength="24" />
                                 </utu:AutoLayout>
-                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" TextWrapping="Wrap" Text="Night mode" Style="{StaticResource TitleMedium}" />
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" 
+                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}" 
+                                               TextWrapping="Wrap" 
+                                               Text="Night mode" 
+                                               Style="{StaticResource TitleMedium}" />
                                 </utu:AutoLayout>
                                 <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                  Mode=TwoWay, 
@@ -338,11 +416,35 @@
                 </utu:AutoLayout>
             </ScrollViewer>
         </utu:AutoLayout>
-        <utu:AutoLayout Padding="18,30">
+        <utu:AutoLayout x:Name="NarrowButtons"
+                        Padding="18,30">
             <Button Command="{Binding Update}"
                     Background="{ThemeResource PrimaryBrush}"
                     Content="Update"
                     utu:AutoLayout.PrimaryLength="56" />
+        </utu:AutoLayout>
+        <utu:AutoLayout x:Name="WideButtons"
+                        Visibility="Collapsed"
+                        Background="{ThemeResource SurfaceBrush}" 
+                        Spacing="40" 
+                        Padding="40,0" 
+                        PrimaryAxisAlignment="End" 
+                        Orientation="Horizontal" 
+                        utu:AutoLayout.CounterAlignment="Stretch" 
+                        Height="100">
+            <Button Content="Cancel" 
+                    Command="{Binding Exit}"
+                    utu:AutoLayout.CounterAlignment="Center" 
+                    Width="190" 
+                    Height="64" 
+                    Foreground="{ThemeResource OnSurfaceMediumBrush}" 
+                    Style="{StaticResource OutlinedButtonStyle}" />
+            <Button Background="{ThemeResource PrimaryBrush}" 
+                    Command="{Binding Update}"
+                    Content="Update" 
+                    utu:AutoLayout.CounterAlignment="Center" 
+                    Width="190" 
+                    Height="64" />
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
