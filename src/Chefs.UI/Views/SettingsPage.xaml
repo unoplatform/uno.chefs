@@ -18,68 +18,6 @@
                     HorizontalAlignment="Stretch">
         <utu:AutoLayout.Resources>
             <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
-            <DataTemplate x:Key="NarrowProfileTemplate">
-                <utu:AutoLayout Spacing="16"
-                                PrimaryAxisAlignment="Center">
-                    <utu:AutoLayout CornerRadius="15"
-                                    utu:AutoLayout.CounterAlignment="Center">
-                        <utu:AutoLayout CornerRadius="15"
-                                        Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Start">
-                            <Border CornerRadius="15"
-                                    utu:AutoLayout.CounterAlignment="Start"
-                                    utu:AutoLayout.PrimaryLength="60"
-                                    utu:AutoLayout.CounterLength="60">
-                                <Image Source="{Binding Data.UrlProfileImage}"
-                                       Stretch="UniformToFill" />
-                            </Border>
-                        </utu:AutoLayout>
-                    </utu:AutoLayout>
-                    <utu:AutoLayout Spacing="5"
-                                    PrimaryAxisAlignment="Center"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Text="{Binding Data.FullName}"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource HeadlineMedium}" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                   TextAlignment="Center"
-                                   Text="{Binding Data.Description}"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource TitleSmall}" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
-            </DataTemplate>
-            <DataTemplate x:Key="WideProfileTemplate">
-                <utu:AutoLayout Spacing="20"
-                                PrimaryAxisAlignment="Center"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout CornerRadius="50"
-                                    Orientation="Horizontal"
-                                    utu:AutoLayout.CounterAlignment="Start">
-                        <Border CornerRadius="60"
-                                utu:AutoLayout.CounterAlignment="Start"
-                                utu:AutoLayout.PrimaryLength="120"
-                                utu:AutoLayout.CounterLength="120">
-                            <Image Source="{Binding Profile.UrlProfileImage}"
-                                   Stretch="UniformToFill" />
-                        </Border>
-                    </utu:AutoLayout>
-                    <utu:AutoLayout Spacing="5"
-                                    PrimaryAxisAlignment="Center"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Text="{Binding Profile.FullName}"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource HeadlineLarge}" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                   TextAlignment="Center"
-                                   Text="{Binding Profile.Description}"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource LabelLarge}" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
-            </DataTemplate>
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -107,8 +45,6 @@
                                 Value="Collapsed" />
                         <Setter Target="SettingsNavBar.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
-                        <!--<Setter Target="PersonalInformationInputs.MinWidth"
-                                Value="543" />-->
                         <Setter Target="PersonalInformationTitle.Style"
                                 Value="{StaticResource HeadlineLarge}" />
                         <!--<Setter Target="ProfileFullName.MinHeight"
@@ -125,8 +61,6 @@
                                 Value="16, 30.5, 16, 30.5" />-->
                         <!--<Setter Target="ProfileLayout.Height"
                                 Value="198" />
-                        <Setter Target="NightModeLayout.MinWidth"
-                                Value="543" />
                         <Setter Target="NightModeLayout.MinHeight"
                                 Value="80" />
                         <Setter Target="NightModeLayout.Padding"
@@ -151,6 +85,16 @@
                                 Value="Visible" />
                         <Setter Target="NarrowButtons.Visibility"
                                 Value="Collapsed" />
+                        <Setter Target="ImageBorder.(utu:AutoLayout.PrimaryLength)"
+                                Value="120" />
+                        <Setter Target="ImageBorder.(utu:AutoLayout.CounterLength)"
+                                Value="120" />
+                        <Setter Target="ImageBorder.CornerRadius"
+                                Value="60" />
+                        <Setter Target="ProfileName.Style"
+                                Value="{StaticResource HeadlineLarge}" />
+                        <Setter Target="ProfileDescription.Style"
+                                Value="{StaticResource LabelLarge}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -197,30 +141,34 @@
                                     PrimaryAxisAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
                         <utu:AutoLayout x:Name="ProfileLayout"
-                                        Background="{ThemeResource SurfaceBrush}"
                                         CornerRadius="0,0,30,30"
                                         Padding="0, 0, 0, 24">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                <Border CornerRadius="50"
-                                        utu:AutoLayout.CounterAlignment="Center"
-                                        utu:AutoLayout.PrimaryLength="100"
-                                        utu:AutoLayout.CounterLength="100">
-                                    <Image Source="{Binding Profile.UrlProfileImage}"
-                                           Stretch="UniformToFill" />
-                                </Border>
-                            </utu:AutoLayout>
-                            <utu:AutoLayout Spacing="5"
-                                            PrimaryAxisAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Text="{Binding Profile.FullName}"
-                                           utu:AutoLayout.CounterAlignment="Center"
-                                           Style="{StaticResource HeadlineLarge}" />
-                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                           TextAlignment="Center"
-                                           Text="{Binding Profile.Description}"
-                                           utu:AutoLayout.CounterAlignment="Center"
-                                           Style="{StaticResource LabelLarge}" />
+                            <utu:AutoLayout Spacing="16"
+                                            PrimaryAxisAlignment="Center">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+                                    <Border x:Name="ImageBorder"
+                                            CornerRadius="15"
+                                            utu:AutoLayout.CounterAlignment="Start"
+                                            utu:AutoLayout.PrimaryLength="60"
+                                            utu:AutoLayout.CounterLength="60">
+                                        <Image Source="{Binding Profile.UrlProfileImage}"
+                                               Stretch="UniformToFill" />
+                                    </Border>
+                                </utu:AutoLayout>
+                                <utu:AutoLayout Spacing="6"
+                                                PrimaryAxisAlignment="Center"
+                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <TextBlock x:Name="ProfileName" Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               Text="{Binding Profile.FullName}"
+                                               utu:AutoLayout.CounterAlignment="Center"
+                                               Style="{StaticResource HeadlineMedium}" />
+                                    <TextBlock x:Name="ProfileDescription"
+                                        Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                               TextAlignment="Center"
+                                               Text="{Binding Profile.Description}"
+                                               utu:AutoLayout.CounterAlignment="Center"
+                                               Style="{StaticResource TitleSmall}" />
+                                </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
 
