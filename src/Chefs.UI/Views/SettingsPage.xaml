@@ -101,7 +101,7 @@
                         <Setter Target="ContentLayout.Spacing"
                                 Value="40" />
                         <Setter Target="ContentLayout.Padding"
-                                Value="40, 8" />
+                                Value="40" />
                         <Setter Target="ProfileLayout.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
                         <Setter Target="BackButton.Visibility"
@@ -158,11 +158,13 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                        utu:AutoLayout.CounterAlignment="Stretch">
             
             <utu:NavigationBar x:Name="SettingsNavBar"
                                Style="{StaticResource NavigationBarStyle}"
-                               Background="{ThemeResource SurfaceBrush}" >
+                               Background="{ThemeResource SurfaceBrush}" 
+                               utu:AutoLayout.CounterAlignment="Stretch">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton x:Name="BackButton"
                                   Label="Settings" 
@@ -198,7 +200,8 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>-->
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                          utu:AutoLayout.CounterAlignment="Stretch">
                 <utu:AutoLayout x:Name="ContentLayout"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                     
