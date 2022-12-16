@@ -1,9 +1,8 @@
 ﻿using Chefs.Business;
-using Windows.System;
 
 namespace Chefs.Presentation;
 
-public partial class SavedRecipesModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class SavedRecipesModel
 {
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
@@ -24,12 +23,6 @@ public partial class SavedRecipesModel // DR_REV: Use Model suffix instead of Vi
 
     public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetSaved(ct));
 
-    // DR_REV: XAML only nav
-    public async ValueTask RecipeNavigation(Recipe recipe, CancellationToken ct)
-    {
-        await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe, cancellation: ct);
-    }
-
     public async ValueTask CreateCookbookNavigation(CancellationToken ct)
     {
         var result = await _navigator.GetDataAsync<CreateCookbookModel, Cookbook>(this, cancellation: ct);
@@ -38,10 +31,5 @@ public partial class SavedRecipesModel // DR_REV: Use Model suffix instead of Vi
         {
             await Cookbooks.AddAsync(result, ct);
         }
-    }
-
-    public async ValueTask CookbookDetailNavigation(Cookbook cookbook, CancellationToken ct)
-    {
-        await _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook, cancellation: ct);
     }
 }
