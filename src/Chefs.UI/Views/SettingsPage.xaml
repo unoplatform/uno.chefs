@@ -16,6 +16,70 @@
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
             <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+            <DataTemplate x:Key="NarrowProfileTemplate">
+                <utu:AutoLayout Spacing="16"
+                                PrimaryAxisAlignment="Center">
+                    <utu:AutoLayout CornerRadius="15"
+                                    utu:AutoLayout.CounterAlignment="Center">
+                        <utu:AutoLayout CornerRadius="15"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Start">
+                            <Border CornerRadius="15"
+                                    utu:AutoLayout.CounterAlignment="Start"
+                                    utu:AutoLayout.PrimaryLength="60"
+                                    utu:AutoLayout.CounterLength="60">
+                                <Image Source="{Binding Data.UrlProfileImage}"
+                                       Stretch="UniformToFill" />
+                            </Border>
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="5"
+                                    PrimaryAxisAlignment="Center"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Text="{Binding Data.FullName}"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Style="{StaticResource HeadlineMedium}" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   TextAlignment="Center"
+                                   Text="{Binding Data.Description}"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Style="{StaticResource TitleSmall}" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </DataTemplate>
+            <DataTemplate x:Key="WideProfileTemplate">
+                <utu:AutoLayout Spacing="16"
+                                PrimaryAxisAlignment="Center">
+                    <utu:AutoLayout CornerRadius="60"
+                                    utu:AutoLayout.CounterAlignment="Center">
+                        <utu:AutoLayout CornerRadius="60"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Start">
+                            <Border CornerRadius="60"
+                                    utu:AutoLayout.CounterAlignment="Start"
+                                    utu:AutoLayout.PrimaryLength="124"
+                                    utu:AutoLayout.CounterLength="124">
+                                <Image Source="{Binding Data.UrlProfileImage}"
+                                       Stretch="UniformToFill" />
+                            </Border>
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="5"
+                                    PrimaryAxisAlignment="Center"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Text="{Binding Data.FullName}"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Style="{StaticResource HeadlineLarge}" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   TextAlignment="Center"
+                                   Text="{Binding Data.Description}"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Style="{StaticResource LabelLarge}" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </DataTemplate>
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -36,6 +100,22 @@
                                 Value="Visible" />
                         <Setter Target="SettingsNavBar.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
+                        <Setter Target="PersonalInformationInputs.MinWidth"
+                                Value="543" />
+                        <Setter Target="PersonalInformationTitle.Style"
+                                Value="{StaticResource HeadlineLarge}" />
+                        <Setter Target="ProfileFullName.MinHeight"
+                                Value="80" />
+                        <Setter Target="ProfileFullName.Padding"
+                                Value="16, 30.5, 16, 30.5" />
+                        <Setter Target="ProfileEmail.MinHeight"
+                                Value="80" />
+                        <Setter Target="ProfileEmail.Padding"
+                                Value="16, 30.5, 16, 30.5" />
+                        <Setter Target="ProfilePhoneNumber.MinHeight"
+                                Value="80" />
+                        <Setter Target="ProfilePhoneNumber.Padding"
+                                Value="16, 30.5, 16, 30.5" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -132,24 +212,29 @@
                         
 
                         <utu:AutoLayout Spacing="18"
-                                    Padding="20, 0, 20, 21"
-                                    Margin="0, 38, 0, 0">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   TextAlignment="Center"
-                                   Text="Personal information"
-                                   utu:AutoLayout.CounterAlignment="Start"
-                                   Style="{StaticResource BodyLarge}" />
-                            <utu:AutoLayout Spacing="16"
-                                        Padding="0"
-                                        CornerRadius="16"
-                                        PrimaryAxisAlignment="Center"
-                                        Orientation="Horizontal">
-                                <TextBox Text="{Binding UserInfo.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 PlaceholderText="Full Name"
-                                 Style="{StaticResource OutlinedTextBoxStyle}"
-                                 Background="{ThemeResource SurfaceBrush}"
-                                 CornerRadius="16"
-                                 utu:AutoLayout.PrimaryAlignment="Stretch">
+                                        Padding="20, 0, 20, 21"
+                                        Margin="0, 38, 0, 0"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <TextBlock x:Name="PersonalInformationTitle"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       TextAlignment="Center"
+                                       Text="Personal information"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       Style="{StaticResource BodyLarge}" />
+                            <utu:AutoLayout x:Name="PersonalInformationInputs"
+                                            Spacing="16"
+                                            Padding="0"
+                                            CornerRadius="16"
+                                            PrimaryAxisAlignment="Center"
+                                            Orientation="Horizontal"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <TextBox x:Name="ProfileFullName"
+                                         Text="{Binding UserInfo.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         PlaceholderText="Full Name"
+                                         Style="{StaticResource OutlinedTextBoxStyle}"
+                                         Background="{ThemeResource SurfaceBrush}"
+                                         CornerRadius="16"
+                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                                     <um:ControlExtensions.Icon>
                                         <ImageIcon Source="ms-appx:///Assets/Icons/leading_icon.png"
                                                Foreground="{ThemeResource OnSurfaceVariantBrush}" />
@@ -157,16 +242,18 @@
                                 </TextBox>
                             </utu:AutoLayout>
                             <utu:AutoLayout Spacing="16"
-                                        Padding="0"
-                                        CornerRadius="16"
-                                        PrimaryAxisAlignment="Center"
-                                        Orientation="Horizontal">
-                                <TextBox Text="{Binding UserInfo.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 PlaceholderText="Email"
-                                 Style="{StaticResource OutlinedTextBoxStyle}"
-                                 Background="{ThemeResource SurfaceBrush}"
-                                 CornerRadius="16"
-                                 utu:AutoLayout.PrimaryAlignment="Stretch">
+                                            Padding="0"
+                                            CornerRadius="16"
+                                            PrimaryAxisAlignment="Center"
+                                            Orientation="Horizontal"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <TextBox x:Name="ProfileEmail"
+                                         Text="{Binding UserInfo.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         PlaceholderText="Email"
+                                         Style="{StaticResource OutlinedTextBoxStyle}"
+                                         Background="{ThemeResource SurfaceBrush}"
+                                         CornerRadius="16"
+                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                                     <um:ControlExtensions.Icon>
                                         <ImageIcon Source="ms-appx:///Assets/Icons/email_icon.png"
                                                Foreground="{ThemeResource OnSurfaceVariantBrush}" />
@@ -177,13 +264,15 @@
                                         Padding="0"
                                         CornerRadius="16"
                                         PrimaryAxisAlignment="Center"
-                                        Orientation="Horizontal">
-                                <TextBox Text="{Binding UserInfo.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 PlaceholderText="Mobile Number"
-                                 Style="{StaticResource OutlinedTextBoxStyle}"
-                                 Background="{ThemeResource SurfaceBrush}"
-                                 CornerRadius="16"
-                                 utu:AutoLayout.PrimaryAlignment="Stretch">
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <TextBox x:Name="ProfilePhoneNumber"
+                                         Text="{Binding UserInfo.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         PlaceholderText="Mobile Number"
+                                         Style="{StaticResource OutlinedTextBoxStyle}"
+                                         Background="{ThemeResource SurfaceBrush}"
+                                         CornerRadius="16"
+                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                                     <um:ControlExtensions.Icon>
                                         <ImageIcon Source="ms-appx:///Assets/Icons/mobile_icon.png" 
                                                Foreground="{ThemeResource OnSurfaceVariantBrush}" />
