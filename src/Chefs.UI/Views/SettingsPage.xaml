@@ -158,13 +158,11 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                        utu:AutoLayout.CounterAlignment="Stretch">
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             
             <utu:NavigationBar x:Name="SettingsNavBar"
                                Style="{StaticResource NavigationBarStyle}"
-                               Background="{ThemeResource SurfaceBrush}" 
-                               utu:AutoLayout.CounterAlignment="Stretch">
+                               Background="{ThemeResource SurfaceBrush}">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton x:Name="BackButton"
                                   Label="Settings" 
@@ -200,8 +198,7 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>-->
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-                          utu:AutoLayout.CounterAlignment="Stretch">
+            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout x:Name="ContentLayout"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                     
@@ -433,7 +430,6 @@
                         Padding="40,0" 
                         PrimaryAxisAlignment="End" 
                         Orientation="Horizontal" 
-                        utu:AutoLayout.CounterAlignment="Stretch" 
                         Height="100">
             <Button Content="Cancel" 
                     Command="{Binding Exit}"
