@@ -143,9 +143,10 @@
 
             <Grid Padding="18,12">
                 <ScrollViewer HorizontalScrollMode="Enabled"
-                              HorizontalScrollBarVisibility="Visible"
-                              Visibility="{Binding Searched}">
-                    <uer:FeedView x:Name="SearchFeed"
+                              Visibility="{Binding Searched}"
+                              HorizontalAlignment="Stretch">
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+                        <uer:FeedView x:Name="SearchFeed"
                                   Source="{Binding Items}">
                         <!--Visibility="{Binding Searched, Converter={StaticResource InvertBool}}"-->
                         <DataTemplate>
@@ -159,10 +160,9 @@
                                                             ItemsStretch="Uniform" />
                                     <muxc:UniformGridLayout x:Key="WideGridLayout"
                                                             MaximumRowsOrColumns="5"
-                                                            ItemsJustification="SpaceAround"
+                                                            ItemsJustification="Center"
                                                             MinColumnSpacing="10"
-                                                            MinRowSpacing="10"
-                                                            ItemsStretch="Uniform" />
+                                                            MinRowSpacing="10"/>
                                 </Grid.Resources>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup>
@@ -221,7 +221,7 @@
                             </Grid>
                         </DataTemplate>
                     </uer:FeedView>
-
+                    </utu:AutoLayout>
                 </ScrollViewer>
                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                 Spacing="8"

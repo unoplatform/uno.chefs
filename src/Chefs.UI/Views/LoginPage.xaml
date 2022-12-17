@@ -48,6 +48,10 @@
                                 Value="{ThemeResource PrimaryBrush}" />
                         <Setter Target="InnerLayout.CornerRadius"
                                 Value="40" />
+                        <Setter Target="InnerLayout.Spacing"
+                                Value="30" />
+                        <Setter Target="FieldsButtonsLayout.Spacing"
+                                Value="20" />
                         <Setter Target="ScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
                         <Setter Target="ScrollViewer.VerticalScrollBarVisibility"
@@ -86,7 +90,8 @@
                                Stretch="Uniform"
                                Height="58"
                                Width="200" />
-                        <utu:AutoLayout Spacing="10"
+                        <utu:AutoLayout x:Name="FieldsButtonsLayout"
+                            Spacing="10"
                                         PrimaryAxisAlignment="Center">
                             <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      PlaceholderText="Email"

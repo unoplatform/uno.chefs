@@ -67,12 +67,12 @@
                                 Spacing="20"
                                 Padding="50,20">
 
-                    <Button Background="{ThemeResource PrimaryBrush}"
+                    <Button Background="{ThemeResource PrimaryInverseBrush}"
                             uen:Navigation.Request="-/Login"
                             Content="Skip"
                             utu:AutoLayout.CounterAlignment="End"
                             Height="37"
-                            Margin="0,0,-15,0"/>
+                            Margin="0,0,-15,0" />
                     <Grid x:Name="ImageFilpView"
                           Height="300">
                         <FlipView Background="Transparent"
@@ -154,15 +154,6 @@
                         <msui:PipsPager x:Name="pipsPager"
                                         utu:AutoLayout.CounterAlignment="Center"
                                         MaxVisiblePips="10" />
-
-                        <!--<Button Background="{ThemeResource PrimaryBrush}"
-                                    Content="Let's cook!"
-                                    x:Name="LetButton"
-                                    utu:AutoLayout.PrimaryLength="56"
-                                    HorizontalAlignment="Stretch"
-                                    Command="{Binding Next}"
-                                    Visibility="{Binding NextPage, Converter={StaticResource CertainNumberToVisibleConverter}}"
-                                    Height="56" />-->
                     </utu:AutoLayout>
                 </utu:AutoLayout>
 
@@ -242,27 +233,6 @@
                    Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
                    Stretch="UniformToFill"
                    Grid.Column="1" />
-            <!--<FlipView x:Name="WideImageFilpView"
-                      VerticalAlignment="Top"
-                      Background="Transparent"
-                      SelectedIndex="{Binding NextPage}"
-                      utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
-                      Grid.Column="1">
-                <FlipViewItem>
-                    <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                           Stretch="UniformToFill"/>
-                </FlipViewItem>
-                <FlipViewItem>
-                    <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
-                           Stretch="UniformToFill" />
-                </FlipViewItem>
-                <FlipViewItem>
-                    <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
-                           Stretch="UniformToFill"/>
-                </FlipViewItem>
-            </FlipView>-->
         </Grid>
-
-
     </Grid>
 </Page>
