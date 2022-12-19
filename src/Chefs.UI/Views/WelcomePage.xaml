@@ -23,6 +23,8 @@
                                 Value="20" />
                         <Setter Target="OuterLayout.Padding"
                                 Value="0" />
+                        <Setter Target="InnerLayout.Padding"
+                                Value="50,0,50,20" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
@@ -48,6 +50,8 @@
                                 Value="60,40" />
                         <Setter Target="InnerLayout.Spacing"
                                 Value="40" />
+                        <Setter Target="WideSkipButton.Visibility"
+                                Value="Visible" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -67,35 +71,53 @@
                                 Spacing="20"
                                 Padding="50,20">
 
-                    <Button Background="{ThemeResource PrimaryInverseBrush}"
+                    <Button x:Name="WideSkipButton"
+                            Background="{ThemeResource PrimaryInverseBrush}"
                             uen:Navigation.Request="-/Login"
                             Content="Skip"
                             utu:AutoLayout.CounterAlignment="End"
                             Height="37"
-                            Margin="0,0,-15,0" />
-                    <Grid x:Name="ImageFilpView"
-                          Height="300">
+                            Margin="0,0,-15,0"
+                            Visibility="Collapsed" />
+
+                    <utu:AutoLayout x:Name="ImageFilpView"
+                                    Margin="-50,0">
                         <FlipView Background="Transparent"
                                   Margin="-50,0"
+                                  Height="400"
                                   SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
                             <FlipViewItem>
                                 <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
                                        Stretch="UniformToFill"
-                                       Height="300" />
+                                       Height="400" />
                             </FlipViewItem>
                             <FlipViewItem>
                                 <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
                                        Stretch="UniformToFill"
-                                       Height="300" />
+                                       Height="400" />
                             </FlipViewItem>
                             <FlipViewItem>
                                 <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
                                        Stretch="UniformToFill"
-                                       Height="300" />
+                                       Height="400" />
                             </FlipViewItem>
                         </FlipView>
-                    </Grid>
+                        <utu:AutoLayout x:Name="SkipButtonLayout"
+                                        PrimaryAxisAlignment="End"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.IsIndependentLayout="True"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Margin="18">
+                            <Button uen:Navigation.Request="-/Login"
+                                    Background="{ThemeResource PrimaryInverseBrush}"
+                                    Content="Skip"
+                                    utu:AutoLayout.CounterAlignment="End">
+                            </Button>
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+
                     <utu:AutoLayout Margin="10,0"
                                     utu:AutoLayout.CounterAlignment="Center"
                                     Width="189"
@@ -149,7 +171,7 @@
                                 utu:AutoLayout.PrimaryLength="56"
                                 HorizontalAlignment="Stretch"
                                 Command="{Binding Next}"
-                                Height="56" />
+                                Height="56"/>
 
                         <msui:PipsPager x:Name="pipsPager"
                                         utu:AutoLayout.CounterAlignment="Center"
