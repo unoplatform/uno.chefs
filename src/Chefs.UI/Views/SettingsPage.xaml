@@ -46,7 +46,7 @@
                         <Setter Target="SettingsNavBar.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
                         <Setter Target="PersonalInformationTitle.Style"
-                                Value="{StaticResource HeadlineLarge}" />
+                                Value="{StaticResource CustomHeadlineLarge}" />
                         <!--<Setter Target="ProfileFullName.MinHeight"
                                 Value="80" />
                         <Setter Target="ProfileFullName.Padding"
@@ -103,7 +103,8 @@
 
             <utu:NavigationBar x:Name="SettingsNavBar"
                                Style="{StaticResource NavigationBarStyle}"
-                               Background="{ThemeResource SurfaceBrush}">
+                               Background="{ThemeResource SurfaceBrush}"
+                               Content="Settings">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton x:Name="BackButton"
                                   Label="Settings"
@@ -135,7 +136,8 @@
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                           utu:AutoLayout.CounterAlignment="Stretch">
                 <utu:AutoLayout x:Name="ContentLayout"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                Padding="18">
                     <utu:AutoLayout x:Name="PersonalInfoLayout"
                                     Spacing="20"
                                     PrimaryAxisAlignment="Center"
@@ -158,12 +160,13 @@
                                 <utu:AutoLayout Spacing="6"
                                                 PrimaryAxisAlignment="Center"
                                                 utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <TextBlock x:Name="ProfileName" Foreground="{ThemeResource SurfaceInverseBrush}"
+                                    <TextBlock x:Name="ProfileName"
+                                               Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Text="{Binding Profile.FullName}"
                                                utu:AutoLayout.CounterAlignment="Center"
                                                Style="{StaticResource HeadlineMedium}" />
                                     <TextBlock x:Name="ProfileDescription"
-                                        Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                               Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                TextAlignment="Center"
                                                Text="{Binding Profile.Description}"
                                                utu:AutoLayout.CounterAlignment="Center"
@@ -173,8 +176,6 @@
                         </utu:AutoLayout>
 
                         <utu:AutoLayout Spacing="18"
-                                        Padding="20, 0, 20, 25"
-                                        Margin="0, 38, 0, 0"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <TextBlock x:Name="PersonalInformationTitle"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
@@ -243,7 +244,6 @@
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout x:Name="SettingsLayout"
-                        Padding="18,0"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <utu:AutoLayout Spacing="18"
