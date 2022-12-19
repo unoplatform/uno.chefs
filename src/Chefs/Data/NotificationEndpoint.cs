@@ -6,7 +6,7 @@ namespace Chefs.Data;
 
 public class NotificationEndpoint : INotificationEndpoint
 {
-    public const string NotifacationDataFile = "Notifications.json";
+    public const string NotificationDataFile = "Notifications.json";
 
     private readonly IStorage _dataService;
     private readonly ISerializer _serializer;
@@ -16,9 +16,8 @@ public class NotificationEndpoint : INotificationEndpoint
 
     public async ValueTask<IImmutableList<NotificationData>> GetAll(CancellationToken ct)
     {
-        var a = await _dataService
-        .ReadPackageFileAsync<IImmutableList<NotificationData>>(_serializer, NotifacationDataFile)
+        return await _dataService
+        .ReadPackageFileAsync<IImmutableList<NotificationData>>(_serializer, NotificationDataFile)
         ?? ImmutableList<NotificationData>.Empty;
-        return a;
     }
 }

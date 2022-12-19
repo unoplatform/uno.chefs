@@ -55,7 +55,8 @@
                 <utu:TabBarItem x:Name="AllTabItem"
                                 uen:Region.Name="AllTab"
                                 Content="All"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                IsSelected="True"/>
                 <utu:TabBarItem uen:Region.Name="UnreadTab"
                                 Content="Unread"
                                 Foreground="{ThemeResource OnSurfaceMediumBrush}" />

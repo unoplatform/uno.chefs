@@ -213,12 +213,12 @@
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <utu:TabBar uen:Region.Attached="True"
-                                    SelectedItem="{Binding ElementName=IngredientsTabItem}"
                                     Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem x:Name="IngredientsTabItem"
                                             Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Ingredients"
-                                            uen:Region.Name="IngredientsTab" />
+                                            uen:Region.Name="IngredientsTab"
+                                            IsSelected="True"/>
                             <utu:TabBarItem x:Name="DetailsTab"
                                             Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             Content="Details"

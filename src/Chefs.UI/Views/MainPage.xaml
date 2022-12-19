@@ -30,7 +30,7 @@
             <Grid Grid.Row="0"
                   uen:Region.Attached="True"
                   uen:Region.Navigator="Visibility"
-                  utu:SafeArea.Insets="All" />
+                  utu:SafeArea.Insets="VisibleBounds" />
 
             <utu:TabBar x:Name="Tabs"
                         Grid.Row="1"

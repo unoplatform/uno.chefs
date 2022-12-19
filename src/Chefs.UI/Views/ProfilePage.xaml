@@ -129,13 +129,13 @@
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <utu:TabBar uen:Region.Attached="True"
                                         Margin="0, 29, 0, -8"
-                                        Style="{StaticResource TopTabBarStyle}"
-                                        SelectedItem="{Binding ElementName=RecipesTab}">
+                                        Style="{StaticResource TopTabBarStyle}">
                                 <utu:TabBarItem x:Name="RecipesTab"
                                                 Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                 uen:Region.Name="MyRecipes"
                                                 IsSelectable="True"
-                                                Content="My Recipes" />
+                                                Content="My Recipes"
+                                                IsSelected="True"/>
                                 <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                 uen:Region.Name="Cookbooks"
                                                 IsSelectable="True"

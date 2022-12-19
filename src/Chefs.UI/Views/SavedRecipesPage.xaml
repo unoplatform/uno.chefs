@@ -30,13 +30,13 @@
                                     Padding="0,20">
                         <utu:TabBar uen:Region.Attached="True"
                                     Margin="0, 0, 0, 29"
-                                    SelectedItem="{Binding ElementName=TabBarRecipeItem}"
                                     Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             x:Name="TabBarRecipeItem"
                                             IsSelectable="True"
                                             uen:Region.Name="MyRecipes"
-                                            Content="All Recipes" />
+                                            Content="All Recipes"
+                                            IsSelected="True" />
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             uen:Region.Name="Cookbooks"
                                             IsSelectable="True"
