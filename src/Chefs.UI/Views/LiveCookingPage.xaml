@@ -8,7 +8,9 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-      mc:Ignorable="d"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:not_win="http://uno.ui/not_win"
+      mc:Ignorable="d not_win"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
@@ -105,12 +107,8 @@
                     <VisualState.Setters>
                         <Setter Target="ContentLayout.Orientation"
                                 Value="Horizontal" />
-                        <Setter Target="StepsFeedLayout.PrimaryAxisAlignment"
-                                Value="Center" />
-                        <Setter Target="StepsFeedLayout.CornerRadius"
-                                Value="16" />
-                        <Setter Target="StepsFeedLayout.Margin"
-                                Value="20,0,40,0" />
+                        <Setter Target="MainLayout.Spacing"
+                                Value="20" />
                         <Setter Target="RecipeImage.MaxHeight"
                                 Value="526" />
                         <Setter Target="RecipeImage.Margin"
@@ -125,18 +123,50 @@
                                 Value="{Binding SelectedStep.Name}" />
                         <Setter Target="WideCooktime.Visibility"
                                 Value="Visible" />
+                        <Setter Target="ItemsRepeaterLayout.Height"
+                                Value="58" />
+                        <Setter Target="ItemsRepeaterLayout.Margin"
+                                Value="20,0,40,0" />
+                        <Setter Target="ItemsRepeaterLayout.CornerRadius"
+                                Value="16" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <utu:AutoLayout x:Name="ContentLayout"
-                        utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                            utu:AutoLayout.CounterAlignment="Stretch">
+        <utu:AutoLayout x:Name="MainLayout">
+            <utu:AutoLayout Orientation="Horizontal"
+                            utu:AutoLayout.PrimaryAlignment="Stretch">
+
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
-                                   x:Name="NavBar"/>
-                <!--<utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
+                                   x:Name="NavBar"
+                                   utu:AutoLayout.PrimaryAlignment="Stretch" />
+
+                <utu:AutoLayout x:Name="WideCooktime"
+                                Visibility="Collapsed"
+                                PrimaryAxisAlignment="End"
+                                MinHeight="{Binding Path=Height, ElementName=NavBar}"
+                                Padding="40,0"
+                                utu:AutoLayout.CounterAlignment="Center">
+                    <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
+                                    Padding="10,6"
+                                    CornerRadius="15"
+                                    utu:AutoLayout.CounterAlignment="End"
+                                    utu:AutoLayout.PrimaryLength="35"
+                                    PrimaryAxisAlignment="Center">
+                        <TextBlock Foreground="{ThemeResource SurfaceBrush}"
+                                   TextAlignment="Center"
+                                   Text="{Binding SelectedStep.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
+                                   utu:AutoLayout.CounterAlignment="End"
+                                   Style="{StaticResource CustomCaptionSmall}" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </utu:AutoLayout>
+            <utu:AutoLayout x:Name="ContentLayout"
+                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                utu:AutoLayout.CounterAlignment="Stretch">
+                    <!--<utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
                                    Style="{StaticResource ModalNavigationBarStyle}">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton Label=""
@@ -152,114 +182,102 @@
                         </AppBarButton>
                     </utu:NavigationBar.PrimaryCommands>
                 </utu:NavigationBar>-->
-                <utu:AutoLayout Padding="0"
-                                x:Name="RecipeImage">
-                    <Image Source="{Binding Recipe.ImageUrl}"
-                           Stretch="UniformToFill" />
-                </utu:AutoLayout>
-                <utu:AutoLayout x:Name="WideRecipeDetails"
-                                Background="{ThemeResource SurfaceBrush}"
-                                CornerRadius="15"
-                                Padding="10"
-                                Visibility="Collapsed"
-                                Margin="40,50,20,0">
-                    <utu:AutoLayout Orientation="Horizontal"
-                                    Spacing="8">
-                        <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                   Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
-                                   Margin="10"
-                                   Style="{StaticResource CustomLabelSmall}" />
+                    <utu:AutoLayout Padding="0"
+                                    x:Name="RecipeImage">
+                        <Image Source="{Binding Recipe.ImageUrl}"
+                               Stretch="UniformToFill" />
                     </utu:AutoLayout>
-                    <utu:Divider Foreground="#E8EEF7"
-                                 utu:AutoLayout.CounterAlignment="Stretch"
-                                 Style="{StaticResource DividerStyle}" />
-                    <utu:AutoLayout Orientation="Horizontal"
-                                    Spacing="8">
-                        <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                   Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
-                                   Margin="10"
-                                   Style="{StaticResource CustomLabelSmall}" />
-
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
-            </utu:AutoLayout>
-            <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                            utu:AutoLayout.CounterAlignment="Stretch"
-                            x:Name="StepsLayout">
-                <utu:AutoLayout x:Name="WideCooktime"
-                                Visibility="Collapsed"
-                                PrimaryAxisAlignment="Center"
-                                MinHeight="{Binding ElementName=NavBar, Path=Height}"
-                                Padding="20,0">
-                    <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
-                                    Padding="10,6"
+                    <utu:AutoLayout x:Name="WideRecipeDetails"
+                                    Background="{ThemeResource SurfaceBrush}"
                                     CornerRadius="15"
-                                    utu:AutoLayout.CounterAlignment="End"
-                                    utu:AutoLayout.PrimaryLength="35"
-                                    PrimaryAxisAlignment="Center">
-                        <TextBlock Foreground="{ThemeResource SurfaceBrush}"
-                                   TextAlignment="Center"
-                                   Text="{Binding SelectedStep.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
-                                   utu:AutoLayout.CounterAlignment="End"
-                                   Style="{StaticResource CustomCaptionSmall}" />
+                                    Padding="10"
+                                    Visibility="Collapsed"
+                                    Margin="40,50,20,0">
+                        <utu:AutoLayout Orientation="Horizontal"
+                                        Spacing="8">
+                            <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
+                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                       Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
+                                       Margin="10"
+                                       Style="{StaticResource CustomLabelSmall}" />
+                        </utu:AutoLayout>
+                        <utu:Divider Foreground="#E8EEF7"
+                                     utu:AutoLayout.CounterAlignment="Stretch"
+                                     Style="{StaticResource DividerStyle}" />
+                        <utu:AutoLayout Orientation="Horizontal"
+                                        Spacing="8">
+                            <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
+                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                       Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
+                                       Margin="10"
+                                       Style="{StaticResource CustomLabelSmall}" />
+
+                        </utu:AutoLayout>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
+                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                utu:AutoLayout.CounterAlignment="Stretch"
+                                x:Name="StepsLayout">
 
-                <utu:AutoLayout x:Name="StepsFeedLayout">
-                    <!--<ScrollViewer HorizontalScrollMode="Enabled"
-                                  HorizontalScrollBarVisibility="Hidden">
-                        <muxc:ItemsRepeater ItemsSource="{Binding Steps}">
-                            <muxc:ItemsRepeater.Layout>
-                                <muxc:UniformGridLayout MinItemWidth="150"
-                                                        Orientation="Horizontal"/>
-                            </muxc:ItemsRepeater.Layout>
-                            <muxc:ItemsRepeater.ItemTemplate>
+                    <utu:AutoLayout x:Name="StepsFeedLayout"
+                                    utu:AutoLayout.CounterAlignment="Stretch">
+                        <!--TEMP WORKAROUND FOR ISSUE ON ANDROID FOR LISTVIEW-->
+                        <not_win:AutoLayout x:Name="ItemsRepeaterLayout"
+                                            utu:AutoLayout.CounterAlignment="Stretch"
+                                            Background="{ThemeResource PrimaryBrush}">
+                            <muxc:ItemsRepeater ItemsSource="{Binding Steps}"
+                                                HorizontalAlignment="Stretch">
+                                <muxc:ItemsRepeater.Layout>
+                                    <muxc:UniformGridLayout Orientation="Horizontal"
+                                                            ItemsJustification="SpaceEvenly" />
+                                </muxc:ItemsRepeater.Layout>
+                                <muxc:ItemsRepeater.ItemTemplate>
+                                    <DataTemplate>
+                                        <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
+                                                        Padding="18"
+                                                        HorizontalAlignment="Stretch"
+                                                        PrimaryAxisAlignment="Center">
+                                            <TextBlock Foreground="{ThemeResource SurfaceBrush}"
+                                                       TextAlignment="Center"
+                                                       Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}" />
+                                        </utu:AutoLayout>
+                                    </DataTemplate>
+                                </muxc:ItemsRepeater.ItemTemplate>
+                            </muxc:ItemsRepeater>
+                        </not_win:AutoLayout>
+
+                        <win:ListView ItemsSource="{Binding Steps}"
+                                      Style="{StaticResource ListViewStyle}"
+                                      Background="{ThemeResource PrimaryBrush}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsStackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
-                                                    PrimaryAxisAlignment="Center"
-                                                    Padding="18">
+                                                    PrimaryAxisAlignment="Center">
                                         <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                    TextAlignment="Center"
                                                    Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                   utu:AutoLayout.CounterAlignment="Center" />
+                                                   utu:AutoLayout.CounterAlignment="Center"
+                                                   Width="128" />
                                     </utu:AutoLayout>
                                 </DataTemplate>
-                            </muxc:ItemsRepeater.ItemTemplate>
-                        </muxc:ItemsRepeater>
-                    </ScrollViewer>-->
-                    <ListView ItemsSource="{Binding Steps}"
-                              Style="{StaticResource ListViewStyle}"
-                              Background="{ThemeResource PrimaryBrush}">
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsStackPanel Orientation="Horizontal" />
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
-                                                PrimaryAxisAlignment="Center">
-                                    <TextBlock Foreground="{ThemeResource SurfaceBrush}"
-                                               TextAlignment="Center"
-                                               Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                               utu:AutoLayout.CounterAlignment="Center"
-                                               Width="128" />
-                                </utu:AutoLayout>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </utu:AutoLayout>
-                <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-                              HorizontalScrollMode="Disabled">
-                    <FlipView x:Name="StepsFlipView"
-                              SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              ItemsSource="{Binding Steps}"
-                              ItemTemplate="{StaticResource NarrowTemplate}"
-                              Background="Transparent" />
+                            </ListView.ItemTemplate>
+                        </win:ListView>
+                    </utu:AutoLayout>
+                    <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                                  HorizontalScrollMode="Disabled">
+                        <FlipView x:Name="StepsFlipView"
+                                  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  ItemsSource="{Binding Steps}"
+                                  ItemTemplate="{StaticResource NarrowTemplate}"
+                                  Background="Transparent" />
 
-                </ScrollViewer>
+                    </ScrollViewer>
+                </utu:AutoLayout>
             </utu:AutoLayout>
         </utu:AutoLayout>
     </utu:AutoLayout>

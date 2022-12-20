@@ -28,6 +28,8 @@
                     <VisualState.Setters>
                         <Setter Target="ContentLayout.Orientation"
                                 Value="Horizontal" />
+                        <Setter Target="ContentLayout.Padding"
+                                Value="0,20,0,0" />
                         <Setter Target="ButtonsLayout.Orientation"
                                 Value="Horizontal" />
                         <Setter Target="ButtonsLayout.PrimaryAxisAlignment"

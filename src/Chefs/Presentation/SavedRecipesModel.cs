@@ -25,7 +25,7 @@ public partial class SavedRecipesModel
 
     public async ValueTask CreateCookbookNavigation(CancellationToken ct)
     {
-        var result = await _navigator.GetDataAsync<CreateCookbookModel, Cookbook>(this, cancellation: ct);
+        var result = await _navigator.GetDataAsync<CreateCookbookModel, Cookbook>(this, qualifier: Qualifiers.Dialog, cancellation: ct);
 
         if (result is not null)
         {

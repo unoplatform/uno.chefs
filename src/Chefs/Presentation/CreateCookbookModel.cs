@@ -26,7 +26,6 @@ public partial class CreateCookbookModel // DR_REV: Use Model suffix instead of 
 
     public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetSaved);
 
-	// DR_REV: You should be able to use XAML nav only and remove this method
 	public async ValueTask Exit(CancellationToken ct) =>
        await _navigator.NavigateBackAsync(this, cancellation: ct);
 
@@ -36,6 +35,7 @@ public partial class CreateCookbookModel // DR_REV: Use Model suffix instead of 
         var cookbookName = await CookbookName;
 
         var selectedRecipes = recipes.Where(x => x.Selected);
+
         if (!string.IsNullOrEmpty(cookbookName)
             && selectedRecipes.Any()) // DR_REV: 'selectedRecipes' cannot be null here
 		{
