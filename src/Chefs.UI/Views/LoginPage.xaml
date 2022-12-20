@@ -78,7 +78,8 @@
 
                     <Image x:Name="ChefImage"
                            Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                           Stretch="Uniform" />
+                           Stretch="UniformToFill"
+                           Height="290"/>
 
                     <utu:AutoLayout x:Name="InnerLayout"
                                     Spacing="15"
