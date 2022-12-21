@@ -67,13 +67,13 @@
                         <Setter Target="ImageBorder.CornerRadius"
                                 Value="60" />
                         <Setter Target="ProfileName.Style"
-                                Value="{StaticResource HeadlineLarge}" />
+                                Value="{StaticResource CustomHeadlineLarge}" />
                         <Setter Target="ProfileDescription.Style"
-                                Value="{StaticResource LabelLarge}" />
+                                Value="{StaticResource CustomLabelLarge}" />
                         <Setter Target="AccentColorLayout.Spacing"
                                 Value="40" />
                         <Setter Target="AccentColorTitle.Style"
-                                Value="{StaticResource HeadlineLarge}" />
+                                Value="{StaticResource CustomHeadlineLarge}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -329,14 +329,15 @@
                                            TextAlignment="Center" 
                                            Text="App accent color" 
                                            utu:AutoLayout.CounterAlignment="Start" 
-                                           Foreground="{ThemeResource SurfaceInverseBrush}" 
-                                           Style="{StaticResource BodyLarge}" />
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           Style="{StaticResource CustomBodyLarge}" />
                                 <utu:AutoLayout Spacing="18" 
                                                 Orientation="Horizontal" 
                                                 Height="40">
                                     <RadioButton GroupName="Colorcheckbox" 
                                                  utu:AutoLayout.CounterAlignment="Start" 
-                                                 utu:AutoLayout.PrimaryAlignment="Stretch" />
+                                                 utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                 />
                                     <RadioButton GroupName="Colorcheckbox" 
                                                  utu:AutoLayout.CounterAlignment="Start" 
                                                  utu:AutoLayout.PrimaryAlignment="Stretch" />
