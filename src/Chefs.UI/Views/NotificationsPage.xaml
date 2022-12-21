@@ -117,52 +117,72 @@
                     <uer:FeedView x:Name="AllFeed"
                                   Source="{Binding Notifications}">
                         <DataTemplate>
-                            <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
-                                <utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                            <ScrollViewer HorizontalScrollMode="Enabled" 
+                                          HorizontalScrollBarVisibility="Visible">
+                            <utu:AutoLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="Narrow" />
+                                        <VisualState x:Name="Wide" >
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="AllTabLayout.MaxWidth"
+                                                    Value="2000" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                
+                                    <utu:AutoLayout x:Name="AllTabLayout"
+                                                    MaxWidth="338">
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasTodayNotifications}">
-                                        <TextBlock Text="Today"
+                                            <TextBlock Text="Today"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
 
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                               Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasYesterdayNotifications}">
-                                        <TextBlock Text="Yesterday"
+                                            <TextBlock Text="Yesterday"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                               Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasOlderNotifications}">
-                                        <TextBlock Text="Older"
+                                            <TextBlock Text="Older"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                               Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
                                     </utu:AutoLayout>
-                                </utu:AutoLayout>
+                                
+                            </utu:AutoLayout>
                             </ScrollViewer>
                         </DataTemplate>
                     </uer:FeedView>
@@ -173,52 +193,69 @@
                     <uer:FeedView x:Name="UnreadFeed"
                                   Source="{Binding Unread}">
                         <DataTemplate>
-                            <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
-                                <utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                            <utu:AutoLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="Narrow" />
+                                        <VisualState x:Name="Wide" >
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="UnreadTabLayout.MaxWidth"
+                                                    Value="2000" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                    <utu:AutoLayout x:Name="UnreadTabLayout"
+                                                    MaxWidth="338">
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasTodayNotifications}">
-                                        <TextBlock Text="Today"
+                                            <TextBlock Text="Today"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                               Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasYesterdayNotifications}">
-                                        <TextBlock Text="Yesterday"
+                                            <TextBlock Text="Yesterday"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                             Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasOlderNotifications}">
-                                        <TextBlock Text="Older"
+                                            <TextBlock Text="Older"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                             Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
                                     </utu:AutoLayout>
-                                </utu:AutoLayout>
-                            </ScrollViewer>
+                                </ScrollViewer>
+                            </utu:AutoLayout>
                         </DataTemplate>
                     </uer:FeedView>
                 </utu:AutoLayout>
@@ -228,52 +265,69 @@
                     <uer:FeedView x:Name="ReadFeed"
                                   Source="{Binding Read}">
                         <DataTemplate>
-                            <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
-                                <utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                            <utu:AutoLayout>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="Narrow" />
+                                        <VisualState x:Name="Wide" >
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="OpenedTabLayout.MaxWidth"
+                                                            Value="2000" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible">
+                                    <utu:AutoLayout x:Name="OpenedTabLayout"
+                                                    MaxWidth="338">
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasTodayNotifications}">
-                                        <TextBlock Text="Today"
+                                            <TextBlock Text="Today"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                               Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasYesterdayNotifications}">
-                                        <TextBlock Text="Yesterday"
+                                            <TextBlock Text="Yesterday"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                               Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="12"
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="12"
                                                 Margin="0,8"
                                                 Visibility="{Binding Data.HasOlderNotifications}">
-                                        <TextBlock Text="Older"
+                                            <TextBlock Text="Older"
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelLarge}" />
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                         ItemTemplate="{StaticResource NotificationTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:StackLayout Orientation="Vertical"
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical"
                                                               Spacing="8" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </utu:AutoLayout>
                                     </utu:AutoLayout>
-                                </utu:AutoLayout>
-                            </ScrollViewer>
+                                </ScrollViewer>
+                            </utu:AutoLayout>
                         </DataTemplate>
                     </uer:FeedView>
                 </utu:AutoLayout>
