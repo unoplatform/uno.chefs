@@ -222,10 +222,12 @@
             </utu:AutoLayout>
 
             <utu:AutoLayout x:Name="WideImageFilpView"
+                            utu:AutoLayout.PrimaryAlignment="Stretch"
                             Grid.Column="1">
                 <FlipView Background="Transparent"
                           SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                          utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
+                          utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
+                          utu:AutoLayout.PrimaryAlignment="Stretch">
                     <FlipViewItem>
                         <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
                                Stretch="UniformToFill" />
