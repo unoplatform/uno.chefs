@@ -52,6 +52,10 @@
                                 Value="40" />
                         <Setter Target="WideSkipButton.Visibility"
                                 Value="Visible" />
+                        <Setter Target="WideTextFilpView.Visibility"
+                                Value="Visible" />
+                        <Setter Target="TextFilpView.Visibility"
+                                Value="Collapsed" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -83,7 +87,6 @@
                     <utu:AutoLayout x:Name="ImageFilpView"
                                     Margin="-50,0">
                         <FlipView Background="Transparent"
-                                  Margin="-50,0"
                                   Height="400"
                                   SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
@@ -124,45 +127,82 @@
                                     Height="56">
                         <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
                                Stretch="Uniform"
-                               utu:AutoLayout.CounterAlignment="Center"
-                               utu:AutoLayout.PrimaryLength="56"
-                               utu:AutoLayout.CounterLength="189"
-                               Grid.Row="0" />
+                               utu:AutoLayout.CounterAlignment="Center" />
                     </utu:AutoLayout>
-                    <FlipView x:Name="TextFilpView"
-                              VerticalAlignment="Top"
-                              Background="Transparent"
-                              SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
-                              Margin="-50,0"
-                              Height="100">
-                        <FlipView.Items>
-                            <FlipViewItem>
-                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           TextAlignment="Center"
-                                           TextWrapping="Wrap"
-                                           Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
-                                           utu:AutoLayout.CounterAlignment="Center"
-                                           Margin="50,0" />
-                            </FlipViewItem>
-                            <FlipViewItem>
-                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           TextAlignment="Center"
-                                           TextWrapping="Wrap"
-                                           Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
-                                           utu:AutoLayout.CounterAlignment="Center"
-                                           Margin="50,0" />
-                            </FlipViewItem>
-                            <FlipViewItem>
-                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           TextAlignment="Center"
-                                           TextWrapping="Wrap"
-                                           Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
-                                           utu:AutoLayout.CounterAlignment="Center"
-                                           Margin="50,0" />
-                            </FlipViewItem>
-                        </FlipView.Items>
-                    </FlipView>
+                    <utu:AutoLayout>
+                        <FlipView x:Name="TextFilpView"
+                                  VerticalAlignment="Top"
+                                  Background="Transparent"
+                                  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
+                                  Margin="-50,0"
+                                  Height="100">
+                            <FlipView.Items>
+                                <FlipViewItem>
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. &#10;Enjoy it."
+                                               utu:AutoLayout.CounterAlignment="Center"
+                                               Margin="50,0" />
+                                </FlipViewItem>
+                                <FlipViewItem>
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. &#10;Enjoy it."
+                                               utu:AutoLayout.CounterAlignment="Center"
+                                               Margin="50,0" />
+                                </FlipViewItem>
+                                <FlipViewItem>
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. &#10;Enjoy it."
+                                               utu:AutoLayout.CounterAlignment="Center"
+                                               Margin="50,0" />
+                                </FlipViewItem>
+                            </FlipView.Items>
+                        </FlipView>
+                        <FlipView x:Name="WideTextFilpView"
+                                  VerticalAlignment="Top"
+                                  Background="Transparent"
+                                  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
+                                  Margin="-50,0"
+                                  Height="150"
+                                  Visibility="Collapsed">
+                            <FlipView.Items>
+                                <FlipViewItem>
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. &#10;Enjoy it."
+                                               utu:AutoLayout.CounterAlignment="Start"
+                                               Margin="50,0"
+                                               Style="{StaticResource CustomHeadlineLarge}"/>
+                                </FlipViewItem>
+                                <FlipViewItem>
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. &#10;Enjoy it."
+                                               utu:AutoLayout.CounterAlignment="Start"
+                                               Margin="50,0"
+                                               Style="{StaticResource CustomHeadlineLarge}"/>
+                                </FlipViewItem>
+                                <FlipViewItem>
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautiful inspiring demo app. &#10;Enjoy it."
+                                               utu:AutoLayout.CounterAlignment="Start"
+                                               Margin="50,0"
+                                               Style="{StaticResource CustomHeadlineLarge}"/>
+                                </FlipViewItem>
+                            </FlipView.Items>
+                        </FlipView>
+                    </utu:AutoLayout>
                     <utu:AutoLayout PrimaryAxisAlignment="Center"
                                     Spacing="20">
 
@@ -171,7 +211,7 @@
                                 utu:AutoLayout.PrimaryLength="56"
                                 HorizontalAlignment="Stretch"
                                 Command="{Binding Next}"
-                                Height="56"/>
+                                Height="56" />
 
                         <msui:PipsPager x:Name="pipsPager"
                                         utu:AutoLayout.CounterAlignment="Center"
@@ -179,82 +219,27 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
 
-                <!--<Grid Padding="60,40"
-                          utu:AutoLayout.PrimaryAlignment="Stretch"
-                          RowSpacing="25">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="56" />
-                            <RowDefinition Height="90" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="56" />
-                            <RowDefinition Height="56" />
-                        </Grid.RowDefinitions>
-                        <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
-                               Stretch="Uniform"
-                               utu:AutoLayout.CounterAlignment="Center"
-                               utu:AutoLayout.PrimaryLength="56"
-                               utu:AutoLayout.CounterLength="189"
-                               Grid.Row="0" />
-                        <FlipView x:Name="TextFilpView"
-                                  VerticalAlignment="Top"
-                                  Background="Transparent"
-                                  Grid.Row="1"
-                                  SelectedIndex="{Binding NextPage}"
-                                  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
-                                  Margin="-40,0">
-                            <FlipView.Items>
-                                <FlipViewItem>
-                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               TextAlignment="Center"
-                                               TextWrapping="Wrap"
-                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
-                                               utu:AutoLayout.CounterAlignment="Center" />
-                                </FlipViewItem>
-                                <FlipViewItem>
-                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               TextAlignment="Center"
-                                               TextWrapping="Wrap"
-                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
-                                               utu:AutoLayout.CounterAlignment="Center" />
-                                </FlipViewItem>
-                                <FlipViewItem>
-                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               TextAlignment="Center"
-                                               TextWrapping="Wrap"
-                                               Text="Easy recipes for busy devs. &#10;UNO Platform and UXDivers joined forces to create this beautyful inspiring demo app. &#10;Enjoy it."
-                                               utu:AutoLayout.CounterAlignment="Center" />
-                                </FlipViewItem>
-                            </FlipView.Items>
-                        </FlipView>
-                        <msui:PipsPager x:Name="pipsPager"
-                                        HorizontalAlignment="Center"
-                                        MaxVisiblePips="10"
-                                        Grid.Row="2" />
-
-                        <Button Background="{ThemeResource PrimaryBrush}"
-                                Content="Next"
-                                utu:AutoLayout.PrimaryLength="56"
-                                Grid.Row="3"
-                                HorizontalAlignment="Stretch"
-                                Command="{Binding Next}"
-                                Visibility="{Binding Visibility, Converter={StaticResource InvertBool}, ElementName=LetButton}"
-                                Height="56" />
-                        <Button Background="{ThemeResource PrimaryBrush}"
-                                Content="Let's cook!"
-                                x:Name="LetButton"
-                                utu:AutoLayout.PrimaryLength="56"
-                                Grid.Row="3"
-                                HorizontalAlignment="Stretch"
-                                Command="{Binding Next}"
-                                Visibility="{Binding NextPage, Converter={StaticResource CertainNumberToVisibleConverter}}"
-                                Height="56" />
-                    </Grid>-->
-
             </utu:AutoLayout>
-            <Image x:Name="WideImageFilpView"
-                   Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                   Stretch="UniformToFill"
-                   Grid.Column="1" />
+
+            <utu:AutoLayout x:Name="WideImageFilpView"
+                            Grid.Column="1">
+                <FlipView Background="Transparent"
+                          SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
+                    <FlipViewItem>
+                        <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                               Stretch="UniformToFill" />
+                    </FlipViewItem>
+                    <FlipViewItem>
+                        <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
+                               Stretch="UniformToFill" />
+                    </FlipViewItem>
+                    <FlipViewItem>
+                        <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
+                               Stretch="UniformToFill" />
+                    </FlipViewItem>
+                </FlipView>
+            </utu:AutoLayout>
         </Grid>
     </Grid>
 </Page>

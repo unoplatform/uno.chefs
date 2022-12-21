@@ -9,6 +9,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:not_win="http://uno.ui/not_win"
       mc:Ignorable="d not_win"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -109,8 +110,10 @@
                                 Value="Horizontal" />
                         <Setter Target="MainLayout.Spacing"
                                 Value="20" />
-                        <Setter Target="RecipeImage.MaxHeight"
-                                Value="526" />
+                        <Setter Target="RecipeImage.Height"
+                                Value="500" />
+                        <Setter Target="RecipeImage.(utu:AutoLayout.PrimaryAlignment)"
+                                Value="Stretch" />
                         <Setter Target="RecipeImage.Margin"
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
@@ -129,6 +132,8 @@
                                 Value="20,0,40,0" />
                         <Setter Target="ItemsRepeaterLayout.CornerRadius"
                                 Value="16" />
+                        <Setter Target="NavBar.Margin"
+                                Value="20,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -140,48 +145,33 @@
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
                                    x:Name="NavBar"
-                                   utu:AutoLayout.PrimaryAlignment="Stretch" />
+                                   utu:AutoLayout.PrimaryAlignment="Stretch"
+                                   toolkit:UIElementExtensions.Elevation="0"/>
 
                 <utu:AutoLayout x:Name="WideCooktime"
                                 Visibility="Collapsed"
                                 PrimaryAxisAlignment="End"
                                 MinHeight="{Binding Path=Height, ElementName=NavBar}"
-                                Padding="40,0"
+                                Padding="40,20"
                                 utu:AutoLayout.CounterAlignment="Center">
                     <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
-                                    Padding="10,6"
-                                    CornerRadius="15"
-                                    utu:AutoLayout.CounterAlignment="End"
-                                    utu:AutoLayout.PrimaryLength="35"
+                                    Padding="20,8"
+                                    CornerRadius="16"
+                                    utu:AutoLayout.CounterAlignment="Center"
                                     PrimaryAxisAlignment="Center">
                         <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                    TextAlignment="Center"
                                    Text="{Binding SelectedStep.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
                                    utu:AutoLayout.CounterAlignment="End"
-                                   Style="{StaticResource CustomCaptionSmall}" />
+                                   Style="{StaticResource CustomCaptionLarge}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
+            
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                 utu:AutoLayout.CounterAlignment="Stretch">
-                    <!--<utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
-                                   Style="{StaticResource ModalNavigationBarStyle}">
-                    <utu:NavigationBar.MainCommand>
-                        <AppBarButton Label=""
-                                      Foreground="Transparent"
-                                      IsEnabled="False" />
-                    </utu:NavigationBar.MainCommand>
-                    <utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton uen:Navigation.Request="-">
-                            <AppBarButton.Icon>
-                                <BitmapIcon ShowAsMonochrome="False"
-                                            UriSource="ms-appx:///Assets/Icons/close.png" />
-                            </AppBarButton.Icon>
-                        </AppBarButton>
-                    </utu:NavigationBar.PrimaryCommands>
-                </utu:NavigationBar>-->
                     <utu:AutoLayout Padding="0"
                                     x:Name="RecipeImage">
                         <Image Source="{Binding Recipe.ImageUrl}"
@@ -194,16 +184,13 @@
                                     Visibility="Collapsed"
                                     Margin="40,50,20,0">
                         <utu:AutoLayout Orientation="Horizontal"
-                                        Spacing="8">
+                                        Spacing="20">
                             <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
                             <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                        Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
                                        Margin="10"
                                        Style="{StaticResource CustomLabelSmall}" />
                         </utu:AutoLayout>
-                        <utu:Divider Foreground="#E8EEF7"
-                                     utu:AutoLayout.CounterAlignment="Stretch"
-                                     Style="{StaticResource DividerStyle}" />
                         <utu:AutoLayout Orientation="Horizontal"
                                         Spacing="8">
                             <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />

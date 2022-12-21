@@ -58,8 +58,44 @@
                 </utu:CardContentControl>
             </DataTemplate>
         </utu:AutoLayout.Resources>
+        
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup>
+                    <VisualState x:Name="Narrow" />
+                    <VisualState x:Name="Wide">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="800" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="TrendingNowTitle.Style"
+                                    Value="{StaticResource CustomHeadlineLarge}" />
+                            <Setter Target="TrendingNowShowAll.Style"
+                                    Value="{StaticResource CustomHeadlineMedium}" />
+                            <Setter Target="CategoriesTitle.Style"
+                                    Value="{StaticResource CustomHeadlineLarge}" />
+                            <Setter Target="RecentlyAddedTitle.Style"
+                                    Value="{StaticResource CustomHeadlineLarge}" />
+                            <Setter Target="RecentlyAddedShowAll.Style"
+                                    Value="{StaticResource CustomHeadlineMedium}" />
+                            <Setter Target="PopularCreatorsTitle.Style"
+                                    Value="{StaticResource CustomHeadlineLarge}" />
+                            <Setter Target="LunchTitle.Style"
+                                    Value="{StaticResource CustomHeadlineLarge}" />
+                            <Setter Target="LunchNowShowAll.Style"
+                                    Value="{StaticResource CustomHeadlineMedium}" />
+                            <Setter Target="DinnerTitle.Style"
+                                    Value="{StaticResource CustomHeadlineLarge}" />
+                            <Setter Target="DinnerShowAll.Style"
+                                    Value="{StaticResource CustomHeadlineMedium}" />
+                            <Setter Target="SnackTitle.Style"
+                                    Value="{StaticResource CustomHeadlineLarge}" />
+                            <Setter Target="SnackShowAll.Style"
+                                    Value="{StaticResource CustomHeadlineMedium}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
             <utu:AutoLayout Spacing="8"
                             Padding="18,12"
                             Orientation="Horizontal">
@@ -112,7 +148,8 @@
                                         Orientation="Horizontal">
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                <TextBlock x:Name="TrendingNowTitle"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Trending now"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource CustomTitleLarge}" />
@@ -120,7 +157,7 @@
                             <Button Background="Transparent"
                                     Command="{Binding ShowAll}"
                                     Padding="0">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                <TextBlock x:Name="TrendingNowShowAll" Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            TextAlignment="End"
                                            TextWrapping="Wrap"
                                            Text="Show me all"
@@ -148,7 +185,7 @@
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="20"
                                     utu:AutoLayout.CounterAlignment="Start">
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                        <TextBlock x:Name="CategoriesTitle" Foreground="{ThemeResource OnSurfaceBrush}"
                                    Text="Categories"
                                    Style="{StaticResource CustomTitleLarge}" />
                         <uer:FeedView x:Name="CategoriesFeedView"
@@ -193,7 +230,8 @@
                                         Orientation="Horizontal">
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                <TextBlock x:Name="RecentlyAddedTitle"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Recently Added"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource CustomTitleLarge}" />
@@ -201,7 +239,8 @@
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllRecentlyAdded}"
                                     Padding="0">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                <TextBlock x:Name="RecentlyAddedShowAll"
+                                           Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            TextAlignment="End"
                                            TextWrapping="Wrap"
                                            Text="Show me all"
@@ -258,9 +297,8 @@
                             </DataTemplate>
                         </uer:FeedView>
                     </utu:AutoLayout>
-
                     <utu:AutoLayout Spacing="20">
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                        <TextBlock x:Name="PopularCreatorsTitle" Foreground="{ThemeResource OnSurfaceBrush}"
                                    Text="Popular Creators"
                                    Style="{StaticResource CustomTitleLarge}" />
                         <uer:FeedView x:Name="PopularCreatorsFeedView"
@@ -278,11 +316,28 @@
                                             <DataTemplate>
                                                 <utu:AutoLayout Spacing="8"
                                                                 utu:AutoLayout.CounterAlignment="Start">
-                                                    <utu:AutoLayout CornerRadius="30"
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup>
+                                                            <VisualState x:Name="Narrow" />
+                                                            <VisualState x:Name="Wide">
+                                                                <VisualState.StateTriggers>
+                                                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                                                </VisualState.StateTriggers>
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="CreatorsLayout.Height"
+                                                                            Value="124" />
+                                                                    <Setter Target="CreatorsLayout.Width"
+                                                                            Value="124" />
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <utu:AutoLayout x:Name="CreatorsLayout"
+                                                                    CornerRadius="30"
                                                                     Orientation="Horizontal"
                                                                     utu:AutoLayout.CounterAlignment="Center"
-                                                                    utu:AutoLayout.PrimaryLength="75"
-                                                                    utu:AutoLayout.CounterLength="75">
+                                                                    Height="75"
+                                                                    Width="75">
                                                         <Border CornerRadius="25"
                                                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                                                             <Image Source="{Binding UrlProfileImage}"
@@ -308,7 +363,7 @@
                                         Orientation="Horizontal">
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                <TextBlock x:Name="LunchTitle" Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Lunch"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource CustomTitleLarge}" />
@@ -316,7 +371,7 @@
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllLunch}"
                                     Padding="0">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                <TextBlock x:Name="LunchShowAll" Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            TextAlignment="End"
                                            TextWrapping="Wrap"
                                            Text="Show me all"
@@ -347,7 +402,7 @@
                                         Orientation="Horizontal">
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                <TextBlock x:Name="DinnerTitle" Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Dinner"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource CustomTitleLarge}" />
@@ -355,7 +410,7 @@
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllDinner}"
                                     Padding="0">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                <TextBlock x:Name="DinnerShowAll" Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            TextAlignment="End"
                                            TextWrapping="Wrap"
                                            Text="Show me all"
@@ -386,7 +441,7 @@
                                         Orientation="Horizontal">
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                <TextBlock x:Name="SnackTitle" Foreground="{ThemeResource OnSurfaceBrush}"
                                            Text="Snack"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource CustomTitleLarge}" />
@@ -394,7 +449,7 @@
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllSnack}"
                                     Padding="0">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                <TextBlock x:Name="SnackShowAll" Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            TextAlignment="End"
                                            TextWrapping="Wrap"
                                            Text="Show me all"

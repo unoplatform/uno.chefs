@@ -172,6 +172,8 @@
                                 Value="Visible" />
                         <Setter Target="AddButtonLayout.Background"
                                 Value="{ThemeResource SurfaceBrush}" />
+                        <Setter Target="ContentLayout.Padding"
+                                Value="0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -246,94 +248,62 @@
                     <utu:AutoLayout x:Name="WideSaved"
                                     Orientation="Horizontal"
                                     Visibility="Collapsed"
-                                    Spacing="12"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
 
-                        <utu:AutoLayout Spacing="20"
-                                        Padding="20"
+                        <utu:AutoLayout Padding="20"
                                         Background="{ThemeResource BackgroundBrush}"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch">
+                            <utu:AutoLayout  Spacing="20"
+                                             utu:AutoLayout.CounterAlignment="Center">
+                                <TextBlock Text="All recipes"
+                                           utu:AutoLayout.CounterAlignment="Start"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           Style="{StaticResource CustomHeadlineLarge}" />
 
-                            <TextBlock Text="All recipes"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomHeadlineLarge}" />
+                                <utu:AutoLayout>
+                                    <uer:FeedView Source="{Binding Recipes}">
+                                        <DataTemplate>
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                ItemTemplate="{StaticResource RecipeTemplate}">
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                                            MinColumnSpacing="10"
+                                                                            MinRowSpacing="10" />
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
 
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                <uer:FeedView Source="{Binding Recipes}">
-                                    <DataTemplate>
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                            ItemTemplate="{StaticResource RecipeTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                        MinColumnSpacing="10"
-                                                                        MinRowSpacing="10" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </DataTemplate>
-                                </uer:FeedView>
+                                        </DataTemplate>
+                                    </uer:FeedView>
+                                </utu:AutoLayout>
                             </utu:AutoLayout>
-
                         </utu:AutoLayout>
                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                        Spacing="20"
                                         Padding="20"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch">
+                            <utu:AutoLayout  Spacing="20"
+                                             utu:AutoLayout.CounterAlignment="Center">
+                                <TextBlock Text="Cookbooks"
+                                           utu:AutoLayout.CounterAlignment="Start"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           Style="{StaticResource CustomHeadlineLarge}" />
 
-                            <TextBlock Text="Cookbooks"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomHeadlineLarge}" />
-
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                <uer:FeedView Source="{Binding Cookbooks}">
-                                    <DataTemplate>
-                                        <ScrollViewer HorizontalScrollMode="Enabled"
-                                                      HorizontalScrollBarVisibility="Visible">
-                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+                                    <uer:FeedView Source="{Binding Cookbooks}">
+                                        <DataTemplate>
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                ItemTemplate="{StaticResource CookbookTemplate}">
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                            ItemsStretch="Fill" />
+                                                                            MinColumnSpacing="10"
+                                                                            MinRowSpacing="10" />
                                                 </muxc:ItemsRepeater.Layout>
-                                                <muxc:ItemsRepeater.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                                uen:Navigation.Request="SavedCookbookDetail"
-                                                                                Style="{StaticResource FilledCardContentControlStyle}"
-                                                                                Background="{ThemeResource SurfaceBrush}"
-                                                                                uen:Navigation.Data="{Binding}">
-                                                            <utu:CardContentControl.ContentTemplate>
-                                                                <DataTemplate>
-                                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-                                                                        <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png"
-                                                                               Stretch="UniformToFill" />
-                                                                        <utu:AutoLayout Spacing="2"
-                                                                                        Padding="11,10"
-                                                                                        PrimaryAxisAlignment="Center">
-                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                                       TextWrapping="NoWrap"
-                                                                                       Text="{Binding Name}"
-                                                                                       Style="{StaticResource TitleMedium}" />
-                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                                                       TextWrapping="NoWrap"
-                                                                                       Text="{Binding PinsNumber, 
-                                                                                                      Converter={StaticResource StringFormatter}, 
-                                                                                                      ConverterParameter='{}{0} pins'}"
-                                                                                       Style="{StaticResource BodySmall}" />
-                                                                        </utu:AutoLayout>
-                                                                    </utu:AutoLayout>
-                                                                </DataTemplate>
-                                                            </utu:CardContentControl.ContentTemplate>
-                                                        </utu:CardContentControl>
-                                                    </DataTemplate>
-                                                </muxc:ItemsRepeater.ItemTemplate>
                                             </muxc:ItemsRepeater>
-                                        </ScrollViewer>
-                                    </DataTemplate>
-                                </uer:FeedView>
+                                        </DataTemplate>
+                                    </uer:FeedView>
+                                </utu:AutoLayout>
                             </utu:AutoLayout>
                             <uer:FeedView Source="{Binding Cookbooks}">
                                 <DataTemplate>

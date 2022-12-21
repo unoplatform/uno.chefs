@@ -6,6 +6,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       mc:Ignorable="d"
       NavigationCacheMode="Enabled"
@@ -66,14 +67,20 @@
                                 Value="190" />
                         <Setter Target="LiveCookingButton.(utu:AutoLayout.CounterLength)"
                                 Value="56" />
+                        <Setter Target="RecipeCard.Spacing"
+                                Value="80" />
+                        <Setter Target="NavBar.Margin"
+                                Value="20,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:NavigationBar Background="{ThemeResource BackgroundBrush}"
+            <utu:NavigationBar x:Name="NavBar"
+                               Background="{ThemeResource BackgroundBrush}"
                                Style="{StaticResource NavigationBarStyle}"
-                               Content="{Binding Recipe.Name}">
+                               Content="{Binding Recipe.Name}"
+                               toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.PrimaryCommands>
                     <AppBarButton uen:Navigation.Request="-">
                         <AppBarButton.Icon>
@@ -118,7 +125,8 @@
                                        Stretch="UniformToFill"
                                        utu:AutoLayout.CounterAlignment="Stretch" />
                             </utu:AutoLayout>
-                            <utu:AutoLayout Background="{ThemeResource OnPrimaryBrush}"
+                            <utu:AutoLayout x:Name="RecipeCard"
+                                            Background="{ThemeResource OnPrimaryBrush}"
                                             Spacing="40"
                                             Padding="40,14"
                                             CornerRadius="16"
@@ -161,18 +169,18 @@
                         </utu:AutoLayout>
                         <utu:AutoLayout x:Name="WideDetailsLayout"
                                         Visibility="Collapsed"
-                                        Spacing="20"
-                                        Padding="40,0">
+                                        Spacing="15"
+                                        Padding="40,20">
                             <utu:AutoLayout Spacing="6"
                                             Orientation="Horizontal">
                                 <PersonPicture utu:AutoLayout.CounterAlignment="Center"
-                                               Width="32"
-                                               Height="32"
+                                               Width="60"
+                                               Height="60"
                                                ProfilePicture="{Binding User.UrlProfileImage}" />
                                 <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                           Style="{StaticResource CustomTitleSmall}" />
+                                           Style="{StaticResource CustomTitleLarge}" />
                             </utu:AutoLayout>
                             <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
@@ -185,20 +193,19 @@
                                                   Style="{StaticResource ListViewStyle}">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                    CornerRadius="15"
-                                                                    Margin="-10,8">
-                                                        <utu:AutoLayout Padding="16,18"
-                                                                        PrimaryAxisAlignment="Center">
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                       TextWrapping="Wrap"
-                                                                       Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                                       Style="{StaticResource CustomTitleMedium}" />
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                                                       TextWrapping="Wrap"
-                                                                       Text="{Binding Description}"
-                                                                       Style="{StaticResource CustomLabelSmall}" />
-                                                        </utu:AutoLayout>
+                                                    <utu:AutoLayout Margin="-10,0"
+                                                                    Padding="0,10"
+                                                                    PrimaryAxisAlignment="Center">
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                   TextWrapping="Wrap"
+                                                                   Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
+                                                                   Style="{StaticResource CustomDisplaySmall}"
+                                                                   FontSize="18" />
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                   TextWrapping="Wrap"
+                                                                   Text="{Binding Description}"
+                                                                   Style="{StaticResource CustomDisplaySmall}"
+                                                                   FontSize="18" />
                                                     </utu:AutoLayout>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
@@ -237,7 +244,7 @@
                                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                            TextWrapping="Wrap"
                                            Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
-                                           Style="{StaticResource CustomHeadlineMedium}"/>
+                                           Style="{StaticResource CustomHeadlineMedium}" />
                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 
                                     <uer:FeedView x:Name="IngredientsFeed"
