@@ -61,6 +61,7 @@
                                                   BorderThickness="1"
                                                   BorderBrush="{ThemeResource PrimaryBrush}"
                                                   CornerRadius="60"
+                                                  Margin="0, 0, 11, 0"
                                                   MaxWidth="60">
                                         <ToggleButton.Content>
                                             <PathIcon Data="{StaticResource Icon_Add}"
