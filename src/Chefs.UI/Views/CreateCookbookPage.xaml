@@ -32,15 +32,16 @@
                 <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                         Style="{StaticResource FilledCardContentControlStyle}"
                                         Background="{ThemeResource SurfaceBrush}"
-                                        Margin="1.5, 0, 0, 0">
+                                        Margin="6, 0, 0, 0">
                     <utu:CardContentControl.ContentTemplate>
                         <DataTemplate>
                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                            MaxWidth="171"
+                                            MaxWidth="155"
                                             CornerRadius="12">
                                 <Image Source="{Binding ImageUrl}"
                                        Stretch="UniformToFill"
-                                       utu:AutoLayout.PrimaryLength="150" />
+                                       utu:AutoLayout.PrimaryLength="110"
+                                       utu:AutoLayout.CounterAlignment="Stretch"/>
                                 <utu:AutoLayout Spacing="2"
                                                 Padding="10"
                                                 Orientation="Horizontal">
@@ -87,11 +88,11 @@
                     <utu:CardContentControl.ContentTemplate>
                         <DataTemplate>
                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                            MaxWidth="200"
+                                            MaxWidth="155"
                                             CornerRadius="12">
                                 <Image Source="{Binding ImageUrl}"
                                        Stretch="UniformToFill"
-                                       utu:AutoLayout.PrimaryLength="150" />
+                                       utu:AutoLayout.PrimaryLength="180" />
                                 <utu:AutoLayout Spacing="2"
                                                 Padding="10"
                                                 Orientation="Horizontal">
@@ -183,7 +184,7 @@
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="18"
                                 Padding="18,0">
-                    <TextBlock Margin="4, 0, 0, 0"
+                    <TextBlock Margin="8, 0, 0, 0"
                                x:Name="AddPinLabel"
                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                Text="Add pin"
@@ -202,9 +203,9 @@
                                                                 ItemTemplate="{StaticResource NarrowItemTemplate}">
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                            ItemsJustification="SpaceAround"
-                                                                            MinColumnSpacing="10"
-                                                                            MinRowSpacing="10" />
+                                                                            ItemsStretch="Fill"
+                                                                            MinColumnSpacing="20"
+                                                                            MinRowSpacing="20" />
                                                 </muxc:ItemsRepeater.Layout>
                                             </muxc:ItemsRepeater>
                                         </ScrollViewer>
@@ -222,7 +223,7 @@
                                                                 ItemTemplate="{StaticResource WideItemTemplate}">
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="5"
-                                                                            ItemsJustification="SpaceAround"
+                                                                            ItemsStretch="Fill"
                                                                             MinColumnSpacing="10"
                                                                             MinRowSpacing="10" />
                                                 </muxc:ItemsRepeater.Layout>
