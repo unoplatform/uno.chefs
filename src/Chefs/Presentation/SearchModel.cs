@@ -26,7 +26,7 @@ public partial class SearchModel
         .Select(ApplyFilter)
         .AsListFeed();
 
-    public IFeed<bool> Searched => Feed.Combine(Filter, Results).Select(GetSearched);
+    public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
     public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
 
@@ -40,16 +40,13 @@ public partial class SearchModel
         await Search(ct);
     }
 
-    private IFeed<IImmutableList<Recipe>> Results => Feed.Async(async ct => 
-    {
-        var term = await Term;
-        return term.IsNullOrEmpty() ? ImmutableList<Recipe>.Empty : await _recipeService.Search(term ?? string.Empty, ct);
-    }, _searchSignal);
+    private IFeed<IImmutableList<Recipe>> Results => Term
+        .SelectAsync(_recipeService.Search);
 
     private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) 
 		=> inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
 
-    private bool GetSearched((SearchFilter filter, IImmutableList<Recipe> recipes) inputs) => inputs.filter.HasFilter ? true : inputs.recipes.Count > 0;
+    private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
      
     public async ValueTask GoBack(CancellationToken ct) =>
         await _navigator.GoBack(this);

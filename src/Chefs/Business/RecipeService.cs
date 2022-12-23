@@ -67,13 +67,20 @@ public class RecipeService : IRecipeService
 
     public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)
     {
-        await SaveSearchHistory(term);
-        return GetRecipesByText((await _recipeEndpoint
-                   .GetAll(ct))
-                   .Select(r => new Recipe(r)), term);
+        if (term.IsNullOrEmpty())
+        {
+            return ImmutableList<Recipe>.Empty;
+        }
+        else
+        {
+            await SaveSearchHistory(term);
+            return GetRecipesByText((await _recipeEndpoint
+                       .GetAll(ct))
+                       .Select(r => new Recipe(r)), term);
+        }
     }
 
-    public IImmutableList<string> GetSearchHistory() => (_searchOptions.Value).Searches.Take(3).ToImmutableList();
+    public IImmutableList<string> GetSearchHistory() => (_searchOptions.Value).Searches.Reverse().Take(3).ToImmutableList();
 
     public async ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct) 
         => (await _recipeEndpoint.GetAll(ct))
@@ -131,11 +138,17 @@ public class RecipeService : IRecipeService
 
     private async Task SaveSearchHistory(string text)
     {
-        var searchHistory = _searchOptions.Value;
+        var searchHistory = _searchOptions.Value.Searches;
         if (searchHistory is not null && !text.IsNullOrEmpty())
         {
-            var toAdd = text != searchHistory.Searches.LastOrDefault() ? searchHistory.Searches.Add(text) : searchHistory.Searches;
-            await _searchOptions.UpdateAsync(h => h with { Searches = toAdd });
+            if(searchHistory.Count == 0)
+            {
+                await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Add(text) });
+            }
+            else if ((text.Contains(searchHistory.LastOrDefault()!) || searchHistory.LastOrDefault()!.Contains(text)))
+            {
+                await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Replace(searchHistory.LastOrDefault() ?? string.Empty, text) });
+            }
         }
     }
 
