@@ -1,0 +1,57 @@
+﻿<ContentDialog x:Class="Chefs.Views.CompletedDialog"
+               xmlns:uen="using:Uno.Extensions.Navigation.UI"
+               xmlns:uer="using:Uno.Extensions.Reactive.UI"
+               xmlns:utu="using:Uno.Toolkit.UI"
+               xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+               xmlns:um="using:Uno.Material"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:local="using:Chefs.App"
+               mc:Ignorable="d"
+               Background="{ThemeResource SurfaceBrush}"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               CornerRadius="30"
+               Padding="0"
+               BorderBrush="Transparent">
+    <utu:AutoLayout PrimaryAxisAlignment="Center">
+        <utu:AutoLayout Spacing="35"
+                        Padding="45"
+                        PrimaryAxisAlignment="Center">
+            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+                <utu:AutoLayout Background="{ThemeResource PrimaryPressedBrush}"
+                                Padding="14"
+                                CornerRadius="15"
+                                Orientation="Horizontal"
+                                utu:AutoLayout.CounterAlignment="Center">
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                    Width="30"
+                                    Height="30">
+                        <Image Source="ms-appx:///Assets/Icons/party.png"
+                               Stretch="UniformToFill"
+                               utu:AutoLayout.IsIndependentLayout="True"
+                               VerticalAlignment="Stretch"
+                               HorizontalAlignment="Stretch"
+                               Width="30"
+                               Height="30" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+                <TextBlock TextAlignment="Center"
+                           Text="Hurray!"
+                           Margin="10"
+                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                           Style="{StaticResource CustomHeadlineLarge}" />
+                <TextBlock TextAlignment="Center"
+                           Text="All steps are completed.&#xA;Enjoy your meal!"
+                           Margin="10,0"
+                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                           Style="{StaticResource CustomBodyLarge}" />
+            </utu:AutoLayout>
+            <Button Background="{ThemeResource PrimaryBrush}"
+                    Content="Completed"
+                    Height="56"
+                    CornerRadius="16"
+                    uen:Navigation.Request="-" />
+        </utu:AutoLayout>
+    </utu:AutoLayout>
+</ContentDialog>

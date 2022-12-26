@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CertainNumberToVisible.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringSeparatorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TimeSpanToStringConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Dialogs\CompletedDialog.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\FilterPage.xaml.cs">
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
@@ -74,6 +75,10 @@
 		 explicitly included in the projitem, so files can be added from vscode
 		 without manipulating the projitem file.
 	-->
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-100.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-150.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\party.scale-300.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\settings.scale-200.png" />
     <Content Include="$(MSBuildThisFileDirectory)categories.json" />
     <Content Include="$(MSBuildThisFileDirectory)Notifications.json" />
@@ -87,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Flyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\Dialogs\CompletedDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

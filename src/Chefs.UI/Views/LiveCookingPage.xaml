@@ -255,6 +255,7 @@
                             </ListView.ItemTemplate>
                         </win:ListView>
                     </utu:AutoLayout>
+                    <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                     <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                                   HorizontalScrollMode="Disabled">
                         <FlipView x:Name="StepsFlipView"
@@ -264,6 +265,15 @@
                                   Background="Transparent" />
 
                     </ScrollViewer>
+                        <utu:AutoLayout PrimaryAxisAlignment="End">
+                        <Button Background="{ThemeResource PrimaryBrush}"
+                                Command="{Binding Complete}"
+                                Content="Done!"
+                                Height="56"
+                                Visibility="{Binding CanFinish}"
+                                Margin="18"/>
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
         </utu:AutoLayout>

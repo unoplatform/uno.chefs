@@ -90,7 +90,8 @@ public sealed partial class App : Application
             new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
             new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
             new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
-            new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>())
+            new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
+            new ViewMap<CompletedDialog>()
         );
 
         routes
@@ -125,7 +126,8 @@ public sealed partial class App : Application
                                     new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn:"RecipeDetails"),
                                     new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>(), DependsOn:"RecipeDetails"),
                                 }),
-                            })
+                            }),
+                            new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
                         }));
     }
 }
