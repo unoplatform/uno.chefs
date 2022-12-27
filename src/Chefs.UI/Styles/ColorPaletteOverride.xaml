@@ -40,6 +40,11 @@
             <Color x:Key="OnTertiaryColor">#FFFFFF</Color>
             <Color x:Key="TertiaryContainerColor">#507FF7</Color>
             <Color x:Key="OnTertiaryContainerColor">#FFFFFF</Color>
+            <!--ContentDialog background overlay color-->
+            <!--Mobile-->
+            <Color x:Key="ContentDialogLightDismissOverlayBackground">#99000000</Color>
+            <!--WinUI-->
+            <Color x:Key="SystemControlPageBackgroundMediumAltMediumBrush">#99000000</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="PrimaryColor">#ED3F64</Color>

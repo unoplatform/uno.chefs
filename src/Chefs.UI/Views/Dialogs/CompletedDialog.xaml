@@ -50,6 +50,7 @@
             <Button Background="{ThemeResource PrimaryBrush}"
                     Content="Completed"
                     Height="56"
+                    Width="350"
                     CornerRadius="16"
                     uen:Navigation.Request="-" />
         </utu:AutoLayout>
