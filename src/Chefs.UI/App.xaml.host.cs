@@ -117,7 +117,7 @@ public sealed partial class App : Application
                                     new RouteMap("Filter", View: views.FindByViewModel<FilterModel>())
                                 }),
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesModel>()),
-                                new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookModel>(), DependsOn: "SavedRecipes"),
+                                new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookModel>()),
                                 new RouteMap("SavedCookbookDetail", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "SavedRecipes"),
                                 new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "SavedCookbookDetail"),
                                 new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), Nested: new RouteMap[]
