@@ -140,13 +140,11 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <utu:AutoLayout x:Name="MainLayout"
-                        utu:AutoLayout.PrimaryAlignment="Stretch">
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout>
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
                                    Content="Create Cookbook"
-                                   x:Name="CreateCookbookTitle"
                                    toolkit:UIElementExtensions.Elevation="0" />
                 
                 <TextBox x:Name="CookbookName"
