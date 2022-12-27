@@ -35,7 +35,7 @@
                                             MaxWidth="155"
                                             Style="{StaticResource FilledCardContentControlStyle}"
                                             Background="{ThemeResource SurfaceBrush}"
-                                            uen:Navigation.Request="SavedCookbookDetail"
+                                            uen:Navigation.Request="!SavedCookbookDetail"
                                             uen:Navigation.Data="{Binding}">
                         <utu:CardContentControl.ContentTemplate>
                             <DataTemplate>
@@ -328,7 +328,7 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Right"
                         Margin="18">
-            <Button Command="{Binding CreateCookbookNavigation}"
+            <Button uen:Navigation.Request="!CreateCookbook"
                     utu:AutoLayout.CounterAlignment="End"
                     CornerRadius="60"
                     Style="{StaticResource FabStyle}">

@@ -152,7 +152,7 @@
                         <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                    x:Name="AddPinsLabel"
                                    Text="3 pins"
-                                   Margin="3.5, 0, 0, 0"
+                                   Margin="11, 0, 0, 0"
                                    Style="{StaticResource LabelLarge}" />
                         <!--Text="{Binding PinsNumber, 
                                                   Converter={StaticResource StringFormatter}, 
