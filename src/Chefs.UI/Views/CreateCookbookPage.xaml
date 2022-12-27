@@ -28,31 +28,60 @@
             <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
             <x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
 
-            <DataTemplate x:Key="NarrowItemTemplate">
-                <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                        Style="{StaticResource FilledCardContentControlStyle}"
-                                        Background="{ThemeResource SurfaceBrush}"
-                                        Margin="6, 0, 0, 0">
-                    <utu:CardContentControl.ContentTemplate>
-                        <DataTemplate>
-                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+            <DataTemplate x:Key="RecipeTemplate">
+                <utu:AutoLayout>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Narrow" />
+                            <VisualState x:Name="Wide">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="RecipeTemplateCard.MaxWidth"
+                                            Value="240" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <utu:CardContentControl x:Name="RecipeTemplateCard"
                                             MaxWidth="155"
-                                            CornerRadius="12">
-                                <Image Source="{Binding ImageUrl}"
-                                       Stretch="UniformToFill"
-                                       utu:AutoLayout.PrimaryLength="110"
-                                       utu:AutoLayout.CounterAlignment="Stretch"/>
-                                <utu:AutoLayout Spacing="2"
-                                                Padding="10"
-                                                Orientation="Horizontal">
-                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            Style="{StaticResource FilledCardContentControlStyle}"
+                                            Background="{ThemeResource SurfaceBrush}">
+                        <utu:CardContentControl.ContentTemplate>
+                            <DataTemplate>
+                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup>
+                                            <VisualState x:Name="Narrow" />
+                                            <VisualState x:Name="Wide">
+                                                <VisualState.StateTriggers>
+                                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                                </VisualState.StateTriggers>
+                                                <VisualState.Setters>
+                                                    <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                            Value="180" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <utu:AutoLayout x:Name="ImageLayout"
+                                                    utu:AutoLayout.PrimaryLength="110">
+                                        <Image Source="{Binding ImageUrl}"
+                                               Stretch="UniformToFill" />
+                                    </utu:AutoLayout>
+                                    <utu:AutoLayout Spacing="2"
+                                                    Padding="10"
+                                                    PrimaryAxisAlignment="Center"
+                                                    Orientation="Horizontal">
+                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                    TextWrapping="NoWrap"
                                                    Text="{Binding Name}"
-                                                   Style="{StaticResource TitleMedium}" />
-                                    </utu:AutoLayout>
-                                    <ToggleButton IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                   Style="{StaticResource CustomTitleMedium}" />
+                                        </utu:AutoLayout>
+                                        <ToggleButton IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   x:Name="toggleButton"
                                                   Background="{Binding IsChecked, 
                                                                     ElementName=toggleButton, 
@@ -62,73 +91,22 @@
                                                   BorderThickness="1"
                                                   BorderBrush="{ThemeResource PrimaryBrush}"
                                                   CornerRadius="60"
-                                                  Margin="0, 0, 11, 0"
                                                   MaxWidth="60">
-                                        <ToggleButton.Content>
-                                            <PathIcon Data="{StaticResource Icon_Add}"
+                                            <ToggleButton.Content>
+                                                <PathIcon Data="{StaticResource Icon_Add}"
                                                       Foreground="{ThemeResource SurfaceBrush}" />
-                                        </ToggleButton.Content>
-                                        <um:ControlExtensions.AlternateContent>
-                                            <PathIcon Data="{StaticResource Icon_Check}"
+                                            </ToggleButton.Content>
+                                            <um:ControlExtensions.AlternateContent>
+                                                <PathIcon Data="{StaticResource Icon_Check}"
                                                       Foreground="{ThemeResource PrimaryBrush}" />
-                                        </um:ControlExtensions.AlternateContent>
-                                    </ToggleButton>
-                                </utu:AutoLayout>
-                            </utu:AutoLayout>
-                        </DataTemplate>
-                    </utu:CardContentControl.ContentTemplate>
-                </utu:CardContentControl>
-            </DataTemplate>
-
-            <DataTemplate x:Key="WideItemTemplate">
-                <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                        Style="{StaticResource FilledCardContentControlStyle}"
-                                        Background="{ThemeResource SurfaceBrush}"
-                                        Margin="1.5, 0, 0, 0">
-                    <utu:CardContentControl.ContentTemplate>
-                        <DataTemplate>
-                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                            MaxWidth="155"
-                                            CornerRadius="12">
-                                <Image Source="{Binding ImageUrl}"
-                                       Stretch="UniformToFill"
-                                       utu:AutoLayout.PrimaryLength="180" />
-                                <utu:AutoLayout Spacing="2"
-                                                Padding="10"
-                                                Orientation="Horizontal">
-                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                   TextWrapping="NoWrap"
-                                                   Text="{Binding Name}"
-                                                   Style="{StaticResource TitleMedium}" />
+                                            </um:ControlExtensions.AlternateContent>
+                                        </ToggleButton>
                                     </utu:AutoLayout>
-                                    <ToggleButton IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                  x:Name="toggleButton"
-                                                  Background="{Binding IsChecked, 
-                                                                    ElementName=toggleButton, 
-                                                                    Converter={StaticResource CustomBackgroundColor}}"
-                                                  utu:AutoLayout.CounterAlignment="Center"
-                                                  Style="{StaticResource IconToggleButtonStyle}"
-                                                  BorderThickness="1"
-                                                  BorderBrush="{ThemeResource PrimaryBrush}"
-                                                  CornerRadius="60"
-                                                  Margin="0, 0, 11, 0"
-                                                  MaxWidth="60">
-                                        <ToggleButton.Content>
-                                            <PathIcon Data="{StaticResource Icon_Add}"
-                                                      Foreground="{ThemeResource SurfaceBrush}" />
-                                        </ToggleButton.Content>
-                                        <um:ControlExtensions.AlternateContent>
-                                            <PathIcon Data="{StaticResource Icon_Check}"
-                                                      Foreground="{ThemeResource PrimaryBrush}" />
-                                        </um:ControlExtensions.AlternateContent>
-                                    </ToggleButton>
                                 </utu:AutoLayout>
-                            </utu:AutoLayout>
-                        </DataTemplate>
-                    </utu:CardContentControl.ContentTemplate>
-                </utu:CardContentControl>
+                            </DataTemplate>
+                        </utu:CardContentControl.ContentTemplate>
+                    </utu:CardContentControl>
+                </utu:AutoLayout>
             </DataTemplate>
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
@@ -152,10 +130,6 @@
                                 Value="Visible" />
                         <Setter Target="NarrowButtons.Visibility"
                                 Value="Collapsed" />
-                        <Setter Target="NarrowLayout.Visibility"
-                                Value="Collapsed" />
-                        <Setter Target="WideLayout.Visibility"
-                                Value="Visible" />
                         <Setter Target="CookbookName.Margin"
                                 Value="39, 24" />
                         <Setter Target="CookbookName.Padding"
@@ -177,14 +151,14 @@
                          Text="{Binding CookbookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
                          PlaceholderText="Cookbook name"
-                         Margin="20,24"
+                         Margin="23,27"
                          CornerRadius="15"
                          Style="{StaticResource OutlinedTextBoxStyle}" />
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout Spacing="18"
                                 Padding="18,0">
-                    <TextBlock Margin="8, 0, 0, 0"
+                    <TextBlock Margin="11, 0, 0, 0"
                                x:Name="AddPinLabel"
                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                Text="Add pin"
@@ -194,41 +168,18 @@
                         <utu:AutoLayout Spacing="22"
                                         Orientation="Horizontal"
                                         utu:AutoLayout.CounterAlignment="Stretch">
-                            <utu:AutoLayout x:Name="NarrowLayout">
+                            <utu:AutoLayout Margin="3, 0, 0, 0">
                                 <uer:FeedView Source="{Binding Recipes}">
                                     <DataTemplate>
-                                        <ScrollViewer HorizontalScrollMode="Enabled"
-                                                      HorizontalScrollBarVisibility="Visible">
-                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                ItemTemplate="{StaticResource NarrowItemTemplate}">
-                                                <muxc:ItemsRepeater.Layout>
-                                                    <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                            ItemsStretch="Fill"
-                                                                            MinColumnSpacing="20"
-                                                                            MinRowSpacing="20" />
-                                                </muxc:ItemsRepeater.Layout>
-                                            </muxc:ItemsRepeater>
-                                        </ScrollViewer>
-                                    </DataTemplate>
-                                </uer:FeedView>
-                            </utu:AutoLayout>
-
-                            <utu:AutoLayout x:Name="WideLayout"
-                                            Visibility="Collapsed">
-                                <uer:FeedView Source="{Binding Recipes}">
-                                    <DataTemplate>
-                                        <ScrollViewer HorizontalScrollMode="Enabled"
-                                                      HorizontalScrollBarVisibility="Visible">
-                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                ItemTemplate="{StaticResource WideItemTemplate}">
-                                                <muxc:ItemsRepeater.Layout>
-                                                    <muxc:UniformGridLayout MaximumRowsOrColumns="5"
-                                                                            ItemsStretch="Fill"
-                                                                            MinColumnSpacing="10"
-                                                                            MinRowSpacing="10" />
-                                                </muxc:ItemsRepeater.Layout>
-                                            </muxc:ItemsRepeater>
-                                        </ScrollViewer>
+                                        <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                            ItemTemplate="{StaticResource RecipeTemplate}">
+                                            <muxc:ItemsRepeater.Layout>
+                                                <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                                        MinColumnSpacing="18"
+                                                                        MinRowSpacing="18"
+                                                                        ItemsStretch="Fill" />
+                                            </muxc:ItemsRepeater.Layout>
+                                        </muxc:ItemsRepeater>
                                     </DataTemplate>
                                 </uer:FeedView>
                             </utu:AutoLayout>
