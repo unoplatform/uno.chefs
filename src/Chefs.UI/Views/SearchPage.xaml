@@ -54,7 +54,7 @@
                                                 </VisualState.StateTriggers>
                                                 <VisualState.Setters>
                                                     <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
-                                                            Value="180" />
+                                                            Value="140" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>
@@ -104,8 +104,7 @@
             <utu:AutoLayout Spacing="8"
                             PrimaryAxisAlignment="Center"
                             Orientation="Horizontal">
-                <Button
-                        Style="{StaticResource IconButtonStyle}"
+                <Button Style="{StaticResource IconButtonStyle}"
                         uen:Navigation.Request="-">
                     <PathIcon Data="{StaticResource Icon_Outline_Arrow_Left_ChefsApp}"
                               Foreground="{ThemeResource SurfaceInverseBrush}" />
@@ -186,24 +185,26 @@
                         </muxc:ItemsRepeater.ItemTemplate>
                     </muxc:ItemsRepeater>
                 </utu:AutoLayout>
-                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
 
                     <uer:FeedView x:Name="SearchFeed"
                                   Source="{Binding Items}"
                                   Visibility="{Binding Searched}">
                         <DataTemplate>
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout.Resources>
                                     <muxc:UniformGridLayout x:Key="NarrowGridLayout"
                                                             MaximumRowsOrColumns="2"
-                                                            ItemsJustification="SpaceAround"
+                                                            ItemsJustification="SpaceBetween"
                                                             MinColumnSpacing="10"
                                                             MinRowSpacing="10"
-                                                            ItemsStretch="Uniform" />
+                                                            ItemsStretch="Fill" />
                                     <muxc:UniformGridLayout x:Key="WideGridLayout"
                                                             MaximumRowsOrColumns="5"
                                                             MinColumnSpacing="30"
-                                                            MinRowSpacing="30" />
+                                                            MinRowSpacing="30"
+                                                            ItemsStretch="Fill" />
                                 </utu:AutoLayout.Resources>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup>
@@ -219,13 +220,17 @@
                                         </VisualState>
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
+                                <ScrollViewer HorizontalScrollMode="Disabled"
+                                              VerticalScrollBarVisibility="Hidden">
+                                    <muxc:ItemsRepeater x:Name="SearchRepeater"
+                                                        ItemsSource="{Binding Data}"
+                                                        uen:Navigation.Request="!RecipeDetails"
+                                                        Layout="{StaticResource NarrowGridLayout}"
+                                                        ItemTemplate="{StaticResource RecipeTemplate}">
 
-                                <muxc:ItemsRepeater x:Name="SearchRepeater"
-                                                    ItemsSource="{Binding Data}"
-                                                    uen:Navigation.Request="!RecipeDetails"
-                                                    Layout="{StaticResource NarrowGridLayout}"
-                                                    ItemTemplate="{StaticResource RecipeTemplate}">
-                                </muxc:ItemsRepeater>
+
+                                    </muxc:ItemsRepeater>
+                                </ScrollViewer>
                             </utu:AutoLayout>
                         </DataTemplate>
                     </uer:FeedView>
