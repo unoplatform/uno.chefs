@@ -270,7 +270,8 @@
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                             MinColumnSpacing="10"
-                                                                            MinRowSpacing="10" />
+                                                                            MinRowSpacing="10"
+                                                                            ItemsStretch="Fill"/>
                                                 </muxc:ItemsRepeater.Layout>
                                             </muxc:ItemsRepeater>
 
@@ -298,7 +299,8 @@
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                             MinColumnSpacing="10"
-                                                                            MinRowSpacing="10" />
+                                                                            MinRowSpacing="10"
+                                                                            ItemsStretch="Fill"/>
                                                 </muxc:ItemsRepeater.Layout>
                                             </muxc:ItemsRepeater>
                                         </DataTemplate>
