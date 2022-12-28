@@ -158,11 +158,11 @@
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                            Text="Add pin"
                            Style="{StaticResource CustomHeadlineLarge}" />
-                <ScrollViewer HorizontalScrollMode="Disabled"
-                              VerticalScrollBarVisibility="Hidden"
-                              utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout x:Name="RecipeLayout"
-                                    utu:AutoLayout.CounterAlignment="Stretch">
+
+                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <ScrollViewer HorizontalScrollMode="Disabled"
+                                  VerticalScrollBarVisibility="Hidden">
                         <uer:FeedView Source="{Binding Recipes}">
                             <DataTemplate>
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
@@ -175,6 +175,8 @@
                                                                 ItemsStretch="Fill" />
                                         <muxc:UniformGridLayout x:Key="WideGridLayout"
                                                                 MaximumRowsOrColumns="5"
+                                                                MinColumnSpacing="30"
+                                                                MinRowSpacing="30"
                                                                 ItemsStretch="Fill" />
                                     </utu:AutoLayout.Resources>
                                     <VisualStateManager.VisualStateGroups>
@@ -198,8 +200,9 @@
                                 </utu:AutoLayout>
                             </DataTemplate>
                         </uer:FeedView>
-                    </utu:AutoLayout>
-                </ScrollViewer>
+
+                    </ScrollViewer>
+                </utu:AutoLayout>
             </utu:AutoLayout>
         </utu:AutoLayout>
         <utu:AutoLayout x:Name="NarrowButtons"

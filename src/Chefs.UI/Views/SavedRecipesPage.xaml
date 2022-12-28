@@ -14,7 +14,6 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <ResourceDictionary>
-
             <DataTemplate x:Key="CookbookTemplate">
                 <utu:AutoLayout>
                     <VisualStateManager.VisualStateGroups>
@@ -173,7 +172,11 @@
                         <Setter Target="AddButtonLayout.Background"
                                 Value="{ThemeResource SurfaceBrush}" />
                         <Setter Target="ContentLayout.Padding"
-                                Value="0" />
+                                Value="0" /> WideRecipes
+                        <Setter Target="WideRecipes.Padding"
+                                Value="40" />
+                        <Setter Target="WideCookbooks.Padding"
+                                Value="40" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -251,7 +254,7 @@
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
 
-                        <utu:AutoLayout Padding="20"
+                        <utu:AutoLayout x:Name="WideRecipes" Padding="20"
                                         Background="{ThemeResource BackgroundBrush}"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch">
@@ -278,7 +281,7 @@
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
-                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                        <utu:AutoLayout x:Name="WideCookbooks" Background="{ThemeResource SurfaceBrush}"
                                         Padding="20"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch">
