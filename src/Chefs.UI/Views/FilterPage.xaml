@@ -30,7 +30,7 @@
                         <Setter Target="MainLayout.CornerRadius"
                                 Value="40,0,0,40" />
                         <Setter Target="MainLayout.Padding"
-                                Value="20,40" />
+                                Value="40" />
                         <Setter Target="MainLayout.CornerRadius"
                                 Value="40,0,0,40" />
                         <Setter Target="MainLayout.Width"
@@ -75,7 +75,7 @@
                                                Style="{StaticResource FilterChipGroupStyle}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <controls:WrapPanel Orientation="Horizontal" />
+                                            <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
                                     <utu:Chip Content="⭐️   Popular"
@@ -111,7 +111,7 @@
                                                Style="{StaticResource FilterChipGroupStyle}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <controls:WrapPanel Orientation="Horizontal" />
+                                            <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
                                     <utu:Chip Content="under 15 min"
@@ -148,7 +148,7 @@
                                                Style="{StaticResource FilterChipGroupStyle}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <controls:WrapPanel Orientation="Horizontal" />
+                                            <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
                                     <utu:Chip Content="Easy"
@@ -185,7 +185,7 @@
                                                Style="{StaticResource FilterChipGroupStyle}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <controls:WrapPanel Orientation="Horizontal" />
+                                            <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
                                     <utu:Chip Content="01"
@@ -234,7 +234,7 @@
                                                SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <controls:WrapPanel Orientation="Horizontal" />
+                                            <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
                                     <utu:ChipGroup.ItemTemplate>
