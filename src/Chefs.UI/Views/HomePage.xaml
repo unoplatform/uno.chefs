@@ -34,7 +34,8 @@
                             </VisualState>
                         </VisualStateGroup>
                     </VisualStateManager.VisualStateGroups>
-                    <utu:CardContentControl x:Name="RecipeTemplateCard" utu:AutoLayout.CounterAlignment="Start"
+                    <utu:CardContentControl x:Name="RecipeTemplateCard"
+                                            utu:AutoLayout.CounterAlignment="Start"
                                             Style="{StaticResource FilledCardContentControlStyle}"
                                             Margin="18,0,0,0"
                                             MaxWidth="320">
@@ -75,102 +76,116 @@
             </DataTemplate>
         </utu:AutoLayout.Resources>
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TrendingNowTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="TrendingNowShowAll.Style"
+                                Value="{StaticResource CustomHeadlineMedium}" />
+                        <Setter Target="CategoriesTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="RecentlyAddedTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="RecentlyAddedShowAll.Style"
+                                Value="{StaticResource CustomHeadlineMedium}" />
+                        <Setter Target="PopularCreatorsTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="LunchTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="LunchShowAll.Style"
+                                Value="{StaticResource CustomHeadlineMedium}" />
+                        <Setter Target="DinnerTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="DinnerShowAll.Style"
+                                Value="{StaticResource CustomHeadlineMedium}" />
+                        <Setter Target="SnackTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="SnackShowAll.Style"
+                                Value="{StaticResource CustomHeadlineMedium}" />
+                        <Setter Target="ContentLayout.Padding"
+                                Value="40,20" />
+                        <Setter Target="TrendingNowFeed.Margin"
+                                Value="-40,0" />
+                        <Setter Target="RecentlyAddedFeedView.Margin"
+                                Value="-40,0" />
+                        <Setter Target="PopularCreatorsFeedView.Margin"
+                                Value="-40,0" />
+                        <Setter Target="LunchRecipesFeedView.Margin"
+                                Value="-40,0" />
+                        <Setter Target="DinnerRecipesFeedView.Margin"
+                                Value="-40,0" />
+                        <Setter Target="SnackRecipesFeedView.Margin"
+                                Value="-40,0" />
+                        <Setter Target="NavBarLayout.Padding"
+                                Value="40,20,40,20" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup>
-                    <VisualState x:Name="Narrow" />
-                    <VisualState x:Name="Wide">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="800" />
-                        </VisualState.StateTriggers>
-                        <VisualState.Setters>
-                            <Setter Target="TrendingNowTitle.Style"
-                                    Value="{StaticResource CustomHeadlineLarge}" />
-                            <Setter Target="TrendingNowShowAll.Style"
-                                    Value="{StaticResource CustomHeadlineMedium}" />
-                            <Setter Target="CategoriesTitle.Style"
-                                    Value="{StaticResource CustomHeadlineLarge}" />
-                            <Setter Target="RecentlyAddedTitle.Style"
-                                    Value="{StaticResource CustomHeadlineLarge}" />
-                            <Setter Target="RecentlyAddedShowAll.Style"
-                                    Value="{StaticResource CustomHeadlineMedium}" />
-                            <Setter Target="PopularCreatorsTitle.Style"
-                                    Value="{StaticResource CustomHeadlineLarge}" />
-                            <Setter Target="LunchTitle.Style"
-                                    Value="{StaticResource CustomHeadlineLarge}" />
-                            <Setter Target="LunchShowAll.Style"
-                                    Value="{StaticResource CustomHeadlineMedium}" />
-                            <Setter Target="DinnerTitle.Style"
-                                    Value="{StaticResource CustomHeadlineLarge}" />
-                            <Setter Target="DinnerShowAll.Style"
-                                    Value="{StaticResource CustomHeadlineMedium}" />
-                            <Setter Target="SnackTitle.Style"
-                                    Value="{StaticResource CustomHeadlineLarge}" />
-                            <Setter Target="SnackShowAll.Style"
-                                    Value="{StaticResource CustomHeadlineMedium}" />
-                            <Setter Target="ContentLayout.Padding"
-                                    Value="40,20" />
-                            <Setter Target="TrendingNowFeed.Margin"
-                                    Value="-40,0" />
-                            <Setter Target="RecentlyAddedFeedView.Margin"
-                                    Value="-40,0" />
-                            <Setter Target="PopularCreatorsFeedView.Margin"
-                                    Value="-40,0" />
-                            <Setter Target="LunchRecipesFeedView.Margin"
-                                    Value="-40,0" />
-                            <Setter Target="DinnerRecipesFeedView.Margin"
-                                    Value="-40,0" />
-                            <Setter Target="SnackRecipesFeedView.Margin"
-                                    Value="-40,0" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-            <utu:AutoLayout Spacing="8"
+            <utu:AutoLayout x:Name="NavBarLayout"
                             Padding="18,12"
+                            Spacing="50"
                             Orientation="Horizontal">
-                <utu:AutoLayout CornerRadius="30"
+                <!--Nested Autolayout until bug when spacing < padding => (Botton/Left) padding = 0-->
+                <utu:AutoLayout x:Name="ProfileLayout"
+                                Spacing="8"
                                 Orientation="Horizontal"
-                                utu:AutoLayout.CounterAlignment="Center"
-                                utu:AutoLayout.PrimaryLength="40"
-                                utu:AutoLayout.CounterLength="40"
-                                uen:Navigation.Request="!Profile"
-                                uen:Navigation.Data="{Binding UserProfile}">
-                    <Border CornerRadius="15"
-                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <Image Source="{Binding UserProfile.UrlProfileImage}"
-                               Stretch="UniformToFill" />
-                    </Border>
-                </utu:AutoLayout>
-
-                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                               Text="{Binding UserProfile.FullName}"
-                               utu:AutoLayout.CounterAlignment="Start"
-                               Style="{StaticResource CustomTitleMedium}" />
-                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                               Text="{Binding UserProfile.Email}"
-                               utu:AutoLayout.CounterAlignment="Start"
-                               Style="{StaticResource CustomCaptionMedium}" />
+                    <utu:AutoLayout CornerRadius="30"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.CounterAlignment="Center"
+                                    utu:AutoLayout.PrimaryLength="40"
+                                    utu:AutoLayout.CounterLength="40"
+                                    uen:Navigation.Request="!Profile"
+                                    uen:Navigation.Data="{Binding UserProfile}">
+                        <Border CornerRadius="15"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <Image Source="{Binding UserProfile.UrlProfileImage}"
+                                   Stretch="UniformToFill" />
+                        </Border>
+                    </utu:AutoLayout>
+
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Text="{Binding UserProfile.FullName}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource CustomTitleMedium}" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   Text="{Binding UserProfile.Email}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource CustomCaptionMedium}" />
+                    </utu:AutoLayout>
                 </utu:AutoLayout>
-                <Button utu:AutoLayout.CounterAlignment="Start"
-                        Style="{StaticResource IconButtonStyle}"
-                        uen:Navigation.Request="Search">
-                    <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
-                              Foreground="{ThemeResource OnSurfaceBrush}" />
-                </Button>
-                <Button utu:AutoLayout.CounterAlignment="Start"
-                        Style="{StaticResource IconButtonStyle}"
-                        uen:Navigation.Request="!Notifications">
-                    <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
-                              Foreground="{ThemeResource OnSurfaceBrush}" />
-                </Button>
+                <!--Nested Autolayout until bug when spacing < padding => (Botton/Left) padding = 0-->
+                <utu:AutoLayout Spacing="8"
+                                Orientation="Horizontal">
+                    <Button utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}"
+                            uen:Navigation.Request="Search">
+                        <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
+                                  Foreground="{ThemeResource OnSurfaceBrush}" />
+                    </Button>
+                    <Button utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}"
+                            uen:Navigation.Request="!Notifications">
+                        <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
+                                  Foreground="{ThemeResource OnSurfaceBrush}" />
+                    </Button>
+                </utu:AutoLayout>
             </utu:AutoLayout>
 
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                           HorizontalScrollMode="Disabled">
-                <utu:AutoLayout x:Name="ContentLayout" Spacing="30"
+                <utu:AutoLayout x:Name="ContentLayout"
+                                Spacing="30"
                                 Padding="18,20">
                     <utu:AutoLayout Spacing="20">
                         <utu:AutoLayout Spacing="8"
@@ -309,34 +324,35 @@
                                                             </VisualState>
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
-                                                    <utu:CardContentControl x:Name="RecentlyAddedTemplateCard" utu:AutoLayout.CounterAlignment="Start"
-                                                                        Style="{StaticResource FilledCardContentControlStyle}"
-                                                                        Background="{ThemeResource SurfaceBrush}"
-                                                                        Margin="18, 0, 0, 0"
-                                                                        MaxWidth="171">
-                                                    <utu:CardContentControl.ContentTemplate>
-                                                        <DataTemplate>
-                                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                            CornerRadius="12">
-                                                                <Image Source="{Binding ImageUrl}"
-                                                                       Stretch="UniformToFill"
-                                                                       utu:AutoLayout.PrimaryLength="150" />
-                                                                <utu:AutoLayout Spacing="2"
-                                                                                Padding="11, 10"
-                                                                                PrimaryAxisAlignment="Center">
-                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                               TextWrapping="NoWrap"
-                                                                               Text="{Binding Name}"
-                                                                               Style="{StaticResource CustomTitleMedium}" />
-                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                                               TextWrapping="NoWrap"
-                                                                               Text="{Binding TimeCal}"
-                                                                               Style="{StaticResource CustomBodySmall}" />
+                                                    <utu:CardContentControl x:Name="RecentlyAddedTemplateCard"
+                                                                            utu:AutoLayout.CounterAlignment="Start"
+                                                                            Style="{StaticResource FilledCardContentControlStyle}"
+                                                                            Background="{ThemeResource SurfaceBrush}"
+                                                                            Margin="18, 0, 0, 0"
+                                                                            MaxWidth="171">
+                                                        <utu:CardContentControl.ContentTemplate>
+                                                            <DataTemplate>
+                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                                CornerRadius="12">
+                                                                    <Image Source="{Binding ImageUrl}"
+                                                                           Stretch="UniformToFill"
+                                                                           utu:AutoLayout.PrimaryLength="150" />
+                                                                    <utu:AutoLayout Spacing="2"
+                                                                                    Padding="11, 10"
+                                                                                    PrimaryAxisAlignment="Center">
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                                   TextWrapping="NoWrap"
+                                                                                   Text="{Binding Name}"
+                                                                                   Style="{StaticResource CustomTitleMedium}" />
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                                   TextWrapping="NoWrap"
+                                                                                   Text="{Binding TimeCal}"
+                                                                                   Style="{StaticResource CustomBodySmall}" />
+                                                                    </utu:AutoLayout>
                                                                 </utu:AutoLayout>
-                                                            </utu:AutoLayout>
-                                                        </DataTemplate>
-                                                    </utu:CardContentControl.ContentTemplate>
-                                                </utu:CardContentControl>
+                                                            </DataTemplate>
+                                                        </utu:CardContentControl.ContentTemplate>
+                                                    </utu:CardContentControl>
                                                 </utu:AutoLayout>
                                             </DataTemplate>
                                         </muxc:ItemsRepeater.ItemTemplate>

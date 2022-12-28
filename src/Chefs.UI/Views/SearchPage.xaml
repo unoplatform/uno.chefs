@@ -93,6 +93,10 @@
                     <VisualState.Setters>
                         <Setter Target="MainLayout.Padding"
                                 Value="40,24" />
+                        <Setter Target="BackButton.Height"
+                                Value="40" />
+                        <Setter Target="BackButton.Width"
+                                Value="40" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -104,8 +108,10 @@
             <utu:AutoLayout Spacing="8"
                             PrimaryAxisAlignment="Center"
                             Orientation="Horizontal">
-                <Button Style="{StaticResource IconButtonStyle}"
-                        uen:Navigation.Request="-">
+                <Button x:Name="BackButton" Style="{StaticResource IconButtonStyle}"
+                        uen:Navigation.Request="-"
+                        Height="24"
+                        Width="24">
                     <PathIcon Data="{StaticResource Icon_Outline_Arrow_Left_ChefsApp}"
                               Foreground="{ThemeResource SurfaceInverseBrush}" />
                 </Button>
@@ -202,8 +208,6 @@
                                                             ItemsStretch="Fill" />
                                     <muxc:UniformGridLayout x:Key="WideGridLayout"
                                                             MaximumRowsOrColumns="5"
-                                                            MinColumnSpacing="30"
-                                                            MinRowSpacing="30"
                                                             ItemsStretch="Fill" />
                                 </utu:AutoLayout.Resources>
                                 <VisualStateManager.VisualStateGroups>
