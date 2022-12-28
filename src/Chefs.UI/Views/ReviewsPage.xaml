@@ -63,6 +63,7 @@
             </utu:NavigationBar>-->
                 <!--Workaround until AppBarButton bug gets fixed-->
                 <utu:AutoLayout Spacing="10"
+                                Margin="18"
                                 Orientation="Horizontal">
                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                TextWrapping="Wrap"
