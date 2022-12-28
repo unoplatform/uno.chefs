@@ -62,7 +62,7 @@
                                     <utu:AutoLayout x:Name="ImageLayout"
                                                     utu:AutoLayout.PrimaryLength="110">
                                         <Image Source="{Binding ImageUrl}"
-                                               Stretch="UniformToFill" />
+                                               Stretch="Uniform" />
                                     </utu:AutoLayout>
                                     <utu:AutoLayout Spacing="2"
                                                     Padding="10"
