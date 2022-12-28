@@ -138,7 +138,7 @@
                                                                 MinRowSpacing="10"
                                                                 ItemsStretch="Fill" />
                                         <muxc:UniformGridLayout x:Key="WideGridLayout"
-                                                                MaximumRowsOrColumns="6"
+                                                                MaximumRowsOrColumns="5"
                                                                 ItemsStretch="Fill" />
                                     </utu:AutoLayout.Resources>
                                     <VisualStateManager.VisualStateGroups>
