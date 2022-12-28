@@ -118,7 +118,7 @@
                             Spacing="18"
                             Padding="18,0">
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                           Text="3 pins"
+                           Text="6 pins"
                            Style="{StaticResource CustomHeadlineLarge}" />
                 <!--Text="{Binding PinsNumber, 
                                    Converter={StaticResource StringFormatter}, 
@@ -138,7 +138,7 @@
                                                                 MinRowSpacing="10"
                                                                 ItemsStretch="Fill" />
                                         <muxc:UniformGridLayout x:Key="WideGridLayout"
-                                                                MaximumRowsOrColumns="5"
+                                                                MaximumRowsOrColumns="6"
                                                                 ItemsStretch="Fill" />
                                     </utu:AutoLayout.Resources>
                                     <VisualStateManager.VisualStateGroups>
