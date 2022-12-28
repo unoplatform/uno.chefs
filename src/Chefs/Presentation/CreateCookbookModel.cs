@@ -26,9 +26,6 @@ public partial class CreateCookbookModel // DR_REV: Use Model suffix instead of 
 
     public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetSaved);
 
-	public async ValueTask Exit(CancellationToken ct) =>
-       await _navigator.NavigateBackAsync(this, cancellation: ct);
-
     public async ValueTask Done(IImmutableList<Recipe> recipes, CancellationToken ct)
     {
         // DR_REV: Use CookbookName = State.Value instead of Empty, then you can implicitly get the 'cookBookName' and 'recipes' parameters (matching types and names)

@@ -7,6 +7,7 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:converters="using:Chefs.Converters"
       xmlns:toolkit="using:Uno.UI.Toolkit"
@@ -228,7 +229,7 @@
                         Orientation="Horizontal"
                         Height="120">
             <Button Content="Cancel"
-                    Command="{Binding Exit}"
+                    uen:Navigation.Request="-"
                     utu:AutoLayout.CounterAlignment="Center"
                     Width="190"
                     Height="64"

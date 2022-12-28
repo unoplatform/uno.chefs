@@ -8,7 +8,6 @@ public partial class SavedRecipesModel
     private readonly IRecipeService _recipeService;
     private readonly ICookbookService _cookbookService;
 
-    // DR_REV: Alignment: one indentation at most per new line
     public SavedRecipesModel(
 		INavigator navigator, 
         IRecipeService recipeService, 

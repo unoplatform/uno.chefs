@@ -8,6 +8,7 @@
        xmlns:um="using:Uno.Material"
        xmlns:ios="http://uno.ui/ios"
        xmlns:android="http://uno.ui/android"
+       xmlns:uen="using:Uno.Extensions.Navigation.UI"
        mc:Ignorable="d android ios"
        Background="{ThemeResource BackgroundBrush}" 
        utu:StatusBar.Foreground="Auto" >
@@ -79,7 +80,7 @@
                         </um:ControlExtensions.Icon>
                     </PasswordBox>
                 </utu:AutoLayout>
-                <Button Command="{Binding NavigateBack}"
+                <Button uen:Navigation.Request="-"
                         HorizontalContentAlignment="Center" 
                         VerticalContentAlignment="Center" 
                         Background="{ThemeResource PrimaryBrush}" 
@@ -89,7 +90,9 @@
                     <utu:AutoLayout PrimaryAxisAlignment="End" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Center">
                         <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}" TextAlignment="Center" Text="Already a user?" utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource LabelMedium}" />
                     </utu:AutoLayout>
-                    <HyperlinkButton  Command="{Binding NavigateBack}" Content="Login Now" utu:AutoLayout.CounterAlignment="Center" />
+                    <HyperlinkButton uen:Navigation.Request="-"
+                                     Content="Login Now" 
+                                     utu:AutoLayout.CounterAlignment="Center" />
                 </utu:AutoLayout>
             </utu:AutoLayout>
         </utu:AutoLayout>

@@ -12,7 +12,6 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
     private readonly ICookbookService _cookbookService;
     private Cookbook _cookbook;
 
-    // DR_DEV: Alignment: at most one tab on new lines
     public UpdateCookbookModel(
 		INavigator navigator,
         IRecipeService recipeService,
@@ -30,7 +29,6 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
     public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
     {
         var cookbook = await Cookbook;
-        // DR_REV: Alignment: the code was miss-aligned making it are to read ... re-aligning it shows that you are doing a cookbook.Recipes.ToList() **for each** recipe
 
 		var recipes = await _recipeService.GetSaved(ct);
 		var recipesExceptCookbook = cookbook?.Recipes is null 
@@ -39,10 +37,6 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
 
 		return recipesExceptCookbook;
     });
-
-    // DR_REV: XAML only nav
-    public async ValueTask Exit(CancellationToken ct) =>
-        await _navigator.NavigateBackAsync(this, cancellation: ct);
 
     public async ValueTask Done(CancellationToken ct)
     {

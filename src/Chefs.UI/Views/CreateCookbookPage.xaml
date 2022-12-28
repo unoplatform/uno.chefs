@@ -10,6 +10,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:converters="using:Chefs.Converters"
       xmlns:toolkit="using:Uno.UI.Toolkit"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -158,11 +159,10 @@
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                            Text="Add pin"
                            Style="{StaticResource CustomHeadlineLarge}" />
-
-                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <ScrollViewer HorizontalScrollMode="Disabled"
-                                  VerticalScrollBarVisibility="Hidden">
+                <ScrollViewer HorizontalScrollMode="Disabled"
+                              VerticalScrollBarVisibility="Hidden"
+                              utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                         <uer:FeedView Source="{Binding Recipes}">
                             <DataTemplate>
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
@@ -222,7 +222,7 @@
                         Orientation="Horizontal"
                         Height="120">
             <Button Content="Cancel"
-                    Command="{Binding Exit}"
+                    uen:Navigation.Request="-"
                     utu:AutoLayout.CounterAlignment="Center"
                     Width="190"
                     Height="64"
