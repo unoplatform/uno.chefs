@@ -123,8 +123,6 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="AddPinLabel.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
                         <Setter Target="WideButtons.Visibility"
                                 Value="Visible" />
                         <Setter Target="NarrowButtons.Visibility"
@@ -158,6 +156,7 @@
                          Style="{StaticResource OutlinedTextBoxStyle}" />
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                            Text="Add pin"
+                           x:Name="AddPinLabel"
                            Style="{StaticResource CustomHeadlineLarge}" />
                 <ScrollViewer HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Hidden"
