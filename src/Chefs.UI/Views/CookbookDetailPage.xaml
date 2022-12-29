@@ -81,17 +81,14 @@
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="Narrow">
-                    <VisualState.Setters>
-                        <Setter Target="AddPinsLabel.Style"
-                                Value="{ThemeResource SurfaceInverseBrush}" />
-                    </VisualState.Setters>
-                </VisualState>
+                <VisualState x:Name="Narrow" />
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="AddPinsLabel.Style"
+                                Value="{ThemeResource CustomHeadlineLarge}" />
                         <Setter Target="AddPinsLabel.Margin"
                                 Value="40, 20" />
                         <Setter Target="ContentLayout.Padding"
@@ -116,7 +113,8 @@
             <TextBlock x:Name="AddPinsLabel"
                        Foreground="{ThemeResource SurfaceInverseBrush}"
                        Text="6 pins"
-                       Style="{StaticResource CustomHeadlineLarge}" />
+                       Margin="27, 18, 18, 9"
+                       Style="{StaticResource CustomLabelLarge}" />
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:AutoLayout.CounterAlignment="Stretch"
