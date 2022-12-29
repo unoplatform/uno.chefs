@@ -111,9 +111,7 @@
                         <Setter Target="MainLayout.Spacing"
                                 Value="20" />
                         <Setter Target="RecipeImage.Height"
-                                Value="500" />
-                        <Setter Target="RecipeImage.(utu:AutoLayout.PrimaryAlignment)"
-                                Value="Stretch" />
+                                Value="480" />
                         <Setter Target="RecipeImage.Margin"
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
@@ -173,9 +171,11 @@
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                 utu:AutoLayout.CounterAlignment="Stretch">
                     <utu:AutoLayout Padding="0"
-                                    x:Name="RecipeImage">
+                                    x:Name="RecipeImage"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                    utu:AutoLayout.CounterAlignment="Stretch">
                         <Image Source="{Binding Recipe.ImageUrl}"
-                               Stretch="UniformToFill" />
+                               Stretch="Uniform" />
                     </utu:AutoLayout>
                     <utu:AutoLayout x:Name="WideRecipeDetails"
                                     Background="{ThemeResource SurfaceBrush}"
