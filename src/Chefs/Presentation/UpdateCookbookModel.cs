@@ -24,19 +24,16 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
         _cookbook = cookbook;
     }
 
-    //public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook);
+    public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook);
 
     public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
     {
-        //var cookbook = await Cookbook;
-        var cookbook = _cookbook;
+        var cookbook = await Cookbook;
 
-        //var recipes = await _recipeService.GetSaved(ct);
-        //var recipesExceptCookbook = cookbook?.Recipes is null 
-        //	? recipes
-        //	: recipes.RemoveAll(r => cookbook.Recipes.Any(cbR => r.Id == cbR.Id));
-        var recipesExceptCookbook = await _recipeService.GetAll(ct);
-
+        var recipes = await _recipeService.GetSaved(ct);
+        var recipesExceptCookbook = cookbook?.Recipes is null
+            ? recipes
+            : recipes.RemoveAll(r => cookbook.Recipes.Any(cbR => r.Id == cbR.Id));
 
         return recipesExceptCookbook;
     });
