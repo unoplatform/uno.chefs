@@ -155,7 +155,7 @@
                      Style="{StaticResource OutlinedTextBoxStyle}" />
             <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                        Text="Add pin"
-                       x:Name="AddPinLabel"
+                       x:Name="AddPinsLabel"
                        Margin="27, 18, 18, 9"
                        Style="{StaticResource CustomLabelLarge}" />
             <utu:AutoLayout x:Name="ContentLayout"

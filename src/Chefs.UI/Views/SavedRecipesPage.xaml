@@ -174,13 +174,13 @@
                         <Setter Target="ContentLayout.Padding"
                                 Value="0" />
                         <Setter Target="WideRecipes.Padding"
-                                Value="40" />
+                                Value="40, 20, 40, 40" />
                         <Setter Target="WideCookbooks.Padding"
-                                Value="40" />
+                                Value="40, 20, 40, 40" />
                         <Setter Target="AllRecipesTitle.Margin"
-                                Value="40, 0, 0, 0" />
+                                Value="40, 20, 20, 0" />
                         <Setter Target="CookbooksTitle.Padding"
-                                Value="40, 0, 0, 0" />
+                                Value="40, 20, 20, 0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -192,30 +192,34 @@
                        x:Name="NarrowTitle"
                        Text="Saved Recipes"
                        Style="{StaticResource CustomHeadlineMedium}" />
+            <Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 
-            <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout x:Name="NarrowSavedRecipes"
-                                uen:Region.Attached="True"
-                                Spacing="12"
-                                Padding="0,40">
-                    <utu:TabBar uen:Region.Attached="True"
-                                Margin="0, 0, 0, 29"
-                                SelectedItem="{Binding ElementName=TabBarRecipeItem}"
-                                Style="{StaticResource TopTabBarStyle}">
-                        <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                        x:Name="TabBarRecipeItem"
-                                        IsSelectable="True"
-                                        uen:Region.Name="MyRecipes"
-                                        Content="All Recipes" />
-                        <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                        uen:Region.Name="Cookbooks"
-                                        IsSelectable="True"
-                                        Content="Cookbooks" />
-                    </utu:TabBar>
-                    <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+                <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                              x:Name="NarrowSavedRecipes">
+                    <utu:AutoLayout uen:Region.Attached="True"
+                                    Spacing="12"
+                                    Margin="0,40"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                    utu:AutoLayout.CounterAlignment="Stretch">
+                        <utu:TabBar uen:Region.Attached="True"
+                                    Margin="0, 0, 0, 29"
+                                    SelectedItem="{Binding ElementName=TabBarRecipeItem}"
+                                    Style="{StaticResource TopTabBarStyle}">
+                            <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                            x:Name="TabBarRecipeItem"
+                                            IsSelectable="True"
+                                            uen:Region.Name="MyRecipes"
+                                            Content="All Recipes" />
+                            <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                            uen:Region.Name="Cookbooks"
+                                            IsSelectable="True"
+                                            Content="Cookbooks" />
+                        </utu:TabBar>
+
                         <Grid uen:Region.Attached="True"
                               uen:Region.Navigator="Visibility"
                               utu:AutoLayout.CounterAlignment="Stretch">
+
                             <utu:AutoLayout Visibility="Visible"
                                             utu:AutoLayout.CounterAlignment="Center"
                                             uen:Region.Name="MyRecipes">
@@ -250,8 +254,9 @@
                                 </uer:FeedView>
                             </utu:AutoLayout>
                         </Grid>
-                    </ScrollViewer>
-                </utu:AutoLayout>
+                    </utu:AutoLayout>
+                </ScrollViewer>
+
                 <utu:AutoLayout x:Name="WideSaved"
                                 Visibility="Collapsed"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -277,12 +282,11 @@
                     <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
                         <utu:AutoLayout Orientation="Horizontal">
                             <utu:AutoLayout x:Name="WideRecipes"
-                                            Padding="20"
                                             Background="{ThemeResource BackgroundBrush}"
                                             utu:AutoLayout.PrimaryAlignment="Stretch"
                                             utu:AutoLayout.CounterAlignment="Stretch">
-                                <utu:AutoLayout  Spacing="20"
-                                                 utu:AutoLayout.CounterAlignment="Center">
+                                <utu:AutoLayout Spacing="20"
+                                                utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout>
                                         <uer:FeedView Source="{Binding Recipes}">
                                             <DataTemplate>
@@ -301,7 +305,6 @@
                             </utu:AutoLayout>
                             <utu:AutoLayout x:Name="WideCookbooks"
                                             Background="{ThemeResource SurfaceBrush}"
-                                            Padding="20"
                                             utu:AutoLayout.PrimaryAlignment="Stretch"
                                             utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout  Spacing="20"
@@ -325,7 +328,7 @@
                         </utu:AutoLayout>
                     </ScrollViewer>
                 </utu:AutoLayout>
-            </utu:AutoLayout>
+            </Grid>
         </utu:AutoLayout>
         <utu:AutoLayout x:Name="AddButtonLayout"
                         PrimaryAxisAlignment="End"
