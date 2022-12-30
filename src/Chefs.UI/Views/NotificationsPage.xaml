@@ -111,6 +111,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout x:Name="MainLayout"
+                        Padding="18, 9"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         uen:Region.Attached="True"
                         Background="{ThemeResource BackgroundBrush}">

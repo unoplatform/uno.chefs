@@ -134,25 +134,32 @@
             <utu:AutoLayout Padding="0,12"
                             Spacing="12">
                 <utu:AutoLayout>
-                    <utu:AutoLayout Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                        <utu:AutoLayout Orientation="Horizontal"
-                                        Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
-                            <TextBlock Text="Recent searches"
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource TitleLarge}" />
-                        </utu:AutoLayout>
-
-                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                        <utu:AutoLayout Grid.Column="0"
+                                        Padding="0, 13, 0, 13"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
-                                       Style="{StaticResource TitleLarge}"
-                                       Visibility="{Binding Searched}" />
+                            <utu:AutoLayout Orientation="Horizontal"
+                                            Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                                <TextBlock Text="Recent searches"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           Style="{StaticResource TitleLarge}" />
+                            </utu:AutoLayout>
+
+                            <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
+                                           Style="{StaticResource TitleLarge}"
+                                           Visibility="{Binding Searched}" />
+                            </utu:AutoLayout>
                         </utu:AutoLayout>
 
-                        <utu:AutoLayout Padding="10"
+                        <utu:AutoLayout Grid.Column="1"
+                                        Padding="10"
                                         PrimaryAxisAlignment="End"
                                         utu:AutoLayout.CounterAlignment="End"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -169,7 +176,7 @@
                             </Button>
                         </utu:AutoLayout>
 
-                    </utu:AutoLayout>
+                    </Grid>
 
                     <muxc:ItemsRepeater x:Name="HistoryRepeater"
                                         utu:AutoLayout.CounterAlignment="Start"
