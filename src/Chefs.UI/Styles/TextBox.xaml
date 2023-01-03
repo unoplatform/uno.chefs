@@ -10,7 +10,16 @@
         <Setter Property="FontWeight"
                 Value="Medium" />
     </Style>
-    
+
+    <Style x:Key="CustomDisplayMedium"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource DisplayMedium}">
+        <Setter Property="FontSize"
+                Value="28" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
     <Style x:Key="CustomHeadlineLarge"
            TargetType="TextBlock"
            BasedOn="{StaticResource HeadlineLarge}">
