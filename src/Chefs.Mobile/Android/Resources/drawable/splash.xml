@@ -2,12 +2,15 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
     <!-- background color -->
-    <color android:color="#101010"/>
+    <color android:color=" #FFFFFF"/>
   </item>
-  <item>
+  <item android:width="350dp" android:height="107dp" android:gravity="center">
     <!-- splash image -->
     <bitmap android:src="@drawable/SplashScreen"
             android:tileMode="disabled"
-            android:gravity="center" />
+			android:filter="true"
+			android:dither="true"
+            android:mipMap="true"/>
+
   </item>
 </layer-list>

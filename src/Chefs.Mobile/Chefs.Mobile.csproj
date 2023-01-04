@@ -40,6 +40,7 @@
 			</ItemGroup>
 			<ItemGroup>
 				<AndroidEnvironment Include="Android/environment.conf" />
+				<AndroidResource Include="Android\Resources\drawable\splash.xml" />
 			</ItemGroup>
 		</When>
 		<When Condition="'$(TargetFramework)'=='net6.0-ios'">
