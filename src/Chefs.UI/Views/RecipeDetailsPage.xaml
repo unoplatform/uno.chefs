@@ -263,7 +263,8 @@
                                                                             Orientation="Horizontal">
                                                                 <ImageIcon Source="{Binding UrlIcon}"
                                                                            utu:AutoLayout.CounterAlignment="Center"
-                                                                           Margin="0, 0, 0, 3" />
+                                                                           Margin="0, 0, 0, 3"
+                                                                           Background="Gray"/>
                                                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                                                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"

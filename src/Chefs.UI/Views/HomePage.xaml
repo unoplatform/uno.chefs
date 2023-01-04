@@ -64,13 +64,13 @@
                                         </utu:AutoLayout>
                                         <ToggleButton utu:AutoLayout.CounterAlignment="Center"
                                                       IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                      Style="{StaticResource IconButtonStyle}">
+                                                      Style="{StaticResource IconToggleButtonStyle}">
                                             <ToggleButton.Content>
-                                                <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
+                                                <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
                                                           Foreground="{ThemeResource OnBackgroundBrush}" />
                                             </ToggleButton.Content>
                                             <um:ControlExtensions.AlternateContent>
-                                                <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
+                                                <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
                                                           Foreground="{ThemeResource OnBackgroundBrush}" />
                                             </um:ControlExtensions.AlternateContent>
                                         </ToggleButton>
