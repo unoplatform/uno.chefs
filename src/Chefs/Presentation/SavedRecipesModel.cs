@@ -18,17 +18,7 @@ public partial class SavedRecipesModel
         _cookbookService = cookbookService;
     }
 
-    public IListState<Cookbook> Cookbooks => ListState<Cookbook>.Async(this, async ct => await _cookbookService.GetSaved(ct));
+    public IListFeed<Cookbook> Cookbooks => _cookbookService.SavedCookbooks;
 
-    public IListFeed<Recipe> Recipes => ListFeed<Recipe>.Async(async ct => await _recipeService.GetSaved(ct));
-
-    public async ValueTask CreateCookbookNavigation(CancellationToken ct)
-    {
-        var result = await _navigator.GetDataAsync<CreateCookbookModel, Cookbook>(this, cancellation: ct);
-
-        if (result is not null)
-        {
-            await Cookbooks.AddAsync(result, ct);
-        }
-    }
+    public IListFeed<Recipe> Recipes => _recipeService.SavedRecipes;
 }

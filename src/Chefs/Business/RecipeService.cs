@@ -9,10 +9,11 @@ public class RecipeService : IRecipeService
 {
     private readonly IRecipeEndpoint _recipeEndpoint;
     private readonly IWritableOptions<SearchHistory> _searchOptions;
+    private Signal _refreshRecipes = new();
 
     public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory) 
         => (_recipeEndpoint, _searchOptions) = (recipeEndpoint, searchHistory);
-        
+
     // DR_REV: Global to the file: Aligment
     //  * Only one tab per new line
     //  * When possible keep a code scope on a single line
@@ -35,7 +36,6 @@ public class RecipeService : IRecipeService
     //      instead of
     //          .FirstOrDefault(r => r.Id == recipeId)?.Ingredients?
     //          .Select(x => new Ingredient(x))
-
 
     public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) 
         => (await _recipeEndpoint.GetAll(ct))
@@ -74,8 +74,7 @@ public class RecipeService : IRecipeService
         else
         {
             await SaveSearchHistory(term);
-            return GetRecipesByText((await _recipeEndpoint
-                       .GetAll(ct))
+            return GetRecipesByText((await _recipeEndpoint.GetAll(ct))
                        .Select(r => new Recipe(r)), term);
         }
     }
@@ -110,28 +109,31 @@ public class RecipeService : IRecipeService
             .Select(x => new Recipe(x))
             .ToImmutableList(); // DR_REV: Cannot be null
 
-    public async ValueTask Save(Recipe recipe, CancellationToken ct) 
-        => await _recipeEndpoint.Save(recipe.ToData(), ct);
-
-
     public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct) 
         => new(await _recipeEndpoint.CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct));
+
+
+    public IListFeed<Recipe> SavedRecipes => ListFeed<Recipe>.Async(async ct => await GetSaved(ct), _refreshRecipes);
 
     public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct)
         => (await _recipeEndpoint.GetSaved(ct))
             .Select(r => new Recipe(r))
             .ToImmutableList();
 
+    public async ValueTask Save(Recipe recipe, CancellationToken ct)
+    {
+        await _recipeEndpoint.Save(recipe.ToData(), ct);
+        _refreshRecipes.Raise();
+    }
+
     public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct) 
-	    => (await _recipeEndpoint
-	       .GetAll(ct))
+	    => (await _recipeEndpoint.GetAll(ct))
 	       .Select(r => new Recipe(r)).OrderBy(x => new Random(1).Next())
 	       .Take(4)
 	       .ToImmutableList();
 
     public async ValueTask<IImmutableList<Recipe>> GetFromChefs(CancellationToken ct)
-        => (await _recipeEndpoint
-           .GetAll(ct))
+        => (await _recipeEndpoint.GetAll(ct))
            .Select(r => new Recipe(r)).OrderBy(x => new Random(2).Next())
            .Take(4)
            .ToImmutableList();
@@ -147,7 +149,8 @@ public class RecipeService : IRecipeService
             }
             else if ((text.Contains(searchHistory.LastOrDefault()!) || searchHistory.LastOrDefault()!.Contains(text)))
             {
-                await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Replace(searchHistory.LastOrDefault() ?? string.Empty, text) });
+                await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Replace(searchHistory.LastOrDefault() 
+                    ?? string.Empty, text) });
             }
         }
     }

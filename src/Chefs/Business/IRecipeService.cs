@@ -17,6 +17,11 @@ public interface IRecipeService
     ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct);
 
     /// <summary>
+    /// Current recipes.
+    /// </summary>
+    IListFeed<Recipe> SavedRecipes { get; }
+
+    /// <summary>
     /// Recipes with a specific category
     /// </summary>
     /// <param name="category">The specific category to filter recipes</param>
