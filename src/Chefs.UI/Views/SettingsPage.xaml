@@ -112,10 +112,10 @@
                                             PrimaryAxisAlignment="Center">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <Border x:Name="ImageBorder"
-                                            CornerRadius="15"
+                                            CornerRadius="30"
                                             utu:AutoLayout.CounterAlignment="Start"
-                                            Height="60"
-                                            Width="60">
+                                            Height="100"
+                                            Width="100">
                                         <Image Source="{Binding Profile.UrlProfileImage}"
                                                Stretch="UniformToFill" />
                                     </Border>
@@ -127,13 +127,13 @@
                                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Text="{Binding Profile.FullName}"
                                                utu:AutoLayout.CounterAlignment="Center"
-                                               Style="{StaticResource HeadlineMedium}" />
+                                               Style="{StaticResource CustomHeadlineMedium}" />
                                     <TextBlock x:Name="ProfileDescription"
                                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                TextAlignment="Center"
                                                Text="{Binding Profile.Description}"
                                                utu:AutoLayout.CounterAlignment="Center"
-                                               Style="{StaticResource TitleSmall}" />
+                                               Style="{StaticResource CustomTitleSmall}" />
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -239,7 +239,7 @@
                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                TextWrapping="Wrap"
                                                Text="App notifications"
-                                               Style="{StaticResource TitleMedium}" />
+                                               Style="{StaticResource CustomTitleMedium}" />
                                 </utu:AutoLayout>
                                 <ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                               Background="{ThemeResource PrimaryBrush}"
@@ -279,7 +279,7 @@
                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                TextWrapping="Wrap"
                                                Text="Light mode"
-                                               Style="{StaticResource TitleMedium}" />
+                                               Style="{StaticResource CustomTitleMedium}" />
                                 </utu:AutoLayout>
                                 <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                          Mode=TwoWay, 
@@ -312,7 +312,7 @@
                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                TextWrapping="Wrap"
                                                Text="Night mode"
-                                               Style="{StaticResource TitleMedium}" />
+                                               Style="{StaticResource CustomTitleMedium}" />
                                 </utu:AutoLayout>
                                 <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                  Mode=TwoWay, 

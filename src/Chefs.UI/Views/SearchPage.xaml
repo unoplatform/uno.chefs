@@ -166,8 +166,10 @@
                 <TextBox x:Name="SearchBox"
                          utu:AutoLayout.CounterAlignment="Center"
                          utu:AutoLayout.PrimaryAlignment="Stretch"
-                         BorderBrush="{ThemeResource OnSurfaceLowBrush}"
+                         BorderBrush="{ThemeResource SurfaceBrush}"
                          BorderThickness="1"
+                         CornerRadius="16"
+                         Background="{ThemeResource SurfaceBrush}"
                          Style="{StaticResource OutlinedTextBoxStyle}"
                          utu:CommandExtensions.Command="{Binding Search}"
                          Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">

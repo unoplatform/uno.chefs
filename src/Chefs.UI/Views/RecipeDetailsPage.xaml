@@ -261,10 +261,10 @@
                                                             <utu:AutoLayout Spacing="16"
                                                                             Padding="16,18"
                                                                             Orientation="Horizontal">
-                                                                <ImageIcon Source="{Binding UrlIcon}"
+                                                                <ImageIcon x:Name="IngredientImage"
+                                                                           Source="{Binding UrlIcon}"
                                                                            utu:AutoLayout.CounterAlignment="Center"
-                                                                           Margin="0, 0, 0, 3"
-                                                                           Background="Gray"/>
+                                                                           Margin="0, 0, 0, 3" />
                                                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                                                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"

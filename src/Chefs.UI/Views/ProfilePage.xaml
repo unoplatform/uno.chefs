@@ -18,6 +18,20 @@
             <x:String x:Key="Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
             <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
         </utu:AutoLayout.Resources>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ContentLayout.Orientation"
+                                Value="Horizontal" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                Background="{ThemeResource SurfaceBrush}">
@@ -53,15 +67,15 @@
                             Padding="0,0,0,24"
                             CornerRadius="0,0,30,30"
                             PrimaryAxisAlignment="Center">
-                <utu:AutoLayout CornerRadius="15"
+                <utu:AutoLayout CornerRadius="30"
                                 utu:AutoLayout.CounterAlignment="Center">
-                    <utu:AutoLayout CornerRadius="15"
+                    <utu:AutoLayout CornerRadius="30"
                                     Orientation="Horizontal"
                                     utu:AutoLayout.CounterAlignment="Start">
-                        <Border CornerRadius="15"
+                        <Border CornerRadius="30"
                                 utu:AutoLayout.CounterAlignment="Start"
-                                utu:AutoLayout.PrimaryLength="60"
-                                utu:AutoLayout.CounterLength="60">
+                                utu:AutoLayout.PrimaryLength="100"
+                                utu:AutoLayout.CounterLength="100">
                             <Image Source="{Binding Profile.UrlProfileImage}"
                                    Stretch="UniformToFill" />
                         </Border>
@@ -74,12 +88,12 @@
                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                Text="{Binding Profile.FullName}"
                                utu:AutoLayout.CounterAlignment="Center"
-                               Style="{StaticResource HeadlineMedium}" />
+                               Style="{StaticResource CustomHeadlineMedium}" />
                     <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                TextAlignment="Center"
                                Text="{Binding Profile.Description}"
                                utu:AutoLayout.CounterAlignment="Center"
-                               Style="{StaticResource TitleSmall}" />
+                               Style="{StaticResource CustomTitleSmall}" />
                 </utu:AutoLayout>
                 <utu:AutoLayout Spacing="50"
                                 Padding="50,0"
@@ -92,11 +106,11 @@
                                    TextAlignment="Center"
                                    Text="{Binding Profile.Recipes}"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource HeadlineMedium}" />
+                                   Style="{StaticResource CustomHeadlineMedium}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Text="Recipes"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource LabelSmall}" />
+                                   Style="{StaticResource CustomLabelSmall}" />
                     </utu:AutoLayout>
                     <utu:AutoLayout Padding="5"
                                     CornerRadius="12"
@@ -105,11 +119,11 @@
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="{Binding Profile.Followers}"
-                                   Style="{StaticResource HeadlineMedium}" />
+                                   Style="{StaticResource CustomHeadlineMedium}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Text="Followers"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource LabelSmall}" />
+                                   Style="{StaticResource CustomLabelSmall}" />
                     </utu:AutoLayout>
                     <utu:AutoLayout Padding="5"
                                     CornerRadius="12"
@@ -118,11 +132,11 @@
                                    TextAlignment="Center"
                                    Text="{Binding Profile.Following}"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource HeadlineMedium}" />
+                                   Style="{StaticResource CustomHeadlineMedium}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Text="Following"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource LabelSmall}" />
+                                   Style="{StaticResource CustomLabelSmall}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
