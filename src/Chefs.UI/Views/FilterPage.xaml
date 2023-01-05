@@ -73,11 +73,11 @@
                                                SelectionMode="Single"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}">
-                                    <utu:ChipGroup.ItemsPanel>
+                                    <!--<utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
+                                    </utu:ChipGroup.ItemsPanel>-->
                                     <utu:Chip Content="⭐️   Popular"
                                               utu:AutoLayout.CounterAlignment="Start"
                                               utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -109,11 +109,11 @@
                                                SelectionMode="Single"
                                                utu:AutoLayout.PrimaryAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}">
-                                    <utu:ChipGroup.ItemsPanel>
+                                    <!--<utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
+                                    </utu:ChipGroup.ItemsPanel>-->
                                     <utu:Chip Content="under 15 min"
                                               utu:AutoLayout.CounterAlignment="Start"
                                               utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -146,11 +146,11 @@
                                                SelectionMode="Single"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}">
-                                    <utu:ChipGroup.ItemsPanel>
+                                    <!--<utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
+                                    </utu:ChipGroup.ItemsPanel>-->
                                     <utu:Chip Content="Easy"
                                               utu:AutoLayout.CounterAlignment="Start"
                                               utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -183,11 +183,11 @@
                                                SelectionMode="Single"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}">
-                                    <utu:ChipGroup.ItemsPanel>
+                                    <!--<utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
+                                    </utu:ChipGroup.ItemsPanel>-->
                                     <utu:Chip Content="01"
                                               utu:AutoLayout.CounterAlignment="Start"
                                               utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -232,11 +232,11 @@
                                                ItemsSource="{Binding Categories}"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
+                                    <!--<utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18" Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
+                                    </utu:ChipGroup.ItemsPanel>-->
                                     <utu:ChipGroup.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal"

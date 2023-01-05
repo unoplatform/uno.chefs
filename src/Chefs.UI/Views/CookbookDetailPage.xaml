@@ -112,7 +112,9 @@
             </utu:AutoLayout>
             <TextBlock x:Name="AddPinsLabel"
                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                       Text="6 pins"
+                       Text="{Binding Cookbook.PinsNumber, 
+                                   Converter={StaticResource StringFormatter}, 
+                                   ConverterParameter='{}{0} pins'}"
                        Margin="27, 18, 18, 9"
                        Style="{StaticResource CustomLabelLarge}" />
             <utu:AutoLayout x:Name="ContentLayout"
@@ -120,13 +122,10 @@
                             utu:AutoLayout.CounterAlignment="Stretch"
                             Spacing="18"
                             Padding="18,0">
-                <!--Text="{Binding PinsNumber, 
-                                   Converter={StaticResource StringFormatter}, 
-                                   ConverterParameter='{}{0} pins'}"-->
                 <ScrollViewer HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Hidden"
                               utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <uer:FeedView Source="{Binding Recipes}">
+                    <uer:FeedView Source="{Binding Cookbook}">
                         <DataTemplate>
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout.Resources>
@@ -157,7 +156,7 @@
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                                 <muxc:ItemsRepeater x:Name="RecipeRepeater"
-                                                    ItemsSource="{Binding Data}"
+                                                    ItemsSource="{Binding Data.Recipes}"
                                                     Layout="{StaticResource NarrowGridLayout}"
                                                     ItemTemplate="{StaticResource RecipeTemplate}" />
                             </utu:AutoLayout>
@@ -166,7 +165,8 @@
                 </ScrollViewer>
             </utu:AutoLayout>
         </utu:AutoLayout>
-        <Button Command="{Binding CreateCookbookNavigation}"
+        <Button uen:Navigation.Request="CreateUpdateCookbook"
+                uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay }"
                 Background="{ThemeResource PrimaryContainerBrush}"
                 Margin="18,20"
                 utu:AutoLayout.CounterAlignment="End"
