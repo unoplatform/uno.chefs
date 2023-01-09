@@ -69,7 +69,7 @@
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" Condition="Exists('..\Chefs.UI\Chefs.UI.projitems')" />
 	<ItemGroup>
 	  <PackageReference Update="Uno.Extensions.Configuration" Version="2.3.0-dev.336" />
-	  <PackageReference Update="Uno.Extensions.Core" Version="2.3.0-dev.336" />
+	  <PackageReference Update="Uno.Extensions.Core" Version="2.3.0-dev.490" />
 	  <PackageReference Update="Uno.Extensions.Hosting" Version="2.3.0-dev.336" />
 	  <PackageReference Update="Uno.Extensions.Hosting.WinUI" Version="2.3.0-dev.336" />
 	  <PackageReference Update="Uno.Extensions.Http" Version="2.3.0-dev.336" />
