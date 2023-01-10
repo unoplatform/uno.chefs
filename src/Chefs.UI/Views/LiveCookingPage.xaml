@@ -74,7 +74,7 @@
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    TextWrapping="Wrap"
                                    Text="{Binding Description}"
-                                   Style="{StaticResource CustomLabelMedium}" />
+                                   Style="{StaticResource CustomTitleMedium}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </DataTemplate>
