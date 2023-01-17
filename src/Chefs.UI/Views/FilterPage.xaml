@@ -44,9 +44,10 @@
                         Padding="18,20"
                         Background="{ThemeResource SurfaceBrush}"
                         utu:AutoLayout.PrimaryAlignment="Stretch">
-            <ScrollViewer HorizontalScrollMode="Disabled">
-                <utu:AutoLayout Spacing="20"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
+            <ScrollViewer HorizontalScrollMode="Disabled"
+                          VerticalScrollBarVisibility="Hidden"
+                          utu:AutoLayout.PrimaryAlignment="Stretch">
+                <utu:AutoLayout Spacing="20">
                     <utu:AutoLayout Spacing="16"
                                     PrimaryAxisAlignment="Center">
                         <utu:AutoLayout Spacing="10"
@@ -255,7 +256,8 @@
                     </utu:AutoLayout>
 
                     <utu:AutoLayout Spacing="20"
-                                    Orientation="Horizontal">
+                                    Orientation="Horizontal"
+                                    Padding="0,20">
                         <Button x:Name="ResetButton"
                                 Background="{ThemeResource SurfaceBrush}"
                                 Content="Reset"

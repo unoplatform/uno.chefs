@@ -40,6 +40,11 @@ public record SearchFilter(
             return true;
         }
 
+        if(OrganizeCategories != null) 
+        {
+            return true;
+        }
+
         return false;
     }
 }
