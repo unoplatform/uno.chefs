@@ -140,10 +140,26 @@
                     <VisualState.Setters>
                         <Setter Target="MainLayout.Padding"
                                 Value="40,24" />
+                        <Setter Target="RecipesForYouTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="RecipesForYouTitle.Margin"
+                                Value="0, 20"  />
+                        <Setter Target="IdeasFromChefsTitle.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
+                        <Setter Target="IdeasFromChefsTitle.Margin"
+                                Value="0, 20"  />
+                        <Setter Target="RecentSearches.Style"
+                                Value="{StaticResource CustomHeadlineLarge}" />
                         <Setter Target="BackButton.Height"
                                 Value="40" />
                         <Setter Target="BackButton.Width"
                                 Value="40" />
+                        <Setter Target="FilterButton.MinWidth"
+                                Value="116" />
+                        <Setter Target="FilterButton.MinHeight"
+                                Value="50" />
+                        <Setter Target="FilterButton.FontSize"
+                                Value="16" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -192,11 +208,14 @@
                         <utu:AutoLayout Grid.Column="0"
                                         Padding="0, 13, 0, 13"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <utu:AutoLayout Orientation="Horizontal"
-                                            Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
-                                <TextBlock Text="Recent searches"
-                                           Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Style="{StaticResource TitleLarge}" />
+                            <utu:AutoLayout Visibility="{Binding SearchHistory.Value, Converter={StaticResource NullToVisibilityConverter}}">
+                                <utu:AutoLayout Orientation="Horizontal"
+                                                Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                                    <TextBlock x:Name="RecentSearches"
+                                               Text="Recent searches"
+                                               Foreground="{ThemeResource SurfaceInverseBrush}"
+                                               Style="{StaticResource CustomTitleLarge}" />
+                                </utu:AutoLayout>
                             </utu:AutoLayout>
 
                             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -213,6 +232,7 @@
                                         utu:AutoLayout.CounterAlignment="End"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <Button Content="Filters"
+                                    x:Name="FilterButton"
                                     utu:AutoLayout.CounterAlignment="End"
                                     BorderBrush="{ThemeResource PrimaryBrush}"
                                     BorderThickness="1.5"
@@ -301,8 +321,9 @@
                                 Spacing="8"
                                 Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
                     <TextBlock Text="Recipes for you"
+                               x:Name="RecipesForYouTitle"
                                Foreground="{ThemeResource SurfaceInverseBrush}"
-                               Style="{StaticResource TitleLarge}" />
+                               Style="{StaticResource CustomTitleLarge}" />
                     <uer:FeedView x:Name="RecommendedFeedView"
                                   Source="{Binding Recommended}">
                         <DataTemplate>
@@ -335,18 +356,43 @@
                                                     Layout="{StaticResource NarrowStackLayout}">
                                     <muxc:ItemsRepeater.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:AutoLayout Spacing="8"
-                                                            MaxWidth="105">
-                                                <Border CornerRadius="12">
-                                                    <Image Source="{Binding ImageUrl}"
-                                                           Stretch="UniformToFill"
-                                                           MaxHeight="80" />
-                                                </Border>
-                                                <TextBlock Text="{Binding Name}"
-                                                           utu:AutoLayout.CounterAlignment="Center"
-                                                           Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                           Style="{StaticResource TitleSmall}"
-                                                           TextWrapping="NoWrap" />
+                                            <utu:AutoLayout>
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup>
+                                                        <VisualState x:Name="Narrow" />
+                                                        <VisualState x:Name="Wide">
+                                                            <VisualState.StateTriggers>
+                                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                                            </VisualState.StateTriggers>
+                                                            <VisualState.Setters>
+                                                                <Setter Target="RecipeTemplate.MaxWidth"
+                                                                        Value="200" />
+                                                                <Setter Target="ImageLayout.MaxHeight"
+                                                                        Value="140" />
+                                                                <Setter Target="RecipeName.Style"
+                                                                        Value="{StaticResource CustomHeadlineMedium}" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <utu:AutoLayout x:Name="RecipeTemplate"
+                                                                Spacing="8"
+                                                                MaxWidth="105"
+                                                                uen:Navigation.Request="!RecipeDetails"
+                                                                uen:Navigation.Data="{Binding}">
+                                                    <Border CornerRadius="12">
+                                                        <Image Source="{Binding ImageUrl}"
+                                                               Stretch="UniformToFill"
+                                                               x:Name="ImageLayout"
+                                                               MaxHeight="80" />
+                                                    </Border>
+                                                    <TextBlock x:Name="RecipeName"
+                                                               Text="{Binding Name}"
+                                                               utu:AutoLayout.CounterAlignment="Start"
+                                                               Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                               Style="{StaticResource CustomTitleSmall}"
+                                                               TextWrapping="NoWrap" />
+                                                </utu:AutoLayout>
                                             </utu:AutoLayout>
                                         </DataTemplate>
                                     </muxc:ItemsRepeater.ItemTemplate>
@@ -355,8 +401,9 @@
                         </DataTemplate>
                     </uer:FeedView>
                     <TextBlock Text="Ideas from chefs"
+                               x:Name="IdeasFromChefsTitle"
                                Foreground="{ThemeResource SurfaceInverseBrush}"
-                               Style="{StaticResource TitleLarge}" />
+                               Style="{StaticResource CustomTitleLarge}" />
                     <uer:FeedView x:Name="ChefsFeedView"
                                   Source="{Binding FromChefs}">
                         <DataTemplate>
@@ -389,18 +436,43 @@
                                                     Layout="{StaticResource NarrowStackLayout}">
                                     <muxc:ItemsRepeater.ItemTemplate>
                                         <DataTemplate>
-                                            <utu:AutoLayout Spacing="8"
-                                                            MaxWidth="105">
-                                                <Border CornerRadius="12">
-                                                    <Image Source="{Binding ImageUrl}"
-                                                           Stretch="UniformToFill"
-                                                           MaxHeight="80" />
-                                                </Border>
-                                                <TextBlock Text="{Binding Name}"
-                                                           utu:AutoLayout.CounterAlignment="Center"
-                                                           Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                           Style="{StaticResource TitleSmall}"
-                                                           TextWrapping="NoWrap" />
+                                            <utu:AutoLayout>
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup>
+                                                        <VisualState x:Name="Narrow" />
+                                                        <VisualState x:Name="Wide">
+                                                            <VisualState.StateTriggers>
+                                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                                            </VisualState.StateTriggers>
+                                                            <VisualState.Setters>
+                                                                <Setter Target="RecipeTemplate.MaxWidth"
+                                                                        Value="200" />
+                                                                <Setter Target="ImageLayout.MaxHeight"
+                                                                        Value="140" />
+                                                                <Setter Target="RecipeName.Style"
+                                                                        Value="{StaticResource CustomHeadlineMedium}" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <utu:AutoLayout x:Name="RecipeTemplate"
+                                                                Spacing="8"
+                                                                MaxWidth="105"
+                                                                uen:Navigation.Request="!RecipeDetails"
+                                                                uen:Navigation.Data="{Binding}">
+                                                    <Border CornerRadius="12">
+                                                        <Image Source="{Binding ImageUrl}"
+                                                               Stretch="UniformToFill"
+                                                               x:Name="ImageLayout"
+                                                               MaxHeight="80" />
+                                                    </Border>
+                                                    <TextBlock x:Name="RecipeName"
+                                                               Text="{Binding Name}"
+                                                               utu:AutoLayout.CounterAlignment="Start"
+                                                               Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                               Style="{StaticResource CustomTitleSmall}"
+                                                               TextWrapping="NoWrap" />
+                                                </utu:AutoLayout>
                                             </utu:AutoLayout>
                                         </DataTemplate>
                                     </muxc:ItemsRepeater.ItemTemplate>
