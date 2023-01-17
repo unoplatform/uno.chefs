@@ -19,6 +19,4 @@
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
                                       FalseValue="{StaticResource OnSurfaceLowBrush}" />
-    <converters:FromNullToVisibilityConverter x:Key="NullToVisibilityConverter"
-                                              Invert="False" />
 </ResourceDictionary>
