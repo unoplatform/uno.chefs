@@ -24,11 +24,25 @@
                         <utu:AutoLayout Orientation="Horizontal"
                                         utu:AutoLayout.CounterAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       TextAlignment="Center"
-                                       Text="Getting started"
-                                       utu:AutoLayout.CounterAlignment="Start"
+                            <TextBlock TextWrapping="Wrap"
+                                       Text="{Binding Name}"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       utu:AutoLayout.PrimaryAlignment="Stretch"
+                                       Foreground="{ThemeResource OnSurfaceBrush}"
                                        Style="{StaticResource CustomHeadlineMedium}" />
+
+                            <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
+                                            Padding="10, 6"
+                                            CornerRadius="15"
+                                            PrimaryAxisAlignment="Center"
+                                            Orientation="Horizontal"
+                                            utu:AutoLayout.CounterAlignment="Center">
+                                <TextBlock TextAlignment="Center"
+                                           Text="{Binding CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           Foreground="{ThemeResource SurfaceBrush}"
+                                           Style="{StaticResource CustomCaptionSmall}" />
+                            </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout x:Name="DataTemplateDetails"
@@ -105,8 +119,6 @@
                     <VisualState.Setters>
                         <Setter Target="StepsFeedLayout.MaxHeight"
                                 Value="56" />
-                        <Setter Target="RecipeImage.MaxHeight"
-                                Value="220" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
@@ -118,12 +130,20 @@
                                 Value="Horizontal" />
                         <Setter Target="MainLayout.Spacing"
                                 Value="20" />
-                        <Setter Target="RecipeImage.Height"
+                        <Setter Target="RecipeImageLayout.Height"
                                 Value="480" />
-                        <Setter Target="RecipeImage.Margin"
+                        <Setter Target="RecipeImageLayout.Margin"
                                 Value="40,0,20,0" />
-                        <Setter Target="RecipeImage.CornerRadius"
+                        <Setter Target="RecipeImageLayout.CornerRadius"
                                 Value="40" />
+                        <Setter Target="RecipeImageLayout.MaxHeight"
+                                Value="550" />
+                        <Setter Target="RecipeImage.MinHeight"
+                                Value="550" />
+                        <Setter Target="RecipeImage.HorizontalAlignment"
+                                Value="Center" />
+                        <Setter Target="RecipeImage.VerticalAlignment"
+                                Value="Center" />
                         <Setter Target="WideRecipeDetails.Visibility"
                                 Value="Visible" />
                         <Setter Target="StepsFlipView.ItemTemplate"
@@ -159,11 +179,14 @@
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
                                 utu:AutoLayout.CounterAlignment="Stretch">
                     <utu:AutoLayout Padding="0"
-                                    x:Name="RecipeImage"
+                                    x:Name="RecipeImageLayout"
+                                    MaxHeight="220"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <Image Source="{Binding Recipe.ImageUrl}"
-                               Stretch="Uniform" />
+                               MinHeight="220"
+                               x:Name="RecipeImage"
+                               Stretch="UniformToFill" />
                     </utu:AutoLayout>
                     <utu:AutoLayout x:Name="WideRecipeDetails"
                                     Background="{ThemeResource SurfaceBrush}"
