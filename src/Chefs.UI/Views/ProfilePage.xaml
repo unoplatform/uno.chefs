@@ -210,7 +210,9 @@
                                 </uer:FeedView>
                             </utu:AutoLayout>
                             <utu:AutoLayout uen:Region.Name="Cookbooks"
-                                            Visibility="Collapsed">
+                                            Visibility="Collapsed"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                                            utu:AutoLayout.CounterAlignment="Stretch">
                                 <uer:FeedView Source="{Binding Cookbooks}"
                                               utu:AutoLayout.CounterAlignment="Center">
                                     <DataTemplate>
@@ -263,6 +265,15 @@
                                         </ScrollViewer>
                                     </DataTemplate>
                                 </uer:FeedView>
+                                <Button uen:Navigation.Request="!CreateCookbook"
+                                        utu:AutoLayout.CounterAlignment="End"
+                                        CornerRadius="60"
+                                        Style="{StaticResource FabStyle}">
+                                    <um:ControlExtensions.Icon>
+                                        <PathIcon Data="{StaticResource Icon_Add}"
+                                                  Foreground="{ThemeResource SurfaceBrush}" />
+                                    </um:ControlExtensions.Icon>
+                                </Button>
                             </utu:AutoLayout>
                         </Grid>
                     </utu:AutoLayout>
