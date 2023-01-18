@@ -1,6 +1,5 @@
 ﻿using Chefs.Data;
 using System.Collections.Immutable;
-using System.Diagnostics;
 using Uno.Extensions.Configuration;
 
 namespace Chefs.Business;
@@ -13,29 +12,6 @@ public class RecipeService : IRecipeService
 
     public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory) 
         => (_recipeEndpoint, _searchOptions) = (recipeEndpoint, searchHistory);
-
-    // DR_REV: Global to the file: Aligment
-    //  * Only one tab per new line
-    //  * When possible keep a code scope on a single line
-    //     i.e. (1 line) "(await _recipeEndpoint.GetAll(ct)) "
-    //     instead of (2-lines) "(await _recipeEndpoint
-    //          .GetAll(ct))"
-    //  * A change of scope should involve a new line with one more or less indentation level
-    //     i.e.
-    //          "(await _recipeEndpoint.GetAll(ct))
-    //              .Select()..."
-    //      instead of 
-    //          "(await _recipeEndpoint.GetAll(ct))
-    //          .Select()"
-    //  * When using expression body, put the body on a new line.
-    //  * When splitting a scope with new lines, add a new line for each statement
-    //      i.e. 
-    //		    .FirstOrDefault(r => r.Id == recipeId)
-    //		    ?.Steps
-    //		    ?.Select(x => new Step(x))
-    //      instead of
-    //          .FirstOrDefault(r => r.Id == recipeId)?.Ingredients?
-    //          .Select(x => new Ingredient(x))
 
     public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) 
         => (await _recipeEndpoint.GetAll(ct))

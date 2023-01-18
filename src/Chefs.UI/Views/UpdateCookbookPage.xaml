@@ -136,6 +136,7 @@
             <utu:AutoLayout x:Name="NavBarLayout">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
+                                   Foreground="{ThemeResource OnBackgroundBrush}"
                                    Content="Update Cookbook"
                                    toolkit:UIElementExtensions.Elevation="0" />
             </utu:AutoLayout>
@@ -157,7 +158,6 @@
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             Spacing="18"
                             Padding="18,0">
-                <!--Text="{Binding Cookbook.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                 <ScrollViewer HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Hidden"
                               utu:AutoLayout.PrimaryAlignment="Stretch">

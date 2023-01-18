@@ -1,7 +1,7 @@
 
 namespace Chefs.Presentation;
 
-public partial class MainModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class MainModel
 {
 	private readonly INavigator _navigator;
 
@@ -13,6 +13,6 @@ public partial class MainModel // DR_REV: Use Model suffix instead of ViewModel
 	{ 
 	
 		_navigator = navigator;
-		Title = $"Main - {appInfo?.Value?.Title}";
-	}
+        Title = $"Main - {appInfo?.Value?.Title ?? "Chefs"}";
+    }
 }

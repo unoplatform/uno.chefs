@@ -62,6 +62,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\LiveCookingPage.xaml.cs">
       <DependentUpon>LiveCookingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Templates\ResponsiveDrawerFlyout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\UpdateCookbookPage.xaml.cs">
       <DependentUpon>UpdateCookbookPage.xaml</DependentUpon>
     </Compile>
@@ -92,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\Flyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\TextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

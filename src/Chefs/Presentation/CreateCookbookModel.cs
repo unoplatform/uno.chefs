@@ -6,7 +6,7 @@ using Uno.Extensions.Reactive;
 
 namespace Chefs.Presentation;
 
-public partial class CreateCookbookModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class CreateCookbookModel
 {
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;

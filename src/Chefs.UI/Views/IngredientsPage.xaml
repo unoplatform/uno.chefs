@@ -64,7 +64,7 @@
                                    Content="{Binding Recipe.Name}"
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton uen:Navigation.Request="-">
+                        <AppBarButton>
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
                                             UriSource="ms-appx:///Assets/Icons/share.png" />

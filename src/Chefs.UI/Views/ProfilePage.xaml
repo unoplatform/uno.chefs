@@ -1,17 +1,17 @@
-﻿<Flyout x:Class="Chefs.Views.ProfilePage"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="using:Chefs.Views"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:uer="using:Uno.Extensions.Reactive.UI"
-        xmlns:utu="using:Uno.Toolkit.UI"
-        xmlns:uen="using:Uno.Extensions.Navigation.UI"
-        xmlns:um="using:Uno.Material"
-        xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-        mc:Ignorable="d"
-        x:Name="Root"
-        Placement="Full">
+﻿<local:ResponsiveDrawerFlyout x:Class="Chefs.Views.ProfilePage"
+                              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                              xmlns:local="using:Chefs.Views"
+                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                              xmlns:uer="using:Uno.Extensions.Reactive.UI"
+                              xmlns:utu="using:Uno.Toolkit.UI"
+                              xmlns:uen="using:Uno.Extensions.Navigation.UI"
+                              xmlns:um="using:Uno.Material"
+                              xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+                              mc:Ignorable="d"
+                              x:Name="Root"
+                              Placement="Full">
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
@@ -46,11 +46,6 @@
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
-                    <!--<AppBarButton Background="{ThemeResource BackgroundBrush}"
-                                          Foreground="Black"
-                                          Visibility="{Binding Profile.IsCurrent}"
-                                          uen:Navigation.Request="!Settings"
-                                          uen:Navigation.Data="{Binding Profile.Value}">-->
                     <AppBarButton Command="{Binding SettingsNavigation}"
                                   Background="{ThemeResource BackgroundBrush}"
                                   Foreground="Black"
@@ -148,16 +143,14 @@
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
                         <utu:TabBar uen:Region.Attached="True"
                                     Margin="0, 29, 0, -8"
-                                    Style="{StaticResource TopTabBarStyle}"
-                                    SelectedItem="{Binding ElementName=RecipesTab}">
+                                    Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem x:Name="RecipesTab"
                                             Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             uen:Region.Name="MyRecipes"
-                                            IsSelectable="True"
-                                            Content="My Recipes" />
+                                            Content="My Recipes"
+                                            IsSelected="True"/>
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             uen:Region.Name="Cookbooks"
-                                            IsSelectable="True"
                                             Content="Cookbooks" />
                         </utu:TabBar>
                         <Grid  uen:Region.Attached="True"
@@ -277,4 +270,4 @@
             </ScrollViewer>
         </utu:AutoLayout>
     </utu:AutoLayout>
-</Flyout>
+</local:ResponsiveDrawerFlyout>
