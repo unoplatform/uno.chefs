@@ -36,8 +36,8 @@ public partial class CreateCookbookViewModel
         if (!string.IsNullOrEmpty(cookbookName)
             && selectedRecipes is not null)
         {
-            await _cookbookService.Create(cookbookName, selectedRecipes.ToImmutableList(), ct);
-            await _navigator.NavigateBackAsync(this);
+            var addedCookbook = await _cookbookService.Create(cookbookName, selectedRecipes.ToImmutableList(), ct);
+            await _navigator.NavigateBackWithResultAsync<Cookbook>(this, data: addedCookbook);
         } 
         else
         {

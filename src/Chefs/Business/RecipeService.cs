@@ -1,14 +1,17 @@
 ﻿using Chefs.Data;
 using System.Collections.Immutable;
+using System.Diagnostics;
+using Uno.Extensions.Configuration;
 
 namespace Chefs.Business;
 
 public class RecipeService : IRecipeService
 {
     private readonly IRecipeEndpoint _recipeEndpoint;
+    private readonly IWritableOptions<SearchHistory> _searchOptions;
 
-    public RecipeService(IRecipeEndpoint recipeEndpoint, IUserEndpoint userEndpoint) 
-        => _recipeEndpoint = recipeEndpoint;
+    public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory) 
+        => (_recipeEndpoint, _searchOptions) = (recipeEndpoint, searchHistory);
 
     public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) => (await _recipeEndpoint
                    .GetAll(ct))
@@ -37,10 +40,25 @@ public class RecipeService : IRecipeService
                    .Select(r => new Recipe(r))
                    .ToImmutableList();
 
-    public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct) => GetRecipesByText((await _recipeEndpoint
+    public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)
+    {
+        await SaveSearchHistory(term);
+        return GetRecipesByText((await _recipeEndpoint
                    .GetAll(ct))
                    .Select(r => new Recipe(r)), term);
+    }
 
+    public IImmutableList<string> GetSearchHistory() => (_searchOptions.Value).Searches.Take(3).ToImmutableList();
+
+    private async Task SaveSearchHistory(string text)
+    {
+        var searchHistory = _searchOptions.Value;
+        if (searchHistory is not null && !text.IsNullOrEmpty())
+        {
+            var toAdd = text != searchHistory.Searches.LastOrDefault() ? searchHistory.Searches.Add(text) : searchHistory.Searches;
+            await _searchOptions.UpdateAsync(h => h with { Searches = toAdd });
+        }
+    }
 
     private IImmutableList<Recipe> GetRecipesByText(IEnumerable<Recipe> recipes, string text) => recipes
             .Where(r => r.Name!.ToLower().Contains(text.ToLower())

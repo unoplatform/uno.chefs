@@ -21,30 +21,28 @@
                 <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
             </utu:AutoLayout.Resources>
             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Orientation="Horizontal" 
-                                Background="{ThemeResource SurfaceBrush}">
-                    <utu:AutoLayout Foreground="Black"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <Button utu:AutoLayout.CounterAlignment="Start"
-                                Foreground="Black"
-                                Height="40"
-                                Background="{ThemeResource BackgroundBrush}"
-                                Command="{Binding SettingsNavigation}"
-                                Visibility="{Binding IsMyProfile}">
-                            <SymbolIcon Symbol="Setting" />
-                        </Button>
-                    </utu:AutoLayout>
-                    <Button Background="{ThemeResource BackgroundBrush}"
-                            Foreground="Black"
-                            Height="40"
-                            Command="{Binding Exit}">
-                        <PathIcon Data="{StaticResource BitmapIcon_Close}">
-                            <PathIcon.Resources>
-                                <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
-                            </PathIcon.Resources>
-                        </PathIcon>
-                    </Button>
-                </utu:AutoLayout>
+                <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
+                               Background="{ThemeResource SurfaceBrush}" >
+                    <utu:NavigationBar.MainCommand>
+                        <AppBarButton Label="" 
+                                      Background="{ThemeResource BackgroundBrush}"
+                                      Foreground="Black">
+                            <AppBarButton.Icon>
+                                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Icons/close.png" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.MainCommand>
+                    <utu:NavigationBar.PrimaryCommands>
+                        <AppBarButton Command="{Binding SettingsNavigation}"
+                                      Background="{ThemeResource BackgroundBrush}"
+                                      Foreground="Black"
+                                      Visibility="{Binding IsMyProfile}">
+                            <AppBarButton.Icon>
+                                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Icons/settings.png" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.PrimaryCommands>
+                </utu:NavigationBar>
                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                 Spacing="16"
                                 Padding="0,0,0,24"
@@ -131,13 +129,13 @@
                                         utu:AutoLayout.PrimaryAlignment="Stretch">
                             <utu:TabBar uen:Region.Attached="True"
                                         Margin="0, 29, 0, -8"
-                                        Style="{StaticResource TopTabBarStyle}"
-                                        SelectedItem="{Binding ElementName=RecipesTab}">
+                                        Style="{StaticResource TopTabBarStyle}">
                                 <utu:TabBarItem x:Name="RecipesTab"
                                                 Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                 uen:Region.Name="MyRecipes"
                                                 IsSelectable="True"
-                                                Content="My Recipes" />
+                                                Content="My Recipes"
+                                                IsSelected="True"/>
                                 <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                 uen:Region.Name="Cookbooks"
                                                 IsSelectable="True"
@@ -204,7 +202,7 @@
                                                     <muxc:ItemsRepeater.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                                uen:Navigation.Request="SavedCookbookDetail"
+                                                                                uen:Navigation.Request="!ProfileCookbookDetail"
                                                                                 Style="{StaticResource FilledCardContentControlStyle}"
                                                                                 Background="{ThemeResource SurfaceBrush}"
                                                                                 Margin="1.5, 0, 0, 0"

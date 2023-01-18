@@ -16,10 +16,22 @@
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
+            <x:String x:Key="Icon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
             <x:String x:Key="Icon_Outline_Arrow_Left_ChefsApp">F1 M 5.280330181121826 1.2803300619125366 C 5.57322359085083 0.9874368906021118 5.57322359085083 0.512563094496727 5.280330181121826 0.21966992318630219 C 4.9874372482299805 -0.0732233077287674 4.5125627517700195 -0.0732233077287674 4.219669818878174 0.21966992318630219 L 0.21966992318630219 4.219669818878174 C 0.0732233077287674 4.366116523742676 0 4.558058261871338 0 4.75 C 0 4.8516926765441895 0.020239103585481644 4.948657989501953 0.05690905824303627 5.037087917327881 C 0.09350889176130295 5.125546932220459 0.1477625072002411 5.208422660827637 0.21966992318630219 5.280330181121826 L 4.219669818878174 9.280330657958984 C 4.5125627517700195 9.573224067687988 4.9874372482299805 9.573224067687988 5.280330181121826 9.280330657958984 C 5.57322359085083 8.98743724822998 5.57322359085083 8.512563705444336 5.280330181121826 8.219670295715332 L 2.5606601238250732 5.5 L 12.25 5.5 C 12.664213180541992 5.5 13 5.16421365737915 13 4.75 C 13 4.33578634262085 12.664213180541992 4 12.25 4 L 2.5606601238250732 4 L 5.280330181121826 1.2803300619125366 Z</x:String>
             <x:String x:Key="Icon_Outline_Filter_ChefsApp">F0 M 0.02379501610994339 10.804652214050293 C 0.02379501610994339 10.456172853708267 0.2924284040927887 10.173674583435059 0.6238044500350952 10.173674583435059 L 5.664457321166992 10.173674583435059 C 5.9958334267139435 10.173674583435059 6.264466285705566 10.456172853708267 6.264466285705566 10.804652214050293 C 6.264466285705566 11.153131574392319 5.9958334267139435 11.435629844665527 5.664457321166992 11.435629844665527 L 0.6238044500350952 11.435629844665527 C 0.2924284040927887 11.435629844665527 0.02379501610994339 11.153131574392319 0.02379501610994339 10.804652214050293 Z M 7.312614917755127 2.650362014770508 C 7.312614917755127 2.301882654428482 7.581247806549072 2.0193843841552734 7.912623882293701 2.0193843841552734 L 12.953277587890625 2.0193843841552734 C 13.284653753042221 2.0193843841552734 13.5532865524292 2.301882654428482 13.5532865524292 2.650362014770508 C 13.5532865524292 2.9988413751125336 13.284653753042221 3.281339645385742 12.953277587890625 3.281339645385742 L 7.912623882293701 3.281339645385742 C 7.581247806549072 3.281339645385742 7.312614917755127 2.9988413751125336 7.312614917755127 2.650362014770508 Z M 0 2.604888677597046 C 0 1.1621099710464478 1.1192399263381958 0 2.490554094314575 0 C 3.8618680238723755 0 4.98110818862915 1.1621099710464478 4.98110818862915 2.604888677597046 C 4.98110818862915 4.047667384147644 3.8618680238723755 5.209777355194092 2.490554094314575 5.209777355194092 C 1.1192399263381958 5.209777355194092 0 4.047667384147644 0 2.604888677597046 Z M 2.490554094314575 1.2619551420211792 C 1.7738621830940247 1.2619551420211792 1.2000188827514648 1.8675875663757324 1.2000188827514648 2.604888677597046 C 1.2000188827514648 3.3421897292137146 1.7738621830940247 3.947822332382202 2.490554094314575 3.947822332382202 C 3.2072460055351257 3.947822332382202 3.7810895442962646 3.3421897292137146 3.7810895442962646 2.604888677597046 C 3.7810895442962646 1.8675875663757324 3.2072460055351257 1.2619551420211792 2.490554094314575 1.2619551420211792 Z M 9.018891334533691 10.771801948547363 C 9.018891334533691 9.328882217407227 10.138266921043396 8.166913032531738 11.51009750366211 8.166913032531738 C 12.88168215751648 8.166913032531738 14 9.329305648803711 14 10.771801948547363 C 14 12.214298248291016 12.88168215751648 13.376690864562988 11.51009750366211 13.376690864562988 C 10.138266921043396 13.376690864562988 9.018891334533691 12.21472179889679 9.018891334533691 10.771801948547363 Z M 11.51009750366211 9.428868293762207 C 10.792618691921234 9.428868293762207 10.218910217285156 10.034642040729523 10.218910217285156 10.771801948547363 C 10.218910217285156 11.508961975574493 10.792618691921234 12.114736557006836 11.51009750366211 12.114736557006836 C 12.226519227027893 12.114736557006836 12.799980163574219 11.509385466575623 12.799980163574219 10.771801948547363 C 12.799980163574219 10.034218430519104 12.226519227027893 9.428868293762207 11.51009750366211 9.428868293762207 Z</x:String>
             <x:String x:Key="Icon_Outline_Interface_Search">F0 M 10.963515281677246 12.024166107177734 C 8.313246726989746 14.146820068359375 4.433813571929932 13.979755401611328 1.9770290851593018 11.522971153259277 C -0.6590096950531006 8.886931419372559 -0.6590096950531006 4.613068103790283 1.9770290851593018 1.9770293235778809 C 4.613068103790283 -0.6590099334716797 8.886931419372559 -0.6590094566345215 11.522970199584961 1.9770293235778809 C 13.979751586914062 4.433810710906982 14.146820068359375 8.313236236572266 12.024174690246582 10.963505744934082 L 17.179807662963867 16.119138717651367 C 17.472702026367188 16.412031173706055 17.472702026367188 16.886905670166016 17.179807662963867 17.179798126220703 C 16.88691520690918 17.472692489624023 16.41204071044922 17.472692489624023 16.11914825439453 17.179798126220703 L 10.963515281677246 12.024166107177734 Z M 3.037689208984375 10.462310791015625 C 0.9874367713928223 8.412057876586914 0.9874367713928223 5.087942123413086 3.037689208984375 3.037689447402954 C 5.087941646575928 0.9874367713928223 8.412057876586914 0.9874370098114014 10.462310791015625 3.037689447402954 C 12.51105785369873 5.086437225341797 12.512561798095703 8.407177925109863 10.466822624206543 10.457793235778809 C 10.46530818939209 10.459281921386719 10.463798522949219 10.460780143737793 10.46229362487793 10.462285041809082 C 10.46078872680664 10.463789939880371 10.459290504455566 10.465300559997559 10.45780086517334 10.466814994812012 C 8.407186508178711 12.512561798095703 5.08643913269043 12.511059761047363 3.037689208984375 10.462310791015625 Z</x:String>
+
         </utu:AutoLayout.Resources>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout Spacing="24"
                             Padding="18,24">
@@ -32,7 +44,8 @@
                         <PathIcon Data="{StaticResource Icon_Outline_Arrow_Left_ChefsApp}"
                                   Foreground="{ThemeResource SurfaceInverseBrush}" />
                     </Button>
-                    <TextBox utu:AutoLayout.CounterAlignment="Center"
+                    <TextBox x:Name="SearchBox"
+                             utu:AutoLayout.CounterAlignment="Center"
                              utu:AutoLayout.PrimaryAlignment="Stretch"
                              BorderBrush="{ThemeResource OnSurfaceLowBrush}"
                              BorderThickness="1"
@@ -45,11 +58,70 @@
                         </um:ControlExtensions.Icon>
                     </TextBox>
                 </utu:AutoLayout>
-                <utu:AutoLayout Orientation="Horizontal">
+                <utu:AutoLayout Spacing="12">
+                    <utu:AutoLayout Orientation="Horizontal">
+
+                        <utu:AutoLayout Orientation="Horizontal"
+                                        Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                            <TextBlock Text="recent searches "
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Style="{StaticResource TitleLarge}" />
+                        </utu:AutoLayout>
+
+                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
+                                       Style="{StaticResource TitleLarge}"
+                                       Visibility="{Binding Searched}" />
+                        </utu:AutoLayout>
+
+                        <utu:AutoLayout Padding="10"
+                                        PrimaryAxisAlignment="End"
+                                        utu:AutoLayout.CounterAlignment="End"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <Button Content="Filters"
+                                    utu:AutoLayout.CounterAlignment="End"
+                                    BorderBrush="{ThemeResource PrimaryBrush}"
+                                    BorderThickness="1.5"
+                                    CornerRadius="15"
+                                    Style="{StaticResource OutlinedButtonStyle}"
+                                    Command="{Binding GoToFilter}">
+                                <um:ControlExtensions.Icon>
+                                    <PathIcon Data="{StaticResource Icon_Outline_Filter_ChefsApp}" />
+                                </um:ControlExtensions.Icon>
+                            </Button>
+                        </utu:AutoLayout>
+
+                    </utu:AutoLayout>
+
+                    <muxc:ItemsRepeater x:Name="HistoryRepeater"
+                                        utu:AutoLayout.CounterAlignment="Start"
+                                        ItemsSource="{Binding SearchHistory}"
+                                        Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                        <muxc:ItemsRepeater.Layout>
+                            <muxc:StackLayout Orientation="Horizontal" />
+                        </muxc:ItemsRepeater.Layout>
+                        <muxc:ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding}"
+                                        Padding="5"
+                                        Margin="0,0,8,0"
+                                        CornerRadius="8"
+                                        Background="{ThemeResource PrimaryInverseColor}"
+                                        Foreground="{ThemeResource SurfaceColor}"
+                                        Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </muxc:ItemsRepeater.ItemTemplate>
+                    </muxc:ItemsRepeater>
+                </utu:AutoLayout>
+                <!--<utu:AutoLayout Orientation="Horizontal">
                     <utu:AutoLayout Orientation="Horizontal"
                                     utu:AutoLayout.CounterAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    Visibility="{Binding Searched, Converter={StaticResource TrueToVisible}}">
+                                    Visibility="{Binding Searched}}">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
                                    utu:AutoLayout.CounterAlignment="Center"
@@ -66,68 +138,94 @@
                             <PathIcon Data="{StaticResource Icon_Outline_Filter_ChefsApp}" />
                         </um:ControlExtensions.Icon>
                     </Button>
-                </utu:AutoLayout>
+                </utu:AutoLayout>-->
             </utu:AutoLayout>
 
             <Grid Padding="18,12">
                 <ScrollViewer HorizontalScrollMode="Enabled"
                               HorizontalScrollBarVisibility="Visible"
-                              Visibility="{Binding Searched, Converter={StaticResource TrueToVisible}}">
+                              Visibility="{Binding Searched}">
                     <uer:FeedView x:Name="SearchFeed"
                                   Source="{Binding Items}">
-                        <!--Visibility="{Binding Searched, Converter={StaticResource TrueToCollapsed}}"-->
+                        <!--Visibility="{Binding Searched, Converter={StaticResource InvertBool}}"-->
                         <DataTemplate>
-                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                uen:Navigation.Request="!RecipeDetails">
-                                <muxc:ItemsRepeater.Layout>
-                                    <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                            <Grid>
+                                <Grid.Resources>
+                                    <muxc:UniformGridLayout x:Key="NarrowGridLayout"
+                                                            MaximumRowsOrColumns="2"
                                                             ItemsJustification="SpaceAround"
                                                             MinColumnSpacing="10"
                                                             MinRowSpacing="10"
-                                                            ItemsStretch="Uniform"/>
-                                </muxc:ItemsRepeater.Layout>
-                                <muxc:ItemsRepeater.ItemTemplate>
-                                    <DataTemplate>
-                                        <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                uen:Navigation.Request="!RecipeDetails"
-                                                                Style="{StaticResource FilledCardContentControlStyle}"
-                                                                Background="{ThemeResource SurfaceBrush}"
-                                                                uen:Navigation.Data="{Binding}"
-                                                                MaxWidth="162">
-                                            <utu:CardContentControl.ContentTemplate>
-                                                <DataTemplate>
-                                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                    CornerRadius="12"
-                                                                    utu:AutoLayout.CounterAlignment="Start">
-                                                        <Image Source="{Binding ImageUrl}"
-                                                               Stretch="UniformToFill"
-                                                               MaxHeight="110" />
-                                                        <utu:AutoLayout Spacing="2"
-                                                                        Padding="16,10"
-                                                                        PrimaryAxisAlignment="Center">
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                       Text="{Binding Name}"
-                                                                       TextWrapping="NoWrap"
-                                                                       Style="{StaticResource TitleMedium}" />
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                                       Text="{Binding TimeCal}"
-                                                                       TextWrapping="NoWrap"
-                                                                       Style="{StaticResource BodySmall}" />
+                                                            ItemsStretch="Uniform" />
+                                    <muxc:UniformGridLayout x:Key="WideGridLayout"
+                                                            MaximumRowsOrColumns="5"
+                                                            ItemsJustification="SpaceAround"
+                                                            MinColumnSpacing="10"
+                                                            MinRowSpacing="10"
+                                                            ItemsStretch="Uniform" />
+                                </Grid.Resources>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup>
+                                        <VisualState x:Name="Narrow" />
+                                        <VisualState x:Name="Wide">
+                                            <VisualState.StateTriggers>
+                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                            </VisualState.StateTriggers>
+                                            <VisualState.Setters>
+                                                <Setter Target="SearchRepeater.Layout"
+                                                        Value="{StaticResource WideGridLayout}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <muxc:ItemsRepeater x:Name="SearchRepeater"
+                                                    ItemsSource="{Binding Data}"
+                                                    uen:Navigation.Request="!RecipeDetails"
+                                                    Layout="{StaticResource NarrowGridLayout}">
+                                    <muxc:ItemsRepeater.ItemTemplate>
+                                        <DataTemplate>
+                                            <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
+                                                                    uen:Navigation.Request="!RecipeDetails"
+                                                                    Style="{StaticResource FilledCardContentControlStyle}"
+                                                                    Background="{ThemeResource SurfaceBrush}"
+                                                                    uen:Navigation.Data="{Binding}"
+                                                                    MaxWidth="162">
+                                                <utu:CardContentControl.ContentTemplate>
+                                                    <DataTemplate>
+                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                        CornerRadius="12"
+                                                                        utu:AutoLayout.CounterAlignment="Start">
+                                                            <Image Source="{Binding ImageUrl}"
+                                                                   Stretch="UniformToFill"
+                                                                   MaxHeight="110" />
+                                                            <utu:AutoLayout Spacing="2"
+                                                                            Padding="16,10"
+                                                                            PrimaryAxisAlignment="Center">
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                           Text="{Binding Name}"
+                                                                           TextWrapping="NoWrap"
+                                                                           Style="{StaticResource TitleMedium}" />
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                           Text="{Binding TimeCal}"
+                                                                           TextWrapping="NoWrap"
+                                                                           Style="{StaticResource BodySmall}" />
+                                                            </utu:AutoLayout>
                                                         </utu:AutoLayout>
-                                                    </utu:AutoLayout>
-                                                </DataTemplate>
-                                            </utu:CardContentControl.ContentTemplate>
-                                        </utu:CardContentControl>
-                                    </DataTemplate>
-                                </muxc:ItemsRepeater.ItemTemplate>
-                            </muxc:ItemsRepeater>
+                                                    </DataTemplate>
+                                                </utu:CardContentControl.ContentTemplate>
+                                            </utu:CardContentControl>
+                                        </DataTemplate>
+                                    </muxc:ItemsRepeater.ItemTemplate>
+                                </muxc:ItemsRepeater>
+                            </Grid>
                         </DataTemplate>
                     </uer:FeedView>
 
                 </ScrollViewer>
                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                 Spacing="8"
-                                Visibility="{Binding Searched, Converter={StaticResource TrueToCollapsed}}">
+                                Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
                     <TextBlock Text="Recipes for you"
                                Foreground="{ThemeResource SurfaceInverseBrush}"
                                Style="{StaticResource TitleLarge}" />

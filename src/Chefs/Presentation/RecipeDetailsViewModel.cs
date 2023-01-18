@@ -32,7 +32,7 @@ public partial class RecipeDetailsViewModel
         await _navigator.NavigateViewModelAsync<LiveCookingViewModel>(this, data: new LiveCookingParameter((await Recipe)!, await Steps));
     
     public async ValueTask IngredientsNavigation(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<IngredientsViewModel>(this, qualifier: Qualifiers.Dialog, data: new IngredientsParameter((await Recipe)!, await Ingredients));
+        await _navigator.NavigateViewModelAsync<IngredientsViewModel>(this, data: new IngredientsParameter((await Recipe)!, await Ingredients, await Steps));
 
     public async ValueTask Review(CancellationToken ct)
     {

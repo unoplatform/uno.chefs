@@ -44,7 +44,7 @@
 	  <Content Include="Images\SplashScreen.scale-200.png" />
 	  <Content Include="Images\SplashScreen.scale-400.png" />
 	  <Content Include="Images\Square150x150Logo.scale-200.png" />
-	  <Content Include="Images\Square44x44Logo.scale-200.png" />
+	  <Content Include="Images\settings.scale-200.png" />
 	  <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
 	  <Content Include="Images\StoreLogo.png" />
 	  <Content Include="Images\Wide310x150Logo.scale-200.png" />
@@ -55,11 +55,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.4" />
-		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221116.1" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
-		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.1.0-dev.27" />
+		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.14.0-dev.54" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Uno.WinUI" Version="4.6.19" />
@@ -85,13 +85,13 @@
 		the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
 		must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
 		-->
-		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22000.25" />
-		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.25" />
+		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22000.27" />
+		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.27" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.64" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.117" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.117" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.68" />
+	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.138" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.138" />
 	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />

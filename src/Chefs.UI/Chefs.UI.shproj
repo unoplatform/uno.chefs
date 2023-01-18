@@ -32,8 +32,8 @@
     <UpToDateCheckInput Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <_Globbed_Compile Remove="Converters\InflateDimensionConverter.cs" />
-    <_Globbed_Compile Remove="Converters\CertainNumberToVisible.cs" />
+    <_Globbed_Compile Remove="Converters\BoolToObjectConverter.cs" />
+    <_Globbed_Compile Remove="Converters\InvertBoolConverter.cs" />
     <_Globbed_Compile Remove="Converters\TimeSpanToStringConverter.cs" />
     <_Globbed_Compile Remove="Converters\BoolToVisibilityConverter.cs" />
     <_Globbed_Compile Remove="Styles\TabBar.xaml.cs" />
@@ -58,6 +58,17 @@
     <_Globbed_Compile Remove="Views\SettingsPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\LiveCookingPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\UpdateCookbookPage.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-100.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-125.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-150.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-200.png" />
+    <_Globbed_Content Remove="Assets\Icons\settings.scale-400.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-16.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-24.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-32.png" />
+    <_Globbed_Content Remove="Assets\Icons\SettingsLogo.targetsize-48.png" />
   </ItemGroup>
   <ItemGroup>
     <_Globbled_Page Remove="Converters\Converters.xaml" />

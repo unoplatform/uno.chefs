@@ -13,7 +13,11 @@ public partial class NotificationsViewModel
         _notificationService = notificationService;
     }
 
-    IListFeed<Notification> Notifications => ListFeed<Notification>.Async(async ct => await _notificationService.GetAll(ct));
+    public IListFeed<Notification> Notifications => ListFeed<Notification>.Async(async ct => await _notificationService.GetAll(ct));
+
+    public IListFeed<Notification> Unread => Notifications.Where(x => !x.Read);
+
+    public IListFeed<Notification> Read => Notifications.Where(x => x.Read);
 
     public async ValueTask DoExist(CancellationToken ct)
     {

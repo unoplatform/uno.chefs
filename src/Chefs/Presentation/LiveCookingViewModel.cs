@@ -1,5 +1,4 @@
 ﻿using Chefs.Business;
-using Chefs.Data;
 using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
@@ -13,13 +12,15 @@ public partial class LiveCookingViewModel
     public LiveCookingViewModel(LiveCookingParameter parameter, INavigator navigator)
     {
         _navigator = navigator;
-        Steps = ListState.Value(this, () => parameter.Steps);
+        Steps = State.Value(this, () => parameter.Steps);
         Recipe = State.Value(this, () => parameter.Recipe);
     }
 
-    public IListFeed<Step> Steps { get; }
+    public IState<IImmutableList<Step>> Steps { get; }
 
     public IState<Recipe> Recipe { get; }
+
+    public IFeed<Step?> SelectedStep => Feed.Combine(Steps, SelectedIndex).Select(param => param.Item2 < 0 ? param.Item1[param.Item2] : param.Item1.FirstOrDefault());
 
     public IState<int> SelectedIndex => State.Value(this, () => 0);
 
