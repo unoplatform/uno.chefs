@@ -2,25 +2,23 @@
 
 namespace Chefs.Presentation;
 
-public partial class FilterModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class FilterModel
 {
 	private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
-    private readonly SearchFilter _filter;
 
     public FilterModel(SearchFilter filters, INavigator navigator, IRecipeService recipeService)
     {
         _navigator = navigator;
         _recipeService = recipeService;
 
-        _filter = filters;
+        Filter = State.Value(this, () => filters);
     }
 
-    public IState<SearchFilter> Filter => State.Value(this, () => _filter);
+    public IState<SearchFilter> Filter { get; }
 
     public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
 
-    // DR_REV: Use implicit parameters
     public async ValueTask SearchFilter(SearchFilter filter, CancellationToken ct) =>
         await _navigator.NavigateBackWithResultAsync(this, data: filter, cancellation: ct);
 

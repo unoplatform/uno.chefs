@@ -69,7 +69,7 @@ public class RecipeService : IRecipeService
     {
         if (term.IsNullOrEmpty())
         {
-            return ImmutableList<Recipe>.Empty;
+            return (await _recipeEndpoint.GetAll(ct)).Select(r => new Recipe(r)).ToImmutableList();
         }
         else
         {
