@@ -150,7 +150,8 @@
                 <utu:AutoLayout Padding="18,0"
                                 utu:AutoLayout.CounterAlignment="Center">
                     <utu:AutoLayout Spacing="18"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                    uen:Region.Attached="True">
                         <utu:TabBar uen:Region.Attached="True"
                                     Margin="0, 29, 0, -8"
                                     Style="{StaticResource TopTabBarStyle}"
@@ -285,24 +286,28 @@
             <Grid uen:Region.Attached="True"
                   uen:Region.Navigator="Visibility"
                   utu:AutoLayout.CounterAlignment="Stretch">
-                <utu:AutoLayout x:Name="AddButtonLayout"
-                                PrimaryAxisAlignment="End"
-                                Orientation="Horizontal"
-                                utu:AutoLayout.IsIndependentLayout="True"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Right"
-                                Margin="18"
+                <utu:AutoLayout uen:Region.Name="MyRecipes"
+                                Visibility="Visible" />
+                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                 uen:Region.Name="Cookbooks"
                                 Visibility="Collapsed">
-                    <Button uen:Navigation.Request="!CreateCookbook"
-                            utu:AutoLayout.CounterAlignment="End"
-                            CornerRadius="60"
-                            Style="{StaticResource FabStyle}">
-                        <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Add}"
-                                      Foreground="{ThemeResource SurfaceBrush}" />
-                        </um:ControlExtensions.Icon>
-                    </Button>
+                    <utu:AutoLayout x:Name="AddButtonLayout"
+                                    PrimaryAxisAlignment="End"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.IsIndependentLayout="True"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Right"
+                                    Margin="18">
+                        <Button uen:Navigation.Request="!CreateCookbook"
+                                utu:AutoLayout.CounterAlignment="End"
+                                CornerRadius="60"
+                                Style="{StaticResource FabStyle}">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Add}"
+                                          Foreground="{ThemeResource SurfaceBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </Button>
+                    </utu:AutoLayout>
                 </utu:AutoLayout>
             </Grid>
         </utu:AutoLayout>
