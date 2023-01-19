@@ -1,22 +1,14 @@
-﻿using System.Collections.Immutable;
-using Chefs.Business;
-using Microsoft.UI.Xaml;
-using Uno.Extensions.Navigation;
+﻿using Chefs.Business;
 
 namespace Chefs.Presentation;
 
 public partial class CookbookDetailModel
 {
-    private readonly INavigator _navigator;
-    private Cookbook? _cookbook;
-
     public CookbookDetailModel(
-        INavigator navigator, 
         Cookbook cookbook)
     {
-        _navigator = navigator;
-        _cookbook = cookbook;
+        Cookbook = State<Cookbook>.Value(this, () => cookbook ?? new Cookbook());
     }
 
-    public IState<Cookbook> Cookbook => State<Cookbook>.Value(this, () => _cookbook ?? new Cookbook());
+    public IState<Cookbook> Cookbook { get; }
 }

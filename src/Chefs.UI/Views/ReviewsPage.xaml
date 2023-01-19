@@ -1,14 +1,14 @@
-﻿<Flyout x:Class="Chefs.Views.ReviewsPage"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="using:Chefs.Views"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:uer="using:Uno.Extensions.Reactive.UI"
-        xmlns:utu="using:Uno.Toolkit.UI"
-        xmlns:uen="using:Uno.Extensions.Navigation.UI"
-        mc:Ignorable="d"
-        Placement="Full">
+﻿<local:ResponsiveDrawerFlyout x:Class="Chefs.Views.ReviewsPage"
+                              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                              xmlns:local="using:Chefs.Views"
+                              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                              xmlns:uer="using:Uno.Extensions.Reactive.UI"
+                              xmlns:utu="using:Uno.Toolkit.UI"
+                              xmlns:uen="using:Uno.Extensions.Navigation.UI"
+                              mc:Ignorable="d"
+                              Placement="Full">
 
     <utu:AutoLayout>
         <utu:AutoLayout.Resources>
@@ -90,24 +90,24 @@
                         </uer:FeedView>
                     </utu:AutoLayout>
                 </ScrollViewer>
-                </utu:AutoLayout>
-                <utu:AutoLayout Spacing="8"
-                                Padding="18,24"
-                                PrimaryAxisAlignment="Center"
-                                Orientation="Horizontal">
-                    <TextBox Background="{ThemeResource SurfaceBrush}"
-                             PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-                             PlaceholderText="Write a comment"
-                             utu:AutoLayout.PrimaryAlignment="Stretch"
-                             Style="{StaticResource OutlinedTextBoxStyle}"
-                             Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <Button Background="{ThemeResource PrimaryBrush}"
-                            Content="Send"
-                            utu:AutoLayout.CounterAlignment="Center"
-                            utu:AutoLayout.CounterLength="56"
-                            Command="{Binding AddReview}" />
-                </utu:AutoLayout>
+            </utu:AutoLayout>
+            <utu:AutoLayout Spacing="8"
+                            Padding="18,24"
+                            PrimaryAxisAlignment="Center"
+                            Orientation="Horizontal">
+                <TextBox Background="{ThemeResource SurfaceBrush}"
+                         PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+                         PlaceholderText="Write a comment"
+                         utu:AutoLayout.PrimaryAlignment="Stretch"
+                         Style="{StaticResource OutlinedTextBoxStyle}"
+                         Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Background="{ThemeResource PrimaryBrush}"
+                        Content="Send"
+                        utu:AutoLayout.CounterAlignment="Center"
+                        utu:AutoLayout.CounterLength="56"
+                        Command="{Binding AddReview}" />
+            </utu:AutoLayout>
         </utu:AutoLayout>
     </utu:AutoLayout>
 
-</Flyout>
+</local:ResponsiveDrawerFlyout>

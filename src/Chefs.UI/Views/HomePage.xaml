@@ -133,7 +133,7 @@
                         <Setter Target="SnackRecipesFeedView.Margin"
                                 Value="-40,0" />
                         <Setter Target="NavBarLayout.Padding"
-                                Value="40,20,40,20" />
+                                Value="40,20" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -141,9 +141,8 @@
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout x:Name="NavBarLayout"
                             Padding="18,12"
-                            Spacing="50"
                             Orientation="Horizontal">
-                <!--Nested Autolayout until bug when spacing < padding => (Botton/Left) padding = 0-->
+
                 <utu:AutoLayout x:Name="ProfileLayout"
                                 Spacing="8"
                                 Orientation="Horizontal"
@@ -174,7 +173,7 @@
                                    Style="{StaticResource CustomCaptionMedium}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
-                <!--Nested Autolayout until bug when spacing < padding => (Botton/Left) padding = 0-->
+                
                 <utu:AutoLayout Spacing="8"
                                 Orientation="Horizontal">
                     <Button utu:AutoLayout.CounterAlignment="Center"
