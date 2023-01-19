@@ -61,7 +61,9 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>-->
-                <!--Workaround until AppBarButton bug gets fixed-->
+                
+                <!--Workaround for: [Bug] AppBarButton not working with uen:Navigation.Request#103
+                    https://github.com/unoplatform/uno.chefs/issues/103-->
                 <utu:AutoLayout Spacing="10"
                                 Margin="18"
                                 Orientation="Horizontal">

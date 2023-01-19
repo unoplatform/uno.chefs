@@ -157,7 +157,6 @@
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             Spacing="18"
                             Padding="18,0">
-                <!--Text="{Binding Cookbook.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
                 <ScrollViewer HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Hidden"
                               utu:AutoLayout.PrimaryAlignment="Stretch">

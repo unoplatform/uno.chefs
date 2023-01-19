@@ -219,7 +219,9 @@
 
                     <utu:AutoLayout x:Name="StepsFeedLayout"
                                     utu:AutoLayout.CounterAlignment="Stretch">
-                        <!--TEMP WORKAROUND FOR ISSUE ON ANDROID FOR LISTVIEW-->
+                        <!--Workaround for: [Bug] [Mobile] Horizontal list view not visible inside AutoLayout#104
+                            https://github.com/unoplatform/uno.chefs/issues/104-->
+                        
                         <not_win:AutoLayout x:Name="ItemsRepeaterLayout"
                                             utu:AutoLayout.CounterAlignment="Stretch"
                                             Background="{ThemeResource PrimaryBrush}">

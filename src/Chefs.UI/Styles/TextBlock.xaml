@@ -41,7 +41,7 @@
     <Style x:Key="CustomTitleLarge"
            TargetType="TextBlock"
            BasedOn="{StaticResource TitleLarge}">
-        <Setter Target="FontSize"
+        <Setter Property="FontSize"
                 Value="16" />
         <Setter Property="FontWeight"
                 Value="Medium" />
@@ -59,7 +59,7 @@
     <Style x:Key="CustomTitleSmall"
            TargetType="TextBlock"
            BasedOn="{StaticResource TitleSmall}">
-        <Setter Target="FontSize"
+        <Setter Property="FontSize"
                 Value="12" />
         <Setter Property="FontWeight"
                 Value="Medium" />

@@ -51,6 +51,10 @@
                                           Visibility="{Binding Profile.IsCurrent}"
                                           uen:Navigation.Request="!Settings"
                                           uen:Navigation.Data="{Binding Profile.Value}">-->
+                    
+                    <!--Workaround for: [Bug] AppBarButton not working with uen:Navigation.Request#103
+                    https://github.com/unoplatform/uno.chefs/issues/103-->
+                    
                     <AppBarButton Command="{Binding SettingsNavigation}"
                                   Background="{ThemeResource BackgroundBrush}"
                                   Foreground="Black"

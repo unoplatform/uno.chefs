@@ -118,7 +118,9 @@
             <!--<utu:NavigationBar Content="Notifications"
                                Background="{ThemeResource BackgroundBrush}"
                                Style="{StaticResource NavigationBarStyle}" />-->
-            <!--Workaround until AppBarButton bug gets fixed-->
+            
+            <!--Workaround for: [Bug] AppBarButton not working with uen:Navigation.Request#103
+                    https://github.com/unoplatform/uno.chefs/issues/103-->
             <utu:AutoLayout Spacing="10"
                             Orientation="Horizontal">
                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
