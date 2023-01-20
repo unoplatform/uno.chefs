@@ -134,6 +134,10 @@
                                 Value="-40,0" />
                         <Setter Target="NavBarLayout.Padding"
                                 Value="40,20" />
+                        <Setter Target="ProfileLayout.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="NotificationButton.Visibility"
+                                Value="Collapsed" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -182,7 +186,7 @@
                         <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
                                   Foreground="{ThemeResource OnSurfaceBrush}" />
                     </Button>
-                    <Button utu:AutoLayout.CounterAlignment="Center"
+                    <Button x:Name="NotificationButton" utu:AutoLayout.CounterAlignment="Center"
                             Style="{StaticResource IconButtonStyle}"
                             uen:Navigation.Request="!Notifications">
                         <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
