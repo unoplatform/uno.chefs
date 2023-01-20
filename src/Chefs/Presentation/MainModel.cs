@@ -1,18 +1,20 @@
+using Chefs.Business;
 
 namespace Chefs.Presentation;
 
 public partial class MainModel
 {
-	private readonly INavigator _navigator;
+    private readonly IUserService _userService;
 
-	public string? Title { get; }
+    public string? Title { get; }
 
 	public MainModel(
-		INavigator navigator,
+        IUserService userService,
 		IOptions<AppConfig> appInfo)
 	{ 
-	
-		_navigator = navigator;
         Title = $"Main - {appInfo?.Value?.Title ?? "Chefs"}";
+        _userService = userService;
     }
+
+    public IFeed<User> UserProfile => _userService.UserFeed;
 }
