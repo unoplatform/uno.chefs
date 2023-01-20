@@ -118,11 +118,8 @@ public class RecipeService : IRecipeService
 
     private async Task SaveSearchHistory(string text)
     {
-        if (lastTextLength <= text.Count())
-        {
-            lastTextLength = 0;
-            lastTextLength = text.Count();
-        }
+        if (lastTextLength <= text.Count()) lastTextLength = text.Count();
+        
         var searchHistory = _searchOptions.Value.Searches;
         if (searchHistory is not null && !text.IsNullOrEmpty())
         {
