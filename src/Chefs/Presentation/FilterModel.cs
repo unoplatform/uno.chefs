@@ -1,10 +1,11 @@
 ﻿using Chefs.Business;
+using Chefs.Data;
 
 namespace Chefs.Presentation;
 
 public partial class FilterModel
 {
-	private readonly INavigator _navigator;
+    private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
 
     public FilterModel(SearchFilter filters, INavigator navigator, IRecipeService recipeService)
@@ -16,6 +17,11 @@ public partial class FilterModel
     }
 
     public IState<SearchFilter> Filter { get; }
+
+    public IEnumerable<OrganizeCategories> OrganizeCategories => Enum.GetValues(typeof(OrganizeCategories)).Cast<OrganizeCategories>();
+    public IEnumerable<Times> Times => Enum.GetValues(typeof(Times)).Cast<Times>();
+    public IEnumerable<Difficulties> Difficulties => Enum.GetValues(typeof(Difficulties)).Cast<Difficulties>();
+    public IEnumerable<int> Serves => new int[] { 1, 2, 3, 4, 5 };
 
     public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
 
