@@ -7,31 +7,37 @@ public abstract class ResponsiveDrawerFlyout : Flyout
 
     public async void ApplyLeftDrawerFlyoutPresenterStyle(object? sender, object e)
     {
-        if (Window.Current.Bounds.Width > 700)
+        if (sender is Flyout elt && elt.XamlRoot is { } root)
         {
-            if (App.Current.Resources.TryGetValue(WideScreenLeftPresenterStyle, out var result) && result is Style style)
+            if (root.Size.Width > 700)
             {
-                FlyoutPresenterStyle = style;
+                if (App.Current.Resources.TryGetValue(WideScreenLeftPresenterStyle, out var result) && result is Style style)
+                {
+                    FlyoutPresenterStyle = style;
+                }
             }
-        }
-        else
-        {
-            ClearValue(FlyoutPresenterStyleProperty);
+            else
+            {
+                ClearValue(FlyoutPresenterStyleProperty);
+            }
         }
     }
 
     public async void ApplyRightDrawerFlyoutPresenterStyle(object? sender, object e)
     {
-        if (Window.Current.Bounds.Width > 700)
+        if (sender is Flyout elt && elt.XamlRoot is { } root)
         {
-            if (App.Current.Resources.TryGetValue(WideScreenRightPresenterStyle, out var result) && result is Style style)
+            if (root.Size.Width > 700)
             {
-                FlyoutPresenterStyle = style;
+                if (App.Current.Resources.TryGetValue(WideScreenRightPresenterStyle, out var result) && result is Style style)
+                {
+                    FlyoutPresenterStyle = style;
+                }
             }
-        }
-        else
-        {
-            ClearValue(FlyoutPresenterStyleProperty);
+            else
+            {
+                ClearValue(FlyoutPresenterStyleProperty);
+            }
         }
     }
 }
