@@ -1,7 +1,7 @@
 ﻿<Page x:Class="Chefs.Views.SavedRecipesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:Chefs.Views"
+      xmlns:controls="using:Chefs.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:utu="using:Uno.Toolkit.UI"
@@ -16,24 +16,13 @@
         <ResourceDictionary>
             <DataTemplate x:Key="CookbookTemplate">
                 <utu:AutoLayout>
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Narrow" />
-                            <VisualState x:Name="Wide">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                </VisualState.StateTriggers>
-                                <VisualState.Setters>
-                                    <Setter Target="CookbookTemplateCard.MaxWidth"
-                                            Value="240" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
                     <utu:CardContentControl x:Name="CookbookTemplateCard"
-                                            MaxWidth="155"
                                             Style="{StaticResource FilledCardContentControlStyle}"
                                             Background="{ThemeResource SurfaceBrush}"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            MinHeight="0"
+                                            MaxWidth="Infinity"
                                             uen:Navigation.Request="!SavedCookbookDetail"
                                             uen:Navigation.Data="{Binding}">
                         <utu:CardContentControl.ContentTemplate>
@@ -79,27 +68,16 @@
 
             <DataTemplate x:Key="RecipeTemplate">
                 <utu:AutoLayout>
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Narrow" />
-                            <VisualState x:Name="Wide">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                </VisualState.StateTriggers>
-                                <VisualState.Setters>
-                                    <Setter Target="RecipeTemplateCard.MaxWidth"
-                                            Value="240" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                    <utu:CardContentControl x:Name="RecipeTemplateCard"
-                                            MaxWidth="155"
-                                            Style="{StaticResource FilledCardContentControlStyle}"
-                                            Background="{ThemeResource SurfaceBrush}"
-                                            uen:Navigation.Request="!RecipeDetails"
-                                            uen:Navigation.Data="{Binding}">
-                        <utu:CardContentControl.ContentTemplate>
+                    <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
+                                                          Style="{StaticResource FilledCardContentControlStyle}"
+                                                          Background="{ThemeResource SurfaceBrush}"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Stretch"
+                                                          MinHeight="0"
+                                                          MaxWidth="Infinity"
+                                                          uen:Navigation.Request="!RecipeDetails"
+                                                          uen:Navigation.Data="{Binding}">
+                        <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                     <VisualStateManager.VisualStateGroups>
@@ -135,8 +113,8 @@
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
                             </DataTemplate>
-                        </utu:CardContentControl.ContentTemplate>
-                    </utu:CardContentControl>
+                        </controls:FixedSizeCardContentControl.ContentTemplate>
+                    </controls:FixedSizeCardContentControl>
                 </utu:AutoLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -185,6 +163,8 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
+        <muxc:PipsPager />
         <utu:AutoLayout x:Name="ContentLayout"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         Padding="18">
@@ -294,7 +274,8 @@
                                                                     ItemTemplate="{StaticResource RecipeTemplate}">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                                ItemsStretch="Fill" />
+                                                                                ItemsStretch="Fill"
+                                                                                MinItemWidth="248" />
                                                     </muxc:ItemsRepeater.Layout>
                                                 </muxc:ItemsRepeater>
 
@@ -316,7 +297,8 @@
                                                                     ItemTemplate="{StaticResource CookbookTemplate}">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                                ItemsStretch="Fill" />
+                                                                                ItemsStretch="Fill"
+                                                                                MinItemWidth="248" />
                                                     </muxc:ItemsRepeater.Layout>
                                                 </muxc:ItemsRepeater>
 

@@ -1,4 +1,5 @@
 ﻿using Chefs.Business;
+using System.Collections.Immutable;
 
 namespace Chefs.Presentation;
 
@@ -18,7 +19,7 @@ public partial class SavedRecipesModel
         _cookbookService = cookbookService;
     }
 
-    public IListFeed<Cookbook> Cookbooks => _cookbookService.SavedCookbooks;
+    public IListFeed<Cookbook> Cookbooks => _cookbookService.SavedCookbooks.AsFeed().Select(cookbooks => Enumerable.Range(0, 10).Select(i => cookbooks.First() with { Name = $"Cookbook {i}", Id = Guid.NewGuid() }).ToImmutableList()).AsListFeed();
 
     public IListFeed<Recipe> Recipes => _recipeService.SavedRecipes;
 }
