@@ -17,6 +17,6 @@
                                        Number="2" />
 
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
-                                      TrueValue="{StaticResource SurfaceBrush}"
-                                      FalseValue="{StaticResource OnSurfaceLowBrush}" />
+                                      TrueValue="{ThemeResource SurfaceBrush}"
+                                      FalseValue="{ThemeResource OnSurfaceLowBrush}" />
 </ResourceDictionary>

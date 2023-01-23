@@ -9,7 +9,7 @@ public abstract class ResponsiveDrawerFlyout : Flyout
     {
         if (Window.Current.Bounds.Width > 700)
         {
-            if (App.Current.Resources.TryGetValue(WideScreenRightPresenterStyle, out var result) && result is Style style)
+            if (App.Current.Resources.TryGetValue(WideScreenLeftPresenterStyle, out var result) && result is Style style)
             {
                 FlyoutPresenterStyle = style;
             }

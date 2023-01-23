@@ -136,6 +136,7 @@
             <utu:AutoLayout x:Name="NavBarLayout">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
+                                   Foreground="{ThemeResource OnBackgroundBrush}"
                                    Content="Update Cookbook"
                                    toolkit:UIElementExtensions.Elevation="0" />
             </utu:AutoLayout>

@@ -142,8 +142,17 @@
             <utu:AutoLayout  x:Name="NavBarLayout">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
+                                   Foreground="{ThemeResource OnBackgroundBrush}"
                                    Content="Create Cookbook"
-                                   toolkit:UIElementExtensions.Elevation="0" />
+                                   toolkit:UIElementExtensions.Elevation="0">
+                    <utu:NavigationBar.MainCommand>
+                        <AppBarButton>
+                            <AppBarButton.Icon>
+                                <BitmapIcon UriSource="ms-appx:///Assets/Icons/back.png" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.MainCommand>ingre
+                </utu:NavigationBar>
             </utu:AutoLayout>
             <TextBox x:Name="CookbookName"
                      Background="{ThemeResource SurfaceBrush}"

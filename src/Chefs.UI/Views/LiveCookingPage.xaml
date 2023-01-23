@@ -168,6 +168,7 @@
 
             <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                Background="{ThemeResource BackgroundBrush}"
+                               Foreground="{ThemeResource OnBackgroundBrush}"
                                x:Name="NavBar"
                                Content="Live Cooking"
                                utu:AutoLayout.PrimaryAlignment="Stretch"
