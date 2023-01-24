@@ -1,6 +1,25 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="CustomDisplaySmall"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource DisplaySmall}">
+        <Setter Property="FontSize"
+                Value="18" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomDisplayMedium"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource DisplayMedium}">
+        <Setter Property="FontSize"
+                Value="28" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
     <Style x:Key="CustomHeadlineLarge"
            TargetType="TextBlock"
            BasedOn="{StaticResource HeadlineLarge}">
@@ -22,7 +41,7 @@
     <Style x:Key="CustomTitleLarge"
            TargetType="TextBlock"
            BasedOn="{StaticResource TitleLarge}">
-        <Setter Property="FontSize"
+        <Setter Target="FontSize"
                 Value="16" />
         <Setter Property="FontWeight"
                 Value="Medium" />
@@ -40,7 +59,7 @@
     <Style x:Key="CustomTitleSmall"
            TargetType="TextBlock"
            BasedOn="{StaticResource TitleSmall}">
-        <Setter Property="FontSize"
+        <Setter Target="FontSize"
                 Value="12" />
         <Setter Property="FontWeight"
                 Value="Medium" />

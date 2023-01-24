@@ -312,8 +312,7 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!RecipeDetails"
-                                                        >
+                                                        uen:Navigation.Request="!RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>

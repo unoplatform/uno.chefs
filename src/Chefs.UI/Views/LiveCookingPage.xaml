@@ -168,7 +168,6 @@
 
             <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                Background="{ThemeResource BackgroundBrush}"
-                               Foreground="{ThemeResource OnBackgroundBrush}"
                                x:Name="NavBar"
                                Content="Live Cooking"
                                utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -186,6 +185,8 @@
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <Image Source="{Binding Recipe.ImageUrl}"
                                MinHeight="220"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Bottom"
                                x:Name="RecipeImage"
                                Stretch="UniformToFill" />
                     </utu:AutoLayout>
@@ -220,9 +221,7 @@
 
                     <utu:AutoLayout x:Name="StepsFeedLayout"
                                     utu:AutoLayout.CounterAlignment="Stretch">
-                        <!--Workaround for: [Bug] [Mobile] Horizontal list view not visible inside AutoLayout#104
-                            https://github.com/unoplatform/uno.chefs/issues/104-->
-                        
+                        <!--TEMP WORKAROUND FOR ISSUE ON ANDROID FOR LISTVIEW-->
                         <not_win:AutoLayout x:Name="ItemsRepeaterLayout"
                                             utu:AutoLayout.CounterAlignment="Stretch"
                                             Background="{ThemeResource PrimaryBrush}">
