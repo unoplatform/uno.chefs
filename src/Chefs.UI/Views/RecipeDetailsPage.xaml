@@ -193,15 +193,17 @@
                                                   Style="{StaticResource ListViewStyle}">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <utu:AutoLayout Margin="-10,0"
-                                                                    Padding="0,10"
-                                                                    PrimaryAxisAlignment="Center">
+                                                    <utu:AutoLayout Margin="-10,8"
+                                                                    Padding="16,18"
+                                                                    PrimaryAxisAlignment="Center"
+                                                                    Background="{ThemeResource SurfaceBrush}"
+                                                                    CornerRadius="15">
                                                         <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                    TextWrapping="Wrap"
                                                                    Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                                   Style="{StaticResource CustomDisplaySmall}"
+                                                                   Style="{StaticResource CustomTitleMedium}"
                                                                    FontSize="18" />
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                                    TextWrapping="Wrap"
                                                                    Text="{Binding Description}"
                                                                    Style="{StaticResource CustomDisplaySmall}"
