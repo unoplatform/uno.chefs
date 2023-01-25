@@ -166,7 +166,7 @@
                             <utu:AutoLayout uen:Region.Name="MyRecipes"
                                             Visibility="Visible"
                                             utu:AutoLayout.PrimaryAlignment="Stretch"
-                                            utu:AutoLayout.CounterAlignment="Stretch">>
+                                            utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start">
                                     <uer:FeedView Source="{Binding Recipes}"
                                                   utu:AutoLayout.CounterAlignment="Center">
