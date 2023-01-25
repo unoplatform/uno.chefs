@@ -70,6 +70,10 @@
                                                        TextWrapping="NoWrap"
                                                        Text="{Binding Name}"
                                                        Style="{StaticResource CustomTitleMedium}" />
+                                            <TextBlock TextWrapping="NoWrap"
+                                                       Text="{Binding TimeCal}"
+                                                       Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                       Style="{StaticResource CustomCaptionMedium}" />
                                         </utu:AutoLayout>
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
