@@ -151,8 +151,7 @@
                                             Padding="0"
                                             CornerRadius="16"
                                             PrimaryAxisAlignment="Center"
-                                            Orientation="Horizontal"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                            Orientation="Horizontal">
                                 <TextBox x:Name="ProfileFullName"
                                          Text="{Binding UserInfo.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          PlaceholderText="Full Name"
@@ -170,8 +169,7 @@
                                             Padding="0"
                                             CornerRadius="16"
                                             PrimaryAxisAlignment="Center"
-                                            Orientation="Horizontal"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                            Orientation="Horizontal">
                                 <TextBox x:Name="ProfileEmail"
                                          Text="{Binding UserInfo.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          PlaceholderText="Email"
@@ -189,8 +187,7 @@
                                             Padding="0"
                                             CornerRadius="16"
                                             PrimaryAxisAlignment="Center"
-                                            Orientation="Horizontal"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                            Orientation="Horizontal">
                                 <TextBox x:Name="ProfilePhoneNumber"
                                          Text="{Binding UserInfo.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          PlaceholderText="Mobile Number"
