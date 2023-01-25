@@ -301,30 +301,6 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
-            <!--<Grid uen:Region.Attached="True"
-                  uen:Region.Navigator="Visibility"
-                  utu:AutoLayout.CounterAlignment="Stretch">
-                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                                uen:Region.Name="Cookbooks"
-                                Visibility="Collapsed"
-                                x:Name="AddButtonLayout"
-                                PrimaryAxisAlignment="End"
-                                Orientation="Horizontal"
-                                utu:AutoLayout.IsIndependentLayout="True"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Right"
-                                Margin="18">
-                    <Button uen:Navigation.Request="!CreateCookbook"
-                            utu:AutoLayout.CounterAlignment="End"
-                            CornerRadius="60"
-                            Style="{StaticResource FabStyle}">
-                        <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Add}"
-                                      Foreground="{ThemeResource SurfaceBrush}" />
-                        </um:ControlExtensions.Icon>
-                    </Button>
-                </utu:AutoLayout>
-            </Grid>-->
         </utu:AutoLayout>
     </utu:AutoLayout>
 </local:ResponsiveDrawerFlyout>
