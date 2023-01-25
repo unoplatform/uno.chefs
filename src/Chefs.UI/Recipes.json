@@ -762,16 +762,16 @@
     ],
     "Details": "Good to have a pretty nice breakfast",
     "Creator": {
-     "Id": "3c896419-e280-40e7-8552-240635566fed",
-     "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
-     "FullName": "James Bondi",
-     "Description": "Passionate about food and life",
-     "Email": "james.bondi@gmail.com",
-     "PhoneNumber": "",
-     "Password": "123",
-     "Followers": 450,
-     "Following": 124,
-     "Recipes": 45
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
     },
     "Category": {
       "Id": 1,
@@ -843,16 +843,16 @@
     ],
     "Details": "Very special dessert to taste.",
     "Creator": {
-        "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-        "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
-        "FullName": "Troyan Smith",
-        "Description": "Passionate about food and life",
-        "Email": "troyan.smith@gmail.com",
-        "PhoneNumber": "",
-        "Password": "123",
-        "Followers": 147,
-        "Following": 259,
-        "Recipes": 45
+      "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
+      "FullName": "Troyan Smith",
+      "Description": "Passionate about food and life",
+      "Email": "troyan.smith@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 147,
+      "Following": 259,
+      "Recipes": 45
     },
     "Category": {
       "Id": 1,
@@ -948,6 +948,668 @@
       "Id": 1,
       "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
       "Name": "Breakfast",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Avocado Salad",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f649eefe-93cb-4bca-93a2-af806966d217",
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Mixing bowl" ],
+        "Description": "In a small mixing bowl whisk together lemon juice, red wine vinegar, extra virgin oil oil, honey, garlic.",
+        "Ingredients": [ "Lemon juic", "Red wine vinegar", "Extra virgin oil oil", "Honey", "Garlic" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Mixing bowl" ],
+        "Description": "After whisk, to get better taste pour cilantro, parsley, oregano, and season with salt and pepper.",
+        "Ingredients": [ "Cilantro", "Parsley", "Oregano", "Salt", "Pepper" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "In a large bowl gently toss together cucumbers, tomatoes, red onion, avocado with dressing.",
+        "Ingredients": [ "Cucumbers", "Tomatoes", "Red onion", "Avocado" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/avocado_salad.png",
+    "Serves": 1,
+    "CookTime": "00:25:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Lemon juic",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Red wine vinegar",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Extra virgin oil oil",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/bread.png",
+        "Name": "Honey",
+        "Quantity": "7 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "1"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cilantro",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Parsley",
+        "Quantity": "3 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Oregano",
+        "Quantity": "1 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "3 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "1.4 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cucumbers",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Tomatoes",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Red onion",
+        "Quantity": "4 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Avocado",
+        "Quantity": "10 gr"
+      }
+    ],
+    "Calories": "268 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Avocado salad recipe is a very healthy meal to loss weight",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/hamburger.png",
+      "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Croissants",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f649eefe-57cb-4bca-93a2-af707966d217",
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Bowl", "Mixer", "Dough hook" ],
+        "Description": "Twenty-four hours before serving, start the détrempe: In the bowl of a stand mixer fitted with the dough hook, combine the flour, sugar, salt and yeast, and stir to combine.",
+        "Ingredients": [ "Flour", "Sugar", "Salt", "Honey", "Garlic", "Yeast" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Mixer", "Dough hook", "Towel" ],
+        "Description": "Create a well in the center, and pour in the water and milk. Mix on low speed until a tight, smooth dough comes together around the hook, about 5 minutes. Remove the hook and cover the bowl with a damp towel. Set aside for 10 minutes.",
+        "Ingredients": [ "Dough", "Water", "Milk" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Dough hook", "Mixer", "Bowl" ],
+        "Description": "Reattach the dough hook and turn the mixer on medium-low speed. Add the butter pieces all at once and continue to mix, scraping down the bowl and hook once or twice, until the dough has formed a very smooth, stretchy ball that is not the least bit sticky, 8 to 10 minutes.",
+        "Ingredients": [ "Butter", "Dough" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/croissants.png",
+    "Serves": 1,
+    "CookTime": "00:45:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Butter",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Flour",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "6 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Honey",
+        "Quantity": "7 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "1"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Yeast",
+        "Quantity": "3 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Dough",
+        "Quantity": "3 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "200 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Milk",
+        "Quantity": "150 ml"
+      }
+    ],
+    "Calories": "800 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-9bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Crossiant recipe to get very taste after lunch",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 1,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Breakfast",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Strawberry Cream Pie",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f649eefe-26cb-4bca-93a2-af707012d237",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Bowl", "Cups" ],
+        "Description": "In a medium bowl, mix together 1 1/2 cups of all-purpose flour and 1/2 cup of cold butter.",
+        "Ingredients": [ "Flour", "Butter" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Pie dish", "Rolling pin" ],
+        "Description": "Use a fork or pastry cutter to blend the butter into the flour until it resembles coarse crumbs. Slowly add in 1/4 cup of ice water, 1 tablespoon at a time, and mix until the dough comes together. Roll out the dough on a floured surface to fit your pie dish and press it into the bottom and up the sides. Prick the crust all over with a fork and preheat the oven to 375F. Bake the crust for 15-20 minutes, or until lightly golden brown.",
+        "Ingredients": [ "Flour", "Butter", "Water" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:25:00",
+        "Cookware": [ "Medium saucepan", "Whisk" ],
+        "Description": "In a medium saucepan, mix together 1 cup of heavy cream, 1/2 cup of granulated sugar, and 1 teaspoon of vanilla extract. Heat the mixture over medium heat, whisking constantly, until it comes to a simmer. In a small bowl, mix together 2 tablespoons of cornstarch and 2 tablespoons of cold water to make a slurry. Slowly pour the slurry into the saucepan and continue to whisk until the mixture thickens. Remove from heat and stir in 2 cups of sliced strawberries. Pour the filling into the cooled crust and refrigerate for at least 2 hours before serving.",
+        "Ingredients": [ "Cream", "Granulated sugar", "Vanilla extract", "Cornstarch", "Water", "Strawberries" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/strawberry_cream_pie.png",
+    "Serves": 1,
+    "CookTime": "00:55:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Flour",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Butter",
+        "Quantity": "150 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "200 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cream",
+        "Quantity": "80 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Granulated Sugar",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Vanilla extract",
+        "Quantity": "2 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cornstarch",
+        "Quantity": "100 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "150 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Strawberries",
+        "Quantity": "30 gr"
+      }
+    ],
+    "Calories": "300 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Strawberry Cream Pie recipe is an awusome dessert to eat in any moment",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 1,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Breakfast",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Teriyaki Salmon",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f167eefe-78cb-4bca-93a2-af707012d237",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "Combine sauce ingredients and stir until brown sugar is dissolved.",
+        "Ingredients": [ "Sauce", "Sugar" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Bowl", "Plastic wrap" ],
+        "Description": "Place individual salmon slices in a mixing bowl. Pour the sauce over the salmon, cover with plastic wrap and let marinate 20 minutes (at room temp or refrigerated).",
+        "Ingredients": [ "Salmon", "Sauce" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:25:00",
+        "Cookware": [ "Baking sheet", "Knife" ],
+        "Description": "Transfer salmon to prepared baking sheet (keep the marinade). Bake at 400 for 12-16 minutes or until salmon is flaky and cooked through, bake times may vary by thickness and cut of salmon (see notes on how long to bake salmon below).",
+        "Ingredients": [ "Salmon" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/teriyaki_salmon.png",
+    "Serves": 1,
+    "CookTime": "00:50:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Salmon",
+        "Quantity": "300 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sauce",
+        "Quantity": "100 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "50 mgr"
+      }
+    ],
+    "Calories": "350 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Teriyaki Salmon is a high protein food with lots of nutrients",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Air Fryer French Fries",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f467eefe-67cb-6bca-08a2-af707012d237",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Potato peeler" ],
+        "Description": "We just wash the potatoes and keep the skins on, but you can peel if you prefer.",
+        "Ingredients": [ "Potatoes" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Knife" ],
+        "Description": "Clean the potatoes and cut into about 1/4 inch strands, making sure all the strands are the same size for even cooking. Rinse the fries under cold water and pat dry.",
+        "Ingredients": [ "Potatoes", "Water" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Third step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Bowl", "Air fryer" ],
+        "Description": "Add the fries into a bowl and drizzle with oil and toss, season and toss again. Evenly spread the fries into the air fryer basket.",
+        "Ingredients": [ "Potatoes", "Oil" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Bowl", "Air fryer" ],
+        "Description": "Cook the fries until crispy and golden, tossing half way.",
+        "Ingredients": [ "Potatoes" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/air_fryer_french_fries.png",
+    "Serves": 1,
+    "CookTime": "00:25:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Potatoes",
+        "Quantity": "500 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Oil",
+        "Quantity": "200 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "400 ml"
+      }
+    ],
+    "Calories": "267 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Air Fryer French Fries is a delicious plate and more healthy that normal fries",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 4,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Snack",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Hasselback Potatoes",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f907eefe-67cb-6bca-08a2-af356012d237",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Oven" ],
+        "Description": "Preheat the oven to 425ºF",
+        "Ingredients": [ "Potatoes" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Chopstick", "Cutting board", "Knife" ],
+        "Description": "Set a potato on a cutting board and place a chopstick on either side of the potato. With a sharp, thin knife, make deep vertical cuts 1/8-inch apart, but without cutting all the way through the potato. The chopsticks should keep you from accidentally cutting too deeply or going all the way through.",
+        "Ingredients": [ "Potatoes" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Third step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Baking dish" ],
+        "Description": "Place the potatoes with the cut side up in the baking dish, spaced a little apart so each one has some room. Fan the potatoes open slightly.",
+        "Ingredients": [ "Potatoes" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:30:00",
+        "Cookware": [ "Oven" ],
+        "Description": "Or until golden and crispy. The potatoes will fan out more during cooking and take on their accordion-like appearance. Serve hot.",
+        "Ingredients": [ "Potatoes" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/hasselback_potatoes.png",
+    "Serves": 1,
+    "CookTime": "00:55:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Potatoes",
+        "Quantity": "300 gr"
+      }
+    ],
+    "Calories": "268 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Hasselback Potatoes is a delicious plate",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Lunch",
       "Color": "#7A67F8"
     },
     "Date": "2022-10-15T00:00:00Z",

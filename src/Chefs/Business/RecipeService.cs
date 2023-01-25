@@ -33,7 +33,7 @@ public class RecipeService : IRecipeService
         => (await _recipeEndpoint.GetAll(ct))
            .Select(r => new Recipe(r))
            .OrderBy(x=>x.Date)
-           .Take(5)
+           .Take(7)
            .ToImmutableList();
 
     public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct) 
