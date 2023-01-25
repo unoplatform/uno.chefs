@@ -186,6 +186,8 @@
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <Image Source="{Binding Recipe.ImageUrl}"
                                MinHeight="220"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Bottom"
                                x:Name="RecipeImage"
                                Stretch="UniformToFill" />
                     </utu:AutoLayout>
