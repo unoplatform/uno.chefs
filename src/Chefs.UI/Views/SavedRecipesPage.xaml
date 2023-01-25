@@ -279,30 +279,40 @@
                                        Style="{StaticResource CustomHeadlineLarge}" />
                         </utu:AutoLayout>
                     </Grid>
-                    <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <utu:AutoLayout Orientation="Horizontal">
+
+                    <utu:AutoLayout Orientation="Horizontal"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                    utu:AutoLayout.CounterAlignment="Stretch">
+                        <ScrollViewer x:Name="RecipesScrollViewer"
+                                      utu:AutoLayout.PrimaryAlignment="Stretch"
+                                      HorizontalScrollMode="Disabled"
+                                      VerticalScrollBarVisibility="Hidden">
                             <utu:AutoLayout x:Name="WideRecipes"
                                             Background="{ThemeResource BackgroundBrush}"
                                             utu:AutoLayout.PrimaryAlignment="Stretch"
                                             utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout Spacing="20"
                                                 utu:AutoLayout.CounterAlignment="Center">
-                                    <utu:AutoLayout>
-                                        <uer:FeedView Source="{Binding Recipes}">
-                                            <DataTemplate>
-                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                    ItemTemplate="{StaticResource RecipeTemplate}">
-                                                    <muxc:ItemsRepeater.Layout>
-                                                        <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                                ItemsStretch="Fill" />
-                                                    </muxc:ItemsRepeater.Layout>
-                                                </muxc:ItemsRepeater>
+                                    <uer:FeedView Source="{Binding Recipes}">
+                                        <DataTemplate>
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                ItemTemplate="{StaticResource RecipeTemplate}">
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                                            ItemsStretch="Fill" />
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
 
-                                            </DataTemplate>
-                                        </uer:FeedView>
-                                    </utu:AutoLayout>
+                                        </DataTemplate>
+                                    </uer:FeedView>
                                 </utu:AutoLayout>
+
                             </utu:AutoLayout>
+                        </ScrollViewer>
+                        <ScrollViewer x:Name="CookbooksScrollViewer"
+                                      utu:AutoLayout.PrimaryAlignment="Stretch"
+                                      HorizontalScrollMode="Disabled"
+                                      VerticalScrollBarVisibility="Hidden">
                             <utu:AutoLayout x:Name="WideCookbooks"
                                             Background="{ThemeResource SurfaceBrush}"
                                             utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -325,8 +335,9 @@
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
-                        </utu:AutoLayout>
-                    </ScrollViewer>
+                        </ScrollViewer>
+                    </utu:AutoLayout>
+
                 </utu:AutoLayout>
             </Grid>
         </utu:AutoLayout>
