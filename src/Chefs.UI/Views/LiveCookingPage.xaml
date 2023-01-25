@@ -175,46 +175,51 @@
 
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout x:Name="ImageLayout"
-                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                utu:AutoLayout.CounterAlignment="Stretch">
-                    <utu:AutoLayout Padding="0"
-                                    x:Name="RecipeImageLayout"
-                                    MaxHeight="220"
+                <ScrollViewer x:Name="ImageScrollViewer"
+                              utu:AutoLayout.PrimaryAlignment="Stretch"
+                              HorizontalScrollMode="Disabled"
+                              VerticalScrollBarVisibility="Hidden">
+                    <utu:AutoLayout x:Name="ImageLayout"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
-                        <Image Source="{Binding Recipe.ImageUrl}"
-                               MinHeight="220"
-                               HorizontalAlignment="Stretch"
-                               VerticalAlignment="Bottom"
-                               x:Name="RecipeImage"
-                               Stretch="UniformToFill" />
-                    </utu:AutoLayout>
-                    <utu:AutoLayout x:Name="WideRecipeDetails"
-                                    Background="{ThemeResource SurfaceBrush}"
-                                    CornerRadius="18"
-                                    Padding="18"
-                                    Visibility="Collapsed"
-                                    Margin="40,0,20,0">
-                        <utu:AutoLayout Orientation="Horizontal"
-                                        Spacing="8">
-                            <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                       Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
-                                       Margin="20,10"
-                                       Style="{StaticResource CustomHeadlineMedium}" />
+                        <utu:AutoLayout Padding="0"
+                                        x:Name="RecipeImageLayout"
+                                        MaxHeight="220"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                                        utu:AutoLayout.CounterAlignment="Stretch">
+                            <Image Source="{Binding Recipe.ImageUrl}"
+                                   MinHeight="220"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Bottom"
+                                   x:Name="RecipeImage"
+                                   Stretch="UniformToFill" />
                         </utu:AutoLayout>
-                        <utu:AutoLayout Orientation="Horizontal"
-                                        Spacing="8">
-                            <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                       Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
-                                       Margin="20,10"
-                                       Style="{StaticResource CustomHeadlineMedium}" />
+                        <utu:AutoLayout x:Name="WideRecipeDetails"
+                                        Background="{ThemeResource SurfaceBrush}"
+                                        CornerRadius="18"
+                                        Padding="18"
+                                        Visibility="Collapsed"
+                                        Margin="40,0,20,0">
+                            <utu:AutoLayout Orientation="Horizontal"
+                                            Spacing="8">
+                                <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
+                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                           Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
+                                           Margin="20,10"
+                                           Style="{StaticResource CustomHeadlineMedium}" />
+                            </utu:AutoLayout>
+                            <utu:AutoLayout Orientation="Horizontal"
+                                            Spacing="8">
+                                <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
+                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                           Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
+                                           Margin="20,10"
+                                           Style="{StaticResource CustomHeadlineMedium}" />
 
+                            </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
-                </utu:AutoLayout>
+                </ScrollViewer>
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                 utu:AutoLayout.CounterAlignment="Stretch"
                                 x:Name="StepsLayout">
