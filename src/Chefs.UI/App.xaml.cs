@@ -1,5 +1,7 @@
 
+using Microsoft.Extensions.DependencyInjection;
 using Uno.Extensions;
+using Uno.Toolkit.UI;
 
 namespace Chefs;
 
@@ -30,10 +32,16 @@ public sealed partial class App : Application
 #else
 		_window = Microsoft.UI.Xaml.Window.Current;
 #endif
-
+        
         var host = await _window.InitializeNavigationAsync(async () => Host);
         _window.Activate();
+
         await Task.Run(() => host.StartAsync());
+
+        var appSettings = Host.Services.GetRequiredService<IWritableOptions<AppConfig>>();
+        var isDark = appSettings.Value?.IsDark ?? false;
+        SystemThemeHelper.SetRootTheme(_window.Content.XamlRoot, isDark);
+
     }
 
     /// <summary>

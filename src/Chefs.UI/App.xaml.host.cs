@@ -48,6 +48,7 @@ public sealed partial class App : Application
                 {
                     // TODO: Register your services
                     services
+                    .AddSingleton<IAppTheme, AppTheme>()
                     .AddSingleton<INotificationService, NotificationService>()
                     .AddSingleton<IRecipeService, RecipeService>()
                     .AddSingleton<IUserService, UserService>()
