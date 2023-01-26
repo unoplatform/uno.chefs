@@ -72,7 +72,7 @@
                                                           Foreground="{ThemeResource OnBackgroundBrush}" />
                                             </ToggleButton.Content>
                                             <um:ControlExtensions.AlternateContent>
-                                                
+
                                                 <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
                                                           Foreground="{ThemeResource OnBackgroundBrush}" />
                                             </um:ControlExtensions.AlternateContent>
@@ -140,54 +140,58 @@
         </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout x:Name="NavBarLayout"
-                            Padding="18,12"
-                            Orientation="Horizontal">
-
-                <utu:AutoLayout x:Name="ProfileLayout"
-                                Spacing="8"
-                                Orientation="Horizontal"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout CornerRadius="30"
-                                    Orientation="Horizontal"
-                                    utu:AutoLayout.CounterAlignment="Center"
-                                    utu:AutoLayout.PrimaryLength="40"
-                                    utu:AutoLayout.CounterLength="40"
-                                    uen:Navigation.Request="!Profile"
-                                    uen:Navigation.Data="{Binding UserProfile}">
-                        <Border CornerRadius="15"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <Image Source="{Binding UserProfile.UrlProfileImage}"
-                                   Stretch="UniformToFill" />
-                        </Border>
-                    </utu:AutoLayout>
-
-                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                   Text="{Binding UserProfile.FullName}"
-                                   utu:AutoLayout.CounterAlignment="Start"
-                                   Style="{StaticResource CustomTitleMedium}" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                   Text="{Binding UserProfile.Email}"
-                                   utu:AutoLayout.CounterAlignment="Start"
-                                   Style="{StaticResource CustomCaptionMedium}" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
+                            Padding="18,12">
                 
-                <utu:AutoLayout Spacing="8"
-                                Orientation="Horizontal">
-                    <Button utu:AutoLayout.CounterAlignment="Center"
-                            Style="{StaticResource IconButtonStyle}"
-                            uen:Navigation.Request="Search">
-                        <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
-                                  Foreground="{ThemeResource OnSurfaceBrush}" />
-                    </Button>
-                    <Button utu:AutoLayout.CounterAlignment="Center"
-                            Style="{StaticResource IconButtonStyle}"
-                            uen:Navigation.Request="!Notifications">
-                        <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
-                                  Foreground="{ThemeResource OnSurfaceBrush}" />
-                    </Button>
+                <!-- Additional AutoLayout added here as a workaround for this issue: -->
+                <!-- https://github.com/unoplatform/uno.chefs/issues/246 -->
+                <utu:AutoLayout Orientation="Horizontal">
+                    
+                    <utu:AutoLayout x:Name="ProfileLayout"
+                                    Spacing="8"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <utu:AutoLayout CornerRadius="30"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Center"
+                                        utu:AutoLayout.PrimaryLength="40"
+                                        utu:AutoLayout.CounterLength="40"
+                                        uen:Navigation.Request="!Profile"
+                                        uen:Navigation.Data="{Binding UserProfile}">
+                            <Border CornerRadius="15"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <Image Source="{Binding UserProfile.UrlProfileImage}"
+                                       Stretch="UniformToFill" />
+                            </Border>
+                        </utu:AutoLayout>
+
+                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                       Text="{Binding UserProfile.FullName}"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       Style="{StaticResource CustomTitleMedium}" />
+                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                       Text="{Binding UserProfile.Email}"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       Style="{StaticResource CustomCaptionMedium}" />
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+
+                    <utu:AutoLayout Spacing="8"
+                                    Orientation="Horizontal">
+                        <Button utu:AutoLayout.CounterAlignment="Center"
+                                Style="{StaticResource IconButtonStyle}"
+                                uen:Navigation.Request="Search">
+                            <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
+                                      Foreground="{ThemeResource OnSurfaceBrush}" />
+                        </Button>
+                        <Button utu:AutoLayout.CounterAlignment="Center"
+                                Style="{StaticResource IconButtonStyle}"
+                                uen:Navigation.Request="!Notifications">
+                            <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
+                                      Foreground="{ThemeResource OnSurfaceBrush}" />
+                        </Button>
+                    </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
 
@@ -312,8 +316,7 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!RecipeDetails"
-                                                        >
+                                                        uen:Navigation.Request="!RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
