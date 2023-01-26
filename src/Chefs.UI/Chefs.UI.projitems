@@ -21,6 +21,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AutoLayout\AutoLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutoLayout\AutoLayoutAlignment.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutoLayout\AutoLayoutChildren.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutoLayout\AutoLayoutExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutoLayout\AutoLayoutJustify.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AutoLayout\AutoLayoutPrimaryAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CertainNumberToVisible.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringSeparatorConverter.cs" />
@@ -82,6 +88,10 @@
     <Content Include="$(MSBuildThisFileDirectory)SavedCookbooks.json" />
     <Content Include="$(MSBuildThisFileDirectory)SavedRecipes.json" />
     <Content Include="$(MSBuildThisFileDirectory)Users.json" />
+    <Page Include="$(MSBuildThisFileDirectory)AutoLayout\AutoLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Styles\FeedView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
