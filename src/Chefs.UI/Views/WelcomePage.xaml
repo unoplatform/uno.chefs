@@ -40,7 +40,7 @@
                                 Value="Visible" />
                         <Setter Target="FlipViewColumn.Width"
                                 Value="*" />
-                        <Setter Target="OuterLayout.Padding"
+                        <Setter Target="InnerLayout.Margin"
                                 Value="50" />
                         <Setter Target="OuterLayout.Background"
                                 Value="{ThemeResource PrimaryBrush}" />
@@ -71,13 +71,12 @@
                                   Width="0" />
             </Grid.ColumnDefinitions>
             <utu:AutoLayout x:Name="OuterLayout"
-                            utu:AutoLayout.PrimaryAlignment="Auto"
-                            Spacing="50">
+                            utu:AutoLayout.PrimaryAlignment="Auto">
                 <utu:AutoLayout x:Name="InnerLayout"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
                                 Background="{ThemeResource SurfaceBrush}"
                                 Spacing="20"
-                                Padding="50,0">
+                                Padding="50">
                     <utu:AutoLayout>
                     <Button x:Name="WideSkipButton"
                             Background="{ThemeResource PrimaryInverseBrush}"
