@@ -1,11 +1,11 @@
-﻿using Uno.Toolkit.UI;
+﻿namespace Chefs.Views;
 
-namespace Chefs.Views;
-
-public sealed partial class FilterPage : Page
+public sealed partial class FilterPage : ResponsiveDrawerFlyout
 {
     public FilterPage()
     {
         this.InitializeComponent();
+
+        Opening += ApplyRightDrawerFlyoutPresenterStyle;
     }
 }

@@ -1,9 +1,13 @@
-﻿namespace Chefs.Views;
+﻿using Windows.UI.Core;
 
-public sealed partial class NotificationsPage : Page
+namespace Chefs.Views;
+
+public sealed partial class NotificationsPage : ResponsiveDrawerFlyout
 {
     public NotificationsPage()
     {
         this.InitializeComponent();
+
+        Opening += ApplyLeftDrawerFlyoutPresenterStyle;
     }
 }

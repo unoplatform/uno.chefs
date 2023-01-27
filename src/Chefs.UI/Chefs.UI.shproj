@@ -16,6 +16,7 @@
     <UpToDateCheckInput Remove="Styles\TabBar.xaml" />
     <UpToDateCheckInput Remove="Views\AddRecipesCookbookPage.xaml" />
     <UpToDateCheckInput Remove="Views\CookbookDetailPage.xaml" />
+    <UpToDateCheckInput Remove="Views\Dialogs\CompletedDialog.xaml" />
     <UpToDateCheckInput Remove="Views\FilterPage.xaml" />
     <UpToDateCheckInput Remove="Views\HomePage.xaml" />
     <UpToDateCheckInput Remove="Views\IngredientsPage.xaml" />
@@ -45,6 +46,7 @@
     <_Globbed_Compile Remove="Converters\StringFormatter.cs" />
     <_Globbed_Compile Remove="Converters\StringSeparatorConverter.cs" />
     <_Globbed_Compile Remove="Helpers\ChipsExtensions.cs" />
+    <_Globbed_Compile Remove="Views\Dialogs\CompletedDialog.xaml.cs" />
     <_Globbed_Compile Remove="Views\FilterPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\HomePage.xaml.cs" />
     <_Globbed_Compile Remove="Views\IngredientsPage.xaml.cs" />
@@ -57,9 +59,14 @@
     <_Globbed_Compile Remove="Views\SearchPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\SettingsPage.xaml.cs" />
     <_Globbed_Compile Remove="Views\LiveCookingPage.xaml.cs" />
+    <_Globbed_Compile Remove="Views\Templates\ResponsiveDrawerFlyout.cs" />
     <_Globbed_Compile Remove="Views\UpdateCookbookPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Content Remove="Assets\Icons\party.scale-100.png" />
+    <_Globbed_Content Remove="Assets\Icons\party.scale-150.png" />
+    <_Globbed_Content Remove="Assets\Icons\party.scale-200.png" />
+    <_Globbed_Content Remove="Assets\Icons\party.scale-300.png" />
     <_Globbed_Content Remove="Assets\Icons\settings.scale-100.png" />
     <_Globbed_Content Remove="Assets\Icons\settings.scale-125.png" />
     <_Globbed_Content Remove="Assets\Icons\settings.scale-150.png" />
@@ -76,6 +83,7 @@
     <_Globbled_Page Remove="Styles\TabBar.xaml" />
     <_Globbled_Page Remove="Views\AddRecipesCookbookPage.xaml" />
     <_Globbled_Page Remove="Views\CookbookDetailPage.xaml" />
+    <_Globbled_Page Remove="Views\Dialogs\CompletedDialog.xaml" />
     <_Globbled_Page Remove="Views\FilterPage.xaml" />
     <_Globbled_Page Remove="Views\HomePage.xaml" />
     <_Globbled_Page Remove="Views\IngredientsPage.xaml" />

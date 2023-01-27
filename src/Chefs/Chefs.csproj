@@ -7,12 +7,8 @@
 	  <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 	</ItemGroup>
 	<ItemGroup>
-	  <SourceGeneratorInput Remove="Presentation\RegisterViewModel.cs" />
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.68" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.138" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.138" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.14" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.18" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.1038" />
 	</ItemGroup>
 </Project>

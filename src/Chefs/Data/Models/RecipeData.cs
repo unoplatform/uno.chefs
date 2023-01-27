@@ -19,4 +19,5 @@ public class RecipeData
     public string? Details { get; set; }
     public CategoryData? Category { get; set; }
     public DateTime Date { get; set; }
+    public bool Save { get; set; }
 }

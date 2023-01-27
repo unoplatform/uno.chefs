@@ -39,7 +39,6 @@
 	<ItemGroup>
 	  <Content Include="Images\LockScreenLogo.scale-200.png" />
 	  <Content Include="Images\SplashScreen.scale-100.png" />
-	  <Content Include="Images\SplashScreen.scale-125.png" />
 	  <Content Include="Images\SplashScreen.scale-150.png" />
 	  <Content Include="Images\SplashScreen.scale-200.png" />
 	  <Content Include="Images\SplashScreen.scale-400.png" />
@@ -55,14 +54,14 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221116.1" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221209.1" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 		<PackageReference Include="Uno.Core.Extensions.Logging.Singleton" Version="4.0.1" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.14.0-dev.54" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Uno.WinUI" Version="4.6.19" />
+		<PackageReference Include="Uno.WinUI" Version="4.7.0-dev.1038" />
 	</ItemGroup>
 
 	<!-- Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
@@ -89,10 +88,9 @@
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22000.27" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.4.0-dev.68" />
-	  <PackageReference Update="Uno.Toolkit.WinUI" Version="2.4.0-dev.138" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.4.0-dev.138" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.6.19" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.14" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.18" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.1038" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />

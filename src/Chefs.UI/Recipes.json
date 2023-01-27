@@ -71,6 +71,7 @@
     "Calories": "268 kcal",
     "Reviews": [
       {
+        "Id": "7ef9e2be-e053-4370-8b49-bfa10013bd61",
         "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
         "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
         "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
@@ -81,6 +82,7 @@
         "Dislikes": 5
       },
       {
+        "Id": "baa91885-a6f0-41a6-84cb-294eb2a68455",
         "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
         "PublisherName": "James Wolden",
         "UrlAuthorImage": "ms-appx:///Assets/Profiles/james_wolden.png",
@@ -115,12 +117,80 @@
     "Name": "Fresh Salad Thaid",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "0007e65f-3d5c-4ca3-842f-134b7f4a8b52",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:03:00",
+        "Cookware": [ "Knife", "Dish" ],
+        "Description": "Cut all your vegetables to size",
+        "Ingredients": [ "Vegetables" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:02:00",
+        "Cookware": [ "Jar" ],
+        "Description": "Place the dressing ingredients in a jar and shake together until well combined",
+        "Ingredients": [ "Vegetables", "Tamari Soy" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Third step",
+        "CookTime": "00:04:00",
+        "Cookware": [ "Jar", "Skillet", "Knife", "Cutting Boards" ],
+        "Description": "Add the mix salad greens first, then strategically place the carrot, onion, red pepper and cucumber around the mixed greens.",
+        "Ingredients": [ "Vegetables", "Tamari Soy", "Carrot", "Onion", "Red Papper", "Cucumber" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:01:00",
+        "Cookware": [ "Fork", "Knife", "Bowl" ],
+        "Description": "Finish up with the dressing. Add the dressing just before you want to serve the salad otherwise it'll go soggy.",
+        "Ingredients": [ "Lime Juice", "Sesame Oil", "Red Chilli" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/fresh_salad_thaid.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Vegetables",
+        "Quantity": "100 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Tamari Soy",
+        "Quantity": "2"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Sesame Oil",
+        "Quantity": "300 g"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "Name": "Lime Juice",
+        "Quantity": "80 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Cucumber",
+        "Quantity": "50 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Carrot",
+        "Quantity": "50 g"
+      }
+    ],
     "Calories": "268 kcal",
     "Reviews": [
       {
@@ -144,7 +214,7 @@
         "Dislikes": 3
       }
     ],
-    "Details": "",
+    "Details": "Fresh, healthy and tasty",
     "Creator": {
       "Id": "3c896419-e280-40e7-8552-240635566fed",
       "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
@@ -170,12 +240,80 @@
     "Name": "Salmon Tomato Sauce",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "5ad60d30-2891-4c4b-99a7-e138e6477191",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:04:00",
+        "Cookware": [ "Knife", "Dish", "Skillet" ],
+        "Description": "Whenever I have fresh spinach in the house, I love wilting it into the sauce during the final few minutes of cooking to add some greens to this dish.",
+        "Ingredients": [ "Spinach" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:02:00",
+        "Cookware": [ "Knife", "Dish", "Skillet" ],
+        "Description": "If you happy to have any other Italian herbs in the house (rosemary, oregano, thyme, etc), feel free to add them in to taste",
+        "Ingredients": [ "Rosemary", "Oregano" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Third step",
+        "CookTime": "00:04:00",
+        "Cookware": [ "Spoon", "Dish", "Knife" ],
+        "Description": "Instead of (or — if you’re feeling extra-indulgent — in addition to) the heavy cream, add in a torn ball of fresh burrata to the dish just before serving. I can vouch that it is heavenly.",
+        "Ingredients": [ "Cream", "Fresh burrata" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:01:00",
+        "Cookware": [ "Wooden spoon" ],
+        "Description": "I have to admit that I really prefer the texture/flavor of this dish using fresh tomatoes. But if you’re in a pinch, it will also taste great using one large (28-ounce) can of good-quality whole tomatoes, which you can break up with a wooden spoon as they cook.",
+        "Ingredients": [ "Tomatoes", "Sesame Oil", "Red Chilli" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/salmon_tomato_sauce.png",
     "Serves": 1,
-    "CookTime": "00:10:00",
+    "CookTime": "00:11:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Spinach",
+        "Quantity": "200 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Rosemary",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Sesame Oil",
+        "Quantity": "30 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "Name": "Tomatoes",
+        "Quantity": "100 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Oregan",
+        "Quantity": "50 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Fresh burrata",
+        "Quantity": "50 g"
+      }
+    ],
     "Calories": "267 kcal",
     "Reviews": [
       {
@@ -199,7 +337,7 @@
         "Dislikes": 3
       }
     ],
-    "Details": "",
+    "Details": "Nutritious and great after workout.",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
       "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
@@ -225,12 +363,66 @@
     "Name": "Fresh Salad Pasta",
     "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
     "Id": "b9e6502b-b373-4fcf-86b2-89379667aa5c",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:12:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Bring a large pot of lightly salted water to a boil. Cook pasta in the boiling water, stirring occasionally, until tender yet firm to the bite, about 10 to 12 minutes; rinse under cold water and drain.",
+        "Ingredients": [ "Pasta" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Next step",
+        "CookTime": "00:02:00",
+        "Cookware": [ "Jar" ],
+        "Description": "Whisk Italian dressing and salad spice mix together until smooth",
+        "Ingredients": [ "Spices" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:01:00",
+        "Cookware": [ "Salad bowl" ],
+        "Description": "Combine pasta, tomatoes, bell peppers, and olives in a salad bowl; pour dressing over salad and toss to coat. Refrigerate salad, 8 hours to overnight.",
+        "Ingredients": [ "Tomatoes", "Pasta", "Bell Peppers", "Olives" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/fresh_salad_pasta.png",
     "Serves": 1,
-    "CookTime": "00:10:00",
+    "CookTime": "00:25:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Spices",
+        "Quantity": "2 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Bell Peppers",
+        "Quantity": "30 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "Name": "Tomatoes",
+        "Quantity": "100 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olives",
+        "Quantity": "50 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pasta",
+        "Quantity": "50 g"
+      }
+    ],
     "Calories": "267 kcal",
     "Reviews": [
       {
@@ -254,7 +446,7 @@
         "Dislikes": 3
       }
     ],
-    "Details": "",
+    "Details": "Healthy and tasty",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
       "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
@@ -278,17 +470,63 @@
   },
   {
     "Name": "Circle Cake",
-    "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "1dc0e330-ab16-43cc-9b84-fdaf2c5e83cd",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Rubber spatula", "Pans" ],
+        "Description": "Scrape the bowl well with a large rubber spatula. Pour the batter into the prepared pans and smooth the tops.",
+        "Ingredients": [ "Batter" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:30:00",
+        "Cookware": [ "Toothpick", "Skillet", "Racks" ],
+        "Description": "Bake the layers for about 30 to 35 minutes, until they are well risen and firm and a toothpick inserted in the center emerges clean. Cool the layers in the pans on racks for 5 minutes, then unmold onto racks to finish cooling right side up.",
+        "Ingredients": [ "Batter" ],
+        "Number": 2,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/circle_cake.png",
     "Serves": 1,
-    "CookTime": "00:10:00",
+    "CookTime": "00:35:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Batter",
+        "Quantity": "500 gr"
+      }
+    ],
     "Calories": "267 kcal",
-    "Reviews": [],
-    "Details": "",
+    "Reviews": [
+      {
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
+        "Likes": 7,
+        "Dislikes": 5
+      },
+      {
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "PublisherName": "James Wolden",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/james_wolden.png",
+        "CreatedBy": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
+        "Likes": 2,
+        "Dislikes": 3
+      }
+    ],
+    "Details": "Impressive with a very fancy form",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
       "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
@@ -312,14 +550,95 @@
   },
   {
     "Name": "Mom's Cheesecake",
-    "UserId": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "f89a5305-4d77-4f66-a97c-65adba6b36ff",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:09:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "In the bowl of a stand mixer or in a large bowl (using a hand mixer) add cream cheese and stir until smooth and creamy (don’t over-beat or you’ll incorporate too much air).",
+        "Ingredients": [ "Cream Cheese" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:02:00",
+        "Cookware": [ "Jar" ],
+        "Description": "Add sugar and stir again until creamy",
+        "Ingredients": [ "Sugar" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:01:00",
+        "Cookware": [ "Jar", "Spatula" ],
+        "Description": "Add sour cream, vanilla extract, and salt, and stir until well-combined. If using a stand mixer, make sure you pause periodically to scrape the sides and bottom of the bowl with a spatula so that all ingredients are evenly incorporated",
+        "Ingredients": [ "Sour cream, Vanilla extract" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Third step",
+        "CookTime": "00:02:00",
+        "Cookware": [ "Spatula", "Bowl" ],
+        "Description": "With mixer on low speed, gradually add lightly beaten eggs, one at a time, stirring just until each egg is just incorporated. Once all eggs have been added, use a spatula to scrape the sides and bottom of the bowl again and make sure all ingredients are well combined.",
+        "Ingredients": [ "Eggs" ],
+        "Number": 4,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Four step",
+        "CookTime": "01:15:00",
+        "Cookware": [ "Oven", "Rack" ],
+        "Description": "Transfer to the center rack of your oven and bake on 325F (160C) for about 75 minutes. Edges will likely have slightly puffed and may have just begun to turn a light golden brown and the center should spring back to the touch but will still be Jello-jiggly. Don't over-bake or the texture will suffer, which means we all suffer",
+        "Ingredients": [ "Jello-jiggly" ],
+        "Number": 5,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Oven", "Kife", "Springform pan" ],
+        "Description": "Remove from oven and allow to cool on top of the oven³ for 10 minutes. Once 10 minutes has passed, use a knife to gently loosen the crust from the inside of the springform pan (this will help prevent cracks as your cheesecake cools and shrinks).",
+        "Ingredients": [ "Cream cheese" ],
+        "Number": 6,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/mom's_cheesecake.png",
     "Serves": 1,
-    "CookTime": "01:00:00",
+    "CookTime": "01:38:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Sour cream",
+        "Quantity": "2 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Eggs",
+        "Quantity": "30 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "Name": "Cream cheese",
+        "Quantity": "100 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Sugar",
+        "Quantity": "50 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Jello-jiggly",
+        "Quantity": "50 g"
+      }
+    ],
     "Calories": "268 kcal",
     "Reviews": [
       {
@@ -333,7 +652,7 @@
         "Dislikes": 5
       }
     ],
-    "Details": "",
+    "Details": "Awesome as a mom gift",
     "Creator": {
       "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
       "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
@@ -359,15 +678,89 @@
     "Name": "Fluffy French Toast",
     "UserId": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
     "Id": "4761a59b-80bc-4910-b443-8ecc74565719",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Bowl", "Spoon" ],
+        "Description": "Measure flour into a large mixing bowl. Slowly whisk in milk. Whisk in eggs, sugar, vanilla extract, cinnamon, and salt until smooth.",
+        "Ingredients": [ "Flour", "Milk", "Eggs", "Sugar", "Vanilla extract", "\nCinnamon", "Salt" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Oiled griddle", "Frying pan" ],
+        "Description": "Heat a lightly oiled griddle or frying pan over medium heat.",
+        "Ingredients": [ "Eggs", "Vanilla" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:03:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "Soak bread slices in milk mixture until saturated.",
+        "Ingredients": [ "Milk" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Batches", "Griddle", "Skillet" ],
+        "Description": "Working in batches, cook bread on the preheated griddle or pan until golden brown on each side. Serve hot.",
+        "Ingredients": [ "Bread" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/fluffy_french_toast.png",
     "Serves": 1,
-    "CookTime": "00:20:00",
+    "CookTime": "00:38:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Sour cream",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Eggs",
+        "Quantity": "3"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Bread",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Cinnamon",
+        "Quantity": "50 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Milk",
+        "Quantity": "200 ml"
+      }
+    ],
     "Calories": "268 kcal",
-    "Reviews": [],
-    "Details": "",
+    "Reviews": [
+      {
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Good to have a pretty nice breakfast",
     "Creator": {
      "Id": "3c896419-e280-40e7-8552-240635566fed",
      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
@@ -393,15 +786,62 @@
     "Name": "Super Duper Oatmeal",
     "UserId": "3c896419-e280-40e7-8552-240635566fed",
     "Id": "63e275f8-9222-48b2-83cb-df6c0961a1eb",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Pot", "Spoon" ],
+        "Description": "Bring the milk and water to a boil in a pot. Mix in the oats, and reduce heat to medium. Stir in blueberries, applesauce, wheat germ, cinnamon, and sugar. Cook 8 to 10 minutes, or until oats are tender.",
+        "Ingredients": [ "Water", "Milk", "Oats", "Blueberries", "Applesauce", "\nWheat germ", "Cinnamon", "Sugar" ],
+        "Number": 1,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/super_duper_oatmeal.png",
     "Serves": 1,
-    "CookTime": "01:00:00",
+    "CookTime": "00:15:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Blueberries",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Applesauce",
+        "Quantity": "50 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Oats",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Water",
+        "Quantity": "300 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "400 gr"
+      }
+    ],
     "Calories": "268 kcal",
-    "Reviews": [],
-    "Details": "",
+    "Reviews": [
+      {
+        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/niki_samantha.png",
+        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+        "PublisherName": "Niki Samantha",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Very special dessert to taste.",
     "Creator": {
         "Id": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
         "UrlProfileImage": "ms-appx:///Assets/Profiles/troyan_smith.png",
@@ -425,14 +865,59 @@
   },
   {
     "Name": "Walnut and nuts",
-    "UserId": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "f649eefe-93cb-4bca-93a2-af707966d217",
-    "Steps": [],
+    "Steps": [
+      {
+        "Name": "Getting started",
+        "CookTime": "00:12:00",
+        "Cookware": [ "Bowl", "Knife", "Baking Sheet", "Pan" ],
+        "Description": "In a bowl, combine flour and sugar. Cut in butter until mixture resembles coarse crumbs. Combine egg yolks and milk; stir into flour mixture until blended. With lightly floured hands, press dough onto the bottom and 1 in. up the sides of a 12-in. tart pan with removable bottom. Line unpricked crust with a double thickness of heavy-duty foil. Fill with pie weights. Place pan on a baking sheet. Bake at 375° until edges are lightly browned, 12-15 minutes.",
+        "Ingredients": [ "Flour", "Sugar", "Eggs", "Milk", "Applesauce" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:20:00",
+        "Cookware": [ "SaucePan", "Spoon", "Wire rack" ],
+        "Description": "Meanwhile, in a saucepan, combine the sugar, cream, cinnamon and salt. Bring to a boil over medium heat, stirring constantly. Remove from the heat; stir in walnuts. Remove foil from crust; pour filling into crust. Bake until golden brown, 20-25 minutes. Cool on a wire rack. Store in the refrigerator.",
+        "Ingredients": [ "Sugar", "Cream", "Cinnamon", "Salt", "Walnuts" ],
+        "Number": 2,
+        "UrlVideo": ""
+      }
+    ],
     "ImageUrl": "ms-appx:///Assets/Recipes/walnut_and_nuts.png",
     "Serves": 1,
-    "CookTime": "00:10:00",
+    "CookTime": "00:32:00",
     "Difficulty": 0,
-    "Ingredients": [],
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Walnuts",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Eggs",
+        "Quantity": "5"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Cream",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Applesauce",
+        "Quantity": "300 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "30 gr"
+      }
+    ],
     "Calories": "268 kcal",
     "Reviews": [
       {
@@ -446,7 +931,7 @@
         "Dislikes": 5
       }
     ],
-    "Details": "",
+    "Details": "Walnuts recipe to get very taste dessert",
     "Creator": {
       "Id": "3c896419-e280-40e7-8552-240635566fed",
       "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
