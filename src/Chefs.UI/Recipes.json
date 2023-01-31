@@ -1454,7 +1454,7 @@
         "UrlVideo": ""
       },
       {
-        "Name": "Second step",
+        "Name": "First step",
         "CookTime": "00:05:00",
         "Cookware": [ "Knife" ],
         "Description": "Clean the potatoes and cut into about 1/4 inch strands, making sure all the strands are the same size for even cooking.\n\nRinse the fries under cold water and pat dry.",
@@ -1463,7 +1463,7 @@
         "UrlVideo": ""
       },
       {
-        "Name": "Third step",
+        "Name": "Second step",
         "CookTime": "00:10:00",
         "Cookware": [ "Bowl", "Air fryer" ],
         "Description": "Add the fries into a bowl and drizzle with oil and toss, season and toss again.\n\nEvenly spread the fries into the air fryer basket.",
@@ -1552,7 +1552,7 @@
         "UrlVideo": ""
       },
       {
-        "Name": "Second step",
+        "Name": "First step",
         "CookTime": "00:10:00",
         "Cookware": [ "Chopstick", "Cutting board", "Knife" ],
         "Description": "Set a potato on a cutting board and place a chopstick on either side of the potato.\n\nWith a sharp, thin knife, make deep vertical cuts 1/8-inch apart, but without cutting all the way through the potato.\n\nThe chopsticks should keep you from accidentally cutting too deeply or going all the way through.",
@@ -1561,7 +1561,7 @@
         "UrlVideo": ""
       },
       {
-        "Name": "Third step",
+        "Name": "Second step",
         "CookTime": "00:05:00",
         "Cookware": [ "Baking dish" ],
         "Description": "Place the potatoes with the cut side up in the baking dish, spaced a little apart so each one has some room.\n\nFan the potatoes open slightly.",
@@ -1604,6 +1604,776 @@
       }
     ],
     "Details": "Hasselback Potatoes is a delicious plate",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Stir-Fry Chicken and Vegetables",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f907eefe-67cb-6bca-08a2-af716322d237",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Pan", "Tablespoon" ],
+        "Description": "In a large pan on medium-high heat, add 1 tablespoon of oil.\n\nOnce the oil is hot, add chicken, season with salt and pepper, and sauté until cooked through and browned.\n\nRemove cooked chicken from pan and set aside.",
+        "Ingredients": [ "Oil", "Chicken", "Salt", "Pepper" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Pan", "Tablespoon" ],
+        "Description": "In the same pan, heat 1 tablespoon of oil and add mushrooms.\n\nWhen the mushrooms start to soften, add broccoli florets and stir-fry until the broccoli is tender.\n\nRemove cooked mushrooms and broccoli from the pan and set aside",
+        "Ingredients": [ "Broccoli" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Pan", "Tablespoon" ],
+        "Description": "Add 1 tablespoon of oil to the pan and sauté garlic and ginger until fragrant.\n\nAdd the remaining sauce ingredients and stir until smooth.",
+        "Ingredients": [ "Garlic", "Ginger", "Sauce" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:07:00",
+        "Cookware": [ "Pan" ],
+        "Description": "Return the chicken and vegetables to the saucy pan, stir until heated through.",
+        "Ingredients": [ "Chicken", "Vegetables" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:32:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Oil",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Chicken",
+        "Quantity": "455 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "1 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "0.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Broccoli",
+        "Quantity": "455 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "3"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sauce",
+        "Quantity": "80 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Vegetables",
+        "Quantity": "50 gr"
+      }
+    ],
+    "Calories": "170 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Stir-Fry Chicken and Vegetables low calories meal",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Spicy Salmon and Vegetables",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f907eefe-67tu-6bca-08a2-af716322d891",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Broiler", "Tablespoon" ],
+        "Description": "Preheat the broiler to low heat.\n\nWhisk together the chili garlic sauce, 2 tablespoons of soy sauce, 1 tablespoon of sesame oil, sugar and vinegar until combined.",
+        "Ingredients": [ "Chili", "Garlic", "Sauce", "Soy", "Oil", "Sugar", "Vinegar" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Bowl", "Cookie sheet", "Non-Stick Foil", "Broiler" ],
+        "Description": "Add the cut up salmon to the bowl and mix until coated.\n\nLine a cookie sheet with Non-Stick Foil and evenly spread out the salmon and cook under the broiler for 8 to 10 minutes or until browned and cooked throughout.",
+        "Ingredients": [ "Salmon" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Pan", "Tablespoon" ],
+        "Description": "Pour the remaining 1 tablespoon of sesame oil into a large frying pan on high heat and add in the bell peppers, snow peas and carrot and stir-fry for 3 to 4 minutes. Finish the vegetables by adding the remaining 1 tablespoon of soy sauce.",
+        "Ingredients": [ "Pepper", "Peas", "Carrot", "Vegetables" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Bowl", "Plate" ],
+        "Description": "Divide the rice into 4 portions and serve the cooked salmon and vegetables evenly.\n\nOptional Servings: Serve with a hard boiled egg or a fried egg.",
+        "Ingredients": [ "Rice", "Vegetables", "Salmon" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:35:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Oil",
+        "Quantity": "15 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Chili",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "2"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sauce",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Soy",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "7,5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Vinegar",
+        "Quantity": "5 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salmon",
+        "Quantity": "170 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "170 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Peas",
+        "Quantity": "160 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Carrot",
+        "Quantity": "4"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Vegetables",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Rice",
+        "Quantity": "800 gr"
+      }
+    ],
+    "Calories": "190 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Spicy Salmon and Vegetables is a protein meal with low calories",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Tomato and garlic pasta",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f907eefe-67tu-6bca-08a2-af716322d891",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Broiler", "Tablespoon" ],
+        "Description": "Preheat the broiler to low heat.\n\nWhisk together the chili garlic sauce, 2 tablespoons of soy sauce, 1 tablespoon of sesame oil, sugar and vinegar until combined.",
+        "Ingredients": [ "Chili", "Garlic", "Sauce", "Soy", "Oil", "Sugar", "Vinegar" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Bowl", "Cookie sheet", "Non-Stick Foil", "Broiler" ],
+        "Description": "Add the cut up salmon to the bowl and mix until coated.\n\nLine a cookie sheet with Non-Stick Foil and evenly spread out the salmon and cook under the broiler for 8 to 10 minutes or until browned and cooked throughout.",
+        "Ingredients": [ "Salmon" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Pan", "Tablespoon" ],
+        "Description": "Pour the remaining 1 tablespoon of sesame oil into a large frying pan on high heat and add in the bell peppers, snow peas and carrot and stir-fry for 3 to 4 minutes.\n\nFinish the vegetables by adding the remaining 1 tablespoon of soy sauce.",
+        "Ingredients": [ "Pepper", "Peas", "Carrot", "Vegetables" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Bowl", "Plate" ],
+        "Description": "Divide the rice into 4 portions and serve the cooked salmon and vegetables evenly.\n\nOptional Servings: Serve with a hard boiled egg or a fried egg.",
+        "Ingredients": [ "Rice", "Vegetables", "Salmon" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:35:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Oil",
+        "Quantity": "15 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Chili",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "2"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sauce",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Soy",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "7,5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Vinegar",
+        "Quantity": "5 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salmon",
+        "Quantity": "170 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "170 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Peas",
+        "Quantity": "160 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Carrot",
+        "Quantity": "4"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Vegetables",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Rice",
+        "Quantity": "800 gr"
+      }
+    ],
+    "Calories": "190 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Tomato and garlic pasta good mix between carbs and vegetables",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Homemade lasagna",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f907eefe-67tu-6bca-08a2-af842912u891",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:30:00",
+        "Cookware": [ "Pot", "Tablespoon" ],
+        "Description": "Put a large pot of salted water (1 tablespoon of salt for every 2 quarts of water) on the stovetop on high heat.\n\nIt can take a while for a large pot of water to come to a boil (this will be your pasta water), so prepare the sauce in the next steps while the water is heating.",
+        "Ingredients": [ "Water", "Salt", "Sauce" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Skillet", "Tablespoon", "Spoon", "Bowl" ],
+        "Description": "In a large skillet heat 2 teaspoons of olive oil on medium-high heat.\n\nAdd the ground beef and cook until it is lightly browned on all sides.\n\nRemove the beef with a slotted spoon to a bowl.\n\nDrain off all but a tablespoon of fat.",
+        "Ingredients": [ "Olive oil", "Ground beef" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Pan", "Tablespoon" ],
+        "Description": "Add the diced bell pepper and onions to the skillet (in the photo we are using yellow bell pepper and red onions).\n\nCook for 4 to 5 minutes, until the onions are translucent and the peppers softened.\n\nAdd the minced garlic and cook half a minute more.\n\nReturn the browned ground beef to the pan.\n\nStir to combine, reduce the heat to low, and cook for another 5 minutes.",
+        "Ingredients": [ "Pepper", "Onions", "Garlic", "Ground beef" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:45:00",
+        "Cookware": [ "Pan", "Aluminum foil" ],
+        "Description": "Cover the lasagna pan with aluminum foil, tented slightly so it doesn't touch the noodles or sauce.\n\nBake at 375°F for 45 minutes. Uncover in the last 10 minutes if you'd like more of a crusty top or edges.",
+        "Ingredients": [ "Sauce" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "01:45:00",
+    "Difficulty": 1,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive oil",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "100 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "2 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sauce",
+        "Quantity": "828 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Ground beef",
+        "Quantity": "454 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "300 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Onions",
+        "Quantity": "26 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "2"
+      }
+    ],
+    "Calories": "402 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Homemade lasagna very taste to eat from home",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Pork Stew",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f802uute-67tu-6bca-08a2-af842912u891",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Pot", "Tablespoon" ],
+        "Description": "In a large pot or dutch oven, brown pork with onions in 1 tablespoon olive oil (it doesn't have to be cooked through).\n\nRemove from pot and set aside.",
+        "Ingredients": [ "Pork", "Onion", "Olive oil" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "01:00:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Add broth, tomatoes, and spices making sure to scrape up any brown bits from the bottom of the pot.\n\nAdd the pork back into the pot and bring to a boil, reduce heat and simmer covered for 1 hour (or until pork is fairly tender).",
+        "Ingredients": [ "Broth", "Tomato", "Spice", "Pork" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:40:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Add potatoes, sweet potatoes, carrots, and mushrooms.\n\nBring to a boil, reduce heat and simmer covered for 30 minutes or until vegetables are tender.\n\nRemove lid and stir in green beans.\n\nThicken if desired (below) and simmer an additional 10 minutes uncovered.",
+        "Ingredients": [ "Potato", "Carrot", "Mushroom", "Vegetables", "Green beans" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "02:00:00",
+    "Difficulty": 1,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive oil",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pork",
+        "Quantity": "680 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Broth",
+        "Quantity": "900 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Tomato",
+        "Quantity": "425 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Spices",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Potato",
+        "Quantity": "156 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Carrot",
+        "Quantity": "2"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Onions",
+        "Quantity": "26 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Mushrooms",
+        "Quantity": "96 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Vegetables",
+        "Quantity": "200 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Green beans",
+        "Quantity": "100 gr"
+      }
+    ],
+    "Calories": "170 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Pork Stew has good nutritional quality for work out",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 2,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Grill Chicken",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "f802uute-67tu-6bca-13b5-af842912u891",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "In a large bowl, whisk the salt in the water to dissolve.\n\nAdd the chicken breasts to the brine.\n\nPut in the refrigerator and chill for 30 minutes.",
+        "Ingredients": [ "Salt", "Water", "Chicken" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Grill", "Pan" ],
+        "Description": "Arrange your grill so that one side is for high direct heat, and the other side is cooler.\n\nAlternatively, you can use a grill pan, set over medium-high heat.\n\nRemove chicken breasts from brine and pat dry.\n\nCoat with olive oil, and sprinkle evenly with paprika.",
+        "Ingredients": [ "Chicken", "Olive oil", "Paprika" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Grill", "Pan" ],
+        "Description": "Brush some olive oil on the grill grates.\n\nPlace chicken breasts on the hot side of the grill (or on the grill pan).\n\nLet the chicken grill, undisturbed, until the pieces start getting some grill marks (you can lift up one to check).\n\nWhen the chicken pieces have browned on one side, turn them over, and move them to the cooler side of the grill (low heat, not no heat).\n\nCover, and let them finish cooking.",
+        "Ingredients": [ "Olive oil", "Chicken" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:40:00",
+    "Difficulty": 1,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive oil",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Chicken",
+        "Quantity": "900 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "946 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "33 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Paprika",
+        "Quantity": "15 gr"
+      }
+    ],
+    "Calories": "284 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Grill Chicken tasty meal to get out of the simple chicken recipe.",
     "Creator": {
       "Id": "3c896419-e280-40e7-8552-240635566fed",
       "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",

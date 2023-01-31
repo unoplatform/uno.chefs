@@ -99,4 +99,9 @@
     <_Globbled_Page Remove="Views\Templates\ItemTemplates.xaml" />
     <_Globbled_Page Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties recipes_1json__JsonSchema="https://codemagic.io/codemagic-schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
