@@ -101,6 +101,7 @@
                            Stretch="UniformToFill"
                            utu:AutoLayout.PrimaryAlignment="Stretch"
                            utu:AutoLayout.CounterAlignment="Stretch" />
+                    <!--Workaround for #281 issue-->
                     <utu:AutoLayout x:Name="NarrowInnerLayout"
                                     Spacing="15"
                                     Padding="30,30,30,15"
