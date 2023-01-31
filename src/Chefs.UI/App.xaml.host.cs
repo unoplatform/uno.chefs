@@ -107,12 +107,17 @@ public sealed partial class App : Application
                             {
                                 new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true, Nested: new RouteMap[]
                                 {
-                                    new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
+                                    new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>())
                                 }),
+                                new RouteMap("HomeRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn:"Home"),
+                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>(), DependsOn:"RecipeDetails"),
+                                new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn:"RecipeDetails"),
+                                new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>(), DependsOn:"RecipeDetails"),
                                 new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>(), Nested: new RouteMap[]
                                 {
                                     new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(),DependsOn: "Profile")
                                 }),
+                                new RouteMap("ProfileRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
                                 new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "Profile"),
                                 new RouteMap("ProfileUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "ProfileCookbookDetail"),
                                 new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), DependsOn:"Home", Nested: new RouteMap[]
@@ -122,13 +127,7 @@ public sealed partial class App : Application
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesModel>()),
                                 new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookModel>()),
                                 new RouteMap("SavedCookbookDetail", View: views.FindByViewModel<CookbookDetailModel>()),
-                                new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "SavedCookbookDetail"),
-                                new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), Nested: new RouteMap[]
-                                {
-                                    new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>(), DependsOn:"RecipeDetails"),
-                                    new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn:"RecipeDetails"),
-                                    new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>(), DependsOn:"RecipeDetails"),
-                                }),
+                                new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "SavedCookbookDetail")
                             }),
                             new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
                         }));
