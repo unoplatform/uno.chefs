@@ -239,7 +239,7 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="RecipeDetails"
+                                                        uen:Navigation.Request="HomeRecipeDetails"
                                                         ItemTemplate="{StaticResource HomeLargeItemTemplate}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
@@ -349,7 +349,8 @@
                                                                             Style="{StaticResource FilledCardContentControlStyle}"
                                                                             Background="{ThemeResource SurfaceBrush}"
                                                                             Margin="18, 0, 0, 0"
-                                                                            MaxWidth="171">
+                                                                            MaxWidth="171"
+                                                                            DisablePointerStates="True">
                                                         <utu:CardContentControl.ContentTemplate>
                                                             <DataTemplate>
                                                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
