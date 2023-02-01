@@ -33,11 +33,11 @@
                                 </VisualState.StateTriggers>
                                 <VisualState.Setters>
                                     <Setter Target="MatchingResultText.Style"
-                                            Value="{StaticResource HeadlineLarge}" />
+                                            Value="{StaticResource CustomHeadlineLarge}" />
                                     <Setter Target="SearchTermsText.Style"
-                                            Value="{StaticResource HeadlineMedium}" />
+                                            Value="{StaticResource CustomHeadlineMedium}" />
                                     <Setter Target="SearchIcon.Style"
-                                            Value="{StaticResource DisplayLarge}" />
+                                            Value="{StaticResource CustomDisplayLarge}" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
