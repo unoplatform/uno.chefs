@@ -160,6 +160,8 @@
                                 Value="20,0" />
                         <Setter Target="ImageLayout.Spacing"
                                 Value="30" />
+                        <Setter Target="DoneButton.Margin"
+                                Value="20,0,40,0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -223,58 +225,30 @@
                 </ScrollViewer>
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                 utu:AutoLayout.CounterAlignment="Stretch"
+                                uen:Region.Attached="True"
                                 x:Name="StepsLayout">
 
                     <utu:AutoLayout x:Name="StepsFeedLayout"
                                     utu:AutoLayout.CounterAlignment="Stretch">
-                        <!--Workaround for: [Bug] [Mobile] Horizontal list view not visible inside AutoLayout#104
-                            https://github.com/unoplatform/uno.chefs/issues/104-->
-                        
-                        <not_win:AutoLayout x:Name="ItemsRepeaterLayout"
-                                            utu:AutoLayout.CounterAlignment="Stretch"
-                                            Background="{ThemeResource PrimaryBrush}">
-                            <muxc:ItemsRepeater ItemsSource="{Binding Steps}"
-                                                HorizontalAlignment="Stretch">
-                                <muxc:ItemsRepeater.Layout>
-                                    <muxc:UniformGridLayout Orientation="Horizontal"
-                                                            ItemsJustification="SpaceEvenly" />
-                                </muxc:ItemsRepeater.Layout>
-                                <muxc:ItemsRepeater.ItemTemplate>
+                        <AutoLayout x:Name="ItemsRepeaterLayout"
+                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                    Background="{ThemeResource PrimaryBrush}">
+                            <utu:TabBar uen:Region.Attached="True"
+                                        Style="{StaticResource TopTabBarStyle}"
+                                        ItemsSource="{Binding Steps}"
+                                        SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Background="Transparent"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <utu:TabBar.ItemTemplate>
                                     <DataTemplate>
-                                        <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
-                                                        Padding="18"
-                                                        HorizontalAlignment="Stretch"
-                                                        PrimaryAxisAlignment="Center">
-                                            <TextBlock Foreground="{ThemeResource SurfaceBrush}"
-                                                       TextAlignment="Center"
+                                        <utu:AutoLayout>
+                                            <TextBlock Foreground="{ThemeResource OnPrimaryBrush}"
                                                        Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}" />
                                         </utu:AutoLayout>
                                     </DataTemplate>
-                                </muxc:ItemsRepeater.ItemTemplate>
-                            </muxc:ItemsRepeater>
-                        </not_win:AutoLayout>
-
-                        <win:ListView ItemsSource="{Binding Steps}"
-                                      Style="{StaticResource ListViewStyle}"
-                                      Background="{ThemeResource PrimaryBrush}">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsStackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <utu:AutoLayout Background="{ThemeResource PrimaryBrush}"
-                                                    PrimaryAxisAlignment="Center">
-                                        <TextBlock Foreground="{ThemeResource SurfaceBrush}"
-                                                   TextAlignment="Center"
-                                                   Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                   utu:AutoLayout.CounterAlignment="Center"
-                                                   Width="128" />
-                                    </utu:AutoLayout>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </win:ListView>
+                                </utu:TabBar.ItemTemplate>
+                            </utu:TabBar>
+                        </AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                         <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -287,7 +261,7 @@
 
                         </ScrollViewer>
                         <utu:AutoLayout PrimaryAxisAlignment="End">
-                            <Button Background="{ThemeResource PrimaryBrush}"
+                            <Button x:Name="DoneButton" Background="{ThemeResource PrimaryBrush}"
                                     Command="{Binding Complete}"
                                     Content="Done!"
                                     Height="56"
