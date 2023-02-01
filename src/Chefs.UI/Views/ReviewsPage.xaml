@@ -58,7 +58,7 @@
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
             </utu:NavigationBar>-->
-                
+
                 <!--Workaround for: [Bug] AppBarButton not working with uen:Navigation.Request#103
                     https://github.com/unoplatform/uno.chefs/issues/103-->
                 <utu:AutoLayout Spacing="10"
