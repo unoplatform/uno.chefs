@@ -9,7 +9,12 @@
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
                                         Separator=" ∙ "/>
-    <converters:CustomBackgroundColorConverter x:Key="CustomBackgroundColor" />
+    <converters:CustomBoolToColorConverter x:Key="CustomColor"
+                                            TrueColorValue="{StaticResource SurfaceBrush}"
+                                            FalseColorValue="{StaticResource PrimaryBrush}" />
+    <converters:CustomBoolToColorConverter x:Key="FilterButtonBackgroundColor"
+                                            TrueColorValue="{StaticResource PrimaryBrush}"
+                                            FalseColorValue="{StaticResource SurfaceBrush}" />
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
     <converters:BoolInverter x:Key="InvertBool" />
 

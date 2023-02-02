@@ -236,8 +236,13 @@
                                         BorderBrush="{ThemeResource PrimaryBrush}"
                                         BorderThickness="1.5"
                                         CornerRadius="15"
+                                        Background="{Binding Filter.Value.HasFilter, 
+                                                    Converter={StaticResource FilterButtonBackgroundColor}}"
+                                        Foreground="{Binding Filter.Value.HasFilter, 
+                                                    Converter={StaticResource CustomColor}}"
                                         Style="{StaticResource OutlinedButtonStyle}"
-                                        Command="{Binding GoToFilter}">
+                                        uen:Navigation.Request="Filter"
+                                        uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay }">
                                     <um:ControlExtensions.Icon>
                                         <PathIcon Data="{StaticResource Icon_Outline_Filter_ChefsApp}" />
                                     </um:ControlExtensions.Icon>
