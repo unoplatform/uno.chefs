@@ -1667,7 +1667,7 @@
         "UrlVideo": ""
       }
     ],
-    "ImageUrl": "",
+    "ImageUrl": "ms-appx:///Assets/Recipes/stir_fry_chicken_salad.png",
     "Serves": 1,
     "CookTime": "00:32:00",
     "Difficulty": 0,
@@ -1751,7 +1751,7 @@
   {
     "Name": "Spicy Salmon and Vegetables",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-    "Id": "f907eefe-67tu-6bca-08a2-af716322d891",
+    "Id": "f907eefe-27cb-6bca-08a2-af356012d237",
     "Steps": [
       {
         "Name": "Getting start",
@@ -1790,7 +1790,7 @@
         "UrlVideo": ""
       }
     ],
-    "ImageUrl": "",
+    "ImageUrl": "ms-appx:///Assets/Recipes/spicy_salmon_vegetables.png",
     "Serves": 1,
     "CookTime": "00:35:00",
     "Difficulty": 0,
@@ -1899,7 +1899,7 @@
   {
     "Name": "Tomato and garlic pasta",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-    "Id": "f907eefe-67tu-6bca-08a2-af716322d891",
+    "Id": "f947eefe-27cb-6bca-18a2-af356012d237",
     "Steps": [
       {
         "Name": "Getting start",
@@ -1938,7 +1938,7 @@
         "UrlVideo": ""
       }
     ],
-    "ImageUrl": "",
+    "ImageUrl": "ms-appx:///Assets/Recipes/tomato_garlic_pasta.png",
     "Serves": 1,
     "CookTime": "00:35:00",
     "Difficulty": 0,
@@ -2047,7 +2047,7 @@
   {
     "Name": "Homemade lasagna",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-    "Id": "f907eefe-67tu-6bca-08a2-af842912u891",
+    "Id": "be9c0be1-3980-4331-b6df-0975de70251a",
     "Steps": [
       {
         "Name": "Getting start",
@@ -2086,7 +2086,7 @@
         "UrlVideo": ""
       }
     ],
-    "ImageUrl": "",
+    "ImageUrl": "ms-appx:///Assets/Recipes/homemade_lasagna.png",
     "Serves": 1,
     "CookTime": "01:45:00",
     "Difficulty": 1,
@@ -2170,7 +2170,7 @@
   {
     "Name": "Pork Stew",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-    "Id": "f802uute-67tu-6bca-08a2-af842912u891",
+    "Id": "a0e8131c-4853-4d3f-a2d7-b6f54dc38a41",
     "Steps": [
       {
         "Name": "Getting start",
@@ -2200,7 +2200,7 @@
         "UrlVideo": ""
       }
     ],
-    "ImageUrl": "",
+    "ImageUrl": "ms-appx:///Assets/Recipes/pork_stew.png",
     "Serves": 1,
     "CookTime": "02:00:00",
     "Difficulty": 1,
@@ -2299,7 +2299,7 @@
   {
     "Name": "Grill Chicken",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
-    "Id": "f802uute-67tu-6bca-13b5-af842912u891",
+    "Id": "8a14332d-9791-41f8-8f31-8e46c8c5020c",
     "Steps": [
       {
         "Name": "Getting start",
@@ -2329,7 +2329,7 @@
         "UrlVideo": ""
       }
     ],
-    "ImageUrl": "",
+    "ImageUrl": "ms-appx:///Assets/Recipes/grill_chicken.png",
     "Serves": 1,
     "CookTime": "00:40:00",
     "Difficulty": 1,
@@ -2390,6 +2390,1599 @@
       "Id": 2,
       "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
       "Name": "Lunch",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Tomato and garlic pasta",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "dcbbc95a-2b23-4311-b58f-ded654f93bf4",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Place tomatoes in a large pot and cover with cold water.\n\nBring just to a boil.\n\nPour off water, and cover again with cold water.\n\nPeel the skin off tomatoes and cut into small pieces.",
+        "Ingredients": [ "Tomato", "Water" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Bring a large pot of lightly salted water to a boil.\n\nCook angel hair pasta in the boiling water, stirring occasionally, until tender yet firm to the bite, 4 to 5 minutes.",
+        "Ingredients": [ "Salt", "Water" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:25:00",
+        "Cookware": [ "Skillet" ],
+        "Description": "Meanwhile, heat olive oil in a large skillet or pan, making sure there is enough to cover the bottom of the pan, and sauté garlic until opaque but not browned. Stir in tomato paste.\n\nImmediately stir in the tomatoes, salt, and pepper.\n\nReduce heat, and simmer until pasta is ready, adding basil at the end.",
+        "Ingredients": [ "Olive oil", "Garlic", "Tomato", "Salt", "Pepper", "Basil" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Plates", "Pot" ],
+        "Description": "Drain pasta, do not rinse in cold water. Toss with a bit of olive oil, then mix into the sauce.\n\nReduce heat as low as possible. Keep warm, uncovered, for about 10 minutes when it is ready to serve. Garnish generously with fresh Parmesan cheese.",
+        "Ingredients": [ "Water", "Olive oil" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/grill_chicken.png",
+    "Serves": 1,
+    "CookTime": "00:45:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive oil",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Tomato",
+        "Quantity": "907 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "578 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "15 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Basil",
+        "Quantity": "10 gr"
+      }
+    ],
+    "Calories": "380 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Tomato and garlic pasta is a simple recipe where the sauce has a delicious taste",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Tomato and garlic pasta",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "dcbbc95a-2b23-4311-b58f-ded654f93bf4",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Place tomatoes in a large pot and cover with cold water.\n\nBring just to a boil.\n\nPour off water, and cover again with cold water.\n\nPeel the skin off tomatoes and cut into small pieces.",
+        "Ingredients": [ "Tomato", "Water" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Bring a large pot of lightly salted water to a boil.\n\nCook angel hair pasta in the boiling water, stirring occasionally, until tender yet firm to the bite, 4 to 5 minutes.",
+        "Ingredients": [ "Salt", "Water" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:25:00",
+        "Cookware": [ "Skillet" ],
+        "Description": "Meanwhile, heat olive oil in a large skillet or pan, making sure there is enough to cover the bottom of the pan, and sauté garlic until opaque but not browned. Stir in tomato paste.\n\nImmediately stir in the tomatoes, salt, and pepper.\n\nReduce heat, and simmer until pasta is ready, adding basil at the end.",
+        "Ingredients": [ "Olive oil", "Garlic", "Tomato", "Salt", "Pepper", "Basil" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Plates", "Pot" ],
+        "Description": "Drain pasta, do not rinse in cold water. Toss with a bit of olive oil, then mix into the sauce.\n\nReduce heat as low as possible. Keep warm, uncovered, for about 10 minutes when it is ready to serve. Garnish generously with fresh Parmesan cheese.",
+        "Ingredients": [ "Water", "Olive oil" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "ms-appx:///Assets/Recipes/grill_chicken.png",
+    "Serves": 1,
+    "CookTime": "00:45:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive oil",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Tomato",
+        "Quantity": "907 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "578 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "15 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Basil",
+        "Quantity": "10 gr"
+      }
+    ],
+    "Calories": "380 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Tomato and garlic pasta is a simple recipe where the sauce has a delicious taste",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Chicken Ramen Bowl",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "e4c6ea0e-1907-41a1-b463-4f114da0535a",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Pan" ],
+        "Description": "In a large saucepan over medium heat, heat the oil.\n\nAdd the scallions, garlic, carrot, mushrooms, and cabbage. Cook, stirring often, for 3 minutes, or until the vegetables soften.\n\nStir in the ginger and brown sugar (if using) and cook for 30 seconds.\n\nFinally add the chicken broth and bring to a simmer.\n\nSimmer for 10 minutes.",
+        "Ingredients": [ "Oil", "Mushrooms", "Scallion", "Garlic", "Carrot", "Cabbage", "Ginger", "Sugar", "Chicken" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Pot", "Spoon" ],
+        "Description": "While the broth is simmering, bring a pot of water to a boil. Set a bowl of cold ice water nearby.\n\nUse a slotted spoon to gently lower the eggs, still in the shell, into the water. Simmer for 7 minutes for eggs that are soft and a little runny in the center, or 9 minutes for hard-boiled eggs.\n\nTransfer the eggs to the bowl of cold water and set aside until ready to serve.",
+        "Ingredients": [ "Water", "Egg" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:03:00",
+        "Cookware": [ "Pot", "Colander" ],
+        "Description": "Return the pot of water to a boil.\n\nAdd the noodles and cook for 3 minutes, or according to the package directions, until tender.\n\nDrain in a colander.",
+        "Ingredients": [ "Water", "Nodles" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:07:00",
+        "Cookware": [ "Bowls", "Spoon" ],
+        "Description": "Divide the noodles among 4 large bowls. Ladle the broth and vegetables over the noodles.\n\nRemove the eggs from the ice water. Tap the shells with a spoon to crack and then peel off the shells.\n\nPat the eggs dry and cut them in half.",
+        "Ingredients": [ "Noodles", "Egg" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:30:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Oil",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Mushrooms",
+        "Quantity": "113 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Scallion",
+        "Quantity": "57 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "3 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Carrot",
+        "Quantity": "54 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cabbage",
+        "Quantity": "130 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Ginger",
+        "Quantity": "7 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "900 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Noodles",
+        "Quantity": "625 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Chicken",
+        "Quantity": "1360 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Egg",
+        "Quantity": "200 gr"
+      }
+    ],
+    "Calories": "290 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Chicken Ramen Bowl is a delicious pasta with high protein qualifications",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Pasta Salad Bowl",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "c7dd4999-0084-45b3-a2c1-c5b0750b2bd0",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Gather all ingredients.\n\nBring a large pot of lightly salted water to a boil.",
+        "Ingredients": [ "Salt", "Water" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:12:00",
+        "Cookware": [ "Pot" ],
+        "Description": "Cook pasta in the boiling water, stirring occasionally, until tender yet firm to the bite, about 10 to 12 minutes; rinse under cold water and drain.",
+        "Ingredients": [ "Pasta" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:13:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "Whisk Italian dressing and salad spice mix together until smooth.\n\nCombine pasta, tomatoes, bell peppers, and olives in a salad bowl; pour dressing over salad and toss to coat.",
+        "Ingredients": [ "Italian dressing", "Pasta", "Tomato", "Pepper", "Olive" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:30:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive",
+        "Quantity": "64 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "800 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pasta",
+        "Quantity": "454 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Italian dressing",
+        "Quantity": "454 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Tomato",
+        "Quantity": "398 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "65 gr"
+      }
+    ],
+    "Calories": "360 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Pasta Salad Bowl mix vegetable nutrients with carbohydrates.",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Roast Beef Tenderloin",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "d54a7cfe-e509-4a14-bc75-0f24679987a7",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Sheet Pan", "Teaspoon" ],
+        "Description": "Heat the oven to 450 degrees. Line a large sheet pan with foil. Place the beef on the pan.\n\nMix the butter, soy sauce, Worcestershire sauce and sugar in a small bowl until the sugar dissolves.\n\nPour the mixture all over the beef, using your hands to spread it around.\n\nSprinkle the beef generously with salt (about 2 teaspoons) and press in an even coating of pepper (about 1 teaspoon).",
+        "Ingredients": [ "Beef", "Butter", "Soy sauce", "Worcestershire sauce", "Sugar", "Pepper" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:30:00",
+        "Cookware": [ "Meat thermometer", "Cutting board" ],
+        "Description": "Roast until browned and a meat thermometer inserted in the center registers 120 to 125 degrees for medium-rare, 25 to 30 minutes. (Start checking at 20 minutes to make sure you don’t overcook the meat.)\n\nUse the foil to lift and transfer the beef with its juices to a cutting board.\n\nLet rest for 15 to 20 minutes.\n\nThe internal temperature of the meat will rise 5 to 10 degrees as it rests.",
+        "Ingredients": [ "Beef" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Cutting board", "Plate" ],
+        "Description": "Transfer the beef to the cutting board, reserving the foil with its juices, and cut the beef into slices for serving.\n\nArrange on a serving platter and pour over all of the juices from the foil and cutting board. Sprinkle with parsley, if you’d like, and serve with the horseradish sauce.",
+        "Ingredients": [ "Beef", "Parsley", "Horseradish sauce" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:50:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Beef",
+        "Quantity": "1814 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Butter",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Soy sauce",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Worcestershire sauce",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Parsley",
+        "Quantity": "113 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Horseradish sauce",
+        "Quantity": "10 ml"
+      }
+    ],
+    "Calories": "375 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Roast Beef Tenderloin has a high caloric percentage and you can taste several sauces",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Italian Spaghetti with meatballs",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "012f6256-b771-45e1-9305-975923664448",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:20:00",
+        "Cookware": [ "Bowl", "Teaspoon" ],
+        "Description": "In a large bowl, combine ground beef, bread crumbs, parsley, parmesan, 1/4 teaspoon black pepper, garlic powder and beaten egg.\n\nMix well and form into 12 balls.\n\nStore, covered, in refrigerator until needed.",
+        "Ingredients": [ "Ground beef", "Bread crumbs", "Parsley", "Parmesan", "Black Pepper", "Garlic", "Egg" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:40:00",
+        "Cookware": [ "Saucepan" ],
+        "Description": "In a large saucepan over medium heat, saute onion and garlic in olive oil until onion is translucent. Stir in tomatoes, salt, sugar and bay leaf.",
+        "Ingredients": [ "Onion", "Garlic", "Olive oil", "Tomato", "Salt", "Sugar", "Bay leaf" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "01:20:00",
+        "Cookware": [ "Teaspoon", "Plate" ],
+        "Description": "Cover, reduce heat to low, and simmer 50 minutes. Stir in tomato paste, basil, 1/2 teaspoon pepper and meatballs and simmer 30 minutes more.",
+        "Ingredients": [ "Tomato", "Basil", "Pepper" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "02:20:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Ground beef",
+        "Quantity": "453 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Bread crumbs",
+        "Quantity": "60 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Parsley",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Parmesan",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Black pepper",
+        "Quantity": "2.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "1.25 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Egg",
+        "Quantity": "1"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Onion",
+        "Quantity": "13 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive oil",
+        "Quantity": "13 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Tomato",
+        "Quantity": "964 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Bay leaf",
+        "Quantity": "1"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Basil",
+        "Quantity": "7.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "5 gr"
+      }
+    ],
+    "Calories": "411 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Italian spaghetti and meatballs mix protein with carbs",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Pork Dumplings",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "e79f9e7c-4576-4e48-87d0-87f17561cdfc",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:43:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "Prepare dipping sauce: Combine soy sauce, rice vinegar, chives, sesame seeds, and chile sauce in a small bowl. Set aside.\n\n Mix pork, garlic, egg, chives, soy sauce, sesame oil, and ginger in a large bowl until thoroughly combined.",
+        "Ingredients": [ "Sauce", "Soy sauce", "Rice vinegar", "Sesame seeds", "Chile sauce", "Pork", "Garlic", "Egg", "Chives", "Sesame oil", "Ginger" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:30:00",
+        "Cookware": [ "Tablespoon" ],
+        "Description": "Place a dumpling wrapper on a lightly floured work surface and spoon about 1 tablespoon of the filling in the middle.\n\nWet the edge with a little water and crimp together forming small pleats to seal the dumpling. Repeat to form remaining dumplings.",
+        "Ingredients": [ "Water" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:07:00",
+        "Cookware": [ "Tablespoon", "Skillet", "Pan", "Cup" ],
+        "Description": "Heat 1 to 2 tablespoons vegetable oil in a large skillet over medium-high heat. Place 8 to 10 dumplings in the pan and cook until browned, about 2 minutes per side. Pour in 1 cup of water; cover and cook until the dumplings are tender and pork is cooked through, about 5 minutes.",
+        "Ingredients": [ "Pork" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "01:20:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Sauce",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Soy sauce",
+        "Quantity": "118 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Rice vinager",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sesame seeds",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Chile sauce",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pork",
+        "Quantity": "453 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Egg",
+        "Quantity": "1"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Sesam oil",
+        "Quantity": "10 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Ginger",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "834 ml"
+      }
+    ],
+    "Calories": "80 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Italian spaghetti and meatballs mix protein with carbs",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 3,
+      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+      "Name": "Dinner",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Yogurt Parfait",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "a8dcfc92-a90b-49eb-8d7c-0a0cd1f595d0",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:02:00",
+        "Cookware": [ "Saucepan" ],
+        "Description": "Bring 2 cups blueberries, the sugar, and water to a simmer in a small saucepan over medium heat.",
+        "Ingredients": [ "Blueberries", "Sugar", "Water" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Cup" ],
+        "Description": "Cook stirring frequently until berries have burst and the compote has thickened, about 5 – 8 minutes.\n\nThere should be 1 cup of the blueberry compote.",
+        "Ingredients": [ "Blueberries" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "Pour mixture into a bowl and chill in refrigerator until cooled. Wait to assemble parfaits until you are almost ready to serve them so the granola stays crisp.",
+        "Ingredients": [ "Granola", "Yogurt" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:17:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Blueberries",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Water",
+        "Quantity": "100 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Granola",
+        "Quantity": "20 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Yogurt",
+        "Quantity": "82 gr"
+      }
+    ],
+    "Calories": "84 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Yogurt Parfait is a delicious and nutritious snack",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 4,
+      "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+      "Name": "Snack",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "American Hotcakes",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "e1024abe-1bf5-40a7-a092-1d458f65b138",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Tablespoon", "Bowl", "Electric hand beaters", "Jug" ],
+        "Description": "Mix 200g self-raising flour, 1 1/2 tablespoon baking powder, 1 tablespoon golden caster sugar and a pinch of salt together in a large bowl./n/nCreate a well in the centre with the back of your spoon then add 3 large eggs, 25g melted butter and 200ml milk.\n\nWhisk together either with a balloon whisk or electric hand beaters until smooth then pour into a jug.",
+        "Ingredients": [ "Flour", "Baking powder", "Sugar", "Salt", "Egg", "Butter", "Milk" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Non-stick frying pan" ],
+        "Description": "Heat a small knob of butter and 1 tablespoon of oil in a large, non-stick frying pan over a medium heat.\n\nWhen the butter looks frothy, pour in rounds of the batter, approximately 8cm wide.\n\nMake sure you don’t put the pancakes too close together as they will spread during cooking.\n\nCook the pancakes on one side for about 1-2 mins or until lots of tiny bubbles start to appear and pop on the surface.\n\nFlip the pancakes over and cook for a further minute on the other side. Repeat until all the batter is used up.",
+        "Ingredients": [ "Butter" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Plate" ],
+        "Description": "Serve your pancakes stacked up on a plate with a drizzle of maple syrup and any of your favourite toppings.",
+        "Ingredients": [ "Maple syrup" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:30:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "",
+        "Name": "Flour",
+        "Quantity": "200 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Baking powder",
+        "Quantity": "15 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Sugar",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Egg",
+        "Quantity": "3"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Butter",
+        "Quantity": "25 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
+        "Name": "Maple syrup",
+        "Quantity": ""
+      }
+    ],
+    "Calories": "268 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "This is a traditional meal in italia",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 4,
+      "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+      "Name": "Snack",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Veggie Sandwich",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "052e70cb-f800-46aa-bc10-f21d10dadb14",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:15:00",
+        "Cookware": [ "Plate" ],
+        "Description": "Get bread, hummus and avocado to get ready the ingredients. Then start to spread one slice of bread with hummus and the other with avocado.",
+        "Ingredients": [ "Avocado", "Bread", "hummus" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Plate" ],
+        "Description": "For this step, it's important to get several vegetables that provide the recipe nutrients.\n\nFill the sandwich with greens, bell pepper, cucumber and carrot.",
+        "Ingredients": [ "Greens", "Pepper", "Cucumber", "Carrot" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Plate" ],
+        "Description": "For getting the nutrients, it's very important to follow the last two steps very strict.\n\n Slice in half and serve.",
+        "Ingredients": [ "Bread" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:10:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "Name": "Avocado",
+        "Quantity": "25 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Bread",
+        "Quantity": "30 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Hummus",
+        "Quantity": "30 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Greens",
+        "Quantity": "32.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cucumber",
+        "Quantity": "75 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Carrot",
+        "Quantity": "64 gr"
+      }
+    ],
+    "Calories": "266 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "This is a traditional meal in italia",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 4,
+      "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+      "Name": "Snack",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Prawns Provencale",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "6e3e90fb-f2fe-4a98-81ff-85033a8a4010",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:12:00",
+        "Cookware": [ "Sheep pan", "Aluminum foil", "Tablespoon", "Shrimp" ],
+        "Description": "Preheat oven to 475 degrees F (245 degrees C). Line a sheet pan with aluminum foil. Brush with 1 tablespoon olive oil.\n\nCarefully remove shells and legs of prawns; leave the tail attached. To butterfly the prawns, cut a slit with a small sharp knife lengthwise down the belly side of shrimp, almost to the skin on the back. Open out like a book.",
+        "Ingredients": [ "Shrimp", "Prawns", "Olive oil" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:03:00",
+        "Cookware": [ "Mortar", "Tablespoon", "Cup" ],
+        "Description": "Place chopped garlic, large pinch kosher salt, oregano, and thyme in a mortar; pound and stir with a pestle a few seconds. Add 1 tablespoon fresh parsley.\n\nPound and stir mixture until it turns into a paste, 1 or 2 minutes. Add 1/3 cup olive oil; mix about 1 minute to infuse olive oil with herbs and garlic.",
+        "Ingredients": [ "Garlic", "Kosher salt", "Oregano", "Thyme", "Parsley", "Olive oil" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Second step",
+        "CookTime": "00:03:00",
+        "Cookware": [ "Bowl", "Fork" ],
+        "Description": "Place bread crumbs in a mixing bowl. Transfer herb-garlic mixture to breadcrumbs. Add a pinch of salt, black pepper, pinch cayenne, remaining chopped parsley, and grated cheese. Mix with a fork to distribute ingredients evenly. Pinch a bit of the mixture; if it feels a bit dry and doesn't stick to your finger, drizzle in a bit more olive oil. Stir until mixture reaches desired consistency. 2 to 3 minutes.",
+        "Ingredients": [ "Bread crumbs", "Garlic", "Black pepper", "Grated cheese", "Parsley", "Cayenne" ],
+        "Number": 3,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:10:00",
+        "Cookware": [ "Baking sheet" ],
+        "Description": "Lightly but thoroughly coat cut side of prawns with crumb mixture; place on prepared baking sheet.\n\nBake in preheated oven until cooked through and tails curl up, 8 to 10 minutes.",
+        "Ingredients": [ "Prawns", "Bread crumb" ],
+        "Number": 4,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:28:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Olive oil",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Bread crumbs",
+        "Quantity": "150 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Shrimp",
+        "Quantity": "907 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Prawns",
+        "Quantity": "30 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Kosher salt",
+        "Quantity": "10 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Oregano",
+        "Quantity": "2.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Thyme",
+        "Quantity": "2.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Parsley",
+        "Quantity": "8.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Black pepper",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Grated cheese",
+        "Quantity": "42.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cayenne",
+        "Quantity": "5.3 gr"
+      }
+    ],
+    "Calories": "386 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Provide seafood benefits and calories",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 4,
+      "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+      "Name": "Snack",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Salmon Croquettes",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "256cdf86-04b3-444f-b496-a364d280d66f",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Bowl" ],
+        "Description": "Add panko and flour to a bowl and mix.\nAdd bell peppers, canned salmon, garlic, salt, pepper, egg, mayonnaise, Worcestershire sauce and cilantro. Mix until incorporated.",
+        "Ingredients": [ "Panko", "Flour", "Pepper", "Canned salmon", "Garlic", "\nSalt" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:07:00",
+        "Cookware": [ "Skillet" ],
+        "Description": "Shape into 6-8 patties and heat oil in large skillet over medium high heat.",
+        "Ingredients": [ "Oil" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:03:00",
+        "Cookware": [ "Skillet" ],
+        "Description": "Add patties to the skillet and cook for 2-3 minutes on each side or until golden brown.",
+        "Ingredients": [ "Pepper", "Egg", "Mayonnaise", "Worcestershire sauce", "\nCilantro" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:15:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Oil",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Panko",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Flour",
+        "Quantity": "34 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "2.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Canned salmon",
+        "Quantity": "141 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Egg",
+        "Quantity": "1"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Mayonnaise",
+        "Quantity": "2.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Worcestershire sauce",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cilantro",
+        "Quantity": "2.5 gr"
+      }
+    ],
+    "Calories": "139 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Provide seafood benefits and calories",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 4,
+      "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+      "Name": "Snack",
+      "Color": "#7A67F8"
+    },
+    "Date": "2022-10-15T00:00:00Z",
+    "Save": false
+  },
+  {
+    "Name": "Banana Muffins",
+    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "Id": "79433407-c5d0-4a34-831b-dec51e48bb7d",
+    "Steps": [
+      {
+        "Name": "Getting start",
+        "CookTime": "00:05:00",
+        "Cookware": [ "Muffin tin", "Bowl" ],
+        "Description": "Preheat the oven to 350 degrees F (175 degrees C). Grease a 12-cup muffin tin or line cups with paper liners. Sift flour, baking powder, baking soda, and salt together in a bowl; set aside.",
+        "Ingredients": [ "Flour", "Baking powder", "Baking soda", "Salt" ],
+        "Number": 1,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "First step",
+        "CookTime": "00:07:00",
+        "Cookware": [ "Skillet" ],
+        "Description": "Shape into 6-8 patties and heat oil in large skillet over medium high heat.",
+        "Ingredients": [ "Oil" ],
+        "Number": 2,
+        "UrlVideo": ""
+      },
+      {
+        "Name": "Final step",
+        "CookTime": "00:03:00",
+        "Cookware": [ "Skillet" ],
+        "Description": "Add patties to the skillet and cook for 2-3 minutes on each side or until golden brown.",
+        "Ingredients": [ "Pepper", "Egg", "Mayonnaise", "Worcestershire sauce", "\nCilantro" ],
+        "Number": 3,
+        "UrlVideo": ""
+      }
+    ],
+    "ImageUrl": "",
+    "Serves": 1,
+    "CookTime": "00:35:00",
+    "Difficulty": 0,
+    "Ingredients": [
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "Name": "Oil",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "Name": "Panko",
+        "Quantity": "50 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Flour",
+        "Quantity": "34 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Pepper",
+        "Quantity": "2.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Canned salmon",
+        "Quantity": "141 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Garlic",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Salt",
+        "Quantity": "5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Egg",
+        "Quantity": "1"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Mayonnaise",
+        "Quantity": "2.5 gr"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Worcestershire sauce",
+        "Quantity": "20 ml"
+      },
+      {
+        "UrlIcon": "",
+        "Name": "Cilantro",
+        "Quantity": "2.5 gr"
+      }
+    ],
+    "Calories": "348 kcal",
+    "Reviews": [
+      {
+        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+        "PublisherName": "Roberta any",
+        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+        "Date": "2022-07-12T00:00:00Z",
+        "Description": "Awesome recipe",
+        "Likes": 7,
+        "Dislikes": 5
+      }
+    ],
+    "Details": "Provide seafood benefits and calories",
+    "Creator": {
+      "Id": "3c896419-e280-40e7-8552-240635566fed",
+      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+      "FullName": "James Bondi",
+      "Description": "Passionate about food and life",
+      "Email": "james.bondi@gmail.com",
+      "PhoneNumber": "",
+      "Password": "123",
+      "Followers": 450,
+      "Following": 124,
+      "Recipes": 45
+    },
+    "Category": {
+      "Id": 4,
+      "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+      "Name": "Snack",
       "Color": "#7A67F8"
     },
     "Date": "2022-10-15T00:00:00Z",
