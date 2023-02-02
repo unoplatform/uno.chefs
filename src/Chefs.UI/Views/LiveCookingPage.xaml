@@ -73,7 +73,7 @@
                     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                     Padding="18"
                                     CornerRadius="15">
-                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                    TextWrapping="Wrap"
                                    Text="{Binding Description}"
                                    Style="{StaticResource CustomTitleMedium}" />
