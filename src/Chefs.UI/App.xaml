@@ -23,6 +23,7 @@
 
                 <MaterialToolkitResources xmlns="using:Uno.Toolkit.UI.Material" />
 
+                <ResourceDictionary Source="ms-appx:///TabBar/TabBar.xaml" />
                 <ResourceDictionary Source="ms-appx:///Converters/Converters.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/FeedView.xaml" />
                 <ResourceDictionary Source="ms-appx:///Views/Templates/ItemTemplates.xaml" />

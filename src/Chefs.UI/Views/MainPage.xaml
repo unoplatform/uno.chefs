@@ -8,6 +8,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:ci="using:Chefs.UI"
       Background="{ThemeResource BackgroundBrush}">
 
     <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -32,37 +33,35 @@
                   uen:Region.Navigator="Visibility"
                   utu:SafeArea.Insets="VisibleBounds" />
 
-            <utu:TabBar x:Name="Tabs"
+            <ci:TabBar x:Name="Tabs"
                         Grid.Row="1"
-                        uen:Region.Attached="True"
-                        Style="{StaticResource BottomTabBarStyle}">
-                <utu:TabBarItem uen:Region.Name="Home"
+                        uen:Region.Attached="True">
+                <ci:TabBarItem uen:Region.Name="Home"
                                 IsSelectable="True"
-                                Content="Home"
-                                Style="{StaticResource BottomTabBarItemStyle}">
-                    <utu:TabBarItem.Icon>
+                                Content="Home">
+                    <ci:TabBarItem.Icon>
                         <PathIcon Data="{StaticResource Icon_Solid_General_Home}" />
-                    </utu:TabBarItem.Icon>
-                </utu:TabBarItem>
+                    </ci:TabBarItem.Icon>
+                </ci:TabBarItem>
 
-                <utu:TabBarItem uen:Region.Name="Create"
+                <ci:TabBarItem uen:Region.Name="Create"
                                 IsSelectable="True"
                                 Content="Create"
                                 Style="{StaticResource BottomTabBarItemStyle}">
-                    <utu:TabBarItem.Icon>
+                    <ci:TabBarItem.Icon>
                         <PathIcon Data="{StaticResource Icon_Outline_Add_ChefsApp}" />
-                    </utu:TabBarItem.Icon>
-                </utu:TabBarItem>
+                    </ci:TabBarItem.Icon>
+                </ci:TabBarItem>
 
-                <utu:TabBarItem uen:Region.Name="SavedRecipes"
+                <ci:TabBarItem uen:Region.Name="SavedRecipes"
                                 IsSelectable="True"
                                 Content="Saved"
                                 Style="{StaticResource BottomTabBarItemStyle}">
-                    <utu:TabBarItem.Icon>
+                    <ci:TabBarItem.Icon>
                         <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}" />
-                    </utu:TabBarItem.Icon>
-                </utu:TabBarItem>
-            </utu:TabBar>
+                    </ci:TabBarItem.Icon>
+                </ci:TabBarItem>
+            </ci:TabBar>
         </Grid>
     </utu:AutoLayout>
 </Page>
