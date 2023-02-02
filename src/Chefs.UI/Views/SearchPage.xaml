@@ -160,6 +160,8 @@
                                 Value="50" />
                         <Setter Target="FilterButton.FontSize"
                                 Value="16" />
+                        <Setter Target="RecentSearchesLayout.Margin"
+                                Value="0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -192,7 +194,7 @@
                              Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                         <um:ControlExtensions.Icon>
                             <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
-                                      Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                      Foreground="{ThemeResource SurfaceInverseBrush}" />
                         </um:ControlExtensions.Icon>
                     </TextBox>
                 </utu:AutoLayout>
@@ -200,14 +202,16 @@
                 <utu:AutoLayout Padding="0,12"
                                 Spacing="12">
                     <utu:AutoLayout>
-                        <Grid>
+                        <Grid x:Name="RecentSearchesLayout" 
+                              Margin="0, 0, 0, 10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <utu:AutoLayout Grid.Column="0"
-                                            Padding="0, 13, 0, 13"
+                                            Grid.HorizontalContentAlignment=""
+                                            Padding="0, 18, 0, 13"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout Orientation="Horizontal"
                                                 Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
@@ -248,7 +252,6 @@
                                     </um:ControlExtensions.Icon>
                                 </Button>
                             </utu:AutoLayout>
-
                         </Grid>
 
                         <muxc:ItemsRepeater x:Name="HistoryRepeater"
@@ -346,7 +349,8 @@
                         <TextBlock Text="Recipes for you"
                                    x:Name="RecipesForYouTitle"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource CustomTitleLarge}" />
+                                   Style="{StaticResource CustomTitleLarge}"
+                                   Margin="0, 12, 0, 24" />
                         <uer:FeedView x:Name="RecommendedFeedView"
                                       Source="{Binding Recommended}">
                             <DataTemplate>
@@ -355,7 +359,7 @@
                                     <ScrollViewer.Resources>
                                         <muxc:StackLayout x:Key="NarrowStackLayout"
                                                           Orientation="Horizontal"
-                                                          Spacing="8" />
+                                                          Spacing="20" />
                                         <muxc:StackLayout x:Key="WideStackLayout"
                                                           Orientation="Horizontal"
                                                           Spacing="30" />
@@ -411,7 +415,7 @@
                                                         </Border>
                                                         <TextBlock x:Name="RecipeName"
                                                                    Text="{Binding Name}"
-                                                                   utu:AutoLayout.CounterAlignment="Start"
+                                                                   utu:AutoLayout.CounterAlignment="Center"
                                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                    Style="{StaticResource CustomTitleSmall}"
                                                                    TextWrapping="NoWrap" />
@@ -426,7 +430,8 @@
                         <TextBlock Text="Ideas from chefs"
                                    x:Name="IdeasFromChefsTitle"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource CustomTitleLarge}" />
+                                   Style="{StaticResource CustomTitleLarge}"
+                                   Margin="0, 24" />
                         <uer:FeedView x:Name="ChefsFeedView"
                                       Source="{Binding FromChefs}">
                             <DataTemplate>
@@ -435,7 +440,7 @@
                                     <ScrollViewer.Resources>
                                         <muxc:StackLayout x:Key="NarrowStackLayout"
                                                           Orientation="Horizontal"
-                                                          Spacing="8" />
+                                                          Spacing="20" />
                                         <muxc:StackLayout x:Key="WideStackLayout"
                                                           Orientation="Horizontal"
                                                           Spacing="30" />
@@ -491,7 +496,7 @@
                                                         </Border>
                                                         <TextBlock x:Name="RecipeName"
                                                                    Text="{Binding Name}"
-                                                                   utu:AutoLayout.CounterAlignment="Start"
+                                                                   utu:AutoLayout.CounterAlignment="Center"
                                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                    Style="{StaticResource CustomTitleSmall}"
                                                                    TextWrapping="NoWrap" />
