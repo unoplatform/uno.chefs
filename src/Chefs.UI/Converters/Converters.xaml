@@ -17,6 +17,10 @@
                                             FalseColorValue="{StaticResource SurfaceBrush}" />
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
     <converters:BoolInverter x:Key="InvertBool" />
+    <converters:FromNullToVisibilityConverter x:Key="FromNullToVisibilityConverter"
+                                              Invert="False" />
+
+    <converters:GreaterThanZeroToVisibleConverter x:Key="GreaterThanZeroToVisibleConverter" />
 
     <converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
                                        Number="2" />

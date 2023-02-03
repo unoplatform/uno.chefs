@@ -213,12 +213,16 @@
                                             Grid.HorizontalContentAlignment=""
                                             Padding="0, 18, 0, 13"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <utu:AutoLayout Orientation="Horizontal"
-                                                Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
-                                    <TextBlock x:Name="RecentSearches"
-                                               Text="Recent searches"
-                                               Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               Style="{StaticResource CustomTitleLarge}" />
+                                <utu:AutoLayout Visibility="{Binding ItemsSource.Count,
+                                                                ElementName=HistoryRepeater, 
+                                                                Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
+                                    <utu:AutoLayout Orientation="Horizontal"
+                                                    Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                                        <TextBlock x:Name="RecentSearches"
+                                                   Text="Recent searches"
+                                                   Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                   Style="{StaticResource CustomTitleLarge}" />
+                                    </utu:AutoLayout>
                                 </utu:AutoLayout>
 
                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
