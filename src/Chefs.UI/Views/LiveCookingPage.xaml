@@ -73,10 +73,10 @@
                     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                     Padding="18"
                                     CornerRadius="15">
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    TextWrapping="Wrap"
                                    Text="{Binding Description}"
-                                   Style="{StaticResource CustomTitleMedium}" />
+                                   Style="{StaticResource CustomLabelMedium}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </DataTemplate>
