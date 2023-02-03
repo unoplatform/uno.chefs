@@ -143,11 +143,11 @@
                         <Setter Target="RecipesForYouTitle.Style"
                                 Value="{StaticResource CustomHeadlineLarge}" />
                         <Setter Target="RecipesForYouTitle.Margin"
-                                Value="0, 20"  />
+                                Value="0, 20" />
                         <Setter Target="IdeasFromChefsTitle.Style"
                                 Value="{StaticResource CustomHeadlineLarge}" />
                         <Setter Target="IdeasFromChefsTitle.Margin"
-                                Value="0, 20"  />
+                                Value="0, 20" />
                         <Setter Target="RecentSearches.Style"
                                 Value="{StaticResource CustomHeadlineLarge}" />
                         <Setter Target="BackButton.Height"
@@ -402,6 +402,8 @@
                                                                             Value="140" />
                                                                     <Setter Target="RecipeName.Style"
                                                                             Value="{StaticResource CustomHeadlineMedium}" />
+                                                                    <Setter Target="RecipeName.(utu:AutoLayout.CounterAlignment)"
+                                                                            Value="Start" />
                                                                 </VisualState.Setters>
                                                             </VisualState>
                                                         </VisualStateGroup>
@@ -483,6 +485,8 @@
                                                                             Value="140" />
                                                                     <Setter Target="RecipeName.Style"
                                                                             Value="{StaticResource CustomHeadlineMedium}" />
+                                                                    <Setter Target="RecipeName.(utu:AutoLayout.CounterAlignment)"
+                                                                            Value="Start" />
                                                                 </VisualState.Setters>
                                                             </VisualState>
                                                         </VisualStateGroup>
