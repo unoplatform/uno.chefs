@@ -278,24 +278,24 @@
                                             utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout Spacing="20"
                                                 utu:AutoLayout.CounterAlignment="Center">
-                                    <utu:AutoLayout>
-                                        <uer:FeedView Source="{Binding Recipes}">
-                                            <DataTemplate>
-                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+									<utu:AutoLayout>
+										<uer:FeedView Source="{Binding Recipes}">
+											<DataTemplate>
+												<muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource RecipeTemplate}">
-                                                    <muxc:ItemsRepeater.Layout>
-                                                        <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+													<muxc:ItemsRepeater.Layout>
+														<muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 ItemsStretch="Fill"
                                                                                 MinItemWidth="248" />
-                                                    </muxc:ItemsRepeater.Layout>
-                                                </muxc:ItemsRepeater>
+													</muxc:ItemsRepeater.Layout>
+												</muxc:ItemsRepeater>
 
-                                        </DataTemplate>
-                                    </uer:FeedView>
-                                </utu:AutoLayout>
-
-                            </utu:AutoLayout>
-                        </ScrollViewer>
+											</DataTemplate>
+										</uer:FeedView>
+									</utu:AutoLayout>
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+						</ScrollViewer>
                         <ScrollViewer x:Name="CookbooksScrollViewer"
                                       utu:AutoLayout.PrimaryAlignment="Stretch"
                                       HorizontalScrollMode="Disabled"
