@@ -162,6 +162,8 @@
                                 Value="16" />
                         <Setter Target="RecentSearchesLayout.Margin"
                                 Value="0" />
+                        <Setter Target="CloseSearchesButton.Margin"
+                                Value="190, 16, 0, 0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -206,23 +208,46 @@
                                     Margin="0, 0, 0, 10">
                             <utu:AutoLayout Padding="0, 18, 0, 13"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <utu:AutoLayout Visibility="{Binding ItemsSource.Count,
-                                                                ElementName=HistoryRepeater, 
-                                                                Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
-                                    <utu:AutoLayout Orientation="Horizontal"
-                                                    Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                                <utu:AutoLayout Visibility="{Binding IsSearchesClosed, 
+                                                                Converter={StaticResource InvertBool}}">
+                                    <utu:AutoLayout Visibility="{Binding ItemsSource.Count,
+                                                                    ElementName=HistoryRepeater, 
+                                                                    Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
                                         <TextBlock x:Name="RecentSearches"
                                                    Text="Recent searches"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomTitleLarge}" />
+                                                   Style="{StaticResource CustomTitleLarge}"
+                                                   Visibility="{Binding Searched, Converter={StaticResource InvertBool}}" />
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
 
-                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <utu:AutoLayout>
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
                                                Style="{StaticResource TitleLarge}"
                                                Visibility="{Binding Searched}" />
+                                </utu:AutoLayout>
+                            </utu:AutoLayout>
+
+                            <utu:AutoLayout Visibility="{Binding IsSearchesClosed, 
+                                                                Converter={StaticResource InvertBool}}"
+                                            utu:AutoLayout.IsIndependentLayout="True">
+                                <utu:AutoLayout Visibility="{Binding ItemsSource.Count,
+                                                            ElementName=HistoryRepeater, 
+                                                            Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
+                                    <Button Command="{Binding CloseRecentSearches}"
+                                            Background="{ThemeResource BackgroundBrush}"
+                                            x:Name="CloseSearchesButton"
+                                            Padding="0, 0, 0, 0"
+                                            Margin="126.5, 9.2, 0, 0"
+                                            PrimaryAxisAlignment="Start"
+                                            utu:AutoLayout.CounterAlignment="Start"
+                                            Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                                        <um:ControlExtensions.Icon>
+                                            <PathIcon Foreground="{StaticResource OnSurfaceVariantBrush}"
+                                                      Data="{StaticResource Icon_Close}" />
+                                        </um:ControlExtensions.Icon>
+                                    </Button>
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
 
@@ -251,45 +276,48 @@
                             </utu:AutoLayout>
                         </AutoLayout>
 
-                        <muxc:ItemsRepeater x:Name="HistoryRepeater"
-                                            utu:AutoLayout.CounterAlignment="Start"
-                                            ItemsSource="{Binding SearchHistory}"
-                                            Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
-                            <muxc:ItemsRepeater.Layout>
-                                <muxc:StackLayout Orientation="Horizontal" />
-                            </muxc:ItemsRepeater.Layout>
-                            <muxc:ItemsRepeater.ItemTemplate>
-                                <DataTemplate>
-                                    <utu:AutoLayout>
-                                        <VisualStateManager.VisualStateGroups>
-                                            <VisualStateGroup>
-                                                <VisualState x:Name="Narrow" />
-                                                <VisualState x:Name="Wide">
-                                                    <VisualState.StateTriggers>
-                                                        <AdaptiveTrigger MinWindowWidth="800" />
-                                                    </VisualState.StateTriggers>
-                                                    <VisualState.Setters>
-                                                        <Setter Target="SearchHistoryButton.Padding"
-                                                                Value="8,6.5" />
-                                                        <Setter Target="SearchHistoryButton.FontSize"
-                                                                Value="16" />
-                                                    </VisualState.Setters>
-                                                </VisualState>
-                                            </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
-                                        <Button Content="{Binding}"
-                                                Padding="5"
-                                                x:Name="SearchHistoryButton"
-                                                Margin="0,0,8,0"
-                                                CornerRadius="8"
-                                                Background="{ThemeResource PrimaryInverseColor}"
-                                                Foreground="{ThemeResource SurfaceColor}"
-                                                Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
-                                                CommandParameter="{Binding}" />
-                                    </utu:AutoLayout>
-                                </DataTemplate>
-                            </muxc:ItemsRepeater.ItemTemplate>
-                        </muxc:ItemsRepeater>
+                        <utu:AutoLayout Visibility="{Binding IsSearchesClosed, 
+                                                       Converter={StaticResource InvertBool}}">
+                            <muxc:ItemsRepeater x:Name="HistoryRepeater"
+                                                utu:AutoLayout.CounterAlignment="Start"
+                                                ItemsSource="{Binding SearchHistory}"
+                                                Visibility="{Binding Searched, Converter={StaticResource InvertBool}}">
+                                <muxc:ItemsRepeater.Layout>
+                                    <muxc:StackLayout Orientation="Horizontal" />
+                                </muxc:ItemsRepeater.Layout>
+                                <muxc:ItemsRepeater.ItemTemplate>
+                                    <DataTemplate>
+                                        <utu:AutoLayout>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup>
+                                                    <VisualState x:Name="Narrow" />
+                                                    <VisualState x:Name="Wide">
+                                                        <VisualState.StateTriggers>
+                                                            <AdaptiveTrigger MinWindowWidth="800" />
+                                                        </VisualState.StateTriggers>
+                                                        <VisualState.Setters>
+                                                            <Setter Target="SearchHistoryButton.Padding"
+                                                                    Value="8,6.5" />
+                                                            <Setter Target="SearchHistoryButton.FontSize"
+                                                                    Value="16" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Button Content="{Binding}"
+                                                    Padding="5"
+                                                    x:Name="SearchHistoryButton"
+                                                    Margin="0,0,8,0"
+                                                    CornerRadius="8"
+                                                    Background="{ThemeResource PrimaryInverseColor}"
+                                                    Foreground="{ThemeResource SurfaceColor}"
+                                                    Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
+                                                    CommandParameter="{Binding}" />
+                                        </utu:AutoLayout>
+                                    </DataTemplate>
+                                </muxc:ItemsRepeater.ItemTemplate>
+                            </muxc:ItemsRepeater>
+                        </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
