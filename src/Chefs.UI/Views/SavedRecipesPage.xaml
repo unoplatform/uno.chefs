@@ -9,6 +9,7 @@
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:um="using:Uno.Material"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:controls="using:Chefs.Controls"
       x:Name="Root"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -16,27 +17,19 @@
         <ResourceDictionary>
             <DataTemplate x:Key="CookbookTemplate">
                 <utu:AutoLayout>
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Narrow" />
-                            <VisualState x:Name="Wide">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                </VisualState.StateTriggers>
-                                <VisualState.Setters>
-                                    <Setter Target="CookbookTemplateCard.MaxWidth"
-                                            Value="240" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                    <utu:CardContentControl x:Name="CookbookTemplateCard"
-                                            MaxWidth="155"
-                                            Style="{StaticResource FilledCardContentControlStyle}"
-                                            Background="{ThemeResource SurfaceBrush}"
-                                            uen:Navigation.Request="!SavedCookbookDetail"
-                                            uen:Navigation.Data="{Binding}">
-                        <utu:CardContentControl.ContentTemplate>
+                    <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                    <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                    <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                    <controls:FixedSizeCardContentControl x:Name="CookbookTemplateCard"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Stretch"
+                                                          MinHeight="0"
+                                                          MaxWidth="500"
+                                                          Style="{StaticResource FilledCardContentControlStyle}"
+                                                          Background="{ThemeResource SurfaceBrush}"
+                                                          uen:Navigation.Request="!SavedCookbookDetail"
+                                                          uen:Navigation.Data="{Binding}">
+                        <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                     <VisualStateManager.VisualStateGroups>
@@ -72,34 +65,26 @@
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
                             </DataTemplate>
-                        </utu:CardContentControl.ContentTemplate>
-                    </utu:CardContentControl>
+                        </controls:FixedSizeCardContentControl.ContentTemplate>
+                    </controls:FixedSizeCardContentControl>
                 </utu:AutoLayout>
             </DataTemplate>
 
             <DataTemplate x:Key="RecipeTemplate">
                 <utu:AutoLayout>
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Narrow" />
-                            <VisualState x:Name="Wide">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                </VisualState.StateTriggers>
-                                <VisualState.Setters>
-                                    <Setter Target="RecipeTemplateCard.MaxWidth"
-                                            Value="240" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                    <utu:CardContentControl x:Name="RecipeTemplateCard"
-                                            MaxWidth="155"
-                                            Style="{StaticResource FilledCardContentControlStyle}"
-                                            Background="{ThemeResource SurfaceBrush}"
-                                            uen:Navigation.Request="!RecipeDetails"
-                                            uen:Navigation.Data="{Binding}">
-                        <utu:CardContentControl.ContentTemplate>
+                    <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                    <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                    <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                    <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
+                                                          Style="{StaticResource FilledCardContentControlStyle}"
+                                                          Background="{ThemeResource SurfaceBrush}"
+                                                          HorizontalAlignment="Stretch"
+                                                          VerticalAlignment="Stretch"
+                                                          MinHeight="0"
+                                                          MaxWidth="500"
+                                                          uen:Navigation.Request="!RecipeDetails"
+                                                          uen:Navigation.Data="{Binding}">
+                        <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                     <VisualStateManager.VisualStateGroups>
@@ -135,8 +120,8 @@
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
                             </DataTemplate>
-                        </utu:CardContentControl.ContentTemplate>
-                    </utu:CardContentControl>
+                        </controls:FixedSizeCardContentControl.ContentTemplate>
+                    </controls:FixedSizeCardContentControl>
                 </utu:AutoLayout>
             </DataTemplate>
         </ResourceDictionary>
@@ -293,15 +278,17 @@
                                             utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout Spacing="20"
                                                 utu:AutoLayout.CounterAlignment="Center">
-                                    <uer:FeedView Source="{Binding Recipes}">
-                                        <DataTemplate>
-                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                ItemTemplate="{StaticResource RecipeTemplate}">
-                                                <muxc:ItemsRepeater.Layout>
-                                                    <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                            ItemsStretch="Fill" />
-                                                </muxc:ItemsRepeater.Layout>
-                                            </muxc:ItemsRepeater>
+                                    <utu:AutoLayout>
+                                        <uer:FeedView Source="{Binding Recipes}">
+                                            <DataTemplate>
+                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                    ItemTemplate="{StaticResource RecipeTemplate}">
+                                                    <muxc:ItemsRepeater.Layout>
+                                                        <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                                                ItemsStretch="Fill"
+                                                                                MinItemWidth="248" />
+                                                    </muxc:ItemsRepeater.Layout>
+                                                </muxc:ItemsRepeater>
 
                                         </DataTemplate>
                                     </uer:FeedView>
@@ -326,7 +313,8 @@
                                                                     ItemTemplate="{StaticResource CookbookTemplate}">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                                ItemsStretch="Fill" />
+                                                                                ItemsStretch="Fill"
+                                                                                MinItemWidth="248" />
                                                     </muxc:ItemsRepeater.Layout>
                                                 </muxc:ItemsRepeater>
 
