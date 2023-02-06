@@ -230,7 +230,7 @@
 
                     <utu:AutoLayout x:Name="StepsFeedLayout"
                                     utu:AutoLayout.CounterAlignment="Stretch">
-                        <AutoLayout x:Name="ItemsRepeaterLayout"
+                        <utu:AutoLayout x:Name="ItemsRepeaterLayout"
                                     utu:AutoLayout.CounterAlignment="Stretch"
                                     Background="{ThemeResource PrimaryBrush}">
                             <utu:TabBar uen:Region.Attached="True"
@@ -248,7 +248,7 @@
                                     </DataTemplate>
                                 </utu:TabBar.ItemTemplate>
                             </utu:TabBar>
-                        </AutoLayout>
+                        </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                         <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
