@@ -202,16 +202,9 @@
                 <utu:AutoLayout Padding="0,12"
                                 Spacing="12">
                     <utu:AutoLayout>
-                        <Grid x:Name="RecentSearchesLayout" 
-                              Margin="0, 0, 0, 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <utu:AutoLayout Grid.Column="0"
-                                            Grid.HorizontalContentAlignment=""
-                                            Padding="0, 18, 0, 13"
+                        <AutoLayout x:Name="RecentSearchesLayout"
+                                    Margin="0, 0, 0, 10">
+                            <utu:AutoLayout Padding="0, 18, 0, 13"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout Visibility="{Binding ItemsSource.Count,
                                                                 ElementName=HistoryRepeater, 
@@ -233,8 +226,8 @@
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
 
-                            <utu:AutoLayout Grid.Column="1"
-                                            Padding="10"
+                            <utu:AutoLayout Padding="10"
+                                            utu:AutoLayout.IsIndependentLayout="True"
                                             PrimaryAxisAlignment="End"
                                             utu:AutoLayout.CounterAlignment="End"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -256,7 +249,7 @@
                                     </um:ControlExtensions.Icon>
                                 </Button>
                             </utu:AutoLayout>
-                        </Grid>
+                        </AutoLayout>
 
                         <muxc:ItemsRepeater x:Name="HistoryRepeater"
                                             utu:AutoLayout.CounterAlignment="Start"

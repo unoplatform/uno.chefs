@@ -55,16 +55,6 @@ public partial class SearchModel
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
 
-    //public async ValueTask GoToFilter(CancellationToken ct) 
-    //{
-    //    var response = await _navigator.GetDataAsync<FilterModel, SearchFilter>(this, data: await Filter, qualifier: Qualifiers.Dialog, cancellation: ct);
-
-    //    if (response is not null)
-    //    {
-    //        await Filter.Update(current => response, ct);
-    //    }
-    //}
-
     public async ValueTask Search(CancellationToken ct) => _searchSignal.Raise();
 
 }
