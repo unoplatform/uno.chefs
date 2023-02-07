@@ -142,8 +142,6 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="MainLayout.CornerRadius"
-                                Value="40,0,0,40" />
                         <Setter Target="MainLayout.Padding"
                                 Value="20,40" />
                         <Setter Target="MainLayout.CornerRadius"
@@ -198,8 +196,7 @@
 
             <ScrollViewer HorizontalScrollMode="Disabled">
                 <Grid uen:Region.Attached="True"
-                      uen:Region.Navigator="Visibility"
-                      Padding="18,0">
+                      uen:Region.Navigator="Visibility">
                     <utu:AutoLayout uen:Region.Name="AllTab"
                                     Visibility="Visible">
                         <uer:FeedView x:Name="AllFeed"
