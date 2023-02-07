@@ -192,30 +192,17 @@
                             <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
                                       Foreground="{ThemeResource OnSurfaceBrush}" />
                         </Button>
-                        <Button utu:AutoLayout.CounterAlignment="Center"
+                        <Button x:Name="NotificationButton"
+                                utu:AutoLayout.CounterAlignment="Center"
                                 Style="{StaticResource IconButtonStyle}"
                                 uen:Navigation.Request="!Notifications">
                             <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
                                       Foreground="{ThemeResource OnSurfaceBrush}" />
                         </Button>
                     </utu:AutoLayout>
+
                 </utu:AutoLayout>
-                
-                <utu:AutoLayout Spacing="8"
-                                Orientation="Horizontal">
-                    <Button utu:AutoLayout.CounterAlignment="Center"
-                            Style="{StaticResource IconButtonStyle}"
-                            uen:Navigation.Request="Search">
-                        <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
-                                  Foreground="{ThemeResource OnSurfaceBrush}" />
-                    </Button>
-                    <Button x:Name="NotificationButton" utu:AutoLayout.CounterAlignment="Center"
-                            Style="{StaticResource IconButtonStyle}"
-                            uen:Navigation.Request="!Notifications">
-                        <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
-                                  Foreground="{ThemeResource OnSurfaceBrush}" />
-                    </Button>
-                </utu:AutoLayout>
+
             </utu:AutoLayout>
 
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"

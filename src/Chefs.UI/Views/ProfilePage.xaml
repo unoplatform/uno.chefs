@@ -51,7 +51,7 @@
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
-                    <AppBarButton Command="{Binding SettingsNavigation}"
+                    <AppBarButton Command="{Binding TabletSettingsNavigation}"
                                   Background="{ThemeResource BackgroundBrush}"
                                   Foreground="Black"
                                   Visibility="{Binding Profile.IsCurrent}">

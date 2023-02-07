@@ -10,14 +10,18 @@ public partial class ProfileModel
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
     private readonly INavigator _navigator;
+    private readonly INavigator _sourceNavigator;
 
-    public ProfileModel(INavigator navigator,
+    public ProfileModel(
+        NavigationRequest request,
+        INavigator navigator,
         ICookbookService cookbookService,
         IRecipeService recipeService,
         IUserService userService,
         User user)
     {
         _navigator = navigator;
+        _sourceNavigator = request?.Source ?? navigator;
         _cookbookService = cookbookService;
         _recipeService = recipeService;
         Profile = State.Async(this, async ct => user ?? await userService.GetCurrent(ct));
@@ -38,5 +42,13 @@ public partial class ProfileModel
         {
             await Profile.Update(c => result, ct);
         }
+    }
+
+    public async ValueTask TabletSettingsNavigation(CancellationToken ct)
+    {
+        await _navigator.NavigateBackAsync(this, cancellation: ct);
+
+        await _sourceNavigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
+        //var result = await _sourceNavigator.NavigateRouteAsync(this, "./MainFrame/Settings", cancellation: ct);
     }
 }
