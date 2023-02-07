@@ -48,7 +48,7 @@ public partial class ProfileModel
     {
         await _navigator.NavigateBackAsync(this, cancellation: ct);
 
-        await _sourceNavigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
-        //var result = await _sourceNavigator.NavigateRouteAsync(this, "./MainFrame/Settings", cancellation: ct);
+        //await _sourceNavigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
+        await _sourceNavigator.NavigateRouteAsync(this, "./MainGrid/Settings", cancellation: ct);
     }
 }
