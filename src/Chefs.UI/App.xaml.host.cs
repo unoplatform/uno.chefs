@@ -109,14 +109,14 @@ public sealed partial class App : Application
                                 {
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>())
                                 }),
-                                new RouteMap("HomeRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn:"Home"),
-                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>(), DependsOn:"RecipeDetails"),
-                                new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn:"RecipeDetails"),
-                                new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>(), DependsOn:"RecipeDetails"),
-                                new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>(), Nested: new RouteMap[]
+                                new RouteMap("HomeRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), Nested: new RouteMap[]
                                 {
-                                    new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(),DependsOn: "Profile")
+                                    new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>()),
+                                    new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>()),
+                                    new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>())
                                 }),
+                                new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
+                                new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>()),
                                 new RouteMap("ProfileRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
                                 new RouteMap("ProfileCookbookDetail", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "Profile"),
                                 new RouteMap("ProfileUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "ProfileCookbookDetail"),
