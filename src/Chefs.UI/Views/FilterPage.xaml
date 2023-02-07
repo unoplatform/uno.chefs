@@ -71,7 +71,7 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="8">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding OrganizeCategories}"
@@ -103,7 +103,7 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                utu:AutoLayout.PrimaryAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding Times}"
@@ -136,7 +136,7 @@
                             <utu:AutoLayout Spacing="16"
                                             Orientation="Horizontal">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding Difficulties}"
@@ -169,7 +169,7 @@
                             <utu:AutoLayout Spacing="16"
                                             Orientation="Horizontal">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding Serves}"
@@ -201,7 +201,7 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                ItemsSource="{Binding Categories}"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">

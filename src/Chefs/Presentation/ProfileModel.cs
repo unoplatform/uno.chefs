@@ -39,4 +39,6 @@ public partial class ProfileModel
             await Profile.Update(c => result, ct);
         }
     }
+
+    public async ValueTask GoBack(CancellationToken ct) => await _navigator.NavigateBackAsync(this, cancellation: ct);
 }
