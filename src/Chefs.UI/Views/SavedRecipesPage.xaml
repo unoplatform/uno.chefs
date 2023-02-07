@@ -344,7 +344,8 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout>
-                                        <uer:FeedView Source="{Binding Recipes}">
+                                        <uer:FeedView Source="{Binding Recipes}"
+                                                      NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource RecipeTemplate}">
