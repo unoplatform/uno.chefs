@@ -124,6 +124,96 @@
                     </controls:FixedSizeCardContentControl>
                 </utu:AutoLayout>
             </DataTemplate>
+
+            <DataTemplate x:Key="RecipeEmptyTemplate">
+                <utu:AutoLayout Spacing="10"
+                                PrimaryAxisAlignment="Center">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Narrow" />
+                            <VisualState x:Name="Wide">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="Icon.Style"
+                                            Value="{StaticResource CustomDisplayLarge}" />
+                                    <Setter Target="TitleText.Style"
+                                            Value="{StaticResource CustomHeadlineLarge}" />
+                                    <Setter Target="DisplayTest.Style"
+                                            Value="{StaticResource CustomHeadlineMedium}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <TextBlock x:Name="Icon"
+                               TextAlignment="Center"
+                               Text="🍽"
+                               utu:AutoLayout.CounterAlignment="Center"
+                               Foreground="{ThemeResource SurfaceInverseBrush}"
+                               Style="{StaticResource DisplayMedium}" />
+                    <utu:AutoLayout Spacing="14"
+                                    utu:AutoLayout.CounterAlignment="Center">
+                        <TextBlock x:Name="TitleText"
+                                   TextAlignment="Center"
+                                   Text="No recipes"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Style="{StaticResource HeadlineMedium}" />
+                        <TextBlock x:Name="DisplayTest"
+                                   TextAlignment="Center"
+                                   Text="There are no recipes. Please&#xA; start saving your recipes"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Style="{StaticResource HeadlineSmall}" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </DataTemplate>
+
+            <DataTemplate x:Key="CookbookEmptyTemplate">
+                <utu:AutoLayout Spacing="10"
+                                PrimaryAxisAlignment="Center">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Narrow" />
+                            <VisualState x:Name="Wide">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="Icon.Style"
+                                            Value="{StaticResource CustomDisplayLarge}" />
+                                    <Setter Target="TitleText.Style"
+                                            Value="{StaticResource CustomHeadlineLarge}" />
+                                    <Setter Target="DisplayTest.Style"
+                                            Value="{StaticResource CustomHeadlineMedium}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <TextBlock x:Name="Icon"
+                               TextAlignment="Center"
+                               Text="📒"
+                               utu:AutoLayout.CounterAlignment="Center"
+                               Foreground="{ThemeResource SurfaceInverseBrush}"
+                               Style="{StaticResource DisplayMedium}" />
+                    <utu:AutoLayout Spacing="14"
+                                    utu:AutoLayout.CounterAlignment="Center">
+                        <TextBlock x:Name="TitleText"
+                                   TextAlignment="Center"
+                                   Text="No cookbook"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Style="{StaticResource HeadlineMedium}" />
+                        <TextBlock x:Name="DisplayTest"
+                                   TextAlignment="Center"
+                                   Text="There is no cookbook. Please&#xA;create your first cookbook"
+                                   utu:AutoLayout.CounterAlignment="Center"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Style="{StaticResource HeadlineSmall}" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+            </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
@@ -200,7 +290,8 @@
                             <utu:AutoLayout Visibility="Visible"
                                             utu:AutoLayout.CounterAlignment="Center"
                                             uen:Region.Name="MyRecipes">
-                                <uer:FeedView Source="{Binding Recipes}">
+                                <uer:FeedView Source="{Binding Recipes}"
+                                              NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                             ItemTemplate="{StaticResource RecipeTemplate}">
@@ -216,7 +307,8 @@
                             </utu:AutoLayout>
                             <utu:AutoLayout Visibility="Collapsed"
                                             uen:Region.Name="Cookbooks">
-                                <uer:FeedView Source="{Binding Cookbooks}">
+                                <uer:FeedView Source="{Binding Cookbooks}"
+                                              NoneTemplate="{StaticResource CookbookEmptyTemplate}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                             ItemTemplate="{StaticResource CookbookTemplate}">
@@ -252,7 +344,8 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout>
-                                        <uer:FeedView Source="{Binding Recipes}">
+                                        <uer:FeedView Source="{Binding Recipes}"
+                                                      NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource RecipeTemplate}">
@@ -284,7 +377,8 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                        <uer:FeedView Source="{Binding Cookbooks}">
+                                        <uer:FeedView Source="{Binding Cookbooks}"
+                                                      NoneTemplate="{StaticResource CookbookEmptyTemplate}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource CookbookTemplate}">
