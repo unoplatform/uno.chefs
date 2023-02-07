@@ -137,6 +137,10 @@
                                 Value="-40,0" />
                         <Setter Target="NavBarLayout.Padding"
                                 Value="40,20" />
+                        <Setter Target="ProfileLayout.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="NotificationButton.Visibility"
+                                Value="Collapsed" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
