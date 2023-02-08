@@ -1,6 +1,3 @@
-
-using Uno.Extensions;
-
 namespace Chefs;
 
 public sealed partial class App : Application
@@ -30,9 +27,10 @@ public sealed partial class App : Application
 #else
 		_window = Microsoft.UI.Xaml.Window.Current;
 #endif
-
+        
         var host = await _window.InitializeNavigationAsync(async () => Host);
         _window.Activate();
+
         await Task.Run(() => host.StartAsync());
     }
 

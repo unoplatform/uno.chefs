@@ -158,14 +158,6 @@
                                 Value="{ThemeResource SurfaceBrush}" />
                         <Setter Target="ContentLayout.Padding"
                                 Value="0" />
-                        <Setter Target="WideRecipes.Padding"
-                                Value="40, 20, 40, 40" />
-                        <Setter Target="WideCookbooks.Padding"
-                                Value="40, 20, 40, 40" />
-                        <Setter Target="AllRecipesTitle.Margin"
-                                Value="40, 20, 20, 0" />
-                        <Setter Target="CookbooksTitle.Padding"
-                                Value="40, 20, 20, 0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -244,34 +236,21 @@
 
                 <utu:AutoLayout x:Name="WideSaved"
                                 Visibility="Collapsed"
+                                Orientation="Horizontal"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
                                 utu:AutoLayout.CounterAlignment="Stretch">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
-                                   Text="All recipes"
-                                   x:Name="AllRecipesTitle"
-                                   Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource CustomHeadlineLarge}" />
-                        <utu:AutoLayout x:Name="CookbooksTitle"
-                                        Grid.Column="1"
-                                        Background="{ThemeResource SurfaceBrush}">
-                            <TextBlock Text="Cookbooks"
+                    <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                        Padding="40,20,40,40"
+                                        Spacing="20">
+                            <TextBlock Text="All recipes"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
                                        Style="{StaticResource CustomHeadlineLarge}" />
-                        </utu:AutoLayout>
-                    </Grid>
-                    <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <utu:AutoLayout Orientation="Horizontal">
-                            <utu:AutoLayout x:Name="WideRecipes"
-                                            Background="{ThemeResource BackgroundBrush}"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                            utu:AutoLayout.CounterAlignment="Stretch">
-                                <utu:AutoLayout Spacing="20"
-                                                utu:AutoLayout.CounterAlignment="Center">
+                            <ScrollViewer x:Name="RecipesScrollViewer"
+                                          utu:AutoLayout.PrimaryAlignment="Stretch"
+                                          HorizontalScrollMode="Disabled"
+                                          VerticalScrollBarVisibility="Hidden">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout>
                                         <uer:FeedView Source="{Binding Recipes}">
                                             <DataTemplate>
@@ -279,22 +258,31 @@
                                                                     ItemTemplate="{StaticResource RecipeTemplate}">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                                                MinColumnSpacing="20"
                                                                                 ItemsStretch="Fill"
                                                                                 MinItemWidth="248" />
                                                     </muxc:ItemsRepeater.Layout>
                                                 </muxc:ItemsRepeater>
-
                                             </DataTemplate>
                                         </uer:FeedView>
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
-                            </utu:AutoLayout>
-                            <utu:AutoLayout x:Name="WideCookbooks"
-                                            Background="{ThemeResource SurfaceBrush}"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                            utu:AutoLayout.CounterAlignment="Stretch">
-                                <utu:AutoLayout  Spacing="20"
-                                                 utu:AutoLayout.CounterAlignment="Center">
+                            </ScrollViewer>
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                    Background="{ThemeResource SurfaceBrush}">
+                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                        Padding="40,20,40,40"
+                                        Spacing="20">
+                            <TextBlock Text="Cookbooks"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Style="{StaticResource CustomHeadlineLarge}" />
+                            <ScrollViewer x:Name="CookbooksScrollViewer"
+                                          utu:AutoLayout.PrimaryAlignment="Stretch"
+                                          HorizontalScrollMode="Disabled"
+                                          VerticalScrollBarVisibility="Hidden">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                         <uer:FeedView Source="{Binding Cookbooks}">
                                             <DataTemplate>
@@ -302,6 +290,7 @@
                                                                     ItemTemplate="{StaticResource CookbookTemplate}">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                                                MinColumnSpacing="20"
                                                                                 ItemsStretch="Fill"
                                                                                 MinItemWidth="248" />
                                                     </muxc:ItemsRepeater.Layout>
@@ -311,9 +300,11 @@
                                         </uer:FeedView>
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
-                            </utu:AutoLayout>
+
+                            </ScrollViewer>
                         </utu:AutoLayout>
-                    </ScrollViewer>
+                    </utu:AutoLayout>
+
                 </utu:AutoLayout>
             </Grid>
         </utu:AutoLayout>
