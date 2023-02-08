@@ -7,9 +7,15 @@ public class CookbookImages
 {
     public CookbookImages(ImmutableList<RecipeData> recipesData)
     {
-        FirstImage = recipesData[0].ImageUrl;
-        SecondImage = recipesData[1].ImageUrl;
-        ThirdImage = recipesData[2].ImageUrl;
+        FirstImage = recipesData.Count > 0 
+            ? recipesData[0].ImageUrl 
+            : null;
+        SecondImage = recipesData.Count > 1
+            ? recipesData[1].ImageUrl
+            : null;
+        ThirdImage = recipesData.Count > 2
+            ? recipesData[2].ImageUrl
+            : null;
     }
 
     public string? FirstImage { get; set; }
