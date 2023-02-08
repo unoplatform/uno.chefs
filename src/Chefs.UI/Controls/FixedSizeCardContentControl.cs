@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Uno.Toolkit.UI;
 using Windows.Foundation;
 
 namespace Chefs.Controls
