@@ -90,7 +90,7 @@
                                                 <Image Source="{Binding CookbookImages.SecondImage}"
                                                        HorizontalAlignment="Stretch"
                                                        VerticalAlignment="Center"
-                                                       Visibility="{Binding CookbookImages.ThirdImage,
+                                                       Visibility="{Binding CookbookImages.SecondImage,
                                                                       Converter={StaticResource NullToVisibilityConverter}}"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
