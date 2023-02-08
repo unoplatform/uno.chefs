@@ -106,7 +106,7 @@
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
                         <Setter Target="TabsLayout.Padding"
-                                Value="20,0,40,20" />
+                                Value="20,0,40,40" />
                         <Setter Target="IngredientsButton.(utu:AutoLayout.PrimaryLength)"
                                 Value="190" />
                         <Setter Target="IngredientsButton.(utu:AutoLayout.CounterLength)"
@@ -125,6 +125,8 @@
                                 Value="20,0" />
                         <Setter Target="MainScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
+                        <Setter Target="TabNavGrid.Padding"
+                                Value="0,0,0,22" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -228,7 +230,7 @@
                             <utu:AutoLayout x:Name="WideDetailsLayout"
                                             Visibility="Collapsed"
                                             Spacing="15"
-                                            Padding="40,20">
+                                            Padding="40,20,40,22">
                                 <utu:AutoLayout Spacing="6"
                                                 Orientation="Horizontal">
                                     <PersonPicture utu:AutoLayout.CounterAlignment="Center"
@@ -279,9 +281,10 @@
                     <utu:AutoLayout x:Name="TabsLayout"
                                     uen:Region.Attached="True"
                                     Spacing="16"
-                                    Padding="18,30"
+                                    Padding="18,30,18,0"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
+
                         <utu:TabBar uen:Region.Attached="True"
                                     Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem x:Name="IngredientsTabItem"
@@ -301,7 +304,8 @@
                                       utu:AutoLayout.PrimaryAlignment="Stretch"
                                       HorizontalScrollMode="Disabled"
                                       VerticalScrollBarVisibility="Hidden">
-                            <Grid uen:Region.Attached="True"
+                            <Grid x:Name="TabNavGrid"
+                                  uen:Region.Attached="True"
                                   uen:Region.Navigator="Visibility">
 
                                 <utu:AutoLayout uen:Region.Name="IngredientsTab"
