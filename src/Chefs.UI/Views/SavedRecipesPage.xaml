@@ -28,6 +28,8 @@
                                 <VisualState.Setters>
                                     <Setter Target="CookbookTemplateCard.Background"
                                             Value="{ThemeResource SurfaceBrush}" />
+                                    <Setter Target="CookbookTemplateCard.MaxWidth"
+                                            Value="240" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -39,7 +41,7 @@
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
                                                           MinHeight="0"
-                                                          MaxWidth="500"
+                                                          MaxWidth="155"
                                                           Style="{StaticResource FilledCardContentControlStyle}"
                                                           Background="{ThemeResource BackgroundBrush}"
                                                           uen:Navigation.Request="!SavedCookbookDetail"
@@ -59,8 +61,6 @@
                                                             Value="180" />
                                                     <Setter Target="SecondImageLayout.Height"
                                                             Value="90" />
-                                                    <Setter Target="SecondImageLayout.MinWidth"
-                                                            Value="125" />
                                                     <Setter Target="ThirdImageLayout.Height"
                                                             Value="90" />
                                                     <Setter Target="ButtonIcon.Margin"
@@ -86,13 +86,12 @@
                                             <utu:AutoLayout x:Name="SecondImageLayout"
                                                             Height="55"
                                                             CornerRadius="12"
-                                                            MinWidth="165"
                                                             Background="{ThemeResource SurfaceVariantColor}">
                                                 <Image Source="{Binding CookbookImages.SecondImage}"
                                                        HorizontalAlignment="Stretch"
                                                        VerticalAlignment="Center"
                                                        Visibility="{Binding CookbookImages.ThirdImage,
-                                                                      Converter={StaticResource NullToVisibilityConverter}}"
+                                                                      Converter={StaticResource InvertNullToVisibilityConverter}}"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
                                             <utu:AutoLayout x:Name="ThirdImageLayout"
@@ -100,7 +99,7 @@
                                                             CornerRadius="12"
                                                             utu:AutoLayout.CounterAlignment="Stretch">
                                                 <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                Converter={StaticResource NullToVisibilityConverter}}">
+                                                                                Converter={StaticResource InvertNullToVisibilityConverter}}">
                                                     <Image Source="{Binding CookbookImages.ThirdImage}"
                                                            HorizontalAlignment="Stretch"
                                                            VerticalAlignment="Center"
@@ -109,7 +108,7 @@
                                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                 utu:AutoLayout.CounterAlignment="Stretch"
                                                                 Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                Converter={StaticResource InvertNullToVisibilityConverter}}">
+                                                                                Converter={StaticResource NullToVisibilityConverter}}">
                                                     <Button uen:Navigation.Request="CreateUpdateCookbook"
                                                             uen:Navigation.Data="{Binding ., Mode=TwoWay }"
                                                             Background="{ThemeResource SurfaceVariantColor}"
@@ -121,7 +120,7 @@
                                                             MinHeight="57">
                                                         <um:ControlExtensions.Icon>
                                                             <PathIcon x:Name="ButtonIcon"
-                                                                      Margin="10,0,0,0"
+                                                                      Margin="12,1,0,0"
                                                                       utu:AutoLayout.CounterAlignment="Stretch"
                                                                       Data="{StaticResource Icon_Add}"
                                                                       Foreground="{ThemeResource PrimaryBrush}" />
@@ -152,6 +151,20 @@
 
             <DataTemplate x:Key="RecipeTemplate">
                 <utu:AutoLayout>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Narrow" />
+                            <VisualState x:Name="Wide">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="RecipeTemplateCard.MaxWidth"
+                                            Value="240" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
                     <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
                     <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
                     <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
@@ -161,7 +174,7 @@
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
                                                           MinHeight="0"
-                                                          MaxWidth="500"
+                                                          MaxWidth="155"
                                                           uen:Navigation.Request="!RecipeDetails"
                                                           uen:Navigation.Data="{Binding}">
                         <controls:FixedSizeCardContentControl.ContentTemplate>
