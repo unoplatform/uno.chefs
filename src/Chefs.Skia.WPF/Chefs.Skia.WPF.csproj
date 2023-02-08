@@ -11,8 +11,8 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.14.0-dev.54" />
-		<PackageReference Include="Uno.WinUI.Skia.Wpf" Version="4.8.0-dev.175" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.8.0-dev.175" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Uno.WinUI.Skia.Wpf" Version="4.7.37" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.37" Condition="'$(Configuration)'=='Debug'" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -29,10 +29,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.15" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.21" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.14" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.17" />
       <PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.3" />
 	  <PackageReference Include="SkiaSharp.Skottie" Version="2.88.3" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.8.0-dev.175" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.37" />
 	</ItemGroup>
 </Project>
