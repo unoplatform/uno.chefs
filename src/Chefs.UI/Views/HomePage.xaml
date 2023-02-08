@@ -200,6 +200,7 @@
                                       Foreground="{ThemeResource OnSurfaceBrush}" />
                         </Button>
                     </utu:AutoLayout>
+
                 </utu:AutoLayout>
             </utu:AutoLayout>
 
@@ -240,7 +241,7 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!RecipeDetails"
+                                                        uen:Navigation.Request="HomeRecipeDetails"
                                                         ItemTemplate="{StaticResource HomeLargeItemTemplate}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
