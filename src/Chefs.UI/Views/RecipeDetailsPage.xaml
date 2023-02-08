@@ -407,7 +407,7 @@
                                     </utu:AutoLayout>
                                     <uer:FeedView x:Name="ReviewsFeed"
                                                   Source="{Binding Reviews}"
-                                                  NoneTemplate="{StaticResource EmptyTemplates}">
+                                                  NoneTemplate="{StaticResource EmptyTemplate}">
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding Data}"
                                                       Style="{StaticResource ListViewStyle}"
