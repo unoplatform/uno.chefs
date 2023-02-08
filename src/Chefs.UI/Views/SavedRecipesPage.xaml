@@ -91,7 +91,7 @@
                                                        HorizontalAlignment="Stretch"
                                                        VerticalAlignment="Center"
                                                        Visibility="{Binding CookbookImages.ThirdImage,
-                                                                      Converter={StaticResource InvertNullToVisibilityConverter}}"
+                                                                      Converter={StaticResource NullToVisibilityConverter}}"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
                                             <utu:AutoLayout x:Name="ThirdImageLayout"
@@ -99,7 +99,7 @@
                                                             CornerRadius="12"
                                                             utu:AutoLayout.CounterAlignment="Stretch">
                                                 <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                Converter={StaticResource InvertNullToVisibilityConverter}}">
+                                                                                Converter={StaticResource NullToVisibilityConverter}}">
                                                     <Image Source="{Binding CookbookImages.ThirdImage}"
                                                            HorizontalAlignment="Stretch"
                                                            VerticalAlignment="Center"
@@ -108,7 +108,7 @@
                                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                 utu:AutoLayout.CounterAlignment="Stretch"
                                                                 Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                Converter={StaticResource NullToVisibilityConverter}}">
+                                                                                Converter={StaticResource InvertNullToVisibilityConverter}}">
                                                     <Button uen:Navigation.Request="CreateUpdateCookbook"
                                                             uen:Navigation.Data="{Binding ., Mode=TwoWay }"
                                                             Background="{ThemeResource SurfaceVariantColor}"
@@ -231,8 +231,6 @@
                     <VisualState.Setters>
                         <Setter Target="WideSaved.Visibility"
                                 Value="Collapsed" />
-                        <Setter Target="AddButtonLayout.Background"
-                                Value="{ThemeResource PrimaryContainerBrush}" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
@@ -246,8 +244,6 @@
                                 Value="Collapsed" />
                         <Setter Target="WideSaved.Visibility"
                                 Value="Visible" />
-                        <Setter Target="AddButtonLayout.Background"
-                                Value="{ThemeResource SurfaceBrush}" />
                         <Setter Target="ContentLayout.Padding"
                                 Value="0" />
                     </VisualState.Setters>
@@ -267,7 +263,7 @@
                               x:Name="NarrowSavedRecipes">
                     <utu:AutoLayout uen:Region.Attached="True"
                                     Spacing="12"
-                                    Margin="0,40"
+                                    Margin="0, 40, 0, 18"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <utu:TabBar uen:Region.Attached="True"
@@ -287,6 +283,7 @@
 
                         <Grid uen:Region.Attached="True"
                               uen:Region.Navigator="Visibility"
+                              utu:AutoLayout.PrimaryAlignment="Stretch"
                               utu:AutoLayout.CounterAlignment="Stretch">
 
                             <utu:AutoLayout Visibility="Visible"
@@ -307,20 +304,43 @@
                                 </uer:FeedView>
                             </utu:AutoLayout>
                             <utu:AutoLayout Visibility="Collapsed"
-                                            uen:Region.Name="Cookbooks">
-                                <uer:FeedView Source="{Binding Cookbooks}">
-                                    <DataTemplate>
-                                        <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                            ItemTemplate="{StaticResource CookbookTemplate}">
-                                            <muxc:ItemsRepeater.Layout>
-                                                <muxc:UniformGridLayout MaximumRowsOrColumns="2"
-                                                                        MinColumnSpacing="10"
-                                                                        MinRowSpacing="10"
-                                                                        ItemsStretch="Fill" />
-                                            </muxc:ItemsRepeater.Layout>
-                                        </muxc:ItemsRepeater>
-                                    </DataTemplate>
-                                </uer:FeedView>
+                                            uen:Region.Name="Cookbooks"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                                            utu:AutoLayout.CounterAlignment="Stretch">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <uer:FeedView Source="{Binding Cookbooks}">
+                                        <DataTemplate>
+                                            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                ItemTemplate="{StaticResource CookbookTemplate}">
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:UniformGridLayout MaximumRowsOrColumns="2"
+                                                                            MinColumnSpacing="10"
+                                                                            MinRowSpacing="10"
+                                                                            ItemsStretch="Fill" />
+                                                </muxc:ItemsRepeater.Layout>
+                                            </muxc:ItemsRepeater>
+                                        </DataTemplate>
+                                    </uer:FeedView>
+                                </utu:AutoLayout>
+                                <utu:AutoLayout PrimaryAxisAlignment="End"
+                                                Orientation="Horizontal"
+                                                utu:AutoLayout.IsIndependentLayout="True"
+                                                VerticalAlignment="Bottom"
+                                                HorizontalAlignment="Right">
+                                    <utu:AutoLayout.Resources>
+                                        <x:String x:Key="Floating_Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
+                                    </utu:AutoLayout.Resources>
+                                    <Button uen:Navigation.Request="!CreateCookbook"
+                                            utu:AutoLayout.CounterAlignment="End"
+                                            CornerRadius="60"
+                                            Style="{StaticResource FabStyle}">
+                                        <um:ControlExtensions.Icon>
+                                            <PathIcon Data="{StaticResource Icon_Add}"
+                                                      Foreground="{ThemeResource SurfaceBrush}" />
+                                        </um:ControlExtensions.Icon>
+                                    </Button>
+                                </utu:AutoLayout>
                             </utu:AutoLayout>
                         </Grid>
                     </utu:AutoLayout>
@@ -396,26 +416,24 @@
                             </ScrollViewer>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
-
+                    <utu:AutoLayout PrimaryAxisAlignment="End"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.IsIndependentLayout="True"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Right"
+                                    Margin="18">
+                        <Button uen:Navigation.Request="!CreateCookbook"
+                                utu:AutoLayout.CounterAlignment="End"
+                                CornerRadius="60"
+                                Style="{StaticResource FabStyle}">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Add}"
+                                          Foreground="{ThemeResource SurfaceBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </Button>
+                    </utu:AutoLayout>
                 </utu:AutoLayout>
             </Grid>
-        </utu:AutoLayout>
-        <utu:AutoLayout x:Name="AddButtonLayout"
-                        PrimaryAxisAlignment="End"
-                        Orientation="Horizontal"
-                        utu:AutoLayout.IsIndependentLayout="True"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right"
-                        Margin="18">
-            <Button uen:Navigation.Request="!CreateCookbook"
-                    utu:AutoLayout.CounterAlignment="End"
-                    CornerRadius="60"
-                    Style="{StaticResource FabStyle}">
-                <um:ControlExtensions.Icon>
-                    <PathIcon Data="{StaticResource Icon_Add}"
-                              Foreground="{ThemeResource SurfaceBrush}" />
-                </um:ControlExtensions.Icon>
-            </Button>
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
