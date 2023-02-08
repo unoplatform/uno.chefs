@@ -15,6 +15,7 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <ResourceDictionary>
+            <x:String x:Key="Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
             <DataTemplate x:Key="CookbookTemplate">
                 <utu:AutoLayout>
                     <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
@@ -40,16 +41,77 @@
                                                     <AdaptiveTrigger MinWindowWidth="800" />
                                                 </VisualState.StateTriggers>
                                                 <VisualState.Setters>
-                                                    <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                    <Setter Target="FirstImageLayout.(utu:AutoLayout.CounterLength)"
                                                             Value="180" />
+                                                    <Setter Target="SecondImageLayout.Height"
+                                                            Value="90" />
+                                                    <Setter Target="ThirdImageLayout.Height"
+                                                            Value="90" />
+                                                    <Setter Target="ButtonIcon.Margin"
+                                                            Value="12,5,0,0" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>
                                     </VisualStateManager.VisualStateGroups>
-                                    <utu:AutoLayout x:Name="ImageLayout"
-                                                    utu:AutoLayout.PrimaryLength="110">
-                                        <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png"
-                                               Stretch="UniformToFill" />
+                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                                    Spacing="8"
+                                                    Orientation="Horizontal">
+                                        <utu:AutoLayout x:Name="FirstImageLayout"
+                                                        utu:AutoLayout.CounterLength="120"
+                                                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                        CornerRadius="12">
+                                            <Image Source="{Binding CookbookImages.FirstImage}"
+                                                   HorizontalAlignment="Stretch"
+                                                   VerticalAlignment="Center"
+                                                   Stretch="UniformToFill"/>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="8"
+                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                            <utu:AutoLayout x:Name="SecondImageLayout"
+                                                            Height="55"
+                                                            CornerRadius="12">
+                                                <Image Source="{Binding CookbookImages.SecondImage}"
+                                                       HorizontalAlignment="Stretch"
+                                                       VerticalAlignment="Center"
+                                                       Visibility="{Binding CookbookImages.ThirdImage,
+                                                                      Converter={StaticResource NullToVisibilityConverter}}"
+                                                       Stretch="UniformToFill" />
+                                                <utu:AutoLayout MinWidth="180"
+                                                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                Visibility="{Binding CookbookImages.ThirdImage,
+                                                                      Converter={StaticResource InvertNullToVisibilityConverter}}"
+                                                                Background="{ThemeResource BackgroundBrush}" />
+                                            </utu:AutoLayout>
+                                            <utu:AutoLayout x:Name="ThirdImageLayout"
+                                                            Height="57"
+                                                            CornerRadius="12">
+                                                <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                Converter={StaticResource NullToVisibilityConverter}}">
+                                                    <Image Source="{Binding CookbookImages.ThirdImage}"
+                                                           HorizontalAlignment="Stretch"
+                                                           VerticalAlignment="Center"
+                                                           Stretch="UniformToFill" />
+                                                </utu:AutoLayout>
+                                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                utu:AutoLayout.CounterAlignment="Stretch"
+                                                                Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                Converter={StaticResource NullToVisibilityInvertConverter}}">
+                                                    <Button uen:Navigation.Request="CreateUpdateCookbook"
+                                                            uen:Navigation.Data="{Binding ., Mode=TwoWay }"
+                                                            Background="{ThemeResource BackgroundBrush}"
+                                                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                            MinHeight="57">
+                                                        <um:ControlExtensions.Icon>
+                                                            <PathIcon x:Name="ButtonIcon"
+                                                                      Margin="10,0,0,0"
+                                                                      utu:AutoLayout.CounterAlignment="Stretch"
+                                                                      Data="{StaticResource Icon_Add}"
+                                                                      Foreground="{ThemeResource PrimaryBrush}" />
+                                                        </um:ControlExtensions.Icon>
+                                                    </Button>
+                                                </utu:AutoLayout>
+                                            </utu:AutoLayout>
+                                        </utu:AutoLayout>
                                     </utu:AutoLayout>
                                     <utu:AutoLayout Spacing="2"
                                                     Padding="10"
@@ -218,7 +280,6 @@
     </Page.Resources>
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
-            <x:String x:Key="Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
             <x:String x:Key="Icon_Favorite">F1 M 10 18.350000381469727 L 8.550000190734863 17.030000686645508 C 3.4000000953674316 12.360000610351562 0 9.27999997138977 0 5.5 C 0 2.4200000762939453 2.4200000762939453 0 5.5 0 C 7.240000009536743 0 8.909999966621399 0.8100001811981201 10 2.0900001525878906 C 11.090000033378601 0.8100001811981201 12.759999990463257 0 14.5 0 C 17.579999923706055 0 20 2.4200000762939453 20 5.5 C 20 9.27999997138977 16.59999990463257 12.36000108718872 11.449999809265137 17.040000915527344 L 10 18.350000381469727 Z</x:String>
             <x:String x:Key="Icon_Outline_Add_ChefsApp">F0 M 0 10.64285659790039 C 0 4.7878168651035855 4.7878168651035855 0 10.64285659790039 0 C 16.49789755684989 0 21.28571319580078 4.7878168651035855 21.28571319580078 10.64285659790039 C 21.28571319580078 16.49789755684989 16.49789755684989 21.28571319580078 10.64285659790039 21.28571319580078 C 4.7878168651035855 21.28571319580078 0 16.49789755684989 0 10.64285659790039 Z M 10.64285659790039 1.2857142857142856 C 5.497897011893136 1.2857142857142856 1.2857142857142856 5.497897011893136 1.2857142857142856 10.64285659790039 C 1.2857142857142856 15.787816183907644 5.497897011893136 19.999998910086493 10.64285659790039 19.999998910086493 C 15.787816183907644 19.999998910086493 19.999998910086493 15.787816183907644 19.999998910086493 10.64285659790039 C 19.999998910086493 5.497897011893136 15.787816183907644 1.2857142857142856 10.64285659790039 1.2857142857142856 Z M 6 10.642857415335518 C 6 10.287817214216505 6.287816941738128 10.000000272478376 6.642857142857142 10.000000272478376 L 14.642856052943637 10.000000272478376 C 14.99789592197963 10.000000272478376 15.285713195800781 10.287817214216505 15.285713195800781 10.642857415335518 C 15.285713195800781 10.997897616454532 14.99789592197963 11.28571455819266 14.642856052943637 11.28571455819266 L 6.642857142857142 11.28571455819266 C 6.287816941738128 11.28571455819266 6 10.997897616454532 6 10.642857415335518 Z M 10.642857415335518 6 C 10.997897616454532 6 11.28571455819266 6.287816941738128 11.28571455819266 6.642857142857142 L 11.28571455819266 14.642856052943637 C 11.28571455819266 14.99789592197963 10.997897616454532 15.285713195800781 10.642857415335518 15.285713195800781 C 10.287817214216505 15.285713195800781 10.000000272478376 14.99789592197963 10.000000272478376 14.642856052943637 L 10.000000272478376 6.642857142857142 C 10.000000272478376 6.287816941738128 10.287817214216505 6 10.642857415335518 6 Z</x:String>
             <x:String x:Key="Icon_Solid_Saved_ChefsApp">F1 M 10.97964096069336 0.34325098991394043 C 8.249691009521484 -0.11441701650619507 5.447885990142822 -0.11441698670387268 2.7179362773895264 0.3432510495185852 C 1.7205910682678223 0.5104530453681946 0.9263294339179993 1.2761204242706299 0.7263557314872742 2.268893003463745 C -0.189764142036438 6.8169848918914795 -0.2397502064704895 11.497064590454102 0.5790193676948547 16.06368637084961 L 0.9123699069023132 17.92292022705078 C 1.0151575207710266 18.4962100982666 1.7140631675720215 18.72534942626953 2.136324405670166 18.324199676513672 L 6.16003942489624 14.501670837402344 C 6.546004772186279 14.135004043579102 7.1515727043151855 14.135004043579102 7.537538528442383 14.50167179107666 L 11.561253547668457 18.324201583862305 C 11.983514785766602 18.72534942626953 12.682419776916504 18.4962100982666 12.785207748413086 17.92292022705078 L 13.118557929992676 16.06368637084961 C 13.937326431274414 11.497066497802734 13.887340545654297 6.816982984542847 12.971221923828125 2.268893003463745 C 12.771247863769531 1.2761199474334717 11.976985931396484 0.5104529857635498 10.97964096069336 0.34325098991394043 Z</x:String>
