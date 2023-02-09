@@ -17,7 +17,16 @@ public interface IRecipeService
     ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct);
 
     /// <summary>
-    /// Current recipes.
+    /// Recipes method
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// Get recipes count by user
+    /// </returns>
+    ValueTask<int> GetCount(Guid userId, CancellationToken ct);
+
+    /// <summary>
+    /// Saved recipes.
     /// </summary>
     IListFeed<Recipe> SavedRecipes { get; }
 

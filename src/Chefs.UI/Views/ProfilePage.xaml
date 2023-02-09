@@ -120,12 +120,18 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="ContentLayout.Orientation"
-                                Value="Horizontal" />
                         <Setter Target="MainLayout.CornerRadius"
                                 Value="0,40,40,0" />
                         <Setter Target="MainLayout.Width"
                                 Value="520" />
+                        <Setter Target="TabletNavBar.Visibility"
+                                Value="Visible" />
+                        <Setter Target="PhoneNavBar.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="TabsLayout.Padding"
+                                Value="40,0" />
+                        <Setter Target="NavBarLayout.Padding"
+                                Value="18" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -134,12 +140,26 @@
                         Background="{ThemeResource BackgroundBrush}"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         uen:Region.Attached="True">
-            <utu:AutoLayout Padding="18"
+            <utu:AutoLayout x:Name="NavBarLayout"
                             Background="{ThemeResource SurfaceBrush}">
-                <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
+                <utu:NavigationBar x:Name="PhoneNavBar"
+                                   Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource SurfaceBrush}"
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
+                        <AppBarButton Label=""
+                                      Background="{ThemeResource BackgroundBrush}"
+                                      Foreground="Black"
+                                      Command="{Binding GoBack}">
+                            <AppBarButton.Icon>
+                                <BitmapIcon ShowAsMonochrome="False"
+                                            Height="12"
+                                            Width="12"
+                                            UriSource="ms-appx:///Assets/Icons/close.png" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.MainCommand>
+                    <utu:NavigationBar.PrimaryCommands>
                         <AppBarButton Command="{Binding SettingsNavigation}"
                                       Background="{ThemeResource BackgroundBrush}"
                                       Foreground="Black"
@@ -151,8 +171,32 @@
                                             UriSource="ms-appx:///Assets/Icons/settings.png" />
                             </AppBarButton.Icon>
                         </AppBarButton>
+                    </utu:NavigationBar.PrimaryCommands>
+                </utu:NavigationBar>
+                <utu:NavigationBar x:Name="TabletNavBar"
+                                   Content="My profile"
+                                   Style="{StaticResource NavigationBarStyle}"
+                                   Background="{ThemeResource SurfaceBrush}"
+                                   toolkit:UIElementExtensions.Elevation="0"
+                                   Visibility="Collapsed">
+                    <utu:NavigationBar.MainCommand>
+                        <AppBarButton Label=""
+                                      Foreground="Transparent"
+                                      Visibility="Collapsed">
+                        </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                     <utu:NavigationBar.PrimaryCommands>
+                        <AppBarButton Command="{Binding SettingsNavigation}"
+                                      Background="{ThemeResource BackgroundBrush}"
+                                      Foreground="Black"
+                                      Visibility="{Binding Profile.IsCurrent}">
+                            <AppBarButton.Icon>
+                                <BitmapIcon ShowAsMonochrome="False"
+                                            Height="12"
+                                            Width="12"
+                                            UriSource="ms-appx:///Assets/Icons/settings.png" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
                         <AppBarButton Label=""
                                       Background="{ThemeResource BackgroundBrush}"
                                       Foreground="Black"
@@ -172,20 +216,11 @@
                             Padding="0,0,0,24"
                             CornerRadius="0,0,30,30"
                             PrimaryAxisAlignment="Center">
-                <utu:AutoLayout CornerRadius="30"
-                                utu:AutoLayout.CounterAlignment="Center">
-                    <utu:AutoLayout CornerRadius="30"
-                                    Orientation="Horizontal"
-                                    utu:AutoLayout.CounterAlignment="Start">
-                        <Border CornerRadius="30"
-                                utu:AutoLayout.CounterAlignment="Start"
-                                utu:AutoLayout.PrimaryLength="100"
-                                utu:AutoLayout.CounterLength="100">
-                            <Image Source="{Binding Profile.UrlProfileImage}"
-                                   Stretch="UniformToFill" />
-                        </Border>
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
+                <PersonPicture utu:AutoLayout.CounterAlignment="Center"
+                               Width="100"
+                               Height="100"
+                               ProfilePicture="{Binding Profile.UrlProfileImage}" />
+
                 <utu:AutoLayout Spacing="5"
                                 PrimaryAxisAlignment="Center"
                                 utu:AutoLayout.CounterAlignment="Center"
@@ -209,7 +244,7 @@
                                     utu:AutoLayout.CounterAlignment="Start">
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    TextAlignment="Center"
-                                   Text="{Binding Profile.Recipes}"
+                                   Text="{Binding RecipesCount}"
                                    utu:AutoLayout.CounterAlignment="Center"
                                    Style="{StaticResource CustomHeadlineMedium}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
@@ -246,13 +281,14 @@
                 </utu:AutoLayout>
             </utu:AutoLayout>
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Padding="18,0"
+                <utu:AutoLayout x:Name="TabsLayout"
+                                Padding="18,0"
+                                Margin="0, 28, 0, 0"
                                 utu:AutoLayout.CounterAlignment="Center">
                     <utu:AutoLayout Spacing="18"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     uen:Region.Attached="True">
                         <utu:TabBar uen:Region.Attached="True"
-                                    Margin="0, 29, 0, -8"
                                     Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem x:Name="RecipesTab"
                                             Foreground="{ThemeResource OnSurfaceMediumBrush}"
