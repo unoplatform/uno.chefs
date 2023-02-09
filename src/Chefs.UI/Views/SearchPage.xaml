@@ -87,7 +87,6 @@
                                             MaxWidth="155"
                                             Style="{StaticResource FilledCardContentControlStyle}"
                                             Background="{ThemeResource SurfaceBrush}"
-                                            uen:Navigation.Request="!RecipeDetails"
                                             uen:Navigation.Data="{Binding}">
                         <utu:CardContentControl.ContentTemplate>
                             <DataTemplate>
@@ -358,7 +357,7 @@
                                         </VisualStateManager.VisualStateGroups>
                                         <muxc:ItemsRepeater x:Name="SearchRepeater"
                                                             ItemsSource="{Binding Data}"
-                                                            uen:Navigation.Request="!RecipeDetails"
+                                                            uen:Navigation.Request="RecipeDetails"
                                                             Layout="{StaticResource NarrowGridLayout}"
                                                             ItemTemplate="{StaticResource RecipeTemplate}" />
 
@@ -404,7 +403,8 @@
                                     </VisualStateManager.VisualStateGroups>
                                     <muxc:ItemsRepeater x:Name="RecipesForYouRepeater"
                                                         ItemsSource="{Binding Data}"
-                                                        Layout="{StaticResource NarrowStackLayout}">
+                                                        Layout="{StaticResource NarrowStackLayout}"
+                                                        uen:Navigation.Request="RecipeDetails">
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:AutoLayout>
@@ -430,9 +430,7 @@
                                                     </VisualStateManager.VisualStateGroups>
                                                     <utu:AutoLayout x:Name="RecipeTemplate"
                                                                     Spacing="8"
-                                                                    MaxWidth="105"
-                                                                    uen:Navigation.Request="!RecipeDetails"
-                                                                    uen:Navigation.Data="{Binding}">
+                                                                    MaxWidth="105">
                                                         <Border CornerRadius="12">
                                                             <Image Source="{Binding ImageUrl}"
                                                                    Stretch="UniformToFill"
@@ -487,7 +485,8 @@
                                     </VisualStateManager.VisualStateGroups>
                                     <muxc:ItemsRepeater x:Name="IdeasFromChefsRecipe"
                                                         ItemsSource="{Binding Data}"
-                                                        Layout="{StaticResource NarrowStackLayout}">
+                                                        Layout="{StaticResource NarrowStackLayout}"
+                                                        uen:Navigation.Request="RecipeDetails">
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:AutoLayout>
@@ -513,9 +512,7 @@
                                                     </VisualStateManager.VisualStateGroups>
                                                     <utu:AutoLayout x:Name="RecipeTemplate"
                                                                     Spacing="8"
-                                                                    MaxWidth="105"
-                                                                    uen:Navigation.Request="!RecipeDetails"
-                                                                    uen:Navigation.Data="{Binding}">
+                                                                    MaxWidth="105">
                                                         <Border CornerRadius="12">
                                                             <Image Source="{Binding ImageUrl}"
                                                                    Stretch="UniformToFill"
