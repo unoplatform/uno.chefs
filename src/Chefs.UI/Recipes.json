@@ -275,7 +275,7 @@
         "Quantity": "100 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/fresh_burrata.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
         "Name": "Fresh burrata",
         "Quantity": "50 g"
       }
@@ -669,11 +669,6 @@
     "CookTime": "00:38:00",
     "Difficulty": 0,
     "Ingredients": [
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/cream.png",
-        "Name": "Sour cream",
-        "Quantity": "10 ml"
-      },
       {
         "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
         "Name": "Eggs",
@@ -1490,9 +1485,14 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/potato.png",
         "Name": "Potatoes",
-        "Quantity": "300 gr"
+        "Quantity": "500 gr"
+      },
+      {
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
+        "Name": "Water",
+        "Quantity": "400 ml"
       }
     ],
     "Calories": "268 kcal",
