@@ -55,52 +55,47 @@
                                                     <AdaptiveTrigger MinWindowWidth="800" />
                                                 </VisualState.StateTriggers>
                                                 <VisualState.Setters>
-                                                    <Setter Target="FirstImageLayout.(utu:AutoLayout.CounterLength)"
+                                                    <Setter Target="ImagesLayout.Height"
                                                             Value="180" />
-                                                    <Setter Target="SecondImageLayout.Height"
-                                                            Value="90" />
-                                                    <Setter Target="ThirdImageLayout.Height"
-                                                            Value="90" />
                                                     <Setter Target="ButtonIcon.Margin"
                                                             Value="12,5,0,0" />
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>
                                     </VisualStateManager.VisualStateGroups>
-                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                    <utu:AutoLayout x:Name="ImagesLayout"
+                                                    utu:AutoLayout.CounterAlignment="Start"
                                                     Spacing="8"
-                                                    Orientation="Horizontal">
-                                        <utu:AutoLayout x:Name="FirstImageLayout"
-                                                        utu:AutoLayout.CounterLength="120"
-                                                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                    Orientation="Horizontal"
+                                                    Height="122">
+                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                                         CornerRadius="12">
                                             <Image Source="{Binding CookbookImages.FirstImage}"
-                                                   HorizontalAlignment="Stretch"
-                                                   VerticalAlignment="Center"
+                                                   utu:AutoLayout.CounterAlignment="Stretch"
+                                                   utu:AutoLayout.PrimaryAlignment="Stretch"
                                                    Stretch="UniformToFill" />
                                         </utu:AutoLayout>
                                         <utu:AutoLayout Spacing="8"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <utu:AutoLayout x:Name="SecondImageLayout"
-                                                            Height="55"
-                                                            CornerRadius="12"
-                                                            Background="{ThemeResource SurfaceVariantColor}">
+                                            <utu:AutoLayout CornerRadius="12"
+                                                            Background="{ThemeResource SurfaceVariantColor}"
+                                                            utu:AutoLayout.CounterAlignment="Stretch"
+                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
                                                 <Image Source="{Binding CookbookImages.SecondImage}"
-                                                       HorizontalAlignment="Stretch"
-                                                       VerticalAlignment="Center"
+                                                       utu:AutoLayout.CounterAlignment="Stretch"
+                                                       utu:AutoLayout.PrimaryAlignment="Stretch"
                                                        Visibility="{Binding CookbookImages.SecondImage,
                                                                       Converter={StaticResource NullToVisibilityConverter}}"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
-                                            <utu:AutoLayout x:Name="ThirdImageLayout"
-                                                            Height="57"
-                                                            CornerRadius="12"
-                                                            utu:AutoLayout.CounterAlignment="Stretch">
+                                            <utu:AutoLayout CornerRadius="12"
+                                                            utu:AutoLayout.CounterAlignment="Stretch"
+                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
                                                 <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
                                                                                 Converter={StaticResource NullToVisibilityConverter}}">
                                                     <Image Source="{Binding CookbookImages.ThirdImage}"
-                                                           HorizontalAlignment="Stretch"
-                                                           VerticalAlignment="Center"
+                                                           utu:AutoLayout.CounterAlignment="Stretch"
+                                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                                            Stretch="UniformToFill" />
                                                 </utu:AutoLayout>
                                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
