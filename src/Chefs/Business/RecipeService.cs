@@ -87,14 +87,11 @@ public class RecipeService : IRecipeService
             ?.Select(x => new Ingredient(x)).ToImmutableList() 
             ?? ImmutableList<Ingredient>.Empty;
 
-    public async ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct)
-    {
-        var test = (await _recipeEndpoint.GetAll(ct))
-            .Where(r => r.UserId == userId)
+    public async ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct) 
+        => (await _recipeEndpoint.GetAll(ct))
+            .Where(r=>r.UserId == userId)
             .Select(x => new Recipe(x))
-            .ToImmutableList();
-        return test;
-    }  // DR_REV: Cannot be null
+            .ToImmutableList(); // DR_REV: Cannot be null
 
     public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct) 
         => new(await _recipeEndpoint.CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct));
