@@ -173,7 +173,6 @@
                                Foreground="{ThemeResource OnBackgroundBrush}"
                                x:Name="NavBar"
                                Content="Live Cooking"
-                               utu:AutoLayout.PrimaryAlignment="Stretch"
                                toolkit:UIElementExtensions.Elevation="0" />
 
             <utu:AutoLayout x:Name="ContentLayout">

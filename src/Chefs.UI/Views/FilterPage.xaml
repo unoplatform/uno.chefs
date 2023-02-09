@@ -227,27 +227,26 @@
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
-
-                    <utu:AutoLayout Spacing="20"
-                                    Orientation="Horizontal"
-                                    Padding="0,20">
-                        <Button x:Name="ResetButton"
-                                Background="{ThemeResource SurfaceBrush}"
-                                Content="Reset"
-                                utu:AutoLayout.CounterAlignment="Stretch"
-                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                Style="{StaticResource ElevatedButtonStyle}"
-                                Command="{Binding ResetFilter}"
-                                MinHeight="56" />
-                        <Button Background="{ThemeResource PrimaryBrush}"
-                                Content="Apply"
-                                utu:AutoLayout.CounterAlignment="Stretch"
-                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                Command="{Binding SearchFilter}"
-                                MinHeight="56" />
-                    </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
+            <utu:AutoLayout Spacing="20"
+                            Orientation="Horizontal"
+                            Padding="0,20">
+                <Button x:Name="ResetButton"
+                        Background="{ThemeResource SurfaceBrush}"
+                        Content="Reset"
+                        utu:AutoLayout.CounterAlignment="Stretch"
+                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                        Style="{StaticResource ElevatedButtonStyle}"
+                        Command="{Binding ResetFilter}"
+                        MinHeight="56" />
+                <Button Background="{ThemeResource PrimaryBrush}"
+                        Content="Apply"
+                        utu:AutoLayout.CounterAlignment="Stretch"
+                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                        Command="{Binding SearchFilter}"
+                        MinHeight="56" />
+            </utu:AutoLayout>
         </utu:AutoLayout>
     </utu:AutoLayout>
 

@@ -159,12 +159,6 @@
                     <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
                               utu:AutoLayout.CounterAlignment="Center"
                               Foreground="{ThemeResource OnPrimaryBrush}" />
-
-                    <TextBlock TextAlignment="Center"
-                               Text="Notifications"
-                               utu:AutoLayout.CounterAlignment="Center"
-                               Foreground="{ThemeResource OnPrimaryBrush}"
-                               Style="{StaticResource CustomTitleSmall}" />
                 </utu:AutoLayout>
             </utu:AutoLayout>
 
