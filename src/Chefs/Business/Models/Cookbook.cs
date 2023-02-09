@@ -13,6 +13,7 @@ public partial record Cookbook
         Recipes = cookbookData.Recipes?
             .Select(c => new Recipe(c))
             .ToImmutableList();
+        CookbookImages = new CookbookImages(cookbookData.Recipes?.ToImmutableList() ?? ImmutableList<RecipeData>.Empty);
     }
 
     internal Cookbook() { Recipes = ImmutableList<Recipe>.Empty; }
@@ -22,6 +23,7 @@ public partial record Cookbook
     public string? Name { get; init; }
     public int PinsNumber => Recipes?.Count ?? 0;
     public IImmutableList<Recipe>? Recipes { get; init; }
+    public CookbookImages? CookbookImages { get; init; }
 
     internal CookbookData ToData() => new()
     {

@@ -348,17 +348,75 @@
                                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
                                                                                     uen:Navigation.Request="!ProfileCookbookDetail"
                                                                                     Style="{StaticResource FilledCardContentControlStyle}"
-                                                                                    Background="{ThemeResource SurfaceBrush}"
+                                                                                    Background="{ThemeResource BackgroundBrush}"
                                                                                     Margin="1.5, 0, 0, 0"
                                                                                     uen:Navigation.Data="{Binding}">
                                                                 <utu:CardContentControl.ContentTemplate>
                                                                     <DataTemplate>
-                                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                        <utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
                                                                                         MaxWidth="171"
                                                                                         CornerRadius="12">
-                                                                            <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png"
-                                                                                   Stretch="UniformToFill"
-                                                                                   utu:AutoLayout.PrimaryLength="150" />
+                                                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                                                                            Spacing="8"
+                                                                                            Orientation="Horizontal">
+                                                                                <utu:AutoLayout x:Name="FirstImageLayout"
+                                                                                                utu:AutoLayout.CounterLength="120"
+                                                                                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                CornerRadius="12">
+                                                                                    <Image Source="{Binding CookbookImages.FirstImage}"
+                                                                                           HorizontalAlignment="Stretch"
+                                                                                           VerticalAlignment="Center"
+                                                                                           Stretch="UniformToFill" />
+                                                                                </utu:AutoLayout>
+                                                                                <utu:AutoLayout Spacing="8"
+                                                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                                    <utu:AutoLayout x:Name="SecondImageLayout"
+                                                                                                    Height="55"
+                                                                                                    CornerRadius="12"
+                                                                                                    Background="{ThemeResource SurfaceVariantColor}">
+                                                                                        <Image Source="{Binding CookbookImages.SecondImage}"
+                                                                                               HorizontalAlignment="Stretch"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Visibility="{Binding CookbookImages.SecondImage,
+                                                                                                                Converter={StaticResource NullToVisibilityConverter}}"
+                                                                                               Stretch="UniformToFill" />
+                                                                                    </utu:AutoLayout>
+                                                                                    <utu:AutoLayout x:Name="ThirdImageLayout"
+                                                                                                    Height="57"
+                                                                                                    CornerRadius="12"
+                                                                                                    utu:AutoLayout.CounterAlignment="Stretch">
+                                                                                        <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                                        Converter={StaticResource NullToVisibilityConverter}}">
+                                                                                            <Image Source="{Binding CookbookImages.ThirdImage}"
+                                                                                                   HorizontalAlignment="Stretch"
+                                                                                                   VerticalAlignment="Center"
+                                                                                                   Stretch="UniformToFill" />
+                                                                                        </utu:AutoLayout>
+                                                                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                        utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                        Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                                        Converter={StaticResource InvertNullToVisibilityConverter}}">
+                                                                                            <Button uen:Navigation.Request="CreateUpdateCookbook"
+                                                                                                    uen:Navigation.Data="{Binding ., Mode=TwoWay }"
+                                                                                                    Background="{ThemeResource SurfaceVariantColor}"
+                                                                                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                    HorizontalAlignment="Stretch"
+                                                                                                    CornerRadius="12"
+                                                                                                    Style="{StaticResource ElevatedButtonStyle}"
+                                                                                                    MinHeight="57">
+                                                                                                <um:ControlExtensions.Icon>
+                                                                                                    <PathIcon x:Name="ButtonIcon"
+                                                                                                              Margin="15,3,0,0"
+                                                                                                              utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                              Data="{StaticResource Icon_Add}"
+                                                                                                              Foreground="{ThemeResource PrimaryBrush}" />
+                                                                                                </um:ControlExtensions.Icon>
+                                                                                            </Button>
+                                                                                        </utu:AutoLayout>
+                                                                                    </utu:AutoLayout>
+                                                                                </utu:AutoLayout>
+                                                                            </utu:AutoLayout>
                                                                             <utu:AutoLayout Spacing="2"
                                                                                             Padding="11,10"
                                                                                             PrimaryAxisAlignment="Center">
