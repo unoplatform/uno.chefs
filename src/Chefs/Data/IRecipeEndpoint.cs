@@ -6,6 +6,8 @@ public interface IRecipeEndpoint
 {
     ValueTask<IImmutableList<RecipeData>> GetAll(CancellationToken ct);
 
+    ValueTask<int> GetCount(Guid userId, CancellationToken ct);
+
     ValueTask<IImmutableList<RecipeData>> GetTrending(CancellationToken ct);
 
     ValueTask<IImmutableList<RecipeData>> GetSaved(CancellationToken ct);

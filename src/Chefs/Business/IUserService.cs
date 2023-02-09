@@ -10,16 +10,6 @@ namespace Chefs.Business;
 public interface IUserService
 {
     /// <summary>
-    /// Authentication method
-    /// </summary>
-    /// <param name="email"> The user email </param>
-    /// <param name="ct"></param>
-    /// <returns>
-    /// User logged in
-    /// </returns>
-    ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct);
-
-    /// <summary>
     /// Current user data
     /// </summary>
     /// <param name="ct"></param>
@@ -77,4 +67,15 @@ public interface IUserService
     /// <returns>
     /// </returns>
     Task SetSettings(AppConfig chefSettings, CancellationToken ct);
+
+    /// <summary>
+    /// Authentication method
+    /// </summary>
+    /// <param name="email"> The user email </param>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// User logged in
+    /// </returns>
+    /// In case we need auth
+    //ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct);
 }

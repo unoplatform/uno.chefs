@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using Chefs.Business;
 using Chefs.Data;
 
@@ -18,7 +17,7 @@ public partial class ProfileModel
         ICookbookService cookbookService,
         IRecipeService recipeService,
         IUserService userService,
-        User user)
+        User? user)
     {
         _navigator = navigator;
         _sourceNavigator = request?.Source ?? navigator;
@@ -29,7 +28,9 @@ public partial class ProfileModel
 
     public IState<User> Profile { get; }
 
-	public IListFeed<Cookbook> Cookbooks => Profile.SelectAsync((user, ct) => _cookbookService.GetByUser(user.Id, ct)).AsListFeed();
+    public IFeed<int> RecipesCount => Profile.SelectAsync((user, ct) => _recipeService.GetCount(user.Id, ct));
+
+    public IListFeed<Cookbook> Cookbooks => Profile.SelectAsync((user, ct) => _cookbookService.GetByUser(user.Id, ct)).AsListFeed();
 
 	public IListFeed<Recipe> Recipes => Profile.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct)).AsListFeed();
 
