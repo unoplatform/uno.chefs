@@ -31,39 +31,41 @@
                                                           uen:Navigation.Data="{Binding}">
                         <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
-                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup>
-                                            <VisualState x:Name="Narrow" />
-                                            <VisualState x:Name="Wide">
-                                                <VisualState.StateTriggers>
-                                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                                </VisualState.StateTriggers>
-                                                <VisualState.Setters>
-                                                    <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
-                                                            Value="180" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                    <utu:AutoLayout x:Name="ImageLayout"
-                                                    utu:AutoLayout.PrimaryLength="110">
-                                        <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png"
-                                               Stretch="UniformToFill" />
+                                <UserControl>
+                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup>
+                                                <VisualState x:Name="Narrow" />
+                                                <VisualState x:Name="Wide">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                                    </VisualState.StateTriggers>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                                Value="180" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <utu:AutoLayout x:Name="ImageLayout"
+                                                        utu:AutoLayout.PrimaryLength="110">
+                                            <Image Source="ms-appx:///Assets/Recipes/avocado_toast.png"
+                                                   Stretch="UniformToFill" />
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="2"
+                                                        Padding="10"
+                                                        PrimaryAxisAlignment="Center">
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                       TextWrapping="NoWrap"
+                                                       Text="{Binding Name}"
+                                                       Style="{StaticResource CustomTitleMedium}" />
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                       TextWrapping="NoWrap"
+                                                       Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} pins'}"
+                                                       Style="{StaticResource CustomBodySmall}" />
+                                        </utu:AutoLayout>
                                     </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="2"
-                                                    Padding="10"
-                                                    PrimaryAxisAlignment="Center">
-                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                   TextWrapping="NoWrap"
-                                                   Text="{Binding Name}"
-                                                   Style="{StaticResource CustomTitleMedium}" />
-                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                   TextWrapping="NoWrap"
-                                                   Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} pins'}"
-                                                   Style="{StaticResource CustomBodySmall}" />
-                                    </utu:AutoLayout>
-                                </utu:AutoLayout>
+                                </UserControl>
                             </DataTemplate>
                         </controls:FixedSizeCardContentControl.ContentTemplate>
                     </controls:FixedSizeCardContentControl>
@@ -86,39 +88,41 @@
                                                           uen:Navigation.Data="{Binding}">
                         <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
-                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup>
-                                            <VisualState x:Name="Narrow" />
-                                            <VisualState x:Name="Wide">
-                                                <VisualState.StateTriggers>
-                                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                                </VisualState.StateTriggers>
-                                                <VisualState.Setters>
-                                                    <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
-                                                            Value="180" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                    <utu:AutoLayout x:Name="ImageLayout"
-                                                    utu:AutoLayout.PrimaryLength="110">
-                                        <Image Source="{Binding ImageUrl}"
-                                               Stretch="UniformToFill" />
+                                <UserControl>
+                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup>
+                                                <VisualState x:Name="Narrow" />
+                                                <VisualState x:Name="Wide">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                                    </VisualState.StateTriggers>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                                Value="180" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <utu:AutoLayout x:Name="ImageLayout"
+                                                        utu:AutoLayout.PrimaryLength="110">
+                                            <Image Source="{Binding ImageUrl}"
+                                                   Stretch="UniformToFill" />
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Spacing="2"
+                                                        Padding="10"
+                                                        PrimaryAxisAlignment="Center">
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                       TextWrapping="NoWrap"
+                                                       Text="{Binding Name}"
+                                                       Style="{StaticResource CustomTitleMedium}" />
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                       TextWrapping="NoWrap"
+                                                       Text="{Binding TimeCal}"
+                                                       Style="{StaticResource CustomBodySmall}" />
+                                        </utu:AutoLayout>
                                     </utu:AutoLayout>
-                                    <utu:AutoLayout Spacing="2"
-                                                    Padding="10"
-                                                    PrimaryAxisAlignment="Center">
-                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                   TextWrapping="NoWrap"
-                                                   Text="{Binding Name}"
-                                                   Style="{StaticResource CustomTitleMedium}" />
-                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                   TextWrapping="NoWrap"
-                                                   Text="{Binding TimeCal}"
-                                                   Style="{StaticResource CustomBodySmall}" />
-                                    </utu:AutoLayout>
-                                </utu:AutoLayout>
+                                </UserControl>
                             </DataTemplate>
                         </controls:FixedSizeCardContentControl.ContentTemplate>
                     </controls:FixedSizeCardContentControl>
