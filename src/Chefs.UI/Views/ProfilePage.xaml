@@ -314,7 +314,8 @@
                                         <DataTemplate>
                                             <ScrollViewer HorizontalScrollMode="Enabled"
                                                           HorizontalScrollBarVisibility="Visible">
-                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                    uen:Navigation.Request="!ModalRecipeDetails">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 ItemsJustification="SpaceAround"
@@ -324,11 +325,9 @@
                                                     <muxc:ItemsRepeater.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                                    uen:Navigation.Request="ProfileRecipeDetails"
                                                                                     Style="{StaticResource FilledCardContentControlStyle}"
                                                                                     Background="{ThemeResource SurfaceBrush}"
-                                                                                    Margin="1.5, 0, 0, 0"
-                                                                                    uen:Navigation.Data="{Binding}">
+                                                                                    Margin="1.5, 0, 0, 0">
                                                                 <utu:CardContentControl.ContentTemplate>
                                                                     <DataTemplate>
                                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -372,7 +371,8 @@
                                         <DataTemplate>
                                             <ScrollViewer HorizontalScrollMode="Enabled"
                                                           HorizontalScrollBarVisibility="Visible">
-                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                    uen:Navigation.Request="!ModalCookbookDetails">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 ItemsJustification="SpaceAround"
@@ -382,11 +382,9 @@
                                                     <muxc:ItemsRepeater.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:CardContentControl utu:AutoLayout.CounterAlignment="Start"
-                                                                                    uen:Navigation.Request="!ProfileCookbookDetail"
                                                                                     Style="{StaticResource FilledCardContentControlStyle}"
                                                                                     Background="{ThemeResource BackgroundBrush}"
-                                                                                    Margin="1.5, 0, 0, 0"
-                                                                                    uen:Navigation.Data="{Binding}">
+                                                                                    Margin="1.5, 0, 0, 0">
                                                                 <utu:CardContentControl.ContentTemplate>
                                                                     <DataTemplate>
                                                                         <utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
@@ -485,7 +483,7 @@
                                                 VerticalAlignment="Bottom"
                                                 HorizontalAlignment="Right"
                                                 Margin="0,18">
-                                    <Button uen:Navigation.Request="!CreateCookbook"
+                                    <Button uen:Navigation.Request="!ModalCreateCookbook"
                                             utu:AutoLayout.CounterAlignment="End"
                                             CornerRadius="60"
                                             Style="{StaticResource FabStyle}">

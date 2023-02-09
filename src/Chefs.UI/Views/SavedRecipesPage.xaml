@@ -43,9 +43,7 @@
                                                           MinHeight="0"
                                                           MaxWidth="155"
                                                           Style="{StaticResource FilledCardContentControlStyle}"
-                                                          Background="{ThemeResource BackgroundBrush}"
-                                                          uen:Navigation.Request="!SavedCookbookDetail"
-                                                          uen:Navigation.Data="{Binding}">
+                                                          Background="{ThemeResource BackgroundBrush}">
                         <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
                                 <utu:AutoLayout>
@@ -79,7 +77,7 @@
                                             <Image Source="{Binding CookbookImages.FirstImage}"
                                                    HorizontalAlignment="Stretch"
                                                    VerticalAlignment="Center"
-                                                   Stretch="UniformToFill"/>
+                                                   Stretch="UniformToFill" />
                                         </utu:AutoLayout>
                                         <utu:AutoLayout Spacing="8"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -174,9 +172,7 @@
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
                                                           MinHeight="0"
-                                                          MaxWidth="155"
-                                                          uen:Navigation.Request="!RecipeDetails"
-                                                          uen:Navigation.Data="{Binding}">
+                                                          MaxWidth="155">
                         <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
@@ -383,7 +379,8 @@
                                               NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                            ItemTemplate="{StaticResource RecipeTemplate}">
+                                                            ItemTemplate="{StaticResource RecipeTemplate}"
+                                                            uen:Navigation.Request="RecipeDetails">
                                             <muxc:ItemsRepeater.Layout>
                                                 <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                         MinColumnSpacing="10"
@@ -403,7 +400,8 @@
                                     <uer:FeedView Source="{Binding Cookbooks}">
                                         <DataTemplate>
                                             <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                ItemTemplate="{StaticResource CookbookTemplate}">
+                                                                ItemTemplate="{StaticResource CookbookTemplate}"
+                                                                uen:Navigation.Request="SavedCookbookDetail">
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                             MinColumnSpacing="10"
@@ -459,7 +457,8 @@
                                                       NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                    ItemTemplate="{StaticResource RecipeTemplate}">
+                                                                    ItemTemplate="{StaticResource RecipeTemplate}"
+                                                                    uen:Navigation.Request="RecipeDetails">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 MinColumnSpacing="20"
@@ -492,7 +491,8 @@
                                                       NoneTemplate="{StaticResource CookbookEmptyTemplate}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                    ItemTemplate="{StaticResource CookbookTemplate}">
+                                                                    ItemTemplate="{StaticResource CookbookTemplate}"
+                                                                    uen:Navigation.Request="SavedCookbookDetail">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 MinColumnSpacing="20"
@@ -515,7 +515,7 @@
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
                                     Margin="18">
-                        <Button uen:Navigation.Request="!CreateCookbook"
+                        <Button uen:Navigation.Request="CreateCookbook"
                                 utu:AutoLayout.CounterAlignment="End"
                                 CornerRadius="60"
                                 Style="{StaticResource FabStyle}">
