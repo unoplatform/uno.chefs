@@ -120,7 +120,6 @@
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                     <utu:TabBar uen:Region.Attached="True"
                                 Style="{StaticResource VerticalTabBarStyle}"
-                                Background="{ThemeResource PrimaryColor}"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                         <utu:TabBarItem uen:Region.Name="Home"
                                         IsSelectable="True"
