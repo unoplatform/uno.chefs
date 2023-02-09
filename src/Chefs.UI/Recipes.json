@@ -63,7 +63,7 @@
         "Quantity": "50 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Salt and Pepper",
         "Quantity": "salt to taste"
       }
@@ -123,7 +123,7 @@
         "CookTime": "00:03:00",
         "Cookware": [ "Knife", "Dish" ],
         "Description": "Cut all your vegetables to size.\n\nYou can also use a bag of pre-shredded coleslaw.\n\nI diced the English cucumbers and cut the red bell peppers into thin strips.\n\nYou may also use julienne carrots, lettuce, etc.",
-        "Ingredients": [ "Vegetables" ],
+        "Ingredients": [ "Carrot" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -132,7 +132,7 @@
         "CookTime": "00:06:00",
         "Cookware": [ "Jar", "Skillet", "Knife", "Cutting Boards" ],
         "Description": "Place the dressing ingredients in a jar and shake together until well combined.\n\nAdd the mix salad greens first, then strategically place the carrot, onion, red pepper and cucumber around the mixed greens.",
-        "Ingredients": [ "Vegetables", "Tamari Soy", "Carrot", "Onion", "\nRed Papper", "Cucumber" ],
+        "Ingredients": [ "Tamari Soy", "Carrot", "Onion", "\nRed Papper", "Cucumber" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -152,32 +152,17 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
-        "Name": "Vegetables",
-        "Quantity": "100 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
-        "Name": "Tamari Soy",
-        "Quantity": "2"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Sesame Oil",
-        "Quantity": "300 g"
-      },
-      {
         "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
         "Name": "Lime Juice",
         "Quantity": "80 ml"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/cucumber.png",
         "Name": "Cucumber",
         "Quantity": "50 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/carrot.png",
         "Name": "Carrot",
         "Quantity": "50 g"
       }
@@ -275,32 +260,22 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/leafy_green.png",
         "Name": "Spinach",
         "Quantity": "200 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
         "Name": "Rosemary",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Sesame Oil",
-        "Quantity": "30 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
         "Name": "Tomatoes",
         "Quantity": "100 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Oregan",
-        "Quantity": "50 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/fresh_burrata.png",
         "Name": "Fresh burrata",
         "Quantity": "50 g"
       }
@@ -389,17 +364,12 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
-        "Name": "Spices",
-        "Quantity": "2 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Bell Peppers",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and Peppers",
         "Quantity": "30 ml"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
         "Name": "Tomatoes",
         "Quantity": "100 gr"
       },
@@ -409,7 +379,7 @@
         "Quantity": "50 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/spaghetti.png",
         "Name": "Pasta",
         "Quantity": "50 g"
       }
@@ -498,19 +468,19 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
         "Name": "Butter",
         "Quantity": "500 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "50 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Vanilla",
-        "Quantity": "5 gr"
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
+        "Name": "Flour",
+        "Quantity": "1000 gr"
       }
     ],
     "Calories": "267 kcal",
@@ -606,27 +576,22 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
-        "Name": "Sour cream",
-        "Quantity": "2 gr"
-      },
-      {
         "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
         "Name": "Eggs",
         "Quantity": "30 ml"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/cheese.png",
         "Name": "Cream cheese",
         "Quantity": "100 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "50 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/jello.png",
         "Name": "Jello-jiggly",
         "Quantity": "50 g"
       }
@@ -705,7 +670,7 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/cream.png",
         "Name": "Sour cream",
         "Quantity": "10 ml"
       },
@@ -720,12 +685,7 @@
         "Quantity": "50 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Cinnamon",
-        "Quantity": "50 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/milk.png",
         "Name": "Milk",
         "Quantity": "200 ml"
       }
@@ -804,27 +764,27 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/blueberries.png",
         "Name": "Blueberries",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/green_apple.png",
         "Name": "Applesauce",
         "Quantity": "50 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
         "Name": "Oats",
         "Quantity": "50 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "300 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "400 gr"
       }
@@ -892,7 +852,7 @@
         "CookTime": "00:20:00",
         "Cookware": [ "SaucePan", "Spoon", "Wire rack" ],
         "Description": "Meanwhile, in a saucepan, combine the sugar, cream, cinnamon and salt.\n\nBring to a boil over medium heat, stirring constantly.\n\nRemove from the heat; stir in walnuts.\n\nRemove foil from crust; pour filling into crust.\n\nBake until golden brown, 20-25 minutes.\n\nCool on a wire rack.\n\nStore in the refrigerator.",
-        "Ingredients": [ "Sugar", "Cream", "Cinnamon", "Salt", "\nWalnuts" ],
+        "Ingredients": [ "Sugar", "Cream", "Cinnamon", "Salt", "\nPeanuts" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -903,8 +863,8 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
-        "Name": "Walnuts",
+        "UrlIcon": "ms-appx:///Assets/Icons/peanuts.png",
+        "Name": "Peanuts",
         "Quantity": "10 gr"
       },
       {
@@ -913,17 +873,12 @@
         "Quantity": "5"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
-        "Name": "Cream",
-        "Quantity": "50 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/green_apple.png",
         "Name": "Applesauce",
         "Quantity": "300 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Salt",
         "Quantity": "30 gr"
       }
@@ -1002,8 +957,8 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
-        "Name": "Lemon juic",
+        "UrlIcon": "ms-appx:///Assets/Icons/lemon.png",
+        "Name": "Lemon juice",
         "Quantity": "10 gr"
       },
       {
@@ -1012,57 +967,37 @@
         "Quantity": "10 ml"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Extra virgin oil oil",
-        "Quantity": "50 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/bread.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/honey.png",
         "Name": "Honey",
         "Quantity": "7 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "1"
       },
       {
-        "UrlIcon": "",
-        "Name": "Cilantro",
-        "Quantity": "10 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/parsley.png",
         "Name": "Parsley",
         "Quantity": "3 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Oregano",
-        "Quantity": "1 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "3 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Pepper",
-        "Quantity": "1.4 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/cucumber.png",
         "Name": "Cucumbers",
         "Quantity": "5 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
         "Name": "Tomatoes",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/onion.png",
         "Name": "Red onion",
         "Quantity": "4 gr"
       },
@@ -1126,7 +1061,7 @@
         "CookTime": "00:15:00",
         "Cookware": [ "Mixer", "Dough hook", "Towel" ],
         "Description": "Create a well in the center, and pour in the water and milk.\n\nMix on low speed until a tight, smooth dough comes together around the hook, about 5 minutes.\n\nRemove the hook and cover the bowl with a damp towel.\n\nSet aside for 10 minutes.",
-        "Ingredients": [ "Dough", "Water", "Milk" ],
+        "Ingredients": [ "Water", "Milk" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -1135,7 +1070,7 @@
         "CookTime": "00:10:00",
         "Cookware": [ "Dough hook", "Mixer", "Bowl" ],
         "Description": "Reattach the dough hook and turn the mixer on medium-low speed.\n\nAdd the butter pieces all at once and continue to mix, scraping down the bowl and hook once or twice, until the dough has formed a very smooth, stretchy ball that is not the least bit sticky, 8 to 10 minutes.",
-        "Ingredients": [ "Butter", "Dough" ],
+        "Ingredients": [ "Butter" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -1146,52 +1081,42 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
         "Name": "Butter",
         "Quantity": "20 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
         "Name": "Flour",
         "Quantity": "50 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "5 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Salt",
         "Quantity": "6 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/honey.png",
         "Name": "Honey",
         "Quantity": "7 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "1"
       },
       {
-        "UrlIcon": "",
-        "Name": "Yeast",
-        "Quantity": "3 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Dough",
-        "Quantity": "3 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "200 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/milk.png",
         "Name": "Milk",
         "Quantity": "150 ml"
       }
@@ -1259,7 +1184,7 @@
         "CookTime": "00:25:00",
         "Cookware": [ "Medium saucepan", "Whisk" ],
         "Description": "In a medium saucepan, mix together 1 cup of heavy cream, 1/2 cup of granulated sugar, and 1 teaspoon of vanilla extract.\n\nHeat the mixture over medium heat, whisking constantly, until it comes to a simmer.\n\nIn a small bowl, mix together 2 tablespoons of cornstarch and 2 tablespoons of cold water to make a slurry.\n\nSlowly pour the slurry into the saucepan and continue to whisk until the mixture thickens.\n\nRemove from heat and stir in 2 cups of sliced strawberries.\n\nPour the filling into the cooled crust and refrigerate for at least 2 hours before serving.",
-        "Ingredients": [ "Cream", "Granulated sugar", "Vanilla extract", "Cornstarch", "\nWater", "Strawberries" ],
+        "Ingredients": [ "Cream", "Sugar", "Vanilla extract", "Cornstarch", "\nWater", "Strawberries" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -1270,47 +1195,32 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
         "Name": "Flour",
         "Quantity": "50 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
         "Name": "Butter",
         "Quantity": "150 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "200 ml"
       },
       {
-        "UrlIcon": "",
-        "Name": "Cream",
-        "Quantity": "80 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Granulated Sugar",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
+        "Name": "Sugar",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Vanilla extract",
-        "Quantity": "2 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Cornstarch",
-        "Quantity": "100 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "150 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Strawberries",
         "Quantity": "30 gr"
       }
@@ -1389,17 +1299,17 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salmon.png",
         "Name": "Salmon",
         "Quantity": "300 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
         "Name": "Sauce",
         "Quantity": "100 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "50 mgr"
       }
@@ -1487,17 +1397,12 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/potato.png",
         "Name": "Potatoes",
         "Quantity": "500 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Oil",
-        "Quantity": "200 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "400 ml"
       }
@@ -1662,7 +1567,7 @@
         "CookTime": "00:07:00",
         "Cookware": [ "Pan" ],
         "Description": "Return the chicken and vegetables to the saucy pan, stir until heated through.",
-        "Ingredients": [ "Chicken", "Vegetables" ],
+        "Ingredients": [ "Chicken" ],
         "Number": 4,
         "UrlVideo": ""
       }
@@ -1673,44 +1578,29 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Oil",
-        "Quantity": "10 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/chicken.png",
         "Name": "Chicken",
         "Quantity": "455 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "1 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Pepper",
-        "Quantity": "0.5 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/broccoli.png",
         "Name": "Broccoli",
         "Quantity": "455 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "3"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
         "Name": "Sauce",
         "Quantity": "80 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/avocado.png",
-        "Name": "Vegetables",
-        "Quantity": "50 gr"
       }
     ],
     "Calories": "170 kcal",
@@ -1796,67 +1686,42 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Oil",
-        "Quantity": "15 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
         "Name": "Chili",
         "Quantity": "10 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "2"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
         "Name": "Sauce",
         "Quantity": "20 ml"
       },
       {
-        "UrlIcon": "",
-        "Name": "Soy",
-        "Quantity": "5 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "7,5 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Vinegar",
-        "Quantity": "5 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salmon.png",
         "Name": "Salmon",
         "Quantity": "170 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Pepper",
         "Quantity": "170 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Peas",
-        "Quantity": "160 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/carrot.png",
         "Name": "Carrot",
         "Quantity": "4"
       },
       {
-        "UrlIcon": "",
-        "Name": "Vegetables",
-        "Quantity": "50 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/rice.png",
         "Name": "Rice",
         "Quantity": "800 gr"
       }
@@ -1924,7 +1789,7 @@
         "CookTime": "00:10:00",
         "Cookware": [ "Pan", "Tablespoon" ],
         "Description": "Pour the remaining 1 tablespoon of sesame oil into a large frying pan on high heat and add in the bell peppers, snow peas and carrot and stir-fry for 3 to 4 minutes.\n\nFinish the vegetables by adding the remaining 1 tablespoon of soy sauce.",
-        "Ingredients": [ "Pepper", "Peas", "Carrot", "Vegetables" ],
+        "Ingredients": [ "Pepper", "Peas", "Carrot" ],
         "Number": 3,
         "UrlVideo": ""
       },
@@ -1933,7 +1798,7 @@
         "CookTime": "00:05:00",
         "Cookware": [ "Bowl", "Plate" ],
         "Description": "Divide the rice into 4 portions and serve the cooked salmon and vegetables evenly.\n\nOptional Servings: Serve with a hard boiled egg or a fried egg.",
-        "Ingredients": [ "Rice", "Vegetables", "Salmon" ],
+        "Ingredients": [ "Rice", "Salmon" ],
         "Number": 4,
         "UrlVideo": ""
       }
@@ -1944,67 +1809,42 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Oil",
-        "Quantity": "15 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
         "Name": "Chili",
         "Quantity": "10 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "2"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
         "Name": "Sauce",
         "Quantity": "20 ml"
       },
       {
-        "UrlIcon": "",
-        "Name": "Soy",
-        "Quantity": "5 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "7,5 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Vinegar",
-        "Quantity": "5 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salmon.png",
         "Name": "Salmon",
         "Quantity": "170 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Pepper",
         "Quantity": "170 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Peas",
-        "Quantity": "160 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/carrot.png",
         "Name": "Carrot",
         "Quantity": "4"
       },
       {
-        "UrlIcon": "",
-        "Name": "Vegetables",
-        "Quantity": "50 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/rice.png",
         "Name": "Rice",
         "Quantity": "800 gr"
       }
@@ -2097,37 +1937,32 @@
         "Quantity": "20 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "100 ml"
       },
       {
-        "UrlIcon": "",
-        "Name": "Salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "2 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
         "Name": "Sauce",
         "Quantity": "828 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/meat.png",
         "Name": "Ground beef",
         "Quantity": "454 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Pepper",
-        "Quantity": "300 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/onion.png",
         "Name": "Onions",
         "Quantity": "26 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "2"
       }
@@ -2186,7 +2021,7 @@
         "CookTime": "01:00:00",
         "Cookware": [ "Pot" ],
         "Description": "Add broth, tomatoes, and spices making sure to scrape up any brown bits from the bottom of the pot.\n\nAdd the pork back into the pot and bring to a boil, reduce heat and simmer covered for 1 hour (or until pork is fairly tender).",
-        "Ingredients": [ "Broth", "Tomato", "Spice", "Pork" ],
+        "Ingredients": [ "Tomato", "Spice", "Pork" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -2195,7 +2030,7 @@
         "CookTime": "00:40:00",
         "Cookware": [ "Pot" ],
         "Description": "Add potatoes, sweet potatoes, carrots, and mushrooms.\n\nBring to a boil, reduce heat and simmer covered for 30 minutes or until vegetables are tender.\n\nRemove lid and stir in green beans.\n\nThicken if desired (below) and simmer an additional 10 minutes uncovered.",
-        "Ingredients": [ "Potato", "Carrot", "Mushroom", "Vegetables", "\nGreen beans" ],
+        "Ingredients": [ "Potato", "Carrot", "Mushroom", "\nGreen beans" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -2211,54 +2046,34 @@
         "Quantity": "20 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/pork.png",
         "Name": "Pork",
         "Quantity": "680 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Broth",
-        "Quantity": "900 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
         "Name": "Tomato",
         "Quantity": "425 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Spices",
-        "Quantity": "20 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/potatoe.png",
         "Name": "Potato",
         "Quantity": "156 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/carrot.png",
         "Name": "Carrot",
         "Quantity": "2"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/onion.png",
         "Name": "Onions",
         "Quantity": "26 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/mushroom.png",
         "Name": "Mushrooms",
         "Quantity": "96 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Vegetables",
-        "Quantity": "200 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Green beans",
-        "Quantity": "100 gr"
       }
     ],
     "Calories": "170 kcal",
@@ -2340,22 +2155,22 @@
         "Quantity": "20 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/chicken.png",
         "Name": "Chicken",
         "Quantity": "900 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "946 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Salt",
         "Quantity": "33 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
         "Name": "Paprika",
         "Quantity": "15 gr"
       }
@@ -2448,32 +2263,27 @@
         "Quantity": "10 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
         "Name": "Tomato",
         "Quantity": "907 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "578 ml"
       },
       {
-        "UrlIcon": "",
-        "Name": "Salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "15 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Pepper",
-        "Quantity": "5 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/basil.png",
         "Name": "Basil",
         "Quantity": "10 gr"
       }
@@ -2566,52 +2376,42 @@
         "Quantity": "20 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/mushroom.png",
         "Name": "Mushrooms",
         "Quantity": "113 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/onion.png",
         "Name": "Scallion",
         "Quantity": "57 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "3 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/carrot.png",
         "Name": "Carrot",
         "Quantity": "54 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Cabbage",
-        "Quantity": "130 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Ginger",
-        "Quantity": "7 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "900 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/spaghetti.png",
         "Name": "Noodles",
         "Quantity": "625 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/chicken.png",
         "Name": "Chicken",
         "Quantity": "1360 gr"
       },
@@ -2700,34 +2500,29 @@
         "Quantity": "64 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "800 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/spaghetti.png",
         "Name": "Pasta",
         "Quantity": "454 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
         "Name": "Italian dressing",
         "Quantity": "454 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
         "Name": "Tomato",
         "Quantity": "398 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Pepper",
-        "Quantity": "65 gr"
       }
     ],
     "Calories": "360 kcal",
@@ -2804,44 +2599,29 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/meat.png",
         "Name": "Beef",
         "Quantity": "1814 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
         "Name": "Butter",
         "Quantity": "20 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Soy sauce",
-        "Quantity": "10 ml"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Worcestershire sauce",
-        "Quantity": "20 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Pepper",
         "Quantity": "50 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/parsley.png",
         "Name": "Parsley",
         "Quantity": "113 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Horseradish sauce",
-        "Quantity": "10 ml"
       }
     ],
     "Calories": "375 kcal",
@@ -2889,7 +2669,7 @@
         "CookTime": "00:20:00",
         "Cookware": [ "Bowl", "Teaspoon" ],
         "Description": "In a large bowl, combine ground beef, bread crumbs, parsley, parmesan, 1/4 teaspoon black pepper, garlic powder and beaten egg.\n\nMix well and form into 12 balls.\n\nStore, covered, in refrigerator until needed.",
-        "Ingredients": [ "Ground beef", "Bread crumbs", "Parsley", "Parmesan", "Black Pepper", "Garlic", "Egg" ],
+        "Ingredients": [ "Ground beef", "Bread crumbs", "Parsley", "Parmesan", "Garlic", "Egg" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -2918,7 +2698,7 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/meat.png",
         "Name": "Ground beef",
         "Quantity": "453 gr"
       },
@@ -2928,22 +2708,17 @@
         "Quantity": "60 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/parsley.png",
         "Name": "Parsley",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/cheese.png",
         "Name": "Parmesan",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Black pepper",
-        "Quantity": "2.5 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "1.25 gr"
       },
@@ -2953,7 +2728,7 @@
         "Quantity": "1"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/onion.png",
         "Name": "Onion",
         "Quantity": "13 gr"
       },
@@ -2963,34 +2738,29 @@
         "Quantity": "13 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
         "Name": "Tomato",
         "Quantity": "964 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "20 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/leaf.png",
         "Name": "Bay leaf",
         "Quantity": "1"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/basil.png",
         "Name": "Basil",
         "Quantity": "7.5 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Pepper",
-        "Quantity": "5 gr"
       }
     ],
     "Calories": "411 kcal",
@@ -3067,37 +2837,27 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
         "Name": "Sauce",
         "Quantity": "20 ml"
       },
       {
-        "UrlIcon": "",
-        "Name": "Soy sauce",
-        "Quantity": "118 ml"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/rice.png",
         "Name": "Rice vinager",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Sesame seeds",
-        "Quantity": "20 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
         "Name": "Chile sauce",
         "Quantity": "10 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/pork.png",
         "Name": "Pork",
         "Quantity": "453 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
         "Quantity": "10 gr"
       },
@@ -3107,17 +2867,7 @@
         "Quantity": "1"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Sesam oil",
-        "Quantity": "10 ml"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Ginger",
-        "Quantity": "20 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "834 ml"
       }
@@ -3196,27 +2946,27 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/blueberries.png",
         "Name": "Blueberries",
         "Quantity": "20 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "20 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
         "Name": "Water",
         "Quantity": "100 ml"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
         "Name": "Granola",
         "Quantity": "20 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/milk.png",
         "Name": "Yogurt",
         "Quantity": "82 gr"
       }
@@ -3295,22 +3045,17 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
         "Name": "Flour",
         "Quantity": "200 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Baking powder",
-        "Quantity": "15 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Salt",
         "Quantity": "5 gr"
       },
@@ -3320,14 +3065,14 @@
         "Quantity": "3"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
         "Name": "Butter",
         "Quantity": "25 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/honey.png",
         "Name": "Maple syrup",
-        "Quantity": ""
+        "Quantity": "80 ml"
       }
     ],
     "Calories": "268 kcal",
@@ -3414,27 +3159,22 @@
         "Quantity": "30 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Hummus",
-        "Quantity": "30 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/leafy_green.png",
         "Name": "Greens",
         "Quantity": "32.5 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
         "Name": "Pepper",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/cucumber.png",
         "Name": "Cucumber",
         "Quantity": "75 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/carrot.png",
         "Name": "Carrot",
         "Quantity": "64 gr"
       }
@@ -3493,7 +3233,7 @@
         "CookTime": "00:03:00",
         "Cookware": [ "Mortar", "Tablespoon", "Cup" ],
         "Description": "Place chopped garlic, large pinch kosher salt, oregano, and thyme in a mortar; pound and stir with a pestle a few seconds. Add 1 tablespoon fresh parsley.\n\nPound and stir mixture until it turns into a paste, 1 or 2 minutes. Add 1/3 cup olive oil; mix about 1 minute to infuse olive oil with herbs and garlic.",
-        "Ingredients": [ "Garlic", "Kosher salt", "Oregano", "Thyme", "\nParsley", "Olive oil" ],
+        "Ingredients": [ "Garlic", "Oregano", "Thyme", "\nParsley", "Olive oil" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -3502,7 +3242,7 @@
         "CookTime": "00:03:00",
         "Cookware": [ "Bowl", "Fork" ],
         "Description": "Place bread crumbs in a mixing bowl. Transfer herb-garlic mixture to breadcrumbs. Add a pinch of salt, black pepper, pinch cayenne, remaining chopped parsley, and grated cheese. Mix with a fork to distribute ingredients evenly. Pinch a bit of the mixture; if it feels a bit dry and doesn't stick to your finger, drizzle in a bit more olive oil. Stir until mixture reaches desired consistency. 2 to 3 minutes.",
-        "Ingredients": [ "Bread crumbs", "Garlic", "Black pepper", "\nGrated cheese", "Parsley", "Cayenne" ],
+        "Ingredients": [ "Bread crumbs", "Garlic", "\nGrated cheese", "Parsley", "Cayenne" ],
         "Number": 3,
         "UrlVideo": ""
       },
@@ -3532,47 +3272,27 @@
         "Quantity": "150 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Shrimp",
-        "Quantity": "907 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/prawns.png",
         "Name": "Prawns",
         "Quantity": "30 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Kosher salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "10 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Oregano",
-        "Quantity": "2.5 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Thyme",
-        "Quantity": "2.5 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/parsley.png",
         "Name": "Parsley",
         "Quantity": "8.5 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Black pepper",
-        "Quantity": "5 gr"
-      },
-      {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/cheese.png",
         "Name": "Grated cheese",
         "Quantity": "42.5 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
         "Name": "Cayenne",
         "Quantity": "5.3 gr"
       }
@@ -3651,38 +3371,28 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/olive.png",
-        "Name": "Oil",
-        "Quantity": "20 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/baguette_bread.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/panko.png",
         "Name": "Panko",
         "Quantity": "50 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
         "Name": "Flour",
         "Quantity": "34 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Pepper",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "2.5 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/salmon.png",
         "Name": "Canned salmon",
         "Quantity": "141 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
         "Name": "Garlic",
-        "Quantity": "5 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Salt",
         "Quantity": "5 gr"
       },
       {
@@ -3691,18 +3401,8 @@
         "Quantity": "1"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/mayonnaise.png",
         "Name": "Mayonnaise",
-        "Quantity": "2.5 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Worcestershire sauce",
-        "Quantity": "20 ml"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Cilantro",
         "Quantity": "2.5 gr"
       }
     ],
@@ -3780,32 +3480,22 @@
     "Difficulty": 0,
     "Ingredients": [
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/flour.png",
         "Name": "Flour",
         "Quantity": "192 gr"
       },
       {
-        "UrlIcon": "",
-        "Name": "Baking powered",
-        "Quantity": "4 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Baking soda",
-        "Quantity": "4 gr"
-      },
-      {
-        "UrlIcon": "",
-        "Name": "Salt",
+        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+        "Name": "Salt and pepper",
         "Quantity": "2 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/banana.png",
         "Name": "Bananas",
         "Quantity": "600 gr"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "150 gr"
       },
@@ -3815,7 +3505,7 @@
         "Quantity": "1"
       },
       {
-        "UrlIcon": "",
+        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
         "Name": "Butter",
         "Quantity": "73 gr"
       }
