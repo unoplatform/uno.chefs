@@ -37,10 +37,6 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="WideInnerLayout.Visibility"
-                                Value="Visible" />
-                        <Setter Target="NarrowInnerLayout.Visibility"
-                                Value="Collapsed" />
                         <Setter Target="ChefImage.Visibility"
                                 Value="Collapsed" />
                         <Setter Target="WideChefImage.Visibility"
@@ -57,15 +53,15 @@
                                 Value="Stretch" />
                         <Setter Target="OuterLayout.Background"
                                 Value="{ThemeResource PrimaryBrush}" />
-                        <Setter Target="WideInnerLayout.CornerRadius"
+                        <Setter Target="InnerLayout.CornerRadius"
                                 Value="40" />
-                        <Setter Target="WideInnerLayout.Padding"
+                        <Setter Target="InnerLayout.Padding"
                                 Value="66" />
-                        <Setter Target="WideInnerLayout.Spacing"
+                        <Setter Target="InnerLayout.Spacing"
                                 Value="40" />
-                        <Setter Target="WideInnerLayout.Margin"
+                        <Setter Target="InnerLayout.Margin"
                                 Value="53, 50, 0, 50" />
-                        <Setter Target="WideInnerLayout.MinWidth"
+                        <Setter Target="InnerLayout.MinWidth"
                                 Value="534" />
                         <Setter Target="FieldsButtonsLayout.Spacing"
                                 Value="20" />
@@ -75,6 +71,8 @@
                                 Value="Hidden" />
                         <Setter Target="RememberLayout.Spacing"
                                 Value="158" />
+                        <Setter Target="InnerLayout.(utu:AutoLayout.IsIndependentLayout)"
+                                Value="True" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -88,8 +86,8 @@
                           utu:AutoLayout.PrimaryAlignment="Stretch">
 
                 <utu:AutoLayout x:Name="OuterLayout"
-                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                            utu:AutoLayout.CounterAlignment="Stretch">
+                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                utu:AutoLayout.CounterAlignment="Stretch">
 
                     <Image x:Name="ChefImage"
                            Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
@@ -101,17 +99,21 @@
                            Stretch="UniformToFill"
                            utu:AutoLayout.PrimaryAlignment="Stretch"
                            utu:AutoLayout.CounterAlignment="Stretch" />
-                    <!--Workaround for #281 issue-->
-                    <utu:AutoLayout x:Name="NarrowInnerLayout"
+                    <utu:AutoLayout x:Name="InnerLayout"
                                     Spacing="15"
                                     Padding="30,30,30,15"
                                     Background="{ThemeResource SurfaceBrush}"
-                                    PrimaryAxisAlignment="Center">
+                                    PrimaryAxisAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Left"
+                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                    utu:AutoLayout.IsIndependentLayout="False">
                         <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
                                Stretch="Uniform"
                                Height="44"
                                Width="200" />
-                        <utu:AutoLayout Spacing="10"
+                        <utu:AutoLayout x:Name="FieldsButtonsLayout"
+                                        Spacing="10"
                                         PrimaryAxisAlignment="Center">
                             <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      PlaceholderText="Email"
@@ -130,118 +132,6 @@
                                 </um:ControlExtensions.Icon>
                             </TextBox>
                             <PasswordBox x:Name="Password"
-                                         Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         PlaceholderText="Password"
-                                         ios:ReturnKeyType="Done"
-                                         android:ImeOptions="Done"
-                                         utu:CommandExtensions.Command="{Binding Login}"
-                                         CornerRadius="16"
-                                         Style="{StaticResource OutlinedPasswordBoxStyle}">
-                                <um:ControlExtensions.Icon>
-                                    <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
-                                              Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-                                </um:ControlExtensions.Icon>
-                            </PasswordBox>
-                            <utu:AutoLayout Spacing="24"
-                                            PrimaryAxisAlignment="Center"
-                                            Orientation="Horizontal">
-                                <CheckBox Content="Remember me"
-                                          IsChecked="{Binding AuthOptions.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                          utu:AutoLayout.CounterAlignment="Center"
-                                          utu:AutoLayout.PrimaryAlignment="Stretch" />
-                                <TextBlock Text="Forgot password?"
-                                           utu:AutoLayout.CounterAlignment="Center"
-                                           Foreground="{ThemeResource PrimaryBrush}"
-                                           Style="{StaticResource LabelLarge}" />
-                            </utu:AutoLayout>
-
-                            <Button Command="{Binding Login}"
-                                    HorizontalContentAlignment="Center"
-                                    VerticalContentAlignment="Center"
-                                    Background="{ThemeResource PrimaryBrush}"
-                                    Content="Sign in"
-                                    Height="56" />
-                            <utu:Divider Style="{StaticResource DividerStyle}" />
-                            <Button HorizontalContentAlignment="Center"
-                                    VerticalContentAlignment="Center"
-                                    Background="#E2E8F0"
-                                    Content="Sign in with Apple"
-                                    Height="56"
-                                    Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                    Style="{StaticResource FilledTonalButtonStyle}">
-                                <um:ControlExtensions.Icon>
-                                    <PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}"
-                                              Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-                                </um:ControlExtensions.Icon>
-                            </Button>
-                            <Button HorizontalContentAlignment="Center"
-                                    VerticalContentAlignment="Center"
-                                    Background="#E2E8F0"
-                                    Content="Sign in with Google"
-                                    Height="56"
-                                    Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                    Style="{StaticResource FilledTonalButtonStyle}">
-                                <um:ControlExtensions.Icon>
-                                    <PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}"
-                                              Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-                                </um:ControlExtensions.Icon>
-                            </Button>
-                        </utu:AutoLayout>
-                        <utu:AutoLayout PrimaryAxisAlignment="End"
-                                        Orientation="Vertical"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                            Orientation="Horizontal"
-                                            utu:AutoLayout.CounterAlignment="Center"
-                                            Spacing="5">
-                                <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                utu:AutoLayout.CounterAlignment="Center">
-                                    <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
-                                               TextAlignment="Center"
-                                               Text="Not a member?"
-                                               Style="{StaticResource LabelMedium}" />
-                                </utu:AutoLayout>
-
-                                <HyperlinkButton uen:Navigation.Request="Register"
-                                                 Content="Register Now"
-                                                 utu:AutoLayout.CounterAlignment="Center" />
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
-                    </utu:AutoLayout>
-                    <utu:AutoLayout x:Name="WideInnerLayout"
-                                    Visibility="Collapsed"
-                                    Spacing="15"
-                                    Padding="30,30,30,15"
-                                    Background="{ThemeResource SurfaceBrush}"
-                                    PrimaryAxisAlignment="Center"
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Left"
-                                    utu:AutoLayout.CounterAlignment="Stretch"
-                                    utu:AutoLayout.IsIndependentLayout="True">
-                        <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
-                               Stretch="Uniform"
-                               Height="44"
-                               Width="200" />
-                        <utu:AutoLayout x:Name="FieldsButtonsLayout"
-                                        Spacing="10"
-                                        PrimaryAxisAlignment="Center">
-                            <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     PlaceholderText="Email"
-                                     PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
-                                     CornerRadius="16"
-                                     utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=WidePassword}"
-                                     ios:ReturnKeyType="Next"
-                                     android:ImeOptions="Next"
-                                     IsSpellCheckEnabled="False"
-                                     utu:AutoLayout.CounterAlignment="Stretch"
-                                     HorizontalAlignment="Stretch"
-                                     Style="{StaticResource OutlinedTextBoxStyle}">
-                                <um:ControlExtensions.Icon>
-                                    <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}"
-                                              Foreground="{ThemeResource OnSurfaceVariantBrush}" />
-                                </um:ControlExtensions.Icon>
-                            </TextBox>
-                            <PasswordBox x:Name="WidePassword"
                                          Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          PlaceholderText="Password"
                                          ios:ReturnKeyType="Done"
@@ -323,8 +213,8 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
-            
-            
+
+
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
