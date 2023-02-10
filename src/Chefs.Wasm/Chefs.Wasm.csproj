@@ -51,8 +51,8 @@
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
 		<PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.4.0" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.14.0-dev.54" />
-		<PackageReference Include="Uno.WinUI.WebAssembly" Version="4.7.0-dev.1038" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.0-dev.1038" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Uno.WinUI.WebAssembly" Version="4.8.0-dev.290" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.8.0-dev.290" Condition="'$(Configuration)'=='Debug'" />
 		<PackageReference Include="Uno.Wasm.Bootstrap" Version="3.3.1" />
 		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="7.0.8" />
 	</ItemGroup>
@@ -62,7 +62,7 @@
 	<ItemGroup>
 	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.14" />
 	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.23" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.0-dev.1038" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.8.0-dev.290" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" Condition="Exists('..\Chefs.UI\Chefs.UI.projitems')" />
