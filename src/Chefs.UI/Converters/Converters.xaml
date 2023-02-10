@@ -30,6 +30,6 @@
     <converters:FromNullToVisibilityConverter x:Key="InvertNullToVisibilityConverter"
                                               Invert="True" />
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
-                                      TrueValue="{StaticResource SurfaceBrush}"
-                                      FalseValue="{StaticResource SurfaceVariantColor}" />
+                                      TrueValue="{ThemeResource SurfaceBrush}"
+                                      FalseValue="{ThemeResource SurfaceVariantBrush}" />
 </ResourceDictionary>
