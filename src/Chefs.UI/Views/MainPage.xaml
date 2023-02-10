@@ -75,6 +75,7 @@
                 <utu:TabBarItem uen:Region.Name="Home"
                                 IsSelectable="True"
                                 Content="Home"
+                                IsSelected="True"
                                 Style="{StaticResource BottomTabBarItemStyle}">
                     <utu:TabBarItem.Icon>
                         <PathIcon Data="{StaticResource Icon_Solid_General_Home}" />
@@ -123,6 +124,7 @@
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                         <utu:TabBarItem uen:Region.Name="Home"
                                         IsSelectable="True"
+                                        IsSelected="True"
                                         Content="Home"
                                         Style="{StaticResource VerticalTabBarItemStyle}">
                             <utu:TabBarItem.Icon>

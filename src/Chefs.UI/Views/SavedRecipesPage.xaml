@@ -29,7 +29,7 @@
                                     <Setter Target="CookbookTemplateCard.Background"
                                             Value="{ThemeResource SurfaceBrush}" />
                                     <Setter Target="CookbookTemplateCard.MaxWidth"
-                                            Value="240" />
+                                            Value="400" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -41,7 +41,7 @@
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
                                                           MinHeight="0"
-                                                          MaxWidth="155"
+                                                          MaxWidth="250"
                                                           Style="{StaticResource FilledCardContentControlStyle}"
                                                           Background="{ThemeResource BackgroundBrush}">
                         <controls:FixedSizeCardContentControl.ContentTemplate>
@@ -142,7 +142,7 @@
                                 </VisualState.StateTriggers>
                                 <VisualState.Setters>
                                     <Setter Target="RecipeTemplateCard.MaxWidth"
-                                            Value="240" />
+                                            Value="400" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -156,7 +156,7 @@
                                                           HorizontalAlignment="Stretch"
                                                           VerticalAlignment="Stretch"
                                                           MinHeight="0"
-                                                          MaxWidth="155">
+                                                          MaxWidth="250">
                         <controls:FixedSizeCardContentControl.ContentTemplate>
                             <DataTemplate>
                                 <UserControl>
