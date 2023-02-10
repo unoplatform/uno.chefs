@@ -18,7 +18,12 @@ public partial class SavedRecipesModel
         _cookbookService = cookbookService;
     }
 
-    public IListFeed<Cookbook> Cookbooks => _cookbookService.SavedCookbooks;
+    public IListFeed<Cookbook> NarrowSavedCookbooks => _cookbookService.SavedCookbooks;
 
-    public IListFeed<Recipe> Recipes => _recipeService.SavedRecipes;
+    public IListFeed<Recipe> NarrowSavedRecipes => _recipeService.SavedRecipes;
+
+    public IListFeed<Cookbook> WideSavedCookbooks => _cookbookService.SavedCookbooks;
+
+    public IListFeed<Recipe> WideSavedRecipes => _recipeService.SavedRecipes;
+
 }

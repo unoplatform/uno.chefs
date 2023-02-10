@@ -204,7 +204,13 @@
                             <utu:AutoLayout Visibility="Visible"
                                             utu:AutoLayout.CounterAlignment="Center"
                                             uen:Region.Name="MyRecipes">
-                                <uer:FeedView Source="{Binding Recipes}">
+                                <!-- Using an ItemsControl here for example with the same Binding for the Source -->
+                                <!-- For some reason with this in addition to the page, even Collapsed, the list in the FeedView is now displaying the items -->
+                                <ItemsControl ItemsSource="{Binding NarrowSavedRecipes}"
+                                              ItemTemplate="{StaticResource RecipeTemplate}"
+                                              Visibility="Collapsed" />
+                                
+                                <uer:FeedView Source="{Binding NarrowSavedRecipes}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                             ItemTemplate="{StaticResource RecipeTemplate}">
@@ -220,7 +226,13 @@
                             </utu:AutoLayout>
                             <utu:AutoLayout Visibility="Collapsed"
                                             uen:Region.Name="Cookbooks">
-                                <uer:FeedView Source="{Binding Cookbooks}">
+                                <!-- Using an ItemsControl here for example with the same Binding for the Source -->
+                                <!-- For some reason with this in addition to the page, even Collapsed, the list in the FeedView is now displaying the items -->
+                                <ItemsControl ItemsSource="{Binding NarrowSavedCookbooks}"
+                                              ItemTemplate="{StaticResource CookbookTemplate}"
+                                              Visibility="Collapsed" />
+                                
+                                <uer:FeedView Source="{Binding NarrowSavedCookbooks}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                             ItemTemplate="{StaticResource CookbookTemplate}">
@@ -256,7 +268,13 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout>
-                                        <uer:FeedView Source="{Binding Recipes}">
+                                        <!-- Using an ItemsControl here for example with the same Binding for the Source -->
+                                        <!-- For some reason with this in addition to the page, even Collapsed, the list in the FeedView is now displaying the items -->
+                                        <ItemsControl ItemsSource="{Binding WideSavedRecipes}"
+                                                      ItemTemplate="{StaticResource RecipeTemplate}"
+                                                      Visibility="Collapsed" />
+
+                                        <uer:FeedView Source="{Binding WideSavedRecipes}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource RecipeTemplate}">
@@ -288,7 +306,13 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                        <uer:FeedView Source="{Binding Cookbooks}">
+                                        <!-- Using an ItemsControl here for example with the same Binding for the Source -->
+                                        <!-- For some reason with this in addition to the page, even Collapsed, the list in the FeedView is now displaying the items -->
+                                        <ItemsControl ItemsSource="{Binding WideSavedCookbooks}"
+                                                      ItemTemplate="{StaticResource CookbookTemplate}"
+                                                      Visibility="Collapsed" />
+                                        
+                                        <uer:FeedView Source="{Binding WideSavedCookbooks}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource CookbookTemplate}">
