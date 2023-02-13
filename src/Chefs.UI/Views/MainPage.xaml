@@ -38,7 +38,7 @@
                         <Setter Target="NavigationGrid.CornerRadius"
                                 Value="40,0,0,40" />
                         <Setter Target="MainGrid.Background"
-                                Value="{ThemeResource PrimaryColor}" />
+                                Value="{ThemeResource SurfaceBrush}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -103,7 +103,7 @@
 
             <utu:AutoLayout x:Name="WideTabs"
                             Grid.RowSpan="2"
-                            Background="{ThemeResource PrimaryColor}"
+                            Background="{ThemeResource SurfaceBrush}"
                             Visibility="Collapsed"
                             Width="120">
                 <utu:AutoLayout PrimaryAxisAlignment="Center"
@@ -159,7 +159,7 @@
                                 uen:Navigation.Request="!Notifications">
                     <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
                               utu:AutoLayout.CounterAlignment="Center"
-                              Foreground="{ThemeResource OnPrimaryBrush}" />
+                              Foreground="{ThemeResource OnSurfaceVariantColor}" />
                 </utu:AutoLayout>
             </utu:AutoLayout>
         </Grid>
