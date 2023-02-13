@@ -211,7 +211,7 @@
                                 Spacing="12">
                     <utu:AutoLayout>
                         <utu:AutoLayout x:Name="RecentSearchesLayout"
-                                    Margin="0, 0, 0, 10">
+                                        Margin="0, 0, 0, 10">
                             <utu:AutoLayout Padding="0, 18, 0, 13"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout Visibility="{Binding IsSearchesClosed, 
@@ -293,37 +293,37 @@
                                 <muxc:ItemsRepeater.ItemTemplate>
                                     <DataTemplate>
                                         <UserControl>
-                                        <utu:AutoLayout>
-                                            <VisualStateManager.VisualStateGroups>
-                                                <VisualStateGroup>
-                                                    <VisualState x:Name="Narrow" />
-                                                    <VisualState x:Name="Wide">
-                                                        <VisualState.StateTriggers>
-                                                            <AdaptiveTrigger MinWindowWidth="800" />
-                                                        </VisualState.StateTriggers>
-                                                        <VisualState.Setters>
-                                                            <Setter Target="SearchHistoryButton.Padding"
-                                                                    Value="8,6.5" />
-                                                            <Setter Target="SearchHistoryButton.FontSize"
-                                                                    Value="16" />
-                                                        </VisualState.Setters>
-                                                    </VisualState>
-                                                </VisualStateGroup>
-                                            </VisualStateManager.VisualStateGroups>
-                                            <Button Content="{Binding}"
-                                                    Padding="5"
-                                                    x:Name="SearchHistoryButton"
-                                                    Margin="0,0,8,0"
-                                                    CornerRadius="8"
-                                                    Background="{ThemeResource PrimaryInverseColor}"
-                                                    Foreground="{ThemeResource SurfaceColor}"
-                                                    Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
-                                                    CommandParameter="{Binding}" />
-                                        </utu:AutoLayout>
-                                    </UserControl>
-                                </DataTemplate>
-                            </muxc:ItemsRepeater.ItemTemplate>
-                        </muxc:ItemsRepeater>
+                                            <utu:AutoLayout>
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup>
+                                                        <VisualState x:Name="Narrow" />
+                                                        <VisualState x:Name="Wide">
+                                                            <VisualState.StateTriggers>
+                                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                                            </VisualState.StateTriggers>
+                                                            <VisualState.Setters>
+                                                                <Setter Target="SearchHistoryButton.Padding"
+                                                                        Value="8,6.5" />
+                                                                <Setter Target="SearchHistoryButton.FontSize"
+                                                                        Value="16" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Button Content="{Binding}"
+                                                        Padding="5"
+                                                        x:Name="SearchHistoryButton"
+                                                        Margin="0,0,8,0"
+                                                        CornerRadius="8"
+                                                        Background="{ThemeResource PrimaryInverseColor}"
+                                                        Foreground="{ThemeResource SurfaceColor}"
+                                                        Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
+                                                        CommandParameter="{Binding}" />
+                                            </utu:AutoLayout>
+                                        </UserControl>
+                                    </DataTemplate>
+                                </muxc:ItemsRepeater.ItemTemplate>
+                            </muxc:ItemsRepeater>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"

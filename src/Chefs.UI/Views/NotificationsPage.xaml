@@ -89,48 +89,50 @@
                     </utu:AutoLayout>
                 </DataTemplate>
                 <DataTemplate x:Key="EmptyTemplate">
-                    <utu:AutoLayout Spacing="10"
-                                    PrimaryAxisAlignment="Center">
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
-                                <VisualState x:Name="Wide">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger MinWindowWidth="800" />
-                                    </VisualState.StateTriggers>
-                                    <VisualState.Setters>
-                                        <Setter Target="Icon.Style"
-                                                Value="{StaticResource CustomDisplayLarge}" />
-                                        <Setter Target="TitleText.Style"
-                                                Value="{StaticResource CustomHeadlineLarge}" />
-                                        <Setter Target="DisplayTest.Style"
-                                                Value="{StaticResource CustomHeadlineMedium}" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        <TextBlock x:Name="Icon"
-                                   TextAlignment="Center"
-                                   Text="🔔"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource CustomDisplayMedium}" />
-                        <utu:AutoLayout Spacing="14"
-                                        utu:AutoLayout.CounterAlignment="Center">
-                            <TextBlock x:Name="TitleText"
+                    <UserControl>
+                        <utu:AutoLayout Spacing="10"
+                                        PrimaryAxisAlignment="Center">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup>
+                                    <VisualState x:Name="Narrow" />
+                                    <VisualState x:Name="Wide">
+                                        <VisualState.StateTriggers>
+                                            <AdaptiveTrigger MinWindowWidth="800" />
+                                        </VisualState.StateTriggers>
+                                        <VisualState.Setters>
+                                            <Setter Target="Icon.Style"
+                                                    Value="{StaticResource CustomDisplayLarge}" />
+                                            <Setter Target="TitleText.Style"
+                                                    Value="{StaticResource CustomHeadlineLarge}" />
+                                            <Setter Target="DisplayTest.Style"
+                                                    Value="{StaticResource CustomHeadlineMedium}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <TextBlock x:Name="Icon"
                                        TextAlignment="Center"
-                                       Text="No new notifications"
+                                       Text="🔔"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomHeadlineMedium}" />
-                            <TextBlock x:Name="DisplayTest"
-                                       TextAlignment="Center"
-                                       Text="Any new notification will appear here "
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomHeadlineSmall}" />
+                                       Style="{StaticResource CustomDisplayMedium}" />
+                            <utu:AutoLayout Spacing="14"
+                                            utu:AutoLayout.CounterAlignment="Center">
+                                <TextBlock x:Name="TitleText"
+                                           TextAlignment="Center"
+                                           Text="No new notifications"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           Style="{StaticResource CustomHeadlineMedium}" />
+                                <TextBlock x:Name="DisplayTest"
+                                           TextAlignment="Center"
+                                           Text="Any new notification will appear here "
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           Style="{StaticResource CustomHeadlineSmall}" />
+                            </utu:AutoLayout>
                         </utu:AutoLayout>
-                    </utu:AutoLayout>
+                    </UserControl>
                 </DataTemplate>
             </ResourceDictionary>
         </utu:AutoLayout.Resources>

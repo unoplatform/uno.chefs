@@ -218,93 +218,97 @@
             </DataTemplate>
 
             <DataTemplate x:Key="RecipeEmptyTemplate">
-                <utu:AutoLayout Spacing="10"
-                                PrimaryAxisAlignment="Center">
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Narrow" />
-                            <VisualState x:Name="Wide">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                </VisualState.StateTriggers>
-                                <VisualState.Setters>
-                                    <Setter Target="Icon.Style"
-                                            Value="{StaticResource CustomDisplayLarge}" />
-                                    <Setter Target="TitleText.Style"
-                                            Value="{StaticResource CustomHeadlineLarge}" />
-                                    <Setter Target="DisplayTest.Style"
-                                            Value="{StaticResource CustomHeadlineMedium}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                    <TextBlock x:Name="Icon"
-                               TextAlignment="Center"
-                               Text="🍽"
-                               utu:AutoLayout.CounterAlignment="Center"
-                               Foreground="{ThemeResource SurfaceInverseBrush}"
-                               Style="{StaticResource DisplayMedium}" />
-                    <utu:AutoLayout Spacing="14"
-                                    utu:AutoLayout.CounterAlignment="Center">
-                        <TextBlock x:Name="TitleText"
+                <UserControl>
+                    <utu:AutoLayout Spacing="10"
+                                    PrimaryAxisAlignment="Center">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Wide">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="Icon.Style"
+                                                Value="{StaticResource CustomDisplayLarge}" />
+                                        <Setter Target="TitleText.Style"
+                                                Value="{StaticResource CustomHeadlineLarge}" />
+                                        <Setter Target="DisplayTest.Style"
+                                                Value="{StaticResource CustomHeadlineMedium}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <TextBlock x:Name="Icon"
                                    TextAlignment="Center"
-                                   Text="No recipes"
+                                   Text="🍽"
                                    utu:AutoLayout.CounterAlignment="Center"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource HeadlineMedium}" />
-                        <TextBlock x:Name="DisplayTest"
-                                   TextAlignment="Center"
-                                   Text="There are no recipes. Please&#xA; start saving your recipes"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource HeadlineSmall}" />
+                                   Style="{StaticResource DisplayMedium}" />
+                        <utu:AutoLayout Spacing="14"
+                                        utu:AutoLayout.CounterAlignment="Center">
+                            <TextBlock x:Name="TitleText"
+                                       TextAlignment="Center"
+                                       Text="No recipes"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Style="{StaticResource HeadlineMedium}" />
+                            <TextBlock x:Name="DisplayTest"
+                                       TextAlignment="Center"
+                                       Text="There are no recipes. Please&#xA; start saving your recipes"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Style="{StaticResource HeadlineSmall}" />
+                        </utu:AutoLayout>
                     </utu:AutoLayout>
-                </utu:AutoLayout>
+                </UserControl>
             </DataTemplate>
 
             <DataTemplate x:Key="CookbookEmptyTemplate">
-                <utu:AutoLayout Spacing="10"
-                                PrimaryAxisAlignment="Center">
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Narrow" />
-                            <VisualState x:Name="Wide">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                </VisualState.StateTriggers>
-                                <VisualState.Setters>
-                                    <Setter Target="Icon.Style"
-                                            Value="{StaticResource CustomDisplayLarge}" />
-                                    <Setter Target="TitleText.Style"
-                                            Value="{StaticResource CustomHeadlineLarge}" />
-                                    <Setter Target="DisplayTest.Style"
-                                            Value="{StaticResource CustomHeadlineMedium}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                    <TextBlock x:Name="Icon"
-                               TextAlignment="Center"
-                               Text="📒"
-                               utu:AutoLayout.CounterAlignment="Center"
-                               Foreground="{ThemeResource SurfaceInverseBrush}"
-                               Style="{StaticResource DisplayMedium}" />
-                    <utu:AutoLayout Spacing="14"
-                                    utu:AutoLayout.CounterAlignment="Center">
-                        <TextBlock x:Name="TitleText"
+                <UserControl>
+                    <utu:AutoLayout Spacing="10"
+                                    PrimaryAxisAlignment="Center">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup>
+                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Wide">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                    </VisualState.StateTriggers>
+                                    <VisualState.Setters>
+                                        <Setter Target="Icon.Style"
+                                                Value="{StaticResource CustomDisplayLarge}" />
+                                        <Setter Target="TitleText.Style"
+                                                Value="{StaticResource CustomHeadlineLarge}" />
+                                        <Setter Target="DisplayTest.Style"
+                                                Value="{StaticResource CustomHeadlineMedium}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <TextBlock x:Name="Icon"
                                    TextAlignment="Center"
-                                   Text="No cookbook"
+                                   Text="📒"
                                    utu:AutoLayout.CounterAlignment="Center"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource HeadlineMedium}" />
-                        <TextBlock x:Name="DisplayTest"
-                                   TextAlignment="Center"
-                                   Text="There is no cookbook. Please&#xA;create your first cookbook"
-                                   utu:AutoLayout.CounterAlignment="Center"
-                                   Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource HeadlineSmall}" />
+                                   Style="{StaticResource DisplayMedium}" />
+                        <utu:AutoLayout Spacing="14"
+                                        utu:AutoLayout.CounterAlignment="Center">
+                            <TextBlock x:Name="TitleText"
+                                       TextAlignment="Center"
+                                       Text="No cookbook"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Style="{StaticResource HeadlineMedium}" />
+                            <TextBlock x:Name="DisplayTest"
+                                       TextAlignment="Center"
+                                       Text="There is no cookbook. Please&#xA;create your first cookbook"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Style="{StaticResource HeadlineSmall}" />
+                        </utu:AutoLayout>
                     </utu:AutoLayout>
-                </utu:AutoLayout>
+                </UserControl>
             </DataTemplate>
         </ResourceDictionary>
     </Page.Resources>
