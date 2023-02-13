@@ -339,6 +339,14 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
+        <!-- Workaround for the https://github.com/unoplatform/uno.chefs/issues/292 issue & https://github.com/unoplatform/uno.extensions/issues/1161 -->
+        <!-- To Force the Feedview Binding to work correctly in order to show the saved items for Recipes and CookBooks -->
+        <TextBlock Text="{Binding SavedRecipes.Count}"
+                   Visibility="Collapsed" />
+        <TextBlock Text="{Binding SavedCookbooks.Count}"
+                   Visibility="Collapsed" />
+
         <utu:AutoLayout x:Name="ContentLayout"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         Padding="18">
