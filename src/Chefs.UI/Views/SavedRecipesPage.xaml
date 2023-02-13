@@ -166,6 +166,14 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+
+        <!-- Workaround for the https://github.com/unoplatform/uno.chefs/issues/292 issue & https://github.com/unoplatform/uno.extensions/issues/1161 -->
+        <!-- To Force the Feedview Binding to work correctly in order to show the saved items for Recipes and CookBooks -->
+        <TextBlock Text="{Binding SavedRecipes.Count}"
+                   Visibility="Collapsed" />
+        <TextBlock Text="{Binding SavedCookbooks.Count}"
+                   Visibility="Collapsed" />
+
         <utu:AutoLayout x:Name="ContentLayout"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         Padding="18">
@@ -204,7 +212,8 @@
                             <utu:AutoLayout Visibility="Visible"
                                             utu:AutoLayout.CounterAlignment="Center"
                                             uen:Region.Name="MyRecipes">
-                                <uer:FeedView Source="{Binding Recipes}">
+
+                                <uer:FeedView Source="{Binding SavedRecipes}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                             ItemTemplate="{StaticResource RecipeTemplate}">
@@ -220,7 +229,7 @@
                             </utu:AutoLayout>
                             <utu:AutoLayout Visibility="Collapsed"
                                             uen:Region.Name="Cookbooks">
-                                <uer:FeedView Source="{Binding Cookbooks}">
+                                <uer:FeedView Source="{Binding SavedCookbooks}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                             ItemTemplate="{StaticResource CookbookTemplate}">
@@ -256,7 +265,7 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout>
-                                        <uer:FeedView Source="{Binding Recipes}">
+                                        <uer:FeedView Source="{Binding SavedRecipes}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource RecipeTemplate}">
@@ -288,7 +297,7 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                        <uer:FeedView Source="{Binding Cookbooks}">
+                                        <uer:FeedView Source="{Binding SavedCookbooks}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource CookbookTemplate}">
