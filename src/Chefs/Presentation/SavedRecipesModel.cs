@@ -18,7 +18,8 @@ public partial class SavedRecipesModel
         _cookbookService = cookbookService;
     }
 
-    public IListFeed<Cookbook> Cookbooks => _cookbookService.SavedCookbooks;
+    public IListFeed<Cookbook> SavedCookbooks => _cookbookService.SavedCookbooks;
 
-    public IListFeed<Recipe> Recipes => _recipeService.SavedRecipes;
+    public IListFeed<Recipe> SavedRecipes => _recipeService.SavedRecipes;
+
 }
