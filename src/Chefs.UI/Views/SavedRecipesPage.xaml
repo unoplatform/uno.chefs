@@ -386,7 +386,7 @@
                             <utu:AutoLayout Visibility="Visible"
                                             utu:AutoLayout.CounterAlignment="Center"
                                             uen:Region.Name="MyRecipes">
-                                <uer:FeedView Source="{Binding Recipes}"
+                                <uer:FeedView Source="{Binding SavedRecipes}"
                                               NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
@@ -409,7 +409,7 @@
                                             utu:AutoLayout.CounterAlignment="Stretch">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                                 utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <uer:FeedView Source="{Binding Cookbooks}">
+                                    <uer:FeedView Source="{Binding SavedCookbooks}">
                                         <DataTemplate>
                                             <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                 ItemTemplate="{StaticResource CookbookTemplate}"
@@ -466,7 +466,7 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout>
-                                        <uer:FeedView Source="{Binding Recipes}"
+                                        <uer:FeedView Source="{Binding SavedRecipes}"
                                                       NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
@@ -500,7 +500,7 @@
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                        <uer:FeedView Source="{Binding Cookbooks}"
+                                        <uer:FeedView Source="{Binding SavedCookbooks}"
                                                       NoneTemplate="{StaticResource CookbookEmptyTemplate}">
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"

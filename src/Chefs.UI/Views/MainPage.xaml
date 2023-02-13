@@ -46,21 +46,13 @@
         <Grid x:Name="MainGrid"
               RowSpacing="0"
               uen:Region.Attached="True"
-              uen:Region.Navigator="Visibility"
-              utu:SafeArea.Insets="VisibleBounds" />
+              utu:AutoLayout.CounterAlignment="Start"
+              utu:AutoLayout.PrimaryAlignment="Stretch">
 
-        <utu:TabBar x:Name="Tabs"
-                    Grid.Row="1"
-                    uen:Region.Attached="True"
-                    Style="{StaticResource BottomTabBarStyle}">
-            <utu:TabBarItem uen:Region.Name="Home"
-                            IsSelectable="True"
-                            Content="Home"
-                            Style="{StaticResource BottomTabBarItemStyle}">
-                <utu:TabBarItem.Icon>
-                    <PathIcon Data="{StaticResource Icon_Solid_General_Home}" />
-                </utu:TabBarItem.Icon>
-            </utu:TabBarItem>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -72,7 +64,6 @@
                   Grid.Column="1"
                   uen:Region.Attached="True"
                   uen:Region.Navigator="Visibility"
-                  uen:Region.Name="MainGrid"
                   utu:SafeArea.Insets="VisibleBounds" />
 
             <utu:TabBar x:Name="Tabs"
