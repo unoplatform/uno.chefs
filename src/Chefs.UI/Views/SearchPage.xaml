@@ -550,10 +550,15 @@
                                 </UserControl>
                             </DataTemplate>
                         </uer:FeedView>
+                        <!-- Workaround for the https://github.com/unoplatform/uno.chefs/issues/292 issue & https://github.com/unoplatform/uno.extensions/issues/1161 -->
+                        <!-- To Force the Feedview Binding to work correctly in order to show the saved items for Recommended and FromChefs -->
+                        <TextBlock Text="{Binding Recommended.Count}"
+                                   Visibility="Collapsed" />
+                        <TextBlock Text="{Binding FromChefs.Count}"
+                                   Visibility="Collapsed" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
         </ScrollViewer>
     </utu:AutoLayout>
-
 </Page>
