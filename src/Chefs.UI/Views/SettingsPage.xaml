@@ -156,7 +156,7 @@
                                                 PrimaryAxisAlignment="Center"
                                                 Orientation="Horizontal">
                                     <TextBox x:Name="ProfileFullName"
-                                             Text="{Binding UserInfo.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             Text="{Binding Profile.FullName, Mode=TwoWay }"
                                              PlaceholderText="Full Name"
                                              Style="{StaticResource OutlinedTextBoxStyle}"
                                              Background="{ThemeResource SurfaceBrush}"
@@ -174,7 +174,7 @@
                                                 PrimaryAxisAlignment="Center"
                                                 Orientation="Horizontal">
                                     <TextBox x:Name="ProfileEmail"
-                                             Text="{Binding UserInfo.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             Text="{Binding Profile.Email, Mode=TwoWay }"
                                              PlaceholderText="Email"
                                              Style="{StaticResource OutlinedTextBoxStyle}"
                                              Background="{ThemeResource SurfaceBrush}"
@@ -192,7 +192,7 @@
                                                 PrimaryAxisAlignment="Center"
                                                 Orientation="Horizontal">
                                     <TextBox x:Name="ProfilePhoneNumber"
-                                             Text="{Binding UserInfo.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             Text="{Binding Profile.PhoneNumber, Mode=TwoWay }"
                                              PlaceholderText="Mobile Number"
                                              Style="{StaticResource OutlinedTextBoxStyle}"
                                              Background="{ThemeResource SurfaceBrush}"
