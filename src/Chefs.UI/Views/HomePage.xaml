@@ -274,21 +274,38 @@
                                         </muxc:ItemsRepeater.Layout>
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
-                                                <utu:AutoLayout Background="{Binding Color}"
-                                                                Spacing="6"
-                                                                Padding="12"
-                                                                CornerRadius="12"
-                                                                PrimaryAxisAlignment="Center"
-                                                                Orientation="Horizontal"
-                                                                utu:AutoLayout.CounterAlignment="Start">
-                                                    <ImageIcon Source="{Binding UrlIcon}"
-                                                               utu:AutoLayout.CounterAlignment="Center"
-                                                               Margin="0, 0, 0, 3" />
-                                                    <TextBlock Foreground="{ThemeResource SurfaceBrush}"
-                                                               Text="{Binding Name}"
-                                                               utu:AutoLayout.CounterAlignment="Center"
-                                                               Style="{StaticResource CustomLabelLarge}" />
-                                                </utu:AutoLayout>
+                                                <UserControl>
+                                                    <utu:AutoLayout x:Name="CategoryTemplateLayout"
+                                                                    Background="{Binding Color}"
+                                                                    Spacing="6"
+                                                                    Padding="12"
+                                                                    CornerRadius="12"
+                                                                    PrimaryAxisAlignment="Center"
+                                                                    Orientation="Horizontal"
+                                                                    utu:AutoLayout.CounterAlignment="Start">
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup>
+                                                                <VisualState x:Name="Narrow" />
+                                                                <VisualState x:Name="Wide">
+                                                                    <VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                                                    </VisualState.StateTriggers>
+                                                                    <VisualState.Setters>
+                                                                        <Setter Target="CategoryTemplateLayout.Padding"
+                                                                                Value="20" />
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                        <ImageIcon Source="{Binding UrlIcon}"
+                                                                   utu:AutoLayout.CounterAlignment="Center"
+                                                                   Margin="0, 0, 0, 3" />
+                                                        <TextBlock Foreground="{ThemeResource SurfaceBrush}"
+                                                                   Text="{Binding Name}"
+                                                                   utu:AutoLayout.CounterAlignment="Center"
+                                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                    </utu:AutoLayout>
+                                                </UserControl>
                                             </DataTemplate>
                                         </muxc:ItemsRepeater.ItemTemplate>
                                     </muxc:ItemsRepeater>
