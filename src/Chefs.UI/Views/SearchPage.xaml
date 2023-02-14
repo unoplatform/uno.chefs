@@ -11,6 +11,7 @@
       xmlns:ios="http://uno.ui/ios"
       xmlns:android="http://uno.ui/android"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:controls="using:Chefs.Controls"
       mc:Ignorable="d android ios"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -81,18 +82,22 @@
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="RecipeTemplateCard.MaxWidth"
-                                                Value="200" />
+                                                Value="400" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <utu:CardContentControl x:Name="RecipeTemplateCard"
-                                                MaxWidth="155"
-                                                Style="{StaticResource FilledCardContentControlStyle}"
-                                                Background="{ThemeResource SurfaceBrush}"
-                                                uen:Navigation.Request="!RecipeDetails"
-                                                uen:Navigation.Data="{Binding}">
-                            <utu:CardContentControl.ContentTemplate>
+                        <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                        <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                        <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                        <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
+                                                              Style="{StaticResource FilledCardContentControlStyle}"
+                                                              Background="{ThemeResource SurfaceBrush}"
+                                                              HorizontalAlignment="Stretch"
+                                                              VerticalAlignment="Stretch"
+                                                              MinHeight="0"
+                                                              MaxWidth="200">
+                            <controls:FixedSizeCardContentControl.ContentTemplate>
                                 <DataTemplate>
                                     <UserControl>
                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
@@ -105,7 +110,7 @@
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
                                                             <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
-                                                                    Value="140" />
+                                                                    Value="130" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
@@ -130,8 +135,8 @@
                                         </utu:AutoLayout>
                                     </UserControl>
                                 </DataTemplate>
-                            </utu:CardContentControl.ContentTemplate>
-                        </utu:CardContentControl>
+                            </controls:FixedSizeCardContentControl.ContentTemplate>
+                        </controls:FixedSizeCardContentControl>
                     </utu:AutoLayout>
                 </UserControl>
             </DataTemplate>
@@ -344,11 +349,13 @@
                                                                         ItemsJustification="SpaceBetween"
                                                                         MinColumnSpacing="10"
                                                                         MinRowSpacing="10"
+                                                                        MinItemWidth="110"
                                                                         ItemsStretch="Fill" />
                                                 <muxc:UniformGridLayout x:Key="WideGridLayout"
                                                                         MaximumRowsOrColumns="5"
                                                                         MinColumnSpacing="30"
                                                                         MinRowSpacing="30"
+                                                                        MinItemWidth="130"
                                                                         ItemsStretch="Fill" />
                                             </utu:AutoLayout.Resources>
                                             <VisualStateManager.VisualStateGroups>
