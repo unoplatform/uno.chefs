@@ -124,7 +124,7 @@
                                    Converter={StaticResource StringFormatter}, 
                                    ConverterParameter='{}{0} pins'}"
                        Margin="27, 18, 18, 9"
-                       Style="{StaticResource CustomLabelLarge}" />
+                       Style="{StaticResource CustomTitleLarge}" />
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:AutoLayout.CounterAlignment="Stretch"

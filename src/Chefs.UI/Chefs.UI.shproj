@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <_Globbed_Compile Remove="Converters\BoolToObjectConverter.cs" />
+    <_Globbed_Compile Remove="Converters\GreaterThanZeroToVisibleConverter.cs" />
     <_Globbed_Compile Remove="Converters\InvertBoolConverter.cs" />
     <_Globbed_Compile Remove="Converters\TimeSpanToStringConverter.cs" />
     <_Globbed_Compile Remove="Converters\BoolToVisibilityConverter.cs" />
@@ -99,4 +100,9 @@
     <_Globbled_Page Remove="Views\Templates\ItemTemplates.xaml" />
     <_Globbled_Page Remove="Views\UpdateCookbookPage.xaml" />
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties recipes_1json__JsonSchema="https://codemagic.io/codemagic-schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

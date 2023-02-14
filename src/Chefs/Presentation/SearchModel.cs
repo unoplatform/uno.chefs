@@ -9,6 +9,7 @@ public partial class SearchModel
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
     private Signal _searchSignal = new();
+    private bool hideSerches = false;
 
     public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
     {
@@ -26,6 +27,8 @@ public partial class SearchModel
         .Combine(Results, Filter)
         .Select(ApplyFilter)
         .AsListFeed();
+
+    public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSerches);
 
     public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
@@ -49,21 +52,13 @@ public partial class SearchModel
 
     private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
      
-    public async ValueTask GoBack(CancellationToken ct) =>
-        await _navigator.GoBack(this);
+    public async ValueTask CloseRecentSearches(CancellationToken ct)
+    {
+        await IsSearchesClosed.Update(_ => !hideSerches, ct);
+    }    
 
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
-
-    public async ValueTask GoToFilter(CancellationToken ct) 
-    {
-        var response = await _navigator.GetDataAsync<FilterModel, SearchFilter>(this, data: await Filter, qualifier: Qualifiers.Dialog, cancellation: ct);
-
-        if (response is not null)
-        {
-            await Filter.Update(current => response, ct);
-        }
-    }
 
     public async ValueTask Search(CancellationToken ct) => _searchSignal.Raise();
 

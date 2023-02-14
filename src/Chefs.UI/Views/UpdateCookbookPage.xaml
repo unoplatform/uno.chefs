@@ -156,7 +156,7 @@
                        Foreground="{ThemeResource SurfaceInverseBrush}"
                        Text="Add pin"
                        Margin="27, 18, 18, 9"
-                       Style="{StaticResource CustomLabelLarge}" />
+                       Style="{StaticResource CustomTitleLarge}" />
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.CounterAlignment="Stretch"
                             utu:AutoLayout.PrimaryAlignment="Stretch"

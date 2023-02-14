@@ -76,7 +76,7 @@
                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    TextWrapping="Wrap"
                                    Text="{Binding Description}"
-                                   Style="{StaticResource CustomTitleMedium}" />
+                                   Style="{StaticResource CustomLabelMedium}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </DataTemplate>
@@ -161,23 +161,21 @@
                         <Setter Target="ImageLayout.Spacing"
                                 Value="30" />
                         <Setter Target="DoneButton.Margin"
-                                Value="20,0,40,0" />
+                                Value="20,0,40,40" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <utu:AutoLayout x:Name="MainLayout">
-
+        <utu:AutoLayout x:Name="MainLayout"
+                        utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                Background="{ThemeResource BackgroundBrush}"
                                Foreground="{ThemeResource OnBackgroundBrush}"
                                x:Name="NavBar"
                                Content="Live Cooking"
-                               utu:AutoLayout.PrimaryAlignment="Stretch"
                                toolkit:UIElementExtensions.Elevation="0" />
 
-            <utu:AutoLayout x:Name="ContentLayout"
-                            utu:AutoLayout.PrimaryAlignment="Stretch">
+            <utu:AutoLayout x:Name="ContentLayout">
                 <ScrollViewer x:Name="ImageScrollViewer"
                               utu:AutoLayout.PrimaryAlignment="Stretch"
                               HorizontalScrollMode="Disabled"
@@ -202,7 +200,9 @@
                                         CornerRadius="18"
                                         Padding="18"
                                         Visibility="Collapsed"
-                                        Margin="40,0,20,0">
+                                        Margin="40,0,20,40"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                                        PrimaryAxisAlignment="Center">
                             <utu:AutoLayout Orientation="Horizontal"
                                             Spacing="8">
                                 <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
@@ -223,6 +223,7 @@
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </ScrollViewer>
+
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                 utu:AutoLayout.CounterAlignment="Stretch"
                                 uen:Region.Attached="True"
@@ -231,8 +232,8 @@
                     <utu:AutoLayout x:Name="StepsFeedLayout"
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <utu:AutoLayout x:Name="ItemsRepeaterLayout"
-                                    utu:AutoLayout.CounterAlignment="Stretch"
-                                    Background="{ThemeResource PrimaryBrush}">
+                                        utu:AutoLayout.CounterAlignment="Stretch"
+                                        Background="{ThemeResource PrimaryBrush}">
                             <utu:TabBar uen:Region.Attached="True"
                                         Style="{StaticResource TopTabBarStyle}"
                                         ItemsSource="{Binding Steps}"
@@ -261,7 +262,8 @@
 
                         </ScrollViewer>
                         <utu:AutoLayout PrimaryAxisAlignment="End">
-                            <Button x:Name="DoneButton" Background="{ThemeResource PrimaryBrush}"
+                            <Button x:Name="DoneButton"
+                                    Background="{ThemeResource PrimaryBrush}"
                                     Command="{Binding Complete}"
                                     Content="Done!"
                                     Height="56"

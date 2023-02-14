@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using Chefs.Business;
 using Chefs.Data;
 
@@ -10,14 +9,18 @@ public partial class ProfileModel
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
     private readonly INavigator _navigator;
+    private readonly INavigator _sourceNavigator;
 
-    public ProfileModel(INavigator navigator,
+    public ProfileModel(
+        NavigationRequest request,
+        INavigator navigator,
         ICookbookService cookbookService,
         IRecipeService recipeService,
         IUserService userService,
-        User user)
+        User? user)
     {
         _navigator = navigator;
+        _sourceNavigator = request?.Source ?? navigator;
         _cookbookService = cookbookService;
         _recipeService = recipeService;
         Profile = State.Async(this, async ct => user ?? await userService.GetCurrent(ct));
@@ -25,9 +28,11 @@ public partial class ProfileModel
 
     public IState<User> Profile { get; }
 
-	public IListFeed<Cookbook> Cookbooks => Profile.SelectAsync((user, ct) => _cookbookService.GetByUser(user.Id, ct)).AsListFeed();
+    public IFeed<int> RecipesCount => Profile.SelectAsync((user, ct) => _recipeService.GetCount(user.Id, ct));
 
-	public IListFeed<Recipe> Recipes => Profile.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct)).AsListFeed();
+    public IListFeed<Cookbook> Cookbooks => _cookbookService.SavedCookbooks;
+
+    public IListFeed<Recipe> Recipes => Profile.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct)).AsListFeed();
 
     //We kept this navigation as workaround for issue: https://github.com/unoplatform/uno.chefs/issues/103
     public async ValueTask SettingsNavigation(CancellationToken ct)
@@ -38,5 +43,15 @@ public partial class ProfileModel
         {
             await Profile.Update(c => result, ct);
         }
+    }
+
+    public async ValueTask GoBack(CancellationToken ct) => await _navigator.NavigateBackAsync(this, cancellation: ct);
+    
+    public async ValueTask TabletSettingsNavigation(CancellationToken ct)
+    {
+        await _navigator.NavigateBackAsync(this, cancellation: ct);
+
+        //await _sourceNavigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
+        await _sourceNavigator.NavigateRouteAsync(this, "./MainGrid/Settings", cancellation: ct);
     }
 }

@@ -71,33 +71,28 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="8">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}">
+                                               Style="{StaticResource FilterChipGroupStyle}"
+                                               ItemsSource="{Binding OrganizeCategories}"
+                                               SelectedItem="{Binding Filter.OrganizeCategories, Mode=TwoWay}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
-                                    <utu:Chip Content="⭐️   Popular"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Recommended, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="👍️   Trending"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Popular, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="🕓️   Recent"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.OrganizeCategories, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Recent, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
+                                    <utu:ChipGroup.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        Spacing="5"
+                                                        Padding="3">
+                                                <TextBlock Text="{Binding}"
+                                                           Foreground="{ThemeResource PrimaryBrush}"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </utu:ChipGroup.ItemTemplate>
                                 </utu:ChipGroup>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -108,33 +103,28 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}">
+                                               Style="{StaticResource FilterChipGroupStyle}"
+                                               ItemsSource="{Binding Times}"
+                                               SelectedItem="{Binding Filter.Time, Mode=TwoWay}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
-                                    <utu:Chip Content="under 15 min"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Time, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Under15min, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="under 30 min"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Time, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Under30min, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="under 60 min"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Time, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Under60min, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
+                                    <utu:ChipGroup.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        Spacing="5"
+                                                        Padding="3">
+                                                <TextBlock Text="{Binding}"
+                                                           Foreground="{ThemeResource PrimaryBrush}"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </utu:ChipGroup.ItemTemplate>
                                 </utu:ChipGroup>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -146,33 +136,28 @@
                             <utu:AutoLayout Spacing="16"
                                             Orientation="Horizontal">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}">
+                                               Style="{StaticResource FilterChipGroupStyle}"
+                                               ItemsSource="{Binding Difficulties}"
+                                               SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
-                                    <utu:Chip Content="Easy"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Difficulty, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Easy, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="Medium"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Difficulty, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Medium, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="Hard"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Difficulty, Converter={StaticResource EnumBooleanConverter}, ConverterParameter=Hard, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
+                                    <utu:ChipGroup.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        Spacing="5"
+                                                        Padding="3">
+                                                <TextBlock Text="{Binding}"
+                                                           Foreground="{ThemeResource PrimaryBrush}"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </utu:ChipGroup.ItemTemplate>
                                 </utu:ChipGroup>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -184,45 +169,28 @@
                             <utu:AutoLayout Spacing="16"
                                             Orientation="Horizontal">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}">
+                                               Style="{StaticResource FilterChipGroupStyle}"
+                                               ItemsSource="{Binding Serves}"
+                                               SelectedItem="{Binding Filter.Serves, Mode=TwoWay}">
                                     <utu:ChipGroup.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
                                         </ItemsPanelTemplate>
                                     </utu:ChipGroup.ItemsPanel>
-                                    <utu:Chip Content="01"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=1, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="02"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=2, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="03"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=3, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="04"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=4, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                    <utu:Chip Content="+ 05"
-                                              utu:AutoLayout.CounterAlignment="Start"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                                              Style="{StaticResource FilterChipStyle}"
-                                              IsChecked="{Binding Filter.Serves, Converter={StaticResource BoolToIntConverter}, ConverterParameter=5, Mode=TwoWay}"
-                                              Foreground="{ThemeResource PrimaryBrush}" />
+                                    <utu:ChipGroup.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal"
+                                                        Spacing="5"
+                                                        Padding="3">
+                                                <TextBlock Text="{Binding}"
+                                                           Foreground="{ThemeResource PrimaryBrush}"
+                                                           VerticalAlignment="Center" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </utu:ChipGroup.ItemTemplate>
                                 </utu:ChipGroup>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -233,7 +201,7 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16">
                                 <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="Single"
+                                               SelectionMode="SingleOrNone"
                                                ItemsSource="{Binding Categories}"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">
@@ -259,27 +227,26 @@
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
-
-                    <utu:AutoLayout Spacing="20"
-                                    Orientation="Horizontal"
-                                    Padding="0,20">
-                        <Button x:Name="ResetButton"
-                                Background="{ThemeResource SurfaceBrush}"
-                                Content="Reset"
-                                utu:AutoLayout.CounterAlignment="Stretch"
-                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                Style="{StaticResource ElevatedButtonStyle}"
-                                Command="{Binding ResetFilter}"
-                                MinHeight="56" />
-                        <Button Background="{ThemeResource PrimaryBrush}"
-                                Content="Apply"
-                                utu:AutoLayout.CounterAlignment="Stretch"
-                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                Command="{Binding SearchFilter}"
-                                MinHeight="56" />
-                    </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
+            <utu:AutoLayout Spacing="20"
+                            Orientation="Horizontal"
+                            Padding="0,20">
+                <Button x:Name="ResetButton"
+                        Background="{ThemeResource SurfaceBrush}"
+                        Content="Reset"
+                        utu:AutoLayout.CounterAlignment="Stretch"
+                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                        Style="{StaticResource ElevatedButtonStyle}"
+                        Command="{Binding ResetFilter}"
+                        MinHeight="56" />
+                <Button Background="{ThemeResource PrimaryBrush}"
+                        Content="Apply"
+                        utu:AutoLayout.CounterAlignment="Stretch"
+                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                        Command="{Binding SearchFilter}"
+                        MinHeight="56" />
+            </utu:AutoLayout>
         </utu:AutoLayout>
     </utu:AutoLayout>
 

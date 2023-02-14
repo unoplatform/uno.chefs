@@ -9,14 +9,27 @@
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
                                         Separator=" ∙ "/>
-    <converters:CustomBackgroundColorConverter x:Key="CustomBackgroundColor" />
+    <converters:CustomBoolToColorConverter x:Key="CustomColor"
+                                            TrueColorValue="{StaticResource SurfaceBrush}"
+                                            FalseColorValue="{StaticResource PrimaryBrush}" />
+    <converters:CustomBoolToColorConverter x:Key="FilterButtonBackgroundColor"
+                                            TrueColorValue="{StaticResource PrimaryBrush}"
+                                            FalseColorValue="{StaticResource SurfaceBrush}" />
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
     <converters:BoolInverter x:Key="InvertBool" />
+    <converters:FromNullToVisibilityConverter x:Key="FromNullToVisibilityConverter"
+                                              Invert="False" />
+
+    <converters:GreaterThanZeroToVisibleConverter x:Key="GreaterThanZeroToVisibleConverter" />
 
     <converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
                                        Number="2" />
 
+    <converters:FromNullToVisibilityConverter x:Key="NullToVisibilityConverter"
+                                              Invert="False" />
+    <converters:FromNullToVisibilityConverter x:Key="InvertNullToVisibilityConverter"
+                                              Invert="True" />
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
-                                      TrueValue="{StaticResource SurfaceBrush}"
-                                      FalseValue="{StaticResource OnSurfaceLowBrush}" />
+                                      TrueValue="{ThemeResource SurfaceBrush}"
+                                      FalseValue="{ThemeResource SurfaceVariantBrush}" />
 </ResourceDictionary>

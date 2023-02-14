@@ -18,23 +18,6 @@ public class UserService : IUserService
         IWritableOptions<Credentials> credentialOptions)
         => (_userEndpoint, _chefAppOptions, _credentialOptions) = (userEndpoint, chefAppOptions, credentialOptions);
 
-    public async ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct)
-    {
-        var autentication = await _userEndpoint.Authenticate(email, password, ct);
-        if (autentication)
-        {
-            await _credentialOptions.UpdateAsync(_ => new Credentials()
-            {
-                Email = email,
-                SaveCredentials = true
-            });
-
-            return true;
-        }
-
-        return false;
-    }
-
     public IFeed<User> UserFeed => Feed<User>.Async(async (ct) => await GetCurrent(ct) is { } user ? user : Option.Undefined<User>(), _userSignal);
 
     public async ValueTask<AppConfig> GetSettings(CancellationToken ct) 
@@ -59,4 +42,22 @@ public class UserService : IUserService
 
     public async ValueTask Update(User user, CancellationToken ct)
         => await _userEndpoint.Update(user.ToData(), ct);
+
+    ///In case we need to add auth
+    //public async ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct)
+    //{
+    //    var autentication = await _userEndpoint.Authenticate(email, password, ct);
+    //    if (autentication)
+    //    {
+    //        await _credentialOptions.UpdateAsync(_ => new Credentials()
+    //        {
+    //            Email = email,
+    //            SaveCredentials = true
+    //        });
+
+    //        return true;
+    //    }
+
+    //    return false;
+    //}
 }

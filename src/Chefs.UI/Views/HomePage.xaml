@@ -139,6 +139,10 @@
                                 Value="-40,0" />
                         <Setter Target="NavBarLayout.Padding"
                                 Value="40,20" />
+                        <Setter Target="ProfileLayout.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="NotificationButton.Visibility"
+                                Value="Collapsed" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -190,14 +194,17 @@
                             <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
                                       Foreground="{ThemeResource OnSurfaceBrush}" />
                         </Button>
-                        <Button utu:AutoLayout.CounterAlignment="Center"
+                        <Button x:Name="NotificationButton"
+                                utu:AutoLayout.CounterAlignment="Center"
                                 Style="{StaticResource IconButtonStyle}"
                                 uen:Navigation.Request="!Notifications">
                             <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
                                       Foreground="{ThemeResource OnSurfaceBrush}" />
                         </Button>
                     </utu:AutoLayout>
+
                 </utu:AutoLayout>
+
             </utu:AutoLayout>
 
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -237,7 +244,8 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!RecipeDetails"
+                                                        uen:Navigation.Request="RecipeDetails"
+                                                        uen:Navigation.Data="{Binding Data}"
                                                         ItemTemplate="{StaticResource HomeLargeItemTemplate}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
@@ -321,7 +329,7 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!RecipeDetails">
+                                                        uen:Navigation.Request="RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
@@ -478,7 +486,8 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}">
+                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}"
+                                                        uen:Navigation.Request="RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
@@ -519,7 +528,8 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}">
+                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}"
+                                                        uen:Navigation.Request="RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
@@ -560,7 +570,8 @@
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}">
+                                                        ItemTemplate="{StaticResource HomeLargeItemTemplate}"
+                                                        uen:Navigation.Request="RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>

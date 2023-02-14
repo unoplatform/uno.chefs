@@ -6,6 +6,6 @@ public sealed partial class ProfilePage : ResponsiveDrawerFlyout
     {
         this.InitializeComponent();
 
-        Opening += ApplyRightDrawerFlyoutPresenterStyle;
+        Opening += ApplyLeftDrawerFlyoutPresenterStyle;
     }
 }

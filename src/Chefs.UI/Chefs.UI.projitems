@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FixedSizeCardContentControl.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CertainNumberToVisible.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\GreaterThanZeroToVisibleConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringSeparatorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\TimeSpanToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Dialogs\CompletedDialog.xaml.cs" />

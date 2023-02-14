@@ -22,6 +22,10 @@ public class RecipeEndpoint : IRecipeEndpoint
     public async ValueTask<IImmutableList<RecipeData>> GetAll(CancellationToken ct) => (await Load()).ToImmutableList()
         ?? ImmutableList<RecipeData>.Empty;
 
+    public async ValueTask<int> GetCount(Guid userId, CancellationToken ct) => (await Load())
+        .Where(x => x.UserId == userId)
+        .Count();
+
     public async ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct) => (await LoadCategories())
         .ToImmutableList()
         ?? ImmutableList<CategoryData>.Empty;
