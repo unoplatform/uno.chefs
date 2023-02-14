@@ -37,12 +37,7 @@ public partial class ProfileModel
     //We kept this navigation as workaround for issue: https://github.com/unoplatform/uno.chefs/issues/103
     public async ValueTask SettingsNavigation(CancellationToken ct)
     {
-        var result = await _navigator.GetDataAsync<SettingsModel, User>(this, qualifier: Qualifiers.Dialog, data: await Profile, cancellation: ct);
-
-        if(result is not null)
-        {
-            await Profile.Update(c => result, ct);
-        }
+        await _navigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
     }
 
     public async ValueTask GoBack(CancellationToken ct) => await _navigator.NavigateBackAsync(this, cancellation: ct);

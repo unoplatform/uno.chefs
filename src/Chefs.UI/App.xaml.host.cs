@@ -122,12 +122,12 @@ public sealed partial class App : Application
                                 new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookModel>(), DependsOn:"SavedRecipes"),
                                 new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "SavedCookbookDetail"),
                                 new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
-                                new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>()),
                                 new RouteMap("ModalCreateCookbook", View: views.FindByViewModel<CreateCookbookModel>()),
+                                new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"Profile"),
                                 new RouteMap("ModalRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
                                 new RouteMap("ModalCookbookDetailss", View: views.FindByViewModel<CookbookDetailModel>())
                             }),
-                            new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
+                            new RouteMap("Completed", View: views.FindByView<CompletedDialog>())
                         }));
     }
 }
