@@ -88,7 +88,7 @@
                                                               x:Name="toggleButton"
                                                               Background="{Binding IsChecked, 
                                                                     ElementName=toggleButton, 
-                                                                    Converter={StaticResource CustomBackgroundColor}}"
+                                                                    Converter={StaticResource FilterButtonBackgroundColor}}"
                                                               utu:AutoLayout.CounterAlignment="Center"
                                                               Style="{StaticResource IconToggleButtonStyle}"
                                                               BorderThickness="1"

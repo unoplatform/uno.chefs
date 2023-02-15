@@ -82,7 +82,7 @@
                                                               x:Name="toggleButton"
                                                               Background="{Binding IsChecked, 
                                                                     ElementName=toggleButton, 
-                                                                    Converter={StaticResource CustomBackgroundColor}}"
+                                                                    Converter={StaticResource FilterButtonBackgroundColor}}"
                                                               utu:AutoLayout.CounterAlignment="Center"
                                                               Style="{StaticResource IconToggleButtonStyle}"
                                                               BorderThickness="1"
@@ -136,6 +136,8 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        
+        
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout x:Name="NavBarLayout">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"

@@ -47,7 +47,7 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
         var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
         var cookbook = _cookbook;
 
-        if (selectedRecipes is not null)
+        if (selectedRecipes is not null && selectedRecipes.Count > 0)
         {
             var response = await _cookbookService.Update(cookbook!, selectedRecipes, ct);
             await _navigator.NavigateBackWithResultAsync(this, data: response);
