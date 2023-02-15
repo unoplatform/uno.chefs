@@ -12,8 +12,8 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:toolkit="using:Uno.UI.Toolkit"
       mc:Ignorable="d"
+      NavigationCacheMode="Enabled"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
@@ -116,7 +116,15 @@
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
                                    Content="Cookbook"
-                                   toolkit:UIElementExtensions.Elevation="0" />
+                                   toolkit:UIElementExtensions.Elevation="0">
+                    <utu:NavigationBar.MainCommand>
+                        <AppBarButton>
+                            <win:AppBarButton.Icon>
+                                <SymbolIcon Symbol="Back" />
+                            </win:AppBarButton.Icon>
+                        </AppBarButton>
+                    </utu:NavigationBar.MainCommand>
+                </utu:NavigationBar>
             </utu:AutoLayout>
             <TextBlock x:Name="AddPinsLabel"
                        Foreground="{ThemeResource SurfaceInverseBrush}"
@@ -175,7 +183,7 @@
                 </ScrollViewer>
             </utu:AutoLayout>
         </utu:AutoLayout>
-        <Button uen:Navigation.Request="CreateUpdateCookbook"
+        <Button uen:Navigation.Request="UpdateCookbook"
                 uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay }"
                 Background="{ThemeResource PrimaryContainerBrush}"
                 Margin="18,20"

@@ -11,6 +11,7 @@
       xmlns:converters="using:Chefs.Converters"
       xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -97,11 +98,11 @@
                                                               MaxWidth="60">
                                                     <ToggleButton.Content>
                                                         <PathIcon Data="{StaticResource Icon_Add}"
-                                                                  Foreground="{ThemeResource SurfaceBrush}" />
+                                                                  Foreground="{ThemeResource PrimaryBrush}" />
                                                     </ToggleButton.Content>
                                                     <um:ControlExtensions.AlternateContent>
                                                         <PathIcon Data="{StaticResource Icon_Check}"
-                                                                  Foreground="{ThemeResource PrimaryBrush}" />
+                                                                  Foreground="{ThemeResource SurfaceBrush}" />
                                                     </um:ControlExtensions.AlternateContent>
                                                 </ToggleButton>
                                             </utu:AutoLayout>
@@ -151,9 +152,9 @@
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton>
-                            <AppBarButton.Icon>
-                                <BitmapIcon UriSource="ms-appx:///Assets/Icons/back.png" />
-                            </AppBarButton.Icon>
+                            <win:AppBarButton.Icon>
+                                <SymbolIcon Symbol="Back" />
+                            </win:AppBarButton.Icon>
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                 </utu:NavigationBar>
