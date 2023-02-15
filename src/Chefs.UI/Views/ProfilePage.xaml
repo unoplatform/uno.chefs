@@ -318,8 +318,6 @@
                                                   Style="{StaticResource DefaultFeedViewStyle}">
                                         <DataTemplate>
                                             <UserControl>
-                                                <!--<ScrollViewer HorizontalScrollMode="Enabled"
-                                                          HorizontalScrollBarVisibility="Visible">-->
                                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                     <VisualStateManager.VisualStateGroups>
                                                         <VisualStateGroup>
@@ -419,7 +417,6 @@
                                                         </muxc:ItemsRepeater.ItemTemplate>
                                                     </muxc:ItemsRepeater>
                                                 </utu:AutoLayout>
-                                                <!--</ScrollViewer>-->
                                             </UserControl>
                                         </DataTemplate>
                                     </uer:FeedView>
@@ -449,8 +446,6 @@
                                                         </VisualState>
                                                     </VisualStateGroup>
                                                 </VisualStateManager.VisualStateGroups>
-                                                <!--<ScrollViewer HorizontalScrollMode="Enabled"
-                                                          HorizontalScrollBarVisibility="Visible">-->
                                                 <UserControl>
                                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                         uen:Navigation.Request="!ModalCookbookDetails">
@@ -593,7 +588,6 @@
                                                         </muxc:ItemsRepeater.ItemTemplate>
                                                     </muxc:ItemsRepeater>
                                                 </UserControl>
-                                                <!--</ScrollViewer>-->
                                             </utu:AutoLayout>
                                         </DataTemplate>
                                     </uer:FeedView>
