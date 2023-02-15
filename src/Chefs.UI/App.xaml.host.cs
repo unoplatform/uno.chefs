@@ -83,7 +83,8 @@ public sealed partial class App : Application
             new DataViewMap<UpdateCookbookPage, UpdateCookbookModel, Cookbook>(),
             new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsModel>(),
-            new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>()),
+            new ViewMap<ProfilePage>(),
+            new ViewMap<ProfileDetailsPage, ProfileModel>(Data: new DataMap<User>()),
             new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesModel>(),
             new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
@@ -121,9 +122,12 @@ public sealed partial class App : Application
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesModel>()),
                                 new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookModel>(), DependsOn:"SavedRecipes"),
                                 new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "SavedCookbookDetail"),
-                                new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
+                                new RouteMap("Profile", View: views.FindByView<ProfilePage>(), Nested: new RouteMap[]
+                                {
+                                    new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
+                                    new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
+                                }),
                                 new RouteMap("ModalCreateCookbook", View: views.FindByViewModel<CreateCookbookModel>()),
-                                new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"Profile"),
                                 new RouteMap("ModalRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
                                 new RouteMap("ModalCookbookDetailss", View: views.FindByViewModel<CookbookDetailModel>())
                             }),
