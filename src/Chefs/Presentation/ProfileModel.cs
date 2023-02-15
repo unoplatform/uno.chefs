@@ -8,7 +8,6 @@ public partial class ProfileModel
 {
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
-    private readonly IUserService _userService;
     private readonly INavigator _navigator;
     private readonly INavigator _sourceNavigator;
 
