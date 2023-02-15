@@ -41,7 +41,10 @@ public class UserService : IUserService
         => new(await _userEndpoint.GetById(userId, ct));
 
     public async ValueTask Update(User user, CancellationToken ct)
-        => await _userEndpoint.Update(user.ToData(), ct);
+    {
+        await _userEndpoint.Update(user.ToData(), ct);
+        _userSignal.Raise();
+    } 
 
     ///In case we need to add auth
     //public async ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct)
