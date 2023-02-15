@@ -8,6 +8,7 @@ public partial class ProfileModel
 {
     private readonly ICookbookService _cookbookService;
     private readonly IRecipeService _recipeService;
+    private readonly IUserService _userService;
     private readonly INavigator _navigator;
     private readonly INavigator _sourceNavigator;
 
@@ -23,10 +24,12 @@ public partial class ProfileModel
         _sourceNavigator = request?.Source ?? navigator;
         _cookbookService = cookbookService;
         _recipeService = recipeService;
-        Profile = State.Async(this, async ct => user ?? await userService.GetCurrent(ct));
+        _userService = userService;
+        //Profile = State.Async(this, async ct => user ?? await userService.GetCurrent(ct));
     }
 
-    public IState<User> Profile { get; }
+    //public IState<User> Profile { get; }
+    public IFeed<User> Profile => _userService.UserFeed;
 
     public IFeed<int> RecipesCount => Profile.SelectAsync((user, ct) => _recipeService.GetCount(user.Id, ct));
 
@@ -37,12 +40,13 @@ public partial class ProfileModel
     //We kept this navigation as workaround for issue: https://github.com/unoplatform/uno.chefs/issues/103
     public async ValueTask SettingsNavigation(CancellationToken ct)
     {
-        var result = await _navigator.GetDataAsync<SettingsModel, User>(this, qualifier: Qualifiers.Dialog, data: await Profile, cancellation: ct);
+        //var result = await _navigator.GetDataAsync<SettingsModel, User>(this, qualifier: Qualifiers.Dialog, data: await Profile, cancellation: ct);
 
-        if(result is not null)
-        {
-            await Profile.Update(c => result, ct);
-        }
+        //if(result is not null)
+        //{
+        //    await Profile.Update(c => result, ct);
+        //}
+        await _sourceNavigator.NavigateRouteAsync(this, "Settings", qualifier: "!", data: await Profile, cancellation: ct);
     }
 
     public async ValueTask GoBack(CancellationToken ct) => await _navigator.NavigateBackAsync(this, cancellation: ct);
