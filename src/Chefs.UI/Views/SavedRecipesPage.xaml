@@ -417,7 +417,7 @@
                                         <DataTemplate>
                                             <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                 ItemTemplate="{StaticResource CookbookTemplate}"
-                                                                uen:Navigation.Request="SavedCookbookDetail">
+                                                                uen:Navigation.Request="CookbookDetail">
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                             MinItemWidth="130"
@@ -509,7 +509,7 @@
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource CookbookTemplate}"
-                                                                    uen:Navigation.Request="SavedCookbookDetail">
+                                                                    uen:Navigation.Request="CookbookDetail">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 MinColumnSpacing="20"
