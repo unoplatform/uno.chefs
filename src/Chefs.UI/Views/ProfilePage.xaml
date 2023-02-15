@@ -431,22 +431,22 @@
                                                   NoneTemplate="{StaticResource CookbookEmptyTemplate}"
                                                   utu:AutoLayout.CounterAlignment="Center">
                                         <DataTemplate>
-                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
-                                                <VisualStateManager.VisualStateGroups>
-                                                    <VisualStateGroup>
-                                                        <VisualState x:Name="Narrow" />
-                                                        <VisualState x:Name="Wide">
-                                                            <VisualState.StateTriggers>
-                                                                <AdaptiveTrigger MinWindowWidth="800" />
-                                                            </VisualState.StateTriggers>
-                                                            <VisualState.Setters>
-                                                                <Setter Target="CookbookUniformGrid.MinItemWidth"
-                                                                        Value="200" />
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                    </VisualStateGroup>
-                                                </VisualStateManager.VisualStateGroups>
-                                                <UserControl>
+                                            <UserControl>
+                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup>
+                                                            <VisualState x:Name="Narrow" />
+                                                            <VisualState x:Name="Wide">
+                                                                <VisualState.StateTriggers>
+                                                                    <AdaptiveTrigger MinWindowWidth="800" />
+                                                                </VisualState.StateTriggers>
+                                                                <VisualState.Setters>
+                                                                    <Setter Target="CookbookUniformGrid.MinItemWidth"
+                                                                            Value="200" />
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
                                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                         uen:Navigation.Request="!ModalCookbookDetails">
                                                         <muxc:ItemsRepeater.Layout>
@@ -587,8 +587,8 @@
                                                             </DataTemplate>
                                                         </muxc:ItemsRepeater.ItemTemplate>
                                                     </muxc:ItemsRepeater>
-                                                </UserControl>
-                                            </utu:AutoLayout>
+                                                </utu:AutoLayout>
+                                            </UserControl>
                                         </DataTemplate>
                                     </uer:FeedView>
                                 </utu:AutoLayout>
