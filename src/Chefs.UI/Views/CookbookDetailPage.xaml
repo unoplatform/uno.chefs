@@ -103,9 +103,7 @@
                                 Value="40,0" />
                         <Setter Target="ContentLayout.Spacing"
                                 Value="28" />
-                        <Setter Target="RecipeLayout.Margin"
-                                Value="80,24" />
-                        <Setter Target="NavBarLayout.Padding"
+                        <Setter Target="NavBarLayout.Margin"
                                 Value="22,10,22,10" />
                     </VisualState.Setters>
                 </VisualState>
@@ -115,7 +113,7 @@
             <utu:AutoLayout x:Name="NavBarLayout">
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
-                                   Content="Cookbook"
+                                   Content="{Binding Cookbook.Name}"
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton>
