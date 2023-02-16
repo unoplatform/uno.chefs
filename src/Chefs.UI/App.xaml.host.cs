@@ -83,7 +83,8 @@ public sealed partial class App : Application
             new DataViewMap<UpdateCookbookPage, UpdateCookbookModel, Cookbook>(),
             new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsModel>(),
-            new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>()),
+            new ViewMap<ProfilePage>(),
+            new ViewMap<ProfileDetailsPage, ProfileModel>(Data: new DataMap<User>()),
             new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesModel>(),
             new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
@@ -123,10 +124,13 @@ public sealed partial class App : Application
                                 new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>(), DependsOn: "RecipeDetails"),
                                 new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
                                 new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails"),
-                                new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
-                                new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>()),
+                                new RouteMap("Profile", View: views.FindByView<ProfilePage>(), Nested: new RouteMap[]
+                                {
+                                    new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
+                                    new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
+                                }),
                             }),
-                            new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
+                            new RouteMap("Completed", View: views.FindByView<CompletedDialog>())
                         }));
     }
 }
