@@ -11,6 +11,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:toolkit="using:Uno.UI.Toolkit"
+      xmlns:controls="using:Chefs.Controls"
       mc:Ignorable="d"
       NavigationCacheMode="Enabled"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -30,16 +31,22 @@
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="RecipeTemplateCard.MaxWidth"
-                                                Value="200" />
+                                                Value="400" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <utu:CardContentControl x:Name="RecipeTemplateCard"
-                                                MaxWidth="155"
-                                                Style="{StaticResource FilledCardContentControlStyle}"
-                                                Background="{ThemeResource SurfaceBrush}">
-                            <utu:CardContentControl.ContentTemplate>
+                        <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                        <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                        <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                        <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
+                                                              Style="{StaticResource FilledCardContentControlStyle}"
+                                                              Background="{ThemeResource SurfaceBrush}"
+                                                              HorizontalAlignment="Stretch"
+                                                              VerticalAlignment="Stretch"
+                                                              MinHeight="0"
+                                                              MaxWidth="200">
+                            <controls:FixedSizeCardContentControl.ContentTemplate>
                                 <DataTemplate>
                                     <UserControl>
                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
@@ -52,7 +59,7 @@
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
                                                             <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
-                                                                    Value="140" />
+                                                                    Value="130" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
@@ -64,25 +71,21 @@
                                             </utu:AutoLayout>
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
-                                                            PrimaryAxisAlignment="Center"
-                                                            Orientation="Horizontal">
-                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                               TextWrapping="NoWrap"
-                                                               Text="{Binding Name}"
-                                                               Style="{StaticResource CustomTitleMedium}" />
-                                                    <TextBlock TextWrapping="NoWrap"
-                                                               Text="{Binding TimeCal}"
-                                                               Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                               Style="{StaticResource CustomCaptionMedium}" />
-                                                </utu:AutoLayout>
+                                                            PrimaryAxisAlignment="Center">
+                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                           TextWrapping="NoWrap"
+                                                           Text="{Binding Name}"
+                                                           Style="{StaticResource CustomTitleMedium}" />
+                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                           TextWrapping="NoWrap"
+                                                           Text="{Binding TimeCal}"
+                                                           Style="{StaticResource CustomBodySmall}" />
                                             </utu:AutoLayout>
                                         </utu:AutoLayout>
                                     </UserControl>
                                 </DataTemplate>
-                            </utu:CardContentControl.ContentTemplate>
-                        </utu:CardContentControl>
+                            </controls:FixedSizeCardContentControl.ContentTemplate>
+                        </controls:FixedSizeCardContentControl>
                     </utu:AutoLayout>
                 </UserControl>
             </DataTemplate>
@@ -154,6 +157,7 @@
                                                                 MaximumRowsOrColumns="5"
                                                                 MinColumnSpacing="30"
                                                                 MinRowSpacing="30"
+                                                                MinItemWidth="200"
                                                                 ItemsStretch="Fill" />
                                     </utu:AutoLayout.Resources>
                                     <VisualStateManager.VisualStateGroups>

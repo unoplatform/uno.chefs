@@ -2,34 +2,31 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:Chefs.Converters">
-    
-    <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
-    <converters:EnumBooleanConverter x:Key="EnumBooleanConverter" />
-    <converters:BoolToIntConverter x:Key="BoolToIntConverter" />
+
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
                                         Separator=" ∙ "/>
-    <converters:CustomBoolToColorConverter x:Key="CustomColor"
-                                            TrueColorValue="{StaticResource SurfaceBrush}"
-                                            FalseColorValue="{StaticResource PrimaryBrush}" />
-    <converters:CustomBoolToColorConverter x:Key="FilterButtonBackgroundColor"
-                                            TrueColorValue="{StaticResource PrimaryBrush}"
-                                            FalseColorValue="{StaticResource SurfaceBrush}" />
+
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
     <converters:BoolInverter x:Key="InvertBool" />
-    <converters:FromNullToVisibilityConverter x:Key="FromNullToVisibilityConverter"
-                                              Invert="False" />
 
     <converters:GreaterThanZeroToVisibleConverter x:Key="GreaterThanZeroToVisibleConverter" />
 
     <converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
                                        Number="2" />
 
-    <converters:FromNullToVisibilityConverter x:Key="NullToVisibilityConverter"
-                                              Invert="False" />
-    <converters:FromNullToVisibilityConverter x:Key="InvertNullToVisibilityConverter"
+    <converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
+    <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
                                               Invert="True" />
+    
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
-                                      TrueValue="{ThemeResource SurfaceBrush}"
-                                      FalseValue="{ThemeResource SurfaceVariantBrush}" />
+                                      TrueValue="{StaticResource SurfaceBrush}"
+                                      FalseValue="{StaticResource SurfaceVariantBrush}" />
+    
+    <converters:BoolToObjectConverter x:Key="PrimarySurfaceColorConverter"
+                                      TrueValue="{StaticResource SurfaceBrush}"
+                                      FalseValue="{StaticResource PrimaryBrush}" />
+    <converters:BoolToObjectConverter x:Key="FilterButtonBackgroundColor"
+                                      TrueValue="{StaticResource PrimaryBrush}"
+                                      FalseValue="{StaticResource SurfaceBrush}" />
 </ResourceDictionary>
