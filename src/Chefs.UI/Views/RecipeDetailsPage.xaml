@@ -262,7 +262,8 @@
                                     <uer:FeedView Source="{Binding Steps}">
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding Data}"
-                                                      Style="{StaticResource ListViewStyle}">
+                                                      Style="{StaticResource ListViewStyle}"
+                                                      SelectionMode="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <utu:AutoLayout Margin="-10,8"
@@ -332,7 +333,8 @@
                                                       Source="{Binding Ingredients}">
                                             <DataTemplate>
                                                 <ListView ItemsSource="{Binding Data}"
-                                                          Style="{StaticResource ListViewStyle}">
+                                                          Style="{StaticResource ListViewStyle}"
+                                                          SelectionMode="None">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -377,7 +379,8 @@
                                                       Source="{Binding Steps}">
                                             <DataTemplate>
                                                 <ListView ItemsSource="{Binding Data}"
-                                                          Style="{StaticResource ListViewStyle}">
+                                                          Style="{StaticResource ListViewStyle}"
+                                                          SelectionMode="None">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -423,7 +426,8 @@
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding Data}"
                                                       Style="{StaticResource ListViewStyle}"
-                                                      ItemTemplate="{StaticResource ReviewDataTemplate}" />
+                                                      ItemTemplate="{StaticResource ReviewDataTemplate}"
+                                                      SelectionMode="None" />
                                         </DataTemplate>
                                     </uer:FeedView>
                                 </utu:AutoLayout>
