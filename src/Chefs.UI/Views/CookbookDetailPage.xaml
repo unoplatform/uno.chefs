@@ -177,6 +177,7 @@
                                     <muxc:ItemsRepeater x:Name="RecipeRepeater"
                                                         ItemsSource="{Binding Data.Recipes}"
                                                         Layout="{StaticResource NarrowGridLayout}"
+                                                        uen:Navigation.Request="CookbookRecipeDetails"
                                                         ItemTemplate="{StaticResource RecipeTemplate}" />
                                 </utu:AutoLayout>
                             </UserControl>
