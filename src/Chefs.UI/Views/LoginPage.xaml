@@ -60,7 +60,7 @@
                         <Setter Target="InnerLayout.Spacing"
                                 Value="40" />
                         <Setter Target="InnerLayout.Margin"
-                                Value="53, 50, 0, 50" />
+                                Value="53, 50, 0, 500" />
                         <Setter Target="InnerLayout.MinWidth"
                                 Value="534" />
                         <Setter Target="FieldsButtonsLayout.Spacing"
@@ -97,16 +97,13 @@
                            Visibility="Collapsed"
                            Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
                            Stretch="UniformToFill"
-                           utu:AutoLayout.PrimaryAlignment="Stretch"
-                           utu:AutoLayout.CounterAlignment="Stretch" />
+                           utu:AutoLayout.CounterAlignment="Stretch"/>
                     <utu:AutoLayout x:Name="InnerLayout"
                                     Spacing="15"
                                     Padding="30,30,30,15"
                                     Background="{ThemeResource SurfaceBrush}"
-                                    PrimaryAxisAlignment="Center"
-                                    VerticalAlignment="Top"
+                                    utu:AutoLayout.PrimaryAlignment="Auto"
                                     HorizontalAlignment="Left"
-                                    utu:AutoLayout.CounterAlignment="Stretch"
                                     utu:AutoLayout.IsIndependentLayout="False">
                         <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
                                Stretch="Uniform"
@@ -114,7 +111,7 @@
                                Width="200" />
                         <utu:AutoLayout x:Name="FieldsButtonsLayout"
                                         Spacing="10"
-                                        PrimaryAxisAlignment="Center">
+                                        PrimaryAxisAlignment="Start">
                             <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                      PlaceholderText="Email"
                                      PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
@@ -190,15 +187,14 @@
                                 </um:ControlExtensions.Icon>
                             </Button>
                         </utu:AutoLayout>
-                        <utu:AutoLayout PrimaryAxisAlignment="End"
-                                        Orientation="Vertical"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <utu:AutoLayout PrimaryAxisAlignment="Center"
+                        <utu:AutoLayout Orientation="Vertical"
+                                        PrimaryAxisAlignment="Start">
+                            <utu:AutoLayout PrimaryAxisAlignment="Start"
                                             Orientation="Horizontal"
                                             utu:AutoLayout.CounterAlignment="Center"
                                             Spacing="5">
                                 <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                utu:AutoLayout.CounterAlignment="Center">
+                                                utu:AutoLayout.CounterAlignment="Start">
                                     <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
                                                TextAlignment="Center"
                                                Text="Not a member?"
@@ -207,7 +203,7 @@
 
                                 <HyperlinkButton uen:Navigation.Request="Register"
                                                  Content="Register Now"
-                                                 utu:AutoLayout.CounterAlignment="Center" />
+                                                 utu:AutoLayout.CounterAlignment="Start" />
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
