@@ -61,6 +61,16 @@
                                                                     Value="180" />
                                                             <Setter Target="ButtonIcon.Margin"
                                                                     Value="12,5,0,0" />
+                                                            <Setter Target="UpdateCookbookButton.MinHeight"
+                                                                    Value="90" />
+                                                            <Setter Target="SecondImageLayout.PrimaryAxisAlignment"
+                                                                    Value="Center" />
+                                                            <Setter Target="SecondImage.Stretch"
+                                                                    Value="Fill" />
+                                                            <Setter Target="ThirdImageLayout.PrimaryAxisAlignment"
+                                                                    Value="Center" />
+                                                            <Setter Target="ThirdImage.Stretch"
+                                                                    Value="Fill" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
@@ -71,39 +81,46 @@
                                                             Orientation="Horizontal"
                                                             Height="122">
                                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                utu:AutoLayout.CounterAlignment="Stretch"
                                                                 CornerRadius="12">
                                                     <Image Source="{Binding CookbookImages.FirstImage}"
                                                            utu:AutoLayout.CounterAlignment="Stretch"
                                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                           Stretch="UniformToFill" />
+                                                           Stretch="Fill" />
                                                 </utu:AutoLayout>
                                                 <utu:AutoLayout Spacing="8"
                                                                 utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                 utu:AutoLayout.CounterAlignment="Stretch">
-                                                    <utu:AutoLayout CornerRadius="12"
+                                                    <utu:AutoLayout x:Name="SecondImageLayout"
+                                                                    CornerRadius="12"
+                                                                    PrimaryAxisAlignment="End"
                                                                     Background="{ThemeResource SurfaceVariantColor}"
                                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                        <Image Source="{Binding CookbookImages.SecondImage}"
+                                                        <Image x:Name="SecondImage"
+                                                               Source="{Binding CookbookImages.SecondImage}"
                                                                Visibility="{Binding CookbookImages.SecondImage,
                                                                       Converter={StaticResource NullToCollapsed}}"
-                                                               Stretch="UniformToFill" />
+                                                               Stretch="Uniform" />
                                                     </utu:AutoLayout>
-                                                    <utu:AutoLayout CornerRadius="12"
+                                                    <utu:AutoLayout x:Name="ThirdImageLayout"
+                                                                    CornerRadius="12"
                                                                     utu:AutoLayout.CounterAlignment="Stretch"
-                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                    PrimaryAxisAlignment="End">
                                                         <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
                                                                                 Converter={StaticResource NullToCollapsed}}"
                                                                         utu:AutoLayout.CounterAlignment="Stretch">
-                                                            <Image Source="{Binding CookbookImages.ThirdImage}"
-                                                                   Stretch="UniformToFill" />
+                                                            <Image x:Name="ThirdImage"
+                                                                   Source="{Binding CookbookImages.ThirdImage}"
+                                                                   Stretch="Uniform" />
                                                         </utu:AutoLayout>
-                                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                        utu:AutoLayout.CounterAlignment="Stretch"
+                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
                                                                         Visibility="{Binding CookbookImages.ThirdImage,
                                                                                 Converter={StaticResource  NullToVisible}}">
                                                             <Button uen:Navigation.Request="SavedUpdateCookbook"
                                                                     uen:Navigation.Data="{Binding}"
+                                                                    x:Name="UpdateCookbookButton"
                                                                     Background="{ThemeResource SurfaceVariantColor}"
                                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                                     utu:AutoLayout.PrimaryAlignment="Stretch"
