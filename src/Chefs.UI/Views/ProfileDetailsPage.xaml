@@ -11,8 +11,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:controls="using:Chefs.Controls"
-      mc:Ignorable="d"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      mc:Ignorable="d">
 
     <utu:AutoLayout>
         <utu:AutoLayout.Resources>
@@ -127,6 +126,8 @@
                     <VisualState.Setters>
                         <Setter Target="MainLayout.CornerRadius"
                                 Value="0,40,40,0" />
+                        <Setter Target="MainLayout.Width"
+                                Value="520" />
                         <Setter Target="TabletNavBar.Visibility"
                                 Value="Visible" />
                         <Setter Target="PhoneNavBar.Visibility"
@@ -142,7 +143,7 @@
         <utu:AutoLayout x:Name="MainLayout"
                         Background="{ThemeResource BackgroundBrush}"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
-                        utu:AutoLayout.CounterAlignment="Stretch"
+                        utu:AutoLayout.CounterAlignment="Start"
                         uen:Region.Attached="True">
             <utu:AutoLayout x:Name="NavBarLayout"
                             Background="{ThemeResource SurfaceBrush}">
