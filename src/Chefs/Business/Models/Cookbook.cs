@@ -40,9 +40,12 @@ public partial record Cookbook
         Id = Id,
         UserId = UserId,
         Name = Name,
-        Recipes = Recipes?
-            .AddRange(recipes)
-            .Select(c => c.ToData())
-            .ToList()
+        Recipes = recipes is null
+            ? Recipes?
+                .Select(c => c.ToData())
+                .ToList()
+            : recipes
+                .Select(c => c.ToData())
+                .ToList()      
     };
 }

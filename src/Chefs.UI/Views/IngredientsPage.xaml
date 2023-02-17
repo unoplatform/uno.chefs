@@ -9,6 +9,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:toolkit="using:Uno.UI.Toolkit"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -65,6 +66,13 @@
                                Style="{StaticResource NavigationBarStyle}"
                                Content="{Binding Recipe.Name}"
                                toolkit:UIElementExtensions.Elevation="0">
+                <utu:NavigationBar.MainCommand>
+                    <AppBarButton>
+                        <win:AppBarButton.Icon>
+                            <SymbolIcon Symbol="Back" />
+                        </win:AppBarButton.Icon>
+                    </AppBarButton>
+                </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
                     <AppBarButton>
                         <AppBarButton.Icon>

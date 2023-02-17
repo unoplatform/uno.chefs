@@ -83,7 +83,8 @@ public sealed partial class App : Application
             new DataViewMap<UpdateCookbookPage, UpdateCookbookModel, Cookbook>(),
             new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage, NotificationsModel>(),
-            new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>()),
+            new ViewMap<ProfilePage>(),
+            new ViewMap<ProfileDetailsPage, ProfileModel>(Data: new DataMap<User>()),
             new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
             new ViewMap<SavedRecipesPage, SavedRecipesModel>(),
             new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
@@ -109,25 +110,27 @@ public sealed partial class App : Application
                                     new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>())
                                 }),
                                 new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
-                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>(), DependsOn: "RecipeDetails"),
-                                new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
-                                new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails"),
-                                new RouteMap("CookbookDetail", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "SavedRecipes"),
-                                new RouteMap("ProfileUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "ProfileCookbookDetail"),
                                 new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), DependsOn:"Home", Nested: new RouteMap[]
                                 {
                                     new RouteMap("Filter", View: views.FindByViewModel<FilterModel>())
                                 }),
                                 new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesModel>()),
+                                new RouteMap("SavedRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "SavedRecipes"),
+                                new RouteMap("SavedUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "SavedRecipes"),
+                                new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "SavedRecipes"),
+                                new RouteMap("UpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "CookbookDetails"),
                                 new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookModel>(), DependsOn:"SavedRecipes"),
-                                new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<UpdateCookbookModel>(), DependsOn: "SavedCookbookDetail"),
-                                new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
-                                new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>()),
-                                new RouteMap("ModalCreateCookbook", View: views.FindByViewModel<CreateCookbookModel>()),
-                                new RouteMap("ModalRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
-                                new RouteMap("ModalCookbookDetailss", View: views.FindByViewModel<CookbookDetailModel>())
+                                new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
+                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>(), DependsOn: "RecipeDetails"),
+                                new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
+                                new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails"),
+                                new RouteMap("Profile", View: views.FindByView<ProfilePage>(), Nested: new RouteMap[]
+                                {
+                                    new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
+                                    new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
+                                }),
                             }),
-                            new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
+                            new RouteMap("Completed", View: views.FindByView<CompletedDialog>())
                         }));
     }
 }

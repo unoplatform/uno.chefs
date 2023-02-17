@@ -8,6 +8,7 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       mc:Ignorable="d"
       NavigationCacheMode="Enabled"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -139,6 +140,13 @@
                                Style="{StaticResource NavigationBarStyle}"
                                Content="{Binding Recipe.Name}"
                                toolkit:UIElementExtensions.Elevation="0">
+                <utu:NavigationBar.MainCommand>
+                    <AppBarButton>
+                        <win:AppBarButton.Icon>
+                            <SymbolIcon Symbol="Back" />
+                        </win:AppBarButton.Icon>
+                    </AppBarButton>
+                </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
                     <AppBarButton uen:Navigation.Request="-">
                         <AppBarButton.Icon>
@@ -156,7 +164,8 @@
             </utu:NavigationBar>
             <ScrollViewer x:Name="MainScrollViewer"
                           utu:AutoLayout.PrimaryAlignment="Stretch"
-                          HorizontalScrollMode="Disabled">
+                          HorizontalScrollMode="Disabled"
+                          VerticalScrollBarVisibility="Hidden">
                 <utu:AutoLayout x:Name="ContentLayout">
                     <ScrollViewer x:Name="DetailScrollViewer"
                                   utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -165,7 +174,8 @@
                         <utu:AutoLayout x:Name="ImageLayout"
                                         PrimaryAxisAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
-                                        utu:AutoLayout.CounterAlignment="Stretch">
+                                        utu:AutoLayout.CounterAlignment="Stretch"
+                                        Padding="0,0,0,40">
                             <utu:AutoLayout x:Name="CreatorLayout"
                                             Spacing="6"
                                             Padding="18,20"
@@ -252,7 +262,8 @@
                                     <uer:FeedView Source="{Binding Steps}">
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding Data}"
-                                                      Style="{StaticResource ListViewStyle}">
+                                                      Style="{StaticResource ListViewStyle}"
+                                                      SelectionMode="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <utu:AutoLayout Margin="-10,8"
@@ -322,7 +333,8 @@
                                                       Source="{Binding Ingredients}">
                                             <DataTemplate>
                                                 <ListView ItemsSource="{Binding Data}"
-                                                          Style="{StaticResource ListViewStyle}">
+                                                          Style="{StaticResource ListViewStyle}"
+                                                          SelectionMode="None">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -367,7 +379,8 @@
                                                       Source="{Binding Steps}">
                                             <DataTemplate>
                                                 <ListView ItemsSource="{Binding Data}"
-                                                          Style="{StaticResource ListViewStyle}">
+                                                          Style="{StaticResource ListViewStyle}"
+                                                          SelectionMode="None">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -413,7 +426,8 @@
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding Data}"
                                                       Style="{StaticResource ListViewStyle}"
-                                                      ItemTemplate="{StaticResource ReviewDataTemplate}" />
+                                                      ItemTemplate="{StaticResource ReviewDataTemplate}"
+                                                      SelectionMode="None" />
                                         </DataTemplate>
                                     </uer:FeedView>
                                 </utu:AutoLayout>

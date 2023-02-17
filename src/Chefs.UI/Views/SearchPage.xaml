@@ -311,7 +311,7 @@
                                 Background="{Binding Filter.Value.HasFilter, 
                                                     Converter={StaticResource FilterButtonBackgroundColor}}"
                                 Foreground="{Binding Filter.Value.HasFilter, 
-                                                    Converter={StaticResource CustomColor}}"
+                                                    Converter={StaticResource PrimarySurfaceColorConverter}}"
                                 Style="{StaticResource OutlinedButtonStyle}"
                                 uen:Navigation.Request="Filter"
                                 uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay }">
@@ -532,7 +532,7 @@
                                                                 MaximumRowsOrColumns="5"
                                                                 MinColumnSpacing="30"
                                                                 MinRowSpacing="30"
-                                                                MinItemWidth="130"
+                                                                MinItemWidth="200"
                                                                 ItemsStretch="Fill" />
                                     </utu:AutoLayout.Resources>
                                     <VisualStateManager.VisualStateGroups>

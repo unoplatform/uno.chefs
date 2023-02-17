@@ -86,14 +86,14 @@
                                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
                                                         <Image Source="{Binding CookbookImages.SecondImage}"
                                                                Visibility="{Binding CookbookImages.SecondImage,
-                                                                      Converter={StaticResource NullToVisibilityConverter}}"
+                                                                      Converter={StaticResource NullToCollapsed}}"
                                                                Stretch="UniformToFill" />
                                                     </utu:AutoLayout>
                                                     <utu:AutoLayout CornerRadius="12"
                                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
                                                         <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                Converter={StaticResource NullToVisibilityConverter}}"
+                                                                                Converter={StaticResource NullToCollapsed}}"
                                                                         utu:AutoLayout.CounterAlignment="Stretch">
                                                             <Image Source="{Binding CookbookImages.ThirdImage}"
                                                                    Stretch="UniformToFill" />
@@ -101,8 +101,8 @@
                                                         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                         utu:AutoLayout.CounterAlignment="Stretch"
                                                                         Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                Converter={StaticResource InvertNullToVisibilityConverter}}">
-                                                            <Button uen:Navigation.Request="CreateUpdateCookbook"
+                                                                                Converter={StaticResource  NullToVisible}}">
+                                                            <Button uen:Navigation.Request="SavedUpdateCookbook"
                                                                     uen:Navigation.Data="{Binding ., Mode=TwoWay }"
                                                                     Background="{ThemeResource SurfaceVariantColor}"
                                                                     utu:AutoLayout.CounterAlignment="Stretch"
@@ -395,7 +395,7 @@
                                     <DataTemplate>
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                             ItemTemplate="{StaticResource RecipeTemplate}"
-                                                            uen:Navigation.Request="RecipeDetails">
+                                                            uen:Navigation.Request="SavedRecipeDetails">
                                             <muxc:ItemsRepeater.Layout>
                                                 <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                         MinItemWidth="130"
@@ -417,7 +417,7 @@
                                         <DataTemplate>
                                             <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                 ItemTemplate="{StaticResource CookbookTemplate}"
-                                                                uen:Navigation.Request="SavedCookbookDetail">
+                                                                uen:Navigation.Request="CookbookDetails">
                                                 <muxc:ItemsRepeater.Layout>
                                                     <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                             MinItemWidth="130"
@@ -437,7 +437,7 @@
                                     <utu:AutoLayout.Resources>
                                         <x:String x:Key="Floating_Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
                                     </utu:AutoLayout.Resources>
-                                    <Button uen:Navigation.Request="!CreateCookbook"
+                                    <Button uen:Navigation.Request="CreateCookbook"
                                             utu:AutoLayout.CounterAlignment="End"
                                             CornerRadius="60"
                                             Style="{StaticResource FabStyle}">
@@ -475,7 +475,7 @@
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource RecipeTemplate}"
-                                                                    uen:Navigation.Request="RecipeDetails">
+                                                                    uen:Navigation.Request="SavedRecipeDetails">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 MinColumnSpacing="20"
@@ -509,7 +509,7 @@
                                             <DataTemplate>
                                                 <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                     ItemTemplate="{StaticResource CookbookTemplate}"
-                                                                    uen:Navigation.Request="SavedCookbookDetail">
+                                                                    uen:Navigation.Request="CookbookDetails">
                                                     <muxc:ItemsRepeater.Layout>
                                                         <muxc:UniformGridLayout MaximumRowsOrColumns="2"
                                                                                 MinColumnSpacing="20"

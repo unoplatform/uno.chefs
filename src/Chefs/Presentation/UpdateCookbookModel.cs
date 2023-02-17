@@ -33,7 +33,11 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
         var recipes = await _recipeService.GetSaved(ct);
         var recipesExceptCookbook = cookbook?.Recipes is null
             ? recipes
-            : recipes.RemoveAll(r => cookbook.Recipes.Any(cbR => r.Id == cbR.Id));
+            : recipes.Select(r => {
+                if (cookbook.Recipes.Any(cbR => r.Id == cbR.Id)) r = r with { Selected = true };
+                return r;
+            })
+            .ToImmutableList();
 
         return recipesExceptCookbook;
     });
@@ -43,7 +47,7 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
         var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
         var cookbook = _cookbook;
 
-        if (selectedRecipes is not null)
+        if (selectedRecipes is not null && selectedRecipes.Count > 0)
         {
             var response = await _cookbookService.Update(cookbook!, selectedRecipes, ct);
             await _navigator.NavigateBackWithResultAsync(this, data: response);

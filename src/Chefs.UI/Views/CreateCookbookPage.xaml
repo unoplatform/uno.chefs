@@ -11,14 +11,10 @@
       xmlns:converters="using:Chefs.Converters"
       xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:controls="using:Chefs.Controls"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Page.Resources>
-        <converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
-        <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
-                                                  Invert="True" />
-    </Page.Resources>
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
@@ -28,7 +24,6 @@
             <x:String x:Key="Icon_Check">F1 M 5.590000152587891 10.579999923706055 L 1.4199998378753662 6.409999847412109 L 0 7.819999694824219 L 5.590000152587891 13.40999984741211 L 17.59000015258789 1.4099998474121094 L 16.18000030517578 0 L 5.590000152587891 10.579999923706055 Z</x:String>
             <x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
             <x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
-
             <DataTemplate x:Key="RecipeTemplate">
                 <UserControl>
                     <utu:AutoLayout>
@@ -41,16 +36,22 @@
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="RecipeTemplateCard.MaxWidth"
-                                                Value="200" />
+                                                Value="400" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <utu:CardContentControl x:Name="RecipeTemplateCard"
-                                                MaxWidth="155"
-                                                Style="{StaticResource FilledCardContentControlStyle}"
-                                                Background="{ThemeResource SurfaceBrush}">
-                            <utu:CardContentControl.ContentTemplate>
+                        <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                        <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                        <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                        <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
+                                                              Style="{StaticResource FilledCardContentControlStyle}"
+                                                              Background="{ThemeResource SurfaceBrush}"
+                                                              HorizontalAlignment="Stretch"
+                                                              VerticalAlignment="Stretch"
+                                                              MinHeight="0"
+                                                              MaxWidth="200">
+                            <controls:FixedSizeCardContentControl.ContentTemplate>
                                 <DataTemplate>
                                     <UserControl>
                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
@@ -88,7 +89,7 @@
                                                               x:Name="toggleButton"
                                                               Background="{Binding IsChecked, 
                                                                     ElementName=toggleButton, 
-                                                                    Converter={StaticResource CustomBackgroundColor}}"
+                                                                    Converter={StaticResource PrimarySurfaceColorConverter}}"
                                                               utu:AutoLayout.CounterAlignment="Center"
                                                               Style="{StaticResource IconToggleButtonStyle}"
                                                               BorderThickness="1"
@@ -108,8 +109,8 @@
                                         </utu:AutoLayout>
                                     </UserControl>
                                 </DataTemplate>
-                            </utu:CardContentControl.ContentTemplate>
-                        </utu:CardContentControl>
+                            </controls:FixedSizeCardContentControl.ContentTemplate>
+                        </controls:FixedSizeCardContentControl>
                     </utu:AutoLayout>
                 </UserControl>
             </DataTemplate>
@@ -151,9 +152,9 @@
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton>
-                            <AppBarButton.Icon>
-                                <BitmapIcon UriSource="ms-appx:///Assets/Icons/back.png" />
-                            </AppBarButton.Icon>
+                            <win:AppBarButton.Icon>
+                                <SymbolIcon Symbol="Back" />
+                            </win:AppBarButton.Icon>
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                 </utu:NavigationBar>
@@ -194,6 +195,7 @@
                                                                 MaximumRowsOrColumns="5"
                                                                 MinColumnSpacing="30"
                                                                 MinRowSpacing="30"
+                                                                MinItemWidth="200"
                                                                 ItemsStretch="Fill" />
                                     </utu:AutoLayout.Resources>
                                     <VisualStateManager.VisualStateGroups>
