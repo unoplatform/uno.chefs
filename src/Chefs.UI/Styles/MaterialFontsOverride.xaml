@@ -3,6 +3,141 @@
 
 	<FontFamily x:Key="MaterialLightFontFamily">ms-appx:///Assets/Fonts/Material/Roboto-Light.ttf#Roboto</FontFamily>
 	<FontFamily x:Key="MaterialMediumFontFamily">ms-appx:///Assets/Fonts/Material/Roboto-Medium.ttf#Roboto</FontFamily>
-	<FontFamily x:Key="MaterialRegularFontFamily">ms-appx:///Assets/Fonts/Material/Roboto-Regular.ttf#Roboto</FontFamily>
-	
+    <FontFamily x:Key="MaterialRegularFontFamily">ms-appx:///Assets/Fonts/Material/Roboto-Regular.ttf#Roboto</FontFamily>
+
+    <Style x:Key="CustomDisplaySmall"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource DisplaySmall}">
+        <Setter Property="FontSize"
+                Value="18" />
+        <Setter Property="FontWeight"
+                Value="Regular" />
+    </Style>
+
+    <Style x:Key="CustomDisplayMedium"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource DisplayMedium}">
+        <Setter Property="FontSize"
+                Value="28" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomHeadlineLarge"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource HeadlineLarge}">
+        <Setter Property="FontSize"
+                Value="24" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomHeadlineMedium"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource HeadlineMedium}">
+        <Setter Property="FontSize"
+                Value="18" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomTitleLarge"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TitleLarge}">
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomTitleMedium"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TitleMedium}">
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomTitleSmall"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource TitleSmall}">
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomLabelLarge"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource LabelLarge}">
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="CustomLabelMedium"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource LabelMedium}">
+        <Setter Property="FontSize"
+                Value="14" />
+        <Setter Property="FontWeight"
+                Value="Regular" />
+    </Style>
+
+    <Style x:Key="CustomLabelSmall"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource LabelSmall}">
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="FontWeight"
+                Value="Regular" />
+    </Style>
+
+    <Style x:Key="CustomBodyLarge"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BodyLarge}">
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
+    <Style x:Key="CustomBodySmall"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BodySmall}">
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="CustomCaptionLarge"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource CaptionLarge}">
+        <Setter Property="FontSize"
+                Value="16" />
+        <Setter Property="FontWeight"
+                Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="CustomCaptionMedium"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource CaptionMedium}">
+        <Setter Property="FontSize"
+                Value="12" />
+        <Setter Property="FontWeight"
+                Value="Regular" />
+    </Style>
+
+    <Style x:Key="CustomCaptionSmall"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource CaptionSmall}">
+        <Setter Property="FontSize"
+                Value="10" />
+        <Setter Property="FontWeight"
+                Value="Medium" />
+    </Style>
+
 </ResourceDictionary>
