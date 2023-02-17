@@ -284,7 +284,7 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+            <ScrollViewer HorizontalScrollMode="Disabled" utu:AutoLayout.PrimaryAlignment="Stretch">
                 <utu:AutoLayout x:Name="TabsLayout"
                                 Padding="18,0"
                                 Margin="0, 28, 0, 0"
@@ -334,7 +334,7 @@
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
                                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                        uen:Navigation.Request="!ModalRecipeDetails">
+                                                                        uen:Navigation.Request="RecipeDetails">
                                                         <muxc:ItemsRepeater.Layout>
                                                             <muxc:UniformGridLayout x:Name="RecipeUniformGrid"
                                                                                     MaximumRowsOrColumns="2"
@@ -448,7 +448,7 @@
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
                                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                        uen:Navigation.Request="!ModalCookbookDetails">
+                                                                        uen:Navigation.Request="CookbookDetails">
                                                         <muxc:ItemsRepeater.Layout>
                                                             <muxc:UniformGridLayout x:Name="CookbookUniformGrid"
                                                                                     MaximumRowsOrColumns="2"
