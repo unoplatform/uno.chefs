@@ -37,6 +37,7 @@ public class CookbookEndpoint : ICookbookEndpoint
         var cookbookItem = _cookbooks?.Where(c => c.Id == cookbook.Id).FirstOrDefault();
         if (cookbookItem is not null)
         {
+            cookbookItem.Name = cookbook.Name;
             cookbookItem.Recipes = cookbook.Recipes;
 
             return cookbookItem;

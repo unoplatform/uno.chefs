@@ -103,7 +103,7 @@
                                                                         Visibility="{Binding CookbookImages.ThirdImage,
                                                                                 Converter={StaticResource  NullToVisible}}">
                                                             <Button uen:Navigation.Request="SavedUpdateCookbook"
-                                                                    uen:Navigation.Data="{Binding ., Mode=TwoWay }"
+                                                                    uen:Navigation.Data="{Binding}"
                                                                     Background="{ThemeResource SurfaceVariantColor}"
                                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                                     utu:AutoLayout.PrimaryAlignment="Stretch"

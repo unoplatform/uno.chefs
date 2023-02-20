@@ -45,7 +45,7 @@ public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of 
     public async ValueTask Done(CancellationToken ct)
     {
         var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
-        var cookbook = _cookbook;
+        var cookbook = await Cookbook;
 
         if (selectedRecipes is not null && selectedRecipes.Count > 0)
         {

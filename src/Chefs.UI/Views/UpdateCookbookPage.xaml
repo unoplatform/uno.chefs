@@ -164,7 +164,7 @@
             </utu:AutoLayout>
             <TextBox x:Name="CookbookName"
                      Background="{ThemeResource SurfaceBrush}"
-                     Text="Cookbook"
+                     Text="{Binding Cookbook.Name, Mode=TwoWay }"
                      PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
                      PlaceholderText="Cookbook name"
                      CornerRadius="15"
