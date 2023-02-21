@@ -145,6 +145,14 @@
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         utu:AutoLayout.CounterAlignment="Start"
                         uen:Region.Attached="True">
+
+            <!-- Workaround for the https://github.com/unoplatform/uno.chefs/issues/292 issue & https://github.com/unoplatform/uno.extensions/issues/1161 -->
+            <!-- To Force the Feedview Binding to work correctly in order to show the items for Recipes and CookBooks -->
+            <TextBlock Text="{Binding Recipes.Count}"
+                       Visibility="Collapsed" />
+            <TextBlock Text="{Binding Cookbooks.Count}"
+                       Visibility="Collapsed" />
+            
             <utu:AutoLayout x:Name="NavBarLayout"
                             Background="{ThemeResource SurfaceBrush}">
                 <utu:NavigationBar x:Name="PhoneNavBar"
