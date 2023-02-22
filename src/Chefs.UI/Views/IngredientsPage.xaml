@@ -56,7 +56,7 @@
                                 Value="Disabled" />
                         <Setter Target="ButtonLayout.Margin"
                                 Value="0,0,0,12" />
-                        
+
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -119,7 +119,8 @@
                                             PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout x:Name="RecipeImage">
-                                    <Image x:Name="Image" Source="{Binding Recipe.ImageUrl}"
+                                    <Image x:Name="Image"
+                                           Source="{Binding Recipe.ImageUrl}"
                                            Stretch="UniformToFill"
                                            utu:AutoLayout.CounterAlignment="Stretch" />
                                 </utu:AutoLayout>

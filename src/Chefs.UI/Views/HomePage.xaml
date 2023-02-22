@@ -46,9 +46,9 @@
                                 <DataTemplate>
                                     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                         <utu:AutoLayout MaxHeight="164">
-                                        <Image Source="{Binding ImageUrl}"
-                                               Stretch="UniformToFill"
-                                               Margin="0,-80,0,0"/>
+                                            <Image Source="{Binding ImageUrl}"
+                                                   Stretch="UniformToFill"
+                                                   Margin="0,-80,0,0" />
                                         </utu:AutoLayout>
                                         <!-- Additional AutoLayout added here as a workaround for this issue: -->
                                         <!-- https://github.com/unoplatform/uno.chefs/issues/246 -->
