@@ -213,7 +213,8 @@
                           HorizontalScrollMode="Disabled">
                 <utu:AutoLayout x:Name="ContentLayout"
                                 Spacing="30"
-                                Padding="18,20">
+                                Padding="18,20"
+                                Margin="0,0,0,20">
                     <utu:AutoLayout Spacing="20">
                         <utu:AutoLayout Spacing="8"
                                         PrimaryAxisAlignment="Center"
@@ -244,7 +245,8 @@
                                       Margin="-18,0">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
-                                              HorizontalScrollBarVisibility="Hidden">
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         uen:Navigation.Request="RecipeDetails"
                                                         uen:Navigation.Data="{Binding Data}"
@@ -267,7 +269,8 @@
                                       Source="{Binding Categories}">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
-                                              HorizontalScrollBarVisibility="Hidden">
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         utu:CommandExtensions.Command="{Binding DataContext.CategorySearch, ElementName=CategoriesFeedView}">
                                         <muxc:ItemsRepeater.Layout>
@@ -346,7 +349,8 @@
                                       Margin="-18,0">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
-                                              HorizontalScrollBarVisibility="Hidden">
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         uen:Navigation.Request="RecipeDetails">
                                         <muxc:ItemsRepeater.Layout>
@@ -417,7 +421,8 @@
                                       Source="{Binding PopularCreators}">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
-                                              HorizontalScrollBarVisibility="Hidden">
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         uen:Navigation.Request="!Profile">
                                         <muxc:ItemsRepeater.Layout>
@@ -503,7 +508,8 @@
                                       Margin="-18,0">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
-                                              HorizontalScrollBarVisibility="Hidden">
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         ItemTemplate="{StaticResource HomeLargeItemTemplate}"
                                                         uen:Navigation.Request="RecipeDetails">
@@ -545,7 +551,8 @@
                                       Margin="-18,0">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
-                                              HorizontalScrollBarVisibility="Hidden">
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         ItemTemplate="{StaticResource HomeLargeItemTemplate}"
                                                         uen:Navigation.Request="RecipeDetails">
@@ -587,7 +594,8 @@
                                       Margin="-18,0">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
-                                              HorizontalScrollBarVisibility="Hidden">
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         ItemTemplate="{StaticResource HomeLargeItemTemplate}"
                                                         uen:Navigation.Request="RecipeDetails">
