@@ -13,25 +13,7 @@
                               mc:Ignorable="d"
                               x:Name="Root"
                               Placement="Full">
-    <Grid x:Name="MainLayout"
-          Background="{ThemeResource BackgroundBrush}">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState x:Name="Narrow" />
-
-                <VisualState x:Name="Wide">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="800" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <Setter Target="MainLayout.CornerRadius"
-                                Value="0,40,40,0" />
-                        <Setter Target="MainLayout.Width"
-                                Value="520" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+    <Grid x:Name="MainLayout">
         <Frame uen:Region.Attached="true"
                HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch"

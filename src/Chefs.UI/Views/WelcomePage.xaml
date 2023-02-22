@@ -47,7 +47,9 @@
                         <Setter Target="InnerLayout.CornerRadius"
                                 Value="40" />
                         <Setter Target="InnerLayout.Padding"
-                                Value="60,40" />
+                                Value="40" />
+                        <Setter Target="LogoLayout.Padding"
+                                Value="20,0" />
                         <Setter Target="InnerLayout.Spacing"
                                 Value="40" />
                         <Setter Target="WideSkipButton.Visibility"
@@ -56,10 +58,16 @@
                                 Value="Visible" />
                         <Setter Target="TextFilpView.Visibility"
                                 Value="Collapsed" />
+                        <Setter Target="TextFlipViewLayout.MaxWidth"
+                                Value="500" />
                         <Setter Target="LogoLayout.Height"
-                                Value="72" />
+                                Value="90" />
                         <Setter Target="LogoLayout.Width"
-                                Value="250" />
+                                Value="300" />
+                        <Setter Target="LogoLayout.Margin"
+                                Value="0,0,0,20" />
+                        <Setter Target="NextButton.MaxWidth"
+                                Value="500" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -73,18 +81,21 @@
             <utu:AutoLayout x:Name="OuterLayout"
                             utu:AutoLayout.PrimaryAlignment="Auto">
                 <utu:AutoLayout x:Name="InnerLayout"
+                                PrimaryAxisAlignment="Center"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
                                 Background="{ThemeResource SurfaceBrush}"
                                 Spacing="20"
                                 Padding="50,0">
-                    <utu:AutoLayout>
+
                     <Button x:Name="WideSkipButton"
                             Background="{ThemeResource PrimaryInverseBrush}"
                             uen:Navigation.Request="-/Login"
                             Content="Skip"
-                            utu:AutoLayout.CounterAlignment="End"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            utu:AutoLayout.IsIndependentLayout="True"
                             Height="37"
-                            Margin="0,20,0,-20"
+                            Margin="40"
                             Visibility="Collapsed" />
 
                     <utu:AutoLayout x:Name="ImageFilpView"
@@ -123,7 +134,7 @@
                             </Button>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
-                    </utu:AutoLayout>
+
                     <utu:AutoLayout x:Name="LogoLayout"
                                     Margin="10,0"
                                     utu:AutoLayout.CounterAlignment="Center"
@@ -133,7 +144,7 @@
                                Stretch="Uniform"
                                utu:AutoLayout.CounterAlignment="Center" />
                     </utu:AutoLayout>
-                    <utu:AutoLayout>
+                    <utu:AutoLayout x:Name="TextFlipViewLayout">
                         <FlipView x:Name="TextFilpView"
                                   VerticalAlignment="Top"
                                   Background="Transparent"
@@ -210,7 +221,8 @@
                     <utu:AutoLayout PrimaryAxisAlignment="Center"
                                     Spacing="20">
 
-                        <Button Background="{ThemeResource PrimaryBrush}"
+                        <Button x:Name="NextButton" 
+                        Background="{ThemeResource PrimaryBrush}"
                                 Content="Next"
                                 utu:AutoLayout.PrimaryLength="56"
                                 HorizontalAlignment="Stretch"

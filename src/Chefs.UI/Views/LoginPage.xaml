@@ -187,6 +187,7 @@
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
+                
                 <utu:AutoLayout x:Name="WideInnerLayout"
                                 Background="{ThemeResource SurfaceBrush}"
                                 utu:AutoLayout.CounterAlignment="Stretch"
@@ -196,7 +197,7 @@
                                 CornerRadius="40"
                                 Spacing="40"
                                 Padding="66"
-                                Margin="50,0,0,0"
+                                Margin="50,-40,0,-40"
                                 Height="700"
                                 Visibility="Collapsed">
                     <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
@@ -302,6 +303,7 @@
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
+                
             </utu:AutoLayout>
         </utu:AutoLayout>
     </utu:AutoLayout>

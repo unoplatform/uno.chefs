@@ -183,6 +183,12 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <!-- Workaround for the https://github.com/unoplatform/uno.chefs/issues/292 issue & https://github.com/unoplatform/uno.extensions/issues/1161 -->
+        <!-- To Force the Feedview Binding to work correctly in order to show the items for Recommended and FromChefs -->
+        <TextBlock Text="{Binding Recommended.Count}"
+                   Visibility="Collapsed" />
+        <TextBlock Text="{Binding FromChefs.Count}"
+                   Visibility="Collapsed" />
         <utu:AutoLayout Padding="18,24"
                         x:Name="MainLayout"
                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -497,13 +503,6 @@
                             </DataTemplate>
                         </uer:FeedView>
                     </utu:AutoLayout>
-                    
-                    <!-- Workaround for the https://github.com/unoplatform/uno.chefs/issues/292 issue & https://github.com/unoplatform/uno.extensions/issues/1161 -->
-                    <!-- To Force the Feedview Binding to work correctly in order to show the items for Recommended and FromChefs -->
-                    <TextBlock Text="{Binding Recommended.Count}"
-                               Visibility="Collapsed" />
-                    <TextBlock Text="{Binding FromChefs.Count}"
-                               Visibility="Collapsed" />
                 </utu:AutoLayout>
             </utu:AutoLayout>
 
