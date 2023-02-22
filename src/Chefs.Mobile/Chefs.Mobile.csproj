@@ -29,8 +29,8 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.14.0-dev.54" />
-		<PackageReference Include="Uno.WinUI" Version="4.7.37" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.37" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Uno.WinUI" Version="4.7.44" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.7.44" Condition="'$(Configuration)'=='Debug'" />
 	</ItemGroup>
 	<Choose>
 		<When Condition="'$(TargetFramework)'=='net6.0-android'">
@@ -80,7 +80,7 @@
 	<ItemGroup>
 	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.14" />
 	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.23" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.37" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.44" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" />

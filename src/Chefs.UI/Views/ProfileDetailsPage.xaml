@@ -311,7 +311,7 @@
                                             Visibility="Visible"
                                             utu:AutoLayout.PrimaryAlignment="Stretch"
                                             utu:AutoLayout.CounterAlignment="Stretch">
-                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                     <uer:FeedView Source="{Binding Recipes}"
                                                   NoneTemplate="{StaticResource RecipeEmptyTemplate}"
                                                   utu:AutoLayout.CounterAlignment="Center"
@@ -334,8 +334,8 @@
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
                                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                        uen:Navigation.Request="RecipeDetails">
-                                                        <muxc:ItemsRepeater.Layout>
+																		uen:Navigation.Request="-">
+														<muxc:ItemsRepeater.Layout>
                                                             <muxc:UniformGridLayout x:Name="RecipeUniformGrid"
                                                                                     MaximumRowsOrColumns="2"
                                                                                     MinItemWidth="155"
@@ -448,7 +448,7 @@
                                                         </VisualStateGroup>
                                                     </VisualStateManager.VisualStateGroups>
                                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                        uen:Navigation.Request="CookbookDetails">
+																		uen:Navigation.Request="-">
                                                         <muxc:ItemsRepeater.Layout>
                                                             <muxc:UniformGridLayout x:Name="CookbookUniformGrid"
                                                                                     MaximumRowsOrColumns="2"
