@@ -106,7 +106,8 @@
                             Width="120">
                 <utu:AutoLayout PrimaryAxisAlignment="Center"
                                 Margin="0,40"
-                                uen:Navigation.Request="!Profile">
+                                uen:Navigation.Request="!Profile"
+								uen:Navigation.Data="{Binding ProfileResponse, Mode=TwoWay}">
                     <Border utu:AutoLayout.IsIndependentLayout="True"
                             utu:AutoLayout.CounterAlignment="Center"
                             Width="56"
