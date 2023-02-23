@@ -81,7 +81,6 @@
             <utu:AutoLayout x:Name="OuterLayout"
                             utu:AutoLayout.PrimaryAlignment="Auto">
                 <utu:AutoLayout x:Name="InnerLayout"
-                                PrimaryAxisAlignment="Center"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
                                 Background="{ThemeResource SurfaceBrush}"
                                 Spacing="20"

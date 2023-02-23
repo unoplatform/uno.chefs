@@ -117,7 +117,9 @@
                                             </VisualStateManager.VisualStateGroups>
                                             <utu:AutoLayout x:Name="ImageLayout"
                                                             utu:AutoLayout.PrimaryLength="110">
-                                                <Image Source="{Binding ImageUrl}"
+                                                <Image utu:AutoLayout.CounterAlignment="Stretch"
+                                                       utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                       Source="{Binding ImageUrl}"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
                                             <utu:AutoLayout Spacing="2"
