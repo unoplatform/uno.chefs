@@ -18,7 +18,8 @@
             <x:String x:Key="Icon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
             <DataTemplate x:Key="NarrowTemplate">
                 <utu:AutoLayout Spacing="16"
-                                Padding="18,30">
+                                Padding="18,30"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
                     <utu:AutoLayout Spacing="16"
                                     Orientation="Horizontal">
                         <utu:AutoLayout Orientation="Horizontal"
@@ -119,6 +120,8 @@
                     <VisualState.Setters>
                         <Setter Target="StepsFeedLayout.MaxHeight"
                                 Value="56" />
+                        <Setter Target="FlipScrollViewer.MaxHeight"
+                                Value="300" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
@@ -160,8 +163,16 @@
                                 Value="20,0" />
                         <Setter Target="ImageLayout.Spacing"
                                 Value="30" />
-                        <Setter Target="DoneButton.Margin"
-                                Value="20,0,40,40" />
+                        <Setter Target="NarrowButton.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="WideButton.Visibility"
+                                Value="Visible" />
+                        <Setter Target="StepsLayout.Spacing"
+                                Value="40" />
+                        <Setter Target="StepsFlipView.Height"
+                                Value="413" />
+                        <Setter Target="MainScrollViewer.VerticalScrollMode"
+                                Value="Disabled" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -182,103 +193,117 @@
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
             </utu:NavigationBar>
-
-            <utu:AutoLayout x:Name="ContentLayout">
-                <ScrollViewer x:Name="ImageScrollViewer"
-                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                              HorizontalScrollMode="Disabled"
-                              VerticalScrollBarVisibility="Hidden">
-                    <utu:AutoLayout x:Name="ImageLayout"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    utu:AutoLayout.CounterAlignment="Stretch">
-                        <utu:AutoLayout Padding="0"
-                                        x:Name="RecipeImageLayout"
-                                        MaxHeight="220"
+            <ScrollViewer  x:Name="MainScrollViewer"
+                           HorizontalScrollMode="Disabled"
+                           VerticalScrollBarVisibility="Hidden">
+                <utu:AutoLayout x:Name="ContentLayout">
+                    <ScrollViewer x:Name="ImageScrollViewer"
+                                  utu:AutoLayout.PrimaryAlignment="Stretch"
+                                  HorizontalScrollMode="Disabled"
+                                  VerticalScrollBarVisibility="Hidden">
+                        <utu:AutoLayout x:Name="ImageLayout"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch">
-                            <Image Source="{Binding Recipe.ImageUrl}"
-                                   MinHeight="220"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Bottom"
-                                   x:Name="RecipeImage"
-                                   Stretch="UniformToFill" />
-                        </utu:AutoLayout>
-                        <utu:AutoLayout x:Name="WideRecipeDetails"
-                                        Background="{ThemeResource SurfaceBrush}"
-                                        CornerRadius="18"
-                                        Padding="18"
-                                        Visibility="Collapsed"
-                                        Margin="40,0,20,40"
-                                        PrimaryAxisAlignment="Center">
-                            <utu:AutoLayout Orientation="Horizontal"
-                                            Spacing="8">
-                                <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
-                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                           Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
-                                           Margin="20,10"
-                                           Style="{StaticResource CustomHeadlineMedium}" />
+                            <utu:AutoLayout Padding="0"
+                                            x:Name="RecipeImageLayout"
+                                            MaxHeight="220"
+                                            utu:AutoLayout.CounterAlignment="Stretch">
+                                <Image Source="{Binding Recipe.ImageUrl}"
+                                       MinHeight="220"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Bottom"
+                                       x:Name="RecipeImage"
+                                       Stretch="UniformToFill" />
                             </utu:AutoLayout>
-                            <utu:AutoLayout Orientation="Horizontal"
-                                            Spacing="8">
-                                <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
-                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                           Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
-                                           Margin="20,10"
-                                           Style="{StaticResource CustomHeadlineMedium}" />
+                            <utu:AutoLayout x:Name="WideRecipeDetails"
+                                            Background="{ThemeResource SurfaceBrush}"
+                                            CornerRadius="18"
+                                            Padding="18"
+                                            Visibility="Collapsed"
+                                            Margin="40,0,20,40"
+                                            PrimaryAxisAlignment="Center">
+                                <utu:AutoLayout Orientation="Horizontal"
+                                                Spacing="8">
+                                    <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                               Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
+                                               Margin="20,10"
+                                               Style="{StaticResource CustomHeadlineMedium}" />
+                                </utu:AutoLayout>
+                                <utu:AutoLayout Orientation="Horizontal"
+                                                Spacing="8">
+                                    <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                               Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
+                                               Margin="20,10"
+                                               Style="{StaticResource CustomHeadlineMedium}" />
 
+                                </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
-                    </utu:AutoLayout>
-                </ScrollViewer>
+                    </ScrollViewer>
 
-                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                                utu:AutoLayout.CounterAlignment="Stretch"
-                                uen:Region.Attached="True"
-                                Spacing="40"
-                                x:Name="StepsLayout">
+                    <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                    uen:Region.Attached="True"
+                                    x:Name="StepsLayout">
 
-                    <utu:AutoLayout x:Name="StepsFeedLayout"
-                                    utu:AutoLayout.CounterAlignment="Stretch">
-                        <utu:AutoLayout x:Name="ItemsRepeaterLayout"
-                                        utu:AutoLayout.CounterAlignment="Stretch"
-                                        Background="{ThemeResource PrimaryBrush}">
-                            <utu:TabBar uen:Region.Attached="True"
-                                        Style="{StaticResource TopTabBarStyle}"
-                                        ItemsSource="{Binding Steps}"
-                                        SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                        Background="Transparent"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <utu:TabBar.ItemTemplate>
-                                    <DataTemplate>
-                                        <utu:AutoLayout>
-                                            <TextBlock Foreground="{ThemeResource OnPrimaryBrush}"
-                                                       Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}" />
-                                        </utu:AutoLayout>
-                                    </DataTemplate>
-                                </utu:TabBar.ItemTemplate>
-                            </utu:TabBar>
+                        <utu:AutoLayout x:Name="StepsFeedLayout"
+                                        utu:AutoLayout.CounterAlignment="Stretch">
+                            <utu:AutoLayout x:Name="ItemsRepeaterLayout"
+                                            utu:AutoLayout.CounterAlignment="Stretch"
+                                            Background="{ThemeResource PrimaryBrush}">
+                                <utu:TabBar uen:Region.Attached="True"
+                                            Style="{StaticResource TopTabBarStyle}"
+                                            ItemsSource="{Binding Steps}"
+                                            SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Background="Transparent"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <utu:TabBar.ItemTemplate>
+                                        <DataTemplate>
+                                            <utu:AutoLayout>
+                                                <TextBlock Foreground="{ThemeResource OnPrimaryBrush}"
+                                                           Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}" />
+                                            </utu:AutoLayout>
+                                        </DataTemplate>
+                                    </utu:TabBar.ItemTemplate>
+                                </utu:TabBar>
+                            </utu:AutoLayout>
                         </utu:AutoLayout>
-                    </utu:AutoLayout>
-                    <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-                                      HorizontalScrollMode="Disabled">
-                            <FlipView x:Name="StepsFlipView"
-                                      SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                      ItemsSource="{Binding Steps}"
-                                      ItemTemplate="{StaticResource NarrowTemplate}"
-                                      Background="Transparent" />
+                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <ScrollViewer x:Name="FlipScrollViewer" utu:AutoLayout.PrimaryAlignment="Stretch"
+                                          HorizontalScrollMode="Disabled">
+                                <FlipView x:Name="StepsFlipView"
+                                          ScrollViewer.IsHorizontalScrollChainingEnabled="False"
+                                          ScrollViewer.IsVerticalScrollChainingEnabled="False"
+                                          VerticalAlignment="Top"
+                                          SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          ItemsSource="{Binding Steps}"
+                                          ItemTemplate="{StaticResource NarrowTemplate}"
+                                          Background="Transparent" />
+                            </ScrollViewer>
 
-                        </ScrollViewer>
-                        <utu:AutoLayout PrimaryAxisAlignment="End">
-                            <Button x:Name="DoneButton"
-                                    Background="{ThemeResource PrimaryBrush}"
-                                    Command="{Binding Complete}"
-                                    Content="Done!"
-                                    Height="56"
-                                    Visibility="{Binding CanFinish}"
-                                    Margin="18" />
+                            <utu:AutoLayout x:Name="WideButton"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                                            Visibility="Collapsed">
+                                <Button Margin="20,0,40,40"
+                                        Background="{ThemeResource PrimaryBrush}"
+                                        Command="{Binding Complete}"
+                                        Content="Done!"
+                                        Height="56"
+                                        Visibility="{Binding CanFinish}" />
+                            </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
+            </ScrollViewer>
+            <utu:AutoLayout x:Name="NarrowButton">
+                <Button Background="{ThemeResource PrimaryBrush}"
+                        Command="{Binding Complete}"
+                        Content="Done!"
+                        Height="56"
+                        Visibility="{Binding CanFinish}"
+                        Margin="18" />
             </utu:AutoLayout>
         </utu:AutoLayout>
     </utu:AutoLayout>

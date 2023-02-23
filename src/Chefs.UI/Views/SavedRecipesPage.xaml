@@ -359,12 +359,11 @@
                               VerticalScrollBarVisibility="Hidden"
                               x:Name="NarrowSavedRecipes">
                     <utu:AutoLayout uen:Region.Attached="True"
-                                    Spacing="12"
-                                    Margin="0, 40, 0, 18"
+                                    Spacing="18"
+                                    Margin="0, 18, 0, 18"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
                         <utu:TabBar uen:Region.Attached="True"
-                                    Margin="0, 0, 0, 29"
                                     Style="{StaticResource TopTabBarStyle}">
                             <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                             x:Name="TabBarRecipeItem"

@@ -388,7 +388,7 @@
                                                             <utu:AutoLayout x:Name="RecipeTemplate"
                                                                             Spacing="8"
                                                                             MaxWidth="105"
-                                                                            uen:Navigation.Request="!RecipeDetails"
+                                                                            uen:Navigation.Request="SearchRecipeDetails"
                                                                             uen:Navigation.Data="{Binding}">
                                                                 <Border CornerRadius="12">
                                                                     <Image Source="{Binding ImageUrl}"
@@ -474,7 +474,7 @@
                                                             <utu:AutoLayout x:Name="RecipeTemplate"
                                                                             Spacing="8"
                                                                             MaxWidth="105"
-                                                                            uen:Navigation.Request="!RecipeDetails"
+                                                                            uen:Navigation.Request="SearchRecipeDetails"
                                                                             uen:Navigation.Data="{Binding}">
                                                                 <Border CornerRadius="12">
                                                                     <Image Source="{Binding ImageUrl}"
@@ -547,7 +547,7 @@
                                     </VisualStateManager.VisualStateGroups>
                                     <muxc:ItemsRepeater x:Name="SearchRepeater"
                                                         ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!RecipeDetails"
+                                                        uen:Navigation.Request="SearchRecipeDetails"
                                                         Layout="{StaticResource NarrowGridLayout}"
                                                         ItemTemplate="{StaticResource RecipeTemplate}" />
                                 </utu:AutoLayout>
