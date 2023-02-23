@@ -104,6 +104,8 @@
                                 Value="Collapsed" />
                         <Setter Target="RecipeImage.MaxHeight"
                                 Value="300" />
+                        <Setter Target="Image.Margin"
+                                Value="0,-150,0,0" />
                         <Setter Target="RecipeImage.Margin"
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
@@ -193,7 +195,7 @@
                                             PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout x:Name="RecipeImage">
-                                    <Image Source="{Binding Recipe.ImageUrl}"
+                                    <Image x:Name="Image" Source="{Binding Recipe.ImageUrl}"
                                            Stretch="UniformToFill"
                                            utu:AutoLayout.CounterAlignment="Stretch" />
                                 </utu:AutoLayout>

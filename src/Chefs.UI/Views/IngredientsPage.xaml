@@ -44,6 +44,8 @@
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
+                        <Setter Target="Image.Margin"
+                                Value="0,-150,0,0" />
                         <Setter Target="ImageLayout.Spacing"
                                 Value="30" />
                         <Setter Target="RecipeCard.Spacing"
@@ -54,7 +56,7 @@
                                 Value="Disabled" />
                         <Setter Target="ButtonLayout.Margin"
                                 Value="0,0,0,12" />
-                        
+
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -117,7 +119,8 @@
                                             PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout x:Name="RecipeImage">
-                                    <Image Source="{Binding Recipe.ImageUrl}"
+                                    <Image x:Name="Image"
+                                           Source="{Binding Recipe.ImageUrl}"
                                            Stretch="UniformToFill"
                                            utu:AutoLayout.CounterAlignment="Stretch" />
                                 </utu:AutoLayout>
@@ -278,14 +281,5 @@
                 </utu:AutoLayout>
             </ScrollViewer>
         </utu:AutoLayout>
-
-
-        <!--<utu:AutoLayout Padding="18,10"
-                        x:Name="ButtonLayout">
-            <Button Background="{ThemeResource PrimaryBrush}"
-                    Content="Done!"
-                    utu:AutoLayout.PrimaryLength="56"
-                    uen:Navigation.Request="-" />
-        </utu:AutoLayout>-->
     </utu:AutoLayout>
 </Page>

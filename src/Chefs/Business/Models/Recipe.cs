@@ -3,7 +3,7 @@ using Chefs.Data;
 
 namespace Chefs.Business;
 
-public partial record Recipe
+public partial record Recipe: IChefEntity
 {
     internal Recipe(RecipeData recipeData)
     {

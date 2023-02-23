@@ -144,6 +144,8 @@
                                 Value="Center" />
                         <Setter Target="RecipeImage.VerticalAlignment"
                                 Value="Center" />
+                        <Setter Target="RecipeImage.Margin"
+                                Value="0,-100,0,0" />
                         <Setter Target="WideRecipeDetails.Visibility"
                                 Value="Visible" />
                         <Setter Target="StepsFlipView.ItemTemplate"
