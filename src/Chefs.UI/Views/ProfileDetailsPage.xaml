@@ -30,11 +30,11 @@
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="Icon.Style"
-                                                Value="{StaticResource CustomDisplayLarge}" />
+                                                Value="{StaticResource DisplayLarge}" />
                                         <Setter Target="TitleText.Style"
-                                                Value="{StaticResource CustomHeadlineLarge}" />
+                                                Value="{StaticResource HeadlineLarge}" />
                                         <Setter Target="DisplayTest.Style"
-                                                Value="{StaticResource CustomHeadlineMedium}" />
+                                                Value="{StaticResource HeadlineMedium}" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -77,11 +77,11 @@
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="Icon.Style"
-                                                Value="{StaticResource CustomDisplayLarge}" />
+                                                Value="{StaticResource DisplayLarge}" />
                                         <Setter Target="TitleText.Style"
-                                                Value="{StaticResource CustomHeadlineLarge}" />
+                                                Value="{StaticResource HeadlineLarge}" />
                                         <Setter Target="DisplayTest.Style"
-                                                Value="{StaticResource CustomHeadlineMedium}" />
+                                                Value="{StaticResource HeadlineMedium}" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -233,12 +233,12 @@
                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                Text="{Binding Profile.FullName}"
                                utu:AutoLayout.CounterAlignment="Center"
-                               Style="{StaticResource CustomHeadlineMedium}" />
+                               Style="{StaticResource HeadlineMedium}" />
                     <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                TextAlignment="Center"
                                Text="{Binding Profile.Description}"
                                utu:AutoLayout.CounterAlignment="Center"
-                               Style="{StaticResource CustomTitleSmall}" />
+                               Style="{StaticResource TitleSmall}" />
                 </utu:AutoLayout>
                 <utu:AutoLayout Spacing="50"
                                 Padding="50,0"
@@ -251,11 +251,11 @@
                                    TextAlignment="Center"
                                    Text="{Binding RecipesCount}"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource CustomHeadlineMedium}" />
+                                   Style="{StaticResource HeadlineMedium}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Text="Recipes"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource CustomLabelSmall}" />
+                                   Style="{StaticResource LabelSmall}" />
                     </utu:AutoLayout>
                     <utu:AutoLayout Padding="5"
                                     CornerRadius="12"
@@ -264,11 +264,11 @@
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
                                    Text="{Binding Profile.Followers}"
-                                   Style="{StaticResource CustomHeadlineMedium}" />
+                                   Style="{StaticResource HeadlineMedium}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Text="Followers"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource CustomLabelSmall}" />
+                                   Style="{StaticResource LabelSmall}" />
                     </utu:AutoLayout>
                     <utu:AutoLayout Padding="5"
                                     CornerRadius="12"
@@ -277,11 +277,11 @@
                                    TextAlignment="Center"
                                    Text="{Binding Profile.Following}"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource CustomHeadlineMedium}" />
+                                   Style="{StaticResource HeadlineMedium}" />
                         <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Text="Following"
                                    utu:AutoLayout.CounterAlignment="Center"
-                                   Style="{StaticResource CustomLabelSmall}" />
+                                   Style="{StaticResource LabelSmall}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
@@ -401,11 +401,11 @@
                                                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                                                            TextWrapping="NoWrap"
                                                                                                            Text="{Binding Name}"
-                                                                                                           Style="{StaticResource CustomTitleMedium}" />
+                                                                                                           Style="{StaticResource TitleMedium}" />
                                                                                                 <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                                                            TextWrapping="NoWrap"
                                                                                                            Text="{Binding TimeCal}"
-                                                                                                           Style="{StaticResource CustomBodySmall}" />
+                                                                                                           Style="{StaticResource BodySmall}" />
                                                                                             </utu:AutoLayout>
                                                                                         </utu:AutoLayout>
                                                                                     </UserControl>

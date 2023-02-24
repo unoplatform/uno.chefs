@@ -52,19 +52,19 @@
                                        Text="🔍"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomDisplayMedium}" />
+                                       Style="{StaticResource DisplayMedium}" />
                             <utu:AutoLayout Spacing="14"
                                             utu:AutoLayout.CounterAlignment="Center">
                                 <TextBlock x:Name="MatchingResultText"
                                            Text="No matching search results"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Style="{StaticResource CustomLabelLarge}" />
+                                           Style="{StaticResource LabelLarge}" />
                                 <TextBlock x:Name="SearchTermsText"
                                            Text="Try again using more general search terms"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Style="{StaticResource CustomLabelMedium}" />
+                                           Style="{StaticResource LabelMedium}" />
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
@@ -126,11 +126,11 @@
                                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding Name}"
-                                                           Style="{StaticResource CustomTitleMedium}" />
+                                                           Style="{StaticResource TitleMedium}" />
                                                 <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding TimeCal}"
-                                                           Style="{StaticResource CustomBodySmall}" />
+                                                           Style="{StaticResource BodySmall}" />
                                             </utu:AutoLayout>
                                         </utu:AutoLayout>
                                     </UserControl>
@@ -152,15 +152,15 @@
                         <Setter Target="MainLayout.Padding"
                                 Value="40,24" />
                         <Setter Target="RecipesForYouTitle.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="RecipesForYouTitle.Margin"
                                 Value="0, 20" />
                         <Setter Target="IdeasFromChefsTitle.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="IdeasFromChefsTitle.Margin"
                                 Value="0, 20" />
                         <Setter Target="RecentSearches.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="BackButton.Height"
                                 Value="40" />
                         <Setter Target="BackButton.Width"
@@ -233,7 +233,7 @@
                                 <TextBlock x:Name="RecentSearches"
                                            Text="Recent searches"
                                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Style="{StaticResource CustomTitleLarge}"
+                                           Style="{StaticResource TitleLarge}"
                                            Visibility="{Binding Searched, Converter={StaticResource InvertBool}}" />
                             </utu:AutoLayout>
                             <Button Command="{Binding CloseRecentSearches}"
@@ -329,7 +329,7 @@
                         <TextBlock Text="Recipes for you"
                                    x:Name="RecipesForYouTitle"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource CustomTitleLarge}" />
+                                   Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="RecommendedFeedView"
                                       Source="{Binding Recommended}">
                             <DataTemplate>
@@ -378,7 +378,7 @@
                                                                             <Setter Target="ImageLayout.MaxHeight"
                                                                                     Value="140" />
                                                                             <Setter Target="RecipeName.Style"
-                                                                                    Value="{StaticResource CustomHeadlineMedium}" />
+                                                                                    Value="{StaticResource HeadlineMedium}" />
                                                                         </VisualState.Setters>
                                                                     </VisualState>
                                                                 </VisualStateGroup>
@@ -398,7 +398,7 @@
                                                                            Text="{Binding Name}"
                                                                            utu:AutoLayout.CounterAlignment="Start"
                                                                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                                           Style="{StaticResource CustomTitleSmall}"
+                                                                           Style="{StaticResource TitleSmall}"
                                                                            TextWrapping="NoWrap" />
                                                             </utu:AutoLayout>
                                                         </utu:AutoLayout>
@@ -415,7 +415,7 @@
                         <TextBlock Text="Ideas from chefs"
                                    x:Name="IdeasFromChefsTitle"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Style="{StaticResource CustomTitleLarge}" />
+                                   Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="ChefsFeedView"
                                       Source="{Binding FromChefs}">
                             <DataTemplate>
@@ -464,7 +464,7 @@
                                                                             <Setter Target="ImageLayout.MaxHeight"
                                                                                     Value="140" />
                                                                             <Setter Target="RecipeName.Style"
-                                                                                    Value="{StaticResource CustomHeadlineMedium}" />
+                                                                                    Value="{StaticResource HeadlineMedium}" />
                                                                         </VisualState.Setters>
                                                                     </VisualState>
                                                                 </VisualStateGroup>
@@ -484,7 +484,7 @@
                                                                            Text="{Binding Name}"
                                                                            utu:AutoLayout.CounterAlignment="Start"
                                                                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                                           Style="{StaticResource CustomTitleSmall}"
+                                                                           Style="{StaticResource TitleSmall}"
                                                                            TextWrapping="NoWrap" />
                                                             </utu:AutoLayout>
                                                         </utu:AutoLayout>

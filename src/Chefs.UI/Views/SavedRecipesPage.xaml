@@ -202,11 +202,11 @@
                                                 <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding Name}"
-                                                           Style="{StaticResource CustomTitleMedium}" />
+                                                           Style="{StaticResource TitleMedium}" />
                                                 <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding TimeCal}"
-                                                           Style="{StaticResource CustomBodySmall}" />
+                                                           Style="{StaticResource BodySmall}" />
                                             </utu:AutoLayout>
                                         </utu:AutoLayout>
                                     </UserControl>
@@ -230,11 +230,11 @@
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="Icon.Style"
-                                                Value="{StaticResource CustomDisplayLarge}" />
+                                                Value="{StaticResource DisplayLarge}" />
                                         <Setter Target="TitleText.Style"
-                                                Value="{StaticResource CustomHeadlineLarge}" />
+                                                Value="{StaticResource HeadlineLarge}" />
                                         <Setter Target="DisplayTest.Style"
-                                                Value="{StaticResource CustomHeadlineMedium}" />
+                                                Value="{StaticResource HeadlineMedium}" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -277,11 +277,11 @@
                                     </VisualState.StateTriggers>
                                     <VisualState.Setters>
                                         <Setter Target="Icon.Style"
-                                                Value="{StaticResource CustomDisplayLarge}" />
+                                                Value="{StaticResource DisplayLarge}" />
                                         <Setter Target="TitleText.Style"
-                                                Value="{StaticResource CustomHeadlineLarge}" />
+                                                Value="{StaticResource HeadlineLarge}" />
                                         <Setter Target="DisplayTest.Style"
-                                                Value="{StaticResource CustomHeadlineMedium}" />
+                                                Value="{StaticResource HeadlineMedium}" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -349,7 +349,7 @@
             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                        x:Name="NarrowTitle"
                        Text="Saved Recipes"
-                       Style="{StaticResource CustomHeadlineMedium}" />
+                       Style="{StaticResource HeadlineMedium}" />
             <Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -455,7 +455,7 @@
                                         Spacing="20">
                             <TextBlock Text="All recipes"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomHeadlineLarge}" />
+                                       Style="{StaticResource HeadlineLarge}" />
                             <ScrollViewer x:Name="RecipesScrollViewer"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           HorizontalScrollMode="Disabled"
@@ -489,7 +489,7 @@
                                         Spacing="20">
                             <TextBlock Text="Cookbooks"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomHeadlineLarge}" />
+                                       Style="{StaticResource HeadlineLarge}" />
                             <ScrollViewer x:Name="CookbooksScrollViewer"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           HorizontalScrollMode="Disabled"
