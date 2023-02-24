@@ -16,9 +16,6 @@
 
 	<ItemGroup>
 		<Content Include="Assets\Fonts\uno-fluentui-assets.ttf" />
-		<Content Include="Assets\Fonts\Roboto-Light.ttf" />
-		<Content Include="Assets\Fonts\Roboto-Medium.ttf" />
-		<Content Include="Assets\Fonts\Roboto-Regular.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
@@ -33,7 +30,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.14" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.23" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.35" />
 	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.44" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
