@@ -193,11 +193,9 @@
                             Orientation="Horizontal">
                 <Button x:Name="BackButton"
                         Style="{StaticResource IconButtonStyle}"
-                        uen:Navigation.Request="-"
-                        Height="24"
-                        Width="24">
-                    <PathIcon Data="{StaticResource Icon_Outline_Arrow_Left_ChefsApp}"
-                              Foreground="{ThemeResource SurfaceInverseBrush}" />
+                        uen:Navigation.Request="-">
+                    <SymbolIcon Symbol="Back"
+                                Foreground="{ThemeResource SurfaceInverseBrush}" />
                 </Button>
                 <TextBox x:Name="SearchBox"
                          utu:AutoLayout.CounterAlignment="Center"
@@ -219,7 +217,6 @@
             <utu:AutoLayout x:Name="DefaultLayout"
                             Spacing="24"
                             Margin="0,24,0,0">
-
                 <utu:AutoLayout Orientation="Horizontal">
                     <utu:AutoLayout PrimaryAxisAlignment="Start"
                                     x:Name="RecentSearchesLayout"
