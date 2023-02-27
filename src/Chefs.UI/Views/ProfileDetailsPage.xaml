@@ -11,6 +11,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:controls="using:Chefs.Controls"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       mc:Ignorable="d">
 
     <utu:AutoLayout>
@@ -464,7 +465,11 @@
                                                                     <utu:AutoLayout>
                                                                         <VisualStateManager.VisualStateGroups>
                                                                             <VisualStateGroup>
-                                                                                <VisualState x:Name="Narrow" />
+                                                                                <VisualState x:Name="Narrow">
+                                                                                    <win:VisualState.StateTriggers>
+                                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                    </win:VisualState.StateTriggers>
+                                                                                </VisualState>
                                                                                 <VisualState x:Name="Wide">
                                                                                     <VisualState.StateTriggers>
                                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -492,7 +497,11 @@
                                                                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                                                             <VisualStateManager.VisualStateGroups>
                                                                                                 <VisualStateGroup>
-                                                                                                    <VisualState x:Name="Narrow" />
+                                                                                                    <VisualState x:Name="Narrow">
+                                                                                                        <win:VisualState.StateTriggers>
+                                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                                        </win:VisualState.StateTriggers>
+                                                                                                    </VisualState>
                                                                                                     <VisualState x:Name="Wide">
                                                                                                         <VisualState.StateTriggers>
                                                                                                             <AdaptiveTrigger MinWindowWidth="800" />
@@ -528,21 +537,21 @@
                                                                                                         <Image Source="{Binding CookbookImages.SecondImage}"
                                                                                                                Visibility="{Binding CookbookImages.SecondImage,
                                                                                                                             Converter={StaticResource NullToCollapsed}}"
-                                                                                                               Stretch="UniformToFill" />
+                                                                                                               Stretch="UniformToFill"
+                                                                                                               utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                               utu:AutoLayout.PrimaryAlignment="Stretch" />
                                                                                                     </utu:AutoLayout>
                                                                                                     <utu:AutoLayout CornerRadius="12"
                                                                                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                                                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                                                        <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                                                                    Converter={StaticResource NullToCollapsed}}"
-                                                                                                                        utu:AutoLayout.CounterAlignment="Stretch">
+                                                                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
                                                                                                             <Image Source="{Binding CookbookImages.ThirdImage}"
-                                                                                                                   Stretch="UniformToFill" />
-                                                                                                        </utu:AutoLayout>
-                                                                                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                                                                        utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                                        Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                                                                    Converter={StaticResource  NullToVisible}}">
+                                                                                                                   Stretch="UniformToFill"
+                                                                                                                   utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                   utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                                   Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                                                    Converter={StaticResource NullToCollapsed}}" />
                                                                                                             <Button uen:Navigation.Request="CreateUpdateCookbook"
                                                                                                                     uen:Navigation.Data="{Binding ., Mode=TwoWay }"
                                                                                                                     Background="{ThemeResource SurfaceVariantColor}"
@@ -551,7 +560,9 @@
                                                                                                                     HorizontalAlignment="Stretch"
                                                                                                                     CornerRadius="12"
                                                                                                                     Style="{StaticResource ElevatedButtonStyle}"
-                                                                                                                    MinHeight="57">
+                                                                                                                    MinHeight="57"
+                                                                                                                    Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                                                    Converter={StaticResource  NullToVisible}}">
                                                                                                                 <um:ControlExtensions.Icon>
                                                                                                                     <PathIcon x:Name="ButtonIcon"
                                                                                                                               Margin="9,1,0,0"
