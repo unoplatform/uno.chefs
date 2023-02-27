@@ -8,12 +8,16 @@
       xmlns:msui="using:Microsoft.UI.Xaml.Controls"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid Background="{ThemeResource BackgroundBrush}"
           utu:SafeArea.Insets="Top">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
+                    <win:VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </win:VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="ImageFilpView.Visibility"
                                 Value="Visible" />

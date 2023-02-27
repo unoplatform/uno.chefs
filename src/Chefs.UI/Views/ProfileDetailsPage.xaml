@@ -4,6 +4,7 @@
       xmlns:local="using:Chefs.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
@@ -23,7 +24,11 @@
                                     PrimaryAxisAlignment="Center">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <win:VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </win:VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -70,7 +75,11 @@
                                     PrimaryAxisAlignment="Center">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <win:VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </win:VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -114,6 +123,9 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
+                    <win:VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </win:VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="AddButtonLayout.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
@@ -322,7 +334,11 @@
                                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                     <VisualStateManager.VisualStateGroups>
                                                         <VisualStateGroup>
-                                                            <VisualState x:Name="Narrow" />
+                                                            <VisualState x:Name="Narrow">
+                                                                <win:VisualState.StateTriggers>
+                                                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                                                </win:VisualState.StateTriggers>
+                                                            </VisualState>
                                                             <VisualState x:Name="Wide">
                                                                 <VisualState.StateTriggers>
                                                                     <AdaptiveTrigger MinWindowWidth="800" />
@@ -350,7 +366,11 @@
                                                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                                         <VisualStateManager.VisualStateGroups>
                                                                             <VisualStateGroup>
-                                                                                <VisualState x:Name="Narrow" />
+                                                                                <VisualState x:Name="Narrow">
+                                                                                    <win:VisualState.StateTriggers>
+                                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                    </win:VisualState.StateTriggers>
+                                                                                </VisualState>
                                                                                 <VisualState x:Name="Wide">
                                                                                     <VisualState.StateTriggers>
                                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -378,7 +398,11 @@
                                                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                                                                             <VisualStateManager.VisualStateGroups>
                                                                                                 <VisualStateGroup>
-                                                                                                    <VisualState x:Name="Narrow" />
+                                                                                                    <VisualState x:Name="Narrow">
+                                                                                                        <win:VisualState.StateTriggers>
+                                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                                        </win:VisualState.StateTriggers>
+                                                                                                    </VisualState>
                                                                                                     <VisualState x:Name="Wide">
                                                                                                         <VisualState.StateTriggers>
                                                                                                             <AdaptiveTrigger MinWindowWidth="800" />
@@ -436,7 +460,11 @@
                                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                     <VisualStateManager.VisualStateGroups>
                                                         <VisualStateGroup>
-                                                            <VisualState x:Name="Narrow" />
+                                                            <VisualState x:Name="Narrow">
+                                                                <win:VisualState.StateTriggers>
+                                                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                                                </win:VisualState.StateTriggers>
+                                                            </VisualState>
                                                             <VisualState x:Name="Wide">
                                                                 <VisualState.StateTriggers>
                                                                     <AdaptiveTrigger MinWindowWidth="800" />
@@ -464,7 +492,11 @@
                                                                     <utu:AutoLayout>
                                                                         <VisualStateManager.VisualStateGroups>
                                                                             <VisualStateGroup>
-                                                                                <VisualState x:Name="Narrow" />
+                                                                                <VisualState x:Name="Narrow">
+                                                                                    <win:VisualState.StateTriggers>
+                                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                    </win:VisualState.StateTriggers>
+                                                                                </VisualState>
                                                                                 <VisualState x:Name="Wide">
                                                                                     <VisualState.StateTriggers>
                                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -492,7 +524,11 @@
                                                                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                                                             <VisualStateManager.VisualStateGroups>
                                                                                                 <VisualStateGroup>
-                                                                                                    <VisualState x:Name="Narrow" />
+                                                                                                    <VisualState x:Name="Narrow">
+                                                                                                        <win:VisualState.StateTriggers>
+                                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                                        </win:VisualState.StateTriggers>
+                                                                                                    </VisualState>
                                                                                                     <VisualState x:Name="Wide">
                                                                                                         <VisualState.StateTriggers>
                                                                                                             <AdaptiveTrigger MinWindowWidth="800" />

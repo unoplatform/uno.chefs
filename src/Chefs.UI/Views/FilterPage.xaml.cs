@@ -1,11 +1,11 @@
 ﻿namespace Chefs.Views;
 
-public sealed partial class FilterPage : ResponsiveDrawerFlyout
-{
-    public FilterPage()
+    public sealed partial class FilterPage : ResponsiveDrawerFlyout
     {
-        this.InitializeComponent();
+        public FilterPage()
+        {
+            this.InitializeComponent();
 
-        Opening += ApplyRightDrawerFlyoutPresenterStyle;
+            Opening += ApplyRightDrawerFlyoutPresenterStyle;
+        }
     }
-}
