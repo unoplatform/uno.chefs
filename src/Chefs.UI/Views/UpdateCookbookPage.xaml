@@ -84,7 +84,7 @@
                                                     <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                TextWrapping="NoWrap"
                                                                Text="{Binding Name}"
-                                                               Style="{StaticResource CustomTitleMedium}" />
+                                                               Style="{StaticResource TitleMedium}" />
                                                 </utu:AutoLayout>
                                                 <ToggleButton IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                               x:Name="toggleButton"
@@ -125,7 +125,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="AddPinsLabel.Style"
-                                Value="{ThemeResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="AddPinsLabel.Margin"
                                 Value="40, 20" />
                         <Setter Target="CookbookName.Margin"
@@ -174,7 +174,7 @@
                        Foreground="{ThemeResource SurfaceInverseBrush}"
                        Text="Add pin"
                        Margin="27, 18, 18, 9"
-                       Style="{StaticResource CustomTitleLarge}" />
+                       Style="{StaticResource TitleLarge}" />
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.CounterAlignment="Stretch"
                             utu:AutoLayout.PrimaryAlignment="Stretch"

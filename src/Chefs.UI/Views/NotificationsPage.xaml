@@ -101,11 +101,11 @@
                                         </VisualState.StateTriggers>
                                         <VisualState.Setters>
                                             <Setter Target="Icon.Style"
-                                                    Value="{StaticResource CustomDisplayLarge}" />
+                                                    Value="{StaticResource DisplayLarge}" />
                                             <Setter Target="TitleText.Style"
-                                                    Value="{StaticResource CustomHeadlineLarge}" />
+                                                    Value="{StaticResource HeadlineLarge}" />
                                             <Setter Target="DisplayTest.Style"
-                                                    Value="{StaticResource CustomHeadlineMedium}" />
+                                                    Value="{StaticResource HeadlineMedium}" />
                                         </VisualState.Setters>
                                     </VisualState>
                                 </VisualStateGroup>
@@ -115,7 +115,7 @@
                                        Text="🔔"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource CustomDisplayMedium}" />
+                                       Style="{StaticResource DisplayMedium}" />
                             <utu:AutoLayout Spacing="14"
                                             utu:AutoLayout.CounterAlignment="Center">
                                 <TextBlock x:Name="TitleText"
@@ -123,13 +123,13 @@
                                            Text="No new notifications"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Style="{StaticResource CustomHeadlineMedium}" />
+                                           Style="{StaticResource HeadlineMedium}" />
                                 <TextBlock x:Name="DisplayTest"
                                            TextAlignment="Center"
                                            Text="Any new notification will appear here "
                                            utu:AutoLayout.CounterAlignment="Center"
                                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Style="{StaticResource CustomHeadlineSmall}" />
+                                           Style="{StaticResource HeadlineSmall}" />
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </UserControl>
@@ -211,7 +211,7 @@
                                                     Visibility="{Binding Data.HasTodayNotifications}">
                                         <TextBlock Text="Today"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
 
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
@@ -226,7 +226,7 @@
                                                     Visibility="{Binding Data.HasYesterdayNotifications}">
                                         <TextBlock Text="Yesterday"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>
@@ -240,7 +240,7 @@
                                                     Visibility="{Binding Data.HasOlderNotifications}">
                                         <TextBlock Text="Older"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>
@@ -265,7 +265,7 @@
                                                     Visibility="{Binding Data.HasTodayNotifications}">
                                         <TextBlock Text="Today"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>
@@ -279,7 +279,7 @@
                                                     Visibility="{Binding Data.HasYesterdayNotifications}">
                                         <TextBlock Text="Yesterday"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>
@@ -293,7 +293,7 @@
                                                     Visibility="{Binding Data.HasOlderNotifications}">
                                         <TextBlock Text="Older"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>
@@ -318,7 +318,7 @@
                                                     Visibility="{Binding Data.HasTodayNotifications}">
                                         <TextBlock Text="Today"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>
@@ -332,7 +332,7 @@
                                                     Visibility="{Binding Data.HasYesterdayNotifications}">
                                         <TextBlock Text="Yesterday"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>
@@ -346,7 +346,7 @@
                                                     Visibility="{Binding Data.HasOlderNotifications}">
                                         <TextBlock Text="Older"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomLabelLarge}" />
+                                                   Style="{StaticResource LabelLarge}" />
                                         <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                             ItemTemplate="{StaticResource NotificationTemplate}">
                                             <muxc:ItemsRepeater.Layout>

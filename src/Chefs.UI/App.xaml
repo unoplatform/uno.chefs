@@ -10,24 +10,16 @@
 		<ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Load WinUI resources -->
-                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-
-                <MaterialColors xmlns="using:Uno.Material"
-                                OverrideSource="ms-appx:///Styles/ColorPaletteOverride.xaml" />
-                <MaterialFonts xmlns="using:Uno.Material"
-                               OverrideSource="ms-appx:///Styles/MaterialFontsOverride.xaml" />
-                <MaterialResources xmlns="using:Uno.Material" />
-
-                <!-- Load Uno.UI.Toolkit resources -->
-                <ToolkitResources xmlns="using:Uno.Toolkit.UI" />
-
-                <MaterialToolkitResources xmlns="using:Uno.Toolkit.UI.Material" />
+				<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+				
+				<MaterialToolkitTheme xmlns="using:Uno.Toolkit.UI.Material"
+									  FontOverrideSource="ms-appx:///Styles/MaterialFontsOverride.xaml"
+									  ColorOverrideSource="ms-appx:///Styles/ColorPaletteOverride.xaml"/>
 
                 <ResourceDictionary Source="ms-appx:///Converters/Converters.xaml" />
                 <ResourceDictionary Source="ms-appx:///Styles/FeedView.xaml" />
-                <ResourceDictionary Source="ms-appx:///Views/Templates/ItemTemplates.xaml" />
-                <ResourceDictionary Source="ms-appx:///Styles/TextBlock.xaml" />
-                <ResourceDictionary Source="ms-appx:///Styles/Flyout.xaml" />
+				<ResourceDictionary Source="ms-appx:///Views/Templates/ItemTemplates.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/Flyout.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

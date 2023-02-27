@@ -40,12 +40,12 @@
                            Text="Hurray!"
                            Margin="10"
                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                           Style="{StaticResource CustomHeadlineLarge}" />
+                           Style="{StaticResource HeadlineLarge}" />
                 <TextBlock TextAlignment="Center"
                            Text="All steps are completed.&#xA;Enjoy your meal!"
                            Margin="10,0"
                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                           Style="{StaticResource CustomBodyLarge}" />
+                           Style="{StaticResource BodyLarge}" />
             </utu:AutoLayout>
             <Button Background="{ThemeResource PrimaryBrush}"
                     Content="Completed"

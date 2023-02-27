@@ -42,11 +42,11 @@
                         <Setter Target="SettingsNavBar.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
                         <Setter Target="PersonalInformationTitle.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="NotificationTitle.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="ThemingTitle.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="WideButtons.Visibility"
                                 Value="Visible" />
                         <Setter Target="NarrowButtons.Visibility"
@@ -58,13 +58,13 @@
                         <Setter Target="ImageBorder.CornerRadius"
                                 Value="60" />
                         <Setter Target="ProfileName.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="ProfileDescription.Style"
-                                Value="{StaticResource CustomLabelLarge}" />
+                                Value="{StaticResource LabelLarge}" />
                         <Setter Target="AccentColorLayout.Spacing"
                                 Value="40" />
                         <Setter Target="AccentColorTitle.Style"
-                                Value="{StaticResource CustomHeadlineLarge}" />
+                                Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="MainLayout.Width"
                                 Value="1024" />
                         <Setter Target="MainLayout.CornerRadius"
@@ -128,13 +128,13 @@
                                                        Foreground="{ThemeResource SurfaceInverseBrush}"
                                                        Text="{Binding Profile.FullName}"
                                                        utu:AutoLayout.CounterAlignment="Center"
-                                                       Style="{StaticResource CustomHeadlineMedium}" />
+                                                       Style="{StaticResource HeadlineMedium}" />
                                             <TextBlock x:Name="ProfileDescription"
                                                        Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                        TextAlignment="Center"
                                                        Text="{Binding Profile.Description}"
                                                        utu:AutoLayout.CounterAlignment="Center"
-                                                       Style="{StaticResource CustomTitleSmall}" />
+                                                       Style="{StaticResource TitleSmall}" />
                                         </utu:AutoLayout>
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
@@ -146,7 +146,7 @@
                                                TextAlignment="Center"
                                                Text="Personal information"
                                                utu:AutoLayout.CounterAlignment="Start"
-                                               Style="{StaticResource CustomBodyLarge}" />
+                                               Style="{StaticResource BodyLarge}" />
                                     <utu:AutoLayout x:Name="PersonalInformationInputs"
                                                     Spacing="16"
                                                     Padding="0"
@@ -214,7 +214,7 @@
                                                TextAlignment="Center"
                                                Text="Notification"
                                                utu:AutoLayout.CounterAlignment="Start"
-                                               Style="{StaticResource CustomBodyLarge}" />
+                                               Style="{StaticResource BodyLarge}" />
                                     <utu:AutoLayout x:Name="NotificationLayout"
                                                     Background="{ThemeResource SurfaceBrush}"
                                                     Spacing="16"
@@ -237,7 +237,7 @@
                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="App notifications"
-                                                       Style="{StaticResource CustomTitleMedium}" />
+                                                       Style="{StaticResource TitleMedium}" />
                                         </utu:AutoLayout>
                                         <ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                       Background="{ThemeResource PrimaryBrush}"
@@ -254,7 +254,7 @@
                                                TextAlignment="Center"
                                                Text="Theming"
                                                utu:AutoLayout.CounterAlignment="Start"
-                                               Style="{StaticResource CustomBodyLarge}" />
+                                               Style="{StaticResource BodyLarge}" />
                                     <utu:AutoLayout x:Name="LightModeLayout"
                                                     Background="{ThemeResource SurfaceBrush}"
                                                     Spacing="16"
@@ -277,7 +277,7 @@
                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="Light mode"
-                                                       Style="{StaticResource CustomTitleMedium}" />
+                                                       Style="{StaticResource TitleMedium}" />
                                         </utu:AutoLayout>
                                         <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                          Mode=TwoWay, 
@@ -310,7 +310,7 @@
                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="Night mode"
-                                                       Style="{StaticResource CustomTitleMedium}" />
+                                                       Style="{StaticResource TitleMedium}" />
                                         </utu:AutoLayout>
                                         <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                  Mode=TwoWay, 
@@ -328,7 +328,7 @@
                                                    Text="App accent color"
                                                    utu:AutoLayout.CounterAlignment="Start"
                                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                   Style="{StaticResource CustomBodyLarge}" />
+                                                   Style="{StaticResource BodyLarge}" />
                                         <utu:AutoLayout Spacing="18"
                                                         Orientation="Horizontal"
                                                         Height="40">
