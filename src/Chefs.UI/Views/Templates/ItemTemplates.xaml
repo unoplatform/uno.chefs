@@ -37,9 +37,11 @@
                                     Orientation="Horizontal">
                         <Button Background="{ThemeResource PrimaryInverseBrush}"
                                 Content="{Binding Likes, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
+                                Command="{Binding Like}"
                                 utu:AutoLayout.CounterAlignment="Start" />
                         <Button Background="{ThemeResource PrimaryInverseBrush}"
                                 Content="{Binding Dislikes, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
+                                Command="{Binding DisLike}"
                                 utu:AutoLayout.CounterAlignment="Start" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>

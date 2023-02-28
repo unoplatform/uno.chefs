@@ -98,6 +98,25 @@ public class RecipeEndpoint : IRecipeEndpoint
         }
     }
 
+    public async ValueTask UpdateReview(ReviewData reviewData, CancellationToken ct)
+    {
+        var currentUser = await _userEndpoint.GetCurrent(ct);
+
+        var recipes = await Load();
+
+        var recipe = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
+
+        if (recipe is not null)
+        {
+            var review = recipe.Reviews?.Where(r => r.Id == reviewData.Id).FirstOrDefault();
+            review = reviewData;
+        }
+        else
+        {
+            throw new Exception();
+        }
+    }
+
     //Implementation to update saved recipes in memory 
     private async ValueTask<IList<RecipeData>> Load()
     {

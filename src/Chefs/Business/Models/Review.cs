@@ -24,15 +24,15 @@ public partial record Review
         Description = text;
     }
 
-    public Guid Id { get; set; }
-    public Guid RecipeId { get; set; }
-    public string? UrlAuthorImage { get; set; }
-    public Guid CreatedBy { get; set; }
-    public string? PublisherName { get; set; }
-    public DateTime Date { get; set; }
-    public string? Description { get; set; }
-    public int Likes { get; set; }
-    public int Dislikes { get; set; }
+    public Guid Id { get; init; }
+    public Guid RecipeId { get; init; }
+    public string? UrlAuthorImage { get; init; }
+    public Guid CreatedBy { get; init; }
+    public string? PublisherName { get; init; }
+    public DateTime Date { get; init; }
+    public string? Description { get; init; }
+    public int Likes { get; init; }
+    public int Dislikes { get; init; }
 
     internal ReviewData ToData() => new()
     {
