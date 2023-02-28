@@ -17,6 +17,16 @@ public interface IRecipeService
     ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct);
 
     /// <summary>
+    /// Update recipe review
+    /// </summary>
+    /// <param name="recipeId">id from the recipe</param>
+    /// <param name="review">review to update</param>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// </returns>
+    ValueTask UpdateReview(Guid recipeId, Review review, CancellationToken ct);
+
+    /// <summary>
     /// Recipes method
     /// </summary>
     /// <param name="ct"></param>
@@ -80,6 +90,7 @@ public interface IRecipeService
     /// <summary>
     /// Get recipe's reviews
     /// </summary>
+    /// <param name="recipeId">id from the recipe</param>
     /// <param name="ct"></param>
     /// <returns>
     /// Recipe's reviews
@@ -89,6 +100,7 @@ public interface IRecipeService
     /// <summary>
     /// Get recipe's ingredients
     /// </summary>
+    /// <param name="recipeId">id from the recipe</param>
     /// <param name="ct">Recipe Guid</param>
     /// <returns>
     /// Recipe's ingredients
@@ -116,6 +128,7 @@ public interface IRecipeService
     /// <summary>
     /// Get review's steps
     /// </summary>
+    /// <param name="recipeId">id from the recipe</param>
     /// <param name="ct"></param>
     /// <returns>
     /// Recipe's steps

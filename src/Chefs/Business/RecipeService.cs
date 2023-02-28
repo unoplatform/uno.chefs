@@ -110,6 +110,12 @@ public class RecipeService : IRecipeService
         _refreshRecipes.Raise();
     }
 
+    public async ValueTask UpdateReview(Guid recipeId, Review review, CancellationToken ct)
+    {
+        review = review with { Likes = review.Likes - 1 };
+        await _recipeEndpoint.UpdateReview(review.ToData(), ct);
+    }
+
     public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct) 
 	    => (await _recipeEndpoint.GetAll(ct))
 	       .Select(r => new Recipe(r)).OrderBy(x => new Random(1).Next())
