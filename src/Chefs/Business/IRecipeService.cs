@@ -22,8 +22,9 @@ public interface IRecipeService
     /// <param name="review">review to update</param>
     /// <param name="ct"></param>
     /// <returns>
+    /// New immutable list with dislikes update
     /// </returns>
-    ValueTask DislikeReview(Review review, CancellationToken ct);
+    ValueTask<IImmutableList<Review>> DislikeReview(Review review, CancellationToken ct);
 
     /// <summary>
     /// Add current user like recipe review
@@ -31,8 +32,9 @@ public interface IRecipeService
     /// <param name="review">review to update</param>
     /// <param name="ct"></param>
     /// <returns>
+    /// New immutable list with likes update
     /// </returns>
-    ValueTask LikeReview(Review review, CancellationToken ct);
+    ValueTask<IImmutableList<Review>> LikeReview(Review review, CancellationToken ct);
 
     /// <summary>
     /// Recipes method

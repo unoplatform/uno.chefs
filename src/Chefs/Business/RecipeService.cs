@@ -110,11 +110,13 @@ public class RecipeService : IRecipeService
         _refreshRecipes.Raise();
     }
 
-    public async ValueTask LikeReview(Review review, CancellationToken ct)
-        => await _recipeEndpoint.LikeReview(review.ToData(), ct);
+    public async ValueTask<IImmutableList<Review>> LikeReview(Review review, CancellationToken ct)
+        => (await _recipeEndpoint.LikeReview(review.ToData(), ct)).Select(r => new Review(r))
+             .ToImmutableList();
 
-    public async ValueTask DislikeReview(Review review, CancellationToken ct)
-        => await _recipeEndpoint.DislikeReview(review.ToData(), ct);
+    public async ValueTask<IImmutableList<Review>> DislikeReview(Review review, CancellationToken ct)
+        => (await _recipeEndpoint.DislikeReview(review.ToData(), ct)).Select(r => new Review(r))
+             .ToImmutableList();
 
     public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct) 
 	    => (await _recipeEndpoint.GetAll(ct))

@@ -98,7 +98,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         }
     }
 
-    public async ValueTask DislikeReview(ReviewData reviewData, CancellationToken ct)
+    public async ValueTask<IImmutableList<ReviewData>> DislikeReview(ReviewData reviewData, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetCurrent(ct);
 
@@ -130,6 +130,7 @@ public class RecipeEndpoint : IRecipeEndpoint
                 UserData? likeUserReview = recipe.Reviews![reviewIndex].Likes?.Find(u => u.Id == user.Id);
                 if (likeUserReview != null) recipe.Reviews![reviewIndex].Likes?.Remove(likeUserReview);
             }
+            return recipe.Reviews!.ToImmutableList();
         }
         else
         {
@@ -137,7 +138,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         }
     }
 
-    public async ValueTask LikeReview(ReviewData reviewData, CancellationToken ct)
+    public async ValueTask<IImmutableList<ReviewData>> LikeReview(ReviewData reviewData, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetCurrent(ct);
 
@@ -169,10 +170,11 @@ public class RecipeEndpoint : IRecipeEndpoint
                 UserData? likeUserReview = recipe.Reviews![reviewIndex].Dislikes?.Find(u => u.Id == user.Id);
                 if (likeUserReview != null) recipe.Reviews![reviewIndex].Dislikes?.Remove(likeUserReview);
             }
-            else
-            {
-                throw new Exception();
-            }
+            return recipe.Reviews!.ToImmutableList();
+        }
+        else
+        {
+            throw new Exception();
         }
     }
 

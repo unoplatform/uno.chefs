@@ -28,6 +28,18 @@ public partial class ReviewsModel
 
     public IState<string> Comment => State<string>.Empty(this);
 
+    public async ValueTask Like(Review review, CancellationToken ct)
+    {
+        var reviews = await _recipeService.LikeReview(review, ct);
+        await Reviews.Update(_ => reviews, ct);
+    }
+
+    public async ValueTask Dislike(Review review, CancellationToken ct)
+    {
+        var reviews = await _recipeService.DislikeReview(review, ct);
+        await Reviews.Update(_ => reviews, ct);
+    }
+
     public ICommand AddReview => Command.Create(b => b.Given(Comment).When(CanComment).Then(Review));
 
     private bool CanComment(string comment) =>

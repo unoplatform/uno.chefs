@@ -79,7 +79,7 @@
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                               HorizontalScrollMode="Disabled">
                     <utu:AutoLayout Padding="18">
-                        <uer:FeedView x:Name="IngredientsFeed"
+                        <uer:FeedView x:Name="ReviewsFeed"
                                       Source="{Binding Reviews}">
                             <DataTemplate>
                                 <ListView ItemsSource="{Binding Data}"

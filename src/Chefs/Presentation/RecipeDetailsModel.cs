@@ -25,19 +25,19 @@ public partial class RecipeDetailsModel
     public Recipe Recipe { get; }
     public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct));
     public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
-    public IListState<Review> Reviews => ListState.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct), _refresh);
+    public IListState<Review> Reviews => ListState.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct));
     public IListFeed<Step> Steps => ListFeed.Async(async ct => await _recipeService.GetSteps(Recipe.Id, ct));
     
     public async ValueTask Like(Review review, CancellationToken ct)
     {
-        await _recipeService.LikeReview(review, ct);
-        _refresh.Raise();
+        var reviews = await _recipeService.LikeReview(review, ct);
+        await Reviews.Update(_ => reviews, ct);
     }
 
     public async ValueTask Dislike(Review review, CancellationToken ct)
     {
-        await _recipeService.DislikeReview(review, ct);
-        _refresh.Raise();
+        var reviews = await _recipeService.DislikeReview(review, ct);
+        await Reviews.Update(_ => reviews, ct);
     }
 
     public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken ct) =>
