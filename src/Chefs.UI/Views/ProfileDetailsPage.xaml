@@ -4,6 +4,7 @@
       xmlns:local="using:Chefs.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
@@ -23,7 +24,11 @@
                                     PrimaryAxisAlignment="Center">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <win:VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </win:VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -70,7 +75,11 @@
                                     PrimaryAxisAlignment="Center">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <win:VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </win:VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -114,6 +123,9 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
+                    <win:VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </win:VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="AddButtonLayout.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
@@ -158,6 +170,8 @@
                                       Command="{Binding GoBack}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
+                                            Height="12"
+                                            Width="12"
                                             UriSource="ms-appx:///Assets/Icons/close.png" />
                             </AppBarButton.Icon>
                         </AppBarButton>
@@ -169,6 +183,8 @@
                                       Visibility="{Binding Profile.IsCurrent}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
+                                            Height="12"
+                                            Width="12"
                                             UriSource="ms-appx:///Assets/Icons/settings.png" />
                             </AppBarButton.Icon>
                         </AppBarButton>
@@ -179,7 +195,8 @@
                                    Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource SurfaceBrush}"
                                    toolkit:UIElementExtensions.Elevation="0"
-                                   Visibility="Collapsed">
+                                   Visibility="Collapsed"
+                                   MainCommandMode="Action">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton Label=""
                                       Foreground="Transparent"
@@ -187,13 +204,14 @@
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                     <utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton Label=""
-                                      Command="{Binding SettingsNavigation}"
+                        <AppBarButton Command="{Binding SettingsNavigation}"
                                       Background="{ThemeResource BackgroundBrush}"
                                       Foreground="Black"
                                       Visibility="{Binding Profile.IsCurrent}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
+                                            Height="12"
+                                            Width="12"
                                             UriSource="ms-appx:///Assets/Icons/settings.png" />
                             </AppBarButton.Icon>
                         </AppBarButton>
@@ -203,6 +221,8 @@
                                       Command="{Binding GoBack}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
+                                            Height="12"
+                                            Width="12"
                                             UriSource="ms-appx:///Assets/Icons/close.png" />
                             </AppBarButton.Icon>
                         </AppBarButton>
@@ -315,7 +335,11 @@
                                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                     <VisualStateManager.VisualStateGroups>
                                                         <VisualStateGroup>
-                                                            <VisualState x:Name="Narrow" />
+                                                            <VisualState x:Name="Narrow">
+                                                                <win:VisualState.StateTriggers>
+                                                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                                                </win:VisualState.StateTriggers>
+                                                            </VisualState>
                                                             <VisualState x:Name="Wide">
                                                                 <VisualState.StateTriggers>
                                                                     <AdaptiveTrigger MinWindowWidth="800" />
@@ -343,7 +367,11 @@
                                                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                                         <VisualStateManager.VisualStateGroups>
                                                                             <VisualStateGroup>
-                                                                                <VisualState x:Name="Narrow" />
+                                                                                <VisualState x:Name="Narrow">
+                                                                                    <win:VisualState.StateTriggers>
+                                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                    </win:VisualState.StateTriggers>
+                                                                                </VisualState>
                                                                                 <VisualState x:Name="Wide">
                                                                                     <VisualState.StateTriggers>
                                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -371,7 +399,11 @@
                                                                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                                                                             <VisualStateManager.VisualStateGroups>
                                                                                                 <VisualStateGroup>
-                                                                                                    <VisualState x:Name="Narrow" />
+                                                                                                    <VisualState x:Name="Narrow">
+                                                                                                        <win:VisualState.StateTriggers>
+                                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                                        </win:VisualState.StateTriggers>
+                                                                                                    </VisualState>
                                                                                                     <VisualState x:Name="Wide">
                                                                                                         <VisualState.StateTriggers>
                                                                                                             <AdaptiveTrigger MinWindowWidth="800" />
@@ -385,7 +417,9 @@
                                                                                             </VisualStateManager.VisualStateGroups>
                                                                                             <utu:AutoLayout x:Name="ImageLayout"
                                                                                                             utu:AutoLayout.PrimaryLength="110">
-                                                                                                <Image Source="{Binding ImageUrl}"
+                                                                                                <Image utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                       utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                       Source="{Binding ImageUrl}"
                                                                                                        Stretch="UniformToFill" />
                                                                                             </utu:AutoLayout>
                                                                                             <utu:AutoLayout Spacing="2"
@@ -429,7 +463,11 @@
                                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                     <VisualStateManager.VisualStateGroups>
                                                         <VisualStateGroup>
-                                                            <VisualState x:Name="Narrow" />
+                                                            <VisualState x:Name="Narrow">
+                                                                <win:VisualState.StateTriggers>
+                                                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                                                </win:VisualState.StateTriggers>
+                                                            </VisualState>
                                                             <VisualState x:Name="Wide">
                                                                 <VisualState.StateTriggers>
                                                                     <AdaptiveTrigger MinWindowWidth="800" />
@@ -457,7 +495,11 @@
                                                                     <utu:AutoLayout>
                                                                         <VisualStateManager.VisualStateGroups>
                                                                             <VisualStateGroup>
-                                                                                <VisualState x:Name="Narrow" />
+                                                                                <VisualState x:Name="Narrow">
+                                                                                    <win:VisualState.StateTriggers>
+                                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                    </win:VisualState.StateTriggers>
+                                                                                </VisualState>
                                                                                 <VisualState x:Name="Wide">
                                                                                     <VisualState.StateTriggers>
                                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -485,7 +527,11 @@
                                                                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                                                                             <VisualStateManager.VisualStateGroups>
                                                                                                 <VisualStateGroup>
-                                                                                                    <VisualState x:Name="Narrow" />
+                                                                                                    <VisualState x:Name="Narrow">
+                                                                                                        <win:VisualState.StateTriggers>
+                                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                                        </win:VisualState.StateTriggers>
+                                                                                                    </VisualState>
                                                                                                     <VisualState x:Name="Wide">
                                                                                                         <VisualState.StateTriggers>
                                                                                                             <AdaptiveTrigger MinWindowWidth="800" />
@@ -521,25 +567,23 @@
                                                                                                         <Image Source="{Binding CookbookImages.SecondImage}"
                                                                                                                Visibility="{Binding CookbookImages.SecondImage,
                                                                                                                             Converter={StaticResource NullToCollapsed}}"
-                                                                                                               utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                               utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                                                                Stretch="UniformToFill" />
                                                                                                     </utu:AutoLayout>
                                                                                                     <utu:AutoLayout CornerRadius="12"
                                                                                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                                                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
-
-                                                                                                        <Image Source="{Binding CookbookImages.ThirdImage}"
-                                                                                                               Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                        <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
                                                                                                                                     Converter={StaticResource NullToCollapsed}}"
-                                                                                                               utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                               utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                                                               Stretch="UniformToFill" />
-                                                                                                        
+                                                                                                                        utu:AutoLayout.CounterAlignment="Stretch">
+                                                                                                            <Image Source="{Binding CookbookImages.ThirdImage}"
+                                                                                                                   Stretch="UniformToFill" />
+                                                                                                        </utu:AutoLayout>
+                                                                                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                                        utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                        Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                                                    Converter={StaticResource  NullToVisible}}">
                                                                                                             <Button uen:Navigation.Request="CreateUpdateCookbook"
                                                                                                                     uen:Navigation.Data="{Binding ., Mode=TwoWay }"
-                                                                                                                    Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                                                                    Converter={StaticResource  NullToVisible}}"
                                                                                                                     Background="{ThemeResource SurfaceVariantColor}"
                                                                                                                     utu:AutoLayout.CounterAlignment="Stretch"
                                                                                                                     utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -555,7 +599,7 @@
                                                                                                                               Foreground="{ThemeResource PrimaryBrush}" />
                                                                                                                 </um:ControlExtensions.Icon>
                                                                                                             </Button>
-                                                                                                        
+                                                                                                        </utu:AutoLayout>
                                                                                                     </utu:AutoLayout>
                                                                                                 </utu:AutoLayout>
                                                                                             </utu:AutoLayout>

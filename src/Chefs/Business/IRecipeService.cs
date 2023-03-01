@@ -17,14 +17,22 @@ public interface IRecipeService
     ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct);
 
     /// <summary>
-    /// Update recipe review
+    /// Add current user dislike recipe review
     /// </summary>
-    /// <param name="recipeId">id from the recipe</param>
     /// <param name="review">review to update</param>
     /// <param name="ct"></param>
     /// <returns>
     /// </returns>
-    ValueTask UpdateReview(Guid recipeId, Review review, CancellationToken ct);
+    ValueTask DislikeReview(Review review, CancellationToken ct);
+
+    /// <summary>
+    /// Add current user like recipe review
+    /// </summary>
+    /// <param name="review">review to update</param>
+    /// <param name="ct"></param>
+    /// <returns>
+    /// </returns>
+    ValueTask LikeReview(Review review, CancellationToken ct);
 
     /// <summary>
     /// Recipes method

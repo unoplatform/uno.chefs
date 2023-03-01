@@ -36,12 +36,16 @@
                     <utu:AutoLayout Spacing="8"
                                     Orientation="Horizontal">
                         <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                Content="{Binding Likes, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
-                                Command="{Binding Like}"
+                                Content="{Binding Likes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
+                                Command="{Binding DataContext.Like, ElementName=ReviewsFeed}"
+                                CommandParameter="{Binding}"
+                                IsEnabled="{Binding UserLike, Converter={StaticResource InvertBool}}"
                                 utu:AutoLayout.CounterAlignment="Start" />
                         <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                Content="{Binding Dislikes, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
-                                Command="{Binding DisLike}"
+                                Content="{Binding Dislikes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
+                                Command="{Binding DataContext.Dislike, ElementName=ReviewsFeed}"
+                                CommandParameter="{Binding}"
+                                IsEnabled="{Binding UserLike}"
                                 utu:AutoLayout.CounterAlignment="Start" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>

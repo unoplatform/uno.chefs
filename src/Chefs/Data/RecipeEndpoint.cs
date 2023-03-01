@@ -82,7 +82,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         var recipe = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
 
-        if(recipe is not null)
+        if (recipe is not null)
         {
             reviewData.PublisherName = currentUser.FullName;
             reviewData.UrlAuthorImage = currentUser.UrlProfileImage;
@@ -98,7 +98,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         }
     }
 
-    public async ValueTask UpdateReview(ReviewData reviewData, CancellationToken ct)
+    public async ValueTask DislikeReview(ReviewData reviewData, CancellationToken ct)
     {
         var currentUser = await _userEndpoint.GetCurrent(ct);
 
@@ -108,8 +108,28 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         if (recipe is not null)
         {
-            var review = recipe.Reviews?.Where(r => r.Id == reviewData.Id).FirstOrDefault();
-            review = reviewData;
+            int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
+            if (reviewIndex != -1)
+            {
+                UserData user = new UserData()
+                {
+                    Id = currentUser.Id,
+                    UrlProfileImage = currentUser.UrlProfileImage,
+                    FullName = currentUser.FullName,
+                    Description = currentUser.Description,
+                    Email = currentUser.Email,
+                    Followers = currentUser.Followers,
+                    Following = currentUser.Following,
+                    Password = currentUser.Password,
+                    IsCurrent = currentUser.IsCurrent,
+                    PhoneNumber = currentUser.PhoneNumber,
+                    Recipes = currentUser.Recipes
+                };
+                recipe.Reviews![reviewIndex].Dislikes?.Add(user);
+                recipe.Reviews![reviewIndex].UserLike = false;
+                UserData? likeUserReview = recipe.Reviews![reviewIndex].Likes?.Find(u => u.Id == user.Id);
+                if (likeUserReview != null) recipe.Reviews![reviewIndex].Likes?.Remove(likeUserReview);
+            }
         }
         else
         {
@@ -117,8 +137,47 @@ public class RecipeEndpoint : IRecipeEndpoint
         }
     }
 
-    //Implementation to update saved recipes in memory 
-    private async ValueTask<IList<RecipeData>> Load()
+    public async ValueTask LikeReview(ReviewData reviewData, CancellationToken ct)
+    {
+        var currentUser = await _userEndpoint.GetCurrent(ct);
+
+        var recipes = await Load();
+
+        var recipe = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
+
+        if (recipe is not null)
+        {
+            int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
+            if (reviewIndex != -1)
+            {
+                UserData user = new UserData()
+                {
+                    Id = currentUser.Id,
+                    UrlProfileImage = currentUser.UrlProfileImage,
+                    FullName = currentUser.FullName,
+                    Description = currentUser.Description,
+                    Email = currentUser.Email,
+                    Followers = currentUser.Followers,
+                    Following = currentUser.Following,
+                    Password = currentUser.Password,
+                    IsCurrent = currentUser.IsCurrent,
+                    PhoneNumber = currentUser.PhoneNumber,
+                    Recipes = currentUser.Recipes
+                };
+                recipe.Reviews![reviewIndex].Likes?.Add(user);
+                recipe.Reviews![reviewIndex].UserLike = true;
+                UserData? likeUserReview = recipe.Reviews![reviewIndex].Dislikes?.Find(u => u.Id == user.Id);
+                if (likeUserReview != null) recipe.Reviews![reviewIndex].Dislikes?.Remove(likeUserReview);
+            }
+            else
+            {
+                throw new Exception();
+            }
+        }
+    }
+
+        //Implementation to update saved recipes in memory 
+        private async ValueTask<IList<RecipeData>> Load()
     {
         if(_recipes == null)
         {
@@ -126,7 +185,9 @@ public class RecipeEndpoint : IRecipeEndpoint
                 .ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
             var saved = await GetSaved(CancellationToken.None);
 
+            var currentUser = await _userEndpoint.GetCurrent(CancellationToken.None);
             _recipes?.ForEach(x => x.Save = saved.Contains(x));
+            _recipes?.ForEach(x => x.Reviews?.ForEach(r => r.UserLike = r.Likes?.Where(l => l.Id == currentUser.Id).FirstOrDefault() != null));
         }
 
         return _recipes ?? new List<RecipeData>();
