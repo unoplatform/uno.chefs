@@ -1,4 +1,5 @@
-﻿using Chefs.Data;
+﻿using System.Collections.Immutable;
+using Chefs.Data;
 
 namespace Chefs.Business;
 
@@ -11,10 +12,15 @@ public partial record Review
         CreatedBy = reviewData.CreatedBy; 
         PublisherName = reviewData.PublisherName;
         Date = reviewData.Date;
-        Likes = reviewData.Likes;
-        Dislikes = reviewData.Dislikes;
+        Likes = reviewData.Likes!.Select(r => new User(r))
+            .ToImmutableList() 
+            ?? ImmutableList<User>.Empty;
+        Dislikes = reviewData.Dislikes!.Select(r => new User(r))
+            .ToImmutableList()
+            ?? ImmutableList<User>.Empty;
         Description = reviewData.Description;
         UrlAuthorImage = reviewData.UrlAuthorImage;
+        UserLike = reviewData.UserLike;
     }
 
     public Review(Guid recipeId, string text)
@@ -31,19 +37,24 @@ public partial record Review
     public string? PublisherName { get; init; }
     public DateTime Date { get; init; }
     public string? Description { get; init; }
-    public int Likes { get; init; }
-    public int Dislikes { get; init; }
+    public ImmutableList<User>? Likes { get; init; }
+    public ImmutableList<User>? Dislikes { get; init; }
+    public bool UserLike { get; init; }
 
     internal ReviewData ToData() => new()
     {
         Id = Id,
         RecipeId = RecipeId,
         CreatedBy = CreatedBy, 
+        PublisherName = PublisherName,
         Date = Date,
-        Likes = Likes,
-        Dislikes = Dislikes,
+        Likes = Likes?.Select(l => l.ToData())
+            .ToList(),
+        Dislikes = Dislikes?.Select(d => d.ToData())
+            .ToList(),
         Description = Description,
         UrlAuthorImage = UrlAuthorImage,
+        UserLike = UserLike,
     };
 }
 
