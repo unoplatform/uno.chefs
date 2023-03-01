@@ -21,7 +21,9 @@ public partial class ReviewsModel
         _recipeId = reviewParameter.recipeId;
         _messenger = messenger;
 
-        Reviews = ListState.Value(this, () => reviewParameter.reviews);
+        Reviews = ListState.Value(this, () => reviewParameter.reviews);     
+        _messenger = messenger;
+        messenger.Observe(Reviews, x => x.Id);
     }
 
     public IListState<Review> Reviews { get; }
@@ -30,14 +32,14 @@ public partial class ReviewsModel
 
     public async ValueTask Like(Review review, CancellationToken ct)
     {
-        var reviews = await _recipeService.LikeReview(review, ct);
-        await Reviews.Update(_ => reviews, ct);
+        var reviewUpdated = await _recipeService.LikeReview(review, ct);
+        _messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
     }
 
     public async ValueTask Dislike(Review review, CancellationToken ct)
     {
-        var reviews = await _recipeService.DislikeReview(review, ct);
-        await Reviews.Update(_ => reviews, ct);
+        var reviewUpdated = await _recipeService.DislikeReview(review, ct);
+        _messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
     }
 
     public ICommand AddReview => Command.Create(b => b.Given(Comment).When(CanComment).Then(Review));

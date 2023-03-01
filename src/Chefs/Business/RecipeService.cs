@@ -1,4 +1,5 @@
 ﻿using Chefs.Data;
+using CommunityToolkit.Mvvm.Messaging;
 using System.Collections.Immutable;
 using Uno.Extensions.Configuration;
 
@@ -8,11 +9,12 @@ public class RecipeService : IRecipeService
 {
     private readonly IRecipeEndpoint _recipeEndpoint;
     private readonly IWritableOptions<SearchHistory> _searchOptions;
+    private readonly IMessenger _messenger;
     private Signal _refreshRecipes = new();
     private int lastTextLength = 0;
 
-    public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory) 
-        => (_recipeEndpoint, _searchOptions) = (recipeEndpoint, searchHistory);
+    public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory, IMessenger messenger) 
+        => (_recipeEndpoint, _searchOptions, _messenger) = (recipeEndpoint, searchHistory, messenger);
 
     public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct) 
         => (await _recipeEndpoint.GetAll(ct))
@@ -110,13 +112,11 @@ public class RecipeService : IRecipeService
         _refreshRecipes.Raise();
     }
 
-    public async ValueTask<IImmutableList<Review>> LikeReview(Review review, CancellationToken ct)
-        => (await _recipeEndpoint.LikeReview(review.ToData(), ct)).Select(r => new Review(r))
-             .ToImmutableList();
+    public async ValueTask<Review> LikeReview(Review review, CancellationToken ct)
+        => new(await _recipeEndpoint.LikeReview(review.ToData(), ct));
 
-    public async ValueTask<IImmutableList<Review>> DislikeReview(Review review, CancellationToken ct)
-        => (await _recipeEndpoint.DislikeReview(review.ToData(), ct)).Select(r => new Review(r))
-             .ToImmutableList();
+    public async ValueTask<Review> DislikeReview(Review review, CancellationToken ct)
+        => new(await _recipeEndpoint.DislikeReview(review.ToData(), ct));
 
     public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct) 
 	    => (await _recipeEndpoint.GetAll(ct))
