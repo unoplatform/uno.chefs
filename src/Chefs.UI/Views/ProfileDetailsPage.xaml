@@ -139,7 +139,7 @@
                         <Setter Target="MainLayout.CornerRadius"
                                 Value="0,40,40,0" />
                         <Setter Target="MainLayout.Width"
-                                Value="520" />
+                                Value="632" />
                         <Setter Target="TabletNavBar.Visibility"
                                 Value="Visible" />
                         <Setter Target="PhoneNavBar.Visibility"
@@ -310,351 +310,361 @@
                                 uen:Region.Name="Cookbooks"
                                 Content="Cookbooks" />
             </utu:TabBar>
-            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout x:Name="TabsLayout"
-                                Padding="18,0"
-                                utu:AutoLayout.CounterAlignment="Center">
-                    <utu:AutoLayout Spacing="18"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    uen:Region.Attached="True">
-                        <Grid uen:Region.Attached="True"
-                              uen:Region.Navigator="Visibility"
-                              utu:AutoLayout.PrimaryAlignment="Stretch"
-                              utu:AutoLayout.CounterAlignment="Stretch">
-                            <utu:AutoLayout uen:Region.Name="MyRecipes"
-                                            Visibility="Visible"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                                            utu:AutoLayout.CounterAlignment="Stretch">
-                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
-                                    <uer:FeedView Source="{Binding Recipes}"
-                                                  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
-                                                  utu:AutoLayout.CounterAlignment="Center"
-                                                  Style="{StaticResource DefaultFeedViewStyle}">
-                                        <DataTemplate>
-                                            <UserControl>
-                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
-                                                    <VisualStateManager.VisualStateGroups>
-                                                        <VisualStateGroup>
-                                                            <VisualState x:Name="Narrow">
-                                                                <win:VisualState.StateTriggers>
-                                                                    <AdaptiveTrigger MinWindowWidth="0" />
-                                                                </win:VisualState.StateTriggers>
-                                                            </VisualState>
-                                                            <VisualState x:Name="Wide">
-                                                                <VisualState.StateTriggers>
-                                                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                                                </VisualState.StateTriggers>
-                                                                <VisualState.Setters>
-                                                                    <Setter Target="RecipeUniformGrid.MinItemWidth"
-                                                                            Value="200" />
-                                                                </VisualState.Setters>
-                                                            </VisualState>
-                                                        </VisualStateGroup>
-                                                    </VisualStateManager.VisualStateGroups>
-                                                    <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                        uen:Navigation.Request="-">
-                                                        <muxc:ItemsRepeater.Layout>
-                                                            <muxc:UniformGridLayout x:Name="RecipeUniformGrid"
-                                                                                    MaximumRowsOrColumns="2"
-                                                                                    MinItemWidth="155"
-                                                                                    MinColumnSpacing="10"
-                                                                                    MinRowSpacing="10"
-                                                                                    ItemsStretch="Fill" />
-                                                        </muxc:ItemsRepeater.Layout>
-                                                        <muxc:ItemsRepeater.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <UserControl>
-                                                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
-                                                                        <VisualStateManager.VisualStateGroups>
-                                                                            <VisualStateGroup>
-                                                                                <VisualState x:Name="Narrow">
-                                                                                    <win:VisualState.StateTriggers>
-                                                                                        <AdaptiveTrigger MinWindowWidth="0" />
-                                                                                    </win:VisualState.StateTriggers>
-                                                                                </VisualState>
-                                                                                <VisualState x:Name="Wide">
-                                                                                    <VisualState.StateTriggers>
-                                                                                        <AdaptiveTrigger MinWindowWidth="800" />
-                                                                                    </VisualState.StateTriggers>
-                                                                                    <VisualState.Setters>
-                                                                                        <Setter Target="RecipeTemplateCard.MaxWidth"
-                                                                                                Value="400" />
-                                                                                    </VisualState.Setters>
-                                                                                </VisualState>
-                                                                            </VisualStateGroup>
-                                                                        </VisualStateManager.VisualStateGroups>
-                                                                        <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
-                                                                        <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
-                                                                        <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
-                                                                        <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
-                                                                                                              Style="{StaticResource FilledCardContentControlStyle}"
-                                                                                                              Background="{ThemeResource SurfaceBrush}"
-                                                                                                              HorizontalAlignment="Stretch"
-                                                                                                              VerticalAlignment="Stretch"
-                                                                                                              MinHeight="0"
-                                                                                                              MaxWidth="400">
-                                                                            <controls:FixedSizeCardContentControl.ContentTemplate>
-                                                                                <DataTemplate>
-                                                                                    <UserControl>
-                                                                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-                                                                                            <VisualStateManager.VisualStateGroups>
-                                                                                                <VisualStateGroup>
-                                                                                                    <VisualState x:Name="Narrow">
-                                                                                                        <win:VisualState.StateTriggers>
-                                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
-                                                                                                        </win:VisualState.StateTriggers>
-                                                                                                    </VisualState>
-                                                                                                    <VisualState x:Name="Wide">
-                                                                                                        <VisualState.StateTriggers>
-                                                                                                            <AdaptiveTrigger MinWindowWidth="800" />
-                                                                                                        </VisualState.StateTriggers>
-                                                                                                        <VisualState.Setters>
-                                                                                                            <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
-                                                                                                                    Value="180" />
-                                                                                                        </VisualState.Setters>
-                                                                                                    </VisualState>
-                                                                                                </VisualStateGroup>
-                                                                                            </VisualStateManager.VisualStateGroups>
-                                                                                            <utu:AutoLayout x:Name="ImageLayout"
-                                                                                                            utu:AutoLayout.PrimaryLength="110">
-                                                                                                <Image utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                                                       Source="{Binding ImageUrl}"
-                                                                                                       Stretch="UniformToFill" />
-                                                                                            </utu:AutoLayout>
-                                                                                            <utu:AutoLayout Spacing="2"
-                                                                                                            Padding="10"
-                                                                                                            PrimaryAxisAlignment="Center">
-                                                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                                                           TextWrapping="NoWrap"
-                                                                                                           Text="{Binding Name}"
-                                                                                                           Style="{StaticResource TitleMedium}" />
-                                                                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                                                                           TextWrapping="NoWrap"
-                                                                                                           Text="{Binding TimeCal}"
-                                                                                                           Style="{StaticResource BodySmall}" />
-                                                                                            </utu:AutoLayout>
-                                                                                        </utu:AutoLayout>
-                                                                                    </UserControl>
-                                                                                </DataTemplate>
-                                                                            </controls:FixedSizeCardContentControl.ContentTemplate>
-                                                                        </controls:FixedSizeCardContentControl>
-                                                                    </utu:AutoLayout>
-                                                                </UserControl>
-                                                            </DataTemplate>
-                                                        </muxc:ItemsRepeater.ItemTemplate>
-                                                    </muxc:ItemsRepeater>
-                                                </utu:AutoLayout>
-                                            </UserControl>
-                                        </DataTemplate>
-                                    </uer:FeedView>
-                                </utu:AutoLayout>
-                            </utu:AutoLayout>
-                            <utu:AutoLayout uen:Region.Name="Cookbooks"
-                                            Visibility="Collapsed"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                utu:AutoLayout.CounterAlignment="Stretch">
-                                    <uer:FeedView Source="{Binding Cookbooks}"
-                                                  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
-                                                  utu:AutoLayout.CounterAlignment="Center">
-                                        <DataTemplate>
-                                            <UserControl>
-                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
-                                                    <VisualStateManager.VisualStateGroups>
-                                                        <VisualStateGroup>
-                                                            <VisualState x:Name="Narrow">
-                                                                <win:VisualState.StateTriggers>
-                                                                    <AdaptiveTrigger MinWindowWidth="0" />
-                                                                </win:VisualState.StateTriggers>
-                                                            </VisualState>
-                                                            <VisualState x:Name="Wide">
-                                                                <VisualState.StateTriggers>
-                                                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                                                </VisualState.StateTriggers>
-                                                                <VisualState.Setters>
-                                                                    <Setter Target="CookbookUniformGrid.MinItemWidth"
-                                                                            Value="200" />
-                                                                </VisualState.Setters>
-                                                            </VisualState>
-                                                        </VisualStateGroup>
-                                                    </VisualStateManager.VisualStateGroups>
-                                                    <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                                        uen:Navigation.Request="-">
-                                                        <muxc:ItemsRepeater.Layout>
-                                                            <muxc:UniformGridLayout x:Name="CookbookUniformGrid"
-                                                                                    MaximumRowsOrColumns="2"
-                                                                                    MinItemWidth="155"
-                                                                                    MinColumnSpacing="10"
-                                                                                    MinRowSpacing="10"
-                                                                                    ItemsStretch="Fill" />
-                                                        </muxc:ItemsRepeater.Layout>
-                                                        <muxc:ItemsRepeater.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <UserControl>
-                                                                    <utu:AutoLayout>
-                                                                        <VisualStateManager.VisualStateGroups>
-                                                                            <VisualStateGroup>
-                                                                                <VisualState x:Name="Narrow">
-                                                                                    <win:VisualState.StateTriggers>
-                                                                                        <AdaptiveTrigger MinWindowWidth="0" />
-                                                                                    </win:VisualState.StateTriggers>
-                                                                                </VisualState>
-                                                                                <VisualState x:Name="Wide">
-                                                                                    <VisualState.StateTriggers>
-                                                                                        <AdaptiveTrigger MinWindowWidth="800" />
-                                                                                    </VisualState.StateTriggers>
-                                                                                    <VisualState.Setters>
-                                                                                        <Setter Target="CookbookTemplateCard.MaxWidth"
-                                                                                                Value="400" />
-                                                                                    </VisualState.Setters>
-                                                                                </VisualState>
-                                                                            </VisualStateGroup>
-                                                                        </VisualStateManager.VisualStateGroups>
-                                                                        <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
-                                                                        <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
-                                                                        <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
-                                                                        <controls:FixedSizeCardContentControl x:Name="CookbookTemplateCard"
-                                                                                                              HorizontalAlignment="Stretch"
-                                                                                                              VerticalAlignment="Stretch"
-                                                                                                              MinHeight="0"
-                                                                                                              MaxWidth="400"
-                                                                                                              Style="{StaticResource FilledCardContentControlStyle}"
-                                                                                                              Background="{ThemeResource BackgroundBrush}">
-                                                                            <controls:FixedSizeCardContentControl.ContentTemplate>
-                                                                                <DataTemplate>
-                                                                                    <UserControl>
-                                                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
-                                                                                            <VisualStateManager.VisualStateGroups>
-                                                                                                <VisualStateGroup>
-                                                                                                    <VisualState x:Name="Narrow">
-                                                                                                        <win:VisualState.StateTriggers>
-                                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
-                                                                                                        </win:VisualState.StateTriggers>
-                                                                                                    </VisualState>
-                                                                                                    <VisualState x:Name="Wide">
-                                                                                                        <VisualState.StateTriggers>
-                                                                                                            <AdaptiveTrigger MinWindowWidth="800" />
-                                                                                                        </VisualState.StateTriggers>
-                                                                                                        <VisualState.Setters>
-                                                                                                            <Setter Target="ImagesLayout.Height"
-                                                                                                                    Value="180" />
-                                                                                                            <Setter Target="ButtonIcon.Margin"
-                                                                                                                    Value="12,5,0,0" />
-                                                                                                        </VisualState.Setters>
-                                                                                                    </VisualState>
-                                                                                                </VisualStateGroup>
-                                                                                            </VisualStateManager.VisualStateGroups>
-                                                                                            <utu:AutoLayout x:Name="ImagesLayout"
-                                                                                                            utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                            Spacing="8"
-                                                                                                            Orientation="Horizontal"
-                                                                                                            Height="122">
-                                                                                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                                                                CornerRadius="12">
-                                                                                                    <Image Source="{Binding CookbookImages.FirstImage}"
-                                                                                                           utu:AutoLayout.CounterAlignment="Stretch"
+            <utu:AutoLayout x:Name="TabsLayout"
+                            Padding="18,0"
+                            utu:AutoLayout.CounterAlignment="Stretch"
+                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                <utu:AutoLayout Spacing="18"
+                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                uen:Region.Attached="True">
+                    <Grid uen:Region.Attached="True"
+                          uen:Region.Navigator="Visibility"
+                          utu:AutoLayout.PrimaryAlignment="Stretch"
+                          utu:AutoLayout.CounterAlignment="Stretch">
+                        <utu:AutoLayout uen:Region.Name="MyRecipes"
+                                        Visibility="Visible"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                                        utu:AutoLayout.CounterAlignment="Stretch">
+                            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                                          HorizontalScrollMode="Disabled"
+                                          VerticalScrollBarVisibility="Hidden">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+                                    <utu:AutoLayout>
+                                        <uer:FeedView Source="{Binding Recipes}"
+                                                      NoneTemplate="{StaticResource RecipeEmptyTemplate}">
+                                            <DataTemplate>
+                                                <UserControl>
+                                                    <utu:AutoLayout>
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup>
+                                                                <VisualState x:Name="Narrow">
+                                                                    <win:VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                    </win:VisualState.StateTriggers>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Wide">
+                                                                    <VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                                                    </VisualState.StateTriggers>
+                                                                    <VisualState.Setters>
+                                                                        <Setter Target="RecipeUniformGrid.MinItemWidth"
+                                                                                Value="200" />
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                        <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                            uen:Navigation.Request="-"
+                                                                            utu:AutoLayout.CounterAlignment="Stretch">
+                                                            <muxc:ItemsRepeater.Layout>
+                                                                <muxc:UniformGridLayout x:Name="RecipeUniformGrid"
+                                                                                        MaximumRowsOrColumns="2"
+                                                                                        MinItemWidth="155"
+                                                                                        MinColumnSpacing="10"
+                                                                                        MinRowSpacing="10"
+                                                                                        ItemsStretch="Fill" />
+                                                            </muxc:ItemsRepeater.Layout>
+                                                            <muxc:ItemsRepeater.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <UserControl>
+                                                                        <utu:AutoLayout>
+                                                                            <VisualStateManager.VisualStateGroups>
+                                                                                <VisualStateGroup>
+                                                                                    <VisualState x:Name="Narrow">
+                                                                                        <win:VisualState.StateTriggers>
+                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                        </win:VisualState.StateTriggers>
+                                                                                    </VisualState>
+                                                                                    <VisualState x:Name="Wide">
+                                                                                        <VisualState.StateTriggers>
+                                                                                            <AdaptiveTrigger MinWindowWidth="800" />
+                                                                                        </VisualState.StateTriggers>
+                                                                                        <VisualState.Setters>
+                                                                                            <Setter Target="RecipeTemplateCard.MaxWidth"
+                                                                                                    Value="400" />
+                                                                                        </VisualState.Setters>
+                                                                                    </VisualState>
+                                                                                </VisualStateGroup>
+                                                                            </VisualStateManager.VisualStateGroups>
+                                                                            <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                                                                            <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                                                                            <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                                                                            <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
+                                                                                                                  Style="{StaticResource FilledCardContentControlStyle}"
+                                                                                                                  Background="{ThemeResource SurfaceBrush}"
+                                                                                                                  HorizontalAlignment="Stretch"
+                                                                                                                  VerticalAlignment="Stretch"
+                                                                                                                  MinHeight="0"
+                                                                                                                  MaxWidth="400">
+                                                                                <controls:FixedSizeCardContentControl.ContentTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <UserControl>
+                                                                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
+                                                                                                <VisualStateManager.VisualStateGroups>
+                                                                                                    <VisualStateGroup>
+                                                                                                        <VisualState x:Name="Narrow">
+                                                                                                            <win:VisualState.StateTriggers>
+                                                                                                                <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                                            </win:VisualState.StateTriggers>
+                                                                                                        </VisualState>
+                                                                                                        <VisualState x:Name="Wide">
+                                                                                                            <VisualState.StateTriggers>
+                                                                                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                                                                                            </VisualState.StateTriggers>
+                                                                                                            <VisualState.Setters>
+                                                                                                                <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                                                                                        Value="180" />
+                                                                                                            </VisualState.Setters>
+                                                                                                        </VisualState>
+                                                                                                    </VisualStateGroup>
+                                                                                                </VisualStateManager.VisualStateGroups>
+                                                                                                <utu:AutoLayout x:Name="ImageLayout"
+                                                                                                                utu:AutoLayout.PrimaryLength="110">
+                                                                                                    <Image utu:AutoLayout.CounterAlignment="Stretch"
                                                                                                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                           Source="{Binding ImageUrl}"
                                                                                                            Stretch="UniformToFill" />
                                                                                                 </utu:AutoLayout>
-                                                                                                <utu:AutoLayout Spacing="8"
-                                                                                                                utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                                                                utu:AutoLayout.CounterAlignment="Stretch">
-                                                                                                    <utu:AutoLayout CornerRadius="12"
-                                                                                                                    Background="{ThemeResource SurfaceVariantColor}"
-                                                                                                                    utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                                                        <Image Source="{Binding CookbookImages.SecondImage}"
-                                                                                                               Visibility="{Binding CookbookImages.SecondImage,
-                                                                                                                            Converter={StaticResource NullToCollapsed}}"
+                                                                                                <utu:AutoLayout Spacing="2"
+                                                                                                                Padding="10"
+                                                                                                                PrimaryAxisAlignment="Center">
+                                                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                                                               TextWrapping="NoWrap"
+                                                                                                               Text="{Binding Name}"
+                                                                                                               Style="{StaticResource TitleMedium}" />
+                                                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                                                               TextWrapping="NoWrap"
+                                                                                                               Text="{Binding TimeCal}"
+                                                                                                               Style="{StaticResource BodySmall}" />
+
+                                                                                                </utu:AutoLayout>
+                                                                                            </utu:AutoLayout>
+                                                                                        </UserControl>
+                                                                                    </DataTemplate>
+                                                                                </controls:FixedSizeCardContentControl.ContentTemplate>
+                                                                            </controls:FixedSizeCardContentControl>
+                                                                        </utu:AutoLayout>
+                                                                    </UserControl>
+                                                                </DataTemplate>
+                                                            </muxc:ItemsRepeater.ItemTemplate>
+                                                        </muxc:ItemsRepeater>
+                                                    </utu:AutoLayout>
+                                                </UserControl>
+                                            </DataTemplate>
+                                        </uer:FeedView>
+                                    </utu:AutoLayout>
+                                </utu:AutoLayout>
+                            </ScrollViewer>
+                        </utu:AutoLayout>
+                        <utu:AutoLayout uen:Region.Name="Cookbooks"
+                                        Visibility="Collapsed"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                                        utu:AutoLayout.CounterAlignment="Stretch">
+                            <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+                                          HorizontalScrollMode="Disabled"
+                                          VerticalScrollBarVisibility="Hidden">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+                                    <utu:AutoLayout>
+                                        <uer:FeedView Source="{Binding Cookbooks}"
+                                                      NoneTemplate="{StaticResource CookbookEmptyTemplate}">
+                                            <DataTemplate>
+                                                <UserControl>
+                                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup>
+                                                                <VisualState x:Name="Narrow">
+                                                                    <win:VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                    </win:VisualState.StateTriggers>
+                                                                </VisualState>
+                                                                <VisualState x:Name="Wide">
+                                                                    <VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                                                    </VisualState.StateTriggers>
+                                                                    <VisualState.Setters>
+                                                                        <Setter Target="CookbookUniformGrid.MinItemWidth"
+                                                                                Value="200" />
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+                                                        <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                                                                            uen:Navigation.Request="-">
+                                                            <muxc:ItemsRepeater.Layout>
+                                                                <muxc:UniformGridLayout x:Name="CookbookUniformGrid"
+                                                                                        MaximumRowsOrColumns="2"
+                                                                                        MinItemWidth="155"
+                                                                                        MinColumnSpacing="10"
+                                                                                        MinRowSpacing="10"
+                                                                                        ItemsStretch="Fill" />
+                                                            </muxc:ItemsRepeater.Layout>
+                                                            <muxc:ItemsRepeater.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <UserControl>
+                                                                        <utu:AutoLayout>
+                                                                            <VisualStateManager.VisualStateGroups>
+                                                                                <VisualStateGroup>
+                                                                                    <VisualState x:Name="Narrow">
+                                                                                        <win:VisualState.StateTriggers>
+                                                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                        </win:VisualState.StateTriggers>
+                                                                                    </VisualState>
+                                                                                    <VisualState x:Name="Wide">
+                                                                                        <VisualState.StateTriggers>
+                                                                                            <AdaptiveTrigger MinWindowWidth="800" />
+                                                                                        </VisualState.StateTriggers>
+                                                                                        <VisualState.Setters>
+                                                                                            <Setter Target="CookbookTemplateCard.MaxWidth"
+                                                                                                    Value="400" />
+                                                                                        </VisualState.Setters>
+                                                                                    </VisualState>
+                                                                                </VisualStateGroup>
+                                                                            </VisualStateManager.VisualStateGroups>
+                                                                            <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                                                                            <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                                                                            <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                                                                            <controls:FixedSizeCardContentControl x:Name="CookbookTemplateCard"
+                                                                                                                  HorizontalAlignment="Stretch"
+                                                                                                                  VerticalAlignment="Stretch"
+                                                                                                                  MinHeight="0"
+                                                                                                                  MaxWidth="400"
+                                                                                                                  Style="{StaticResource FilledCardContentControlStyle}"
+                                                                                                                  Background="{ThemeResource BackgroundBrush}">
+                                                                                <controls:FixedSizeCardContentControl.ContentTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <UserControl>
+                                                                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+                                                                                                <VisualStateManager.VisualStateGroups>
+                                                                                                    <VisualStateGroup>
+                                                                                                        <VisualState x:Name="Narrow">
+                                                                                                            <win:VisualState.StateTriggers>
+                                                                                                                <AdaptiveTrigger MinWindowWidth="0" />
+                                                                                                            </win:VisualState.StateTriggers>
+                                                                                                        </VisualState>
+                                                                                                        <VisualState x:Name="Wide">
+                                                                                                            <VisualState.StateTriggers>
+                                                                                                                <AdaptiveTrigger MinWindowWidth="800" />
+                                                                                                            </VisualState.StateTriggers>
+                                                                                                            <VisualState.Setters>
+                                                                                                                <Setter Target="ImagesLayout.Height"
+                                                                                                                        Value="180" />
+                                                                                                                <Setter Target="ButtonIcon.Margin"
+                                                                                                                        Value="12,5,0,0" />
+                                                                                                            </VisualState.Setters>
+                                                                                                        </VisualState>
+                                                                                                    </VisualStateGroup>
+                                                                                                </VisualStateManager.VisualStateGroups>
+                                                                                                <utu:AutoLayout x:Name="ImagesLayout"
+                                                                                                                utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                Spacing="8"
+                                                                                                                Orientation="Horizontal"
+                                                                                                                Height="122">
+                                                                                                    <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                                    CornerRadius="12">
+                                                                                                        <Image Source="{Binding CookbookImages.FirstImage}"
+                                                                                                               utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                               utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                                                                Stretch="UniformToFill" />
                                                                                                     </utu:AutoLayout>
-                                                                                                    <utu:AutoLayout CornerRadius="12"
-                                                                                                                    utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                                                        <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                                                                    Converter={StaticResource NullToCollapsed}}"
-                                                                                                                        utu:AutoLayout.CounterAlignment="Stretch">
-                                                                                                            <Image Source="{Binding CookbookImages.ThirdImage}"
+                                                                                                    <utu:AutoLayout Spacing="8"
+                                                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                                    utu:AutoLayout.CounterAlignment="Stretch">
+                                                                                                        <utu:AutoLayout CornerRadius="12"
+                                                                                                                        Background="{ThemeResource SurfaceVariantColor}"
+                                                                                                                        utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                                                            <Image Source="{Binding CookbookImages.SecondImage}"
+                                                                                                                   Visibility="{Binding CookbookImages.SecondImage,
+                                                                                                                            Converter={StaticResource NullToCollapsed}}"
                                                                                                                    Stretch="UniformToFill" />
                                                                                                         </utu:AutoLayout>
-                                                                                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                        <utu:AutoLayout CornerRadius="12"
                                                                                                                         utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                                        Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                                                            <utu:AutoLayout Visibility="{Binding CookbookImages.ThirdImage,
+                                                                                                                                    Converter={StaticResource NullToCollapsed}}"
+                                                                                                                            utu:AutoLayout.CounterAlignment="Stretch">
+                                                                                                                <Image Source="{Binding CookbookImages.ThirdImage}"
+                                                                                                                       Stretch="UniformToFill" />
+                                                                                                            </utu:AutoLayout>
+                                                                                                            <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                                            utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                            Visibility="{Binding CookbookImages.ThirdImage,
                                                                                                                                     Converter={StaticResource  NullToVisible}}">
-                                                                                                            <Button uen:Navigation.Request="CreateUpdateCookbook"
-                                                                                                                    uen:Navigation.Data="{Binding ., Mode=TwoWay }"
-                                                                                                                    Background="{ThemeResource SurfaceVariantColor}"
-                                                                                                                    utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                                                                    HorizontalAlignment="Stretch"
-                                                                                                                    CornerRadius="12"
-                                                                                                                    Style="{StaticResource ElevatedButtonStyle}"
-                                                                                                                    MinHeight="57">
-                                                                                                                <um:ControlExtensions.Icon>
-                                                                                                                    <PathIcon x:Name="ButtonIcon"
-                                                                                                                              Margin="9,1,0,0"
-                                                                                                                              utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                                              Data="{StaticResource Icon_Add}"
-                                                                                                                              Foreground="{ThemeResource PrimaryBrush}" />
-                                                                                                                </um:ControlExtensions.Icon>
-                                                                                                            </Button>
+                                                                                                                <Button uen:Navigation.Request="CreateUpdateCookbook"
+                                                                                                                        uen:Navigation.Data="{Binding ., Mode=TwoWay }"
+                                                                                                                        Background="{ThemeResource SurfaceVariantColor}"
+                                                                                                                        utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                                                                        HorizontalAlignment="Stretch"
+                                                                                                                        CornerRadius="12"
+                                                                                                                        Style="{StaticResource ElevatedButtonStyle}"
+                                                                                                                        MinHeight="57">
+                                                                                                                    <um:ControlExtensions.Icon>
+                                                                                                                        <PathIcon x:Name="ButtonIcon"
+                                                                                                                                  Margin="9,1,0,0"
+                                                                                                                                  utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                                  Data="{StaticResource Icon_Add}"
+                                                                                                                                  Foreground="{ThemeResource PrimaryBrush}" />
+                                                                                                                    </um:ControlExtensions.Icon>
+                                                                                                                </Button>
+                                                                                                            </utu:AutoLayout>
                                                                                                         </utu:AutoLayout>
                                                                                                     </utu:AutoLayout>
                                                                                                 </utu:AutoLayout>
-                                                                                            </utu:AutoLayout>
-                                                                                            <utu:AutoLayout Spacing="2"
-                                                                                                            Padding="10"
-                                                                                                            PrimaryAxisAlignment="Center">
-                                                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                                                           TextWrapping="NoWrap"
-                                                                                                           Text="{Binding Name}"
-                                                                                                           Style="{StaticResource TitleMedium}" />
-                                                                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                                                                           TextWrapping="NoWrap"
-                                                                                                           Text="{Binding PinsNumber, 
+                                                                                                <utu:AutoLayout Spacing="2"
+                                                                                                                Padding="10"
+                                                                                                                PrimaryAxisAlignment="Center">
+                                                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                                                               TextWrapping="NoWrap"
+                                                                                                               Text="{Binding Name}"
+                                                                                                               Style="{StaticResource TitleMedium}" />
+                                                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                                                               TextWrapping="NoWrap"
+                                                                                                               Text="{Binding PinsNumber, 
                                                                                                                 Converter={StaticResource StringFormatter}, 
                                                                                                                 ConverterParameter='{}{0} pins'}"
-                                                                                                           Style="{StaticResource BodySmall}" />
+                                                                                                               Style="{StaticResource BodySmall}" />
+                                                                                                </utu:AutoLayout>
                                                                                             </utu:AutoLayout>
-                                                                                        </utu:AutoLayout>
-                                                                                    </UserControl>
-                                                                                </DataTemplate>
-                                                                            </controls:FixedSizeCardContentControl.ContentTemplate>
-                                                                        </controls:FixedSizeCardContentControl>
-                                                                    </utu:AutoLayout>
-                                                                </UserControl>
-                                                            </DataTemplate>
-                                                        </muxc:ItemsRepeater.ItemTemplate>
-                                                    </muxc:ItemsRepeater>
-                                                </utu:AutoLayout>
-                                            </UserControl>
-                                        </DataTemplate>
-                                    </uer:FeedView>
+                                                                                        </UserControl>
+                                                                                    </DataTemplate>
+                                                                                </controls:FixedSizeCardContentControl.ContentTemplate>
+                                                                            </controls:FixedSizeCardContentControl>
+                                                                        </utu:AutoLayout>
+                                                                    </UserControl>
+                                                                </DataTemplate>
+                                                            </muxc:ItemsRepeater.ItemTemplate>
+                                                        </muxc:ItemsRepeater>
+                                                    </utu:AutoLayout>
+                                                </UserControl>
+                                            </DataTemplate>
+                                        </uer:FeedView>
+                                    </utu:AutoLayout>
                                 </utu:AutoLayout>
-
-                                <utu:AutoLayout x:Name="AddButtonLayout"
-                                                PrimaryAxisAlignment="End"
-                                                Orientation="Horizontal"
-                                                utu:AutoLayout.IsIndependentLayout="True"
-                                                VerticalAlignment="Bottom"
-                                                HorizontalAlignment="Right"
-                                                Margin="0,18">
-                                    <Button uen:Navigation.Request="!ModalCreateCookbook"
-                                            utu:AutoLayout.CounterAlignment="End"
-                                            CornerRadius="60"
-                                            Style="{StaticResource FabStyle}">
-                                        <um:ControlExtensions.Icon>
-                                            <PathIcon Data="{StaticResource Icon_Add}"
-                                                      Foreground="{ThemeResource SurfaceBrush}" />
-                                        </um:ControlExtensions.Icon>
-                                    </Button>
-                                </utu:AutoLayout>
+                            </ScrollViewer>
+                            <utu:AutoLayout x:Name="AddButtonLayout"
+                                            PrimaryAxisAlignment="End"
+                                            Orientation="Horizontal"
+                                            utu:AutoLayout.IsIndependentLayout="True"
+                                            VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Right"
+                                            Margin="0,18">
+                                <Button uen:Navigation.Request="!ModalCreateCookbook"
+                                        utu:AutoLayout.CounterAlignment="End"
+                                        CornerRadius="60"
+                                        Style="{StaticResource FabStyle}">
+                                    <um:ControlExtensions.Icon>
+                                        <PathIcon Data="{StaticResource Icon_Add}"
+                                                  Foreground="{ThemeResource SurfaceBrush}" />
+                                    </um:ControlExtensions.Icon>
+                                </Button>
                             </utu:AutoLayout>
-                        </Grid>
-                    </utu:AutoLayout>
+                        </utu:AutoLayout>
+                    </Grid>
                 </utu:AutoLayout>
-            </ScrollViewer>
+            </utu:AutoLayout>
+
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>

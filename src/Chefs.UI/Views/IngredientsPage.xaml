@@ -20,6 +20,9 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
+                    <win:VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </win:VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="ImageScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
@@ -54,9 +57,6 @@
                                 Value="20,0" />
                         <Setter Target="MainScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
-                        <Setter Target="ButtonLayout.Margin"
-                                Value="0,0,0,12" />
-
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -187,7 +187,8 @@
                                            Style="{StaticResource HeadlineMedium}" />
                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                                     <ListView ItemsSource="{Binding Steps}"
-                                              Style="{StaticResource ListViewStyle}">
+                                              Style="{StaticResource ListViewStyle}"
+                                              SelectionMode="None">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -243,40 +244,45 @@
                                            Style="{StaticResource BodySmall}" />
                             </utu:AutoLayout>
                         </utu:AutoLayout>
-                        <ScrollViewer HorizontalScrollMode="Disabled"
-                                      VerticalScrollBarVisibility="Hidden"
-                                      utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <utu:AutoLayout Margin="18,0,18,18"
-                                            Spacing="28">
-                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                        ItemsSource="{Binding Ingredients}">
-                                        <muxc:ItemsRepeater.Layout>
-                                            <muxc:StackLayout Orientation="Vertical" />
-                                        </muxc:ItemsRepeater.Layout>
-                                        <muxc:ItemsRepeater.ItemTemplate>
-                                            <DataTemplate>
-                                                <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                    <CheckBox Content="{Binding NameQuantity}"
-                                                              utu:AutoLayout.CounterAlignment="Start"
-                                                              Height="54" />
-                                                    <utu:Divider Foreground="#E8EEF7"
-                                                                 utu:AutoLayout.CounterAlignment="Stretch"
-                                                                 Style="{StaticResource DividerStyle}" />
-                                                </utu:AutoLayout>
-                                            </DataTemplate>
-                                        </muxc:ItemsRepeater.ItemTemplate>
-                                    </muxc:ItemsRepeater>
-                                </utu:AutoLayout>
+                        <utu:AutoLayout>
+                            <ScrollViewer HorizontalScrollMode="Disabled"
+                                          VerticalScrollBarVisibility="Hidden"
+                                          utu:AutoLayout.PrimaryAlignment="Stretch">
+                                <utu:AutoLayout Margin="18,0,18,18"
+                                                Spacing="28"
+                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <utu:AutoLayout>
+                                        <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                            ItemsSource="{Binding Ingredients}">
+                                            <muxc:ItemsRepeater.Layout>
+                                                <muxc:StackLayout Orientation="Vertical" />
+                                            </muxc:ItemsRepeater.Layout>
+                                            <muxc:ItemsRepeater.ItemTemplate>
+                                                <DataTemplate>
+                                                    <utu:AutoLayout PrimaryAxisAlignment="Center">
+                                                        <CheckBox Content="{Binding NameQuantity}"
+                                                                  utu:AutoLayout.CounterAlignment="Start"
+                                                                  Height="54" />
+                                                        <utu:Divider Foreground="#E8EEF7"
+                                                                     utu:AutoLayout.CounterAlignment="Stretch"
+                                                                     Style="{StaticResource DividerStyle}" />
+                                                    </utu:AutoLayout>
+                                                </DataTemplate>
+                                            </muxc:ItemsRepeater.ItemTemplate>
+                                        </muxc:ItemsRepeater>
+                                    </utu:AutoLayout>
 
-                                <utu:AutoLayout x:Name="ButtonLayout">
-                                    <Button Background="{ThemeResource PrimaryBrush}"
-                                            Content="Done!"
-                                            utu:AutoLayout.PrimaryLength="56"
-                                            uen:Navigation.Request="-" />
+
                                 </utu:AutoLayout>
+                            </ScrollViewer>
+                            <utu:AutoLayout x:Name="ButtonLayout"
+                                            Padding="18">
+                                <Button Background="{ThemeResource PrimaryBrush}"
+                                        Content="Done!"
+                                        utu:AutoLayout.PrimaryLength="56"
+                                        uen:Navigation.Request="-" />
                             </utu:AutoLayout>
-                        </ScrollViewer>
+                        </utu:AutoLayout>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>

@@ -26,7 +26,11 @@
                                     Height="436">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <win:VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </win:VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -70,6 +74,9 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
+                    <win:VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </win:VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="DetailScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
@@ -110,6 +117,8 @@
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
+                        <Setter Target="ImageLayout.Padding"
+                                Value="0,0,0,40" />
                         <Setter Target="TabsLayout.Padding"
                                 Value="20,0,40,40" />
                         <Setter Target="IngredientsButton.(utu:AutoLayout.PrimaryLength)"
@@ -177,7 +186,7 @@
                                         PrimaryAxisAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch"
-                                        Padding="0,0,0,40">
+                                        Padding="0,0,0,8">
                             <utu:AutoLayout x:Name="CreatorLayout"
                                             Spacing="6"
                                             Padding="18,20"
@@ -296,7 +305,7 @@
                     <utu:AutoLayout x:Name="TabsLayout"
                                     uen:Region.Attached="True"
                                     Spacing="16"
-                                    Padding="18,30,18,0"
+                                    Padding="18,18,18,0"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
 
