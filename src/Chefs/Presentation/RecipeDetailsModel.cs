@@ -10,6 +10,7 @@ public partial class RecipeDetailsModel
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
     private readonly IUserService _userService;
+    private readonly IMessenger _messenger;
     private readonly Signal _refresh = new();
 
     public RecipeDetailsModel(Recipe recipe, INavigator navigator, IRecipeService recipeService, IUserService userService, IMessenger messenger)
@@ -19,6 +20,7 @@ public partial class RecipeDetailsModel
         _userService = userService;
 
         Recipe = recipe;
+        _messenger = messenger;
         messenger.Observe(Reviews, x => x.Id);
     }
 
@@ -30,14 +32,14 @@ public partial class RecipeDetailsModel
     
     public async ValueTask Like(Review review, CancellationToken ct)
     {
-        var reviews = await _recipeService.LikeReview(review, ct);
-        await Reviews.Update(_ => reviews, ct);
+        var reviewUpdated = await _recipeService.LikeReview(review, ct);
+        _messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
     }
 
     public async ValueTask Dislike(Review review, CancellationToken ct)
     {
-        var reviews = await _recipeService.DislikeReview(review, ct);
-        await Reviews.Update(_ => reviews, ct);
+        var reviewUpdated = await _recipeService.DislikeReview(review, ct);
+        _messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
     }
 
     public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken ct) =>

@@ -18,7 +18,7 @@ public interface IRecipeEndpoint
 
     ValueTask<IImmutableList<CategoryData>> GetCategories(CancellationToken ct);
 
-    ValueTask<IImmutableList<ReviewData>> LikeReview(ReviewData reviewData, CancellationToken ct);
+    ValueTask<ReviewData> LikeReview(ReviewData reviewData, CancellationToken ct);
 
-    ValueTask<IImmutableList<ReviewData>> DislikeReview(ReviewData reviewData, CancellationToken ct);
+    ValueTask<ReviewData> DislikeReview(ReviewData reviewData, CancellationToken ct);
 }
