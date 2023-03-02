@@ -21,7 +21,13 @@
 
     <converters:UserLikeColorConverter x:Key="UserLikeColorConverter"
                                        UnpressValue="{StaticResource PrimaryInverseBrush}"
-                                       PressValue="{StaticResource PrimaryBrush}" />
+                                       PressValue="{StaticResource PrimaryBrush}"
+                                       DefaultValue="{StaticResource PrimaryInverseBrush}" />
+
+    <converters:UserLikeColorConverter x:Key="UserDislikeColorConverter"
+                                       UnpressValue="{StaticResource PrimaryBrush}"
+                                       PressValue="{StaticResource PrimaryInverseBrush}"
+                                       DefaultValue="{StaticResource PrimaryInverseBrush}"/>
 
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"

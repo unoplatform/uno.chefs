@@ -21,12 +21,8 @@ public class RecipeService : IRecipeService
            .Select(r => new Recipe(r))
            .ToImmutableList();
 
-    public async ValueTask<int> GetCount(Guid userId, CancellationToken ct)
-    //=> (await _recipeEndpoint.GetCount(userId, ct));
-    {
-        var a = await _recipeEndpoint.GetCount(userId, ct);
-        return a;
-    }
+    public async ValueTask<int> GetCount(Guid userId, CancellationToken ct) => await _recipeEndpoint.GetCount(userId, ct);
+
     public async ValueTask<IImmutableList<Recipe>> GetByCategory(int categoryId, CancellationToken ct) 
         => (await _recipeEndpoint.GetAll(ct))
            .Select(r => new Recipe(r))
