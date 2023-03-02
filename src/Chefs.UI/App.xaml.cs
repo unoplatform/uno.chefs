@@ -1,3 +1,9 @@
+#if WINDOWS
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
+using WinRT.Interop;
+#endif
+
 namespace Chefs;
 
 public sealed partial class App : Application
@@ -7,10 +13,6 @@ public sealed partial class App : Application
     public App()
     {
         this.InitializeComponent();
-
-#if HAS_UNO || NETFX_CORE
-		this.Suspending += OnSuspending;
-#endif
     }
 
     /// <summary>
@@ -21,40 +23,49 @@ public sealed partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
 
-#if NET6_0_OR_GREATER && WINDOWS && !HAS_UNO
-        _window = new Window();
-        _window.Activate();
-#else
-		_window = Microsoft.UI.Xaml.Window.Current;
+        var appBuilder = this.CreateBuilder(args)
+                                .ConfigureApp()
+                                .UseToolkitNavigation();
+        _window = appBuilder.Window;
+
+#if WINDOWS
+        var m_AppWindow = GetAppWindowForCurrentWindow();
+
+        if (AppWindowTitleBar.IsCustomizationSupported())
+        {
+            var titleBar = m_AppWindow.TitleBar;
+            // Hide default title bar.
+            titleBar.ExtendsContentIntoTitleBar = true;
+        }
 #endif
-        
-        var host = await _window.InitializeNavigationAsync(async () => Host);
-        _window.Activate();
 
-        await Task.Run(() => host.StartAsync());
+        var host = await appBuilder.NavigateAsync<ShellControl>(
+        // Uncomment this block to see the splashscreen for an extended time
+        // Note: This will prevent navigation to first page of app, so is just
+        // for validating the splashscreen UI
+        // See Style in App.Xaml for ExtendedSplashScreen to change splashscreen layout
+        //    initialNavigate: async (sp, nav) =>
+        //{
+        //    await Task.Delay(10000);
+        //}
+        );
+
+#if WINDOWS
+        if (AppWindowTitleBar.IsCustomizationSupported())
+        {
+            var titleBar = m_AppWindow.TitleBar;
+            // Hide default title bar.
+            titleBar.ExtendsContentIntoTitleBar = false;
+        }
+#endif
     }
 
-    /// <summary>
-    /// Invoked when Navigation to a certain page fails
-    /// </summary>
-    /// <param name="sender">The Frame which failed navigation</param>
-    /// <param name="e">Details about the navigation failure</param>
-    void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+#if WINDOWS
+    private AppWindow GetAppWindowForCurrentWindow()
     {
-        throw new InvalidOperationException($"Failed to load {e.SourcePageType.FullName}: {e.Exception}");
+        IntPtr hWnd = WindowNative.GetWindowHandle(_window);
+        WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
+        return AppWindow.GetFromWindowId(wndId);
     }
-
-    /// <summary>
-    /// Invoked when application execution is being suspended.  Application state is saved
-    /// without knowing whether the application will be terminated or resumed with the contents
-    /// of memory still intact.
-    /// </summary>
-    /// <param name="sender">The source of the suspend request.</param>
-    /// <param name="e">Details about the suspend request.</param>
-    private void OnSuspending(object sender, SuspendingEventArgs e)
-    {
-        var deferral = e.SuspendingOperation.GetDeferral();
-        // TODO: Save application state and stop any background activity
-        deferral.Complete();
-    }
+#endif
 }
