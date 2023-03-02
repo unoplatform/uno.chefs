@@ -36,7 +36,7 @@ public partial class SearchModel
 
     public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetFromChefs);
 
-    public IListState<string> SearchHistory => ListState.Value(this, () => _recipeService.GetSearchHistory());
+    public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
 
     public async ValueTask ApplySearchHistory(string term, CancellationToken ct)
     {
