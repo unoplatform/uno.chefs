@@ -22,24 +22,63 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Images\AppIcon.scale-100.png" />
+	  <None Remove="Images\AppIcon.scale-200.png" />
+	  <None Remove="Images\AppIcon.scale-400.png" />
+	  <None Remove="Images\BadgeLogo.scale-100.png" />
+	  <None Remove="Images\BadgeLogo.scale-200.png" />
+	  <None Remove="Images\BadgeLogo.scale-400.png" />
+	  <None Remove="Images\LargeTile.scale-100.png" />
+	  <None Remove="Images\LargeTile.scale-125.png" />
+	  <None Remove="Images\LargeTile.scale-150.png" />
+	  <None Remove="Images\LargeTile.scale-200.png" />
+	  <None Remove="Images\LargeTile.scale-400.png" />
+	  <None Remove="Images\MediumTile.scale-100.png" />
+	  <None Remove="Images\MediumTile.scale-200.png" />
+	  <None Remove="Images\MediumTile.scale-400.png" />
+	  <None Remove="Images\SmallTile.scale-100.png" />
+	  <None Remove="Images\SmallTile.scale-200.png" />
+	  <None Remove="Images\SmallTile.scale-400.png" />
 	  <None Remove="Images\SplashScreen.scale-100.png" />
 	  <None Remove="Images\SplashScreen.scale-125.png" />
 	  <None Remove="Images\SplashScreen.scale-150.png" />
 	  <None Remove="Images\SplashScreen.scale-200.png" />
 	  <None Remove="Images\SplashScreen.scale-400.png" />
+	  <None Remove="Images\StoreLogo.scale-100.png" />
+	  <None Remove="Images\StoreLogo.scale-200.png" />
+	  <None Remove="Images\StoreLogo.scale-400.png" />
+	  <None Remove="Images\Wide310x150Logo.scale-125.png" />
+	  <None Remove="Images\Wide310x150Logo.scale-150.png" />
+	  <None Remove="Images\WideTile.scale-100.png" />
+	  <None Remove="Images\WideTile.scale-200.png" />
+	  <None Remove="Images\WideTile.scale-400.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Images\LockScreenLogo.scale-200.png" />
+	  <Content Include="Images\AppIcon.scale-100.png" />
+	  <Content Include="Images\AppIcon.scale-200.png" />
+	  <Content Include="Images\AppIcon.scale-400.png" />
+	  <Content Include="Images\BadgeLogo.scale-100.png" />
+	  <Content Include="Images\BadgeLogo.scale-200.png" />
+	  <Content Include="Images\BadgeLogo.scale-400.png" />
+	  <Content Include="Images\LargeTile.scale-100.png" />
+	  <Content Include="Images\LargeTile.scale-200.png" />
+	  <Content Include="Images\LargeTile.scale-400.png" />
+	  <Content Include="Images\MediumTile.scale-100.png" />
+	  <Content Include="Images\MediumTile.scale-200.png" />
+	  <Content Include="Images\MediumTile.scale-400.png" />
+	  <Content Include="Images\SmallTile.scale-100.png" />
+	  <Content Include="Images\SmallTile.scale-200.png" />
+	  <Content Include="Images\SmallTile.scale-400.png" />
 	  <Content Include="Images\SplashScreen.scale-100.png" />
-	  <Content Include="Images\SplashScreen.scale-150.png" />
 	  <Content Include="Images\SplashScreen.scale-200.png" />
 	  <Content Include="Images\SplashScreen.scale-400.png" />
-	  <Content Include="Images\Square150x150Logo.scale-200.png" />
-	  <Content Include="Images\settings.scale-200.png" />
-	  <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
-	  <Content Include="Images\StoreLogo.png" />
-	  <Content Include="Images\Wide310x150Logo.scale-200.png" />
+	  <Content Include="Images\StoreLogo.scale-100.png" />
+	  <Content Include="Images\StoreLogo.scale-200.png" />
+	  <Content Include="Images\StoreLogo.scale-400.png" />
+	  <Content Include="Images\WideTile.scale-100.png" />
+	  <Content Include="Images\WideTile.scale-200.png" />
+	  <Content Include="Images\WideTile.scale-400.png" />
 	</ItemGroup>
 	
 	<ItemGroup>

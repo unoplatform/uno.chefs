@@ -6,14 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Chefs;
 
-public sealed partial class App : Application
+public static class AppHost
 {
-    private IHost Host { get; } = BuildAppHost();
-
-    private static IHost BuildAppHost()
+    public static IApplicationBuilder ConfigureApp(this IApplicationBuilder builder)
     {
-        return UnoHost
-                .CreateDefaultBuilder()
+        return builder.Configure(host => host
 #if DEBUG
                 // Switch to Development environment when running in DEBUG
                 .UseEnvironment(Environments.Development)
@@ -61,14 +58,9 @@ public sealed partial class App : Application
 
 
                 // Enable navigation, including registering views and viewmodels
-                .UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes)
-
-                // Add navigation support for toolkit controls such as TabBar and NavigationView
-                .UseToolkitNavigation()
-
-                .Build(enableUnoLogging: true);
-
+                .UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes));
     }
+
     private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
     {
         views.Register(

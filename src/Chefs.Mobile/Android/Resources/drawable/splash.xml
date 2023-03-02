@@ -4,13 +4,8 @@
     <!-- background color -->
     <color android:color=" #FFFFFF"/>
   </item>
-  <item android:width="350dp" android:height="107dp" android:gravity="center">
-    <!-- splash image -->
-    <bitmap android:src="@drawable/SplashScreen"
-            android:tileMode="disabled"
-			android:filter="true"
-			android:dither="true"
-            android:mipMap="true"/>
-
+  <item>
+    <bitmap android:src="@drawable/splashicon"
+				android:gravity="center"/>
   </item>
 </layer-list>
