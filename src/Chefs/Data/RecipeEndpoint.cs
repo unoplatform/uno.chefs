@@ -111,23 +111,9 @@ public class RecipeEndpoint : IRecipeEndpoint
             int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
             if (reviewIndex != -1)
             {
-                UserData user = new UserData()
-                {
-                    Id = currentUser.Id,
-                    UrlProfileImage = currentUser.UrlProfileImage,
-                    FullName = currentUser.FullName,
-                    Description = currentUser.Description,
-                    Email = currentUser.Email,
-                    Followers = currentUser.Followers,
-                    Following = currentUser.Following,
-                    Password = currentUser.Password,
-                    IsCurrent = currentUser.IsCurrent,
-                    PhoneNumber = currentUser.PhoneNumber,
-                    Recipes = currentUser.Recipes
-                };
-                recipe.Reviews![reviewIndex].Dislikes?.Add(user);
+                recipe.Reviews![reviewIndex].Dislikes?.Add(currentUser.Id.ToString());
                 recipe.Reviews![reviewIndex].UserLike = false;
-                UserData? likeUserReview = recipe.Reviews![reviewIndex].Likes?.Find(u => u.Id == user.Id);
+                string? likeUserReview = recipe.Reviews![reviewIndex].Likes?.Find(l => l == currentUser.Id.ToString());
                 if (likeUserReview != null) recipe.Reviews![reviewIndex].Likes?.Remove(likeUserReview);
                 return recipe.Reviews![reviewIndex]!;
             }
@@ -155,23 +141,9 @@ public class RecipeEndpoint : IRecipeEndpoint
             int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
             if (reviewIndex != -1)
             {
-                UserData user = new UserData()
-                {
-                    Id = currentUser.Id,
-                    UrlProfileImage = currentUser.UrlProfileImage,
-                    FullName = currentUser.FullName,
-                    Description = currentUser.Description,
-                    Email = currentUser.Email,
-                    Followers = currentUser.Followers,
-                    Following = currentUser.Following,
-                    Password = currentUser.Password,
-                    IsCurrent = currentUser.IsCurrent,
-                    PhoneNumber = currentUser.PhoneNumber,
-                    Recipes = currentUser.Recipes
-                };
-                recipe.Reviews![reviewIndex].Likes?.Add(user);
+                recipe.Reviews![reviewIndex].Likes?.Add(currentUser.Id.ToString());
                 recipe.Reviews![reviewIndex].UserLike = true;
-                UserData? likeUserReview = recipe.Reviews![reviewIndex].Dislikes?.Find(u => u.Id == user.Id);
+                string? likeUserReview = recipe.Reviews![reviewIndex].Dislikes?.Find(d => d == currentUser.Id.ToString());
                 if (likeUserReview != null) recipe.Reviews![reviewIndex].Dislikes?.Remove(likeUserReview);
                 return recipe.Reviews![reviewIndex]!;
             }
@@ -197,7 +169,6 @@ public class RecipeEndpoint : IRecipeEndpoint
 
             var currentUser = await _userEndpoint.GetCurrent(CancellationToken.None);
             _recipes?.ForEach(x => x.Save = saved.Contains(x));
-            _recipes?.ForEach(x => x.Reviews?.ForEach(r => r.UserLike = r.Likes?.Where(l => l.Id == currentUser.Id).FirstOrDefault() != null));
         }
 
         return _recipes ?? new List<RecipeData>();

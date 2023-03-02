@@ -238,13 +238,13 @@
                     <utu:AutoLayout PrimaryAxisAlignment="Start"
                                     x:Name="RecentSearchesLayout"
                                     Visibility="{Binding IsSearchesClosed, 
-                                                                Converter={StaticResource InvertBool}}">
+                                                         Converter={StaticResource InvertBool}}">
                         <utu:AutoLayout Spacing="8"
                                         PrimaryAxisAlignment="Start"
                                         Orientation="Horizontal"
                                         Visibility="{Binding ItemsSource.Count,
-                                                                    ElementName=HistoryRepeater, 
-                                                                    Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
+                                                             ElementName=HistoryRepeater, 
+                                                             Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                                 <TextBlock x:Name="RecentSearches"
                                            Text="Recent searches"
