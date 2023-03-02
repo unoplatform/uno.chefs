@@ -35,12 +35,12 @@
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="8"
                                     Orientation="Horizontal">
-                        <Button Background="{Binding Likes, Converter={StaticResource UserLikeColorConverter}, ConverterParameter={Binding DataContext.CurrentUser, ElementName=ReviewsFeed}}"
+                        <Button Background="{Binding UserLike, Converter={StaticResource UserLikeColorConverter}}"
                                 Content="{Binding Likes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
                                 Command="{Binding DataContext.Like, ElementName=ReviewsFeed}"
                                 CommandParameter="{Binding}"
                                 utu:AutoLayout.CounterAlignment="Start" />
-                        <Button Background="{Binding Dislikes, Converter={StaticResource UserLikeColorConverter}, ConverterParameter={Binding DataContext.CurrentUser, ElementName=ReviewsFeed}}"
+                        <Button Background="{Binding UserLike, Converter={StaticResource UserDislikeColorConverter}}"
                                 Content="{Binding Dislikes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
                                 Command="{Binding DataContext.Dislike, ElementName=ReviewsFeed}"
                                 CommandParameter="{Binding}"

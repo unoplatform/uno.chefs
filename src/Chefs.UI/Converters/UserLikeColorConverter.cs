@@ -11,19 +11,16 @@ public class UserLikeColorConverter : IValueConverter
 
     public object? UnpressValue { get; set; }
 
+    public object? DefaultValue { get; set; }
+
     public object Convert(object value, Type targetType, object parameter, string language)
     {
-        if(value is IImmutableList<Guid> && parameter is User)
-        {
-            var user = (User)parameter;
-            var ids = (IImmutableList<Guid>)value;
-            return ids.Where(id => id == user.Id).Count() > 0 
-                ? PressValue! 
-                : UnpressValue!;
-        }
-        return UnpressValue!;
+        if (value is null) return DefaultValue!;
+
+        var userLike = (bool)value;
+
+        return userLike ? PressValue! : UnpressValue!;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language) => throw new NotImplementedException();
-    
 }

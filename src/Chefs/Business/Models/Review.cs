@@ -12,11 +12,9 @@ public partial record Review
         CreatedBy = reviewData.CreatedBy; 
         PublisherName = reviewData.PublisherName;
         Date = reviewData.Date;
-        Likes = reviewData.Likes!.Select(r => new Guid(r))
-            .ToImmutableList() 
+        Likes = reviewData.Likes!.ToImmutableList() 
             ?? ImmutableList<Guid>.Empty;
-        Dislikes = reviewData.Dislikes!.Select(r => new Guid(r))
-            .ToImmutableList()
+        Dislikes = reviewData.Dislikes!.ToImmutableList()
             ?? ImmutableList<Guid>.Empty;
         Description = reviewData.Description;
         UrlAuthorImage = reviewData.UrlAuthorImage;
@@ -39,7 +37,7 @@ public partial record Review
     public string? Description { get; init; }
     public ImmutableList<Guid>? Likes { get; init; }
     public ImmutableList<Guid>? Dislikes { get; init; }
-    public bool UserLike { get; init; }
+    public bool? UserLike { get; init; }
 
     internal ReviewData ToData() => new()
     {
@@ -48,13 +46,10 @@ public partial record Review
         CreatedBy = CreatedBy, 
         PublisherName = PublisherName,
         Date = Date,
-        Likes = Likes?.Select(l => l.ToString())
-            .ToList(),
-        Dislikes = Dislikes?.Select(d => d.ToString())
-            .ToList(),
+        Likes = Likes?.ToList(),
+        Dislikes = Dislikes?.ToList(),
         Description = Description,
-        UrlAuthorImage = UrlAuthorImage,
-        UserLike = UserLike,
+        UrlAuthorImage = UrlAuthorImage
     };
 }
 

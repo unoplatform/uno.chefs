@@ -100,27 +100,38 @@ public class RecipeEndpoint : IRecipeEndpoint
 
     public async ValueTask<ReviewData> DislikeReview(ReviewData reviewData, CancellationToken ct)
     {
-        var currentUser = await _userEndpoint.GetCurrent(ct);
+        var userId = (await _userEndpoint.GetCurrent(ct)).Id;
 
-        var recipes = await Load();
+        var review = (await Load()).FirstOrDefault(r => r.Id == reviewData.RecipeId)?
+            .Reviews?.FirstOrDefault(x=> x.Id == reviewData.Id);
 
-        var recipe = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
-
-        if (recipe is not null)
+        if (review is not null)
         {
-            int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
-            if (reviewIndex != -1)
+            if(review.Likes is not null && review.Likes.Contains(userId))
             {
-                if (recipe.Reviews![reviewIndex].Dislikes?.Where(r => r == currentUser.Id.ToString()).Count() == 0) recipe.Reviews![reviewIndex].Dislikes?.Add(currentUser.Id.ToString());
-                else recipe.Reviews![reviewIndex].Dislikes?.Remove(currentUser.Id.ToString());
-                string? likeUserReview = recipe.Reviews![reviewIndex].Likes?.Find(l => l == currentUser.Id.ToString());
-                if (likeUserReview != null) recipe.Reviews![reviewIndex].Likes?.Remove(likeUserReview);
-                return recipe.Reviews![reviewIndex]!;
+                review.Likes.Remove(userId);
+            }
+
+            if(review.Dislikes is not null)
+            {
+                if(review.Dislikes.Contains(userId))
+                {
+                    review.Dislikes.Remove(userId);
+                    review.UserLike = null;
+                }
+                else
+                {
+                    review.Dislikes.Add(userId);
+                    review.UserLike = false;
+                }
             }
             else
             {
-                throw new Exception();
+                review.Dislikes = new List<Guid> { userId };
+                review.UserLike = false;
             }
+
+            return review;
         }
         else
         {
@@ -130,27 +141,38 @@ public class RecipeEndpoint : IRecipeEndpoint
 
     public async ValueTask<ReviewData> LikeReview(ReviewData reviewData, CancellationToken ct)
     {
-        var currentUser = await _userEndpoint.GetCurrent(ct);
+        var userId = (await _userEndpoint.GetCurrent(ct)).Id;
 
-        var recipes = await Load();
+        var review = (await Load()).FirstOrDefault(r => r.Id == reviewData.RecipeId)?
+            .Reviews?.FirstOrDefault(x => x.Id == reviewData.Id);
 
-        var recipe = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
-
-        if (recipe is not null)
+        if (review is not null)
         {
-            int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
-            if (reviewIndex != -1)
+            if (review.Dislikes is not null && review.Dislikes.Contains(userId))
             {
-                if (recipe.Reviews![reviewIndex].Likes?.Where(r => r == currentUser.Id.ToString()).Count() == 0) recipe.Reviews![reviewIndex].Likes?.Add(currentUser.Id.ToString());
-                else recipe.Reviews![reviewIndex].Likes?.Remove(currentUser.Id.ToString());
-                string? likeUserReview = recipe.Reviews![reviewIndex].Dislikes?.Find(d => d == currentUser.Id.ToString());
-                if (likeUserReview != null) recipe.Reviews![reviewIndex].Dislikes?.Remove(likeUserReview);
-                return recipe.Reviews![reviewIndex]!;
+                review.Dislikes.Remove(userId);
+            }
+
+            if (review.Likes is not null)
+            {
+                if (review.Likes.Contains(userId))
+                {
+                    review.Likes.Remove(userId);
+                    review.UserLike = null;
+                }
+                else
+                {
+                    review.Likes.Add(userId);
+                    review.UserLike = true;
+                }
             }
             else
             {
-                throw new Exception();
+                review.Likes = new List<Guid> { userId };
+                review.UserLike = true;
             }
+
+            return review;
         }
         else
         {
@@ -158,8 +180,8 @@ public class RecipeEndpoint : IRecipeEndpoint
         }
     }
 
-        //Implementation to update saved recipes in memory 
-        private async ValueTask<IList<RecipeData>> Load()
+    //Implementation to update saved recipes in memory 
+    private async ValueTask<IList<RecipeData>> Load()
     {
         if(_recipes == null)
         {
@@ -168,7 +190,29 @@ public class RecipeEndpoint : IRecipeEndpoint
             var saved = await GetSaved(CancellationToken.None);
 
             var currentUser = await _userEndpoint.GetCurrent(CancellationToken.None);
-            _recipes?.ForEach(x => x.Save = saved.Contains(x));
+            if (_recipes is not null)
+            {
+                foreach (RecipeData r in _recipes)
+                {
+                    if(r.Reviews is not null)
+                    {
+                        foreach(ReviewData rev in r.Reviews)
+                        {
+                            if(rev.Likes is not null && rev.Likes.Contains(currentUser.Id))
+                            {
+                                rev.UserLike = true;
+                                break;
+                            }
+
+                            if (rev.Dislikes is not null && rev.Dislikes.Contains(currentUser.Id))
+                            {
+                                rev.UserLike = false;
+                            }
+                        }
+                    }
+                }
+                _recipes?.ForEach(x => x.Save = saved.Contains(x));
+            }
         }
 
         return _recipes ?? new List<RecipeData>();
