@@ -10,24 +10,32 @@ public record ReviewParameter(Guid recipeId, IImmutableList<Review> reviews);
 public partial class ReviewsModel
 {
     private readonly IRecipeService _recipeService;
+    private readonly IUserService _userService;
     private readonly INavigator _navigator;
     private readonly Guid _recipeId;
     private readonly IMessenger _messenger;
 
-    public ReviewsModel(INavigator navigator, IRecipeService recipeService, ReviewParameter reviewParameter, IMessenger messenger)
+    public ReviewsModel(
+        INavigator navigator, 
+        IRecipeService recipeService,
+        ReviewParameter reviewParameter,
+        IMessenger messenger,
+        IUserService userService)
     {
         _navigator = navigator;
         _recipeService = recipeService;
+        _userService = userService;
         _recipeId = reviewParameter.recipeId;
         _messenger = messenger;
 
-        Reviews = ListState.Value(this, () => reviewParameter.reviews);     
+        Reviews = ListState.Value(this, () => reviewParameter.reviews);
         _messenger = messenger;
         messenger.Observe(Reviews, x => x.Id);
+        _userService = userService;
     }
 
     public IListState<Review> Reviews { get; }
-
+    public IState<User> CurrentUser => State.Async(this, async ct => await _userService.GetCurrent(ct));
     public IState<string> Comment => State<string>.Empty(this);
 
     public async ValueTask Like(Review review, CancellationToken ct)

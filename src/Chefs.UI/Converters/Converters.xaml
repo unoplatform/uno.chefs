@@ -18,7 +18,11 @@
     <converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
     <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
                                               Invert="True" />
-    
+
+    <converters:UserLikeColorConverter x:Key="UserLikeColorConverter"
+                                       UnpressValue="{StaticResource PrimaryInverseBrush}"
+                                       PressValue="{StaticResource PrimaryBrush}" />
+
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
                                       FalseValue="{StaticResource SurfaceVariantBrush}" />

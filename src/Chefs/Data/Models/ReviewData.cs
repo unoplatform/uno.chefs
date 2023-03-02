@@ -9,7 +9,7 @@ public class ReviewData
     public string? PublisherName { get; set; }
     public DateTime Date { get; set; }
     public string? Description { get; set; }
-    public List<UserData>? Likes { get; set; }
-    public List<UserData>? Dislikes { get; set; }
+    public List<string>? Likes { get; set; }
+    public List<string>? Dislikes { get; set; }
     public bool UserLike { get; set; }
 }
