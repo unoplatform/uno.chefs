@@ -26,7 +26,7 @@ public partial class RecipeDetailsModel
 
     public Recipe Recipe { get; }
     public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct));
-    public IState<User> CurrentUser => State.Async(this, async ct => await _userService.GetCurrent(ct));
+    public IFeed<User> CurrentUser => Feed.Async(async ct => await _userService.GetCurrent(ct));
     public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
     public IListState<Review> Reviews => ListState.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct));
     public IListFeed<Step> Steps => ListFeed.Async(async ct => await _recipeService.GetSteps(Recipe.Id, ct));

@@ -35,7 +35,7 @@ public partial class ReviewsModel
     }
 
     public IListState<Review> Reviews { get; }
-    public IState<User> CurrentUser => State.Async(this, async ct => await _userService.GetCurrent(ct));
+    public IFeed<User> CurrentUser => Feed.Async(async ct => await _userService.GetCurrent(ct));
     public IState<string> Comment => State<string>.Empty(this);
 
     public async ValueTask Like(Review review, CancellationToken ct)

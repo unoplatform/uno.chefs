@@ -111,8 +111,8 @@ public class RecipeEndpoint : IRecipeEndpoint
             int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
             if (reviewIndex != -1)
             {
-                recipe.Reviews![reviewIndex].Dislikes?.Add(currentUser.Id.ToString());
-                recipe.Reviews![reviewIndex].UserLike = false;
+                if (recipe.Reviews![reviewIndex].Dislikes?.Where(r => r == currentUser.Id.ToString()).Count() == 0) recipe.Reviews![reviewIndex].Dislikes?.Add(currentUser.Id.ToString());
+                else recipe.Reviews![reviewIndex].Dislikes?.Remove(currentUser.Id.ToString());
                 string? likeUserReview = recipe.Reviews![reviewIndex].Likes?.Find(l => l == currentUser.Id.ToString());
                 if (likeUserReview != null) recipe.Reviews![reviewIndex].Likes?.Remove(likeUserReview);
                 return recipe.Reviews![reviewIndex]!;
@@ -141,8 +141,8 @@ public class RecipeEndpoint : IRecipeEndpoint
             int reviewIndex = recipe.Reviews?.FindIndex(r => r.Id == reviewData.Id) ?? -1;
             if (reviewIndex != -1)
             {
-                recipe.Reviews![reviewIndex].Likes?.Add(currentUser.Id.ToString());
-                recipe.Reviews![reviewIndex].UserLike = true;
+                if (recipe.Reviews![reviewIndex].Likes?.Where(r => r == currentUser.Id.ToString()).Count() == 0) recipe.Reviews![reviewIndex].Likes?.Add(currentUser.Id.ToString());
+                else recipe.Reviews![reviewIndex].Likes?.Remove(currentUser.Id.ToString());
                 string? likeUserReview = recipe.Reviews![reviewIndex].Dislikes?.Find(d => d == currentUser.Id.ToString());
                 if (likeUserReview != null) recipe.Reviews![reviewIndex].Dislikes?.Remove(likeUserReview);
                 return recipe.Reviews![reviewIndex]!;
