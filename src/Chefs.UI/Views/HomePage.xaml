@@ -11,6 +11,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:um="using:Uno.Material"
       mc:Ignorable="d"
+      x:Name="Home"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       NavigationCacheMode="Enabled">
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
@@ -74,7 +75,7 @@
                                                 </utu:AutoLayout>
                                                 <ToggleButton utu:AutoLayout.CounterAlignment="Center"
                                                               IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                              Command="{Binding SaveRecipe}"
+                                                              Command="{Binding DataContext.SaveRecipe, ElementName=Home}"
                                                               CommandParameter="{Binding}"
                                                               Style="{StaticResource IconToggleButtonStyle}">
                                                     <ToggleButton.Content>
