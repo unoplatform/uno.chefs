@@ -24,6 +24,7 @@
                                         Orientation="Horizontal">
                             <utu:AutoLayout CornerRadius="5"
                                             Orientation="Horizontal"
+                                            Margin="0,6,0,0"
                                             utu:AutoLayout.CounterAlignment="Start">
                                 <PathIcon Data="{StaticResource Icon_Outline_Refresh_ChefsApp}"
                                           utu:AutoLayout.CounterAlignment="Start"
