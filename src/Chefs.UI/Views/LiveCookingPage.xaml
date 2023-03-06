@@ -30,7 +30,7 @@
                                        Text="{Binding Name}"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        utu:AutoLayout.PrimaryAlignment="Stretch"
-                                       Foreground="{ThemeResource OnSurfaceBrush}"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
                                        Style="{StaticResource HeadlineMedium}" />
 
                             <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
@@ -54,7 +54,7 @@
                         <utu:AutoLayout Orientation="Horizontal"
                                         Spacing="8">
                             <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                        Text="{Binding Cookware, Converter={StaticResource DotStringSeparator}}"
                                        Margin="10"
                                        Style="{StaticResource LabelSmall}" />
@@ -65,7 +65,7 @@
                         <utu:AutoLayout Orientation="Horizontal"
                                         Spacing="8">
                             <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                        Text="{Binding Ingredients, Converter={StaticResource DotStringSeparator}}"
                                        Margin="10"
                                        Style="{StaticResource LabelSmall}" />
@@ -92,7 +92,7 @@
                                    Text="{Binding Name}"
                                    utu:AutoLayout.CounterAlignment="Center"
                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Style="{StaticResource DisplayMedium}" />
 
                         <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
@@ -185,7 +185,7 @@
                         utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                Background="{ThemeResource BackgroundBrush}"
-                               Foreground="{ThemeResource OnBackgroundBrush}"
+                               Foreground="{ThemeResource SurfaceInverseBrush}"
                                x:Name="NavBar"
                                Content="Live Cooking"
                                toolkit:UIElementExtensions.Elevation="0">
@@ -229,7 +229,7 @@
                                 <utu:AutoLayout Orientation="Horizontal"
                                                 Spacing="8">
                                     <ImageIcon Source="ms-appx:///Assets/Icons/bowl.png" />
-                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                Text="{Binding SelectedStep.Cookware, Converter={StaticResource DotStringSeparator}}"
                                                Margin="20,10"
                                                Style="{StaticResource HeadlineMedium}" />
@@ -237,7 +237,7 @@
                                 <utu:AutoLayout Orientation="Horizontal"
                                                 Spacing="8">
                                     <ImageIcon Source="ms-appx:///Assets/Icons/cart.png" />
-                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                Text="{Binding SelectedStep.Ingredients, Converter={StaticResource DotStringSeparator}}"
                                                Margin="20,10"
                                                Style="{StaticResource HeadlineMedium}" />

@@ -24,15 +24,15 @@
                     <utu:AutoLayout PrimaryAxisAlignment="Center">
                         <TextBlock TextWrapping="Wrap"
                                    Text="{Binding Date, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:MMM dd, yyy}'}"
-                                   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                   Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Style="{StaticResource CaptionSmall}" />
                         <TextBlock TextWrapping="Wrap"
                                    Text="{Binding PublisherName}"
-                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Style="{StaticResource TitleMedium}" />
                         <TextBlock TextWrapping="Wrap"
                                    Text="{Binding Description}"
-                                   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                   Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                    Style="{StaticResource LabelSmall}" />
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="8"

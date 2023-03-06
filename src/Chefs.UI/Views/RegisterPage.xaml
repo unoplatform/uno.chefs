@@ -78,34 +78,7 @@
                                  IsSpellCheckEnabled="False"
                                  InputScope="Text">
                         <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Person_ChefApp}"
-                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
-                        </um:ControlExtensions.Icon>
-                    </PasswordBox>
-                    <TextBox PlaceholderText="Email"
-                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
-                                 CornerRadius="16"
-                                 Style="{StaticResource OutlinedTextBoxStyle}"
-                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
-                                 ios:ReturnKeyType="Next"
-                                 android:ImeOptions="Next"
-                                 IsSpellCheckEnabled="False"
-                                 InputScope="Text">
-                        <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}"
-                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
-                        </um:ControlExtensions.Icon>
-                    </TextBox>
-                    <PasswordBox PlaceholderText="Password"
-                                     x:Name="Password"
-                                     CornerRadius="16"
-                                     Style="{StaticResource OutlinedPasswordBoxStyle}"
-                                     utu:CommandExtensions.Command="{Binding NavigateBack}"
-                                     ios:ReturnKeyType="Done"
-                                     android:ImeOptions="Done">
-                        <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
-                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                            <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                         </um:ControlExtensions.Icon>
                     </PasswordBox>
                 </utu:AutoLayout>

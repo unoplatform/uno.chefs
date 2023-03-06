@@ -8,8 +8,8 @@
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:toolkit="using:Uno.UI.Toolkit"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
-      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d"
       xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       NavigationCacheMode="Enabled"
@@ -96,7 +96,7 @@
                         <Setter Target="ContentLayout.Orientation"
                                 Value="Horizontal" />
                         <Setter Target="ContentLayout.Padding"
-                                Value="0,10,0,0" />
+                                Value="0,20,0,0" />
                         <Setter Target="ButtonsLayout.Orientation"
                                 Value="Horizontal" />
                         <Setter Target="ButtonsLayout.PrimaryAxisAlignment"
@@ -120,13 +120,13 @@
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
                         <Setter Target="TabsLayout.Padding"
-                                 Value="20,0,40,0" />
+                                Value="20,0,40,0" />
                         <Setter Target="IngredientsButton.Width"
                                 Value="190" />
                         <Setter Target="IngredientsButton.Height"
                                 Value="56" />
                         <Setter Target="IngredientsButton.Foreground"
-                                Value="{ThemeResource OnSurfaceMediumBrush}" />
+                                Value="{ThemeResource OnSurfaceVariantBrush}" />
                         <Setter Target="IngredientsButton.Style"
                                 Value="{StaticResource OutlinedButtonStyle}" />
                         <Setter Target="LiveCookingButton.Width"
@@ -136,9 +136,7 @@
                         <Setter Target="RecipeCard.Spacing"
                                 Value="80" />
                         <Setter Target="NavBar.Margin"
-                                Value="20,10,20,0" />
-                        <Setter Target="NavBar.Height"
-                                Value="80" />
+                                Value="20,0" />
                         <Setter Target="TabNavGrid.Margin"
                                 Value="0,0,0,30" />
                         <Setter Target="MainScrollViewer.VerticalScrollMode"
@@ -158,6 +156,7 @@
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar x:Name="NavBar"
                                Background="{ThemeResource BackgroundBrush}"
+                               Foreground="{ThemeResource SurfaceInverseBrush}"
                                Style="{StaticResource NavigationBarStyle}"
                                Content="{Binding Recipe.Name}"
                                toolkit:UIElementExtensions.Elevation="0">
@@ -172,13 +171,15 @@
                     <AppBarButton uen:Navigation.Request="-">
                         <AppBarButton.Icon>
                             <BitmapIcon ShowAsMonochrome="False"
-                                        UriSource="ms-appx:///Assets/Icons/share.png" />
+                                        UriSource="ms-appx:///Assets/Icons/share.png"
+                                        Foreground="{ThemeResource SurfaceInverseBrush}"/>
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton>
                         <AppBarButton.Icon>
                             <BitmapIcon ShowAsMonochrome="False"
-                                        UriSource="ms-appx:///Assets/Icons/bookmark.png" />
+                                        UriSource="ms-appx:///Assets/Icons/bookmark.png"
+                                        Foreground="{ThemeResource SurfaceInverseBrush}"/>
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
@@ -205,7 +206,7 @@
                                                ProfilePicture="{Binding User.UrlProfileImage}" />
                                 <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                            utu:AutoLayout.CounterAlignment="Center"
-                                           Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                           Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            Style="{StaticResource TitleSmall}" />
                             </utu:AutoLayout>
                             <utu:AutoLayout Spacing="-35"
@@ -273,7 +274,7 @@
                                                    ProfilePicture="{Binding User.UrlProfileImage}" />
                                     <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                                utu:AutoLayout.CounterAlignment="Center"
-                                               Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                               Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                Style="{StaticResource TitleLarge}" />
                                 </utu:AutoLayout>
                                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
@@ -295,12 +296,12 @@
                                                                         PrimaryAxisAlignment="Center"
                                                                         Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="15">
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                        TextWrapping="Wrap"
                                                                        Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
                                                                        Style="{StaticResource TitleMedium}"
                                                                        FontSize="18" />
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                        TextWrapping="Wrap"
                                                                        Text="{Binding Description}"
                                                                        Style="{StaticResource DisplaySmall}"
@@ -328,15 +329,15 @@
                             <utu:TabBar uen:Region.Attached="True"
                                         Style="{StaticResource TopTabBarStyle}">
                                 <utu:TabBarItem x:Name="IngredientsTabItem"
-                                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                 Content="Ingredients"
                                                 uen:Region.Name="IngredientsTab"
                                                 IsSelected="True" />
                                 <utu:TabBarItem x:Name="DetailsTab"
-                                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                 Content="Details"
                                                 uen:Region.Name="DetailsTab" />
-                                <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                <utu:TabBarItem Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                 Content="Reviews"
                                                 uen:Region.Name="ReviewsTab" />
                             </utu:TabBar>
@@ -380,7 +381,7 @@
                                                                                Margin="0, 0, 0, 3" />
                                                                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                                    TextWrapping="Wrap"
                                                                                    Text="{Binding Name}"
                                                                                    Style="{StaticResource TitleMedium}" />
@@ -420,11 +421,11 @@
                                                                                 Margin="-10,8">
                                                                     <utu:AutoLayout Padding="16,18"
                                                                                     PrimaryAxisAlignment="Center">
-                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                                    TextWrapping="Wrap"
                                                                                    Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
                                                                                    Style="{StaticResource TitleMedium}" />
-                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                                    TextWrapping="Wrap"
                                                                                    Text="{Binding Description}"
                                                                                    Style="{StaticResource LabelSmall}" />
@@ -486,7 +487,7 @@
                                                Text="Ingredients"
                                                Style="{StaticResource HeadlineMedium}" />
                                 </utu:AutoLayout>
-                                <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
+                                <utu:AutoLayout Background="{ThemeResource PrimaryMediumBrush}"
                                                 Padding="16,8"
                                                 CornerRadius="12"
                                                 PrimaryAxisAlignment="Center"
@@ -515,6 +516,8 @@
                                                     <DataTemplate>
                                                         <utu:AutoLayout PrimaryAxisAlignment="Center">
                                                             <CheckBox Content="{Binding NameQuantity}"
+                                                                      Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                                      BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                                                       utu:AutoLayout.CounterAlignment="Start"
                                                                       Height="54" />
                                                             <utu:Divider Foreground="#E8EEF7"

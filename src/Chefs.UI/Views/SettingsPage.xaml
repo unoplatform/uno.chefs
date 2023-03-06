@@ -65,8 +65,8 @@
                                 Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="ProfileDescription.Style"
                                 Value="{StaticResource LabelLarge}" />
-                        <Setter Target="AccentColorLayout.Spacing"
-                                Value="40" />
+                        <!--<Setter Target="AccentColorLayout.Spacing"
+                                Value="40" />-->
                         <Setter Target="AccentColorTitle.Style"
                                 Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="MainLayout.Width"
@@ -84,6 +84,7 @@
                 <utu:NavigationBar x:Name="SettingsNavBar"
                                    Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource SurfaceBrush}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Content="Settings"
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
@@ -160,6 +161,9 @@
                                                  Text="{Binding Profile.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  PlaceholderText="Full Name"
                                                  Style="{StaticResource OutlinedTextBoxStyle}"
+                                                 Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                                  Background="{ThemeResource SurfaceBrush}"
                                                  CornerRadius="16"
                                                  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -178,6 +182,9 @@
                                                  Text="{Binding Profile.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  PlaceholderText="Email"
                                                  Style="{StaticResource OutlinedTextBoxStyle}"
+                                                 Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                                  Background="{ThemeResource SurfaceBrush}"
                                                  CornerRadius="16"
                                                  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -196,6 +203,9 @@
                                                  Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  PlaceholderText="Mobile Number"
                                                  Style="{StaticResource OutlinedTextBoxStyle}"
+                                                 Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                                  Background="{ThemeResource SurfaceBrush}"
                                                  CornerRadius="16"
                                                  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -237,7 +247,7 @@
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="App notifications"
                                                        Style="{StaticResource TitleMedium}" />
@@ -277,7 +287,7 @@
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="Light mode"
                                                        Style="{StaticResource TitleMedium}" />
@@ -310,7 +320,7 @@
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="Night mode"
                                                        Style="{StaticResource TitleMedium}" />
@@ -323,7 +333,8 @@
                                                       utu:AutoLayout.CounterAlignment="Center"
                                                       Height="70" />
                                     </utu:AutoLayout>
-                                    <utu:AutoLayout x:Name="AccentColorLayout"
+                                    <!--Commented accent color selection until implemented-->
+                                    <!--<utu:AutoLayout x:Name="AccentColorLayout"
                                                     Spacing="18"
                                                     Padding="0,20">
                                         <TextBlock x:Name="AccentColorTitle"
@@ -348,7 +359,7 @@
                                                          utu:AutoLayout.CounterAlignment="Start"
                                                          utu:AutoLayout.PrimaryAlignment="Stretch" />
                                         </utu:AutoLayout>
-                                    </utu:AutoLayout>
+                                    </utu:AutoLayout>-->
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -375,7 +386,7 @@
                         utu:AutoLayout.CounterAlignment="Center"
                         Width="190"
                         Height="64"
-                        Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                        Foreground="{ThemeResource OnSurfaceVariantBrush}"
                         Style="{StaticResource OutlinedButtonStyle}" />
                 <Button Background="{ThemeResource PrimaryBrush}"
                         Command="{Binding Update}"
