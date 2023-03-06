@@ -76,7 +76,7 @@
                                  ios:ReturnKeyType="Done"
 							     android:ImeOptions="Done">
                         <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                            <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                         </um:ControlExtensions.Icon>
                     </PasswordBox>
                 </utu:AutoLayout>

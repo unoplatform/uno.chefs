@@ -120,8 +120,8 @@
 		<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22621.28" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.14" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.35" />
+	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.39" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.51" />
 	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.8.0-dev.630" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />

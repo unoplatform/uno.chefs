@@ -102,7 +102,7 @@
                             Spacing="8">
                 <TextBox utu:AutoLayout.PrimaryAlignment="Stretch"
                          Background="{ThemeResource SurfaceBrush}"
-                         PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+                         PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                          PlaceholderText="Write a comment"
                          Style="{StaticResource OutlinedTextBoxStyle}"
                          Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

@@ -138,7 +138,7 @@
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding Name}"
                                                            Style="{StaticResource TitleMedium}" />

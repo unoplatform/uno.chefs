@@ -162,11 +162,12 @@
                 <utu:NavigationBar x:Name="PhoneNavBar"
                                    Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource SurfaceBrush}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton Label=""
                                       Background="{ThemeResource BackgroundBrush}"
-                                      Foreground="Black"
+                                      Foreground="{ThemeResource SurfaceInverseBrush}"
                                       Command="{Binding GoBack}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
@@ -177,7 +178,7 @@
                     <utu:NavigationBar.PrimaryCommands>
                         <AppBarButton Command="{Binding SettingsNavigation}"
                                       Background="{ThemeResource BackgroundBrush}"
-                                      Foreground="Black"
+                                      Foreground="{ThemeResource OnBackgroundBrush}"
                                       Visibility="{Binding Profile.IsCurrent}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
@@ -189,6 +190,7 @@
                 <utu:NavigationBar x:Name="TabletNavBar"
                                    Content="My profile"
                                    Style="{StaticResource NavigationBarStyle}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Background="{ThemeResource SurfaceBrush}"
                                    toolkit:UIElementExtensions.Elevation="0"
                                    Visibility="Collapsed"
@@ -295,11 +297,11 @@
                         uen:Region.Attached="True"
                         Style="{StaticResource TopTabBarStyle}">
                 <utu:TabBarItem x:Name="RecipesTab"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                 uen:Region.Name="MyRecipes"
                                 Content="My Recipes"
                                 IsSelected="True" />
-                <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                <utu:TabBarItem Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                 uen:Region.Name="Cookbooks"
                                 Content="Cookbooks" />
             </utu:TabBar>
@@ -422,7 +424,7 @@
                                                                                                 <utu:AutoLayout Spacing="2"
                                                                                                                 Padding="10"
                                                                                                                 PrimaryAxisAlignment="Center">
-                                                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                                                                TextWrapping="NoWrap"
                                                                                                                Text="{Binding Name}"
                                                                                                                Style="{StaticResource TitleMedium}" />
@@ -608,7 +610,7 @@
                                                                                                 <utu:AutoLayout Spacing="2"
                                                                                                                 Padding="10"
                                                                                                                 PrimaryAxisAlignment="Center">
-                                                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                                                                TextWrapping="NoWrap"
                                                                                                                Text="{Binding Name}"
                                                                                                                Style="{StaticResource TitleMedium}" />

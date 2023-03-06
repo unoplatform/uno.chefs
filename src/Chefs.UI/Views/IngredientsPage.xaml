@@ -65,13 +65,15 @@
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:NavigationBar x:Name="NavBar"
                                Background="{ThemeResource BackgroundBrush}"
+                               Foreground="{ThemeResource SurfaceInverseBrush}"
                                Style="{StaticResource NavigationBarStyle}"
                                Content="{Binding Recipe.Name}"
                                toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton>
                         <win:AppBarButton.Icon>
-                            <SymbolIcon Symbol="Back" />
+                            <SymbolIcon Symbol="Back"
+                                        Foreground="{ThemeResource SurfaceInverseBrush}"/>
                         </win:AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
@@ -112,7 +114,7 @@
                                                ProfilePicture="{Binding User.UrlProfileImage}" />
                                 <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                            utu:AutoLayout.CounterAlignment="Center"
-                                           Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                           Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            Style="{StaticResource TitleSmall}" />
                             </utu:AutoLayout>
                             <utu:AutoLayout Spacing="-35"
@@ -178,7 +180,7 @@
                                                    ProfilePicture="{Binding User.UrlProfileImage}" />
                                     <TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
                                                utu:AutoLayout.CounterAlignment="Center"
-                                               Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                               Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                Style="{StaticResource TitleLarge}" />
                                 </utu:AutoLayout>
                                 <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
@@ -196,12 +198,12 @@
                                                                 Margin="-10,8"
                                                                 Padding="16,18"
                                                                 PrimaryAxisAlignment="Center">
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                TextWrapping="Wrap"
                                                                Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
                                                                Style="{StaticResource TitleMedium}"
                                                                FontSize="18" />
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                TextWrapping="Wrap"
                                                                Text="{Binding Description}"
                                                                Style="{StaticResource DisplaySmall}"
