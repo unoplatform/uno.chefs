@@ -178,7 +178,7 @@
                     <utu:NavigationBar.PrimaryCommands>
                         <AppBarButton Command="{Binding SettingsNavigation}"
                                       Background="{ThemeResource BackgroundBrush}"
-                                      Foreground="{ThemeResource OnBackgroundBrush}"
+                                      Foreground="{ThemeResource SurfaceInverseBrush}"
                                       Visibility="{Binding Profile.IsCurrent}">
                             <AppBarButton.Icon>
                                 <BitmapIcon ShowAsMonochrome="False"
