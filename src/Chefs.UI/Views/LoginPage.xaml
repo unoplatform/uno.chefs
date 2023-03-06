@@ -97,6 +97,7 @@
                         <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  PlaceholderText="Email"
                                  PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                 Foreground="{ThemeResource SurfaceInverseBrush}"
                                  CornerRadius="16"
                                  utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
                                  ios:ReturnKeyType="Next"
@@ -119,7 +120,8 @@
                                      utu:CommandExtensions.Command="{Binding Login}"
                                      CornerRadius="16"
                                      Style="{StaticResource OutlinedPasswordBoxStyle}"
-                                     BorderBrush="{ThemeResource OnSurfaceVariantBrush}">
+                                     BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
+                                     Foreground="{ThemeResource SurfaceInverseBrush}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
                                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
@@ -216,7 +218,7 @@
                                     PrimaryAxisAlignment="Start">
                         <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  PlaceholderText="Email"
-                                 Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                 Foreground="{ThemeResource SurfaceInverseBrush}"
                                  PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                                  BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                  CornerRadius="16"
@@ -238,7 +240,7 @@
                                      android:ImeOptions="Done"
                                      utu:CommandExtensions.Command="{Binding Login}"
                                      CornerRadius="16"
-                                     Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                     Foreground="{ThemeResource SurfaceInverseBrush}"
                                      BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                      Style="{StaticResource OutlinedPasswordBoxStyle}">
                             <um:ControlExtensions.Icon>

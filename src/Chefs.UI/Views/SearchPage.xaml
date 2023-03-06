@@ -218,6 +218,7 @@
                          utu:AutoLayout.CounterAlignment="Center"
                          utu:AutoLayout.PrimaryAlignment="Stretch"
                          BorderBrush="{ThemeResource SurfaceBrush}"
+                         Foreground="{ThemeResource SurfaceInverseBrush}"
                          BorderThickness="1"
                          CornerRadius="16"
                          Background="{ThemeResource SurfaceBrush}"
