@@ -24,7 +24,11 @@
                     <utu:AutoLayout>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -52,7 +56,11 @@
                                         <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup>
-                                                    <VisualState x:Name="Narrow" />
+                                                    <VisualState x:Name="Narrow">
+                                                        <VisualState.StateTriggers>
+                                                            <AdaptiveTrigger MinWindowWidth="0" />
+                                                        </VisualState.StateTriggers>
+                                                    </VisualState>
                                                     <VisualState x:Name="Wide">
                                                         <VisualState.StateTriggers>
                                                             <AdaptiveTrigger MinWindowWidth="800" />
@@ -92,7 +100,11 @@
         </utu:AutoLayout.Resources>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -162,7 +174,11 @@
                                     </utu:AutoLayout.Resources>
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
-                                            <VisualState x:Name="Narrow" />
+                                            <VisualState x:Name="Narrow">
+                                                <VisualState.StateTriggers>
+                                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                                </VisualState.StateTriggers>
+                                            </VisualState>
                                             <VisualState x:Name="Wide">
                                                 <VisualState.StateTriggers>
                                                     <AdaptiveTrigger MinWindowWidth="800" />
