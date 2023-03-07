@@ -6,11 +6,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:utu="using:Uno.Toolkit.UI"
              mc:Ignorable="d"
-             xmlns:uen="using:Uno.Extensions.Navigation.UI"
-             d:DesignHeight="300"
-             d:DesignWidth="400">
+			 xmlns:ui="using:Uno.Toolkit.UI"
+			 d:DesignHeight="300"
+			 d:DesignWidth="400">
 
-    <Grid>
-        <Frame uen:Region.Attached="true" />
-    </Grid>
+	<ui:ExtendedSplashScreen x:Name="Splash"
+							 HorizontalAlignment="Stretch"
+							 VerticalAlignment="Stretch"
+							 HorizontalContentAlignment="Stretch"
+							 VerticalContentAlignment="Stretch" />
 </UserControl>
