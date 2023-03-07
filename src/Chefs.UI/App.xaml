@@ -28,12 +28,13 @@
 				<Setter Property="LoadingContentTemplate">
 					<Setter.Value>
 						<DataTemplate>
-							<Grid>
-								<ProgressRing IsActive="true"
-											  VerticalAlignment="Bottom"
-											  HorizontalAlignment="Center"
-											  Margin="0,0,0,50" />
-							</Grid>
+                            <StackPanel VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Center"
+                                        Margin="0,0,0,50">
+                                <ProgressRing IsActive="true"
+											  VerticalAlignment="Center"
+											  HorizontalAlignment="Center" />
+							</StackPanel>
 						</DataTemplate>
 					</Setter.Value>
 				</Setter>
