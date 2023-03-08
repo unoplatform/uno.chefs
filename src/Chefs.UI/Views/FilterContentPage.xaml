@@ -9,6 +9,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
 
     <!-- Workaround used here by separating the FilterPage / FilterContentPage into two files -->
@@ -78,30 +79,29 @@
                                        Text="Organize"
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="8">
-                                <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="SingleOrNone"
-                                               HorizontalAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}"
-                                               ItemsSource="{Binding OrganizeCategories}"
-                                               SelectedItem="{Binding Filter.OrganizeCategories, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
-                                                                Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
+                                <muxc:ItemsRepeater ItemsSource="{Binding OrganizeCategories}"
+                                                    HorizontalAlignment="Stretch"
+                                                    utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategories, Mode=TwoWay}"
+                                                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
+                                    <muxc:ItemsRepeater.Layout>
+                                        <muxc:StackLayout Orientation="Horizontal"
+                                                          Spacing="18" />
+                                    </muxc:ItemsRepeater.Layout>
+                                    <muxc:ItemsRepeater.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
-                                                        Spacing="5"
-                                                        Padding="3">
-                                                <TextBlock Text="{Binding}"
-                                                           Foreground="{ThemeResource PrimaryBrush}"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
+                                            <utu:Chip Style="{StaticResource MaterialFilterChipStyle}"
+                                                      CanRemove="False">
+                                                <StackPanel Orientation="Horizontal"
+                                                            Spacing="5"
+                                                            Padding="3">
+                                                    <TextBlock Text="{Binding}"
+                                                               Foreground="{ThemeResource PrimaryBrush}"
+                                                               VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </utu:Chip>
                                         </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
+                                    </muxc:ItemsRepeater.ItemTemplate>
+                                </muxc:ItemsRepeater>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                         <utu:AutoLayout Spacing="16">
@@ -110,30 +110,29 @@
                                        Text="Time"
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16">
-                                <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="SingleOrNone"
-                                               utu:AutoLayout.PrimaryAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}"
-                                               ItemsSource="{Binding Times}"
-                                               SelectedItem="{Binding Filter.Time, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
-                                                                Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
+                                <muxc:ItemsRepeater ItemsSource="{Binding Times}"
+                                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                    utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
+                                                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
+                                    <muxc:ItemsRepeater.Layout>
+                                        <muxc:StackLayout Orientation="Horizontal"
+                                                          Spacing="18" />
+                                    </muxc:ItemsRepeater.Layout>
+                                    <muxc:ItemsRepeater.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
-                                                        Spacing="5"
-                                                        Padding="3">
-                                                <TextBlock Text="{Binding}"
-                                                           Foreground="{ThemeResource PrimaryBrush}"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
+                                            <utu:Chip Style="{StaticResource MaterialFilterChipStyle}"
+                                                      CanRemove="False">
+                                                <StackPanel Orientation="Horizontal"
+                                                            Spacing="5"
+                                                            Padding="3">
+                                                    <TextBlock Text="{Binding}"
+                                                               Foreground="{ThemeResource PrimaryBrush}"
+                                                               VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </utu:Chip>
                                         </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
+                                    </muxc:ItemsRepeater.ItemTemplate>
+                                </muxc:ItemsRepeater>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                         <utu:AutoLayout Spacing="16">
@@ -143,30 +142,29 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16"
                                             Orientation="Horizontal">
-                                <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="SingleOrNone"
-                                               HorizontalAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}"
-                                               ItemsSource="{Binding Difficulties}"
-                                               SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
-                                                                Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
+                                <muxc:ItemsRepeater ItemsSource="{Binding Difficulties}"
+                                                    HorizontalAlignment="Stretch"
+                                                    utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}"
+                                                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
+                                    <muxc:ItemsRepeater.Layout>
+                                        <muxc:StackLayout Orientation="Horizontal"
+                                                          Spacing="18" />
+                                    </muxc:ItemsRepeater.Layout>
+                                    <muxc:ItemsRepeater.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
-                                                        Spacing="5"
-                                                        Padding="3">
-                                                <TextBlock Text="{Binding}"
-                                                           Foreground="{ThemeResource PrimaryBrush}"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
+                                            <utu:Chip Style="{StaticResource MaterialFilterChipStyle}"
+                                                      CanRemove="False">
+                                                <StackPanel Orientation="Horizontal"
+                                                            Spacing="5"
+                                                            Padding="3">
+                                                    <TextBlock Text="{Binding}"
+                                                               Foreground="{ThemeResource PrimaryBrush}"
+                                                               VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </utu:Chip>
                                         </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
+                                    </muxc:ItemsRepeater.ItemTemplate>
+                                </muxc:ItemsRepeater>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                         <utu:AutoLayout Spacing="16">
@@ -176,30 +174,29 @@
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16"
                                             Orientation="Horizontal">
-                                <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="SingleOrNone"
-                                               HorizontalAlignment="Stretch"
-                                               Style="{StaticResource FilterChipGroupStyle}"
-                                               ItemsSource="{Binding Serves}"
-                                               SelectedItem="{Binding Filter.Serves, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
-                                                                Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
+                                <muxc:ItemsRepeater ItemsSource="{Binding Serves}"
+                                                    HorizontalAlignment="Stretch"
+                                                    utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}"
+                                                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
+                                    <muxc:ItemsRepeater.Layout>
+                                        <muxc:StackLayout Orientation="Horizontal"
+                                                          Spacing="18" />
+                                    </muxc:ItemsRepeater.Layout>
+                                    <muxc:ItemsRepeater.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
-                                                        Spacing="5"
-                                                        Padding="3">
-                                                <TextBlock Text="{Binding}"
-                                                           Foreground="{ThemeResource PrimaryBrush}"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
+                                            <utu:Chip Style="{StaticResource MaterialFilterChipStyle}"
+                                                      CanRemove="False">
+                                                <StackPanel Orientation="Horizontal"
+                                                            Spacing="5"
+                                                            Padding="3">
+                                                    <TextBlock Text="{Binding}"
+                                                               Foreground="{ThemeResource PrimaryBrush}"
+                                                               VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </utu:Chip>
                                         </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
+                                    </muxc:ItemsRepeater.ItemTemplate>
+                                </muxc:ItemsRepeater>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                         <utu:AutoLayout Spacing="16">
@@ -208,30 +205,31 @@
                                        Text="Categories"
                                        Style="{StaticResource TitleLarge}" />
                             <utu:AutoLayout Spacing="16">
-                                <utu:ChipGroup CanRemove="False"
-                                               SelectionMode="SingleOrNone"
-                                               ItemsSource="{Binding Categories}"
-                                               Style="{StaticResource FilterChipGroupStyle}"
-                                               SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
-                                                                Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
-                                                        Spacing="5"
-                                                        Padding="3">
-                                                <ImageIcon Source="{Binding UrlIcon}" />
-                                                <TextBlock Text="{Binding Name}"
-                                                           Foreground="{ThemeResource PrimaryBrush}"
-                                                           VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
+                                <uer:FeedView Source="{Binding Categories}">
+                                    <DataTemplate>
+                                        <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                            <muxc:ItemsRepeater.Layout>
+                                                <muxc:UniformGridLayout  MaximumRowsOrColumns="4"
+                                                                         ItemsJustification="SpaceBetween"
+                                                                         MinColumnSpacing="18"
+                                                                         MinRowSpacing="18"
+                                                                         ItemsStretch="Fill" />
+                                            </muxc:ItemsRepeater.Layout>
+                                            <muxc:ItemsRepeater.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal"
+                                                                Spacing="5"
+                                                                Padding="3">
+                                                        <ImageIcon Source="{Binding UrlIcon}" />
+                                                        <TextBlock Text="{Binding Name}"
+                                                                   Foreground="{ThemeResource PrimaryBrush}"
+                                                                   VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </muxc:ItemsRepeater.ItemTemplate>
+                                        </muxc:ItemsRepeater>
+                                    </DataTemplate>
+                                </uer:FeedView>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
