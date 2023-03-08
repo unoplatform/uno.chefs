@@ -276,14 +276,16 @@
                         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                             <ScrollViewer x:Name="FlipScrollViewer" utu:AutoLayout.PrimaryAlignment="Stretch"
                                           HorizontalScrollMode="Disabled">
+                                <!--Added static height for issue https://github.com/unoplatform/uno.chefs/issues/402 workaround--> 
                                 <FlipView x:Name="StepsFlipView"
                                           ScrollViewer.IsHorizontalScrollChainingEnabled="False"
                                           ScrollViewer.IsVerticalScrollChainingEnabled="False"
-                                          VerticalAlignment="Top"
+                                          VerticalAlignment="Stretch"
                                           SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                           ItemsSource="{Binding Steps}"
                                           ItemTemplate="{StaticResource NarrowTemplate}"
-                                          Background="Transparent" />
+                                          Background="Transparent"
+                                          Height="400"/>
                             </ScrollViewer>
 
                             <utu:AutoLayout x:Name="WideButton"
