@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:um="using:Uno.Material"
     xmlns:converters="using:Chefs.Converters">
 
     <converters:StringFormatter x:Key="StringFormatter" />
@@ -19,15 +20,15 @@
     <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
                                               Invert="True" />
 
-    <converters:UserLikeColorConverter x:Key="UserLikeColorConverter"
-                                       UnpressValue="{StaticResource PrimaryInverseBrush}"
-                                       PressValue="{StaticResource PrimaryBrush}"
-                                       DefaultValue="{StaticResource PrimaryInverseBrush}" />
+    <um:FromBoolToValueConverter x:Key="UserLikeColorConverter"
+                                       FalseValue="{StaticResource PrimaryInverseBrush}"
+                                       TrueValue="{StaticResource PrimaryBrush}"
+                                       NullValue="{StaticResource PrimaryInverseBrush}" />
 
-    <converters:UserLikeColorConverter x:Key="UserDislikeColorConverter"
-                                       UnpressValue="{StaticResource PrimaryBrush}"
-                                       PressValue="{StaticResource PrimaryInverseBrush}"
-                                       DefaultValue="{StaticResource PrimaryInverseBrush}"/>
+    <um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
+                                       FalseValue="{StaticResource PrimaryBrush}"
+                                       TrueValue="{StaticResource PrimaryInverseBrush}"
+                                       NullValue="{StaticResource PrimaryInverseBrush}"/>
 
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
