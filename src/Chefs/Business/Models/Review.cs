@@ -12,9 +12,9 @@ public partial record Review
         CreatedBy = reviewData.CreatedBy; 
         PublisherName = reviewData.PublisherName;
         Date = reviewData.Date;
-        Likes = reviewData.Likes!.ToImmutableList() 
+        Likes = reviewData.Likes?.ToImmutableList() 
             ?? ImmutableList<Guid>.Empty;
-        Dislikes = reviewData.Dislikes!.ToImmutableList()
+        Dislikes = reviewData.Dislikes?.ToImmutableList()
             ?? ImmutableList<Guid>.Empty;
         Description = reviewData.Description;
         UrlAuthorImage = reviewData.UrlAuthorImage;

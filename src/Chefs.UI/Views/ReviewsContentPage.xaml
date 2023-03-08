@@ -20,9 +20,9 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
-                    <VisualState.StateTriggers>
+                    <win:VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
+                    </win:VisualState.StateTriggers>
                 </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
