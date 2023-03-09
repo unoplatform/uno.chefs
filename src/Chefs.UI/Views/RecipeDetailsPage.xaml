@@ -119,10 +119,8 @@
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
-                        <Setter Target="ImageLayout.Padding"
-                                Value="0,0,0,40" />
                         <Setter Target="TabsLayout.Padding"
-                                Value="20,0,40,40" />
+                                Value="20,0,40,0" />
                         <Setter Target="IngredientsButton.(utu:AutoLayout.PrimaryLength)"
                                 Value="190" />
                         <Setter Target="IngredientsButton.(utu:AutoLayout.CounterLength)"
@@ -139,8 +137,8 @@
                                 Value="80" />
                         <Setter Target="NavBar.Margin"
                                 Value="20,0" />
-                        <Setter Target="TabNavGrid.Padding"
-                                Value="0,0,0,22" />
+                        <Setter Target="TabNavGrid.Margin"
+                                Value="0,0,0,30" />
                         <Setter Target="MainScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
                         <Setter Target="MainScrollViewer.VerticalScrollBarVisibility"
@@ -338,10 +336,10 @@
                                       VerticalScrollBarVisibility="Hidden">
                             <Grid x:Name="TabNavGrid"
                                   uen:Region.Attached="True"
-                                  uen:Region.Navigator="Visibility">
+                                  uen:Region.Navigator="Visibility" >
 
                                 <utu:AutoLayout uen:Region.Name="IngredientsTab"
-                                                Visibility="Visible">
+                                                Visibility="Visible" >
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                TextWrapping="Wrap"
                                                Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
