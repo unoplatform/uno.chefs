@@ -64,6 +64,7 @@
                                 Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="ProfileDescription.Style"
                                 Value="{StaticResource LabelLarge}" />
+                        <!--Commented accent color selection until implemented-->
                         <!--<Setter Target="AccentColorLayout.Spacing"
                                 Value="40" />-->
                         <Setter Target="AccentColorTitle.Style"
