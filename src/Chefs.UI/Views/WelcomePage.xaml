@@ -221,14 +221,14 @@
                             </FlipView.Items>
                         </FlipView>
                     </utu:AutoLayout>
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
+                    <utu:AutoLayout x:Name="NextButton"
+                                    PrimaryAxisAlignment="Center"
                                     Spacing="20">
 
-                        <Button x:Name="NextButton" 
-                        Background="{ThemeResource PrimaryBrush}"
+                        <Button Background="{ThemeResource PrimaryBrush}"
                                 Content="Next"
                                 Height="56"
-                                HorizontalAlignment="Stretch"
+                                utu:AutoLayout.CounterAlignment="Stretch"
                                 Command="{Binding Next}" />
 
                         <msui:PipsPager x:Name="pipsPager"
