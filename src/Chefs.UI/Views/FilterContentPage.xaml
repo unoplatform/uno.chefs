@@ -211,20 +211,23 @@
                                             <muxc:ItemsRepeater.Layout>
                                                 <muxc:UniformGridLayout  MaximumRowsOrColumns="4"
                                                                          ItemsJustification="SpaceBetween"
-                                                                         MinColumnSpacing="18"
-                                                                         MinRowSpacing="18"
+                                                                         MinColumnSpacing="4"
+                                                                         MinRowSpacing="4"
                                                                          ItemsStretch="Fill" />
                                             </muxc:ItemsRepeater.Layout>
                                             <muxc:ItemsRepeater.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal"
-                                                                Spacing="5"
-                                                                Padding="3">
-                                                        <ImageIcon Source="{Binding UrlIcon}" />
-                                                        <TextBlock Text="{Binding Name}"
-                                                                   Foreground="{ThemeResource PrimaryBrush}"
-                                                                   VerticalAlignment="Center" />
-                                                    </StackPanel>
+                                                    <utu:Chip Style="{StaticResource MaterialFilterChipStyle}"
+                                                              CanRemove="False">
+                                                        <StackPanel Orientation="Horizontal"
+                                                                    Spacing="5"
+                                                                    Padding="3">
+                                                            <ImageIcon Source="{Binding UrlIcon}" />
+                                                            <TextBlock Text="{Binding Name}"
+                                                                       Foreground="{ThemeResource PrimaryBrush}"
+                                                                       VerticalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </utu:Chip>
                                                 </DataTemplate>
                                             </muxc:ItemsRepeater.ItemTemplate>
                                         </muxc:ItemsRepeater>
