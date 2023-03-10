@@ -198,6 +198,8 @@
                                 Value="0,12,0,0" />
                         <Setter Target="RecentSearchesLayout.Spacing"
                                 Value="8" />
+                        <Setter Target="ItemsCount.Style"
+                                Value="{StaticResource HeadlineLarge}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -315,7 +317,8 @@
                     <utu:AutoLayout PrimaryAxisAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     Visibility="{Binding Searched}">
-                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                        <TextBlock x:Name="ItemsCount"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TitleLarge}" />
                     </utu:AutoLayout>

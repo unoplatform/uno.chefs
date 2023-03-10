@@ -439,7 +439,9 @@
                                             <DataTemplate>
                                                 <UserControl>
                                                     <utu:AutoLayout Spacing="8"
-                                                                    utu:AutoLayout.CounterAlignment="Start">
+                                                                    utu:AutoLayout.CounterAlignment="Start"
+                                                                    VerticalContentAlignment="Center"
+                                                                    HorizontalContentAlignment="Center" >
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
                                                                 <VisualState x:Name="Narrow">
@@ -463,10 +465,9 @@
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                         <utu:AutoLayout x:Name="CreatorsLayout"
-                                                                        CornerRadius="30"
-                                                                        Orientation="Horizontal"
-                                                                        utu:AutoLayout.CounterAlignment="Center"
+                                                                        utu:AutoLayout.CounterAlignment="Stretch"
                                                                         Height="75"
+                                                                        Spacing="8"
                                                                         Width="75">
                                                             <Border CornerRadius="25"
                                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -474,11 +475,14 @@
                                                                        Stretch="UniformToFill" />
                                                             </Border>
                                                         </utu:AutoLayout>
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                   TextAlignment="Center"
-                                                                   Text="{Binding FullName}"
-                                                                   utu:AutoLayout.CounterAlignment="Center"
-                                                                   Style="{StaticResource BodySmall}" />
+                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                       TextWrapping="Wrap"
+                                                                       TextAlignment="Center"
+                                                                       Text="{Binding FullName, Converter={StaticResource StringReplacerConverter}, ConverterParameter=' ' }"
+                                                                       utu:AutoLayout.CounterAlignment="Center"
+                                                                       Style="{StaticResource TitleMedium}" />
+                                                        </utu:AutoLayout>
                                                     </utu:AutoLayout>
                                                 </UserControl>
                                             </DataTemplate>
