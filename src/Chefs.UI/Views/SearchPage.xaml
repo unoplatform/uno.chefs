@@ -303,7 +303,7 @@
                                                     CornerRadius="8"
                                                     Background="{ThemeResource PrimaryInverseColor}"
                                                     Foreground="{ThemeResource SurfaceColor}"
-                                                    Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
+                                                    Command="{utu:AncestorBinding AncestorType=muxc:ItemsRepeater, Path=DataContext.ApplySearchHistory}"
                                                     CommandParameter="{Binding}" />
                                         </utu:AutoLayout>
                                     </UserControl>

@@ -73,7 +73,7 @@ public static class AppHost
             new ViewMap<HomePage, HomeModel>(),
             new ViewMap<IngredientsPage, IngredientsModel>(Data: new DataMap<IngredientsParameter>()),
             new ViewMap<CreateCookbookPage, CreateCookbookModel>(),
-            new DataViewMap<UpdateCookbookPage, UpdateCookbookModel, Cookbook>(),
+            new DataViewMap<UpdateCookbookPage, UpdateCookbookModel, UpdateCookbook>(),
             new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
             new ViewMap<NotificationsPage>(),
             new ViewMap<NotificationsContentPage, NotificationsModel>(),

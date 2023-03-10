@@ -5,12 +5,12 @@ using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
-public partial class UpdateCookbookModel // DR_REV: Use Model suffix instead of ViewModel
+public partial class UpdateCookbookModel
 {
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
     private readonly ICookbookService _cookbookService;
-    private Cookbook _cookbook;
+    private readonly Cookbook _cookbook;
 
     public UpdateCookbookModel(
 		INavigator navigator,
