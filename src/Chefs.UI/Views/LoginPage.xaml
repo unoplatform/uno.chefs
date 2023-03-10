@@ -129,7 +129,7 @@
                                         utu:AutoLayout.CounterAlignment="Stretch"
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
-                                      IsChecked="{Binding AuthOptions.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"
@@ -245,7 +245,7 @@
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
-                                      IsChecked="{Binding AuthOptions.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"

@@ -589,10 +589,10 @@
                                                                                                             </utu:AutoLayout>
                                                                                                             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                                                                             utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                                                            Visibility="{Binding CookbookImages.ThirdImage,
-                                                                                                                                    Converter={StaticResource  NullToVisible}}">
-                                                                                                                <Button uen:Navigation.Request="CreateUpdateCookbook"
-                                                                                                                        uen:Navigation.Data="{Binding ., Mode=TwoWay }"
+                                                                                                                            Visibility="{Binding CookbookImages.ThirdImage, 
+                                                                                                                                   Converter={StaticResource NullToVisible}}">
+                                                                                                                <Button Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.UpdateCookBookNavigation}"
+                                                                                                                        CommandParameter="{Binding}"
                                                                                                                         Background="{ThemeResource SurfaceVariantColor}"
                                                                                                                         utu:AutoLayout.CounterAlignment="Stretch"
                                                                                                                         utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -622,8 +622,8 @@
                                                                                                     <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                                                                TextWrapping="NoWrap"
                                                                                                                Text="{Binding PinsNumber, 
-                                                                                                                Converter={StaticResource StringFormatter}, 
-                                                                                                                ConverterParameter='{}{0} pins'}"
+                                                                                                                   Converter={StaticResource StringFormatter}, 
+                                                                                                                   ConverterParameter='{}{0} pins'}"
                                                                                                                Style="{StaticResource BodySmall}" />
                                                                                                 </utu:AutoLayout>
                                                                                             </utu:AutoLayout>
@@ -650,7 +650,8 @@
                                             VerticalAlignment="Bottom"
                                             HorizontalAlignment="Right"
                                             Margin="0,18">
-                                <Button uen:Navigation.Request="!ModalCreateCookbook"
+                                <Button uen:Navigation.Request="-"
+                                        uen:Navigation.Data="{Binding EmptyCookBook}"
                                         utu:AutoLayout.CounterAlignment="End"
                                         CornerRadius="60"
                                         Style="{StaticResource FabStyle}">
