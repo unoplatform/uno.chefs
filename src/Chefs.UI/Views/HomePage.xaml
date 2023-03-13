@@ -460,6 +460,8 @@
                                                                                 Value="124" />
                                                                         <Setter Target="CreatorsLayout.Margin"
                                                                                 Value="40,0,0,0" />
+                                                                        <Setter Target="NameLayout.Margin"
+                                                                                Value="40,0,0,0" />
                                                                     </VisualState.Setters>
                                                                 </VisualState>
                                                             </VisualStateGroup>
@@ -475,9 +477,9 @@
                                                                        Stretch="UniformToFill" />
                                                             </Border>
                                                         </utu:AutoLayout>
-                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+                                                                        x:Name="NameLayout">
                                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                       TextWrapping="Wrap"
                                                                        TextAlignment="Center"
                                                                        Text="{Binding FullName, Converter={StaticResource StringReplacerConverter}, ConverterParameter=' ' }"
                                                                        utu:AutoLayout.CounterAlignment="Center"
