@@ -26,9 +26,9 @@
                                        NullValue="{StaticResource PrimaryInverseBrush}" />
 
     <um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
-                                       FalseValue="{StaticResource PrimaryBrush}"
-                                       TrueValue="{StaticResource PrimaryInverseBrush}"
-                                       NullValue="{StaticResource PrimaryInverseBrush}"/>
+                                 FalseValue="{StaticResource PrimaryBrush}"
+                                 TrueValue="{StaticResource PrimaryInverseBrush}"
+                                 NullValue="{StaticResource PrimaryInverseBrush}" />
 
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
