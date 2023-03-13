@@ -75,6 +75,8 @@
                                             <utu:AutoLayout x:Name="ImageLayout"
                                                             utu:AutoLayout.PrimaryLength="110">
                                                 <Image Source="{Binding ImageUrl}"
+                                                       utu:AutoLayout.CounterAlignment="Stretch"
+                                                       utu:AutoLayout.PrimaryAlignment="Stretch"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
                                             <utu:AutoLayout Spacing="2"
@@ -161,7 +163,7 @@
                                     <utu:AutoLayout.Resources>
                                         <muxc:UniformGridLayout x:Key="NarrowGridLayout"
                                                                 MaximumRowsOrColumns="2"
-                                                                ItemsJustification="SpaceBetween"
+                                                                MinItemWidth="155"
                                                                 MinColumnSpacing="10"
                                                                 MinRowSpacing="10"
                                                                 ItemsStretch="Fill" />
