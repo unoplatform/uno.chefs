@@ -8,8 +8,12 @@ public class StringReplacerConverter : IValueConverter
         if (value is string)
         {
             string[] stringParams = ((string)parameter).Split(',');
-            if(stringParams.Length == 1) return ((string)value).Replace(stringParams[0], "\n");
-            return ((string)value).Replace(stringParams[0], stringParams[1]);
+            if (stringParams.Length == 1) 
+            {
+                return ((string)value).Replace(stringParams[0], "\n");
+            } 
+            var stringReplaced = ((string)value).Replace(stringParams[0], stringParams[1]);
+            return stringReplaced;
         }
 
         return value;
