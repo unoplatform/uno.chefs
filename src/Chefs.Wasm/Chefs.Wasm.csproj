@@ -5,6 +5,9 @@
 		<NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
 		<DefineConstants>$(DefineConstants);WINUI</DefineConstants>
 		<ImplicitUsings>disable</ImplicitUsings>
+		<!-- Changing the root of the app to have the correct path for the images -->
+		<!-- Related details here : https://github.com/unoplatform/uno.chefs/issues/404 -->
+		<WasmShellWebAppBasePath>/</WasmShellWebAppBasePath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
