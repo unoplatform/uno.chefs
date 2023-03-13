@@ -81,6 +81,8 @@
                                             <utu:AutoLayout x:Name="ImageLayout"
                                                             Height="110">
                                                 <Image Source="{Binding ImageUrl}"
+                                                       utu:AutoLayout.CounterAlignment="Stretch"
+                                                       utu:AutoLayout.PrimaryAlignment="Stretch"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
                                             <utu:AutoLayout Spacing="2"
@@ -142,6 +144,10 @@
                                 Value="40, 20" />
                         <Setter Target="CookbookName.Margin"
                                 Value="40, 0" />
+                        <Setter Target="CookbookName.Width"
+                                Value="535" />
+                        <Setter Target="CookbookName.(utu:AutoLayout.CounterAlignment)"
+                                Value="Start" />
                         <Setter Target="WideButtons.Visibility"
                                 Value="Visible" />
                         <Setter Target="NarrowButtons.Visibility"
@@ -175,6 +181,7 @@
                 </utu:NavigationBar>
             </utu:AutoLayout>
             <TextBox x:Name="CookbookName"
+                     utu:AutoLayout.CounterAlignment="Stretch"
                      Background="{ThemeResource SurfaceBrush}"
                      Text="{Binding Cookbook.Name, Mode=TwoWay}"
                      PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
@@ -203,7 +210,7 @@
                                         <utu:AutoLayout.Resources>
                                             <muxc:UniformGridLayout x:Key="NarrowGridLayout"
                                                                     MaximumRowsOrColumns="2"
-                                                                    ItemsJustification="SpaceBetween"
+                                                                    MinItemWidth="155"
                                                                     MinColumnSpacing="10"
                                                                     MinRowSpacing="10"
                                                                     ItemsStretch="Fill" />
