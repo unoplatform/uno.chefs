@@ -4,7 +4,7 @@ namespace Chefs.Converters;
 public class StringReplacerConverter : IValueConverter
 {
    public object Convert(object value, Type targetType, object parameter, string language)
-    {
+   {
         if (value is string)
         {
             string[] stringParams = ((string)parameter).Split(',');
@@ -17,7 +17,7 @@ public class StringReplacerConverter : IValueConverter
         }
 
         return value;
-    }
+   }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language) => throw new NotImplementedException();
 }
