@@ -121,17 +121,17 @@
                                 Value="40" />
                         <Setter Target="TabsLayout.Padding"
                                 Value="20,0,40,0" />
-                        <Setter Target="IngredientsButton.(utu:AutoLayout.PrimaryLength)"
+                        <Setter Target="IngredientsButton.Width"
                                 Value="190" />
-                        <Setter Target="IngredientsButton.(utu:AutoLayout.CounterLength)"
+                        <Setter Target="IngredientsButton.Height"
                                 Value="56" />
                         <Setter Target="IngredientsButton.Foreground"
                                 Value="{ThemeResource OnSurfaceMediumBrush}" />
                         <Setter Target="IngredientsButton.Style"
                                 Value="{StaticResource OutlinedButtonStyle}" />
-                        <Setter Target="LiveCookingButton.(utu:AutoLayout.PrimaryLength)"
+                        <Setter Target="LiveCookingButton.Width"
                                 Value="190" />
-                        <Setter Target="LiveCookingButton.(utu:AutoLayout.CounterLength)"
+                        <Setter Target="LiveCookingButton.Height"
                                 Value="56" />
                         <Setter Target="RecipeCard.Spacing"
                                 Value="80" />
@@ -467,14 +467,14 @@
                         Spacing="16">
             <Button x:Name="IngredientsButton"
                     Content="Get the Ingredients"
-                    utu:AutoLayout.PrimaryLength="56"
+                    Height="56"
                     Style="{StaticResource TextButtonStyle}"
                     Command="{Binding IngredientsNavigation}" />
 
             <Button x:Name="LiveCookingButton"
                     Background="{ThemeResource PrimaryBrush}"
                     Content="Start cooking!"
-                    utu:AutoLayout.PrimaryLength="56"
+                    Height="56"
                     Command="{Binding LiveCooking}" />
         </utu:AutoLayout>
     </utu:AutoLayout>

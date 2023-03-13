@@ -198,6 +198,8 @@
                                 Value="0,12,0,0" />
                         <Setter Target="RecentSearchesLayout.Spacing"
                                 Value="8" />
+                        <Setter Target="ItemsCount.Style"
+                                Value="{StaticResource HeadlineLarge}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -303,7 +305,7 @@
                                                     CornerRadius="8"
                                                     Background="{ThemeResource PrimaryInverseColor}"
                                                     Foreground="{ThemeResource SurfaceColor}"
-                                                    Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
+                                                    Command="{utu:AncestorBinding AncestorType=muxc:ItemsRepeater, Path=DataContext.ApplySearchHistory}"
                                                     CommandParameter="{Binding}" />
                                         </utu:AutoLayout>
                                     </UserControl>
@@ -315,7 +317,8 @@
                     <utu:AutoLayout PrimaryAxisAlignment="Center"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     Visibility="{Binding Searched}">
-                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                        <TextBlock x:Name="ItemsCount"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TitleLarge}" />
                     </utu:AutoLayout>
