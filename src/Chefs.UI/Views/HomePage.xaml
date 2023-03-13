@@ -481,7 +481,7 @@
                                                                         x:Name="NameLayout">
                                                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                        TextAlignment="Center"
-                                                                       Text="{Binding FullName, Converter={StaticResource StringReplacerConverter}, ConverterParameter=' ' }"
+                                                                       Text="{Binding FullName, Converter={StaticResource WhiteSpaceToLineBreakConverter}}"
                                                                        utu:AutoLayout.CounterAlignment="Center"
                                                                        Style="{StaticResource TitleMedium}" />
                                                         </utu:AutoLayout>

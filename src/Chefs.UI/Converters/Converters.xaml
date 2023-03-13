@@ -20,7 +20,9 @@
     <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
                                               Invert="True" />
 
-    <converters:StringReplacerConverter x:Key="StringReplacerConverter" />
+    <converters:StringReplacerConverter x:Key="WhiteSpaceToLineBreakConverter"
+                                        OldValue=" "
+                                        NewValue="&#x0a;"/>
 
     <um:FromBoolToValueConverter x:Key="UserLikeColorConverter"
                                        FalseValue="{StaticResource PrimaryInverseBrush}"
