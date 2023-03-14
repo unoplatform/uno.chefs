@@ -66,14 +66,14 @@
                                                             <AdaptiveTrigger MinWindowWidth="800" />
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
-                                                            <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                            <Setter Target="ImageLayout.Height"
                                                                     Value="130" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
                                             <utu:AutoLayout x:Name="ImageLayout"
-                                                            utu:AutoLayout.PrimaryLength="110">
+                                                            Height="110">
                                                 <Image Source="{Binding ImageUrl}"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
