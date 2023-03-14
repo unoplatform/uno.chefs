@@ -576,6 +576,8 @@
                                                                                                             <Image Source="{Binding CookbookImages.SecondImage}"
                                                                                                                    Visibility="{Binding CookbookImages.SecondImage,
                                                                                                                             Converter={StaticResource NullToCollapsed}}"
+                                                                                                                   utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                                                   utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                                                                    Stretch="UniformToFill" />
                                                                                                         </utu:AutoLayout>
                                                                                                         <utu:AutoLayout CornerRadius="12"
@@ -602,7 +604,7 @@
                                                                                                                         MinHeight="57">
                                                                                                                     <um:ControlExtensions.Icon>
                                                                                                                         <PathIcon x:Name="ButtonIcon"
-                                                                                                                                  Margin="9,1,0,0"
+                                                                                                                                  Margin="13,1,0,0"
                                                                                                                                   utu:AutoLayout.CounterAlignment="Stretch"
                                                                                                                                   Data="{StaticResource Icon_Add}"
                                                                                                                                   Foreground="{ThemeResource PrimaryBrush}" />
