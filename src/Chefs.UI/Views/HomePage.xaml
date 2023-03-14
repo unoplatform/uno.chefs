@@ -159,35 +159,35 @@
                             Padding="18,12"
                             Orientation="Horizontal">
                 <utu:AutoLayout x:Name="ProfileLayout"
-                                    Spacing="8"
+                                Spacing="8"
+                                Orientation="Horizontal"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <utu:AutoLayout CornerRadius="30"
                                     Orientation="Horizontal"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <utu:AutoLayout CornerRadius="30"
-                                        Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Center"
-                                        Width="40"
-                                        Height="40"
-                                        uen:Navigation.Request="!Profile"
-                                        uen:Navigation.Data="{Binding UserProfile}">
-                            <Border CornerRadius="15"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <Image Source="{Binding UserProfile.UrlProfileImage}"
-                                       Stretch="UniformToFill" />
-                            </Border>
-                        </utu:AutoLayout>
-
-                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                       Text="{Binding UserProfile.FullName}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource TitleMedium}" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       Text="{Binding UserProfile.Email}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource CaptionMedium}" />
-                        </utu:AutoLayout>
+                                    utu:AutoLayout.CounterAlignment="Center"
+                                    utu:AutoLayout.PrimaryLength="40"
+                                    utu:AutoLayout.CounterLength="40"
+                                    uen:Navigation.Request="!Profile"
+                                    uen:Navigation.Data="{Binding UserProfile}">
+                        <Border CornerRadius="15"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <Image Source="{Binding UserProfile.UrlProfileImage}"
+                                   Stretch="UniformToFill" />
+                        </Border>
                     </utu:AutoLayout>
+
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Text="{Binding UserProfile.FullName}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource TitleMedium}" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   Text="{Binding UserProfile.Email}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource CaptionMedium}" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
 
                 <utu:AutoLayout Spacing="8"
                                 Orientation="Horizontal">
@@ -441,7 +441,7 @@
                                                     <utu:AutoLayout Spacing="8"
                                                                     utu:AutoLayout.CounterAlignment="Start"
                                                                     VerticalContentAlignment="Center"
-                                                                    HorizontalContentAlignment="Center" >
+                                                                    HorizontalContentAlignment="Center">
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
                                                                 <VisualState x:Name="Narrow">
@@ -466,25 +466,23 @@
                                                                 </VisualState>
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
-                                                        <utu:AutoLayout x:Name="CreatorsLayout"
-                                                                        utu:AutoLayout.CounterAlignment="Stretch"
-                                                                        Height="75"
-                                                                        Spacing="8"
-                                                                        Width="75">
-                                                            <Border CornerRadius="25"
-                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                <Image Source="{Binding UrlProfileImage}"
-                                                                       Stretch="UniformToFill" />
-                                                            </Border>
-                                                        </utu:AutoLayout>
-                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
-                                                                        x:Name="NameLayout">
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                       TextAlignment="Center"
-                                                                       Text="{Binding FullName, Converter={StaticResource WhiteSpaceToLineBreakConverter}}"
-                                                                       utu:AutoLayout.CounterAlignment="Center"
-                                                                       Style="{StaticResource TitleMedium}" />
-                                                        </utu:AutoLayout>
+                                                        <Border x:Name="CreatorsLayout"
+                                                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                utu:AutoLayout.CounterAlignment="Stretch"
+                                                                CornerRadius="25"
+                                                                Height="75"
+                                                                Width="75">
+                                                            <Image Source="{Binding UrlProfileImage}"
+                                                                   Stretch="UniformToFill" />
+                                                        </Border>
+
+                                                        <TextBlock x:Name="NameLayout"
+                                                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                   TextAlignment="Center"
+                                                                   Text="{Binding FullName, Converter={StaticResource WhiteSpaceToLineBreakConverter}}"
+                                                                   utu:AutoLayout.CounterAlignment="Center"
+                                                                   Style="{StaticResource TitleMedium}" />
+
                                                     </utu:AutoLayout>
                                                 </UserControl>
                                             </DataTemplate>
