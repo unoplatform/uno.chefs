@@ -19,80 +19,231 @@
         <x:String x:Key="Icon_Outline_Password_ChefApp">F0 M 7.948718070983886 1.5384615384615383 C 7.064662944204398 1.5384615384615383 6.216816630988931 1.889651005084698 5.5916953335629165 2.5147721706292567 C 4.966574036136902 3.1398933361738157 4.61538468637774 3.987739758613782 4.61538468637774 4.871794871794871 L 4.61538468637774 8.205128205128204 L 11.282051455590032 8.205128205128204 L 11.282051455590032 4.871794871794871 C 11.282051455590032 3.987739758613782 10.930861616767112 3.1398933361738157 10.305741297468616 2.5147721706292567 C 9.680620000042602 1.889651005084698 8.832773197763373 1.5384615384615383 7.948718070983886 1.5384615384615383 Z M 12.820513017715946 8.205128205128204 L 12.820513017715946 4.871794871794871 C 12.820513017715946 3.5797146039131356 12.30723668958343 2.3405543351784726 11.3935971178627 1.4269155111068332 C 10.479958524269492 0.5132766870351937 9.240798114208319 0 7.948718070983886 0 C 6.656638027759453 0 5.417477617698281 0.5132766870351937 4.503838535041312 1.4269155111068332 C 3.5901996969162226 2.3405543351784726 3.076923124251827 3.5797146039131356 3.076923124251827 4.871794871794871 L 3.076923124251827 8.205128205128204 L 2.820512863897508 8.205128205128204 C 1.2627865912201097 8.205128205128204 0 9.467914287860577 0 11.025641025641026 L 0 17.17948717948718 C 0 18.737213917267628 1.2627865912201097 20 2.820512863897508 20 L 13.076923278070264 20 C 14.634649061683904 20 15.897436141967772 18.737213917267628 15.897436141967772 17.17948717948718 L 15.897436141967772 11.025641025641026 C 15.897436141967772 9.467914287860577 14.634649061683904 8.205128205128204 13.076923278070264 8.205128205128204 L 12.820513017715946 8.205128205128204 Z M 2.820512863897508 9.743589743589743 C 2.112455400535451 9.743589743589743 1.5384615621259135 10.317583328638321 1.5384615621259135 11.025641025641026 L 1.5384615621259135 17.17948717948718 C 1.5384615621259135 17.88754389836238 2.112455400535451 18.46153846153846 2.820512863897508 18.46153846153846 L 13.076923278070264 18.46153846153846 C 13.784980985964202 18.46153846153846 14.35897457984186 17.88754389836238 14.35897457984186 17.17948717948718 L 14.35897457984186 11.025641025641026 C 14.35897457984186 10.317583328638321 13.784980985964202 9.743589743589743 13.076923278070264 9.743589743589743 L 2.820512863897508 9.743589743589743 Z M 7.948718070983886 13.846153846153845 C 7.807106725030602 13.846153846153845 7.6923078106295675 13.960952758789062 7.6923078106295675 14.102564102564102 C 7.6923078106295675 14.244175446339142 7.807106725030602 14.358974358974358 7.948718070983886 14.358974358974358 C 8.09032941693717 14.358974358974358 8.205128331338205 14.244175446339142 8.205128331338205 14.102564102564102 C 8.205128331338205 13.960952758789062 8.09032941693717 13.846153846153845 7.948718070983886 13.846153846153845 Z M 6.153846248503654 14.102564102564102 C 6.153846248503654 13.111283718011318 6.957437671183381 12.307692307692307 7.948718070983886 12.307692307692307 C 8.93999847078439 12.307692307692307 9.743589893464119 13.111283718011318 9.743589893464119 14.102564102564102 C 9.743589893464119 15.093844487116886 8.93999847078439 15.897435897435896 7.948718070983886 15.897435897435896 C 6.957437671183381 15.897435897435896 6.153846248503654 15.093844487116886 6.153846248503654 14.102564102564102 Z</x:String>
     </Page.Resources>
     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:AutoLayout PrimaryAxisAlignment="Center" 
-                            Height="230">
-                <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png" 
-                       Stretch="UniformToFill" 
-                       utu:AutoLayout.PrimaryAlignment="Stretch" />
-            </utu:AutoLayout>
-            <utu:AutoLayout Spacing="15" 
-                            Padding="30,5,30,10" 
-                            PrimaryAxisAlignment="End" 
-                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" 
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <Image Source="ms-appx:///Assets/Icons/uno_logo.png" 
-                           Stretch="UniformToFill" 
-                           utu:AutoLayout.IsIndependentLayout="True" 
-                           VerticalAlignment="Stretch" 
-                           HorizontalAlignment="Stretch" 
-                           Width="190" 
-                           Height="57.5" />
-                </utu:AutoLayout>
-                <utu:AutoLayout Spacing="20" PrimaryAxisAlignment="Center">
-                    <TextBox PlaceholderText="Full name" 
-                             PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}" 
-                             CornerRadius="16" 
-                             Style="{StaticResource OutlinedTextBoxStyle}"
-                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Email}"
-                             ios:ReturnKeyType="Next"
-					         android:ImeOptions="Next"
-						     IsSpellCheckEnabled="False"
-						     InputScope="Text">
-                        <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Person_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
-                        </um:ControlExtensions.Icon>
-                    </TextBox>
-                    <TextBox PlaceholderText="Email" 
-                             x:Name="Email"
-                             PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}" 
-                             CornerRadius="16" 
-                             Style="{StaticResource OutlinedTextBoxStyle}"
-                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
-                             ios:ReturnKeyType="Next"
-					         android:ImeOptions="Next"
-						     IsSpellCheckEnabled="False"
-						     InputScope="Text">
-                        <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}" Foreground="{ThemeResource OnSurfaceVariantBrush}" />
-                        </um:ControlExtensions.Icon>
-                    </TextBox>
-                    <PasswordBox PlaceholderText="Password" 
-                                 x:Name="Password"
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ChefImage.Visibility"
+                                Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ChefImage.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="WideChefImage.Visibility"
+                                Value="Visible" />
+                        <Setter Target="WideChefImage.(utu:AutoLayout.PrimaryAlignment)"
+                                Value="Stretch" />
+                        <Setter Target="WideChefImage.(utu:AutoLayout.CounterAlignment)"
+                                Value="Stretch" />
+                        <Setter Target="WideChefImage.Margin"
+                                Value="363, 0, 0, 0" />
+                        <Setter Target="OuterLayout.(utu:AutoLayout.PrimaryAlignment)"
+                                Value="Stretch" />
+                        <Setter Target="OuterLayout.(utu:AutoLayout.CounterAlignment)"
+                                Value="Stretch" />
+                        <Setter Target="OuterLayout.Background"
+                                Value="{ThemeResource PrimaryBrush}" />
+                        <Setter Target="WideInnerLayout.Visibility"
+                                Value="Visible" />
+                        <Setter Target="InnerLayout.Visibility"
+                                Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+                        utu:AutoLayout.CounterAlignment="Stretch"
+                        x:Name="LayoutContainer">
+            <utu:AutoLayout x:Name="OuterLayout"
+                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                            utu:AutoLayout.CounterAlignment="Stretch">
+
+                <Image x:Name="ChefImage"
+                       Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                       Stretch="UniformToFill"
+                       Height="290" />
+                <Image x:Name="WideChefImage"
+                       Visibility="Collapsed"
+                       Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                       Stretch="UniformToFill"
+                       utu:AutoLayout.CounterAlignment="Stretch" />
+
+                <utu:AutoLayout x:Name="InnerLayout"
+                                Spacing="15"
+                                Padding="30,30,30,15"
+                                Background="{ThemeResource SurfaceBrush}"
+                                PrimaryAxisAlignment="Center"
+                                HorizontalAlignment="Left"
+                                utu:AutoLayout.IsIndependentLayout="False"
+                                utu:AutoLayout.CounterAlignment="Stretch">
+                    <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
+                           Stretch="Uniform"
+                           Height="44"
+                           Width="200" />
+                    <utu:AutoLayout x:Name="FieldsButtonsLayout"
+                                    Spacing="10"
+                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                    PrimaryAxisAlignment="Start">
+                        <TextBox PlaceholderText="Full name"
+                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                                  CornerRadius="16"
-                                 Style="{StaticResource OutlinedPasswordBoxStyle}"
-                                 utu:CommandExtensions.Command="{Binding NavigateBack}"
-                                 ios:ReturnKeyType="Done"
-							     android:ImeOptions="Done">
-                        <um:ControlExtensions.Icon>
-                            <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-                        </um:ControlExtensions.Icon>
-                    </PasswordBox>
-                </utu:AutoLayout>
-                <Button uen:Navigation.Request="-"
-                        HorizontalContentAlignment="Center" 
-                        VerticalContentAlignment="Center" 
-                        Background="{ThemeResource PrimaryBrush}" 
-                        Content="Sign in" 
-                        Height="56" />
-                <utu:AutoLayout Spacing="5" PrimaryAxisAlignment="Center" Orientation="Horizontal" utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout PrimaryAxisAlignment="End" Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Center">
-                        <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}" TextAlignment="Center" Text="Already a user?" utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource LabelMedium}" />
+                                 Style="{StaticResource OutlinedTextBoxStyle}"
+                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Email}"
+                                 ios:ReturnKeyType="Next"
+                                 android:ImeOptions="Next"
+                                 IsSpellCheckEnabled="False"
+                                 InputScope="Text">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Person_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </TextBox>
+                        <TextBox PlaceholderText="Email"
+                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                 CornerRadius="16"
+                                 Style="{StaticResource OutlinedTextBoxStyle}"
+                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
+                                 ios:ReturnKeyType="Next"
+                                 android:ImeOptions="Next"
+                                 IsSpellCheckEnabled="False"
+                                 InputScope="Text">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </TextBox>
+                        <PasswordBox PlaceholderText="Password"
+                                     x:Name="Password"
+                                     CornerRadius="16"
+                                     Style="{StaticResource OutlinedPasswordBoxStyle}"
+                                     utu:CommandExtensions.Command="{Binding NavigateBack}"
+                                     ios:ReturnKeyType="Done"
+                                     android:ImeOptions="Done">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </PasswordBox>
                     </utu:AutoLayout>
-                    <HyperlinkButton uen:Navigation.Request="-"
-                                     Content="Login Now" 
-                                     utu:AutoLayout.CounterAlignment="Center" />
+                    <Button uen:Navigation.Request="-"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="{ThemeResource PrimaryBrush}"
+                            Content="Sign in"
+                            Height="56" />
+                    <utu:AutoLayout Spacing="5"
+                                    PrimaryAxisAlignment="Center"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <utu:AutoLayout PrimaryAxisAlignment="End"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Center">
+                            <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                       TextAlignment="Center"
+                                       Text="Already a user?"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Style="{StaticResource LabelMedium}" />
+                        </utu:AutoLayout>
+                        <HyperlinkButton uen:Navigation.Request="-"
+                                         Content="Login Now"
+                                         utu:AutoLayout.CounterAlignment="Center" />
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
+                <utu:AutoLayout x:Name="WideInnerLayout"
+                                Background="{ThemeResource SurfaceBrush}"
+                                utu:AutoLayout.CounterAlignment="Stretch"
+                                utu:AutoLayout.IsIndependentLayout="True"
+                                PrimaryAxisAlignment="Center"
+                                HorizontalAlignment="Left"
+                                CornerRadius="40"
+                                Spacing="40"
+                                Padding="66, 90, 66, 66"
+                                Margin="50,-40,0,-40"
+                                Height="700"
+                                Visibility="Collapsed">
+                    <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
+                           Stretch="Uniform"
+                           Height="57.5"
+                           Width="200"
+                           Margin="0, 0, 0, 30"/>
+                    <utu:AutoLayout Spacing="20"
+                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                    PrimaryAxisAlignment="Start">
+                        <TextBox PlaceholderText="Full name"
+                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                 CornerRadius="16"
+                                 Style="{StaticResource OutlinedTextBoxStyle}"
+                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Email}"
+                                 ios:ReturnKeyType="Next"
+                                 android:ImeOptions="Next"
+                                 IsSpellCheckEnabled="False"
+                                 InputScope="Text">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Person_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </TextBox>
+                        <TextBox PlaceholderText="Email"
+                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                 CornerRadius="16"
+                                 Style="{StaticResource OutlinedTextBoxStyle}"
+                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=WidePassword}"
+                                 ios:ReturnKeyType="Next"
+                                 android:ImeOptions="Next"
+                                 IsSpellCheckEnabled="False"
+                                 utu:AutoLayout.CounterAlignment="Stretch"
+                                 HorizontalAlignment="Stretch"
+                                 InputScope="Text">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </TextBox>
+                        <PasswordBox PlaceholderText="Password"
+                                     x:Name="WidePassword"
+                                     CornerRadius="16"
+                                     Style="{StaticResource OutlinedPasswordBoxStyle}"
+                                     utu:CommandExtensions.Command="{Binding NavigateBack}"
+                                     ios:ReturnKeyType="Done"
+                                     android:ImeOptions="Done">
+                            <um:ControlExtensions.Icon>
+                                <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
+                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                            </um:ControlExtensions.Icon>
+                        </PasswordBox>
+                    </utu:AutoLayout>
+                    <Button uen:Navigation.Request="-"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="{ThemeResource PrimaryBrush}"
+                            Content="Sign in"
+                            MinWidth="416"
+                            Height="56" />
+                    <utu:AutoLayout Spacing="5"
+                                    PrimaryAxisAlignment="Center"
+                                    Orientation="Horizontal"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <utu:AutoLayout PrimaryAxisAlignment="End"
+                                        Orientation="Horizontal"
+                                        utu:AutoLayout.CounterAlignment="Start">
+                            <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                       TextAlignment="Center"
+                                       Text="Already a user?"
+                                       utu:AutoLayout.CounterAlignment="Center"
+                                       Style="{StaticResource LabelMedium}" />
+                        </utu:AutoLayout>
+                        <HyperlinkButton uen:Navigation.Request="-"
+                                         Content="Login Now"
+                                         utu:AutoLayout.CounterAlignment="Start" />
+                    </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
         </utu:AutoLayout>
