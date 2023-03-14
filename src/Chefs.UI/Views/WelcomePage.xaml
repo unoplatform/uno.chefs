@@ -227,10 +227,9 @@
                         <Button x:Name="NextButton" 
                         Background="{ThemeResource PrimaryBrush}"
                                 Content="Next"
-                                utu:AutoLayout.PrimaryLength="56"
+                                Height="56"
                                 HorizontalAlignment="Stretch"
-                                Command="{Binding Next}"
-                                Height="56" />
+                                Command="{Binding Next}" />
 
                         <msui:PipsPager x:Name="pipsPager"
                                         utu:AutoLayout.CounterAlignment="Center"

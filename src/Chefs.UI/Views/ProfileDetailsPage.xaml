@@ -242,7 +242,7 @@
                 <utu:AutoLayout Spacing="5"
                                 PrimaryAxisAlignment="Center"
                                 utu:AutoLayout.CounterAlignment="Center"
-                                utu:AutoLayout.CounterLength="390">
+                                Width="390">
                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                Text="{Binding Profile.FullName}"
                                utu:AutoLayout.CounterAlignment="Center"
@@ -412,14 +412,14 @@
                                                                                                                 <AdaptiveTrigger MinWindowWidth="800" />
                                                                                                             </VisualState.StateTriggers>
                                                                                                             <VisualState.Setters>
-                                                                                                                <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                                                                                <Setter Target="ImageLayout.Height"
                                                                                                                         Value="180" />
                                                                                                             </VisualState.Setters>
                                                                                                         </VisualState>
                                                                                                     </VisualStateGroup>
                                                                                                 </VisualStateManager.VisualStateGroups>
                                                                                                 <utu:AutoLayout x:Name="ImageLayout"
-                                                                                                                utu:AutoLayout.PrimaryLength="110">
+                                                                                                                Height="110">
                                                                                                     <Image utu:AutoLayout.CounterAlignment="Stretch"
                                                                                                            utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                                                            Source="{Binding ImageUrl}"
