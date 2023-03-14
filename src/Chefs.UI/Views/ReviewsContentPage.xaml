@@ -107,7 +107,7 @@
                          Style="{StaticResource OutlinedTextBoxStyle}"
                          Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Button utu:AutoLayout.CounterAlignment="Center"
-                        utu:AutoLayout.CounterLength="56"
+                        Width="56"
                         Background="{ThemeResource PrimaryBrush}"
                         Command="{Binding AddReview}"
                         Content="Send" />

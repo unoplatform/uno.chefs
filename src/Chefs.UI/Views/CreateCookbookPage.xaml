@@ -71,14 +71,14 @@
                                                             <AdaptiveTrigger MinWindowWidth="800" />
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
-                                                            <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                            <Setter Target="ImageLayout.Height"
                                                                     Value="140" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
                                             <utu:AutoLayout x:Name="ImageLayout"
-                                                            utu:AutoLayout.PrimaryLength="110">
+                                                            Height="110">
                                                 <Image Source="{Binding ImageUrl}"
                                                        Stretch="UniformToFill" />
                                             </utu:AutoLayout>
@@ -244,7 +244,7 @@
             <Button Command="{Binding Done}"
                     Background="{ThemeResource PrimaryBrush}"
                     Content="Done"
-                    utu:AutoLayout.PrimaryLength="56" />
+                    Height="56" />
         </utu:AutoLayout>
         <utu:AutoLayout x:Name="WideButtons"
                         Visibility="Collapsed"
