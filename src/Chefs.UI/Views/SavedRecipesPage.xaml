@@ -370,6 +370,8 @@
                                 Value="Visible" />
                         <Setter Target="ContentLayout.Padding"
                                 Value="0" />
+                        <Setter Target="ContentLayout.Spacing"
+                                Value="0" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
