@@ -10,6 +10,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       mc:Ignorable="d"
+      xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       NavigationCacheMode="Enabled"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       VerticalAlignment="Stretch"
@@ -159,9 +160,9 @@
                                toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton>
-                        <win:AppBarButton.Icon>
+						<not_mobile:AppBarButton.Icon>
                             <SymbolIcon Symbol="Back" />
-                        </win:AppBarButton.Icon>
+                        </not_mobile:AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
