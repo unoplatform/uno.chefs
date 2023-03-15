@@ -45,10 +45,6 @@
                                 Value="Stretch" />
                         <Setter Target="WideChefImage.Margin"
                                 Value="363, 0, 0, 0" />
-                        <Setter Target="OuterLayout.(utu:AutoLayout.PrimaryAlignment)"
-                                Value="Stretch" />
-                        <Setter Target="OuterLayout.(utu:AutoLayout.CounterAlignment)"
-                                Value="Stretch" />
                         <Setter Target="OuterLayout.Background"
                                 Value="{ThemeResource PrimaryBrush}" />
                         <Setter Target="WideInnerLayout.Visibility"
@@ -60,8 +56,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-                        utu:AutoLayout.CounterAlignment="Stretch"
-                        x:Name="LayoutContainer">
+                        utu:AutoLayout.CounterAlignment="Stretch">
             <utu:AutoLayout x:Name="OuterLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:AutoLayout.CounterAlignment="Stretch">
@@ -78,7 +73,7 @@
 
                 <utu:AutoLayout x:Name="InnerLayout"
                                 Spacing="15"
-                                Padding="30,30,30,15"
+                                Padding="30,40,30,15"
                                 Background="{ThemeResource SurfaceBrush}"
                                 PrimaryAxisAlignment="Center"
                                 HorizontalAlignment="Left"
@@ -87,7 +82,8 @@
                     <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
                            Stretch="Uniform"
                            Height="44"
-                           Width="200" />
+                           Width="200"
+                           Margin="0, 0, 0, 15" />
                     <utu:AutoLayout x:Name="FieldsButtonsLayout"
                                     Spacing="10"
                                     utu:AutoLayout.CounterAlignment="Stretch"
@@ -138,23 +134,17 @@
                             VerticalContentAlignment="Center"
                             Background="{ThemeResource PrimaryBrush}"
                             Content="Sign in"
-                            Height="56" />
+                            Height="56"/>
+
                     <utu:AutoLayout Spacing="5"
-                                    PrimaryAxisAlignment="Center"
                                     Orientation="Horizontal"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <utu:AutoLayout PrimaryAxisAlignment="End"
-                                        Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Center">
-                            <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
-                                       TextAlignment="Center"
-                                       Text="Already a user?"
-                                       utu:AutoLayout.CounterAlignment="Center"
-                                       Style="{StaticResource LabelMedium}" />
-                        </utu:AutoLayout>
+                                    utu:AutoLayout.CounterAlignment="Center">
+                        <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                   TextAlignment="Center"
+                                   Text="Already a user?"
+                                   Style="{StaticResource LabelMedium}" />
                         <HyperlinkButton uen:Navigation.Request="-"
-                                         Content="Login Now"
-                                         utu:AutoLayout.CounterAlignment="Center" />
+                                         Content="Login Now" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
                 <utu:AutoLayout x:Name="WideInnerLayout"
