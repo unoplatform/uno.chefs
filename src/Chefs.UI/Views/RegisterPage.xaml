@@ -20,12 +20,12 @@
     </Page.Resources>
     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:AutoLayout PrimaryAxisAlignment="Center" 
-                            Height="230">
+            <Border Height="230">
                 <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png" 
-                       Stretch="UniformToFill" 
-                       utu:AutoLayout.PrimaryAlignment="Stretch" />
-            </utu:AutoLayout>
+                       Stretch="UniformToFill"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            </Border>
             <utu:AutoLayout Spacing="15" 
                             Padding="30,5,30,10" 
                             PrimaryAxisAlignment="End" 
