@@ -306,7 +306,7 @@
                                                     x:Name="SearchHistoryButton"
                                                     Margin="0,0,8,0"
                                                     CornerRadius="8"
-                                                    Background="{ThemeResource PrimaryInverseColor}"
+                                                    Background="{ThemeResource SecondaryContainerBrush}"
                                                     Foreground="{ThemeResource SurfaceColor}"
                                                     Command="{utu:AncestorBinding AncestorType=muxc:ItemsRepeater, Path=DataContext.ApplySearchHistory}"
                                                     CommandParameter="{Binding}" />
