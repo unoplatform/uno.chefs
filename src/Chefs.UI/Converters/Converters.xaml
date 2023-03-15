@@ -20,15 +20,19 @@
     <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
                                               Invert="True" />
 
+    <converters:StringReplacerConverter x:Key="WhiteSpaceToLineBreakConverter"
+                                        OldValue=" "
+                                        NewValue="&#x0a;"/>
+
     <um:FromBoolToValueConverter x:Key="UserLikeColorConverter"
                                        FalseValue="{StaticResource PrimaryInverseBrush}"
                                        TrueValue="{StaticResource PrimaryBrush}"
                                        NullValue="{StaticResource PrimaryInverseBrush}" />
 
     <um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
-                                       FalseValue="{StaticResource PrimaryBrush}"
-                                       TrueValue="{StaticResource PrimaryInverseBrush}"
-                                       NullValue="{StaticResource PrimaryInverseBrush}"/>
+                                 FalseValue="{StaticResource PrimaryBrush}"
+                                 TrueValue="{StaticResource PrimaryInverseBrush}"
+                                 NullValue="{StaticResource PrimaryInverseBrush}" />
 
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"

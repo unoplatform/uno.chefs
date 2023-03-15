@@ -104,19 +104,17 @@
                             Background="{ThemeResource SurfaceBrush}"
                             Visibility="Collapsed"
                             Width="120">
-                <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                Margin="0,40"
-                                uen:Navigation.Request="!Profile"
-								uen:Navigation.Data="{Binding ProfileResponse, Mode=TwoWay}">
-                    <Border utu:AutoLayout.IsIndependentLayout="True"
-                            utu:AutoLayout.CounterAlignment="Center"
-                            Width="56"
-                            Height="56"
-                            CornerRadius="15">
+                <Button Command="{Binding ShowProfile}"
+                        Width="56"
+                        Height="56"
+                        Margin="0,40"
+                        utu:AutoLayout.CounterAlignment="Center"
+                        Style="{StaticResource IconButtonStyle}">
+                    <Border CornerRadius="15">
                         <Image Source="{Binding UserProfile.UrlProfileImage}"
                                Stretch="UniformToFill" />
                     </Border>
-                </utu:AutoLayout>
+                </Button>
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                     <utu:TabBar uen:Region.Attached="True"
                                 Style="{StaticResource VerticalTabBarStyle}"

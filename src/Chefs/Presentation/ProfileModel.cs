@@ -26,6 +26,8 @@ public partial class ProfileModel
         Profile = user != null ? State.Value(this, () => user) : userService.UserFeed;
     }
 
+    public Cookbook EmptyCookBook => new Cookbook();
+
     public IFeed<User> Profile { get; }
 
     public IFeed<int> RecipesCount => Profile.SelectAsync((user, ct) => _recipeService.GetCount(user.Id, ct));
@@ -42,11 +44,9 @@ public partial class ProfileModel
 
     public async ValueTask GoBack(CancellationToken ct) => await _navigator.NavigateBackAsync(this, cancellation: ct);
     
-    public async ValueTask TabletSettingsNavigation(CancellationToken ct)
+    public async ValueTask UpdateCookBookNavigation(Cookbook cookbook, CancellationToken ct)
     {
-        await _navigator.NavigateBackAsync(this, cancellation: ct);
+		await _navigator.NavigateBackWithResultAsync(this, data : cookbook.UpdateCookBook(), cancellation: ct);
 
-        //await _sourceNavigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
-        await _sourceNavigator.NavigateRouteAsync(this, "./MainGrid/Settings", cancellation: ct);
-    }
+	}
 }
