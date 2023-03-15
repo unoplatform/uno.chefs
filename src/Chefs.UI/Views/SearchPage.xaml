@@ -128,13 +128,15 @@
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
-                                            <utu:AutoLayout x:Name="ImageLayout"
-                                                            Height="110">
+                                            <Border x:Name="ImageLayout"
+                                                            utu:AutoLayout.PrimaryLength="110">
                                                 <Image utu:AutoLayout.CounterAlignment="Stretch"
                                                        utu:AutoLayout.PrimaryAlignment="Stretch"
                                                        Source="{Binding ImageUrl}"
-                                                       Stretch="UniformToFill" />
-                                            </utu:AutoLayout>
+                                                       Stretch="UniformToFill"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"/>
+                                            </Border>
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center">
@@ -419,11 +421,13 @@
                                                                             MaxWidth="105"
                                                                             uen:Navigation.Request="SearchRecipeDetails"
                                                                             uen:Navigation.Data="{Binding}">
-                                                                <Border CornerRadius="12">
+                                                                <Border x:Name="ImageLayout"
+                                                                        CornerRadius="12"
+                                                                        MaxHeight="80">
                                                                     <Image Source="{Binding ImageUrl}"
                                                                            Stretch="UniformToFill"
-                                                                           x:Name="ImageLayout"
-                                                                           MaxHeight="80" />
+                                                                           VerticalAlignment="Center"
+                                                                           HorizontalAlignment="Center" />
                                                                 </Border>
                                                                 <TextBlock x:Name="RecipeName"
                                                                            Text="{Binding Name}"
@@ -513,11 +517,13 @@
                                                                             MaxWidth="105"
                                                                             uen:Navigation.Request="SearchRecipeDetails"
                                                                             uen:Navigation.Data="{Binding}">
-                                                                <Border CornerRadius="12">
+                                                                <Border x:Name="ImageLayout"
+                                                                        MaxHeight="80"
+                                                                        CornerRadius="12">
                                                                     <Image Source="{Binding ImageUrl}"
                                                                            Stretch="UniformToFill"
-                                                                           x:Name="ImageLayout"
-                                                                           MaxHeight="80" />
+                                                                           VerticalAlignment="Center"
+                                                                           HorizontalAlignment="Center" />
                                                                 </Border>
                                                                 <TextBlock x:Name="RecipeName"
                                                                            Text="{Binding Name}"

@@ -48,8 +48,6 @@
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
-                        <Setter Target="Image.Margin"
-                                Value="0,-150,0,0" />
                         <Setter Target="ImageLayout.Spacing"
                                 Value="30" />
                         <Setter Target="RecipeCard.Spacing"
@@ -119,12 +117,14 @@
                             <utu:AutoLayout Spacing="-35"
                                             PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <utu:AutoLayout x:Name="RecipeImage">
-                                    <Image x:Name="Image"
-                                           Source="{Binding Recipe.ImageUrl}"
+                                 <Border x:Name="RecipeImage"
+                                         MaxHeight="200"
+                                         utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <Image Source="{Binding Recipe.ImageUrl}"
                                            Stretch="UniformToFill"
-                                           utu:AutoLayout.CounterAlignment="Stretch" />
-                                </utu:AutoLayout>
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                </Border>
                                 <utu:AutoLayout x:Name="RecipeCard"
                                                 Background="{ThemeResource OnPrimaryBrush}"
                                                 Spacing="40"

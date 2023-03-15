@@ -78,13 +78,13 @@
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
-                                            <utu:AutoLayout x:Name="ImageLayout"
-                                                            Height="110">
+                                            <Border x:Name="ImageLayout"
+                                                    utu:AutoLayout.PrimaryLength="110">
                                                 <Image Source="{Binding ImageUrl}"
-                                                       utu:AutoLayout.CounterAlignment="Stretch"
-                                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                       Stretch="UniformToFill" />
-                                            </utu:AutoLayout>
+                                                       Stretch="UniformToFill"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center" />
+                                            </Border>
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center"
