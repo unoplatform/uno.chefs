@@ -18,4 +18,19 @@
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.7.44" />
 		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.51" />
 	</ItemGroup>
+
+	<Choose>
+		<When Condition="'$(TargetFramework)'=='net6.0-ios' or '$(TargetFramework)'=='net6.0-android' or '$(TargetFramework)'=='net6.0-maccatalyst'">
+			<ItemGroup>
+				<IncludeXamlNamespaces Include="mobile" />
+				<ExcludeXamlNamespaces Include="not_mobile" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<IncludeXamlNamespaces Include="not_mobile" />
+				<ExcludeXamlNamespaces Include="mobile" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
 </Project>
