@@ -134,6 +134,8 @@
                                 Value="40,20" />
                         <Setter Target="TrendingNowFeed.Margin"
                                 Value="-40,0" />
+                        <Setter Target="CategoriesFeedView.Margin"
+                                Value="-30,0" />
                         <Setter Target="RecentlyAddedFeedView.Margin"
                                 Value="-40,0" />
                         <Setter Target="PopularCreatorsFeedView.Margin"
@@ -164,32 +166,16 @@
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                     <utu:AutoLayout CornerRadius="30"
                                     Orientation="Horizontal"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <utu:AutoLayout CornerRadius="30"
-                                        Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Center"
-                                        Width="40"
-                                        Height="40"
-                                        uen:Navigation.Request="!Profile"
-                                        uen:Navigation.Data="{Binding UserProfile}">
-                            <Border CornerRadius="15"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <Image Source="{Binding UserProfile.UrlProfileImage}"
-                                       Stretch="UniformToFill" />
-                            </Border>
-                        </utu:AutoLayout>
-
-                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                       Text="{Binding UserProfile.FullName}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource TitleMedium}" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       Text="{Binding UserProfile.Email}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource CaptionMedium}" />
-                        </utu:AutoLayout>
+                                    utu:AutoLayout.CounterAlignment="Center"
+                                    Width="40"
+                                    Height="40"
+                                    uen:Navigation.Request="!Profile"
+                                    uen:Navigation.Data="{Binding UserProfile}">
+                        <Border CornerRadius="15"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <Image Source="{Binding UserProfile.UrlProfileImage}"
+                                   Stretch="UniformToFill" />
+                        </Border>
                     </utu:AutoLayout>
 
                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
@@ -280,7 +266,8 @@
                                    Text="Categories"
                                    Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="CategoriesFeedView"
-                                      Source="{Binding Categories}">
+                                      Source="{Binding Categories}"
+                                      Margin="-8,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -288,8 +275,7 @@
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         utu:CommandExtensions.Command="{Binding DataContext.CategorySearch, ElementName=CategoriesFeedView}">
                                         <muxc:ItemsRepeater.Layout>
-                                            <muxc:StackLayout Orientation="Horizontal"
-                                                              Spacing="8" />
+                                            <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
@@ -301,7 +287,8 @@
                                                                     CornerRadius="12"
                                                                     PrimaryAxisAlignment="Center"
                                                                     Orientation="Horizontal"
-                                                                    utu:AutoLayout.CounterAlignment="Start">
+                                                                    utu:AutoLayout.CounterAlignment="Start"
+                                                                    Margin="10,0,0,0">
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
                                                                 <VisualState x:Name="Narrow">
@@ -316,13 +303,14 @@
                                                                     <VisualState.Setters>
                                                                         <Setter Target="CategoryTemplateLayout.Padding"
                                                                                 Value="20" />
+                                                                        <Setter Target="CategoryTemplateLayout.Margin"
+                                                                                Value="30,0,0,0" />
                                                                     </VisualState.Setters>
                                                                 </VisualState>
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                         <ImageIcon Source="{Binding UrlIcon}"
-                                                                   utu:AutoLayout.CounterAlignment="Center"
-                                                                   Margin="0, 0, 0, 3" />
+                                                                   utu:AutoLayout.CounterAlignment="Center" />
                                                         <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                                    Text="{Binding Name}"
                                                                    utu:AutoLayout.CounterAlignment="Center"
@@ -440,7 +428,8 @@
                                    Text="Popular Creators"
                                    Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="PopularCreatorsFeedView"
-                                      Source="{Binding PopularCreators}">
+                                      Source="{Binding PopularCreators}"
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -487,7 +476,8 @@
                                                                 utu:AutoLayout.CounterAlignment="Stretch"
                                                                 CornerRadius="25"
                                                                 Height="75"
-                                                                Width="75">
+                                                                Width="75"
+                                                                Margin="18, 0, 0, 0">
                                                             <Image Source="{Binding UrlProfileImage}"
                                                                    Stretch="UniformToFill" />
                                                         </Border>
@@ -497,7 +487,8 @@
                                                                    TextAlignment="Center"
                                                                    Text="{Binding FullName, Converter={StaticResource WhiteSpaceToLineBreakConverter}}"
                                                                    utu:AutoLayout.CounterAlignment="Center"
-                                                                   Style="{StaticResource TitleMedium}" />
+                                                                   Style="{StaticResource TitleMedium}"
+                                                                   Margin="18, 0, 0, 0" />
 
                                                     </utu:AutoLayout>
                                                 </UserControl>
