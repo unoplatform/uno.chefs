@@ -112,7 +112,9 @@
                         Style="{StaticResource IconButtonStyle}">
                     <Border CornerRadius="15">
                         <Image Source="{Binding UserProfile.UrlProfileImage}"
-                               Stretch="UniformToFill" />
+                               Stretch="UniformToFill"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
                     </Border>
                 </Button>
                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">

@@ -118,7 +118,9 @@
                                                     Height="100"
                                                     Width="100">
                                                 <Image Source="{Binding Profile.UrlProfileImage}"
-                                                       Stretch="UniformToFill" />
+                                                       Stretch="UniformToFill"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center" />
                                             </Border>
                                         </utu:AutoLayout>
                                         <utu:AutoLayout Spacing="6"
