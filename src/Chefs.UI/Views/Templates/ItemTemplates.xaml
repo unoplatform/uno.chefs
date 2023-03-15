@@ -35,11 +35,15 @@
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="8"
                                     Orientation="Horizontal">
-                        <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                Content="👍  7"
+                        <Button Background="{Binding UserLike, Converter={StaticResource UserLikeColorConverter}}"
+                                Content="{Binding Likes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
+                                Command="{Binding DataContext.Like, ElementName=ReviewsFeed}"
+                                CommandParameter="{Binding}"
                                 utu:AutoLayout.CounterAlignment="Start" />
-                        <Button Background="{ThemeResource PrimaryInverseBrush}"
-                                Content="👎  5"
+                        <Button Background="{Binding UserLike, Converter={StaticResource UserDislikeColorConverter}}"
+                                Content="{Binding Dislikes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
+                                Command="{Binding DataContext.Dislike, ElementName=ReviewsFeed}"
+                                CommandParameter="{Binding}"
                                 utu:AutoLayout.CounterAlignment="Start" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>

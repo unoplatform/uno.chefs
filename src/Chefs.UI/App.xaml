@@ -3,6 +3,7 @@
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:wasm="http://platform.uno/wasm"
 			 xmlns:local="using:Chefs"
+			 xmlns:utu="using:Uno.Toolkit.UI"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="wasm">
 
@@ -22,7 +23,21 @@
 				<ResourceDictionary Source="ms-appx:///Styles/Flyout.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+			<Style TargetType="utu:ExtendedSplashScreen"
+				   BasedOn="{StaticResource DefaultExtendedSplashScreen}">
+				<Setter Property="LoadingContentTemplate">
+					<Setter.Value>
+						<DataTemplate>
+                            <ProgressRing Height="32"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Bottom"
+                                          Margin="0, 0, 0, 200"
+                                          IsActive="True" />
+                        </DataTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+		</ResourceDictionary>
 	</Application.Resources>
 
 </Application>

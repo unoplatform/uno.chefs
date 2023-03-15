@@ -46,6 +46,8 @@ public partial record Cookbook : IChefEntity
                 .ToList()
             : recipes
                 .Select(c => c.ToData())
-                .ToList()      
+                .ToList()
     };
+
+    internal UpdateCookbook UpdateCookBook() => new(this);
 }

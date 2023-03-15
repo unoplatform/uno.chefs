@@ -20,6 +20,9 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="ProfileLayout.Height"
                                 Value="141" />
@@ -35,7 +38,7 @@
                                 Value="Horizontal" />
                         <Setter Target="ContentLayout.Spacing"
                                 Value="40" />
-                        <Setter Target="PaddingLayout.Padding"
+                        <Setter Target="ContentLayout.Padding"
                                 Value="40" />
                         <Setter Target="ProfileLayout.Background"
                                 Value="{ThemeResource BackgroundBrush}" />
@@ -96,12 +99,9 @@
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                               utu:AutoLayout.CounterAlignment="Stretch"
                               HorizontalScrollMode="Disabled">
-                    <!-- Additional AutoLayout added here as a workaround for this issue: -->
-                    <!-- https://github.com/unoplatform/uno.chefs/issues/246 -->
-                    <utu:AutoLayout x:Name="PaddingLayout"
-                                    Padding="18">
-                        <utu:AutoLayout x:Name="ContentLayout"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <utu:AutoLayout x:Name="ContentLayout"
+                                    Padding="18"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
                             <utu:AutoLayout x:Name="PersonalInfoLayout"
                                             Spacing="20"
                                             PrimaryAxisAlignment="Center"
@@ -349,7 +349,6 @@
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
-                    </utu:AutoLayout>
                 </ScrollViewer>
             </utu:AutoLayout>
             <utu:AutoLayout x:Name="NarrowButtons"

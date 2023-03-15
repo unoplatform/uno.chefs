@@ -82,7 +82,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
         var recipe = recipes.Where(r => r.Id == reviewData.RecipeId).FirstOrDefault();
 
-        if(recipe is not null)
+        if (recipe is not null)
         {
             reviewData.PublisherName = currentUser.FullName;
             reviewData.UrlAuthorImage = currentUser.UrlProfileImage;
@@ -91,6 +91,88 @@ public class RecipeEndpoint : IRecipeEndpoint
             recipe.Reviews?.Add(reviewData);
 
             return reviewData;
+        }
+        else
+        {
+            throw new Exception();
+        }
+    }
+
+    public async ValueTask<ReviewData> DislikeReview(ReviewData reviewData, CancellationToken ct)
+    {
+        var userId = (await _userEndpoint.GetCurrent(ct)).Id;
+
+        var review = (await Load()).FirstOrDefault(r => r.Id == reviewData.RecipeId)?
+            .Reviews?.FirstOrDefault(x=> x.Id == reviewData.Id);
+
+        if (review is not null)
+        {
+            if(review.Likes is not null && review.Likes.Contains(userId))
+            {
+                review.Likes.Remove(userId);
+            }
+
+            if(review.Dislikes is not null)
+            {
+                if(review.Dislikes.Contains(userId))
+                {
+                    review.Dislikes.Remove(userId);
+                    review.UserLike = null;
+                }
+                else
+                {
+                    review.Dislikes.Add(userId);
+                    review.UserLike = false;
+                }
+            }
+            else
+            {
+                review.Dislikes = new List<Guid> { userId };
+                review.UserLike = false;
+            }
+
+            return review;
+        }
+        else
+        {
+            throw new Exception();
+        }
+    }
+
+    public async ValueTask<ReviewData> LikeReview(ReviewData reviewData, CancellationToken ct)
+    {
+        var userId = (await _userEndpoint.GetCurrent(ct)).Id;
+
+        var review = (await Load()).FirstOrDefault(r => r.Id == reviewData.RecipeId)?
+            .Reviews?.FirstOrDefault(x => x.Id == reviewData.Id);
+
+        if (review is not null)
+        {
+            if (review.Dislikes is not null && review.Dislikes.Contains(userId))
+            {
+                review.Dislikes.Remove(userId);
+            }
+
+            if (review.Likes is not null)
+            {
+                if (review.Likes.Contains(userId))
+                {
+                    review.Likes.Remove(userId);
+                    review.UserLike = null;
+                }
+                else
+                {
+                    review.Likes.Add(userId);
+                    review.UserLike = true;
+                }
+            }
+            else
+            {
+                review.Likes = new List<Guid> { userId };
+                review.UserLike = true;
+            }
+
+            return review;
         }
         else
         {
@@ -107,7 +189,30 @@ public class RecipeEndpoint : IRecipeEndpoint
                 .ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
             var saved = await GetSaved(CancellationToken.None);
 
-            _recipes?.ForEach(x => x.Save = saved.Contains(x));
+            var currentUser = await _userEndpoint.GetCurrent(CancellationToken.None);
+            if (_recipes is not null)
+            {
+                foreach (RecipeData r in _recipes)
+                {
+                    if(r.Reviews is not null)
+                    {
+                        foreach(ReviewData rev in r.Reviews)
+                        {
+                            if(rev.Likes is not null && rev.Likes.Contains(currentUser.Id))
+                            {
+                                rev.UserLike = true;
+                                break;
+                            }
+
+                            if (rev.Dislikes is not null && rev.Dislikes.Contains(currentUser.Id))
+                            {
+                                rev.UserLike = false;
+                            }
+                        }
+                    }
+                }
+                _recipes?.ForEach(x => x.Save = saved.Contains(x));
+            }
         }
 
         return _recipes ?? new List<RecipeData>();

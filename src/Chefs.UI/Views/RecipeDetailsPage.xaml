@@ -26,7 +26,11 @@
                                     Height="436">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -70,7 +74,12 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <Setter Target="MainScrollViewer.VerticalScrollMode"
+                                Value="Enabled" />
                         <Setter Target="DetailScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
                         <Setter Target="TabScrollViewer.VerticalScrollMode"
@@ -111,27 +120,33 @@
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
                         <Setter Target="TabsLayout.Padding"
-                                Value="20,0,40,40" />
-                        <Setter Target="IngredientsButton.(utu:AutoLayout.PrimaryLength)"
+                                Value="20,0,40,0" />
+                        <Setter Target="IngredientsButton.Width"
                                 Value="190" />
-                        <Setter Target="IngredientsButton.(utu:AutoLayout.CounterLength)"
+                        <Setter Target="IngredientsButton.Height"
                                 Value="56" />
                         <Setter Target="IngredientsButton.Foreground"
                                 Value="{ThemeResource OnSurfaceMediumBrush}" />
                         <Setter Target="IngredientsButton.Style"
                                 Value="{StaticResource OutlinedButtonStyle}" />
-                        <Setter Target="LiveCookingButton.(utu:AutoLayout.PrimaryLength)"
+                        <Setter Target="LiveCookingButton.Width"
                                 Value="190" />
-                        <Setter Target="LiveCookingButton.(utu:AutoLayout.CounterLength)"
+                        <Setter Target="LiveCookingButton.Height"
                                 Value="56" />
                         <Setter Target="RecipeCard.Spacing"
                                 Value="80" />
                         <Setter Target="NavBar.Margin"
                                 Value="20,0" />
+                        <Setter Target="TabNavGrid.Margin"
+                                Value="0,0,0,30" />
                         <Setter Target="MainScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
-                        <Setter Target="TabNavGrid.Padding"
-                                Value="0,0,0,22" />
+                        <Setter Target="MainScrollViewer.VerticalScrollBarVisibility"
+                                Value="Disabled" />
+                        <Setter Target="DetailScrollViewer.VerticalScrollMode"
+                                Value="Enabled" />
+                        <Setter Target="TabScrollViewer.VerticalScrollMode"
+                                Value="Enabled" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -166,18 +181,16 @@
             </utu:NavigationBar>
             <ScrollViewer x:Name="MainScrollViewer"
                           utu:AutoLayout.PrimaryAlignment="Stretch"
-                          HorizontalScrollMode="Disabled"
                           VerticalScrollBarVisibility="Hidden">
                 <utu:AutoLayout x:Name="ContentLayout">
                     <ScrollViewer x:Name="DetailScrollViewer"
                                   utu:AutoLayout.PrimaryAlignment="Stretch"
-                                  HorizontalScrollMode="Disabled"
                                   VerticalScrollBarVisibility="Hidden">
                         <utu:AutoLayout x:Name="ImageLayout"
                                         PrimaryAxisAlignment="Center"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch"
-                                        Padding="0,0,0,40">
+                                        Padding="0,0,0,8">
                             <utu:AutoLayout x:Name="CreatorLayout"
                                             Spacing="6"
                                             Padding="18,20"
@@ -195,7 +208,8 @@
                                             PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout x:Name="RecipeImage">
-                                    <Image x:Name="Image" Source="{Binding Recipe.ImageUrl}"
+                                    <Image x:Name="Image"
+                                           Source="{Binding Recipe.ImageUrl}"
                                            Stretch="UniformToFill"
                                            utu:AutoLayout.CounterAlignment="Stretch" />
                                 </utu:AutoLayout>
@@ -265,6 +279,8 @@
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding Data}"
                                                       Style="{StaticResource ListViewStyle}"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollMode="Disabled"
                                                       SelectionMode="None">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
@@ -296,7 +312,7 @@
                     <utu:AutoLayout x:Name="TabsLayout"
                                     uen:Region.Attached="True"
                                     Spacing="16"
-                                    Padding="18,30,18,0"
+                                    Padding="18,18,18,0"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
                                     utu:AutoLayout.CounterAlignment="Stretch">
 
@@ -317,14 +333,13 @@
                         </utu:TabBar>
                         <ScrollViewer x:Name="TabScrollViewer"
                                       utu:AutoLayout.PrimaryAlignment="Stretch"
-                                      HorizontalScrollMode="Disabled"
                                       VerticalScrollBarVisibility="Hidden">
                             <Grid x:Name="TabNavGrid"
                                   uen:Region.Attached="True"
-                                  uen:Region.Navigator="Visibility">
+                                  uen:Region.Navigator="Visibility" >
 
                                 <utu:AutoLayout uen:Region.Name="IngredientsTab"
-                                                Visibility="Visible">
+                                                Visibility="Visible" >
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                TextWrapping="Wrap"
                                                Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
@@ -336,6 +351,8 @@
                                             <DataTemplate>
                                                 <ListView ItemsSource="{Binding Data}"
                                                           Style="{StaticResource ListViewStyle}"
+                                                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                          ScrollViewer.VerticalScrollMode="Disabled"
                                                           SelectionMode="None">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
@@ -382,6 +399,8 @@
                                             <DataTemplate>
                                                 <ListView ItemsSource="{Binding Data}"
                                                           Style="{StaticResource ListViewStyle}"
+                                                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                          ScrollViewer.VerticalScrollMode="Disabled"
                                                           SelectionMode="None">
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
@@ -428,6 +447,8 @@
                                         <DataTemplate>
                                             <ListView ItemsSource="{Binding Data}"
                                                       Style="{StaticResource ListViewStyle}"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                      ScrollViewer.VerticalScrollMode="Disabled"
                                                       ItemTemplate="{StaticResource ReviewDataTemplate}"
                                                       SelectionMode="None" />
                                         </DataTemplate>
@@ -446,14 +467,14 @@
                         Spacing="16">
             <Button x:Name="IngredientsButton"
                     Content="Get the Ingredients"
-                    utu:AutoLayout.PrimaryLength="56"
+                    Height="56"
                     Style="{StaticResource TextButtonStyle}"
                     Command="{Binding IngredientsNavigation}" />
 
             <Button x:Name="LiveCookingButton"
                     Background="{ThemeResource PrimaryBrush}"
                     Content="Start cooking!"
-                    utu:AutoLayout.PrimaryLength="56"
+                    Height="56"
                     Command="{Binding LiveCooking}" />
         </utu:AutoLayout>
     </utu:AutoLayout>

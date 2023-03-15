@@ -4,14 +4,15 @@
       xmlns:local="using:Chefs.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:um="using:Uno.Material"
       mc:Ignorable="d"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      NavigationCacheMode="Enabled">
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
             <x:String x:Key="Icon_Outline_Add_ChefsApp">F0 M 0 10.64285659790039 C 0 4.7878168651035855 4.7878168651035855 0 10.64285659790039 0 C 16.49789755684989 0 21.28571319580078 4.7878168651035855 21.28571319580078 10.64285659790039 C 21.28571319580078 16.49789755684989 16.49789755684989 21.28571319580078 10.64285659790039 21.28571319580078 C 4.7878168651035855 21.28571319580078 0 16.49789755684989 0 10.64285659790039 Z M 10.64285659790039 1.2857142857142856 C 5.497897011893136 1.2857142857142856 1.2857142857142856 5.497897011893136 1.2857142857142856 10.64285659790039 C 1.2857142857142856 15.787816183907644 5.497897011893136 19.999998910086493 10.64285659790039 19.999998910086493 C 15.787816183907644 19.999998910086493 19.999998910086493 15.787816183907644 19.999998910086493 10.64285659790039 C 19.999998910086493 5.497897011893136 15.787816183907644 1.2857142857142856 10.64285659790039 1.2857142857142856 Z M 6 10.642857415335518 C 6 10.287817214216505 6.287816941738128 10.000000272478376 6.642857142857142 10.000000272478376 L 14.642856052943637 10.000000272478376 C 14.99789592197963 10.000000272478376 15.285713195800781 10.287817214216505 15.285713195800781 10.642857415335518 C 15.285713195800781 10.997897616454532 14.99789592197963 11.28571455819266 14.642856052943637 11.28571455819266 L 6.642857142857142 11.28571455819266 C 6.287816941738128 11.28571455819266 6 10.997897616454532 6 10.642857415335518 Z M 10.642857415335518 6 C 10.997897616454532 6 11.28571455819266 6.287816941738128 11.28571455819266 6.642857142857142 L 11.28571455819266 14.642856052943637 C 11.28571455819266 14.99789592197963 10.997897616454532 15.285713195800781 10.642857415335518 15.285713195800781 C 10.287817214216505 15.285713195800781 10.000000272478376 14.99789592197963 10.000000272478376 14.642856052943637 L 10.000000272478376 6.642857142857142 C 10.000000272478376 6.287816941738128 10.287817214216505 6 10.642857415335518 6 Z</x:String>
@@ -25,7 +26,11 @@
                     <utu:AutoLayout>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup>
-                                <VisualState x:Name="Narrow" />
+                                <VisualState x:Name="Narrow">
+                                    <VisualState.StateTriggers>
+                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                    </VisualState.StateTriggers>
+                                </VisualState>
                                 <VisualState x:Name="Wide">
                                     <VisualState.StateTriggers>
                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -50,39 +55,36 @@
                                                    Stretch="UniformToFill"
                                                    Margin="0,-80,0,0" />
                                         </utu:AutoLayout>
-                                        <!-- Additional AutoLayout added here as a workaround for this issue: -->
-                                        <!-- https://github.com/unoplatform/uno.chefs/issues/246 -->
-                                        <utu:AutoLayout Padding="16">
-                                            <utu:AutoLayout Spacing="16"
-                                                            Orientation="Horizontal">
-                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                    <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                   TextWrapping="Wrap"
-                                                                   Text="{Binding Name}"
-                                                                   Style="{StaticResource TitleMedium}" />
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                                                   TextWrapping="Wrap"
-                                                                   Text="{Binding TimeCal}" />
-                                                    </utu:AutoLayout>
+                                        <utu:AutoLayout Padding="16"
+                                                        Spacing="16"
+                                                        Orientation="Horizontal">
+                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                <utu:AutoLayout PrimaryAxisAlignment="Center">
+                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                               TextWrapping="Wrap"
+                                                               Text="{Binding Name}"
+                                                               Style="{StaticResource TitleMedium}" />
+                                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                               TextWrapping="Wrap"
+                                                               Text="{Binding TimeCal}" />
                                                 </utu:AutoLayout>
-                                                <ToggleButton utu:AutoLayout.CounterAlignment="Center"
-                                                              IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                              Command="{Binding SaveRecipe}"
-                                                              CommandParameter="{Binding}"
-                                                              Style="{StaticResource IconToggleButtonStyle}">
-                                                    <ToggleButton.Content>
-                                                        <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
-                                                                  Foreground="{ThemeResource OnBackgroundBrush}" />
-                                                    </ToggleButton.Content>
-                                                    <um:ControlExtensions.AlternateContent>
-
-                                                        <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
-                                                                  Foreground="{ThemeResource OnBackgroundBrush}" />
-                                                    </um:ControlExtensions.AlternateContent>
-                                                </ToggleButton>
                                             </utu:AutoLayout>
+                                            <ToggleButton utu:AutoLayout.CounterAlignment="Center"
+                                                          IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.SaveRecipe}"
+                                                          CommandParameter="{Binding}"
+                                                          Style="{StaticResource IconToggleButtonStyle}">
+                                                <ToggleButton.Content>
+                                                    <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
+                                                              Foreground="{ThemeResource OnBackgroundBrush}" />
+                                                </ToggleButton.Content>
+                                                <um:ControlExtensions.AlternateContent>
+
+                                                    <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
+                                                              Foreground="{ThemeResource OnBackgroundBrush}" />
+                                                </um:ControlExtensions.AlternateContent>
+                                            </ToggleButton>
                                         </utu:AutoLayout>
                                     </utu:AutoLayout>
                                 </DataTemplate>
@@ -92,10 +94,13 @@
                 </UserControl>
             </DataTemplate>
         </utu:AutoLayout.Resources>
-
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -151,62 +156,55 @@
         </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout x:Name="NavBarLayout"
-                            Padding="18,12">
-
-                <!-- Additional AutoLayout added here as a workaround for this issue: -->
-                <!-- https://github.com/unoplatform/uno.chefs/issues/246 -->
-                <utu:AutoLayout Orientation="Horizontal">
-
-                    <utu:AutoLayout x:Name="ProfileLayout"
-                                    Spacing="8"
+                            Padding="18,12"
+                            Orientation="Horizontal">
+                <utu:AutoLayout x:Name="ProfileLayout"
+                                Spacing="8"
+                                Orientation="Horizontal"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <utu:AutoLayout CornerRadius="30"
                                     Orientation="Horizontal"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <utu:AutoLayout CornerRadius="30"
-                                        Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Center"
-                                        utu:AutoLayout.PrimaryLength="40"
-                                        utu:AutoLayout.CounterLength="40"
-                                        uen:Navigation.Request="!Profile"
-                                        uen:Navigation.Data="{Binding UserProfile}">
-                            <Border CornerRadius="15"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <Image Source="{Binding UserProfile.UrlProfileImage}"
-                                       Stretch="UniformToFill" />
-                            </Border>
-                        </utu:AutoLayout>
-
-                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                       Text="{Binding UserProfile.FullName}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource TitleMedium}" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       Text="{Binding UserProfile.Email}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource CaptionMedium}" />
-                        </utu:AutoLayout>
+                                    utu:AutoLayout.CounterAlignment="Center"
+                                    utu:AutoLayout.PrimaryLength="40"
+                                    utu:AutoLayout.CounterLength="40"
+                                    uen:Navigation.Request="!Profile"
+                                    uen:Navigation.Data="{Binding UserProfile}">
+                        <Border CornerRadius="15"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <Image Source="{Binding UserProfile.UrlProfileImage}"
+                                   Stretch="UniformToFill" />
+                        </Border>
                     </utu:AutoLayout>
 
-                    <utu:AutoLayout Spacing="8"
-                                    Orientation="Horizontal">
-                        <Button utu:AutoLayout.CounterAlignment="Center"
-                                Style="{StaticResource IconButtonStyle}"
-                                uen:Navigation.Request="Search">
-                            <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
-                                      Foreground="{ThemeResource OnSurfaceBrush}" />
-                        </Button>
-                        <Button x:Name="NotificationButton"
-                                utu:AutoLayout.CounterAlignment="Center"
-                                Style="{StaticResource IconButtonStyle}"
-                                uen:Navigation.Request="!Notifications">
-                            <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
-                                      Foreground="{ThemeResource OnSurfaceBrush}" />
-                        </Button>
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Text="{Binding UserProfile.FullName}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource TitleMedium}" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   Text="{Binding UserProfile.Email}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource CaptionMedium}" />
                     </utu:AutoLayout>
-
                 </utu:AutoLayout>
 
+                <utu:AutoLayout Spacing="8"
+                                Orientation="Horizontal">
+                    <Button utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}"
+                            uen:Navigation.Request="Search">
+                        <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
+                                  Foreground="{ThemeResource OnSurfaceBrush}" />
+                    </Button>
+                    <Button x:Name="NotificationButton"
+                            utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}"
+                            uen:Navigation.Request="!Notifications">
+                        <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
+                                  Foreground="{ThemeResource OnSurfaceBrush}" />
+                    </Button>
+                </utu:AutoLayout>
             </utu:AutoLayout>
 
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -290,7 +288,11 @@
                                                                     utu:AutoLayout.CounterAlignment="Start">
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
-                                                                <VisualState x:Name="Narrow" />
+                                                                <VisualState x:Name="Narrow">
+                                                                    <VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                    </VisualState.StateTriggers>
+                                                                </VisualState>
                                                                 <VisualState x:Name="Wide">
                                                                     <VisualState.StateTriggers>
                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -362,7 +364,11 @@
                                                     <utu:AutoLayout>
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
-                                                                <VisualState x:Name="Narrow" />
+                                                                <VisualState x:Name="Narrow">
+                                                                    <VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                    </VisualState.StateTriggers>
+                                                                </VisualState>
                                                                 <VisualState x:Name="Wide">
                                                                     <VisualState.StateTriggers>
                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -433,10 +439,16 @@
                                             <DataTemplate>
                                                 <UserControl>
                                                     <utu:AutoLayout Spacing="8"
-                                                                    utu:AutoLayout.CounterAlignment="Start">
+                                                                    utu:AutoLayout.CounterAlignment="Start"
+                                                                    VerticalContentAlignment="Center"
+                                                                    HorizontalContentAlignment="Center">
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
-                                                                <VisualState x:Name="Narrow" />
+                                                                <VisualState x:Name="Narrow">
+                                                                    <VisualState.StateTriggers>
+                                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                                    </VisualState.StateTriggers>
+                                                                </VisualState>
                                                                 <VisualState x:Name="Wide">
                                                                     <VisualState.StateTriggers>
                                                                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -448,27 +460,29 @@
                                                                                 Value="124" />
                                                                         <Setter Target="CreatorsLayout.Margin"
                                                                                 Value="40,0,0,0" />
+                                                                        <Setter Target="NameLayout.Margin"
+                                                                                Value="40,0,0,0" />
                                                                     </VisualState.Setters>
                                                                 </VisualState>
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
-                                                        <utu:AutoLayout x:Name="CreatorsLayout"
-                                                                        CornerRadius="30"
-                                                                        Orientation="Horizontal"
-                                                                        utu:AutoLayout.CounterAlignment="Center"
-                                                                        Height="75"
-                                                                        Width="75">
-                                                            <Border CornerRadius="25"
-                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                <Image Source="{Binding UrlProfileImage}"
-                                                                       Stretch="UniformToFill" />
-                                                            </Border>
-                                                        </utu:AutoLayout>
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                        <Border x:Name="CreatorsLayout"
+                                                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                utu:AutoLayout.CounterAlignment="Stretch"
+                                                                CornerRadius="25"
+                                                                Height="75"
+                                                                Width="75">
+                                                            <Image Source="{Binding UrlProfileImage}"
+                                                                   Stretch="UniformToFill" />
+                                                        </Border>
+
+                                                        <TextBlock x:Name="NameLayout"
+                                                                   Foreground="{ThemeResource OnSurfaceBrush}"
                                                                    TextAlignment="Center"
-                                                                   Text="{Binding FullName}"
+                                                                   Text="{Binding FullName, Converter={StaticResource WhiteSpaceToLineBreakConverter}}"
                                                                    utu:AutoLayout.CounterAlignment="Center"
-                                                                   Style="{StaticResource BodySmall}" />
+                                                                   Style="{StaticResource TitleMedium}" />
+
                                                     </utu:AutoLayout>
                                                 </UserControl>
                                             </DataTemplate>

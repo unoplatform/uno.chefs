@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:um="using:Uno.Material"
     xmlns:converters="using:Chefs.Converters">
 
     <converters:StringFormatter x:Key="StringFormatter" />
@@ -18,7 +19,21 @@
     <converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
     <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
                                               Invert="True" />
-    
+
+    <converters:StringReplacerConverter x:Key="WhiteSpaceToLineBreakConverter"
+                                        OldValue=" "
+                                        NewValue="&#x0a;"/>
+
+    <um:FromBoolToValueConverter x:Key="UserLikeColorConverter"
+                                       FalseValue="{StaticResource PrimaryInverseBrush}"
+                                       TrueValue="{StaticResource PrimaryBrush}"
+                                       NullValue="{StaticResource PrimaryInverseBrush}" />
+
+    <um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
+                                 FalseValue="{StaticResource PrimaryBrush}"
+                                 TrueValue="{StaticResource PrimaryInverseBrush}"
+                                 NullValue="{StaticResource PrimaryInverseBrush}" />
+
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
                                       FalseValue="{StaticResource SurfaceVariantBrush}" />
