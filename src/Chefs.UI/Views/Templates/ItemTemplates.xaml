@@ -35,10 +35,10 @@
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="8"
                                     Orientation="Horizontal">
-                        <Button Background="{ThemeResource PrimaryInverseBrush}"
+                        <Button Background="{ThemeResource SecondaryContainerBrush}"
                                 Content="{Binding Likes, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}"
                                 utu:AutoLayout.CounterAlignment="Start" />
-                        <Button Background="{ThemeResource PrimaryInverseBrush}"
+                        <Button Background="{ThemeResource SecondaryContainerBrush}"
                                 Content="{Binding Dislikes, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}"
                                 utu:AutoLayout.CounterAlignment="Start" />
                     </utu:AutoLayout>

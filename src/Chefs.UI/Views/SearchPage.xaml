@@ -302,8 +302,8 @@
                                                     x:Name="SearchHistoryButton"
                                                     Margin="0,0,8,0"
                                                     CornerRadius="8"
-                                                    Background="{ThemeResource PrimaryInverseColor}"
-                                                    Foreground="{ThemeResource SurfaceColor}"
+                                                    Background="{ThemeResource SecondaryContainerBrush}"
+                                                    Foreground="{ThemeResource SurfaceBrush}"
                                                     Command="{Binding Path=DataContext.ApplySearchHistory, ElementName=HistoryRepeater}"
                                                     CommandParameter="{Binding}" />
                                         </utu:AutoLayout>
