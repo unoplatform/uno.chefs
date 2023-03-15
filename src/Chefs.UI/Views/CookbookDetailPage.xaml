@@ -11,6 +11,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:toolkit="using:Uno.UI.Toolkit"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:controls="using:Chefs.Controls"
       mc:Ignorable="d"
       NavigationCacheMode="Enabled"
@@ -134,9 +135,9 @@
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton>
-                            <win:AppBarButton.Icon>
+                            <not_mobile:AppBarButton.Icon>
                                 <SymbolIcon Symbol="Back" />
-                            </win:AppBarButton.Icon>
+                            </not_mobile:AppBarButton.Icon>
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                 </utu:NavigationBar>
