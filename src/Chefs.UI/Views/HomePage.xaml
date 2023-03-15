@@ -256,7 +256,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="TrendingNowFeed"
                                       Source="{Binding TrendingNow}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -364,7 +364,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="RecentlyAddedFeedView"
                                       Source="{Binding RecentlyAdded}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -535,7 +535,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="LunchRecipesFeedView"
                                       Source="{Binding LunchRecipes}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -578,7 +578,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="DinnerRecipesFeedView"
                                       Source="{Binding DinnerRecipes}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -621,7 +621,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="SnackRecipesFeedView"
                                       Source="{Binding SnackRecipes}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
