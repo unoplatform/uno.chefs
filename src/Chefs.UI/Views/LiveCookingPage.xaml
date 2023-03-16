@@ -32,7 +32,7 @@
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
                                        Style="{StaticResource HeadlineMedium}" />
 
-                            <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
+                            <utu:AutoLayout Background="{ThemeResource SecondaryContainerBrush}"
                                             Padding="10, 6"
                                             CornerRadius="15"
                                             PrimaryAxisAlignment="Center"
@@ -94,7 +94,7 @@
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Style="{StaticResource DisplayMedium}" />
 
-                        <utu:AutoLayout Background="{ThemeResource PrimaryInverseBrush}"
+                        <utu:AutoLayout Background="{ThemeResource SecondaryContainerBrush}"
                                         Padding="24,12"
                                         CornerRadius="16"
                                         PrimaryAxisAlignment="Center"
