@@ -10,6 +10,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       mc:Ignorable="d"
+      xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       NavigationCacheMode="Enabled"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       VerticalAlignment="Stretch"
@@ -113,8 +114,6 @@
                                 Value="Collapsed" />
                         <Setter Target="RecipeImage.MaxHeight"
                                 Value="300" />
-                        <Setter Target="Image.Margin"
-                                Value="0,-150,0,0" />
                         <Setter Target="RecipeImage.Margin"
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
@@ -159,9 +158,9 @@
                                toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton>
-                        <win:AppBarButton.Icon>
+						<not_mobile:AppBarButton.Icon>
                             <SymbolIcon Symbol="Back" />
-                        </win:AppBarButton.Icon>
+                        </not_mobile:AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
@@ -207,12 +206,14 @@
                             <utu:AutoLayout Spacing="-35"
                                             PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <utu:AutoLayout x:Name="RecipeImage">
-                                    <Image x:Name="Image"
-                                           Source="{Binding Recipe.ImageUrl}"
+                                <Border x:Name="RecipeImage"
+                                        MaxHeight="200"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <Image Source="{Binding Recipe.ImageUrl}"
                                            Stretch="UniformToFill"
-                                           utu:AutoLayout.CounterAlignment="Stretch" />
-                                </utu:AutoLayout>
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                </Border>
                                 <utu:AutoLayout x:Name="RecipeCard"
                                                 Background="{ThemeResource OnPrimaryBrush}"
                                                 Spacing="40"

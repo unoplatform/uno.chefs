@@ -69,15 +69,20 @@
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:AutoLayout.CounterAlignment="Stretch">
 
-                <Image x:Name="ChefImage"
-                       Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                       Stretch="UniformToFill"
-                       Height="290" />
-                <Image x:Name="WideChefImage"
-                       Visibility="Collapsed"
-                       Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                       Stretch="UniformToFill"
-                       utu:AutoLayout.CounterAlignment="Stretch" />
+                <Border x:Name="ChefImage"
+                        Height="290">
+                    <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                           Stretch="UniformToFill"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+                </Border>
+                <Border x:Name="WideChefImage"
+                        Visibility="Collapsed">
+                    <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                           Stretch="UniformToFill"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+                </Border>
                 <utu:AutoLayout x:Name="InnerLayout"
                                 Spacing="15"
                                 Padding="30,30,30,15"

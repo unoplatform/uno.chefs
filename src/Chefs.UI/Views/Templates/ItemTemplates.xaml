@@ -13,7 +13,9 @@
                         CornerRadius="20"
                         Margin="16,18,0,18">
                     <Image Source="{Binding UrlAuthorImage}"
-                           Stretch="UniformToFill" />
+                           Stretch="UniformToFill"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
                 </Border>
                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"

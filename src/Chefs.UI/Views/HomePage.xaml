@@ -53,6 +53,8 @@
                                         <utu:AutoLayout MaxHeight="164">
                                             <Image Source="{Binding ImageUrl}"
                                                    Stretch="UniformToFill"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
                                                    Margin="0,-80,0,0" />
                                         </utu:AutoLayout>
                                         <utu:AutoLayout Padding="16"
@@ -174,7 +176,9 @@
                         <Border CornerRadius="15"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
                             <Image Source="{Binding UserProfile.UrlProfileImage}"
-                                   Stretch="UniformToFill" />
+                                   Stretch="UniformToFill"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
                         </Border>
                     </utu:AutoLayout>
 
@@ -394,9 +398,12 @@
                                                                 <DataTemplate>
                                                                     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                                     CornerRadius="12">
-                                                                        <Image Source="{Binding ImageUrl}"
-                                                                               Stretch="UniformToFill"
-                                                                               Height="150" />
+                                                                        <Border Height="150">
+                                                                            <Image Source="{Binding ImageUrl}"
+                                                                                   Stretch="UniformToFill"
+                                                                                   VerticalAlignment="Center"
+                                                                                   HorizontalAlignment="Center" />
+                                                                        </Border>
                                                                         <utu:AutoLayout Spacing="2"
                                                                                         Padding="11, 10"
                                                                                         PrimaryAxisAlignment="Center">
@@ -479,7 +486,9 @@
                                                                 Width="75"
                                                                 Margin="18, 0, 0, 0">
                                                             <Image Source="{Binding UrlProfileImage}"
-                                                                   Stretch="UniformToFill" />
+                                                                   Stretch="UniformToFill"
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Center"/>
                                                         </Border>
 
                                                         <TextBlock x:Name="NameLayout"
