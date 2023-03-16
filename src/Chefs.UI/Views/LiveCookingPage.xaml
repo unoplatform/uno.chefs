@@ -7,6 +7,7 @@
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:toolkit="using:Uno.UI.Toolkit"
@@ -190,10 +191,9 @@
                                toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton>
-                        <win:AppBarButton.Icon>
-                            <SymbolIcon Symbol="Back"
-                                        Foreground="{ThemeResource SurfaceInverseBrush}"/>
-                        </win:AppBarButton.Icon>
+                        <not_mobile:AppBarButton.Icon>
+                            <SymbolIcon Symbol="Back" />
+                        </not_mobile:AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
             </utu:NavigationBar>

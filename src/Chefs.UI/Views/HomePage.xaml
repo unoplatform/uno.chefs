@@ -53,41 +53,40 @@
                                         <utu:AutoLayout MaxHeight="164">
                                             <Image Source="{Binding ImageUrl}"
                                                    Stretch="UniformToFill"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
                                                    Margin="0,-80,0,0" />
                                         </utu:AutoLayout>
-                                        <!-- Additional AutoLayout added here as a workaround for this issue: -->
-                                        <!-- https://github.com/unoplatform/uno.chefs/issues/246 -->
-                                        <utu:AutoLayout Padding="16">
-                                            <utu:AutoLayout Spacing="16"
-                                                            Orientation="Horizontal">
-                                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                    <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                                                   TextWrapping="Wrap"
-                                                                   Text="{Binding Name}"
-                                                                   Style="{StaticResource TitleMedium}" />
-                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                                   TextWrapping="Wrap"
-                                                                   Text="{Binding TimeCal}" />
-                                                    </utu:AutoLayout>
+                                        <utu:AutoLayout Padding="16"
+                                                        Spacing="16"
+                                                        Orientation="Horizontal">
+                                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                <utu:AutoLayout PrimaryAxisAlignment="Center">
+                                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                               TextWrapping="Wrap"
+                                                               Text="{Binding Name}"
+                                                               Style="{StaticResource TitleMedium}" />
+                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                               TextWrapping="Wrap"
+                                                               Text="{Binding TimeCal}" />
                                                 </utu:AutoLayout>
-                                                <ToggleButton utu:AutoLayout.CounterAlignment="Center"
-                                                              IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                              Command="{Binding SaveRecipe}"
-                                                              CommandParameter="{Binding}"
-                                                              Style="{StaticResource IconToggleButtonStyle}">
-                                                    <ToggleButton.Content>
-                                                        <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
-                                                                  Foreground="{ThemeResource SurfaceInverseBrush}" />
-                                                    </ToggleButton.Content>
-                                                    <um:ControlExtensions.AlternateContent>
-
-                                                        <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
-                                                                  Foreground="{ThemeResource SurfaceInverseBrush}" />
-                                                    </um:ControlExtensions.AlternateContent>
-                                                </ToggleButton>
                                             </utu:AutoLayout>
+                                            <ToggleButton utu:AutoLayout.CounterAlignment="Center"
+                                                          IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                          Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.SaveRecipe}"
+                                                          CommandParameter="{Binding}"
+                                                          Style="{StaticResource IconToggleButtonStyle}">
+                                                <ToggleButton.Content>
+                                                    <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
+                                                              Foreground="{ThemeResource SurfaceInverseBrush}" />
+                                                </ToggleButton.Content>
+                                                <um:ControlExtensions.AlternateContent>
+
+                                                    <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
+                                                              Foreground="{ThemeResource SurfaceInverseBrush}" />
+                                                </um:ControlExtensions.AlternateContent>
+                                            </ToggleButton>
                                         </utu:AutoLayout>
                                     </utu:AutoLayout>
                                 </DataTemplate>
@@ -137,6 +136,8 @@
                                 Value="40,20" />
                         <Setter Target="TrendingNowFeed.Margin"
                                 Value="-40,0" />
+                        <Setter Target="CategoriesFeedView.Margin"
+                                Value="-30,0" />
                         <Setter Target="RecentlyAddedFeedView.Margin"
                                 Value="-40,0" />
                         <Setter Target="PopularCreatorsFeedView.Margin"
@@ -159,62 +160,57 @@
         </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout x:Name="NavBarLayout"
-                            Padding="18,12">
-
-                <!-- Additional AutoLayout added here as a workaround for this issue: -->
-                <!-- https://github.com/unoplatform/uno.chefs/issues/246 -->
-                <utu:AutoLayout Orientation="Horizontal">
-
-                    <utu:AutoLayout x:Name="ProfileLayout"
-                                    Spacing="8"
+                            Padding="18,12"
+                            Orientation="Horizontal">
+                <utu:AutoLayout x:Name="ProfileLayout"
+                                Spacing="8"
+                                Orientation="Horizontal"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <utu:AutoLayout CornerRadius="30"
                                     Orientation="Horizontal"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <utu:AutoLayout CornerRadius="30"
-                                        Orientation="Horizontal"
-                                        utu:AutoLayout.CounterAlignment="Center"
-                                        utu:AutoLayout.PrimaryLength="40"
-                                        utu:AutoLayout.CounterLength="40"
-                                        uen:Navigation.Request="!Profile"
-                                        uen:Navigation.Data="{Binding UserProfile}">
-                            <Border CornerRadius="15"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <Image Source="{Binding UserProfile.UrlProfileImage}"
-                                       Stretch="UniformToFill" />
-                            </Border>
-                        </utu:AutoLayout>
-
-                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Text="{Binding UserProfile.FullName}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource TitleMedium}" />
-                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                       Text="{Binding UserProfile.Email}"
-                                       utu:AutoLayout.CounterAlignment="Start"
-                                       Style="{StaticResource CaptionMedium}" />
-                        </utu:AutoLayout>
+                                    utu:AutoLayout.CounterAlignment="Center"
+                                    Width="40"
+                                    Height="40"
+                                    uen:Navigation.Request="!Profile"
+                                    uen:Navigation.Data="{Binding UserProfile}">
+                        <Border CornerRadius="15"
+                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <Image Source="{Binding UserProfile.UrlProfileImage}"
+                                   Stretch="UniformToFill"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
+                        </Border>
                     </utu:AutoLayout>
 
-                    <utu:AutoLayout Spacing="8"
-                                    Orientation="Horizontal">
-                        <Button utu:AutoLayout.CounterAlignment="Center"
-                                Style="{StaticResource IconButtonStyle}"
-                                uen:Navigation.Request="Search">
-                            <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
-                                      Foreground="{ThemeResource SurfaceInverseBrush}" />
-                        </Button>
-                        <Button x:Name="NotificationButton"
-                                utu:AutoLayout.CounterAlignment="Center"
-                                Style="{StaticResource IconButtonStyle}"
-                                uen:Navigation.Request="!Notifications">
-                            <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
-                                      Foreground="{ThemeResource SurfaceInverseBrush}" />
-                        </Button>
+                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Text="{Binding UserProfile.FullName}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource TitleMedium}" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   Text="{Binding UserProfile.Email}"
+                                   utu:AutoLayout.CounterAlignment="Start"
+                                   Style="{StaticResource CaptionMedium}" />
                     </utu:AutoLayout>
-
                 </utu:AutoLayout>
 
+                <utu:AutoLayout Spacing="8"
+                                Orientation="Horizontal">
+                    <Button utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}"
+                            uen:Navigation.Request="Search">
+                        <PathIcon Data="{StaticResource Icon_Outline_Interface_Search}"
+                                  Foreground="{ThemeResource OnSurfaceBrush}" />
+                    </Button>
+                    <Button x:Name="NotificationButton"
+                            utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}"
+                            uen:Navigation.Request="!Notifications">
+                        <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
+                                  Foreground="{ThemeResource OnSurfaceBrush}" />
+                    </Button>
+                </utu:AutoLayout>
             </utu:AutoLayout>
 
             <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -250,7 +246,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="TrendingNowFeed"
                                       Source="{Binding TrendingNow}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -274,7 +270,8 @@
                                    Text="Categories"
                                    Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="CategoriesFeedView"
-                                      Source="{Binding Categories}">
+                                      Source="{Binding Categories}"
+                                      Margin="-8,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -282,8 +279,7 @@
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                         utu:CommandExtensions.Command="{Binding DataContext.CategorySearch, ElementName=CategoriesFeedView}">
                                         <muxc:ItemsRepeater.Layout>
-                                            <muxc:StackLayout Orientation="Horizontal"
-                                                              Spacing="8" />
+                                            <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
                                         <muxc:ItemsRepeater.ItemTemplate>
                                             <DataTemplate>
@@ -295,7 +291,8 @@
                                                                     CornerRadius="12"
                                                                     PrimaryAxisAlignment="Center"
                                                                     Orientation="Horizontal"
-                                                                    utu:AutoLayout.CounterAlignment="Start">
+                                                                    utu:AutoLayout.CounterAlignment="Start"
+                                                                    Margin="10,0,0,0">
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
                                                                 <VisualState x:Name="Narrow">
@@ -310,13 +307,14 @@
                                                                     <VisualState.Setters>
                                                                         <Setter Target="CategoryTemplateLayout.Padding"
                                                                                 Value="20" />
+                                                                        <Setter Target="CategoryTemplateLayout.Margin"
+                                                                                Value="30,0,0,0" />
                                                                     </VisualState.Setters>
                                                                 </VisualState>
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
                                                         <ImageIcon Source="{Binding UrlIcon}"
-                                                                   utu:AutoLayout.CounterAlignment="Center"
-                                                                   Margin="0, 0, 0, 3" />
+                                                                   utu:AutoLayout.CounterAlignment="Center" />
                                                         <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                                    Text="{Binding Name}"
                                                                    utu:AutoLayout.CounterAlignment="Center"
@@ -358,7 +356,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="RecentlyAddedFeedView"
                                       Source="{Binding RecentlyAdded}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -400,9 +398,12 @@
                                                                 <DataTemplate>
                                                                     <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                                     CornerRadius="12">
-                                                                        <Image Source="{Binding ImageUrl}"
-                                                                               Stretch="UniformToFill"
-                                                                               utu:AutoLayout.PrimaryLength="150" />
+                                                                        <Border Height="150">
+                                                                            <Image Source="{Binding ImageUrl}"
+                                                                                   Stretch="UniformToFill"
+                                                                                   VerticalAlignment="Center"
+                                                                                   HorizontalAlignment="Center" />
+                                                                        </Border>
                                                                         <utu:AutoLayout Spacing="2"
                                                                                         Padding="11, 10"
                                                                                         PrimaryAxisAlignment="Center">
@@ -434,7 +435,8 @@
                                    Text="Popular Creators"
                                    Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="PopularCreatorsFeedView"
-                                      Source="{Binding PopularCreators}">
+                                      Source="{Binding PopularCreators}"
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -449,7 +451,9 @@
                                             <DataTemplate>
                                                 <UserControl>
                                                     <utu:AutoLayout Spacing="8"
-                                                                    utu:AutoLayout.CounterAlignment="Start">
+                                                                    utu:AutoLayout.CounterAlignment="Start"
+                                                                    VerticalContentAlignment="Center"
+                                                                    HorizontalContentAlignment="Center">
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
                                                                 <VisualState x:Name="Narrow">
@@ -468,27 +472,33 @@
                                                                                 Value="124" />
                                                                         <Setter Target="CreatorsLayout.Margin"
                                                                                 Value="40,0,0,0" />
+                                                                        <Setter Target="NameLayout.Margin"
+                                                                                Value="40,0,0,0" />
                                                                     </VisualState.Setters>
                                                                 </VisualState>
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
-                                                        <utu:AutoLayout x:Name="CreatorsLayout"
-                                                                        CornerRadius="30"
-                                                                        Orientation="Horizontal"
-                                                                        utu:AutoLayout.CounterAlignment="Center"
-                                                                        Height="75"
-                                                                        Width="75">
-                                                            <Border CornerRadius="25"
-                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                <Image Source="{Binding UrlProfileImage}"
-                                                                       Stretch="UniformToFill" />
-                                                            </Border>
-                                                        </utu:AutoLayout>
-                                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                        <Border x:Name="CreatorsLayout"
+                                                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                utu:AutoLayout.CounterAlignment="Stretch"
+                                                                CornerRadius="25"
+                                                                Height="75"
+                                                                Width="75"
+                                                                Margin="18, 0, 0, 0">
+                                                            <Image Source="{Binding UrlProfileImage}"
+                                                                   Stretch="UniformToFill"
+                                                                   VerticalAlignment="Center"
+                                                                   HorizontalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <TextBlock x:Name="NameLayout"
+                                                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                    TextAlignment="Center"
-                                                                   Text="{Binding FullName}"
+                                                                   Text="{Binding FullName, Converter={StaticResource WhiteSpaceToLineBreakConverter}}"
                                                                    utu:AutoLayout.CounterAlignment="Center"
-                                                                   Style="{StaticResource BodySmall}" />
+                                                                   Style="{StaticResource TitleMedium}"
+                                                                   Margin="18, 0, 0, 0" />
+
                                                     </utu:AutoLayout>
                                                 </UserControl>
                                             </DataTemplate>
@@ -525,7 +535,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="LunchRecipesFeedView"
                                       Source="{Binding LunchRecipes}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -568,7 +578,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="DinnerRecipesFeedView"
                                       Source="{Binding DinnerRecipes}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"
@@ -611,7 +621,7 @@
                         </utu:AutoLayout>
                         <uer:FeedView x:Name="SnackRecipesFeedView"
                                       Source="{Binding SnackRecipes}"
-                                      Margin="-18,0">
+                                      Margin="-18,-4">
                             <DataTemplate>
                                 <ScrollViewer HorizontalScrollMode="Enabled"
                                               HorizontalScrollBarVisibility="Hidden"

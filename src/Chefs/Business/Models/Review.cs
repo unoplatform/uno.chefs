@@ -1,4 +1,5 @@
-﻿using Chefs.Data;
+﻿using System.Collections.Immutable;
+using Chefs.Data;
 
 namespace Chefs.Business;
 
@@ -11,10 +12,13 @@ public partial record Review
         CreatedBy = reviewData.CreatedBy; 
         PublisherName = reviewData.PublisherName;
         Date = reviewData.Date;
-        Likes = reviewData.Likes;
-        Dislikes = reviewData.Dislikes;
+        Likes = reviewData.Likes?.ToImmutableList() 
+            ?? ImmutableList<Guid>.Empty;
+        Dislikes = reviewData.Dislikes?.ToImmutableList()
+            ?? ImmutableList<Guid>.Empty;
         Description = reviewData.Description;
         UrlAuthorImage = reviewData.UrlAuthorImage;
+        UserLike = reviewData.UserLike;
     }
 
     public Review(Guid recipeId, string text)
@@ -24,26 +28,28 @@ public partial record Review
         Description = text;
     }
 
-    public Guid Id { get; set; }
-    public Guid RecipeId { get; set; }
-    public string? UrlAuthorImage { get; set; }
-    public Guid CreatedBy { get; set; }
-    public string? PublisherName { get; set; }
-    public DateTime Date { get; set; }
-    public string? Description { get; set; }
-    public int Likes { get; set; }
-    public int Dislikes { get; set; }
+    public Guid Id { get; init; }
+    public Guid RecipeId { get; init; }
+    public string? UrlAuthorImage { get; init; }
+    public Guid CreatedBy { get; init; }
+    public string? PublisherName { get; init; }
+    public DateTime Date { get; init; }
+    public string? Description { get; init; }
+    public ImmutableList<Guid>? Likes { get; init; }
+    public ImmutableList<Guid>? Dislikes { get; init; }
+    public bool? UserLike { get; init; }
 
     internal ReviewData ToData() => new()
     {
         Id = Id,
         RecipeId = RecipeId,
         CreatedBy = CreatedBy, 
+        PublisherName = PublisherName,
         Date = Date,
-        Likes = Likes,
-        Dislikes = Dislikes,
+        Likes = Likes?.ToList(),
+        Dislikes = Dislikes?.ToList(),
         Description = Description,
-        UrlAuthorImage = UrlAuthorImage,
+        UrlAuthorImage = UrlAuthorImage
     };
 }
 

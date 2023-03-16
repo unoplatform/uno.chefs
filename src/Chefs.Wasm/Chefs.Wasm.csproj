@@ -5,6 +5,9 @@
 		<NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
 		<DefineConstants>$(DefineConstants);WINUI</DefineConstants>
 		<ImplicitUsings>disable</ImplicitUsings>
+		<!-- Changing the root of the app to have the correct path for the images -->
+		<!-- Related details here : https://github.com/unoplatform/uno.chefs/issues/404 -->
+		<WasmShellWebAppBasePath>/</WasmShellWebAppBasePath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<MonoRuntimeDebuggerEnabled>true</MonoRuntimeDebuggerEnabled>
@@ -51,8 +54,8 @@
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
 		<PackageReference Include="Uno.Extensions.Logging.WebAssembly.Console" Version="1.4.0" />
 		<PackageReference Include="Uno.UI.RuntimeTests.Engine" Version="0.14.0-dev.54" />
-		<PackageReference Include="Uno.WinUI.WebAssembly" Version="4.8.0-dev.630" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.8.0-dev.630" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Uno.WinUI.WebAssembly" Version="4.9.0-dev.55" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="4.9.0-dev.55" Condition="'$(Configuration)'=='Debug'" />
 		<PackageReference Include="Uno.Wasm.Bootstrap" Version="3.3.1" />
 		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="7.0.8" />
 	</ItemGroup>
@@ -61,8 +64,8 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.39" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.51" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.8.0-dev.630" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.59" />
+	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.9.0-dev.55" />
 	</ItemGroup>
 	<Import Project="..\Extensions.props" />
 	<Import Project="..\Chefs.UI\Chefs.UI.projitems" Label="Shared" Condition="Exists('..\Chefs.UI\Chefs.UI.projitems')" />

@@ -10,6 +10,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       mc:Ignorable="d"
+      xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       NavigationCacheMode="Enabled"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       VerticalAlignment="Stretch"
@@ -113,34 +114,30 @@
                                 Value="Collapsed" />
                         <Setter Target="RecipeImage.MaxHeight"
                                 Value="300" />
-                        <Setter Target="Image.Margin"
-                                Value="0,-150,0,0" />
                         <Setter Target="RecipeImage.Margin"
                                 Value="40,0,20,0" />
                         <Setter Target="RecipeImage.CornerRadius"
                                 Value="40" />
-                        <Setter Target="ImageLayout.Padding"
-                                Value="0,0,0,40" />
                         <Setter Target="TabsLayout.Padding"
-                                Value="20,0,40,40" />
-                        <Setter Target="IngredientsButton.(utu:AutoLayout.PrimaryLength)"
+                                Value="20,0,40,0" />
+                        <Setter Target="IngredientsButton.Width"
                                 Value="190" />
-                        <Setter Target="IngredientsButton.(utu:AutoLayout.CounterLength)"
+                        <Setter Target="IngredientsButton.Height"
                                 Value="56" />
                         <Setter Target="IngredientsButton.Foreground"
                                 Value="{ThemeResource OnSurfaceVariantBrush}" />
                         <Setter Target="IngredientsButton.Style"
                                 Value="{StaticResource OutlinedButtonStyle}" />
-                        <Setter Target="LiveCookingButton.(utu:AutoLayout.PrimaryLength)"
+                        <Setter Target="LiveCookingButton.Width"
                                 Value="190" />
-                        <Setter Target="LiveCookingButton.(utu:AutoLayout.CounterLength)"
+                        <Setter Target="LiveCookingButton.Height"
                                 Value="56" />
                         <Setter Target="RecipeCard.Spacing"
                                 Value="80" />
                         <Setter Target="NavBar.Margin"
                                 Value="20,0" />
-                        <Setter Target="TabNavGrid.Padding"
-                                Value="0,0,0,22" />
+                        <Setter Target="TabNavGrid.Margin"
+                                Value="0,0,0,30" />
                         <Setter Target="MainScrollViewer.VerticalScrollMode"
                                 Value="Disabled" />
                         <Setter Target="MainScrollViewer.VerticalScrollBarVisibility"
@@ -162,10 +159,9 @@
                                toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton>
-                        <win:AppBarButton.Icon>
-                            <SymbolIcon Symbol="Back"
-                                        Foreground="{ThemeResource SurfaceInverseBrush}"/>
-                        </win:AppBarButton.Icon>
+						<not_mobile:AppBarButton.Icon>
+                            <SymbolIcon Symbol="Back" />
+                        </not_mobile:AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.MainCommand>
                 <utu:NavigationBar.PrimaryCommands>
@@ -213,12 +209,14 @@
                             <utu:AutoLayout Spacing="-35"
                                             PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <utu:AutoLayout x:Name="RecipeImage">
-                                    <Image x:Name="Image"
-                                           Source="{Binding Recipe.ImageUrl}"
+                                <Border x:Name="RecipeImage"
+                                        MaxHeight="200"
+                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                    <Image Source="{Binding Recipe.ImageUrl}"
                                            Stretch="UniformToFill"
-                                           utu:AutoLayout.CounterAlignment="Stretch" />
-                                </utu:AutoLayout>
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                </Border>
                                 <utu:AutoLayout x:Name="RecipeCard"
                                                 Background="{ThemeResource OnPrimaryBrush}"
                                                 Spacing="40"
@@ -342,10 +340,10 @@
                                       VerticalScrollBarVisibility="Hidden">
                             <Grid x:Name="TabNavGrid"
                                   uen:Region.Attached="True"
-                                  uen:Region.Navigator="Visibility">
+                                  uen:Region.Navigator="Visibility" >
 
                                 <utu:AutoLayout uen:Region.Name="IngredientsTab"
-                                                Visibility="Visible">
+                                                Visibility="Visible" >
                                     <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                TextWrapping="Wrap"
                                                Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
@@ -370,6 +368,8 @@
                                                                             Padding="16,18"
                                                                             Orientation="Horizontal">
                                                                 <ImageIcon x:Name="IngredientImage"
+                                                                           Height="24"
+                                                                           Width="24"
                                                                            Source="{Binding UrlIcon}"
                                                                            utu:AutoLayout.CounterAlignment="Center"
                                                                            Margin="0, 0, 0, 3" />
@@ -473,13 +473,14 @@
                         Spacing="16">
             <Button x:Name="IngredientsButton"
                     Content="Get the Ingredients"
-                    utu:AutoLayout.PrimaryLength="56"
+                    Height="56"
+                    Style="{StaticResource TextButtonStyle}"
                     Command="{Binding IngredientsNavigation}" />
 
             <Button x:Name="LiveCookingButton"
                     Background="{ThemeResource PrimaryBrush}"
                     Content="Start cooking!"
-                    utu:AutoLayout.PrimaryLength="56"
+                    Height="56"
                     Command="{Binding LiveCooking}" />
         </utu:AutoLayout>
     </utu:AutoLayout>

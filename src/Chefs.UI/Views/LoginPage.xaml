@@ -69,15 +69,20 @@
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:AutoLayout.CounterAlignment="Stretch">
 
-                <Image x:Name="ChefImage"
-                       Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                       Stretch="UniformToFill"
-                       Height="290" />
-                <Image x:Name="WideChefImage"
-                       Visibility="Collapsed"
-                       Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                       Stretch="UniformToFill"
-                       utu:AutoLayout.CounterAlignment="Stretch" />
+                <Border x:Name="ChefImage"
+                        Height="290">
+                    <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                           Stretch="UniformToFill"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+                </Border>
+                <Border x:Name="WideChefImage"
+                        Visibility="Collapsed">
+                    <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                           Stretch="UniformToFill"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+                </Border>
                 <utu:AutoLayout x:Name="InnerLayout"
                                 Spacing="15"
                                 Padding="30,30,30,15"
@@ -133,7 +138,7 @@
                                         utu:AutoLayout.CounterAlignment="Stretch"
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
-                                      IsChecked="{Binding AuthOptions.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"
@@ -253,7 +258,7 @@
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
-                                      IsChecked="{Binding AuthOptions.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"

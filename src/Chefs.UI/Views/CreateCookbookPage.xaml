@@ -10,6 +10,7 @@
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       xmlns:converters="using:Chefs.Converters"
       xmlns:toolkit="using:Uno.UI.Toolkit"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:controls="using:Chefs.Controls"
@@ -71,17 +72,19 @@
                                                             <AdaptiveTrigger MinWindowWidth="800" />
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
-                                                            <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                            <Setter Target="ImageLayout.Height"
                                                                     Value="140" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
-                                            <utu:AutoLayout x:Name="ImageLayout"
-                                                            utu:AutoLayout.PrimaryLength="110">
+                                            <Border x:Name="ImageLayout"
+                                                    Height="110">
                                                 <Image Source="{Binding ImageUrl}"
-                                                       Stretch="UniformToFill" />
-                                            </utu:AutoLayout>
+                                                       Stretch="UniformToFill"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center" />
+                                            </Border>
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center"
@@ -141,6 +144,10 @@
                                 Value="40, 20" />
                         <Setter Target="CookbookName.Margin"
                                 Value="40, 0" />
+                        <Setter Target="CookbookName.Width"
+                                Value="535" />
+                        <Setter Target="CookbookName.(utu:AutoLayout.CounterAlignment)"
+                                Value="Start" />
                         <Setter Target="WideButtons.Visibility"
                                 Value="Visible" />
                         <Setter Target="NarrowButtons.Visibility"
@@ -164,15 +171,15 @@
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton>
-                            <win:AppBarButton.Icon>
-                                <SymbolIcon Symbol="Back"
-                                            Foreground="{ThemeResource SurfaceInverseBrush}"/>
-                            </win:AppBarButton.Icon>
+                            <not_mobile:AppBarButton.Icon>
+                                <SymbolIcon Symbol="Back" />
+                            </not_mobile:AppBarButton.Icon>
                         </AppBarButton>
                     </utu:NavigationBar.MainCommand>
                 </utu:NavigationBar>
             </utu:AutoLayout>
             <TextBox x:Name="CookbookName"
+                     utu:AutoLayout.CounterAlignment="Stretch"
                      Background="{ThemeResource SurfaceBrush}"
                      Text="{Binding CookbookName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Foreground="{ThemeResource SurfaceInverseBrush}"
@@ -202,7 +209,7 @@
                                     <utu:AutoLayout.Resources>
                                         <muxc:UniformGridLayout x:Key="NarrowGridLayout"
                                                                 MaximumRowsOrColumns="2"
-                                                                ItemsJustification="SpaceBetween"
+                                                                MinItemWidth="155"
                                                                 MinColumnSpacing="10"
                                                                 MinRowSpacing="10"
                                                                 ItemsStretch="Fill" />
@@ -247,7 +254,7 @@
             <Button Command="{Binding Done}"
                     Background="{ThemeResource PrimaryBrush}"
                     Content="Done"
-                    utu:AutoLayout.PrimaryLength="56" />
+                    Height="56" />
         </utu:AutoLayout>
         <utu:AutoLayout x:Name="WideButtons"
                         Visibility="Collapsed"

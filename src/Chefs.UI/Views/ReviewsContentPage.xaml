@@ -20,9 +20,9 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="Narrow">
-                    <VisualState.StateTriggers>
+                    <win:VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
-                    </VisualState.StateTriggers>
+                    </win:VisualState.StateTriggers>
                 </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
@@ -86,7 +86,7 @@
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                               HorizontalScrollMode="Disabled">
                     <utu:AutoLayout Padding="18">
-                        <uer:FeedView x:Name="IngredientsFeed"
+                        <uer:FeedView x:Name="ReviewsFeed"
                                       Source="{Binding Reviews}">
                             <DataTemplate>
                                 <ListView ItemTemplate="{StaticResource ReviewDataTemplate}"
@@ -110,7 +110,7 @@
                          Style="{StaticResource OutlinedTextBoxStyle}"
                          Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Button utu:AutoLayout.CounterAlignment="Center"
-                        utu:AutoLayout.CounterLength="56"
+                        Width="56"
                         Background="{ThemeResource PrimaryBrush}"
                         Command="{Binding AddReview}"
                         Content="Send" />

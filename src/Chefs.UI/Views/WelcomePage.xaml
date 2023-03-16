@@ -108,19 +108,28 @@
                                   SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
                             <FlipViewItem>
-                                <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                                       Stretch="UniformToFill"
-                                       Height="400" />
+                                 <Border Height="400">
+                                    <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+                                           Stretch="UniformToFill"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                 </Border>
                             </FlipViewItem>
                             <FlipViewItem>
-                                <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
-                                       Stretch="UniformToFill"
-                                       Height="400" />
+                                 <Border Height="400">
+                                    <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
+                                           Stretch="UniformToFill"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                 </Border>
                             </FlipViewItem>
                             <FlipViewItem>
-                                <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
-                                       Stretch="UniformToFill"
-                                       Height="400" />
+                                 <Border Height="400">
+                                    <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
+                                           Stretch="UniformToFill"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                 </Border>
                             </FlipViewItem>
                         </FlipView>
                         <utu:AutoLayout x:Name="SkipButtonLayout"
@@ -221,16 +230,15 @@
                             </FlipView.Items>
                         </FlipView>
                     </utu:AutoLayout>
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
+                    <utu:AutoLayout x:Name="NextButton"
+                                    PrimaryAxisAlignment="Center"
                                     Spacing="20">
 
-                        <Button x:Name="NextButton" 
-                        Background="{ThemeResource PrimaryBrush}"
+                        <Button Background="{ThemeResource PrimaryBrush}"
                                 Content="Next"
-                                utu:AutoLayout.PrimaryLength="56"
-                                HorizontalAlignment="Stretch"
-                                Command="{Binding Next}"
-                                Height="56" />
+                                Height="56"
+                                utu:AutoLayout.CounterAlignment="Stretch"
+                                Command="{Binding Next}" />
 
                         <msui:PipsPager x:Name="pipsPager"
                                         utu:AutoLayout.CounterAlignment="Center"
@@ -249,15 +257,21 @@
                           utu:AutoLayout.PrimaryAlignment="Stretch">
                     <FlipViewItem>
                         <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                               Stretch="UniformToFill" />
+                               Stretch="UniformToFill"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
                     </FlipViewItem>
                     <FlipViewItem>
                         <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
-                               Stretch="UniformToFill" />
+                               Stretch="UniformToFill"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
                     </FlipViewItem>
                     <FlipViewItem>
                         <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
-                               Stretch="UniformToFill" />
+                               Stretch="UniformToFill"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
                     </FlipViewItem>
                 </FlipView>
             </utu:AutoLayout>
