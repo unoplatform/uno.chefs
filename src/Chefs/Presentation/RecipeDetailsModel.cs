@@ -26,6 +26,7 @@ public partial class RecipeDetailsModel
 
     public Recipe Recipe { get; }
     public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct));
+    public IState<bool> IngredientsCheck => State.Value(this, () => false);
     public IFeed<User> CurrentUser => Feed.Async(async ct => await _userService.GetCurrent(ct));
     public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
     public IListState<Review> Reviews => ListState.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct));
@@ -46,10 +47,10 @@ public partial class RecipeDetailsModel
     public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<LiveCookingModel>(this, data: new LiveCookingParameter(Recipe, steps));
 
-	public async ValueTask IngredientsNavigation(CancellationToken ct) =>
-        await _navigator.NavigateViewModelAsync<IngredientsModel>(this, data: new IngredientsParameter(Recipe, await Ingredients, await Steps));
+    public async ValueTask IngredientsChecklist(CancellationToken ct)
+        => await IngredientsCheck.Update(c => !c, ct);
 
-	public async ValueTask Review(IImmutableList<Review> reviews, CancellationToken ct) =>
+    public async ValueTask Review(IImmutableList<Review> reviews, CancellationToken ct) =>
         await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog, cancellation: ct);
 
     public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
