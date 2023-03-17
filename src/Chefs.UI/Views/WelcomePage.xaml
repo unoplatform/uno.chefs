@@ -10,6 +10,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	
     <Grid Background="{ThemeResource BackgroundBrush}"
           utu:SafeArea.Insets="Top">
         <VisualStateManager.VisualStateGroups>
