@@ -199,14 +199,14 @@
                                                             <AdaptiveTrigger MinWindowWidth="800" />
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
-                                                            <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                            <Setter Target="ImageLayout.Height"
                                                                     Value="180" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
                                             <Border x:Name="ImageLayout"
-                                                            utu:AutoLayout.PrimaryLength="110">
+                                                            Height="110">
                                                 <Image Source="{Binding ImageUrl}"
                                                        Stretch="UniformToFill" 
                                                        VerticalAlignment="Center"
@@ -366,6 +366,8 @@
                         <Setter Target="WideSaved.Visibility"
                                 Value="Visible" />
                         <Setter Target="ContentLayout.Padding"
+                                Value="0" />
+                        <Setter Target="ContentLayout.Spacing"
                                 Value="0" />
                     </VisualState.Setters>
                 </VisualState>

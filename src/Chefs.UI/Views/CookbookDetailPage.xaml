@@ -67,14 +67,14 @@
                                                             <AdaptiveTrigger MinWindowWidth="800" />
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
-                                                            <Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                            <Setter Target="ImageLayout.Height"
                                                                     Value="130" />
                                                         </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
                                             <Border x:Name="ImageLayout"
-                                                    utu:AutoLayout.PrimaryLength="110">
+                                                    Height="110">
                                                 <Image Source="{Binding ImageUrl}"
                                                        Stretch="UniformToFill"
                                                        VerticalAlignment="Center"
@@ -164,7 +164,7 @@
                                     <utu:AutoLayout.Resources>
                                         <muxc:UniformGridLayout x:Key="NarrowGridLayout"
                                                                 MaximumRowsOrColumns="2"
-                                                                ItemsJustification="SpaceBetween"
+                                                                MinItemWidth="155"
                                                                 MinColumnSpacing="10"
                                                                 MinRowSpacing="10"
                                                                 ItemsStretch="Fill" />

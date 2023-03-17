@@ -170,8 +170,6 @@
 									  Command="{Binding GoBack}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
-											Height="12"
-											Width="12"
 											UriSource="ms-appx:///Assets/Icons/close.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
@@ -183,8 +181,6 @@
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
-											Height="12"
-											Width="12"
 											UriSource="ms-appx:///Assets/Icons/settings.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
@@ -210,8 +206,6 @@
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
-											Height="12"
-											Width="12"
 											UriSource="ms-appx:///Assets/Icons/settings.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
@@ -221,8 +215,6 @@
 									  Command="{Binding GoBack}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
-											Height="12"
-											Width="12"
 											UriSource="ms-appx:///Assets/Icons/close.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
@@ -242,7 +234,7 @@
 				<utu:AutoLayout Spacing="5"
 								PrimaryAxisAlignment="Center"
 								utu:AutoLayout.CounterAlignment="Center"
-								utu:AutoLayout.CounterLength="390">
+								Width="390">
 					<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
 							   Text="{Binding Profile.FullName}"
 							   utu:AutoLayout.CounterAlignment="Center"
@@ -412,14 +404,14 @@
 																												<AdaptiveTrigger MinWindowWidth="800" />
 																											</VisualState.StateTriggers>
 																											<VisualState.Setters>
-																												<Setter Target="ImageLayout.(utu:AutoLayout.PrimaryLength)"
+                                                                                                                <Setter Target="ImageLayout.Height"
 																														Value="180" />
 																											</VisualState.Setters>
 																										</VisualState>
 																									</VisualStateGroup>
 																								</VisualStateManager.VisualStateGroups>
 																								<Border x:Name="ImageLayout"
-																										utu:AutoLayout.PrimaryLength="110">
+																										Height="110">
 																									<Image Source="{Binding ImageUrl}"
 																										   Stretch="UniformToFill"
 																										   VerticalAlignment="Center"

@@ -227,13 +227,13 @@
                                                     Orientation="Horizontal">
                                         <utu:AutoLayout PrimaryAxisAlignment="Center"
                                                         utu:AutoLayout.CounterAlignment="Center"
-                                                        utu:AutoLayout.PrimaryLength="24"
-                                                        utu:AutoLayout.CounterLength="60">
+                                                        Height="24"
+                                                        Width="60">
                                             <Image Source="ms-appx:///Assets/Icons/bell_icon.png"
                                                    Stretch="UniformToFill"
                                                    utu:AutoLayout.CounterAlignment="Start"
-                                                   utu:AutoLayout.PrimaryLength="24"
-                                                   utu:AutoLayout.CounterLength="24" />
+                                                   Height="24"
+                                                   Width="24" />
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -246,7 +246,7 @@
                                                       Background="{ThemeResource PrimaryBrush}"
                                                       Foreground="{ThemeResource PrimaryBrush}"
                                                       utu:AutoLayout.CounterAlignment="Center"
-                                                      utu:AutoLayout.PrimaryLength="70" />
+                                                      Height="70" />
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
                                 <utu:AutoLayout Spacing="18"
@@ -267,13 +267,13 @@
                                                     Orientation="Horizontal">
                                         <utu:AutoLayout PrimaryAxisAlignment="Center"
                                                         utu:AutoLayout.CounterAlignment="Center"
-                                                        utu:AutoLayout.PrimaryLength="24"
-                                                        utu:AutoLayout.CounterLength="60">
+                                                        Height="24"
+                                                        Width="60">
                                             <Image Source="ms-appx:///Assets/Icons/sun_icon.png"
                                                    Stretch="UniformToFill"
                                                    utu:AutoLayout.CounterAlignment="Start"
-                                                   utu:AutoLayout.PrimaryLength="24"
-                                                   utu:AutoLayout.CounterLength="24" />
+                                                   Height="24"
+                                                   Width="24" />
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -289,7 +289,7 @@
                                                       Background="{ThemeResource PrimaryBrush}"
                                                       Foreground="{ThemeResource PrimaryBrush}"
                                                       utu:AutoLayout.CounterAlignment="Center"
-                                                      utu:AutoLayout.PrimaryLength="70" />
+                                                      Height="70" />
                                     </utu:AutoLayout>
                                     <utu:AutoLayout x:Name="NightModeLayout"
                                                     Background="{ThemeResource SurfaceBrush}"
@@ -300,13 +300,13 @@
                                                     Orientation="Horizontal">
                                         <utu:AutoLayout PrimaryAxisAlignment="Center"
                                                         utu:AutoLayout.CounterAlignment="Center"
-                                                        utu:AutoLayout.PrimaryLength="24"
-                                                        utu:AutoLayout.CounterLength="60">
+                                                        Height="24"
+                                                        Width="60">
                                             <Image Source="ms-appx:///Assets/Icons/moon_icon.png"
                                                    Stretch="UniformToFill"
                                                    utu:AutoLayout.CounterAlignment="Start"
-                                                   utu:AutoLayout.PrimaryLength="24"
-                                                   utu:AutoLayout.CounterLength="24" />
+                                                   Height="24"
+                                                   Width="24" />
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -321,7 +321,7 @@
                                                       Background="{ThemeResource PrimaryBrush}"
                                                       Foreground="{ThemeResource PrimaryBrush}"
                                                       utu:AutoLayout.CounterAlignment="Center"
-                                                      utu:AutoLayout.PrimaryLength="70" />
+                                                      Height="70" />
                                     </utu:AutoLayout>
                                     <utu:AutoLayout x:Name="AccentColorLayout"
                                                     Spacing="18"
@@ -360,7 +360,7 @@
                 <Button Command="{Binding Update}"
                         Background="{ThemeResource PrimaryBrush}"
                         Content="Update"
-                        utu:AutoLayout.PrimaryLength="56" />
+                        Height="56" />
             </utu:AutoLayout>
             <utu:AutoLayout x:Name="WideButtons"
                             Visibility="Collapsed"

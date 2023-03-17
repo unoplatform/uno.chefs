@@ -365,6 +365,8 @@
                                                                             Padding="16,18"
                                                                             Orientation="Horizontal">
                                                                 <ImageIcon x:Name="IngredientImage"
+                                                                           Height="24"
+                                                                           Width="24"
                                                                            Source="{Binding UrlIcon}"
                                                                            utu:AutoLayout.CounterAlignment="Center"
                                                                            Margin="0, 0, 0, 3" />

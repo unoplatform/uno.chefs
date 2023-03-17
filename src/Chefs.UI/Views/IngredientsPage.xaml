@@ -280,7 +280,7 @@
                                             Padding="18">
                                 <Button Background="{ThemeResource PrimaryBrush}"
                                         Content="Done!"
-                                        utu:AutoLayout.PrimaryLength="56"
+                                        Height="56"
                                         uen:Navigation.Request="-" />
                             </utu:AutoLayout>
                         </utu:AutoLayout>
