@@ -166,21 +166,19 @@
                                 Spacing="8"
                                 Orientation="Horizontal"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout CornerRadius="30"
-                                    Orientation="Horizontal"
-                                    utu:AutoLayout.CounterAlignment="Center"
-                                    Width="40"
-                                    Height="40"
-                                    uen:Navigation.Request="!Profile"
-                                    uen:Navigation.Data="{Binding UserProfile}">
-                        <Border CornerRadius="15"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <Button Command="{Binding ShowCurrentProfile}"
+                            Width="40"
+                            Height="40"
+                            CornerRadius="30"
+                            utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}">
+                        <Border CornerRadius="15">
                             <Image Source="{Binding UserProfile.UrlProfileImage}"
                                    Stretch="UniformToFill"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"/>
+                                   HorizontalAlignment="Center" />
                         </Border>
-                    </utu:AutoLayout>
+                    </Button>
 
                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -442,7 +440,7 @@
                                               HorizontalScrollBarVisibility="Hidden"
                                               VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!Profile">
+                                                        utu:CommandExtensions.Command="{Binding DataContext.ShowProfile, ElementName=PopularCreatorsFeedView}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal"
                                                               Spacing="8" />
