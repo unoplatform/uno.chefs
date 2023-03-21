@@ -29,9 +29,7 @@ public partial class ReviewsModel
         _messenger = messenger;
 
         Reviews = ListState.Value(this, () => reviewParameter.reviews);
-        _messenger = messenger;
         messenger.Observe(Reviews, x => x.Id);
-        _userService = userService;
     }
 
     public IListState<Review> Reviews { get; }
@@ -61,8 +59,6 @@ public partial class ReviewsModel
     {
         var review = await _recipeService.CreateReview(_recipeId, comment, ct);
         _messenger.Send(new EntityMessage<Review>(EntityChange.Created, review));
-
-        await Reviews.AddAsync(review, ct);
         await Comment.Set(string.Empty, ct);
     }
 }
