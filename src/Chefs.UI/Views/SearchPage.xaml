@@ -557,8 +557,7 @@
                                   NoneTemplate="{StaticResource EmptyTemplate}">
                         <DataTemplate>
                             <UserControl>
-                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
-                                                Background="Blue">
+                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
                                     <utu:AutoLayout.Resources>
                                         <muxc:UniformGridLayout x:Key="NarrowGridLayout"
                                                                 MaximumRowsOrColumns="2"
