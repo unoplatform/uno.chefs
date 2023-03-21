@@ -7,7 +7,7 @@ public interface ICookbookService
     /// <summary>
     /// Add cookbook created by the user
     /// </summary>
-    /// <param name="cookbook">Cookbook to add</param>
+    /// <param name="name">Name of the cookbook to add</param>
     /// <param name="ct"></param>
     /// <returns></returns>
     ValueTask<Cookbook> Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct);

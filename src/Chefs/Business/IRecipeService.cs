@@ -53,7 +53,7 @@ public interface IRecipeService
     /// <summary>
     /// Recipes with a specific category
     /// </summary>
-    /// <param name="category">The specific category to filter recipes</param>
+    /// <param name="categoryId">The specific category to filter recipes</param>
     /// <param name="ct"></param>
     /// <returns>
     /// Get each recipe from api filter by a category
@@ -90,7 +90,7 @@ public interface IRecipeService
     /// <summary>
     /// Filter recipes from api
     /// </summary>
-    /// <param name="search">This is an object with attributes to filter recipes</param>
+    /// <param name="term">The search term</param>
     /// <param name="ct"></param>
     /// <returns>
     /// Get recipes filter by different options selected by the user
