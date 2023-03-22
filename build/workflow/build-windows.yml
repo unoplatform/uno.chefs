@@ -15,10 +15,16 @@ jobs:
   - powershell: .\build\Install-WindowsSdkISO.ps1 18362
     displayName: Install Windows SDK 18362
 
-  - powershell: |
-      cd src
-      dotnet build -c Release "/p:PackageOutputPath=$(build.artifactstagingdirectory)\nuget" "/p:PackageVersion=$env:GITVERSION_FullSemVer" "/p:InformationalVersion==$env:GITVERSION_InformationalVersion" /detailedsummary /bl:$(build.artifactstagingdirectory)\msbuild.binlog
-    displayName: Build apps
+  - task: MSBuild@1
+    displayName: 'Build solution'
+    retryCountOnTaskFailure: 3
+    inputs:
+      solution: src/Chefs.sln
+      configuration: Release
+      msbuildLocationMethod: version
+      msbuildVersion: latest
+      maximumCpuCount: true
+      msbuildArguments: /m /r "/p:PackageOutputPath=$(build.artifactstagingdirectory)\nuget" "/p:PackageVersion=%GITVERSION_FullSemVer%" "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /detailedsummary /bl:$(build.artifactstagingdirectory)\msbuild.binlog
 
   - task: PublishBuildArtifacts@1
     condition: always()

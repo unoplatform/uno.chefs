@@ -46,7 +46,7 @@ public class UserService : IUserService
         _userSignal.Raise();
     } 
 
-    ///In case we need to add auth
+    //In case we need to add auth
     //public async ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct)
     //{
     //    var autentication = await _userEndpoint.Authenticate(email, password, ct);
