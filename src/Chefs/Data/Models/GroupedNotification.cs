@@ -1,5 +1,6 @@
 ﻿using Chefs.Business;
 using System.Collections.Immutable;
+using Notification = Chefs.Business.Notification;
 
 namespace Chefs.Data.Models;
 

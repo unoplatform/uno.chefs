@@ -68,14 +68,14 @@ public interface IUserService
     /// </returns>
     Task SetSettings(AppConfig chefSettings, CancellationToken ct);
 
-    /// <summary>
-    /// Authentication method
-    /// </summary>
-    /// <param name="email"> The user email </param>
-    /// <param name="ct"></param>
-    /// <returns>
-    /// User logged in
-    /// </returns>
-    /// In case we need auth
+    // <summary>
+    // Authentication method
+    // </summary>
+    // <param name="email"> The user email </param>
+    // <param name="ct"></param>
+    // <returns>
+    // User logged in
+    // </returns>
+    // In case we need auth
     //ValueTask<bool> BasicAuthenticate(string email, string password, CancellationToken ct);
 }
