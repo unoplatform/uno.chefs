@@ -68,4 +68,29 @@ public partial class HomeModel
 
     public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
         await _recipeService.Save(recipe, ct);
+
+    public async Task ShowProfile(User profile)
+    {
+        await ProfileNavigation(profile);
+    }
+
+    public async Task ShowCurrentProfile()
+    {
+        await ProfileNavigation();
+    }
+
+    private async Task ProfileNavigation(User? profile = null)
+    {
+        var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
+        var result = await response!.Result;
+
+        await (result.SomeOrDefault() switch
+        {
+            UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<UpdateCookbookModel>(this, data: updateCookbook.Cookbook),
+            Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateCookbookModel>(this),
+            Cookbook cookbook => _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook),
+            object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj),
+            _ => Task.CompletedTask,
+        });
+    }
 }

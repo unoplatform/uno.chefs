@@ -64,7 +64,7 @@ public class RecipeEndpoint : IRecipeEndpoint
         {
             userSavedRecipe.SavedRecipes = !userSavedRecipe.SavedRecipes.Contains(recipe.Id) ? 
                 userSavedRecipe.SavedRecipes.Concat(recipe.Id).ToArray() :
-                userSavedRecipe.SavedRecipes;
+                userSavedRecipe.SavedRecipes.Where(id => recipe.Id != id).ToArray();
         }
         else
         {
