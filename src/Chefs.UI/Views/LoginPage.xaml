@@ -62,12 +62,12 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <!--<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                         utu:AutoLayout.CounterAlignment="Stretch"
-                        x:Name="LayoutContainer">-->
-            <!--<utu:AutoLayout x:Name="OuterLayout"
+                        x:Name="LayoutContainer">
+            <utu:AutoLayout x:Name="OuterLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
-                            utu:AutoLayout.CounterAlignment="Stretch">-->
+                            utu:AutoLayout.CounterAlignment="Stretch">
 
                 <Border x:Name="ChefImage"
                         Height="290">
@@ -83,22 +83,22 @@
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                 </Border>
-                <!--<utu:AutoLayout x:Name="InnerLayout"
+                <utu:AutoLayout x:Name="InnerLayout"
                                 Spacing="15"
                                 Padding="30,30,30,15"
                                 Background="{ThemeResource SurfaceBrush}"
                                 PrimaryAxisAlignment="Center"
                                 HorizontalAlignment="Left"
                                 utu:AutoLayout.IsIndependentLayout="False"
-                                utu:AutoLayout.CounterAlignment="Stretch">-->
+                                utu:AutoLayout.CounterAlignment="Stretch">
                     <Image Source="ms-appx:///Assets/Icons/uno_logo.png"
                            Stretch="Uniform"
                            Height="44"
                            Width="200" />
-                    <!--<utu:AutoLayout x:Name="FieldsButtonsLayout"
+                    <utu:AutoLayout x:Name="FieldsButtonsLayout"
                                     Spacing="10"
                                     utu:AutoLayout.CounterAlignment="Stretch"
-                                    PrimaryAxisAlignment="Start">-->
+                                    PrimaryAxisAlignment="Start">
                         <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  PlaceholderText="Email"
                                  PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
@@ -180,8 +180,8 @@
                                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                             </um:ControlExtensions.Icon>
                         </Button>
-                    <!--</utu:AutoLayout>-->
-                    <!--<utu:AutoLayout Orientation="Vertical"
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Orientation="Vertical"
                                     utu:AutoLayout.CounterAlignment="Stretch"
                                     PrimaryAxisAlignment="Start">
                         <utu:AutoLayout PrimaryAxisAlignment="Start"
@@ -194,16 +194,16 @@
                                            TextAlignment="Center"
                                            Text="Not a member?"
                                            Style="{StaticResource LabelMedium}" />
-                            <!--</utu:AutoLayout>-->
+                            </utu:AutoLayout>
 
                             <HyperlinkButton uen:Navigation.Request="Register"
                                              Content="Register Now"
                                              utu:AutoLayout.CounterAlignment="Start" />
-                        <!--</utu:AutoLayout>
-                    </utu:AutoLayout>-->
-                <!--</utu:AutoLayout>-->
+                        </utu:AutoLayout>
+                    </utu:AutoLayout>
+                </utu:AutoLayout>
                 
-                <!--<utu:AutoLayout x:Name="WideInnerLayout"
+                <utu:AutoLayout x:Name="WideInnerLayout"
                                 Background="{ThemeResource SurfaceBrush}"
                                 utu:AutoLayout.CounterAlignment="Stretch"
                                 utu:AutoLayout.IsIndependentLayout="True"
@@ -323,9 +323,9 @@
                                              utu:AutoLayout.CounterAlignment="Start" />
                         </utu:AutoLayout>
                     </utu:AutoLayout>
-                </utu:AutoLayout>-->
+                </utu:AutoLayout>
                 
-            <!--</utu:AutoLayout>-->
-        <!--</utu:AutoLayout>-->
+            </utu:AutoLayout>
+        </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
