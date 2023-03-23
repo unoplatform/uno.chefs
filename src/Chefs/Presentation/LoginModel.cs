@@ -8,6 +8,7 @@ public partial class LoginModel
     private readonly INavigator _navigator;
     private readonly IUserService _userService;
     private readonly IWritableOptions<Credentials> _credentialOptions;
+    //private bool isRegisterToggle = false;
 
     public LoginModel(
         INavigator navigator, 
@@ -31,7 +32,15 @@ public partial class LoginModel
             : false,
     });
 
+    public IState<bool> IsRegisterToggle => State<bool>.Value(this, () => false);
+
     public ICommand Login => Command.Create(b => b.Given(Credentials).When(CanLogin).Then(DoLogin));
+
+
+    public async ValueTask HyperLinkNavigation(bool isRegisterToggle, CancellationToken ct)
+    {
+        await IsRegisterToggle.Update(_ => !isRegisterToggle, ct);
+    }
 
     private bool CanLogin(Credentials credentials)
         => credentials is { Email.Length: > 0 } and { Password.Length: > 0 };
