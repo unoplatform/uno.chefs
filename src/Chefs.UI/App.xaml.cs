@@ -1,4 +1,4 @@
-#if WINDOWS
+#if WINDOWS_WINUI
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using WinRT.Interop;
@@ -28,7 +28,7 @@ public sealed partial class App : Application
                                 .UseToolkitNavigation();
         _window = appBuilder.Window;
 
-#if WINDOWS
+#if WINDOWS_WINUI
         var m_AppWindow = GetAppWindowForCurrentWindow();
 
         if (AppWindowTitleBar.IsCustomizationSupported())
@@ -50,7 +50,7 @@ public sealed partial class App : Application
         //}
         );
 
-#if WINDOWS
+#if WINDOWS_WINUI
         if (AppWindowTitleBar.IsCustomizationSupported())
         {
             var titleBar = m_AppWindow.TitleBar;
@@ -60,7 +60,7 @@ public sealed partial class App : Application
 #endif
     }
 
-#if WINDOWS
+#if WINDOWS_WINUI
     private AppWindow GetAppWindowForCurrentWindow()
     {
         IntPtr hWnd = WindowNative.GetWindowHandle(_window);

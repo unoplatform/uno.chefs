@@ -548,15 +548,14 @@
 
             <utu:AutoLayout x:Name="ItemsLayout"
                             utu:AutoLayout.CounterAlignment="Stretch"
-                            utu:AutoLayout.PrimaryAlignment="Stretch">
-
+                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                            Visibility="{Binding Searched}">
                 <ScrollViewer HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Hidden"
                               utu:AutoLayout.PrimaryAlignment="Stretch">
                     <uer:FeedView x:Name="SearchFeed"
                                   Source="{Binding Items}"
-                                  NoneTemplate="{StaticResource EmptyTemplate}"
-                                  Visibility="{Binding Searched}">
+                                  NoneTemplate="{StaticResource EmptyTemplate}">
                         <DataTemplate>
                             <UserControl>
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">

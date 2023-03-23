@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
+		<PackageReference Include="Uno.CommunityToolkit.WinUI.UI.Controls" Version="7.1.100" />
 		<PackageReference Include="FluentAssertions" Version="6.8.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
@@ -35,12 +35,6 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Update="Uno.Material.WinUI" Version="2.5.0-dev.39" />
-	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.5.0-dev.59" />
-	  <PackageReference Update="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.9.0-dev.55" />
 	</ItemGroup>
 
 </Project>

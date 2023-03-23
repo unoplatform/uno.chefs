@@ -66,9 +66,11 @@
                   uen:Region.Navigator="Visibility"
                   utu:SafeArea.Insets="VisibleBounds" />
 
+			<!-- WORKAROUND: Add Height="Auto" to avoid clipping caused by https://github.com/unoplatform/uno.toolkit.ui/issues/509 -->
             <utu:TabBar x:Name="Tabs"
                         Grid.Row="1"
                         Grid.Column="1"
+			Height="Auto"
                         uen:Region.Attached="True"
                         Style="{StaticResource BottomTabBarStyle}">
                 <utu:TabBarItem uen:Region.Name="Home"
