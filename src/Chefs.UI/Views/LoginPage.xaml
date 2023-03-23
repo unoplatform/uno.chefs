@@ -139,6 +139,8 @@
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
                                       IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                      BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"
@@ -259,6 +261,8 @@
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
                                       IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                      BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"

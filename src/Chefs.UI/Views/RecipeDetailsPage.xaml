@@ -516,6 +516,8 @@
                                                     <DataTemplate>
                                                         <utu:AutoLayout PrimaryAxisAlignment="Center">
                                                             <CheckBox Content="{Binding NameQuantity}"
+                                                                      Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                                      BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                                                       utu:AutoLayout.CounterAlignment="Start"
                                                                       Height="54" />
                                                             <utu:Divider Foreground="#E8EEF7"
