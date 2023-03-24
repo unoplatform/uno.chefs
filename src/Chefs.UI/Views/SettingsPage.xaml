@@ -65,7 +65,7 @@
                                 Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="ProfileDescription.Style"
                                 Value="{StaticResource LabelLarge}" />
-                        <!--Commented accent color selection until implemented-->
+                        <!--Commented accent color selection until https://github.com/unoplatform/uno.chefs/issues/78 implemented-->
                         <!--<Setter Target="AccentColorLayout.Spacing"
                                 Value="40" />-->
                         <!--<Setter Target="AccentColorTitle.Style"
@@ -328,7 +328,7 @@
                                                       utu:AutoLayout.CounterAlignment="Center"
                                                       Height="70" />
                                     </utu:AutoLayout>
-                                    <!--Commented accent color selection until implemented-->
+                                <!--Commented accent color selection until https://github.com/unoplatform/uno.chefs/issues/78 implemented-->
                                     <!--<utu:AutoLayout x:Name="AccentColorLayout"
                                                     Spacing="18"
                                                     Padding="0,20">
