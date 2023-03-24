@@ -253,7 +253,8 @@
                         Content="Apply"
                         utu:AutoLayout.CounterAlignment="Stretch"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
-                        Command="{Binding SearchFilter}"
+                        uen:Navigation.Request="-"
+                        uen:Navigation.Data="{Binding Filter.Value}"
                         MinHeight="56" />
             </utu:AutoLayout>
         </utu:AutoLayout>

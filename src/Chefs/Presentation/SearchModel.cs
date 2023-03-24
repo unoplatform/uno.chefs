@@ -24,7 +24,7 @@ public partial class SearchModel
     public IState<SearchFilter> Filter { get; }
 
     public IListFeed<Recipe> Items => Feed
-        .Combine(Results, Filter)
+        .Combine(Results, Filter.Select(f => f))
         .Select(ApplyFilter)
         .AsListFeed();
 
