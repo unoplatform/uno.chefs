@@ -162,7 +162,7 @@
                                toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton>
-						<not_mobile:AppBarButton.Icon>
+		        <not_mobile:AppBarButton.Icon>
                             <SymbolIcon Symbol="Back" />
                         </not_mobile:AppBarButton.Icon>
                     </AppBarButton>
