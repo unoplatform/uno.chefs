@@ -27,7 +27,17 @@
                     utu:AutoLayout.CounterAlignment="Stretch">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <VisualState x:Name="Narrow" />
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NarrowLayout.Visibility"
+                                Value="Visible" />
+                        <Setter Target="WideInnerLayout.Visibility"
+                                Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="800" />
@@ -84,7 +94,7 @@
                                              PlaceholderText="Email"
                                              PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                                              CornerRadius="16"
-                                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
+                                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=NarrowLoginPassword}"
                                              ios:ReturnKeyType="Next"
                                              android:ImeOptions="Next"
                                              IsSpellCheckEnabled="False"
@@ -96,7 +106,7 @@
                                                       Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                                         </um:ControlExtensions.Icon>
                                     </TextBox>
-                                    <PasswordBox x:Name="LoginPassword"
+                                    <PasswordBox x:Name="NarrowLoginPassword"
                                                  Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  PlaceholderText="Password"
                                                  ios:ReturnKeyType="Done"
@@ -194,7 +204,7 @@
                                              PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                                              CornerRadius="16"
                                              Style="{StaticResource OutlinedTextBoxStyle}"
-                                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Email}"
+                                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=NarrowEmail}"
                                              ios:ReturnKeyType="Next"
                                              android:ImeOptions="Next"
                                              IsSpellCheckEnabled="False"
@@ -205,11 +215,11 @@
                                         </um:ControlExtensions.Icon>
                                     </TextBox>
                                     <TextBox PlaceholderText="Email"
-                                             x:Name="Email"
+                                             x:Name="NarrowEmail"
                                              PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                                              CornerRadius="16"
                                              Style="{StaticResource OutlinedTextBoxStyle}"
-                                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegisterPassword}"
+                                             utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=NarrowRegisterPassword}"
                                              ios:ReturnKeyType="Next"
                                              android:ImeOptions="Next"
                                              IsSpellCheckEnabled="False"
@@ -220,10 +230,10 @@
                                         </um:ControlExtensions.Icon>
                                     </TextBox>
                                     <PasswordBox PlaceholderText="Password"
-                                                 x:Name="RegisterPassword"
+                                                 x:Name="NarrowRegisterPassword"
                                                  CornerRadius="16"
                                                  Style="{StaticResource OutlinedPasswordBoxStyle}"
-                                                 utu:CommandExtensions.Command="{Binding NavigateBack}"
+                                                 utu:CommandExtensions.Command="{Binding HyperLinkNavigation}"
                                                  ios:ReturnKeyType="Done"
                                                  android:ImeOptions="Done">
                                         <um:ControlExtensions.Icon>
@@ -232,7 +242,7 @@
                                         </um:ControlExtensions.Icon>
                                     </PasswordBox>
                                 </utu:AutoLayout>
-                                <Button uen:Navigation.Request="-"
+                                <Button Command="{Binding HyperLinkNavigation}"
                                         HorizontalContentAlignment="Center"
                                         VerticalContentAlignment="Center"
                                         Background="{ThemeResource PrimaryBrush}"
@@ -288,7 +298,7 @@
                                      PlaceholderText="Email"
                                      PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                                      CornerRadius="16"
-                                     utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
+                                     utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=WideLoginPassword}"
                                      ios:ReturnKeyType="Next"
                                      android:ImeOptions="Next"
                                      IsSpellCheckEnabled="False"
@@ -301,6 +311,7 @@
                                 </um:ControlExtensions.Icon>
                             </TextBox>
                             <PasswordBox Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         x:Name="WideLoginPassword"
                                          PlaceholderText="Password"
                                          ios:ReturnKeyType="Done"
                                          android:ImeOptions="Done"
@@ -410,7 +421,7 @@
                                      PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
                                      CornerRadius="16"
                                      Style="{StaticResource OutlinedTextBoxStyle}"
-                                     utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=WidePassword}"
+                                     utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=WideRegisterPassword}"
                                      ios:ReturnKeyType="Next"
                                      android:ImeOptions="Next"
                                      IsSpellCheckEnabled="False"
@@ -423,10 +434,10 @@
                                 </um:ControlExtensions.Icon>
                             </TextBox>
                             <PasswordBox PlaceholderText="Password"
-                                         x:Name="WidePassword"
+                                         x:Name="WideRegisterPassword"
                                          CornerRadius="16"
                                          Style="{StaticResource OutlinedPasswordBoxStyle}"
-                                         utu:CommandExtensions.Command="{Binding NavigateBack}"
+                                         utu:CommandExtensions.Command="{Binding HyperLinkNavigation}"
                                          ios:ReturnKeyType="Done"
                                          android:ImeOptions="Done">
                                 <um:ControlExtensions.Icon>
@@ -435,7 +446,7 @@
                                 </um:ControlExtensions.Icon>
                             </PasswordBox>
                         </utu:AutoLayout>
-                        <Button uen:Navigation.Request="-"
+                        <Button Command="{Binding HyperLinkNavigation}"
                                 HorizontalContentAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 Background="{ThemeResource PrimaryBrush}"
