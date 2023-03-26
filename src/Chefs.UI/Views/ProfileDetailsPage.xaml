@@ -314,11 +314,13 @@
 						<utu:AutoLayout uen:Region.Name="MyRecipes"
 										Visibility="Visible"
 										utu:AutoLayout.PrimaryAlignment="Stretch"
-										utu:AutoLayout.CounterAlignment="Stretch">
+										utu:AutoLayout.CounterAlignment="Stretch"
+                                        PrimaryAxisAlignment="Center">
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
-								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                PrimaryAxisAlignment="Center">
 									<utu:AutoLayout>
 										<uer:FeedView Source="{Binding Recipes}"
 													  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
@@ -449,11 +451,13 @@
 						<utu:AutoLayout uen:Region.Name="Cookbooks"
 										Visibility="Collapsed"
 										utu:AutoLayout.PrimaryAlignment="Stretch"
-										utu:AutoLayout.CounterAlignment="Stretch">
+										utu:AutoLayout.CounterAlignment="Stretch"
+                                        PrimaryAxisAlignment="Center">
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
-								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+                                                PrimaryAxisAlignment="Center">
 									<utu:AutoLayout>
 										<uer:FeedView Source="{Binding Cookbooks}"
 													  NoneTemplate="{StaticResource CookbookEmptyTemplate}">
