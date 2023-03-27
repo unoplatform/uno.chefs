@@ -67,9 +67,9 @@
                                                             <AdaptiveTrigger MinWindowWidth="800" />
                                                         </VisualState.StateTriggers>
                                                         <VisualState.Setters>
-															<Setter Target="ImagesLayout.Height"
+                                                            <Setter Target="ImagesLayout.Height"
                                                                     Value="180" />
-														</VisualState.Setters>
+                                                        </VisualState.Setters>
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
