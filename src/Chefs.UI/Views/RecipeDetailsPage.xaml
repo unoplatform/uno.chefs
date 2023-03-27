@@ -292,19 +292,21 @@
                                                     <DataTemplate>
                                                         <utu:AutoLayout Margin="-10,8"
                                                                         Padding="16,18"
-                                                                        PrimaryAxisAlignment="Center"
+                                                                        PrimaryAxisAlignment="Stretch"
                                                                         Background="{ThemeResource SurfaceBrush}"
                                                                         CornerRadius="15">
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                       TextWrapping="Wrap"
-                                                                       Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
-                                                                       Style="{StaticResource TitleMedium}"
-                                                                       FontSize="18" />
-                                                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                                                       TextWrapping="Wrap"
-                                                                       Text="{Binding Description}"
-                                                                       Style="{StaticResource DisplaySmall}"
-                                                                       FontSize="18" />
+                                                            <utu:AutoLayout>
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                           TextWrapping="Wrap"
+                                                                           Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
+                                                                           Style="{StaticResource TitleMedium}"
+                                                                           FontSize="18" />
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                                           TextWrapping="Wrap"
+                                                                           Text="{Binding Description}"
+                                                                           Style="{StaticResource DisplaySmall}"
+                                                                           FontSize="18" />
+                                                            </utu:AutoLayout>
                                                         </utu:AutoLayout>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
@@ -367,28 +369,31 @@
                                                             <DataTemplate>
                                                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                                 CornerRadius="15"
-                                                                                PrimaryAxisAlignment="Center"
+                                                                                PrimaryAxisAlignment="Stretch"
                                                                                 Margin="-10,8"
-                                                                                Spacing="16"
                                                                                 Padding="16,18"
-                                                                                Orientation="Horizontal">
-                                                                    <ImageIcon x:Name="IngredientImage"
-                                                                               Height="24"
-                                                                               Width="24"
-                                                                               Source="{Binding UrlIcon}"
-                                                                               utu:AutoLayout.CounterAlignment="Center"
-                                                                               Margin="0, 0, 0, 3" />
-                                                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                                                                   TextWrapping="Wrap"
-                                                                                   Text="{Binding Name}"
-                                                                                   Style="{StaticResource TitleMedium}" />
+                                                                                utu:AutoLayout.CounterAlignment="Stretch"
+                                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                    <utu:AutoLayout Orientation="Horizontal"
+                                                                                    Spacing="16">
+                                                                        <ImageIcon x:Name="IngredientImage"
+                                                                                   Height="24"
+                                                                                   Width="24"
+                                                                                   Source="{Binding UrlIcon}"
+                                                                                   utu:AutoLayout.CounterAlignment="Center"
+                                                                                   Margin="0, 0, 0, 3" />
+                                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                                       TextWrapping="Wrap"
+                                                                                       Text="{Binding Name}"
+                                                                                       Style="{StaticResource TitleMedium}" />
+                                                                        </utu:AutoLayout>
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                                   TextAlignment="End"
+                                                                                   Text="{Binding Quantity}"
+                                                                                   utu:AutoLayout.CounterAlignment="Center" />
                                                                     </utu:AutoLayout>
-                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                                                               TextAlignment="End"
-                                                                               Text="{Binding Quantity}"
-                                                                               utu:AutoLayout.CounterAlignment="Center" />
                                                                 </utu:AutoLayout>
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>
