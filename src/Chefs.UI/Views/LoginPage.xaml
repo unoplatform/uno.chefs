@@ -102,6 +102,7 @@
                         <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  PlaceholderText="Email"
                                  PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                 Foreground="{ThemeResource SurfaceInverseBrush}"
                                  CornerRadius="16"
                                  utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
                                  ios:ReturnKeyType="Next"
@@ -109,7 +110,8 @@
                                  IsSpellCheckEnabled="False"
                                  utu:AutoLayout.CounterAlignment="Stretch"
                                  HorizontalAlignment="Stretch"
-                                 Style="{StaticResource OutlinedTextBoxStyle}">
+                                 Style="{StaticResource OutlinedTextBoxStyle}"
+                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Email_ChefApp}"
                                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
@@ -122,10 +124,12 @@
                                      android:ImeOptions="Done"
                                      utu:CommandExtensions.Command="{Binding Login}"
                                      CornerRadius="16"
-                                     Style="{StaticResource OutlinedPasswordBoxStyle}">
+                                     Style="{StaticResource OutlinedPasswordBoxStyle}"
+                                     BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
+                                     Foreground="{ThemeResource SurfaceInverseBrush}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
-                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                             </um:ControlExtensions.Icon>
                         </PasswordBox>
                         <utu:AutoLayout Spacing="24"
@@ -135,6 +139,8 @@
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
                                       IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                      BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"
@@ -155,11 +161,11 @@
                                 Background="#E2E8F0"
                                 Content="Sign in with Apple"
                                 Height="56"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                 Style="{StaticResource FilledTonalButtonStyle}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}"
-                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                             </um:ControlExtensions.Icon>
                         </Button>
                         <Button HorizontalContentAlignment="Center"
@@ -167,11 +173,11 @@
                                 Background="#E2E8F0"
                                 Content="Sign in with Google"
                                 Height="56"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                 Style="{StaticResource FilledTonalButtonStyle}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}"
-                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                             </um:ControlExtensions.Icon>
                         </Button>
                     </utu:AutoLayout>
@@ -184,7 +190,7 @@
                                         Spacing="5">
                             <utu:AutoLayout PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.CounterAlignment="Start">
-                                <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            TextAlignment="Center"
                                            Text="Not a member?"
                                            Style="{StaticResource LabelMedium}" />
@@ -218,7 +224,9 @@
                                     PrimaryAxisAlignment="Start">
                         <TextBox Text="{Binding Credentials.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  PlaceholderText="Email"
+                                 Foreground="{ThemeResource SurfaceInverseBrush}"
                                  PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                  CornerRadius="16"
                                  utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=Password}"
                                  ios:ReturnKeyType="Next"
@@ -238,10 +246,12 @@
                                      android:ImeOptions="Done"
                                      utu:CommandExtensions.Command="{Binding Login}"
                                      CornerRadius="16"
+                                     Foreground="{ThemeResource SurfaceInverseBrush}"
+                                     BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                      Style="{StaticResource OutlinedPasswordBoxStyle}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
-                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                             </um:ControlExtensions.Icon>
                         </PasswordBox>
                         <utu:AutoLayout Spacing="158"
@@ -251,6 +261,8 @@
                                         Orientation="Horizontal">
                             <CheckBox Content="Remember me"
                                       IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                      Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                      BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                       utu:AutoLayout.CounterAlignment="Center"
                                       utu:AutoLayout.PrimaryAlignment="Stretch" />
                             <TextBlock Text="Forgot password?"
@@ -271,11 +283,11 @@
                                 Background="#E2E8F0"
                                 Content="Sign in with Apple"
                                 Height="56"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                 Style="{StaticResource FilledTonalButtonStyle}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}"
-                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                             </um:ControlExtensions.Icon>
                         </Button>
                         <Button HorizontalContentAlignment="Center"
@@ -283,11 +295,11 @@
                                 Background="#E2E8F0"
                                 Content="Sign in with Google"
                                 Height="56"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                 Style="{StaticResource FilledTonalButtonStyle}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}"
-                                          Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                             </um:ControlExtensions.Icon>
                         </Button>
                     </utu:AutoLayout>
@@ -300,7 +312,7 @@
                                         Spacing="5">
                             <utu:AutoLayout PrimaryAxisAlignment="Center"
                                             utu:AutoLayout.CounterAlignment="Start">
-                                <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                            TextAlignment="Center"
                                            Text="Not a member?"
                                            Style="{StaticResource LabelMedium}" />

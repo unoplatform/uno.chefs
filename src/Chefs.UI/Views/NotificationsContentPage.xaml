@@ -37,11 +37,11 @@
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                Style="{StaticResource LabelMedium}"
                                                Text="{Binding Title}"
                                                TextWrapping="Wrap" />
-                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                Style="{StaticResource CaptionMedium}"
                                                Text="{Binding Description}"
                                                TextWrapping="Wrap" />
@@ -193,7 +193,8 @@
                 <Button uen:Navigation.Request="-"
                         utu:AutoLayout.CounterAlignment="End"
                         Style="{StaticResource IconButtonStyle}">
-                    <PathIcon Data="{StaticResource Icon_Close}" />
+                    <PathIcon Data="{StaticResource Icon_Close}"
+                              Foreground="{ThemeResource SurfaceInverseBrush}"/>
                 </Button>
             </utu:AutoLayout>
             <utu:TabBar Margin="18,24"
@@ -203,14 +204,14 @@
                 <utu:TabBarItem x:Name="AllTabItem"
                                 uen:Region.Name="AllTab"
                                 Content="All"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                 IsSelected="True" />
                 <utu:TabBarItem uen:Region.Name="UnreadTab"
                                 Content="Unread"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}" />
                 <utu:TabBarItem uen:Region.Name="OpenedTab"
                                 Content="Opened"
-                                Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                Foreground="{ThemeResource OnSurfaceVariantBrush}" />
             </utu:TabBar>
 
             <ScrollViewer HorizontalScrollMode="Disabled">
