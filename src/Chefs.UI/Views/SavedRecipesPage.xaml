@@ -133,7 +133,7 @@
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding Name}"
                                                            Style="{StaticResource TitleMedium}" />
@@ -216,7 +216,7 @@
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding Name}"
                                                            Style="{StaticResource TitleMedium}" />
@@ -378,7 +378,7 @@
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         Padding="18,18,18,0"
                         Spacing="18">
-            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                        x:Name="NarrowTitle"
                        Text="Saved Recipes"
                        Style="{StaticResource HeadlineMedium}" />
@@ -390,13 +390,13 @@
                                 utu:AutoLayout.CounterAlignment="Stretch">
                     <utu:TabBar uen:Region.Attached="True"
                                 Style="{StaticResource TopTabBarStyle}">
-                        <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                        <utu:TabBarItem Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                         x:Name="TabBarRecipeItem"
                                         IsSelectable="True"
                                         uen:Region.Name="MyRecipes"
                                         Content="All Recipes"
                                         IsSelected="True" />
-                        <utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                        <utu:TabBarItem Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                         uen:Region.Name="Cookbooks"
                                         IsSelectable="True"
                                         Content="Cookbooks" />
