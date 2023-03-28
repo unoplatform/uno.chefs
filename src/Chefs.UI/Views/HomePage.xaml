@@ -275,7 +275,7 @@
                                               HorizontalScrollBarVisibility="Hidden"
                                               VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        utu:CommandExtensions.Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.CategorySearch}" >
+                                                        utu:CommandExtensions.Command="{Binding DataContext.CategorySearch, ElementName=CategoriesFeedView}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal" />
                                         </muxc:ItemsRepeater.Layout>
@@ -440,7 +440,7 @@
                                               HorizontalScrollBarVisibility="Hidden"
                                               VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        utu:CommandExtensions.Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.ShowProfile}">
+                                                        utu:CommandExtensions.Command="{Binding DataContext.ShowProfile, ElementName=PopularCreatorsFeedView}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal"
                                                               Spacing="8" />
