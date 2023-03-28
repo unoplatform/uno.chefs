@@ -37,9 +37,10 @@ public partial class LoginModel
     public ICommand Login => Command.Create(b => b.Given(Credentials).When(CanLogin).Then(DoLogin));
 
 
-    public async ValueTask HyperLinkNavigation(bool isRegisterToggle, CancellationToken ct)
+    public async ValueTask ToggleRegister(CancellationToken ct)
     {
-        await IsRegisterToggle.Update(_ => !isRegisterToggle, ct);
+        var isRegister = await IsRegisterToggle;
+        await IsRegisterToggle.Update(_ => !isRegister, ct);
     }
 
     private bool CanLogin(Credentials credentials)
