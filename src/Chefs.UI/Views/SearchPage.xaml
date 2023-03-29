@@ -326,10 +326,12 @@
                     </utu:AutoLayout>
 
                     <utu:AutoLayout PrimaryAxisAlignment="End"
-                                    utu:AutoLayout.CounterAlignment="Start">
+                                    utu:AutoLayout.CounterAlignment="Start"
+									DataContext="{Binding Filter}"
+									x:Name="FilterButtonHost"
+									>
                         <Button Content="Filters"
                                 x:Name="FilterButton"
-                                DataContext="{Binding Filter}"
                                 utu:AutoLayout.CounterAlignment="End"
                                 BorderBrush="{ThemeResource PrimaryBrush}"
                                 BorderThickness="1.5"
@@ -339,8 +341,8 @@
                                 Foreground="{Binding Value.HasFilter, 
                                                     Converter={StaticResource PrimarySurfaceColorConverter}}"
                                 Style="{StaticResource OutlinedButtonStyle}"
-                                uen:Navigation.Request="Filter"
-                                uen:Navigation.Data="{Binding Value, Mode=TwoWay }">
+                                uen:Navigation.Request="!Filter"
+								uen:Navigation.Data="{Binding DataContext.Value, ElementName=FilterButtonHost, Mode=TwoWay }">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Filter_ChefsApp}" />
                             </um:ControlExtensions.Icon>

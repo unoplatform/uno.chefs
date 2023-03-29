@@ -185,8 +185,20 @@ public class RecipeEndpoint : IRecipeEndpoint
     {
         if(_recipes == null)
         {
-            _recipes = (await _dataService
-                .ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
+            // TODO: Remove this workaround once this issue resolved: https://github.com/unoplatform/uno/issues/11620
+            var success = false;
+            while (!success)
+            {
+                try
+                {
+                    _recipes = (await _dataService
+                                           .ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
+                    success = true;
+                }
+                catch{
+                    await Task.Delay(100);
+                }
+            }
             var saved = await GetSaved(CancellationToken.None);
 
             var currentUser = await _userEndpoint.GetCurrent(CancellationToken.None);
