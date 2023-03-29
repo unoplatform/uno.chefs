@@ -166,7 +166,6 @@
 					<utu:NavigationBar.MainCommand>
 						<AppBarButton Label=""
 									  Background="{ThemeResource BackgroundBrush}"
-									  Foreground="Black"
 									  Command="{Binding GoBack}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
@@ -177,7 +176,6 @@
 					<utu:NavigationBar.PrimaryCommands>
 						<AppBarButton Command="{Binding SettingsNavigation}"
 									  Background="{ThemeResource BackgroundBrush}"
-									  Foreground="Black"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
@@ -294,11 +292,11 @@
 						uen:Region.Attached="True"
 						Style="{StaticResource TopTabBarStyle}">
 				<utu:TabBarItem x:Name="RecipesTab"
-								Foreground="{ThemeResource OnSurfaceMediumBrush}"
+								Foreground="{ThemeResource OnSurfaceVariantBrush}"
 								uen:Region.Name="MyRecipes"
 								Content="My Recipes"
 								IsSelected="True" />
-				<utu:TabBarItem Foreground="{ThemeResource OnSurfaceMediumBrush}"
+				<utu:TabBarItem Foreground="{ThemeResource OnSurfaceVariantBrush}"
 								uen:Region.Name="Cookbooks"
 								Content="Cookbooks" />
 			</utu:TabBar>
@@ -316,11 +314,13 @@
 						<utu:AutoLayout uen:Region.Name="MyRecipes"
 										Visibility="Visible"
 										utu:AutoLayout.PrimaryAlignment="Stretch"
-										utu:AutoLayout.CounterAlignment="Stretch">
+										utu:AutoLayout.CounterAlignment="Stretch"
+                                        PrimaryAxisAlignment="Center">
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
-								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                PrimaryAxisAlignment="Center">
 									<utu:AutoLayout>
 										<uer:FeedView Source="{Binding Recipes}"
 													  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
@@ -420,7 +420,7 @@
 																								<utu:AutoLayout Spacing="2"
 																												Padding="10"
 																												PrimaryAxisAlignment="Center">
-																									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+																									<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
 																											   TextWrapping="NoWrap"
 																											   Text="{Binding Name}"
 																											   Style="{StaticResource TitleMedium}" />
@@ -451,11 +451,13 @@
 						<utu:AutoLayout uen:Region.Name="Cookbooks"
 										Visibility="Collapsed"
 										utu:AutoLayout.PrimaryAlignment="Stretch"
-										utu:AutoLayout.CounterAlignment="Stretch">
+										utu:AutoLayout.CounterAlignment="Stretch"
+                                        PrimaryAxisAlignment="Center">
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
-								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+                                                PrimaryAxisAlignment="Center">
 									<utu:AutoLayout>
 										<uer:FeedView Source="{Binding Cookbooks}"
 													  NoneTemplate="{StaticResource CookbookEmptyTemplate}">

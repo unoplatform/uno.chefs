@@ -10,27 +10,27 @@
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Light">
             <Color x:Key="StatusBarForegroundColor">#000000</Color>
-            <Color x:Key="SurfaceInverseColor">#0F172A</Color>
-            <Color x:Key="SurfaceColor">#FFFFFF</Color>
-            <Color x:Key="OnSurfaceColor">#0F172A</Color>
-            <Color x:Key="OnBackgroundColor">#0F172A</Color>
-            <Color x:Key="ErrorColor">#FF2525</Color>
-            <Color x:Key="PrimaryColor">#ED3F64</Color>
-            <Color x:Key="OnPrimaryColor">#FFFFFF</Color>
-            <Color x:Key="OnSecondaryColor">#FFFFFF</Color>
-            <Color x:Key="OnErrorColor">#FFFFFF</Color>
-            <Color x:Key="PrimaryInverseColor">#F48CA2</Color>
-            <Color x:Key="OnSurfaceVariantColor">#94A3B8</Color>
             <Color x:Key="BackgroundColor">#F5F8FD</Color>
+            <Color x:Key="PrimaryColor">#ED3F64</Color>
+            <Color x:Key="OnSurfaceColor">#0F172A</Color>
+            <Color x:Key="SecondaryContainerColor">#F48CA2</Color>
+            <Color x:Key="OnSurfaceVariantColor">#94A3B8</Color>
+            <Color x:Key="ErrorColor">#FF2525</Color>
+            <Color x:Key="OnSecondaryContainerColor">#000000</Color>
+            <Color x:Key="OnErrorColor">#FFFFFF</Color>
+            <Color x:Key="SurfaceColor">#FFFFFF</Color>
+            <Color x:Key="OnPrimaryColor">#FFFFFF</Color>
+            <Color x:Key="SurfaceInverseColor">#0F172A</Color>
+            <Color x:Key="PrimaryInverseColorOnSurfaceVariantColor">#F48CA2</Color>
             <Color x:Key="PrimaryContainerColor">#ED3F64</Color>
             <Color x:Key="OnPrimaryContainerColor">#FFFFFF</Color>
             <Color x:Key="PrimaryVariantLightColor">#F16583</Color>
             <Color x:Key="PrimaryVariantDarkColor">#910030</Color>
             <Color x:Key="SecondaryColor">#7A67F8</Color>
-            <Color x:Key="SecondaryVariantDarkColor">#2B009E</Color>
+            <Color x:Key="SecondaryVariantDarkColor">#9585F9</Color>
             <Color x:Key="SecondaryVariantLightColor">#AFA4FB</Color>
-            <Color x:Key="SecondaryContainerColor">#E2E8F0</Color>
-            <Color x:Key="OnSecondaryContainerColor">#FFFFFF</Color>
+            <Color x:Key="OnSecondaryColor">#FFFFFF</Color>
+            <Color x:Key="OnBackgroundColor">#F8FAFC</Color>
             <Color x:Key="OnSurfaceInverseColor">#F4EFF4</Color>
             <Color x:Key="SurfaceVariantColor">#CBD5E1</Color>
             <Color x:Key="OutlineColor">#CBD5E1</Color>
@@ -40,13 +40,9 @@
             <Color x:Key="OnTertiaryColor">#FFFFFF</Color>
             <Color x:Key="TertiaryContainerColor">#507FF7</Color>
             <Color x:Key="OnTertiaryContainerColor">#FFFFFF</Color>
-            <!--ContentDialog background overlay color-->
-            <!--Mobile-->
-            <Color x:Key="ContentDialogLightDismissOverlayBackground">#99000000</Color>
-            <!--WinUI-->
-            <Color x:Key="SystemControlPageBackgroundMediumAltMediumBrush">#99000000</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
+            <Color x:Key="SecondaryColor">#7A67F8</Color>
             <Color x:Key="PrimaryColor">#ED3F64</Color>
             <Color x:Key="PrimaryInverseColor">#F48CA2</Color>
             <Color x:Key="OnPrimaryColor">#FFFFFF</Color>
@@ -54,7 +50,6 @@
             <Color x:Key="OnPrimaryContainerColor">#F48CA2</Color>
             <Color x:Key="PrimaryVariantLightColor">#F48CA2</Color>
             <Color x:Key="PrimaryVariantDarkColor">#ED3F64</Color>
-            <Color x:Key="SecondaryColor">#7A67F8</Color>
             <Color x:Key="OnSecondaryColor">#2B009E</Color>
             <Color x:Key="SecondaryContainerColor">#4226BE</Color>
             <Color x:Key="OnSecondaryContainerColor">#E5DEFF</Color>

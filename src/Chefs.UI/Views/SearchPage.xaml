@@ -140,7 +140,7 @@
                                             <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding Name}"
                                                            Style="{StaticResource TitleMedium}" />
@@ -222,6 +222,7 @@
                          utu:AutoLayout.CounterAlignment="Center"
                          utu:AutoLayout.PrimaryAlignment="Stretch"
                          BorderBrush="{ThemeResource SurfaceBrush}"
+                         Foreground="{ThemeResource SurfaceInverseBrush}"
                          BorderThickness="1"
                          CornerRadius="16"
                          Background="{ThemeResource SurfaceBrush}"
@@ -305,7 +306,7 @@
                                                     x:Name="SearchHistoryButton"
                                                     Margin="0,0,8,0"
                                                     CornerRadius="8"
-                                                    Background="{ThemeResource PrimaryInverseColor}"
+                                                    Background="{ThemeResource SecondaryContainerBrush}"
                                                     Foreground="{ThemeResource SurfaceColor}"
                                                     Command="{utu:AncestorBinding AncestorType=muxc:ItemsRepeater, Path=DataContext.ApplySearchHistory}"
                                                     CommandParameter="{Binding}" />
@@ -547,15 +548,14 @@
 
             <utu:AutoLayout x:Name="ItemsLayout"
                             utu:AutoLayout.CounterAlignment="Stretch"
-                            utu:AutoLayout.PrimaryAlignment="Stretch">
-
+                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                            Visibility="{Binding Searched}">
                 <ScrollViewer HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Hidden"
                               utu:AutoLayout.PrimaryAlignment="Stretch">
                     <uer:FeedView x:Name="SearchFeed"
                                   Source="{Binding Items}"
-                                  NoneTemplate="{StaticResource EmptyTemplate}"
-                                  Visibility="{Binding Searched}">
+                                  NoneTemplate="{StaticResource EmptyTemplate}">
                         <DataTemplate>
                             <UserControl>
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">

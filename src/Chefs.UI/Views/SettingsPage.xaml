@@ -65,10 +65,11 @@
                                 Value="{StaticResource HeadlineLarge}" />
                         <Setter Target="ProfileDescription.Style"
                                 Value="{StaticResource LabelLarge}" />
-                        <Setter Target="AccentColorLayout.Spacing"
-                                Value="40" />
-                        <Setter Target="AccentColorTitle.Style"
-                                Value="{StaticResource HeadlineLarge}" />
+                        <!--Commented accent color selection until https://github.com/unoplatform/uno.chefs/issues/78 implemented-->
+                        <!--<Setter Target="AccentColorLayout.Spacing"
+                                Value="40" />-->
+                        <!--<Setter Target="AccentColorTitle.Style"
+                                Value="{StaticResource HeadlineLarge}" />-->
                         <Setter Target="MainLayout.Width"
                                 Value="1024" />
                         <Setter Target="MainLayout.CornerRadius"
@@ -84,13 +85,14 @@
                 <utu:NavigationBar x:Name="SettingsNavBar"
                                    Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource SurfaceBrush}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Content="Settings"
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton x:Name="BackButton"
                                       Label="Settings"
                                       Background="{ThemeResource BackgroundBrush}"
-                                      Foreground="Black">
+                                      Foreground="{ThemeResource SurfaceInverseBrush}">
                             <not_mobile:AppBarButton.Icon>
                                 <SymbolIcon Symbol="Back" />
                             </not_mobile:AppBarButton.Icon>
@@ -160,12 +162,14 @@
                                                  Text="{Binding Profile.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  PlaceholderText="Full Name"
                                                  Style="{StaticResource OutlinedTextBoxStyle}"
+                                                 Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                                  Background="{ThemeResource SurfaceBrush}"
                                                  CornerRadius="16"
                                                  utu:AutoLayout.PrimaryAlignment="Stretch">
                                             <um:ControlExtensions.Icon>
-                                                <ImageIcon Source="ms-appx:///Assets/Icons/leading_icon.png"
-                                                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                                                <ImageIcon Source="ms-appx:///Assets/Icons/leading_icon.png" />
                                             </um:ControlExtensions.Icon>
                                         </TextBox>
                                     </utu:AutoLayout>
@@ -178,12 +182,14 @@
                                                  Text="{Binding Profile.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  PlaceholderText="Email"
                                                  Style="{StaticResource OutlinedTextBoxStyle}"
+                                                 Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                                  Background="{ThemeResource SurfaceBrush}"
                                                  CornerRadius="16"
                                                  utu:AutoLayout.PrimaryAlignment="Stretch">
                                             <um:ControlExtensions.Icon>
-                                                <ImageIcon Source="ms-appx:///Assets/Icons/email_icon.png"
-                                                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                                                <ImageIcon Source="ms-appx:///Assets/Icons/email_icon.png" />
                                             </um:ControlExtensions.Icon>
                                         </TextBox>
                                     </utu:AutoLayout>
@@ -196,12 +202,14 @@
                                                  Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                  PlaceholderText="Mobile Number"
                                                  Style="{StaticResource OutlinedTextBoxStyle}"
+                                                 Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                 PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                                                 BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                                                  Background="{ThemeResource SurfaceBrush}"
                                                  CornerRadius="16"
                                                  utu:AutoLayout.PrimaryAlignment="Stretch">
                                             <um:ControlExtensions.Icon>
-                                                <ImageIcon Source="ms-appx:///Assets/Icons/mobile_icon.png"
-                                                           Foreground="{ThemeResource OnSurfaceVariantBrush}" />
+                                                <ImageIcon Source="ms-appx:///Assets/Icons/mobile_icon.png" />
                                             </um:ControlExtensions.Icon>
                                         </TextBox>
                                     </utu:AutoLayout>
@@ -237,13 +245,12 @@
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="App notifications"
                                                        Style="{StaticResource TitleMedium}" />
                                         </utu:AutoLayout>
                                         <ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                      Background="{ThemeResource PrimaryBrush}"
                                                       Foreground="{ThemeResource PrimaryBrush}"
                                                       utu:AutoLayout.CounterAlignment="Center"
                                                       Height="70" />
@@ -277,7 +284,7 @@
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="Light mode"
                                                        Style="{StaticResource TitleMedium}" />
@@ -286,7 +293,6 @@
                                                          Mode=TwoWay, 
                                                          UpdateSourceTrigger=PropertyChanged, 
                                                          Converter={StaticResource InvertBool}}"
-                                                      Background="{ThemeResource PrimaryBrush}"
                                                       Foreground="{ThemeResource PrimaryBrush}"
                                                       utu:AutoLayout.CounterAlignment="Center"
                                                       Height="70" />
@@ -310,7 +316,7 @@
                                         </utu:AutoLayout>
                                         <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                        TextWrapping="Wrap"
                                                        Text="Night mode"
                                                        Style="{StaticResource TitleMedium}" />
@@ -318,12 +324,12 @@
                                         <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                  Mode=TwoWay, 
                                                  UpdateSourceTrigger=PropertyChanged}"
-                                                      Background="{ThemeResource PrimaryBrush}"
                                                       Foreground="{ThemeResource PrimaryBrush}"
                                                       utu:AutoLayout.CounterAlignment="Center"
                                                       Height="70" />
                                     </utu:AutoLayout>
-                                    <utu:AutoLayout x:Name="AccentColorLayout"
+                                <!--Commented accent color selection until https://github.com/unoplatform/uno.chefs/issues/78 implemented-->
+                                    <!--<utu:AutoLayout x:Name="AccentColorLayout"
                                                     Spacing="18"
                                                     Padding="0,20">
                                         <TextBlock x:Name="AccentColorTitle"
@@ -348,7 +354,7 @@
                                                          utu:AutoLayout.CounterAlignment="Start"
                                                          utu:AutoLayout.PrimaryAlignment="Stretch" />
                                         </utu:AutoLayout>
-                                    </utu:AutoLayout>
+                                    </utu:AutoLayout>-->
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
@@ -375,7 +381,7 @@
                         utu:AutoLayout.CounterAlignment="Center"
                         Width="190"
                         Height="64"
-                        Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                        Foreground="{ThemeResource OnSurfaceVariantBrush}"
                         Style="{StaticResource OutlinedButtonStyle}" />
                 <Button Background="{ThemeResource PrimaryBrush}"
                         Command="{Binding Update}"

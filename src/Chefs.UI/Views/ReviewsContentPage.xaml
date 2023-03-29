@@ -79,7 +79,8 @@
                     <Button uen:Navigation.Request="-"
                             utu:AutoLayout.CounterAlignment="End"
                             Style="{StaticResource IconButtonStyle}">
-                        <PathIcon Data="{StaticResource Icon_Close}" />
+                        <PathIcon Data="{StaticResource Icon_Close}"
+                                  Foreground="{ThemeResource SurfaceInverseBrush}"/>
                     </Button>
                 </utu:AutoLayout>
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -102,12 +103,15 @@
                             Spacing="8">
                 <TextBox utu:AutoLayout.PrimaryAlignment="Stretch"
                          Background="{ThemeResource SurfaceBrush}"
-                         PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+                         Foreground="{ThemeResource SurfaceInverseBrush}"
+                         PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
+                         BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                          PlaceholderText="Write a comment"
                          Style="{StaticResource OutlinedTextBoxStyle}"
                          Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Button utu:AutoLayout.CounterAlignment="Center"
-                        Width="56"
+                        Width="85"
+                        Height="56"
                         Background="{ThemeResource PrimaryBrush}"
                         Command="{Binding AddReview}"
                         Content="Send" />

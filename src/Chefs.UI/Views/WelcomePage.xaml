@@ -91,7 +91,7 @@
                                 Padding="50,0">
 
                     <Button x:Name="WideSkipButton"
-                            Background="{ThemeResource PrimaryInverseBrush}"
+                            Background="{ThemeResource SecondaryContainerBrush}"
                             uen:Navigation.Request="-/Login"
                             Content="Skip"
                             VerticalAlignment="Top"
@@ -140,7 +140,7 @@
                                         HorizontalAlignment="Right"
                                         Margin="18">
                             <Button uen:Navigation.Request="-/Login"
-                                    Background="{ThemeResource PrimaryInverseBrush}"
+                                    Background="{ThemeResource SecondaryContainerBrush}"
                                     Content="Skip"
                                     utu:AutoLayout.CounterAlignment="End">
                             </Button>

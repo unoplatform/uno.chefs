@@ -71,7 +71,6 @@ public static class AppHost
             new ViewMap<FilterPage>(),
             new ViewMap<FilterContentPage, FilterModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeModel>(),
-            new ViewMap<IngredientsPage, IngredientsModel>(Data: new DataMap<IngredientsParameter>()),
             new ViewMap<CreateCookbookPage, CreateCookbookModel>(),
             new DataViewMap<UpdateCookbookPage, UpdateCookbookModel, UpdateCookbook>(),
             new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
@@ -123,7 +122,6 @@ public static class AppHost
                                 new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateCookbookModel>(), DependsOn:"SavedRecipes"),
                                 new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
                                 new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
-                                new RouteMap("Ingredients", View: views.FindByViewModel<IngredientsModel>(), DependsOn: "RecipeDetails"),
                                 new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
                                 new RouteMap("Reviews", View: views.FindByView<ReviewsPage>(), Nested: new RouteMap[]
                                     {

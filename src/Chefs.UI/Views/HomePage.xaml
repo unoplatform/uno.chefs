@@ -63,11 +63,11 @@
                                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                                 <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                TextWrapping="Wrap"
                                                                Text="{Binding Name}"
                                                                Style="{StaticResource TitleMedium}" />
-                                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                TextWrapping="Wrap"
                                                                Text="{Binding TimeCal}" />
                                                 </utu:AutoLayout>
@@ -79,12 +79,12 @@
                                                           Style="{StaticResource IconToggleButtonStyle}">
                                                 <ToggleButton.Content>
                                                     <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
-                                                              Foreground="{ThemeResource OnBackgroundBrush}" />
+                                                              Foreground="{ThemeResource SurfaceInverseBrush}" />
                                                 </ToggleButton.Content>
                                                 <um:ControlExtensions.AlternateContent>
 
                                                     <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
-                                                              Foreground="{ThemeResource OnBackgroundBrush}" />
+                                                              Foreground="{ThemeResource SurfaceInverseBrush}" />
                                                 </um:ControlExtensions.AlternateContent>
                                             </ToggleButton>
                                         </utu:AutoLayout>
@@ -166,25 +166,23 @@
                                 Spacing="8"
                                 Orientation="Horizontal"
                                 utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout CornerRadius="30"
-                                    Orientation="Horizontal"
-                                    utu:AutoLayout.CounterAlignment="Center"
-                                    Width="40"
-                                    Height="40"
-                                    uen:Navigation.Request="!Profile"
-                                    uen:Navigation.Data="{Binding UserProfile}">
-                        <Border CornerRadius="15"
-                                utu:AutoLayout.PrimaryAlignment="Stretch">
+                    <Button Command="{Binding ShowCurrentProfile}"
+                            Width="40"
+                            Height="40"
+                            CornerRadius="30"
+                            utu:AutoLayout.CounterAlignment="Center"
+                            Style="{StaticResource IconButtonStyle}">
+                        <Border CornerRadius="15">
                             <Image Source="{Binding UserProfile.UrlProfileImage}"
                                    Stretch="UniformToFill"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"/>
+                                   HorizontalAlignment="Center" />
                         </Border>
-                    </utu:AutoLayout>
+                    </Button>
 
                     <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
                                     utu:AutoLayout.PrimaryAlignment="Stretch">
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="{Binding UserProfile.FullName}"
                                    utu:AutoLayout.CounterAlignment="Start"
                                    Style="{StaticResource TitleMedium}" />
@@ -226,7 +224,7 @@
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock x:Name="TrendingNowTitle"
-                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
                                            Text="Trending now"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
@@ -266,7 +264,7 @@
                     <utu:AutoLayout Spacing="20"
                                     utu:AutoLayout.CounterAlignment="Start">
                         <TextBlock x:Name="CategoriesTitle"
-                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="Categories"
                                    Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="CategoriesFeedView"
@@ -336,7 +334,7 @@
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock x:Name="RecentlyAddedTitle"
-                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
                                            Text="Recently Added"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
@@ -407,7 +405,7 @@
                                                                         <utu:AutoLayout Spacing="2"
                                                                                         Padding="11, 10"
                                                                                         PrimaryAxisAlignment="Center">
-                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                                        TextWrapping="NoWrap"
                                                                                        Text="{Binding Name}"
                                                                                        Style="{StaticResource TitleMedium}" />
@@ -431,7 +429,7 @@
                     </utu:AutoLayout>
                     <utu:AutoLayout Spacing="20">
                         <TextBlock x:Name="PopularCreatorsTitle"
-                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="Popular Creators"
                                    Style="{StaticResource TitleLarge}" />
                         <uer:FeedView x:Name="PopularCreatorsFeedView"
@@ -442,7 +440,7 @@
                                               HorizontalScrollBarVisibility="Hidden"
                                               VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        uen:Navigation.Request="!Profile">
+                                                        utu:CommandExtensions.Command="{Binding DataContext.ShowProfile, ElementName=PopularCreatorsFeedView}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal"
                                                               Spacing="8" />
@@ -492,7 +490,7 @@
                                                         </Border>
 
                                                         <TextBlock x:Name="NameLayout"
-                                                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                   Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                    TextAlignment="Center"
                                                                    Text="{Binding FullName, Converter={StaticResource WhiteSpaceToLineBreakConverter}}"
                                                                    utu:AutoLayout.CounterAlignment="Center"
@@ -515,7 +513,7 @@
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock x:Name="LunchTitle"
-                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
                                            Text="Lunch"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
@@ -558,7 +556,7 @@
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock x:Name="DinnerTitle"
-                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
                                            Text="Dinner"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
@@ -601,7 +599,7 @@
                             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <TextBlock x:Name="SnackTitle"
-                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Foreground="{ThemeResource SurfaceInverseBrush}"
                                            Text="Snack"
                                            utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
