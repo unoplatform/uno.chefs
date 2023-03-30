@@ -440,7 +440,7 @@
                                               HorizontalScrollBarVisibility="Hidden"
                                               VerticalScrollMode="Disabled">
                                     <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                                        utu:CommandExtensions.Command="{Binding DataContext.ShowProfile, ElementName=PopularCreatorsFeedView}">
+                                                        utu:CommandExtensions.Command="{Binding Parent.ShowProfile}">
                                         <muxc:ItemsRepeater.Layout>
                                             <muxc:StackLayout Orientation="Horizontal"
                                                               Spacing="8" />
