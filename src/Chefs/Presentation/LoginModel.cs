@@ -11,7 +11,7 @@ public partial class LoginModel
     //private bool isRegisterToggle = false;
 
     public LoginModel(
-        INavigator navigator, 
+        INavigator navigator,
         IUserService userService,
         IWritableOptions<Credentials> credentialOptions)
     {
@@ -22,8 +22,8 @@ public partial class LoginModel
 
     public IState<Credentials> Credentials => State<Credentials>.Async(this, async _ => new Credentials()
     {
-        Email = _credentialOptions.Value != null 
-            ? _credentialOptions.Value.Email! 
+        Email = _credentialOptions.Value != null
+            ? _credentialOptions.Value.Email!
             : string.Empty,
         Password = string.Empty,
         SkipWelcome = false,
@@ -37,9 +37,10 @@ public partial class LoginModel
     public ICommand Login => Command.Create(b => b.Given(Credentials).When(CanLogin).Then(DoLogin));
 
 
-    public async ValueTask HyperLinkNavigation(bool isRegisterToggle, CancellationToken ct)
+    public async ValueTask ToggleRegister(CancellationToken ct)
     {
-        await IsRegisterToggle.Update(_ => !isRegisterToggle, ct);
+        var isRegister = await IsRegisterToggle;
+        await IsRegisterToggle.Update(_ => !isRegister, ct);
     }
 
     private bool CanLogin(Credentials credentials)

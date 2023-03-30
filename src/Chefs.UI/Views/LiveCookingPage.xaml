@@ -124,8 +124,6 @@
                     <VisualState.Setters>
                         <Setter Target="StepsFeedLayout.MaxHeight"
                                 Value="56" />
-                        <Setter Target="FlipScrollViewer.MaxHeight"
-                                Value="300" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="Wide">
@@ -275,9 +273,11 @@
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                            <ScrollViewer x:Name="FlipScrollViewer" utu:AutoLayout.PrimaryAlignment="Stretch"
+                            <ScrollViewer x:Name="FlipScrollViewer" 
+                                          utu:AutoLayout.PrimaryAlignment="Stretch"
                                           HorizontalScrollMode="Disabled">
                                 <FlipView x:Name="StepsFlipView"
+                                          Height="430"
                                           ScrollViewer.IsHorizontalScrollChainingEnabled="False"
                                           ScrollViewer.IsVerticalScrollChainingEnabled="False"
                                           VerticalAlignment="Top"
@@ -301,7 +301,9 @@
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
-            <utu:AutoLayout x:Name="NarrowButton">
+            <utu:AutoLayout x:Name="NarrowButton"
+                            PrimaryAxisAlignment="End"
+                            utu:AutoLayout.IsIndependentLayout="True">
                 <Button Background="{ThemeResource PrimaryBrush}"
                         Command="{Binding Complete}"
                         Content="Done!"

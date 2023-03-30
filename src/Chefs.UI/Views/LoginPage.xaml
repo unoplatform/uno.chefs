@@ -126,6 +126,8 @@
                                                     Orientation="Horizontal">
                                         <CheckBox Content="Remember me"
                                                   IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                  BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                                   utu:AutoLayout.CounterAlignment="Center"
                                                   utu:AutoLayout.PrimaryAlignment="Stretch" />
                                         <TextBlock Text="Forgot password?"
@@ -169,21 +171,21 @@
                                 <utu:AutoLayout Orientation="Vertical"
                                                 utu:AutoLayout.CounterAlignment="Stretch"
                                                 PrimaryAxisAlignment="Start">
-                                    <utu:AutoLayout PrimaryAxisAlignment="Start"
+                                    <utu:AutoLayout PrimaryAxisAlignment="Center"
                                                     Orientation="Horizontal"
                                                     utu:AutoLayout.CounterAlignment="Center"
                                                     Spacing="5">
                                         <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                        utu:AutoLayout.CounterAlignment="Start">
-                                            <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                                        utu:AutoLayout.CounterAlignment="Center">
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                        TextAlignment="Center"
                                                        Text="Not a member?"
                                                        Style="{StaticResource LabelMedium}" />
                                         </utu:AutoLayout>
 
-                                        <HyperlinkButton Command="{Binding HyperLinkNavigation}"
+                                        <HyperlinkButton Command="{Binding ToggleRegister}"
                                                          Content="Register Now"
-                                                         utu:AutoLayout.CounterAlignment="Start" />
+                                                         utu:AutoLayout.CounterAlignment="Center" />
                                     </utu:AutoLayout>
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
@@ -233,7 +235,7 @@
                                                  x:Name="NarrowRegisterPassword"
                                                  CornerRadius="16"
                                                  Style="{StaticResource OutlinedPasswordBoxStyle}"
-                                                 utu:CommandExtensions.Command="{Binding HyperLinkNavigation}"
+                                                 utu:CommandExtensions.Command="{Binding ToggleRegister}"
                                                  ios:ReturnKeyType="Done"
                                                  android:ImeOptions="Done">
                                         <um:ControlExtensions.Icon>
@@ -242,7 +244,7 @@
                                         </um:ControlExtensions.Icon>
                                     </PasswordBox>
                                 </utu:AutoLayout>
-                                <Button Command="{Binding HyperLinkNavigation}"
+                                <Button Command="{Binding ToggleRegister}"
                                         HorizontalContentAlignment="Center"
                                         VerticalContentAlignment="Center"
                                         Background="{ThemeResource PrimaryBrush}"
@@ -252,17 +254,18 @@
                                 <utu:AutoLayout Spacing="5"
                                                 Orientation="Horizontal"
                                                 utu:AutoLayout.CounterAlignment="Center">
-                                    <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                TextAlignment="Center"
                                                Text="Already a user?"
                                                Style="{StaticResource LabelMedium}" />
-                                    <HyperlinkButton Command="{Binding HyperLinkNavigation}"
+                                    <HyperlinkButton Command="{Binding ToggleRegister}"
                                                      Content="Login Now" />
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </ScrollViewer>
+
                 <Border x:Name="WideChefImage"
                         Visibility="Collapsed"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -329,6 +332,8 @@
                                             Orientation="Horizontal">
                                 <CheckBox Content="Remember me"
                                           IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                          BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                           utu:AutoLayout.CounterAlignment="Center"
                                           utu:AutoLayout.PrimaryAlignment="Stretch" />
                                 <TextBlock Text="Forgot password?"
@@ -372,21 +377,21 @@
                         <utu:AutoLayout Orientation="Vertical"
                                         utu:AutoLayout.CounterAlignment="Stretch"
                                         PrimaryAxisAlignment="Start">
-                            <utu:AutoLayout PrimaryAxisAlignment="Start"
+                            <utu:AutoLayout PrimaryAxisAlignment="Center"
                                             Orientation="Horizontal"
                                             utu:AutoLayout.CounterAlignment="Center"
                                             Spacing="5">
                                 <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                                utu:AutoLayout.CounterAlignment="Start">
-                                    <TextBlock Foreground="{ThemeResource OnBackgroundMediumBrush}"
+                                                utu:AutoLayout.CounterAlignment="Center">
+                                    <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                TextAlignment="Center"
                                                Text="Not a member?"
                                                Style="{StaticResource LabelMedium}" />
                                 </utu:AutoLayout>
 
-                                <HyperlinkButton Command="{Binding HyperLinkNavigation}"
+                                <HyperlinkButton Command="{Binding ToggleRegister}"
                                                  Content="Register Now"
-                                                 utu:AutoLayout.CounterAlignment="Start" />
+                                                 utu:AutoLayout.CounterAlignment="Center" />
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
@@ -436,7 +441,7 @@
                                          x:Name="WideRegisterPassword"
                                          CornerRadius="16"
                                          Style="{StaticResource OutlinedPasswordBoxStyle}"
-                                         utu:CommandExtensions.Command="{Binding HyperLinkNavigation}"
+                                         utu:CommandExtensions.Command="{Binding ToggleRegister}"
                                          ios:ReturnKeyType="Done"
                                          android:ImeOptions="Done">
                                 <um:ControlExtensions.Icon>
@@ -445,7 +450,7 @@
                                 </um:ControlExtensions.Icon>
                             </PasswordBox>
                         </utu:AutoLayout>
-                        <Button Command="{Binding HyperLinkNavigation}"
+                        <Button Command="{Binding ToggleRegister}"
                                 HorizontalContentAlignment="Center"
                                 VerticalContentAlignment="Center"
                                 Background="{ThemeResource PrimaryBrush}"
@@ -459,13 +464,13 @@
                             <utu:AutoLayout PrimaryAxisAlignment="End"
                                             Orientation="Horizontal"
                                             utu:AutoLayout.CounterAlignment="Start">
-                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                            TextAlignment="Center"
                                            Text="Already a user?"
                                            utu:AutoLayout.CounterAlignment="Center"
                                            Style="{StaticResource LabelMedium}" />
                             </utu:AutoLayout>
-                            <HyperlinkButton Command="{Binding HyperLinkNavigation}"
+                            <HyperlinkButton Command="{Binding ToggleRegister}"
                                              Content="Login Now"
                                              utu:AutoLayout.CounterAlignment="Start" />
                         </utu:AutoLayout>
