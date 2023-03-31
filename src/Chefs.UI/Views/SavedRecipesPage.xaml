@@ -277,7 +277,7 @@
                                        Text="There are no recipes. Please&#xA; start saving your recipes"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource HeadlineSmall}" />
+                                       Style="{StaticResource TitleMedium}" />
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </UserControl>
@@ -328,7 +328,7 @@
                                        Text="There is no cookbook. Please&#xA;create your first cookbook"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                                       Style="{StaticResource HeadlineSmall}" />
+                                       Style="{StaticResource TitleMedium}" />
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </UserControl>
@@ -432,11 +432,12 @@
                                         uen:Region.Name="Cookbooks"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         utu:AutoLayout.CounterAlignment="Stretch">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
                                             utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                                               VerticalScrollBarVisibility="Hidden">
-                                    <uer:FeedView Source="{Binding SavedCookbooks}">
+                                    <uer:FeedView Source="{Binding SavedCookbooks}"
+                                                  NoneTemplate="{StaticResource CookbookEmptyTemplate}">
                                         <DataTemplate>
                                             <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                                                 ItemTemplate="{StaticResource CookbookTemplate}"
@@ -491,7 +492,8 @@
                                           HorizontalScrollMode="Disabled"
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                Margin="0,0,0,40">
+                                                Margin="0,0,0,40"
+                                                PrimaryAxisAlignment="Center">
                                     <uer:FeedView Source="{Binding SavedRecipes}"
                                                   NoneTemplate="{StaticResource RecipeEmptyTemplate}">
                                         <DataTemplate>
@@ -524,7 +526,8 @@
                                           HorizontalScrollMode="Disabled"
                                           VerticalScrollBarVisibility="Hidden">
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                Margin="0,0,0,40">
+                                                Margin="0,0,0,40"
+                                                PrimaryAxisAlignment="Center">
                                     <uer:FeedView Source="{Binding SavedCookbooks}"
                                                   NoneTemplate="{StaticResource CookbookEmptyTemplate}">
                                         <DataTemplate>
