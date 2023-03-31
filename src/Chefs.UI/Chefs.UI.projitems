@@ -77,8 +77,8 @@
       <DependentUpon>LiveCookingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Templates\ResponsiveDrawerFlyout.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\UpdateCookbookPage.xaml.cs">
-      <DependentUpon>UpdateCookbookPage.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CreateUpdateCookbookPage.xaml.cs">
+      <DependentUpon>CreateUpdateCookbookPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -175,7 +175,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Views\UpdateCookbookPage.xaml">
+    <Page Include="$(MSBuildThisFileDirectory)Views\CreateUpdateCookbookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

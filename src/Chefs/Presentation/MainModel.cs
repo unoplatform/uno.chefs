@@ -27,8 +27,8 @@ public partial class MainModel
 
         await (result.SomeOrDefault() switch
         {
-            UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<UpdateCookbookModel>(this, data: updateCookbook.Cookbook, qualifier: Qualifiers.Nested),
-            Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateCookbookModel>(this, qualifier: Qualifiers.Nested),
+            UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this, data: updateCookbook.Cookbook, qualifier: Qualifiers.Nested),
+            Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this, qualifier: Qualifiers.Nested),
             Cookbook cookbook => _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook, qualifier: Qualifiers.Nested),
             object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj, qualifier: Qualifiers.Nested),
             _ => Task.CompletedTask,

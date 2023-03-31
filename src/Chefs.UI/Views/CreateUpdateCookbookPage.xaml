@@ -1,4 +1,4 @@
-﻿<Page x:Class="Chefs.Views.UpdateCookbookPage"
+﻿<Page x:Class="Chefs.Views.CreateUpdateCookbookPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="using:Chefs.Views"
@@ -170,7 +170,7 @@
                 <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
                                    Background="{ThemeResource BackgroundBrush}"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
-                                   Content="Update Cookbook"
+                                   Content="{Binding Title}"
                                    toolkit:UIElementExtensions.Elevation="0">
                     <utu:NavigationBar.MainCommand>
                         <AppBarButton>

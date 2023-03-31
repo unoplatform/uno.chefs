@@ -5,26 +5,37 @@ using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
-public partial class UpdateCookbookModel
+public partial class CreateUpdateCookbookModel
 {
     private readonly INavigator _navigator;
     private readonly IRecipeService _recipeService;
     private readonly ICookbookService _cookbookService;
-    private readonly Cookbook _cookbook;
+    private readonly Cookbook? _cookbook;
+    private readonly bool _isCreate = false;
 
-    public UpdateCookbookModel(
+    public CreateUpdateCookbookModel(
 		INavigator navigator,
         IRecipeService recipeService,
         ICookbookService cookbookService,
-        Cookbook cookbook)
+        Cookbook? cookbook)
     {
         _navigator = navigator;
         _recipeService = recipeService;
         _cookbookService = cookbookService;
-        _cookbook = cookbook;
+        if(cookbook is not null)
+        {
+            _cookbook = cookbook;
+            Title = "Update cookbook";
+        }
+        else
+        {
+            Title = "Create cookbook";
+            _isCreate = true;
+        }
     }
+    public string Title { get; }
 
-    public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook);
+    public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
 
     public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
     {
@@ -47,9 +58,12 @@ public partial class UpdateCookbookModel
         var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
         var cookbook = await Cookbook;
 
-        if (selectedRecipes is not null && selectedRecipes.Count > 0)
+        if (selectedRecipes is not null && cookbook is not null && selectedRecipes.Count > 0)
         {
-            var response = await _cookbookService.Update(cookbook!, selectedRecipes, ct);
+            
+            var response = _isCreate ? await _cookbookService.Create(cookbook.Name!, selectedRecipes.ToImmutableList(), ct) 
+                : await _cookbookService.Update(cookbook!, selectedRecipes, ct);
+
             await _navigator.NavigateBackWithResultAsync(this, data: response);
         }
         else

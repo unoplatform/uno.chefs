@@ -86,8 +86,8 @@ public partial class HomeModel
 
         await (result.SomeOrDefault() switch
         {
-            UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<UpdateCookbookModel>(this, data: updateCookbook.Cookbook),
-            Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateCookbookModel>(this),
+            UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this, data: updateCookbook.Cookbook),
+            Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this),
             Cookbook cookbook => _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook),
             object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj),
             _ => Task.CompletedTask,

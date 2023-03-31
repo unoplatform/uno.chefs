@@ -109,7 +109,7 @@
                                                                    Visibility="{Binding CookbookImages.ThirdImage,
                                                                                 Converter={StaticResource NullToCollapsed}}"/>
 
-                                                            <Button uen:Navigation.Request="SavedUpdateCookbook"
+                                                            <Button uen:Navigation.Request="SavedCreateUpdateCookbook"
                                                                     uen:Navigation.Data="{Binding}"
                                                                     Background="{ThemeResource SurfaceVariantColor}"
                                                                     HorizontalAlignment="Stretch"
@@ -461,7 +461,7 @@
                                     <utu:AutoLayout.Resources>
                                         <x:String x:Key="Floating_Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
                                     </utu:AutoLayout.Resources>
-                                    <Button uen:Navigation.Request="CreateCookbook"
+                                    <Button uen:Navigation.Request="SavedCreateUpdateCookbook"
                                             utu:AutoLayout.CounterAlignment="End"
                                             CornerRadius="60"
                                             Style="{StaticResource FabStyle}">
@@ -554,7 +554,7 @@
                                     VerticalAlignment="Bottom"
                                     HorizontalAlignment="Right"
                                     Margin="18">
-                        <Button uen:Navigation.Request="CreateCookbook"
+                        <Button uen:Navigation.Request="SavedCreateUpdateCookbook"
                                 utu:AutoLayout.CounterAlignment="End"
                                 CornerRadius="60"
                                 Style="{StaticResource FabStyle}">
