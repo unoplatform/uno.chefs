@@ -206,7 +206,7 @@
                 </ScrollViewer>
             </utu:AutoLayout>
         </utu:AutoLayout>
-        <Button uen:Navigation.Request="UpdateCookbook"
+        <Button uen:Navigation.Request="CreateUpdateCookbook"
                 uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay }"
                 Background="{ThemeResource PrimaryContainerBrush}"
                 Margin="18,20"
