@@ -23,24 +23,6 @@
             <DataTemplate x:Key="RecipeTemplate">
                 <UserControl>
                     <utu:AutoLayout>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup>
-                                <VisualState x:Name="Narrow">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger MinWindowWidth="0" />
-                                    </VisualState.StateTriggers>
-                                </VisualState>
-                                <VisualState x:Name="Wide">
-                                    <VisualState.StateTriggers>
-                                        <AdaptiveTrigger MinWindowWidth="800" />
-                                    </VisualState.StateTriggers>
-                                    <VisualState.Setters>
-                                        <Setter Target="RecipeTemplateCard.MaxWidth"
-                                                Value="400" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                         <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
                         <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
                         <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
@@ -50,7 +32,7 @@
                                                               HorizontalAlignment="Stretch"
                                                               VerticalAlignment="Stretch"
                                                               MinHeight="0"
-                                                              MaxWidth="200">
+                                                              MaxWidth="400">
                             <controls:FixedSizeCardContentControl.ContentTemplate>
                                 <DataTemplate>
                                     <UserControl>
@@ -115,14 +97,14 @@
                     <VisualState.Setters>
                         <Setter Target="AddPinsLabel.Style"
                                 Value="{StaticResource HeadlineLarge}" />
-                        <Setter Target="AddPinsLabel.Margin"
-                                Value="40, 20" />
                         <Setter Target="ContentLayout.Padding"
                                 Value="40,0" />
                         <Setter Target="ContentLayout.Spacing"
                                 Value="28" />
                         <Setter Target="NavBarLayout.Margin"
                                 Value="22,10,22,10" />
+                        <Setter Target="FabButton.Margin"
+                                Value="35,20" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -143,22 +125,22 @@
                     </utu:NavigationBar.MainCommand>
                 </utu:NavigationBar>
             </utu:AutoLayout>
-            <TextBlock x:Name="AddPinsLabel"
-                       Foreground="{ThemeResource SurfaceInverseBrush}"
-                       Text="{Binding Cookbook.PinsNumber, 
-                                   Converter={StaticResource StringFormatter}, 
-                                   ConverterParameter='{}{0} pins'}"
-                       Margin="27, 18, 18, 9"
-                       Style="{StaticResource TitleLarge}" />
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:AutoLayout.CounterAlignment="Stretch"
                             Spacing="18"
                             Padding="18,0">
+
+                <TextBlock x:Name="AddPinsLabel"
+                           Foreground="{ThemeResource SurfaceInverseBrush}"
+                           Text="{Binding Cookbook.PinsNumber, 
+                                   Converter={StaticResource StringFormatter}, 
+                                   ConverterParameter='{}{0} pins'}"
+                           Style="{StaticResource TitleLarge}" />
                 <ScrollViewer HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Hidden"
                               utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <uer:FeedView Source="{Binding Cookbook}">
+                    <uer:FeedView Margin="-5,0"  Source="{Binding Cookbook}">
                         <DataTemplate>
                             <UserControl>
                                 <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
@@ -206,17 +188,21 @@
                 </ScrollViewer>
             </utu:AutoLayout>
         </utu:AutoLayout>
-        <Button uen:Navigation.Request="CreateUpdateCookbook"
-                uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay }"
-                Background="{ThemeResource PrimaryContainerBrush}"
-                Margin="18,20"
-                utu:AutoLayout.CounterAlignment="End"
-                CornerRadius="60"
-                Style="{StaticResource FabStyle}">
-            <um:ControlExtensions.Icon>
-                <PathIcon Data="{StaticResource Icon_Add}"
-                          Foreground="{ThemeResource SurfaceBrush}" />
-            </um:ControlExtensions.Icon>
-        </Button>
+        <utu:AutoLayout x:Name="FabButton"
+                        PrimaryAxisAlignment="End"
+                        utu:AutoLayout.IsIndependentLayout="True"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Margin="13,10">
+            <Button uen:Navigation.Request="CreateUpdateCookbook"
+                    utu:AutoLayout.CounterAlignment="End"
+                    CornerRadius="60"
+                    Style="{StaticResource FabStyle}">
+                <um:ControlExtensions.Icon>
+                    <PathIcon Data="{StaticResource Icon_Add}"
+                              Foreground="{ThemeResource SurfaceBrush}" />
+                </um:ControlExtensions.Icon>
+            </Button>
+        </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
