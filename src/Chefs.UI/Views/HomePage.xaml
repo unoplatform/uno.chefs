@@ -78,12 +78,12 @@
                                                       Style="{StaticResource IconToggleButtonStyle}">
                                             <ToggleButton.Content>
                                                 <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}"
-                                                          Foreground="{ThemeResource OnBackgroundBrush}" />
+                                                          Foreground="{ThemeResource OnSurfaceBrush}" />
                                             </ToggleButton.Content>
                                             <um:ControlExtensions.AlternateContent>
 
                                                 <PathIcon Data="{StaticResource Icon_Solid_Saved_ChefsApp}"
-                                                          Foreground="{ThemeResource OnBackgroundBrush}" />
+                                                          Foreground="{ThemeResource OnSurfaceBrush}" />
                                             </um:ControlExtensions.AlternateContent>
                                         </ToggleButton>
                                     </utu:AutoLayout>
