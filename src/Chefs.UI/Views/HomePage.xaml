@@ -285,10 +285,11 @@
                                                                     Spacing="6"
                                                                     Padding="12"
                                                                     CornerRadius="12"
-                                                                    PrimaryAxisAlignment="Center"
+                                                                    PrimaryAxisAlignment="Stretch"
                                                                     Orientation="Horizontal"
-                                                                    utu:AutoLayout.CounterAlignment="Start"
-                                                                    Margin="10,0,0,0">
+                                                                    Margin="10,0,0,0"
+                                                                    utu:AutoLayout.CounterAlignment="Stretch"
+                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
                                                         <VisualStateManager.VisualStateGroups>
                                                             <VisualStateGroup>
                                                                 <VisualState x:Name="Narrow">
@@ -309,11 +310,9 @@
                                                                 </VisualState>
                                                             </VisualStateGroup>
                                                         </VisualStateManager.VisualStateGroups>
-                                                        <ImageIcon Source="{Binding UrlIcon}"
-                                                                   utu:AutoLayout.CounterAlignment="Center" />
+                                                        <ImageIcon Source="{Binding UrlIcon}" />
                                                         <TextBlock Foreground="{ThemeResource SurfaceBrush}"
                                                                    Text="{Binding Name}"
-                                                                   utu:AutoLayout.CounterAlignment="Center"
                                                                    Style="{StaticResource LabelLarge}" />
                                                     </utu:AutoLayout>
                                                 </UserControl>
