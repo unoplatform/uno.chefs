@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using Android.App;
@@ -26,6 +27,14 @@ namespace Chefs.Droid
 			: base(() => new App(), javaReference, transfer)
 		{
 			ConfigureUniversalImageLoader();
+
+            // LinkDescription commented for now in the Chefs.Mobile.csproj as it is failing the Android Build
+            // Workaround in place here for System.Collections.Immutable.ImmutableList
+            var unused = ImmutableList.Create<string>();
+			var unused2 = ImmutableList.CreateBuilder<string>();
+			var unused3 = ImmutableList.CreateRange<string>(new string[] { "a", "b" });
+			var unused4 = ImmutableList.Create("a");
+			var unused5 = ImmutableList.Create(new string[] { "a", "b" });
 		}
 
 		private static void ConfigureUniversalImageLoader()
