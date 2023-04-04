@@ -23,6 +23,6 @@
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Uno.WinUI" Version="4.8.15" />
+		<PackageReference Include="Uno.WinUI" Version="4.9.0-dev.357" />
 	</ItemGroup>
 </Project>
