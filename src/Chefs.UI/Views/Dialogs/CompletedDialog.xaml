@@ -10,13 +10,14 @@
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:local="using:Chefs.App"
                mc:Ignorable="d"
+               Style="{StaticResource MaterialContentDialogStyle}"
                Background="{ThemeResource SurfaceBrush}"
                BorderBrush="Transparent"
                CornerRadius="30"
                Padding="0">
     <utu:AutoLayout PrimaryAxisAlignment="Center">
         <utu:AutoLayout Spacing="35"
-                        Padding="45"
+                        Padding="15"
                         PrimaryAxisAlignment="Center">
             <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
                 <utu:AutoLayout Background="{ThemeResource PrimaryPressedBrush}"
