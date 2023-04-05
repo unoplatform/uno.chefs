@@ -195,6 +195,7 @@
                         HorizontalAlignment="Right"
                         Margin="13,10">
             <Button uen:Navigation.Request="CreateUpdateCookbook"
+                    uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay }"
                     utu:AutoLayout.CounterAlignment="End"
                     CornerRadius="60"
                     Style="{StaticResource FabStyle}">

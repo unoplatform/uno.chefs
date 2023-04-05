@@ -169,9 +169,6 @@
                          utu:AutoLayout.CounterAlignment="Stretch"
                          Background="{ThemeResource SurfaceBrush}"
                          Text="{Binding Cookbook.Name, Mode=TwoWay}"
-                         Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                         PlaceholderForeground="{ThemeResource OnSurfaceVariantBrush}"
-                         BorderBrush="{ThemeResource OnSurfaceVariantBrush}"
                          PlaceholderText="Cookbook name"
                          CornerRadius="15"
                          Style="{StaticResource OutlinedTextBoxStyle}" />
