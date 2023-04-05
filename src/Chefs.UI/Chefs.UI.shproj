@@ -36,6 +36,13 @@
     <UpToDateCheckInput Remove="Views\Templates\ItemTemplates.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbed_Compile Remove="Controls\CommandExtensions.cs" />
+    <_Globbed_Compile Remove="Controls\DependencyObjectExtensions.cs" />
+    <_Globbed_Compile Remove="Controls\EnumerableExtensions.cs" />
+    <_Globbed_Compile Remove="Controls\InputExtensions.cs" />
+    <_Globbed_Compile Remove="controls\ItemsRepeaterExtensions.cs" />
+    <_Globbed_Compile Remove="Controls\ItemsSelectionHelper.cs" />
+    <_Globbed_Compile Remove="Controls\VisualTreeHelperEx.cs" />
     <_Globbed_Compile Remove="Converters\BoolToObjectConverter.cs" />
     <_Globbed_Compile Remove="Converters\GreaterThanZeroToVisibleConverter.cs" />
     <_Globbed_Compile Remove="Converters\InvertBoolConverter.cs" />

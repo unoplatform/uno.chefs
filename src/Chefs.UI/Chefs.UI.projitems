@@ -21,7 +21,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.host.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CommandExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DependencyObjectExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\EnumerableExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FixedSizeChip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\FixedSizeCardContentControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\InputExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)controls\ItemsRepeaterExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ItemsSelectionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\VisualTreeHelperEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolToObjectConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CertainNumberToVisible.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\GreaterThanZeroToVisibleConverter.cs" />

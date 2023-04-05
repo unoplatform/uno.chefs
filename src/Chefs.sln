@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chefs.Windows", "Chefs.Wind
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chefs.Skia.Linux.FrameBuffer", "Chefs.Skia.Linux.FrameBuffer\Chefs.Skia.Linux.FrameBuffer.csproj", "{925C7A3E-6532-4E27-8ABE-37A4F9B73C8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chefs.Tests", "Chefs.Tests\Chefs.Tests.csproj", "{9B2848AB-1FA3-45FE-AD58-EF543E6A7D8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chefs.Tests", "Chefs.Tests\Chefs.Tests.csproj", "{9B2848AB-1FA3-45FE-AD58-EF543E6A7D8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
