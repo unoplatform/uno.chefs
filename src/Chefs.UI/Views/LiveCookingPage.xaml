@@ -152,7 +152,7 @@
                         <Setter Target="RecipeImage.VerticalAlignment"
                                 Value="Center" />
                         <Setter Target="RecipeImage.Margin"
-                                Value="0,-100,0,0" />
+                                Value="0,-40,0,0" />
                         <Setter Target="WideRecipeDetails.Visibility"
                                 Value="Visible" />
                         <Setter Target="StepsFlipView.ItemTemplate"
@@ -210,12 +210,11 @@
                                         utu:AutoLayout.CounterAlignment="Stretch">
                             <utu:AutoLayout Padding="0"
                                             x:Name="RecipeImageLayout"
-                                            MaxHeight="220"
                                             utu:AutoLayout.CounterAlignment="Stretch">
                                 <Image Source="{Binding Recipe.ImageUrl}"
                                        MinHeight="220"
                                        HorizontalAlignment="Stretch"
-                                       VerticalAlignment="Bottom"
+                                       VerticalAlignment="Center"
                                        x:Name="RecipeImage"
                                        Stretch="UniformToFill" />
                             </utu:AutoLayout>
