@@ -327,7 +327,11 @@
                                    Style="{StaticResource TitleLarge}" />
                     </utu:AutoLayout>
 
-                    <utu:AutoLayout PrimaryAxisAlignment="End"
+                    <!-- Workaround for https://github.com/unoplatform/uno/issues/11835 -->
+                    <!-- Databinding fix to avoid null data context -->
+                    <utu:AutoLayout x:Name="FilterButtonHost"
+                                    DataContext="{Binding Filter}"
+                                    PrimaryAxisAlignment="End"
                                     utu:AutoLayout.CounterAlignment="Start">
                         <Button Content="Filters"
                                 x:Name="FilterButton"
@@ -340,8 +344,8 @@
                                 Foreground="{Binding Filter.Value.HasFilter, 
                                                     Converter={StaticResource PrimarySurfaceColorConverter}}"
                                 Style="{StaticResource OutlinedButtonStyle}"
-                                uen:Navigation.Request="Filter"
-                                uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay }">
+                                uen:Navigation.Request="!Filter"
+                                uen:Navigation.Data="{Binding DataContext.Value, ElementName=FilterButtonHost, Mode=TwoWay}">
                             <um:ControlExtensions.Icon>
                                 <PathIcon Data="{StaticResource Icon_Outline_Filter_ChefsApp}" />
                             </um:ControlExtensions.Icon>
