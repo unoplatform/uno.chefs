@@ -162,7 +162,7 @@
                                toolkit:UIElementExtensions.Elevation="0">
                 <utu:NavigationBar.MainCommand>
                     <AppBarButton>
-		        <not_mobile:AppBarButton.Icon>
+                        <not_mobile:AppBarButton.Icon>
                             <SymbolIcon Symbol="Back" />
                         </not_mobile:AppBarButton.Icon>
                     </AppBarButton>
@@ -172,14 +172,14 @@
                         <AppBarButton.Icon>
                             <BitmapIcon ShowAsMonochrome="False"
                                         UriSource="ms-appx:///Assets/Icons/share.png"
-                                        Foreground="{ThemeResource SurfaceInverseBrush}"/>
+                                        Foreground="{ThemeResource SurfaceInverseBrush}" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton>
                         <AppBarButton.Icon>
                             <BitmapIcon ShowAsMonochrome="False"
                                         UriSource="ms-appx:///Assets/Icons/bookmark.png"
-                                        Foreground="{ThemeResource SurfaceInverseBrush}"/>
+                                        Foreground="{ThemeResource SurfaceInverseBrush}" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>
@@ -284,12 +284,12 @@
                                 <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
                                     <uer:FeedView Source="{Binding Steps}">
                                         <DataTemplate>
-                                            <ListView ItemsSource="{Binding Data}"
-                                                      Style="{StaticResource ListViewStyle}"
-                                                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                      ScrollViewer.VerticalScrollMode="Disabled"
-                                                      SelectionMode="None">
-                                                <ListView.ItemTemplate>
+                                            <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                ItemsSource="{Binding Data}">
+                                                <muxc:ItemsRepeater.Layout>
+                                                    <muxc:StackLayout Orientation="Vertical" />
+                                                </muxc:ItemsRepeater.Layout>
+                                                <muxc:ItemsRepeater.ItemTemplate>
                                                     <DataTemplate>
                                                         <utu:AutoLayout Margin="-10,8"
                                                                         Padding="16,18"
@@ -310,8 +310,8 @@
                                                             </utu:AutoLayout>
                                                         </utu:AutoLayout>
                                                     </DataTemplate>
-                                                </ListView.ItemTemplate>
-                                            </ListView>
+                                                </muxc:ItemsRepeater.ItemTemplate>
+                                            </muxc:ItemsRepeater>
                                         </DataTemplate>
                                     </uer:FeedView>
                                 </utu:AutoLayout>
@@ -361,17 +361,17 @@
                                             <uer:FeedView x:Name="IngredientsFeed"
                                                           Source="{Binding Ingredients}">
                                                 <DataTemplate>
-                                                    <ListView ItemsSource="{Binding Data}"
-                                                              Style="{StaticResource ListViewStyle}"
-                                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                              ScrollViewer.VerticalScrollMode="Disabled"
-                                                              SelectionMode="None">
-                                                        <ListView.ItemTemplate>
+                                                    <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                        ItemsSource="{Binding Data}">
+                                                        <muxc:ItemsRepeater.Layout>
+                                                            <muxc:StackLayout Orientation="Vertical" />
+                                                        </muxc:ItemsRepeater.Layout>
+                                                        <muxc:ItemsRepeater.ItemTemplate>
                                                             <DataTemplate>
                                                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                                 CornerRadius="15"
                                                                                 PrimaryAxisAlignment="Stretch"
-                                                                                Margin="-10,8"
+                                                                                Margin="0,8"
                                                                                 Padding="16,18"
                                                                                 utu:AutoLayout.CounterAlignment="Stretch"
                                                                                 utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -397,8 +397,8 @@
                                                                     </utu:AutoLayout>
                                                                 </utu:AutoLayout>
                                                             </DataTemplate>
-                                                        </ListView.ItemTemplate>
-                                                    </ListView>
+                                                        </muxc:ItemsRepeater.ItemTemplate>
+                                                    </muxc:ItemsRepeater>
                                                 </DataTemplate>
                                             </uer:FeedView>
                                         </utu:AutoLayout>
@@ -414,16 +414,12 @@
                                             <uer:FeedView x:Name="StepsFeed"
                                                           Source="{Binding Steps}">
                                                 <DataTemplate>
-                                                    <ListView ItemsSource="{Binding Data}"
-                                                              Style="{StaticResource ListViewStyle}"
-                                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                              ScrollViewer.VerticalScrollMode="Disabled"
-                                                              SelectionMode="None">
-                                                        <ListView.ItemTemplate>
+                                                    <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                                        <muxc:ItemsRepeater.ItemTemplate>
                                                             <DataTemplate>
                                                                 <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
                                                                                 CornerRadius="15"
-                                                                                Margin="-10,8">
+                                                                                Margin="0,8">
                                                                     <utu:AutoLayout Padding="16,18"
                                                                                     PrimaryAxisAlignment="Center">
                                                                         <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
@@ -437,8 +433,8 @@
                                                                     </utu:AutoLayout>
                                                                 </utu:AutoLayout>
                                                             </DataTemplate>
-                                                        </ListView.ItemTemplate>
-                                                    </ListView>
+                                                        </muxc:ItemsRepeater.ItemTemplate>
+                                                    </muxc:ItemsRepeater>
                                                 </DataTemplate>
                                             </uer:FeedView>
                                         </utu:AutoLayout>
@@ -462,12 +458,13 @@
                                                       Source="{Binding Reviews}"
                                                       NoneTemplate="{StaticResource EmptyTemplate}">
                                             <DataTemplate>
-                                                <ListView ItemsSource="{Binding Data}"
-                                                          Style="{StaticResource ListViewStyle}"
-                                                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                          ScrollViewer.VerticalScrollMode="Disabled"
-                                                          ItemTemplate="{StaticResource ReviewDataTemplate}"
-                                                          SelectionMode="None" />
+                                                <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                                    ItemTemplate="{StaticResource ReviewDataTemplate}"
+                                                                    ItemsSource="{Binding Data}">
+                                                    <muxc:ItemsRepeater.Layout>
+                                                        <muxc:StackLayout Orientation="Vertical" />
+                                                    </muxc:ItemsRepeater.Layout>
+                                                </muxc:ItemsRepeater>
                                             </DataTemplate>
                                         </uer:FeedView>
                                     </utu:AutoLayout>

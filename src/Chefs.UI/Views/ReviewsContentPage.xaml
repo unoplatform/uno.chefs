@@ -8,6 +8,7 @@
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:uer="using:Uno.Extensions.Reactive.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d">
 
     <!-- Workaround used here by separating the ReviewsPage / ReviewsContentPage into two files -->
@@ -80,7 +81,7 @@
                             utu:AutoLayout.CounterAlignment="End"
                             Style="{StaticResource IconButtonStyle}">
                         <PathIcon Data="{StaticResource Icon_Close}"
-                                  Foreground="{ThemeResource SurfaceInverseBrush}"/>
+                                  Foreground="{ThemeResource SurfaceInverseBrush}" />
                     </Button>
                 </utu:AutoLayout>
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -89,9 +90,9 @@
                         <uer:FeedView x:Name="ReviewsFeed"
                                       Source="{Binding Reviews}">
                             <DataTemplate>
-                                <ListView ItemTemplate="{StaticResource ReviewDataTemplate}"
-                                          ItemsSource="{Binding Data}"
-                                          Style="{StaticResource ListViewStyle}" />
+                                <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                    ItemTemplate="{StaticResource ReviewDataTemplate}"
+                                                    ItemsSource="{Binding Data}" />
                             </DataTemplate>
                         </uer:FeedView>
                     </utu:AutoLayout>

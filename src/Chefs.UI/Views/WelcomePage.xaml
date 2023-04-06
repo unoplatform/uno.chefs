@@ -50,10 +50,12 @@
                                 Value="{ThemeResource PrimaryBrush}" />
                         <Setter Target="InnerLayout.CornerRadius"
                                 Value="40" />
-                        <Setter Target="InnerLayout.Padding"
-                                Value="40" />
+                        <Setter Target="InnerLayout.PrimaryAxisAlignment"
+                                Value="Center" />
                         <Setter Target="LogoLayout.Padding"
                                 Value="20,0" />
+                        <Setter Target="InnerLayout.Spacing"
+                                Value="40" />
                         <Setter Target="InnerLayout.Spacing"
                                 Value="40" />
                         <Setter Target="WideSkipButton.Visibility"
@@ -89,7 +91,6 @@
                                 Background="{ThemeResource SurfaceBrush}"
                                 Spacing="20"
                                 Padding="50,0">
-
                     <Button x:Name="WideSkipButton"
                             Background="{ThemeResource SecondaryContainerBrush}"
                             uen:Navigation.Request="-/Login"
@@ -100,7 +101,6 @@
                             Height="37"
                             Margin="40"
                             Visibility="Collapsed" />
-
                     <utu:AutoLayout x:Name="ImageFilpView"
                                     Margin="-50,0">
                         <FlipView Background="Transparent"
@@ -108,28 +108,28 @@
                                   SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}">
                             <FlipViewItem>
-                                 <Border Height="400">
+                                <Border Height="400">
                                     <Image Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
                                            Stretch="UniformToFill"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
-                                 </Border>
+                                </Border>
                             </FlipViewItem>
                             <FlipViewItem>
-                                 <Border Height="400">
+                                <Border Height="400">
                                     <Image Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
                                            Stretch="UniformToFill"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
-                                 </Border>
+                                </Border>
                             </FlipViewItem>
                             <FlipViewItem>
-                                 <Border Height="400">
+                                <Border Height="400">
                                     <Image Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
                                            Stretch="UniformToFill"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
-                                 </Border>
+                                </Border>
                             </FlipViewItem>
                         </FlipView>
                         <utu:AutoLayout x:Name="SkipButtonLayout"
@@ -146,7 +146,6 @@
                             </Button>
                         </utu:AutoLayout>
                     </utu:AutoLayout>
-
                     <utu:AutoLayout x:Name="LogoLayout"
                                     Margin="10,0"
                                     utu:AutoLayout.CounterAlignment="Center"
@@ -235,7 +234,7 @@
                                     Spacing="20">
 
                         <Button Background="{ThemeResource PrimaryBrush}"
-                                Content="Next"
+                                Content="{Binding ButtonText}"
                                 Height="56"
                                 utu:AutoLayout.CounterAlignment="Stretch"
                                 Command="{Binding Next}" />
@@ -245,9 +244,7 @@
                                         MaxVisiblePips="10" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
-
             </utu:AutoLayout>
-
             <utu:AutoLayout x:Name="WideImageFilpView"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             Grid.Column="1">
