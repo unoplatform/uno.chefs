@@ -199,8 +199,6 @@
 					</utu:NavigationBar.MainCommand>
 					<utu:NavigationBar.PrimaryCommands>
 						<AppBarButton Command="{Binding SettingsNavigation}"
-									  Background="{ThemeResource BackgroundBrush}"
-									  Foreground="Black"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
@@ -208,8 +206,6 @@
 							</AppBarButton.Icon>
 						</AppBarButton>
 						<AppBarButton Label=""
-									  Background="{ThemeResource BackgroundBrush}"
-									  Foreground="Black"
 									  Command="{Binding GoBack}">
 							<AppBarButton.Icon>
 								<BitmapIcon ShowAsMonochrome="False"
