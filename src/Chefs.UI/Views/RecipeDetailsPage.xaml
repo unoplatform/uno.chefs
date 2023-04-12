@@ -170,15 +170,13 @@
                 <utu:NavigationBar.PrimaryCommands>
                     <AppBarButton uen:Navigation.Request="-">
                         <AppBarButton.Icon>
-                            <BitmapIcon ShowAsMonochrome="False"
-                                        UriSource="ms-appx:///Assets/Icons/share.png"
+                            <BitmapIcon  UriSource="ms-appx:///Assets/Icons/share.png"
                                         Foreground="{ThemeResource SurfaceInverseBrush}" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton>
                         <AppBarButton.Icon>
-                            <BitmapIcon ShowAsMonochrome="False"
-                                        UriSource="ms-appx:///Assets/Icons/bookmark.png"
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/bookmark.png"
                                         Foreground="{ThemeResource SurfaceInverseBrush}" />
                         </AppBarButton.Icon>
                     </AppBarButton>
