@@ -168,8 +168,7 @@
 									  Background="{ThemeResource BackgroundBrush}"
 									  Command="{Binding GoBack}">
 							<AppBarButton.Icon>
-								<BitmapIcon ShowAsMonochrome="False"
-											UriSource="ms-appx:///Assets/Icons/close.png" />
+								<BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
 					</utu:NavigationBar.MainCommand>
@@ -178,8 +177,7 @@
 									  Background="{ThemeResource BackgroundBrush}"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
-								<BitmapIcon ShowAsMonochrome="False"
-											UriSource="ms-appx:///Assets/Icons/settings.png" />
+								<BitmapIcon UriSource="ms-appx:///Assets/Icons/settings.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
 					</utu:NavigationBar.PrimaryCommands>
@@ -201,15 +199,13 @@
 						<AppBarButton Command="{Binding SettingsNavigation}"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
-								<BitmapIcon ShowAsMonochrome="False"
-											UriSource="ms-appx:///Assets/Icons/settings.png" />
+								<BitmapIcon UriSource="ms-appx:///Assets/Icons/settings.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
 						<AppBarButton Label=""
 									  Command="{Binding GoBack}">
 							<AppBarButton.Icon>
-								<BitmapIcon ShowAsMonochrome="False"
-											UriSource="ms-appx:///Assets/Icons/close.png" />
+								<BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
 					</utu:NavigationBar.PrimaryCommands>
