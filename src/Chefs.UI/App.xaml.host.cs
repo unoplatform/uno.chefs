@@ -67,7 +67,6 @@ public static class AppHost
             new ViewMap(ViewModel: typeof(ShellModel)),
             new ViewMap<MainPage, MainModel>(),
             new ViewMap<WelcomePage, WelcomeModel>(),
-            new ViewMap<RegisterPage, RegisterModel>(),
             new ViewMap<FilterPage>(),
             new ViewMap<FilterContentPage, FilterModel>(Data: new DataMap<SearchFilter>()),
             new ViewMap<HomePage, HomeModel>(),
@@ -95,7 +94,6 @@ public static class AppHost
                         {
                             new RouteMap("Welcome", View: views.FindByViewModel<WelcomeModel>()),
                             new RouteMap("Login", View: views.FindByViewModel<LoginModel>()),
-                            new RouteMap("Register", View: views.FindByViewModel<RegisterModel>()),
                             new RouteMap("Main", View: views.FindByViewModel<MainModel>(), Nested: new RouteMap[]
                             {
                                 new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true, Nested: new RouteMap[]
