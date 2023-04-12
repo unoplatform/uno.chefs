@@ -55,186 +55,172 @@
             <ScrollViewer HorizontalScrollMode="Disabled"
                           VerticalScrollBarVisibility="Hidden"
                           utu:AutoLayout.PrimaryAlignment="Stretch">
-                <utu:AutoLayout Spacing="20">
-                    <utu:AutoLayout Spacing="16"
+                <utu:AutoLayout Spacing="16"
                                     PrimaryAxisAlignment="Center">
-                        <utu:AutoLayout Spacing="10"
+                    <utu:AutoLayout Spacing="10"
                                         Orientation="Horizontal">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
                                        Text="Filters"
                                        utu:AutoLayout.CounterAlignment="Center"
                                        utu:AutoLayout.PrimaryAlignment="Stretch"
                                        Style="{StaticResource HeadlineMedium}" />
-                            <Button utu:AutoLayout.CounterAlignment="Center"
+                        <Button utu:AutoLayout.CounterAlignment="Center"
                                     Style="{StaticResource IconButtonStyle}"
                                     uen:Navigation.Request="-">
-                                <PathIcon Data="{StaticResource Icon_Close}"
+                            <PathIcon Data="{StaticResource Icon_Close}"
                                           Foreground="{ThemeResource SurfaceInverseBrush}" />
-                            </Button>
-                        </utu:AutoLayout>
-                        <utu:AutoLayout Spacing="16">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                        </Button>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="16">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
                                        Text="Organize"
                                        Style="{StaticResource TitleLarge}" />
-                            <utu:AutoLayout Spacing="8">
-                                <utu:ChipGroup CanRemove="False"
+                        <utu:ChipGroup CanRemove="False"
                                                SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding OrganizeCategories}"
                                                SelectedItem="{Binding Filter.OrganizeCategories, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
+                            <utu:ChipGroup.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
+                                </ItemsPanelTemplate>
+                            </utu:ChipGroup.ItemsPanel>
+                            <utu:ChipGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
                                                         Spacing="5"
                                                         Padding="3">
-                                                <TextBlock Text="{Binding}"
+                                        <TextBlock Text="{Binding}"
                                                            Foreground="{ThemeResource PrimaryBrush}"
                                                            VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
-                        <utu:AutoLayout Spacing="16">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                    </StackPanel>
+                                </DataTemplate>
+                            </utu:ChipGroup.ItemTemplate>
+                        </utu:ChipGroup>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="16">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
                                        Text="Time"
                                        Style="{StaticResource TitleLarge}" />
-                            <utu:AutoLayout Spacing="16">
-                                <utu:ChipGroup CanRemove="False"
+                        <utu:ChipGroup CanRemove="False"
                                                SelectionMode="SingleOrNone"
                                                utu:AutoLayout.PrimaryAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding Times}"
                                                SelectedItem="{Binding Filter.Time, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
+                            <utu:ChipGroup.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
+                                </ItemsPanelTemplate>
+                            </utu:ChipGroup.ItemsPanel>
+                            <utu:ChipGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
                                                         Spacing="5"
                                                         Padding="3">
-                                                <TextBlock Text="{Binding}"
+                                        <TextBlock Text="{Binding}"
                                                            Foreground="{ThemeResource PrimaryBrush}"
                                                            VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
-                        <utu:AutoLayout Spacing="16">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                    </StackPanel>
+                                </DataTemplate>
+                            </utu:ChipGroup.ItemTemplate>
+                        </utu:ChipGroup>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="16">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
                                        Text="Difficulty"
                                        Style="{StaticResource TitleLarge}" />
-                            <utu:AutoLayout Spacing="16"
-                                            Orientation="Horizontal">
-                                <utu:ChipGroup CanRemove="False"
+                        <utu:ChipGroup CanRemove="False"
                                                SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding Difficulties}"
                                                SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
+                            <utu:ChipGroup.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
+                                </ItemsPanelTemplate>
+                            </utu:ChipGroup.ItemsPanel>
+                            <utu:ChipGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
                                                         Spacing="5"
                                                         Padding="3">
-                                                <TextBlock Text="{Binding}"
+                                        <TextBlock Text="{Binding}"
                                                            Foreground="{ThemeResource PrimaryBrush}"
                                                            VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
-                        <utu:AutoLayout Spacing="16">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                    </StackPanel>
+                                </DataTemplate>
+                            </utu:ChipGroup.ItemTemplate>
+                        </utu:ChipGroup>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="16">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
                                        Text="Serves"
                                        Style="{StaticResource TitleLarge}" />
-                            <utu:AutoLayout Spacing="16"
-                                            Orientation="Horizontal">
-                                <utu:ChipGroup CanRemove="False"
+                        <utu:ChipGroup CanRemove="False"
                                                SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                ItemsSource="{Binding Serves}"
                                                SelectedItem="{Binding Filter.Serves, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
+                            <utu:ChipGroup.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
+                                </ItemsPanelTemplate>
+                            </utu:ChipGroup.ItemsPanel>
+                            <utu:ChipGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
                                                         Spacing="5"
                                                         Padding="3">
-                                                <TextBlock Text="{Binding}"
+                                        <TextBlock Text="{Binding}"
                                                            Foreground="{ThemeResource PrimaryBrush}"
                                                            VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
-                        <utu:AutoLayout Spacing="16">
-                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                    </StackPanel>
+                                </DataTemplate>
+                            </utu:ChipGroup.ItemTemplate>
+                        </utu:ChipGroup>
+                    </utu:AutoLayout>
+                    <utu:AutoLayout Spacing="16">
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                        TextWrapping="Wrap"
                                        Text="Categories"
                                        Style="{StaticResource TitleLarge}" />
-                            <utu:AutoLayout Spacing="16">
-                                <utu:ChipGroup CanRemove="False"
+                        <utu:ChipGroup CanRemove="False"
                                                SelectionMode="SingleOrNone"
                                                ItemsSource="{Binding Categories}"
                                                Style="{StaticResource FilterChipGroupStyle}"
                                                SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">
-                                    <utu:ChipGroup.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <controls:WrapPanel HorizontalSpacing="18"
+                            <utu:ChipGroup.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <controls:WrapPanel HorizontalSpacing="18"
                                                                 Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </utu:ChipGroup.ItemsPanel>
-                                    <utu:ChipGroup.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal"
+                                </ItemsPanelTemplate>
+                            </utu:ChipGroup.ItemsPanel>
+                            <utu:ChipGroup.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal"
                                                         Spacing="5"
                                                         Padding="3">
-                                                <ImageIcon Source="{Binding UrlIcon}" />
-                                                <TextBlock Text="{Binding Name}"
+                                        <ImageIcon Source="{Binding UrlIcon}" />
+                                        <TextBlock Text="{Binding Name}"
                                                            Foreground="{ThemeResource PrimaryBrush}"
                                                            VerticalAlignment="Center" />
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </utu:ChipGroup.ItemTemplate>
-                                </utu:ChipGroup>
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </utu:ChipGroup.ItemTemplate>
+                        </utu:ChipGroup>
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </ScrollViewer>
