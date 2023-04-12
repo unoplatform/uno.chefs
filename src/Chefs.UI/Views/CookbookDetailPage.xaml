@@ -19,67 +19,77 @@
 
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout.Resources>
+            <muxc:UniformGridLayout x:Key="NarrowGridLayout"
+                                                                MaximumRowsOrColumns="2"
+                                                                MinItemWidth="155"
+                                                                MinColumnSpacing="10"
+                                                                MinRowSpacing="10"
+                                                                ItemsStretch="Fill" />
+            <muxc:UniformGridLayout x:Key="WideGridLayout"
+                                                                MaximumRowsOrColumns="5"
+                                                                MinColumnSpacing="30"
+                                                                MinRowSpacing="30"
+                                                                MinItemWidth="200"
+                                                                ItemsStretch="Fill" />
             <x:String x:Key="Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
             <DataTemplate x:Key="RecipeTemplate">
                 <UserControl>
-                    <utu:AutoLayout>
-                        <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
-                        <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
-                        <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
-                        <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
+                    <!-- Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue: -->
+                    <!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+                    <!-- (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values) -->
+                    <controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
                                                               Style="{StaticResource FilledCardContentControlStyle}"
                                                               Background="{ThemeResource SurfaceBrush}"
                                                               HorizontalAlignment="Stretch"
                                                               VerticalAlignment="Stretch"
                                                               MinHeight="0"
                                                               MaxWidth="400">
-                            <controls:FixedSizeCardContentControl.ContentTemplate>
-                                <DataTemplate>
-                                    <UserControl>
-                                        <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-                                            <VisualStateManager.VisualStateGroups>
-                                                <VisualStateGroup>
-                                                    <VisualState x:Name="Narrow">
-                                                        <VisualState.StateTriggers>
-                                                            <AdaptiveTrigger MinWindowWidth="0" />
-                                                        </VisualState.StateTriggers>
-                                                    </VisualState>
-                                                    <VisualState x:Name="Wide">
-                                                        <VisualState.StateTriggers>
-                                                            <AdaptiveTrigger MinWindowWidth="800" />
-                                                        </VisualState.StateTriggers>
-                                                        <VisualState.Setters>
-                                                            <Setter Target="ImageLayout.Height"
+                        <controls:FixedSizeCardContentControl.ContentTemplate>
+                            <DataTemplate>
+                                <UserControl>
+                                    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup>
+                                                <VisualState x:Name="Narrow">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="0" />
+                                                    </VisualState.StateTriggers>
+                                                </VisualState>
+                                                <VisualState x:Name="Wide">
+                                                    <VisualState.StateTriggers>
+                                                        <AdaptiveTrigger MinWindowWidth="800" />
+                                                    </VisualState.StateTriggers>
+                                                    <VisualState.Setters>
+                                                        <Setter Target="ImageLayout.Height"
                                                                     Value="130" />
-                                                        </VisualState.Setters>
-                                                    </VisualState>
-                                                </VisualStateGroup>
-                                            </VisualStateManager.VisualStateGroups>
-                                            <Border x:Name="ImageLayout"
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Border x:Name="ImageLayout"
                                                     Height="110">
-                                                <Image Source="{Binding ImageUrl}"
+                                            <Image Source="{Binding ImageUrl}"
                                                        Stretch="UniformToFill"
                                                        VerticalAlignment="Center"
                                                        HorizontalAlignment="Center" />
-                                            </Border>
-                                            <utu:AutoLayout Spacing="2"
+                                        </Border>
+                                        <utu:AutoLayout Spacing="2"
                                                             Padding="10"
                                                             PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                            <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding Name}"
                                                            Style="{StaticResource TitleMedium}" />
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                            TextWrapping="NoWrap"
                                                            Text="{Binding TimeCal}"
                                                            Style="{StaticResource BodySmall}" />
-                                            </utu:AutoLayout>
                                         </utu:AutoLayout>
-                                    </UserControl>
-                                </DataTemplate>
-                            </controls:FixedSizeCardContentControl.ContentTemplate>
-                        </controls:FixedSizeCardContentControl>
-                    </utu:AutoLayout>
+                                    </utu:AutoLayout>
+                                </UserControl>
+                            </DataTemplate>
+                        </controls:FixedSizeCardContentControl.ContentTemplate>
+                    </controls:FixedSizeCardContentControl>
                 </UserControl>
             </DataTemplate>
         </utu:AutoLayout.Resources>
@@ -110,21 +120,20 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:AutoLayout x:Name="NavBarLayout">
-                <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
+            <utu:NavigationBar Style="{StaticResource NavigationBarStyle}"
+                                   x:Name="NavBarLayout"
                                    Background="{ThemeResource BackgroundBrush}"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Content="{Binding Cookbook.Name}"
                                    toolkit:UIElementExtensions.Elevation="0">
-                    <utu:NavigationBar.MainCommand>
-                        <AppBarButton>
-                            <not_mobile:AppBarButton.Icon>
-                                <SymbolIcon Symbol="Back" />
-                            </not_mobile:AppBarButton.Icon>
-                        </AppBarButton>
-                    </utu:NavigationBar.MainCommand>
-                </utu:NavigationBar>
-            </utu:AutoLayout>
+                <utu:NavigationBar.MainCommand>
+                    <AppBarButton>
+                        <not_mobile:AppBarButton.Icon>
+                            <SymbolIcon Symbol="Back" />
+                        </not_mobile:AppBarButton.Icon>
+                    </AppBarButton>
+                </utu:NavigationBar.MainCommand>
+            </utu:NavigationBar>
             <utu:AutoLayout x:Name="ContentLayout"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:AutoLayout.CounterAlignment="Stretch"
@@ -143,21 +152,11 @@
                     <uer:FeedView Margin="-5,0"  Source="{Binding Cookbook}">
                         <DataTemplate>
                             <UserControl>
-                                <utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
-                                    <utu:AutoLayout.Resources>
-                                        <muxc:UniformGridLayout x:Key="NarrowGridLayout"
-                                                                MaximumRowsOrColumns="2"
-                                                                MinItemWidth="155"
-                                                                MinColumnSpacing="10"
-                                                                MinRowSpacing="10"
-                                                                ItemsStretch="Fill" />
-                                        <muxc:UniformGridLayout x:Key="WideGridLayout"
-                                                                MaximumRowsOrColumns="5"
-                                                                MinColumnSpacing="30"
-                                                                MinRowSpacing="30"
-                                                                MinItemWidth="200"
-                                                                ItemsStretch="Fill" />
-                                    </utu:AutoLayout.Resources>
+                                <muxc:ItemsRepeater x:Name="RecipeRepeater"
+                                                        ItemsSource="{Binding Data.Recipes}"
+                                                        Layout="{StaticResource NarrowGridLayout}"
+                                                        uen:Navigation.Request="CookbookRecipeDetails"
+                                                        ItemTemplate="{StaticResource RecipeTemplate}" >
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup>
                                             <VisualState x:Name="Narrow">
@@ -176,34 +175,26 @@
                                             </VisualState>
                                         </VisualStateGroup>
                                     </VisualStateManager.VisualStateGroups>
-                                    <muxc:ItemsRepeater x:Name="RecipeRepeater"
-                                                        ItemsSource="{Binding Data.Recipes}"
-                                                        Layout="{StaticResource NarrowGridLayout}"
-                                                        uen:Navigation.Request="CookbookRecipeDetails"
-                                                        ItemTemplate="{StaticResource RecipeTemplate}" />
-                                </utu:AutoLayout>
+                                </muxc:ItemsRepeater>
                             </UserControl>
                         </DataTemplate>
                     </uer:FeedView>
                 </ScrollViewer>
             </utu:AutoLayout>
         </utu:AutoLayout>
-        <utu:AutoLayout x:Name="FabButton"
-                        PrimaryAxisAlignment="End"
-                        utu:AutoLayout.IsIndependentLayout="True"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right"
-                        Margin="13,10">
-            <Button uen:Navigation.Request="CreateUpdateCookbook"
-                    uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay }"
-                    utu:AutoLayout.CounterAlignment="End"
-                    CornerRadius="60"
-                    Style="{StaticResource FabStyle}">
-                <um:ControlExtensions.Icon>
-                    <PathIcon Data="{StaticResource Icon_Add}"
+        <Button x:Name="FabButton"
+                utu:AutoLayout.IsIndependentLayout="True"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="13,10"
+                uen:Navigation.Request="CreateUpdateCookbook"
+                uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay }"
+                CornerRadius="60"
+                Style="{StaticResource FabStyle}">
+            <um:ControlExtensions.Icon>
+                <PathIcon Data="{StaticResource Icon_Add}"
                               Foreground="{ThemeResource SurfaceBrush}" />
-                </um:ControlExtensions.Icon>
-            </Button>
-        </utu:AutoLayout>
+            </um:ControlExtensions.Icon>
+        </Button>
     </utu:AutoLayout>
 </Page>
