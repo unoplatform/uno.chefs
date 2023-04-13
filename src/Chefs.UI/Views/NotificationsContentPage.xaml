@@ -163,7 +163,7 @@
                         <Setter Target="MainLayout.CornerRadius"
                                 Value="0,40,40,0" />
                         <Setter Target="MainLayout.Width"
-                                Value="520" />
+                                Value="{StaticResource DrawerFlyoutWidth}" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

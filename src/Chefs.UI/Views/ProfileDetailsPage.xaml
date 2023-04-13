@@ -139,7 +139,7 @@
 						<Setter Target="MainLayout.CornerRadius"
 								Value="0,40,40,0" />
 						<Setter Target="MainLayout.Width"
-								Value="632" />
+								Value="{StaticResource DrawerFlyoutWidth}" />
 						<Setter Target="TabletNavBar.Visibility"
 								Value="Visible" />
 						<Setter Target="PhoneNavBar.Visibility"
