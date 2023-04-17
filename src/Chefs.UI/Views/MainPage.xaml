@@ -67,7 +67,7 @@
                   uen:Region.Navigator="Visibility"
                   utu:SafeArea.Insets="VisibleBounds" />
 
-			<!-- WORKAROUND: Add Height="Auto" to avoid clipping caused by https://github.com/unoplatform/uno.toolkit.ui/issues/509 -->
+            <!-- WORKAROUND: Add Height="Auto" to avoid clipping caused by https://github.com/unoplatform/uno.toolkit.ui/issues/509 -->
             <utu:TabBar x:Name="Tabs"
                         Grid.Row="1"
                         Grid.Column="1"
@@ -120,44 +120,41 @@
                                HorizontalAlignment="Center" />
                     </Border>
                 </Button>
-                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:TabBar uen:Region.Attached="True"
+                <utu:TabBar uen:Region.Attached="True"
                                 Style="{StaticResource VerticalTabBarStyle}"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
                                 um:ControlExtensions.IsTintEnabled="False">
-                        <utu:TabBarItem uen:Region.Name="Home"
+                    <utu:TabBarItem uen:Region.Name="Home"
                                         IsSelectable="True"
                                         Content="Home"
                                         Style="{StaticResource VerticalTabBarItemStyle}">
-                            <utu:TabBarItem.Icon>
-                                <PathIcon Data="{StaticResource Icon_Outline_Home_ChefsApp}" />
-                            </utu:TabBarItem.Icon>
-                        </utu:TabBarItem>
+                        <utu:TabBarItem.Icon>
+                            <PathIcon Data="{StaticResource Icon_Outline_Home_ChefsApp}" />
+                        </utu:TabBarItem.Icon>
+                    </utu:TabBarItem>
 
-                        <utu:TabBarItem uen:Region.Name="Create"
+                    <utu:TabBarItem uen:Region.Name="Create"
                                         IsSelectable="True"
                                         Content="Create"
                                         Style="{StaticResource VerticalTabBarItemStyle}">
-                            <utu:TabBarItem.Icon>
-                                <PathIcon Data="{StaticResource Icon_Outline_Add_ChefsApp}" />
-                            </utu:TabBarItem.Icon>
-                        </utu:TabBarItem>
+                        <utu:TabBarItem.Icon>
+                            <PathIcon Data="{StaticResource Icon_Outline_Add_ChefsApp}" />
+                        </utu:TabBarItem.Icon>
+                    </utu:TabBarItem>
 
-                        <utu:TabBarItem uen:Region.Name="SavedRecipes"
+                    <utu:TabBarItem uen:Region.Name="SavedRecipes"
                                         IsSelectable="True"
                                         Content="Saved"
                                         Style="{StaticResource VerticalTabBarItemStyle}">
-                            <utu:TabBarItem.Icon>
-                                <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}" />
-                            </utu:TabBarItem.Icon>
-                        </utu:TabBarItem>
-                    </utu:TabBar>
-                </utu:AutoLayout>
+                        <utu:TabBarItem.Icon>
+                            <PathIcon Data="{StaticResource Icon_Outline_Status_Bookmark}" />
+                        </utu:TabBarItem.Icon>
+                    </utu:TabBarItem>
+                </utu:TabBar>
 
                 <utu:AutoLayout PrimaryAxisAlignment="Center"
                                 utu:AutoLayout.CounterAlignment="Stretch"
                                 Margin="0,40"
-                                Spacing="8"
                                 uen:Navigation.Request="!Notifications">
                     <PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
                               utu:AutoLayout.CounterAlignment="Center"

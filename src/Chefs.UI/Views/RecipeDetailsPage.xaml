@@ -279,40 +279,37 @@
                                            TextWrapping="Wrap"
                                            Text="{Binding Steps.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
                                            Style="{StaticResource HeadlineMedium}" />
-                                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <uer:FeedView Source="{Binding Steps}">
-                                        <DataTemplate>
-                                            <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                <uer:FeedView Source="{Binding Steps}" 
+                                              VerticalAlignment="Stretch">
+                                    <DataTemplate>
+                                        <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                 ItemsSource="{Binding Data}">
-                                                <muxc:ItemsRepeater.Layout>
-                                                    <muxc:StackLayout Orientation="Vertical" />
-                                                </muxc:ItemsRepeater.Layout>
-                                                <muxc:ItemsRepeater.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <utu:AutoLayout Margin="-10,8"
-                                                                        Padding="16,18"
-                                                                        PrimaryAxisAlignment="Stretch"
-                                                                        Background="{ThemeResource SurfaceBrush}"
-                                                                        CornerRadius="15">
-                                                            <utu:AutoLayout>
-                                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <muxc:ItemsRepeater.Layout>
+                                                <muxc:StackLayout Orientation="Vertical" />
+                                            </muxc:ItemsRepeater.Layout>
+                                            <muxc:ItemsRepeater.ItemTemplate>
+                                                <DataTemplate>
+                                                    <utu:AutoLayout Margin="-10,8"
+                                                                    Padding="16,18"
+                                                                    PrimaryAxisAlignment="Stretch"
+                                                                    Background="{ThemeResource SurfaceBrush}"
+                                                                    CornerRadius="15">
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                            TextWrapping="Wrap"
                                                                            Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
                                                                            Style="{StaticResource TitleMedium}"
                                                                            FontSize="18" />
-                                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                                        <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                                            TextWrapping="Wrap"
                                                                            Text="{Binding Description}"
                                                                            Style="{StaticResource DisplaySmall}"
                                                                            FontSize="18" />
-                                                            </utu:AutoLayout>
-                                                        </utu:AutoLayout>
-                                                    </DataTemplate>
-                                                </muxc:ItemsRepeater.ItemTemplate>
-                                            </muxc:ItemsRepeater>
-                                        </DataTemplate>
-                                    </uer:FeedView>
-                                </utu:AutoLayout>
+                                                    </utu:AutoLayout>
+                                                </DataTemplate>
+                                            </muxc:ItemsRepeater.ItemTemplate>
+                                        </muxc:ItemsRepeater>
+                                    </DataTemplate>
+                                </uer:FeedView>
                             </utu:AutoLayout>
                         </utu:AutoLayout>
                     </ScrollViewer>
@@ -354,52 +351,48 @@
                                                    TextWrapping="Wrap"
                                                    Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
                                                    Style="{StaticResource HeadlineMedium}" />
-                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-
-                                            <uer:FeedView x:Name="IngredientsFeed"
-                                                          Source="{Binding Ingredients}">
-                                                <DataTemplate>
-                                                    <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                        <uer:FeedView x:Name="IngredientsFeed"
+                                                      VerticalAlignment="Stretch"
+                                                      Source="{Binding Ingredients}">
+                                            <DataTemplate>
+                                                <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
                                                                         ItemsSource="{Binding Data}">
-                                                        <muxc:ItemsRepeater.Layout>
-                                                            <muxc:StackLayout Orientation="Vertical" />
-                                                        </muxc:ItemsRepeater.Layout>
-                                                        <muxc:ItemsRepeater.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                                CornerRadius="15"
-                                                                                PrimaryAxisAlignment="Stretch"
-                                                                                Margin="0,8"
-                                                                                Padding="16,18"
-                                                                                utu:AutoLayout.CounterAlignment="Stretch"
-                                                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                    <utu:AutoLayout Orientation="Horizontal"
+                                                    <muxc:ItemsRepeater.Layout>
+                                                        <muxc:StackLayout Orientation="Vertical" />
+                                                    </muxc:ItemsRepeater.Layout>
+                                                    <muxc:ItemsRepeater.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                            CornerRadius="15"
+                                                                            PrimaryAxisAlignment="Stretch"
+                                                                            Margin="0,8"
+                                                                                Padding="16,18">
+                                                                <utu:AutoLayout Orientation="Horizontal"
                                                                                     Spacing="16">
-                                                                        <ImageIcon x:Name="IngredientImage"
+                                                                    <ImageIcon x:Name="IngredientImage"
                                                                                    Height="24"
                                                                                    Width="24"
                                                                                    Source="{Binding UrlIcon}"
                                                                                    utu:AutoLayout.CounterAlignment="Center"
                                                                                    Margin="0, 0, 0, 3" />
-                                                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                                                        utu:AutoLayout.PrimaryAlignment="Stretch">
-                                                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                                                        TextWrapping="Wrap"
                                                                                        Text="{Binding Name}"
                                                                                        Style="{StaticResource TitleMedium}" />
-                                                                        </utu:AutoLayout>
-                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                    </utu:AutoLayout>
+                                                                    <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                                    TextAlignment="End"
                                                                                    Text="{Binding Quantity}"
                                                                                    utu:AutoLayout.CounterAlignment="Center" />
-                                                                    </utu:AutoLayout>
                                                                 </utu:AutoLayout>
-                                                            </DataTemplate>
-                                                        </muxc:ItemsRepeater.ItemTemplate>
-                                                    </muxc:ItemsRepeater>
-                                                </DataTemplate>
-                                            </uer:FeedView>
-                                        </utu:AutoLayout>
+                                                            </utu:AutoLayout>
+                                                        </DataTemplate>
+                                                    </muxc:ItemsRepeater.ItemTemplate>
+                                                </muxc:ItemsRepeater>
+                                            </DataTemplate>
+                                        </uer:FeedView>
                                     </utu:AutoLayout>
 
                                     <utu:AutoLayout uen:Region.Name="DetailsTab"
@@ -408,34 +401,32 @@
                                                    TextWrapping="Wrap"
                                                    Text="{Binding Steps.Count, Converter={StaticResource StringFormatter},ConverterParameter='{}{0} Items'}"
                                                    Style="{StaticResource HeadlineMedium}" />
-                                        <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <uer:FeedView x:Name="StepsFeed"
-                                                          Source="{Binding Steps}">
-                                                <DataTemplate>
-                                                    <muxc:ItemsRepeater ItemsSource="{Binding Data}">
-                                                        <muxc:ItemsRepeater.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-                                                                                CornerRadius="15"
-                                                                                Margin="0,8">
-                                                                    <utu:AutoLayout Padding="16,18"
-                                                                                    PrimaryAxisAlignment="Center">
-                                                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                        <uer:FeedView x:Name="StepsFeed"
+                                                      VerticalAlignment="Stretch"
+                                                      Source="{Binding Steps}">
+                                            <DataTemplate>
+                                                <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+                                                    <muxc:ItemsRepeater.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+                                                                            CornerRadius="15"
+                                                                            Margin="0,8"
+                                                                            Padding="16,18"
+                                                                            PrimaryAxisAlignment="Stretch">
+                                                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
                                                                                    TextWrapping="Wrap"
                                                                                    Text="{Binding Number, Converter={StaticResource StringFormatter}, ConverterParameter='Step {0}'}"
                                                                                    Style="{StaticResource TitleMedium}" />
-                                                                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                                                <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
                                                                                    TextWrapping="Wrap"
                                                                                    Text="{Binding Description}"
                                                                                    Style="{StaticResource LabelSmall}" />
-                                                                    </utu:AutoLayout>
-                                                                </utu:AutoLayout>
-                                                            </DataTemplate>
-                                                        </muxc:ItemsRepeater.ItemTemplate>
-                                                    </muxc:ItemsRepeater>
-                                                </DataTemplate>
-                                            </uer:FeedView>
-                                        </utu:AutoLayout>
+                                                            </utu:AutoLayout>
+                                                        </DataTemplate>
+                                                    </muxc:ItemsRepeater.ItemTemplate>
+                                                </muxc:ItemsRepeater>
+                                            </DataTemplate>
+                                        </uer:FeedView>
                                     </utu:AutoLayout>
 
                                     <utu:AutoLayout uen:Region.Name="ReviewsTab"
@@ -479,14 +470,12 @@
                                             PrimaryAxisAlignment="Center"
                                             Orientation="Horizontal"
                                             Padding="18,0">
-                                <utu:AutoLayout Orientation="Horizontal"
-                                                utu:AutoLayout.CounterAlignment="Center"
-                                                utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
-                                               TextAlignment="Center"
-                                               Text="Ingredients"
-                                               Style="{StaticResource HeadlineMedium}" />
-                                </utu:AutoLayout>
+                                <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                           utu:AutoLayout.CounterAlignment="Center"
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
+                                           TextAlignment="Start"
+                                           Text="Ingredients"
+                                           Style="{StaticResource HeadlineMedium}" />
                                 <utu:AutoLayout Background="{ThemeResource PrimaryMediumBrush}"
                                                 Padding="16,8"
                                                 CornerRadius="12"
@@ -499,47 +488,37 @@
                                                Style="{StaticResource BodySmall}" />
                                 </utu:AutoLayout>
                             </utu:AutoLayout>
-                            <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <ScrollViewer HorizontalScrollMode="Disabled"
-                                              VerticalScrollBarVisibility="Hidden"
-                                              utu:AutoLayout.PrimaryAlignment="Stretch">
-                                    <utu:AutoLayout Margin="18,0,18,18"
-                                                    Spacing="28"
-                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                        <utu:AutoLayout>
-                                            <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                                ItemsSource="{Binding Ingredients}">
-                                                <muxc:ItemsRepeater.Layout>
-                                                    <muxc:StackLayout Orientation="Vertical" />
-                                                </muxc:ItemsRepeater.Layout>
-                                                <muxc:ItemsRepeater.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                            <CheckBox Content="{Binding NameQuantity}"
+                            <ScrollViewer HorizontalScrollMode="Disabled"
+                                              VerticalAlignment="Stretch"
+                                              VerticalScrollBarVisibility="Hidden">
+                                <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                                                        Margin="18,0,18,18"
+                                                        ItemsSource="{Binding Ingredients}">
+                                    <muxc:ItemsRepeater.Layout>
+                                        <muxc:StackLayout Orientation="Vertical" />
+                                    </muxc:ItemsRepeater.Layout>
+                                    <muxc:ItemsRepeater.ItemTemplate>
+                                        <DataTemplate>
+                                            <utu:AutoLayout PrimaryAxisAlignment="Center">
+                                                <CheckBox Content="{Binding NameQuantity}"
                                                                       Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                                       BorderBrush="{ThemeResource OnSurfaceMediumBrush}"
                                                                       utu:AutoLayout.CounterAlignment="Start"
                                                                       Height="54" />
-                                                            <utu:Divider Foreground="#E8EEF7"
+                                                <utu:Divider Foreground="#E8EEF7"
                                                                          utu:AutoLayout.CounterAlignment="Stretch"
                                                                          Style="{StaticResource DividerStyle}" />
-                                                        </utu:AutoLayout>
-                                                    </DataTemplate>
-                                                </muxc:ItemsRepeater.ItemTemplate>
-                                            </muxc:ItemsRepeater>
-                                        </utu:AutoLayout>
-
-
-                                    </utu:AutoLayout>
-                                </ScrollViewer>
-                            </utu:AutoLayout>
-                            <utu:AutoLayout x:Name="ButtonLayout"
-                                            Padding="18">
-                                <Button Background="{ThemeResource PrimaryBrush}"
-                                        Content="Done!"
-                                        Height="56"
-                                        Command="{Binding IngredientsChecklist}" />
-                            </utu:AutoLayout>
+                                            </utu:AutoLayout>
+                                        </DataTemplate>
+                                    </muxc:ItemsRepeater.ItemTemplate>
+                                </muxc:ItemsRepeater>
+                            </ScrollViewer>
+                            <Button Background="{ThemeResource PrimaryBrush}"
+                                    x:Name="ButtonLayout"
+                                    Margin="18"
+                                    Content="Done!"
+                                    Height="56"
+                                    Command="{Binding IngredientsChecklist}" />
                         </utu:AutoLayout>
                     </Grid>
                 </utu:AutoLayout>
