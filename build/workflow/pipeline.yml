@@ -7,6 +7,16 @@ trigger:
       - stable
       - release/stable/*
 
+  paths:
+    include:
+    - '/'
+    exclude:
+    - .dependabot/
+    - .github/
+    # don't trigger the CI if only docs files are changed
+    - doc/*
+    - '**/*.md'
+
 pr: 
   branches:
     include:
@@ -16,9 +26,19 @@ pr:
       - stable
       - release/stable/*
 
+  paths:
+    include:
+    - '/'
+    exclude:
+    - .dependabot/
+    - .github/
+    # don't trigger the CI if only docs files are changed
+    - doc/*
+    - '**/*.md'
+
 variables:
   # Path where packages (nuget or app packages) will be copied to.
-  PackageOutputPath: $(Build.ArtifactStagingDirectory)
+  PackageOutputPath: $(build.artifactstagingdirectory)
 
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
   IsReleaseBranch: $[or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))]
@@ -28,5 +48,9 @@ variables:
   AndroidNdkDirectory: C:\Microsoft\AndroidNDK64\android-ndk-r16b
 
 jobs:
-- template: build-windows.yml
+- template: build-solution.yml
+- template: build-android.yml
+- template: build-ios-catalyst.yml
+- template: build-wasm.yml
+- template: build-skia-gtk.yml
 - template: uitests-wasm.yml

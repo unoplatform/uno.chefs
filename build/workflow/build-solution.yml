@@ -1,13 +1,9 @@
 jobs:
-- job: Windows
+- job: Build_Solution
   pool:
     vmImage: windows-2022
   
   steps:
-  - checkout: self
-    fetchDepth: 0
-    clean: true
-
   - template: templates/gitversion.yml
   - template: templates/dotnet6-install-windows.yml
 
@@ -24,11 +20,11 @@ jobs:
       msbuildLocationMethod: version
       msbuildVersion: latest
       maximumCpuCount: true
-      msbuildArguments: /m /r "/p:PackageOutputPath=$(build.artifactstagingdirectory)\nuget" "/p:PackageVersion=%GITVERSION_FullSemVer%" "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /detailedsummary /bl:$(build.artifactstagingdirectory)\msbuild.binlog
+      msbuildArguments: /m /r "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /detailedsummary /bl:$(build.artifactstagingdirectory)\build-solution.binlog
 
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
       PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: uno-ui-toolkit-drop
+      ArtifactName: Solution
       ArtifactType: Container

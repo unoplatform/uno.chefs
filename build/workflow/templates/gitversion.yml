@@ -1,10 +1,20 @@
-
 steps:
+  - checkout: self
+    fetchDepth: 0
+    clean: true
+
   - task: UseDotNet@2
-    displayName: 'Use .NET Runtime'
+    retryCountOnTaskFailure: 3
+    displayName: 'Use .Net Core runtime 6.0.0'
     inputs:
       packageType: runtime
-      version: 6.0.x
+      version: 6.0.0
+
+  # Restore nuget.org to the list of existing sources, .NET 6 Pre 2 may somehow remove it
+  - powershell: |
+      dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org | Out-Null
+      $global:LASTEXITCODE = 0
+    displayName: Adjust nuget.org source 
 
   - task: gitversion/setup@0
     inputs:
