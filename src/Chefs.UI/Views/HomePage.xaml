@@ -59,17 +59,16 @@
                                     <utu:AutoLayout Padding="16"
                                                     Spacing="16"
                                                     Orientation="Horizontal">
-                                        <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+                                        <utu:AutoLayout PrimaryAxisAlignment="Center"
+                                                        utu:AutoLayout.CounterAlignment="Center"
                                                         utu:AutoLayout.PrimaryAlignment="Stretch">
-                                            <utu:AutoLayout PrimaryAxisAlignment="Center">
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
                                                            TextWrapping="Wrap"
                                                            Text="{Binding Name}"
                                                            Style="{StaticResource TitleMedium}" />
-                                                <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                            <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
                                                            TextWrapping="Wrap"
                                                            Text="{Binding TimeCal}" />
-                                            </utu:AutoLayout>
                                         </utu:AutoLayout>
                                         <ToggleButton utu:AutoLayout.CounterAlignment="Center"
                                                       IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -219,14 +218,12 @@
                         <utu:AutoLayout Spacing="8"
                                         PrimaryAxisAlignment="Center"
                                         Orientation="Horizontal">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock x:Name="TrendingNowTitle"
-                                           Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Text="Trending now"
-                                           utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
-                            </utu:AutoLayout>
+                            <TextBlock x:Name="TrendingNowTitle"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       utu:AutoLayout.PrimaryAlignment="Stretch"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Text="Trending now"
+                                       Style="{StaticResource TitleLarge}" />
                             <Button Background="Transparent"
                                     Command="{Binding ShowAll}"
                                     Padding="0">
@@ -328,14 +325,12 @@
                         <utu:AutoLayout Spacing="8"
                                         PrimaryAxisAlignment="Center"
                                         Orientation="Horizontal">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock x:Name="RecentlyAddedTitle"
+                            <TextBlock x:Name="RecentlyAddedTitle"
+                                           utu:AutoLayout.CounterAlignment="Start"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch"
                                            Foreground="{ThemeResource SurfaceInverseBrush}"
                                            Text="Recently Added"
-                                           utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
-                            </utu:AutoLayout>
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllRecentlyAdded}"
                                     Padding="0">
@@ -507,14 +502,12 @@
                         <utu:AutoLayout Spacing="8"
                                         PrimaryAxisAlignment="Center"
                                         Orientation="Horizontal">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock x:Name="LunchTitle"
-                                           Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Text="Lunch"
-                                           utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
-                            </utu:AutoLayout>
+                            <TextBlock x:Name="LunchTitle"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       utu:AutoLayout.PrimaryAlignment="Stretch"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Text="Lunch"
+                                       Style="{StaticResource TitleLarge}" />
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllLunch}"
                                     Padding="0">
@@ -550,12 +543,12 @@
                         <utu:AutoLayout Spacing="8"
                                         PrimaryAxisAlignment="Center"
                                         Orientation="Horizontal">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
+                            <utu:AutoLayout >
                                 <TextBlock x:Name="DinnerTitle"
+                                           utu:AutoLayout.CounterAlignment="Start"
+                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                            Foreground="{ThemeResource SurfaceInverseBrush}"
                                            Text="Dinner"
-                                           utu:AutoLayout.CounterAlignment="Start"
                                            Style="{StaticResource TitleLarge}" />
                             </utu:AutoLayout>
                             <Button Background="Transparent"
@@ -593,14 +586,12 @@
                         <utu:AutoLayout Spacing="8"
                                         PrimaryAxisAlignment="Center"
                                         Orientation="Horizontal">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <TextBlock x:Name="SnackTitle"
-                                           Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Text="Snack"
-                                           utu:AutoLayout.CounterAlignment="Start"
-                                           Style="{StaticResource TitleLarge}" />
-                            </utu:AutoLayout>
+                            <TextBlock x:Name="SnackTitle"
+                                       utu:AutoLayout.CounterAlignment="Start"
+                                       utu:AutoLayout.PrimaryAlignment="Stretch"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Text="Snack"
+                                       Style="{StaticResource TitleLarge}" />
                             <Button Background="Transparent"
                                     Command="{Binding ShowAllSnack}"
                                     Padding="0">
