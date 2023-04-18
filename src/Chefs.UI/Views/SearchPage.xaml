@@ -251,13 +251,12 @@
                                         Visibility="{Binding ItemsSource.Count,
                                                              ElementName=HistoryRepeater, 
                                                              Converter={StaticResource GreaterThanZeroToVisibleConverter}}">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                <TextBlock x:Name="RecentSearches"
-                                           Text="Recent searches"
-                                           Foreground="{ThemeResource SurfaceInverseBrush}"
-                                           Style="{StaticResource TitleLarge}"
-                                           Visibility="{Binding Searched, Converter={StaticResource InvertBool}}" />
-                            </utu:AutoLayout>
+                            <TextBlock x:Name="RecentSearches"
+                                       Text="Recent searches"
+                                       Foreground="{ThemeResource SurfaceInverseBrush}"
+                                       Style="{StaticResource TitleLarge}"
+                                       Visibility="{Binding Searched, Converter={StaticResource InvertBool}}"
+                                       utu:AutoLayout.CounterAlignment="Center"/>
                             <Button Command="{Binding CloseRecentSearches}"
                                     utu:AutoLayout.CounterAlignment="Center"
                                     Padding="0"
@@ -318,14 +317,12 @@
                         </muxc:ItemsRepeater>
                     </utu:AutoLayout>
 
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
+                    <TextBlock x:Name="ItemsCount"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    Visibility="{Binding Searched}">
-                        <TextBlock x:Name="ItemsCount"
+                                    Visibility="{Binding Searched}"
                                    Foreground="{ThemeResource SurfaceInverseBrush}"
                                    Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} Items', UpdateSourceTrigger=PropertyChanged}"
                                    Style="{StaticResource TitleLarge}" />
-                    </utu:AutoLayout>
 
                     <!-- Workaround for https://github.com/unoplatform/uno/issues/11835 -->
                     <!-- Databinding fix to avoid null data context -->

@@ -85,16 +85,15 @@
                 </utu:AutoLayout>
                 <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
                               HorizontalScrollMode="Disabled">
-                    <utu:AutoLayout Padding="18">
-                        <uer:FeedView x:Name="ReviewsFeed"
-                                      Source="{Binding Reviews}">
-                            <DataTemplate>
-                                <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
+                    <uer:FeedView x:Name="ReviewsFeed"
+                                      Source="{Binding Reviews}"
+                                      Margin="18">
+                        <DataTemplate>
+                            <muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
                                                     ItemTemplate="{StaticResource ReviewDataTemplate}"
                                                     ItemsSource="{Binding Data}" />
-                            </DataTemplate>
-                        </uer:FeedView>
-                    </utu:AutoLayout>
+                        </DataTemplate>
+                    </uer:FeedView>
                 </ScrollViewer>
             </utu:AutoLayout>
             <utu:AutoLayout Padding="18,24"

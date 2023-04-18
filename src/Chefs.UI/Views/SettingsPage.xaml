@@ -114,18 +114,16 @@
                                             Padding="0, 0, 0, 24">
                                 <utu:AutoLayout Spacing="16"
                                                 PrimaryAxisAlignment="Center">
-                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-                                        <Border x:Name="ImageBorder"
+                                    <Border x:Name="ImageBorder"
                                                 CornerRadius="30"
-                                                utu:AutoLayout.CounterAlignment="Start"
+                                                utu:AutoLayout.CounterAlignment="Center"
                                                 Height="100"
                                                 Width="100">
-                                            <Image Source="{Binding Profile.UrlProfileImage}"
+                                        <Image Source="{Binding Profile.UrlProfileImage}"
                                                    Stretch="UniformToFill"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Center" />
-                                        </Border>
-                                    </utu:AutoLayout>
+                                    </Border>
                                     <utu:AutoLayout Spacing="6"
                                                     PrimaryAxisAlignment="Center"
                                                     utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -243,13 +241,12 @@
                                                Height="24"
                                                Width="24" />
                                     </utu:AutoLayout>
-                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                   utu:AutoLayout.CounterAlignment="Center"
+                                                    utu:AutoLayout.PrimaryAlignment="Stretch"
                                                    TextWrapping="Wrap"
                                                    Text="App notifications"
                                                    Style="{StaticResource TitleMedium}" />
-                                    </utu:AutoLayout>
                                     <ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                   Foreground="{ThemeResource PrimaryBrush}"
                                                   utu:AutoLayout.CounterAlignment="Center"
@@ -282,13 +279,12 @@
                                                Height="24"
                                                Width="24" />
                                     </utu:AutoLayout>
-                                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                                    utu:AutoLayout.PrimaryAlignment="Stretch">
-                                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                    <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                                   utu:AutoLayout.CounterAlignment="Center"
+                                                    utu:AutoLayout.PrimaryAlignment="Stretch"
                                                    TextWrapping="Wrap"
                                                    Text="Night mode"
                                                    Style="{StaticResource TitleMedium}" />
-                                    </utu:AutoLayout>
                                     <ToggleSwitch IsOn="{Binding Settings.IsDark, 
                                                  Mode=TwoWay, 
                                                  UpdateSourceTrigger=PropertyChanged}"
