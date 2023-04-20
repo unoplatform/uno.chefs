@@ -36,9 +36,6 @@
 	<Choose>
 		<When Condition="'$(TargetFramework)'=='net6.0-android'">
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
-				<AndroidKeyStore>true</AndroidKeyStore>
-				<AndroidSigningKeyStore>Android\chefs.keystore</AndroidSigningKeyStore>
-				<AndroidSigningKeyAlias>chefs</AndroidSigningKeyAlias>
 				<RunAOTCompilation>true</RunAOTCompilation>
 			</PropertyGroup>
 			<ItemGroup>
