@@ -1,0 +1,102 @@
+jobs:
+- job: iOS_Catalyst
+  strategy:
+    maxParallel: 2
+    matrix:
+      iOS:
+        BuildTargetFramework: net6.0-ios
+        ArtifactName: iOS
+        ApplicationBuildNumberOffset: 50
+        BuildCommand: publish
+      Catalyst:
+        BuildTargetFramework: net6.0-maccatalyst
+        ArtifactName: Catalyst
+        ApplicationBuildNumberOffset: 50
+        BuildCommand: build
+  pool:
+    vmImage: macos-12
+  
+  variables:
+  - group: 'unoplatform.apple.ios.appstore.distribution'
+
+  steps:
+  - task: InstallAppleCertificate@2
+    displayName: Install Certificate
+    inputs:
+      certSecureFile: UnoPlatform-Apple-Distribution.p12
+      certPwd: $(appleappstorecertificatepassword)
+      keychain: temp
+      # disabled because of azure devops failing to uninstall as of 2022-11-16
+      # deleteCert: true
+
+  - task: InstallAppleCertificate@2
+    displayName: Install Certificate
+    inputs:
+      certSecureFile: UnoPlatform-MacInstaller.p12
+      certPwd: $(appleappstorecertificatepassword)
+      keychain: temp
+      # disabled because of azure devops failing to uninstall as of 2022-11-16
+      # deleteCert: true
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Catalyst.provisionprofile
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Canary_Catalyst.provisionprofile
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_iOS.mobileprovision
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Canary_iOS.mobileprovision
+
+  - template: templates/dotnet6-install-mac.yml
+  - template: templates/canary-updater.yml
+
+  - task: UseDotNet@2
+    condition: eq(variables['IsCanaryBranch'], true)
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: runtime
+      version: 3.1.3
+
+  - template: templates/gitversion.yml
+
+  - bash: |
+      cd $(build.sourcesdirectory)/src/Chefs.Mobile
+      echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
+      dotnet $(BuildCommand) -f $(BuildTargetFramework) -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
+    displayName: Build project for Release - $(BuildTargetFramework)
+
+  - task: CopyFiles@2
+    displayName: 'Publish Binaries'
+    inputs:
+      SourceFolder: $(build.sourcesdirectory)/src/Chefs.Mobile/bin/Release/
+      Contents:  |
+        **/*.apk
+        **/*.ipa
+        **/*.dSym/**
+        **/*.pkg
+      TargetFolder: $(build.artifactstagingdirectory)
+      CleanTargetFolder: false
+      OverWrite: false
+      flattenFolders: false
+
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: $(ArtifactName)
+      ArtifactType: Container

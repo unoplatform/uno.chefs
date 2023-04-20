@@ -1,0 +1,39 @@
+jobs:
+- job: Skia_GTK
+  timeoutInMinutes: 90
+  pool:
+    vmImage: windows-2022
+
+  steps:
+
+  - task: UseDotNet@2
+    condition: eq(variables['IsCanaryBranch'], true)
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: runtime
+      version: 3.1.3
+
+  - template: templates/gitversion.yml
+  - template: templates/dotnet6-install-windows.yml
+  - template: templates/canary-updater.yml
+
+  - task: MSBuild@1
+    displayName: Build project
+    retryCountOnTaskFailure: 3
+    inputs:
+      solution: src\Chefs.Skia.Gtk\Chefs.Skia.Gtk.csproj
+      msbuildArguments: /ds /m /r /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/build-skia-gtk.binlog
+
+  - task: CopyFiles@2
+    displayName: Copy Skia output
+    inputs:
+      SourceFolder: src\Chefs.Skia.Gtk\bin\Release\net6.0
+      Contents: '**/*.*'
+      TargetFolder: $(build.artifactstagingdirectory)/bin
+
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: skia-gtk
+      ArtifactType: Container
