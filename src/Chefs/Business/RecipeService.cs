@@ -11,7 +11,6 @@ public class RecipeService : IRecipeService
     private readonly IWritableOptions<SearchHistory> _searchOptions;
     private readonly IMessenger _messenger;
     private Signal _refreshRecipes = new();
-    private int lastTextLength = 0;
 
     public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory, IMessenger messenger) 
         => (_recipeEndpoint, _searchOptions, _messenger) = (recipeEndpoint, searchHistory, messenger);
@@ -50,7 +49,6 @@ public class RecipeService : IRecipeService
     {
         if (term.IsNullOrEmpty())
         {
-            lastTextLength = 0;
             return (await _recipeEndpoint.GetAll(ct)).Select(r => new Recipe(r)).ToImmutableList();
         }
         else
@@ -128,21 +126,23 @@ public class RecipeService : IRecipeService
 
     private async Task SaveSearchHistory(string text)
     {
-        if (lastTextLength <= text.Count()) lastTextLength = text.Count();
-        
         var searchHistory = _searchOptions.Value.Searches;
+        var last = searchHistory.LastOrDefault();
+
         if (searchHistory is not null && !text.IsNullOrEmpty())
         {
-            if(searchHistory.Count == 0 || lastTextLength == 1)
+            if (searchHistory.Any(x => x.Contains(text)))
+            {
+                return;
+            }
+            else if (last!.Contains(text) || text!.Contains(last))
+            {
+                await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Replace(last!
+                    ?? string.Empty, text).Take(3).ToImmutableList() });
+            }
+            else
             {
                 await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Add(text) });
-            }
-            else if ((text.Contains(searchHistory.LastOrDefault()!) 
-                || searchHistory.LastOrDefault()!.Contains(text)) 
-                && lastTextLength == text.Count())
-            {
-                await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Replace(searchHistory.LastOrDefault() 
-                    ?? string.Empty, text) });
             }
         }
     }

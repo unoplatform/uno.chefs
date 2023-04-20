@@ -1,6 +1,5 @@
 ﻿using Chefs.Business;
 using System.Collections.Immutable;
-using Uno.Extensions;
 
 namespace Chefs.Presentation;
 
@@ -36,13 +35,10 @@ public partial class SearchModel
 
     public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetFromChefs);
 
-    public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
+    public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory(), _searchSignal);
 
-    public async ValueTask ApplySearchHistory(string term, CancellationToken ct)
-    {
-        await Term.Update(s => term, ct);
-        await Search(ct);
-    }
+    public async ValueTask ApplySearchHistory(string term, CancellationToken ct) => await Term.Update(s => term, ct);
+    
 
     private IFeed<IImmutableList<Recipe>> Results => Term
         .SelectAsync(_recipeService.Search);
@@ -50,7 +46,15 @@ public partial class SearchModel
     private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs) 
 		=> inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
 
-    private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
+    private bool GetSearched((SearchFilter filter, string term) inputs)
+    { 
+        var searched = inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty(); 
+        if(!searched)
+        {
+            _searchSignal.Raise();
+        }
+        return searched;
+    }
      
     public async ValueTask CloseRecentSearches(CancellationToken ct)
     {
@@ -59,7 +63,4 @@ public partial class SearchModel
 
     public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
         await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
-
-    public async ValueTask Search(CancellationToken ct) => _searchSignal.Raise();
-
 }
