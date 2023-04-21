@@ -19,8 +19,25 @@
 
     <!-- Specifying MinWidth and HorizontalAlignment as a workaround for iOS while using LeftDrawerFlyout -->
     <!-- https://github.com/unoplatform/uno.chefs/issues/423 -->
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup>
+            <VisualState x:Name="Narrow">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0" />
+                </VisualState.StateTriggers>
+            </VisualState>
+            <VisualState x:Name="Wide">
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="800" />
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="MainLayout.MinWidth"
+                            Value="{StaticResource DrawerFlyoutWidth}" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
     <Grid x:Name="MainLayout"
-          MinWidth="{StaticResource DrawerFlyoutWidth}"
           HorizontalAlignment="Left">
         <Frame HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch"
