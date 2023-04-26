@@ -5,11 +5,13 @@ jobs:
 
   variables:
   - group: 'UnoPlatform KeyStore'
+  - name: VersionCodeOffset
+    value: 1
 
   steps:
-  - template: templates/gitversion.yml
   - template: templates/dotnet6-install-windows.yml
   - template: templates/canary-updater.yml
+  - template: templates/gitversion.yml
 
   - task: DownloadSecureFile@1
     name: keyStore

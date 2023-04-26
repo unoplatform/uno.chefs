@@ -1,8 +1,4 @@
 steps:
-  - checkout: self
-    fetchDepth: 0
-    clean: true
-
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
     displayName: 'Use .Net Core runtime 6.0.0'
@@ -26,3 +22,5 @@ steps:
       useConfigFile: true
       configFilePath: build/gitversion.yml
     displayName: Use GitVersion
+
+  - template: set-app-versions.yml
