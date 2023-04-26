@@ -15,7 +15,7 @@ steps:
       useNuGetOrg: true
       usePrivateFeed: false
       mergeBranch: true
-      branchToMerge: master
+      branchToMerge: main
       nugetUpdaterVersion: 2.3.0-alpha.35
       packageAuthor: 'nventive,uno platform'
       summaryFile: '$(build.artifactstagingdirectory)/Canary.md'
