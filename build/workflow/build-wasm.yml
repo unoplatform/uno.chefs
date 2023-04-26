@@ -8,7 +8,8 @@ jobs:
 
   variables:
     SkipUnknownFrameworks: true
-
+  
+  steps:
   - template: templates/gitversion.yml
 
   - task: UseDotNet@2
