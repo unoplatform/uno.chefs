@@ -5,9 +5,13 @@ jobs:
     vmImage: windows-2022
 
   steps:
-  - template: templates/gitversion.yml
+  - checkout: self
+    fetchDepth: 0
+    clean: 'true'
+
   - template: templates/dotnet6-install-windows.yml
   - template: templates/canary-updater.yml
+  - template: templates/gitversion.yml
 
   - task: MSBuild@1
     displayName: Build project

@@ -10,7 +10,9 @@ jobs:
     SkipUnknownFrameworks: true
   
   steps:
-  - template: templates/gitversion.yml
+  - checkout: self
+    fetchDepth: 0
+    clean: 'true'
 
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
@@ -19,6 +21,7 @@ jobs:
       version: 6.0.401
 
   - template: templates/canary-updater.yml
+  - template: templates/gitversion.yml
 
   - bash: |
       dotnet build /ds /m /r /p:DisableNet6MobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
