@@ -82,6 +82,8 @@ steps:
       usePrivateFeed: false
       mergeBranch: true
       branchToMerge: 'main'
+      gitUserEmail: 'ci@ci.com'
+      gitUserName: 'ci'
       nugetUpdaterVersion: '2.3.0-alpha.35'
       packageAuthor: 'nventive,uno platform'
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
