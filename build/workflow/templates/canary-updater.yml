@@ -18,9 +18,10 @@ steps:
       version: 3.1.3
 
   - task: nventiveCanaryUpdater@5
+    displayName: 'Canary Update'
     condition: eq(variables['IsCanaryBranch'], true)
     inputs:
-      solution: 'src/Chefs.sln'
+      solution: src/Chefs.sln
       useNuGetOrg: true
       pushBranch: false
       usePrivateFeed: false
