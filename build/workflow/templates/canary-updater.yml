@@ -84,7 +84,5 @@ steps:
       branchToMerge: 'main'
       nugetUpdaterVersion: '2.3.0-alpha.35'
       packageAuthor: 'nventive,uno platform'
-      gitUserEmail: 'ci@ci.com'
-      gitUserName: 'ci'
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
       resultFile: '$(Build.ArtifactStagingDirectory)/Results.json'
