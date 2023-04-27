@@ -20,14 +20,14 @@ steps:
   - task: nventiveCanaryUpdater@5
     condition: eq(variables['IsCanaryBranch'], true)
     inputs:
-      solution: Chefs.sln
+      solution: 'src/Chefs.sln'
       useNuGetOrg: true
+      pushBranch: false
       usePrivateFeed: false
       mergeBranch: true
-      branchToMerge: main
-      nugetUpdaterVersion: 2.3.0-alpha.35
+      branchToMerge: 'main'
+      nugetUpdaterVersion: '2.3.0-alpha.35'
       packageAuthor: 'nventive,uno platform'
-      summaryFile: '$(build.artifactstagingdirectory)/Canary.md'
 
   - powershell: |
       dotnet tool uninstall nventive.nuget.updater.tool --tool-path $(Agent.TempDirectory)
