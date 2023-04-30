@@ -3,6 +3,10 @@ jobs:
   pool:
     vmImage: windows-2022
   
+  variables:
+  - name: VersionCodeOffset
+    value: 50
+
   steps:
   - template: templates/dotnet6-install-windows.yml
   - template: templates/canary-updater.yml

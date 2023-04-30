@@ -5,6 +5,8 @@ jobs:
 
   variables:
   - group: 'UnoPlatform KeyStore'
+  - name: VersionCodeOffset
+    value: 1
 
   steps:
   - template: templates/dotnet6-install-windows.yml
