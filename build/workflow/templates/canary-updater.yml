@@ -1,5 +1,6 @@
 steps:
   - checkout: self
+    fetchDepthh: 0
     persistCredentials: true
 
   - task: UseDotNet@2
