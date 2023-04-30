@@ -55,13 +55,13 @@
                      Importance="$(_MessageImportance)" />
 
 		<PropertyGroup>
-			<_SourceBasePath>$(MSBuildThisFileDirectory)../$(AppName)/$(AppName)</_SourceBasePath>
+			<_SourceBasePath>$(MSBuildThisFileDirectory)../../src/$(AppName)/$(AppName)</_SourceBasePath>
 			<_ManifestPath>$(_SourceBasePath).Droid/Properties/AndroidManifest.xml</_ManifestPath>
 			<_PlistFilePath>$(_SourceBasePath).iOS/Info.plist</_PlistFilePath>
 			<_macPlistFilePath>$(_SourceBasePath).macOS/Info.plist</_macPlistFilePath>
 			<_AppxManifestPath>$(_SourceBasePath).UWP/Package.appxmanifest</_AppxManifestPath>
 			
-			<_mobileSourceBasePath>../$(AppName)/$(AppName).Mobile</_mobileSourceBasePath>
+			<_mobileSourceBasePath>../../src/$(AppName)/$(AppName).Mobile</_mobileSourceBasePath>
 			<_MobileAndroidManifestPath>$(_mobileSourceBasePath)/Android/AndroidManifest.xml</_MobileAndroidManifestPath>
 			<_catalystPlistFilePath>$(_mobileSourceBasePath)/MacCatalyst/Info.plist</_catalystPlistFilePath>
 			<_MobileiOSPlistFilePath>$(_mobileSourceBasePath)/iOS/Info.plist</_MobileiOSPlistFilePath>
