@@ -23,4 +23,4 @@ steps:
       configFilePath: build/gitversion.yml
     displayName: Use GitVersion
 
- - template: set-app-versions.yml
+  - template: set-app-versions.yml
