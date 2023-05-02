@@ -21,4 +21,8 @@
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.6.0-dev.40" />
+	</ItemGroup>
+
 </Project>

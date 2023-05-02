@@ -25,23 +25,24 @@
 		<PackageReference Include="Uno.WinUI" Version="4.9.0-dev.357" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Uno.Extensions.Configuration" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Core" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Hosting" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Http" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Http.Refit" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Localization.WinUI" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Logging.Serilog" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Logging.WinUI" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Navigation" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Reactive" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Serialization" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Serialization.Http" Version="2.3.6" />
-	  <PackageReference Include="Uno.Extensions.Serialization.Refit" Version="2.3.6" />
+	  <PackageReference Update="Uno.Extensions.Configuration" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Core" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Hosting" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Hosting.WinUI" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Http" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Http.Refit" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Localization.WinUI" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Logging.Serilog" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Logging.WinUI" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Navigation" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Navigation.Toolkit.WinUI" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Navigation.WinUI" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Reactive" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Reactive.Messaging" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Reactive.WinUI" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Serialization" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Serialization.Http" Version="2.3.10" />
+	  <PackageReference Update="Uno.Extensions.Serialization.Refit" Version="2.3.10" />
+	  <PackageReference Update="Uno.Toolkit.WinUI.Material" Version="2.6.0-dev.40" />
 	</ItemGroup>
 </Project>
