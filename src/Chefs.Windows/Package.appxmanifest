@@ -7,14 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="E2821155-50B7-468D-A15B-E0EAF55DAC2B"
+    Name="70D25C6A-8772-48DE-97B1-7FCE43190D6B"
     Publisher="O=Chefs"
     Version="1.0.0.0" />
 
   <Properties>
 	<DisplayName>Chefs</DisplayName>
 	<PublisherDisplayName>Chefs</PublisherDisplayName>
-	<Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -32,14 +31,9 @@
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
         DisplayName="Chefs"
-        Description="Chefs"
-        BackgroundColor="#FFFFFF"
-        Square150x150Logo="Images\MediumTile.png"
-        Square44x44Logo="Images\AppIcon.png">
-        <uap:DefaultTile Wide310x150Logo="Images\WideTile.png"  Square71x71Logo="Images\SmallTile.png" Square310x310Logo="Images\LargeTile.png">
-        </uap:DefaultTile >
-        <uap:SplashScreen BackgroundColor="#FFFFFF"  Image="Images\SplashScreen.png"/>
-        <uap:LockScreen BadgeLogo="Images\BadgeLogo.png" Notification="badgeAndTileText"/>
+        Description="Chefs">
+		  <uap:SplashScreen />
+		  <uap:DefaultTile />
       </uap:VisualElements>
     </Application>
   </Applications>

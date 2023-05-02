@@ -12,15 +12,15 @@ export UNO_UITEST_PROJECT=$BUILD_SOURCESDIRECTORY/src/Chefs.UITests/Chefs.UITest
 export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/src/Chefs.UITests/bin/Release/net48/Chefs.UITests.dll
 export UNO_UITEST_LOGFILE=$BUILD_ARTIFACTSTAGINGDIRECTORY/screenshots/wasm/nunit-log.txt
 export UNO_UITEST_WASM_PROJECT=$BUILD_SOURCESDIRECTORY/src/Chefs.Wasm/Chefs.Wasm.csproj
-export UNO_UITEST_WASM_OUTPUT_PATH=$BUILD_SOURCESDIRECTORY/src/Chefs.Wasm/bin/Release/net6.0/dist/
+export UNO_UITEST_WASM_OUTPUT_PATH=$BUILD_SOURCESDIRECTORY/src/Chefs.Wasm/bin/Release/net7.0/dist/
 export UNO_UITEST_NUNIT_VERSION=3.11.1
 export UNO_UITEST_DOTNETSERVE_VERSION=1.10.112
 export UNO_UITEST_NUGET_URL=https://dist.nuget.org/win-x86-commandline/v5.7.0/nuget.exe
 
 cd $BUILD_SOURCESDIRECTORY
 
-msbuild /r /p:Configuration=Release $UNO_UITEST_PROJECT
-dotnet build /p:Configuration=Release $UNO_UITEST_WASM_PROJECT /p:IsUiAutomationMappingEnabled=True /p:DisableNet6MobileTargets=True
+dotnet build /r /p:Configuration=Release $UNO_UITEST_PROJECT
+dotnet build /p:Configuration=Release $UNO_UITEST_WASM_PROJECT /p:IsUiAutomationMappingEnabled=True /p:DisableNetMobileTargets=True
 
 # install dotnet serve / Remove as needed
 dotnet tool uninstall dotnet-serve -g || true
