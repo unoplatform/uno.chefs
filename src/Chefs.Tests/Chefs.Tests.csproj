@@ -20,9 +20,4 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="Uno.Toolkit.WinUI.Material" Version="2.6.0-dev.40" />
-	</ItemGroup>
-
 </Project>
