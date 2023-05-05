@@ -1,6 +1,6 @@
 ﻿namespace Chefs.Data;
 
-public enum OrganizeCategories
+public enum OrganizeCategory
 {
     Recommended,
     Popular,

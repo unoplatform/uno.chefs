@@ -26,7 +26,7 @@ public partial record Recipe: IChefEntity
     public string? Name { get; init; }
     public int Serves { get; init; }
     public TimeSpan CookTime { get; init; }
-    public Difficulties Difficulty { get; init; }
+    public Difficulty Difficulty { get; init; }
     public string? Calories { get; init; }
     public string? Details { get; init; }
     public Category Category { get; init; }

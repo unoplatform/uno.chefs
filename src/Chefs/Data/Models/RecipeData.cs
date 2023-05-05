@@ -12,7 +12,7 @@ public class RecipeData
     public string? Name { get; set; }
     public int Serves { get; set; }
     public TimeSpan CookTime { get; set; }
-    public Difficulties Difficulty { get; set; }
+    public Difficulty Difficulty { get; set; }
     public IImmutableList<IngredientData>? Ingredients { get; set; }
     public string? Calories { get; set; }
     public List<ReviewData>? Reviews { get; set; }
