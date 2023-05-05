@@ -81,8 +81,8 @@
                                                SelectionMode="SingleOrNone"
                                                HorizontalAlignment="Stretch"
                                                Style="{StaticResource FilterChipGroupStyle}"
-                                               ItemsSource="{Binding OrganizeCategories}"
-                                               SelectedItem="{Binding Filter.OrganizeCategories, Mode=TwoWay}">
+                                               ItemsSource="{Binding OrganizeCategory}"
+                                               SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}">
                             <utu:ChipGroup.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <controls:WrapPanel HorizontalSpacing="18"

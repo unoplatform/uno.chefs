@@ -1,6 +1,6 @@
 ﻿namespace Chefs.Data;
 
-public enum Difficulties
+public enum Difficulty
 {
     Easy,
     Medium,

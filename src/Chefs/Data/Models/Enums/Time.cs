@@ -1,6 +1,6 @@
 ﻿namespace Chefs.Data;
 
-public enum Times
+public enum Time
 {
     Under15min,
     Under30min,

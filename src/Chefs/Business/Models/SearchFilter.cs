@@ -1,46 +1,41 @@
 ﻿using Chefs.Data;
 
+
 namespace Chefs.Business;
 
+
 public record SearchFilter(
-    OrganizeCategories? OrganizeCategories, 
-    Times? Time, 
-    Difficulties? Difficulty, 
+    OrganizeCategory? OrganizeCategory,
+    Time? Time,
+    Difficulty? Difficulty,
     int? Serves,
     Category? Category)
 {
-    public bool HasFilter => OrganizeCategories != null ||
-        Time != null || Difficulty != null || Category != null; 
+    public bool HasFilter => OrganizeCategory != null ||
+        Time != null || Difficulty != null || Category != null;
 
     public bool Match(Recipe recipe)
     {
-        TimeSpan time = TimeSpan.Zero;
-
-        if (Time is not null)
+        var time = Time switch
         {
-            switch (Time)
-            {
-                case Times.Under15min:
-                    time = new TimeSpan(0, 15, 00);
-                    break;
-                case Times.Under30min:
-                    time=  new TimeSpan(0, 30, 00);
-                    break;
-                case Times.Under60min:
-                    time = new TimeSpan(0, 60, 00);
-                    break;
-            }
-        }
+            Data.Time.Under15min => new TimeSpan(0, 15, 0),
+            Data.Time.Under30min =>  new TimeSpan(0, 30, 0),
+            Data.Time.Under60min => new TimeSpan(0, 60, 0),
+
+            _ => TimeSpan.Zero,
+        };
+
+
 
         if ((Difficulty == null || recipe.Difficulty == Difficulty) &&
             (Time == null || recipe.CookTime < time) &&
-            (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) && 
+            (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
             (Serves == null || Serves == recipe.Serves))
         {
             return true;
         }
 
-        if(OrganizeCategories != null) 
+        if (OrganizeCategory != null)
         {
             return true;
         }

@@ -18,9 +18,9 @@ public partial class FilterModel
 
     public IState<SearchFilter> Filter { get; }
 
-    public IEnumerable<OrganizeCategories> OrganizeCategories => Enum.GetValues(typeof(OrganizeCategories)).Cast<OrganizeCategories>();
-    public IEnumerable<Times> Times => Enum.GetValues(typeof(Times)).Cast<Times>();
-    public IEnumerable<Difficulties> Difficulties => Enum.GetValues(typeof(Difficulties)).Cast<Difficulties>();
+    public IEnumerable<OrganizeCategory> OrganizeCategories => Enum.GetValues(typeof(OrganizeCategory)).Cast<OrganizeCategory>();
+    public IEnumerable<Time> Times => Enum.GetValues(typeof(Time)).Cast<Time>();
+    public IEnumerable<Difficulty> Difficulties => Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>();
     public IEnumerable<int> Serves => new int[] { 1, 2, 3, 4, 5 };
 
     public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
