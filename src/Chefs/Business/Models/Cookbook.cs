@@ -49,5 +49,5 @@ public partial record Cookbook : IChefEntity
                 .ToList()
     };
 
-    internal UpdateCookbook UpdateCookBook() => new(this);
+    internal UpdateCookbook UpdateCookbook() => new(this);
 }

@@ -173,7 +173,7 @@
 						</AppBarButton>
 					</utu:NavigationBar.MainCommand>
 					<utu:NavigationBar.PrimaryCommands>
-						<AppBarButton Command="{Binding SettingsNavigation}"
+                        <AppBarButton Command="{Binding NavigateToSettings}"
 									  Background="{ThemeResource BackgroundBrush}"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
@@ -196,7 +196,7 @@
 						</AppBarButton>
 					</utu:NavigationBar.MainCommand>
 					<utu:NavigationBar.PrimaryCommands>
-						<AppBarButton Command="{Binding SettingsNavigation}"
+                        <AppBarButton Command="{Binding NavigateToSettings}"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
 								<BitmapIcon UriSource="ms-appx:///Assets/Icons/settings.png" />
@@ -574,7 +574,7 @@
 																												   Visibility="{Binding CookbookImages.ThirdImage,
                                                                                                                                     Converter={StaticResource NullToCollapsed}}"/>
 
-																											<Button Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.UpdateCookBookNavigation}"
+                                                                                                            <Button Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.NavigateToUpdateCookBook}"
 																													CommandParameter="{Binding}"
 																													Background="{ThemeResource SurfaceVariantColor}"
 																													CornerRadius="12"
@@ -633,7 +633,7 @@
 											HorizontalAlignment="Right"
 											Margin="0,18">
 								<Button uen:Navigation.Request="-"
-										uen:Navigation.Data="{Binding EmptyCookBook}"
+										uen:Navigation.Data="{Binding EmptyCookbook}"
 										utu:AutoLayout.CounterAlignment="End"
 										CornerRadius="60"
 										Style="{StaticResource FabStyle}">

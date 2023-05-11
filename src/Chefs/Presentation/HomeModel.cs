@@ -71,15 +71,15 @@ public partial class HomeModel
 
     public async Task ShowProfile(User profile)
     {
-        await ProfileNavigation(profile);
+        await NavigateToProfile(profile);
     }
 
     public async Task ShowCurrentProfile()
     {
-        await ProfileNavigation();
+        await NavigateToProfile();
     }
 
-    private async Task ProfileNavigation(User? profile = null)
+    private async Task NavigateToProfile(User? profile = null)
     {
         var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
         var result = await response!.Result;
