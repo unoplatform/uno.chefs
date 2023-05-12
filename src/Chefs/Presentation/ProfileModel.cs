@@ -26,7 +26,7 @@ public partial class ProfileModel
         Profile = user != null ? State.Value(this, () => user) : userService.UserFeed;
     }
 
-    public Cookbook EmptyCookBook => new Cookbook();
+    public Cookbook EmptyCookbook => new Cookbook();
 
     public IFeed<User> Profile { get; }
 
@@ -37,16 +37,16 @@ public partial class ProfileModel
     public IListFeed<Recipe> Recipes => Profile.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct)).AsListFeed();
 
     //We kept this navigation as workaround for issue: https://github.com/unoplatform/uno.chefs/issues/103
-    public async ValueTask SettingsNavigation(CancellationToken ct)
+    public async ValueTask NavigateToSettings(CancellationToken ct)
     {
         await _navigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
     }
 
     public async ValueTask GoBack(CancellationToken ct) => await _navigator.NavigateBackAsync(this, cancellation: ct);
     
-    public async ValueTask UpdateCookBookNavigation(Cookbook cookbook, CancellationToken ct)
+    public async ValueTask NavigateToUpdateCookbook(Cookbook cookbook, CancellationToken ct)
     {
-		await _navigator.NavigateBackWithResultAsync(this, data : cookbook.UpdateCookBook(), cancellation: ct);
+		await _navigator.NavigateBackWithResultAsync(this, data : cookbook.UpdateCookbook(), cancellation: ct);
 
 	}
 }
