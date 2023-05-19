@@ -38,10 +38,10 @@ jobs:
           useConfigFile: true
           configFilePath: build/gitversion.yml
 
-      - name: Setup dotnet 6.0.300
+      - name: Setup dotnet 7.0.203
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: '6.0.300'
+          dotnet-version: '7.0.203'
 
       - run: |
           cd src/Chefs.Wasm
