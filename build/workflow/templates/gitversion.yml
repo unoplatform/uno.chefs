@@ -1,10 +1,10 @@
 steps:
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
-    displayName: 'Use .Net Core runtime 6.0.0'
+    displayName: 'Use .Net Core runtime 7.0.5'
     inputs:
       packageType: runtime
-      version: 6.0.0
+      version: 7.0.5
 
   # Restore nuget.org to the list of existing sources, .NET 6 Pre 2 may somehow remove it
   - powershell: |

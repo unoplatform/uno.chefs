@@ -2,7 +2,7 @@ jobs:
 - job: WASM
   timeoutInMinutes: 90
   pool:
-    vmImage: ubuntu-latest
+    vmImage: ubuntu-20.04
 
   container: unoplatform/wasm-build:3.0
 
@@ -10,23 +10,37 @@ jobs:
     SkipUnknownFrameworks: true
   
   steps:
+  - template: templates/canary-updater.yml
+  - template: templates/gitversion.yml
+
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 6.0.401
+      version: 7.0.203
 
-  - template: templates/canary-updater.yml
-  - template: templates/gitversion.yml
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core SDK 5.0.400'
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: sdk
+      version: 5.0.400
+      
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core SDK 3.1.406'
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: sdk
+      version: 3.1.406
 
   - bash: |
-      dotnet build /ds /m /r /p:DisableNet6MobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet build /ds /m /r /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
     displayName: Copy Wasm output
     inputs:
-      SourceFolder: src/Chefs.Wasm/bin/Release/net6.0/dist
+      SourceFolder: src/Chefs.Wasm/bin/Release/net7.0/dist
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)
 

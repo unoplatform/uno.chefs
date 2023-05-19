@@ -1,12 +1,12 @@
-﻿
-namespace Chefs.UITests;
-
-public class Constants
+﻿namespace Chefs.UITests
 {
-	public readonly static string WebAssemblyDefaultUri = "https://localhost:58524/";
-	public readonly static string iOSAppName = "com.example.app";
-	public readonly static string AndroidAppName = "com.example.app";
-	public readonly static string iOSDeviceNameOrId = "iPad Pro (12.9-inch) (3rd generation)";
+	public class Constants
+	{
+		public readonly static string WebAssemblyDefaultUri = "http://localhost:5000/";
+		public readonly static string iOSAppName = "uno.platform.chefs";
+		public readonly static string AndroidAppName = "uno.platform.chefs";
+		public readonly static string iOSDeviceNameOrId = "iPad Pro (12.9-inch) (3rd generation)";
 
-	public readonly static Platform CurrentPlatform = Platform.Browser;
+		public readonly static Platform CurrentPlatform = Platform.Browser;
+	}
 }

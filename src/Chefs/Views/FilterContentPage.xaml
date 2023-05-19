@@ -1,0 +1,211 @@
+﻿<Page x:Class="Chefs.Views.FilterContentPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:local="using:Chefs.Views"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
+	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  mc:Ignorable="d">
+
+	<!--  Workaround used here by separating the FilterPage / FilterContentPage into two files  -->
+	<!--  Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482  -->
+
+	<utu:AutoLayout Background="Transparent">
+		<utu:AutoLayout.Resources>
+			<x:String x:Key="Icon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
+		</utu:AutoLayout.Resources>
+		<VisualStateManager.VisualStateGroups>
+			<VisualStateGroup>
+				<VisualState x:Name="Narrow">
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="0" />
+					</VisualState.StateTriggers>
+				</VisualState>
+				<VisualState x:Name="Wide">
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="800" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<Setter Target="ResetButton.Style" Value="{StaticResource OutlinedButtonStyle}" />
+						<Setter Target="ResetButton.Foreground" Value="{ThemeResource OnSurfaceVariantBrush}" />
+						<Setter Target="MainLayout.CornerRadius" Value="40,0,0,40" />
+						<Setter Target="MainLayout.Padding" Value="40" />
+						<Setter Target="MainLayout.CornerRadius" Value="40,0,0,40" />
+						<Setter Target="MainLayout.Width" Value="{StaticResource DrawerFlyoutWidth}" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
+
+		<utu:AutoLayout x:Name="MainLayout"
+						Padding="18,20"
+						uen:Region.Attached="True"
+						Background="{ThemeResource SurfaceBrush}"
+						utu:AutoLayout.PrimaryAlignment="Stretch">
+			<ScrollViewer HorizontalScrollMode="Disabled"
+						  VerticalScrollBarVisibility="Hidden"
+						  utu:AutoLayout.PrimaryAlignment="Stretch">
+				<utu:AutoLayout Spacing="16"
+								PrimaryAxisAlignment="Center">
+					<utu:AutoLayout Spacing="10"
+									Orientation="Horizontal">
+						<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+								   TextWrapping="Wrap"
+								   Text="Filters"
+								   utu:AutoLayout.CounterAlignment="Center"
+								   utu:AutoLayout.PrimaryAlignment="Stretch"
+								   Style="{StaticResource HeadlineMedium}" />
+						<Button utu:AutoLayout.CounterAlignment="Center"
+								Style="{StaticResource IconButtonStyle}"
+								uen:Navigation.Request="-">
+							<PathIcon Data="{StaticResource Icon_Close}"
+									  Foreground="{ThemeResource SurfaceInverseBrush}" />
+						</Button>
+					</utu:AutoLayout>
+					<utu:AutoLayout Spacing="16">
+						<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+								   TextWrapping="Wrap"
+								   Text="Organize"
+								   Style="{StaticResource TitleLarge}" />
+						<muxc:ItemsRepeater HorizontalAlignment="Stretch"
+											ItemsSource="{Binding OrganizeCategories}"
+											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}">
+							<muxc:ItemsRepeater.Layout>
+								<muxc:UniformGridLayout MinColumnSpacing="18"
+														ItemsJustification="Start" />
+							</muxc:ItemsRepeater.Layout>
+							<muxc:ItemsRepeater.ItemTemplate>
+								<DataTemplate>
+									<utu:Chip Content="{Binding}"
+											  CanRemove="False"
+											  Style="{StaticResource FilterChipStyle}"
+											  Foreground="{ThemeResource PrimaryBrush}" />
+								</DataTemplate>
+							</muxc:ItemsRepeater.ItemTemplate>
+						</muxc:ItemsRepeater>
+					</utu:AutoLayout>
+					<utu:AutoLayout Spacing="16">
+						<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+								   TextWrapping="Wrap"
+								   Text="Time"
+								   Style="{StaticResource TitleLarge}" />
+						<muxc:ItemsRepeater HorizontalAlignment="Stretch"
+											ItemsSource="{Binding Times}"
+											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}">
+							<muxc:ItemsRepeater.Layout>
+								<muxc:UniformGridLayout MinColumnSpacing="18"
+														ItemsJustification="Start" />
+							</muxc:ItemsRepeater.Layout>
+							<muxc:ItemsRepeater.ItemTemplate>
+								<DataTemplate>
+									<utu:Chip Content="{Binding}"
+											  CanRemove="False"
+											  Style="{StaticResource FilterChipStyle}"
+											  Foreground="{ThemeResource PrimaryBrush}" />
+								</DataTemplate>
+							</muxc:ItemsRepeater.ItemTemplate>
+						</muxc:ItemsRepeater>
+					</utu:AutoLayout>
+					<utu:AutoLayout Spacing="16">
+						<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+								   TextWrapping="Wrap"
+								   Text="Difficulty"
+								   Style="{StaticResource TitleLarge}" />
+						<muxc:ItemsRepeater HorizontalAlignment="Stretch"
+											ItemsSource="{Binding Difficulties}"
+											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}">
+							<muxc:ItemsRepeater.Layout>
+								<muxc:UniformGridLayout MinColumnSpacing="18"
+														ItemsJustification="Start" />
+							</muxc:ItemsRepeater.Layout>
+							<muxc:ItemsRepeater.ItemTemplate>
+								<DataTemplate>
+									<utu:Chip Content="{Binding}"
+											  CanRemove="False"
+											  Style="{StaticResource FilterChipStyle}"
+											  Foreground="{ThemeResource PrimaryBrush}" />
+								</DataTemplate>
+							</muxc:ItemsRepeater.ItemTemplate>
+						</muxc:ItemsRepeater>
+					</utu:AutoLayout>
+					<utu:AutoLayout Spacing="16">
+						<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+								   TextWrapping="Wrap"
+								   Text="Serves"
+								   Style="{StaticResource TitleLarge}" />
+						<muxc:ItemsRepeater HorizontalAlignment="Stretch"
+											ItemsSource="{Binding Serves}"
+											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}">
+							<muxc:ItemsRepeater.Layout>
+								<muxc:UniformGridLayout MinColumnSpacing="18"
+														ItemsJustification="Start" />
+							</muxc:ItemsRepeater.Layout>
+							<muxc:ItemsRepeater.ItemTemplate>
+								<DataTemplate>
+									<utu:Chip Content="{Binding}"
+											  CanRemove="False"
+											  Style="{StaticResource FilterChipStyle}"
+											  Foreground="{ThemeResource PrimaryBrush}" />
+								</DataTemplate>
+							</muxc:ItemsRepeater.ItemTemplate>
+						</muxc:ItemsRepeater>
+					</utu:AutoLayout>
+					<utu:AutoLayout Spacing="16">
+						<TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+								   TextWrapping="Wrap"
+								   Text="Categories"
+								   Style="{StaticResource TitleLarge}" />
+						<muxc:ItemsRepeater HorizontalAlignment="Stretch"
+											ItemsSource="{Binding Categories}"
+											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Category.Value, Mode=TwoWay}">
+							<muxc:ItemsRepeater.Layout>
+								<muxc:UniformGridLayout MinColumnSpacing="18"
+														ItemsJustification="Start" />
+							</muxc:ItemsRepeater.Layout>
+							<muxc:ItemsRepeater.ItemTemplate>
+								<DataTemplate>
+									<utu:Chip Content="{Binding Name}"
+											  CanRemove="False"
+											  Style="{StaticResource FilterChipStyle}"
+											  Foreground="{ThemeResource PrimaryBrush}">
+										<utu:Chip.Icon>
+											<ImageIcon Source="{Binding UrlIcon}" />
+										</utu:Chip.Icon>
+									</utu:Chip>
+								</DataTemplate>
+							</muxc:ItemsRepeater.ItemTemplate>
+						</muxc:ItemsRepeater>
+					</utu:AutoLayout>
+				</utu:AutoLayout>
+			</ScrollViewer>
+
+			<utu:AutoLayout Spacing="20"
+							Orientation="Horizontal"
+							Padding="0,20">
+				<Button x:Name="ResetButton"
+						Background="{ThemeResource SurfaceBrush}"
+						Content="Reset"
+						utu:AutoLayout.CounterAlignment="Stretch"
+						utu:AutoLayout.PrimaryAlignment="Stretch"
+						Style="{StaticResource ElevatedButtonStyle}"
+						Command="{Binding ResetFilter}"
+						MinHeight="56" />
+				<Button Background="{ThemeResource PrimaryBrush}"
+						Content="Apply"
+						utu:AutoLayout.CounterAlignment="Stretch"
+						utu:AutoLayout.PrimaryAlignment="Stretch"
+						Command="{Binding SearchFilter}"
+						MinHeight="56" />
+			</utu:AutoLayout>
+		</utu:AutoLayout>
+	</utu:AutoLayout>
+</Page>

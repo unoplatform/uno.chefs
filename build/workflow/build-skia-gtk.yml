@@ -5,9 +5,9 @@ jobs:
     vmImage: windows-2022
 
   steps:
-  - template: templates/dotnet6-install-windows.yml
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
+  - template: templates/dotnet-install-windows.yml
 
   - task: MSBuild@1
     displayName: Build project
@@ -19,7 +19,7 @@ jobs:
   - task: CopyFiles@2
     displayName: Copy Skia output
     inputs:
-      SourceFolder: src\Chefs.Skia.Gtk\bin\Release\net6.0
+      SourceFolder: src\Chefs.Skia.Gtk\bin\Release\net7.0
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/bin
 

@@ -1,12 +1,11 @@
-using System;
 using GLib;
 using Uno.UI.Runtime.Skia;
 
 namespace Chefs.Skia.Gtk
 {
-	class Program
+	public class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			ExceptionManager.UnhandledException += delegate (UnhandledExceptionArgs expArgs)
 			{
@@ -14,7 +13,7 @@ namespace Chefs.Skia.Gtk
 				expArgs.ExitApplication = true;
 			};
 
-			var host = new GtkHost(() => new App(), args);
+			var host = new GtkHost(() => new AppHead(), args);
 
 			host.Run();
 		}
