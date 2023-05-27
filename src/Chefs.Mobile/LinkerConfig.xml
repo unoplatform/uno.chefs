@@ -1,3 +1,7 @@
 <linker>
 	<assembly fullname="CommunityToolkit.WinUI.UI.Controls" />
+	<assembly fullname="System.Collections.Immutable">
+		<!-- This is required by System.Text.Json to properly deserialize ImmutableList across the App -->
+		<type fullname="System.Collections.Immutable.ImmutableList*" />
+	</assembly>
 </linker>
