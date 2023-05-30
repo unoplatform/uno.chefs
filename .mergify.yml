@@ -1,5 +1,7 @@
 pull_request_rules:
   - name: automatic strict merge when CI passes, has 2 reviews, no requests for change and is labeled 'ready-to-merge' unless labelled 'do-not-merge/breaking-change' or 'do-not-merge/work-in-progress'
+    disabled:
+      reason: Cannot use Mergify on a private repository
     conditions:
       # Only pull-requests sent to the master branch
       - base=master
@@ -29,6 +31,8 @@ pull_request_rules:
         method: merge
 
   - name: automatic merge for allcontributors pull requests
+    disabled:
+      reason: Cannot use Mergify on a private repository
     conditions:
       - author=allcontributors[bot]
     actions:
