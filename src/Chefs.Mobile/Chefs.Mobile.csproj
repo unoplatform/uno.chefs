@@ -7,6 +7,7 @@
 		<ApplicationTitle>Chefs</ApplicationTitle>
 		<!-- App Identifier -->
 		<ApplicationId>uno.platform.chefs</ApplicationId>
+		<ApplicationId Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">uno.platform.chefs-canary</ApplicationId>
 		<ApplicationIdGuid>CF96CC46-FE2B-4CCD-BBBD-C4EA6B04E5AC</ApplicationIdGuid>
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
