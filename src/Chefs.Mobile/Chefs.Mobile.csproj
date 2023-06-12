@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
 		<SingleProject>true</SingleProject>
@@ -31,7 +31,7 @@
 		<PackageReference Include="Uno.Extensions.Http.Refit" Version="2.3.11" />
 		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="2.3.11" />
 		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="2.3.11" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="2.3.11" />
+		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="2.4.2" />
 		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="2.6.0-dev.68" />
 		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="2.3.11" />
 		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="2.3.11" />
