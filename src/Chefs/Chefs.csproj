@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
 		<TargetFrameworks>$(TargetFrameworks);net7.0</TargetFrameworks>
@@ -25,7 +25,7 @@
 		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="2.3.10" />
 		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="2.3.10" />
 		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="2.3.10" />
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="2.3.10" />
+		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="2.4.2" />
 		<PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="2.3.10" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 	</ItemGroup>
