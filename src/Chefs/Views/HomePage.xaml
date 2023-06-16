@@ -415,9 +415,7 @@
 											<DataTemplate>
 												<UserControl>
 													<utu:AutoLayout Spacing="8"
-																	utu:AutoLayout.CounterAlignment="Start"
-																	VerticalContentAlignment="Center"
-																	HorizontalContentAlignment="Center">
+																	utu:AutoLayout.CounterAlignment="Start">
 														<VisualStateManager.VisualStateGroups>
 															<VisualStateGroup>
 																<VisualState x:Name="Narrow">
