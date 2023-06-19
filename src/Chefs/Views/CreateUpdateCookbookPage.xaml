@@ -183,7 +183,7 @@
 								  Source="{Binding Recipes}">
 						<DataTemplate>
 							<UserControl>
-								<muxc:ItemsRepeater x:Name="RecipeRepeater"
+								<muxc:ItemsRepeater x:Name="RecipeReDonepeater"
 													ItemsSource="{Binding Data}"
 													Layout="{StaticResource NarrowGridLayout}"
 													ItemTemplate="{StaticResource RecipeTemplate}">
@@ -215,7 +215,7 @@
 				</ScrollViewer>
 			</utu:AutoLayout>
 		</utu:AutoLayout>
-		<Button Command="{Binding Done}"
+		<Button Command="{Binding Submit}"
 				x:Name="NarrowButtons"
 				HorizontalAlignment="Stretch"
 				utu:AutoLayout.IsIndependentLayout="True"
@@ -242,7 +242,7 @@
 					Style="{StaticResource OutlinedButtonStyle}" />
 			<Button Background="{ThemeResource PrimaryBrush}"
 					Content="Done"
-					Command="{Binding Done}"
+					Command="{Binding Submit}"
 					utu:AutoLayout.CounterAlignment="Center"
 					Width="190"
 					Height="64" />
