@@ -183,7 +183,7 @@
 								  Source="{Binding Recipes}">
 						<DataTemplate>
 							<UserControl>
-								<muxc:ItemsRepeater x:Name="RecipeReDonepeater"
+								<muxc:ItemsRepeater x:Name="RecipeRepeater"
 													ItemsSource="{Binding Data}"
 													Layout="{StaticResource NarrowGridLayout}"
 													ItemTemplate="{StaticResource RecipeTemplate}">
