@@ -21,12 +21,14 @@ public partial class HomeModel
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
+	public IListFeed<Recipe> SavedRecipes => ListFeed.Async(_recipeService.GetSaved);
+
 	public IListFeed<Recipe> LunchRecipes => Recipes.Where(x => x.Category.Name == "Lunch");
 
 	public IListFeed<Recipe> DinnerRecipes => Recipes.Where(x => x.Category.Name == "Dinner");
 
 	public IListFeed<Recipe> SnackRecipes => Recipes.Where(x => x.Category.Name == "Snack");
-
+	
 	public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
 	public IFeed<User> UserProfile => _userService.UserFeed;
