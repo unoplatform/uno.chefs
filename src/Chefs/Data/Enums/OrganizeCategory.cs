@@ -2,7 +2,7 @@
 
 public enum OrganizeCategory
 {
-	Recommended,
 	Popular,
+	Trending,
 	Recent
 }

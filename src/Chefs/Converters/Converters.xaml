@@ -6,6 +6,7 @@
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
                                          Separator=" ∙ " />
+    <converters:CookingTimeFormatter x:Key="CookingTimeFormatter" />
 
     <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
     <converters:BoolInverter x:Key="InvertBool" />
