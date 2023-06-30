@@ -72,35 +72,30 @@
 	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:AutoLayout Background="{ThemeResource SurfaceInverseBrush}" 
-							Orientation="Horizontal">
-				<utu:AutoLayout Padding="16,12,12,12" 
-								Justify="SpaceBetween" 
-								Orientation="Horizontal" 
-								utu:AutoLayout.PrimaryAlignment="Stretch">
-					<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
-							  utu:AutoLayout.CounterAlignment="Center" 
-							  Foreground="{ThemeResource OnPrimaryBrush}" />
-					<utu:AutoLayout Orientation="Horizontal" 
-									utu:AutoLayout.CounterAlignment="Center">
-						<Button Command="{Binding ShowCurrentProfile}"
-								utu:AutoLayout.CounterAlignment="Start" 
-								Foreground="{ThemeResource OnPrimaryBrush}" 
-								Style="{StaticResource IconButtonStyle}">
-							<PathIcon Data="{StaticResource Icon_Person_Outline}" 
-									  Foreground="{ThemeResource OnPrimaryBrush}" />
-						</Button>
-						<Button utu:AutoLayout.CounterAlignment="Start" 
-								Foreground="{ThemeResource OnPrimaryBrush}"
-								Style="{StaticResource IconButtonStyle}"
-								uen:Navigation.Request="!Notifications">
-							<PathIcon Data="{StaticResource Icon_Notifications_None}" 
-									  Foreground="{ThemeResource OnPrimaryBrush}" />
-						</Button>
+			<utu:NavigationBar x:Name="NavBar"
+							   Background="{ThemeResource SurfaceInverseBrush}" >
+				<utu:NavigationBar.Content>
+					<utu:AutoLayout Padding="0,10">
+						<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
+								  utu:AutoLayout.CounterAlignment="Center" 
+								  Foreground="{ThemeResource OnPrimaryBrush}" />
 					</utu:AutoLayout>
-				</utu:AutoLayout>
-			</utu:AutoLayout>
-				
+				</utu:NavigationBar.Content>
+				<utu:NavigationBar.PrimaryCommands>
+					<AppBarButton Command="{Binding ShowCurrentProfile}">
+						<AppBarButton.Icon>
+							<PathIcon Data="{StaticResource Icon_Person_Outline}"
+									  Foreground="{ThemeResource OnPrimaryBrush}"/>
+						</AppBarButton.Icon>
+					</AppBarButton>
+					<AppBarButton uen:Navigation.Request="!Notifications">>
+						<AppBarButton.Icon>
+							<PathIcon Data="{StaticResource Icon_Notifications_None}"
+									  Foreground="{ThemeResource OnPrimaryBrush}"/>
+						</AppBarButton.Icon>
+					</AppBarButton>
+				</utu:NavigationBar.PrimaryCommands>
+			</utu:NavigationBar>
 			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
 				<utu:AutoLayout Background="{ThemeResource BackgroundBrush}" 
 								Spacing="16" 
@@ -215,7 +210,7 @@
 								Command="{Binding ShowAllRecentlyAdded}"/>
 					</utu:AutoLayout>
 					<uer:FeedView x:Name="RecentlyAddedFeedView"
-									  Source="{Binding RecentlyAdded}">
+								  Source="{Binding RecentlyAdded}">
 						<DataTemplate>
 							<ScrollViewer Padding="16,4" 
 										  HorizontalScrollMode="Auto"
@@ -383,7 +378,7 @@
 								Command="{Binding ShowAllSnack}" />
 					</utu:AutoLayout>
 					<uer:FeedView x:Name="SnackRecipesFeedView"
-									  Source="{Binding SnackRecipes}">
+								  Source="{Binding SnackRecipes}">
 						<DataTemplate>
 							<ScrollViewer Padding="16,4" 
 										  HorizontalScrollMode="Auto"
