@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
 		<SingleProject>true</SingleProject>
@@ -23,7 +23,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Uno.Resizetizer" Version="1.0.4" />
+		<PackageReference Include="Uno.Resizetizer" Version="1.1.2" />
 		<PackageReference Include="Uno.WinUI" Version="4.9.20" />
 		<PackageReference Include="Uno.Extensions.Configuration" Version="2.5.0-dev.167" />
 		<PackageReference Include="Uno.Extensions.Core" Version="2.5.0-dev.167" />
