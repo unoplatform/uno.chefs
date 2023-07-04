@@ -46,7 +46,7 @@
 
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
-                                      FalseValue="{StaticResource SurfaceVariantBrush}" />
+                                      FalseValue="{StaticResource SurfaceTintBrush}" />
 
     <converters:BoolToObjectConverter x:Key="PrimarySurfaceColorConverter"
                                       TrueValue="{StaticResource SurfaceBrush}"

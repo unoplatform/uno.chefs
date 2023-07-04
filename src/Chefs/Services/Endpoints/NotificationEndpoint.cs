@@ -2,8 +2,6 @@
 
 public class NotificationEndpoint : INotificationEndpoint
 {
-	public const string NotificationDataFile = "Notifications.json";
-
 	private readonly IStorage _dataService;
 	private readonly ISerializer _serializer;
 
@@ -11,6 +9,6 @@ public class NotificationEndpoint : INotificationEndpoint
 		=> (_dataService, _serializer) = (dataService, serializer);
 
 	public async ValueTask<IImmutableList<NotificationData>> GetAll(CancellationToken ct)
-		=> await _dataService.ReadPackageFileAsync<IImmutableList<NotificationData>>(_serializer, NotificationDataFile)
+		=> await _dataService.ReadPackageFileAsync<IImmutableList<NotificationData>>(_serializer, Constants.NotificationsDataFile)
 		?? ImmutableList<NotificationData>.Empty;
 }
