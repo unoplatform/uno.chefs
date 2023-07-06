@@ -234,7 +234,7 @@
 										   Style="{StaticResource TitleLarge}"
 										   Visibility="{Binding Searched, Converter={StaticResource InvertBool}}" />
 							</utu:AutoLayout>
-							<Button Command="{Binding CloseRecentSearches}"
+							<Button Command="{Binding CloseSearches}"
 									utu:AutoLayout.CounterAlignment="Center"
 									Padding="0"
 									Background="{ThemeResource BackgroundBrush}"
@@ -284,7 +284,7 @@
 													Background="{ThemeResource SecondaryContainerBrush}"
 													Foreground="{ThemeResource SurfaceColor}"
 													Command="{utu:AncestorBinding AncestorType=muxc:ItemsRepeater,
-																				  Path=DataContext.ApplySearchHistory}"
+																				  Path=DataContext.ApplyHistory}"
 													CommandParameter="{Binding}" />
 										</utu:AutoLayout>
 									</UserControl>

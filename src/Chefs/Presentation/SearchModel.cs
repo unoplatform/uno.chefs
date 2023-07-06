@@ -34,7 +34,7 @@ public partial class SearchModel
 
 	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
 
-	public async ValueTask ApplySearchHistory(string term, CancellationToken ct)
+	public async ValueTask ApplyHistory(string term, CancellationToken ct)
 	{
 		await Term.Update(s => term, ct);
 		await Search(ct);
@@ -48,7 +48,7 @@ public partial class SearchModel
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
 
-	public async ValueTask CloseRecentSearches(CancellationToken ct)
+	public async ValueTask CloseSearches(CancellationToken ct)
 	{
 		await IsSearchesClosed.Update(_ => !hideSerches, ct);
 	}
