@@ -68,53 +68,6 @@
                     </um:ControlExtensions.Icon>
                 </Button>
             </utu:AutoLayout>
-
-            <!--<UserControl>
-                <utu:AutoLayout PrimaryAxisAlignment="Center" Spacing="10">
-                    <TextBlock
-                        x:Name="Icon"
-                        utu:AutoLayout.CounterAlignment="Center"
-                        Foreground="{ThemeResource SurfaceInverseBrush}"
-                        Style="{StaticResource DisplayMedium}"
-                        Text="📒"
-                        TextAlignment="Center" />
-                    <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" Spacing="14">
-                        <TextBlock
-                            x:Name="TitleText"
-                            utu:AutoLayout.CounterAlignment="Center"
-                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                            Style="{StaticResource HeadlineMedium}"
-                            Text="No cookbook"
-                            TextAlignment="Center" />
-                        <TextBlock
-                            x:Name="DisplayTest"
-                            utu:AutoLayout.CounterAlignment="Center"
-                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                            Style="{StaticResource TitleMedium}"
-                            Text="There is no cookbook. Please&#xA;create your first cookbook"
-                            TextAlignment="Center" />
-                    </utu:AutoLayout>
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup>
-                            <VisualState x:Name="Narrow">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="0" />
-                                </VisualState.StateTriggers>
-                            </VisualState>
-                            <VisualState x:Name="Wide">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="800" />
-                                </VisualState.StateTriggers>
-                                <VisualState.Setters>
-                                    <Setter Target="Icon.Style" Value="{StaticResource DisplayLarge}" />
-                                    <Setter Target="TitleText.Style" Value="{StaticResource HeadlineLarge}" />
-                                    <Setter Target="DisplayTest.Style" Value="{StaticResource HeadlineMedium}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
-                </utu:AutoLayout>
-            </UserControl>-->
         </DataTemplate>
 
         <DataTemplate x:Key="CookbookTemplate" x:DataType="models:Cookbook">
@@ -215,111 +168,10 @@
                 </utu:CardContentControl>
             </Border>
         </DataTemplate>
-
-        <DataTemplate x:Key="RecipeEmptyTemplate">
-
-            <utu:AutoLayout
-                Height="546"
-                Margin="32,0"
-                PrimaryAxisAlignment="Center"
-                Spacing="24">
-                <Image
-                    Width="72"
-                    Height="72"
-                    utu:AutoLayout.CounterAlignment="Center"
-                    Source="ms-appx:///Chefs/Assets/Icons/empty_box.png" />
-                <TextBlock
-                    Foreground="{ThemeResource OnSurfaceBrush}"
-                    Style="{StaticResource TitleLarge}"
-                    Text="No Favorites Yet"
-                    TextAlignment="Center"
-                    TextWrapping="Wrap" />
-                <TextBlock
-                    Foreground="{ThemeResource OnSurfaceBrush}"
-                    Text="You haven't added any recipes to your favorites. Start exploring and find delicious recipes to try and love! Once you've found a recipe you enjoy, click on the heart icon to add it to your favorites for easy access later."
-                    TextAlignment="Center"
-                    TextWrapping="Wrap" />
-                <Button
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    utu:AutoLayout.CounterAlignment="Center"
-                    Content="See popular recipes"
-                    CornerRadius="4"
-                    Foreground="{ThemeResource PrimaryBrush}"
-                    Style="{StaticResource TextButtonStyle}">
-                    <um:ControlExtensions.Icon>
-                        <PathIcon Data="{StaticResource Icon_Star_Outline}" Foreground="{ThemeResource PrimaryBrush}" />
-                    </um:ControlExtensions.Icon>
-                </Button>
-            </utu:AutoLayout>
-        </DataTemplate>
-
-        <DataTemplate x:Key="RecipeTemplate" x:DataType="models:Recipe">
-            <Border win:DataContext="{x:Bind}">
-                <utu:CardContentControl
-                    x:Name="RecipeTemplateCard"
-                    MaxWidth="400"
-                    Background="{ThemeResource SurfaceBrush}"
-                    CornerRadius="4"
-                    Style="{StaticResource FilledCardContentControlStyle}">
-                    <utu:CardContentControl.ContentTemplate>
-                        <DataTemplate>
-                            <utu:AutoLayout CornerRadius="4">
-                                <Border x:Name="ImageLayout" Height="144">
-                                    <Image
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Source="{Binding ImageUrl}"
-                                        Stretch="UniformToFill" />
-                                </Border>
-
-                                <utu:AutoLayout
-                                    Padding="16"
-                                    PrimaryAxisAlignment="Center"
-                                    Spacing="4">
-                                    <TextBlock
-                                        Foreground="{ThemeResource OnSurfaceBrush}"
-                                        Style="{StaticResource TitleSmall}"
-                                        Text="{Binding Name}"
-                                        TextWrapping="Wrap" />
-                                    <TextBlock
-                                        Foreground="{ThemeResource OnSurfaceLowBrush}"
-                                        Style="{StaticResource CaptionMedium}"
-                                        Text="{Binding TimeCal}"
-                                        TextWrapping="Wrap" />
-                                </utu:AutoLayout>
-                            </utu:AutoLayout>
-                        </DataTemplate>
-                    </utu:CardContentControl.ContentTemplate>
-                </utu:CardContentControl>
-            </Border>
-        </DataTemplate>
     </Page.Resources>
     <utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
         <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-            <utu:NavigationBar x:Name="NavBar" Background="{ThemeResource SurfaceInverseBrush}">
-                <utu:NavigationBar.Content>
-                    <utu:AutoLayout Padding="0,10">
-                        <PathIcon
-                            utu:AutoLayout.CounterAlignment="Center"
-                            Data="{StaticResource Icon_ChefsAppSignature}"
-                            Foreground="{ThemeResource OnPrimaryBrush}" />
-                    </utu:AutoLayout>
-                </utu:NavigationBar.Content>
-                <!--<utu:NavigationBar.PrimaryCommands>
-                    <AppBarButton Command="{Binding ShowCurrentProfile}">
-                        <AppBarButton.Icon>
-                            <PathIcon Data="{StaticResource Icon_Person_Outline}" Foreground="{ThemeResource OnPrimaryBrush}" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                    <AppBarButton uen:Navigation.Request="!Notifications">
 
-                        <AppBarButton.Icon>
-                            <PathIcon Data="{StaticResource Icon_Notifications_None}" Foreground="{ThemeResource OnPrimaryBrush}" />
-                        </AppBarButton.Icon>
-                    </AppBarButton>
-                </utu:NavigationBar.PrimaryCommands>-->
-            </utu:NavigationBar>
 
             <utu:AutoLayout
                 Margin="16"
@@ -350,75 +202,18 @@
                     uen:Region.Navigator="Visibility"
                     utu:AutoLayout.CounterAlignment="Stretch"
                     utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout uen:Region.Name="MyRecipes">
-
-                        <!--<uer:FeedView
-                            utu:AutoLayout.CounterAlignment="Stretch"
-                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                            NoneTemplate="{StaticResource RecipeEmptyTemplate}"
-                            Source="{Binding SavedRecipes}">
-                            <DataTemplate>
-                                <ScrollViewer
-                                    x:Name="RecipesScrollViewer"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    HorizontalScrollMode="Disabled"
-                                    VerticalScrollBarVisibility="Hidden">
-                                    <utu:AutoLayout>
-                                        <utu:AutoLayout
-                                            Padding="0,0,0,16"
-                                            Justify="SpaceBetween"
-                                            Orientation="Horizontal">
-                                            <TextBlock utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource BodyLarge}">
-                                                <Run Text="{Binding Data.Count}" />
-                                                <Run Text="results" />
-                                            </TextBlock>
-                                            <Button
-                                                utu:AutoLayout.CounterAlignment="Center"
-                                                Content="Filters"
-                                                Style="{StaticResource TextButtonStyle}">
-                                                <um:ControlExtensions.Icon>
-                                                    <PathIcon Data="{StaticResource Icon_Tune}" />
-                                                </um:ControlExtensions.Icon>
-                                            </Button>
-                                        </utu:AutoLayout>
-                                        <utu:AutoLayout Padding="0,0,0,16" Spacing="8">
-
-
-                                            <muxc:ItemsRepeater
-                                                uen:Navigation.Request="SavedRecipeDetails"
-                                                ItemTemplate="{StaticResource RecipeTemplate}"
-                                                ItemsSource="{Binding Data}">
-                                                <muxc:ItemsRepeater.Layout>
-                                                    <muxc:UniformGridLayout
-                                                        ItemsStretch="Fill"
-                                                        MaximumRowsOrColumns="2"
-                                                        MinColumnSpacing="10"
-                                                        MinItemWidth="130"
-                                                        MinRowSpacing="10" />
-                                                </muxc:ItemsRepeater.Layout>
-                                            </muxc:ItemsRepeater>
-
-                                        </utu:AutoLayout>
-                                    </utu:AutoLayout>
-                                </ScrollViewer>
-                            </DataTemplate>
-                        </uer:FeedView>-->
-                    </utu:AutoLayout>
+                    <utu:AutoLayout uen:Region.Name="MyRecipes" />
                     <utu:AutoLayout
                         uen:Region.Name="Cookbooks"
                         utu:AutoLayout.CounterAlignment="Stretch"
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         Visibility="Collapsed">
 
-                        <!--  Visibility="Collapsed">  -->
-                        <!--<Grid >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>-->
+                        <!--<ScrollViewer utu:AutoLayout.CounterAlignment="Stretch" utu:AutoLayout.PrimaryAlignment="Stretch">-->
 
-                            <Grid VerticalAlignment="Stretch"
+                        <!--<Grid VerticalAlignment="Stretch"
                                   HorizontalAlignment="Stretch"
-                                  Background="Red" />
+                                  Background="Red" />-->
 
                         <uer:FeedView
                             utu:AutoLayout.CounterAlignment="Stretch"
@@ -470,11 +265,10 @@
                                 </Grid>
                             </DataTemplate>
                         </uer:FeedView>
-                        <!--</Grid>-->
+                        <!--</ScrollViewer>-->
                     </utu:AutoLayout>
                 </Grid>
             </utu:AutoLayout>
-            <!--</ScrollViewer>-->
         </utu:AutoLayout>
     </utu:AutoLayout>
 </Page>
