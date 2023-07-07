@@ -309,7 +309,7 @@
                 <!--<utu:NavigationBar.PrimaryCommands>
                     <AppBarButton Command="{Binding ShowCurrentProfile}">
                         <AppBarButton.Icon>
-                            <PathIcon Data="{StaticResource Icon_Person_Outline}" Foreground="{ThemeResource OnPrimaryBrush}" />
+                            <BitmapIcon Data="{StaticResource Icon_Person_Outline}" Foreground="{ThemeResource OnPrimaryBrush}" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                     <AppBarButton uen:Navigation.Request="!Notifications">
@@ -350,35 +350,35 @@
                     uen:Region.Navigator="Visibility"
                     utu:AutoLayout.CounterAlignment="Stretch"
                     utu:AutoLayout.PrimaryAlignment="Stretch">
+
                     <utu:AutoLayout uen:Region.Name="MyRecipes">
-                        <ScrollViewer
-                            x:Name="RecipesScrollViewer"
-                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                            HorizontalScrollMode="Disabled"
-                            VerticalScrollBarVisibility="Hidden">
-                            <utu:AutoLayout>
-                                <utu:AutoLayout
-                                    Padding="0,0,0,16"
-                                    Justify="SpaceBetween"
-                                    Orientation="Horizontal">
-                                    <TextBlock utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource BodyLarge}">
-                                        <Run Text="{Binding SavedRecipes.Count}" />
-                                        <Run Text="results" />
-                                    </TextBlock>
-                                    <Button
-                                        utu:AutoLayout.CounterAlignment="Center"
-                                        Content="Filters"
-                                        Style="{StaticResource TextButtonStyle}">
-                                        <um:ControlExtensions.Icon>
-                                            <PathIcon Data="{StaticResource Icon_Tune}" />
-                                        </um:ControlExtensions.Icon>
-                                    </Button>
-                                </utu:AutoLayout>
-                                <utu:AutoLayout Padding="0,0,0,16" Spacing="8">
+                        <uer:FeedView NoneTemplate="{StaticResource RecipeEmptyTemplate}" Source="{Binding SavedRecipes}">
+                            <DataTemplate>
+                                <ScrollViewer
+                                    x:Name="RecipesScrollViewer"
+                                    utu:AutoLayout.PrimaryAlignment="Stretch"
+                                    HorizontalScrollMode="Disabled"
+                                    VerticalScrollBarVisibility="Hidden">
+                                    <utu:AutoLayout>
+                                        <utu:AutoLayout
+                                            Padding="0,0,0,16"
+                                            Justify="SpaceBetween"
+                                            Orientation="Horizontal">
+                                            <TextBlock utu:AutoLayout.CounterAlignment="Center" Style="{StaticResource BodyLarge}">
+                                                <Run Text="{Binding Data.Count}" />
+                                                <Run Text="results" />
+                                            </TextBlock>
+                                            <Button
+                                                utu:AutoLayout.CounterAlignment="Center"
+                                                Content="Filters"
+                                                Style="{StaticResource TextButtonStyle}">
+                                                <um:ControlExtensions.Icon>
+                                                    <PathIcon Data="{StaticResource Icon_Tune}" />
+                                                </um:ControlExtensions.Icon>
+                                            </Button>
+                                        </utu:AutoLayout>
+                                        <utu:AutoLayout Padding="0,0,0,16" Spacing="8">
 
-
-                                    <uer:FeedView NoneTemplate="{StaticResource RecipeEmptyTemplate}" Source="{Binding SavedRecipes}">
-                                        <DataTemplate>
                                             <muxc:ItemsRepeater
                                                 uen:Navigation.Request="SavedRecipeDetails"
                                                 ItemTemplate="{StaticResource RecipeTemplate}"
@@ -392,11 +392,11 @@
                                                         MinRowSpacing="10" />
                                                 </muxc:ItemsRepeater.Layout>
                                             </muxc:ItemsRepeater>
-                                        </DataTemplate>
-                                    </uer:FeedView>
-                                </utu:AutoLayout>
-                            </utu:AutoLayout>
-                        </ScrollViewer>
+                                        </utu:AutoLayout>
+                                    </utu:AutoLayout>
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </uer:FeedView>
                     </utu:AutoLayout>
                     <utu:AutoLayout
                         uen:Region.Name="Cookbooks"
@@ -404,7 +404,7 @@
                         utu:AutoLayout.PrimaryAlignment="Stretch"
                         Visibility="Collapsed">
 
-                        <ScrollViewer
+                        <!--<ScrollViewer
                             x:Name="CookbooksScrollViewer"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             HorizontalScrollMode="Disabled"
@@ -413,32 +413,36 @@
                                 Margin="0,0,0,40"
                                 utu:AutoLayout.CounterAlignment="Stretch"
                                 utu:AutoLayout.PrimaryAlignment="Stretch"
-                                PrimaryAxisAlignment="Stretch">
-                                <uer:FeedView
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    utu:AutoLayout.CounterAlignment="Stretch"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    NoneTemplate="{StaticResource CookbookEmptyTemplate}"
-                                    Source="{Binding SavedCookbooks}">
-                                    <DataTemplate>
-                                        <Grid>
-                                            <!--<ScrollViewer
-                                            x:Name="cookbooksscrollviewer"
-                                            utu:AutoLayout.PrimaryAlignment="stretch"
-                                            HorizontalScrollMode="disabled"
-                                            VerticalScrollBarVisibility="hidden">
-                                        <utu:AutoLayout Margin="0,0,0,40"
-                                                        utu:AutoLayout.CounterAlignment="Stretch"
-                                                        utu:AutoLayout.PrimaryAlignment="Stretch"
-                                                        PrimaryAxisAlignment="Stretch">
-                                            <Rectangle
-                                            Width="300"
-                                            Height="1500"
-                                            Fill="red" />-->
+                                PrimaryAxisAlignment="Stretch">-->
+                            <!--<Grid Height="1500"
+                                  Width="200"
+                                  Background="Red"
+                                  CornerRadius="24" />-->
+                            <uer:FeedView
+                            utu:AutoLayout.CounterAlignment="Stretch"
+                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                            NoneTemplate="{StaticResource CookbookEmptyTemplate}"
+                            Source="{Binding SavedCookbooks}">
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid Height="1500"
+                                          Width="200"
+                                          Background="Red"
+                                          CornerRadius="24" />
+                                    <!--<ScrollViewer
+                                        x:Name="cookbooksscrollviewer"
+                                        utu:AutoLayout.PrimaryAlignment="stretch"
+                                        HorizontalScrollMode="disabled"
+                                        VerticalScrollBarVisibility="hidden">
+                                        <utu:AutoLayout
+                                            Margin="0,0,0,40"
+                                            utu:AutoLayout.CounterAlignment="Stretch"
+                                            utu:AutoLayout.PrimaryAlignment="Stretch"
+                                            PrimaryAxisAlignment="Stretch">
+                                            
 
-                                            <muxc:ItemsRepeater
-                                                uen:Navigation.Request="CookbookDetails"
+                                            --><!--<muxc:ItemsRepeater
+                                                uen:Navigation.Request="!CookbookDetails"
                                                 ItemTemplate="{StaticResource CookbookTemplate}"
                                                 ItemsSource="{Binding Data}">
                                                 <muxc:ItemsRepeater.Layout>
@@ -449,27 +453,27 @@
                                                         MinItemWidth="180"
                                                         MinRowSpacing="16" />
                                                 </muxc:ItemsRepeater.Layout>
-                                            </muxc:ItemsRepeater>
-                                            <!--</utu:AutoLayout>
-                                            </ScrollViewer>-->
-                                            <Button
-                                                Margin="0,0,8,8"
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Bottom"
-                                                uen:Navigation.Request="SavedCreateUpdateCookbook"
-                                                utu:AutoLayout.IsIndependentLayout="True"
-                                                Background="{ThemeResource PrimaryBrush}"
-                                                CornerRadius="56"
-                                                Style="{StaticResource FabStyle}">
-                                                <um:ControlExtensions.Icon>
-                                                    <PathIcon Data="{StaticResource Icon_Add}" Foreground="{ThemeResource OnPrimaryBrush}" />
-                                                </um:ControlExtensions.Icon>
-                                            </Button>
-                                        </Grid>
-                                    </DataTemplate>
-                                </uer:FeedView>
-                            </utu:AutoLayout>
-                        </ScrollViewer>
+                                            </muxc:ItemsRepeater>--><!--
+                                        </utu:AutoLayout>
+                                    </ScrollViewer>-->
+                                    <!--<Button
+                                        Margin="0,0,8,8"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        uen:Navigation.Request="SavedCreateUpdateCookbook"
+                                        utu:AutoLayout.IsIndependentLayout="True"
+                                        Background="{ThemeResource PrimaryBrush}"
+                                        CornerRadius="56"
+                                        Style="{StaticResource FabStyle}">
+                                        <um:ControlExtensions.Icon>
+                                            <PathIcon Data="{StaticResource Icon_Add}" Foreground="{ThemeResource OnPrimaryBrush}" />
+                                        </um:ControlExtensions.Icon>
+                                    </Button>-->
+                                </Grid>
+                            </DataTemplate>
+                        </uer:FeedView>
+                        <!--</utu:AutoLayout>-->
+                        <!--</ScrollViewer>-->
                     </utu:AutoLayout>
                 </Grid>
             </utu:AutoLayout>
