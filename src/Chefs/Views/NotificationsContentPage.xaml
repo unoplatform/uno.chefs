@@ -10,6 +10,7 @@
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:um="using:Uno.Material"
 	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:converters="using:Chefs.Converters"
 	  mc:Ignorable="d">
 
 	<!-- Workaround used here by separating the NotificationsPage / NotificationsContentPage into two files -->
@@ -22,8 +23,7 @@
 		<x:String x:Key="Icon_People">F1 M 15 6 C 16.6599999666214 6 17.989999771118164 4.659999966621399 17.989999771118164 3 C 17.989999771118164 1.340000033378601 16.6599999666214 0 15 0 C 13.340000033378601 0 12 1.340000033378601 12 3 C 12 4.659999966621399 13.340000033378601 6 15 6 Z M 7 6 C 8.659999966621399 6 9.989999771118164 4.659999966621399 9.989999771118164 3 C 9.989999771118164 1.340000033378601 8.659999966621399 0 7 0 C 5.340000033378601 0 4 1.340000033378601 4 3 C 4 4.659999966621399 5.340000033378601 6 7 6 Z M 7 8 C 4.670000076293945 8 0 9.170000076293945 0 11.5 L 0 14 L 14 14 L 14 11.5 C 14 9.170000076293945 9.329999923706055 8 7 8 Z M 15 8 C 14.71000000834465 8 14.379999727010727 8.020000191405416 14.029999732971191 8.050000190734863 C 15.18999969959259 8.89000016450882 16 10.019999980926514 16 11.5 L 16 14 L 22 14 L 22 11.5 C 22 9.170000076293945 17.329999923706055 8 15 8 Z</x:String>
 		<DataTemplate x:Key="NotificationTemplate">
 			<!--Workaround Margin="0,0,36,0"-->
-			<!--Wrong color for Read Background="{Binding Read, Converter={StaticResource BoolToNotificationColor}}-->
-			<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+			<utu:AutoLayout Background="{Binding Read, Converter={StaticResource BoolToNotificationColor}}"
 							CornerRadius="4"
 							PrimaryAxisAlignment="Center"
 							Orientation="Horizontal" 
@@ -44,10 +44,11 @@
 								Text="{Binding Title}"
 								Foreground="{ThemeResource OnSurfaceBrush}"
 								Style="{StaticResource TitleSmall}" />
+					
+					<!-- Adding Style="{StaticResource TextMediumWithLineSpacing}" causes the app to crash on Windows-->
 					<TextBlock TextWrapping="Wrap" 
 								Text="{Binding Description}"
-								Foreground="{ThemeResource OnSurfaceMediumBrush}"
-								Style="{StaticResource TextMediumWithLineSpacing}" />
+								Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 				</utu:AutoLayout>
 			</utu:AutoLayout>
 		</DataTemplate>
@@ -56,6 +57,8 @@
 				<utu:AutoLayout Spacing="24" 
 								PrimaryAxisAlignment="Center" 
 								Padding="32,0" 
+								utu:AutoLayout.IsIndependentLayout="True"
+								VerticalAlignment="Center"
 								utu:AutoLayout.PrimaryAlignment="Stretch">
 					<Image Source="ms-appx:///Chefs/Assets/Icons/no_notification.png"
 						   utu:AutoLayout.CounterAlignment="Center" 
@@ -87,237 +90,239 @@
 			</UserControl>
 		</DataTemplate>
 	</Page.Resources>
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Content="Notifications" Style="{StaticResource ModalNavigationBarStyle}">
-				<utu:NavigationBar.MainCommand>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Close}" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.MainCommand>
-			</utu:NavigationBar>
-			
-			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-						  HorizontalScrollMode="Disabled">
-				<utu:AutoLayout Background="{ThemeResource BackgroundBrush}" 
-							uen:Region.Attached="True">
-					<utu:TabBar Background="{ThemeResource BackgroundBrush}" 
-							uen:Region.Attached="True"
-							Style="{StaticResource TopTabBarStyle}"
-							Padding="16">
-						<utu:TabBarItem Content="All" 
+	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}" 
+					PrimaryAxisAlignment="Stretch">
+		<utu:NavigationBar Content="Notifications" 
+							Style="{StaticResource ModalNavigationBarStyle}">
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton>
+					<AppBarButton.Icon>
+						<PathIcon Data="{StaticResource Icon_Close}" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.MainCommand>
+		</utu:NavigationBar>
+		<utu:AutoLayout Background="{ThemeResource BackgroundBrush}" 
+						uen:Region.Attached="True"
+						utu:AutoLayout.PrimaryAlignment="Stretch">
+			<utu:TabBar Background="{ThemeResource BackgroundBrush}" 
+						uen:Region.Attached="True"
+						Style="{StaticResource TopTabBarStyle}"
+						Padding="16,0">
+				<utu:TabBarItem Content="All" 
+								uen:Region.Name="AllTab"
+								IsSelected="True"/>
+				<utu:TabBarItem Content="Unread" 
+								uen:Region.Name="UnreadTab" 
+								Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+				<utu:TabBarItem Content="Read" 
+								uen:Region.Name="ReadTab"
+								Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+			</utu:TabBar>
+			<ScrollViewer HorizontalScrollMode="Disabled" 
+						  utu:AutoLayout.PrimaryAlignment="Stretch"
+						  VerticalContentAlignment="Center">
+				<Grid uen:Region.Attached="True"
+					  uen:Region.Navigator="Visibility">
+
+					<!--All Notifications-->
+					<utu:AutoLayout Padding="16"
+									PrimaryAxisAlignment="Stretch"
+									utu:AutoLayout.PrimaryAlignment="Stretch"
 									uen:Region.Name="AllTab"
-									IsSelected="True"/>
-						<utu:TabBarItem Content="Unread" 
-									uen:Region.Name="UnreadTab" 
-									Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-						<utu:TabBarItem Content="Read" 
+									Visibility="Visible">
+						<uer:FeedView x:Name="AllFeed"
+									  Source="{Binding Notifications}"
+									  NoneTemplate="{StaticResource EmptyTemplate}">
+							<DataTemplate>
+								<utu:AutoLayout>
+									<!--Today-->
+									<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+												   Text="Today"
+												   Foreground="{ThemeResource OnSurfaceBrush}"
+												   Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
+									</utu:AutoLayout>
+
+									<!--Yesterday-->
+									<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+													Text="Yesterday"
+													Foreground="{ThemeResource OnSurfaceBrush}"
+													Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
+									</utu:AutoLayout>
+
+									<!--Older-->
+									<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+												   Text="Older"
+												   Foreground="{ThemeResource OnSurfaceBrush}"
+												   Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
+									</utu:AutoLayout>
+								</utu:AutoLayout>
+							</DataTemplate>
+						</uer:FeedView>
+					</utu:AutoLayout>
+
+					<!--Unread-->
+					<utu:AutoLayout Padding="16"
+									PrimaryAxisAlignment="Stretch"
+									utu:AutoLayout.PrimaryAlignment="Stretch"
+									uen:Region.Name="UnreadTab"
+									Visibility="Collapsed">
+						<uer:FeedView x:Name="UnreadFeed"
+									  Source="{Binding Unread}"
+									  NoneTemplate="{StaticResource EmptyTemplate}">
+							<DataTemplate>
+								<utu:AutoLayout>
+									<!--Today-->
+									<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+													Text="Today"
+													Foreground="{ThemeResource OnSurfaceBrush}"
+													Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
+									</utu:AutoLayout>
+
+									<!--Yesterday-->
+									<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+													Text="Yesterday"
+													Foreground="{ThemeResource OnSurfaceBrush}"
+													Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
+									</utu:AutoLayout>
+
+									<!--Older-->
+									<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+													Text="Older"
+													Foreground="{ThemeResource OnSurfaceBrush}"
+													Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
+									</utu:AutoLayout>
+								</utu:AutoLayout>
+							</DataTemplate>
+						</uer:FeedView>
+					</utu:AutoLayout>
+
+					<!--Read-->
+					<utu:AutoLayout Padding="16"
+									PrimaryAxisAlignment="Stretch"
+									utu:AutoLayout.PrimaryAlignment="Stretch"
 									uen:Region.Name="ReadTab"
-									Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-					</utu:TabBar>
-
-					<Grid uen:Region.Attached="True"
-						  uen:Region.Navigator="Visibility">
-
-						<!--All Notifications-->
-						<utu:AutoLayout 
-										Padding="16"
-										PrimaryAxisAlignment="Center"
-										uen:Region.Name="AllTab"
-										Visibility="Visible">
-							<uer:FeedView x:Name="AllFeed"
-										  Source="{Binding Notifications}"
-										  NoneTemplate="{StaticResource EmptyTemplate}">
-								<DataTemplate>
-									<utu:AutoLayout>
-										<!--Today-->
-										<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Today"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
-
-										<!--Yesterday-->
-										<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Yesterday"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
-
-										<!--Older-->
-										<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Older"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
+									Visibility="Collapsed">
+						<uer:FeedView x:Name="ReadFeed"
+										Source="{Binding Read}"
+										NoneTemplate="{StaticResource EmptyTemplate}">
+							<DataTemplate>
+								<utu:AutoLayout>
+									<!--Today-->
+									<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+													Text="Today"
+													Foreground="{ThemeResource OnSurfaceBrush}"
+													Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
-								</DataTemplate>
-							</uer:FeedView>
-						</utu:AutoLayout>
 
-						<!--Unread-->
-						<utu:AutoLayout Padding="16"
-										PrimaryAxisAlignment="Center"
-										uen:Region.Name="UnreadTab"
-										Visibility="Collapsed">
-							<uer:FeedView x:Name="UnreadFeed"
-										  Source="{Binding Unread}"
-										  NoneTemplate="{StaticResource EmptyTemplate}">
-								<DataTemplate>
-									<utu:AutoLayout>
-										<!--Today-->
-										<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Today"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
-
-										<!--Yesterday-->
-										<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Yesterday"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
-
-										<!--Older-->
-										<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Older"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
+									<!--Yesterday-->
+									<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+												   Text="Yesterday"
+												   Foreground="{ThemeResource OnSurfaceBrush}"
+												   Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																	Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
-								</DataTemplate>
-							</uer:FeedView>
-						</utu:AutoLayout>
 
-						<!--Read-->
-						<utu:AutoLayout Padding="16"
-										PrimaryAxisAlignment="Center"
-										uen:Region.Name="ReadTab"
-										Visibility="Collapsed">
-							<uer:FeedView x:Name="ReadFeed"
-										  Source="{Binding Read}"
-										  NoneTemplate="{StaticResource EmptyTemplate}">
-								<DataTemplate>
-									<utu:AutoLayout>
-										<!--Today-->
-										<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Today"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
-
-										<!--Yesterday-->
-										<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Yesterday"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
-
-										<!--Older-->
-										<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
-														Padding="0,16"
-														Spacing="16">
-											<TextBlock TextWrapping="Wrap" 
-													   Text="Older"
-													   Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource LabelLarge}" />
-											<muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
-																ItemTemplate="{StaticResource NotificationTemplate}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:StackLayout Orientation="Vertical"
-																	  Spacing="2" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-										</utu:AutoLayout>
+									<!--Older-->
+									<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
+													Padding="0,16"
+													Spacing="16">
+										<TextBlock TextWrapping="Wrap" 
+												   Text="Older"
+												   Foreground="{ThemeResource OnSurfaceBrush}"
+												   Style="{StaticResource LabelLarge}" />
+										<muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
+															ItemTemplate="{StaticResource NotificationTemplate}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:StackLayout Orientation="Vertical"
+																  Spacing="2" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
-								</DataTemplate>
-							</uer:FeedView>
-						</utu:AutoLayout>
-					</Grid>
-				</utu:AutoLayout>
+								</utu:AutoLayout>
+							</DataTemplate>
+						</uer:FeedView>
+					</utu:AutoLayout>
+				</Grid>
 			</ScrollViewer>
 		</utu:AutoLayout>
 	</utu:AutoLayout>

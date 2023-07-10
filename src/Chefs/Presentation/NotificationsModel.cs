@@ -1,5 +1,4 @@
 ﻿namespace Chefs.Presentation;
-
 public partial class NotificationsModel
 {
 	private readonly INotificationService _notificationService;
@@ -8,10 +7,18 @@ public partial class NotificationsModel
 	{
 		_notificationService = notificationService;
 	}
+	public IFeed<GroupedNotification> Notifications => Feed<GroupedNotification>.Async(async ct
+			=> await _notificationService.GetAll(ct) is { Count: > 0 } result
+			? new GroupedNotification(result)
+			: Option.None<GroupedNotification>());
 
-	public IFeed<GroupedNotification> Notifications => Feed<GroupedNotification>.Async(async ct => new GroupedNotification(await _notificationService.GetAll(ct)));
+	public IFeed<GroupedNotification> Unread => Feed<GroupedNotification>.Async(async ct
+			=> await _notificationService.GetUnread(ct) is { Count: > 0 } result
+			? new GroupedNotification(result)
+			: Option.None<GroupedNotification>());
 
-	public IFeed<GroupedNotification> Unread => Notifications.Select(x => new GroupedNotification(x.GetAll().Where(y => !y.Read)));
-
-	public IFeed<GroupedNotification> Read => Notifications.Select(x => new GroupedNotification(x.GetAll().Where(y => y.Read)));
+	public IFeed<GroupedNotification> Read => Feed<GroupedNotification>.Async(async ct
+			=> await _notificationService.GetRead(ct) is { Count: > 0 } result
+			? new GroupedNotification(result.Where(x => x.Read))
+			: Option.None<GroupedNotification>());
 }
