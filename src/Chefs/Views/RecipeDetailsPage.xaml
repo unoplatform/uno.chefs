@@ -80,12 +80,14 @@
 				<utu:NavigationBar.PrimaryCommands>
 					<AppBarButton>
 						<AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Share}" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/share_recipe.png"
+										Foreground="{ThemeResource OnPrimaryBrush}" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 					<AppBarButton>
 						<AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Favorite_Border}" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/favorite_heart.png"
+										Foreground="{ThemeResource OnPrimaryBrush}" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
