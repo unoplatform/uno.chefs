@@ -11,8 +11,8 @@
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  mc:Ignorable="d">
 
-	<!--  Workaround used here by separating the FilterPage / FilterContentPage into two files  -->
-	<!--  Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482  -->
+	<!-- Workaround used here by separating the FilterPage / FilterContentPage into two files -->
+	<!-- Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482 -->
 
 	<utu:AutoLayout Background="Transparent">
 		<utu:AutoLayout.Resources>
@@ -46,6 +46,7 @@
 						uen:Region.Attached="True"
 						Background="{ThemeResource SurfaceBrush}"
 						utu:AutoLayout.PrimaryAlignment="Stretch">
+			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 			<ScrollViewer HorizontalScrollMode="Disabled"
 						  VerticalScrollBarVisibility="Hidden"
 						  utu:AutoLayout.PrimaryAlignment="Stretch">

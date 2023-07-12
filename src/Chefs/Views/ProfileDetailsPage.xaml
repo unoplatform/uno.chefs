@@ -6,6 +6,7 @@
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
+	  xmlns:models="using:Chefs.Business.Models"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:um="using:Uno.Material"
@@ -160,7 +161,7 @@
 						</AppBarButton>
 					</utu:NavigationBar.MainCommand>
 					<utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton Command="{Binding NavigateToSettings}"
+						<AppBarButton Command="{Binding NavigateToSettings}"
 									  Background="{ThemeResource BackgroundBrush}"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
@@ -182,7 +183,7 @@
 									  Visibility="Collapsed" />
 					</utu:NavigationBar.MainCommand>
 					<utu:NavigationBar.PrimaryCommands>
-                        <AppBarButton Command="{Binding NavigateToSettings}"
+						<AppBarButton Command="{Binding NavigateToSettings}"
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
 								<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/settings.png" />
@@ -294,6 +295,7 @@
 										utu:AutoLayout.PrimaryAlignment="Stretch"
 										utu:AutoLayout.CounterAlignment="Stretch"
 										PrimaryAxisAlignment="Center">
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
@@ -334,8 +336,10 @@
 																						ItemsStretch="Fill" />
 															</muxc:ItemsRepeater.Layout>
 															<muxc:ItemsRepeater.ItemTemplate>
-																<DataTemplate>
-																	<UserControl>
+																<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+																<!-- https://github.com/microsoft/microsoft-ui-xaml/issues/6689 -->
+																<DataTemplate x:DataType="models:Recipe">
+																	<UserControl win:DataContext="{x:Bind}">
 																		<utu:AutoLayout>
 																			<VisualStateManager.VisualStateGroups>
 																				<VisualStateGroup>
@@ -354,17 +358,14 @@
 																					</VisualState>
 																				</VisualStateGroup>
 																			</VisualStateManager.VisualStateGroups>
-																			<!--  Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue:  -->
-																			<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
-																			<!--  (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values)  -->
-																			<controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
-																												  Style="{StaticResource FilledCardContentControlStyle}"
-																												  Background="{ThemeResource SurfaceBrush}"
-																												  HorizontalAlignment="Stretch"
-																												  VerticalAlignment="Stretch"
-																												  MinHeight="0"
-																												  MaxWidth="400">
-																				<controls:FixedSizeCardContentControl.ContentTemplate>
+																			<utu:CardContentControl x:Name="RecipeTemplateCard"
+																									Style="{StaticResource FilledCardContentControlStyle}"
+																									Background="{ThemeResource SurfaceBrush}"
+																									HorizontalAlignment="Stretch"
+																									VerticalAlignment="Stretch"
+																									MinHeight="0"
+																									MaxWidth="400">
+																				<utu:CardContentControl.ContentTemplate>
 																					<DataTemplate>
 																						<UserControl>
 																							<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
@@ -408,8 +409,8 @@
 																							</utu:AutoLayout>
 																						</UserControl>
 																					</DataTemplate>
-																				</controls:FixedSizeCardContentControl.ContentTemplate>
-																			</controls:FixedSizeCardContentControl>
+																				</utu:CardContentControl.ContentTemplate>
+																			</utu:CardContentControl>
 																		</utu:AutoLayout>
 																	</UserControl>
 																</DataTemplate>
@@ -428,6 +429,7 @@
 										utu:AutoLayout.PrimaryAlignment="Stretch"
 										utu:AutoLayout.CounterAlignment="Stretch"
 										PrimaryAxisAlignment="Center">
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
@@ -467,8 +469,10 @@
 																						ItemsStretch="Fill" />
 															</muxc:ItemsRepeater.Layout>
 															<muxc:ItemsRepeater.ItemTemplate>
-																<DataTemplate>
-																	<UserControl>
+																<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+																<!-- https://github.com/microsoft/microsoft-ui-xaml/issues/6689 -->
+																<DataTemplate x:DataType="models:Cookbook">
+																	<UserControl win:DataContext="{x:Bind}">
 																		<utu:AutoLayout>
 																			<VisualStateManager.VisualStateGroups>
 																				<VisualStateGroup>
@@ -487,17 +491,14 @@
 																					</VisualState>
 																				</VisualStateGroup>
 																			</VisualStateManager.VisualStateGroups>
-																			<!--  Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue:  -->
-																			<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
-																			<!--  (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values)  -->
-																			<controls:FixedSizeCardContentControl x:Name="CookbookTemplateCard"
-																												  HorizontalAlignment="Stretch"
-																												  VerticalAlignment="Stretch"
-																												  MinHeight="0"
-																												  MaxWidth="400"
-																												  Style="{StaticResource FilledCardContentControlStyle}"
-																												  Background="{ThemeResource BackgroundBrush}">
-																				<controls:FixedSizeCardContentControl.ContentTemplate>
+																			<utu:CardContentControl x:Name="CookbookTemplateCard"
+																									HorizontalAlignment="Stretch"
+																									VerticalAlignment="Stretch"
+																									MinHeight="0"
+																									MaxWidth="400"
+																									Style="{StaticResource FilledCardContentControlStyle}"
+																									Background="{ThemeResource BackgroundBrush}">
+																				<utu:CardContentControl.ContentTemplate>
 																					<DataTemplate>
 																						<UserControl>
 																							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
@@ -551,7 +552,8 @@
 																												   HorizontalAlignment="Center"
 																												   Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToCollapsed}}" />
 
-                                                                                                            <Button Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.NavigateToUpdateCookBook}"
+																											<Button Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																																				  Path=DataContext.NavigateToUpdateCookBook}"
 																													CommandParameter="{Binding}"
 																													Background="{ThemeResource SurfaceVariantColor}"
 																													CornerRadius="12"
@@ -585,8 +587,8 @@
 																							</utu:AutoLayout>
 																						</UserControl>
 																					</DataTemplate>
-																				</controls:FixedSizeCardContentControl.ContentTemplate>
-																			</controls:FixedSizeCardContentControl>
+																				</utu:CardContentControl.ContentTemplate>
+																			</utu:CardContentControl>
 																		</utu:AutoLayout>
 																	</UserControl>
 																</DataTemplate>

@@ -466,6 +466,7 @@
 								</utu:AutoLayout>
 							</utu:AutoLayout>
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+								<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 								<ScrollViewer HorizontalScrollMode="Disabled"
 											  VerticalScrollBarVisibility="Hidden"
 											  utu:AutoLayout.PrimaryAlignment="Stretch">
