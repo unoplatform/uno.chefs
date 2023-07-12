@@ -6,6 +6,7 @@
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:models="using:Chefs.Business.Models"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:um="using:Uno.Material"
@@ -18,8 +19,11 @@
 	<Page.Resources>
 		<ResourceDictionary>
 			<x:String x:Key="Icon_Add">F1 M 16 8.904761723109655 L 9.142857142857142 8.904761723109655 L 9.142857142857142 15.583333015441895 L 6.857142857142857 15.583333015441895 L 6.857142857142857 8.904761723109655 L 0 8.904761723109655 L 0 6.678571292332241 L 6.857142857142857 6.678571292332241 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.678571292332241 L 16 6.678571292332241 L 16 8.904761723109655 Z</x:String>
-			<DataTemplate x:Key="CookbookTemplate">
-				<UserControl>
+			<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+			<!-- https://github.com/microsoft/microsoft-ui-xaml/issues/6689 -->
+			<DataTemplate x:Key="CookbookTemplate"
+						  x:DataType="models:Cookbook">
+				<UserControl win:DataContext="{x:Bind}">
 					<utu:AutoLayout>
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup>
@@ -39,17 +43,14 @@
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<!--  Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue:  -->
-						<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
-						<!--  (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values)  -->
-						<controls:FixedSizeCardContentControl x:Name="CookbookTemplateCard"
-															  HorizontalAlignment="Stretch"
-															  VerticalAlignment="Stretch"
-															  MinHeight="0"
-															  MaxWidth="400"
-															  Style="{StaticResource FilledCardContentControlStyle}"
-															  Background="{ThemeResource BackgroundBrush}">
-							<controls:FixedSizeCardContentControl.ContentTemplate>
+						<utu:CardContentControl x:Name="CookbookTemplateCard"
+												HorizontalAlignment="Stretch"
+												VerticalAlignment="Stretch"
+												MinHeight="0"
+												MaxWidth="400"
+												Style="{StaticResource FilledCardContentControlStyle}"
+												Background="{ThemeResource BackgroundBrush}">
+							<utu:CardContentControl.ContentTemplate>
 								<DataTemplate>
 									<UserControl>
 										<utu:AutoLayout>
@@ -137,14 +138,17 @@
 										</utu:AutoLayout>
 									</UserControl>
 								</DataTemplate>
-							</controls:FixedSizeCardContentControl.ContentTemplate>
-						</controls:FixedSizeCardContentControl>
+							</utu:CardContentControl.ContentTemplate>
+						</utu:CardContentControl>
 					</utu:AutoLayout>
 				</UserControl>
 			</DataTemplate>
 
-			<DataTemplate x:Key="RecipeTemplate">
-				<UserControl>
+			<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+			<!-- https://github.com/microsoft/microsoft-ui-xaml/issues/6689 -->
+			<DataTemplate x:Key="RecipeTemplate"
+						  x:DataType="models:Recipe">
+				<UserControl win:DataContext="{x:Bind}">
 					<utu:AutoLayout>
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup>
@@ -163,17 +167,14 @@
 								</VisualState>
 							</VisualStateGroup>
 						</VisualStateManager.VisualStateGroups>
-						<!--  Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue:  -->
-						<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
-						<!--  (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values)  -->
-						<controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
-															  Style="{StaticResource FilledCardContentControlStyle}"
-															  Background="{ThemeResource SurfaceBrush}"
-															  HorizontalAlignment="Stretch"
-															  VerticalAlignment="Stretch"
-															  MinHeight="0"
-															  MaxWidth="400">
-							<controls:FixedSizeCardContentControl.ContentTemplate>
+						<utu:CardContentControl x:Name="RecipeTemplateCard"
+												Style="{StaticResource FilledCardContentControlStyle}"
+												Background="{ThemeResource SurfaceBrush}"
+												HorizontalAlignment="Stretch"
+												VerticalAlignment="Stretch"
+												MinHeight="0"
+												MaxWidth="400">
+							<utu:CardContentControl.ContentTemplate>
 								<DataTemplate>
 									<UserControl>
 										<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
@@ -216,8 +217,8 @@
 										</utu:AutoLayout>
 									</UserControl>
 								</DataTemplate>
-							</controls:FixedSizeCardContentControl.ContentTemplate>
-						</controls:FixedSizeCardContentControl>
+							</utu:CardContentControl.ContentTemplate>
+						</utu:CardContentControl>
 					</utu:AutoLayout>
 				</UserControl>
 			</DataTemplate>
@@ -465,6 +466,7 @@
 							<TextBlock Text="All recipes"
 									   Foreground="{ThemeResource SurfaceInverseBrush}"
 									   Style="{StaticResource HeadlineLarge}" />
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer x:Name="RecipesScrollViewer"
 										  utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
@@ -499,6 +501,7 @@
 							<TextBlock Text="Cookbooks"
 									   Foreground="{ThemeResource SurfaceInverseBrush}"
 									   Style="{StaticResource HeadlineLarge}" />
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer x:Name="CookbooksScrollViewer"
 										  utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"

@@ -11,8 +11,8 @@
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  mc:Ignorable="d">
 
-	<!--  Workaround used here by separating the NotificationsPage / NotificationsContentPage into two files  -->
-	<!--  Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482  -->
+	<!-- Workaround used here by separating the NotificationsPage / NotificationsContentPage into two files -->
+	<!-- Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482 -->
 
 	<utu:AutoLayout>
 		<utu:AutoLayout.Resources>
@@ -208,6 +208,7 @@
 								Foreground="{ThemeResource OnSurfaceVariantBrush}" />
 			</utu:TabBar>
 
+			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 			<ScrollViewer HorizontalScrollMode="Disabled">
 				<Grid uen:Region.Attached="True"
 					  uen:Region.Navigator="Visibility">

@@ -5,6 +5,7 @@
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:models="using:Chefs.Business.Models"
 	  xmlns:um="using:Uno.Material"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
@@ -38,19 +39,19 @@
 									MinRowSpacing="30"
 									MinItemWidth="200"
 									ItemsStretch="Fill" />
-			<DataTemplate x:Key="RecipeTemplate">
-				<UserControl>
-					<!--  Using a custom local FixedCardContentControl as a workaround for now regarding this WinUI issue:  -->
-					<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
-					<!--  (For this workaround to be able to work we need to stretch the control and change the MinHeight/MaxWidth values)  -->
-					<controls:FixedSizeCardContentControl x:Name="RecipeTemplateCard"
-														  Style="{StaticResource FilledCardContentControlStyle}"
-														  Background="{ThemeResource SurfaceBrush}"
-														  HorizontalAlignment="Stretch"
-														  VerticalAlignment="Stretch"
-														  MinHeight="0"
-														  MaxWidth="400">
-						<controls:FixedSizeCardContentControl.ContentTemplate>
+			<DataTemplate x:Key="RecipeTemplate"
+						  x:DataType="models:Recipe">
+				<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+				<!-- https://github.com/microsoft/microsoft-ui-xaml/issues/6689 -->
+				<UserControl win:DataContext="{x:Bind}">
+					<utu:CardContentControl x:Name="RecipeTemplateCard"
+											Style="{StaticResource FilledCardContentControlStyle}"
+											Background="{ThemeResource SurfaceBrush}"
+											HorizontalAlignment="Stretch"
+											VerticalAlignment="Stretch"
+											MinHeight="0"
+											MaxWidth="400">
+						<utu:CardContentControl.ContentTemplate>
 							<DataTemplate>
 								<UserControl>
 									<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
@@ -110,8 +111,8 @@
 									</utu:AutoLayout>
 								</UserControl>
 							</DataTemplate>
-						</controls:FixedSizeCardContentControl.ContentTemplate>
-					</controls:FixedSizeCardContentControl>
+						</utu:CardContentControl.ContentTemplate>
+					</utu:CardContentControl>
 				</UserControl>
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
@@ -176,6 +177,7 @@
 						   Foreground="{ThemeResource SurfaceInverseBrush}"
 						   Text="Add pin"
 						   Style="{StaticResource TitleLarge}" />
+				<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 				<ScrollViewer HorizontalScrollMode="Disabled"
 							  VerticalScrollBarVisibility="Hidden"
 							  utu:AutoLayout.PrimaryAlignment="Stretch">
