@@ -125,7 +125,7 @@
 						<Setter Target="LunchRecipesFeedView.Margin" Value="-40,0" />
 						<Setter Target="DinnerRecipesFeedView.Margin" Value="-40,0" />
 						<Setter Target="SnackRecipesFeedView.Margin" Value="-40,0" />
-						<Setter Target="NavBarLayout.Padding" Value="40,20" />
+						<!--<Setter Target="NavBarLayout.Padding" Value="40,20" />-->
 						<Setter Target="ProfileLayout.Visibility" Value="Collapsed" />
 						<Setter Target="NotificationButton.Visibility" Value="Collapsed" />
 					</VisualState.Setters>
@@ -133,7 +133,9 @@
 			</VisualStateGroup>
 		</VisualStateManager.VisualStateGroups>
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:AutoLayout x:Name="NavBarLayout"
+			<utu:NavigationBar Content="HALLO"
+							   Background="{ThemeResource SurfaceInverseBrush}" />
+			<!--<utu:AutoLayout x:Name="NavBarLayout"
 							Padding="18,12"
 							Orientation="Horizontal">
 				<utu:AutoLayout x:Name="ProfileLayout"
@@ -183,7 +185,7 @@
 								  Foreground="{ThemeResource OnSurfaceBrush}" />
 					</Button>
 				</utu:AutoLayout>
-			</utu:AutoLayout>
+			</utu:AutoLayout>-->
 
 			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 						  HorizontalScrollMode="Disabled">
