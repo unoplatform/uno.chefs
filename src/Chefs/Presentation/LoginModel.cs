@@ -19,8 +19,8 @@ public partial class LoginModel
 
 	public IState<Credentials> Credentials => State<Credentials>.Async(this, async _ => new Credentials()
 	{
-		Email = _credentialOptions.Value != null
-			? _credentialOptions.Value.Email!
+		Username = _credentialOptions.Value != null
+			? _credentialOptions.Value.Username!
 			: string.Empty,
 		Password = string.Empty,
 		SkipWelcome = false,
@@ -41,7 +41,7 @@ public partial class LoginModel
 	}
 
 	private bool CanLogin(Credentials credentials)
-		=> credentials is { Email.Length: > 0 } and { Password.Length: > 0 };
+		=> credentials is { Username.Length: > 0 } and { Password.Length: > 0 };
 
 	private async ValueTask DoLogin(Credentials credentials, CancellationToken ct)
 	{
