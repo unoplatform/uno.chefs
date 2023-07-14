@@ -234,53 +234,11 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar 
-							   Background="{ThemeResource SurfaceInverseBrush}">
-				<utu:NavigationBar.Content>
-					<utu:AutoLayout Padding="0,10">
-						<PathIcon utu:AutoLayout.CounterAlignment="Center"
-								  Data="{StaticResource Icon_ChefsAppSignature}"
-								  Foreground="{ThemeResource OnPrimaryBrush}" />
-					</utu:AutoLayout>
-				</utu:NavigationBar.Content>
-				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										UriSource="ms-appx:///Chefs/Assets/Icons/person_icon.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-					<AppBarButton uen:Navigation.Request="!Notifications">
-						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										UriSource="ms-appx:///Chefs/Assets/Icons/menubell_icon.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.PrimaryCommands>
-			</utu:NavigationBar>
+		<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
+						   Content="test">
+		</utu:NavigationBar>
 
-			<utu:AutoLayout Padding="16"
-							uen:Region.Attached="True"
-							Grid.Row="1"
-							Background="{ThemeResource BackgroundBrush}"
-							Spacing="16">
-				<utu:TabBar Margin="0,0,0,16"
-							uen:Region.Attached="True"
-							Background="{ThemeResource BackgroundBrush}"
-							Style="{StaticResource TopTabBarStyle}">
-					<utu:TabBarItem x:Name="TabBarRecipeItem"
-									uen:Region.Name="MyRecipes"
-									Content="All Recipes"
-									Foreground="{ThemeResource OnSurfaceMediumBrush}"
-									IsSelectable="True"
-									IsSelected="True" />
-					<utu:TabBarItem uen:Region.Name="Cookbooks"
-									Content="My Cookbooks"
-									Foreground="{ThemeResource OnSurfaceMediumBrush}"
-									IsSelectable="True" />
-
-				</utu:TabBar>
+			
 				<Button Margin="0,0,8,8"
 						HorizontalAlignment="Right"
 						VerticalAlignment="Bottom"
@@ -295,111 +253,6 @@
 								  Foreground="{ThemeResource OnPrimaryBrush}" />
 					</um:ControlExtensions.Icon>
 				</Button>
-				<Grid uen:Region.Attached="True"
-					  uen:Region.Navigator="Visibility"
-					  utu:AutoLayout.CounterAlignment="Stretch"
-					  utu:AutoLayout.PrimaryAlignment="Stretch">
-					<utu:AutoLayout uen:Region.Name="MyRecipes">
-						<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
-									  utu:AutoLayout.PrimaryAlignment="Stretch"
-									  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
-									  Source="{Binding SavedRecipes}">
-							<DataTemplate>
-								 <!--It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871--> 
-								<ScrollViewer x:Name="RecipesScrollViewer"
-											  utu:AutoLayout.PrimaryAlignment="Stretch"
-											  HorizontalScrollMode="Disabled"
-											  VerticalScrollBarVisibility="Hidden">
-									<utu:AutoLayout>
-										<utu:AutoLayout Padding="0,0,0,16"
-														Justify="SpaceBetween"
-														Orientation="Horizontal">
-											<TextBlock utu:AutoLayout.CounterAlignment="Center"
-													   Style="{StaticResource BodyLarge}">
-												<Run Text="{Binding Data.Count}" />
-												<Run Text="results" />
-											</TextBlock>
-											 <!--Check to see if this pr https://github.com/unoplatform/uno.toolkit.ui/pull/634 fixes the issue on android where the Margin from line 260 becomes negative.--> 
-											<Button utu:AutoLayout.CounterAlignment="Center"
-													Content="Filters"
-													Style="{StaticResource TextButtonStyle}">
-												<um:ControlExtensions.Icon>
-													<PathIcon Data="{StaticResource Icon_Tune}" />
-												</um:ControlExtensions.Icon>
-											</Button>
-										</utu:AutoLayout>
-										<utu:AutoLayout Padding="0,0,0,16"
-														HorizontalAlignment="Center"
-														Spacing="8">
-
-
-											<muxc:ItemsRepeater uen:Navigation.Request="!SavedRecipeDetails"
-																ItemTemplate="{StaticResource RecipeTemplate}"
-																ItemsSource="{Binding Data}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:UniformGridLayout ItemsStretch="Fill"
-																			MaximumRowsOrColumns="2"
-																			MinColumnSpacing="8"
-																			MinItemWidth="130"
-																			MinRowSpacing="8" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-
-										</utu:AutoLayout>
-									</utu:AutoLayout>
-								</ScrollViewer>
-							</DataTemplate>
-						</uer:FeedView>
-					</utu:AutoLayout>
-					<utu:AutoLayout uen:Region.Name="Cookbooks"
-									Visibility="Collapsed">
-						 <!--It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871--> 
-						<ScrollViewer x:Name="RecipesScrollViewer"
-									  utu:AutoLayout.PrimaryAlignment="Stretch"
-									  HorizontalScrollMode="Disabled"
-									  VerticalScrollBarVisibility="Hidden">
-							<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
-										  utu:AutoLayout.PrimaryAlignment="Stretch"
-										  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
-										  Source="{Binding SavedCookbooks}">
-								<DataTemplate>
-
-									<utu:AutoLayout Padding="0,0,0,16"
-													HorizontalAlignment="Center"
-													Spacing="8">
-										<Grid>
-											<muxc:ItemsRepeater uen:Navigation.Request="!CookbookDetails"
-																ItemTemplate="{StaticResource CookbookTemplate}"
-																ItemsSource="{Binding Data}">
-												<muxc:ItemsRepeater.Layout>
-													<muxc:UniformGridLayout ItemsStretch="Fill"
-																			MaximumRowsOrColumns="2"
-																			MinColumnSpacing="8"
-																			MinItemWidth="150"
-																			MinRowSpacing="16" />
-												</muxc:ItemsRepeater.Layout>
-											</muxc:ItemsRepeater>
-											<Button Margin="0,0,8,8"
-													HorizontalAlignment="Right"
-													VerticalAlignment="Bottom"
-													uen:Navigation.Request="!SavedCreateUpdateCookbook"
-													utu:AutoLayout.IsIndependentLayout="True"
-													Background="{ThemeResource PrimaryBrush}"
-													CornerRadius="56"
-													Style="{StaticResource FabStyle}">
-												<um:ControlExtensions.Icon>
-													<PathIcon Data="{StaticResource Icon_Add}"
-															  Foreground="{ThemeResource OnPrimaryBrush}" />
-												</um:ControlExtensions.Icon>
-											</Button>
-										</Grid>
-									</utu:AutoLayout>
-								</DataTemplate>
-							</uer:FeedView>
-						</ScrollViewer>
-					</utu:AutoLayout>
-				</Grid>
-			</utu:AutoLayout>
-	</utu:AutoLayout>
+				
 		</Grid>
 </Page>

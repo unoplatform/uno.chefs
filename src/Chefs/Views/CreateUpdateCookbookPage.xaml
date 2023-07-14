@@ -18,83 +18,8 @@
 	  mc:Ignorable="d">
 
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout.Resources>
-			<x:String x:Key="Icon_Favorite">F1 M 10 18.350000381469727 L 8.550000190734863 17.030000686645508 C 3.4000000953674316 12.360000610351562 0 9.27999997138977 0 5.5 C 0 2.4200000762939453 2.4200000762939453 0 5.5 0 C 7.240000009536743 0 8.909999966621399 0.8100001811981201 10 2.0900001525878906 C 11.090000033378601 0.8100001811981201 12.759999990463257 0 14.5 0 C 17.579999923706055 0 20 2.4200000762939453 20 5.5 C 20 9.27999997138977 16.59999990463257 12.36000108718872 11.449999809265137 17.040000915527344 L 10 18.350000381469727 Z</x:String>
-			<x:String x:Key="Icon_Add">F1 M 16 9.142857142857142 L 9.142857142857142 9.142857142857142 L 9.142857142857142 16 L 6.857142857142857 16 L 6.857142857142857 9.142857142857142 L 0 9.142857142857142 L 0 6.857142857142857 L 6.857142857142857 6.857142857142857 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.857142857142857 L 16 6.857142857142857 L 16 9.142857142857142 Z</x:String>
-			<x:String x:Key="Icon_Bookmark">F1 M 12 0 L 2 0 C 0.8999999761581421 0 0.010000228881835938 0.8999999761581421 0.010000228881835938 2 L 0 18 L 7 15 L 14 18 L 14 2 C 14 0.8999999761581421 13.100000023841858 0 12 0 Z</x:String>
-			<x:String x:Key="Icon_Favorite_Border">F1 M 14.5 0 C 12.759999990463257 0 11.090000033378601 0.8100001811981201 10 2.0900001525878906 C 8.909999966621399 0.8100001811981201 7.240000009536743 0 5.5 0 C 2.4200000762939453 0 0 2.4200000762939453 0 5.5 C 0 9.27999997138977 3.4000000953674316 12.36000108718872 8.550000190734863 17.040000915527344 L 10 18.350000381469727 L 11.449999809265137 17.030000686645508 C 16.59999990463257 12.360000610351562 20 9.27999997138977 20 5.5 C 20 2.4200000762939453 17.579999923706055 0 14.5 0 Z M 10.100000381469727 15.549999237060547 L 10 15.649999618530273 L 9.899999618530273 15.549999237060547 C 5.1399993896484375 11.239999294281006 2 8.390000104904175 2 5.5 C 2 3.5 3.5 2 5.5 2 C 7.039999961853027 2 8.539999723434448 2.9900001287460327 9.069999694824219 4.360000133514404 L 10.9399995803833 4.360000133514404 C 11.459999561309814 2.9900001287460327 12.960000038146973 2 14.5 2 C 16.5 2 18 3.5 18 5.5 C 18 8.390000104904175 14.860000610351562 11.239999294281006 10.100000381469727 15.549999237060547 Z</x:String>
-			<x:String x:Key="Icon_Bookmark_Border">F1 M 12 0 L 2 0 C 0.8999999761581421 0 0.010000228881835938 0.8999999761581421 0.010000228881835938 2 L 0 18 L 7 15 L 14 18 L 14 2 C 14 0.8999999761581421 13.100000023841858 0 12 0 Z M 12 15 L 7 12.819999694824219 L 2 15 L 2 2 L 12 2 L 12 15 Z</x:String>
-			<x:String x:Key="Icon_Check">F1 M 5.590000152587891 10.579999923706055 L 1.4199998378753662 6.409999847412109 L 0 7.819999694824219 L 5.590000152587891 13.40999984741211 L 17.59000015258789 1.4099998474121094 L 16.18000030517578 0 L 5.590000152587891 10.579999923706055 Z</x:String>
-			<x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
-			<x:String x:Key="Icon_Outline_Plus_Chefsapp">M 6 12 L 6 0 M 0 5.99999942779541 L 12 6</x:String>
-
-			<DataTemplate x:Key="RecipeTemplate"
-						  x:DataType="models:Recipe">
-				<!--
-					Using an x:bind for windows as a workaround for now regarding this WinUI issue:
-					https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013
-				-->
-				<Border win:DataContext="{x:Bind}">
-					<utu:CardContentControl x:Name="RecipeTemplateCard"
-											MaxWidth="400"
-											Background="{ThemeResource SurfaceBrush}"
-											CornerRadius="4"
-											Style="{StaticResource FilledCardContentControlStyle}">
-						<utu:CardContentControl.ContentTemplate>
-							<DataTemplate>
-								<utu:AutoLayout CornerRadius="4">
-									<Border x:Name="ImageLayout"
-											Height="144">
-										<Image Source="{Binding ImageUrl}"
-											   Stretch="UniformToFill"
-											   VerticalAlignment="Center"
-											   HorizontalAlignment="Center" />
-									</Border>
-									<utu:AutoLayout Padding="16"
-													Orientation="Horizontal"
-													Spacing="16">
-										<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-														utu:AutoLayout.PrimaryAlignment="Stretch">
-											<utu:AutoLayout PrimaryAxisAlignment="Center"
-															Spacing="4">
-												<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-														   Style="{StaticResource TitleSmall}"
-														   Text="{Binding Name}"
-														   TextWrapping="Wrap" />
-												<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
-														   Style="{StaticResource CaptionMedium}"
-														   Text="{Binding TimeCal}"
-														   TextWrapping="Wrap" />
-											</utu:AutoLayout>
-										</utu:AutoLayout>
-										<ToggleButton x:Name="toggleButton"
-													  MaxWidth="60"
-													  utu:AutoLayout.CounterAlignment="Center"
-													  CornerRadius="60"
-													  IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-													  Style="{StaticResource IconToggleButtonStyle}">
-											<ToggleButton.Content>
-												<PathIcon Data="{StaticResource Icon_Favorite_Border}"
-														  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-											</ToggleButton.Content>
-											<um:ControlExtensions.AlternateContent>
-												<PathIcon Data="{StaticResource Icon_Favorite}"
-														  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-														  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookToColorConverter}}" />
-											</um:ControlExtensions.AlternateContent>
-										</ToggleButton>
-									</utu:AutoLayout>
-								</utu:AutoLayout>
-							</DataTemplate>
-						</utu:CardContentControl.ContentTemplate>
-					</utu:CardContentControl>
-				</Border>
-			</DataTemplate>
-		</utu:AutoLayout.Resources>
-
-
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<!--<utu:NavigationBar x:Name="NavBarLayout"
+			<utu:NavigationBar x:Name="NavBarLayout"
 							   toolkit:UIElementExtensions.Elevation="0"
 							   Background="{ThemeResource SurfaceInverseBrush}"
 							   Content="{Binding Title}"
@@ -106,76 +31,9 @@
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
-				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										UriSource="ms-appx:///Chefs/Assets/Icons/three_dot.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.PrimaryCommands>
-			</utu:NavigationBar>-->
+			</utu:NavigationBar>
 
-			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
-			<ScrollViewer x:Name="RecipesScrollViewer"
-						  utu:AutoLayout.PrimaryAlignment="Stretch"
-						  HorizontalScrollMode="Disabled"
-						  VerticalScrollBarVisibility="Hidden">
-				<utu:AutoLayout Margin="16"
-								Spacing="16">
-					<TextBox PlaceholderText="Cookbook name"
-							 Style="{StaticResource OutlinedTextBoxStyle}"
-							 Text="{Binding Cookbook.Name, Mode=TwoWay}" />
-					<TextBlock Margin="0,16,0,8"
-							   utu:AutoLayout.CounterAlignment="Start"
-							   Style="{StaticResource BodyLarge}"
-							   Text="{Binding SubTitle}" />
-					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
-								  utu:AutoLayout.PrimaryAlignment="Stretch"
-								  Source="{Binding Recipes}">
-						<DataTemplate>
-							<utu:AutoLayout Padding="0,0,0,16"
-											HorizontalAlignment="Center"
-											Spacing="8">
-								<muxc:ItemsRepeater uen:Navigation.Request="!SavedRecipeDetails"
-													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data}">
-									<muxc:ItemsRepeater.Layout>
-										<muxc:UniformGridLayout ItemsStretch="Fill"
-																MaximumRowsOrColumns="2"
-																MinColumnSpacing="8"
-																MinItemWidth="130"
-																MinRowSpacing="8" />
-									</muxc:ItemsRepeater.Layout>
-								</muxc:ItemsRepeater>
-							</utu:AutoLayout>
-						</DataTemplate>
-					</uer:FeedView>
-				</utu:AutoLayout>
-			</ScrollViewer>
 		</utu:AutoLayout>
-		<utu:AutoLayout Height="108"
-						Padding="16,24"
-						HorizontalAlignment="Stretch"
-						utu:AutoLayout.CounterAlignment="Start"
-						Background="{ThemeResource SurfaceBrush}"
-						Orientation="Horizontal"
-						Spacing="16">
-			<Button Height="59"
-					Padding="12,20"
-					uen:Navigation.Request="-"
-					utu:AutoLayout.CounterAlignment="Start"
-					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Content="Cancel"
-					CornerRadius="4"
-					Style="{StaticResource TextButtonStyle}" />
-			<Button Height="59"
-					Padding="24,20"
-					utu:AutoLayout.CounterAlignment="Start"
-					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Command="{Binding Submit}"
-					Content="{Binding SaveButtonContent}"
-					CornerRadius="4" />
-		</utu:AutoLayout>
+		
 	</utu:AutoLayout>
 </Page>

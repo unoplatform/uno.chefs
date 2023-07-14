@@ -95,8 +95,8 @@
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Content="HALLO"
-							   Background="{ThemeResource SurfaceInverseBrush}" />
+			<!--<utu:NavigationBar Content="HALLO"
+							   Background="{ThemeResource SurfaceInverseBrush}" />-->
 			<uer:FeedView x:Name="TrendingNowFeed"
 						  Source="{Binding TrendingNow}">
 				<DataTemplate>
