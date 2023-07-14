@@ -306,14 +306,14 @@
                     uen:Region.Navigator="Visibility"
                     utu:AutoLayout.CounterAlignment="Stretch"
                     utu:AutoLayout.PrimaryAlignment="Stretch">
-                    <utu:AutoLayout uen:Region.Name="MyRecipes">
+                    <utu:AutoLayout uen:Region.Name="MyRecipes" Visibility="Visible">
                         <uer:FeedView
                             utu:AutoLayout.CounterAlignment="Stretch"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             NoneTemplate="{StaticResource RecipeEmptyTemplate}"
                             Source="{Binding SavedRecipes}">
                             <DataTemplate>
-                                <!--It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871-->
+                                <!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
                                 <ScrollViewer
                                     x:Name="RecipesScrollViewer"
                                     utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -363,20 +363,24 @@
                             </DataTemplate>
                         </uer:FeedView>
                     </utu:AutoLayout>
-                    <utu:AutoLayout uen:Region.Name="Cookbooks"
-                                    Visibility="Collapsed">
-                        <!--It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871-->
-                        <ScrollViewer x:Name="RecipesScrollViewer"
+                    <utu:AutoLayout uen:Region.Name="Cookbooks" Visibility="Collapsed">
+                        <!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+                        
+                        <!--<ScrollViewer x:Name="RecipesScrollViewer"
                                       utu:AutoLayout.PrimaryAlignment="Stretch"
                                       HorizontalScrollMode="Disabled"
-                                      VerticalScrollBarVisibility="Hidden">
+                                      VerticalScrollBarVisibility="Hidden">-->
                             <uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
                                           utu:AutoLayout.PrimaryAlignment="Stretch"
                                           NoneTemplate="{StaticResource CookbookEmptyTemplate}"
                                           Source="{Binding SavedCookbooks}">
                                 <DataTemplate>
 
-                                    <utu:AutoLayout Padding="0,0,0,16"
+                                <Grid Height="300"
+                                      Width="300"
+                                      Background="Black" />
+
+                                <!--<utu:AutoLayout Padding="0,0,0,16"
                                                     HorizontalAlignment="Center"
                                                     Spacing="8">
                                         <Grid>
@@ -405,10 +409,10 @@
                                                 </um:ControlExtensions.Icon>
                                             </Button>
                                         </Grid>
-                                    </utu:AutoLayout>
+                                    </utu:AutoLayout>-->
                                 </DataTemplate>
                             </uer:FeedView>
-                        </ScrollViewer>
+                        <!--</ScrollViewer>-->
                     </utu:AutoLayout>
                 </Grid>
             </utu:AutoLayout>
