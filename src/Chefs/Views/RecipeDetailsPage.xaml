@@ -168,7 +168,8 @@
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
-			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch" >
+			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+						  HorizontalScrollMode="Disabled">
 				<utu:AutoLayout x:Name="TabsLayout"
 								uen:Region.Attached="True">
 					<utu:TabBar Background="{ThemeResource BackgroundBrush}"
@@ -211,7 +212,7 @@
 																	PrimaryAxisAlignment="Center"
 																	Height="60">
 														<utu:AutoLayout Spacing="16" 
-																		Padding="8,0,40,0" 
+																		Padding="8,0,16,0" 
 																		Orientation="Horizontal">
 															<Image Source="{Binding UrlIcon}" 
 																   utu:AutoLayout.CounterAlignment="Center" 
@@ -269,7 +270,7 @@
 													<utu:AutoLayout Background="{ThemeResource SurfaceBrush}" 
 																	CornerRadius="4">
 														<utu:AutoLayout Spacing="8" 
-																		Padding="16,16,40,16" 
+																		Padding="16" 
 																		PrimaryAxisAlignment="Center">
 															<TextBlock TextWrapping="Wrap" 
 																	   Text="{Binding Name}" 
@@ -312,7 +313,7 @@
 													<utu:AutoLayout Background="{ThemeResource SurfaceBrush}" 
 																	CornerRadius="4">
 														<utu:AutoLayout Spacing="16" 
-																		Padding="16,16,40,16" 
+																		Padding="16" 
 																		Orientation="Horizontal">
 															<PersonPicture utu:AutoLayout.CounterAlignment="Start"
 																		   Width="60" 
