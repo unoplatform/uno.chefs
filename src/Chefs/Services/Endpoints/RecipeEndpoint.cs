@@ -43,6 +43,11 @@ public class RecipeEndpoint : IRecipeEndpoint
 			return recipes?.Where(x => savedRecipes.SavedRecipes.Any(y => y == x.Id)).ToImmutableList() ?? ImmutableList<RecipeData>.Empty;
 		}
 
+		//if (savedRecipes is not null && savedRecipes.SavedRecipes is not null)
+		//{
+		//	return recipes?.Where(x => savedRecipes.SavedRecipes.Any(y => y == x.Id)).ToImmutableList() ?? ImmutableList<RecipeData>.Empty;
+		//}
+
 		return ImmutableList<RecipeData>.Empty;
 	}
 
