@@ -10,8 +10,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Uno.Material.WinUI" Version="3.0.0-dev.262" />
-		<PackageReference Include="Uno.Resizetizer" Version="1.1.2" />
-		<PackageReference Include="Uno.WinUI.Skia.Gtk" Version="5.0.0-dev.1380" />
+		<PackageReference Include="Uno.Resizetizer" Version="1.2.0-dev.19" />
+		<PackageReference Include="Uno.WinUI.Skia.Gtk" Version="5.0.0-dev.1392" />
 		<PackageReference Include="Uno.Extensions.Configuration" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Uno.Extensions.Core" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Uno.Extensions.Http" Version="3.0.0-dev.1960" />
@@ -19,7 +19,7 @@
 		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="3.0.0-dev.1960" />
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="4.0.0-dev.35" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="4.0.0-dev.51" />
 		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="3.0.0-dev.1960" />
@@ -28,10 +28,10 @@
 		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="3.0.0-dev.1960" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
-		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.3" />
+		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" Version="2.88.4-preview.84" />
 		<PackageReference Include="SkiaSharp.Skottie" Version="2.88.3" />
-		<PackageReference Include="Uno.WinUI.RemoteControl" Version="5.0.0-dev.1380" Condition="'$(Configuration)'=='Debug'" />
-		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.0-dev.1380" />
+		<PackageReference Include="Uno.WinUI.RemoteControl" Version="5.0.0-dev.1392" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.0-dev.1392" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />

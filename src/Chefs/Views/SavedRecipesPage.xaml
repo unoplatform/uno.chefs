@@ -234,18 +234,17 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-		<!--<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">-->
+		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar 
-							   Content="HALLO"
 							   Background="{ThemeResource SurfaceInverseBrush}">
-				<!--<utu:NavigationBar.Content>
+				<utu:NavigationBar.Content>
 					<utu:AutoLayout Padding="0,10">
 						<PathIcon utu:AutoLayout.CounterAlignment="Center"
 								  Data="{StaticResource Icon_ChefsAppSignature}"
 								  Foreground="{ThemeResource OnPrimaryBrush}" />
 					</utu:AutoLayout>
-				</utu:NavigationBar.Content>-->
-				<!--<utu:NavigationBar.PrimaryCommands>
+				</utu:NavigationBar.Content>
+				<utu:NavigationBar.PrimaryCommands>
 					<AppBarButton>
 						<AppBarButton.Icon>
 							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
@@ -258,15 +257,15 @@
 										UriSource="ms-appx:///Chefs/Assets/Icons/menubell_icon.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-				</utu:NavigationBar.PrimaryCommands>-->
+				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
 
-			<!--<utu:AutoLayout Padding="16"
+			<utu:AutoLayout Padding="16"
 							uen:Region.Attached="True"
 							Grid.Row="1"
 							Background="{ThemeResource BackgroundBrush}"
-							Spacing="16">-->
-				<!--<utu:TabBar Margin="0,0,0,16"
+							Spacing="16">
+				<utu:TabBar Margin="0,0,0,16"
 							uen:Region.Attached="True"
 							Background="{ThemeResource BackgroundBrush}"
 							Style="{StaticResource TopTabBarStyle}">
@@ -281,7 +280,7 @@
 									Foreground="{ThemeResource OnSurfaceMediumBrush}"
 									IsSelectable="True" />
 
-				</utu:TabBar>-->
+				</utu:TabBar>
 				<Button Margin="0,0,8,8"
 						HorizontalAlignment="Right"
 						VerticalAlignment="Bottom"
@@ -296,7 +295,7 @@
 								  Foreground="{ThemeResource OnPrimaryBrush}" />
 					</um:ControlExtensions.Icon>
 				</Button>
-				<!--<Grid uen:Region.Attached="True"
+				<Grid uen:Region.Attached="True"
 					  uen:Region.Navigator="Visibility"
 					  utu:AutoLayout.CounterAlignment="Stretch"
 					  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -306,7 +305,7 @@
 									  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
 									  Source="{Binding SavedRecipes}">
 							<DataTemplate>
-								--><!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 --><!--
+								 <!--It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871--> 
 								<ScrollViewer x:Name="RecipesScrollViewer"
 											  utu:AutoLayout.PrimaryAlignment="Stretch"
 											  HorizontalScrollMode="Disabled"
@@ -320,7 +319,7 @@
 												<Run Text="{Binding Data.Count}" />
 												<Run Text="results" />
 											</TextBlock>
-											--><!-- Check to see if this pr https://github.com/unoplatform/uno.toolkit.ui/pull/634 fixes the issue on android where the Margin from line 260 becomes negative. --><!--
+											 <!--Check to see if this pr https://github.com/unoplatform/uno.toolkit.ui/pull/634 fixes the issue on android where the Margin from line 260 becomes negative.--> 
 											<Button utu:AutoLayout.CounterAlignment="Center"
 													Content="Filters"
 													Style="{StaticResource TextButtonStyle}">
@@ -352,9 +351,9 @@
 							</DataTemplate>
 						</uer:FeedView>
 					</utu:AutoLayout>
-					--><!--<utu:AutoLayout uen:Region.Name="Cookbooks"
+					<utu:AutoLayout uen:Region.Name="Cookbooks"
 									Visibility="Collapsed">
-						--><!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 --><!--
+						 <!--It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871--> 
 						<ScrollViewer x:Name="RecipesScrollViewer"
 									  utu:AutoLayout.PrimaryAlignment="Stretch"
 									  HorizontalScrollMode="Disabled"
@@ -398,9 +397,9 @@
 								</DataTemplate>
 							</uer:FeedView>
 						</ScrollViewer>
-					</utu:AutoLayout>--><!--
-				</Grid>-->
-			<!--</utu:AutoLayout>-->
+					</utu:AutoLayout>
+				</Grid>
+			</utu:AutoLayout>
+	</utu:AutoLayout>
 		</Grid>
-	<!--</utu:AutoLayout>-->
 </Page>
