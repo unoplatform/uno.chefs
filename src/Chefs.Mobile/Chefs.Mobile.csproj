@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
 		<SingleProject>true</SingleProject>
@@ -52,7 +52,7 @@
 				<RunAOTCompilation>true</RunAOTCompilation>
 			</PropertyGroup>
 			<ItemGroup>
-				<PackageReference Include="Xamarin.Google.Android.Material" Version="1.8.0" />
+				<PackageReference Include="Xamarin.Google.Android.Material" Version="1.9.0.2" />
 				<PackageReference Include="Uno.UniversalImageLoader" Version="1.9.36" />
 			</ItemGroup>
 			<ItemGroup>
