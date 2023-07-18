@@ -351,7 +351,7 @@
 													HorizontalAlignment="Center"
 													Spacing="8">
 										<Grid>
-											<muxc:ItemsRepeater uen:Navigation.Request="!CookbookDetails"
+											<muxc:ItemsRepeater uen:Navigation.Request="CookbookDetails"
 																ItemTemplate="{StaticResource CookbookTemplate}"
 																ItemsSource="{Binding Data}">
 												<muxc:ItemsRepeater.Layout>
