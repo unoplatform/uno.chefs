@@ -85,11 +85,11 @@
 						<not_mobile:AppBarButton.Icon>
 							<SymbolIcon Symbol="Back" />
 						</not_mobile:AppBarButton.Icon>
-						<ios:AppBarButton.Icon>
+						<!--<ios:AppBarButton.Icon>
 							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
 										ShowAsMonochrome="True"
 										UriSource="ms-appx:///Chefs/Assets/Icons/back.png" />
-						</ios:AppBarButton.Icon>
+						</ios:AppBarButton.Icon>-->
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 
