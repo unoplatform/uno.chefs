@@ -58,6 +58,9 @@
 			<ItemGroup>
 				<AndroidEnvironment Include="Android/environment.conf" />
 			</ItemGroup>
+			<ItemGroup>
+				<AndroidResource Include="Android\Resources\drawable\splash_logo.svg" />
+			</ItemGroup>
 		</When>
 		<When Condition="$(IsIOS)">
 			<PropertyGroup>
