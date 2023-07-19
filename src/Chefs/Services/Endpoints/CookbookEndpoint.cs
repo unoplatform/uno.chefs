@@ -71,8 +71,6 @@ public class CookbookEndpoint : ICookbookEndpoint
 		return (await LoadCookbooks())
 		.Where(x => x.UserId == userId)
 		.ToImmutableList() ?? ImmutableList<CookbookData>.Empty;
-
-		//return ImmutableList<CookbookData>.Empty;
 	}
 
 	//Implementation to update cookbooks in memory 
