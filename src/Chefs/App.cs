@@ -76,7 +76,7 @@ namespace Chefs
 				new ViewMap<ProfilePage>(ResultData: typeof(IChefEntity)),
 				new ViewMap<ProfileDetailsPage, ProfileModel>(Data: new DataMap<User>()),
 				new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
-				new ViewMap<SavedRecipesPage, SavedRecipesModel>(),
+				new ViewMap<FavoriteRecipesPage, FavoriteRecipesModel>(),
 				new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
 				new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
 				new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
@@ -108,7 +108,7 @@ namespace Chefs
 									new RouteMap("FilterContent", View: views.FindByViewModel<FilterModel>(), IsDefault:true)
 								}),
 							}),
-							new RouteMap("SavedRecipes", View: views.FindByViewModel<SavedRecipesModel>()),
+							new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
 							new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 						}),
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main"),
@@ -118,8 +118,8 @@ namespace Chefs
 							}),
 
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main"),
-						new RouteMap("SavedRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
-						new RouteMap("SavedCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
+						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
+						new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>()),
 						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
 						new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "CookbookDetails"),

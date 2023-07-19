@@ -126,7 +126,7 @@
 							</utu:AutoLayout>
 							<utu:AutoLayout Padding="0,16">
 
-								<muxc:ItemsRepeater uen:Navigation.Request="SavedRecipeDetails"
+								<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data.Recipes}">
 									<muxc:ItemsRepeater.Layout>

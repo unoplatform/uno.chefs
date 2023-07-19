@@ -1,4 +1,4 @@
-﻿<Page x:Class="Chefs.Views.SavedRecipesPage"
+﻿<Page x:Class="Chefs.Views.FavoriteRecipesPage"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:local="using:Chefs.Views"
@@ -51,7 +51,7 @@
 				<Button Padding="12,10,16,10"
 						HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
-						uen:Navigation.Request="!SavedCreateUpdateCookbook"
+						uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="Create cookbook"
 						CornerRadius="4"
@@ -121,7 +121,7 @@
 														HorizontalAlignment="Stretch"
 														VerticalAlignment="Stretch"
 														uen:Navigation.Data="{Binding}"
-														uen:Navigation.Request="!SavedCreateUpdateCookbook"
+														uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
 														Background="{ThemeResource BackgroundBrush}"
 														CornerRadius="12"
 														Style="{StaticResource TextButtonStyle}"
@@ -316,7 +316,7 @@
 														Spacing="8">
 
 
-											<muxc:ItemsRepeater uen:Navigation.Request="!SavedRecipeDetails"
+											<muxc:ItemsRepeater uen:Navigation.Request="!FavoriteRecipeDetails"
 																ItemTemplate="{StaticResource RecipeTemplate}"
 																ItemsSource="{Binding Data}">
 												<muxc:ItemsRepeater.Layout>
@@ -365,7 +365,7 @@
 											<Button Margin="0,0,8,8"
 													HorizontalAlignment="Right"
 													VerticalAlignment="Bottom"
-													uen:Navigation.Request="!SavedCreateUpdateCookbook"
+													uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
 													utu:AutoLayout.IsIndependentLayout="True"
 													Background="{ThemeResource PrimaryBrush}"
 													CornerRadius="56"

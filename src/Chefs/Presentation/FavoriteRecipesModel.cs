@@ -1,12 +1,12 @@
 ﻿namespace Chefs.Presentation;
 
-public partial class SavedRecipesModel
+public partial class FavoriteRecipesModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
 
-	public SavedRecipesModel(
+	public FavoriteRecipesModel(
 		INavigator navigator,
 		IRecipeService recipeService,
 		ICookbookService cookbookService)

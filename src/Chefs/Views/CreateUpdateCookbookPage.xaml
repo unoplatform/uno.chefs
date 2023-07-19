@@ -139,7 +139,7 @@
 							<utu:AutoLayout Padding="0,0,0,16"
 											HorizontalAlignment="Center"
 											Spacing="8">
-								<muxc:ItemsRepeater uen:Navigation.Request="!SavedRecipeDetails"
+								<muxc:ItemsRepeater uen:Navigation.Request="!FavoriteRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}">
 									<muxc:ItemsRepeater.Layout>
