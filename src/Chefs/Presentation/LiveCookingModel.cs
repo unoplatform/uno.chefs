@@ -1,20 +1,25 @@
-﻿namespace Chefs.Presentation;
+﻿using Uno.Extensions.Reactive.Sources;
+
+namespace Chefs.Presentation;
 
 public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
 public partial class LiveCookingModel
 {
 	private readonly INavigator _navigator;
+    private readonly IRecipeService _recipeService;
 
-	public LiveCookingModel(LiveCookingParameter parameter, INavigator navigator)
+
+    public LiveCookingModel(LiveCookingParameter parameter, INavigator navigator, IRecipeService recipeService)
 	{
 		Steps = parameter.Steps;
 		Recipe = parameter.Recipe;
 
 		_navigator = navigator;
-	}
+        _recipeService = recipeService;
+    }
 
-	public IImmutableList<Step> Steps { get; }
+    public IImmutableList<Step> Steps { get; }
 
 	public IFeed<Step> SelectedStep => SelectedIndex.Select(x => Steps[x]);
 
@@ -22,12 +27,40 @@ public partial class LiveCookingModel
 
 	public IFeed<bool> CanFinish => SelectedIndex.Select(x => x == Steps.Count - 1);
 
-	public Recipe Recipe { get; }
+	public IFeed<bool> CanGoNext => SelectedIndex.Select(x => (x + 1) < Steps.Count);
+
+	public IFeed<bool> CanGoBack => SelectedIndex.Select(x => (x - 1) >= 0);
+
+    public IState<bool> Completed => State.Value(this, () => false);
+
+    public Recipe Recipe { get; }
 
 	public async ValueTask Complete(CancellationToken ct)
 	{
-		await _navigator.NavigateBackAsync(this, cancellation: ct);
-
-		await _navigator.NavigateRouteAsync(this, "Completed", Qualifiers.Dialog, cancellation: ct);
+		await Completed.Set(true, ct);
 	}
+
+	public async ValueTask Next(int selectedIndex, CancellationToken ct)
+	{
+		if (selectedIndex + 1 < Steps.Count)
+		{
+			await SelectedIndex.Set(selectedIndex + 1, ct);
+		}
+    }
+
+	public async ValueTask Back(int selectedIndex, CancellationToken ct)
+	{
+		if (selectedIndex - 1 >= 0)
+		{
+			await SelectedIndex.Set(selectedIndex - 1, ct);
+		}
+    }
+
+    public async ValueTask BackToLastStep(CancellationToken ct)
+    {
+        await Completed.Set(false, ct);
+    }
+
+    public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
+		await _recipeService.Save(recipe, ct);
 }
