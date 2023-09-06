@@ -102,7 +102,7 @@ namespace Chefs
 								}),
 							}),
 							new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
-							new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), DependsOn:"Home", Nested: new RouteMap[]
+							new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), Nested: new RouteMap[]
 							{
 								new RouteMap("Filter", View: views.FindByView<FilterPage>(), Nested: new RouteMap[]
 								{
