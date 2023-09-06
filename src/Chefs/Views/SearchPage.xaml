@@ -116,30 +116,33 @@
 		</utu:AutoLayout.Resources>
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:AutoLayout Background="{ThemeResource SurfaceInverseBrush}" Orientation="Horizontal">
-				<utu:AutoLayout Justify="SpaceBetween"
-								Orientation="Horizontal"
-								Padding="16,12,12,12"
-								utu:AutoLayout.PrimaryAlignment="Stretch">
-					<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
-							  utu:AutoLayout.CounterAlignment="Center"
-							  Foreground="{ThemeResource OnPrimaryBrush}" />
-					<utu:AutoLayout Orientation="Horizontal" utu:AutoLayout.CounterAlignment="Center">
-						<Button utu:AutoLayout.CounterAlignment="Start"
-								Foreground="{ThemeResource OnPrimaryBrush}"
-								Style="{StaticResource IconButtonStyle}"
-								Command="{Binding ShowCurrentProfile}">
-							<PathIcon Data="{StaticResource Icon_Person_Outline}" Foreground="{ThemeResource OnPrimaryBrush}" />
-						</Button>
-						<Button utu:AutoLayout.CounterAlignment="Start"
-								Foreground="{ThemeResource OnPrimaryBrush}"
-								Style="{StaticResource IconButtonStyle}"
-								uen:Navigation.Request="!Notifications">
-							<PathIcon Data="{StaticResource Icon_Notifications_None}" Foreground="{ThemeResource OnPrimaryBrush}" />
-						</Button>
+
+			<utu:NavigationBar x:Name="NavBar"
+							   Background="{ThemeResource SurfaceInverseBrush}">
+				<utu:NavigationBar.Content>
+					<utu:AutoLayout Padding="0,10">
+						<PathIcon utu:AutoLayout.CounterAlignment="Center"
+								  Data="{StaticResource Icon_ChefsAppSignature}"
+								  Foreground="{ThemeResource OnPrimaryBrush}" />
 					</utu:AutoLayout>
-				</utu:AutoLayout>
-			</utu:AutoLayout>
+				</utu:NavigationBar.Content>
+				<utu:NavigationBar.PrimaryCommands>
+					<AppBarButton Command="{Binding ShowCurrentProfile}">
+						<AppBarButton.Icon>
+							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
+										ShowAsMonochrome="True"
+										UriSource="ms-appx:///Chefs/Assets/Icons/profile_icon.png" />
+						</AppBarButton.Icon>
+					</AppBarButton>
+					<AppBarButton uen:Navigation.Request="!Notifications">
+						<AppBarButton.Icon>
+							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
+										ShowAsMonochrome="True"
+										UriSource="ms-appx:///Chefs/Assets/Icons/nav_bell_icon.png" />
+						</AppBarButton.Icon>
+					</AppBarButton>
+				</utu:NavigationBar.PrimaryCommands>
+			</utu:NavigationBar>
 
 			<utu:AutoLayout Padding="16,24"
 							PrimaryAxisAlignment="Center"
@@ -183,8 +186,7 @@
 
 			<utu:AutoLayout x:Name="ItemsLayout"
 							utu:AutoLayout.CounterAlignment="Stretch"
-							utu:AutoLayout.PrimaryAlignment="Stretch"
-							Visibility="{Binding Searched}">
+							utu:AutoLayout.PrimaryAlignment="Stretch">
 				<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch" VerticalScrollBarVisibility="Hidden">
 					<uer:FeedView x:Name="SearchFeed"
 								  NoneTemplate="{StaticResource EmptyTemplate}"

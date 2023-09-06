@@ -48,13 +48,14 @@
 								   Text="Recipe Categories"
 								   TextWrapping="Wrap" />
 						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}"
-											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
 											ItemsSource="{Binding OrganizeCategories}"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
 														MinColumnSpacing="8"
 														MinRowSpacing="8"
+														MinItemWidth="120"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
 														Orientation="Horizontal" />
@@ -66,12 +67,13 @@
 								   Text="Cooking Time"
 								   TextWrapping="Wrap" />
 						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
-											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
 											ItemsSource="{Binding Times}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
 														MinColumnSpacing="8"
 														MinRowSpacing="8"
+														MinItemWidth="80"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
 														Orientation="Horizontal" />
@@ -81,6 +83,7 @@
 									<utu:Chip Background="{ThemeResource SurfaceBrush}"
 											  Content="{Binding Converter={StaticResource CookingTimeFormatter}}"
 											  Foreground="{ThemeResource OnSurfaceVariantBrush}"
+											  HorizontalAlignment="Stretch"
 											  BorderThickness="1"
 											  Style="{StaticResource MaterialChipStyle}" />
 								</DataTemplate>
@@ -92,13 +95,14 @@
 								   Text="Skill Level"
 								   TextWrapping="Wrap" />
 						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}"
-											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
 											ItemsSource="{Binding Difficulties}"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
 														MinColumnSpacing="8"
 														MinRowSpacing="8"
+														MinItemWidth="140"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
 														Orientation="Horizontal" />
@@ -110,13 +114,14 @@
 								   Text="Serves"
 								   TextWrapping="Wrap" />
 						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}"
-											utu:ItemsRepeaterExtensions.SelectionMode="Single"
+											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
 											ItemsSource="{Binding Serves}"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
 														MinColumnSpacing="8"
 														MinRowSpacing="8"
+														MinItemWidth="50"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
 														Orientation="Horizontal" />
