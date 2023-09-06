@@ -8,12 +8,14 @@
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:models="using:Chefs.Business.Models"
 	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:ios="http://uno.ui/ios"
+	  xmlns:not_ios="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:um="using:Uno.Material"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:controls="using:Chefs.Controls"
-	  mc:Ignorable="d">
+	  mc:Ignorable="d ios">
 
 	<utu:AutoLayout>
 		<utu:AutoLayout.Resources>
@@ -48,7 +50,7 @@
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Foreground="{ThemeResource SurfaceInverseBrush}"
 								   Style="{StaticResource DisplayMedium}" />
-						<utu:AutoLayout Spacing="14"
+						<utu:AutoLayout Spacing="14" 
 										utu:AutoLayout.CounterAlignment="Center">
 							<TextBlock x:Name="TitleText"
 									   TextAlignment="Center"
@@ -69,7 +71,7 @@
 
 			<DataTemplate x:Key="CookbookEmptyTemplate">
 				<UserControl>
-					<utu:AutoLayout Spacing="10"
+					<utu:AutoLayout Spacing="10" 
 									PrimaryAxisAlignment="Center">
 						<VisualStateManager.VisualStateGroups>
 							<VisualStateGroup>
@@ -145,7 +147,7 @@
 						utu:AutoLayout.PrimaryAlignment="Stretch"
 						utu:AutoLayout.CounterAlignment="Start"
 						uen:Region.Attached="True">
-			<utu:AutoLayout x:Name="NavBarLayout"
+			<utu:AutoLayout x:Name="NavBarLayout" 
 							Background="{ThemeResource SurfaceBrush}">
 				<utu:NavigationBar x:Name="PhoneNavBar"
 								   Style="{StaticResource NavigationBarStyle}"
@@ -183,13 +185,13 @@
 									  Visibility="Collapsed" />
 					</utu:NavigationBar.MainCommand>
 					<utu:NavigationBar.PrimaryCommands>
-						<AppBarButton Command="{Binding NavigateToSettings}"
+						<AppBarButton Command="{Binding NavigateToSettings}" 
 									  Visibility="{Binding Profile.IsCurrent}">
 							<AppBarButton.Icon>
 								<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/settings.png" />
 							</AppBarButton.Icon>
 						</AppBarButton>
-						<AppBarButton Label=""
+						<AppBarButton Label="" 
 									  Command="{Binding GoBack}">
 							<AppBarButton.Icon>
 								<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/close.png" />
@@ -203,7 +205,19 @@
 							Padding="0,0,0,24"
 							CornerRadius="0,0,30,30"
 							PrimaryAxisAlignment="Center">
-				<PersonPicture utu:AutoLayout.CounterAlignment="Center"
+
+				<!-- Person picture does not work on IOS when the source is delayed https://github.com/unoplatform/uno/issues/13543-->
+				<ios:Grid Width="100"
+					  Height="100"
+					  utu:AutoLayout.CounterAlignment="Center"
+					  CornerRadius="50">
+					<Image Width="100"
+						   Height="100"
+						   VerticalAlignment="Center"
+						   HorizontalAlignment="Center"
+						   Source="{Binding Profile.UrlProfileImage}" />
+				</ios:Grid>
+				<not_ios:PersonPicture utu:AutoLayout.CounterAlignment="Center"
 							   Width="100"
 							   Height="100"
 							   ProfilePicture="{Binding Profile.UrlProfileImage}" />
@@ -299,10 +313,10 @@
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
-								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center" 
 												PrimaryAxisAlignment="Center">
 									<utu:AutoLayout>
-										<uer:FeedView Source="{Binding Recipes}"
+										<uer:FeedView Source="{Binding Recipes}" 
 													  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
 											<DataTemplate>
 												<UserControl>
@@ -386,7 +400,7 @@
 																										</VisualState>
 																									</VisualStateGroup>
 																								</VisualStateManager.VisualStateGroups>
-																								<Border x:Name="ImageLayout"
+																								<Border x:Name="ImageLayout" 
 																										Height="110">
 																									<Image Source="{Binding ImageUrl}"
 																										   Stretch="UniformToFill"
@@ -433,10 +447,10 @@
 							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
-								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch" 
 												PrimaryAxisAlignment="Center">
 									<utu:AutoLayout>
-										<uer:FeedView Source="{Binding Cookbooks}"
+										<uer:FeedView Source="{Binding Cookbooks}" 
 													  NoneTemplate="{StaticResource CookbookEmptyTemplate}">
 											<DataTemplate>
 												<UserControl>
@@ -458,7 +472,7 @@
 																</VisualState>
 															</VisualStateGroup>
 														</VisualStateManager.VisualStateGroups>
-														<muxc:ItemsRepeater ItemsSource="{Binding Data}"
+														<muxc:ItemsRepeater ItemsSource="{Binding Data}" 
 																			uen:Navigation.Request="-">
 															<muxc:ItemsRepeater.Layout>
 																<muxc:UniformGridLayout x:Name="CookbookUniformGrid"
@@ -525,7 +539,7 @@
 																												Spacing="8"
 																												Orientation="Horizontal"
 																												Height="122">
-																									<Border utu:AutoLayout.PrimaryAlignment="Stretch"
+																									<Border utu:AutoLayout.PrimaryAlignment="Stretch" 
 																											CornerRadius="12">
 																										<Image Source="{Binding CookbookImages.FirstImage}"
 																											   Stretch="UniformToFill"
@@ -544,7 +558,7 @@
 																												   HorizontalAlignment="Center"
 																												   Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
 																										</Border>
-																										<Grid CornerRadius="12"
+																										<Grid CornerRadius="12" 
 																											  utu:AutoLayout.PrimaryAlignment="Stretch">
 																											<Image Source="{Binding CookbookImages.ThirdImage}"
 																												   Stretch="UniformToFill"
@@ -614,7 +628,7 @@
 										CornerRadius="60"
 										Style="{StaticResource FabStyle}">
 									<um:ControlExtensions.Icon>
-										<PathIcon Data="{StaticResource Icon_Add}"
+										<PathIcon Data="{StaticResource Icon_Add}" 
 												  Foreground="{ThemeResource SurfaceBrush}" />
 									</um:ControlExtensions.Icon>
 								</Button>

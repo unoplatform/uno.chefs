@@ -10,7 +10,9 @@
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-	  mc:Ignorable="d"
+	  xmlns:ios="http://uno.ui/ios"
+	  xmlns:not_ios="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  mc:Ignorable="d ios"
 	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  NavigationCacheMode="Enabled"
 	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -164,7 +166,18 @@
 											Spacing="6"
 											Padding="18,20"
 											Orientation="Horizontal">
-								<PersonPicture utu:AutoLayout.CounterAlignment="Center"
+								<!-- Person picture does not work on IOS when the source is delayed https://github.com/unoplatform/uno/issues/13543-->
+								<ios:Grid Width="32"
+										  Height="32"
+										  utu:AutoLayout.CounterAlignment="Center"
+										  CornerRadius="16">
+									<Image Width="32"
+										   Height="32"
+										   VerticalAlignment="Center"
+										   HorizontalAlignment="Center"
+										   Source="{Binding User.UrlProfileImage}" />
+								</ios:Grid>
+								<not_ios:PersonPicture utu:AutoLayout.CounterAlignment="Center"
 											   Width="32"
 											   Height="32"
 											   ProfilePicture="{Binding User.UrlProfileImage}" />
@@ -233,9 +246,7 @@
 								<utu:AutoLayout Spacing="10"
 												Orientation="Horizontal">
 									<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-												   Width="60"
-												   Height="60"
-												   ProfilePicture="{Binding User.UrlProfileImage}" />
+														   ProfilePicture="{Binding User.UrlProfileImage}" />
 									<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
 											   utu:AutoLayout.CounterAlignment="Center"
 											   Foreground="{ThemeResource OnSurfaceVariantBrush}"
