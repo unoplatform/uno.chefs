@@ -1,5 +1,5 @@
 using GLib;
-using Uno.UI.Runtime.Skia;
+using Uno.UI.Runtime.Skia.Gtk;
 
 namespace Chefs.Skia.Gtk
 {
