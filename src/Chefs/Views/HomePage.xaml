@@ -222,7 +222,7 @@
 											  HorizontalScrollBarVisibility="Hidden"
 											  VerticalScrollMode="Disabled">
 									<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-														uen:Navigation.Request="RecipeDetails"
+														uen:Navigation.Request="!RecipeDetails"
 														uen:Navigation.Data="{Binding Data}"
 														ItemTemplate="{StaticResource HomeLargeItemTemplate}">
 										<muxc:ItemsRepeater.Layout>
@@ -327,7 +327,7 @@
 											  HorizontalScrollBarVisibility="Hidden"
 											  VerticalScrollMode="Disabled">
 									<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-														uen:Navigation.Request="RecipeDetails">
+														uen:Navigation.Request="!RecipeDetails">
 										<muxc:ItemsRepeater.Layout>
 											<muxc:StackLayout Orientation="Horizontal" />
 										</muxc:ItemsRepeater.Layout>
@@ -498,7 +498,7 @@
 											  VerticalScrollMode="Disabled">
 									<muxc:ItemsRepeater ItemsSource="{Binding Data}"
 														ItemTemplate="{StaticResource HomeLargeItemTemplate}"
-														uen:Navigation.Request="RecipeDetails">
+														uen:Navigation.Request="!RecipeDetails">
 										<muxc:ItemsRepeater.Layout>
 											<muxc:StackLayout Orientation="Horizontal" />
 										</muxc:ItemsRepeater.Layout>
@@ -541,7 +541,7 @@
 											  VerticalScrollMode="Disabled">
 									<muxc:ItemsRepeater ItemsSource="{Binding Data}"
 														ItemTemplate="{StaticResource HomeLargeItemTemplate}"
-														uen:Navigation.Request="RecipeDetails">
+														uen:Navigation.Request="!RecipeDetails">
 										<muxc:ItemsRepeater.Layout>
 											<muxc:StackLayout Orientation="Horizontal" />
 										</muxc:ItemsRepeater.Layout>
@@ -582,7 +582,7 @@
 											  VerticalScrollMode="Disabled">
 									<muxc:ItemsRepeater ItemsSource="{Binding Data}"
 														ItemTemplate="{StaticResource HomeLargeItemTemplate}"
-														uen:Navigation.Request="RecipeDetails">
+														uen:Navigation.Request="!RecipeDetails">
 										<muxc:ItemsRepeater.Layout>
 											<muxc:StackLayout Orientation="Horizontal" />
 										</muxc:ItemsRepeater.Layout>
