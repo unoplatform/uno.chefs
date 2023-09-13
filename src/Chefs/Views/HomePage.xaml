@@ -238,7 +238,7 @@
 																	HorizontalAlignment="Stretch">
 														<utu:AutoLayout CornerRadius="4">
 															<Image Source="{Binding ImageUrl}" 
-																   Stretch="UniformToFill" 
+																   Stretch="Uniform" 
 																   Height="144" />
 															<utu:AutoLayout Spacing="4" 
 																			Padding="16" 
