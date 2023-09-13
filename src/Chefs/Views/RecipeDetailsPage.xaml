@@ -136,6 +136,7 @@
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
 								<TextBlock TextAlignment="Center"
 										   TextWrapping="Wrap" 
+                                           utu:AutoLayout.CounterAlignment="Center" 
 										   Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}" 
 										   Foreground="{ThemeResource OnSurfaceMediumBrush}" 
 										   Style="{StaticResource BodySmall}" />
@@ -148,6 +149,7 @@
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
 								<TextBlock TextAlignment="Center" 
 										   TextWrapping="Wrap" 
+                                           utu:AutoLayout.CounterAlignment="Center" 
 										   Text="{Binding Recipe.Difficulty}" 
 										   Foreground="{ThemeResource OnSurfaceMediumBrush}" 
 										   Style="{StaticResource BodySmall}" />
@@ -160,6 +162,7 @@
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
 								<TextBlock TextAlignment="Center" 
 										   TextWrapping="Wrap" 
+                                           utu:AutoLayout.CounterAlignment="Center" 
 										   Text="{Binding Recipe.Calories}" 
 										   Foreground="{ThemeResource OnSurfaceMediumBrush}" 
 										   Style="{StaticResource BodySmall}" />
