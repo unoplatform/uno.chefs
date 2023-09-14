@@ -40,7 +40,6 @@
 							   Foreground="{ThemeResource OnSurfaceBrush}"
 							   Style="{StaticResource TitleSmall}" />
 					
-					<!-- Adding Style="{StaticResource TextMediumWithLineSpacing}" causes the app to crash on Windows-->
 					<TextBlock TextWrapping="Wrap" 
 							   Text="{Binding Description}"
 							   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
