@@ -90,7 +90,7 @@
                 <TextBlock CharacterSpacing="25"
                            Foreground="{ThemeResource OnSurfaceBrush}"
                            LineHeight="25"
-                           Style="{StaticResource DisplaySmall}"
+                           Style="{StaticResource TitleMedium}"
                            Text="{Binding Description}"
                            TextAlignment="Center"
                            TextWrapping="Wrap" />
@@ -132,7 +132,7 @@
                         <!--This issue is present in the following FlipView: https://github.com/unoplatform/uno/issues/12942-->
                         <!--The Height in the FlipView is a workaround for the issue.-->
                         <FlipView x:Name="StepsFlipView"
-                                  Height="543"
+                                  Height="400"
                                   VerticalAlignment="Top"
                                   utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
                                   Background="Transparent"
@@ -195,7 +195,7 @@
                             <TextBlock CharacterSpacing="25"
                                        Foreground="{ThemeResource OnSurfaceBrush}"
                                        LineHeight="25"
-                                       Style="{StaticResource DisplaySmall}"
+                                       Style="{StaticResource TitleMedium}" 
                                        Text="All steps are completed. Now it’s time to enjoy your meal!"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap" />
