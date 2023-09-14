@@ -328,8 +328,7 @@
 																				PrimaryAxisAlignment="Center">
 																	<TextBlock TextWrapping="Wrap" 
 																			   Text="{Binding Description}" 
-																			   Foreground="{ThemeResource OnSurfaceBrush}" 
-																			   Style="{StaticResource TextMediumWithLineSpacing}" />
+																			   Foreground="{ThemeResource OnSurfaceBrush}" />
 																	<TextBlock TextWrapping="Wrap"
 																			   Text="{Binding PublisherName}" 
 																			   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
