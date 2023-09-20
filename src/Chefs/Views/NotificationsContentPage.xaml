@@ -39,7 +39,7 @@
 							   Text="{Binding Title}"
 							   Foreground="{ThemeResource OnSurfaceBrush}"
 							   Style="{StaticResource TitleSmall}" />
-					
+
 					<TextBlock TextWrapping="Wrap" 
 							   Text="{Binding Description}"
 							   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
@@ -87,7 +87,7 @@
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}" 
 					PrimaryAxisAlignment="Stretch">
 		<utu:NavigationBar Content="Notifications" 
-							Style="{StaticResource ModalNavigationBarStyle}">
+						   Style="{StaticResource ModalNavigationBarStyle}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<AppBarButton.Icon>
