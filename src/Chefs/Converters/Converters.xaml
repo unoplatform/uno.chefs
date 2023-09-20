@@ -33,6 +33,16 @@
                                  TrueValue="{StaticResource PrimaryMediumBrush}"
                                  NullValue="{StaticResource PrimaryMediumBrush}" />
 
+    <um:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
+                                 FalseValue="False"
+                                 TrueValue="True"
+                                 NullValue="False" />
+
+    <um:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
+                                 FalseValue="True"
+                                 TrueValue="False"
+                                 NullValue="False" />
+
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
                                       FalseValue="{StaticResource SurfaceVariantBrush}" />
