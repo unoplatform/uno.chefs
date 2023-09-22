@@ -73,11 +73,13 @@
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar x:Name="NavBar"
-							   Background="{ThemeResource SurfaceInverseBrush}" >
+							   Style="{StaticResource PrimaryNavigationBarStyle}"
+							   Background="{ThemeResource SurfaceInverseBrush}">
 				<utu:NavigationBar.Content>
-					<utu:AutoLayout Padding="0,10">
+					<utu:AutoLayout Orientation="Horizontal"
+									Padding="12,0,0,0">
 						<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
-								  utu:AutoLayout.CounterAlignment="Start" 
+								  utu:AutoLayout.CounterAlignment="Center"
 								  Foreground="{ThemeResource OnPrimaryBrush}" />
 					</utu:AutoLayout>
 				</utu:NavigationBar.Content>
