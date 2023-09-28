@@ -35,7 +35,7 @@
 					<Image utu:AutoLayout.CounterAlignment="Center"
 						   Width="160"
 						   Height="90"
-						   Source="ms-appx:///Chefs/Assets/Icons/unochef_logo.png"
+						   Source="{ThemeResource ChefsLogoWithIcon}"
 						   Stretch="Uniform" />
 					<utu:AutoLayout Spacing="16"
 									PrimaryAxisAlignment="Center">
@@ -128,7 +128,7 @@
 								PrimaryAxisAlignment="Center"
 								Spacing="32"
 								Visibility="{Binding IsRegisterToggle, FallbackValue=Collapsed}">
-					<Image Source="ms-appx:///Chefs/Assets/Icons/unochef_logo.png"
+					<Image Source="{ThemeResource ChefsLogoWithIcon}"
 						   Stretch="Uniform"
 						   utu:AutoLayout.CounterAlignment="Center"
 						   Width="160"
