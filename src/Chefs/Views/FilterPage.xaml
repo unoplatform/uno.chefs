@@ -14,13 +14,13 @@
 							  Placement="Full"
 							  mc:Ignorable="d">
 
-	<!--  Workaround used here by separating the FilterPage / FilterContentPage into two files  -->
-	<!--  Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482  -->
+	<!-- Workaround used here by separating the FilterPage / FilterContentPage into two files -->
+	<!-- Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482 -->
 
-	<!--  Specifying MinWidth and HorizontalAlignment as a workaround for iOS while using RightDrawerFlyout  -->
-	<!--  https://github.com/unoplatform/uno.chefs/issues/423  -->
+	<!-- Specifying MinWidth and HorizontalAlignment as a workaround for iOS while using RightDrawerFlyout -->
+	<!-- https://github.com/unoplatform/uno.chefs/issues/423 -->
 	<Grid x:Name="MainLayout"
-		  MinWidth="{StaticResource DrawerFlyoutWidth}"
+		  Loaded="MainLayout_Loaded"
 		  HorizontalAlignment="Right">
 		<Frame HorizontalAlignment="Stretch"
 			   VerticalAlignment="Stretch"

@@ -5,7 +5,7 @@ public partial class SearchModel
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private Signal _searchSignal = new();
-	private bool hideSerches = false;
+	private bool hideSearches = false;
 
 	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
 	{
@@ -24,7 +24,7 @@ public partial class SearchModel
 		.Select(ApplyFilter)
 		.AsListFeed();
 
-	public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSerches);
+	public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSearches);
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
@@ -50,7 +50,7 @@ public partial class SearchModel
 
 	public async ValueTask CloseSearches(CancellationToken ct)
 	{
-		await IsSearchesClosed.Update(_ => !hideSerches, ct);
+		await IsSearchesClosed.Update(_ => !hideSearches, ct);
 	}
 
 	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
@@ -58,4 +58,26 @@ public partial class SearchModel
 
 	public async ValueTask Search(CancellationToken ct) => _searchSignal.Raise();
 
+    public async ValueTask SearchPopular(CancellationToken ct) =>
+        await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
+
+    public async Task ShowCurrentProfile()
+    {
+        await NavigateToProfile();
+    }
+
+    private async Task NavigateToProfile(User? profile = null)
+    {
+        var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
+        var result = await response!.Result;
+
+        await (result.SomeOrDefault() switch
+        {
+            UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this, data: updateCookbook.Cookbook),
+            Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this),
+            Cookbook cookbook => _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook),
+            object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj),
+            _ => Task.CompletedTask,
+        });
+    }
 }
