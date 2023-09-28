@@ -10,7 +10,6 @@ public partial class WelcomeModel
 	}
 
 	public IState<int> NextPage => State.Value(this, () => 0);
-	public IFeed<string> ButtonText => NextPage.Select(x => x >= 2 ? "Let's cook!" : "Next");
 
 	public async ValueTask Next(int nextPage, CancellationToken ct)
 	{
