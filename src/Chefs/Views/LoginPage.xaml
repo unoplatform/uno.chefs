@@ -45,6 +45,7 @@
 								 CornerRadius="4"
 								 Foreground="{ThemeResource OnSurfaceBrush}"
 								 Style="{StaticResource OutlinedTextBoxStyle}"
+								 BorderBrush="{ThemeResource OutlineVariantBrush}"
 								 android:ImeOptions="Next"
 								 ios:ReturnKeyType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
@@ -61,7 +62,8 @@
 									 utu:CommandExtensions.Command="{Binding Login}"
 									 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									 PlaceholderText="Password"
-									 Style="{StaticResource OutlinedPasswordBoxStyle}">
+									 Style="{StaticResource OutlinedPasswordBoxStyle}"
+									 BorderBrush="{ThemeResource OutlineVariantBrush}">
 							<um:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
@@ -140,6 +142,7 @@
 								 CornerRadius="4"
 								 Foreground="{ThemeResource OnSurfaceBrush}"
 								 Style="{StaticResource OutlinedTextBoxStyle}"
+								 BorderBrush="{ThemeResource OutlineVariantBrush}"
 								 android:ImeOptions="Next"
 								 ios:ReturnKeyType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
@@ -157,6 +160,7 @@
 								 CornerRadius="4"
 								 Foreground="{ThemeResource OnSurfaceBrush}"
 								 Style="{StaticResource OutlinedTextBoxStyle}"
+								 BorderBrush="{ThemeResource OutlineVariantBrush}"
 								 x:Name="RegistrationEmail"
 								 android:ImeOptions="Next"
 								 ios:ReturnKeyType="Next"
@@ -173,7 +177,8 @@
 									 utu:CommandExtensions.Command="{Binding Login}"
 									 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									 PlaceholderText="Password"
-									 Style="{StaticResource OutlinedPasswordBoxStyle}">
+									 Style="{StaticResource OutlinedPasswordBoxStyle}"
+									 BorderBrush="{ThemeResource OutlineVariantBrush}">
 							<um:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
