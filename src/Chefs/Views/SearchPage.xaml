@@ -12,6 +12,8 @@
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:um="using:Uno.Material"
 	  xmlns:utu="using:Uno.Toolkit.UI"
+	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
+	  utu:StatusBar.Foreground="AutoInverse"
 	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 	  NavigationCacheMode="Enabled"
 	  mc:Ignorable="d android ios">
@@ -124,29 +126,27 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 
 			<utu:NavigationBar x:Name="NavBar"
-			                   Style="{StaticResource PrimaryNavigationBarStyle}"
-			                   Background="{ThemeResource SurfaceInverseBrush}">
+							   Style="{StaticResource PrimaryNavigationBarStyle}"
+							   Background="{ThemeResource SurfaceInverseBrush}">
 				<utu:NavigationBar.Content>
 					<utu:AutoLayout Orientation="Horizontal"
-					                Padding="12,0,0,0">
+									Padding="12,0,0,0">
 						<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
-						          utu:AutoLayout.CounterAlignment="Center"
-						          Foreground="{ThemeResource OnPrimaryBrush}" />
+								  utu:AutoLayout.CounterAlignment="Center"
+								  Foreground="{ThemeResource OnSurfaceInverseBrush}" />
 					</utu:AutoLayout>
 				</utu:NavigationBar.Content>
 				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton Command="{Binding ShowCurrentProfile}">
+					<AppBarButton Command="{Binding ShowCurrentProfile}"
+								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										ShowAsMonochrome="True"
-										UriSource="ms-appx:///Chefs/Assets/Icons/profile_icon.png" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/profile_icon.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-					<AppBarButton uen:Navigation.Request="!Notifications">
+					<AppBarButton uen:Navigation.Request="!Notifications"
+								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										ShowAsMonochrome="True"
-										UriSource="ms-appx:///Chefs/Assets/Icons/nav_bell_icon.png" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/nav_bell_icon.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
@@ -165,15 +165,18 @@
 						 Style="{StaticResource OutlinedTextBoxStyle}"
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<um:ControlExtensions.Icon>
-						<PathIcon Data="{StaticResource Icon_Search}" Foreground="{ThemeResource OnSurfaceLowBrush}" />
+						<PathIcon Data="{StaticResource Icon_Search}"
+								  Foreground="{ThemeResource OnSurfaceLowBrush}" />
 					</um:ControlExtensions.Icon>
 				</TextBox>
 
-				<utu:AutoLayout Justify="SpaceBetween" Orientation="Horizontal">
+				<utu:AutoLayout Justify="SpaceBetween"
+								Orientation="Horizontal">
 					<TextBlock utu:AutoLayout.CounterAlignment="Center"
 							   Style="{StaticResource BodyLarge}"
 							   Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
-					<utu:AutoLayout x:Name="FilterButtonHost" DataContext="{Binding Filter}">
+					<utu:AutoLayout x:Name="FilterButtonHost"
+									DataContext="{Binding Filter}">
 						<Button x:Name="FiltersButton"
 								HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
@@ -185,7 +188,8 @@
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Tune}" Foreground="{ThemeResource PrimaryBrush}" />
+								<PathIcon Data="{StaticResource Icon_Tune}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
 							</um:ControlExtensions.Icon>
 						</Button>
 					</utu:AutoLayout>
@@ -195,7 +199,8 @@
 			<utu:AutoLayout x:Name="ItemsLayout"
 							utu:AutoLayout.CounterAlignment="Stretch"
 							utu:AutoLayout.PrimaryAlignment="Stretch">
-				<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch" VerticalScrollBarVisibility="Hidden">
+				<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+							  VerticalScrollBarVisibility="Hidden">
 					<uer:FeedView x:Name="SearchFeed"
 								  NoneTemplate="{StaticResource EmptyTemplate}"
 								  Source="{Binding Items}">
