@@ -9,6 +9,8 @@
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:um="using:Uno.Material"
 	  mc:Ignorable="d"
+	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
+	  utu:StatusBar.Foreground="AutoInverse"
 	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 	  NavigationCacheMode="Enabled">
 	<Page.Resources>
