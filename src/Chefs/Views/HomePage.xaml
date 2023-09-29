@@ -232,8 +232,10 @@
 									<muxc:ItemsRepeater.ItemTemplate>
 										<DataTemplate>
 											<UserControl>
+												<!--Added Height="210" to prevent the card from expanding vertically-->
 												<utu:CardContentControl Margin="0" 
-																		HorizontalAlignment="Stretch" 
+																		Width="160"
+																		Height="210"
 																		CornerRadius="4" 
 																		Style="{StaticResource FilledCardContentControlStyle}">
 													<utu:AutoLayout Background="{ThemeResource SurfaceBrush}" 
@@ -242,7 +244,7 @@
 																	HorizontalAlignment="Stretch">
 														<utu:AutoLayout CornerRadius="4">
 															<Image Source="{Binding ImageUrl}" 
-																   Stretch="Uniform" 
+																   Stretch="UniformToFill" 
 																   Height="144" />
 															<utu:AutoLayout Spacing="4" 
 																			Padding="16" 
