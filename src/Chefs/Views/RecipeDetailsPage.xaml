@@ -104,7 +104,7 @@
 								   utu:AutoLayout.CounterAlignment="Center" 
 								   Width="32" 
 								   Height="32" />
-					
+
 					<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
 							   utu:AutoLayout.CounterAlignment="Center" 
 							   Style="{StaticResource BodySmall}" />
@@ -193,7 +193,7 @@
 					<Grid x:Name="TabNavGrid"
 						  uen:Region.Attached="True"
 						  uen:Region.Navigator="Visibility">
-						
+
 						<utu:AutoLayout uen:Region.Name="IngredientsTab"
 										Spacing="8"
 										Padding="16,24,16,16">
