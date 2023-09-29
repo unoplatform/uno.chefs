@@ -91,7 +91,7 @@
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<AppBarButton.Icon>
-						<PathIcon Data="{StaticResource Icon_Close}" />
+						<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/close.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
