@@ -10,12 +10,18 @@
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	  xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
+	  xmlns:models="using:Chefs.Business.Models"
 	  mc:Ignorable="d"
 	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  NavigationCacheMode="Enabled"
 	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 	  VerticalAlignment="Stretch"
 	  HorizontalAlignment="Stretch">
+
+	<Page.DataContext>
+		<models:ChartModel />
+	</Page.DataContext>
 
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout.Resources>
@@ -306,6 +312,9 @@
 								<utu:TabBarItem Foreground="{ThemeResource OnSurfaceVariantBrush}"
 												Content="Reviews"
 												uen:Region.Name="ReviewsTab" />
+								<utu:TabBarItem Foreground="{ThemeResource OnSurfaceVariantBrush}"
+												Content="Nutrition"
+												uen:Region.Name="NutritionTab" />
 							</utu:TabBar>
 							<ScrollViewer x:Name="TabScrollViewer"
 										  utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -431,6 +440,14 @@
 												</muxc:ItemsRepeater>
 											</DataTemplate>
 										</uer:FeedView>
+									</utu:AutoLayout>
+
+									<utu:AutoLayout uen:Region.Name="NutritionTab">
+										<utu:AutoLayout Orientation="Horizontal"
+														Spacing="10">
+											<TextBlock Text="Nutrition information goes here" />
+											<lvc:PieChart Series="{Binding Series}"></lvc:PieChart>
+										</utu:AutoLayout>
 									</utu:AutoLayout>
 								</Grid>
 							</ScrollViewer>
