@@ -93,7 +93,7 @@
 							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-					<AppBarButton uen:Navigation.Request="!Notifications"
+					<AppBarButton Command="{Binding ShowNotifications}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
 							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
