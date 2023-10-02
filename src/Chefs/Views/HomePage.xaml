@@ -232,7 +232,7 @@
 												<!-- Added Height="210" to prevent the card from expanding vertically -->
 												<utu:CardContentControl Margin="0"
 																		Width="160"
-																		Height="210"
+																		MaxHeight="210"
 																		CornerRadius="4"
 																		Style="{StaticResource FilledCardContentControlStyle}">
 													<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
