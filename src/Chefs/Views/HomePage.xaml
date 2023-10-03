@@ -133,7 +133,7 @@
 										  VerticalScrollBarVisibility="Disabled"
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 								<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-													uen:Navigation.Request="RecipeDetails"
+													uen:Navigation.Request="!RecipeDetails"
 													uen:Navigation.Data="{Binding Data}"
 													ItemTemplate="{StaticResource HomeLargeItemTemplate}">
 									<muxc:ItemsRepeater.Layout>
@@ -225,7 +225,7 @@
 										  VerticalScrollBarVisibility="Disabled"
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 								<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-													uen:Navigation.Request="RecipeDetails"
+													uen:Navigation.Request="!RecipeDetails"
 													uen:Navigation.Data="{Binding Data}">
 									<muxc:ItemsRepeater.Layout>
 										<muxc:StackLayout Orientation="Horizontal"
@@ -360,7 +360,7 @@
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 								<muxc:ItemsRepeater ItemsSource="{Binding Data}"
 													ItemTemplate="{StaticResource HomeLargeItemTemplate}"
-													uen:Navigation.Request="RecipeDetails">
+													uen:Navigation.Request="!RecipeDetails">
 									<muxc:ItemsRepeater.Layout>
 										<muxc:StackLayout Orientation="Horizontal"
 														  Spacing="8" />
@@ -396,7 +396,7 @@
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 								<muxc:ItemsRepeater ItemsSource="{Binding Data}"
 													ItemTemplate="{StaticResource HomeLargeItemTemplate}"
-													uen:Navigation.Request="RecipeDetails">
+													uen:Navigation.Request="!RecipeDetails">
 									<muxc:ItemsRepeater.Layout>
 										<muxc:StackLayout Orientation="Horizontal"
 														  Spacing="8" />
@@ -424,7 +424,7 @@
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 								<muxc:ItemsRepeater ItemsSource="{Binding Data}"
 													ItemTemplate="{StaticResource HomeLargeItemTemplate}"
-													uen:Navigation.Request="RecipeDetails">
+													uen:Navigation.Request="!RecipeDetails">
 									<muxc:ItemsRepeater.Layout>
 										<muxc:StackLayout Orientation="Horizontal"
 														  Spacing="8" />
