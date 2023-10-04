@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
 		<SingleProject>true</SingleProject>
@@ -33,7 +33,7 @@
 		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="3.0.0-dev.2270" />
 		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="3.0.0-dev.2270" />
 		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="5.0.0-dev.102" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="5.0.0-dev.112" />
 		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="3.0.0-dev.2270" />
 		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.0.0-dev.2270" />
 		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="3.0.0-dev.2270" />
@@ -73,6 +73,9 @@
 			</PropertyGroup>
 			<ItemGroup Condition="'$(Configuration)'=='Release'">
 				<LinkerDescriptor Include="LinkerConfig.xml" />
+			</ItemGroup>
+			<ItemGroup>
+				<PackageReference Include="SkiaSharp.NativeAssets.iOS" Version="2.88.6" />
 			</ItemGroup>
 		</When>
 		<When Condition="$(IsMacCatalyst)">

@@ -15,7 +15,8 @@ public partial class WelcomeModel
 	{
 		if (nextPage >= 2)
 		{
-			await _navigator.NavigateViewModelAsync<LoginModel>(this, Qualifiers.ClearBackStack);
+			//await _navigator.NavigateViewModelAsync<LoginModel>(this, Qualifiers.ClearBackStack);
+			await _navigator.NavigateViewModelAsync<MapModel>(this);
 		}
 		else
 		{

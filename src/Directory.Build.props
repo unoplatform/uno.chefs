@@ -32,7 +32,7 @@
 				<IsIOS>true</IsIOS>
 				<SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
 				<RuntimeIdentifier Condition="'$(RuntimeIdentifier)'=='' and '$(Configuration)'=='Release'">ios-arm64</RuntimeIdentifier>
-				<RuntimeIdentifier Condition="'$(RuntimeIdentifier)'=='' and '$(Configuration)'!='Release'">iossimulator-x64</RuntimeIdentifier>
+				<RuntimeIdentifier Condition="'$(RuntimeIdentifier)'=='' and '$(Configuration)'!='Release'">iossimulator-arm64</RuntimeIdentifier>
 			</PropertyGroup>
 		</When>
 		<When Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">
