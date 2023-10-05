@@ -101,7 +101,6 @@ namespace Chefs
 									new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true)
 								}),
 							}),
-							new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
 							new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), Nested: new RouteMap[]
 							{
 								new RouteMap("Filter", View: views.FindByView<FilterPage>(), Nested: new RouteMap[]
@@ -123,6 +122,7 @@ namespace Chefs
 							}),
 
 						}),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main"),
 						new RouteMap("Profile", View: views.FindByView<ProfilePage>(), Nested: new RouteMap[]
 						{
 							new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
