@@ -69,27 +69,25 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar x:Name="NavBar"
 							   Background="{ThemeResource SurfaceInverseBrush}"
-							   Style="{StaticResource PrimaryModalNavigationBarStyle}"
+							   Foreground="{ThemeResource OnSurfaceInverseBrush}"
 							   Content="{Binding Recipe.Name}"
 							   toolkit:UIElementExtensions.Elevation="0">
 				<utu:NavigationBar.MainCommand>
-					<AppBarButton>
+					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<not_mobile:AppBarButton.Icon>
 							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton>
+					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/share_recipe.png"
-										Foreground="{ThemeResource OnPrimaryBrush}" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/share_recipe.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-					<AppBarButton>
+					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/favorite_heart.png"
-										Foreground="{ThemeResource OnPrimaryBrush}" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/favorite_heart.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
