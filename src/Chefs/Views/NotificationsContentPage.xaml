@@ -11,6 +11,8 @@
 	  xmlns:um="using:Uno.Material"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:converters="using:Chefs.Converters"
+	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
+	  utu:StatusBar.Foreground="AutoInverse"
 	  mc:Ignorable="d">
 
 	<!-- Workaround used here by separating the NotificationsPage / NotificationsContentPage into two files -->
