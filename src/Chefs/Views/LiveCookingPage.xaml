@@ -116,10 +116,8 @@
 		</utu:NavigationBar>
 		<ScrollViewer x:Name="MainScrollViewer"
                       utu:AutoLayout.PrimaryAlignment="Stretch">
-			<!--This issue is present at line 120: https://github.com/unoplatform/uno.toolkit.ui/issues/660-->
-			<!--The Grid is a workaround for the listed issue-->
-			<Grid x:Name="ContentLayout">
-				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+			<utu:AutoLayout>
+                <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                                 Background="{ThemeResource SurfaceBrush}"
                                 Visibility="{Binding Completed, Converter={StaticResource TrueToCollapsed}}">
 					<Image MaxHeight="220"
@@ -151,15 +149,15 @@
                                         Style="{StaticResource PipsPagerStyle}" />
 						<utu:AutoLayout>
 							<utu:AutoLayout Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}">
-								<Button Height="59"
-                                        Command="{Binding Next}"
+								<Button Command="{Binding Next}"
+										Padding="24,20"
                                         Content="Next"
                                         CornerRadius="4"
                                         Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
 							</utu:AutoLayout>
 							<utu:AutoLayout Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}">
-								<Button Height="59"
-                                        Command="{Binding Complete}"
+								<Button Command="{Binding Complete}"
+										Padding="12,20"
                                         Content="Done!"
                                         CornerRadius="4"
                                         Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}" />
@@ -245,7 +243,7 @@
 						</utu:AutoLayout>
 					</utu:AutoLayout>
 				</utu:AutoLayout>
-			</Grid>
+			</utu:AutoLayout>
 		</ScrollViewer>
 	</utu:AutoLayout>
 </Page>
