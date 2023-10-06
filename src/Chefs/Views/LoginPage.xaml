@@ -64,6 +64,12 @@
 									 PlaceholderText="Password"
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
+							<PasswordBox.Resources>
+								<!-- OnSurfaceMediumBrush -->
+								<SolidColorBrush x:Key="OutlinedPasswordBoxPlaceholderForeground"
+												 Color="{StaticResource OnSurfaceColor}" 
+												 Opacity="{StaticResource MediumOpacity}" />
+							</PasswordBox.Resources>
 							<um:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
@@ -179,6 +185,12 @@
 									 PlaceholderText="Password"
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
+							<PasswordBox.Resources>
+								<!-- OnSurfaceMediumBrush -->
+								<SolidColorBrush x:Key="OutlinedPasswordBoxPlaceholderForeground"
+												 Color="{StaticResource OnSurfaceColor}" 
+												 Opacity="{StaticResource MediumOpacity}" />
+							</PasswordBox.Resources>
 							<um:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
