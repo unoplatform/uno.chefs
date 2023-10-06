@@ -23,7 +23,6 @@
 		<DataTemplate x:Key="HomeLargeItemTemplate">
 			<utu:CardContentControl Margin="0"
 									Width="328"
-									Height="216"
 									CornerRadius="4"
 									Style="{StaticResource FilledCardContentControlStyle}">
 				<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -232,7 +231,6 @@
 												<!-- Added Height="210" to prevent the card from expanding vertically -->
 												<utu:CardContentControl Margin="0"
 																		Width="160"
-																		Height="210"
 																		CornerRadius="4"
 																		Style="{StaticResource FilledCardContentControlStyle}">
 													<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
@@ -246,7 +244,7 @@
 															<utu:AutoLayout Spacing="4"
 																			Padding="16"
 																			PrimaryAxisAlignment="Center">
-																<TextBlock TextWrapping="Wrap"
+																<TextBlock TextWrapping="NoWrap"
 																		   Text="{Binding Name}"
 																		   Foreground="{ThemeResource OnSurfaceBrush}"
 																		   Style="{StaticResource TitleSmall}" />
