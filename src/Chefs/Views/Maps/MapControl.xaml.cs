@@ -39,6 +39,7 @@ namespace Chefs.Views.Maps
                 feature[nameof(User.FullName)] = c.FullName;
                 feature[nameof(User.Location.Lat)] = c.Location.Lat;
                 feature[nameof(User.Location.Lng)] = c.Location.Lng;
+                feature[nameof(User.Id)] = c.Id;
                 feature.Styles.Add(CreateCalloutStyle(feature.ToStringOfKeyValuePairs()));
                 return (IFeature)feature;
             });
