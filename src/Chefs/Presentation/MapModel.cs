@@ -19,8 +19,6 @@ public partial class MapModel
 
 	public IFeed<User> UserProfile => _userService.UserFeed;
 
-	//public IFeed<Mapsui.Map> Map => Feed.Async<Mapsui.Map>(CreateMap);
-
 	public IFeed<Mapsui.Map> CurrentMap => Feed.Async(_mapService.GetCurrentMapAsync);
 
 	public MapModel(INavigator navigator, IUserService userService, IMapService mapService)
@@ -28,76 +26,6 @@ public partial class MapModel
 		_navigator = navigator;
 		_userService = userService;
 		_mapService = mapService;
-	}
-
-	//private async Task<Mapsui.Map> CreateMap()
-	//{
-	//	var map = new Mapsui.Map();
-
-	//	map.Layers.Add(OpenStreetMap.CreateTileLayer());
-	//	map.Layers.Add(CreatePointLayer());
-	//	map.Home = n => n.CenterOnAndZoomTo(map.Layers[1].Extent!.Centroid, n.Resolutions[5]);
-	//	return map;
-	//}
-
-	//private Layer CreatePointLayer()
-	//{
-	//	return new Layer
-	//	{
-	//		Name = "Point",
-	//		DataSource = new MemoryProvider(GetContributors()),
-	//		IsMapInfoLayer = true
-	//	};
-	//}
-
-	//private async IAsyncEnumerable<IEnumerable<IFeature>> GetContributors()
-	//{
-	//	//var contributors = new List<Contributor> 
-	//	//{ 
-	//	//	//create mock data
-	//	//	new Contributor { Name = "John Doe", Lat = 45.4976, Lng = -73.5701 },
-	//	//	new Contributor { Name = "Noemi Macavei", Lat = 45.4985, Lng = -73.5697 },
-	//	//	new Contributor { Name = "Mathias Huysmans", Lat = 45.5007, Lng = -73.5668 }
-	//	//};
-
-	//	var contributors = await PopularCreators;
-
-	//	yield return contributors.Select(c =>
-	//	{
-	//		var feature = new PointFeature(SphericalMercator.FromLonLat(c.Location.Lng ?? 0, c.Location.Lat ?? 0).ToMPoint());
-	//		feature[nameof(User.FullName)] = c.FullName;
-	//		feature[nameof(User.Location.Lat)] = c.Location.Lat;
-	//		feature[nameof(User.Location.Lng)] = c.Location.Lng;
-	//		feature.Styles.Add(CreateCalloutStyle(feature.ToStringOfKeyValuePairs()));
-	//		return (IFeature)feature;
-	//	});
-	//}
-
-	private async Task<IImmutableList<User>> GetPopularCreatorsAsync()
-	{
-		return await _userService.GetPopularCreators(CancellationToken.None);
-	}
-
-	//private class Contributor
-	//{
-	//	public string? Name { get; set; }
-	//	public double Lat { get; set; }
-	//	public double Lng { get; set; }
-	//}
-
-	private static CalloutStyle CreateCalloutStyle(string content)
-	{
-		return new CalloutStyle
-		{
-			Title = content,
-			TitleFont = { FontFamily = null, Size = 12, Italic = false, Bold = true },
-			TitleFontColor = Color.Gray,
-			MaxWidth = 120,
-			RectRadius = 10,
-			ShadowWidth = 4,
-			Enabled = false,
-			SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
-		};
 	}
 
 	public async Task ShowProfile(User profile)

@@ -17,12 +17,12 @@ public sealed partial class MapPage : Page
 	{
 		this.InitializeComponent();
 
-		//zoomSlider.ValueChanged += ZoomSlider_ValueChanged;
+        //zoomSlider.ValueChanged += ZoomSlider_ValueChanged;
+        //MapControl.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
 
-		//MapControl.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
-		//MyMap.Map.Widgets.Add(new ZoomInOutWidget { MarginX = 10, MarginY = 20 });
-		//MyMap.PointerMoved += MyMap_PointerMoved;
-		//var centerOfLondonOntario = new MPoint(-81.2497, 42.9837);
+        //MyMap.Map.Widgets.Add(new ZoomInOutWidget { MarginX = 10, MarginY = 20 });
+        //MyMap.PointerMoved += MyMap_PointerMoved;
+        //var centerOfLondonOntario = new MPoint(-81.2497, 42.9837);
 
 		//var sphericalMercatorCoordinate = SphericalMercator.FromLonLat(centerOfLondonOntario.X, centerOfLondonOntario.Y).ToMPoint();
 
