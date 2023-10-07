@@ -35,22 +35,6 @@ public partial class LiveCookingModel
 		await Completed.Set(true, ct);
 	}
 
-	public async ValueTask Next(int selectedIndex, CancellationToken ct)
-	{
-		if (selectedIndex + 1 < Steps.Count)
-		{
-			await SelectedIndex.Set(selectedIndex + 1, ct);
-		}
-	}
-
-	public async ValueTask Back(int selectedIndex, CancellationToken ct)
-	{
-		if (selectedIndex - 1 >= 0)
-		{
-			await SelectedIndex.Set(selectedIndex - 1, ct);
-		}
-	}
-
 	public async ValueTask BackToLastStep(CancellationToken ct)
 	{
 		await Completed.Set(false, ct);
