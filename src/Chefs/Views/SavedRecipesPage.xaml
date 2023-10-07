@@ -52,7 +52,6 @@
 												Background="{ThemeResource BackgroundBrush}">
 							<utu:CardContentControl.ContentTemplate>
 								<DataTemplate>
-									<UserControl>
 										<utu:AutoLayout>
 											<VisualStateManager.VisualStateGroups>
 												<VisualStateGroup>
@@ -136,7 +135,6 @@
 														   Style="{StaticResource BodySmall}" />
 											</utu:AutoLayout>
 										</utu:AutoLayout>
-									</UserControl>
 								</DataTemplate>
 							</utu:CardContentControl.ContentTemplate>
 						</utu:CardContentControl>
@@ -176,7 +174,6 @@
 												MaxWidth="400">
 							<utu:CardContentControl.ContentTemplate>
 								<DataTemplate>
-									<UserControl>
 										<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
 											<VisualStateManager.VisualStateGroups>
 												<VisualStateGroup>
@@ -215,7 +212,6 @@
 														   Style="{StaticResource BodySmall}" />
 											</utu:AutoLayout>
 										</utu:AutoLayout>
-									</UserControl>
 								</DataTemplate>
 							</utu:CardContentControl.ContentTemplate>
 						</utu:CardContentControl>
@@ -224,7 +220,6 @@
 			</DataTemplate>
 
 			<DataTemplate x:Key="RecipeEmptyTemplate">
-				<UserControl>
 					<utu:AutoLayout Spacing="10"
 									PrimaryAxisAlignment="Center">
 						<VisualStateManager.VisualStateGroups>
@@ -268,11 +263,9 @@
 									   Style="{StaticResource TitleMedium}" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-				</UserControl>
 			</DataTemplate>
 
 			<DataTemplate x:Key="CookbookEmptyTemplate">
-				<UserControl>
 					<utu:AutoLayout Spacing="10"
 									PrimaryAxisAlignment="Center">
 						<VisualStateManager.VisualStateGroups>
@@ -316,7 +309,6 @@
 									   Style="{StaticResource TitleMedium}" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-				</UserControl>
 			</DataTemplate>
 		</ResourceDictionary>
 	</Page.Resources>

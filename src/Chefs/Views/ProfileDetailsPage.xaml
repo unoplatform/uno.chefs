@@ -20,7 +20,6 @@
 			<x:String x:Key="Icon_Add">F1 M 16 8.904761723109655 L 9.142857142857142 8.904761723109655 L 9.142857142857142 15.583333015441895 L 6.857142857142857 15.583333015441895 L 6.857142857142857 8.904761723109655 L 0 8.904761723109655 L 0 6.678571292332241 L 6.857142857142857 6.678571292332241 L 6.857142857142857 0 L 9.142857142857142 0 L 9.142857142857142 6.678571292332241 L 16 6.678571292332241 L 16 8.904761723109655 Z</x:String>
 			<x:String x:Key="BitmapIcon_Close">F1 M 14 1.4099998474121094 L 12.59000015258789 0 L 7 5.590000152587891 L 1.4099998474121094 0 L 0 1.4099998474121094 L 5.590000152587891 7 L 0 12.59000015258789 L 1.4099998474121094 14 L 7 8.40999984741211 L 12.59000015258789 14 L 14 12.59000015258789 L 8.40999984741211 7 L 14 1.4099998474121094 Z</x:String>
 			<DataTemplate x:Key="RecipeEmptyTemplate">
-				<UserControl>
 					<utu:AutoLayout Spacing="10"
 									PrimaryAxisAlignment="Center">
 						<VisualStateManager.VisualStateGroups>
@@ -64,11 +63,9 @@
 									   Style="{StaticResource HeadlineSmall}" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-				</UserControl>
 			</DataTemplate>
 
 			<DataTemplate x:Key="CookbookEmptyTemplate">
-				<UserControl>
 					<utu:AutoLayout Spacing="10"
 									PrimaryAxisAlignment="Center">
 						<VisualStateManager.VisualStateGroups>
@@ -112,7 +109,6 @@
 									   Style="{StaticResource HeadlineSmall}" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-				</UserControl>
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
 		<VisualStateManager.VisualStateGroups>
@@ -305,7 +301,6 @@
 										<uer:FeedView Source="{Binding Recipes}"
 													  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
 											<DataTemplate>
-												<UserControl>
 													<utu:AutoLayout>
 														<VisualStateManager.VisualStateGroups>
 															<VisualStateGroup>
@@ -367,7 +362,6 @@
 																									MaxWidth="400">
 																				<utu:CardContentControl.ContentTemplate>
 																					<DataTemplate>
-																						<UserControl>
 																							<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
 																								<VisualStateManager.VisualStateGroups>
 																									<VisualStateGroup>
@@ -407,7 +401,6 @@
 
 																								</utu:AutoLayout>
 																							</utu:AutoLayout>
-																						</UserControl>
 																					</DataTemplate>
 																				</utu:CardContentControl.ContentTemplate>
 																			</utu:CardContentControl>
@@ -417,7 +410,6 @@
 															</muxc:ItemsRepeater.ItemTemplate>
 														</muxc:ItemsRepeater>
 													</utu:AutoLayout>
-												</UserControl>
 											</DataTemplate>
 										</uer:FeedView>
 									</utu:AutoLayout>
@@ -439,7 +431,6 @@
 										<uer:FeedView Source="{Binding Cookbooks}"
 													  NoneTemplate="{StaticResource CookbookEmptyTemplate}">
 											<DataTemplate>
-												<UserControl>
 													<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
 														<VisualStateManager.VisualStateGroups>
 															<VisualStateGroup>
@@ -500,7 +491,6 @@
 																									Background="{ThemeResource BackgroundBrush}">
 																				<utu:CardContentControl.ContentTemplate>
 																					<DataTemplate>
-																						<UserControl>
 																							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch">
 																								<VisualStateManager.VisualStateGroups>
 																									<VisualStateGroup>
@@ -585,7 +575,6 @@
 																											   Style="{StaticResource BodySmall}" />
 																								</utu:AutoLayout>
 																							</utu:AutoLayout>
-																						</UserControl>
 																					</DataTemplate>
 																				</utu:CardContentControl.ContentTemplate>
 																			</utu:CardContentControl>
@@ -595,7 +584,6 @@
 															</muxc:ItemsRepeater.ItemTemplate>
 														</muxc:ItemsRepeater>
 													</utu:AutoLayout>
-												</UserControl>
 											</DataTemplate>
 										</uer:FeedView>
 									</utu:AutoLayout>
