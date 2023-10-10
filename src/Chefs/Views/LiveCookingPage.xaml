@@ -121,18 +121,14 @@
 				   Stretch="UniformToFill" />
 
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch" Justify="SpaceBetween" >
+				<!--We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
 				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 						  Background="Transparent"
+						  utu:AutoLayout.PrimaryAlignment="Stretch"
 						  ItemTemplate="{StaticResource StepTemplate}"
 						  ItemsSource="{Binding Steps}"
-						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-					<FlipView.ItemsPanel>
-						<ItemsPanelTemplate>
-							<StackPanel Orientation="Horizontal" />
-						</ItemsPanelTemplate>
-					</FlipView.ItemsPanel>
-				</FlipView>
+						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				<utu:AutoLayout Padding="32,0,32,32"
 								CornerRadius="8"
 								Spacing="16">
