@@ -27,6 +27,7 @@ steps:
       usePrivateFeed: false
       mergeBranch: true
       branchToMerge: 'main'
+      ignorePackages: 'Uno.Resizetizer'
       nugetUpdaterVersion: '2.3.0-alpha.42'
       packageAuthor: 'nventive,Uno Platform'
 
