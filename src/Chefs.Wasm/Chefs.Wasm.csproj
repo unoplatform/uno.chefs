@@ -47,7 +47,8 @@
 		<LinkerDescriptor Include="LinkerConfig.xml" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Uno.Material.WinUI" Version="4.0.0-dev.126" />
+		<PackageReference Include="Uno.Material.WinUI" Version="4.0.0-dev.162" />
+		<PackageReference Include="Uno.WinUI.MediaPlayer.WebAssembly" Version="5.0.0-dev.2572" />
 		<PackageReference Include="Uno.Resizetizer" Version="1.2.0-dev.34" />
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.0" />
 		<PackageReference Include="Uno.Wasm.Bootstrap" Version="8.0.0-dev.280" />

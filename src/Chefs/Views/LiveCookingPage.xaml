@@ -116,10 +116,13 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed, Converter={StaticResource TrueToCollapsed}}">
-			<Image MaxHeight="220"
-				   Source="{Binding Recipe.ImageUrl}"
-				   utu:AutoLayout.PrimaryAlignment="Auto"
-				   Stretch="UniformToFill" />
+			<MediaPlayerElement AreTransportControlsEnabled="True"
+								Source="ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4"
+								Height="225">
+				<MediaPlayerElement.TransportControls>
+					<MediaTransportControls IsCompact="True" />
+				</MediaPlayerElement.TransportControls>
+			</MediaPlayerElement>
 
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch" Justify="SpaceBetween" >
 				<!--We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
