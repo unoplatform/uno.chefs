@@ -47,7 +47,6 @@
 											MaxWidth="400">
 						<utu:CardContentControl.ContentTemplate>
 							<DataTemplate>
-								<UserControl>
 									<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
 										<VisualStateManager.VisualStateGroups>
 											<VisualStateGroup>
@@ -86,7 +85,6 @@
 													   Style="{StaticResource BodySmall}" />
 										</utu:AutoLayout>
 									</utu:AutoLayout>
-								</UserControl>
 							</DataTemplate>
 						</utu:CardContentControl.ContentTemplate>
 					</utu:CardContentControl>
@@ -146,7 +144,6 @@
 					<uer:FeedView Margin="-5,0"
 								  Source="{Binding Cookbook}">
 						<DataTemplate>
-							<UserControl>
 								<muxc:ItemsRepeater x:Name="RecipeRepeater"
 													ItemsSource="{Binding Data.Recipes}"
 													Layout="{StaticResource NarrowGridLayout}"
@@ -170,7 +167,6 @@
 										</VisualStateGroup>
 									</VisualStateManager.VisualStateGroups>
 								</muxc:ItemsRepeater>
-							</UserControl>
 						</DataTemplate>
 					</uer:FeedView>
 				</ScrollViewer>
