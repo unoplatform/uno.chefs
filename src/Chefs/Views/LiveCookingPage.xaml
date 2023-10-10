@@ -27,7 +27,8 @@
 		<DataTemplate x:Key="StepTemplate">
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Padding="32">
-				<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+				<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+							  HorizontalScrollMode="Disabled">
 					<utu:AutoLayout Spacing="24">
 						<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 										Orientation="Horizontal">
