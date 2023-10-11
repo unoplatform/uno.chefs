@@ -109,6 +109,9 @@ namespace Chefs
 								}),
 							}),
 							new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
+							new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
+							new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
+							new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "CookbookDetails"),
 							new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 						}),
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main"),
@@ -120,9 +123,7 @@ namespace Chefs
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main"),
 						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
-						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>()),
-						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
-						new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "CookbookDetails"),
+						
 
 						new RouteMap("Profile", View: views.FindByView<ProfilePage>(), Nested: new RouteMap[]
 						{

@@ -84,7 +84,8 @@
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
-			<uer:FeedView Source="{Binding Cookbook}">
+			<uer:FeedView Source="{Binding Cookbook}"
+						  utu:AutoLayout.PrimaryAlignment="Stretch">
 				<DataTemplate>
 					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 					<ScrollViewer x:Name="RecipesScrollViewer"

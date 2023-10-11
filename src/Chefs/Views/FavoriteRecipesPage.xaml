@@ -83,74 +83,72 @@
 										Style="{StaticResource FilledCardContentControlStyle}">
 					<utu:CardContentControl.ContentTemplate>
 						<DataTemplate>
-							<UserControl>
-								<utu:AutoLayout Margin="4">
-									<utu:AutoLayout x:Name="ImagesLayout"
-													Height="144"
-													utu:AutoLayout.CounterAlignment="Stretch"
-													Orientation="Horizontal"
+							<utu:AutoLayout Margin="4">
+								<utu:AutoLayout x:Name="ImagesLayout"
+												Height="144"
+												utu:AutoLayout.CounterAlignment="Stretch"
+												Orientation="Horizontal"
+												Spacing="4">
+									<Border utu:AutoLayout.PrimaryAlignment="Stretch"
+											CornerRadius="12">
+										<Image HorizontalAlignment="Center"
+											   VerticalAlignment="Center"
+											   Source="{Binding CookbookImages.FirstImage}"
+											   Stretch="UniformToFill" />
+									</Border>
+									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+													utu:AutoLayout.PrimaryAlignment="Stretch"
 													Spacing="4">
-										<Border utu:AutoLayout.PrimaryAlignment="Stretch"
+										<Border utu:AutoLayout.CounterAlignment="Stretch"
+												utu:AutoLayout.PrimaryAlignment="Stretch"
+												Background="{ThemeResource BackgroundBrush}"
 												CornerRadius="12">
 											<Image HorizontalAlignment="Center"
 												   VerticalAlignment="Center"
-												   Source="{Binding CookbookImages.FirstImage}"
-												   Stretch="UniformToFill" />
+												   Source="{Binding CookbookImages.SecondImage}"
+												   Stretch="UniformToFill"
+												   Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
 										</Border>
-										<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
-														utu:AutoLayout.PrimaryAlignment="Stretch"
-														Spacing="4">
-											<Border utu:AutoLayout.CounterAlignment="Stretch"
-													utu:AutoLayout.PrimaryAlignment="Stretch"
-													Background="{ThemeResource BackgroundBrush}"
-													CornerRadius="12">
-												<Image HorizontalAlignment="Center"
-													   VerticalAlignment="Center"
-													   Source="{Binding CookbookImages.SecondImage}"
-													   Stretch="UniformToFill"
-													   Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
-											</Border>
-											<Grid utu:AutoLayout.CounterAlignment="Stretch"
-												  utu:AutoLayout.PrimaryAlignment="Stretch"
-												  CornerRadius="12">
-												<Image HorizontalAlignment="Center"
-													   VerticalAlignment="Center"
-													   Source="{Binding CookbookImages.ThirdImage}"
-													   Stretch="UniformToFill"
-													   Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToCollapsed}}" />
+										<Grid utu:AutoLayout.CounterAlignment="Stretch"
+											  utu:AutoLayout.PrimaryAlignment="Stretch"
+											  CornerRadius="12">
+											<Image HorizontalAlignment="Center"
+												   VerticalAlignment="Center"
+												   Source="{Binding CookbookImages.ThirdImage}"
+												   Stretch="UniformToFill"
+												   Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToCollapsed}}" />
 
-												<Button MinHeight="57"
-														HorizontalAlignment="Stretch"
-														VerticalAlignment="Stretch"
-														uen:Navigation.Data="{Binding}"
-														uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
-														Background="{ThemeResource BackgroundBrush}"
-														CornerRadius="12"
-														Style="{StaticResource TextButtonStyle}"
-														Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
-													<Button.Content>
-														<PathIcon x:Name="ButtonIcon"
-																  Data="{StaticResource Icon_Add}"
-																  Foreground="{ThemeResource OnSurfaceBrush}" />
-													</Button.Content>
-												</Button>
-											</Grid>
-										</utu:AutoLayout>
-									</utu:AutoLayout>
-									<utu:AutoLayout Padding="12"
-													PrimaryAxisAlignment="Center"
-													Spacing="2">
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleSmall}"
-												   Text="{Binding Name}"
-												   TextWrapping="NoWrap" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
-												   Style="{StaticResource CaptionMedium}"
-												   Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
-												   TextWrapping="NoWrap" />
+											<Button MinHeight="57"
+													HorizontalAlignment="Stretch"
+													VerticalAlignment="Stretch"
+													uen:Navigation.Data="{Binding}"
+													uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
+													Background="{ThemeResource BackgroundBrush}"
+													CornerRadius="12"
+													Style="{StaticResource TextButtonStyle}"
+													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
+												<Button.Content>
+													<PathIcon x:Name="ButtonIcon"
+															  Data="{StaticResource Icon_Add}"
+															  Foreground="{ThemeResource OnSurfaceBrush}" />
+												</Button.Content>
+											</Button>
+										</Grid>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
-							</UserControl>
+								<utu:AutoLayout Padding="12"
+												PrimaryAxisAlignment="Center"
+												Spacing="2">
+									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleSmall}"
+											   Text="{Binding Name}"
+											   TextWrapping="NoWrap" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+											   Style="{StaticResource CaptionMedium}"
+											   Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
+											   TextWrapping="NoWrap" />
+								</utu:AutoLayout>
+							</utu:AutoLayout>
 						</DataTemplate>
 					</utu:CardContentControl.ContentTemplate>
 				</utu:CardContentControl>
