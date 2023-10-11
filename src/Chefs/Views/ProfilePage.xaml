@@ -14,10 +14,7 @@
 							  x:Name="Root"
 							  Placement="Full">
 
-	<!--  Specifying MinWidth as a workaround for iOS while using LeftDrawerFlyout  -->
-	<!--  https://github.com/unoplatform/uno.chefs/issues/423  -->
-	<Grid x:Name="MainLayout"
-		  MinWidth="{StaticResource DrawerFlyoutWidth}">
+	<Grid x:Name="MainLayout">
 		<Frame uen:Region.Attached="true"
 			   HorizontalAlignment="Stretch"
 			   VerticalAlignment="Stretch"
