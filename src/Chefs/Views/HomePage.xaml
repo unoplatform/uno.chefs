@@ -228,7 +228,6 @@
 									</muxc:ItemsRepeater.Layout>
 									<muxc:ItemsRepeater.ItemTemplate>
 										<DataTemplate>
-												<!-- Added Height="210" to prevent the card from expanding vertically -->
 												<utu:CardContentControl Margin="0"
 																		Width="160"
 																		CornerRadius="4"
