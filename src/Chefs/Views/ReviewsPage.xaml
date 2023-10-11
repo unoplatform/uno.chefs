@@ -17,10 +17,7 @@
 	<!--  Workaround used here by separating the ReviewsPage / ReviewsContentPage into two files  -->
 	<!--  Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482  -->
 
-	<!--  Specifying MinWidth as a workaround for iOS while using RightDrawerFlyout  -->
-	<!--  https://github.com/unoplatform/uno.chefs/issues/423  -->
-	<Grid x:Name="MainLayout"
-		  MinWidth="{StaticResource DrawerFlyoutWidth}">
+	<Grid x:Name="MainLayout">
 		<Frame HorizontalAlignment="Stretch"
 			   VerticalAlignment="Stretch"
 			   HorizontalContentAlignment="Stretch"
