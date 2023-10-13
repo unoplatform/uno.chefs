@@ -85,7 +85,7 @@
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
-				<utu:TabBarItem uen:Region.Name="SavedRecipes"
+				<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
 								IsSelectable="True"
 								Content="Favorites"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
@@ -136,7 +136,7 @@
 							</utu:TabBarItem.Icon>
 						</utu:TabBarItem>
 
-						<utu:TabBarItem uen:Region.Name="SavedRecipes"
+						<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
 										IsSelectable="True"
 										Content="Favorites"
 										Style="{StaticResource VerticalTabBarItemStyle}">
