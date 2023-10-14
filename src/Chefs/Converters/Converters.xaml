@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:um="using:Uno.Material"
-                    xmlns:converters="using:Chefs.Converters">
+                    xmlns:converters="using:Chefs.Converters"
+                    xmlns:um="using:Uno.Material">
 
     <converters:StringFormatter x:Key="StringFormatter" />
     <converters:StringSeparatorConverter x:Key="DotStringSeparator"
@@ -21,27 +21,52 @@
                                               Invert="True" />
 
     <converters:StringReplacerConverter x:Key="WhiteSpaceToLineBreakConverter"
-                                        OldValue=" "
-                                        NewValue="&#x0a;" />
+                                        NewValue="&#x0a;"
+                                        OldValue=" " />
+
+    <um:FromBoolToValueConverter x:Key="TrueToVisible"
+                                 FalseValue="Collapsed"
+                                 NullValue="Collapsed"
+                                 TrueValue="Visible" />
+
+    <um:FromBoolToValueConverter x:Key="TrueToCollapsed"
+                                 FalseValue="Visible"
+                                 NullValue="Visible"
+                                 TrueValue="Collapsed" />
 
     <um:FromBoolToValueConverter x:Key="UserLikeColorConverter"
                                  FalseValue="{StaticResource PrimaryMediumBrush}"
-                                 TrueValue="{StaticResource PrimaryBrush}"
-                                 NullValue="{StaticResource PrimaryMediumBrush}" />
+                                 NullValue="{StaticResource PrimaryMediumBrush}"
+                                 TrueValue="{StaticResource PrimaryBrush}" />
+
+    <um:FromBoolToValueConverter x:Key="IsCreatingCookbookToColorConverter"
+                                 FalseValue="{StaticResource PrimaryBrush}"
+                                 TrueValue="{StaticResource OnSurfaceMediumBrush}"
+                                 NullValue="{StaticResource OnSurfaceMediumBrush}" />
 
     <um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
                                  FalseValue="{StaticResource PrimaryBrush}"
-                                 TrueValue="{StaticResource PrimaryMediumBrush}"
-                                 NullValue="{StaticResource PrimaryMediumBrush}" />
+                                 NullValue="{StaticResource PrimaryMediumBrush}"
+                                 TrueValue="{StaticResource PrimaryMediumBrush}" />
+
+    <um:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
+                                 FalseValue="False"
+                                 TrueValue="True"
+                                 NullValue="False" />
+
+    <um:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
+                                 FalseValue="True"
+                                 TrueValue="False"
+                                 NullValue="False" />
 
     <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
                                       TrueValue="{StaticResource SurfaceBrush}"
-                                      FalseValue="{StaticResource SurfaceVariantBrush}" />
+                                      FalseValue="{StaticResource SurfaceTintBrush}" />
 
     <converters:BoolToObjectConverter x:Key="PrimarySurfaceColorConverter"
-                                      TrueValue="{StaticResource SurfaceBrush}"
-                                      FalseValue="{StaticResource PrimaryBrush}" />
+                                      FalseValue="{StaticResource PrimaryBrush}"
+                                      TrueValue="{StaticResource SurfaceBrush}" />
     <converters:BoolToObjectConverter x:Key="FilterButtonBackgroundColor"
-                                      TrueValue="{StaticResource PrimaryBrush}"
-                                      FalseValue="{StaticResource SurfaceBrush}" />
+                                      FalseValue="{StaticResource SurfaceBrush}"
+                                      TrueValue="{StaticResource PrimaryBrush}" />
 </ResourceDictionary>

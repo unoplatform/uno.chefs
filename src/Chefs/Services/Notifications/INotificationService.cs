@@ -13,4 +13,6 @@ public interface INotificationService
 	/// Get each notifiacion from api
 	/// </returns>
 	ValueTask<IImmutableList<Notification>> GetAll(CancellationToken ct);
+	ValueTask<IImmutableList<Notification>> GetRead(CancellationToken ct);
+	ValueTask<IImmutableList<Notification>> GetUnread(CancellationToken ct);
 }

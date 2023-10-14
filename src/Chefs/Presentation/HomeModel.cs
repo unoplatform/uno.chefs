@@ -77,7 +77,12 @@ public partial class HomeModel
         await NavigateToProfile();
     }
 
-    private async Task NavigateToProfile(User? profile = null)
+	public async Task ShowNotifications()
+	{
+		await NavigateToNotifications();
+	}
+
+	private async Task NavigateToProfile(User? profile = null)
     {
         var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
         var result = await response!.Result;
@@ -90,5 +95,10 @@ public partial class HomeModel
 			object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj),
 			_ => Task.CompletedTask,
 		});
+	}
+
+	private async Task NavigateToNotifications()
+	{
+		_ = _navigator.NavigateViewAsync<NotificationsContentPage>(this, qualifier: Qualifiers.Dialog);
 	}
 }

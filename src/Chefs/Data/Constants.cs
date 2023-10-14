@@ -8,4 +8,5 @@ public static class Constants
 	public const string RecipeDataFile = "Chefs/Data/AppData/Recipes.json";
 	public const string CategoryDataFile = "Chefs/Data/AppData/categories.json";
 	public const string SavedCookbooksDataFile = "Chefs/Data/AppData/SavedCookbooks.json";
+	public const string NotificationsDataFile = "Chefs/Data/AppData/Notifications.json";
 }
