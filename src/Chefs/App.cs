@@ -120,7 +120,7 @@ namespace Chefs
 								new RouteMap("ReviewsContent", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails", IsDefault:true)
 							}),
 
-						new RouteMap("LiveCookingModel", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
+						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
 						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 						
