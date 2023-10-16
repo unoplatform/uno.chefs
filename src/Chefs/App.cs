@@ -83,7 +83,8 @@ namespace Chefs
 				new ViewMap<ReviewsPage>(),
 				new ViewMap<ReviewsContentPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 				new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
-				new ViewMap<CompletedDialog>()
+				new ViewMap<CompletedDialog>(),
+				new ViewMap<MapPage, MapModel>()
 			);
 
 			routes.Register(
@@ -127,7 +128,8 @@ namespace Chefs
 							new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
 							new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
 						}),
-						new RouteMap("Completed", View: views.FindByView<CompletedDialog>())
+						new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
+						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main")
 					}
 				)
 			);
