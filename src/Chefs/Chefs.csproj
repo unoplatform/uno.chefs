@@ -75,7 +75,14 @@
 		<UnoImage Include="Assets\**\*.svg" />
 		<Content Include="Data\**\*.json" />
 		<EmbeddedResource Include="appsettings.json" />
+		<EmbeddedResource Include="Assets\Maps\location_circle.svg" />
+		<EmbeddedResource Include="Assets\Maps\location_pin.svg" />
 		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UnoImage Remove="Assets\Maps\location_circle.svg" />
+	  <UnoImage Remove="Assets\Maps\location_pin.svg" />
 	</ItemGroup>
 </Project>

@@ -2,8 +2,10 @@
 using Mapsui.Extensions;
 using Mapsui.Layers;
 using Mapsui.Projections;
+using Mapsui.Providers;
 using Mapsui.Styles;
 using Mapsui.Tiling;
+using Mapsui.Utilities;
 using Microsoft.UI.Xaml.Data;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -13,6 +15,8 @@ namespace Chefs.Views.Maps
 	public sealed partial class MapControl : UserControl
 	{
 		private static Mapsui.Map? _map;
+		private static MyLocationLayer? _myLocationLayer;
+
 		public ICollectionView Users
 		{
 			get { return (ICollectionView)GetValue(UsersProperty); }
@@ -33,7 +37,24 @@ namespace Chefs.Views.Maps
 			}
 
 			AddPinsLayer(contributors);
-			CenterOnPoint(_map.Layers[1].Extent!.Centroid);
+			AddMyLocationLayer();
+
+			_map.Info += (s, e) =>
+			{
+				Console.WriteLine(e.MapInfo);
+			};
+		}
+
+		private static void AddMyLocationLayer()
+		{
+			// TODO: Get real location
+			var startingPosition = _map!.Layers[1].Extent!.Centroid;
+
+			_myLocationLayer = new MyLocationLayer(_map!);
+			_myLocationLayer.UpdateMyLocation(startingPosition);
+
+			_map!.Layers.Add(_myLocationLayer);
+			CenterOnPoint(startingPosition, 12);
 		}
 
 		private static void AddPinsLayer(ICollectionView contributors)
@@ -51,10 +72,15 @@ namespace Chefs.Views.Maps
 
 			var pinsLayer = new MemoryLayer
 			{
-				Name = "Contributors with callouts",
+				Name = "Contributor pins with callouts",
 				IsMapInfoLayer = true,
-				Features = pins,
-				Style = SymbolStyles.CreatePinStyle(pinColor: new Color(237, 63, 100), symbolScale: 0.7),
+				Features = new MemoryProvider(pins).Features,
+				Style = new SymbolStyle()
+				{
+					BitmapId = typeof(MapControl).LoadSvgId(@"Assets.Maps.location_pin.svg"),
+					SymbolScale = 1,
+					SymbolOffset = new Offset(x: 0.0, y: 0.5, isRelative: true)
+				}
 			};
 
 			_map!.Layers.Add(pinsLayer);
@@ -75,9 +101,9 @@ namespace Chefs.Views.Maps
 			};
 		}
 
-		private static void CenterOnPoint(MPoint point)
+		private static void CenterOnPoint(MPoint point, int resolution)
 		{
-			_map!.Home = navigator => navigator.CenterOnAndZoomTo(point, navigator.Resolutions[12]);
+			_map!.Home = navigator => navigator.CenterOnAndZoomTo(point, navigator.Resolutions[resolution]);
 		}
 
 		public MapControl()
@@ -85,7 +111,6 @@ namespace Chefs.Views.Maps
 			this.InitializeComponent();
 
 			ContributorsMap.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
-
 			ContributorsMap.Map.Widgets.Add(new Mapsui.Widgets.Zoom.ZoomInOutWidget { MarginX = 10, MarginY = 20 });
 		}
 	}
