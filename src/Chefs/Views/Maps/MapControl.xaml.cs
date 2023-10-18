@@ -25,7 +25,7 @@ namespace Chefs.Views.Maps
 
 		// Using a DependencyProperty as the backing store for Users.  This enables animation, styling, binding, etc.
 		public static readonly DependencyProperty UsersProperty =
-			DependencyProperty.Register("Users", typeof(ICollectionView), typeof(MapControl), new PropertyMetadata(0, new PropertyChangedCallback(OnUsersChanged)));
+			DependencyProperty.Register("Users", typeof(ICollectionView), typeof(MapControl), new PropertyMetadata(null, new PropertyChangedCallback(OnUsersChanged)));
 
 		private static void OnUsersChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
