@@ -12,6 +12,5 @@ public class UserData
 	public long? Followers { get; set; }
 	public long? Following { get; set; }
 	public long? Recipes { get; set; }
-	public LocationData? Location { get; set; }
 	public bool IsCurrent { get; set; }
 }

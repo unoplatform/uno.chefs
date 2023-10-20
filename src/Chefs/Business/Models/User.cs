@@ -13,7 +13,6 @@ public partial record User
 		Followers = user.Followers;
 		Following = user.Following;
 		Recipes = user.Recipes;
-		Location = new Location(user.Location);
 		IsCurrent = user.IsCurrent;
 	}
 
@@ -26,7 +25,6 @@ public partial record User
 	public long? Followers { get; init; }
 	public long? Following { get; init; }
 	public long? Recipes { get; init; }
-	public Location Location { get; init; }
 	public bool IsCurrent { get; init; }
 
 	internal UserData ToData() => new()
@@ -40,7 +38,6 @@ public partial record User
 		Followers = Followers,
 		Following = Following,
 		Recipes = Recipes,
-		Location = Location.ToData(),
 		IsCurrent = IsCurrent
 	};
 }
