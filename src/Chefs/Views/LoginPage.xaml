@@ -15,7 +15,7 @@
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  utu:StatusBar.Background="{ThemeResource SurfaceBrush}"
 	  utu:StatusBar.Foreground="Auto"
-	  Background="{ThemeResource BackgroundBrush}"
+	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d android ios not_win">
 	<Page.Resources>
 		<ResourceDictionary>
@@ -36,10 +36,13 @@
 		</ResourceDictionary>
 	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
+		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+					  HorizontalAlignment="Center">
 			<Grid>
 				<utu:AutoLayout x:Name="LoginLayout"
 								Spacing="32"
+								HorizontalAlignment="Stretch"
+								MaxWidth="500"
 								PrimaryAxisAlignment="Center"
 								Padding="32"
 								Visibility="{Binding IsRegisterToggle, Converter={StaticResource InvertBool}}">
@@ -138,6 +141,8 @@
 
 				<utu:AutoLayout x:Name="RegisterLayout"
 								Margin="32"
+								HorizontalAlignment="Stretch"
+								MaxWidth="500"
 								PrimaryAxisAlignment="Center"
 								Spacing="32"
 								Visibility="{Binding IsRegisterToggle, FallbackValue=Collapsed}">
