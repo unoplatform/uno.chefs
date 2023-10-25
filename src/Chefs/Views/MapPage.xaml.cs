@@ -1,4 +1,4 @@
-﻿using Mapsui;
+using Mapsui;
 using Mapsui.Extensions;
 using Mapsui.Layers;
 using Mapsui.Projections;
@@ -15,11 +15,24 @@ public sealed partial class MapPage : Page
 	private static Mapsui.Map? _map;
 	private static MyLocationLayer? _myLocationLayer;
 
+	private static List<Contributor> Contributors => new List<Contributor>
+	{
+		new Contributor("Troyan Smith", 45.5018, -73.5566, 45),
+		new Contributor("Niki Samantha", 45.5411, -73.5770, 20),
+		new Contributor("Mike Baker", 45.5113, -73.5961, 15)
+	};
+
+	private record Contributor(string? Name, double Lat, double Lng, int Recipes);
+	
 	public MapPage()
 	{
 		this.InitializeComponent();
 
+#if HAS_UNO
+		this.Loaded += (sender, e) => InitializeMap();
+#else
 		InitializeMap();
+#endif
 	}
 
 	private void InitializeMap()
@@ -104,21 +117,6 @@ public sealed partial class MapPage : Page
 	{
 		_map!.Home = navigator => navigator.CenterOnAndZoomTo(point, navigator.Resolutions[resolution]);
 	}
-
-	private class Contributor
-	{
-		public string? Name { get; set; }
-		public double Lat { get; set; }
-		public double Lng { get; set; }
-		public int Recipes { get; set; }
-	}
-
-	private static List<Contributor> Contributors => new List<Contributor>
-	{
-		new Contributor { Name = "Troyan Smith", Lat = 45.5018, Lng = -73.5566, Recipes = 45 },
-		new Contributor { Name = "Niki Samantha", Lat = 45.5411, Lng = -73.5770, Recipes = 20 },
-		new Contributor { Name = "Mike Baker", Lat = 45.5113, Lng = -73.5961, Recipes = 15 }
-	};
 
 	private static void MapOnInfo(object? sender, MapInfoEventArgs e)
 	{
