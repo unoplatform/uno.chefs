@@ -73,6 +73,10 @@
 		<PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="3.0.0-dev.2270" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 		<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />
+		<PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" Version="7.3.0" GeneratePathProperty="true" />
+	</ItemGroup>
+	<ItemGroup>
+		<NativeFileReference Include="$(PKGHarfBuzzSharp_NativeAssets_WebAssembly)\build\netstandard1.0\libHarfBuzzSharp.a\3.1.12\libHarfBuzzSharp.a" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
