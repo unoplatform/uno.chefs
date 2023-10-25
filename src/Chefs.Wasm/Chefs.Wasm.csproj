@@ -76,9 +76,6 @@
 		<PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" Version="7.3.0" GeneratePathProperty="true" />
 	</ItemGroup>
 	<ItemGroup>
-		<NativeFileReference Include="$(PKGHarfBuzzSharp_NativeAssets_WebAssembly)\build\netstandard1.0\libHarfBuzzSharp.a\3.1.12\libHarfBuzzSharp.a" />
-	</ItemGroup>
-	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
 	</ItemGroup>
 	<Import Project="..\Chefs.Base\base.props" />
