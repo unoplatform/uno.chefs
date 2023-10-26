@@ -189,7 +189,7 @@
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             uen:Navigation.Data="{Binding DataContext.Value, ElementName=FilterButtonHost, Mode=TwoWay}"
-                            uen:Navigation.Request="!Filter"
+                            uen:Navigation.Request="!FilterContent"
                             utu:AutoLayout.CounterAlignment="Center"
                             Content="Filters"
                             CornerRadius="4"
