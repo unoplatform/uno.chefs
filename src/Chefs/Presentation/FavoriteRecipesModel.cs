@@ -37,6 +37,6 @@ public partial class FavoriteRecipesModel
 
 	public async Task ShowNotifications()
 	{
-		_ = _navigator.NavigateViewAsync<NotificationsContentPage>(this, qualifier: Qualifiers.Dialog);
+		_ = _navigator.NavigateRouteAsync(this, "Notifications", qualifier: Qualifiers.Dialog);
 	}
 }

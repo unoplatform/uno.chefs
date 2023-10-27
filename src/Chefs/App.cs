@@ -1,4 +1,5 @@
 using LiveChartsCore;
+using Chefs.Views.Flyouts;
 
 namespace Chefs;
 
@@ -76,22 +77,22 @@ public class App : Application
 			new ViewMap(ViewModel: typeof(ShellModel)),
 			new ViewMap<MainPage, MainModel>(),
 			new ViewMap<WelcomePage, WelcomeModel>(),
-			new ViewMap<FilterPage>(),
-			new ViewMap<FilterContentPage, FilterModel>(Data: new DataMap<SearchFilter>()),
+			new ViewMap<FiltersFlyout>(),
+			new ViewMap<FiltersPage, FilterModel>(Data: new DataMap<SearchFilter>()),
 			new ViewMap<HomePage, HomeModel>(),
 			new DataViewMap<CreateUpdateCookbookPage, CreateUpdateCookbookModel, Cookbook>(),
 			new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
-			new ViewMap<NotificationsPage>(),
-			new ViewMap<NotificationsContentPage, NotificationsModel>(),
-			new ViewMap<ProfilePage>(ResultData: typeof(IChefEntity)),
-			new ViewMap<ProfileDetailsPage, ProfileModel>(Data: new DataMap<User>()),
+			new ViewMap<NotificationsFlyout>(),
+			new ViewMap<NotificationsPage, NotificationsModel>(),
+			new ViewMap<ProfileFlyout>(ResultData: typeof(IChefEntity)),
+			new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>()),
 			new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
 			new ViewMap<FavoriteRecipesPage, FavoriteRecipesModel>(),
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
 			new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
-			new ViewMap<ReviewsPage>(),
-			new ViewMap<ReviewsContentPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
+			new ViewMap<ReviewsFlyout>(),
+			new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>()
 		// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
@@ -108,14 +109,14 @@ public class App : Application
 					{
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true, Nested: new RouteMap[]
 						{
-							new RouteMap("Notifications", View: views.FindByView<NotificationsPage>(), Nested: new RouteMap[]
+							new RouteMap("Notifications", View: views.FindByView<NotificationsFlyout>(), Nested: new RouteMap[]
 							{
 								new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true)
 							}),
 						}),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), Nested: new RouteMap[]
 						{
-							new RouteMap("Filter", View: views.FindByView<FilterPage>(), Nested: new RouteMap[]
+							new RouteMap("Filter", View: views.FindByView<FiltersFlyout>(), Nested: new RouteMap[]
 							{
 								new RouteMap("FilterContent", View: views.FindByViewModel<FilterModel>(), IsDefault:true)
 							}),
@@ -127,7 +128,7 @@ public class App : Application
 						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 					}),
 					new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main"),
-					new RouteMap("Reviews", View: views.FindByView<ReviewsPage>(), Nested: new RouteMap[]
+					new RouteMap("Reviews", View: views.FindByView<ReviewsFlyout>(), Nested: new RouteMap[]
 						{
 							new RouteMap("ReviewsContent", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails", IsDefault:true)
 						}),
@@ -137,7 +138,7 @@ public class App : Application
 					new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 
 
-					new RouteMap("Profile", View: views.FindByView<ProfilePage>(), Nested: new RouteMap[]
+					new RouteMap("Profile", View: views.FindByView<ProfileFlyout>(), Nested: new RouteMap[]
 					{
 						new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
 						new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
