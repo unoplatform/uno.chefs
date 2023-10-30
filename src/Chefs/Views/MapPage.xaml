@@ -1,4 +1,4 @@
-﻿<Page xmlns:uen="using:Uno.Extensions.Navigation.UI"
+<Page xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:utum="using:Uno.Toolkit.UI.Material"
@@ -15,9 +15,6 @@
 	  utu:StatusBar.Foreground="Dark"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<Page.Resources>
-		<x:String x:Key="Icon_Arrow_Back">F1 M 16 7 L 3.8299999237060547 7 L 9.420000076293945 1.4099998474121094 L 8 0 L 0 8 L 8 16 L 9.40999984741211 14.59000015258789 L 3.8299999237060547 9 L 16 9 L 16 7 Z</x:String>
-	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
@@ -26,8 +23,8 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton>
 						<AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}"
-									  Foreground="{ThemeResource OnSurfaceInverseBrush}" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/arrow_back.png"
+										Foreground="{ThemeResource OnSurfaceInverseBrush}" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
