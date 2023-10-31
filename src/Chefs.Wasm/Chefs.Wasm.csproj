@@ -36,6 +36,9 @@
 		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
 		<DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
 	</PropertyGroup>
+	<ItemGroup Condition="'$(Configuration)'=='Release'">
+		<WasmShellExtraEmccFlags Include="-s INITIAL_MEMORY=32MB" />
+	</ItemGroup>
 	<ItemGroup>
 		<Content Include="manifest.webmanifest" />
 	</ItemGroup>
@@ -50,9 +53,9 @@
 		<PackageReference Include="Uno.Material.WinUI" Version="4.0.0-dev.162" />
 		<PackageReference Include="Uno.WinUI.MediaPlayer.WebAssembly" Version="5.0.0-dev.2572" />
 		<PackageReference Include="Uno.Resizetizer" Version="1.2.0-dev.34" />
-		<PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.5" />
-		<PackageReference Include="Uno.Wasm.Bootstrap" Version="8.0.0-dev.280" />
-		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="8.0.0-dev.280" />
+		<PackageReference Include="Microsoft.Windows.Compatibility" Version="7.0.3" />
+		<PackageReference Include="Uno.Wasm.Bootstrap" Version="8.0.0-dev.306" />
+		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="8.0.0-dev.306" />
 		<PackageReference Include="Uno.WinUI.WebAssembly" Version="5.0.0-dev.2572" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="5.0.0-dev.2572" Condition="'$(Configuration)'=='Debug'" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.0-dev.2572" />
@@ -73,6 +76,8 @@
 		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="3.0.0-dev.2270" />
 		<PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="3.0.0-dev.2270" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+		<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />
+		<PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" Version="7.3.0" GeneratePathProperty="true" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />

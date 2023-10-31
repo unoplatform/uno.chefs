@@ -5,21 +5,38 @@
 	<ItemGroup>
 		<None Include="$(MSBuildThisFileDirectory)AppHead.xaml" />
 		<ApplicationDefinition Include="$(MSBuildThisFileDirectory)AppHead.xaml"
-								SubType="Designer"
-								XamlRuntime="WinUI"
-								Generator="MSBuild:Compile"
-								Link="AppHead.xaml" />
+							   SubType="Designer"
+							   XamlRuntime="WinUI"
+							   Generator="MSBuild:Compile"
+							   Link="AppHead.xaml" />
 		<Compile Include="$(MSBuildThisFileDirectory)AppHead.xaml.cs"
-				XamlRuntime="WinUI"
-				DependentUpon="AppHead.xaml"
-				Link="AppHead.xaml.cs" />
-		<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
-				ForegroundFile="$(MSBuildThisFileDirectory)Icons\appconfig.svg"
-				ForegroundScale="0.65"
-				Color="#00000000" />
+				 XamlRuntime="WinUI"
+				 DependentUpon="AppHead.xaml"
+				 Link="AppHead.xaml.cs" />
+
 		<UnoSplashScreen
 			Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
-			BaseSize="250,72"
-			Color="#086AD1" />
+			Color="#313033" />
 	</ItemGroup>
+
+	<Choose>
+		<When Condition="'$(IsCanaryBranch)'=='true'">
+			<ItemGroup>
+				<UnoIcon Condition="'$(IsCanaryBranch)'=='true'"
+						 Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
+						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg-canary.svg"
+						 ForegroundScale="0.5"
+						 Color="#00000000" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
+						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
+						 ForegroundScale="0.5"
+						 Color="#00000000" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
 </Project>

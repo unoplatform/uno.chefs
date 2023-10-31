@@ -30,9 +30,12 @@
 								PrimaryAxisAlignment="Center"
 								HorizontalAlignment="Stretch">
 					<utu:AutoLayout CornerRadius="4">
-						<Image Source="{Binding ImageUrl}"
-							   Stretch="UniformToFill"
-							   Height="144" />
+						<Border Height="144">
+							<Image HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   Source="{Binding ImageUrl}"
+								   Stretch="UniformToFill" />
+						</Border>
 						<utu:AutoLayout Spacing="16"
 										Padding="16"
 										Orientation="Horizontal">
@@ -268,7 +271,14 @@
 						<TextBlock Text="Popular Contributors"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Style="{StaticResource TitleMedium}" />
-
+						<Button HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Content="Near me"
+								utu:AutoLayout.CounterAlignment="Center"
+								Foreground="{ThemeResource PrimaryBrush}"
+								CornerRadius="20"
+								Style="{StaticResource TextButtonStyle}"
+								uen:Navigation.Request="Map" />
 					</utu:AutoLayout>
 					<uer:FeedView x:Name="PopularCreatorsFeedView"
 								  Source="{Binding PopularCreators}">
