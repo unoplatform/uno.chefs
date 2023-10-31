@@ -114,10 +114,13 @@
 				<utu:AutoLayout Spacing="8" 
 								utu:AutoLayout.CounterAlignment="Stretch" 
 								Height="250">
-					<Image Source="{Binding Recipe.ImageUrl}" 
-						   Stretch="UniformToFill" 
-						   utu:AutoLayout.CounterAlignment="Start" 
-						   Height="195" />
+					<Border Height="195" 
+							utu:AutoLayout.CounterAlignment="Start">
+						<Image Source="{Binding Recipe.ImageUrl}" 
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   Stretch="UniformToFill"/>
+					</Border>
 					<utu:AutoLayout utu:AutoLayout.IsIndependentLayout="True"
 									Margin="16,159,16,0" 
 									VerticalAlignment="Top" 

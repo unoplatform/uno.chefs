@@ -103,10 +103,12 @@
                                     CornerRadius="4"
                                     PrimaryAxisAlignment="Center">
                                     <utu:AutoLayout CornerRadius="4">
-                                        <Image
-                                            Height="144"
-                                            Source="{x:Bind ImageUrl}"
-                                            Stretch="UniformToFill" />
+                                        <Border Height="144">
+                                            <Image HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Source="{x:Bind ImageUrl}"
+                                                   Stretch="UniformToFill" />
+                                        </Border>
                                         <utu:AutoLayout
                                             Padding="16"
                                             PrimaryAxisAlignment="Center"
