@@ -102,6 +102,8 @@
 								Orientation="Horizontal" 
 								utu:AutoLayout.CounterAlignment="Start"
 								Width="390">
+					<!-- Workaround for https://github.com/unoplatform/uno.chefs/issues/639 -->
+					<!-- TODO Use PersonPicture when this is merged https://github.com/unoplatform/uno/pull/14119 -->
 					<Border Width="32"
 							Height="32"
 							CornerRadius="32"
