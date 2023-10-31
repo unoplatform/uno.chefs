@@ -268,7 +268,14 @@
 						<TextBlock Text="Popular Contributors"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Style="{StaticResource TitleMedium}" />
-
+						<Button HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Content="Near me"
+								utu:AutoLayout.CounterAlignment="Center"
+								Foreground="{ThemeResource PrimaryBrush}"
+								CornerRadius="20"
+								Style="{StaticResource TextButtonStyle}"
+								uen:Navigation.Request="Map" />
 					</utu:AutoLayout>
 					<uer:FeedView x:Name="PopularCreatorsFeedView"
 								  Source="{Binding PopularCreators}">
