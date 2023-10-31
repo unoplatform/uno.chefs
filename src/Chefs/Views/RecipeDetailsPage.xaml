@@ -102,10 +102,17 @@
 								Orientation="Horizontal" 
 								utu:AutoLayout.CounterAlignment="Start"
 								Width="390">
-					<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
-								   utu:AutoLayout.CounterAlignment="Center" 
-								   Width="32" 
-								   Height="32" />
+					<!-- Workaround for https://github.com/unoplatform/uno.chefs/issues/639 -->
+					<!-- TODO Use PersonPicture when this is merged https://github.com/unoplatform/uno/pull/14119 -->
+					<Border Width="32"
+							Height="32"
+							CornerRadius="32"
+							utu:AutoLayout.CounterAlignment="Center">
+						<Image Source="{Binding User.UrlProfileImage}"
+							   Stretch="UniformToFill"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center" />
+					</Border>
 
 					<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
 							   utu:AutoLayout.CounterAlignment="Center" 
@@ -325,10 +332,15 @@
 														<utu:AutoLayout Spacing="16" 
 																		Padding="16" 
 																		Orientation="Horizontal">
-															<PersonPicture utu:AutoLayout.CounterAlignment="Start"
-																		   Width="60" 
-																		   Height="60" 
-																		   ProfilePicture="{Binding UrlAuthorImage}"/>
+															<Border Width="60"
+																	Height="60"
+																	CornerRadius="60"
+																	utu:AutoLayout.CounterAlignment="Start">
+																<Image Source="{Binding UrlAuthorImage}"
+																	   Stretch="UniformToFill"
+																	   HorizontalAlignment="Center"
+																	   VerticalAlignment="Center" />
+															</Border>
 															<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start" 
 																			utu:AutoLayout.PrimaryAlignment="Stretch">
 																<utu:AutoLayout Spacing="8"
