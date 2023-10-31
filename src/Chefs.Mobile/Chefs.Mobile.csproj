@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-ios;net7.0-maccatalyst;net7.0-android</TargetFrameworks>
 		<SingleProject>true</SingleProject>
@@ -45,6 +45,7 @@
 		<PackageReference Include="Uno.Extensions.Logging.OSLog" Version="1.6.0" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="5.0.0-dev.2572" />
 		<PackageReference Include="Uno.WinUI.RemoteControl" Version="5.0.0-dev.2572" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />
 	</ItemGroup>
 	<Choose>
 		<When Condition="$(IsAndroid)">
