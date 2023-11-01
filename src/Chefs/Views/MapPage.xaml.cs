@@ -47,6 +47,9 @@ public sealed partial class MapPage : Page
 	private static void AddBaseLayer()
 	{
 		_map!.Layers.Add(OpenStreetMap.CreateTileLayer());
+		// Add "using Mapsui.Tiling.Layers;" and uncomment following line to use a different tile source
+		//_map!.Layers.Add(layers: new TileLayer(KnownTileSources.Create(KnownTileSource.BingAerial)));
+
 		_map!.Widgets.Add(new ZoomInOutWidget { MarginX = 36, MarginY = 36 });
 	}
 

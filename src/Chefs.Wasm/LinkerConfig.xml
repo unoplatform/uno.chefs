@@ -9,4 +9,8 @@
 		<!-- This is required by System.Text.Json to properly deserialize ImmutableList across the App -->
 		<type fullname="System.Collections.Immutable.ImmutableList*" />
 	</assembly>
+	<assembly fullname="Mapsui">
+		<!-- This is required by Mapsui to display map tiles on WASM -->
+		<type fullname="Mapsui.Tiling*" />
+	</assembly>
 </linker>
