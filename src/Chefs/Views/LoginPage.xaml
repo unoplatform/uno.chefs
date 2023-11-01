@@ -127,7 +127,8 @@
 						</Button>
 					</utu:AutoLayout>
 					<utu:AutoLayout PrimaryAxisAlignment="Center"
-									Orientation="Horizontal">
+									Orientation="Horizontal"
+									Spacing="4">
 						<TextBlock Text="Not a member?"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Foreground="{ThemeResource OnSurfaceBrush}"
@@ -210,7 +211,8 @@
 								Command="{Binding Login}" />
 					</utu:AutoLayout>
 					<utu:AutoLayout PrimaryAxisAlignment="Center"
-									Orientation="Horizontal">
+									Orientation="Horizontal"
+									Spacing="4">
 						<TextBlock Text="Already a member?"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Foreground="{ThemeResource OnSurfaceBrush}"
