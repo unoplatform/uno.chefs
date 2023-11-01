@@ -1,10 +1,11 @@
+using BruTile.Predefined;
 using Mapsui;
 using Mapsui.Extensions;
 using Mapsui.Layers;
 using Mapsui.Projections;
 using Mapsui.Providers;
 using Mapsui.Styles;
-using Mapsui.Tiling;
+using Mapsui.Tiling.Layers;
 using Mapsui.Utilities;
 using Mapsui.Widgets.Zoom;
 
@@ -46,7 +47,7 @@ public sealed partial class MapPage : Page
 
 	private static void AddBaseLayer()
 	{
-		_map!.Layers.Add(OpenStreetMap.CreateTileLayer());
+		_map!.Layers.Add(layers: new TileLayer(KnownTileSources.Create(KnownTileSource.BingRoads)));
 		_map!.Widgets.Add(new ZoomInOutWidget { MarginX = 36, MarginY = 36 });
 	}
 
