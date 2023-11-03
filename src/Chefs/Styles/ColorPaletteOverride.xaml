@@ -1,13 +1,13 @@
-﻿<ResourceDictionary xmlns:uen="using:Uno.Extensions.Navigation.UI"
-					xmlns:uer="using:Uno.Extensions.Reactive.UI"
-					xmlns:utu="using:Uno.Toolkit.UI"
-					xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-					xmlns:um="using:Uno.Material"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-					xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-					xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<!--Themed colors-->
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+                    xmlns:uen="using:Uno.Extensions.Navigation.UI"
+                    xmlns:uer="using:Uno.Extensions.Reactive.UI"
+                    xmlns:um="using:Uno.Material"
+                    xmlns:utu="using:Uno.Toolkit.UI">
+	<!--  Themed colors  -->
 	<ResourceDictionary.ThemeDictionaries>
 		<ResourceDictionary x:Key="Light">
 			<Color x:Key="StatusBarForegroundColor">#000000</Color>
@@ -44,6 +44,10 @@
 			<Color x:Key="TertiaryContainerColor">#F5F3CB</Color>
 			<Color x:Key="OnTertiaryContainerColor">#001D36</Color>
 
+			<Color x:Key="NutritionTrackBackgroundColor">#1C1B1F14</Color>
+			<Color x:Key="NutritionProteinValColor">#159BFF</Color>
+			<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
+			<Color x:Key="NutritionFatValColor">#F85977</Color>
 			<x:String x:Key="ChefsLogoWithIcon">ms-appx:///Chefs/Assets/Icons/UnoChefsLogoWithIcon_Light.png</x:String>
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Dark">
@@ -79,6 +83,10 @@
 			<Color x:Key="OnTertiaryContainerColor">#2A2800</Color>
 			<Color x:Key="StatusBarForegroundColor">#FFFFFF</Color>
 
+			<Color x:Key="NutritionTrackBackgroundColor">#EBEDF0</Color>
+			<Color x:Key="NutritionProteinValColor">#159BFF</Color>
+			<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
+			<Color x:Key="NutritionFatValColor">#F85977</Color>
 			<x:String x:Key="ChefsLogoWithIcon">ms-appx:///Chefs/Assets/Icons/UnoChefsLogoWithIcon_Dark.png</x:String>
 		</ResourceDictionary>
 	</ResourceDictionary.ThemeDictionaries>

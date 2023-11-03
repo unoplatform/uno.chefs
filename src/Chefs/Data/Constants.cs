@@ -1,4 +1,6 @@
-﻿namespace Chefs.Data;
+﻿using Windows.UI;
+
+namespace Chefs.Data;
 
 public static class Constants
 {

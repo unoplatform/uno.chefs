@@ -9,6 +9,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc1.2" />
 		<PackageReference Include="Uno.Material.WinUI" Version="4.0.0-dev.162" />
 		<PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.18" />
 		<PackageReference Include="Uno.WinUI.MediaPlayer.Skia.Gtk" Version="5.0.0-dev.2572" />

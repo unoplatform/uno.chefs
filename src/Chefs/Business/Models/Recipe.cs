@@ -16,6 +16,7 @@ public partial record Recipe : IChefEntity
 		Category = new Category(recipeData.Category);
 		Date = recipeData.Date;
 		Save = recipeData.Save;
+		Nutrition = new Nutrition(recipeData?.Nutrition);
 	}
 	public Guid Id { get; init; }
 	public Guid UserId { get; init; }
@@ -30,6 +31,11 @@ public partial record Recipe : IChefEntity
 	public DateTime Date { get; init; }
 	public bool Save { get; init; }
 	public bool Selected { get; init; }
+	public Nutrition Nutrition { get; init; }
+
+	//remove "kcal" unit from Calories property
+	public string? CaloriesAmount => Calories?.Remove(Calories.Length - 4);
+
 	public string TimeCal => CookTime > TimeSpan.FromHours(1) ?
 		String.Format("{0:%h} hour {0:%m} mins • {1}", CookTime, Calories) :
 		String.Format("{0:%m} mins • {1}", CookTime, Calories);
