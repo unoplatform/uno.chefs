@@ -37,7 +37,8 @@
 	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
 		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-					  HorizontalAlignment="Center">
+					  HorizontalAlignment="Center"
+					  VerticalScrollBarVisibility="Auto">
 			<Grid>
 				<utu:AutoLayout x:Name="LoginLayout"
 								Spacing="32"
