@@ -1,3 +1,5 @@
+﻿using LiveChartsCore;
+
 namespace Chefs
 {
 	public class App : Application
@@ -55,6 +57,14 @@ namespace Chefs
 
 				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes));
 
+			LiveCharts.Configure(config =>
+				config
+				.HasMap<NutritionChartItem>((nutritionChartItem, point) =>
+				{
+					// here we use the index as X, and the nutrition value as Y 
+					point.Coordinate = new(point.Index, nutritionChartItem.Value);
+				})
+			);
 			_window = builder.Window;
 
 			Host = await builder.NavigateAsync<ShellControl>();
