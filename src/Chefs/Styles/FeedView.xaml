@@ -7,60 +7,12 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     xmlns:utu="using:Uno.Toolkit.UI"
                     mc:Ignorable="skia">
-    
-    <Style TargetType="uer:FeedView"
-           BasedOn="{StaticResource DefaultFeedViewStyle}">
-        <Setter Property="ProgressTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <!-- MaterialProgressRingStyle not being resolve on WinUI -->
-                    <!--<not_skia:Grid>
-						<winui:ProgressRing
-							Style="{StaticResource MaterialProgressRingStyle}"
-							IsActive="{Binding}"
-							Width="50"
-							Height="50"
-							VerticalAlignment="Center"
-							HorizontalAlignment="Center" />
-					</not_skia:Grid>-->
-                    <skia:Grid>
-                        <TextBlock Text="Loading"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
-                    </skia:Grid>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
-    <Style TargetType="uer:FeedView"
-           x:Key="MaterialCompositeFeedViewStyle"
-           BasedOn="{StaticResource CompositeFeedViewStyle}">
-        <Setter Property="ProgressTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <!-- MaterialProgressRingStyle not being resolve on WinUI -->
+	<Style TargetType="uer:FeedView"
+		   BasedOn="{StaticResource DefaultFeedViewStyle}" />
 
-                    <!--<not_skia:Grid>
-						<winui:ProgressRing
-							Style="{StaticResource MaterialProgressRingStyle}"
-							IsActive="{Binding}"
-							Width="50"
-							Height="50"
-							VerticalAlignment="Center"
-							HorizontalAlignment="Center" />
-					</not_skia:Grid>-->
-                    <skia:Grid>
-                        <TextBlock Text="Loading"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
-                    </skia:Grid>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
-    <Style TargetType="uer:FeedView"
+	<Style TargetType="uer:FeedView"
            x:Key="DefaultFeedViewStyle">
         <Setter Property="VerticalAlignment"
                 Value="Stretch" />
