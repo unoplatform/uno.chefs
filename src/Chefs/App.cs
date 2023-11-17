@@ -93,8 +93,9 @@ namespace Chefs
 				new ViewMap<ReviewsPage>(),
 				new ViewMap<ReviewsContentPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 				new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
-				new ViewMap<CompletedDialog>(),
-				new ViewMap<MapPage, MapModel>()
+				new ViewMap<CompletedDialog>()
+				// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
+				//new ViewMap<MapPage, MapModel>()
 			);
 
 			routes.Register(
