@@ -62,7 +62,7 @@ namespace Chefs
 				.HasMap<NutritionChartItem>((nutritionChartItem, point) =>
 				{
 					// here we use the index as X, and the nutrition value as Y 
-					point.Coordinate = new(point.Index, nutritionChartItem.Value);
+					return new(point, nutritionChartItem.Value);
 				})
 			);
 			_window = builder.Window;
