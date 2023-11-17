@@ -45,6 +45,7 @@
 			<Color x:Key="OnTertiaryContainerColor">#001D36</Color>
 
 			<x:String x:Key="ChefsLogoWithIcon">ms-appx:///Chefs/Assets/Icons/UnoChefsLogoWithIcon_Light.png</x:String>
+			<x:String x:Key="ChefsLogoWithIconInverse">ms-appx:///Chefs/Assets/Icons/UnoChefsLogoWithIcon_Dark.png</x:String>
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Dark">
 			<Color x:Key="PrimaryColor">#FFA3B6</Color>
@@ -80,6 +81,7 @@
 			<Color x:Key="StatusBarForegroundColor">#FFFFFF</Color>
 
 			<x:String x:Key="ChefsLogoWithIcon">ms-appx:///Chefs/Assets/Icons/UnoChefsLogoWithIcon_Dark.png</x:String>
+			<x:String x:Key="ChefsLogoWithIconInverse">ms-appx:///Chefs/Assets/Icons/UnoChefsLogoWithIcon_Light.png</x:String>
 		</ResourceDictionary>
 	</ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>
