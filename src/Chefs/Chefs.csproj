@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
 		<TargetFrameworks>$(TargetFrameworks);net7.0</TargetFrameworks>
@@ -9,7 +9,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />
+		<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
+		<!--<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />-->
 		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc1.2" />
 		<PackageReference Include="Uno.Dsp.Tasks" Version="1.2.0-dev.20" />
 		<PackageReference Include="Uno.Material.WinUI" Version="4.0.0-dev.162" />
@@ -80,6 +81,13 @@
 		<EmbeddedResource Include="Assets\Maps\location_pin.svg" />
 		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+	</ItemGroup>
+
+	<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
+	<ItemGroup>
+		<None Remove="Views\MapPage.xaml" />
+		<Page Remove="Views\MapPage.xaml" />
+		<Compile Remove="Views\MapPage.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
