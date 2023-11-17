@@ -100,19 +100,6 @@
 							Background="{ThemeResource SurfaceBrush}"
 							Visibility="Collapsed"
 							Width="120">
-				<Button Command="{Binding ShowProfile}"
-						Width="56"
-						Height="56"
-						Margin="0,40"
-						utu:AutoLayout.CounterAlignment="Center"
-						Style="{StaticResource IconButtonStyle}">
-					<Border CornerRadius="15">
-						<Image Source="{Binding UserProfile.UrlProfileImage}"
-							   Stretch="UniformToFill"
-							   VerticalAlignment="Center"
-							   HorizontalAlignment="Center" />
-					</Border>
-				</Button>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 					<utu:TabBar uen:Region.Attached="True"
 								Style="{StaticResource VerticalTabBarStyle}"
