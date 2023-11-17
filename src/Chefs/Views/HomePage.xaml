@@ -271,6 +271,9 @@
 						<TextBlock Text="Popular Contributors"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Style="{StaticResource TitleMedium}" />
+
+						<!-- TODO: Add back Map nav request when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
+						<!--uen:Navigation.Request="Map"-->
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Near me"
@@ -278,7 +281,7 @@
 								Foreground="{ThemeResource PrimaryBrush}"
 								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}"
-								uen:Navigation.Request="Map" />
+								 />
 					</utu:AutoLayout>
 					<uer:FeedView x:Name="PopularCreatorsFeedView"
 								  Source="{Binding PopularCreators}">
