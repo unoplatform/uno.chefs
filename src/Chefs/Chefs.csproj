@@ -11,26 +11,26 @@
 	<ItemGroup>
 		<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
 		<!--<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />-->
-		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc1.2" />
-		<PackageReference Include="Uno.Dsp.Tasks" Version="1.2.0-dev.20" />
-		<PackageReference Include="Uno.Material.WinUI" Version="4.0.0-dev.162" />
-		<PackageReference Include="Uno.WinUI" Version="5.0.0-dev.2572" />
-		<PackageReference Include="Uno.Resizetizer" Version="1.2.0-dev.34" />
-		<PackageReference Include="Uno.Extensions.Configuration" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Core" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Http" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Http.Refit" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="5.0.0-dev.117" />
-		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="3.0.0-dev.2270" />
-		<PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="3.0.0-dev.2270" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc2" />
+		<PackageReference Include="Uno.Dsp.Tasks" Version="1.3.0-dev.2" />
+		<PackageReference Include="Uno.Material.WinUI" Version="4.1.0-dev.27" />
+		<PackageReference Include="Uno.WinUI" Version="5.1.0-dev.542" />
+		<PackageReference Include="Uno.Resizetizer" Version="1.3.0-dev.12" />
+		<PackageReference Include="Uno.Extensions.Configuration" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Core" Version="3.1.0-dev.85" />
+		<PackageReference Include="Uno.Extensions.Http" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Http.Refit" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="5.1.0-dev.26" />
+		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="3.1.0-dev.76" />
+		<PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="3.1.0-dev.76" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
 	</ItemGroup>
 
