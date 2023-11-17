@@ -47,9 +47,10 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Recipe Categories"
 								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}"
+						<!-- It's important to put the ItemsSource bove the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
+						<muxc:ItemsRepeater ItemsSource="{Binding OrganizeCategories}"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-											ItemsSource="{Binding OrganizeCategories}"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
@@ -66,9 +67,9 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Cooking Time"
 								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
-											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-											ItemsSource="{Binding Times}">
+						<muxc:ItemsRepeater ItemsSource="{Binding Times}"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
+											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
 														MinColumnSpacing="8"
@@ -94,9 +95,9 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Skill Level"
 								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}"
+						<muxc:ItemsRepeater ItemsSource="{Binding Difficulties}"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-											ItemsSource="{Binding Difficulties}"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
@@ -113,9 +114,9 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Serves"
 								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}"
+						<muxc:ItemsRepeater ItemsSource="{Binding Serves}"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-											ItemsSource="{Binding Serves}"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
