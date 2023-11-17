@@ -62,7 +62,7 @@ namespace Chefs
 				.HasMap<NutritionChartItem>((nutritionChartItem, point) =>
 				{
 					// here we use the index as X, and the nutrition value as Y 
-					point.Coordinate = new(point.Index, nutritionChartItem.Value);
+					return new(point, nutritionChartItem.Value);
 				})
 			);
 			_window = builder.Window;
@@ -143,7 +143,8 @@ namespace Chefs
 							new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
 						}),
 						new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
-						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main")
+						// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
+						//new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main")
 					}
 				)
 			);
