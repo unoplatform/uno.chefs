@@ -20,6 +20,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Verify whitespace
-      run: dotnet format whitespace --verify-no-changes --verbosity diagnostic
+      run: dotnet format whitespace src/Chefs.sln --verify-no-changes --verbosity diagnostic
     - name: Verify code style
-      run: dotnet format style --verify-no-changes --verbosity diagnostic
+      run: dotnet format style src/Chefs.sln --verify-no-changes --verbosity diagnostic
