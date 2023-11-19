@@ -1,4 +1,4 @@
-﻿namespace Chefs.UITests
+namespace Chefs.UITests
 {
 	public class Constants
 	{

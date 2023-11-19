@@ -1,4 +1,4 @@
-﻿global using Chefs.Business.Models;
+global using Chefs.Business.Models;
 global using Chefs.Data;
 global using Chefs.Presentation;
 global using Chefs.Services.Cookbooks;

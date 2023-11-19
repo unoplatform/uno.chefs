@@ -1,4 +1,4 @@
-﻿namespace Chefs.Views;
+namespace Chefs.Views;
 
 public abstract class ResponsiveDrawerFlyout : Flyout
 {

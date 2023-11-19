@@ -1,4 +1,4 @@
-﻿using Uno.Extensions.Toolkit;
+using Uno.Extensions.Toolkit;
 using AppTheme = Uno.Extensions.Toolkit.AppTheme;
 
 namespace Chefs.Presentation;

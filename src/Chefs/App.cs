@@ -1,4 +1,4 @@
-﻿using LiveChartsCore;
+using LiveChartsCore;
 
 namespace Chefs
 {
@@ -94,8 +94,8 @@ namespace Chefs
 				new ViewMap<ReviewsContentPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 				new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 				new ViewMap<CompletedDialog>()
-				// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
-				//new ViewMap<MapPage, MapModel>()
+			// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
+			//new ViewMap<MapPage, MapModel>()
 			);
 
 			routes.Register(
@@ -135,7 +135,7 @@ namespace Chefs
 						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
 						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
-						
+
 
 						new RouteMap("Profile", View: views.FindByView<ProfilePage>(), Nested: new RouteMap[]
 						{

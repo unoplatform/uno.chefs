@@ -1,4 +1,4 @@
-﻿using LiveChartsCore;
+using LiveChartsCore;
 using LiveChartsCore.ConditionalDraw;
 using LiveChartsCore.Defaults;
 using LiveChartsCore.Measure;

@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Data;
 namespace Chefs.Converters;
 
 #nullable disable
