@@ -1,4 +1,4 @@
-﻿namespace Chefs.Services.Users;
+namespace Chefs.Services.Users;
 
 /// <summary>
 /// Implements user related methods

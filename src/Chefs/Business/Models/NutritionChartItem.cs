@@ -1,4 +1,4 @@
-﻿using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.Painting;
 
 namespace Chefs.Business.Models;
 

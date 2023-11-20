@@ -1,4 +1,4 @@
-﻿
+
 namespace Chefs.Views;
 
 public sealed partial class MainPage : Page

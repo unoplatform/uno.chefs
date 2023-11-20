@@ -1,4 +1,4 @@
-﻿namespace Chefs.Business.Models;
+namespace Chefs.Business.Models;
 
 public partial record Cookbook : IChefEntity
 {
@@ -46,5 +46,5 @@ public partial record Cookbook : IChefEntity
 				.ToList()
 	};
 
-    internal UpdateCookbook UpdateCookbook() => new(this);
+	internal UpdateCookbook UpdateCookbook() => new(this);
 }

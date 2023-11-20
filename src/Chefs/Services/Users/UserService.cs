@@ -1,4 +1,4 @@
-﻿namespace Chefs.Services.Users;
+namespace Chefs.Services.Users;
 
 public class UserService : IUserService
 {

@@ -1,4 +1,4 @@
-﻿namespace Chefs.Presentation;
+namespace Chefs.Presentation;
 
 public partial class CreateUpdateCookbookModel
 {
@@ -32,7 +32,7 @@ public partial class CreateUpdateCookbookModel
 			IsCreate = true;
 		}
 	}
-	public bool IsCreate { get; } 
+	public bool IsCreate { get; }
 
 	public string Title { get; }
 
@@ -59,10 +59,10 @@ public partial class CreateUpdateCookbookModel
 		return recipesExceptCookbook;
 	});
 
-    public async ValueTask Submit(CancellationToken ct)
-    {
-        var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
-        var cookbook = await Cookbook;
+	public async ValueTask Submit(CancellationToken ct)
+	{
+		var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
+		var cookbook = await Cookbook;
 
 		if (selectedRecipes is not null && cookbook is not null && selectedRecipes.Count > 0)
 		{

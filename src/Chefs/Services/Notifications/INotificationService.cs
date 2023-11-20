@@ -1,4 +1,4 @@
-﻿namespace Chefs.Services.Notifications;
+namespace Chefs.Services.Notifications;
 
 /// <summary>
 /// Implements notification related methods

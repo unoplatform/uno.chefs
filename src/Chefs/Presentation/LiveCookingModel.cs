@@ -1,4 +1,4 @@
-﻿namespace Chefs.Presentation;
+namespace Chefs.Presentation;
 
 public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
@@ -11,8 +11,8 @@ public partial class LiveCookingModel
 		Steps = parameter.Steps;
 		Recipe = parameter.Recipe;
 
-        _recipeService = recipeService;
-    }
+		_recipeService = recipeService;
+	}
 
 	public IImmutableList<Step> Steps { get; }
 
