@@ -1,230 +1,230 @@
 ﻿<Page x:Class="Chefs.Views.LoginPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:android="http://uno.ui/android"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:ios="http://uno.ui/ios"
-      xmlns:local="using:Chefs.Views"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-      xmlns:not_win="http://uno.ui/not_win"
-      xmlns:uen="using:Uno.Extensions.Navigation.UI"
-      xmlns:uer="using:Uno.Extensions.Reactive.UI"
-      xmlns:um="using:Uno.Material"
-      xmlns:utu="using:Uno.Toolkit.UI"
-      xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      utu:StatusBar.Background="{ThemeResource SurfaceBrush}"
-      utu:StatusBar.Foreground="Auto"
-      Background="{ThemeResource SurfaceBrush}"
-      mc:Ignorable="d android ios not_win">
-    <Page.Resources>
-        <ResourceDictionary>
-            <x:String x:Key="Icon_Person_Outline">M 8 1.9000000953674316 C 9.159999966621399 1.9000000953674316 10.100000381469727 2.840000033378601 10.100000381469727 4 C 10.100000381469727 5.159999966621399 9.159999966621399 6.100000381469727 8 6.100000381469727 C 6.840000033378601 6.100000381469727 5.899999618530273 5.159999966621399 5.899999618530273 4 C 5.899999618530273 2.840000033378601 6.840000033378601 1.9000000953674316 8 1.9000000953674316 Z M 8 10.899999618530273 C 10.97000002861023 10.899999618530273 14.100000381469727 12.360000014305115 14.100000381469727 13 L 14.100000381469727 14.100000381469727 L 1.9000000953674316 14.100000381469727 L 1.9000000953674316 13 C 1.9000000953674316 12.360000014305115 5.0299999713897705 10.899999618530273 8 10.899999618530273 Z M 8 0 C 5.789999961853027 0 4 1.7899999618530273 4 4 C 4 6.210000038146973 5.789999961853027 8 8 8 C 10.210000038146973 8 12 6.210000038146973 12 4 C 12 1.7899999618530273 10.210000038146973 0 8 0 Z M 8 9 C 5.329999923706055 9 0 10.339999914169312 0 13 L 0 16 L 16 16 L 16 13 C 16 10.339999914169312 10.670000076293945 9 8 9 Z</x:String>
-            <x:String x:Key="Icon_Mail_Outline">M 18 0 L 2 0 C 0.8999999761581421 0 0.009999990463256836 0.8999999761581421 0.009999990463256836 2 L 0 14 C 0 15.100000023841858 0.8999999761581421 16 2 16 L 18 16 C 19.100000023841858 16 20 15.100000023841858 20 14 L 20 2 C 20 0.8999999761581421 19.100000023841858 0 18 0 Z M 18 14 L 2 14 L 2 4 L 10 9 L 18 4 L 18 14 Z M 10 7 L 2 2 L 18 2 L 10 7 Z</x:String>
-            <x:String x:Key="Icon_Outline_Password_ChefApp">M12 17C13.1 17 14 16.1 14 15C14 13.9 13.1 13 12 13C10.9 13 10 13.9 10 15C10 16.1 10.9 17 12 17ZM18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM8.9 6C8.9 4.29 10.29 2.9 12 2.9C13.71 2.9 15.1 4.29 15.1 6V8H8.9V6ZM18 20H6V10H18V20Z</x:String>
-            <x:String x:Key="Icon_Solid_Apple_ChefsApp">M 12.714478797869686 5.1163002140903 C 12.64285594010919 5.158081433572135 10.937882248165652 6.039828159570652 10.937882248165652 7.994863633606899 C 11.018239596542335 10.22446156072098 13.089479721530036 11.0063662005999 13.125 11.0063662005999 C 13.089479721530036 11.048147420081733 12.812304780401112 12.071516287359978 11.99126230672496 13.144262667664913 C 11.339669033433776 14.068332993006411 10.616453028197734 15 9.518235884547058 15 C 8.473590312265467 15 8.098589659759519 14.38413384504151 6.893229442786205 14.38413384504151 C 5.598777313066023 14.38413384504151 5.232510938591211 15 4.241436937678703 15 C 3.1432197940280284 15 2.3664318703452727 14.018412505829371 1.6793183250918284 13.103023945284953 C 0.7866529806397691 11.904933934834002 0.027916727913154627 10.02477948264374 0.0011309443978483403 8.219505276084998 C -0.01692034416280054 7.262878122529698 0.17989675773218622 6.322529674161725 0.679509837901603 5.523802978966244 C 1.3846746825618719 4.40873272845182 2.6436064709042695 3.651787133476055 4.018415957678076 3.6268269242511963 C 5.071796016237384 3.5937275160584545 6.009298862273968 4.300752369161806 6.652157649287437 4.300752369161806 C 7.268230650616365 4.300752369161806 8.420018393818753 3.6268269242511963 9.723204940401125 3.6268269242511963 C 10.285706405068733 3.6273695375199333 11.785710854603977 3.7852698918412404 12.714478797869686 5.1163002140903 Z M 6.563065875371622 3.435827193131889 C 6.375565392933713 2.5622198641976563 6.893229477493969 1.688612405894345 7.375373585107952 1.1313486322790547 C 7.99144658643688 0.45742299331482705 8.964468802033878 0 9.803562575116855 0 C 9.857134142147467 0.8736073289342327 9.517654598928566 1.7303937668736087 8.910898341313219 2.354398983345335 C 8.366448176052437 3.0283246223095626 7.42894543413914 3.535668030031324 6.563065875371622 3.435827193131889 Z</x:String>
-            <x:String x:Key="Icon_Solid_Google_ChefsApp">M 15 7.666561375059984 C 15 7.049901808076161 14.948939849147266 6.599902287297539 14.838438195471976 6.133242560573256 L 7.653076155177733 6.133242560573256 L 7.653076155177733 8.916540416950355 L 11.870721128742362 8.916540416950355 C 11.785719854637586 9.608228578127953 11.326537907290051 10.649897676282196 10.30611234690023 11.349858528442557 L 10.291808608836702 11.443039912599666 L 12.563687442546856 13.167838634377501 L 12.72108714403801 13.183233647806388 C 14.166636448088061 11.87488587707026 15 9.949879092821476 15 7.666561375059984 Z M 7.652584332200218 14.999982833862305 C 9.718871283977679 14.999982833862305 11.454044376601432 14.333206665432838 12.72108714403801 13.183233647806388 L 10.30611234690023 11.349858528442557 C 9.659870110028475 11.791532735902692 8.792008318256968 12.09991516301768 7.652584332200218 12.09991516301768 C 5.628798174469365 12.09991516301768 3.91113286438792 10.791610648182118 3.2988324585726563 8.983262813868315 L 3.209083280116846 8.990731438967178 L 0.8467583200507827 10.782418769312383 L 0.8158648377815232 10.866582490293755 C 2.074348897676207 13.316587331773007 4.659375917059118 14.999982833862305 7.652584332200218 14.999982833862305 Z M 3.2988324585726563 8.983262813868315 C 3.1372714310329766 8.516603087144032 3.0442176785791975 8.016616945494981 3.0442176785791975 7.499976430634894 C 3.0442176785791975 6.98327843992268 3.137719146617425 6.483298003284138 3.2907800494075463 6.016638276559855 L 3.2865004401883766 5.917251203361281 L 0.8945650291247303 4.096801083324871 L 0.81630523051693 4.13328147499141 C 0.2976216595433322 5.149959732043345 0 6.2916477120225025 0 7.499976430634894 C 0 8.708305149247286 0.29718126680792534 9.84990423324182 0.8158648377815232 10.866582490293755 L 3.2988324585726563 8.983262813868315 Z M 7.652623841525282 2.8999774124694326 C 9.089676767399702 2.8999774124694326 10.059045593556764 3.508306642319546 10.611789864159674 4.016674466196871 L 12.771648180995214 1.949997795649911 C 11.445155715105614 0.7416690770375194 9.718922543920973 0 7.652623841525282 0 C 4.65939839650269 0 2.074796528111248 1.6833035407258938 0.81630523051693 4.13328147499141 L 3.2907800494075463 6.016638276559855 C 3.9115841562474825 4.208310367208123 5.6288261034750136 2.8999774124694326 7.652623841525282 2.8999774124694326 Z</x:String>
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:android="http://uno.ui/android"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:ios="http://uno.ui/ios"
+	  xmlns:local="using:Chefs.Views"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	  xmlns:not_win="http://uno.ui/not_win"
+	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
+	  xmlns:um="using:Uno.Material"
+	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  utu:StatusBar.Background="{ThemeResource SurfaceBrush}"
+	  utu:StatusBar.Foreground="Auto"
+	  Background="{ThemeResource SurfaceBrush}"
+	  mc:Ignorable="d android ios not_win">
+	<Page.Resources>
+		<ResourceDictionary>
+			<x:String x:Key="Icon_Person_Outline">M 8 1.9000000953674316 C 9.159999966621399 1.9000000953674316 10.100000381469727 2.840000033378601 10.100000381469727 4 C 10.100000381469727 5.159999966621399 9.159999966621399 6.100000381469727 8 6.100000381469727 C 6.840000033378601 6.100000381469727 5.899999618530273 5.159999966621399 5.899999618530273 4 C 5.899999618530273 2.840000033378601 6.840000033378601 1.9000000953674316 8 1.9000000953674316 Z M 8 10.899999618530273 C 10.97000002861023 10.899999618530273 14.100000381469727 12.360000014305115 14.100000381469727 13 L 14.100000381469727 14.100000381469727 L 1.9000000953674316 14.100000381469727 L 1.9000000953674316 13 C 1.9000000953674316 12.360000014305115 5.0299999713897705 10.899999618530273 8 10.899999618530273 Z M 8 0 C 5.789999961853027 0 4 1.7899999618530273 4 4 C 4 6.210000038146973 5.789999961853027 8 8 8 C 10.210000038146973 8 12 6.210000038146973 12 4 C 12 1.7899999618530273 10.210000038146973 0 8 0 Z M 8 9 C 5.329999923706055 9 0 10.339999914169312 0 13 L 0 16 L 16 16 L 16 13 C 16 10.339999914169312 10.670000076293945 9 8 9 Z</x:String>
+			<x:String x:Key="Icon_Mail_Outline">M 18 0 L 2 0 C 0.8999999761581421 0 0.009999990463256836 0.8999999761581421 0.009999990463256836 2 L 0 14 C 0 15.100000023841858 0.8999999761581421 16 2 16 L 18 16 C 19.100000023841858 16 20 15.100000023841858 20 14 L 20 2 C 20 0.8999999761581421 19.100000023841858 0 18 0 Z M 18 14 L 2 14 L 2 4 L 10 9 L 18 4 L 18 14 Z M 10 7 L 2 2 L 18 2 L 10 7 Z</x:String>
+			<x:String x:Key="Icon_Outline_Password_ChefApp">M12 17C13.1 17 14 16.1 14 15C14 13.9 13.1 13 12 13C10.9 13 10 13.9 10 15C10 16.1 10.9 17 12 17ZM18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM8.9 6C8.9 4.29 10.29 2.9 12 2.9C13.71 2.9 15.1 4.29 15.1 6V8H8.9V6ZM18 20H6V10H18V20Z</x:String>
+			<x:String x:Key="Icon_Solid_Apple_ChefsApp">M 12.714478797869686 5.1163002140903 C 12.64285594010919 5.158081433572135 10.937882248165652 6.039828159570652 10.937882248165652 7.994863633606899 C 11.018239596542335 10.22446156072098 13.089479721530036 11.0063662005999 13.125 11.0063662005999 C 13.089479721530036 11.048147420081733 12.812304780401112 12.071516287359978 11.99126230672496 13.144262667664913 C 11.339669033433776 14.068332993006411 10.616453028197734 15 9.518235884547058 15 C 8.473590312265467 15 8.098589659759519 14.38413384504151 6.893229442786205 14.38413384504151 C 5.598777313066023 14.38413384504151 5.232510938591211 15 4.241436937678703 15 C 3.1432197940280284 15 2.3664318703452727 14.018412505829371 1.6793183250918284 13.103023945284953 C 0.7866529806397691 11.904933934834002 0.027916727913154627 10.02477948264374 0.0011309443978483403 8.219505276084998 C -0.01692034416280054 7.262878122529698 0.17989675773218622 6.322529674161725 0.679509837901603 5.523802978966244 C 1.3846746825618719 4.40873272845182 2.6436064709042695 3.651787133476055 4.018415957678076 3.6268269242511963 C 5.071796016237384 3.5937275160584545 6.009298862273968 4.300752369161806 6.652157649287437 4.300752369161806 C 7.268230650616365 4.300752369161806 8.420018393818753 3.6268269242511963 9.723204940401125 3.6268269242511963 C 10.285706405068733 3.6273695375199333 11.785710854603977 3.7852698918412404 12.714478797869686 5.1163002140903 Z M 6.563065875371622 3.435827193131889 C 6.375565392933713 2.5622198641976563 6.893229477493969 1.688612405894345 7.375373585107952 1.1313486322790547 C 7.99144658643688 0.45742299331482705 8.964468802033878 0 9.803562575116855 0 C 9.857134142147467 0.8736073289342327 9.517654598928566 1.7303937668736087 8.910898341313219 2.354398983345335 C 8.366448176052437 3.0283246223095626 7.42894543413914 3.535668030031324 6.563065875371622 3.435827193131889 Z</x:String>
+			<x:String x:Key="Icon_Solid_Google_ChefsApp">M 15 7.666561375059984 C 15 7.049901808076161 14.948939849147266 6.599902287297539 14.838438195471976 6.133242560573256 L 7.653076155177733 6.133242560573256 L 7.653076155177733 8.916540416950355 L 11.870721128742362 8.916540416950355 C 11.785719854637586 9.608228578127953 11.326537907290051 10.649897676282196 10.30611234690023 11.349858528442557 L 10.291808608836702 11.443039912599666 L 12.563687442546856 13.167838634377501 L 12.72108714403801 13.183233647806388 C 14.166636448088061 11.87488587707026 15 9.949879092821476 15 7.666561375059984 Z M 7.652584332200218 14.999982833862305 C 9.718871283977679 14.999982833862305 11.454044376601432 14.333206665432838 12.72108714403801 13.183233647806388 L 10.30611234690023 11.349858528442557 C 9.659870110028475 11.791532735902692 8.792008318256968 12.09991516301768 7.652584332200218 12.09991516301768 C 5.628798174469365 12.09991516301768 3.91113286438792 10.791610648182118 3.2988324585726563 8.983262813868315 L 3.209083280116846 8.990731438967178 L 0.8467583200507827 10.782418769312383 L 0.8158648377815232 10.866582490293755 C 2.074348897676207 13.316587331773007 4.659375917059118 14.999982833862305 7.652584332200218 14.999982833862305 Z M 3.2988324585726563 8.983262813868315 C 3.1372714310329766 8.516603087144032 3.0442176785791975 8.016616945494981 3.0442176785791975 7.499976430634894 C 3.0442176785791975 6.98327843992268 3.137719146617425 6.483298003284138 3.2907800494075463 6.016638276559855 L 3.2865004401883766 5.917251203361281 L 0.8945650291247303 4.096801083324871 L 0.81630523051693 4.13328147499141 C 0.2976216595433322 5.149959732043345 0 6.2916477120225025 0 7.499976430634894 C 0 8.708305149247286 0.29718126680792534 9.84990423324182 0.8158648377815232 10.866582490293755 L 3.2988324585726563 8.983262813868315 Z M 7.652623841525282 2.8999774124694326 C 9.089676767399702 2.8999774124694326 10.059045593556764 3.508306642319546 10.611789864159674 4.016674466196871 L 12.771648180995214 1.949997795649911 C 11.445155715105614 0.7416690770375194 9.718922543920973 0 7.652623841525282 0 C 4.65939839650269 0 2.074796528111248 1.6833035407258938 0.81630523051693 4.13328147499141 L 3.2907800494075463 6.016638276559855 C 3.9115841562474825 4.208310367208123 5.6288261034750136 2.8999774124694326 7.652623841525282 2.8999774124694326 Z</x:String>
 
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light">
-                    <StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="Default">
-                    <StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-                </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
-    <utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-        <ScrollViewer HorizontalAlignment="Center"
-                      utu:AutoLayout.PrimaryAlignment="Stretch"
-                      VerticalScrollBarVisibility="Auto">
-            <Grid>
-                <utu:AutoLayout x:Name="LoginLayout"
-                                MaxWidth="500"
-                                Padding="32"
-                                HorizontalAlignment="Stretch"
-                                PrimaryAxisAlignment="Center"
-                                Spacing="32"
-                                Visibility="{Binding IsRegisterToggle, Converter={StaticResource InvertBool}}">
-                    <Image Width="160"
-                           Height="90"
-                           utu:AutoLayout.CounterAlignment="Center"
-                           Source="{ThemeResource ChefsLogoWithIcon}"
-                           Stretch="Uniform" />
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                    Spacing="16">
-                        <TextBox android:ImeOptions="Next"
-                                 ios:ReturnKeyType="Next"
-                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
-                                 BorderBrush="{ThemeResource OutlineVariantBrush}"
-                                 BorderThickness="1"
-                                 CornerRadius="4"
-                                 Foreground="{ThemeResource OnSurfaceBrush}"
-                                 IsSpellCheckEnabled="False"
-                                 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-                                 PlaceholderText="Username"
-                                 Style="{StaticResource OutlinedTextBoxStyle}"
-                                 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                            <um:ControlExtensions.Icon>
-                                <PathIcon Data="{StaticResource Icon_Person_Outline}"
-                                          Foreground="{ThemeResource OnSurfaceLowBrush}" />
-                            </um:ControlExtensions.Icon>
-                        </TextBox>
-                        <PasswordBox x:Name="LoginPassword"
-                                     android:ImeOptions="Done"
-                                     ios:ReturnKeyType="Done"
-                                     utu:CommandExtensions.Command="{Binding Login}"
-                                     BorderBrush="{ThemeResource OutlineVariantBrush}"
-                                     Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     PlaceholderText="Password"
-                                     Style="{StaticResource OutlinedPasswordBoxStyle}">
-                            <um:ControlExtensions.Icon>
-                                <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
-                                          Foreground="{ThemeResource OnSurfaceLowBrush}" />
-                            </um:ControlExtensions.Icon>
-                        </PasswordBox>
-                        <utu:AutoLayout Orientation="Horizontal"
-                                        Spacing="24">
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <CheckBox utu:AutoLayout.CounterAlignment="Start"
-                                          Content="Remember me"
-                                          IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            </utu:AutoLayout>
-                            <utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-                                            utu:AutoLayout.PrimaryAlignment="Stretch">
-                                <Button utu:AutoLayout.CounterAlignment="End"
-                                        Content="Forgot password?"
-                                        Style="{StaticResource TextButtonStyle}" />
-                            </utu:AutoLayout>
-                        </utu:AutoLayout>
-                        <Button Padding="24,20"
-                                Command="{Binding Login}"
-                                Content="Login"
-                                CornerRadius="4" />
-                    </utu:AutoLayout>
-                    <utu:Divider Style="{StaticResource DividerStyle}" />
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key="Light">
+					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+				</ResourceDictionary>
+				<ResourceDictionary x:Key="Default">
+					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
+	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
+		<ScrollViewer HorizontalAlignment="Center"
+					  utu:AutoLayout.PrimaryAlignment="Stretch"
+					  VerticalScrollBarVisibility="Auto">
+			<Grid>
+				<utu:AutoLayout x:Name="LoginLayout"
+								MaxWidth="500"
+								Padding="32"
+								HorizontalAlignment="Stretch"
+								PrimaryAxisAlignment="Center"
+								Spacing="32"
+								Visibility="{Binding IsRegisterToggle, Converter={StaticResource InvertBool}}">
+					<Image Width="160"
+						   Height="90"
+						   utu:AutoLayout.CounterAlignment="Center"
+						   Source="{ThemeResource ChefsLogoWithIcon}"
+						   Stretch="Uniform" />
+					<utu:AutoLayout PrimaryAxisAlignment="Center"
+									Spacing="16">
+						<TextBox android:ImeOptions="Next"
+								 ios:ReturnKeyType="Next"
+								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
+								 BorderBrush="{ThemeResource OutlineVariantBrush}"
+								 BorderThickness="1"
+								 CornerRadius="4"
+								 Foreground="{ThemeResource OnSurfaceBrush}"
+								 IsSpellCheckEnabled="False"
+								 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+								 PlaceholderText="Username"
+								 Style="{StaticResource OutlinedTextBoxStyle}"
+								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							<um:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Person_Outline}"
+										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+							</um:ControlExtensions.Icon>
+						</TextBox>
+						<PasswordBox x:Name="LoginPassword"
+									 android:ImeOptions="Done"
+									 ios:ReturnKeyType="Done"
+									 utu:CommandExtensions.Command="{Binding Login}"
+									 BorderBrush="{ThemeResource OutlineVariantBrush}"
+									 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+									 PlaceholderText="Password"
+									 Style="{StaticResource OutlinedPasswordBoxStyle}">
+							<um:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
+										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+							</um:ControlExtensions.Icon>
+						</PasswordBox>
+						<utu:AutoLayout Orientation="Horizontal"
+										Spacing="24">
+							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+											utu:AutoLayout.PrimaryAlignment="Stretch">
+								<CheckBox utu:AutoLayout.CounterAlignment="Start"
+										  Content="Remember me"
+										  IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+							</utu:AutoLayout>
+							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+											utu:AutoLayout.PrimaryAlignment="Stretch">
+								<Button utu:AutoLayout.CounterAlignment="End"
+										Content="Forgot password?"
+										Style="{StaticResource TextButtonStyle}" />
+							</utu:AutoLayout>
+						</utu:AutoLayout>
+						<Button Padding="24,20"
+								Command="{Binding Login}"
+								Content="Login"
+								CornerRadius="4" />
+					</utu:AutoLayout>
+					<utu:Divider Style="{StaticResource DividerStyle}" />
 
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                    Spacing="8">
-                        <Button Padding="16,20,24,20"
-                                Content="Sign in with Apple"
-                                CornerRadius="4"
-                                Style="{StaticResource FilledTonalButtonStyle}">
-                            <um:ControlExtensions.Icon>
-                                <PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}"
-                                          Foreground="{ThemeResource OnSurfaceBrush}" />
-                            </um:ControlExtensions.Icon>
-                        </Button>
-                        <Button Padding="16,20,24,20"
-                                Content="Sign in with Google"
-                                CornerRadius="4"
-                                Style="{StaticResource FilledTonalButtonStyle}">
-                            <um:ControlExtensions.Icon>
-                                <PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}"
-                                          Foreground="{ThemeResource OnSurfaceBrush}" />
-                            </um:ControlExtensions.Icon>
-                        </Button>
-                    </utu:AutoLayout>
-                    <utu:AutoLayout Orientation="Horizontal"
-                                    PrimaryAxisAlignment="Center"
-                                    Spacing="4">
-                        <TextBlock utu:AutoLayout.CounterAlignment="Center"
-                                   Foreground="{ThemeResource OnSurfaceBrush}"
-                                   Style="{StaticResource LabelLarge}"
-                                   Text="Not a member?" />
-                        <Button utu:AutoLayout.CounterAlignment="Center"
-                                Command="{Binding ToggleRegister}"
-                                Content="Register Now"
-                                Style="{StaticResource TextButtonStyle}" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
+					<utu:AutoLayout PrimaryAxisAlignment="Center"
+									Spacing="8">
+						<Button Padding="16,20,24,20"
+								Content="Sign in with Apple"
+								CornerRadius="4"
+								Style="{StaticResource FilledTonalButtonStyle}">
+							<um:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}"
+										  Foreground="{ThemeResource OnSurfaceBrush}" />
+							</um:ControlExtensions.Icon>
+						</Button>
+						<Button Padding="16,20,24,20"
+								Content="Sign in with Google"
+								CornerRadius="4"
+								Style="{StaticResource FilledTonalButtonStyle}">
+							<um:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}"
+										  Foreground="{ThemeResource OnSurfaceBrush}" />
+							</um:ControlExtensions.Icon>
+						</Button>
+					</utu:AutoLayout>
+					<utu:AutoLayout Orientation="Horizontal"
+									PrimaryAxisAlignment="Center"
+									Spacing="4">
+						<TextBlock utu:AutoLayout.CounterAlignment="Center"
+								   Foreground="{ThemeResource OnSurfaceBrush}"
+								   Style="{StaticResource LabelLarge}"
+								   Text="Not a member?" />
+						<Button utu:AutoLayout.CounterAlignment="Center"
+								Command="{Binding ToggleRegister}"
+								Content="Register Now"
+								Style="{StaticResource TextButtonStyle}" />
+					</utu:AutoLayout>
+				</utu:AutoLayout>
 
-                <utu:AutoLayout x:Name="RegisterLayout"
-                                MaxWidth="500"
-                                Margin="32"
-                                HorizontalAlignment="Stretch"
-                                PrimaryAxisAlignment="Center"
-                                Spacing="32"
-                                Visibility="{Binding IsRegisterToggle, FallbackValue=Collapsed}">
-                    <Image Width="160"
-                           Height="90"
-                           utu:AutoLayout.CounterAlignment="Center"
-                           Source="{ThemeResource ChefsLogoWithIcon}"
-                           Stretch="Uniform" />
-                    <utu:AutoLayout Spacing="16">
-                        <TextBox android:ImeOptions="Next"
-                                 ios:ReturnKeyType="Next"
-                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
-                                 BorderBrush="{ThemeResource OutlineVariantBrush}"
-                                 BorderThickness="1"
-                                 CornerRadius="4"
-                                 Foreground="{ThemeResource OnSurfaceBrush}"
-                                 InputScope="Text"
-                                 IsSpellCheckEnabled="False"
-                                 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-                                 PlaceholderText="Username"
-                                 Style="{StaticResource OutlinedTextBoxStyle}"
-                                 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                            <um:ControlExtensions.Icon>
-                                <PathIcon Data="{StaticResource Icon_Person_Outline}"
-                                          Foreground="{ThemeResource OnSurfaceLowBrush}" />
-                            </um:ControlExtensions.Icon>
-                        </TextBox>
-                        <TextBox x:Name="RegistrationEmail"
-                                 android:ImeOptions="Next"
-                                 ios:ReturnKeyType="Next"
-                                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
-                                 BorderBrush="{ThemeResource OutlineVariantBrush}"
-                                 BorderThickness="1"
-                                 CornerRadius="4"
-                                 Foreground="{ThemeResource OnSurfaceBrush}"
-                                 IsSpellCheckEnabled="False"
-                                 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-                                 PlaceholderText="Email"
-                                 Style="{StaticResource OutlinedTextBoxStyle}">
-                            <um:ControlExtensions.Icon>
-                                <PathIcon Data="{StaticResource Icon_Mail_Outline}"
-                                          Foreground="{ThemeResource OnSurfaceLowBrush}" />
-                            </um:ControlExtensions.Icon>
-                        </TextBox>
-                        <PasswordBox x:Name="RegistrationPassword"
-                                     android:ImeOptions="Done"
-                                     ios:ReturnKeyType="Done"
-                                     utu:CommandExtensions.Command="{Binding Login}"
-                                     BorderBrush="{ThemeResource OutlineVariantBrush}"
-                                     Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     PlaceholderText="Password"
-                                     Style="{StaticResource OutlinedPasswordBoxStyle}">
-                            <um:ControlExtensions.Icon>
-                                <PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
-                                          Foreground="{ThemeResource OnSurfaceLowBrush}" />
-                            </um:ControlExtensions.Icon>
-                        </PasswordBox>
-                        <Button Height="59"
-                                Padding="24,20"
-                                HorizontalContentAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                Command="{Binding Login}"
-                                Content="Sign Up"
-                                CornerRadius="4"
-                                Foreground="{ThemeResource OnPrimaryBrush}" />
-                    </utu:AutoLayout>
-                    <utu:AutoLayout Orientation="Horizontal"
-                                    PrimaryAxisAlignment="Center"
-                                    Spacing="4">
-                        <TextBlock utu:AutoLayout.CounterAlignment="Center"
-                                   Foreground="{ThemeResource OnSurfaceBrush}"
-                                   Style="{StaticResource LabelLarge}"
-                                   Text="Already a member?" />
-                        <Button utu:AutoLayout.CounterAlignment="Center"
-                                Command="{Binding ToggleRegister}"
-                                Content="Login Now"
-                                Style="{StaticResource TextButtonStyle}" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
-            </Grid>
-        </ScrollViewer>
-    </utu:AutoLayout>
+				<utu:AutoLayout x:Name="RegisterLayout"
+								MaxWidth="500"
+								Margin="32"
+								HorizontalAlignment="Stretch"
+								PrimaryAxisAlignment="Center"
+								Spacing="32"
+								Visibility="{Binding IsRegisterToggle, FallbackValue=Collapsed}">
+					<Image Width="160"
+						   Height="90"
+						   utu:AutoLayout.CounterAlignment="Center"
+						   Source="{ThemeResource ChefsLogoWithIcon}"
+						   Stretch="Uniform" />
+					<utu:AutoLayout Spacing="16">
+						<TextBox android:ImeOptions="Next"
+								 ios:ReturnKeyType="Next"
+								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
+								 BorderBrush="{ThemeResource OutlineVariantBrush}"
+								 BorderThickness="1"
+								 CornerRadius="4"
+								 Foreground="{ThemeResource OnSurfaceBrush}"
+								 InputScope="Text"
+								 IsSpellCheckEnabled="False"
+								 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+								 PlaceholderText="Username"
+								 Style="{StaticResource OutlinedTextBoxStyle}"
+								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							<um:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Person_Outline}"
+										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+							</um:ControlExtensions.Icon>
+						</TextBox>
+						<TextBox x:Name="RegistrationEmail"
+								 android:ImeOptions="Next"
+								 ios:ReturnKeyType="Next"
+								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
+								 BorderBrush="{ThemeResource OutlineVariantBrush}"
+								 BorderThickness="1"
+								 CornerRadius="4"
+								 Foreground="{ThemeResource OnSurfaceBrush}"
+								 IsSpellCheckEnabled="False"
+								 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+								 PlaceholderText="Email"
+								 Style="{StaticResource OutlinedTextBoxStyle}">
+							<um:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Mail_Outline}"
+										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+							</um:ControlExtensions.Icon>
+						</TextBox>
+						<PasswordBox x:Name="RegistrationPassword"
+									 android:ImeOptions="Done"
+									 ios:ReturnKeyType="Done"
+									 utu:CommandExtensions.Command="{Binding Login}"
+									 BorderBrush="{ThemeResource OutlineVariantBrush}"
+									 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+									 PlaceholderText="Password"
+									 Style="{StaticResource OutlinedPasswordBoxStyle}">
+							<um:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
+										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+							</um:ControlExtensions.Icon>
+						</PasswordBox>
+						<Button Height="59"
+								Padding="24,20"
+								HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Command="{Binding Login}"
+								Content="Sign Up"
+								CornerRadius="4"
+								Foreground="{ThemeResource OnPrimaryBrush}" />
+					</utu:AutoLayout>
+					<utu:AutoLayout Orientation="Horizontal"
+									PrimaryAxisAlignment="Center"
+									Spacing="4">
+						<TextBlock utu:AutoLayout.CounterAlignment="Center"
+								   Foreground="{ThemeResource OnSurfaceBrush}"
+								   Style="{StaticResource LabelLarge}"
+								   Text="Already a member?" />
+						<Button utu:AutoLayout.CounterAlignment="Center"
+								Command="{Binding ToggleRegister}"
+								Content="Login Now"
+								Style="{StaticResource TextButtonStyle}" />
+					</utu:AutoLayout>
+				</utu:AutoLayout>
+			</Grid>
+		</ScrollViewer>
+	</utu:AutoLayout>
 </Page>

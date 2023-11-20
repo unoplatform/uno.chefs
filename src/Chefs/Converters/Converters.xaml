@@ -1,72 +1,72 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:converters="using:Chefs.Converters"
-                    xmlns:um="using:Uno.Material">
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:converters="using:Chefs.Converters"
+					xmlns:um="using:Uno.Material">
 
-    <converters:StringFormatter x:Key="StringFormatter" />
-    <converters:StringSeparatorConverter x:Key="DotStringSeparator"
-                                         Separator=" ∙ " />
-    <converters:CookingTimeFormatter x:Key="CookingTimeFormatter" />
+	<converters:StringFormatter x:Key="StringFormatter" />
+	<converters:StringSeparatorConverter x:Key="DotStringSeparator"
+										 Separator=" ∙ " />
+	<converters:CookingTimeFormatter x:Key="CookingTimeFormatter" />
 
-    <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
-    <converters:BoolInverter x:Key="InvertBool" />
+	<converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
+	<converters:BoolInverter x:Key="InvertBool" />
 
-    <converters:GreaterThanZeroToVisibleConverter x:Key="GreaterThanZeroToVisibleConverter" />
+	<converters:GreaterThanZeroToVisibleConverter x:Key="GreaterThanZeroToVisibleConverter" />
 
-    <converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
-                                       Number="2" />
+	<converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
+									   Number="2" />
 
-    <converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
-    <converters:FromNullToVisibilityConverter x:Key="NullToVisible"
-                                              Invert="True" />
+	<converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
+	<converters:FromNullToVisibilityConverter x:Key="NullToVisible"
+											  Invert="True" />
 
-    <converters:StringReplacerConverter x:Key="WhiteSpaceToLineBreakConverter"
-                                        NewValue="&#x0a;"
-                                        OldValue=" " />
+	<converters:StringReplacerConverter x:Key="WhiteSpaceToLineBreakConverter"
+										NewValue="&#x0a;"
+										OldValue=" " />
 
-    <um:FromBoolToValueConverter x:Key="TrueToVisible"
-                                 FalseValue="Collapsed"
-                                 NullValue="Collapsed"
-                                 TrueValue="Visible" />
+	<um:FromBoolToValueConverter x:Key="TrueToVisible"
+								 FalseValue="Collapsed"
+								 NullValue="Collapsed"
+								 TrueValue="Visible" />
 
-    <um:FromBoolToValueConverter x:Key="TrueToCollapsed"
-                                 FalseValue="Visible"
-                                 NullValue="Visible"
-                                 TrueValue="Collapsed" />
+	<um:FromBoolToValueConverter x:Key="TrueToCollapsed"
+								 FalseValue="Visible"
+								 NullValue="Visible"
+								 TrueValue="Collapsed" />
 
-    <um:FromBoolToValueConverter x:Key="UserLikeColorConverter"
-                                 FalseValue="{StaticResource PrimaryMediumBrush}"
-                                 NullValue="{StaticResource PrimaryMediumBrush}"
-                                 TrueValue="{StaticResource PrimaryBrush}" />
+	<um:FromBoolToValueConverter x:Key="UserLikeColorConverter"
+								 FalseValue="{StaticResource PrimaryMediumBrush}"
+								 NullValue="{StaticResource PrimaryMediumBrush}"
+								 TrueValue="{StaticResource PrimaryBrush}" />
 
-    <um:FromBoolToValueConverter x:Key="IsCreatingCookbookToColorConverter"
-                                 FalseValue="{StaticResource PrimaryBrush}"
-                                 NullValue="{StaticResource OnSurfaceMediumBrush}"
-                                 TrueValue="{StaticResource OnSurfaceMediumBrush}" />
+	<um:FromBoolToValueConverter x:Key="IsCreatingCookbookToColorConverter"
+								 FalseValue="{StaticResource PrimaryBrush}"
+								 NullValue="{StaticResource OnSurfaceMediumBrush}"
+								 TrueValue="{StaticResource OnSurfaceMediumBrush}" />
 
-    <um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
-                                 FalseValue="{StaticResource PrimaryBrush}"
-                                 NullValue="{StaticResource PrimaryMediumBrush}"
-                                 TrueValue="{StaticResource PrimaryMediumBrush}" />
+	<um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
+								 FalseValue="{StaticResource PrimaryBrush}"
+								 NullValue="{StaticResource PrimaryMediumBrush}"
+								 TrueValue="{StaticResource PrimaryMediumBrush}" />
 
-    <um:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
-                                 FalseValue="False"
-                                 NullValue="False"
-                                 TrueValue="True" />
+	<um:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
+								 FalseValue="False"
+								 NullValue="False"
+								 TrueValue="True" />
 
-    <um:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
-                                 FalseValue="True"
-                                 NullValue="False"
-                                 TrueValue="False" />
+	<um:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
+								 FalseValue="True"
+								 NullValue="False"
+								 TrueValue="False" />
 
-    <converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
-                                      FalseValue="{StaticResource SurfaceTintBrush}"
-                                      TrueValue="{StaticResource SurfaceBrush}" />
+	<converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
+									  FalseValue="{StaticResource SurfaceTintBrush}"
+									  TrueValue="{StaticResource SurfaceBrush}" />
 
-    <converters:BoolToObjectConverter x:Key="PrimarySurfaceColorConverter"
-                                      FalseValue="{StaticResource PrimaryBrush}"
-                                      TrueValue="{StaticResource SurfaceBrush}" />
-    <converters:BoolToObjectConverter x:Key="FilterButtonBackgroundColor"
-                                      FalseValue="{StaticResource SurfaceBrush}"
-                                      TrueValue="{StaticResource PrimaryBrush}" />
+	<converters:BoolToObjectConverter x:Key="PrimarySurfaceColorConverter"
+									  FalseValue="{StaticResource PrimaryBrush}"
+									  TrueValue="{StaticResource SurfaceBrush}" />
+	<converters:BoolToObjectConverter x:Key="FilterButtonBackgroundColor"
+									  FalseValue="{StaticResource SurfaceBrush}"
+									  TrueValue="{StaticResource PrimaryBrush}" />
 </ResourceDictionary>
