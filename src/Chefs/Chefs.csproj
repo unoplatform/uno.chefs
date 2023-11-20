@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
 		<TargetFrameworks>$(TargetFrameworks);net7.0</TargetFrameworks>
@@ -11,34 +11,34 @@
 	<ItemGroup>
 		<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
 		<!--<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />-->
-		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc2" />
-		<PackageReference Include="Uno.Dsp.Tasks" Version="1.3.0-dev.2" />
-		<PackageReference Include="Uno.Material.WinUI" Version="4.1.0-dev.27" />
-		<PackageReference Include="Uno.WinUI" Version="5.1.0-dev.542" />
-		<PackageReference Include="Uno.Resizetizer" Version="1.3.0-dev.12" />
-		<PackageReference Include="Uno.Extensions.Configuration" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Core" Version="3.1.0-dev.85" />
-		<PackageReference Include="Uno.Extensions.Http" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Http.Refit" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Logging.WinUI" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Serialization.Http" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" Version="5.1.0-dev.26" />
-		<PackageReference Include="Uno.Extensions.Authentication.WinUI" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Localization.WinUI" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" Version="3.1.0-dev.76" />
-		<PackageReference Include="Uno.Extensions.Reactive.Messaging" Version="3.1.0-dev.76" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
+		<PackageReference Include="Uno.Dsp.Tasks" />
+		<PackageReference Include="Uno.Material.WinUI" />
+		<PackageReference Include="Uno.WinUI" />
+		<PackageReference Include="Uno.Resizetizer" />
+		<PackageReference Include="Uno.Extensions.Configuration" />
+		<PackageReference Include="Uno.Extensions.Core" />
+		<PackageReference Include="Uno.Extensions.Http" />
+		<PackageReference Include="Uno.Extensions.Http.Refit" />
+		<PackageReference Include="Uno.Extensions.Logging.WinUI" />
+		<PackageReference Include="Uno.Extensions.Serialization.Http" />
+		<PackageReference Include="Uno.Extensions.Serialization.Refit" />
+		<PackageReference Include="Uno.Toolkit.WinUI.Material" />
+		<PackageReference Include="Uno.Extensions.Authentication.WinUI" />
+		<PackageReference Include="Uno.Extensions.Hosting.WinUI" />
+		<PackageReference Include="Uno.Extensions.Localization.WinUI" />
+		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" />
+		<PackageReference Include="Uno.Extensions.Navigation.WinUI" />
+		<PackageReference Include="Uno.Extensions.Reactive.WinUI" />
+		<PackageReference Include="Uno.Extensions.Reactive.Messaging" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
 	</ItemGroup>
 
 	<Choose>
 		<When Condition="$(IsWinAppSdk)">
 			<ItemGroup>
-				<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.4.231008000" />
-				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
+				<PackageReference Include="Microsoft.WindowsAppSDK" />
+				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
 			</ItemGroup>
 
 			<ItemGroup>
