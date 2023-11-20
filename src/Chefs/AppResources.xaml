@@ -1,13 +1,13 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
 
         <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
 
-        <MaterialToolkitTheme
-            xmlns="using:Uno.Toolkit.UI.Material"
-            ColorOverrideSource="ms-appx:///Chefs/Styles/ColorPaletteOverride.xaml"
-            FontOverrideSource="ms-appx:///Chefs/Styles/MaterialFontsOverride.xaml" />
+        <MaterialToolkitTheme xmlns="using:Uno.Toolkit.UI.Material"
+                              ColorOverrideSource="ms-appx:///Chefs/Styles/ColorPaletteOverride.xaml"
+                              FontOverrideSource="ms-appx:///Chefs/Styles/MaterialFontsOverride.xaml" />
 
         <ResourceDictionary Source="ms-appx:///Chefs/Converters/Converters.xaml" />
         <ResourceDictionary Source="ms-appx:///Chefs/Styles/FeedView.xaml" />

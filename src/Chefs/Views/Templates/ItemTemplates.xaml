@@ -1,63 +1,55 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:uer="using:Uno.Extensions.Reactive.UI"
-    xmlns:utu="using:Uno.Toolkit.UI">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:uer="using:Uno.Extensions.Reactive.UI"
+                    xmlns:utu="using:Uno.Toolkit.UI">
     <DataTemplate x:Key="ReviewDataTemplate">
-        <utu:AutoLayout
-            Margin="0,8"
-            Background="{ThemeResource SurfaceBrush}"
-            CornerRadius="15">
-            <utu:AutoLayout Orientation="Horizontal" Spacing="16">
-                <Border
-                    Width="60"
-                    Height="60"
-                    Margin="16,18,0,18"
-                    utu:AutoLayout.CounterAlignment="Start"
-                    CornerRadius="20">
-                    <Image
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Source="{Binding UrlAuthorImage}"
-                        Stretch="UniformToFill" />
+        <utu:AutoLayout Margin="0,8"
+                        Background="{ThemeResource SurfaceBrush}"
+                        CornerRadius="15">
+            <utu:AutoLayout Orientation="Horizontal"
+                            Spacing="16">
+                <Border Width="60"
+                        Height="60"
+                        Margin="16,18,0,18"
+                        utu:AutoLayout.CounterAlignment="Start"
+                        CornerRadius="20">
+                    <Image HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Source="{Binding UrlAuthorImage}"
+                           Stretch="UniformToFill" />
                 </Border>
-                <utu:AutoLayout
-                    Padding="0,18,16,18"
-                    utu:AutoLayout.CounterAlignment="Start"
-                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                    Spacing="16">
+                <utu:AutoLayout Padding="0,18,16,18"
+                                utu:AutoLayout.CounterAlignment="Start"
+                                utu:AutoLayout.PrimaryAlignment="Stretch"
+                                Spacing="16">
                     <utu:AutoLayout PrimaryAxisAlignment="Center">
-                        <TextBlock
-                            Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                            Style="{StaticResource CaptionSmall}"
-                            Text="{Binding Date, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:MMM dd, yyy}'}"
-                            TextWrapping="Wrap" />
-                        <TextBlock
-                            Foreground="{ThemeResource SurfaceInverseBrush}"
-                            Style="{StaticResource TitleMedium}"
-                            Text="{Binding PublisherName}"
-                            TextWrapping="Wrap" />
-                        <TextBlock
-                            Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                            Style="{StaticResource LabelSmall}"
-                            Text="{Binding Description}"
-                            TextWrapping="Wrap" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   Style="{StaticResource CaptionSmall}"
+                                   Text="{Binding Date, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0:MMM dd, yyy}'}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Foreground="{ThemeResource SurfaceInverseBrush}"
+                                   Style="{StaticResource TitleMedium}"
+                                   Text="{Binding PublisherName}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                   Style="{StaticResource LabelSmall}"
+                                   Text="{Binding Description}"
+                                   TextWrapping="Wrap" />
                     </utu:AutoLayout>
-                    <utu:AutoLayout Orientation="Horizontal" Spacing="8">
-                        <Button
-                            utu:AutoLayout.CounterAlignment="Start"
-                            Background="{Binding UserLike, Converter={StaticResource UserLikeColorConverter}}"
-                            Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-                                                          Path=DataContext.Like}"
-                            CommandParameter="{Binding}"
-                            Content="{Binding Likes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}" />
-                        <Button
-                            utu:AutoLayout.CounterAlignment="Start"
-                            Background="{Binding UserLike, Converter={StaticResource UserDislikeColorConverter}}"
-                            Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-                                                          Path=DataContext.Dislike}"
-                            CommandParameter="{Binding}"
-                            Content="{Binding Dislikes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}" />
+                    <utu:AutoLayout Orientation="Horizontal"
+                                    Spacing="8">
+                        <Button utu:AutoLayout.CounterAlignment="Start"
+                                Background="{Binding UserLike, Converter={StaticResource UserLikeColorConverter}}"
+                                Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+                                                              Path=DataContext.Like}"
+                                CommandParameter="{Binding}"
+                                Content="{Binding Likes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👍 {0}'}" />
+                        <Button utu:AutoLayout.CounterAlignment="Start"
+                                Background="{Binding UserLike, Converter={StaticResource UserDislikeColorConverter}}"
+                                Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+                                                              Path=DataContext.Dislike}"
+                                CommandParameter="{Binding}"
+                                Content="{Binding Dislikes.Count, Converter={StaticResource StringFormatter}, ConverterParameter='👎 {0}'}" />
                     </utu:AutoLayout>
                 </utu:AutoLayout>
             </utu:AutoLayout>
