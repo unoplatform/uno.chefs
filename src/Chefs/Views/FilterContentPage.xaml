@@ -24,8 +24,10 @@
 						  Style="{StaticResource MaterialChipStyle}" />
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
-		<utu:AutoLayout uen:Region.Attached="True" utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Content="Filters" Style="{StaticResource ModalNavigationBarStyle}">
+		<utu:AutoLayout uen:Region.Attached="True"
+						utu:AutoLayout.PrimaryAlignment="Stretch">
+			<utu:NavigationBar Content="Filters"
+							   Style="{StaticResource ModalNavigationBarStyle}">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton uen:Navigation.Request="-">
 						<AppBarButton.Icon>
@@ -34,7 +36,8 @@
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 			</utu:NavigationBar>
-			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch" HorizontalScrollMode="Disabled">
+			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+						  HorizontalScrollMode="Disabled">
 				<!--
 					The use of UniformGridLayout in the ItemsRepeater makes the spacing between
 					the Chips inconsistent and sometimes the Chip content is truncated too
