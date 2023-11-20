@@ -169,28 +169,28 @@
 									</muxc:ItemsRepeater.Layout>
 									<muxc:ItemsRepeater.ItemTemplate>
 										<DataTemplate>
-												<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-																CornerRadius="4">
-													<utu:AutoLayout Spacing="8"
-																	Padding="8,0,16,0"
-																	Orientation="Horizontal"
-																	utu:AutoLayout.CounterAlignment="Start">
-														<Image Source="{Binding UrlIcon}"
-															   utu:AutoLayout.CounterAlignment="Center"
-															   Width="60"
-															   Height="60" />
-														<utu:AutoLayout PrimaryAxisAlignment="Center"
-																		utu:AutoLayout.CounterAlignment="Center">
-															<TextBlock Text="{Binding Name}"
-																	   utu:AutoLayout.CounterAlignment="Start"
-																	   Foreground="{ThemeResource OnSurfaceBrush}"
-																	   Style="{StaticResource TitleMedium}" />
-															<TextBlock Text="164 recipes"
-																	   utu:AutoLayout.CounterAlignment="Start"
-																	   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-														</utu:AutoLayout>
+											<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+															CornerRadius="4">
+												<utu:AutoLayout Spacing="8"
+																Padding="8,0,16,0"
+																Orientation="Horizontal"
+																utu:AutoLayout.CounterAlignment="Start">
+													<Image Source="{Binding UrlIcon}"
+														   utu:AutoLayout.CounterAlignment="Center"
+														   Width="60"
+														   Height="60" />
+													<utu:AutoLayout PrimaryAxisAlignment="Center"
+																	utu:AutoLayout.CounterAlignment="Center">
+														<TextBlock Text="{Binding Name}"
+																   utu:AutoLayout.CounterAlignment="Start"
+																   Foreground="{ThemeResource OnSurfaceBrush}"
+																   Style="{StaticResource TitleMedium}" />
+														<TextBlock Text="164 recipes"
+																   utu:AutoLayout.CounterAlignment="Start"
+																   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 													</utu:AutoLayout>
 												</utu:AutoLayout>
+											</utu:AutoLayout>
 										</DataTemplate>
 									</muxc:ItemsRepeater.ItemTemplate>
 								</muxc:ItemsRepeater>
@@ -231,33 +231,33 @@
 									</muxc:ItemsRepeater.Layout>
 									<muxc:ItemsRepeater.ItemTemplate>
 										<DataTemplate>
-												<utu:CardContentControl Margin="0"
-																		Width="160"
-																		CornerRadius="4"
-																		Style="{StaticResource FilledCardContentControlStyle}">
-													<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+											<utu:CardContentControl Margin="0"
+																	Width="160"
 																	CornerRadius="4"
-																	PrimaryAxisAlignment="Center"
-																	HorizontalAlignment="Stretch">
-														<utu:AutoLayout CornerRadius="4">
-															<Image Source="{Binding ImageUrl}"
-																   Stretch="UniformToFill"
-																   Height="144" />
-															<utu:AutoLayout Spacing="4"
-																			Padding="16"
-																			PrimaryAxisAlignment="Center">
-																<TextBlock TextWrapping="NoWrap"
-																		   Text="{Binding Name}"
-																		   Foreground="{ThemeResource OnSurfaceBrush}"
-																		   Style="{StaticResource TitleSmall}" />
-																<TextBlock TextWrapping="Wrap"
-																		   Text="{Binding Calories}"
-																		   Foreground="{ThemeResource OnSurfaceLowBrush}"
-																		   Style="{StaticResource CaptionMedium}" />
-															</utu:AutoLayout>
+																	Style="{StaticResource FilledCardContentControlStyle}">
+												<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+																CornerRadius="4"
+																PrimaryAxisAlignment="Center"
+																HorizontalAlignment="Stretch">
+													<utu:AutoLayout CornerRadius="4">
+														<Image Source="{Binding ImageUrl}"
+															   Stretch="UniformToFill"
+															   Height="144" />
+														<utu:AutoLayout Spacing="4"
+																		Padding="16"
+																		PrimaryAxisAlignment="Center">
+															<TextBlock TextWrapping="NoWrap"
+																	   Text="{Binding Name}"
+																	   Foreground="{ThemeResource OnSurfaceBrush}"
+																	   Style="{StaticResource TitleSmall}" />
+															<TextBlock TextWrapping="Wrap"
+																	   Text="{Binding Calories}"
+																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
+																	   Style="{StaticResource CaptionMedium}" />
 														</utu:AutoLayout>
 													</utu:AutoLayout>
-												</utu:CardContentControl>
+												</utu:AutoLayout>
+											</utu:CardContentControl>
 										</DataTemplate>
 									</muxc:ItemsRepeater.ItemTemplate>
 								</muxc:ItemsRepeater>
@@ -273,15 +273,14 @@
 								   Style="{StaticResource TitleMedium}" />
 
 						<!-- TODO: Add back Map nav request when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
-						<!--uen:Navigation.Request="Map"-->
+						<!-- uen:Navigation.Request="Map" -->
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Near me"
 								utu:AutoLayout.CounterAlignment="Center"
 								Foreground="{ThemeResource PrimaryBrush}"
 								CornerRadius="20"
-								Style="{StaticResource TextButtonStyle}"
-								 />
+								Style="{StaticResource TextButtonStyle}" />
 					</utu:AutoLayout>
 					<uer:FeedView x:Name="PopularCreatorsFeedView"
 								  Source="{Binding PopularCreators}">
@@ -300,36 +299,36 @@
 									</muxc:ItemsRepeater.Layout>
 									<muxc:ItemsRepeater.ItemTemplate>
 										<DataTemplate>
-												<utu:CardContentControl Margin="0"
-																		Style="{StaticResource FilledCardContentControlStyle}">
-													<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
-																	PrimaryAxisAlignment="Center">
-														<utu:AutoLayout Spacing="8"
-																		CornerRadius="12"
-																		Padding="10,8"
-																		utu:AutoLayout.CounterAlignment="Center">
-															<Border utu:AutoLayout.CounterAlignment="Center"
-																	Width="96"
-																	Height="96"
-																	CornerRadius="80">
-																<Image Source="{Binding UrlProfileImage}"
-																	   Stretch="UniformToFill" />
-															</Border>
-															<utu:AutoLayout Spacing="4">
-																<TextBlock TextAlignment="Center"
-																		   TextWrapping="Wrap"
-																		   Text="{Binding FullName}"
-																		   Foreground="{ThemeResource OnSurfaceBrush}"
-																		   Style="{StaticResource TitleSmall}" />
-																<TextBlock TextAlignment="Center"
-																		   TextWrapping="Wrap"
-																		   Text="{Binding Recipes}"
-																		   Foreground="{ThemeResource OnSurfaceLowBrush}"
-																		   Style="{StaticResource LabelMedium}" />
-															</utu:AutoLayout>
+											<utu:CardContentControl Margin="0"
+																	Style="{StaticResource FilledCardContentControlStyle}">
+												<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
+																PrimaryAxisAlignment="Center">
+													<utu:AutoLayout Spacing="8"
+																	CornerRadius="12"
+																	Padding="10,8"
+																	utu:AutoLayout.CounterAlignment="Center">
+														<Border utu:AutoLayout.CounterAlignment="Center"
+																Width="96"
+																Height="96"
+																CornerRadius="80">
+															<Image Source="{Binding UrlProfileImage}"
+																   Stretch="UniformToFill" />
+														</Border>
+														<utu:AutoLayout Spacing="4">
+															<TextBlock TextAlignment="Center"
+																	   TextWrapping="Wrap"
+																	   Text="{Binding FullName}"
+																	   Foreground="{ThemeResource OnSurfaceBrush}"
+																	   Style="{StaticResource TitleSmall}" />
+															<TextBlock TextAlignment="Center"
+																	   TextWrapping="Wrap"
+																	   Text="{Binding Recipes}"
+																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
+																	   Style="{StaticResource LabelMedium}" />
 														</utu:AutoLayout>
 													</utu:AutoLayout>
-												</utu:CardContentControl>
+												</utu:AutoLayout>
+											</utu:CardContentControl>
 										</DataTemplate>
 									</muxc:ItemsRepeater.ItemTemplate>
 								</muxc:ItemsRepeater>
