@@ -44,34 +44,37 @@
 											   VerticalAlignment="Center"
 											   HorizontalAlignment="Center" />
 									</Border>
-									<utu:AutoLayout Padding="16"
-													Orientation="Horizontal"
-													Spacing="16">
-										<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-														utu:AutoLayout.PrimaryAlignment="Stretch">
-											<utu:AutoLayout PrimaryAxisAlignment="Center"
-															Spacing="4">
-												<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-														   Style="{StaticResource TitleSmall}"
-														   Text="{Binding Name}"
-														   TextWrapping="Wrap" />
+									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+													utu:AutoLayout.PrimaryAlignment="Stretch"
+													Padding="16,16,16,8">
+										<utu:AutoLayout PrimaryAxisAlignment="Center"
+														Spacing="4">
+											<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+													   Style="{StaticResource TitleSmall}"
+													   Text="{Binding Name}"
+													   TextWrapping="Wrap" />
+											<utu:AutoLayout Orientation="Horizontal"
+															Spacing="16">
 												<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
 														   Style="{StaticResource CaptionMedium}"
+														   utu:AutoLayout.PrimaryAlignment="Stretch"
 														   Text="{Binding TimeCal}"
 														   TextWrapping="Wrap" />
+												<PathIcon Data="{StaticResource Icon_Favorite_Border}"
+														  Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}"
+														  utu:AutoLayout.CounterAlignment="End"
+														  utu:AutoLayout.PrimaryAlignment="Auto"
+														  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+
+												<Border utu:AutoLayout.CounterAlignment="End"
+														utu:AutoLayout.PrimaryAlignment="Auto"
+														Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
+													<PathIcon Data="{StaticResource Icon_Favorite}"
+															  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+															  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookToColorConverter}}" />
+												</Border>
 											</utu:AutoLayout>
 										</utu:AutoLayout>
-										<PathIcon Data="{StaticResource Icon_Favorite_Border}"
-												  Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}"
-												  utu:AutoLayout.CounterAlignment="Center"
-												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-
-										<Border utu:AutoLayout.CounterAlignment="Center"
-												Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
-											<PathIcon Data="{StaticResource Icon_Favorite}"
-													  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-													  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookToColorConverter}}" />
-										</Border>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
 							</DataTemplate>
