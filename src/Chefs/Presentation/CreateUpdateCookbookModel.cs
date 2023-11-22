@@ -44,7 +44,7 @@ public partial class CreateUpdateCookbookModel
 
 	public async ValueTask SelectRecipe(Recipe recipe, CancellationToken ct)
 	{
-		await Recipes.UpdateAsync( r => r.Id == recipe.Id, recipe =>
+		await Recipes.UpdateAsync(r => r.Id == recipe.Id, recipe =>
 		{
 			return recipe with { Selected = !recipe.Selected };
 		}, ct);
