@@ -61,22 +61,17 @@
 														   TextWrapping="Wrap" />
 											</utu:AutoLayout>
 										</utu:AutoLayout>
-										<ToggleButton x:Name="toggleButton"
-													  MaxWidth="60"
-													  utu:AutoLayout.CounterAlignment="Center"
-													  CornerRadius="60"
-													  IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-													  Style="{StaticResource IconToggleButtonStyle}">
-											<ToggleButton.Content>
-												<PathIcon Data="{StaticResource Icon_Favorite_Border}"
-														  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-											</ToggleButton.Content>
-											<um:ControlExtensions.AlternateContent>
-												<PathIcon Data="{StaticResource Icon_Favorite}"
-														  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-														  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookToColorConverter}}" />
-											</um:ControlExtensions.AlternateContent>
-										</ToggleButton>
+										<PathIcon Data="{StaticResource Icon_Favorite_Border}"
+												  Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}"
+												  utu:AutoLayout.CounterAlignment="Center"
+												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+
+										<Border utu:AutoLayout.CounterAlignment="Center"
+												Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
+											<PathIcon Data="{StaticResource Icon_Favorite}"
+													  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+													  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookToColorConverter}}" />
+										</Border>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
 							</DataTemplate>
@@ -131,7 +126,7 @@
 							<utu:AutoLayout Padding="0,0,0,16"
 											HorizontalAlignment="Center"
 											Spacing="8">
-								<muxc:ItemsRepeater uen:Navigation.Request="!FavoriteRecipeDetails"
+								<muxc:ItemsRepeater utu:CommandExtensions.Command="{Binding Parent.SelectRecipe}"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}">
 									<muxc:ItemsRepeater.Layout>
