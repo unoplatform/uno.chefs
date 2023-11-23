@@ -42,6 +42,14 @@ public partial class CreateUpdateCookbookModel
 
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
 
+	public async ValueTask SelectRecipe(Recipe recipe, CancellationToken ct)
+	{
+		await Recipes.UpdateAsync(r => r.Id == recipe.Id, recipe =>
+		{
+			return recipe with { Selected = !recipe.Selected };
+		}, ct);
+	}
+
 	public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
 	{
 		var cookbook = await Cookbook;
