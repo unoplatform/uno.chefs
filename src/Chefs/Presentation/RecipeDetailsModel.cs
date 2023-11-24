@@ -16,25 +16,36 @@ public partial class RecipeDetailsModel
 	private readonly IRecipeService _recipeService;
 	private readonly IUserService _userService;
 	private readonly IMessenger _messenger;
+	private readonly IDispatcher _dispatcher;
 	private readonly Signal _refresh = new();
-	public static readonly Color NutritionTrackBackgroundColor = (Color)App.Current.Resources["NutritionTrackBackgroundColor"];
-	public static readonly Color NutritionProteinValColor = (Color)App.Current.Resources["NutritionProteinValColor"];
-	public static readonly Color NutritionCarbsValColor = (Color)App.Current.Resources["NutritionCarbsValColor"];
-	public static readonly Color NutritionFatValColor = (Color)App.Current.Resources["NutritionFatValColor"];
-	public static readonly Color OnSurfaceColor = (Color)App.Current.Resources["OnSurfaceColor"];
 
-	public RecipeDetailsModel(Recipe recipe, INavigator navigator, IRecipeService recipeService, IUserService userService, IMessenger messenger)
+#if WINDOWS
+	private static Color NutritionTrackBackgroundColor;
+	private static Color NutritionProteinValColor;
+	private static Color NutritionCarbsValColor;
+	private static Color NutritionFatValColor;
+	private static Color OnSurfaceColor;
+	private static bool ColorsInitialized;
+#else
+	private static readonly Color NutritionTrackBackgroundColor = (Color)App.Current.Resources["NutritionTrackBackgroundColor"];
+	private static readonly Color NutritionProteinValColor = (Color)App.Current.Resources["NutritionProteinValColor"];
+	private static readonly Color NutritionCarbsValColor = (Color)App.Current.Resources["NutritionCarbsValColor"];
+	private static readonly Color NutritionFatValColor = (Color)App.Current.Resources["NutritionFatValColor"];
+	private static readonly Color OnSurfaceColor = (Color)App.Current.Resources["OnSurfaceColor"];
+#endif
+
+	public RecipeDetailsModel(Recipe recipe, INavigator navigator, IRecipeService recipeService, IUserService userService, IMessenger messenger, IDispatcher dispatcher)
 	{
 		_navigator = navigator;
 		_recipeService = recipeService;
 		_userService = userService;
+		_dispatcher = dispatcher;
 
 		Recipe = recipe;
 		_messenger = messenger;
 		messenger.Observe(Reviews, x => x.Id);
 
-		DoughnutSeries = BuildDoughnutChart();
-		ColumnSeries = BuildColumnChart();
+		_ = BuildCharts();
 	}
 
 	public Recipe Recipe { get; }
@@ -72,15 +83,15 @@ public partial class RecipeDetailsModel
 	public async ValueTask Share(CancellationToken ct) =>
 		throw new NotSupportedException("to define");
 
-	public IEnumerable<ISeries> DoughnutSeries { get; set; }
+	public IEnumerable<ISeries>? DoughnutSeries { get; set; }
 
-	public IEnumerable<ISeries> ColumnSeries { get; set; }
+	public IEnumerable<ISeries>? ColumnSeries { get; set; }
 
 	public Axis[] XAxes = { new Axis { IsVisible = false } };
 
 	public Axis[] YAxes = { new Axis { IsVisible = false } };
 
-	private IEnumerable<ISeries> BuildColumnChart()
+	private async Task BuildColumnChart()
 	{
 		//Build column chart
 		var _chartdata = new NutritionChartItem[]
@@ -117,7 +128,7 @@ public partial class RecipeDetailsModel
 			new()
 		};
 
-		var rowSeriesLimiit = new RowSeries<NutritionChartItem>
+		var rowSeriesLimit = new RowSeries<NutritionChartItem>
 		{
 			Values = chartlimit,
 			IgnoresBarPosition = true,
@@ -127,12 +138,12 @@ public partial class RecipeDetailsModel
 		};
 		//End
 
-		return new[] { rowSeries, rowSeriesLimiit };
+		ColumnSeries = new[] { rowSeriesLimit, rowSeries };
 	}
 
-	private IEnumerable<ISeries> BuildDoughnutChart()
+	private async Task BuildDoughnutChart()
 	{
-		return new ISeries[]
+		DoughnutSeries = new ISeries[]
 		{
 			new PieSeries<int>
 			{
@@ -170,4 +181,37 @@ public partial class RecipeDetailsModel
 	{
 		return new SKColor(resourceColor.R, resourceColor.G, resourceColor.B, resourceColor.A);
 	}
+
+	private async Task BuildCharts()
+	{
+#if WINDOWS
+		await _dispatcher.ExecuteAsync(async ct =>
+		{
+			await EnsureResourceColors();
+#endif
+			await BuildDoughnutChart();
+			await BuildColumnChart();
+#if WINDOWS
+		}, CancellationToken.None);
+#endif
+	}
+
+#if WINDOWS
+	private async Task EnsureResourceColors()
+	{
+		if (!ColorsInitialized)
+		{
+			await _dispatcher.ExecuteAsync(ct =>
+			{
+				NutritionTrackBackgroundColor = (Color)App.Current.Resources["NutritionTrackBackgroundColor"];
+				NutritionProteinValColor = (Color)App.Current.Resources["NutritionProteinValColor"];
+				NutritionCarbsValColor = (Color)App.Current.Resources["NutritionCarbsValColor"];
+				NutritionFatValColor = (Color)App.Current.Resources["NutritionFatValColor"];
+				OnSurfaceColor = (Color)App.Current.Resources["OnSurfaceColor"];
+
+				ColorsInitialized = true;
+			}, CancellationToken.None);
+		}
+	}
+#endif
 }
