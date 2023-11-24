@@ -20,7 +20,7 @@
 	  mc:Ignorable="d">
 
 	<Page.Resources>
-	<DataTemplate x:Key="EmptyTemplate">
+		<DataTemplate x:Key="EmptyTemplate">
 			<utu:AutoLayout Padding="16,24"
 							utu:AutoLayout.PrimaryAlignment="Stretch"
 							PrimaryAxisAlignment="Center">
