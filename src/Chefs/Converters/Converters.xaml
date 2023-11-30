@@ -39,8 +39,13 @@
 								 NullValue="{StaticResource PrimaryMediumBrush}"
 								 TrueValue="{StaticResource PrimaryBrush}" />
 
-	<um:FromBoolToValueConverter x:Key="IsCreatingCookbookToColorConverter"
+	<um:FromBoolToValueConverter x:Key="IsCreatingCookbookFavoriteToColorConverter"
 								 FalseValue="{StaticResource PrimaryBrush}"
+								 TrueValue="{StaticResource OnSurfaceMediumBrush}"
+								 NullValue="{StaticResource OnSurfaceMediumBrush}" />
+
+	<um:FromBoolToValueConverter x:Key="IsCreatingCookbookFavoriteBorderToColorConverter"
+								 FalseValue="{StaticResource OnSurfaceBrush}"
 								 TrueValue="{StaticResource OnSurfaceMediumBrush}"
 								 NullValue="{StaticResource OnSurfaceMediumBrush}" />
 
