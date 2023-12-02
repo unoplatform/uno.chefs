@@ -17,8 +17,8 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 
 	private void OnOpening(object? sender, object e)
 	{
-		if (_presenter is { } presenter 
-			&& sender is Flyout flyout 
+		if (_presenter is { } presenter
+			&& sender is Flyout flyout
 			&& flyout.XamlRoot is { } root
 			)
 		{
