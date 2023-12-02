@@ -1,11 +1,10 @@
 namespace Chefs.Views;
 
-public sealed partial class ProfilePage : ResponsiveDrawerFlyout
+public sealed partial class ProfilePage : Page
 {
 	public ProfilePage()
 	{
 		this.InitializeComponent();
-
-		Opening += ApplyLeftDrawerFlyoutPresenterStyle;
 	}
 }
+

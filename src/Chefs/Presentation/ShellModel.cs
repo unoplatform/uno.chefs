@@ -15,5 +15,5 @@ public class ShellModel
 		_ = Start();
 	}
 
-	public async Task Start() => await _navigator.NavigateViewModelAsync<WelcomeModel>(this);
+	public async Task Start() => await _navigator.NavigateViewModelAsync<LoginModel>(this);
 }

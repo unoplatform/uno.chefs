@@ -67,8 +67,7 @@
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Person_Outline}"
-										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+								<PathIcon Data="{StaticResource Icon_Person_Outline}" />
 							</um:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="LoginPassword"
@@ -80,8 +79,7 @@
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
-										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" />
 							</um:ControlExtensions.Icon>
 						</PasswordBox>
 						<utu:AutoLayout Spacing="24"
