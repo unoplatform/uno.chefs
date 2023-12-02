@@ -66,9 +66,9 @@
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-							<um:ControlExtensions.LeadingIcon>
+							<um:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Person_Outline}" />
-							</um:ControlExtensions.LeadingIcon>
+							</um:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="LoginPassword"
 									 android:ImeOptions="Done"
@@ -165,10 +165,10 @@
 								 InputScope="Text"
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-							<um:ControlExtensions.LeadingIcon>
+							<um:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Person_Outline}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-							</um:ControlExtensions.LeadingIcon>
+							</um:ControlExtensions.Icon>
 						</TextBox>
 						<TextBox PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
 								 PlaceholderText="Email"
@@ -182,10 +182,10 @@
 								 ios:ReturnKeyType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
 								 IsSpellCheckEnabled="False">
-							<um:ControlExtensions.LeadingIcon>
+							<um:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Mail_Outline}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-							</um:ControlExtensions.LeadingIcon>
+							</um:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="RegistrationPassword"
 									 android:ImeOptions="Done"
