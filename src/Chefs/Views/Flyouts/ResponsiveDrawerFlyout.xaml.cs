@@ -9,12 +9,12 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 	public ResponsiveDrawerFlyout()
 	{
 		this.InitializeComponent();
-		
-		_presenter = new DrawerFlyoutPresenter() 
-		{ 
+
+		_presenter = new DrawerFlyoutPresenter()
+		{
 			OpenDirection = DrawerOpenDirection.Up,
 			DrawerLength = new GridLength(1, GridUnitType.Star),
-			Content = MainLayout 
+			Content = MainLayout
 		};
 	}
 
@@ -35,7 +35,7 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 		}
 	}
 
-		protected override Control CreatePresenter() => _presenter;
+	protected override Control CreatePresenter() => _presenter;
 
 	private CornerRadius GetWideCornerRadius()
 	{
