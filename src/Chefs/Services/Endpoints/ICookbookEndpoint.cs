@@ -1,4 +1,4 @@
-﻿namespace Chefs.Services.Endpoints;
+namespace Chefs.Services.Endpoints;
 public interface ICookbookEndpoint
 {
 	ValueTask<IImmutableList<CookbookData>> GetAll(CancellationToken ct);

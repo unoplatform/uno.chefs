@@ -1,4 +1,4 @@
-﻿namespace Chefs.Services.Recipes;
+namespace Chefs.Services.Recipes;
 
 public class RecipeService : IRecipeService
 {

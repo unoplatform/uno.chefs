@@ -1,4 +1,4 @@
-﻿using Uno.Extensions.Specialized;
+using Uno.Extensions.Specialized;
 
 namespace Chefs.Services.Endpoints;
 public class UserEndpoint : IUserEndpoint

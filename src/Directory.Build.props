@@ -9,7 +9,7 @@
 		<SynthesizeLinkMetadata>true</SynthesizeLinkMetadata>
 
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-		<NoWarn>$(NoWarn);Uno0001;CS1998;CA1416;NU1507</NoWarn>
+		<NoWarn>$(NoWarn);Uno0001;CS1998;CA1416;NU1507;NU1701</NoWarn>
 
 		<DefaultLanguage>en</DefaultLanguage>
 
@@ -52,6 +52,8 @@
 		<When Condition="$(TargetFramework.Contains('windows10'))">
 			<PropertyGroup>
 				<IsWinAppSdk>true</IsWinAppSdk>
+				<UseRidGraph>true</UseRidGraph>
+				<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 				<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
 				<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 			</PropertyGroup>

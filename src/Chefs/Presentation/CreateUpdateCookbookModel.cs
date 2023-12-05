@@ -1,4 +1,4 @@
-﻿namespace Chefs.Presentation;
+namespace Chefs.Presentation;
 
 public partial class CreateUpdateCookbookModel
 {
@@ -6,7 +6,6 @@ public partial class CreateUpdateCookbookModel
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
 	private readonly Cookbook? _cookbook;
-	private readonly bool _isCreate = false;
 
 	public CreateUpdateCookbookModel(
 		INavigator navigator,
@@ -21,16 +20,35 @@ public partial class CreateUpdateCookbookModel
 		{
 			_cookbook = cookbook;
 			Title = "Update cookbook";
+			SubTitle = "Manage cookbook's recipes";
+			SaveButtonContent = "Apply change";
+			IsCreate = false;
 		}
 		else
 		{
 			Title = "Create cookbook";
-			_isCreate = true;
+			SubTitle = "Add recipes";
+			SaveButtonContent = "Create cookbook";
+			IsCreate = true;
 		}
 	}
+	public bool IsCreate { get; }
+
 	public string Title { get; }
 
+	public string SubTitle { get; }
+
+	public string SaveButtonContent { get; }
+
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
+
+	public async ValueTask SelectRecipe(Recipe recipe, CancellationToken ct)
+	{
+		await Recipes.UpdateAsync(r => r.Id == recipe.Id, recipe =>
+		{
+			return recipe with { Selected = !recipe.Selected };
+		}, ct);
+	}
 
 	public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
 	{
@@ -49,15 +67,15 @@ public partial class CreateUpdateCookbookModel
 		return recipesExceptCookbook;
 	});
 
-    public async ValueTask Submit(CancellationToken ct)
-    {
-        var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
-        var cookbook = await Cookbook;
+	public async ValueTask Submit(CancellationToken ct)
+	{
+		var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
+		var cookbook = await Cookbook;
 
 		if (selectedRecipes is not null && cookbook is not null && selectedRecipes.Count > 0)
 		{
 
-			var response = _isCreate ? await _cookbookService.Create(cookbook.Name!, selectedRecipes.ToImmutableList(), ct)
+			var response = IsCreate ? await _cookbookService.Create(cookbook.Name!, selectedRecipes.ToImmutableList(), ct)
 				: await _cookbookService.Update(cookbook!, selectedRecipes, ct);
 
 			await _navigator.NavigateBackWithResultAsync(this, data: response);

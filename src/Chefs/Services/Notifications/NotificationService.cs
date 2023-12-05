@@ -1,4 +1,4 @@
-﻿namespace Chefs.Services.Notifications;
+namespace Chefs.Services.Notifications;
 
 public class NotificationService : INotificationService
 {

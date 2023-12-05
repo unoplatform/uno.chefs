@@ -1,4 +1,4 @@
-﻿namespace Chefs.Services.Cookbooks;
+namespace Chefs.Services.Cookbooks;
 
 public class CookbookService : ICookbookService
 {

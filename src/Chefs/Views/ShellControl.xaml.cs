@@ -1,4 +1,4 @@
-﻿namespace Chefs.Views;
+namespace Chefs.Views;
 
 public sealed partial class ShellControl : UserControl, IContentControlProvider
 {
@@ -6,6 +6,7 @@ public sealed partial class ShellControl : UserControl, IContentControlProvider
 	public ShellControl()
 	{
 		this.InitializeComponent();
+
 	}
 
 	public ContentControl ContentControl => Splash;

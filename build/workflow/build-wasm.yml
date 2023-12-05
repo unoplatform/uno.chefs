@@ -14,7 +14,7 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 7.0.203
+      version: 8.0.100
 
   - task: UseDotNet@2
     displayName: 'Use .NET Core SDK 5.0.400'
@@ -39,7 +39,7 @@ jobs:
   - task: CopyFiles@2
     displayName: Copy Wasm output
     inputs:
-      SourceFolder: src/Chefs.Wasm/bin/Release/net7.0/dist
+      SourceFolder: src/Chefs.Wasm/bin/Release/net8.0/dist
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)
 

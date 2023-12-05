@@ -1,4 +1,4 @@
-﻿namespace Chefs.Presentation;
+namespace Chefs.Presentation;
 
 public record ReviewParameter(Guid recipeId, IImmutableList<Review> reviews);
 

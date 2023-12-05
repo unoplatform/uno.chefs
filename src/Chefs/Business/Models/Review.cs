@@ -1,4 +1,4 @@
-﻿namespace Chefs.Business.Models;
+namespace Chefs.Business.Models;
 
 public partial record Review
 {

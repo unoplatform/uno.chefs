@@ -1,0 +1,372 @@
+﻿<Page x:Class="Chefs.Views.FavoriteRecipesPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:local="using:Chefs.Views"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:models="using:Chefs.Business.Models"
+	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
+	  xmlns:um="using:Uno.Material"
+	  NavigationCacheMode="Enabled"
+	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
+	  utu:StatusBar.Foreground="AutoInverse"
+	  Background="{ThemeResource BackgroundBrush}"
+	  mc:Ignorable="d">
+	<Page.Resources>
+		<DataTemplate x:Key="CookbookEmptyTemplate">
+			<utu:AutoLayout Height="546"
+							Padding="32,0"
+							PrimaryAxisAlignment="Center"
+							Spacing="24">
+				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+								Width="72"
+								Height="72">
+					<utu:AutoLayout PrimaryAxisAlignment="Center"
+									utu:AutoLayout.IsIndependentLayout="True"
+									VerticalAlignment="Stretch"
+									HorizontalAlignment="Stretch">
+						<Path Data="{StaticResource Empty_Cookbook}"
+							  Fill="{ThemeResource OnSurfaceBrush}"
+							  utu:AutoLayout.CounterAlignment="Center"
+							  Width="56"
+							  Height="72" />
+					</utu:AutoLayout>
+				</utu:AutoLayout>
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleLarge}"
+						   Text="No Cookbooks Created"
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleMedium}"
+						   Text="It looks like you haven't created any cookbooks yet. Cookbooks are a great way to organize your recipes into collections. "
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
+				<Button Padding="12,10,16,10"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
+						utu:AutoLayout.CounterAlignment="Center"
+						Content="Create cookbook"
+						CornerRadius="4"
+						Foreground="{ThemeResource PrimaryBrush}"
+						Style="{StaticResource TextButtonStyle}">
+					<um:ControlExtensions.Icon>
+						<PathIcon Data="{StaticResource Icon_Add}"
+								  Foreground="{ThemeResource PrimaryBrush}" />
+					</um:ControlExtensions.Icon>
+				</Button>
+			</utu:AutoLayout>
+		</DataTemplate>
+
+		<DataTemplate x:Key="CookbookTemplate"
+					  x:DataType="models:Cookbook">
+			<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+			<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+			<Border win:DataContext="{x:Bind}">
+				<utu:CardContentControl x:Name="CookbookTemplateCard"
+										HorizontalAlignment="Stretch"
+										VerticalAlignment="Stretch"
+										Background="{ThemeResource SurfaceBrush}"
+										CornerRadius="12"
+										Style="{StaticResource FilledCardContentControlStyle}">
+					<utu:CardContentControl.ContentTemplate>
+						<DataTemplate>
+							<utu:AutoLayout Margin="4">
+								<utu:AutoLayout x:Name="ImagesLayout"
+												Height="144"
+												utu:AutoLayout.CounterAlignment="Stretch"
+												Orientation="Horizontal"
+												Spacing="4">
+									<Border utu:AutoLayout.PrimaryAlignment="Stretch"
+											CornerRadius="12">
+										<Image HorizontalAlignment="Center"
+											   VerticalAlignment="Center"
+											   Source="{Binding CookbookImages.FirstImage}"
+											   Stretch="UniformToFill" />
+									</Border>
+									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+													utu:AutoLayout.PrimaryAlignment="Stretch"
+													Spacing="4">
+										<Border utu:AutoLayout.CounterAlignment="Stretch"
+												utu:AutoLayout.PrimaryAlignment="Stretch"
+												Background="{ThemeResource BackgroundBrush}"
+												CornerRadius="12">
+											<Image HorizontalAlignment="Center"
+												   VerticalAlignment="Center"
+												   Source="{Binding CookbookImages.SecondImage}"
+												   Stretch="UniformToFill"
+												   Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
+										</Border>
+										<Grid utu:AutoLayout.CounterAlignment="Stretch"
+											  utu:AutoLayout.PrimaryAlignment="Stretch"
+											  CornerRadius="12">
+											<Image HorizontalAlignment="Center"
+												   VerticalAlignment="Center"
+												   Source="{Binding CookbookImages.ThirdImage}"
+												   Stretch="UniformToFill"
+												   Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToCollapsed}}" />
+
+											<Button MinHeight="57"
+													HorizontalAlignment="Stretch"
+													VerticalAlignment="Stretch"
+													uen:Navigation.Data="{Binding}"
+													uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
+													Background="{ThemeResource BackgroundBrush}"
+													CornerRadius="12"
+													Style="{StaticResource TextButtonStyle}"
+													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
+												<Button.Content>
+													<PathIcon x:Name="ButtonIcon"
+															  Data="{StaticResource Icon_Add}"
+															  Foreground="{ThemeResource OnSurfaceBrush}" />
+												</Button.Content>
+											</Button>
+										</Grid>
+									</utu:AutoLayout>
+								</utu:AutoLayout>
+								<utu:AutoLayout Padding="12"
+												PrimaryAxisAlignment="Center"
+												Spacing="2">
+									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleSmall}"
+											   Text="{Binding Name}"
+											   TextWrapping="NoWrap" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+											   Style="{StaticResource CaptionMedium}"
+											   Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
+											   TextWrapping="NoWrap" />
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+						</DataTemplate>
+					</utu:CardContentControl.ContentTemplate>
+				</utu:CardContentControl>
+			</Border>
+		</DataTemplate>
+
+		<DataTemplate x:Key="RecipeEmptyTemplate">
+			<utu:AutoLayout Height="546"
+							Margin="32,0"
+							PrimaryAxisAlignment="Center"
+							Spacing="24">
+				<utu:AutoLayout PrimaryAxisAlignment="Center"
+								utu:AutoLayout.CounterAlignment="Center"
+								Width="72"
+								Height="72">
+					<Path Data="{StaticResource Empty_Box}"
+						  Fill="{ThemeResource OnSurfaceBrush}"
+						  utu:AutoLayout.CounterAlignment="Center"
+						  Width="64"
+						  Height="72" />
+				</utu:AutoLayout>
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleLarge}"
+						   Text="No Favorites Yet"
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Text="You haven't added any recipes to your favorites. Start exploring and find delicious recipes to try and love! Once you've found a recipe you enjoy, click on the heart icon to add it to your favorites for easy access later."
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
+				<Button HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						utu:AutoLayout.CounterAlignment="Center"
+						Content="See popular recipes"
+						CornerRadius="4"
+						Foreground="{ThemeResource PrimaryBrush}"
+						Style="{StaticResource TextButtonStyle}">
+					<um:ControlExtensions.Icon>
+						<PathIcon Data="{StaticResource Icon_Star_Outline}"
+								  Foreground="{ThemeResource PrimaryBrush}" />
+					</um:ControlExtensions.Icon>
+				</Button>
+			</utu:AutoLayout>
+		</DataTemplate>
+
+		<DataTemplate x:Key="RecipeTemplate"
+					  x:DataType="models:Recipe">
+			<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+			<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+			<Border win:DataContext="{x:Bind}">
+				<utu:CardContentControl x:Name="RecipeTemplateCard"
+										Background="{ThemeResource SurfaceBrush}"
+										CornerRadius="4"
+										Style="{StaticResource FilledCardContentControlStyle}">
+					<utu:CardContentControl.ContentTemplate>
+						<DataTemplate>
+							<utu:AutoLayout CornerRadius="4">
+								<Border x:Name="ImageLayout"
+										Height="144">
+									<Image HorizontalAlignment="Center"
+										   VerticalAlignment="Center"
+										   Source="{Binding ImageUrl}"
+										   Stretch="UniformToFill" />
+								</Border>
+
+								<utu:AutoLayout Padding="16"
+												PrimaryAxisAlignment="Center"
+												Spacing="4">
+									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleSmall}"
+											   Text="{Binding Name}"
+											   TextWrapping="Wrap" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+											   Style="{StaticResource CaptionMedium}"
+											   Text="{Binding TimeCal}"
+											   TextWrapping="Wrap" />
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+						</DataTemplate>
+					</utu:CardContentControl.ContentTemplate>
+				</utu:CardContentControl>
+			</Border>
+		</DataTemplate>
+	</Page.Resources>
+
+	<utu:AutoLayout PrimaryAxisAlignment="Stretch"
+					Background="{ThemeResource BackgroundBrush}">
+		<utu:NavigationBar x:Name="NavBar"
+						   Foreground="{ThemeResource OnSurfaceInverseBrush}"
+						   Background="{ThemeResource SurfaceInverseBrush}">
+			<utu:NavigationBar.Content>
+				<utu:AutoLayout Orientation="Horizontal"
+								Padding="12,0,0,0">
+					<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
+							  utu:AutoLayout.CounterAlignment="Center"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}" />
+				</utu:AutoLayout>
+			</utu:NavigationBar.Content>
+			<utu:NavigationBar.PrimaryCommands>
+				<AppBarButton Command="{Binding ShowCurrentProfile}">
+					<AppBarButton.Icon>
+						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
+									ShowAsMonochrome="True"
+									UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+				<AppBarButton Command="{Binding ShowNotifications}">
+					<AppBarButton.Icon>
+						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
+									ShowAsMonochrome="True"
+									UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.PrimaryCommands>
+		</utu:NavigationBar>
+		<utu:AutoLayout uen:Region.Attached="True"
+						Padding="16"
+						utu:AutoLayout.PrimaryAlignment="Stretch"
+						Background="{ThemeResource BackgroundBrush}"
+						Spacing="16">
+			<!-- Added a MaxHeight here because of this issue: https://github.com/unoplatform/uno.chefs/issues/625 -->
+			<utu:TabBar uen:Region.Attached="True"
+						Background="{ThemeResource BackgroundBrush}"
+						Style="{StaticResource TopTabBarStyle}">
+				<utu:TabBarItem x:Name="TabBarRecipeItem"
+								uen:Region.Name="MyRecipes"
+								Content="All Recipes"
+								Foreground="{ThemeResource OnSurfaceMediumBrush}"
+								IsSelected="True" />
+				<utu:TabBarItem uen:Region.Name="Cookbooks"
+								Content="My Cookbooks"
+								Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+			</utu:TabBar>
+			<Grid uen:Region.Attached="True"
+				  uen:Region.Navigator="Visibility"
+				  utu:AutoLayout.CounterAlignment="Stretch"
+				  utu:AutoLayout.PrimaryAlignment="Stretch">
+				<Grid uen:Region.Name="MyRecipes">
+					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
+								  utu:AutoLayout.PrimaryAlignment="Stretch"
+								  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
+								  Source="{Binding SavedRecipes}">
+						<DataTemplate>
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
+							<ScrollViewer x:Name="RecipesScrollViewer"
+										  utu:AutoLayout.PrimaryAlignment="Stretch"
+										  HorizontalScrollMode="Disabled"
+										  VerticalScrollBarVisibility="Hidden">
+								<utu:AutoLayout>
+									<utu:AutoLayout Padding="0,0,0,16"
+													Justify="SpaceBetween"
+													Orientation="Horizontal">
+										<TextBlock utu:AutoLayout.CounterAlignment="Center"
+												   Style="{StaticResource BodyLarge}">
+											<Run Text="{Binding Data.Count}" />
+											<Run Text="results" />
+										</TextBlock>
+										<!-- Check to see if this pr https://github.com/unoplatform/uno.toolkit.ui/pull/634 fixes the issue on android where the Margin from line 260 becomes negative. -->
+									</utu:AutoLayout>
+									<utu:AutoLayout Padding="0,0,0,16"
+													HorizontalAlignment="Center"
+													Spacing="8">
+
+										<muxc:ItemsRepeater uen:Navigation.Request="!FavoriteRecipeDetails"
+															ItemTemplate="{StaticResource RecipeTemplate}"
+															ItemsSource="{Binding Data}">
+											<muxc:ItemsRepeater.Layout>
+												<muxc:UniformGridLayout ItemsStretch="Fill"
+																		MaximumRowsOrColumns="2"
+																		MinColumnSpacing="8"
+																		MinItemWidth="130"
+																		MinRowSpacing="8" />
+											</muxc:ItemsRepeater.Layout>
+										</muxc:ItemsRepeater>
+									</utu:AutoLayout>
+								</utu:AutoLayout>
+							</ScrollViewer>
+						</DataTemplate>
+					</uer:FeedView>
+				</Grid>
+				<Grid uen:Region.Name="Cookbooks"
+					  Visibility="Collapsed">
+					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
+
+					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
+								  utu:AutoLayout.PrimaryAlignment="Stretch"
+								  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
+								  Source="{Binding SavedCookbooks}">
+						<DataTemplate>
+							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+								<ScrollViewer x:Name="RecipesScrollViewer"
+											  utu:AutoLayout.PrimaryAlignment="Stretch"
+											  HorizontalScrollMode="Disabled"
+											  VerticalScrollBarVisibility="Hidden">
+									<muxc:ItemsRepeater uen:Navigation.Request="!CookbookDetails"
+														ItemTemplate="{StaticResource CookbookTemplate}"
+														ItemsSource="{Binding Data}"
+														Margin="0,0,0,16">
+										<muxc:ItemsRepeater.Layout>
+											<muxc:UniformGridLayout ItemsStretch="Fill"
+																	MaximumRowsOrColumns="2"
+																	MinColumnSpacing="8"
+																	MinItemWidth="150"
+																	MinRowSpacing="16" />
+										</muxc:ItemsRepeater.Layout>
+									</muxc:ItemsRepeater>
+								</ScrollViewer>
+								<Button Margin="0,0,8,8"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Bottom"
+										uen:Navigation.Request="!FavoriteCreateUpdateCookbook"
+										utu:AutoLayout.IsIndependentLayout="True"
+										Background="{ThemeResource PrimaryBrush}"
+										CornerRadius="56"
+										Style="{StaticResource FabStyle}">
+									<um:ControlExtensions.Icon>
+										<PathIcon Data="{StaticResource Icon_Add}"
+												  Foreground="{ThemeResource OnPrimaryBrush}" />
+									</um:ControlExtensions.Icon>
+								</Button>
+							</utu:AutoLayout>
+						</DataTemplate>
+					</uer:FeedView>
+				</Grid>
+			</Grid>
+		</utu:AutoLayout>
+	</utu:AutoLayout>
+</Page>

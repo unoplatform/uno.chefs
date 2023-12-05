@@ -14,7 +14,7 @@ on:
 jobs:
   build_and_deploy_job_azure_static_apps:
     env:
-      DIST_PATH: src/Chefs.Wasm/bin/Release/net7.0/dist
+      DIST_PATH: src/Chefs.Wasm/bin/Release/net8.0/dist
 
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
@@ -38,20 +38,25 @@ jobs:
           useConfigFile: true
           configFilePath: build/gitversion.yml
 
-      - name: Setup dotnet 7.0.203
+      - name: Setup dotnet 8.0.100
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: '7.0.203'
+          dotnet-version: '8.0.100'
 
       - name: Build app
         run: |
           cd src/Chefs.Wasm
-          dotnet build -c Release "/p:PackageVersion=${{ steps.gitversion.outputs.fullSemVer }}" /p:DisableNetMobileTargets=True
+          dotnet build -c Release "/p:PackageVersion=${{ steps.gitversion.outputs.fullSemVer }}" /p:DisableNetMobileTargets=True /bl:./artifacts-logs/build.binlog
 
       - uses: actions/upload-artifact@v2
         with:
           name: wasm-site
           path: ${{ env.DIST_PATH }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: artifacts-logs
 
       - name: Publish to Azure Static WebApps
         continue-on-error: true

@@ -1,4 +1,4 @@
-﻿namespace Chefs.Presentation;
+namespace Chefs.Presentation;
 
 public partial class HomeModel
 {
@@ -67,15 +67,15 @@ public partial class HomeModel
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
 
-    public async Task ShowProfile(User profile)
-    {
-        await NavigateToProfile(profile);
-    }
+	public async Task ShowProfile(User profile)
+	{
+		await NavigateToProfile(profile);
+	}
 
-    public async Task ShowCurrentProfile()
-    {
-        await NavigateToProfile();
-    }
+	public async Task ShowCurrentProfile()
+	{
+		await NavigateToProfile();
+	}
 
 	public async Task ShowNotifications()
 	{
@@ -83,9 +83,9 @@ public partial class HomeModel
 	}
 
 	private async Task NavigateToProfile(User? profile = null)
-    {
-        var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
-        var result = await response!.Result;
+	{
+		var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
+		var result = await response!.Result;
 
 		await (result.SomeOrDefault() switch
 		{
@@ -99,6 +99,6 @@ public partial class HomeModel
 
 	private async Task NavigateToNotifications()
 	{
-		_ = _navigator.NavigateViewAsync<NotificationsContentPage>(this, qualifier: Qualifiers.Dialog);
+		_ = _navigator.NavigateRouteAsync(this, "Notifications", qualifier: Qualifiers.Dialog);
 	}
 }

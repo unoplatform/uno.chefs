@@ -1,4 +1,4 @@
-﻿namespace Chefs.Data;
+namespace Chefs.Data;
 
 public class RecipeData
 {
@@ -17,4 +17,5 @@ public class RecipeData
 	public CategoryData? Category { get; set; }
 	public DateTime Date { get; set; }
 	public bool Save { get; set; }
+	public NutritionData? Nutrition { get; set; } = new(30, 101, 30, 110, 300, 75);
 }

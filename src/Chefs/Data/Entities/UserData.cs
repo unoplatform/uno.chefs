@@ -1,4 +1,4 @@
-﻿namespace Chefs.Data;
+namespace Chefs.Data;
 
 public class UserData
 {

@@ -1,24 +1,23 @@
-﻿using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Data;
 
-namespace Chefs.Converters
+namespace Chefs.Converters;
+
+public class StringSeparatorConverter : IValueConverter
 {
-	public class StringSeparatorConverter : IValueConverter
+	public string? Separator { get; set; }
+
+	public object Convert(object value, Type targetType, object parameter, string language)
 	{
-		public string? Separator { get; set; }
-
-		public object Convert(object value, Type targetType, object parameter, string language)
+		if (value is IEnumerable<string> list)
 		{
-			if (value is IEnumerable<string> list)
-			{
-				return string.Join(Separator, list.ToArray());
-			}
-
-			return string.Empty;
+			return string.Join(Separator, list.ToArray());
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, string language)
-		{
-			throw new NotImplementedException();
-		}
+		return string.Empty;
+	}
+
+	public object ConvertBack(object value, Type targetType, object parameter, string language)
+	{
+		throw new NotImplementedException();
 	}
 }
