@@ -131,13 +131,13 @@
 					<AppBarButton Command="{Binding ShowCurrentProfile}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/profile_icon.png" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-					<AppBarButton uen:Navigation.Request="!Notifications"
+					<AppBarButton Command="{Binding ShowNotifications}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/nav_bell_icon.png" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>

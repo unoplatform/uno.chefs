@@ -69,7 +69,7 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar Content="Profile">
 				<utu:NavigationBar.MainCommand>
-					<AppBarButton Command="{Binding GoBack}">
+					<AppBarButton>
 						<AppBarButton.Icon>
 							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/close.png" />
 						</AppBarButton.Icon>
@@ -85,76 +85,82 @@
 				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
 
-			<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-							Spacing="24"
-							Padding="32">
-				<utu:AutoLayout Spacing="16">
-					<Border utu:AutoLayout.CounterAlignment="Center"
-							Width="88"
-							Height="88"
-							CornerRadius="44">
-						<Image Source="{Binding Profile.UrlProfileImage}"
-							   Stretch="UniformToFill" />
-					</Border>
-					<utu:AutoLayout Spacing="4">
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="{Binding Profile.FullName}"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleMedium}" />
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="{Binding Profile.Description}"
-								   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-								   Style="{StaticResource BodySmall}" />
-					</utu:AutoLayout>
-				</utu:AutoLayout>
-				<utu:AutoLayout Spacing="16"
-								PrimaryAxisAlignment="Center"
-								Orientation="Horizontal">
-					<utu:AutoLayout Spacing="4"
-									utu:AutoLayout.CounterAlignment="Start"
-									utu:AutoLayout.PrimaryAlignment="Stretch">
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="{Binding RecipesCount}"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleMedium}" />
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="Recipes"
-								   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-								   Style="{StaticResource BodySmall}" />
-					</utu:AutoLayout>
-					<utu:AutoLayout Spacing="4"
-									utu:AutoLayout.CounterAlignment="Start"
-									utu:AutoLayout.PrimaryAlignment="Stretch">
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="{Binding Profile.Followers}"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleMedium}" />
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="Followers"
-								   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-								   Style="{StaticResource BodySmall}" />
-					</utu:AutoLayout>
-					<utu:AutoLayout Spacing="4"
-									utu:AutoLayout.CounterAlignment="Start"
-									utu:AutoLayout.PrimaryAlignment="Stretch">
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="{Binding Profile.Following}"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleMedium}" />
-						<TextBlock TextAlignment="Center"
-								   TextWrapping="Wrap"
-								   Text="Following"
-								   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-								   Style="{StaticResource BodySmall}" />
-					</utu:AutoLayout>
-				</utu:AutoLayout>
+			<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
+				<uer:FeedView Source="{Binding Profile}">
+					<DataTemplate>
+						<utu:AutoLayout Spacing="24"
+										Padding="32">
+							<utu:AutoLayout Spacing="16">
+								<Border utu:AutoLayout.CounterAlignment="Center"
+										Width="88"
+										Height="88"
+										CornerRadius="44">
+									<Image Source="{Binding Data.UrlProfileImage}"
+										   Stretch="UniformToFill" />
+								</Border>
+								<utu:AutoLayout Spacing="4">
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="{Binding Data.FullName}"
+											   Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleMedium}" />
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="{Binding Data.Description}"
+											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+											   Style="{StaticResource BodySmall}" />
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+							<utu:AutoLayout Spacing="16"
+											PrimaryAxisAlignment="Center"
+											Orientation="Horizontal">
+								<utu:AutoLayout Spacing="4"
+												utu:AutoLayout.CounterAlignment="Start"
+												utu:AutoLayout.PrimaryAlignment="Stretch">
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="{Binding Data.Recipes}"
+											   Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleMedium}" />
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="Recipes"
+											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+											   Style="{StaticResource BodySmall}" />
+								</utu:AutoLayout>
+								<utu:AutoLayout Spacing="4"
+												utu:AutoLayout.CounterAlignment="Start"
+												utu:AutoLayout.PrimaryAlignment="Stretch">
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="{Binding Data.Followers}"
+											   Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleMedium}" />
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="Followers"
+											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+											   Style="{StaticResource BodySmall}" />
+								</utu:AutoLayout>
+								<utu:AutoLayout Spacing="4"
+												utu:AutoLayout.CounterAlignment="Start"
+												utu:AutoLayout.PrimaryAlignment="Stretch">
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="{Binding Data.Following}"
+											   Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleMedium}" />
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="Following"
+											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+											   Style="{StaticResource BodySmall}" />
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+						</utu:AutoLayout>
+					</DataTemplate>
+				</uer:FeedView>
+
 			</utu:AutoLayout>
 
 			<utu:AutoLayout Justify="SpaceBetween"
