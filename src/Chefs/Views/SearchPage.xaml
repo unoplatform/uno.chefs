@@ -202,9 +202,22 @@
 															ItemsJustification="SpaceBetween"
 															ItemsStretch="Fill"
 															MaximumRowsOrColumns="2"
-															MinColumnSpacing="10"
+															MinColumnSpacing="8"
 															MinItemWidth="110"
-															MinRowSpacing="10" />
+															MinRowSpacing="8" />
+
+									<muxc:UniformGridLayout x:Key="WideGridLayout"
+															ItemsJustification="SpaceBetween"
+															ItemsStretch="Fill"
+															MaximumRowsOrColumns="4"
+															MinColumnSpacing="16"
+															MinItemWidth="110"
+															MinRowSpacing="16" />
+
+									<!-- Will probably be moved to somewhere to be global -->
+									<utu:ResponsiveLayout x:Key="CustomLayout"
+														  Normal="800"
+														  Wide="1080"/>
 								</utu:AutoLayout.Resources>
 
 								<muxc:ItemsRepeater x:Name="SearchRepeater"
@@ -212,7 +225,9 @@
 													uen:Navigation.Request="SearchRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{StaticResource NarrowGridLayout}" />
+													Layout="{utu:Responsive Layout={StaticResource CustomLayout},
+																			Normal={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>
