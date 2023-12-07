@@ -214,10 +214,6 @@
 															MinItemWidth="110"
 															MinRowSpacing="16" />
 
-									<!-- Will probably be moved to somewhere to be global -->
-									<utu:ResponsiveLayout x:Key="CustomLayout"
-														  Normal="800"
-														  Wide="1080"/>
 								</utu:AutoLayout.Resources>
 
 								<muxc:ItemsRepeater x:Name="SearchRepeater"
@@ -225,8 +221,7 @@
 													uen:Navigation.Request="SearchRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Layout={StaticResource CustomLayout},
-																			Normal={StaticResource NarrowGridLayout},
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
 																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</DataTemplate>

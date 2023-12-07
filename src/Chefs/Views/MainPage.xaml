@@ -12,29 +12,18 @@
 	  xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  Background="{ThemeResource BackgroundBrush}">
 
+	<Page.Resources>
+		<CornerRadius x:Key="NavGridNarrowCornerRadius">0</CornerRadius>
+		<CornerRadius x:Key="NavGridWideCornerRadius">40,0,0,40</CornerRadius>
+
+		<SolidColorBrush x:Key="MainGridNarrowBackground" Color="Transparent" />
+		<SolidColorBrush x:Key="MainGridWideBackground" Color="{ThemeResource SurfaceColor}" />
+	</Page.Resources>
+
 	<Grid>
-		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup>
-				<VisualState x:Name="Narrow">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="0" />
-					</VisualState.StateTriggers>
-				</VisualState>
-				<VisualState x:Name="Wide">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="800" />
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="Tabs.Visibility" Value="Collapsed" />
-						<Setter Target="WideTabs.Visibility" Value="Visible" />
-						<Setter Target="NavigationGrid.CornerRadius" Value="40,0,0,40" />
-						<Setter Target="MainGrid.Background" Value="{ThemeResource SurfaceBrush}" />
-					</VisualState.Setters>
-				</VisualState>
-			</VisualStateGroup>
-		</VisualStateManager.VisualStateGroups>
 		<Grid x:Name="MainGrid"
 			  RowSpacing="0"
+			  Background="{utu:Responsive Narrow={StaticResource MainGridNarrowBackground}, Wide={StaticResource MainGridWideBackground}}"
 			  uen:Region.Attached="True"
 			  utu:AutoLayout.CounterAlignment="Start"
 			  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -52,13 +41,16 @@
 			<Grid x:Name="NavigationGrid"
 				  Grid.Row="0"
 				  Grid.Column="1"
+				  CornerRadius="{utu:Responsive Narrow={StaticResource NavGridNarrowCornerRadius}, Wide={StaticResource NavGridWideCornerRadius}}"
 				  uen:Region.Attached="True"
 				  uen:Region.Navigator="Visibility" />
 
 			<!-- WORKAROUND: Add Height="Auto" to avoid clipping caused by https://github.com/unoplatform/uno.toolkit.ui/issues/509 -->
+
 			<utu:TabBar x:Name="Tabs"
 						Grid.Row="1"
 						Grid.Column="1"
+						Visibility="{utu:Responsive Narrow=Visible, Wide=Collapsed}"
 						uen:Region.Attached="True"
 						Style="{StaticResource BottomTabBarStyle}">
 				<utu:TabBarItem uen:Region.Name="Home"
@@ -92,7 +84,7 @@
 			<utu:AutoLayout x:Name="WideTabs"
 							Grid.RowSpan="2"
 							Background="{ThemeResource SurfaceBrush}"
-							Visibility="Collapsed"
+							Visibility="{utu:Responsive Narrow=Collapsed, Wide=Visible}"
 							Width="120">
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 					<utu:TabBar uen:Region.Attached="True"
