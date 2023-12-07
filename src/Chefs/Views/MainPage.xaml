@@ -12,18 +12,10 @@
 	  xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  Background="{ThemeResource BackgroundBrush}">
 
-	<Page.Resources>
-		<CornerRadius x:Key="NavGridNarrowCornerRadius">0</CornerRadius>
-		<CornerRadius x:Key="NavGridWideCornerRadius">40,0,0,40</CornerRadius>
-
-		<SolidColorBrush x:Key="MainGridNarrowBackground" Color="Transparent" />
-		<SolidColorBrush x:Key="MainGridWideBackground" Color="{ThemeResource SurfaceColor}" />
-	</Page.Resources>
-
 	<Grid>
 		<Grid x:Name="MainGrid"
 			  RowSpacing="0"
-			  Background="{utu:Responsive Narrow={StaticResource MainGridNarrowBackground}, Wide={StaticResource MainGridWideBackground}}"
+			  Background="{utu:Responsive Narrow=Transparent, Wide={StaticResource SurfaceBrush}}"
 			  uen:Region.Attached="True"
 			  utu:AutoLayout.CounterAlignment="Start"
 			  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -41,7 +33,7 @@
 			<Grid x:Name="NavigationGrid"
 				  Grid.Row="0"
 				  Grid.Column="1"
-				  CornerRadius="{utu:Responsive Narrow={StaticResource NavGridNarrowCornerRadius}, Wide={StaticResource NavGridWideCornerRadius}}"
+				  CornerRadius="{utu:Responsive Narrow=0, Wide='40,0,0,40'}"
 				  uen:Region.Attached="True"
 				  uen:Region.Navigator="Visibility" />
 

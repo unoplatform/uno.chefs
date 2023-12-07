@@ -114,12 +114,6 @@
 					</utu:CardContentControl>
 				</utu:AutoLayout>
 			</DataTemplate>
-
-			<Thickness x:Key="LayoutNarrowMargin">16,24</Thickness>
-			<Thickness x:Key="LayoutWideMargin">40,40,40,24</Thickness>
-
-			<Thickness x:Key="ListNarrowMargin">16,0,16,16</Thickness>
-			<Thickness x:Key="ListWideMargin">40,0,40,40</Thickness>
 		</utu:AutoLayout.Resources>
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -151,8 +145,7 @@
 				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
 
-			<utu:AutoLayout Padding="{utu:Responsive Narrow={StaticResource LayoutNarrowMargin},
-													 Wide={StaticResource LayoutWideMargin}}"
+			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}"
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
 				<TextBox utu:CommandExtensions.Command="{Binding Search}"
@@ -226,13 +219,11 @@
 								</utu:AutoLayout.Resources>
 
 								<muxc:ItemsRepeater x:Name="SearchRepeater"
-													Margin="{utu:Responsive Narrow={StaticResource ListNarrowMargin},
-																			Wide={StaticResource ListWideMargin}}"
+													Margin="{utu:Responsive Narrow='16,0,16,16', Wide='40,0,40,40'}"
 													uen:Navigation.Request="SearchRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																			Wide={StaticResource WideGridLayout}}" />
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>
