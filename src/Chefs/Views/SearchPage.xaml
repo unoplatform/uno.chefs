@@ -23,6 +23,7 @@
 
 			<DataTemplate x:Key="EmptyTemplate">
 				<utu:AutoLayout Height="492"
+								Width="500"
 								Padding="16,0,16,16"
 								Background="{ThemeResource BackgroundBrush}">
 					<utu:AutoLayout Padding="32,0"
@@ -71,6 +72,7 @@
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</DataTemplate>
+
 			<DataTemplate x:Key="RecipeTemplate">
 				<utu:AutoLayout>
 					<utu:CardContentControl x:Name="RecipeTemplateCard"
@@ -112,6 +114,12 @@
 					</utu:CardContentControl>
 				</utu:AutoLayout>
 			</DataTemplate>
+
+			<Thickness x:Key="LayoutNarrowMargin">16,24</Thickness>
+			<Thickness x:Key="LayoutWideMargin">40,40,40,24</Thickness>
+
+			<Thickness x:Key="ListNarrowMargin">16,0,16,16</Thickness>
+			<Thickness x:Key="ListWideMargin">40,0,40,40</Thickness>
 		</utu:AutoLayout.Resources>
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -143,7 +151,8 @@
 				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
 
-			<utu:AutoLayout Padding="16,24"
+			<utu:AutoLayout Padding="{utu:Responsive Narrow={StaticResource LayoutNarrowMargin},
+													 Wide={StaticResource LayoutWideMargin}}"
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
 				<TextBox utu:CommandExtensions.Command="{Binding Search}"
@@ -217,7 +226,8 @@
 								</utu:AutoLayout.Resources>
 
 								<muxc:ItemsRepeater x:Name="SearchRepeater"
-													Margin="16,0,16,16"
+													Margin="{utu:Responsive Narrow={StaticResource ListNarrowMargin},
+																			Wide={StaticResource ListWideMargin}}"
 													uen:Navigation.Request="SearchRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
