@@ -67,6 +67,7 @@ public class App : Application
 			})
 		);
 		_window = builder.Window;
+
 		var helper = ResponsiveHelper.GetForCurrentView();
 		helper.HookupEvent(_window);
 
