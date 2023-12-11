@@ -93,7 +93,29 @@ public class App : Application
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
 			new ViewMap<ReviewsFlyout>(),
 			new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
-			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
+			new DataViewMap<CookbookDetailPage, CookbookDetailModel, Cookbook>(FromQuery: async (IServiceProvider sp, IDictionary<string, object> args) =>
+			{
+				if (args.TryGetValue(string.Empty, out var data))
+				{
+					if (data is Recipe recipe)
+					{
+						var cookbookService = sp.GetRequiredService<ICookbookService>();
+						var cookbooks = await cookbookService.GetByUser(recipe.UserId, CancellationToken.None);
+						var cookbook = cookbooks.Where(cb => cb.Recipes?.Any(r => r.Id == recipe.Id) ?? false).FirstOrDefault();
+
+						if(cookbook is null)
+						{
+							cookbooks = await cookbookService.GetSaved(CancellationToken.None);
+							cookbook = cookbooks.FirstOrDefault();
+						}
+						return cookbook;
+					}
+
+					return data as Cookbook;
+				}
+
+				return default;
+			}),
 			new ViewMap<CompletedDialog>()
 		// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
 		//new ViewMap<MapPage, MapModel>()

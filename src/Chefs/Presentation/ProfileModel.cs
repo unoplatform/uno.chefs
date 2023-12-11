@@ -28,7 +28,7 @@ public partial class ProfileModel
 
 	public IFeed<int> RecipesCount => Profile.SelectAsync((user, ct) => _recipeService.GetCount(user.Id, ct));
 
-	public IListFeed<Cookbook> Cookbooks => _cookbookService.SavedCookbooks;
+	public IListFeed<Cookbook> Cookbooks => ListFeed.Async(async ct => await _cookbookService.GetByUser((await Profile)?.Id ?? Guid.Empty, ct));
 
 	public IListFeed<Recipe> Recipes => Profile.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct)).AsListFeed();
 

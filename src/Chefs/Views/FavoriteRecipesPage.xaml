@@ -336,7 +336,7 @@
 											  utu:AutoLayout.PrimaryAlignment="Stretch"
 											  HorizontalScrollMode="Disabled"
 											  VerticalScrollBarVisibility="Hidden">
-									<muxc:ItemsRepeater uen:Navigation.Request="!CookbookDetails"
+									<muxc:ItemsRepeater uen:Navigation.Request="CookbookDetails"
 														ItemTemplate="{StaticResource CookbookTemplate}"
 														ItemsSource="{Binding Data}"
 														Margin="0,0,0,16">
