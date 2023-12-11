@@ -69,6 +69,9 @@ public class App : Application
 		_window = builder.Window;
 
 		Host = await builder.NavigateAsync<ShellControl>();
+
+		var helper = ResponsiveHelper.GetForCurrentView();
+		helper.HookupEvent(_window);
 	}
 
 	private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
