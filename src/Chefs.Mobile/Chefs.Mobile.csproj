@@ -45,8 +45,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
 		<PackageReference Include="Uno.Extensions.Logging.OSLog" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
-		<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
-		<!--<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />-->
+		<PackageReference Include="Mapsui.Uno.WinUI" />
 	</ItemGroup>
 	<Choose>
 		<When Condition="$(IsAndroid)">
