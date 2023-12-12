@@ -94,9 +94,8 @@ public class App : Application
 			new ViewMap<ReviewsFlyout>(),
 			new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
-			new ViewMap<CompletedDialog>()
-		// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
-		//new ViewMap<MapPage, MapModel>()
+			new ViewMap<CompletedDialog>(),
+			new ViewMap<MapPage, MapModel>()
 		);
 
 		routes.Register(
@@ -144,8 +143,7 @@ public class App : Application
 						new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
 					}),
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
-					// TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed
-					//new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main")
+					new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main")
 				}
 			)
 		);

@@ -24,7 +24,7 @@ public sealed partial class MapPage : Page
 	};
 
 	private record Contributor(string? Name, double Lat, double Lng, int Recipes);
-	
+
 	public MapPage()
 	{
 		this.InitializeComponent();
@@ -108,7 +108,7 @@ public sealed partial class MapPage : Page
 				SymbolScale = 1
 			}
 		};
-		
+
 		_myLocationLayer.UpdateMyLocation(startingPosition);
 		_map!.Layers.Add(_myLocationLayer);
 		CenterOnPoint(startingPosition, 13);
