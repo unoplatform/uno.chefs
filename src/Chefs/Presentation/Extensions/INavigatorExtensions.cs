@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Chefs.Views.Flyouts;
 
 namespace Chefs.Presentation.Extensions;
 
@@ -15,7 +16,7 @@ public static class INavigatorExtensions
 	// This is the blocker issue right now for this - https://github.com/unoplatform/uno.extensions/issues/1394
 	public static async ValueTask NavigateToProfile(this INavigator navigator, object sender, User? profile = null)
 	{
-		var response = await navigator.NavigateRouteForResultAsync<Recipe?>(sender, "Profile", data: profile);
+		var response = await navigator.NavigateViewForResultAsync<Recipe?>(sender, typeof(ProfileFlyout), data: profile);
 		var result = await response!.Result;
 
 		//If a Recipe was selected, navigate to the RecipeDetails. Otherwise, do nothing
