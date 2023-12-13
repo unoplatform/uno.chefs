@@ -15,6 +15,12 @@ public class StringFormatter : IValueConverter
 		if (value is null) return null;
 		if ((Format ?? parameter as string) is not { } format) return value.ToString();
 
+		if (value is int count)
+		{
+			// Handle singular form
+			format = count == 1 && format.EndsWith("s") ? format.Remove(format.Length - 1) : format;
+		}
+
 		return string.Format(CultureInfo.CurrentUICulture, format, value);
 	}
 

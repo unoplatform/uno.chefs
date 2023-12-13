@@ -86,7 +86,7 @@ public partial class RecipeDetailsModel
 
 	public IEnumerable<ISeries>? ColumnSeries { get; set; }
 
-	public Axis[] XAxes = { new Axis { IsVisible = false } };
+	public Axis[] XAxes = { new Axis { IsVisible = false, MaxLimit = 1000 } };
 
 	public Axis[] YAxes = { new Axis { IsVisible = false } };
 
@@ -95,9 +95,9 @@ public partial class RecipeDetailsModel
 		//Build column chart
 		var _chartdata = new NutritionChartItem[]
 		 {
-			new(nameof(Nutrition.Protein),Recipe.Nutrition.Protein,Recipe.Nutrition.ProteinBase, GetNutritionColorPaint(nameof(Nutrition.Protein))),
+			new(nameof(Nutrition.Fat),Recipe.Nutrition.Fat,Recipe.Nutrition.FatBase,GetNutritionColorPaint(nameof(Nutrition.Fat))),
 			new(nameof(Nutrition.Carbs),Recipe.Nutrition.Carbs,Recipe.Nutrition.CarbsBase,GetNutritionColorPaint(nameof(Nutrition.Carbs))),
-			new(nameof(Nutrition.Fat),Recipe.Nutrition.Fat,Recipe.Nutrition.FatBase,GetNutritionColorPaint(nameof(Nutrition.Fat)))
+			new(nameof(Nutrition.Protein),Recipe.Nutrition.Protein,Recipe.Nutrition.ProteinBase, GetNutritionColorPaint(nameof(Nutrition.Protein)))
 		 };
 
 		var rowSeries = new RowSeries<NutritionChartItem>
@@ -146,6 +146,12 @@ public partial class RecipeDetailsModel
 		{
 			new PieSeries<int>
 			{
+				Values = new []{ 5 },
+				Fill = GetNutritionColorPaint(nameof(Nutrition.Fat)),
+				InnerRadius = 60,
+			},
+			new PieSeries<int>
+			{
 				Values = new []{ 5},
 				Fill = GetNutritionColorPaint(nameof(Nutrition.Protein)),
 				InnerRadius = 60,
@@ -154,12 +160,6 @@ public partial class RecipeDetailsModel
 			{
 				Values = new []{ 5 },
 				Fill = GetNutritionColorPaint(nameof(Nutrition.Carbs)),
-				InnerRadius = 60,
-			},
-			new PieSeries<int>
-			{
-				Values = new []{ 5 },
-				Fill = GetNutritionColorPaint(nameof(Nutrition.Fat)),
 				InnerRadius = 60,
 			}
 		};
