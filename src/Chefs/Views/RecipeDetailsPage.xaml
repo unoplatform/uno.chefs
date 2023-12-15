@@ -12,7 +12,6 @@
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:um="using:Uno.Material"
 	  xmlns:utu="using:Uno.Toolkit.UI"
-	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  HorizontalAlignment="Stretch"
 	  VerticalAlignment="Stretch"
 	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -187,7 +186,6 @@
 										Background="{ThemeResource BackgroundBrush}"
 										utu:AutoLayout.PrimaryAlignment="Stretch">
 							<utu:TabBar uen:Region.Attached="True"
-										Height="50"
 										Background="{ThemeResource BackgroundBrush}"
 										Style="{StaticResource TopTabBarStyle}">
 								<utu:TabBarItem uen:Region.Name="IngredientsTab"
@@ -587,9 +585,11 @@
 										uen:Region.Attached="True"
 										Background="{ThemeResource BackgroundBrush}"
 										utu:AutoLayout.PrimaryAlignment="Stretch">
+							<!-- MaxHeight needed because of this issue https://github.com/unoplatform/uno.chefs/issues/625 -->
+							<!-- If top margin is removed the issue doesn't occur -->
 							<utu:TabBar uen:Region.Attached="True"
-										Height="50"
 										utu:AutoLayout.CounterAlignment="Center"
+										MaxHeight="130"
 										Background="{ThemeResource BackgroundBrush}"
 										Style="{StaticResource TopTabBarStyle}"
 										Orientation="Horizontal"
