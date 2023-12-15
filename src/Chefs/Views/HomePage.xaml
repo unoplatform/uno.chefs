@@ -67,8 +67,6 @@
 				</utu:AutoLayout>
 			</utu:CardContentControl>
 		</DataTemplate>
-		<utu:ResponsiveLayout x:Key="HomeResponsiveLayout"
-							  Normal="800" />
 	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -300,9 +298,8 @@
 												<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
 																PrimaryAxisAlignment="Center">
 													<utu:AutoLayout Spacing="8"
-																	Orientation="{utu:Responsive Normal=Vertical,
-																								 Wide=Horizontal,
-																								 Layout={StaticResource HomeResponsiveLayout}}"
+																	Orientation="{utu:Responsive Narrow=Vertical,
+																								 Wide=Horizontal}"
 																	CornerRadius="12"
 																	Padding="10,8"
 																	utu:AutoLayout.CounterAlignment="Center">
@@ -315,17 +312,15 @@
 														</Border>
 														<utu:AutoLayout Spacing="4"
 																		PrimaryAxisAlignment="Center">
-															<TextBlock TextAlignment="{utu:Responsive Normal=Center,
-																									  Wide=Start,
-																									  Layout={StaticResource HomeResponsiveLayout}}"
+															<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
+																									  Wide=Start}"
 																	   TextWrapping="Wrap"
 																	   Text="{Binding FullName}"
 																	   Foreground="{ThemeResource OnSurfaceBrush}"
 																	   Style="{StaticResource TitleSmall}" />
 
-															<TextBlock TextAlignment="{utu:Responsive Normal=Center,
-																									  Wide=Start,
-																									  Layout={StaticResource HomeResponsiveLayout}}"
+															<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
+																									  Wide=Start}"
 																	   Text="{Binding Recipes, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
 																	   TextWrapping="Wrap"
 																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
