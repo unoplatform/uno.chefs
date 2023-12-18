@@ -1,3 +1,6 @@
+using Chefs.Presentation.Extensions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Chefs.Presentation;
 
 public partial class HomeModel
@@ -31,11 +34,7 @@ public partial class HomeModel
 
 	public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
-	public IFeed<User> UserProfile => _userService.UserFeed;
-
-	// TODO: DR_REV: XAML only nav - AppButtons doesnt support NavRequest yet
-	public async ValueTask Notifications(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<NotificationsModel>(this);
+	public IFeed<User> UserProfile => _userService.User;
 
 	public async ValueTask Search(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
@@ -67,37 +66,17 @@ public partial class HomeModel
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
 
-	public async Task ShowProfile(User profile)
+	public async ValueTask ShowProfile(User profile)
 	{
-		await NavigateToProfile(profile);
+		await _navigator.NavigateToProfile(this, profile);
 	}
 
-	public async Task ShowCurrentProfile()
+	public async ValueTask ShowCurrentProfile()
 	{
-		await NavigateToProfile();
+		await _navigator.NavigateToProfile(this);
 	}
 
-	public async Task ShowNotifications()
-	{
-		await NavigateToNotifications();
-	}
-
-	private async Task NavigateToProfile(User? profile = null)
-	{
-		var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
-		var result = await response!.Result;
-
-		await (result.SomeOrDefault() switch
-		{
-			UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this, data: updateCookbook.Cookbook),
-			Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this),
-			Cookbook cookbook => _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook),
-			object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj),
-			_ => Task.CompletedTask,
-		});
-	}
-
-	private async Task NavigateToNotifications()
+	public async ValueTask ShowNotifications()
 	{
 		_ = _navigator.NavigateRouteAsync(this, "Notifications", qualifier: Qualifiers.Dialog);
 	}

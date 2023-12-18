@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:utu="using:Uno.Toolkit.UI">
 
 	<ResourceDictionary.MergedDictionaries>
 
@@ -15,4 +16,7 @@
 		<ResourceDictionary Source="ms-appx:///Chefs/Styles/Strings.xaml" />
 	</ResourceDictionary.MergedDictionaries>
 
+	<utu:ResponsiveLayout x:Key="DefaultResponsiveLayout"
+						  Narrow="800"
+						  Wide="1080" />
 </ResourceDictionary>

@@ -23,6 +23,7 @@
 
 			<DataTemplate x:Key="EmptyTemplate">
 				<utu:AutoLayout Height="492"
+								Width="500"
 								Padding="16,0,16,16"
 								Background="{ThemeResource BackgroundBrush}">
 					<utu:AutoLayout Padding="32,0"
@@ -71,6 +72,7 @@
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</DataTemplate>
+
 			<DataTemplate x:Key="RecipeTemplate">
 				<utu:AutoLayout>
 					<utu:CardContentControl x:Name="RecipeTemplateCard"
@@ -131,19 +133,20 @@
 					<AppBarButton Command="{Binding ShowCurrentProfile}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/profile_icon.png" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-					<AppBarButton uen:Navigation.Request="!Notifications"
+					<AppBarButton Command="{Binding ShowNotifications}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/nav_bell_icon.png" />
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
 
-			<utu:AutoLayout Padding="16,24"
+			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
+													 Wide='40,40,40,24'}"
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
 				<TextBox utu:CommandExtensions.Command="{Binding Search}"
@@ -202,17 +205,28 @@
 															ItemsJustification="SpaceBetween"
 															ItemsStretch="Fill"
 															MaximumRowsOrColumns="2"
-															MinColumnSpacing="10"
+															MinColumnSpacing="8"
 															MinItemWidth="110"
-															MinRowSpacing="10" />
+															MinRowSpacing="8" />
+
+									<muxc:UniformGridLayout x:Key="WideGridLayout"
+															ItemsJustification="SpaceBetween"
+															ItemsStretch="Fill"
+															MaximumRowsOrColumns="4"
+															MinColumnSpacing="16"
+															MinItemWidth="110"
+															MinRowSpacing="16" />
+
 								</utu:AutoLayout.Resources>
 
 								<muxc:ItemsRepeater x:Name="SearchRepeater"
-													Margin="16,0,16,16"
+													Margin="{utu:Responsive Narrow='16,0,16,16',
+																			Wide='40,0,40,40'}"
 													uen:Navigation.Request="SearchRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{StaticResource NarrowGridLayout}" />
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>

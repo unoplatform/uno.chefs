@@ -5,7 +5,7 @@ public class UserService : IUserService
 	private readonly IUserEndpoint _userEndpoint;
 	private readonly IWritableOptions<AppConfig> _chefAppOptions;
 	private readonly IWritableOptions<Credentials> _credentialOptions;
-	private Signal _userSignal = new();
+
 
 	public UserService(
 		IUserEndpoint userEndpoint,
@@ -13,7 +13,9 @@ public class UserService : IUserService
 		IWritableOptions<Credentials> credentialOptions)
 		=> (_userEndpoint, _chefAppOptions, _credentialOptions) = (userEndpoint, chefAppOptions, credentialOptions);
 
-	public IFeed<User> UserFeed => Feed<User>.Async(async (ct) => await GetCurrent(ct) is { } user ? user : Option.Undefined<User>(), _userSignal);
+	private IState<User> _user => State.Async(this, GetCurrent);
+
+	public IFeed<User> User => _user;
 
 	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
 		=> _chefAppOptions.Value;
@@ -38,7 +40,7 @@ public class UserService : IUserService
 	public async ValueTask Update(User user, CancellationToken ct)
 	{
 		await _userEndpoint.Update(user.ToData(), ct);
-		_userSignal.Raise();
+		await _user.UpdateAsync(_ => user, ct);
 	}
 
 	//In case we need to add auth
