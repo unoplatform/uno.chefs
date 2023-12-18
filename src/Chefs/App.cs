@@ -71,9 +71,6 @@ public class App : Application
 		var helper = ResponsiveHelper.GetForCurrentView();
 		helper.HookupEvent(_window);
 
-		var helper = ResponsiveHelper.GetForCurrentView();
-		helper.HookupEvent(_window);
-
 		Host = await builder.NavigateAsync<ShellControl>();
 	}
 
