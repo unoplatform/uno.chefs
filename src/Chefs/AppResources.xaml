@@ -15,8 +15,4 @@
 		<ResourceDictionary Source="ms-appx:///Chefs/Views/Templates/ItemTemplates.xaml" />
 		<ResourceDictionary Source="ms-appx:///Chefs/Styles/Strings.xaml" />
 	</ResourceDictionary.MergedDictionaries>
-
-	<utu:ResponsiveLayout x:Key="DefaultResponsiveLayout"
-						  Narrow="800"
-						  Wide="1080" />
 </ResourceDictionary>
