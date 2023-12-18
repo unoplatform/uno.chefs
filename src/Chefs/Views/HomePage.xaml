@@ -297,6 +297,8 @@
 												<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
 																PrimaryAxisAlignment="Center">
 													<utu:AutoLayout Spacing="8"
+																	Orientation="{utu:Responsive Narrow=Vertical,
+																								 Wide=Horizontal}"
 																	CornerRadius="12"
 																	Padding="10,8"
 																	utu:AutoLayout.CounterAlignment="Center">
@@ -307,15 +309,19 @@
 															<Image Source="{Binding UrlProfileImage}"
 																   Stretch="UniformToFill" />
 														</Border>
-														<utu:AutoLayout Spacing="4">
-															<TextBlock TextAlignment="Center"
+														<utu:AutoLayout Spacing="4"
+																		PrimaryAxisAlignment="Center">
+															<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
+																									  Wide=Start}"
 																	   TextWrapping="Wrap"
 																	   Text="{Binding FullName}"
 																	   Foreground="{ThemeResource OnSurfaceBrush}"
 																	   Style="{StaticResource TitleSmall}" />
-															<TextBlock TextAlignment="Center"
+
+															<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
+																									  Wide=Start}"
+																	   Text="{Binding Recipes, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
 																	   TextWrapping="Wrap"
-																	   Text="{Binding Recipes}"
 																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
 																	   Style="{StaticResource LabelMedium}" />
 														</utu:AutoLayout>
