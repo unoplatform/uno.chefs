@@ -31,23 +31,17 @@
 									Height="72"
 									utu:AutoLayout.CounterAlignment="Center"
 									PrimaryAxisAlignment="Center">
-						<Path Width="{utu:Responsive Narrow=64,
-													 Wide=72}"
-							  Height="{utu:Responsive Narrow=72,
-													  Wide=60}"
-							  utu:AutoLayout.CounterAlignment="Center"
-							  Data="{utu:Responsive Narrow='{StaticResource No_Review}',
-													Wide='{StaticResource No_Review_Wide}'}"
-							  Fill="{utu:Responsive Narrow='{ThemeResource OnBackgroundBrush}',
-													Wide='{ThemeResource OnSurfaceBrush}'}" />
+						<Path utu:AutoLayout.CounterAlignment="Center"
+							  Data="{StaticResource No_Review_Wide}"
+							  Fill="{ThemeResource OnSurfaceBrush}" />
 					</utu:AutoLayout>
 					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 							   Style="{StaticResource TitleLarge}"
 							   Text="No Reviews Yet"
 							   TextAlignment="Center"
 							   TextWrapping="Wrap" />
-					<TextBlock Visibility="{utu:Responsive Narrow='Collapsed',
-														   Wide='Visible'}"
+					<TextBlock Visibility="{utu:Responsive Narrow=Collapsed,
+														   Wide=Visible}"
 							   Foreground="{ThemeResource OnSurfaceBrush}"
 							   TextAlignment="Center"
 							   TextWrapping="Wrap"
