@@ -37,8 +37,8 @@
 		<utu:AutoLayout.Resources>
 			<DataTemplate x:Key="RecipeTemplate"
 						  x:DataType="models:Recipe">
-				<!--  Using an x:bind for windows as a workaround for now regarding this WinUI issue:  -->
-				<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
+				<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+				<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
 				<Border win:DataContext="{x:Bind}">
 					<utu:CardContentControl x:Name="RecipeTemplateCard"
 											Background="{ThemeResource SurfaceBrush}"
@@ -99,7 +99,7 @@
 			<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
 						  Source="{Binding Cookbook}">
 				<DataTemplate>
-					<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 					<ScrollViewer x:Name="RecipesScrollViewer"
 								  Padding="16"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -126,7 +126,8 @@
 								<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data.Recipes}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},Wide={StaticResource WideGridLayout}}" />
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</utu:AutoLayout>
 					</ScrollViewer>

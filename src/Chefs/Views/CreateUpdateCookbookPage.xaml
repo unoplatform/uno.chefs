@@ -32,7 +32,7 @@
 								MinItemWidth="240"
 								MinRowSpacing="15" />
 	</Page.Resources>
-	
+
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout.Resources>
 			<DataTemplate x:Key="RecipeTemplate"
@@ -156,7 +156,8 @@
 								<muxc:ItemsRepeater utu:CommandExtensions.Command="{Binding Parent.SelectRecipe}"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},Wide={StaticResource WideGridLayout}}" />
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>
