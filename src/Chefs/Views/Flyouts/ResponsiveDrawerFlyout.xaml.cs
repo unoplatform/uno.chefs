@@ -1,7 +1,3 @@
-using Microsoft.UI.Xaml.Media;
-using Uno.UI;
-using Uno.UI.Extensions;
-
 namespace Chefs.Views.Flyouts;
 
 public abstract partial class ResponsiveDrawerFlyout : Flyout
@@ -20,15 +16,13 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 
 	private void OnOpening(object? sender, object e)
 	{
-		if (_presenter is { } presenter
-			&& sender is Flyout flyout
-			&& flyout.XamlRoot is { } root
-			)
+		if (_presenter is { } presenter)
 		{
-			//// TODO: Use Responsive Helpers
-			if (root.Size.Width >= WideLayout)
+			var width = ResponsiveHelper.GetForCurrentView().WindowSize.Width;
+
+			if (width >= WideLayout)
 			{
-				var gridLength = root.Size.Width >= WidestLayout ? 0.33 : 0.66;
+				var gridLength = width >= WidestLayout ? 0.33 : 0.66;
 
 				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(gridLength, GridUnitType.Star));
 				DrawerFlyoutPresenter.SetOpenDirection(presenter, WideOpenDirection);

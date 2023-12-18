@@ -266,14 +266,13 @@
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Style="{StaticResource TitleMedium}" />
 
-						<!-- TODO: Add back Map nav request when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
-						<!-- uen:Navigation.Request="Map" -->
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Near me"
 								utu:AutoLayout.CounterAlignment="Center"
 								Foreground="{ThemeResource PrimaryBrush}"
 								CornerRadius="20"
+								uen:Navigation.Request="Map"
 								Style="{StaticResource TextButtonStyle}" />
 					</utu:AutoLayout>
 					<uer:FeedView x:Name="PopularCreatorsFeedView"
