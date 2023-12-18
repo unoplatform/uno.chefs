@@ -17,12 +17,28 @@
 	  NavigationCacheMode="Enabled"
 	  mc:Ignorable="d">
 
+	<Page.Resources>
+		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="2"
+								MinColumnSpacing="6"
+								MinItemWidth="155"
+								MinRowSpacing="6" />
+
+		<muxc:UniformGridLayout x:Key="WideGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="6"
+								MinColumnSpacing="15"
+								MinItemWidth="240"
+								MinRowSpacing="15" />
+	</Page.Resources>
+
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout.Resources>
 			<DataTemplate x:Key="RecipeTemplate"
 						  x:DataType="models:Recipe">
-				<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
-				<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+				<!--  Using an x:bind for windows as a workaround for now regarding this WinUI issue:  -->
+				<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
 				<Border win:DataContext="{x:Bind}">
 					<utu:CardContentControl x:Name="RecipeTemplateCard"
 											Background="{ThemeResource SurfaceBrush}"
@@ -80,10 +96,10 @@
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
-			<uer:FeedView Source="{Binding Cookbook}"
-						  utu:AutoLayout.PrimaryAlignment="Stretch">
+			<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
+						  Source="{Binding Cookbook}">
 				<DataTemplate>
-					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
+					<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
 					<ScrollViewer x:Name="RecipesScrollViewer"
 								  Padding="16"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -107,19 +123,10 @@
 								</Button>
 							</utu:AutoLayout>
 							<utu:AutoLayout Padding="0,16">
-
 								<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data.Recipes}">
-									<muxc:ItemsRepeater.Layout>
-										<muxc:UniformGridLayout ItemsStretch="Fill"
-																MaximumRowsOrColumns="2"
-																MinColumnSpacing="8"
-																MinItemWidth="130"
-																MinRowSpacing="8" />
-									</muxc:ItemsRepeater.Layout>
-								</muxc:ItemsRepeater>
-
+													ItemsSource="{Binding Data.Recipes}"
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</utu:AutoLayout>
 					</ScrollViewer>
