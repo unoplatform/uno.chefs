@@ -17,7 +17,6 @@ public partial class RecipeDetailsModel
 	private readonly IUserService _userService;
 	private readonly IMessenger _messenger;
 	private readonly IDispatcher _dispatcher;
-	private readonly Signal _refresh = new();
 
 #if WINDOWS
 	private static Color NutritionTrackBackgroundColor;

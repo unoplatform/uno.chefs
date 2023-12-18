@@ -17,7 +17,7 @@ public interface IUserService
 	/// <summary>
 	/// Feed of the current user.
 	/// </summary>
-	IFeed<User> UserFeed { get; }
+	IFeed<User> User { get; }
 
 	/// <summary>
 	/// Update user information

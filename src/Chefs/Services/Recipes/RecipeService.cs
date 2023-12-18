@@ -5,7 +5,6 @@ public class RecipeService : IRecipeService
 	private readonly IRecipeEndpoint _recipeEndpoint;
 	private readonly IWritableOptions<SearchHistory> _searchOptions;
 	private readonly IMessenger _messenger;
-	private Signal _refreshRecipes = new();
 	private int lastTextLength = 0;
 
 	public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory, IMessenger messenger)
@@ -90,7 +89,7 @@ public class RecipeService : IRecipeService
 		=> new(await _recipeEndpoint.CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct));
 
 
-	public IListFeed<Recipe> SavedRecipes => ListFeed<Recipe>.Async(async ct => await GetSaved(ct), _refreshRecipes);
+	public IListFeed<Recipe> SavedRecipes => ListFeed<Recipe>.Async(GetSaved);
 
 	public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct)
 		=> (await _recipeEndpoint.GetSaved(ct))
@@ -100,7 +99,7 @@ public class RecipeService : IRecipeService
 	public async ValueTask Save(Recipe recipe, CancellationToken ct)
 	{
 		await _recipeEndpoint.Save(recipe.ToData(), ct);
-		_refreshRecipes.Raise();
+		_messenger.Send(recipe);
 	}
 
 	public async ValueTask<Review> LikeReview(Review review, CancellationToken ct)
