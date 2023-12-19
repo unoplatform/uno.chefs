@@ -559,8 +559,6 @@
 										uen:Region.Attached="True"
 										Background="{ThemeResource BackgroundBrush}"
 										utu:AutoLayout.PrimaryAlignment="Stretch">
-							<!-- MaxHeight needed because of this issue https://github.com/unoplatform/uno.chefs/issues/625 -->
-							<!-- If top margin is removed the issue doesn't occur -->
 							<utu:TabBar uen:Region.Attached="True"
 										utu:AutoLayout.CounterAlignment="Center"
 										Background="{ThemeResource BackgroundBrush}"
