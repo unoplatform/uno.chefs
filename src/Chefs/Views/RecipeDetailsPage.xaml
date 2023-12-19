@@ -563,11 +563,8 @@
 							<!-- If top margin is removed the issue doesn't occur -->
 							<utu:TabBar uen:Region.Attached="True"
 										utu:AutoLayout.CounterAlignment="Center"
-										MaxHeight="130"
 										Background="{ThemeResource BackgroundBrush}"
-										Style="{StaticResource TopTabBarStyle}"
-										Orientation="Horizontal"
-										Margin="40,56,40,0">
+										Style="{StaticResource TopTabBarStyle}">
 								<utu:TabBarItem uen:Region.Name="IngredientsTabWide"
 												Content="Ingredients"
 												IsSelected="True" />
