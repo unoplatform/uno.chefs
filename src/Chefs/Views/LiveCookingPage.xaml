@@ -31,8 +31,10 @@
 
 		<DataTemplate x:Key="StepTemplate">
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-							Padding="{utu:Responsive Narrow=32, Wide=40}"
-							PrimaryAxisAlignment="{utu:Responsive Narrow={StaticResource AutoLayoutStart}, Wide={StaticResource AutoLayoutCenter}}">
+							Padding="{utu:Responsive Narrow=32,
+													 Wide=40}"
+							PrimaryAxisAlignment="{utu:Responsive Narrow={StaticResource AutoLayoutStart},
+																  Wide={StaticResource AutoLayoutCenter}}">
 				<ScrollViewer HorizontalScrollMode="Disabled">
 					<utu:AutoLayout Spacing="24">
 						<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
@@ -250,10 +252,12 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
-						Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+						Orientation="{utu:Responsive Narrow=Vertical,
+													 Wide=Horizontal}">
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
 							utu:AutoLayout.PrimaryAlignment="Stretch"
-							Visibility="{utu:Responsive Narrow=Collapsed, Wide=Visible}">
+							Visibility="{utu:Responsive Narrow=Collapsed,
+														Wide=Visible}">
 				<Image Source="{Binding Recipe.ImageUrl}"
 					   Stretch="UniformToFill"
 					   utu:AutoLayout.PrimaryAlignment="Stretch" />
@@ -261,7 +265,8 @@
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
 							utu:AutoLayout.PrimaryAlignment="Stretch">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
-								Padding="{utu:Responsive Narrow=32, Wide=40}"
+								Padding="{utu:Responsive Narrow=32,
+														 Wide=40}"
 								Spacing="24">
 					<Path Data="{StaticResource Icon_Thumb_Done}"
 						  Fill="{ThemeResource OnSurfaceBrush}"
