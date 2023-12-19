@@ -40,26 +40,6 @@
 							   Text="No Reviews Yet"
 							   TextAlignment="Center"
 							   TextWrapping="Wrap" />
-					<TextBlock Visibility="{utu:Responsive Narrow=Collapsed,
-														   Wide=Visible}"
-							   Foreground="{ThemeResource OnSurfaceBrush}"
-							   TextAlignment="Center"
-							   TextWrapping="Wrap"
-							   Text="Be the first to share your thoughts about this recipe! Your feedback helps the community!"
-							   Style="{StaticResource TitleMedium}" />
-					<Button HorizontalContentAlignment="Center"
-							VerticalContentAlignment="Center"
-							utu:AutoLayout.CounterAlignment="Center"
-							Content="Add comment"
-							Padding="12,10,16,10"
-							CornerRadius="4"
-							Foreground="{ThemeResource PrimaryBrush}"
-							Style="{StaticResource TextButtonStyle}">
-						<um:ControlExtensions.Icon>
-							<PathIcon Data="{StaticResource Icon_Edit}"
-									  Foreground="{ThemeResource PrimaryBrush}" />
-						</um:ControlExtensions.Icon>
-					</Button>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
 		</DataTemplate>
@@ -132,45 +112,45 @@
 													utu:AutoLayout.IsIndependentLayout="True"
 													VerticalAlignment="Stretch"
 													HorizontalAlignment="Stretch">
-										<utu:AutoLayout Spacing="4"
-														utu:AutoLayout.CounterAlignment="Start"
-														utu:AutoLayout.PrimaryAlignment="Stretch">
+										<StackPanel Spacing="4"
+													utu:AutoLayout.CounterAlignment="Start"
+													utu:AutoLayout.PrimaryAlignment="Stretch">
 											<PathIcon Data="{StaticResource Icon_Timer}"
-													  utu:AutoLayout.CounterAlignment="Center"
+													  HorizontalAlignment="Center"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
 											<TextBlock TextAlignment="Center"
 													   TextWrapping="Wrap"
-													   utu:AutoLayout.CounterAlignment="Center"
+													   HorizontalAlignment="Center"
 													   Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
 													   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 													   Style="{StaticResource BodySmall}" />
-										</utu:AutoLayout>
-										<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-														utu:AutoLayout.PrimaryAlignment="Stretch"
-														Spacing="4">
-											<PathIcon utu:AutoLayout.CounterAlignment="Center"
+										</StackPanel>
+										<StackPanel utu:AutoLayout.CounterAlignment="Start"
+													utu:AutoLayout.PrimaryAlignment="Stretch"
+													Spacing="4">
+											<PathIcon HorizontalAlignment="Center"
 													  Data="{StaticResource Icon_Star_Rate}"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
-											<TextBlock utu:AutoLayout.CounterAlignment="Center"
+											<TextBlock HorizontalAlignment="Center"
 													   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 													   Style="{StaticResource BodySmall}"
 													   Text="{Binding Recipe.Difficulty}"
 													   TextAlignment="Center"
 													   TextWrapping="Wrap" />
-										</utu:AutoLayout>
-										<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-														utu:AutoLayout.PrimaryAlignment="Stretch"
-														Spacing="4">
-											<PathIcon utu:AutoLayout.CounterAlignment="Center"
+										</StackPanel>
+										<StackPanel utu:AutoLayout.CounterAlignment="Start"
+													utu:AutoLayout.PrimaryAlignment="Stretch"
+													Spacing="4">
+											<PathIcon HorizontalAlignment="Center"
 													  Data="{StaticResource Icon_Local_Fire_Department}"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
-											<TextBlock utu:AutoLayout.CounterAlignment="Center"
+											<TextBlock HorizontalAlignment="Center"
 													   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 													   Style="{StaticResource BodySmall}"
 													   Text="{Binding Recipe.Calories}"
 													   TextAlignment="Center"
 													   TextWrapping="Wrap" />
-										</utu:AutoLayout>
+										</StackPanel>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
 							</utu:AutoLayout>
