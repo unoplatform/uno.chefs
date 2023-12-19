@@ -51,39 +51,39 @@
 								<utu:AutoLayout CornerRadius="4">
 									<Border x:Name="ImageLayout"
 											Height="144">
-										<Image Source="{Binding ImageUrl}"
-											   Stretch="UniformToFill"
+										<Image HorizontalAlignment="Center"
 											   VerticalAlignment="Center"
-											   HorizontalAlignment="Center" />
+											   Source="{Binding ImageUrl}"
+											   Stretch="UniformToFill" />
 									</Border>
 
 									<utu:AutoLayout>
-										<utu:AutoLayout Spacing="16"
+										<utu:AutoLayout Padding="16"
 														Orientation="Horizontal"
-														Padding="16">
+														Spacing="16">
 											<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 															utu:AutoLayout.PrimaryAlignment="Stretch">
 												<utu:AutoLayout PrimaryAxisAlignment="Center">
-													<utu:AutoLayout Spacing="4"
-																	PrimaryAxisAlignment="Center">
+													<utu:AutoLayout PrimaryAxisAlignment="Center"
+																	Spacing="4">
 														<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 																   Style="{StaticResource TitleSmall}"
 																   Text="{Binding Name}"
-																   TextWrapping="NoWrap"
-																   TextTrimming="CharacterEllipsis" />
-														<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+																   TextTrimming="CharacterEllipsis"
+																   TextWrapping="NoWrap" />
+														<TextBlock utu:AutoLayout.PrimaryAlignment="Stretch"
+																   Foreground="{ThemeResource OnSurfaceLowBrush}"
 																   Style="{StaticResource CaptionMedium}"
-																   utu:AutoLayout.PrimaryAlignment="Stretch"
 																   Text="{Binding TimeCal}"
-																   TextWrapping="NoWrap"
-																   TextTrimming="CharacterEllipsis" />
+																   TextTrimming="CharacterEllipsis"
+																   TextWrapping="NoWrap" />
 													</utu:AutoLayout>
 												</utu:AutoLayout>
 											</utu:AutoLayout>
-											<utu:AutoLayout Orientation="Horizontal"
-															utu:AutoLayout.CounterAlignment="Center">
-												<utu:AutoLayout PrimaryAxisAlignment="End"
-																Orientation="Horizontal">
+											<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+															Orientation="Horizontal">
+												<utu:AutoLayout Orientation="Horizontal"
+																PrimaryAxisAlignment="End">
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}">
 														<PathIcon Data="{StaticResource Icon_Favorite_Border}"

@@ -22,8 +22,8 @@
 		<utu:AutoLayout.Resources>
 
 			<DataTemplate x:Key="EmptyTemplate">
-				<utu:AutoLayout Height="492"
-								Width="500"
+				<utu:AutoLayout Width="500"
+								Height="492"
 								Padding="16,0,16,16"
 								Background="{ThemeResource BackgroundBrush}">
 					<utu:AutoLayout Padding="32,0"

@@ -41,13 +41,13 @@
 
 	<um:FromBoolToValueConverter x:Key="IsCreatingCookbookFavoriteToColorConverter"
 								 FalseValue="{StaticResource PrimaryBrush}"
-								 TrueValue="{StaticResource OnSurfaceMediumBrush}"
-								 NullValue="{StaticResource OnSurfaceMediumBrush}" />
+								 NullValue="{StaticResource OnSurfaceMediumBrush}"
+								 TrueValue="{StaticResource OnSurfaceMediumBrush}" />
 
 	<um:FromBoolToValueConverter x:Key="IsCreatingCookbookFavoriteBorderToColorConverter"
 								 FalseValue="{StaticResource OnSurfaceBrush}"
-								 TrueValue="{StaticResource OnSurfaceMediumBrush}"
-								 NullValue="{StaticResource OnSurfaceMediumBrush}" />
+								 NullValue="{StaticResource OnSurfaceMediumBrush}"
+								 TrueValue="{StaticResource OnSurfaceMediumBrush}" />
 
 	<um:FromBoolToValueConverter x:Key="UserDislikeColorConverter"
 								 FalseValue="{StaticResource PrimaryBrush}"
@@ -56,17 +56,17 @@
 
 	<um:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
 								 FalseValue="False"
-								 TrueValue="True"
-								 NullValue="False" />
+								 NullValue="False"
+								 TrueValue="True" />
 
 	<um:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
 								 FalseValue="True"
-								 TrueValue="False"
-								 NullValue="False" />
+								 NullValue="False"
+								 TrueValue="False" />
 
 	<converters:BoolToObjectConverter x:Key="BoolToNotificationColor"
-									  TrueValue="{StaticResource SurfaceBrush}"
-									  FalseValue="{StaticResource SurfaceTintBrush}" />
+									  FalseValue="{StaticResource SurfaceTintBrush}"
+									  TrueValue="{StaticResource SurfaceBrush}" />
 
 	<converters:BoolToObjectConverter x:Key="PrimarySurfaceColorConverter"
 									  FalseValue="{StaticResource PrimaryBrush}"

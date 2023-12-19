@@ -16,11 +16,11 @@
 	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
 		<utu:AutoLayout.Resources>
 			<DataTemplate x:Key="FilterChipTemplate">
-				<utu:Chip Background="{ThemeResource SurfaceBrush}"
-						  Content="{Binding}"
-						  HorizontalAlignment="Stretch"
-						  Foreground="{ThemeResource OnSurfaceVariantBrush}"
+				<utu:Chip HorizontalAlignment="Stretch"
+						  Background="{ThemeResource SurfaceBrush}"
 						  BorderThickness="1"
+						  Content="{Binding}"
+						  Foreground="{ThemeResource OnSurfaceVariantBrush}"
 						  Style="{StaticResource MaterialChipStyle}" />
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
@@ -51,17 +51,17 @@
 								   Text="Recipe Categories"
 								   TextWrapping="Wrap" />
 						<!-- It's important to put the ItemsSource bove the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
-						<muxc:ItemsRepeater ItemsSource="{Binding OrganizeCategories}"
-											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}"
+						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-											ItemTemplate="{StaticResource FilterChipTemplate}">
+											ItemTemplate="{StaticResource FilterChipTemplate}"
+											ItemsSource="{Binding OrganizeCategories}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
-														MinColumnSpacing="8"
-														MinRowSpacing="8"
-														MinItemWidth="120"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
+														MinColumnSpacing="8"
+														MinItemWidth="120"
+														MinRowSpacing="8"
 														Orientation="Horizontal" />
 							</muxc:ItemsRepeater.Layout>
 						</muxc:ItemsRepeater>
@@ -70,25 +70,25 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Cooking Time"
 								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater ItemsSource="{Binding Times}"
-											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
-											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
+						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
+											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
+											ItemsSource="{Binding Times}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
-														MinColumnSpacing="8"
-														MinRowSpacing="8"
-														MinItemWidth="90"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
+														MinColumnSpacing="8"
+														MinItemWidth="90"
+														MinRowSpacing="8"
 														Orientation="Horizontal" />
 							</muxc:ItemsRepeater.Layout>
 							<muxc:ItemsRepeater.ItemTemplate>
 								<DataTemplate>
-									<utu:Chip Background="{ThemeResource SurfaceBrush}"
+									<utu:Chip HorizontalAlignment="Stretch"
+											  Background="{ThemeResource SurfaceBrush}"
+											  BorderThickness="1"
 											  Content="{Binding Converter={StaticResource CookingTimeFormatter}}"
 											  Foreground="{ThemeResource OnSurfaceVariantBrush}"
-											  HorizontalAlignment="Stretch"
-											  BorderThickness="1"
 											  Style="{StaticResource MaterialChipStyle}" />
 								</DataTemplate>
 							</muxc:ItemsRepeater.ItemTemplate>
@@ -98,17 +98,17 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Skill Level"
 								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater ItemsSource="{Binding Difficulties}"
-											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}"
+						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-											ItemTemplate="{StaticResource FilterChipTemplate}">
+											ItemTemplate="{StaticResource FilterChipTemplate}"
+											ItemsSource="{Binding Difficulties}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
-														MinColumnSpacing="8"
-														MinRowSpacing="8"
-														MinItemWidth="140"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
+														MinColumnSpacing="8"
+														MinItemWidth="140"
+														MinRowSpacing="8"
 														Orientation="Horizontal" />
 							</muxc:ItemsRepeater.Layout>
 						</muxc:ItemsRepeater>
@@ -117,17 +117,17 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Serves"
 								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater ItemsSource="{Binding Serves}"
-											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}"
+						<muxc:ItemsRepeater utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-											ItemTemplate="{StaticResource FilterChipTemplate}">
+											ItemTemplate="{StaticResource FilterChipTemplate}"
+											ItemsSource="{Binding Serves}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout ItemsJustification="Start"
-														MinColumnSpacing="8"
-														MinRowSpacing="8"
-														MinItemWidth="50"
 														ItemsStretch="Fill"
 														MaximumRowsOrColumns="4"
+														MinColumnSpacing="8"
+														MinItemWidth="50"
+														MinRowSpacing="8"
 														Orientation="Horizontal" />
 							</muxc:ItemsRepeater.Layout>
 						</muxc:ItemsRepeater>
@@ -142,18 +142,18 @@
 						Orientation="Horizontal"
 						PrimaryAxisAlignment="Center"
 						Spacing="16">
-			<Button utu:AutoLayout.CounterAlignment="Start"
+			<Button Height="60"
+					utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Content="Reset"
-					Height="60"
 					Command="{Binding Reset}"
+					Content="Reset"
 					CornerRadius="4"
 					Style="{StaticResource TextButtonStyle}" />
-			<Button utu:AutoLayout.CounterAlignment="Start"
+			<Button Height="60"
+					utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Content="Apply filter"
-					Height="60"
 					Command="{Binding Search}"
+					Content="Apply filter"
 					CornerRadius="4" />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
