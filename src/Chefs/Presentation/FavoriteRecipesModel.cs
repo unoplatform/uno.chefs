@@ -1,3 +1,5 @@
+using Chefs.Presentation.Extensions;
+
 namespace Chefs.Presentation;
 
 public partial class FavoriteRecipesModel
@@ -41,8 +43,8 @@ public partial class FavoriteRecipesModel
 		});
 	}
 
-	public async Task ShowNotifications()
+	public async ValueTask ShowNotifications()
 	{
-		_ = _navigator.NavigateRouteAsync(this, "Notifications", qualifier: Qualifiers.Dialog);
+		await _navigator.NavigateToNavigations(this);
 	}
 }

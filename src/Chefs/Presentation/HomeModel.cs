@@ -61,6 +61,6 @@ public partial class HomeModel
 
 	public async ValueTask ShowNotifications()
 	{
-		_ = _navigator.NavigateRouteAsync(this, "Notifications", qualifier: Qualifiers.Dialog);
+		await _navigator.NavigateToNavigations(this);
 	}
 }
