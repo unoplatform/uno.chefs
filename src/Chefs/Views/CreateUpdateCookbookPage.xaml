@@ -17,6 +17,22 @@
 	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 	  mc:Ignorable="d">
 
+	<Page.Resources>
+		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="2"
+								MinColumnSpacing="6"
+								MinItemWidth="155"
+								MinRowSpacing="6" />
+
+		<muxc:UniformGridLayout x:Key="WideGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="6"
+								MinColumnSpacing="15"
+								MinItemWidth="240"
+								MinRowSpacing="15" />
+	</Page.Resources>
+
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout.Resources>
 			<DataTemplate x:Key="RecipeTemplate"
@@ -139,15 +155,9 @@
 											Spacing="8">
 								<muxc:ItemsRepeater utu:CommandExtensions.Command="{Binding Parent.SelectRecipe}"
 													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data}">
-									<muxc:ItemsRepeater.Layout>
-										<muxc:UniformGridLayout ItemsStretch="Fill"
-																MaximumRowsOrColumns="2"
-																MinColumnSpacing="8"
-																MinItemWidth="130"
-																MinRowSpacing="8" />
-									</muxc:ItemsRepeater.Layout>
-								</muxc:ItemsRepeater>
+													ItemsSource="{Binding Data}"
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>
