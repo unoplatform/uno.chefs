@@ -148,7 +148,7 @@
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Justify="SpaceBetween">
 				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
-				<FlipView x:Name="NarrowStepsFlipView"
+				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 						  Background="Transparent"
 						  utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -167,7 +167,7 @@
 						<Button Padding="24,20"
 								Content="Next"
 								CornerRadius="4"
-								utu:FlipViewExtensions.Next="{Binding ElementName=NarrowStepsFlipView}"
+								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
 								Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
 						<Button Command="{Binding Complete}"
 								Padding="12,20"
@@ -178,7 +178,7 @@
 					<Button Padding="12,20"
 							Content="Back"
 							CornerRadius="4"
-							utu:FlipViewExtensions.Previous="{Binding ElementName=NarrowStepsFlipView}"
+							utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
 							Style="{StaticResource TextButtonStyle}"
 							Visibility="{Binding CanGoBack, Converter={StaticResource TrueToVisible}}" />
 				</utu:AutoLayout>
