@@ -28,7 +28,7 @@ public partial class SettingsModel
 
 		Profile.ForEachAsync(async (profile, ct) =>
 		{
-			if (profile is not { })
+			if (profile is null)
 			{
 				return;
 			}
