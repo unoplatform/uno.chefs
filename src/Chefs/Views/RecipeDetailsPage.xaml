@@ -505,6 +505,8 @@
 								<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 									<Image Source="{Binding Recipe.ImageUrl}"
 										   Stretch="UniformToFill"
+										   VerticalAlignment="Center"
+										   HorizontalAlignment="Center"
 										   utu:AutoLayout.PrimaryAlignment="Stretch" />
 								</utu:AutoLayout>
 								<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
