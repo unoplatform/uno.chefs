@@ -15,8 +15,7 @@
 	<Grid>
 		<Grid x:Name="MainGrid"
 			  RowSpacing="0"
-			  Background="{utu:Responsive Narrow=Transparent,
-										  Wide={StaticResource SurfaceBrush}}"
+			  Background="{ThemeResource SurfaceBrush}"
 			  uen:Region.Attached="True"
 			  utu:AutoLayout.CounterAlignment="Start"
 			  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -38,8 +37,6 @@
 												Wide='40,0,0,40'}"
 				  uen:Region.Attached="True"
 				  uen:Region.Navigator="Visibility" />
-
-			<!-- WORKAROUND: Add Height="Auto" to avoid clipping caused by https://github.com/unoplatform/uno.toolkit.ui/issues/509 -->
 
 			<utu:TabBar x:Name="Tabs"
 						Grid.Row="1"

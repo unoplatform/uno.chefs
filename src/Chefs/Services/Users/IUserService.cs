@@ -20,6 +20,11 @@ public interface IUserService
 	IFeed<User> User { get; }
 
 	/// <summary>
+	/// Feed of the current settings.
+	/// </summary>
+	IFeed<AppConfig> Settings { get; }
+
+	/// <summary>
 	/// Update user information
 	/// </summary>
 	/// <param name="user">user with information to update</param>

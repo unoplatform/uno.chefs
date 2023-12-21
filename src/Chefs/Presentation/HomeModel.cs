@@ -24,14 +24,6 @@ public partial class HomeModel
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
-	public IListFeed<Recipe> SavedRecipes => ListFeed.Async(_recipeService.GetSaved);
-
-	public IListFeed<Recipe> LunchRecipes => Recipes.Where(x => x.Category.Name == "Lunch");
-
-	public IListFeed<Recipe> DinnerRecipes => Recipes.Where(x => x.Category.Name == "Dinner");
-
-	public IListFeed<Recipe> SnackRecipes => Recipes.Where(x => x.Category.Name == "Snack");
-
 	public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
 	public IFeed<User> UserProfile => _userService.User;
@@ -44,15 +36,6 @@ public partial class HomeModel
 
 	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Recent, null, null, null, null));
-
-	public async ValueTask ShowAllLunch(IImmutableList<Category> categories, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Lunch")));
-
-	public async ValueTask ShowAllDinner(IImmutableList<Category> categories, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Dinner")));
-
-	public async ValueTask ShowAllSnack(IImmutableList<Category> categories, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Snack")));
 
 	public async ValueTask CategorySearch(Category category, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, category));
@@ -78,6 +61,6 @@ public partial class HomeModel
 
 	public async ValueTask ShowNotifications()
 	{
-		_ = _navigator.NavigateRouteAsync(this, "Notifications", qualifier: Qualifiers.Dialog);
+		await _navigator.NavigateToNotifications(this);
 	}
 }

@@ -87,93 +87,48 @@
 										Background="{ThemeResource SurfaceBrush}"
 										CornerRadius="8"
 										Spacing="16">
-							<utu:AutoLayout PrimaryAxisAlignment="Center">
-								<utu:AutoLayout Padding="16"
+							<utu:AutoLayout PrimaryAxisAlignment="Stretch"
+											Justify="SpaceBetween"
+											Orientation="Horizontal">
+								<utu:AutoLayout Spacing="16"
+												Margin="16"
 												Orientation="Horizontal"
-												Spacing="16">
-									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-										<utu:AutoLayout Height="24"
-														utu:AutoLayout.CounterAlignment="Start"
-														Orientation="Horizontal">
-											<PathIcon utu:AutoLayout.CounterAlignment="Start"
-													  Data="{StaticResource Icon_Notifications_None}"
-													  Foreground="{ThemeResource PrimaryBrush}" />
-										</utu:AutoLayout>
-									</utu:AutoLayout>
-									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-													utu:AutoLayout.PrimaryAlignment="Stretch">
-										<utu:AutoLayout PrimaryAxisAlignment="Center">
-											<utu:AutoLayout PrimaryAxisAlignment="Center">
-												<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-														   Style="{StaticResource TitleMedium}"
-														   Text="Notifications"
-														   TextWrapping="Wrap" />
-											</utu:AutoLayout>
-										</utu:AutoLayout>
-									</utu:AutoLayout>
-									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-													Orientation="Horizontal">
-										<utu:AutoLayout Orientation="Horizontal"
-														PrimaryAxisAlignment="End">
-											<ToggleSwitch utu:AutoLayout.CounterAlignment="Start"
-														  IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-														  Style="{StaticResource MaterialToggleSwitchStyle}" />
-										</utu:AutoLayout>
-									</utu:AutoLayout>
+												utu:AutoLayout.CounterAlignment="Center">
+									<PathIcon Data="{StaticResource Icon_Notifications_None}"
+											  Foreground="{ThemeResource PrimaryBrush}" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleMedium}"
+											   Text="Notifications"
+											   TextWrapping="Wrap" />
 								</utu:AutoLayout>
+								<ToggleSwitch utu:AutoLayout.CounterAlignment="Center"
+											  IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+											  Style="{StaticResource ToggleSwitchStyle}" />
 							</utu:AutoLayout>
 							<utu:Divider Foreground="{ThemeResource OutlineVariantBrush}"
-										 Style="{StaticResource MaterialDividerStyle}" />
-							<utu:AutoLayout PrimaryAxisAlignment="Center">
-								<utu:AutoLayout Padding="16"
+										 Style="{StaticResource DividerStyle}" />
+							<utu:AutoLayout PrimaryAxisAlignment="Stretch"
+											Justify="SpaceBetween"
+											Orientation="Horizontal">
+								<utu:AutoLayout Spacing="16"
+												Margin="16"
 												Orientation="Horizontal"
-												Spacing="16">
-									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-										<utu:AutoLayout Height="24"
-														utu:AutoLayout.CounterAlignment="Start"
-														Orientation="Horizontal">
-											<PathIcon utu:AutoLayout.CounterAlignment="Start"
-													  Data="{StaticResource Icon_Night_Mode}"
-													  Foreground="{ThemeResource PrimaryBrush}" />
-										</utu:AutoLayout>
-									</utu:AutoLayout>
-									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-													utu:AutoLayout.PrimaryAlignment="Stretch">
-										<utu:AutoLayout PrimaryAxisAlignment="Center">
-											<utu:AutoLayout PrimaryAxisAlignment="Center">
-												<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-														   Style="{StaticResource TitleMedium}"
-														   Text="Night Mode"
-														   TextWrapping="Wrap" />
-											</utu:AutoLayout>
-										</utu:AutoLayout>
-									</utu:AutoLayout>
-									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-													Orientation="Horizontal">
-										<utu:AutoLayout Orientation="Horizontal"
-														PrimaryAxisAlignment="End">
-											<ToggleSwitch utu:AutoLayout.CounterAlignment="Start"
-														  IsOn="{Binding Settings.IsDark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-														  Style="{StaticResource MaterialToggleSwitchStyle}" />
-										</utu:AutoLayout>
-									</utu:AutoLayout>
+												utu:AutoLayout.CounterAlignment="Center">
+									<PathIcon Data="{StaticResource Icon_Night_Mode}"
+											  Foreground="{ThemeResource PrimaryBrush}" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleMedium}"
+											   Text="Night Mode"
+											   TextWrapping="Wrap" />
 								</utu:AutoLayout>
+								<ToggleSwitch utu:AutoLayout.CounterAlignment="Center"
+											  IsOn="{Binding Settings.IsDark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+											  Style="{StaticResource ToggleSwitchStyle}" />
 							</utu:AutoLayout>
 						</utu:AutoLayout>
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</ScrollViewer>
-			<utu:AutoLayout Padding="16,24"
-							utu:AutoLayout.CounterAlignment="Stretch"
-							Background="{ThemeResource SurfaceBrush}">
-				<Button Height="59"
-						Padding="24,20"
-						HorizontalAlignment="Stretch"
-						utu:AutoLayout.CounterAlignment="Stretch"
-						Command="{Binding Update}"
-						Content="Save Changes"
-						CornerRadius="4" />
-			</utu:AutoLayout>
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>

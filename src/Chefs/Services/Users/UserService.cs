@@ -17,6 +17,10 @@ public class UserService : IUserService
 
 	public IFeed<User> User => _user;
 
+	private IState<AppConfig> _settings => State.Async(this, GetSettings);
+
+	public IFeed<AppConfig> Settings => _settings;
+
 	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
 		=> _chefAppOptions.Value;
 
@@ -27,12 +31,17 @@ public class UserService : IUserService
 		=> new(await _userEndpoint.GetCurrent(ct));
 
 	public async Task SetSettings(AppConfig chefSettings, CancellationToken ct)
-		=> await _chefAppOptions.UpdateAsync(_ => new AppConfig
+	{
+		var settings = new AppConfig
 		{
 			IsDark = chefSettings.IsDark,
 			Notification = chefSettings.Notification,
 			AccentColor = chefSettings.AccentColor,
-		});
+		};
+
+		await _chefAppOptions.UpdateAsync(_ => settings);
+		await _settings.UpdateAsync(_ => settings, ct);
+	}
 
 	public async ValueTask<User> GetById(Guid userId, CancellationToken ct)
 		=> new(await _userEndpoint.GetById(userId, ct));

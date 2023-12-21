@@ -2,9 +2,6 @@ namespace Chefs.Views.Flyouts;
 
 public abstract partial class ResponsiveDrawerFlyout : Flyout
 {
-	private const int WideLayout = 700;
-	private const int WidestLayout = 1080;
-
 	protected abstract DrawerOpenDirection WideOpenDirection { get; }
 
 	private FlyoutPresenter? _presenter;
@@ -18,11 +15,13 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 	{
 		if (_presenter is { } presenter)
 		{
-			var width = ResponsiveHelper.GetForCurrentView().WindowSize.Width;
+			// TODO: Use Responsive markup extension in a custom style
+			var responsiveHelper = ResponsiveHelper.GetForCurrentView();
+			var width = responsiveHelper.WindowSize.Width;
 
-			if (width >= WideLayout)
+			if (width >= responsiveHelper.Layout.Wide)
 			{
-				var gridLength = width >= WidestLayout ? 0.33 : 0.66;
+				var gridLength = width > responsiveHelper.Layout.Widest ? 0.33 : 0.66;
 
 				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(gridLength, GridUnitType.Star));
 				DrawerFlyoutPresenter.SetOpenDirection(presenter, WideOpenDirection);
