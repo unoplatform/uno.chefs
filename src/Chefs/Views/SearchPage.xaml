@@ -14,7 +14,7 @@
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
-	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+	  Background="{ThemeResource BackgroundBrush}"
 	  NavigationCacheMode="Enabled"
 	  mc:Ignorable="d android ios">
 
