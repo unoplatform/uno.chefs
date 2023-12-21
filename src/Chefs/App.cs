@@ -1,5 +1,6 @@
 using Chefs.Views.Flyouts;
 using LiveChartsCore;
+using Uno.UI;
 
 namespace Chefs;
 
@@ -7,7 +8,12 @@ public class App : Application
 {
 	private static Window? _window;
 	public static IHost? Host { get; private set; }
-
+//	public App()
+//	{
+//#if !WINDOWS
+//		FeatureConfiguration.FrameworkTemplate.IsPoolingEnabled = false;
+//#endif
+//	}
 	protected async override void OnLaunched(LaunchActivatedEventArgs args)
 	{
 		var builder = this.CreateBuilder(args)
