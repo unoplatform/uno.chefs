@@ -127,127 +127,63 @@
 			</utu:NavigationBar.MainCommand>
 		</utu:NavigationBar>
 
-		<!-- It's possible to achieve the same result by using ResponsiveExtension on the AutoLayout under DataTemplate -->
-		<!-- And setting utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow={StaticResource AutoLayoutAuto}, Wide={StaticResource AutoLayoutStretch}}" -->
-		<!-- But since using ResponsiveExtension is not supported in Attached Properties on non-windows platforms we need to use ResponsiveView -->
-		<!-- When https://github.com/unoplatform/uno.toolkit.ui/issues/955 is fixed we can remove the workaround -->
-		<utu:ResponsiveView utu:AutoLayout.PrimaryAlignment="Stretch"
-							Visibility="{Binding Completed, Converter={StaticResource TrueToCollapsed}}">
-			<utu:ResponsiveView.NarrowTemplate>
-				<DataTemplate>
-					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-									Orientation="Vertical"
-									Background="{ThemeResource SurfaceBrush}">
-						<utu:AutoLayout Background="{ThemeResource BrandBlackBrush}"
-										PrimaryAxisAlignment="Start">
-							<MediaPlayerElement AreTransportControlsEnabled="True"
-												MaxWidth="800"
-												Source="ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4">
-								<MediaPlayerElement.TransportControls>
-									<MediaTransportControls IsCompact="True" />
-								</MediaPlayerElement.TransportControls>
-							</MediaPlayerElement>
-						</utu:AutoLayout>
+		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+						Orientation="{utu:Responsive Narrow=Vertical,
+													 Wide=Horizontal}"
+						Background="{ThemeResource SurfaceBrush}"
+						Visibility="{Binding Completed, Converter={StaticResource TrueToCollapsed}}">
+			<utu:AutoLayout Background="{ThemeResource BrandBlackBrush}"
+							utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow={StaticResource AutoLayoutAuto},
+																			 Wide={StaticResource AutoLayoutStretch}}"
+							PrimaryAxisAlignment="{utu:Responsive Narrow={StaticResource AutoLayoutStart},
+																  Wide={StaticResource AutoLayoutCenter}}">
+				<MediaPlayerElement AreTransportControlsEnabled="True"
+									Source="ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4">
+					<MediaPlayerElement.TransportControls>
+						<MediaTransportControls IsCompact="True" />
+					</MediaPlayerElement.TransportControls>
+				</MediaPlayerElement>
+			</utu:AutoLayout>
 
-						<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-										Justify="SpaceBetween">
-							<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
-							<FlipView x:Name="NarrowStepsFlipView"
-									  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
-									  Background="Transparent"
-									  utu:AutoLayout.PrimaryAlignment="Stretch"
-									  ItemTemplate="{StaticResource StepTemplate}"
-									  ItemsSource="{Binding Steps}"
-									  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-							<utu:AutoLayout Padding="32,0,32,32"
-											CornerRadius="8"
-											Spacing="16">
-								<muxc:PipsPager x:Name="pipsPager"
-												Margin="0,0,0,24"
-												utu:AutoLayout.CounterAlignment="Center"
-												Orientation="Horizontal"
-												Style="{StaticResource PipsPagerStyle}" />
-								<utu:AutoLayout>
-									<Button Padding="24,20"
-											Content="Next"
-											CornerRadius="4"
-											utu:FlipViewExtensions.Next="{Binding ElementName=NarrowStepsFlipView}"
-											Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
-									<Button Command="{Binding Complete}"
-											Padding="12,20"
-											Content="Done!"
-											CornerRadius="4"
-											Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}" />
-								</utu:AutoLayout>
-								<Button Padding="12,20"
-										Content="Back"
-										CornerRadius="4"
-										utu:FlipViewExtensions.Previous="{Binding ElementName=NarrowStepsFlipView}"
-										Style="{StaticResource TextButtonStyle}"
-										Visibility="{Binding CanGoBack, Converter={StaticResource TrueToVisible}}" />
-							</utu:AutoLayout>
-						</utu:AutoLayout>
-					</utu:AutoLayout>
-				</DataTemplate>
-			</utu:ResponsiveView.NarrowTemplate>
-			<utu:ResponsiveView.WideTemplate>
-				<DataTemplate>
-					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+							Justify="SpaceBetween">
+				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
+				<FlipView x:Name="NarrowStepsFlipView"
+						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
+						  Background="Transparent"
+						  utu:AutoLayout.PrimaryAlignment="Stretch"
+						  ItemTemplate="{StaticResource StepTemplate}"
+						  ItemsSource="{Binding Steps}"
+						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+				<utu:AutoLayout Padding="32,0,32,32"
+								CornerRadius="8"
+								Spacing="16">
+					<muxc:PipsPager x:Name="pipsPager"
+									Margin="0,0,0,24"
+									utu:AutoLayout.CounterAlignment="Center"
 									Orientation="Horizontal"
-									Background="{ThemeResource SurfaceBrush}">
-						<utu:AutoLayout Background="{ThemeResource BrandBlackBrush}"
-										utu:AutoLayout.PrimaryAlignment="Stretch"
-										PrimaryAxisAlignment="Center">
-							<MediaPlayerElement AreTransportControlsEnabled="True"
-												Source="ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4">
-								<MediaPlayerElement.TransportControls>
-									<MediaTransportControls IsCompact="True" />
-								</MediaPlayerElement.TransportControls>
-							</MediaPlayerElement>
-						</utu:AutoLayout>
-
-						<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-										Justify="SpaceBetween">
-							<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
-							<FlipView x:Name="WideStepsFlipView"
-									  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
-									  Background="Transparent"
-									  utu:AutoLayout.PrimaryAlignment="Stretch"
-									  ItemTemplate="{StaticResource StepTemplate}"
-									  ItemsSource="{Binding Steps}"
-									  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-							<utu:AutoLayout Padding="32,0,32,32"
-											CornerRadius="8"
-											Spacing="16">
-								<muxc:PipsPager x:Name="pipsPager"
-												Margin="0,0,0,24"
-												utu:AutoLayout.CounterAlignment="Center"
-												Orientation="Horizontal"
-												Style="{StaticResource PipsPagerStyle}" />
-								<utu:AutoLayout>
-									<Button Padding="24,20"
-											Content="Next"
-											CornerRadius="4"
-											utu:FlipViewExtensions.Next="{Binding ElementName=WideStepsFlipView}"
-											Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
-									<Button Command="{Binding Complete}"
-											Padding="12,20"
-											Content="Done!"
-											CornerRadius="4"
-											Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}" />
-								</utu:AutoLayout>
-								<Button Padding="12,20"
-										Content="Back"
-										CornerRadius="4"
-										utu:FlipViewExtensions.Previous="{Binding ElementName=WideStepsFlipView}"
-										Style="{StaticResource TextButtonStyle}"
-										Visibility="{Binding CanGoBack, Converter={StaticResource TrueToVisible}}" />
-							</utu:AutoLayout>
-						</utu:AutoLayout>
+									Style="{StaticResource PipsPagerStyle}" />
+					<utu:AutoLayout>
+						<Button Padding="24,20"
+								Content="Next"
+								CornerRadius="4"
+								utu:FlipViewExtensions.Next="{Binding ElementName=NarrowStepsFlipView}"
+								Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
+						<Button Command="{Binding Complete}"
+								Padding="12,20"
+								Content="Done!"
+								CornerRadius="4"
+								Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}" />
 					</utu:AutoLayout>
-				</DataTemplate>
-			</utu:ResponsiveView.WideTemplate>
-		</utu:ResponsiveView>
+					<Button Padding="12,20"
+							Content="Back"
+							CornerRadius="4"
+							utu:FlipViewExtensions.Previous="{Binding ElementName=NarrowStepsFlipView}"
+							Style="{StaticResource TextButtonStyle}"
+							Visibility="{Binding CanGoBack, Converter={StaticResource TrueToVisible}}" />
+				</utu:AutoLayout>
+			</utu:AutoLayout>
+		</utu:AutoLayout>
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"

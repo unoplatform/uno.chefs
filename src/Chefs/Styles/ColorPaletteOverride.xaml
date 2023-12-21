@@ -92,5 +92,6 @@
 	</ResourceDictionary.ThemeDictionaries>
 
 	<Color x:Key="BrandBlackColor">#242424</Color>
-	<SolidColorBrush x:Key="BrandBlackBrush" Color="{StaticResource BrandBlackColor}" />
+	<SolidColorBrush x:Key="BrandBlackBrush"
+					 Color="{StaticResource BrandBlackColor}" />
 </ResourceDictionary>
