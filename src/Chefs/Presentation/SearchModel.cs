@@ -65,6 +65,6 @@ public partial class SearchModel
 
 	public async ValueTask ShowNotifications()
 	{
-		await _navigator.NavigateToNavigations(this);
+		await _navigator.NavigateToNotifications(this);
 	}
 }

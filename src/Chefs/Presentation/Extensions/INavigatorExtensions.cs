@@ -27,7 +27,7 @@ public static class INavigatorExtensions
 		});
 	}
 
-	public static Task NavigateToNavigations(this INavigator navigator, object sender)
+	public static Task NavigateToNotifications(this INavigator navigator, object sender)
 	{
 		return navigator.NavigateViewAsync(sender, typeof(NotificationsFlyout), qualifier: Qualifiers.Dialog);
 	}

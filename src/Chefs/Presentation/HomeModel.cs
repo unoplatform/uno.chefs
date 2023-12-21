@@ -61,6 +61,6 @@ public partial class HomeModel
 
 	public async ValueTask ShowNotifications()
 	{
-		await _navigator.NavigateToNavigations(this);
+		await _navigator.NavigateToNotifications(this);
 	}
 }
