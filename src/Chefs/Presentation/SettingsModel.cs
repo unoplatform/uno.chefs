@@ -1,5 +1,4 @@
 using Uno.Extensions.Toolkit;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using AppTheme = Uno.Extensions.Toolkit.AppTheme;
 
 namespace Chefs.Presentation;
