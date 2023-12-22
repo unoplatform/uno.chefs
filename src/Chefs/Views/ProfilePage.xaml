@@ -172,18 +172,19 @@
 						   Style="{StaticResource BodyLarge}" />
 			</utu:AutoLayout>
 
-			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
-			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-						  HorizontalScrollMode="Disabled"
-						  VerticalScrollBarVisibility="Hidden">
-				<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
-								VerticalAlignment="Center"
-								Spacing="16">
+			<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
+							utu:AutoLayout.PrimaryAlignment="Stretch"
+							Spacing="16">
 
-					<uer:FeedView Source="{Binding Recipes}"
-								  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
-						<DataTemplate>
-							<UserControl>
+				<uer:FeedView Source="{Binding Recipes}"
+							  utu:AutoLayout.PrimaryAlignment="Stretch"
+							  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
+					<DataTemplate>
+						<UserControl>
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
+							<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+										  HorizontalScrollMode="Disabled"
+										  VerticalScrollBarVisibility="Hidden">
 								<utu:AutoLayout>
 									<muxc:ItemsRepeater ItemsSource="{Binding Data}"
 														uen:Navigation.Request="-"
@@ -240,11 +241,11 @@
 										</muxc:ItemsRepeater.ItemTemplate>
 									</muxc:ItemsRepeater>
 								</utu:AutoLayout>
-							</UserControl>
-						</DataTemplate>
-					</uer:FeedView>
-				</utu:AutoLayout>
-			</ScrollViewer>
+							</ScrollViewer>
+						</UserControl>
+					</DataTemplate>
+				</uer:FeedView>
+			</utu:AutoLayout>
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>
