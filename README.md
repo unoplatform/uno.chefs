@@ -18,7 +18,7 @@
 
 ## Contributing
 
-To make contributions to this repo, you must create a Pull Requests and get at least one approval from code owners. You must also use Conventional Commits and pass some code styling convention automated checks.
+To make contributions to this repo, you must create a pull request and get at least one approval from a code owner. You must also use Conventional Commits and pass some code style convention checks.
 
 ### Conventional Commits
 
