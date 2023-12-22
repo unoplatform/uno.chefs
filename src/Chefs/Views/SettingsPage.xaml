@@ -13,7 +13,7 @@
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
-	  utu:StatusBar.Foreground="Dark"
+	  utu:StatusBar.Foreground="AutoInverse"
 	  mc:Ignorable="d">
 
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
