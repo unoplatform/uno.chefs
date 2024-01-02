@@ -123,7 +123,12 @@ public class App : Application
 								new RouteMap("FilterContent", View: views.FindByViewModel<FilterModel>(), IsDefault:true)
 							}),
 						}),
-						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
+						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>(),
+						Nested: new[]
+						{
+							new RouteMap("MyRecipes"),
+							new RouteMap("Cookbooks")
+						}),
 						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
 						new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "CookbookDetails"),
