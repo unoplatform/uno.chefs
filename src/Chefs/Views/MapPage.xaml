@@ -1,4 +1,4 @@
-<Page xmlns:uen="using:Uno.Extensions.Navigation.UI"
+﻿<Page xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:utum="using:Uno.Toolkit.UI.Material"
@@ -23,7 +23,7 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton>
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/arrow_back.png"
+							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/back.png"
 										Foreground="{ThemeResource OnSurfaceInverseBrush}" />
 						</AppBarButton.Icon>
 					</AppBarButton>

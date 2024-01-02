@@ -50,7 +50,7 @@
 								Content="Home"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Home_Filled}" />
+						<BitmapIcon UriSource="{StaticResource Icon_Home_Filled}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
@@ -59,7 +59,7 @@
 								Content="Search"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Search}" />
+						<BitmapIcon UriSource="{StaticResource Icon_Search}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
@@ -68,7 +68,7 @@
 								Content="Favorites"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Favorite_Border}" />
+						<BitmapIcon UriSource="{StaticResource Icon_Favorite_Border}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 			</utu:TabBar>
@@ -88,7 +88,7 @@
 									Content="Home"
 									Style="{StaticResource VerticalTabBarItemStyle}">
 						<utu:TabBarItem.Icon>
-							<PathIcon Data="{StaticResource Icon_Home_Filled}" />
+							<BitmapIcon UriSource="{StaticResource Icon_Home_Filled}" />
 						</utu:TabBarItem.Icon>
 					</utu:TabBarItem>
 
@@ -97,7 +97,7 @@
 									Content="Search"
 									Style="{StaticResource VerticalTabBarItemStyle}">
 						<utu:TabBarItem.Icon>
-							<PathIcon Data="{StaticResource Icon_Search}" />
+							<BitmapIcon UriSource="{StaticResource Icon_Search}" />
 						</utu:TabBarItem.Icon>
 					</utu:TabBarItem>
 
@@ -106,7 +106,7 @@
 									Content="Favorites"
 									Style="{StaticResource VerticalTabBarItemStyle}">
 						<utu:TabBarItem.Icon>
-							<PathIcon Data="{StaticResource Icon_Favorite_Border}" />
+							<BitmapIcon UriSource="{StaticResource Icon_Favorite_Border}" />
 						</utu:TabBarItem.Icon>
 					</utu:TabBarItem>
 				</utu:TabBar>

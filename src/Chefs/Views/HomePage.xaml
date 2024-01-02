@@ -54,11 +54,11 @@
 																		Path=DataContext.SaveRecipe}"
 										  CommandParameter="{Binding}">
 								<ToggleButton.Content>
-									<PathIcon Data="{StaticResource Icon_Favorite_Border}"
+									<BitmapIcon UriSource="{StaticResource Icon_Favorite_Border}"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 								</ToggleButton.Content>
 								<um:ControlExtensions.AlternateContent>
-									<PathIcon Data="{StaticResource Icon_Favorite_Filled}"
+									<BitmapIcon UriSource="{StaticResource Icon_Favorite_Filled}"
 											  Foreground="{ThemeResource PrimaryBrush}" />
 								</um:ControlExtensions.AlternateContent>
 							</ToggleButton>

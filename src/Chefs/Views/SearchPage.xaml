@@ -159,8 +159,8 @@
 						 Style="{StaticResource OutlinedTextBoxStyle}"
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<um:ControlExtensions.Icon>
-						<PathIcon Data="{StaticResource Icon_Search}"
-								  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+						<BitmapIcon UriSource="{StaticResource Icon_Search}"
+									Foreground="{ThemeResource OnSurfaceLowBrush}" />
 					</um:ControlExtensions.Icon>
 				</TextBox>
 

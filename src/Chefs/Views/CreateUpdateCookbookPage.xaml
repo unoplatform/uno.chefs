@@ -86,13 +86,13 @@
 																Orientation="Horizontal">
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}">
-														<PathIcon Data="{StaticResource Icon_Favorite_Border}"
+														<BitmapIcon UriSource="{StaticResource Icon_Favorite_Border}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
 																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteBorderToColorConverter}}" />
 													</Border>
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
-														<PathIcon Data="{StaticResource Icon_Favorite}"
+														<BitmapIcon UriSource="{StaticResource Icon_Favorite_Filled}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
 																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteToColorConverter}}" />
 													</Border>
