@@ -116,9 +116,9 @@
 							   Foreground="{ThemeResource OnSurfaceInverseBrush}">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
-						<not_mobile:AppBarButton.Icon>
+						<AppBarButton.Icon>
 							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
-						</not_mobile:AppBarButton.Icon>
+						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 				<utu:NavigationBar.PrimaryCommands>
@@ -126,7 +126,7 @@
 						<AppBarButton.Icon>
 							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
 										ShowAsMonochrome="True"
-										UriSource="ms-appx:///Chefs/Assets/Icons/threedot.png" />
+										UriSource="{StaticResource Icon_Threedot}" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>

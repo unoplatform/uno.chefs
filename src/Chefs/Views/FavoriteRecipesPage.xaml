@@ -259,14 +259,14 @@
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"
-									UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+									UriSource="{StaticResource Icon_Profile}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 				<AppBarButton Command="{Binding ShowNotifications}">
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"
-									UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+									UriSource="{StaticResource Icon_Notification_Outline}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
