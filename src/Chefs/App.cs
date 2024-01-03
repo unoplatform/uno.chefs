@@ -116,7 +116,7 @@ public class App : Application
 							new RouteMap("FavoriteRecipes"),
 							new RouteMap("Notifications", View: views.FindByView<NotificationsFlyout>(), Nested: new RouteMap[]
 							{
-								new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true, Nested: new[] 
+								new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true, Nested: new[]
 								{
 									new RouteMap("AllTab"),
 									new RouteMap("Unread"),
