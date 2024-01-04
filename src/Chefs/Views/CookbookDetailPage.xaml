@@ -139,7 +139,7 @@
 				HorizontalAlignment="Right"
 				VerticalAlignment="Bottom"
 				uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay}"
-				uen:Navigation.Request="CreateUpdateCookbook"
+				uen:Navigation.Request="!CreateUpdateCookbook"
 				utu:AutoLayout.IsIndependentLayout="True"
 				CornerRadius="60"
 				Style="{StaticResource FabStyle}">
