@@ -70,7 +70,7 @@
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<um:ControlExtensions.Icon>
-						<PathIcon Data="{StaticResource Icon_Add}"
+						<BitmapIcon UriSource="{StaticResource Icon_Add}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</um:ControlExtensions.Icon>
 				</Button>
@@ -135,8 +135,8 @@
 													Style="{StaticResource TextButtonStyle}"
 													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 												<Button.Content>
-													<PathIcon x:Name="ButtonIcon"
-															  Data="{StaticResource Icon_Add}"
+													<BitmapIcon x:Name="ButtonIcon"
+															  UriSource="{StaticResource Icon_Add}"
 															  Foreground="{ThemeResource OnSurfaceBrush}" />
 												</Button.Content>
 											</Button>
@@ -360,7 +360,7 @@
 										CornerRadius="56"
 										Style="{StaticResource FabStyle}">
 									<um:ControlExtensions.Icon>
-										<PathIcon Data="{StaticResource Icon_Add}"
+										<BitmapIcon UriSource="{StaticResource Icon_Add}"
 												  Foreground="{ThemeResource OnPrimaryBrush}" />
 									</um:ControlExtensions.Icon>
 								</Button>

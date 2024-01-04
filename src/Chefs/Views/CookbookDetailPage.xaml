@@ -144,7 +144,7 @@
 				CornerRadius="60"
 				Style="{StaticResource FabStyle}">
 			<um:ControlExtensions.Icon>
-				<PathIcon Data="{StaticResource Icon_Add}"
+				<BitmapIcon UriSource="{StaticResource Icon_Add}"
 						  Foreground="{ThemeResource SurfaceBrush}" />
 			</um:ControlExtensions.Icon>
 		</Button>

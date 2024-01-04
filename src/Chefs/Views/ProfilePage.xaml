@@ -55,7 +55,7 @@
 							CornerRadius="4"
 							Style="{StaticResource TextButtonStyle}">
 						<um:ControlExtensions.Icon>
-							<PathIcon Data="{StaticResource Icon_Add}"
+							<BitmapIcon UriSource="{StaticResource Icon_Add}"
 									  Foreground="{ThemeResource PrimaryBrush}" />
 						</um:ControlExtensions.Icon>
 					</Button>
