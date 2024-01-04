@@ -202,21 +202,18 @@
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 								<utu:AutoLayout.Resources>
 									<muxc:UniformGridLayout x:Key="NarrowGridLayout"
-															ItemsJustification="SpaceBetween"
 															ItemsStretch="Fill"
 															MaximumRowsOrColumns="2"
 															MinColumnSpacing="8"
-															MinItemWidth="110"
+															MinItemWidth="155"
 															MinRowSpacing="8" />
 
 									<muxc:UniformGridLayout x:Key="WideGridLayout"
-															ItemsJustification="SpaceBetween"
 															ItemsStretch="Fill"
-															MaximumRowsOrColumns="4"
+															MaximumRowsOrColumns="8"
 															MinColumnSpacing="16"
-															MinItemWidth="110"
+															MinItemWidth="240"
 															MinRowSpacing="16" />
-
 								</utu:AutoLayout.Resources>
 
 								<muxc:ItemsRepeater x:Name="SearchRepeater"
