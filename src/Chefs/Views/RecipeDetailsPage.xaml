@@ -240,7 +240,6 @@
 
 										<utu:AutoLayout Padding="16,24"
 														uen:Region.Name="StepsTab"
-														PrimaryAxisAlignment="Center"
 														Spacing="8"
 														Visibility="Collapsed">
 											<TextBlock Style="{StaticResource BodyLarge}"
@@ -281,7 +280,6 @@
 
 										<utu:AutoLayout Padding="16,24"
 														uen:Region.Name="ReviewsTab"
-														PrimaryAxisAlignment="Center"
 														Spacing="8"
 														Visibility="Collapsed">
 											<TextBlock Style="{StaticResource BodyLarge}"
