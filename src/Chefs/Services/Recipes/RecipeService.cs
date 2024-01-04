@@ -40,6 +40,11 @@ public class RecipeService : IRecipeService
 		   .Select(r => new Recipe(r))
 		   .ToImmutableList();
 
+	public async ValueTask<IImmutableList<Recipe>> GetPopular(CancellationToken ct)
+		=> (await _recipeEndpoint.GetPopular(ct))
+		   .Select(r => new Recipe(r))
+		   .ToImmutableList();
+
 	public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)
 	{
 		if (term.IsNullOrEmpty())

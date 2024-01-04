@@ -30,11 +30,6 @@ public record SearchFilter(
 			return true;
 		}
 
-		if (OrganizeCategory != null)
-		{
-			return true;
-		}
-
 		return false;
 	}
 }

@@ -1,5 +1,6 @@
 using Chefs.Presentation.Extensions;
 using Uno.Extensions.Navigation;
+using Uno.Extensions.Reactive;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Chefs.Presentation;
@@ -25,7 +26,7 @@ public partial class SearchModel
 	public IListFeed<Recipe> Items => Feed
 		.Combine(Results, Filter)
 		.Select(ApplyFilter)
-		.AsListFeed();
+		.AsListFeed<Recipe>();
 
 	public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSearches);
 
@@ -46,7 +47,23 @@ public partial class SearchModel
 		.SelectAsync(_recipeService.Search);
 
 	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs)
-		=> inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
+	{
+		if (inputs.filter.OrganizeCategory is not null)
+		{
+			var selectedOrganizedCategory = inputs.filter.OrganizeCategory;
+
+			inputs.recipes = selectedOrganizedCategory switch
+			{
+				OrganizeCategory.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
+				OrganizeCategory.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
+				OrganizeCategory.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
+				_ => inputs.recipes
+			};
+		}
+
+		return inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
+	}
+
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
 
