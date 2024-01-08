@@ -41,11 +41,10 @@
 				<FlipView.Items>
 					<!-- First onboarding page -->
 					<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
-						<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-							<Image Source="{utu:Responsive Narrow=ms-appx:///Chefs/Assets/Welcome/first_splash_screen.png,
+						<Image Source="{utu:Responsive Narrow=ms-appx:///Chefs/Assets/Welcome/first_splash_screen.png,
 														   Wide=ms-appx:///Chefs/Assets/Welcome/first_splash_wide_screen.png}"
-								   Stretch="UniformToFill" />
-						</Grid>
+							   Stretch="UniformToFill"
+							   utu:AutoLayout.PrimaryAlignment="Stretch" />
 						<utu:AutoLayout Padding="32,0"
 										utu:AutoLayout.PrimaryAlignment="Stretch"
 										PrimaryAxisAlignment="Center"
