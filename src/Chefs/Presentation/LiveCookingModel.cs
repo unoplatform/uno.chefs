@@ -16,8 +16,6 @@ public partial class LiveCookingModel
 
 	public IImmutableList<Step> Steps { get; }
 
-	public IFeed<Step> SelectedStep => SelectedIndex.Select(x => Steps[x]);
-
 	public IState<int> SelectedIndex => State.Value(this, () => 0);
 
 	public IFeed<bool> CanFinish => SelectedIndex.Select(x => x == Steps.Count - 1);

@@ -116,6 +116,8 @@ public class App : Application
 								new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true)
 							}),
 						}),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
+						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), Nested: new RouteMap[]
 						{
 							new RouteMap("Filter", View: views.FindByView<FiltersFlyout>(), Nested: new RouteMap[]
@@ -134,17 +136,12 @@ public class App : Application
 						new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "CookbookDetails"),
 						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 					}),
-					new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main"),
 					new RouteMap("Reviews", View: views.FindByView<ReviewsFlyout>(), Nested: new RouteMap[]
-						{
-							new RouteMap("ReviewsContent", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails", IsDefault:true)
-						}),
-
-					new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
+					{
+						new RouteMap("ReviewsContent", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails", IsDefault:true)
+					}),
 					new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 					new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
-
-
 					new RouteMap("Profile", View: views.FindByView<ProfileFlyout>(), Nested: new RouteMap[]
 					{
 						new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
