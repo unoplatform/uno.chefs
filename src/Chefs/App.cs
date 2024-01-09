@@ -8,6 +8,14 @@ public class App : Application
 	private static Window? _window;
 	public static IHost? Host { get; private set; }
 
+	public App()
+	{
+#if ANDROID
+		// Pooling causes problems for Android from this issue: https://github.com/unoplatform/uno/issues/12189
+		Uno.UI.FeatureConfiguration.FrameworkTemplate.IsPoolingEnabled = false;	
+#endif
+	}
+
 	protected async override void OnLaunched(LaunchActivatedEventArgs args)
 	{
 		var builder = this.CreateBuilder(args)
