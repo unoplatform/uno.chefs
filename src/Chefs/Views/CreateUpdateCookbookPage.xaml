@@ -117,7 +117,7 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+							<BitmapIcon UriSource="{StaticResource Icon_Arrow_Back}" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>

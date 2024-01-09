@@ -67,7 +67,7 @@
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Person_Outline}" />
+								<BitmapIcon UriSource="{StaticResource Icon_Person_Outline}" />
 							</um:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="LoginPassword"
@@ -79,7 +79,7 @@
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}" />
+								<BitmapIcon UriSource="{StaticResource Icon_Outline_Password_ChefApp}" />
 							</um:ControlExtensions.Icon>
 						</PasswordBox>
 						<utu:AutoLayout Spacing="24"
@@ -111,7 +111,7 @@
 								CornerRadius="4"
 								Style="{StaticResource FilledTonalButtonStyle}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Solid_Apple_ChefsApp}"
+								<BitmapIcon UriSource="{StaticResource Icon_Solid_Apple_ChefsApp}"
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
 							</um:ControlExtensions.Icon>
 						</Button>
@@ -120,7 +120,7 @@
 								CornerRadius="4"
 								Style="{StaticResource FilledTonalButtonStyle}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Solid_Google_ChefsApp}"
+								<BitmapIcon UriSource="{StaticResource Icon_Solid_Google_ChefsApp}"
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
 							</um:ControlExtensions.Icon>
 						</Button>
@@ -166,7 +166,7 @@
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Person_Outline}"
+								<BitmapIcon UriSource="{StaticResource Icon_Person_Outline}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
 							</um:ControlExtensions.Icon>
 						</TextBox>
@@ -183,7 +183,7 @@
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
 								 IsSpellCheckEnabled="False">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Mail_Outline}"
+								<BitmapIcon UriSource="{StaticResource Icon_Mail_Outline}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
 							</um:ControlExtensions.Icon>
 						</TextBox>
@@ -196,7 +196,7 @@
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Outline_Password_ChefApp}"
+								<BitmapIcon UriSource="{StaticResource Icon_Outline_Password_ChefApp}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
 							</um:ControlExtensions.Icon>
 						</PasswordBox>

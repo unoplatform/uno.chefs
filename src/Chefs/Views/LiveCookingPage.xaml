@@ -78,7 +78,7 @@
 										<utu:AutoLayout Spacing="4"
 														PrimaryAxisAlignment="Center"
 														Orientation="Horizontal">
-											<PathIcon Data="{StaticResource Icon_Check_Circle}"
+											<BitmapIcon UriSource="{StaticResource Icon_Check_Circle}"
 													  VerticalAlignment="Center"
 													  Foreground="{ThemeResource OnSurfaceLowBrush}" />
 											<TextBlock Text="{x:Bind}"
@@ -113,7 +113,7 @@
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<not_mobile:AppBarButton.Icon>
-						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+						<BitmapIcon UriSource="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>

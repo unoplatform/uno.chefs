@@ -82,7 +82,7 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<not_mobile:AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+							<BitmapIcon UriSource="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
@@ -118,7 +118,7 @@
 										Content="Filters"
 										Style="{StaticResource TextButtonStyle}">
 									<um:ControlExtensions.Icon>
-										<PathIcon Data="{StaticResource Icon_Tune}" />
+										<BitmapIcon UriSource="{StaticResource Icon_Tune}" />
 									</um:ControlExtensions.Icon>
 								</Button>
 							</utu:AutoLayout>

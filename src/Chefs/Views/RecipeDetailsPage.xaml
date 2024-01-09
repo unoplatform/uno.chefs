@@ -53,7 +53,7 @@
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<not_mobile:AppBarButton.Icon>
-						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+						<BitmapIcon UriSource="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
@@ -115,7 +115,7 @@
 										<StackPanel Spacing="4"
 													utu:AutoLayout.CounterAlignment="Start"
 													utu:AutoLayout.PrimaryAlignment="Stretch">
-											<PathIcon Data="{StaticResource Icon_Timer}"
+											<BitmapIcon UriSource="{StaticResource Icon_Timer}"
 													  HorizontalAlignment="Center"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
 											<TextBlock TextAlignment="Center"
@@ -480,7 +480,7 @@
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<PathIcon Data="{StaticResource Icon_Timer}"
+									<BitmapIcon UriSource="{StaticResource Icon_Timer}"
 											  utu:AutoLayout.CounterAlignment="Center"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 									<TextBlock TextAlignment="Center"
@@ -492,7 +492,7 @@
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<PathIcon Data="{StaticResource Icon_Star_Rate}"
+									<BitmapIcon UriSource="{StaticResource Icon_Star_Rate}"
 											  utu:AutoLayout.CounterAlignment="Center"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 									<TextBlock TextAlignment="Center"
@@ -504,7 +504,7 @@
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<PathIcon Data="{StaticResource Icon_Local_Fire_Department}"
+									<BitmapIcon UriSource="{StaticResource Icon_Local_Fire_Department}"
 											  utu:AutoLayout.CounterAlignment="Center"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 									<TextBlock TextAlignment="Center"
@@ -714,7 +714,7 @@
 																				<ToggleButton.Content>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Up_Off_Alt}"
+																						<BitmapIcon UriSource="{StaticResource Icon_Thumb_Up_Off_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Likes.Count}"
@@ -726,7 +726,7 @@
 																				<um:ControlExtensions.AlternateContent>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Up_Alt}"
+																						<BitmapIcon UriSource="{StaticResource Icon_Thumb_Up_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Likes.Count}"
@@ -749,7 +749,7 @@
 																				<ToggleButton.Content>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Down_Off_Alt}"
+																						<BitmapIcon UriSource="{StaticResource Icon_Thumb_Down_Off_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Dislikes.Count}"
@@ -761,7 +761,7 @@
 																				<um:ControlExtensions.AlternateContent>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Down_Alt}"
+																						<BitmapIcon UriSource="{StaticResource Icon_Thumb_Down_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Dislikes.Count}"

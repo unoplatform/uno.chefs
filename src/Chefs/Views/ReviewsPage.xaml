@@ -75,7 +75,7 @@
 					<Button uen:Navigation.Request="-"
 							utu:AutoLayout.CounterAlignment="End"
 							Style="{StaticResource IconButtonStyle}">
-						<PathIcon Data="{StaticResource Icon_Close}"
+						<BitmapIcon UriSource="{StaticResource Icon_Close}"
 								  Foreground="{ThemeResource SurfaceInverseBrush}" />
 					</Button>
 				</utu:AutoLayout>

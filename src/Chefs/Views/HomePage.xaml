@@ -76,7 +76,7 @@
 				<utu:NavigationBar.Content>
 					<utu:AutoLayout Orientation="Horizontal"
 									Padding="12,0,0,0">
-						<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
+						<BitmapIcon UriSource="{StaticResource Icon_ChefsAppSignature}"
 								  utu:AutoLayout.CounterAlignment="Center"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}" />
 					</utu:AutoLayout>
