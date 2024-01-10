@@ -32,23 +32,19 @@
 						</Border>
 						<utu:AutoLayout Spacing="16"
 										Padding="16"
+										Justify="SpaceBetween"
 										Orientation="Horizontal">
-							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-											utu:AutoLayout.PrimaryAlignment="Stretch">
-								<utu:AutoLayout Spacing="4"
-												PrimaryAxisAlignment="Center">
-									<TextBlock TextWrapping="Wrap"
-											   Text="{Binding Name}"
-											   Foreground="{ThemeResource OnSurfaceBrush}"
-											   Style="{StaticResource TitleSmall}" />
-									<TextBlock TextWrapping="Wrap"
-											   Text="{Binding TimeCal}"
-											   Foreground="{ThemeResource OnSurfaceLowBrush}"
-											   Style="{StaticResource CaptionMedium}" />
-								</utu:AutoLayout>
+							<utu:AutoLayout Spacing="4">
+								<TextBlock TextWrapping="Wrap"
+										   Text="{Binding Name}"
+										   Foreground="{ThemeResource OnSurfaceBrush}"
+										   Style="{StaticResource TitleSmall}" />
+								<TextBlock TextWrapping="Wrap"
+										   Text="{Binding TimeCal}"
+										   Foreground="{ThemeResource OnSurfaceLowBrush}"
+										   Style="{StaticResource CaptionMedium}" />
 							</utu:AutoLayout>
-							<ToggleButton utu:AutoLayout.CounterAlignment="Center"
-										  Style="{StaticResource IconToggleButtonStyle}"
+							<ToggleButton Style="{StaticResource IconToggleButtonStyle}"
 										  IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 										  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																		Path=DataContext.SaveRecipe}"
