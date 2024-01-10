@@ -8,6 +8,7 @@ public partial class SettingsModel
 {
 	private readonly IUserService _userService;
 	private readonly IThemeService _themeService;
+	private readonly User _user;
 
 	public SettingsModel(
 		IThemeService themeService,
@@ -16,22 +17,15 @@ public partial class SettingsModel
 	{
 		_userService = userService;
 		_themeService = themeService;
-
-		Profile = State.Value(this, () => user);
-		Settings = State.Async(this, async ct =>
-		{
-			var settings = await _userService.Settings;
-			return new AppConfig
-			{
-				IsDark = _themeService.IsDark,
-				Notification = settings?.Notification,
-			};
-		});
+		_user = user;
 
 		Settings.ForEachAsync(async (settings, ct) =>
 		{
-			await _themeService.SetThemeAsync((settings?.IsDark ?? false) ? AppTheme.Dark : AppTheme.Light);
-			await _userService.Settings.UpdateAsync(_ => settings, ct);
+			if (settings is { })
+			{
+				await _themeService.SetThemeAsync((settings.IsDark ?? false) ? AppTheme.Dark : AppTheme.Light);
+				await _userService.SetSettings(settings, ct);
+			}
 		});
 
 		Profile.ForEachAsync(async (profile, ct) =>
@@ -45,7 +39,7 @@ public partial class SettingsModel
 		});
 	}
 
-	public IState<User> Profile { get; }
+	public IState<User> Profile => State.Value(this, () => _user);
 
-	public IState<AppConfig> Settings { get; }
+	public IState<AppConfig> Settings => State.Async(this, async ct => await _userService.GetSettings(ct));
 }
