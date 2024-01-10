@@ -15,7 +15,7 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 	{
 		if (_presenter is { } presenter)
 		{
-			// TODO: Use Responsive markup extension in a custom style
+			// Using ResponsiveHelper here will not include any local overrides for the default layout values
 			var responsiveHelper = ResponsiveHelper.GetForCurrentView();
 			var width = responsiveHelper.WindowSize.Width;
 

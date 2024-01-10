@@ -1,4 +1,5 @@
 using Uno.Extensions.Toolkit;
+using Windows.Management.Deployment;
 using AppTheme = Uno.Extensions.Toolkit.AppTheme;
 
 namespace Chefs.Presentation;
@@ -7,22 +8,24 @@ public partial class SettingsModel
 {
 	private readonly IUserService _userService;
 	private readonly IThemeService _themeService;
+	private readonly User _user;
 
 	public SettingsModel(
 		IThemeService themeService,
-		INavigator navigator,
 		IUserService userService,
 		User user)
 	{
 		_userService = userService;
 		_themeService = themeService;
-
-		Profile = State.Value(this, () => user);
+		_user = user;
 
 		Settings.ForEachAsync(async (settings, ct) =>
 		{
-			await _themeService.SetThemeAsync((settings?.IsDark ?? false) ? AppTheme.Dark : AppTheme.Light);
-			await _userService.SetSettings((await Settings)!, ct);
+			if (settings is { })
+			{
+				await _themeService.SetThemeAsync((settings.IsDark ?? false) ? AppTheme.Dark : AppTheme.Light);
+				await _userService.SetSettings(settings, ct);
+			}
 		});
 
 		Profile.ForEachAsync(async (profile, ct) =>
@@ -36,7 +39,7 @@ public partial class SettingsModel
 		});
 	}
 
-	public IState<User> Profile { get; }
+	public IState<User> Profile => State.Value(this, () => _user);
 
-	public IState<AppConfig> Settings => State.FromFeed(this, _userService.Settings);
+	public IState<AppConfig> Settings => State.Async(this, async ct => await _userService.GetSettings(ct));
 }

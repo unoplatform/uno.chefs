@@ -22,7 +22,7 @@ public interface IUserService
 	/// <summary>
 	/// Feed of the current settings.
 	/// </summary>
-	IFeed<AppConfig> Settings { get; }
+	IState<AppConfig> Settings { get; }
 
 	/// <summary>
 	/// Update user information

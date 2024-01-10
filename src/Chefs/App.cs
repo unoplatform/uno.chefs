@@ -71,7 +71,20 @@ public class App : Application
 		var helper = ResponsiveHelper.GetForCurrentView();
 		helper.HookupEvent(_window);
 
+
+
 		Host = await builder.NavigateAsync<ShellControl>();
+
+		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
+		var themeService = _window.GetThemeService();
+		var appTheme = config.Value?.IsDark switch
+		{
+			true => AppTheme.Dark,
+			false => AppTheme.Light,
+			_ => AppTheme.System
+		};
+
+		await themeService.SetThemeAsync(appTheme);
 	}
 
 	private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
