@@ -111,9 +111,6 @@ public class App : Application
 					{
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true, Nested: new RouteMap[]
 						{
-							new RouteMap("Home"),
-							new RouteMap("Search"),
-							new RouteMap("FavoriteRecipes"),
 							new RouteMap("Notifications", View: views.FindByView<NotificationsFlyout>(), Nested: new RouteMap[]
 							{
 								new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true, Nested: new[]
