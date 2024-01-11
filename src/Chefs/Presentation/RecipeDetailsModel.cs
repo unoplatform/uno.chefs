@@ -188,8 +188,8 @@ public partial class RecipeDetailsModel
 		{
 			await EnsureResourceColors();
 #endif
-		await BuildDoughnutChart();
-		await BuildColumnChart();
+			await BuildDoughnutChart();
+			await BuildColumnChart();
 #if WINDOWS
 		}, CancellationToken.None);
 #endif
