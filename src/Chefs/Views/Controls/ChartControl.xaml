@@ -7,6 +7,10 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d">
+	
+	<!-- UserControl used for LiveCharts2 components to avoid having to data-bind the chart properties to the Model -->
+	<!-- Currently a bug in LiveCharts2 that causes a crash when setting DataContext to null: https://github.com/beto-rodriguez/LiveCharts2/issues/1422 -->
+	
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.ThemeDictionaries>
