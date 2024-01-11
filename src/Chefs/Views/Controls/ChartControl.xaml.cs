@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using LiveChartsCore;
+using LiveChartsCore.ConditionalDraw;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
@@ -74,7 +75,11 @@ public sealed partial class ChartControl : UserControl
 			Padding = 1,
 
 			IsVisibleAtLegend = true
-		};
+		}.OnPointMeasured(point =>
+		{
+			if (point.Visual is null) return;
+			point.Visual.Fill = point.Model!.ColumnColor;
+		});
 		//End
 
 		//Build column background
@@ -134,7 +139,7 @@ public sealed partial class ChartControl : UserControl
 			nameof(Nutrition.Carbs) => new SolidColorPaint(GetSKColorFromResource("NutritionCarbsValColor")),
 			nameof(Nutrition.Protein) => new SolidColorPaint(GetSKColorFromResource("NutritionProteinValColor")),
 			nameof(Nutrition.Fat) => new SolidColorPaint(GetSKColorFromResource("NutritionFatValColor")),
-			_ => new SolidColorPaint(SKColors.Red),
+			_ => new SolidColorPaint(SKColors.Yellow),
 		};
 	}
 
