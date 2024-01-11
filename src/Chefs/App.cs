@@ -66,12 +66,8 @@ public class App : Application
 				return new(point, nutritionChartItem.Value);
 			})
 		);
+
 		_window = builder.Window;
-
-		var helper = ResponsiveHelper.GetForCurrentView();
-		helper.HookupEvent(_window);
-
-
 
 		Host = await builder.NavigateAsync<ShellControl>();
 

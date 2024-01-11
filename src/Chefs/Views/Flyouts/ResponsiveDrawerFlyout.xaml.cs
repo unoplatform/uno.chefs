@@ -16,7 +16,7 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 		if (_presenter is { } presenter)
 		{
 			// Using ResponsiveHelper here will not include any local overrides for the default layout values
-			var responsiveHelper = ResponsiveHelper.GetForCurrentView();
+			var responsiveHelper = ResponsiveView.GetForCurrentView();
 			var width = responsiveHelper.WindowSize.Width;
 
 			if (width >= responsiveHelper.Layout.Wide)
