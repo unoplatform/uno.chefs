@@ -114,7 +114,7 @@
 									<Run Text="{Binding Data.Recipes.Count}" />
 									<Run Text="results" />
 								</TextBlock>
-								
+
 							</utu:AutoLayout>
 							<utu:AutoLayout Padding="0,16">
 								<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
