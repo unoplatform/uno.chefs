@@ -38,7 +38,7 @@
 			<RowDefinition Height="120" />
 		</Grid.RowDefinitions>
 		<Grid>
-			<lvc:PieChart x:Name="MyPie" />
+			<lvc:PieChart x:Name="pieChart" />
 
 			<StackPanel HorizontalAlignment="Center"
 						VerticalAlignment="Center">
@@ -52,7 +52,7 @@
 		</Grid>
 
 		<Grid Grid.Row="1">
-			<lvc:CartesianChart x:Name="MyCartesian"
+			<lvc:CartesianChart x:Name="cartesianChart"
 								TooltipPosition="Hidden" />
 		</Grid>
 	</Grid>

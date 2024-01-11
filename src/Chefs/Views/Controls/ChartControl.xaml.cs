@@ -95,9 +95,9 @@ public sealed partial class ChartControl : UserControl
 		};
 		//End
 
-		MyCartesian.Series = new[] { rowSeriesLimit, rowSeries };
-		MyCartesian.XAxes = new[] { new Axis { IsVisible = false, MaxLimit = 1000 } };
-		MyCartesian.YAxes = new[] { new Axis { IsVisible = false } };
+		cartesianChart.Series = new[] { rowSeriesLimit, rowSeries };
+		cartesianChart.XAxes = new[] { new Axis { IsVisible = false, MaxLimit = 1000 } };
+		cartesianChart.YAxes = new[] { new Axis { IsVisible = false } };
 	}
 
 	private void BuildDoughnutChart()
@@ -124,7 +124,7 @@ public sealed partial class ChartControl : UserControl
 			}
 		};
 
-		MyPie.Series = c;
+		pieChart.Series = c;
 	}
 
 	private SolidColorPaint GetNutritionColorPaint(string name)
