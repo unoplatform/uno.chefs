@@ -415,7 +415,7 @@
 														   Text="Intake per serving" />
 
 												<ctrl:ChartControl DataContext="{Binding Recipe}"
-																	Grid.Row="1" />
+																   Grid.Row="1" />
 											</Grid>
 										</Grid>
 									</Grid>
@@ -779,7 +779,7 @@
 													   Style="{StaticResource TitleLarge}" />
 
 											<ctrl:ChartControl DataContext="{Binding Recipe}"
-																Grid.Row="1" />
+															   Grid.Row="1" />
 										</Grid>
 									</Grid>
 								</Grid>
