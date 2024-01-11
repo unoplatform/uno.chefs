@@ -8,6 +8,8 @@ public interface IRecipeEndpoint
 
 	ValueTask<IImmutableList<RecipeData>> GetTrending(CancellationToken ct);
 
+	ValueTask<IImmutableList<RecipeData>> GetPopular(CancellationToken ct);
+
 	ValueTask<IImmutableList<RecipeData>> GetSaved(CancellationToken ct);
 
 	ValueTask Save(RecipeData recipe, CancellationToken ct);
