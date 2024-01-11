@@ -105,4 +105,8 @@
 			<ReferenceCopyLocalPaths Remove="@(_OtherPriFiles2)" />
 		</ItemGroup>
 	</Target>
+	
+	<ItemGroup>
+	  <AdditionalFiles Remove="Views\ChartControl.xaml" />
+	</ItemGroup>
 </Project>
