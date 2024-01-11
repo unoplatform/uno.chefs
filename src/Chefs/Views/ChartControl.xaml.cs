@@ -144,7 +144,7 @@ public sealed partial class ChartControl : UserControl
 		{
 			return new SKColor(color.R, color.G, color.B, color.A);
 		}
-		
+
 		return SKColor.Empty;
 	}
 }

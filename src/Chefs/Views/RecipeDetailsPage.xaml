@@ -413,7 +413,8 @@
 														   FontSize="22"
 														   Text="Intake per serving" />
 
-												<local:ChartControl DataContext="{Binding Recipe}" Grid.Row="1" />
+												<local:ChartControl DataContext="{Binding Recipe}"
+																	Grid.Row="1" />
 											</Grid>
 										</Grid>
 									</Grid>
@@ -776,7 +777,8 @@
 													   Foreground="{ThemeResource OnBackgroundBrush}"
 													   Style="{StaticResource TitleLarge}" />
 
-											<local:ChartControl DataContext="{Binding Recipe}" Grid.Row="1" />
+											<local:ChartControl DataContext="{Binding Recipe}"
+																Grid.Row="1" />
 										</Grid>
 									</Grid>
 								</Grid>
