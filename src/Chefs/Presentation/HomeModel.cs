@@ -20,13 +20,25 @@ public partial class HomeModel
 
 	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
 
-	public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
+	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategories);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
 	public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
 	public IFeed<User> UserProfile => _userService.User;
+
+	public async ValueTask<ImmutableList<CategoryWithCount>> GetCategories(CancellationToken ct)
+	{
+		var categories = await _recipeService.GetCategories(ct);
+		var categoriesWithCount = new List<CategoryWithCount>();
+		foreach (var category in categories)
+		{
+			var recipesByCategory = await _recipeService.GetByCategory((int)category!.Id!, ct);
+			categoriesWithCount.Add(new CategoryWithCount(recipesByCategory.Count, category));
+		}
+		return categoriesWithCount.ToImmutableList();
+	}
 
 	public async ValueTask Search(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
@@ -37,8 +49,8 @@ public partial class HomeModel
 	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Recent, null, null, null, null));
 
-	public async ValueTask CategorySearch(Category category, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, category));
+	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categoryWithCount.Category));
 
 	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);

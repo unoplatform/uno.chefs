@@ -165,17 +165,17 @@
 																Padding="8,0,16,0"
 																Orientation="Horizontal"
 																utu:AutoLayout.CounterAlignment="Start">
-													<Image Source="{Binding UrlIcon}"
+													<Image Source="{Binding Category.UrlIcon}"
 														   utu:AutoLayout.CounterAlignment="Center"
 														   Width="60"
 														   Height="60" />
 													<utu:AutoLayout PrimaryAxisAlignment="Center"
 																	utu:AutoLayout.CounterAlignment="Center">
-														<TextBlock Text="{Binding Name}"
+														<TextBlock Text="{Binding Category.Name}"
 																   utu:AutoLayout.CounterAlignment="Start"
 																   Foreground="{ThemeResource OnSurfaceBrush}"
 																   Style="{StaticResource TitleMedium}" />
-														<TextBlock Text="164 recipes"
+														<TextBlock Text="{Binding Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes', UpdateSourceTrigger=PropertyChanged}"
 																   utu:AutoLayout.CounterAlignment="Start"
 																   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 													</utu:AutoLayout>
