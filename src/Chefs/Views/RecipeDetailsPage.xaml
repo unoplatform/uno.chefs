@@ -3,6 +3,7 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:local="using:Chefs.Views"
+	  xmlns:ctrl="using:Chefs.Views.Controls"
 	  xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
@@ -413,7 +414,7 @@
 														   FontSize="22"
 														   Text="Intake per serving" />
 
-												<local:ChartControl DataContext="{Binding Recipe}"
+												<ctrl:ChartControl DataContext="{Binding Recipe}"
 																	Grid.Row="1" />
 											</Grid>
 										</Grid>
@@ -777,7 +778,7 @@
 													   Foreground="{ThemeResource OnBackgroundBrush}"
 													   Style="{StaticResource TitleLarge}" />
 
-											<local:ChartControl DataContext="{Binding Recipe}"
+											<ctrl:ChartControl DataContext="{Binding Recipe}"
 																Grid.Row="1" />
 										</Grid>
 									</Grid>
