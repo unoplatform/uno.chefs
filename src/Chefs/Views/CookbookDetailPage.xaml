@@ -114,13 +114,7 @@
 									<Run Text="{Binding Data.Recipes.Count}" />
 									<Run Text="results" />
 								</TextBlock>
-								<Button utu:AutoLayout.CounterAlignment="Center"
-										Content="Filters"
-										Style="{StaticResource TextButtonStyle}">
-									<um:ControlExtensions.Icon>
-										<PathIcon Data="{StaticResource Icon_Tune}" />
-									</um:ControlExtensions.Icon>
-								</Button>
+
 							</utu:AutoLayout>
 							<utu:AutoLayout Padding="0,16">
 								<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
