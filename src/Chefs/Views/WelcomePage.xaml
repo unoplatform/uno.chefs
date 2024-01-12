@@ -31,8 +31,7 @@
 			</Grid.RowDefinitions>
 			<!-- Onboarding pages as flip views -->
 			<FlipView x:Name="flipView"
-					  Grid.RowSpan="{utu:Responsive Narrow=1,
-													Wide=2}"
+					 
 					  Grid.ColumnSpan="2"
 					  utu:AutoLayout.PrimaryAlignment="Stretch"
 					  utu:SelectorExtensions.PipsPager="{Binding ElementName=PipsPager}"
@@ -128,8 +127,6 @@
 			<utu:AutoLayout Grid.Row="1"
 							Grid.Column="{utu:Responsive Narrow=0,
 														 Wide=1}"
-							Grid.ColumnSpan="{utu:Responsive Narrow=2,
-															 Wide=1}"
 							Padding="32,0,32,15"
 							PrimaryAxisAlignment="Center"
 							Spacing="16">

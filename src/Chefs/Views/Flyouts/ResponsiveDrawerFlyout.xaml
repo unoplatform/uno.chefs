@@ -11,9 +11,8 @@
 		xmlns:um="using:Uno.Material"
 		xmlns:utu="using:Uno.Toolkit.UI"
 		x:Name="Root"
-		Opening="OnOpening"
 		Placement="Full"
-		FlyoutPresenterStyle="{StaticResource BottomDrawerFlyoutPresenterStyle}"
+		FlyoutPresenterStyle="{StaticResource MyDrawerFlyoutPresenterStyle}"
 		mc:Ignorable="d">
 
 	<Grid x:Name="MainLayout"
