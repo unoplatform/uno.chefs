@@ -38,21 +38,19 @@
             <RowDefinition Height="140" />
             <RowDefinition Height="120" />
         </Grid.RowDefinitions>
-        <Grid>
-            <lvc:PieChart x:Name="pieChart" />
+        <lvc:PieChart x:Name="pieChart" />
 
-            <StackPanel HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                <TextBlock HorizontalAlignment="Center"
-                           FontSize="22"
-                           Text="{Binding CaloriesAmount}" />
-                <TextBlock HorizontalAlignment="Center"
-                           FontSize="14"
-                           Text="Calories" />
-            </StackPanel>
-        </Grid>
+		<StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+			<TextBlock HorizontalAlignment="Center"
+                       FontSize="22"
+                       Text="{Binding CaloriesAmount}" />
+			<TextBlock HorizontalAlignment="Center"
+                       FontSize="14"
+                       Text="Calories" />
+		</StackPanel>
 
-        <lvc:CartesianChart x:Name="cartesianChart"
+		<lvc:CartesianChart x:Name="cartesianChart"
                             Grid.Row="1"
                             TooltipPosition="Hidden" />
     </Grid>
