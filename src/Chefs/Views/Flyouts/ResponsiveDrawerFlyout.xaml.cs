@@ -15,15 +15,10 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 	{
 		if (_presenter is { } presenter)
 		{
-			// Using ResponsiveHelper here will not include any local overrides for the default layout values
-			var responsiveHelper = ResponsiveView.GetForCurrentView();
-			var width = responsiveHelper.WindowSize.Width;
 
-			if (width >= responsiveHelper.Layout.Wide)
+			if ((this.XamlRoot?.Size.Width ?? 0d) > 700)
 			{
-				var gridLength = width > responsiveHelper.Layout.Widest ? 0.33 : 0.66;
-
-				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(gridLength, GridUnitType.Star));
+				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(0.66, GridUnitType.Star));
 				DrawerFlyoutPresenter.SetOpenDirection(presenter, WideOpenDirection);
 				presenter.CornerRadius = GetWideCornerRadius();
 			}
