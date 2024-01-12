@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserControl x:Class="Chefs.Views.Controls.ChartControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="using:Chefs.Views"
+			 xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:utu="using:Uno.Toolkit.UI"
+			 mc:Ignorable="d">
+
+	<!-- UserControl used for LiveCharts2 components to avoid having to data-bind the chart properties to the Model -->
+	<!-- Currently a bug in LiveCharts2 that causes a crash when setting DataContext to null: https://github.com/beto-rodriguez/LiveCharts2/issues/1422 -->
+
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key="Light">
+					<Color x:Key="NutritionTrackBackgroundColor">#1C1B1F14</Color>
+					<Color x:Key="NutritionProteinValColor">#159BFF</Color>
+					<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
+					<Color x:Key="NutritionFatValColor">#F85977</Color>
+					<StaticResource x:Key="NutritionDataLabelColor" ResourceKey="OnSurfaceColor" />
+				</ResourceDictionary>
+				<ResourceDictionary x:Key="Dark">
+					<Color x:Key="NutritionTrackBackgroundColor">#242629</Color>
+					<Color x:Key="NutritionProteinValColor">#159BFF</Color>
+					<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
+					<Color x:Key="NutritionFatValColor">#F85977</Color>
+					<StaticResource x:Key="NutritionDataLabelColor" ResourceKey="OnSurfaceColor" />
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+
+	<Grid RowSpacing="{utu:Responsive Narrow=5, Wide=24}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="140" />
+			<RowDefinition Height="120" />
+		</Grid.RowDefinitions>
+		<lvc:PieChart x:Name="pieChart" />
+
+		<StackPanel HorizontalAlignment="Center"
+					VerticalAlignment="Center">
+			<TextBlock HorizontalAlignment="Center"
+					   FontSize="22"
+					   Text="{Binding CaloriesAmount}" />
+			<TextBlock HorizontalAlignment="Center"
+					   FontSize="14"
+					   Text="Calories" />
+		</StackPanel>
+
+		<lvc:CartesianChart x:Name="cartesianChart"
+							Grid.Row="1"
+							TooltipPosition="Hidden" />
+	</Grid>
+</UserControl>

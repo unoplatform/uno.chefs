@@ -3,6 +3,7 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:local="using:Chefs.Views"
+	  xmlns:ctrl="using:Chefs.Views.Controls"
 	  xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
@@ -407,33 +408,14 @@
 												  RowSpacing="5">
 												<Grid.RowDefinitions>
 													<RowDefinition Height="Auto" />
-													<RowDefinition Height="140" />
-													<RowDefinition Height="120" />
+													<RowDefinition Height="Auto" />
 												</Grid.RowDefinitions>
 												<TextBlock HorizontalAlignment="Center"
 														   FontSize="22"
 														   Text="Intake per serving" />
 
-												<Grid Grid.Row="1">
-													<lvc:PieChart Series="{Binding DoughnutSeries}" />
-
-													<StackPanel HorizontalAlignment="Center"
-																VerticalAlignment="Center">
-														<TextBlock HorizontalAlignment="Center"
-																   FontSize="22"
-																   Text="{Binding Recipe.CaloriesAmount}" />
-														<TextBlock HorizontalAlignment="Center"
-																   FontSize="14"
-																   Text="Calories" />
-													</StackPanel>
-												</Grid>
-
-												<Grid Grid.Row="2">
-													<lvc:CartesianChart Series="{Binding ColumnSeries}"
-																		TooltipPosition="Hidden"
-																		XAxes="{Binding XAxes}"
-																		YAxes="{Binding YAxes}" />
-												</Grid>
+												<ctrl:ChartControl DataContext="{Binding Recipe}"
+																   Grid.Row="1" />
 											</Grid>
 										</Grid>
 									</Grid>
@@ -790,36 +772,15 @@
 											  RowSpacing="24">
 											<Grid.RowDefinitions>
 												<RowDefinition Height="Auto" />
-												<RowDefinition Height="200" />
-												<RowDefinition Height="150" />
+												<RowDefinition Height="Auto" />
 											</Grid.RowDefinitions>
 											<TextBlock TextAlignment="Center"
 													   Text="Intake per serving"
 													   Foreground="{ThemeResource OnBackgroundBrush}"
 													   Style="{StaticResource TitleLarge}" />
 
-											<Grid Grid.Row="1">
-												<lvc:PieChart Series="{Binding DoughnutSeries}" />
-
-												<StackPanel HorizontalAlignment="Center"
-															VerticalAlignment="Center">
-													<TextBlock TextAlignment="Center"
-															   Foreground="{ThemeResource OnBackgroundBrush}"
-															   Style="{StaticResource TitleLarge}"
-															   Text="{Binding Recipe.CaloriesAmount}" />
-													<TextBlock TextAlignment="Center"
-															   Foreground="{ThemeResource OnBackgroundBrush}"
-															   Style="{StaticResource LabelLarge}"
-															   Text="Calories" />
-												</StackPanel>
-											</Grid>
-
-											<Grid Grid.Row="2">
-												<lvc:CartesianChart Series="{Binding ColumnSeries}"
-																	TooltipPosition="Hidden"
-																	XAxes="{Binding XAxes}"
-																	YAxes="{Binding YAxes}" />
-											</Grid>
+											<ctrl:ChartControl DataContext="{Binding Recipe}"
+															   Grid.Row="1" />
 										</Grid>
 									</Grid>
 								</Grid>
