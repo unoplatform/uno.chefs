@@ -11,7 +11,7 @@
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:android="http://uno.ui/android#using:Uno.Toolkit.UI"
 	  xmlns:ios="http://uno.ui/ios#using:Uno.Toolkit.UI"
-	  utu:SafeArea.Insets="top,Bottom"
+	  utu:SafeArea.Insets="VisibleBounds"
 	  ios:StatusBar.Foreground="Auto"
 	  android:StatusBar.Foreground="Auto"
 	  android:StatusBar.Background="{ThemeResource SurfaceBrush}"
