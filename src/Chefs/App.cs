@@ -68,11 +68,6 @@ public class App : Application
 		);
 		_window = builder.Window;
 
-		var helper = ResponsiveHelper.GetForCurrentView();
-		helper.HookupEvent(_window);
-
-
-
 		Host = await builder.NavigateAsync<ShellControl>();
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
