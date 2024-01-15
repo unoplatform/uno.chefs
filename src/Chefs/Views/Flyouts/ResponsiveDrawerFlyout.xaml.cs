@@ -2,6 +2,9 @@ namespace Chefs.Views.Flyouts;
 
 public abstract partial class ResponsiveDrawerFlyout : Flyout
 {
+	private const int WideBreakpoint = 800;
+	private const int WidestBreakpoint = 1080;
+
 	protected abstract DrawerOpenDirection WideOpenDirection { get; }
 
 	private FlyoutPresenter? _presenter;
@@ -15,13 +18,10 @@ public abstract partial class ResponsiveDrawerFlyout : Flyout
 	{
 		if (_presenter is { } presenter)
 		{
-			// Using ResponsiveHelper here will not include any local overrides for the default layout values
-			var responsiveHelper = ResponsiveHelper.GetForCurrentView();
-			var width = responsiveHelper.WindowSize.Width;
-
-			if (width >= responsiveHelper.Layout.Wide)
+			var width = XamlRoot?.Size.Width ?? 0;
+			if (width >= WideBreakpoint)
 			{
-				var gridLength = width > responsiveHelper.Layout.Widest ? 0.33 : 0.66;
+				var gridLength = width > WidestBreakpoint ? 0.33 : 0.66;
 
 				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(gridLength, GridUnitType.Star));
 				DrawerFlyoutPresenter.SetOpenDirection(presenter, WideOpenDirection);
