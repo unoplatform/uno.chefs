@@ -94,10 +94,9 @@
 			</utu:NavigationBar>
 			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch">
 				<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
-								Spacing="16"
 								Padding="0,0,0,16">
 
-					<utu:AutoLayout Padding="16,16,16,0"
+					<utu:AutoLayout Padding="16,24,16,0"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Trending Now"
@@ -116,7 +115,7 @@
 					<uer:FeedView x:Name="TrendingNowFeed"
 								  Source="{Binding TrendingNow}">
 						<DataTemplate>
-							<ScrollViewer Padding="16,4"
+							<ScrollViewer Padding="16,0"
 										  HorizontalScrollMode="Auto"
 										  HorizontalScrollBarVisibility="Auto"
 										  VerticalScrollMode="Disabled"
@@ -135,7 +134,8 @@
 						</DataTemplate>
 					</uer:FeedView>
 
-					<utu:AutoLayout Padding="16,16,16,0"
+					<!-- This title autolayout has more padding than the others because it has no button -->
+					<utu:AutoLayout Padding="16,32,16,8"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Categories"
@@ -145,7 +145,7 @@
 					<uer:FeedView x:Name="CategoriesFeedView"
 								  Source="{Binding Categories}">
 						<DataTemplate>
-							<ScrollViewer Padding="16,4"
+							<ScrollViewer Padding="16,0"
 										  HorizontalScrollMode="Auto"
 										  HorizontalScrollBarVisibility="Auto"
 										  VerticalScrollMode="Disabled"
@@ -188,7 +188,7 @@
 						</DataTemplate>
 					</uer:FeedView>
 
-					<utu:AutoLayout Padding="16,16,16,0"
+					<utu:AutoLayout Padding="16,24,16,0"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Recently Added"
@@ -206,7 +206,7 @@
 					<uer:FeedView x:Name="RecentlyAddedFeedView"
 								  Source="{Binding RecentlyAdded}">
 						<DataTemplate>
-							<ScrollViewer Padding="16,4"
+							<ScrollViewer Padding="16,0"
 										  HorizontalScrollMode="Auto"
 										  HorizontalScrollBarVisibility="Auto"
 										  VerticalScrollMode="Disabled"
@@ -255,7 +255,7 @@
 						</DataTemplate>
 					</uer:FeedView>
 
-					<utu:AutoLayout Padding="16,16,16,0"
+					<utu:AutoLayout Padding="16,24,16,0"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Popular Contributors"
@@ -274,7 +274,7 @@
 					<uer:FeedView x:Name="PopularCreatorsFeedView"
 								  Source="{Binding PopularCreators}">
 						<DataTemplate>
-							<ScrollViewer Padding="16,4"
+							<ScrollViewer Padding="16,0"
 										  HorizontalScrollMode="Auto"
 										  HorizontalScrollBarVisibility="Auto"
 										  VerticalScrollMode="Disabled"
