@@ -33,20 +33,20 @@ public class CookbookService : ICookbookService
 	{
 		Cookbook newCookbook = new(await _cookbookEndpoint.Update(cookbook.ToData(recipes), ct));
 
-		_messenger.Send(newCookbook);
+		_messenger.Send(new EntityMessage<Cookbook>(EntityChange.Updated, newCookbook));
 		return newCookbook;
 	}
 
 	public async ValueTask Update(Cookbook cookbook, CancellationToken ct)
 	{
 		await _cookbookEndpoint.Update(cookbook.ToData(), ct);
-		_messenger.Send(cookbook);
+		_messenger.Send(new EntityMessage<Cookbook>(EntityChange.Updated, cookbook));
 	}
 
 	public async ValueTask Save(Cookbook cookbook, CancellationToken ct)
 	{
 		await _cookbookEndpoint.Save(cookbook.ToData(), ct);
-		_messenger.Send(cookbook);
+		_messenger.Send(new EntityMessage<Cookbook>(EntityChange.Created, cookbook));
 	}
 
 	public async ValueTask<IImmutableList<Cookbook>> GetSaved(CancellationToken ct)
