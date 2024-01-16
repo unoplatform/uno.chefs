@@ -162,7 +162,6 @@ public class App : Application
 					{
 						new RouteMap("ReviewsContent", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails", IsDefault:true)
 					}),
-					new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 					new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 					new RouteMap("Profile", View: views.FindByView<ProfileFlyout>(), Nested: new RouteMap[]
 					{
