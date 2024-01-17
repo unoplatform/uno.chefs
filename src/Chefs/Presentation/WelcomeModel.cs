@@ -15,7 +15,7 @@ public partial class WelcomeModel
 
 	public IFeed<bool> HasNext => NextPage.Select(x => x < PageCount - 1);
 
-	public async ValueTask Next(int nextPage, CancellationToken ct) 
+	public async ValueTask Next(int nextPage, CancellationToken ct)
 	{
 		if (nextPage >= 2)
 		{

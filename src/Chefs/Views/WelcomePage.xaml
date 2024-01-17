@@ -24,7 +24,7 @@
 							Padding="32,0,32,15"
 							PrimaryAxisAlignment="End"
 							Spacing="16">
-				<!--  Pips  -->
+				<!-- Pips -->
 				<muxc:PipsPager x:Name="PipsPager"
 								Margin="0,0,0,10"
 								utu:AutoLayout.CounterAlignment="Center"
@@ -33,7 +33,7 @@
 								SelectedPageIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								Style="{StaticResource PipsPagerStyle}" />
 
-				<!--  Buttons  -->
+				<!-- Buttons -->
 				<Button Height="61"
 						HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
@@ -136,7 +136,7 @@
 						</FlipView.Items>
 					</FlipView>
 
-					<!--  Pips and Buttons  -->
+					<!-- Pips and Buttons -->
 					<muxc:ContentPresenter ContentTemplate="{StaticResource PipsAndButtonsTemplate}" />
 				</utu:AutoLayout>
 			</DataTemplate>
@@ -154,18 +154,18 @@
 								  IsEnabled="False"
 								  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<FlipView.Items>
-								<!--  First Splash image  -->
+								<!-- First Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 									<Image utu:AutoLayout.PrimaryAlignment="Stretch"
 										   Source="ms-appx:///Chefs/Assets/Welcome/first_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
-								<!--  Second Splash image  -->
+								<!-- Second Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 									<Image Source="ms-appx:///Chefs/Assets/Welcome/second_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
-								<!--  Third Splash image  -->
+								<!-- Third Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 									<Image Source="ms-appx:///Chefs/Assets/Welcome/third_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
@@ -181,7 +181,7 @@
 									  Background="Transparent"
 									  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<FlipView.Items>
-									<!--  First onboarding page  -->
+									<!-- First onboarding page -->
 									<utu:AutoLayout Padding="32,0"
 													MaxWidth="500"
 													utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -202,7 +202,7 @@
 												   TextAlignment="Center"
 												   TextWrapping="Wrap" />
 									</utu:AutoLayout>
-									<!--  Second onboarding page  -->
+									<!-- Second onboarding page -->
 									<utu:AutoLayout MaxWidth="500"
 													Padding="32,0"
 													utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -223,7 +223,7 @@
 												   TextAlignment="Center"
 												   TextWrapping="Wrap" />
 									</utu:AutoLayout>
-									<!--  Third onboarding page  -->
+									<!-- Third onboarding page -->
 									<utu:AutoLayout MaxWidth="500"
 													Padding="32,0"
 													utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -248,7 +248,7 @@
 							</FlipView>
 						</Grid>
 
-						<!--  Pips and Buttons  -->
+						<!-- Pips and Buttons -->
 						<muxc:ContentPresenter ContentTemplate="{StaticResource PipsAndButtonsTemplate}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
