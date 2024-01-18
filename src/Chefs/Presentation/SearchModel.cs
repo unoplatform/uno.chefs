@@ -32,6 +32,8 @@ public partial class SearchModel
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
+	public IFeed<bool> HasFilter => Filter.Select(f => f.HasFilter);
+
 	public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
 
 	public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetFromChefs);
@@ -88,4 +90,7 @@ public partial class SearchModel
 	{
 		await _navigator.NavigateToNotifications(this);
 	}
+
+	public async ValueTask ResetFilters(CancellationToken ct) =>
+		await Filter.Update(current => new SearchFilter(null, null, null, null, null), ct);
 }
