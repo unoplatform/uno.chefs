@@ -448,6 +448,7 @@
 									   HorizontalAlignment="Center"
 									   utu:AutoLayout.PrimaryAlignment="Stretch" />
 							</utu:AutoLayout>
+							<TextBlock Text="{Binding}" FontSize="44" />
 							<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
 											CornerRadius="4"
 											Padding="0,16"

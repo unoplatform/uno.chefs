@@ -128,11 +128,12 @@ public class App : Application
 									new RouteMap("Read"),
 								})
 							}),
+
 						}),
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
-						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), Nested: new RouteMap[]
 						{
+
+
 							new RouteMap("Filter", View: views.FindByView<FiltersFlyout>(), Nested: new RouteMap[]
 							{
 								new RouteMap("FilterContent", View: views.FindByViewModel<FilterModel>(), IsDefault:true)
@@ -143,26 +144,52 @@ public class App : Application
 							new RouteMap("MyRecipes"),
 							new RouteMap("Cookbooks")
 						}),
+
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home", Nested: new[] {
+							new RouteMap("IngredientsTabWide"),
+							new RouteMap("StepsTabWide"),
+							new RouteMap("ReviewsTabWide"),
+							new RouteMap("NutritionTabWide"),
+							new RouteMap("IngredientsTab"),
+							new RouteMap("StepsTab"),
+							new RouteMap("ReviewsTab"),
+							new RouteMap("NutritionTab"),
+						}),
+
+						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search", Nested: new[] {
+							new RouteMap("IngredientsTabWide"),
+							new RouteMap("StepsTabWide"),
+							new RouteMap("ReviewsTabWide"),
+							new RouteMap("NutritionTabWide"),
+							new RouteMap("IngredientsTab"),
+							new RouteMap("StepsTab"),
+							new RouteMap("ReviewsTab"),
+							new RouteMap("NutritionTab"),
+						}),
+
+						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes", Nested: new[] {
+							new RouteMap("IngredientsTabWide"),
+							new RouteMap("StepsTabWide"),
+							new RouteMap("ReviewsTabWide"),
+							new RouteMap("NutritionTabWide"),
+							new RouteMap("IngredientsTab"),
+							new RouteMap("StepsTab"),
+							new RouteMap("ReviewsTab"),
+							new RouteMap("NutritionTab"),
+						}),
+
+						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
+						new RouteMap("SearchLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "SearchRecipeDetails"),
+						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
 						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
 						new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "CookbookDetails"),
-						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 					}),
-					new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main", Nested: new[] {
-						new RouteMap("IngredientsTabWide"),
-						new RouteMap("StepsTabWide"),
-						new RouteMap("ReviewsTabWide"),
-						new RouteMap("NutritionTabWide"),
-						new RouteMap("IngredientsTab"),
-						new RouteMap("StepsTab"),
-						new RouteMap("ReviewsTab"),
-						new RouteMap("NutritionTab"),
-					}),
+
 					new RouteMap("Reviews", View: views.FindByView<ReviewsFlyout>(), Nested: new RouteMap[]
 					{
 						new RouteMap("ReviewsContent", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails", IsDefault:true)
 					}),
-					new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 					new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 					new RouteMap("Profile", View: views.FindByView<ProfileFlyout>(), Nested: new RouteMap[]
 					{
