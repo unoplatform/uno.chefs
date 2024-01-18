@@ -169,23 +169,39 @@
 					<TextBlock utu:AutoLayout.CounterAlignment="Center"
 							   Style="{StaticResource BodyLarge}"
 							   Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
-					<utu:AutoLayout x:Name="FilterButtonHost"
-									DataContext="{Binding Filter}">
-						<Button x:Name="FiltersButton"
-								HorizontalContentAlignment="Center"
-								VerticalContentAlignment="Center"
-								uen:Navigation.Data="{Binding DataContext.Value, ElementName=FilterButtonHost, Mode=TwoWay}"
-								uen:Navigation.Request="!Filter"
+					<utu:AutoLayout Orientation="Horizontal">
+						<Button utu:AutoLayout.PrimaryAlignment="Auto"
 								utu:AutoLayout.CounterAlignment="Center"
-								Content="Filters"
+								Content="Clear filters"
+								Visibility="{Binding HasFilter, Converter={StaticResource TrueToVisible}}"
+								Command="{Binding ResetFilters}"
+								Margin="0,0,8,0"
 								CornerRadius="4"
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
 							<um:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Tune}"
+								<PathIcon Data="{StaticResource Icon_Close}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 							</um:ControlExtensions.Icon>
 						</Button>
+						<utu:AutoLayout x:Name="FilterButtonHost"
+										DataContext="{Binding Filter}">
+							<Button x:Name="FiltersButton"
+									HorizontalContentAlignment="Center"
+									VerticalContentAlignment="Center"
+									uen:Navigation.Data="{Binding DataContext.Value, ElementName=FilterButtonHost, Mode=TwoWay}"
+									uen:Navigation.Request="!Filter"
+									utu:AutoLayout.CounterAlignment="Center"
+									Content="Filters"
+									CornerRadius="4"
+									Foreground="{ThemeResource PrimaryBrush}"
+									Style="{StaticResource TextButtonStyle}">
+								<um:ControlExtensions.Icon>
+									<PathIcon Data="{StaticResource Icon_Tune}"
+											  Foreground="{ThemeResource PrimaryBrush}" />
+								</um:ControlExtensions.Icon>
+							</Button>
+						</utu:AutoLayout>
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
