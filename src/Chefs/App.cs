@@ -56,7 +56,7 @@ public class App : Application
 					.AddSingleton<ICookbookEndpoint, CookbookEndpoint>();
 			})
 
-			.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes));
+			.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes, configureServices: ConfigureNavServices));
 
 		LiveCharts.Configure(config =>
 			config
@@ -82,27 +82,28 @@ public class App : Application
 		await themeService.SetThemeAsync(appTheme);
 	}
 
+	private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)
+	{
+		services.AddTransient<Flyout, ResponsiveDrawerFlyout>();
+	}
+
 	private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
 	{
 		views.Register(
 			new ViewMap(ViewModel: typeof(ShellModel)),
 			new ViewMap<MainPage, MainModel>(),
 			new ViewMap<WelcomePage, WelcomeModel>(),
-			new ViewMap<FiltersFlyout>(),
 			new ViewMap<FiltersPage, FilterModel>(Data: new DataMap<SearchFilter>()),
 			new ViewMap<HomePage, HomeModel>(),
 			new DataViewMap<CreateUpdateCookbookPage, CreateUpdateCookbookModel, Cookbook>(),
 			new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
-			new ViewMap<NotificationsFlyout>(),
 			new ViewMap<NotificationsPage, NotificationsModel>(),
-			new ViewMap<ProfileFlyout>(ResultData: typeof(IChefEntity)),
-			new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>()),
+			new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>(), ResultData: typeof(IChefEntity)),
 			new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
 			new ViewMap<FavoriteRecipesPage, FavoriteRecipesModel>(),
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
 			new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
-			new ViewMap<ReviewsFlyout>(),
 			new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
@@ -117,60 +118,59 @@ public class App : Application
 					new RouteMap("Login", View: views.FindByViewModel<LoginModel>()),
 					new RouteMap("Main", View: views.FindByViewModel<MainModel>(), Nested: new RouteMap[]
 					{
-						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true, Nested: new RouteMap[]
-						{
-							new RouteMap("Notifications", View: views.FindByView<NotificationsFlyout>(), Nested: new RouteMap[]
-							{
-								new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true, Nested: new[]
-								{
-									new RouteMap("AllTab"),
-									new RouteMap("UnreadTab"),
-									new RouteMap("ReadTab"),
-								})
-							}),
-						}),
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
-						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
-						new RouteMap("Search", View: views.FindByViewModel<SearchModel>(), Nested: new RouteMap[]
-						{
-							new RouteMap("Filter", View: views.FindByView<FiltersFlyout>(), Nested: new RouteMap[]
-							{
-								new RouteMap("FilterContent", View: views.FindByViewModel<FilterModel>(), IsDefault:true)
-							}),
-						}),
+						#region Main Tabs
+						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
+						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
 						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>(), Nested: new[]
 						{
 							new RouteMap("MyRecipes"),
 							new RouteMap("Cookbooks")
 						}),
+						#endregion
+
+						#region Cookbooks
 						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
-						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "CookbookDetails"),
-						new RouteMap("CreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "CookbookDetails"),
+						new RouteMap("UpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
+						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
+						#endregion
+
+						#region Recipe Details
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home", Nested: new[] {
+							new RouteMap("IngredientsTabWide"),
+							new RouteMap("StepsTabWide"),
+							new RouteMap("ReviewsTabWide"),
+							new RouteMap("NutritionTabWide"),
+							new RouteMap("IngredientsTab"),
+							new RouteMap("StepsTab"),
+							new RouteMap("ReviewsTab"),
+							new RouteMap("NutritionTab"),
+						}),
 						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
+						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
+						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
+						#endregion
+
+						#region Live Cooking
+						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
+						new RouteMap("SearchLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "SearchRecipeDetails"),
+						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
+						new RouteMap("CookbookLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "CookbookRecipeDetails"),
+						#endregion
+
+						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
 					}),
-					new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Main", Nested: new[] {
-						new RouteMap("IngredientsTabWide"),
-						new RouteMap("StepsTabWide"),
-						new RouteMap("ReviewsTabWide"),
-						new RouteMap("NutritionTabWide"),
-						new RouteMap("IngredientsTab"),
-						new RouteMap("StepsTab"),
-						new RouteMap("ReviewsTab"),
-						new RouteMap("NutritionTab"),
-					}),
-					new RouteMap("Reviews", View: views.FindByView<ReviewsFlyout>(), Nested: new RouteMap[]
+					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>(), Nested: new RouteMap[]
 					{
-						new RouteMap("ReviewsContent", View: views.FindByViewModel<ReviewsModel>(), DependsOn: "RecipeDetails", IsDefault:true)
+						new RouteMap("AllTab"),
+						new RouteMap("UnreadTab"),
+						new RouteMap("ReadTab"),
 					}),
-					new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
-					new RouteMap("FavoriteCreateUpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
-					new RouteMap("Profile", View: views.FindByView<ProfileFlyout>(), Nested: new RouteMap[]
-					{
-						new RouteMap("ProfileDetails", View: views.FindByViewModel<ProfileModel>(), IsDefault:true),
-						new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"ProfileDetails"),
-					}),
+					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),
+					new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>()),
+					new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
+					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"Profile"),
+
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
-					new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main")
 				}
 			)
 		);
