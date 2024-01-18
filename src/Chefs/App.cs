@@ -124,8 +124,8 @@ public class App : Application
 								new RouteMap("NotificationsContent", View: views.FindByViewModel<NotificationsModel>(), IsDefault:true, Nested: new[]
 								{
 									new RouteMap("AllTab"),
-									new RouteMap("Unread"),
-									new RouteMap("Read"),
+									new RouteMap("UnreadTab"),
+									new RouteMap("ReadTab"),
 								})
 							}),
 						}),
