@@ -1,4 +1,4 @@
-<Page x:Class="Chefs.Views.LiveCookingPage"
+﻿<Page x:Class="Chefs.Views.LiveCookingPage"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -132,7 +132,7 @@
 							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
 																  Wide=Center}">
 				<MediaPlayerElement AreTransportControlsEnabled="True"
-									x:Name="mediaPlayer">
+									Source="ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4">>
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>

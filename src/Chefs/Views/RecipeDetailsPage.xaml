@@ -429,7 +429,7 @@
 							<Button Width="358"
 									Height="59"
 									utu:AutoLayout.CounterAlignment="Center"
-									uen:Navigation.Request="LiveCooking"
+									Command="{Binding LiveCooking}"
 									Content="Start Cooking!"
 									CornerRadius="4" />
 						</utu:AutoLayout>
