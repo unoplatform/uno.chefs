@@ -132,7 +132,7 @@
 							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
 																  Wide=Center}">
 				<MediaPlayerElement AreTransportControlsEnabled="True"
-									Source="ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4">>
+									Source="ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
