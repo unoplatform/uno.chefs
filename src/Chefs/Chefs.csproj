@@ -83,22 +83,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Views\FiltersPage.xaml" />
-	  <None Remove="Views\Flyouts\NotifFlyout.xaml" />
-	  <None Remove="Views\Flyouts\ResponsiveDrawerFlyout.xaml" />
-	  <None Remove="Views\NotificationsPage.xaml" />
-	  <None Remove="Views\ProfilePage.xaml" />
-	  <None Remove="Views\ReviewsPage.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <UnoImage Remove="Assets\Maps\location_circle.svg" />
 	  <UnoImage Remove="Assets\Maps\location_pin.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <UpToDateCheckInput Remove="Views\Flyouts\NotifFlyout.xaml" />
-	  <UpToDateCheckInput Remove="Views\Flyouts\ResponsiveDrawerFlyout.xaml" />
 	</ItemGroup>
 
 	<!-- Workaround to avoid including Uno.Toolkit.UI XBFs in the PRI file -->
@@ -119,12 +105,4 @@
 			<ReferenceCopyLocalPaths Remove="@(_OtherPriFiles2)" />
 		</ItemGroup>
 	</Target>
-	
-	<ItemGroup>
-	  <AdditionalFiles Remove="Views\Flyouts\NotifFlyout.xaml" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <AdditionalFiles Remove="Views\Flyouts\ResponsiveDrawerFlyout.xaml" />
-	</ItemGroup>
 </Project>
