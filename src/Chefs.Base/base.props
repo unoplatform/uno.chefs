@@ -24,7 +24,7 @@
 			<ItemGroup>
 				<UnoIcon Condition="'$(IsCanaryBranch)'=='true'"
 						 Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
-						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg-canary.svg"
+						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appconfig-canary.svg"
 						 ForegroundScale="0.5"
 						 Color="#00000000" />
 			</ItemGroup>
@@ -32,7 +32,7 @@
 		<Otherwise>
 			<ItemGroup>
 				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
-						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
+						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appconfig.svg"
 						 ForegroundScale="0.5"
 						 Color="#00000000" />
 			</ItemGroup>
