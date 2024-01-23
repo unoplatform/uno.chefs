@@ -11,7 +11,9 @@
 	  xmlns:um="using:Uno.Material"
 	  xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  Background="{ThemeResource BackgroundBrush}">
-
+	<Page.Resources>
+		<x:Double x:Key="NavigationTabBarItemIconHeight">24</x:Double>
+	</Page.Resources>
 	<Grid>
 		<Grid x:Name="MainGrid"
 			  RowSpacing="0"
@@ -48,7 +50,7 @@
 								Content="Home"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Home_Filled}" />
+						<FontIcon Glyph="{StaticResource Icon_Home}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
@@ -57,7 +59,7 @@
 								Content="Search"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Search}" />
+						<FontIcon Glyph="{StaticResource Icon_Search}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
@@ -66,7 +68,7 @@
 								Content="Favorites"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Favorite_Border}" />
+						<FontIcon Glyph="{StaticResource Icon_Heart}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 			</utu:TabBar>
@@ -81,12 +83,13 @@
 							Style="{StaticResource VerticalTabBarStyle}"
 							utu:AutoLayout.PrimaryAlignment="Stretch"
 							um:ControlExtensions.IsTintEnabled="False">
+
 					<utu:TabBarItem uen:Region.Name="Home"
 									IsSelectable="True"
 									Content="Home"
 									Style="{StaticResource VerticalTabBarItemStyle}">
 						<utu:TabBarItem.Icon>
-							<PathIcon Data="{StaticResource Icon_Home_Filled}" />
+							<FontIcon Glyph="{StaticResource Icon_Home}" />
 						</utu:TabBarItem.Icon>
 					</utu:TabBarItem>
 
@@ -95,7 +98,7 @@
 									Content="Search"
 									Style="{StaticResource VerticalTabBarItemStyle}">
 						<utu:TabBarItem.Icon>
-							<PathIcon Data="{StaticResource Icon_Search}" />
+							<FontIcon Glyph="{StaticResource Icon_Search}" />
 						</utu:TabBarItem.Icon>
 					</utu:TabBarItem>
 
@@ -104,7 +107,7 @@
 									Content="Favorites"
 									Style="{StaticResource VerticalTabBarItemStyle}">
 						<utu:TabBarItem.Icon>
-							<PathIcon Data="{StaticResource Icon_Favorite_Border}" />
+							<FontIcon Glyph="{StaticResource Icon_Heart}" />
 						</utu:TabBarItem.Icon>
 					</utu:TabBarItem>
 				</utu:TabBar>

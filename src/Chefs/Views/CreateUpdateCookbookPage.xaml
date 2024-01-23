@@ -86,13 +86,15 @@
 																Orientation="Horizontal">
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}">
-														<PathIcon Data="{StaticResource Icon_Favorite_Border}"
+														<FontIcon FontFamily="{StaticResource FontAwesomeRegularFontFamily}"
+																  Glyph="{StaticResource Icon_Favorite}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
 																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteBorderToColorConverter}}" />
 													</Border>
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
-														<PathIcon Data="{StaticResource Icon_Favorite}"
+														<FontIcon FontFamily="{StaticResource FontAwesomeRegularFontFamily}"
+																  Glyph="{StaticResource Icon_Favorite}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
 																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteToColorConverter}}" />
 													</Border>
@@ -117,7 +119,7 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<not_mobile:AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+							<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>

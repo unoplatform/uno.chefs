@@ -50,11 +50,13 @@
 																		Path=DataContext.SaveRecipe}"
 										  CommandParameter="{Binding}">
 								<ToggleButton.Content>
-									<PathIcon Data="{StaticResource Icon_Favorite_Border}"
+									<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+											  Glyph="{StaticResource Icon_Favorite}"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 								</ToggleButton.Content>
 								<um:ControlExtensions.AlternateContent>
-									<PathIcon Data="{StaticResource Icon_Favorite_Filled}"
+									<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+											  Glyph="{StaticResource Icon_Favorite}"
 											  Foreground="{ThemeResource PrimaryBrush}" />
 								</um:ControlExtensions.AlternateContent>
 							</ToggleButton>
@@ -72,9 +74,10 @@
 				<utu:NavigationBar.Content>
 					<utu:AutoLayout Orientation="Horizontal"
 									Padding="12,0,0,0">
-						<PathIcon Data="{StaticResource Icon_ChefsAppSignature}"
-								  utu:AutoLayout.CounterAlignment="Center"
-								  Foreground="{ThemeResource OnSurfaceInverseBrush}" />
+						<Image Source="{ThemeResource ChefsAppSignature}"
+							   Width="128"
+							   Height="40"
+							   utu:AutoLayout.CounterAlignment="Center" />
 					</utu:AutoLayout>
 				</utu:NavigationBar.Content>
 				<utu:NavigationBar.PrimaryCommands>
