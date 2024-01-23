@@ -67,8 +67,19 @@ public partial class RecipeDetailsModel
 		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
 	}
 
-	public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<LiveCookingModel>(this, data: new LiveCookingParameter(Recipe, steps));
+	public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken ct)
+	{
+		var route = _navigator?.Route?.Base switch
+		{
+			"RecipeDetails" => "LiveCooking",
+			"SearchRecipeDetails" => "SearchLiveCooking",
+			"FavoriteRecipeDetails" => "FavoriteLiveCooking",
+			"CookbookRecipeDetails" => "CookbookLiveCooking",
+			_ => throw new InvalidOperationException("Navigating from unknown route")
+		};
+
+		await _navigator.NavigateRouteAsync(this, route, data: new LiveCookingParameter(Recipe, steps), cancellation: ct);
+	}
 
 	public async ValueTask IngredientsChecklist(CancellationToken ct)
 		=> await IngredientsCheck.Update(c => !c, ct);

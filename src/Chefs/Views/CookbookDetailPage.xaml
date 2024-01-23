@@ -117,7 +117,7 @@
 
 							</utu:AutoLayout>
 							<utu:AutoLayout Padding="0,16">
-								<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
+								<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data.Recipes}"
 													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
@@ -133,7 +133,7 @@
 				HorizontalAlignment="Right"
 				VerticalAlignment="Bottom"
 				uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay}"
-				uen:Navigation.Request="CreateUpdateCookbook"
+				uen:Navigation.Request="UpdateCookbook"
 				utu:AutoLayout.IsIndependentLayout="True"
 				CornerRadius="60"
 				Style="{StaticResource FabStyle}">
