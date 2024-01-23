@@ -7,8 +7,8 @@ public record Step
 		Number = stepData.Number;
 		Name = stepData.Name;
 		CookTime = stepData.CookTime;
-		Cookware = stepData.Cookware;
-		Ingredients = stepData.Ingredients;
+		Cookware = stepData.Cookware?.ToImmutableList() ?? ImmutableList<string>.Empty;
+		Ingredients = stepData.Ingredients?.ToImmutableList() ?? ImmutableList<string>.Empty;
 		Description = stepData.Description;
 	}
 
@@ -24,8 +24,8 @@ public record Step
 		Number = Number,
 		Name = Name,
 		CookTime = CookTime,
-		Cookware = Cookware,
-		Ingredients = Ingredients,
+		Cookware = Cookware?.ToList(),
+		Ingredients = Ingredients?.ToList(),
 		Description = Description
 	};
 }
