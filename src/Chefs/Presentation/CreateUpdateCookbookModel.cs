@@ -33,7 +33,7 @@ public partial class CreateUpdateCookbookModel
 			IsCreate = true;
 		}
 		messenger.Observe(Cookbook, cb => cb.Id);
-		
+
 	}
 	public bool IsCreate { get; }
 

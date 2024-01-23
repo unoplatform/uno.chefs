@@ -19,7 +19,7 @@ public partial class FavoriteRecipesModel
 		_recipeService = recipeService;
 		_cookbookService = cookbookService;
 		_messenger = messenger;
-		
+
 		_messenger.Observe(SavedCookbooks, cb => cb.Id);
 		_messenger.Observe(SavedRecipes, r => r.Id);
 	}
