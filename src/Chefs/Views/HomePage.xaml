@@ -102,11 +102,8 @@
 						<TextBlock Text="Trending Now"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Style="{StaticResource TitleMedium}" />
-						<Button HorizontalContentAlignment="Center"
-								VerticalContentAlignment="Center"
-								Content="View all"
+						<Button Content="View all"
 								Command="{Binding ShowAll}"
-								utu:AutoLayout.CounterAlignment="Center"
 								Foreground="{ThemeResource PrimaryBrush}"
 								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}" />
@@ -194,10 +191,7 @@
 						<TextBlock Text="Recently Added"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Style="{StaticResource TitleMedium}" />
-						<Button HorizontalContentAlignment="Center"
-								VerticalContentAlignment="Center"
-								Content="View all"
-								utu:AutoLayout.CounterAlignment="Center"
+						<Button Content="View all"
 								Foreground="{ThemeResource PrimaryBrush}"
 								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}"
@@ -262,10 +256,7 @@
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Style="{StaticResource TitleMedium}" />
 
-						<Button HorizontalContentAlignment="Center"
-								VerticalContentAlignment="Center"
-								Content="Near me"
-								utu:AutoLayout.CounterAlignment="Center"
+						<Button Content="Near me"
 								Foreground="{ThemeResource PrimaryBrush}"
 								CornerRadius="20"
 								uen:Navigation.Request="Map"
