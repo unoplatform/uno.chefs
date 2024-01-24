@@ -28,6 +28,7 @@
 				<muxc:PipsPager x:Name="PipsPager"
 								Margin="0,0,0,10"
 								utu:AutoLayout.CounterAlignment="Center"
+								NumberOfPages="3"
 								MaxVisiblePips="3"
 								Orientation="Horizontal"
 								SelectedPageIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
