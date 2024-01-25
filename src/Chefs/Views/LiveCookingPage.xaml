@@ -32,8 +32,8 @@
 								Spacing="24"
 								Padding="{utu:Responsive Narrow=32,
 														 Wide=40}"
-								PrimaryAxisAlignment="{utu:Responsive Narrow={StaticResource AutoLayoutStart},
-																	  Wide={StaticResource AutoLayoutCenter}}">
+								PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
+																	  Wide=Center}">
 					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 									Orientation="Horizontal">
 						<TextBlock FontSize="22"
