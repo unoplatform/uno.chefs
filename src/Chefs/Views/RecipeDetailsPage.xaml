@@ -32,9 +32,8 @@
 									Height="72"
 									utu:AutoLayout.CounterAlignment="Center"
 									PrimaryAxisAlignment="Center">
-						<Path utu:AutoLayout.CounterAlignment="Center"
-							  Data="{StaticResource No_Review_Wide}"
-							  Fill="{ThemeResource OnSurfaceBrush}" />
+						<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
+									UriSource="{ThemeResource Empty_Recipe}" />
 					</utu:AutoLayout>
 					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 							   Style="{StaticResource TitleLarge}"
@@ -54,7 +53,7 @@
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<not_mobile:AppBarButton.Icon>
-						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
@@ -116,7 +115,7 @@
 										<StackPanel Spacing="4"
 													utu:AutoLayout.CounterAlignment="Start"
 													utu:AutoLayout.PrimaryAlignment="Stretch">
-											<PathIcon Data="{StaticResource Icon_Timer}"
+											<FontIcon Glyph="{StaticResource Icon_Timer}"
 													  HorizontalAlignment="Center"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
 											<TextBlock TextAlignment="Center"
@@ -129,8 +128,8 @@
 										<StackPanel utu:AutoLayout.CounterAlignment="Start"
 													utu:AutoLayout.PrimaryAlignment="Stretch"
 													Spacing="4">
-											<PathIcon HorizontalAlignment="Center"
-													  Data="{StaticResource Icon_Star_Rate}"
+											<FontIcon HorizontalAlignment="Center"
+													  Glyph="{StaticResource Icon_Star_Rate}"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
 											<TextBlock HorizontalAlignment="Center"
 													   Foreground="{ThemeResource OnSurfaceMediumBrush}"
@@ -142,8 +141,8 @@
 										<StackPanel utu:AutoLayout.CounterAlignment="Start"
 													utu:AutoLayout.PrimaryAlignment="Stretch"
 													Spacing="4">
-											<PathIcon HorizontalAlignment="Center"
-													  Data="{StaticResource Icon_Local_Fire_Department}"
+											<FontIcon HorizontalAlignment="Center"
+													  Glyph="{StaticResource Icon_Local_Fire_Department}"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
 											<TextBlock HorizontalAlignment="Center"
 													   Foreground="{ThemeResource OnSurfaceMediumBrush}"
@@ -337,9 +336,9 @@
 																							  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}}">
 																					<ToggleButton.Content>
 																						<StackPanel Orientation="Horizontal">
-																							<PathIcon Margin="0,0,5,0"
+																							<FontIcon Margin="0,0,5,0"
 																									  VerticalAlignment="Center"
-																									  Data="{StaticResource Icon_Thumb_Up_Off_Alt}"
+																									  Glyph="{StaticResource Icon_Thumb_Up_Off_Alt}"
 																									  Foreground="{ThemeResource PrimaryBrush}" />
 																							<TextBlock VerticalAlignment="Center"
 																									   Foreground="{ThemeResource PrimaryBrush}"
@@ -348,9 +347,9 @@
 																					</ToggleButton.Content>
 																					<um:ControlExtensions.AlternateContent>
 																						<StackPanel Orientation="Horizontal">
-																							<PathIcon Margin="0,0,5,0"
+																							<FontIcon Margin="0,0,5,0"
 																									  VerticalAlignment="Center"
-																									  Data="{StaticResource Icon_Thumb_Up_Alt}"
+																									  Glyph="{StaticResource Icon_Thumb_Up_Alt}"
 																									  Foreground="{ThemeResource PrimaryBrush}" />
 																							<TextBlock VerticalAlignment="Center"
 																									   Foreground="{ThemeResource PrimaryBrush}"
@@ -367,9 +366,9 @@
 																							  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}}">
 																					<ToggleButton.Content>
 																						<StackPanel Orientation="Horizontal">
-																							<PathIcon Margin="0,0,5,0"
+																							<FontIcon Margin="0,0,5,0"
 																									  VerticalAlignment="Center"
-																									  Data="{StaticResource Icon_Thumb_Down_Off_Alt}"
+																									  Glyph="{StaticResource Icon_Thumb_Down_Off_Alt}"
 																									  Foreground="{ThemeResource PrimaryBrush}" />
 																							<TextBlock VerticalAlignment="Center"
 																									   Foreground="{ThemeResource PrimaryBrush}"
@@ -378,9 +377,9 @@
 																					</ToggleButton.Content>
 																					<um:ControlExtensions.AlternateContent>
 																						<StackPanel Orientation="Horizontal">
-																							<PathIcon Margin="0,0,5,0"
+																							<FontIcon Margin="0,0,5,0"
 																									  VerticalAlignment="Center"
-																									  Data="{StaticResource Icon_Thumb_Down_Alt}"
+																									  Glyph="{StaticResource Icon_Thumb_Down_Alt}"
 																									  Foreground="{ThemeResource PrimaryBrush}" />
 																							<TextBlock VerticalAlignment="Center"
 																									   Foreground="{ThemeResource PrimaryBrush}"
@@ -460,7 +459,7 @@
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<PathIcon Data="{StaticResource Icon_Timer}"
+									<FontIcon Glyph="{StaticResource Icon_Timer}"
 											  utu:AutoLayout.CounterAlignment="Center"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 									<TextBlock TextAlignment="Center"
@@ -472,7 +471,7 @@
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<PathIcon Data="{StaticResource Icon_Star_Rate}"
+									<FontIcon Glyph="{StaticResource Icon_Star_Rate}"
 											  utu:AutoLayout.CounterAlignment="Center"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 									<TextBlock TextAlignment="Center"
@@ -484,7 +483,7 @@
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<PathIcon Data="{StaticResource Icon_Local_Fire_Department}"
+									<FontIcon Glyph="{StaticResource Icon_Local_Fire_Department}"
 											  utu:AutoLayout.CounterAlignment="Center"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 									<TextBlock TextAlignment="Center"
@@ -695,7 +694,7 @@
 																				<ToggleButton.Content>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Up_Off_Alt}"
+																						<FontIcon Glyph="{StaticResource Icon_Thumb_Up_Off_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Likes.Count}"
@@ -707,7 +706,7 @@
 																				<um:ControlExtensions.AlternateContent>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Up_Alt}"
+																						<FontIcon Glyph="{StaticResource Icon_Thumb_Up_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Likes.Count}"
@@ -730,7 +729,7 @@
 																				<ToggleButton.Content>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Down_Off_Alt}"
+																						<FontIcon Glyph="{StaticResource Icon_Thumb_Down_Off_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Dislikes.Count}"
@@ -742,7 +741,7 @@
 																				<um:ControlExtensions.AlternateContent>
 																					<utu:AutoLayout Orientation="Horizontal"
 																									Spacing="8">
-																						<PathIcon Data="{StaticResource Icon_Thumb_Down_Alt}"
+																						<FontIcon Glyph="{StaticResource Icon_Thumb_Down_Alt}"
 																								  VerticalAlignment="Center"
 																								  Foreground="{ThemeResource PrimaryBrush}" />
 																						<TextBlock Text="{Binding Dislikes.Count}"

@@ -82,7 +82,7 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<not_mobile:AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+							<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
@@ -138,7 +138,7 @@
 				CornerRadius="60"
 				Style="{StaticResource FabStyle}">
 			<um:ControlExtensions.Icon>
-				<PathIcon Data="{StaticResource Icon_Add}"
+				<FontIcon Glyph="{StaticResource Icon_Add}"
 						  Foreground="{ThemeResource SurfaceBrush}" />
 			</um:ControlExtensions.Icon>
 		</Button>

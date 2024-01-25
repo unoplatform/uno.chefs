@@ -43,11 +43,10 @@
 									VerticalAlignment="Stretch"
 									utu:AutoLayout.IsIndependentLayout="True"
 									PrimaryAxisAlignment="Center">
-						<Path Width="56"
-							  Height="72"
-							  utu:AutoLayout.CounterAlignment="Center"
-							  Data="{StaticResource Empty_Cookbook}"
-							  Fill="{ThemeResource OnSurfaceBrush}" />
+						<BitmapIcon Width="56"
+									Height="72"
+									utu:AutoLayout.CounterAlignment="Center"
+									UriSource="{ThemeResource Empty_Box}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
@@ -70,7 +69,7 @@
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<um:ControlExtensions.Icon>
-						<PathIcon Data="{StaticResource Icon_Add}"
+						<FontIcon Glyph="{StaticResource Icon_Add}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</um:ControlExtensions.Icon>
 				</Button>
@@ -171,11 +170,10 @@
 								Height="72"
 								utu:AutoLayout.CounterAlignment="Center"
 								PrimaryAxisAlignment="Center">
-					<Path Width="64"
-						  Height="72"
-						  utu:AutoLayout.CounterAlignment="Center"
-						  Data="{StaticResource Empty_Box}"
-						  Fill="{ThemeResource OnSurfaceBrush}" />
+					<BitmapIcon Width="64"
+								Height="72"
+								utu:AutoLayout.CounterAlignment="Center"
+								UriSource="{ThemeResource Empty_Box}" />
 				</utu:AutoLayout>
 				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 						   Style="{StaticResource TitleLarge}"
@@ -194,7 +192,7 @@
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<um:ControlExtensions.Icon>
-						<PathIcon Data="{StaticResource Icon_Star_Outline}"
+						<FontIcon Glyph="{StaticResource Icon_Star_Outline}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</um:ControlExtensions.Icon>
 				</Button>
@@ -249,9 +247,10 @@
 			<utu:NavigationBar.Content>
 				<utu:AutoLayout Padding="12,0,0,0"
 								Orientation="Horizontal">
-					<PathIcon utu:AutoLayout.CounterAlignment="Center"
-							  Data="{StaticResource Icon_ChefsAppSignature}"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}" />
+					<Image utu:AutoLayout.CounterAlignment="Center"
+						   Source="{ThemeResource ChefsAppSignature}"
+						   Width="128"
+						   Height="40" />
 				</utu:AutoLayout>
 			</utu:NavigationBar.Content>
 			<utu:NavigationBar.PrimaryCommands>
@@ -360,7 +359,7 @@
 										CornerRadius="56"
 										Style="{StaticResource FabStyle}">
 									<um:ControlExtensions.Icon>
-										<PathIcon Data="{StaticResource Icon_Add}"
+										<FontIcon Glyph="{StaticResource Icon_Add}"
 												  Foreground="{ThemeResource OnPrimaryBrush}" />
 									</um:ControlExtensions.Icon>
 								</Button>
