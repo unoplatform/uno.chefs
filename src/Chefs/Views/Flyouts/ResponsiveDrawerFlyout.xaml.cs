@@ -23,6 +23,7 @@ public partial class ResponsiveDrawerFlyout : Flyout
 
 				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(gridLength, GridUnitType.Star));
 				DrawerFlyoutPresenter.SetOpenDirection(presenter, DrawerOpenDirection.Left);
+				DrawerFlyoutPresenter.SetIsGestureEnabled(presenter, false);
 				presenter.CornerRadius = new CornerRadius(20, 0, 0, 20);
 			}
 			else
