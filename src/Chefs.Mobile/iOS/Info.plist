@@ -9,6 +9,13 @@
 			<integer>1</integer>
 			<integer>2</integer>
 		</array>
+		<key>NSAppTransportSecurity</key>
+		<dict>
+			<key>NSAllowsArbitraryLoadsForMedia</key>
+			<true/>
+			<key>NSExceptionMinimumTLSVersion</key>
+			<string>TLSv1.2</string>
+		</dict>
 		<key>UIRequiredDeviceCapabilities</key>
 		<array>
 			<string>armv7</string>
