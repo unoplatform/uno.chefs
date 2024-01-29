@@ -292,13 +292,10 @@
 																	CornerRadius="12"
 																	Padding="10,8"
 																	utu:AutoLayout.CounterAlignment="Center">
-														<Border utu:AutoLayout.CounterAlignment="Center"
-																Width="96"
-																Height="96"
-																CornerRadius="80">
-															<Image Source="{Binding UrlProfileImage}"
-																   Stretch="UniformToFill" />
-														</Border>
+														<PersonPicture utu:AutoLayout.CounterAlignment="Center"
+																	   Width="96"
+																	   Height="96"
+																	   ProfilePicture="{Binding UrlProfileImage}" />
 														<utu:AutoLayout Spacing="4"
 																		PrimaryAxisAlignment="Center">
 															<TextBlock TextAlignment="{utu:Responsive Narrow=Center,

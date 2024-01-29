@@ -303,15 +303,10 @@
 																	<utu:AutoLayout Spacing="16"
 																					Padding="16"
 																					Orientation="Horizontal">
-																		<Border Width="60"
-																				Height="60"
-																				CornerRadius="60"
-																				utu:AutoLayout.CounterAlignment="Start">
-																			<Image Source="{Binding UrlAuthorImage}"
-																				   Stretch="UniformToFill"
-																				   HorizontalAlignment="Center"
-																				   VerticalAlignment="Center" />
-																		</Border>
+																		<PersonPicture utu:AutoLayout.CounterAlignment="Start"
+																					   Width="60"
+																					   Height="60"
+																					   ProfilePicture="{Binding UrlAuthorImage}" />
 																		<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
 																						utu:AutoLayout.PrimaryAlignment="Stretch">
 																			<utu:AutoLayout Spacing="8"
