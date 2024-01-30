@@ -134,8 +134,7 @@
 													Style="{StaticResource TextButtonStyle}"
 													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 												<Button.Content>
-													<PathIcon x:Name="ButtonIcon"
-															  Data="{StaticResource Icon_Add}"
+													<FontIcon Glyph="{StaticResource Icon_Add}"
 															  Foreground="{ThemeResource OnSurfaceBrush}" />
 												</Button.Content>
 											</Button>
