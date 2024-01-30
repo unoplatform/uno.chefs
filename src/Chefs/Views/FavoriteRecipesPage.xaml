@@ -134,8 +134,8 @@
 													Style="{StaticResource TextButtonStyle}"
 													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 												<Button.Content>
-													<PathIcon x:Name="ButtonIcon"
-															  Data="{StaticResource Icon_Add}"
+													<FontIcon Glyph="{StaticResource Icon_Add}"
+															  FontFamily="{StaticResource MaterialIconFontFamily}"
 															  Foreground="{ThemeResource OnSurfaceBrush}" />
 												</Button.Content>
 											</Button>
@@ -360,6 +360,7 @@
 										Style="{StaticResource FabStyle}">
 									<um:ControlExtensions.Icon>
 										<FontIcon Glyph="{StaticResource Icon_Add}"
+												  FontFamily="{StaticResource MaterialIconFontFamily}"
 												  Foreground="{ThemeResource OnPrimaryBrush}" />
 									</um:ControlExtensions.Icon>
 								</Button>
