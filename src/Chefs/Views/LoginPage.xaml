@@ -23,7 +23,7 @@
 				<ResourceDictionary x:Key="Light">
 					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
 					<!-- Workaround for winui/windows -->
-					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>					
+					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
 				</ResourceDictionary>
 				<ResourceDictionary x:Key="Default">
 					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
