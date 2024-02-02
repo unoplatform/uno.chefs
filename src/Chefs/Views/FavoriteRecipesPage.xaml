@@ -8,7 +8,7 @@
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
@@ -68,10 +68,10 @@
 						CornerRadius="4"
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
-					<um:ControlExtensions.Icon>
+					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Add}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
-					</um:ControlExtensions.Icon>
+					</ut:ControlExtensions.Icon>
 				</Button>
 			</utu:AutoLayout>
 		</DataTemplate>
@@ -191,10 +191,10 @@
 						CornerRadius="4"
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
-					<um:ControlExtensions.Icon>
+					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Star_Outline}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
-					</um:ControlExtensions.Icon>
+					</ut:ControlExtensions.Icon>
 				</Button>
 			</utu:AutoLayout>
 		</DataTemplate>
@@ -358,11 +358,11 @@
 										Background="{ThemeResource PrimaryBrush}"
 										CornerRadius="56"
 										Style="{StaticResource FabStyle}">
-									<um:ControlExtensions.Icon>
+									<ut:ControlExtensions.Icon>
 										<FontIcon Glyph="{StaticResource Icon_Add}"
 												  FontFamily="{StaticResource MaterialIconFontFamily}"
 												  Foreground="{ThemeResource OnPrimaryBrush}" />
-									</um:ControlExtensions.Icon>
+									</ut:ControlExtensions.Icon>
 								</Button>
 							</utu:AutoLayout>
 						</DataTemplate>

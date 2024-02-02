@@ -11,7 +11,7 @@
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  HorizontalAlignment="Stretch"
 	  VerticalAlignment="Stretch"
@@ -348,7 +348,7 @@
 																										   Text="{Binding Likes.Count}" />
 																							</StackPanel>
 																						</ToggleButton.Content>
-																						<um:ControlExtensions.AlternateContent>
+																						<ut:ControlExtensions.AlternateContent>
 																							<StackPanel Orientation="Horizontal">
 																								<FontIcon Margin="0,0,5,0"
 																										  VerticalAlignment="Center"
@@ -358,7 +358,7 @@
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Text="{Binding Likes.Count}" />
 																							</StackPanel>
-																						</um:ControlExtensions.AlternateContent>
+																						</ut:ControlExtensions.AlternateContent>
 																					</ToggleButton>
 																					<ToggleButton HorizontalContentAlignment="Center"
 																								  VerticalContentAlignment="Center"
@@ -378,7 +378,7 @@
 																										   Text="{Binding Dislikes.Count}" />
 																							</StackPanel>
 																						</ToggleButton.Content>
-																						<um:ControlExtensions.AlternateContent>
+																						<ut:ControlExtensions.AlternateContent>
 																							<StackPanel Orientation="Horizontal">
 																								<FontIcon Margin="0,0,5,0"
 																										  VerticalAlignment="Center"
@@ -388,7 +388,7 @@
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Text="{Binding Dislikes.Count}" />
 																							</StackPanel>
-																						</um:ControlExtensions.AlternateContent>
+																						</ut:ControlExtensions.AlternateContent>
 																					</ToggleButton>
 																				</utu:AutoLayout>
 																			</utu:AutoLayout>
@@ -724,7 +724,7 @@
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
 																						</ToggleButton.Content>
-																						<um:ControlExtensions.AlternateContent>
+																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up_Alt}"
@@ -735,7 +735,7 @@
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
-																						</um:ControlExtensions.AlternateContent>
+																						</ut:ControlExtensions.AlternateContent>
 																					</ToggleButton>
 																				</utu:AutoLayout>
 																				<utu:AutoLayout Orientation="Horizontal"
@@ -759,7 +759,7 @@
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
 																						</ToggleButton.Content>
-																						<um:ControlExtensions.AlternateContent>
+																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down_Alt}"
@@ -770,7 +770,7 @@
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
-																						</um:ControlExtensions.AlternateContent>
+																						</ut:ControlExtensions.AlternateContent>
 																					</ToggleButton>
 																				</utu:AutoLayout>
 																			</utu:AutoLayout>
