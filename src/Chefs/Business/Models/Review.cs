@@ -46,7 +46,8 @@ public partial record Review
 		Likes = Likes?.ToList(),
 		Dislikes = Dislikes?.ToList(),
 		Description = Description,
-		UrlAuthorImage = UrlAuthorImage
+		UrlAuthorImage = UrlAuthorImage,
+		UserLike = UserLike
 	};
 }
 

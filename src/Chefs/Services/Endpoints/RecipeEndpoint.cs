@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Chefs.Services.Endpoints;
 
 public class RecipeEndpoint : IRecipeEndpoint
@@ -99,6 +101,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
 	public async ValueTask<ReviewData> DislikeReview(ReviewData reviewData, CancellationToken ct)
 	{
+		Debug.WriteLine($"==================Start==DislikeReview===================");
 		var userId = (await _userEndpoint.GetCurrent(ct)).Id;
 
 		var review = (await Load()).FirstOrDefault(r => r.Id == reviewData.RecipeId)?
@@ -108,7 +111,9 @@ public class RecipeEndpoint : IRecipeEndpoint
 		{
 			if (review.Likes is not null && review.Likes.Contains(userId))
 			{
-				review.Likes.Remove(userId);
+				Debug.WriteLine($"======= LIKES-BEFORE User removed: {review.Likes.Count}");
+				var userremoved = review.Likes.Remove(userId);
+				Debug.WriteLine($"======= LIKES User removed: {userremoved}");
 			}
 
 			if (review.Dislikes is not null)
@@ -130,6 +135,13 @@ public class RecipeEndpoint : IRecipeEndpoint
 				review.UserLike = false;
 			}
 
+			Debug.WriteLine($"======= USER LIKE is : {review.UserLike}");
+			Debug.WriteLine($"======= LIKES : {review.Likes?.Count}");
+			Debug.WriteLine($"======= DISLIKES : {review.Dislikes?.Count}");
+			Debug.WriteLine($"===================END======================");
+			Debug.WriteLine(string.Empty);
+			Debug.WriteLine(string.Empty);
+
 			return review;
 		}
 		else
@@ -140,6 +152,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 
 	public async ValueTask<ReviewData> LikeReview(ReviewData reviewData, CancellationToken ct)
 	{
+		Debug.WriteLine($"==================Start=LikeReview====================");
 		var userId = (await _userEndpoint.GetCurrent(ct)).Id;
 
 		var review = (await Load()).FirstOrDefault(r => r.Id == reviewData.RecipeId)?
@@ -149,7 +162,9 @@ public class RecipeEndpoint : IRecipeEndpoint
 		{
 			if (review.Dislikes is not null && review.Dislikes.Contains(userId))
 			{
-				review.Dislikes.Remove(userId);
+				Debug.WriteLine($"======= DISLIKES-BEFORE User removed: {review.Dislikes.Count}");
+				var userremoved = review.Dislikes.Remove(userId);
+				Debug.WriteLine($"======= DISLIKES User removed: {userremoved}");
 			}
 
 			if (review.Likes is not null)
@@ -170,6 +185,13 @@ public class RecipeEndpoint : IRecipeEndpoint
 				review.Likes = new List<Guid> { userId };
 				review.UserLike = true;
 			}
+
+			Debug.WriteLine($"======= USER LIKE is : {review.UserLike}");
+			Debug.WriteLine($"======= LIKES : {review.Likes?.Count}");
+			Debug.WriteLine($"======= DISLIKES : {review.Dislikes?.Count}");
+			Debug.WriteLine($"===================END======================");
+			Debug.WriteLine(string.Empty);
+			Debug.WriteLine(string.Empty);
 
 			return review;
 		}

@@ -32,8 +32,10 @@
 									Height="72"
 									utu:AutoLayout.CounterAlignment="Center"
 									PrimaryAxisAlignment="Center">
+
 						<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
 									UriSource="{ThemeResource Empty_Recipe}" />
+
 					</utu:AutoLayout>
 					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 							   Style="{StaticResource TitleLarge}"
