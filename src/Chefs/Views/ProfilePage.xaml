@@ -9,7 +9,7 @@
 	  xmlns:models="using:Chefs.Business.Models"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  mc:Ignorable="d"
@@ -50,10 +50,10 @@
 							Foreground="{ThemeResource PrimaryBrush}"
 							CornerRadius="4"
 							Style="{StaticResource TextButtonStyle}">
-						<um:ControlExtensions.Icon>
+						<ut:ControlExtensions.Icon>
 							<FontIcon Glyph="{StaticResource Icon_Add}"
 									  Foreground="{ThemeResource PrimaryBrush}" />
-						</um:ControlExtensions.Icon>
+						</ut:ControlExtensions.Icon>
 					</Button>
 				</utu:AutoLayout>
 			</UserControl>

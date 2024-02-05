@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					xmlns:converters="using:Chefs.Converters"
-					xmlns:um="using:Uno.Material">
+					xmlns:ut="using:Uno.Themes">
 
 	<converters:StringFormatter x:Key="StringFormatter" />
 
@@ -28,12 +28,12 @@
 										NewValue="&#x0a;"
 										OldValue=" " />
 
-	<um:FromBoolToValueConverter x:Key="TrueToVisible"
+	<ut:FromBoolToValueConverter x:Key="TrueToVisible"
 								 FalseValue="Collapsed"
 								 NullValue="Collapsed"
 								 TrueValue="Visible" />
 
-	<um:FromBoolToValueConverter x:Key="TrueToCollapsed"
+	<ut:FromBoolToValueConverter x:Key="TrueToCollapsed"
 								 FalseValue="Visible"
 								 NullValue="Visible"
 								 TrueValue="Collapsed" />
@@ -58,12 +58,12 @@
 										NullValue="PrimaryMediumBrush"
 										TrueValue="PrimaryMediumBrush" />
 
-	<um:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
+	<ut:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
 								 FalseValue="False"
 								 TrueValue="True"
 								 NullValue="False" />
 
-	<um:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
+	<ut:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
 								 FalseValue="True"
 								 TrueValue="False"
 								 NullValue="False" />

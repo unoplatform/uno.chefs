@@ -10,7 +10,7 @@
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
@@ -63,10 +63,10 @@
 								CornerRadius="4"
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Star_Outline}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</Button>
 					</utu:AutoLayout>
 				</utu:AutoLayout>
@@ -158,10 +158,10 @@
 						 PlaceholderText="Search"
 						 Style="{StaticResource OutlinedTextBoxStyle}"
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-					<um:ControlExtensions.Icon>
+					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Search}"
 								  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-					</um:ControlExtensions.Icon>
+					</ut:ControlExtensions.Icon>
 				</TextBox>
 
 				<utu:AutoLayout Justify="SpaceBetween"
@@ -179,10 +179,10 @@
 								CornerRadius="4"
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Close}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</Button>
 						<utu:AutoLayout x:Name="FilterButtonHost"
 										DataContext="{Binding Filter}">
@@ -196,10 +196,10 @@
 									CornerRadius="4"
 									Foreground="{ThemeResource PrimaryBrush}"
 									Style="{StaticResource TextButtonStyle}">
-								<um:ControlExtensions.Icon>
+								<ut:ControlExtensions.Icon>
 									<FontIcon Glyph="{StaticResource Icon_Tune}"
 											  Foreground="{ThemeResource PrimaryBrush}" />
-								</um:ControlExtensions.Icon>
+								</ut:ControlExtensions.Icon>
 							</Button>
 						</utu:AutoLayout>
 					</utu:AutoLayout>
