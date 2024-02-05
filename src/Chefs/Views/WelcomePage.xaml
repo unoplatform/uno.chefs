@@ -86,7 +86,8 @@
 										   Style="{StaticResource TitleMedium}"
 										   Text="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences."
 										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
+										   TextWrapping="Wrap"
+										   Padding="24" />
 							</utu:AutoLayout>
 							<!-- Second onboarding page -->
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -109,7 +110,8 @@
 										   Style="{StaticResource TitleMedium}"
 										   Text="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes."
 										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
+										   TextWrapping="Wrap"
+										   Padding="24" />
 							</utu:AutoLayout>
 							<!-- Third onboarding page -->
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -132,7 +134,8 @@
 										   Style="{StaticResource TitleMedium}"
 										   Text="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community."
 										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
+										   TextWrapping="Wrap"
+										   Padding="24" />
 							</utu:AutoLayout>
 						</FlipView.Items>
 					</FlipView>
@@ -201,7 +204,8 @@
 												   Style="{StaticResource TitleMedium}"
 												   Text="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences."
 												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
+												   TextWrapping="Wrap"
+												   Padding="24" />
 									</utu:AutoLayout>
 									<!-- Second onboarding page -->
 									<utu:AutoLayout MaxWidth="500"
@@ -222,7 +226,8 @@
 												   Style="{StaticResource TitleMedium}"
 												   Text="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes."
 												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
+												   TextWrapping="Wrap"
+												   Padding="24" />
 									</utu:AutoLayout>
 									<!-- Third onboarding page -->
 									<utu:AutoLayout MaxWidth="500"
@@ -243,7 +248,8 @@
 												   Style="{StaticResource TitleMedium}"
 												   Text="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community."
 												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
+												   TextWrapping="Wrap"
+												   Padding="24" />
 									</utu:AutoLayout>
 								</FlipView.Items>
 							</FlipView>
