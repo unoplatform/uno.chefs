@@ -338,26 +338,30 @@
 																								  CommandParameter="{Binding}"
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}}">
 																						<ToggleButton.Content>
-																							<StackPanel Orientation="Horizontal">
-																								<FontIcon Margin="0,0,5,0"
-																										  VerticalAlignment="Center"
-																										  Glyph="{StaticResource Icon_Thumb_Up_Off_Alt}"
+																							<utu:AutoLayout Orientation="Horizontal"
+																											Spacing="5">
+																								<FontIcon FontSize="20"
+																										  utu:AutoLayout.CounterAlignment="Center"
+																										  Glyph="{StaticResource Icon_Thumb_Up}"
+																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock VerticalAlignment="Center"
+																								<TextBlock utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Text="{Binding Likes.Count}" />
-																							</StackPanel>
+																							</utu:AutoLayout>
 																						</ToggleButton.Content>
 																						<ut:ControlExtensions.AlternateContent>
-																							<StackPanel Orientation="Horizontal">
-																								<FontIcon Margin="0,0,5,0"
-																										  VerticalAlignment="Center"
-																										  Glyph="{StaticResource Icon_Thumb_Up_Alt}"
+																							<utu:AutoLayout Orientation="Horizontal"
+																											Spacing="5">
+																								<FontIcon FontSize="20"
+																										  utu:AutoLayout.CounterAlignment="Center"
+																										  Glyph="{StaticResource Icon_Thumb_Up}"
+																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock VerticalAlignment="Center"
+																								<TextBlock utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Text="{Binding Likes.Count}" />
-																							</StackPanel>
+																							</utu:AutoLayout>
 																						</ut:ControlExtensions.AlternateContent>
 																					</ToggleButton>
 																					<ToggleButton HorizontalContentAlignment="Center"
@@ -368,26 +372,30 @@
 																								  CommandParameter="{Binding}"
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}}">
 																						<ToggleButton.Content>
-																							<StackPanel Orientation="Horizontal">
-																								<FontIcon Margin="0,0,5,0"
-																										  VerticalAlignment="Center"
-																										  Glyph="{StaticResource Icon_Thumb_Down_Off_Alt}"
+																							<utu:AutoLayout Orientation="Horizontal"
+																											Spacing="5">
+																								<FontIcon FontSize="20"
+																										  utu:AutoLayout.CounterAlignment="Center"
+																										  Glyph="{StaticResource Icon_Thumb_Down}"
+																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock VerticalAlignment="Center"
+																								<TextBlock utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Text="{Binding Dislikes.Count}" />
-																							</StackPanel>
+																							</utu:AutoLayout>
 																						</ToggleButton.Content>
 																						<ut:ControlExtensions.AlternateContent>
-																							<StackPanel Orientation="Horizontal">
-																								<FontIcon Margin="0,0,5,0"
-																										  VerticalAlignment="Center"
-																										  Glyph="{StaticResource Icon_Thumb_Down_Alt}"
+																							<utu:AutoLayout Orientation="Horizontal"
+																											Spacing="5">
+																								<FontIcon FontSize="20"
+																										  utu:AutoLayout.CounterAlignment="Center"
+																										  Glyph="{StaticResource Icon_Thumb_Down}"
+																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock VerticalAlignment="Center"
+																								<TextBlock utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Text="{Binding Dislikes.Count}" />
-																							</StackPanel>
+																							</utu:AutoLayout>
 																						</ut:ControlExtensions.AlternateContent>
 																					</ToggleButton>
 																				</utu:AutoLayout>
@@ -715,8 +723,10 @@
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up_Off_Alt}"
-																										  VerticalAlignment="Center"
+																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
+																										  FontSize="20"
+																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Likes.Count}"
 																										   utu:AutoLayout.CounterAlignment="Center"
@@ -727,8 +737,10 @@
 																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up_Alt}"
-																										  VerticalAlignment="Center"
+																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
+																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+																										  FontSize="20"
+																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Likes.Count}"
 																										   utu:AutoLayout.CounterAlignment="Center"
@@ -750,8 +762,10 @@
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down_Off_Alt}"
-																										  VerticalAlignment="Center"
+																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
+																										  FontSize="20"
+																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Dislikes.Count}"
 																										   utu:AutoLayout.CounterAlignment="Center"
@@ -762,8 +776,10 @@
 																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down_Alt}"
-																										  VerticalAlignment="Center"
+																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
+																										  FontSize="20"
+																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Dislikes.Count}"
 																										   utu:AutoLayout.CounterAlignment="Center"
