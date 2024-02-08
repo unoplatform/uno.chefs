@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserControl x:Class="Chefs.Views.Controls.ReviewControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:local="using:Chefs.Views"
+			 xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:utu="using:Uno.Toolkit.UI"
+			 xmlns:um="using:Uno.Material"
+			 xmlns:ut="using:Uno.Themes"
+			 xmlns:uer="using:Uno.Extensions.Reactive.UI"
+			 xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+			 mc:Ignorable="d">
+
+	<UserControl.Resources>
+		<DataTemplate x:Key="EmptyTemplate">
+			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
+											 Wide='40'}"
+							utu:AutoLayout.PrimaryAlignment="Stretch"
+							PrimaryAxisAlignment="Center">
+				<utu:AutoLayout Padding="32,0"
+								PrimaryAxisAlignment="Center"
+								Spacing="24">
+					<utu:AutoLayout Width="72"
+									Height="72"
+									utu:AutoLayout.CounterAlignment="Center"
+									PrimaryAxisAlignment="Center">
+						<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
+									UriSource="{ThemeResource Empty_Recipe}" />
+					</utu:AutoLayout>
+					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+							   Style="{StaticResource TitleLarge}"
+							   Text="No Reviews Yet"
+							   TextAlignment="Center"
+							   TextWrapping="Wrap" />
+				</utu:AutoLayout>
+			</utu:AutoLayout>
+		</DataTemplate>
+	</UserControl.Resources>
+
+	<uer:FeedView x:Name="ReviewsFeed"
+				  VerticalContentAlignment="Center"
+				  NoneTemplate="{StaticResource EmptyTemplate}"
+				  Source="{Binding Reviews}">
+		<DataTemplate>
+			<muxc:ItemsRepeater ItemsSource="{Binding Data}">
+				<muxc:ItemsRepeater.Layout>
+					<muxc:StackLayout Orientation="Vertical"
+									  Spacing="2" />
+				</muxc:ItemsRepeater.Layout>
+				<muxc:ItemsRepeater.ItemTemplate>
+					<DataTemplate>
+						<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+										CornerRadius="4">
+							<utu:AutoLayout Spacing="16"
+											Padding="16"
+											Orientation="Horizontal">
+								<Border Width="60"
+										Height="60"
+										CornerRadius="60"
+										utu:AutoLayout.CounterAlignment="Start">
+									<Image Source="{Binding UrlAuthorImage}"
+										   Stretch="UniformToFill"
+										   HorizontalAlignment="Center"
+										   VerticalAlignment="Center" />
+								</Border>
+								<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
+												utu:AutoLayout.PrimaryAlignment="Stretch">
+									<utu:AutoLayout Spacing="8"
+													PrimaryAxisAlignment="Center">
+										<TextBlock TextWrapping="Wrap"
+												   Text="{Binding Description}"
+												   Foreground="{ThemeResource OnSurfaceBrush}" />
+										<TextBlock TextWrapping="Wrap"
+												   Text="{Binding PublisherName}"
+												   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+									</utu:AutoLayout>
+									<utu:AutoLayout Padding="0,16,0,16"
+													utu:AutoLayout.CounterAlignment="Start"
+													Orientation="Horizontal"
+													Spacing="8">
+										<ToggleButton HorizontalContentAlignment="Center"
+													  VerticalContentAlignment="Center"
+													  utu:AutoLayout.CounterAlignment="Start"
+													  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+														Path=DataContext.Like}"
+													  CommandParameter="{Binding}"
+													  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}}">
+											<ToggleButton.Content>
+												<utu:AutoLayout Orientation="Horizontal"
+																Spacing="5">
+													<FontIcon FontSize="20"
+															  utu:AutoLayout.CounterAlignment="Center"
+															  Glyph="{StaticResource Icon_Thumb_Up}"
+															  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+															  Foreground="{ThemeResource PrimaryBrush}" />
+													<TextBlock utu:AutoLayout.CounterAlignment="Center"
+															   Foreground="{ThemeResource PrimaryBrush}"
+															   Text="{Binding Likes.Count}" />
+												</utu:AutoLayout>
+											</ToggleButton.Content>
+											<ut:ControlExtensions.AlternateContent>
+												<utu:AutoLayout Orientation="Horizontal"
+																Spacing="5">
+													<FontIcon FontSize="20"
+															  utu:AutoLayout.CounterAlignment="Center"
+															  Glyph="{StaticResource Icon_Thumb_Up}"
+															  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+															  Foreground="{ThemeResource PrimaryBrush}" />
+													<TextBlock utu:AutoLayout.CounterAlignment="Center"
+															   Foreground="{ThemeResource PrimaryBrush}"
+															   Text="{Binding Likes.Count}" />
+												</utu:AutoLayout>
+											</ut:ControlExtensions.AlternateContent>
+										</ToggleButton>
+										<ToggleButton HorizontalContentAlignment="Center"
+													  VerticalContentAlignment="Center"
+													  utu:AutoLayout.CounterAlignment="Start"
+													  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																													Path=DataContext.Dislike}"
+													  CommandParameter="{Binding}"
+													  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}}">
+											<ToggleButton.Content>
+												<utu:AutoLayout Orientation="Horizontal"
+																Spacing="5">
+													<FontIcon FontSize="20"
+															  utu:AutoLayout.CounterAlignment="Center"
+															  Glyph="{StaticResource Icon_Thumb_Down}"
+															  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+															  Foreground="{ThemeResource PrimaryBrush}" />
+													<TextBlock utu:AutoLayout.CounterAlignment="Center"
+															   Foreground="{ThemeResource PrimaryBrush}"
+															   Text="{Binding Dislikes.Count}" />
+												</utu:AutoLayout>
+											</ToggleButton.Content>
+											<ut:ControlExtensions.AlternateContent>
+												<utu:AutoLayout Orientation="Horizontal"
+																Spacing="5">
+													<FontIcon FontSize="20"
+															  utu:AutoLayout.CounterAlignment="Center"
+															  Glyph="{StaticResource Icon_Thumb_Down}"
+															  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+															  Foreground="{ThemeResource PrimaryBrush}" />
+													<TextBlock utu:AutoLayout.CounterAlignment="Center"
+															   Foreground="{ThemeResource PrimaryBrush}"
+															   Text="{Binding Dislikes.Count}" />
+												</utu:AutoLayout>
+											</ut:ControlExtensions.AlternateContent>
+										</ToggleButton>
+									</utu:AutoLayout>
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+						</utu:AutoLayout>
+					</DataTemplate>
+				</muxc:ItemsRepeater.ItemTemplate>
+			</muxc:ItemsRepeater>
+		</DataTemplate>
+	</uer:FeedView>
+</UserControl>

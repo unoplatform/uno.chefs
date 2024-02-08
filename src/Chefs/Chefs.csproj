@@ -78,8 +78,33 @@
 		<EmbeddedResource Include="appsettings.json" />
 		<EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 		<EmbeddedResource Include="Assets\Maps\location_pin.svg" />
+		<EmbeddedResource Include="Views\Controls\CategoriesControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\FavoriteCookbookControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\IngredientsControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\NotificationControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\PopularControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\ProfilRecipeControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\RecentControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\RecipeCardControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\ReviewControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\StepControl.xaml" />
+		<EmbeddedResource Include="Views\Controls\TrendingControl.xaml" />
 		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Views\Controls\CategoriesControl.xaml" />
+	  <None Remove="Views\Controls\FavoriteCookbookControl.xaml" />
+	  <None Remove="Views\Controls\IngredientsControl.xaml" />
+	  <None Remove="Views\Controls\NotificationControl.xaml" />
+	  <None Remove="Views\Controls\PopularControl.xaml" />
+	  <None Remove="Views\Controls\ProfilRecipeControl.xaml" />
+	  <None Remove="Views\Controls\RecentControl.xaml" />
+	  <None Remove="Views\Controls\RecipeCardControl.xaml" />
+	  <None Remove="Views\Controls\ReviewControl.xaml" />
+	  <None Remove="Views\Controls\StepControl.xaml" />
+	  <None Remove="Views\Controls\TrendingControl.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -87,6 +112,34 @@
 	  <UnoImage Remove="Assets\Maps\location_pin.svg" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Views\Controls\CategoriesControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\FavoriteCookbookControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\IngredientsControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\NotificationControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\PopularControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\ProfilRecipeControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\RecentControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\RecipeCardControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\ReviewControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\StepControl.xaml" />
+	  <UpToDateCheckInput Remove="Views\Controls\TrendingControl.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Remove="Views\Controls\IngredientsControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\StepControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\ReviewControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\TrendingControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\RecentControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\PopularControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\CategoriesControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\FavoriteCookbookControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\RecipeCardControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\ProfilRecipeControl.xaml" />
+		<AdditionalFiles Remove="Views\Controls\NotificationControl.xaml" />
+	</ItemGroup>
+	
 	<!-- Workaround to avoid including Uno.Toolkit.UI XBFs in the PRI file -->
 	<Target Name="AdjustGetPackagingOutput1" AfterTargets="GetMrtPackagingOutputs">
 		<Message Importance="high" Text="Applying NuGet packaging workaround for dependent PRI files exclusion" />

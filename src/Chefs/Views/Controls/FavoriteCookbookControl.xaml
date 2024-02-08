@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserControl x:Class="Chefs.Views.Controls.FavoriteCookbookControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:data="using:Chefs.Business.Models"
+			 xmlns:local="using:Chefs.Views"
+			 xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:utu="using:Uno.Toolkit.UI"
+			 xmlns:um="using:Uno.Material"
+			 xmlns:ut="using:Uno.Themes"
+			 xmlns:uen="using:Uno.Extensions.Navigation.UI"
+			 xmlns:uer="using:Uno.Extensions.Reactive.UI"
+			 xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+			 xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 mc:Ignorable="d">
+
+	<UserControl.Resources>
+		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="3"
+								MinColumnSpacing="6"
+								MinItemWidth="155"
+								MinRowSpacing="6" />
+
+		<muxc:UniformGridLayout x:Key="WideGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="7"
+								MinColumnSpacing="15"
+								MinItemWidth="240"
+								MinRowSpacing="15" />
+		
+		<DataTemplate x:Key="CookbookEmptyTemplate">
+			<utu:AutoLayout Height="546"
+							Padding="32,0"
+							PrimaryAxisAlignment="Center"
+							Spacing="24">
+				<utu:AutoLayout Width="72"
+								Height="72"
+								utu:AutoLayout.CounterAlignment="Center">
+					<utu:AutoLayout HorizontalAlignment="Stretch"
+									VerticalAlignment="Stretch"
+									utu:AutoLayout.IsIndependentLayout="True"
+									PrimaryAxisAlignment="Center">
+						<BitmapIcon Width="56"
+									Height="72"
+									utu:AutoLayout.CounterAlignment="Center"
+									UriSource="{ThemeResource Empty_Box}" />
+					</utu:AutoLayout>
+				</utu:AutoLayout>
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleLarge}"
+						   Text="No Cookbooks Created"
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleMedium}"
+						   Text="It looks like you haven't created any cookbooks yet. Cookbooks are a great way to organize your recipes into collections. "
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
+				<Button Padding="12,10,16,10"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						uen:Navigation.Request="!CreateCookbook"
+						utu:AutoLayout.CounterAlignment="Center"
+						Content="Create cookbook"
+						CornerRadius="4"
+						Foreground="{ThemeResource PrimaryBrush}"
+						Style="{StaticResource TextButtonStyle}">
+					<ut:ControlExtensions.Icon>
+						<FontIcon Glyph="{StaticResource Icon_Add}"
+								  Foreground="{ThemeResource PrimaryBrush}" />
+					</ut:ControlExtensions.Icon>
+				</Button>
+			</utu:AutoLayout>
+		</DataTemplate>
+
+		<DataTemplate x:Key="CookbookTemplate"
+					  x:DataType="data:Cookbook">
+			<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+			<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
+			<Border win:DataContext="{x:Bind}">
+				<utu:CardContentControl x:Name="CookbookTemplateCard"
+										HorizontalAlignment="Stretch"
+										VerticalAlignment="Stretch"
+										Background="{ThemeResource SurfaceBrush}"
+										CornerRadius="12"
+										Style="{StaticResource FilledCardContentControlStyle}">
+					<utu:CardContentControl.ContentTemplate>
+						<DataTemplate>
+							<utu:AutoLayout Margin="4">
+								<utu:AutoLayout x:Name="ImagesLayout"
+												Height="144"
+												utu:AutoLayout.CounterAlignment="Stretch"
+												Orientation="Horizontal"
+												Spacing="4">
+									<Border utu:AutoLayout.PrimaryAlignment="Stretch"
+											CornerRadius="12">
+										<Image HorizontalAlignment="Center"
+											   VerticalAlignment="Center"
+											   Source="{Binding CookbookImages.FirstImage}"
+											   Stretch="UniformToFill" />
+									</Border>
+									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
+													utu:AutoLayout.PrimaryAlignment="Stretch"
+													Spacing="4">
+										<Border utu:AutoLayout.CounterAlignment="Stretch"
+												utu:AutoLayout.PrimaryAlignment="Stretch"
+												Background="{ThemeResource BackgroundBrush}"
+												CornerRadius="12">
+											<Image HorizontalAlignment="Center"
+												   VerticalAlignment="Center"
+												   Source="{Binding CookbookImages.SecondImage}"
+												   Stretch="UniformToFill"
+												   Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
+										</Border>
+										<Grid utu:AutoLayout.CounterAlignment="Stretch"
+											  utu:AutoLayout.PrimaryAlignment="Stretch"
+											  CornerRadius="12">
+											<Image HorizontalAlignment="Center"
+												   VerticalAlignment="Center"
+												   Source="{Binding CookbookImages.ThirdImage}"
+												   Stretch="UniformToFill"
+												   Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToCollapsed}}" />
+
+											<Button MinHeight="57"
+													HorizontalAlignment="Stretch"
+													VerticalAlignment="Stretch"
+													uen:Navigation.Data="{Binding}"
+													uen:Navigation.Request="!CreateCookbook"
+													Background="{ThemeResource BackgroundBrush}"
+													CornerRadius="12"
+													Style="{StaticResource TextButtonStyle}"
+													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
+												<Button.Content>
+													<FontIcon Glyph="{StaticResource Icon_Add}"
+															  FontFamily="{StaticResource MaterialIconFontFamily}"
+															  Foreground="{ThemeResource OnSurfaceBrush}" />
+												</Button.Content>
+											</Button>
+										</Grid>
+									</utu:AutoLayout>
+								</utu:AutoLayout>
+								<utu:AutoLayout Padding="12"
+												PrimaryAxisAlignment="Center"
+												Spacing="2">
+									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+											   Style="{StaticResource TitleSmall}"
+											   Text="{Binding Name}"
+											   TextWrapping="NoWrap" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+											   Style="{StaticResource CaptionMedium}"
+											   Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
+											   TextWrapping="NoWrap" />
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+						</DataTemplate>
+					</utu:CardContentControl.ContentTemplate>
+				</utu:CardContentControl>
+			</Border>
+		</DataTemplate>
+	</UserControl.Resources>
+
+	<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
+				  utu:AutoLayout.PrimaryAlignment="Stretch"
+				  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
+				  Source="{Binding SavedCookbooks}">
+		<DataTemplate>
+			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+				<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
+				<ScrollViewer x:Name="RecipesScrollViewer"
+							  utu:AutoLayout.PrimaryAlignment="Stretch"
+							  HorizontalScrollMode="Disabled"
+							  VerticalScrollBarVisibility="Hidden">
+					<muxc:ItemsRepeater Margin="0,0,0,16"
+										uen:Navigation.Request="CookbookDetails"
+										ItemTemplate="{StaticResource CookbookTemplate}"
+										ItemsSource="{Binding Data}"
+										Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																		Wide={StaticResource WideGridLayout}}" />
+				</ScrollViewer>
+
+				<Button Margin="0,0,8,8"
+						HorizontalAlignment="Right"
+						VerticalAlignment="Bottom"
+						uen:Navigation.Request="!CreateCookbook"
+						utu:AutoLayout.IsIndependentLayout="True"
+						Background="{ThemeResource PrimaryBrush}"
+						CornerRadius="56"
+						Style="{StaticResource FabStyle}">
+					<ut:ControlExtensions.Icon>
+						<FontIcon Glyph="{StaticResource Icon_Add}"
+								  FontFamily="{StaticResource MaterialIconFontFamily}"
+								  Foreground="{ThemeResource OnPrimaryBrush}" />
+					</ut:ControlExtensions.Icon>
+				</Button>
+			</utu:AutoLayout>
+		</DataTemplate>
+	</uer:FeedView>
+
+</UserControl>
