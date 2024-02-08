@@ -2,57 +2,57 @@
 <UserControl x:Class="Chefs.Views.Controls.ProfilRecipeControl"
 			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:data="using:Chefs.Business.Models"
 			 xmlns:local="using:Chefs.Views"
 			 xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
-			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 xmlns:utu="using:Uno.Toolkit.UI"
-			 xmlns:um="using:Uno.Material"
-			 xmlns:ut="using:Uno.Themes"
+			 xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 			 xmlns:uen="using:Uno.Extensions.Navigation.UI"
 			 xmlns:uer="using:Uno.Extensions.Reactive.UI"
-			 xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+			 xmlns:um="using:Uno.Material"
+			 xmlns:ut="using:Uno.Themes"
+			 xmlns:utu="using:Uno.Toolkit.UI"
 			 xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 			 mc:Ignorable="d">
-	
+
 	<UserControl.Resources>
 		<DataTemplate x:Key="RecipeEmptyTemplate">
 			<UserControl>
-				<utu:AutoLayout Spacing="24"
+				<utu:AutoLayout Padding="32,0"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
 								PrimaryAxisAlignment="Center"
-								Padding="32,0"
-								utu:AutoLayout.PrimaryAlignment="Stretch">
-					<utu:AutoLayout PrimaryAxisAlignment="Center"
+								Spacing="24">
+					<utu:AutoLayout Width="72"
+									Height="72"
 									utu:AutoLayout.CounterAlignment="Center"
-									Width="72"
-									Height="72">
-						<BitmapIcon UriSource="{ThemeResource Empty_Box}"
+									PrimaryAxisAlignment="Center">
+						<BitmapIcon Width="64"
+									Height="72.201614"
 									utu:AutoLayout.CounterAlignment="Center"
-									Width="64"
-									Height="72.201614" />
+									UriSource="{ThemeResource Empty_Box}" />
 					</utu:AutoLayout>
-					<TextBlock TextAlignment="Center"
-							   TextWrapping="Wrap"
+					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+							   Style="{StaticResource TitleLarge}"
 							   Text="No Recipes Created"
-							   Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleLarge}" />
-					<TextBlock TextAlignment="Center"
-							   TextWrapping="Wrap"
+							   TextAlignment="Center"
+							   TextWrapping="Wrap" />
+					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+							   Style="{StaticResource TitleMedium}"
 							   Text="You haven't created any recipes yet. Share your culinary creativity with the community! Click on 'Create Recipe' to start sharing your own delicious dishes. Your recipe might be the next big hit!"
-							   Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleMedium}" />
-					<Button HorizontalContentAlignment="Center"
+							   TextAlignment="Center"
+							   TextWrapping="Wrap" />
+					<Button Padding="12,10,16,10"
+							HorizontalContentAlignment="Center"
 							VerticalContentAlignment="Center"
-							Content="Create Recipe"
-							Padding="12,10,16,10"
 							utu:AutoLayout.CounterAlignment="Center"
-							Foreground="{ThemeResource PrimaryBrush}"
+							Content="Create Recipe"
 							CornerRadius="4"
+							Foreground="{ThemeResource PrimaryBrush}"
 							Style="{StaticResource TextButtonStyle}">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Add}"
-									  Foreground="{ThemeResource PrimaryBrush}" />
+							<FontIcon Foreground="{ThemeResource PrimaryBrush}"
+									  Glyph="{StaticResource Icon_Add}" />
 						</ut:ControlExtensions.Icon>
 					</Button>
 				</utu:AutoLayout>
@@ -60,9 +60,9 @@
 		</DataTemplate>
 	</UserControl.Resources>
 
-	<uer:FeedView Source="{Binding Recipes}"
-				  utu:AutoLayout.PrimaryAlignment="Stretch"
-				  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
+	<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
+				  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
+				  Source="{Binding Recipes}">
 		<DataTemplate>
 			<UserControl>
 				<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
@@ -70,23 +70,23 @@
 							  HorizontalScrollMode="Disabled"
 							  VerticalScrollBarVisibility="Hidden">
 					<utu:AutoLayout>
-						<muxc:ItemsRepeater ItemsSource="{Binding Data}"
+						<muxc:ItemsRepeater Margin="16,0,16,16"
 											uen:Navigation.Request="-"
-											Margin="16,0,16,16"
-											utu:AutoLayout.CounterAlignment="Stretch">
+											utu:AutoLayout.CounterAlignment="Stretch"
+											ItemsSource="{Binding Data}">
 							<muxc:ItemsRepeater.Layout>
 								<muxc:UniformGridLayout x:Name="RecipeUniformGrid"
+														ItemsStretch="Fill"
 														MaximumRowsOrColumns="2"
-														MinItemWidth="155"
 														MinColumnSpacing="10"
-														MinRowSpacing="8"
-														ItemsStretch="Fill" />
+														MinItemWidth="155"
+														MinRowSpacing="8" />
 							</muxc:ItemsRepeater.Layout>
 							<muxc:ItemsRepeater.ItemTemplate>
 								<!--
-											Using an x:bind for windows as a workaround for now regarding this WinUI issue:
-											https://github.com/microsoft/microsoft-ui-xaml/issues/6689
-										-->
+									Using an x:bind for windows as a workaround for now regarding this WinUI issue:
+									https://github.com/microsoft/microsoft-ui-xaml/issues/6689
+								-->
 								<DataTemplate x:DataType="data:Recipe">
 									<Border win:DataContext="{x:Bind}">
 										<utu:CardContentControl x:Name="RecipeTemplateCard"

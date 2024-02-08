@@ -3,8 +3,8 @@ namespace Chefs.Views.Controls;
 
 public partial class RecipeCardControl : UserControl
 {
-	public RecipeCardControl ()
+	public RecipeCardControl()
 	{
-		InitializeComponent ();
+		InitializeComponent();
 	}
 }

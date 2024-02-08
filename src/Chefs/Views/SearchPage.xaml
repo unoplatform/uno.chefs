@@ -2,11 +2,11 @@
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:android="http://uno.ui/android"
+	  xmlns:ctrl="using:Chefs.Views.Controls"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:data="using:Chefs.Business.Models"
 	  xmlns:ios="http://uno.ui/ios"
 	  xmlns:local="using:Chefs.Views"
-	  xmlns:ctrl="using:Chefs.Views.Controls"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
@@ -20,7 +20,7 @@
 	  mc:Ignorable="d android ios">
 
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		
+
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 
 			<utu:NavigationBar x:Name="NavBar"
@@ -29,10 +29,10 @@
 				<utu:NavigationBar.Content>
 					<utu:AutoLayout Padding="12,0,0,0"
 									Orientation="Horizontal">
-						<Image utu:AutoLayout.CounterAlignment="Center"
-							   Source="{ThemeResource ChefsAppSignature}"
-							   Width="128"
-							   Height="40" />
+						<Image Width="128"
+							   Height="40"
+							   utu:AutoLayout.CounterAlignment="Center"
+							   Source="{ThemeResource ChefsAppSignature}" />
 					</utu:AutoLayout>
 				</utu:NavigationBar.Content>
 				<utu:NavigationBar.PrimaryCommands>
@@ -65,8 +65,8 @@
 						 Style="{StaticResource OutlinedTextBoxStyle}"
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Search}"
-								  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+						<FontIcon Foreground="{ThemeResource OnSurfaceLowBrush}"
+								  Glyph="{StaticResource Icon_Search}" />
 					</ut:ControlExtensions.Icon>
 				</TextBox>
 
@@ -76,18 +76,18 @@
 							   Style="{StaticResource BodyLarge}"
 							   Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
 					<utu:AutoLayout Orientation="Horizontal">
-						<Button utu:AutoLayout.PrimaryAlignment="Auto"
+						<Button Margin="0,0,8,0"
 								utu:AutoLayout.CounterAlignment="Center"
-								Content="Clear filters"
-								Visibility="{Binding HasFilter, Converter={StaticResource TrueToVisible}}"
+								utu:AutoLayout.PrimaryAlignment="Auto"
 								Command="{Binding ResetFilters}"
-								Margin="0,0,8,0"
+								Content="Clear filters"
 								CornerRadius="4"
 								Foreground="{ThemeResource PrimaryBrush}"
-								Style="{StaticResource TextButtonStyle}">
+								Style="{StaticResource TextButtonStyle}"
+								Visibility="{Binding HasFilter, Converter={StaticResource TrueToVisible}}">
 							<ut:ControlExtensions.Icon>
-								<FontIcon Glyph="{StaticResource Icon_Close}"
-										  Foreground="{ThemeResource PrimaryBrush}" />
+								<FontIcon Foreground="{ThemeResource PrimaryBrush}"
+										  Glyph="{StaticResource Icon_Close}" />
 							</ut:ControlExtensions.Icon>
 						</Button>
 						<utu:AutoLayout x:Name="FilterButtonHost"
@@ -103,8 +103,8 @@
 									Foreground="{ThemeResource PrimaryBrush}"
 									Style="{StaticResource TextButtonStyle}">
 								<ut:ControlExtensions.Icon>
-									<FontIcon Glyph="{StaticResource Icon_Tune}"
-											  Foreground="{ThemeResource PrimaryBrush}" />
+									<FontIcon Foreground="{ThemeResource PrimaryBrush}"
+											  Glyph="{StaticResource Icon_Tune}" />
 								</ut:ControlExtensions.Icon>
 							</Button>
 						</utu:AutoLayout>
