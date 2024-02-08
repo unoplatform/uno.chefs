@@ -10,7 +10,7 @@
 	  xmlns:not_win="http://uno.ui/not_win"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  utu:StatusBar.Background="{ThemeResource SurfaceBrush}"
@@ -22,9 +22,13 @@
 			<ResourceDictionary.ThemeDictionaries>
 				<ResourceDictionary x:Key="Light">
 					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+					<!-- Workaround for winui/windows -->
+					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
 				</ResourceDictionary>
 				<ResourceDictionary x:Key="Default">
 					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+					<!-- Workaround for winui/windows -->
+					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
 		</ResourceDictionary>
@@ -60,9 +64,9 @@
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="LoginPassword"
 									 android:ImeOptions="Done"
@@ -72,9 +76,9 @@
 									 PlaceholderText="Password"
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Lock}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</PasswordBox>
 						<utu:AutoLayout Spacing="24"
 										Orientation="Horizontal">
@@ -104,24 +108,24 @@
 								Padding="16,20,24,20"
 								CornerRadius="4"
 								Style="{StaticResource FilledTonalButtonStyle}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
 										  VerticalAlignment="Center"
 										  Glyph="{StaticResource Icon_Apple_Brand}"
 										  FontSize="18"
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</Button>
 						<Button Content="Sign in with Google"
 								Padding="16,20,24,20"
 								CornerRadius="4"
 								Style="{StaticResource FilledTonalButtonStyle}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
 										  Glyph="{StaticResource Icon_Google_Brand}"
 										  FontSize="18"
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</Button>
 					</utu:AutoLayout>
 					<utu:AutoLayout PrimaryAxisAlignment="Center"
@@ -164,10 +168,10 @@
 								 InputScope="Text"
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Person_Outline}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</TextBox>
 						<TextBox PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
 								 PlaceholderText="Email"
@@ -181,10 +185,10 @@
 								 ios:ReturnKeyType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
 								 IsSpellCheckEnabled="False">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Mail_Outline}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="RegistrationPassword"
 									 android:ImeOptions="Done"
@@ -194,10 +198,10 @@
 									 PlaceholderText="Password"
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
-							<um:ControlExtensions.Icon>
+							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Lock}"
 										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-							</um:ControlExtensions.Icon>
+							</ut:ControlExtensions.Icon>
 						</PasswordBox>
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"

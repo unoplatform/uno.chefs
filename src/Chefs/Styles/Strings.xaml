@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 	<!--#region: Material Icon Font Glyphs-->
 	<x:String x:Key="Icon_Home">&#xe9b2;</x:String>
@@ -36,5 +36,7 @@
 	<x:String x:Key="Icon_Favorite">&#xf004;</x:String>
 	<x:String x:Key="Icon_Apple_Brand">&#xf179;</x:String>
 	<x:String x:Key="Icon_Google_Brand">&#xf1a0;</x:String>
+	<x:String x:Key="Icon_Thumb_Up">&#xf164;</x:String>
+	<x:String x:Key="Icon_Thumb_Down">&#xf165;</x:String>
 	<!--#endregion-->
 </ResourceDictionary>

@@ -8,7 +8,7 @@
 	  mc:Ignorable="d"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  Background="{ThemeResource BackgroundBrush}">
 	<Page.Resources>
@@ -81,8 +81,7 @@
 							Width="120">
 				<utu:TabBar uen:Region.Attached="True"
 							Style="{StaticResource VerticalTabBarStyle}"
-							utu:AutoLayout.PrimaryAlignment="Stretch"
-							um:ControlExtensions.IsTintEnabled="False">
+							utu:AutoLayout.PrimaryAlignment="Stretch">
 
 					<utu:TabBarItem uen:Region.Name="Home"
 									IsSelectable="True"
