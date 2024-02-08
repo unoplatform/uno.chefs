@@ -32,6 +32,7 @@ public class UserService : IUserService
 	{
 		var settings = new AppConfig
 		{
+			Title = chefSettings.Title,
 			IsDark = chefSettings.IsDark,
 			Notification = chefSettings.Notification,
 			AccentColor = chefSettings.AccentColor,
@@ -39,6 +40,21 @@ public class UserService : IUserService
 
 		await _chefAppOptions.UpdateAsync(_ => settings);
 		await Settings.UpdateAsync(_ => settings, ct);
+	}
+
+	public async Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null)
+	{
+		var currentSettings = await GetSettings(ct);
+
+		var settings = new AppConfig
+		{
+			Title = title ?? currentSettings.Title,
+			IsDark = isDark ?? currentSettings.IsDark,
+			Notification = notification ?? currentSettings.Notification,
+			AccentColor = accentColor ?? currentSettings.AccentColor,
+		};
+
+		await SetSettings(settings, ct);
 	}
 
 	public async ValueTask<User> GetById(Guid userId, CancellationToken ct)

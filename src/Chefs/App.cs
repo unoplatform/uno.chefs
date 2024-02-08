@@ -71,6 +71,7 @@ public class App : Application
 		Host = await builder.NavigateAsync<ShellControl>();
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
+		var userService = Host.Services.GetRequiredService<IUserService>();
 		var themeService = _window.GetThemeService();
 		var appTheme = config.Value?.IsDark switch
 		{
@@ -79,6 +80,7 @@ public class App : Application
 			_ => AppTheme.System
 		};
 
+		await userService.UpdateSettings(CancellationToken.None, isDark: themeService.IsDark);
 		await themeService.SetThemeAsync(appTheme);
 	}
 
