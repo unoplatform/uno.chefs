@@ -103,7 +103,7 @@
 											   Source="{Binding CookbookImages.FirstImage}"
 											   Stretch="UniformToFill" />
 									</Border>
-									
+
 									<Grid RowSpacing="4"
 										  utu:AutoLayout.CounterAlignment="Stretch"
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -121,7 +121,7 @@
 												   Stretch="UniformToFill"
 												   Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
 										</Border>
-										
+
 										<Grid Grid.Row="1"
 											  utu:AutoLayout.CounterAlignment="Stretch"
 											  utu:AutoLayout.PrimaryAlignment="Stretch"
