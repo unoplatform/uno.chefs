@@ -19,10 +19,10 @@
 	<Page.Resources>
 		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="3"
-								MinColumnSpacing="6"
+								MaximumRowsOrColumns="2"
+								MinColumnSpacing="8"
 								MinItemWidth="155"
-								MinRowSpacing="6" />
+								MinRowSpacing="8" />
 
 		<muxc:UniformGridLayout x:Key="WideGridLayout"
 								ItemsStretch="Fill"
@@ -95,16 +95,22 @@
 												utu:AutoLayout.CounterAlignment="Stretch"
 												Orientation="Horizontal"
 												Spacing="4">
-									<Border utu:AutoLayout.PrimaryAlignment="Stretch"
+									<Border utu:AutoLayout.CounterAlignment="Stretch"
+											utu:AutoLayout.PrimaryAlignment="Stretch"
 											CornerRadius="12">
 										<Image HorizontalAlignment="Center"
 											   VerticalAlignment="Center"
 											   Source="{Binding CookbookImages.FirstImage}"
 											   Stretch="UniformToFill" />
 									</Border>
-									<utu:AutoLayout utu:AutoLayout.CounterAlignment="Stretch"
-													utu:AutoLayout.PrimaryAlignment="Stretch"
-													Spacing="4">
+									
+									<Grid RowSpacing="4"
+										  utu:AutoLayout.CounterAlignment="Stretch"
+										  utu:AutoLayout.PrimaryAlignment="Stretch">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="*" />
+											<RowDefinition Height="*" />
+										</Grid.RowDefinitions>
 										<Border utu:AutoLayout.CounterAlignment="Stretch"
 												utu:AutoLayout.PrimaryAlignment="Stretch"
 												Background="{ThemeResource BackgroundBrush}"
@@ -115,7 +121,9 @@
 												   Stretch="UniformToFill"
 												   Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
 										</Border>
-										<Grid utu:AutoLayout.CounterAlignment="Stretch"
+										
+										<Grid Grid.Row="1"
+											  utu:AutoLayout.CounterAlignment="Stretch"
 											  utu:AutoLayout.PrimaryAlignment="Stretch"
 											  CornerRadius="12">
 											<Image HorizontalAlignment="Center"
@@ -140,7 +148,7 @@
 												</Button.Content>
 											</Button>
 										</Grid>
-									</utu:AutoLayout>
+									</Grid>
 								</utu:AutoLayout>
 								<utu:AutoLayout Padding="12"
 												PrimaryAxisAlignment="Center"
