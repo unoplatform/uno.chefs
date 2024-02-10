@@ -129,7 +129,7 @@
 				CornerRadius="60"
 				Style="{StaticResource FabStyle}">
 			<ut:ControlExtensions.Icon>
-				<FontIcon Glyph="{StaticResource Icon_Add}"
+				<FontIcon Glyph="{StaticResource Icon_Edit}"
 						  Foreground="{ThemeResource SurfaceBrush}" />
 			</ut:ControlExtensions.Icon>
 		</Button>

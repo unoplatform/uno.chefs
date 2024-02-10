@@ -86,17 +86,17 @@
 																Orientation="Horizontal">
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}">
-														<FontIcon FontFamily="{StaticResource FontAwesomeRegularFontFamily}"
+														<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
 																  Glyph="{StaticResource Icon_Favorite}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteBorderToColorConverter}}" />
+																  Foreground="{ThemeResource OnSurfaceBrush}" />
 													</Border>
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
-														<FontIcon FontFamily="{StaticResource FontAwesomeRegularFontFamily}"
+														<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 																  Glyph="{StaticResource Icon_Favorite}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteToColorConverter}}" />
+																  Foreground="{ThemeResource PrimaryBrush}" />
 													</Border>
 												</utu:AutoLayout>
 											</utu:AutoLayout>
