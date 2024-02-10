@@ -363,7 +363,6 @@
 										VerticalAlignment="Bottom"
 										uen:Navigation.Request="CreateCookbook"
 										utu:AutoLayout.IsIndependentLayout="True"
-										Background="{ThemeResource PrimaryBrush}"
 										CornerRadius="56"
 										Style="{StaticResource FabStyle}">
 									<ut:ControlExtensions.Icon>
