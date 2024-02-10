@@ -123,15 +123,6 @@
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
-				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										ShowAsMonochrome="True"
-										UriSource="ms-appx:///Chefs/Assets/Icons/threedot.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
 
 			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
