@@ -43,16 +43,6 @@
 										NullValue="PrimaryMediumBrush"
 										TrueValue="PrimaryBrush" />
 
-	<converters:BoolToResourceConverter x:Key="IsCreatingCookbookFavoriteToColorConverter"
-										FalseValue="PrimaryBrush"
-										TrueValue="OnSurfaceMediumBrush"
-										NullValue="OnSurfaceMediumBrush" />
-
-	<converters:BoolToResourceConverter x:Key="IsCreatingCookbookFavoriteBorderToColorConverter"
-										FalseValue="OnSurfaceBrush"
-										TrueValue="OnSurfaceMediumBrush"
-										NullValue="OnSurfaceMediumBrush" />
-
 	<converters:BoolToResourceConverter x:Key="UserDislikeColorConverter"
 										FalseValue="PrimaryBrush"
 										NullValue="PrimaryMediumBrush"
