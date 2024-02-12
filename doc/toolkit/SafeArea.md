@@ -1,3 +1,7 @@
+---
+uid: Uno.Recipes.SafeArea
+---
+
 # How to restrict page content to the Safe Area on mobile devices
  
 ## Problem
@@ -5,8 +9,6 @@
 In a mobile platform context, UI elements can be obscured by device-specific features like status bars, rounded corners, notches, or soft-input panels like on-screen keyboards. Certain content, such as readable text or interactive controls, needs to stay within the visible screen area to ensure usability.
  
 ## Solution
-
-The `SafeArea` control allows adjusting the `Padding` or `Margin` of child elements to keep content within the visible screen area, as defined by `ApplicationView.VisibleBounds`.
 
 ```xml
 <Page ...
@@ -33,4 +35,4 @@ The above code has the following effect:
 
 ### Documentation
 
-- Uno Toolkit UI [SafeArea documentation](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/controls/SafeArea.html)
+- [SafeArea documentation](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/controls/SafeArea.html)
