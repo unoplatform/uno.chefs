@@ -1,10 +1,12 @@
-# How to easily turn static layouts into responsive ones in XAML
+---
+uid: Uno.Recipes.ResponsiveExtension
+---
+
+# How to adapt properties based on screen size in XAML
 
 ## Problem
 
 XAML currently lacks a simple and flexible approach for creating responsive layouts. While options like `VisualStates` with `AdaptiveTriggers` exist, they can become cumbersome even in simple scenarios that do not involve significant UI structure changes based on screen size.
-
-For example, switching between a navigation pane with a compact UI for smaller screens and a tab-based layout for larger displays requires intricate setups using multiple named containers, visibility states, and triggers.
 
 ## Solution
 
@@ -15,15 +17,14 @@ The `ResponsiveExtension` class is a markup extension that enables the customiza
     <th>Typical scenario</th>
   </tr>
   <tr>
-   <td><img src="../assets/responsiveview-sample.gif" width="1200px" alt="ResponsiveView Scenario"/></td>
+   <td><img src="../assets/responsiveview-sample.gif" width="800px" alt="ResponsiveView Scenario"/></td>
   </tr>
 </table>
 
-`ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/controls/ResponsiveView.html) control.
+`ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:uno.recipes.responsiveview) control.
 
 ```xml
-<utu:AutoLayout Padding="{utu:Responsive Narrow=32,Wide=40}"
-                PrimaryAxisAlignment="{utu:Responsive Narrow=Start, Wide=Center}">
+<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}">
                 ...
 </utu:AutoLayout>
 ```
@@ -31,12 +32,10 @@ The `ResponsiveExtension` class is a markup extension that enables the customiza
 The above code has the following effect:
 <table>
   <tr>
-    <th>Narrow Mode</th>
-    <th>Wide Mode</th>
+    <th>Responsive Markup Extension</th>
   </tr>
   <tr>
-   <td><img src="../assets/responsiveextension-narrow.png" width="400px" alt="Responsive Extension Narrow"/></td>
-   <td><img src="../assets/responsiveextension-wide.png" width="800px" alt="Responsive Extension Wide"/></td>
+   <td><img src="../assets/responsiveextension-animated.gif" width="800px" alt="Responsive Extension Animation"/></td>
   </tr>
 </table>
 
@@ -55,4 +54,4 @@ Chefs app
 
 ### Documentation
 
-- Uno Toolkit UI [ResponsiveExtension documentation](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/helpers/responsive-extension.html)
+- [ResponsiveExtension documentation](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/helpers/responsive-extension.html)
