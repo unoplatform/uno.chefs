@@ -42,16 +42,16 @@ The above code has the following effect:
 ### Source Code
 
 Chefs app
-- [Main Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/MainPage.xaml#L44)
-- [Search Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/SearchPage.xaml#L148)
-- [Home Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/HomePage.xaml#L290)
-- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/RecipeDetailsPage.xaml#L24)
-- [Create/Update Cookbook Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/CreateUpdateCookbookPage.xaml#L161)
-- [Cookbook Details Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/CookbookDetailPage.xaml#L123)
-- [Favorite Recipes Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/FavoriteRecipesPage.xaml#L331)
-- [Live Cooking Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/LiveCookingPage.xaml#L34)
-- [Chart Control](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/Controls/ChartControl.xaml#L36)
+- [Main Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/MainPage.xaml#L44)
+- [Search Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/SearchPage.xaml#L148)
+- [Home Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/HomePage.xaml#L290)
+- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/RecipeDetailsPage.xaml#L24)
+- [Create/Update Cookbook Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/CreateUpdateCookbookPage.xaml#L152)
+- [Cookbook Details Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/CookbookDetailPage.xaml#L114)
+- [Favorite Recipes Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/FavoriteRecipesPage.xaml#L331)
+- [Live Cooking Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LiveCookingPage.xaml#L34)
+- [Chart Control](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/Controls/ChartControl.xaml#L36)
 
 ### Documentation
 
-- [ResponsiveExtension documentation](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/helpers/responsive-extension.html)
+- [ResponsiveExtension documentation](xref:Toolkit.Helpers.ResponsiveExtension)

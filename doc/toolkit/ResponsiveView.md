@@ -52,9 +52,9 @@ The above code has the following effect:
 ### Source Code
 
 Chefs app
-- [Welcome Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/WelcomePage.xaml#L59)
-- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/RecipeDetailsPage.xaml#L74)
+- [Welcome Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/WelcomePage.xaml#L59)
+- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/RecipeDetailsPage.xaml#L74)
 
 ### Documentation
 
-- [ResponsiveView documentation](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/controls/ResponsiveView.html)
+- [ResponsiveView documentation](xref:Toolkit.Controls.ResponsiveView)
