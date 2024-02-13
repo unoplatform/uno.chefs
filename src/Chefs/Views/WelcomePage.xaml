@@ -63,6 +63,7 @@
 					<FlipView x:Name="flipView"
 							  utu:AutoLayout.PrimaryAlignment="Stretch"
 							  Background="Transparent"
+							  Margin="32,0"
 							  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 						<FlipView.Items>
 							<!-- First onboarding page -->
