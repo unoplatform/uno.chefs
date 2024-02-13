@@ -6,7 +6,7 @@ uid: Uno.Recipes.InputExtensions
 
 ## Problem
 
-There is no easy way to denote the next control to receive focus when the Enter key is pressed while entering input in a control such as a `TextBox` or `Passwordbox`.
+There is no easy way to denote the next control to receive focus when the Enter key is pressed while entering input in a control such as a `TextBox` or `PasswordBox`.
 
 ## Solution
 
@@ -45,10 +45,11 @@ The above code has the following effect:
 ### Source Code
 
 Chefs app
+
 - [Login Page (1)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LoginPage.xaml#L64)
 - [Login Page (2)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LoginPage.xaml#L167)
-- [Login Page (2)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LoginPage.xaml#L186)
+- [Login Page (3)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LoginPage.xaml#L186)
 
 ### Documentation
 
-- [InputExtensions documentation](https://platform.uno/docs/articles/external/uno.toolkit.ui/doc/helpers/Input-extensions.html)
+- [InputExtensions documentation](xref:Toolkit.Helpers.InputExtensions)
