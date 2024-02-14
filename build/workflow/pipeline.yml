@@ -16,6 +16,7 @@ trigger:
     # don't trigger the CI if only docs files are changed
     - doc/*
     - '**/*.md'
+    - '*.md'
 
 pr: 
   branches:
@@ -35,6 +36,7 @@ pr:
     # don't trigger the CI if only docs files are changed
     - doc/*
     - '**/*.md'
+    - '*.md'
 
 variables:
   # Path where packages (nuget or app packages) will be copied to.
