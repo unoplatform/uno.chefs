@@ -29,10 +29,10 @@ The above code has the following effect:
   </tr>
 </table>
 
-### Source Code
+## Source Code
 
 - Chefs app [Welcome Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/WelcomePage.xaml#L17)
 
-### Documentation
+## Documentation
 
 - [SafeArea documentation](xref:Toolkit.Controls.SafeArea)
