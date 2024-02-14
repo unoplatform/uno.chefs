@@ -17,7 +17,7 @@ To test the Recipe Book follow these instructions:
 1. Open a PowerShell CLI, navigate to the cloned *Uno* repo's *doc* folder and call the *import_external_docs_test* script:
 
     ```bash
-    PS> cd unoplatform/uno/doc
+    PS> cd [YOUR-UNO-REPO-FOLDER]/uno/doc
     PS> .\import_external_docs_test
     ```
 
