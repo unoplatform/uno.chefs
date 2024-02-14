@@ -48,3 +48,9 @@ For the dotnet CLI tool, make sure to provide the path for the `xaml-styler.json
 ```bash
 xstyler --recursive --config src\xaml-styler.json --directory src
 ```
+
+## Contributing and Debugging the Chefs Recipe Books documentation
+
+The content of the Recipe Book is embedded as part of the Uno Platform docs using DocFx.
+
+To test the Recipe Book follow [these instructions](/doc/docs-setup-local.md).
