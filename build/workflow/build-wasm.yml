@@ -29,9 +29,10 @@ jobs:
     inputs:
       packageType: sdk
       version: 3.1.406
-
-  - template: templates/canary-updater.yml
+  
   - template: templates/gitversion.yml
+  - template: templates/canary-updater.yml
+
   - bash: |
       dotnet build /ds /m /r /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
