@@ -5,6 +5,7 @@
 ### WebAssembly
 
 - [Latest `main`](https://green-wave-0d2d8e10f.2.azurestaticapps.net/)
+- [Canary](https://green-wave-0d2d8e10f-canary.eastus2.2.azurestaticapps.net/)
 
 ### Android (AppCenter)
 
