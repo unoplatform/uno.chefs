@@ -13,15 +13,13 @@
 				 XamlRuntime="WinUI"
 				 DependentUpon="AppHead.xaml"
 				 Link="AppHead.xaml.cs" />
-
-		<UnoSplashScreen
-			Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
-			Color="#313033" />
 	</ItemGroup>
 
 	<Choose>
 		<When Condition="'$(IsCanaryBranch)'=='true'">
 			<ItemGroup>
+				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen_canary.svg"
+								 Color="#313033" />
 				<UnoIcon Condition="'$(_UnoResizetizerIsWasmApp)' != 'True'"
 						 Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
 						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfgcanary.svg"
@@ -34,6 +32,8 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
+				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
+								 Color="#313033" />
 				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
 						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
 						 ForegroundScale="0.5"
