@@ -10,6 +10,9 @@ jobs:
     SkipUnknownFrameworks: true
   
   steps:
+  - checkout: self
+    clean: true
+
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
     inputs:
