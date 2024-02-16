@@ -10,9 +10,6 @@ jobs:
     SkipUnknownFrameworks: true
   
   steps:
-  - checkout: self
-    clean: true
-
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
     inputs:
@@ -32,10 +29,9 @@ jobs:
     inputs:
       packageType: sdk
       version: 3.1.406
-  
-  - template: templates/gitversion.yml
-  - template: templates/canary-updater.yml
 
+  - template: templates/canary-updater.yml
+  - template: templates/gitversion.yml
   - bash: |
       dotnet build /ds /m /r /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3

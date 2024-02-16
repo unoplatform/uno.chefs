@@ -22,8 +22,6 @@ jobs:
   - group: 'unoplatform.apple.ios.appstore.distribution'
 
   steps:
-  - checkout: self
-    clean: true
   - task: InstallAppleCertificate@2
     displayName: Install Certificate
     inputs:
@@ -66,9 +64,9 @@ jobs:
       provisioningProfileLocation: 'secureFiles'
       provProfileSecureFile: Uno_Chefs_Canary_iOS.mobileprovision
 
+  - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
   - template: templates/dotnet-install-mac.yml
-  - template: templates/canary-updater.yml
 
   - bash: |
       cd $(build.sourcesdirectory)/src/Chefs.Mobile
