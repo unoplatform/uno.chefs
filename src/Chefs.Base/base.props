@@ -13,10 +13,6 @@
 				 XamlRuntime="WinUI"
 				 DependentUpon="AppHead.xaml"
 				 Link="AppHead.xaml.cs" />
-
-		<UnoSplashScreen
-			Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
-			Color="#313033" />
 	</ItemGroup>
 
 	<Choose>
@@ -30,6 +26,8 @@
 				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\appiconfgcanary.svg"
 						 WasmForegroundScale="1"
 						 Condition="'$(_UnoResizetizerIsWasmApp)' == 'True'"/>
+				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
+								 Color="#313033" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -42,6 +40,8 @@
 				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
 						 WasmForegroundScale="1"
 						 Condition="'$(_UnoResizetizerIsWasmApp)' == 'True'"/>
+				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen_canary.svg"
+								 Color="#313033" />
 				</ItemGroup>
 		</Otherwise>
 	</Choose>
