@@ -1,10 +1,11 @@
 {
   "profiles": {
-	"Chefs.Windows (Package)": {
-	  "commandName": "MsixPackage"
-	},
-	"Chefs.Windows (Unpackaged)": {
-	  "commandName": "Project"
-	}
+    "Chefs.Windows (Package)": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    },
+    "Chefs.Windows (Unpackaged)": {
+      "commandName": "Project"
+    }
   }
 }

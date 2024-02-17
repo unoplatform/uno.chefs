@@ -28,7 +28,7 @@
 		<!-- XAML Resource trimming https://aka.platform.uno/xaml-trimming -->
 		 <UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
 		<!-- Improve performance with AOT builds https://aka.platform.uno/wasm-aot -->
-		<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode> 
+		<WasmShellMonoRuntimeExecutionMode>Interpreter</WasmShellMonoRuntimeExecutionMode>
 		<!-- Temporarily uncomment to generate an AOT profile https://aka.platform.uno/wasm-aot-profile -->
 		<!-- <WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile> -->
 	</PropertyGroup>
@@ -80,8 +80,7 @@
 		<PackageReference Include="Uno.Extensions.Reactive.WinUI" />
 		<PackageReference Include="Uno.Extensions.Reactive.Messaging" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
-		<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
-		<!--<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />-->
+		<PackageReference Include="Mapsui.Uno.WinUI" />
 		<PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" GeneratePathProperty="true" />
 		<!-- Use ILLink package to improve XAML trimming performance -->
 		<PackageReference Include="Microsoft.NET.ILLink.Tasks" />

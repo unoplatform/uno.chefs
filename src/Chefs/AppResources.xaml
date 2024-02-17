@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:utu="using:Uno.Toolkit.UI">
 
 	<ResourceDictionary.MergedDictionaries>
 
@@ -13,6 +14,23 @@
 		<ResourceDictionary Source="ms-appx:///Chefs/Styles/FeedView.xaml" />
 		<ResourceDictionary Source="ms-appx:///Chefs/Views/Templates/ItemTemplates.xaml" />
 		<ResourceDictionary Source="ms-appx:///Chefs/Styles/Strings.xaml" />
+		<ResourceDictionary Source="ms-appx:///Chefs/Styles/CustomFonts.xaml" />
+		<ResourceDictionary Source="ms-appx:///Chefs/Styles/Images.xaml" />
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key="Light">
+					<StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
+					<StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
+					<StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+				</ResourceDictionary>
+				<ResourceDictionary x:Key="Dark">
+					<StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
+					<StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
+					<StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+		</ResourceDictionary>
+
 	</ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

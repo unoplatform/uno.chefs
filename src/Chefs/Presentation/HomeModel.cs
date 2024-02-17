@@ -1,3 +1,6 @@
+using Chefs.Presentation.Extensions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Chefs.Presentation;
 
 public partial class HomeModel
@@ -17,25 +20,25 @@ public partial class HomeModel
 
 	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
 
-	public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
+	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategories);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
-	public IListFeed<Recipe> SavedRecipes => ListFeed.Async(_recipeService.GetSaved);
-
-	public IListFeed<Recipe> LunchRecipes => Recipes.Where(x => x.Category.Name == "Lunch");
-
-	public IListFeed<Recipe> DinnerRecipes => Recipes.Where(x => x.Category.Name == "Dinner");
-
-	public IListFeed<Recipe> SnackRecipes => Recipes.Where(x => x.Category.Name == "Snack");
-
 	public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
-	public IFeed<User> UserProfile => _userService.UserFeed;
+	public IFeed<User> UserProfile => _userService.User;
 
-	// TODO: DR_REV: XAML only nav - AppButtons doesnt support NavRequest yet
-	public async ValueTask Notifications(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<NotificationsModel>(this);
+	public async ValueTask<ImmutableList<CategoryWithCount>> GetCategories(CancellationToken ct)
+	{
+		var categories = await _recipeService.GetCategories(ct);
+		var categoriesWithCount = new List<CategoryWithCount>();
+		foreach (var category in categories)
+		{
+			var recipesByCategory = await _recipeService.GetByCategory((int)category!.Id!, ct);
+			categoriesWithCount.Add(new CategoryWithCount(recipesByCategory.Count, category));
+		}
+		return categoriesWithCount.ToImmutableList();
+	}
 
 	public async ValueTask Search(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
@@ -46,17 +49,8 @@ public partial class HomeModel
 	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Recent, null, null, null, null));
 
-	public async ValueTask ShowAllLunch(IImmutableList<Category> categories, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Lunch")));
-
-	public async ValueTask ShowAllDinner(IImmutableList<Category> categories, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Dinner")));
-
-	public async ValueTask ShowAllSnack(IImmutableList<Category> categories, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categories.FirstOrDefault(x => x.Name == "Snack")));
-
-	public async ValueTask CategorySearch(Category category, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, category));
+	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categoryWithCount.Category));
 
 	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
@@ -67,38 +61,18 @@ public partial class HomeModel
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
 
-	public async Task ShowProfile(User profile)
+	public async ValueTask ShowProfile(User profile)
 	{
-		await NavigateToProfile(profile);
+		await _navigator.NavigateToProfile(this, profile);
 	}
 
-	public async Task ShowCurrentProfile()
+	public async ValueTask ShowCurrentProfile()
 	{
-		await NavigateToProfile();
+		await _navigator.NavigateToProfile(this);
 	}
 
-	public async Task ShowNotifications()
+	public async ValueTask ShowNotifications()
 	{
-		await NavigateToNotifications();
-	}
-
-	private async Task NavigateToProfile(User? profile = null)
-	{
-		var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
-		var result = await response!.Result;
-
-		await (result.SomeOrDefault() switch
-		{
-			UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this, data: updateCookbook.Cookbook),
-			Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this),
-			Cookbook cookbook => _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook),
-			object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj),
-			_ => Task.CompletedTask,
-		});
-	}
-
-	private async Task NavigateToNotifications()
-	{
-		_ = _navigator.NavigateRouteAsync(this, "Notifications", qualifier: Qualifiers.Dialog);
+		await _navigator.NavigateToNotifications(this);
 	}
 }

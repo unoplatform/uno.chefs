@@ -1,10 +1,14 @@
+using Chefs.Presentation.Extensions;
+using Uno.Extensions.Navigation;
+using Uno.Extensions.Reactive;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Chefs.Presentation;
 
 public partial class SearchModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
-	private Signal _searchSignal = new();
 	private bool hideSearches = false;
 
 	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
@@ -22,11 +26,13 @@ public partial class SearchModel
 	public IListFeed<Recipe> Items => Feed
 		.Combine(Results, Filter)
 		.Select(ApplyFilter)
-		.AsListFeed();
+		.AsListFeed<Recipe>();
 
 	public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSearches);
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
+
+	public IFeed<bool> HasFilter => Filter.Select(f => f.HasFilter);
 
 	public IListFeed<Recipe> Recommended => ListFeed.Async(_recipeService.GetRecommended);
 
@@ -37,14 +43,33 @@ public partial class SearchModel
 	public async ValueTask ApplyHistory(string term, CancellationToken ct)
 	{
 		await Term.Update(s => term, ct);
-		await Search(ct);
 	}
 
 	private IFeed<IImmutableList<Recipe>> Results => Term
 		.SelectAsync(_recipeService.Search);
 
 	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs)
-		=> inputs.recipes.Where(p => inputs.filter.Match(p)).ToImmutableList();
+	{
+		IImmutableList<Recipe> recipesByTerm;
+		IImmutableList<Recipe> recipesByCategory;
+		recipesByCategory = recipesByTerm = inputs.recipes;
+
+		if (inputs.filter.OrganizeCategory is not null)
+		{
+			var selectedOrganizedCategory = inputs.filter.OrganizeCategory;
+
+			recipesByCategory = selectedOrganizedCategory switch
+			{
+				OrganizeCategory.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
+				OrganizeCategory.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
+				OrganizeCategory.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
+				_ => recipesByCategory
+			};
+		}
+
+		return recipesByCategory.Intersect(recipesByTerm).Where(p => inputs.filter.Match(p)).ToImmutableList();
+	}
+
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
 
@@ -53,31 +78,19 @@ public partial class SearchModel
 		await IsSearchesClosed.Update(_ => !hideSearches, ct);
 	}
 
-	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
-
-	public async ValueTask Search(CancellationToken ct) => _searchSignal.Raise();
-
 	public async ValueTask SearchPopular(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
 
-	public async Task ShowCurrentProfile()
+	public async ValueTask ShowCurrentProfile()
 	{
-		await NavigateToProfile();
+		await _navigator.NavigateToProfile(this);
 	}
 
-	private async Task NavigateToProfile(User? profile = null)
+	public async ValueTask ShowNotifications()
 	{
-		var response = await _navigator.NavigateRouteForResultAsync<IChefEntity>(this, "Profile", data: profile);
-		var result = await response!.Result;
-
-		await (result.SomeOrDefault() switch
-		{
-			UpdateCookbook updateCookbook => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this, data: updateCookbook.Cookbook),
-			Cookbook cookbook when cookbook.Id == Guid.Empty => _navigator.NavigateViewModelAsync<CreateUpdateCookbookModel>(this),
-			Cookbook cookbook => _navigator.NavigateViewModelAsync<CookbookDetailModel>(this, data: cookbook),
-			object obj when obj is not null && obj.GetType() != typeof(object) => _navigator.NavigateDataAsync(this, obj),
-			_ => Task.CompletedTask,
-		});
+		await _navigator.NavigateToNotifications(this);
 	}
+
+	public async ValueTask ResetFilters(CancellationToken ct) =>
+		await Filter.Update(current => new SearchFilter(null, null, null, null, null), ct);
 }

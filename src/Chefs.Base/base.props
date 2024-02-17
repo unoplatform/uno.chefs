@@ -22,11 +22,14 @@
 	<Choose>
 		<When Condition="'$(IsCanaryBranch)'=='true'">
 			<ItemGroup>
-				<UnoIcon Condition="'$(IsCanaryBranch)'=='true'"
+				<UnoIcon Condition="'$(_UnoResizetizerIsWasmApp)' != 'True'"
 						 Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
-						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg-canary.svg"
+						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfgcanary.svg"
 						 ForegroundScale="0.5"
 						 Color="#00000000" />
+				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\appiconfgcanary.svg"
+						 WasmForegroundScale="1"
+						 Condition="'$(_UnoResizetizerIsWasmApp)' == 'True'"/>
 			</ItemGroup>
 		</When>
 		<Otherwise>
@@ -34,8 +37,12 @@
 				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
 						 ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
 						 ForegroundScale="0.5"
-						 Color="#00000000" />
-			</ItemGroup>
+						 Color="#00000000"
+						 Condition="'$(_UnoResizetizerIsWasmApp)' != 'True'"/>
+				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
+						 WasmForegroundScale="1"
+						 Condition="'$(_UnoResizetizerIsWasmApp)' == 'True'"/>
+				</ItemGroup>
 		</Otherwise>
 	</Choose>
 

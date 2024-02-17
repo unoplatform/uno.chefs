@@ -10,13 +10,14 @@ public partial class LiveCookingModel
 	{
 		Steps = parameter.Steps;
 		Recipe = parameter.Recipe;
+		VideoSource = new Uri("ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4");
 
 		_recipeService = recipeService;
 	}
 
 	public IImmutableList<Step> Steps { get; }
 
-	public IFeed<Step> SelectedStep => SelectedIndex.Select(x => Steps[x]);
+	public Uri VideoSource { get; set; }
 
 	public IState<int> SelectedIndex => State.Value(this, () => 0);
 

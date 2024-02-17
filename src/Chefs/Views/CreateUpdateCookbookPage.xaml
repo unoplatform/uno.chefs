@@ -11,11 +11,27 @@
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+	  Background="{ThemeResource BackgroundBrush}"
 	  mc:Ignorable="d">
+
+	<Page.Resources>
+		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="2"
+								MinColumnSpacing="6"
+								MinItemWidth="155"
+								MinRowSpacing="6" />
+
+		<muxc:UniformGridLayout x:Key="WideGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="7"
+								MinColumnSpacing="15"
+								MinItemWidth="240"
+								MinRowSpacing="15" />
+	</Page.Resources>
 
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout.Resources>
@@ -70,15 +86,17 @@
 																Orientation="Horizontal">
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}">
-														<PathIcon Data="{StaticResource Icon_Favorite_Border}"
+														<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+																  Glyph="{StaticResource Icon_Favorite}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteBorderToColorConverter}}" />
+																  Foreground="{ThemeResource OnSurfaceBrush}" />
 													</Border>
 													<Border utu:AutoLayout.CounterAlignment="Start"
 															Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
-														<PathIcon Data="{StaticResource Icon_Favorite}"
+														<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+																  Glyph="{StaticResource Icon_Favorite}"
 																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																  Foreground="{Binding DataContext.IsCreate, Converter={StaticResource IsCreatingCookbookFavoriteToColorConverter}}" />
+																  Foreground="{ThemeResource PrimaryBrush}" />
 													</Border>
 												</utu:AutoLayout>
 											</utu:AutoLayout>
@@ -101,19 +119,10 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<not_mobile:AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+							<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
-				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										ShowAsMonochrome="True"
-										UriSource="ms-appx:///Chefs/Assets/Icons/threedot.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
 
 			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
@@ -139,15 +148,9 @@
 											Spacing="8">
 								<muxc:ItemsRepeater utu:CommandExtensions.Command="{Binding Parent.SelectRecipe}"
 													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data}">
-									<muxc:ItemsRepeater.Layout>
-										<muxc:UniformGridLayout ItemsStretch="Fill"
-																MaximumRowsOrColumns="2"
-																MinColumnSpacing="8"
-																MinItemWidth="130"
-																MinRowSpacing="8" />
-									</muxc:ItemsRepeater.Layout>
-								</muxc:ItemsRepeater>
+													ItemsSource="{Binding Data}"
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>

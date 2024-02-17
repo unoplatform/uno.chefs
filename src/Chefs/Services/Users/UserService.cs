@@ -5,7 +5,7 @@ public class UserService : IUserService
 	private readonly IUserEndpoint _userEndpoint;
 	private readonly IWritableOptions<AppConfig> _chefAppOptions;
 	private readonly IWritableOptions<Credentials> _credentialOptions;
-	private Signal _userSignal = new();
+
 
 	public UserService(
 		IUserEndpoint userEndpoint,
@@ -13,7 +13,11 @@ public class UserService : IUserService
 		IWritableOptions<Credentials> credentialOptions)
 		=> (_userEndpoint, _chefAppOptions, _credentialOptions) = (userEndpoint, chefAppOptions, credentialOptions);
 
-	public IFeed<User> UserFeed => Feed<User>.Async(async (ct) => await GetCurrent(ct) is { } user ? user : Option.Undefined<User>(), _userSignal);
+	private IState<User> _user => State.Async(this, GetCurrent);
+
+	public IFeed<User> User => _user;
+
+	public IState<AppConfig> Settings => State.Async(this, GetSettings);
 
 	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
 		=> _chefAppOptions.Value;
@@ -25,12 +29,33 @@ public class UserService : IUserService
 		=> new(await _userEndpoint.GetCurrent(ct));
 
 	public async Task SetSettings(AppConfig chefSettings, CancellationToken ct)
-		=> await _chefAppOptions.UpdateAsync(_ => new AppConfig
+	{
+		var settings = new AppConfig
 		{
+			Title = chefSettings.Title,
 			IsDark = chefSettings.IsDark,
 			Notification = chefSettings.Notification,
 			AccentColor = chefSettings.AccentColor,
-		});
+		};
+
+		await _chefAppOptions.UpdateAsync(_ => settings);
+		await Settings.UpdateAsync(_ => settings, ct);
+	}
+
+	public async Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null)
+	{
+		var currentSettings = await GetSettings(ct);
+
+		var settings = new AppConfig
+		{
+			Title = title ?? currentSettings.Title,
+			IsDark = isDark ?? currentSettings.IsDark,
+			Notification = notification ?? currentSettings.Notification,
+			AccentColor = accentColor ?? currentSettings.AccentColor,
+		};
+
+		await SetSettings(settings, ct);
+	}
 
 	public async ValueTask<User> GetById(Guid userId, CancellationToken ct)
 		=> new(await _userEndpoint.GetById(userId, ct));
@@ -38,7 +63,7 @@ public class UserService : IUserService
 	public async ValueTask Update(User user, CancellationToken ct)
 	{
 		await _userEndpoint.Update(user.ToData(), ct);
-		_userSignal.Raise();
+		await _user.UpdateAsync(_ => user, ct);
 	}
 
 	//In case we need to add auth

@@ -11,7 +11,8 @@ public partial class CreateUpdateCookbookModel
 		INavigator navigator,
 		IRecipeService recipeService,
 		ICookbookService cookbookService,
-		Cookbook? cookbook)
+		Cookbook? cookbook,
+		IMessenger messenger)
 	{
 		_navigator = navigator;
 		_recipeService = recipeService;
@@ -31,6 +32,8 @@ public partial class CreateUpdateCookbookModel
 			SaveButtonContent = "Create cookbook";
 			IsCreate = true;
 		}
+		messenger.Observe(Cookbook, cb => cb.Id);
+
 	}
 	public bool IsCreate { get; }
 
@@ -77,6 +80,11 @@ public partial class CreateUpdateCookbookModel
 
 			var response = IsCreate ? await _cookbookService.Create(cookbook.Name!, selectedRecipes.ToImmutableList(), ct)
 				: await _cookbookService.Update(cookbook!, selectedRecipes, ct);
+
+			if (IsCreate)
+			{
+				await _cookbookService.Save(response!, ct);
+			}
 
 			await _navigator.NavigateBackWithResultAsync(this, data: response);
 		}

@@ -8,33 +8,16 @@
 	  mc:Ignorable="d"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  Background="{ThemeResource BackgroundBrush}">
-
+	<Page.Resources>
+		<x:Double x:Key="NavigationTabBarItemIconHeight">24</x:Double>
+	</Page.Resources>
 	<Grid>
-		<VisualStateManager.VisualStateGroups>
-			<VisualStateGroup>
-				<VisualState x:Name="Narrow">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="0" />
-					</VisualState.StateTriggers>
-				</VisualState>
-				<VisualState x:Name="Wide">
-					<VisualState.StateTriggers>
-						<AdaptiveTrigger MinWindowWidth="800" />
-					</VisualState.StateTriggers>
-					<VisualState.Setters>
-						<Setter Target="Tabs.Visibility" Value="Collapsed" />
-						<Setter Target="WideTabs.Visibility" Value="Visible" />
-						<Setter Target="NavigationGrid.CornerRadius" Value="40,0,0,40" />
-						<Setter Target="MainGrid.Background" Value="{ThemeResource SurfaceBrush}" />
-					</VisualState.Setters>
-				</VisualState>
-			</VisualStateGroup>
-		</VisualStateManager.VisualStateGroups>
 		<Grid x:Name="MainGrid"
 			  RowSpacing="0"
+			  Background="{ThemeResource SurfaceBrush}"
 			  uen:Region.Attached="True"
 			  utu:AutoLayout.CounterAlignment="Start"
 			  utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -55,10 +38,11 @@
 				  uen:Region.Attached="True"
 				  uen:Region.Navigator="Visibility" />
 
-			<!-- WORKAROUND: Add Height="Auto" to avoid clipping caused by https://github.com/unoplatform/uno.toolkit.ui/issues/509 -->
 			<utu:TabBar x:Name="Tabs"
 						Grid.Row="1"
 						Grid.Column="1"
+						Visibility="{utu:Responsive Narrow=Visible,
+													Wide=Collapsed}"
 						uen:Region.Attached="True"
 						Style="{StaticResource BottomTabBarStyle}">
 				<utu:TabBarItem uen:Region.Name="Home"
@@ -66,7 +50,7 @@
 								Content="Home"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Home_Filled}" />
+						<FontIcon Glyph="{StaticResource Icon_Home}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
@@ -75,7 +59,7 @@
 								Content="Search"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Search}" />
+						<FontIcon Glyph="{StaticResource Icon_Search}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
@@ -84,7 +68,7 @@
 								Content="Favorites"
 								Foreground="{ThemeResource OnSurfaceVariantBrush}">
 					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Favorite_Border}" />
+						<FontIcon Glyph="{StaticResource Icon_Heart}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 			</utu:TabBar>
@@ -92,51 +76,40 @@
 			<utu:AutoLayout x:Name="WideTabs"
 							Grid.RowSpan="2"
 							Background="{ThemeResource SurfaceBrush}"
-							Visibility="Collapsed"
+							Visibility="{utu:Responsive Narrow=Collapsed,
+														Wide=Visible}"
 							Width="120">
-				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-					<utu:TabBar uen:Region.Attached="True"
-								Style="{StaticResource VerticalTabBarStyle}"
-								utu:AutoLayout.PrimaryAlignment="Stretch"
-								um:ControlExtensions.IsTintEnabled="False">
-						<utu:TabBarItem uen:Region.Name="Home"
-										IsSelectable="True"
-										Content="Home"
-										Style="{StaticResource VerticalTabBarItemStyle}">
-							<utu:TabBarItem.Icon>
-								<PathIcon Data="{StaticResource Icon_Home_Filled}" />
-							</utu:TabBarItem.Icon>
-						</utu:TabBarItem>
+				<utu:TabBar uen:Region.Attached="True"
+							Style="{StaticResource VerticalTabBarStyle}"
+							utu:AutoLayout.PrimaryAlignment="Stretch">
 
-						<utu:TabBarItem uen:Region.Name="Search"
-										IsSelectable="True"
-										Content="Search"
-										Style="{StaticResource VerticalTabBarItemStyle}">
-							<utu:TabBarItem.Icon>
-								<PathIcon Data="{StaticResource Icon_Search}" />
-							</utu:TabBarItem.Icon>
-						</utu:TabBarItem>
+					<utu:TabBarItem uen:Region.Name="Home"
+									IsSelectable="True"
+									Content="Home"
+									Style="{StaticResource VerticalTabBarItemStyle}">
+						<utu:TabBarItem.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Home}" />
+						</utu:TabBarItem.Icon>
+					</utu:TabBarItem>
 
-						<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
-										IsSelectable="True"
-										Content="Favorites"
-										Style="{StaticResource VerticalTabBarItemStyle}">
-							<utu:TabBarItem.Icon>
-								<PathIcon Data="{StaticResource Icon_Favorite_Border}" />
-							</utu:TabBarItem.Icon>
-						</utu:TabBarItem>
-					</utu:TabBar>
-				</utu:AutoLayout>
+					<utu:TabBarItem uen:Region.Name="Search"
+									IsSelectable="True"
+									Content="Search"
+									Style="{StaticResource VerticalTabBarItemStyle}">
+						<utu:TabBarItem.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Search}" />
+						</utu:TabBarItem.Icon>
+					</utu:TabBarItem>
 
-				<utu:AutoLayout PrimaryAxisAlignment="Center"
-								utu:AutoLayout.CounterAlignment="Stretch"
-								Margin="0,40"
-								Spacing="8"
-								uen:Navigation.Request="!Notifications">
-					<PathIcon Data="{StaticResource Icon_Outline_Alert_ChefsApp}"
-							  utu:AutoLayout.CounterAlignment="Center"
-							  Foreground="{ThemeResource OnSurfaceVariantColor}" />
-				</utu:AutoLayout>
+					<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
+									IsSelectable="True"
+									Content="Favorites"
+									Style="{StaticResource VerticalTabBarItemStyle}">
+						<utu:TabBarItem.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Heart}" />
+						</utu:TabBarItem.Icon>
+					</utu:TabBarItem>
+				</utu:TabBar>
 			</utu:AutoLayout>
 		</Grid>
 	</Grid>

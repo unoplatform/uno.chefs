@@ -29,6 +29,11 @@ public class RecipeEndpoint : IRecipeEndpoint
 		.ToImmutableList()
 		?? ImmutableList<RecipeData>.Empty;
 
+	public async ValueTask<IImmutableList<RecipeData>> GetPopular(CancellationToken ct) => (await Load())?
+		.Take(15)
+		.ToImmutableList()
+		?? ImmutableList<RecipeData>.Empty;
+
 	public async ValueTask<IImmutableList<RecipeData>> GetSaved(CancellationToken ct)
 	{
 		var currentUser = await _userEndpoint.GetCurrent(ct);

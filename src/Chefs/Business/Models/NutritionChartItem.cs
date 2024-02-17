@@ -4,7 +4,7 @@ namespace Chefs.Business.Models;
 
 public partial record NutritionChartItem
 {
-	public NutritionChartItem(int chartTrackVal = 100)
+	public NutritionChartItem(int chartTrackVal = 1000)
 	{
 		Value = chartTrackVal;
 	}
@@ -19,7 +19,7 @@ public partial record NutritionChartItem
 		var _maxValueRef = maxValueRef ?? 0;
 		var _tempValue = (_val / _maxValueRef) * 100;
 
-		Value = _tempValue;
+		Value = _tempValue * 10;
 		MaxValueRef = _maxValueRef;
 	}
 

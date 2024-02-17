@@ -10,12 +10,28 @@
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:um="using:Uno.Material"
+	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+	  Background="{ThemeResource BackgroundBrush}"
 	  NavigationCacheMode="Enabled"
 	  mc:Ignorable="d">
+
+	<Page.Resources>
+		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="2"
+								MinColumnSpacing="6"
+								MinItemWidth="155"
+								MinRowSpacing="6" />
+
+		<muxc:UniformGridLayout x:Key="WideGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="7"
+								MinColumnSpacing="15"
+								MinItemWidth="240"
+								MinRowSpacing="15" />
+	</Page.Resources>
 
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout.Resources>
@@ -66,22 +82,13 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<not_mobile:AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+							<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
-				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<BitmapIcon Foreground="{ThemeResource OnPrimaryBrush}"
-										ShowAsMonochrome="True"
-										UriSource="ms-appx:///Chefs/Assets/Icons/threedot.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.PrimaryCommands>
 			</utu:NavigationBar>
-			<uer:FeedView Source="{Binding Cookbook}"
-						  utu:AutoLayout.PrimaryAlignment="Stretch">
+			<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
+						  Source="{Binding Cookbook}">
 				<DataTemplate>
 					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 					<ScrollViewer x:Name="RecipesScrollViewer"
@@ -98,28 +105,14 @@
 									<Run Text="{Binding Data.Recipes.Count}" />
 									<Run Text="results" />
 								</TextBlock>
-								<Button utu:AutoLayout.CounterAlignment="Center"
-										Content="Filters"
-										Style="{StaticResource TextButtonStyle}">
-									<um:ControlExtensions.Icon>
-										<PathIcon Data="{StaticResource Icon_Tune}" />
-									</um:ControlExtensions.Icon>
-								</Button>
+
 							</utu:AutoLayout>
 							<utu:AutoLayout Padding="0,16">
-
-								<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
+								<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
 													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data.Recipes}">
-									<muxc:ItemsRepeater.Layout>
-										<muxc:UniformGridLayout ItemsStretch="Fill"
-																MaximumRowsOrColumns="2"
-																MinColumnSpacing="8"
-																MinItemWidth="130"
-																MinRowSpacing="8" />
-									</muxc:ItemsRepeater.Layout>
-								</muxc:ItemsRepeater>
-
+													ItemsSource="{Binding Data.Recipes}"
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
 						</utu:AutoLayout>
 					</ScrollViewer>
@@ -131,14 +124,14 @@
 				HorizontalAlignment="Right"
 				VerticalAlignment="Bottom"
 				uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay}"
-				uen:Navigation.Request="CreateUpdateCookbook"
+				uen:Navigation.Request="UpdateCookbook"
 				utu:AutoLayout.IsIndependentLayout="True"
 				CornerRadius="60"
 				Style="{StaticResource FabStyle}">
-			<um:ControlExtensions.Icon>
-				<PathIcon Data="{StaticResource Icon_Add}"
+			<ut:ControlExtensions.Icon>
+				<FontIcon Glyph="{StaticResource Icon_Edit}"
 						  Foreground="{ThemeResource SurfaceBrush}" />
-			</um:ControlExtensions.Icon>
+			</ut:ControlExtensions.Icon>
 		</Button>
 	</utu:AutoLayout>
 </Page>

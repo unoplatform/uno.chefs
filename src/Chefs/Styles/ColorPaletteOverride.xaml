@@ -5,7 +5,7 @@
 					xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 					xmlns:uen="using:Uno.Extensions.Navigation.UI"
 					xmlns:uer="using:Uno.Extensions.Reactive.UI"
-					xmlns:um="using:Uno.Material"
+					xmlns:ut="using:Uno.Themes"
 					xmlns:utu="using:Uno.Toolkit.UI">
 	<!-- Themed colors -->
 	<ResourceDictionary.ThemeDictionaries>
@@ -90,4 +90,8 @@
 			<x:String x:Key="ChefsLogoWithIcon">ms-appx:///Chefs/Assets/Icons/chefslogodark.png</x:String>
 		</ResourceDictionary>
 	</ResourceDictionary.ThemeDictionaries>
+
+	<Color x:Key="BrandBlackColor">#242424</Color>
+	<SolidColorBrush x:Key="BrandBlackBrush"
+					 Color="{StaticResource BrandBlackColor}" />
 </ResourceDictionary>

@@ -17,7 +17,12 @@ public interface IUserService
 	/// <summary>
 	/// Feed of the current user.
 	/// </summary>
-	IFeed<User> UserFeed { get; }
+	IFeed<User> User { get; }
+
+	/// <summary>
+	/// Feed of the current settings.
+	/// </summary>
+	IState<AppConfig> Settings { get; }
 
 	/// <summary>
 	/// Update user information
@@ -63,6 +68,18 @@ public interface IUserService
 	/// <returns>
 	/// </returns>
 	Task SetSettings(AppConfig chefSettings, CancellationToken ct);
+
+	///<summary>
+	/// Update app settings with specified properties without overwriting the rest
+	/// </summary>
+	/// <param name="ct"></param>
+	/// <param name="title">App title</param>
+	/// <param name="isDark">App theme flag</param>
+	/// <param name="notification">User notifications flag</param>
+	/// <param name="accentColor">Accent color</param>
+	/// <returns>
+	/// </returns>
+	Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null);
 
 	// <summary>
 	// Authentication method

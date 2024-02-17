@@ -9,8 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
-		<!--<PackageReference Include="Mapsui.Uno.WinUI" Version="4.1.0" />-->
+		<PackageReference Include="Mapsui.Uno.WinUI" />
 		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
 		<PackageReference Include="Uno.Dsp.Tasks" />
 		<PackageReference Include="Uno.Material.WinUI" />
@@ -81,13 +80,6 @@
 		<EmbeddedResource Include="Assets\Maps\location_pin.svg" />
 		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
-	</ItemGroup>
-
-	<!-- TODO: Add back Mapsui when https://github.com/Mapsui/Mapsui/issues/2238 is fixed -->
-	<ItemGroup>
-		<None Remove="Views\MapPage.xaml" />
-		<Page Remove="Views\MapPage.xaml" />
-		<Compile Remove="Views\MapPage.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

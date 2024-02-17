@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "Name": "Avocado Toast",
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
@@ -27,7 +27,7 @@
         "CookTime": "00:01:00",
         "Cookware": [ "Fork", "Knife", "Bowl", "Cutting Boards" ],
         "Description": "Meanwhile, toast bread slices to desired doneness, 3 to 4 minutes.",
-        "Ingredients": [ "Avocado", "Lemon juice", "Salt and Pepper" ],
+        "Ingredients": [ "Avocado", "Lemon juice", "Salt and pepper" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -64,35 +64,12 @@
       },
       {
         "UrlIcon": "ms-appx:///Chefs/Assets/Icons/salt.png",
-        "Name": "Salt and Pepper",
+        "Name": "Salt and pepper",
         "Quantity": "salt to taste"
       }
     ],
-    "Calories": "268 kcal",
-    "Reviews": [
-      {
-        "Id": "7ef9e2be-e053-4370-8b49-bfa10013bd61",
-        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
-        "UrlAuthorImage": "ms-appx:///Chefs/Assets/Profiles/niki_samantha.png",
-        "CreatedBy": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
-        "PublisherName": "Niki Samantha",
-        "Date": "2022-07-12T00:00:00Z",
-        "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
-        "Likes": [ "3c896419-e280-40e7-8552-240635566fed", "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
-        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
-      },
-      {
-        "Id": "baa91885-a6f0-41a6-84cb-294eb2a68455",
-        "RecipeId": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
-        "PublisherName": "James Wolden",
-        "UrlAuthorImage": "ms-appx:///Chefs/Assets/Profiles/james_wolden.png",
-        "CreatedBy": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
-        "Date": "2022-07-12T00:00:00Z",
-        "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
-        "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
-        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
-      }
-    ],
+    "Calories": "250 kcal",
+    "Reviews": [],
     "Details": "Details",
     "Creator": {
       "Id": "3c896419-e280-40e7-8552-240635566fed",
@@ -102,7 +79,7 @@
       "Email": "james.bondi@gmail.com",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 1,
@@ -132,7 +109,7 @@
         "CookTime": "00:06:00",
         "Cookware": [ "Jar", "Skillet", "Knife", "Cutting Boards" ],
         "Description": "Place the dressing ingredients in a jar and shake together until well combined.\n\nAdd the mix salad greens first, then strategically place the carrot, onion, red pepper and cucumber around the mixed greens.",
-        "Ingredients": [ "Tamari Soy", "Carrot", "Onion", "\nRed Papper", "Cucumber" ],
+        "Ingredients": [ "Tamari Soy", "Carrot", "Onion", "Red Pepper", "Cucumber" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -167,7 +144,7 @@
         "Quantity": "50 g"
       }
     ],
-    "Calories": "268 kcal",
+    "Calories": "350 kcal",
     "Reviews": [
       {
         "Id": "bd95eeef-643e-4eb0-bbd8-1456791040f8",
@@ -188,8 +165,8 @@
         "CreatedBy": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
-        "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe"],
-        "Dislikes": ["02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2"]
+        "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
+        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
       }
     ],
     "Details": "Fresh, healthy and tasty",
@@ -203,7 +180,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -282,7 +259,7 @@
         "Quantity": "50 g"
       }
     ],
-    "Calories": "267 kcal",
+    "Calories": "200 kcal",
     "Reviews": [
       {
         "Id": "9702c946-c6f0-4f18-91f0-a959990bb306",
@@ -369,7 +346,7 @@
     "Ingredients": [
       {
         "UrlIcon": "ms-appx:///Chefs/Assets/Icons/salt.png",
-        "Name": "Salt and Peppers",
+        "Name": "Salt and pepper",
         "Quantity": "30 ml"
       },
       {
@@ -388,7 +365,7 @@
         "Quantity": "50 g"
       }
     ],
-    "Calories": "267 kcal",
+    "Calories": "350 kcal",
     "Reviews": [
       {
         "Id": "6a0fa592-1b1d-4855-ba83-7f6fd0120830",
@@ -437,7 +414,7 @@
   },
   {
     "Name": "Circle Cake",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "bed8ff9c-08f7-4c44-b5a3-4d95708f245e",
     "Id": "1dc0e330-ab16-43cc-9b84-fdaf2c5e83cd",
     "Steps": [
       {
@@ -489,7 +466,7 @@
         "Quantity": "1000 gr"
       }
     ],
-    "Calories": "267 kcal",
+    "Calories": "550 kcal",
     "Reviews": [
       {
         "Id": "9de1691e-da43-4788-8a98-0e5b2f2a2a6c",
@@ -500,7 +477,7 @@
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
-        "Dislikes": ["02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
+        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
       },
       {
         "Id": "8a8e8398-049f-466c-8f7e-634c30815cd8",
@@ -604,7 +581,7 @@
         "Quantity": "50 g"
       }
     ],
-    "Calories": "268 kcal",
+    "Calories": "700 kcal",
     "Reviews": [
       {
         "Id": "5dad6dce-339c-4af1-b99c-f530946a8a1e",
@@ -615,7 +592,7 @@
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
-        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2"]
+        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
       }
     ],
     "Details": "Awesome as a mom gift",
@@ -650,7 +627,7 @@
         "CookTime": "00:05:00",
         "Cookware": [ "Bowl", "Spoon" ],
         "Description": "Measure flour into a large mixing bowl.\n\nSlowly whisk in milk.\n\nWhisk in eggs, sugar, vanilla extract, cinnamon, and salt until smooth.",
-        "Ingredients": [ "Flour", "Milk", "Eggs", "Sugar", "\nVanilla extract", "\nCinnamon", "Salt" ],
+        "Ingredients": [ "Flour", "Milk", "Eggs", "Sugar", "Vanilla extract", "Cinnamon", "Salt" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -694,7 +671,7 @@
         "Quantity": "200 ml"
       }
     ],
-    "Calories": "268 kcal",
+    "Calories": "400 kcal",
     "Reviews": [
       {
         "Id": "6b07573b-cf63-420a-937b-dd004682523b",
@@ -719,7 +696,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 1,
@@ -732,7 +709,7 @@
   },
   {
     "Name": "Super Duper Oatmeal",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
     "Id": "63e275f8-9222-48b2-83cb-df6c0961a1eb",
     "Steps": [
       {
@@ -740,7 +717,7 @@
         "CookTime": "00:05:00",
         "Cookware": [ "Bowl" ],
         "Description": "Bring the milk and water to a boil in a bowl.\n\nCombine flours, oats, dried cranberries and apricots, baking powder, and salt in a large mixing bowl.",
-        "Ingredients": [ "Water", "Milk", "Oats", "Cranberries", "\nApricots", "Salt" ],
+        "Ingredients": [ "Water", "Milk", "Oats", "Cranberries", "Apricots", "Salt" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -749,7 +726,7 @@
         "CookTime": "00:01:00",
         "Cookware": [ "Pot", "Spoon" ],
         "Description": "Mix in the oats, and reduce heat to medium.\n\nStir in blueberries, applesauce, wheat germ, cinnamon, and sugar.",
-        "Ingredients": [ "Oats", "Blueberries", "Applesauce", "Wheat germ", "\nCinnamon", "Sugar" ],
+        "Ingredients": [ "Oats", "Blueberries", "Applesauce", "Wheat germ", "Cinnamon", "Sugar" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -794,7 +771,7 @@
         "Quantity": "400 gr"
       }
     ],
-    "Calories": "268 kcal",
+    "Calories": "150 kcal",
     "Reviews": [
       {
         "Id": "b79797c0-5255-4937-ac02-4df5f231c8ce",
@@ -805,7 +782,7 @@
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum",
         "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
-        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2"]
+        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
       }
     ],
     "Details": "Very special dessert to taste.",
@@ -832,7 +809,7 @@
   },
   {
     "Name": "Walnut and nuts",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
     "Id": "f649eefe-93cb-4bca-93a2-af707966d217",
     "Steps": [
       {
@@ -858,7 +835,7 @@
         "CookTime": "00:20:00",
         "Cookware": [ "SaucePan", "Spoon", "Wire rack" ],
         "Description": "Meanwhile, in a saucepan, combine the sugar, cream, cinnamon and salt.\n\nBring to a boil over medium heat, stirring constantly.\n\nRemove from the heat; stir in walnuts.\n\nRemove foil from crust; pour filling into crust.\n\nBake until golden brown, 20-25 minutes.\n\nCool on a wire rack.\n\nStore in the refrigerator.",
-        "Ingredients": [ "Sugar", "Cream", "Cinnamon", "Salt", "\nPeanuts" ],
+        "Ingredients": [ "Sugar", "Cream", "Cinnamon", "Salt", "Peanuts" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -889,7 +866,7 @@
         "Quantity": "30 gr"
       }
     ],
-    "Calories": "268 kcal",
+    "Calories": "150 kcal",
     "Reviews": [
       {
         "Id": "92ebde78-0049-4e8c-af6f-4e7dc6d6c0b2",
@@ -914,7 +891,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 1,
@@ -927,7 +904,7 @@
   },
   {
     "Name": "Avocado Salad",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
     "Id": "f649eefe-93cb-4bca-93a2-af806966d217",
     "Steps": [
       {
@@ -935,7 +912,7 @@
         "CookTime": "00:05:00",
         "Cookware": [ "Mixing bowl" ],
         "Description": "In a small mixing bowl whisk together lemon juice, red wine vinegar, extra virgin oil oil, honey, garlic.",
-        "Ingredients": [ "Lemon juic", "Red wine vinegar", "Extra virgin oil oil", "Honey", "\nGarlic" ],
+        "Ingredients": [ "Lemon juic", "Red wine vinegar", "Extra virgin oil oil", "Honey", "Garlic" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -1014,7 +991,7 @@
         "Quantity": "10 gr"
       }
     ],
-    "Calories": "268 kcal",
+    "Calories": "200 kcal",
     "Reviews": [
       {
         "Id": "0d191b8a-993c-47b0-908c-30c5bc57980e",
@@ -1039,7 +1016,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -1052,7 +1029,7 @@
   },
   {
     "Name": "Croissants",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
     "Id": "f649eefe-57cb-4bca-93a2-af707966d217",
     "Steps": [
       {
@@ -1060,7 +1037,7 @@
         "CookTime": "00:20:00",
         "Cookware": [ "Bowl", "Mixer", "Dough hook" ],
         "Description": "Twenty-four hours before serving, start the détrempe: In the bowl of a stand mixer fitted with the dough hook, combine the flour, sugar, salt and yeast, and stir to combine.",
-        "Ingredients": [ "Flour", "Sugar", "Salt", "Honey", "\nGarlic", "Yeast" ],
+        "Ingredients": [ "Flour", "Sugar", "Salt", "Honey", "Garlic", "Yeast" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -1154,7 +1131,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 1,
@@ -1167,7 +1144,7 @@
   },
   {
     "Name": "Strawberry Cream Pie",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe",
     "Id": "f649eefe-26cb-4bca-93a2-af707012d237",
     "Steps": [
       {
@@ -1193,7 +1170,7 @@
         "CookTime": "00:25:00",
         "Cookware": [ "Medium saucepan", "Whisk" ],
         "Description": "In a medium saucepan, mix together 1 cup of heavy cream, 1/2 cup of granulated sugar, and 1 teaspoon of vanilla extract.\n\nHeat the mixture over medium heat, whisking constantly, until it comes to a simmer.\n\nIn a small bowl, mix together 2 tablespoons of cornstarch and 2 tablespoons of cold water to make a slurry.\n\nSlowly pour the slurry into the saucepan and continue to whisk until the mixture thickens.\n\nRemove from heat and stir in 2 cups of sliced strawberries.\n\nPour the filling into the cooled crust and refrigerate for at least 2 hours before serving.",
-        "Ingredients": [ "Cream", "Sugar", "Vanilla extract", "Cornstarch", "\nWater", "Strawberries" ],
+        "Ingredients": [ "Cream", "Sugar", "Vanilla extract", "Cornstarch", "Water", "Strawberries" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -1259,7 +1236,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 1,
@@ -1272,7 +1249,7 @@
   },
   {
     "Name": "Teriyaki Salmon",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
     "Id": "f167eefe-78cb-4bca-93a2-af707012d237",
     "Steps": [
       {
@@ -1349,7 +1326,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 3,
@@ -1362,7 +1339,7 @@
   },
   {
     "Name": "Air Fryer French Fries",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "3f848dba-f972-493a-bf52-0cd93958f4b2",
     "Id": "f467eefe-67cb-6bca-08a2-af707012d237",
     "Steps": [
       {
@@ -1418,7 +1395,7 @@
         "Quantity": "400 ml"
       }
     ],
-    "Calories": "267 kcal",
+    "Calories": "425 kcal",
     "Reviews": [
       {
         "Id": "25370a3f-7bca-4475-9575-3a7b54752e76",
@@ -1428,7 +1405,7 @@
         "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
         "Date": "2022-07-12T00:00:00Z",
         "Description": "Awesome recipe",
-        "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",  "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
+        "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
         "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
       }
     ],
@@ -1443,7 +1420,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 4,
@@ -1456,7 +1433,7 @@
   },
   {
     "Name": "Hasselback Potatoes",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "3f848dba-f972-493a-bf52-0cd93958f4b2",
     "Id": "f907eefe-67cb-6bca-08a2-af356012d237",
     "Steps": [
       {
@@ -1512,7 +1489,7 @@
         "Quantity": "400 ml"
       }
     ],
-    "Calories": "268 kcal",
+    "Calories": "375 kcal",
     "Reviews": [
       {
         "Id": "40c710b9-e8bb-40f6-9115-03382aa138fa",
@@ -1537,7 +1514,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -1550,7 +1527,7 @@
   },
   {
     "Name": "Stir-Fry Chicken and Vegetables",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "3f848dba-f972-493a-bf52-0cd93958f4b2",
     "Id": "f907eefe-67cb-6bca-08a2-af716322d237",
     "Steps": [
       {
@@ -1646,7 +1623,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -1659,7 +1636,7 @@
   },
   {
     "Name": "Spicy Salmon and Vegetables",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "7f7cddd2-2e1e-4a99-a6e3-88575d2f66f1",
     "Id": "f907eefe-27cb-6bca-08a2-af356012d237",
     "Steps": [
       {
@@ -1667,7 +1644,7 @@
         "CookTime": "00:05:00",
         "Cookware": [ "Broiler", "Tablespoon" ],
         "Description": "Preheat the broiler to low heat.\n\nWhisk together the chili garlic sauce, 2 tablespoons of soy sauce, 1 tablespoon of sesame oil, sugar and vinegar until combined.",
-        "Ingredients": [ "Chili", "Garlic", "Sauce", "Soy", "\nOil", "Sugar", "Vinegar" ],
+        "Ingredients": [ "Chili", "Garlic", "Sauce", "Soy", "Oil", "Sugar", "Vinegar" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -1770,7 +1747,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -1783,7 +1760,7 @@
   },
   {
     "Name": "Tomato and garlic pasta",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "7f7cddd2-2e1e-4a99-a6e3-88575d2f66f1",
     "Id": "f947eefe-27cb-6bca-18a2-af356012d237",
     "Steps": [
       {
@@ -1791,7 +1768,7 @@
         "CookTime": "00:05:00",
         "Cookware": [ "Broiler", "Tablespoon" ],
         "Description": "Preheat the broiler to low heat.\n\nWhisk together the chili garlic sauce, 2 tablespoons of soy sauce, 1 tablespoon of sesame oil, sugar and vinegar until combined.",
-        "Ingredients": [ "Chili", "Garlic", "Sauce", "Soy", "\nOil", "Sugar", "Vinegar" ],
+        "Ingredients": [ "Chili", "Garlic", "Sauce", "Soy", "Oil", "Sugar", "Vinegar" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -1894,7 +1871,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -1907,7 +1884,7 @@
   },
   {
     "Name": "Homemade lasagna",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "cf12f68f-ccc4-4740-87b3-acc984ac6821",
     "Id": "be9c0be1-3980-4331-b6df-0975de70251a",
     "Steps": [
       {
@@ -1988,7 +1965,7 @@
         "Quantity": "2"
       }
     ],
-    "Calories": "402 kcal",
+    "Calories": "425 kcal",
     "Reviews": [
       {
         "Id": "537802b0-aa01-4e1d-8dd6-c6c60c8614e6",
@@ -2013,7 +1990,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -2026,7 +2003,7 @@
   },
   {
     "Name": "Pork Stew",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "ebf3be76-2ff2-4325-94ec-ab9356daa8d2",
     "Id": "a0e8131c-4853-4d3f-a2d7-b6f54dc38a41",
     "Steps": [
       {
@@ -2052,7 +2029,7 @@
         "CookTime": "00:40:00",
         "Cookware": [ "Pot" ],
         "Description": "Add potatoes, sweet potatoes, carrots, and mushrooms.\n\nBring to a boil, reduce heat and simmer covered for 30 minutes or until vegetables are tender.\n\nRemove lid and stir in green beans.\n\nThicken if desired (below) and simmer an additional 10 minutes uncovered.",
-        "Ingredients": [ "Potato", "Carrot", "Mushroom", "\nGreen beans" ],
+        "Ingredients": [ "Potato", "Carrot", "Mushroom", "Green beans" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -2098,7 +2075,7 @@
         "Quantity": "96 gr"
       }
     ],
-    "Calories": "170 kcal",
+    "Calories": "550 kcal",
     "Reviews": [
       {
         "Id": "5d5f45db-dd02-449c-acd9-10b3dc51e011",
@@ -2123,7 +2100,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -2136,7 +2113,7 @@
   },
   {
     "Name": "Grill Chicken",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "697b0ccf-ddaf-4c67-bc69-377bc377c2e0",
     "Id": "8a14332d-9791-41f8-8f31-8e46c8c5020c",
     "Steps": [
       {
@@ -2198,7 +2175,7 @@
         "Quantity": "15 gr"
       }
     ],
-    "Calories": "284 kcal",
+    "Calories": "525 kcal",
     "Reviews": [
       {
         "Id": "38bf80d7-c477-4d6b-ab38-cb172e98267b",
@@ -2223,7 +2200,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 2,
@@ -2236,7 +2213,7 @@
   },
   {
     "Name": "Tomato pasta",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "0fb99c42-28a6-4e15-be40-6d2254f18f3f",
     "Id": "dcbbc95a-2b23-4311-b58f-ded654f93bf4",
     "Steps": [
       {
@@ -2262,7 +2239,7 @@
         "CookTime": "00:25:00",
         "Cookware": [ "Skillet" ],
         "Description": "Meanwhile, heat olive oil in a large skillet or pan, making sure there is enough to cover the bottom of the pan, and sauté garlic until opaque but not browned. Stir in tomato paste.\n\nImmediately stir in the tomatoes, salt, and pepper.\n\nReduce heat, and simmer until pasta is ready, adding basil at the end.",
-        "Ingredients": [ "Olive oil", "Garlic", "Tomato", "Salt", "\nPepper", "Basil" ],
+        "Ingredients": [ "Olive oil", "Garlic", "Tomato", "Salt", "Pepper", "Basil" ],
         "Number": 3,
         "UrlVideo": ""
       },
@@ -2337,7 +2314,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 3,
@@ -2350,7 +2327,7 @@
   },
   {
     "Name": "Chicken Ramen Bowl",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "bed8ff9c-08f7-4c44-b5a3-4d95708f245e",
     "Id": "e4c6ea0e-1907-41a1-b463-4f114da0535a",
     "Steps": [
       {
@@ -2358,7 +2335,7 @@
         "CookTime": "00:15:00",
         "Cookware": [ "Pan" ],
         "Description": "In a large saucepan over medium heat, heat the oil.\n\nAdd the scallions, garlic, carrot, mushrooms, and cabbage. Cook, stirring often, for 3 minutes, or until the vegetables soften.\n\nStir in the ginger and brown sugar (if using) and cook for 30 seconds.\n\nFinally add the chicken broth and bring to a simmer.\n\nSimmer for 10 minutes.",
-        "Ingredients": [ "Oil", "Mushrooms", "Scallion", "Garlic", "\nCarrot", "Cabbage", "Ginger", "Sugar", "\nChicken" ],
+        "Ingredients": [ "Oil", "Mushrooms", "Scallion", "Garlic", "Carrot", "Cabbage", "Ginger", "Sugar", "Chicken" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -2471,7 +2448,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 3,
@@ -2484,7 +2461,7 @@
   },
   {
     "Name": "Pasta Salad Bowl",
-    "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
+    "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
     "Id": "c7dd4999-0084-45b3-a2c1-c5b0750b2bd0",
     "Steps": [
       {
@@ -2510,7 +2487,7 @@
         "CookTime": "00:13:00",
         "Cookware": [ "Bowl" ],
         "Description": "Whisk Italian dressing and salad spice mix together until smooth.\n\nCombine pasta, tomatoes, bell peppers, and olives in a salad bowl; pour dressing over salad and toss to coat.",
-        "Ingredients": [ "Italian dressing", "Pasta", "Tomato", "Pepper", "\nOlive" ],
+        "Ingredients": [ "Italian dressing", "Pasta", "Tomato", "Pepper", "Olive" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -2576,7 +2553,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 3,
@@ -2676,7 +2653,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 3,
@@ -2689,7 +2666,7 @@
   },
   {
     "Name": "Italian Spaghetti with meatballs",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "02cbd790-905f-4f07-bd67-bfe3a6a8c56c",
     "Id": "012f6256-b771-45e1-9305-975923664448",
     "Steps": [
       {
@@ -2706,7 +2683,7 @@
         "CookTime": "00:40:00",
         "Cookware": [ "Saucepan" ],
         "Description": "In a large saucepan over medium heat, saute onion and garlic in olive oil until onion is translucent. Stir in tomatoes, salt, sugar and bay leaf.",
-        "Ingredients": [ "Onion", "Garlic", "Olive oil", "Tomato", "\nSalt", "Sugar", "Bay leaf" ],
+        "Ingredients": [ "Onion", "Garlic", "Olive oil", "Tomato", "Salt", "Sugar", "Bay leaf" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -2816,7 +2793,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 3,
@@ -2829,7 +2806,7 @@
   },
   {
     "Name": "Pork Dumplings",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "3f848dba-f972-493a-bf52-0cd93958f4b2",
     "Id": "e79f9e7c-4576-4e48-87d0-87f17561cdfc",
     "Steps": [
       {
@@ -2837,7 +2814,7 @@
         "CookTime": "00:43:00",
         "Cookware": [ "Bowl" ],
         "Description": "Prepare dipping sauce: Combine soy sauce, rice vinegar, chives, sesame seeds, and chile sauce in a small bowl. Set aside.\n\n Mix pork, garlic, egg, chives, soy sauce, sesame oil, and ginger in a large bowl until thoroughly combined.",
-        "Ingredients": [ "Sauce", "Soy sauce", "Rice vinegar", "Sesame seeds", "\nChile sauce", "Pork", "Garlic", "Egg", "\nChives", "Sesame oil", "Ginger" ],
+        "Ingredients": [ "Sauce", "Soy sauce", "Rice vinegar", "Sesame seeds", "Chile sauce", "Pork", "Garlic", "Egg", "Chives", "Sesame oil", "Ginger" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -2926,7 +2903,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 3,
@@ -2939,7 +2916,7 @@
   },
   {
     "Name": "Yogurt Parfait",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "7f7cddd2-2e1e-4a99-a6e3-88575d2f66f1",
     "Id": "a8dcfc92-a90b-49eb-8d7c-0a0cd1f595d0",
     "Steps": [
       {
@@ -3026,7 +3003,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 4,
@@ -3039,7 +3016,7 @@
   },
   {
     "Name": "American Hotcakes",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "7f7cddd2-2e1e-4a99-a6e3-88575d2f66f1",
     "Id": "e1024abe-1bf5-40a7-a092-1d458f65b138",
     "Steps": [
       {
@@ -3047,7 +3024,7 @@
         "CookTime": "00:15:00",
         "Cookware": [ "Tablespoon", "Bowl", "Electric hand beaters", "Jug" ],
         "Description": "Mix 200g self-raising flour, 1 1/2 tablespoon baking powder, 1 tablespoon golden caster sugar and a pinch of salt together in a large bowl./n/nCreate a well in the centre with the back of your spoon then add 3 large eggs, 25g melted butter and 200ml milk.\n\nWhisk together either with a balloon whisk or electric hand beaters until smooth then pour into a jug.",
-        "Ingredients": [ "Flour", "Baking powder", "Sugar", "Salt", "\nEgg", "Butter", "Milk" ],
+        "Ingredients": [ "Flour", "Baking powder", "Sugar", "Salt", "Egg", "Butter", "Milk" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -3131,7 +3108,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 4,
@@ -3144,7 +3121,7 @@
   },
   {
     "Name": "Veggie Sandwich",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "cf12f68f-ccc4-4740-87b3-acc984ac6821",
     "Id": "052e70cb-f800-46aa-bc10-f21d10dadb14",
     "Steps": [
       {
@@ -3211,7 +3188,7 @@
         "Quantity": "64 gr"
       }
     ],
-    "Calories": "266 kcal",
+    "Calories": "265 kcal",
     "Reviews": [
       {
         "Id": "0b6004c6-ea94-4716-b9c9-889c3570ed84",
@@ -3236,7 +3213,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 4,
@@ -3249,7 +3226,7 @@
   },
   {
     "Name": "Prawns Provencale",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "ebf3be76-2ff2-4325-94ec-ab9356daa8d2",
     "Id": "6e3e90fb-f2fe-4a98-81ff-85033a8a4010",
     "Steps": [
       {
@@ -3266,7 +3243,7 @@
         "CookTime": "00:03:00",
         "Cookware": [ "Mortar", "Tablespoon", "Cup" ],
         "Description": "Place chopped garlic, large pinch kosher salt, oregano, and thyme in a mortar; pound and stir with a pestle a few seconds. Add 1 tablespoon fresh parsley.\n\nPound and stir mixture until it turns into a paste, 1 or 2 minutes. Add 1/3 cup olive oil; mix about 1 minute to infuse olive oil with herbs and garlic.",
-        "Ingredients": [ "Garlic", "Oregano", "Thyme", "\nParsley", "Olive oil" ],
+        "Ingredients": [ "Garlic", "Oregano", "Thyme", "Parsley", "Olive oil" ],
         "Number": 2,
         "UrlVideo": ""
       },
@@ -3275,7 +3252,7 @@
         "CookTime": "00:03:00",
         "Cookware": [ "Bowl", "Fork" ],
         "Description": "Place bread crumbs in a mixing bowl. Transfer herb-garlic mixture to breadcrumbs. Add a pinch of salt, black pepper, pinch cayenne, remaining chopped parsley, and grated cheese. Mix with a fork to distribute ingredients evenly. Pinch a bit of the mixture; if it feels a bit dry and doesn't stick to your finger, drizzle in a bit more olive oil. Stir until mixture reaches desired consistency. 2 to 3 minutes.",
-        "Ingredients": [ "Bread crumbs", "Garlic", "\nGrated cheese", "Parsley", "Cayenne" ],
+        "Ingredients": [ "Bread crumbs", "Garlic", "Grated cheese", "Parsley", "Cayenne" ],
         "Number": 3,
         "UrlVideo": ""
       },
@@ -3330,7 +3307,7 @@
         "Quantity": "5.3 gr"
       }
     ],
-    "Calories": "386 kcal",
+    "Calories": "385 kcal",
     "Reviews": [
       {
         "Id": "f84b52c1-3536-41ca-a077-3d423de32ff8",
@@ -3355,7 +3332,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 4,
@@ -3368,7 +3345,7 @@
   },
   {
     "Name": "Salmon Croquettes",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "697b0ccf-ddaf-4c67-bc69-377bc377c2e0",
     "Id": "256cdf86-04b3-444f-b496-a364d280d66f",
     "Steps": [
       {
@@ -3376,7 +3353,7 @@
         "CookTime": "00:05:00",
         "Cookware": [ "Bowl" ],
         "Description": "Add panko and flour to a bowl and mix.\nAdd bell peppers, canned salmon, garlic, salt, pepper, egg, mayonnaise, Worcestershire sauce and cilantro. Mix until incorporated.",
-        "Ingredients": [ "Panko", "Flour", "Pepper", "Canned salmon", "\nGarlic", "Salt" ],
+        "Ingredients": [ "Panko", "Flour", "Pepper", "Canned salmon", "Garlic", "Salt" ],
         "Number": 1,
         "UrlVideo": ""
       },
@@ -3394,7 +3371,7 @@
         "CookTime": "00:03:00",
         "Cookware": [ "Skillet" ],
         "Description": "Add patties to the skillet and cook for 2-3 minutes on each side or until golden brown.",
-        "Ingredients": [ "Pepper", "Egg", "Mayonnaise", "Worcestershire sauce", "\nCilantro" ],
+        "Ingredients": [ "Pepper", "Egg", "Mayonnaise", "Worcestershire sauce", "Cilantro" ],
         "Number": 3,
         "UrlVideo": ""
       }
@@ -3440,7 +3417,7 @@
         "Quantity": "2.5 gr"
       }
     ],
-    "Calories": "139 kcal",
+    "Calories": "150 kcal",
     "Reviews": [
       {
         "Id": "52728a86-a404-42be-a664-4c2e02aa250b",
@@ -3465,7 +3442,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 4,
@@ -3478,7 +3455,7 @@
   },
   {
     "Name": "Banana Muffins",
-    "UserId": "3c896419-e280-40e7-8552-240635566fed",
+    "UserId": "0fb99c42-28a6-4e15-be40-6d2254f18f3f",
     "Id": "79433407-c5d0-4a34-831b-dec51e48bb7d",
     "Steps": [
       {
@@ -3570,7 +3547,7 @@
       "Password": "123",
       "Followers": 450,
       "Following": 124,
-      "Recipes": 45
+      "Recipes": 0
     },
     "Category": {
       "Id": 4,
