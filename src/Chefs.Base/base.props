@@ -26,7 +26,7 @@
 				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\appiconfgcanary.svg"
 						 WasmForegroundScale="1"
 						 Condition="'$(_UnoResizetizerIsWasmApp)' == 'True'"/>
-				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
+				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen_canary.svg"
 								 Color="#313033" />
 			</ItemGroup>
 		</When>
@@ -40,7 +40,7 @@
 				<UnoIcon Include="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
 						 WasmForegroundScale="1"
 						 Condition="'$(_UnoResizetizerIsWasmApp)' == 'True'"/>
-				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen_canary.svg"
+				<UnoSplashScreen Include="$(MSBuildThisFileDirectory)Splash\splash_screen.svg"
 								 Color="#313033" />
 				</ItemGroup>
 		</Otherwise>
