@@ -81,6 +81,26 @@
 		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
 		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
 	</ItemGroup>
+	
+	<Choose>
+		<When Condition="'$(IsCanaryBranch)'=='true'">
+			<ItemGroup>
+				<UnoImage Remove="Assets\Icons\chefslogodark.svg" />
+				<UnoImage Remove="Assets\Icons\chefslogo.svg" />
+				<UnoImage Remove="Assets\Icons\chefslogodark_canary.svg" />
+				<UnoImage Remove="Assets\Icons\chefslogo_canary.svg" />
+
+				<UnoImage Include="Assets\Icons\chefslogodark_canary.svg" Link="Assets\Icons\chefslogodark.svg" />
+				<UnoImage Include="Assets\Icons\chefslogo_canary.svg" Link="Assets\Icons\chefslogo.svg" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<UnoImage Remove="Assets\Icons\chefslogodark_canary.svg" />
+				<UnoImage Remove="Assets\Icons\chefslogo_canary.svg" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
 
 	<ItemGroup>
 	  <UnoImage Remove="Assets\Maps\location_circle.svg" />
