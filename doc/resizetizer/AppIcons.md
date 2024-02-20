@@ -17,7 +17,7 @@ The Uno Resizetizer tool can generate all the required app icons for you from a 
 Given the following `.svg` files:
 
 - [`iconapp.svg`](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs.Base/Icons/iconapp.svg) (the icon background)
-    <img src="../assets/iconapp.svg" width="100px" alt="Icon background"/>
+    <img src="../assets/iconapp.svg" width="100px" alt="Icon background" style="border-style:solid"/>
 - [`appiconfg.svg`](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs.Base/Icons/appiconfg.svg) (the main icon)
     <img src="../assets/appiconfg.svg" width="100px" alt="Icon foreground"/>
 
