@@ -52,6 +52,7 @@
 							Style="{StaticResource TextButtonStyle}">
 						<ut:ControlExtensions.Icon>
 							<FontIcon Glyph="{StaticResource Icon_Add}"
+									  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 									  Foreground="{ThemeResource PrimaryBrush}" />
 						</ut:ControlExtensions.Icon>
 					</Button>

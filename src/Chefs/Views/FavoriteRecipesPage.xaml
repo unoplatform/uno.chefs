@@ -70,6 +70,7 @@
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Add}"
+								  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</ut:ControlExtensions.Icon>
 				</Button>
@@ -143,7 +144,7 @@
 													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 												<Button.Content>
 													<FontIcon Glyph="{StaticResource Icon_Add}"
-															  FontFamily="{StaticResource MaterialIconFontFamily}"
+															  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 															  Foreground="{ThemeResource OnSurfaceBrush}" />
 												</Button.Content>
 											</Button>
@@ -358,8 +359,7 @@
 																				Wide={StaticResource WideGridLayout}}" />
 								</ScrollViewer>
 
-								<Button Margin="0,0,8,8"
-										HorizontalAlignment="Right"
+								<Button HorizontalAlignment="Right"
 										VerticalAlignment="Bottom"
 										uen:Navigation.Request="CreateCookbook"
 										utu:AutoLayout.IsIndependentLayout="True"
@@ -367,8 +367,8 @@
 										Style="{StaticResource FabStyle}">
 									<ut:ControlExtensions.Icon>
 										<FontIcon Glyph="{StaticResource Icon_Add}"
-												  FontFamily="{StaticResource MaterialIconFontFamily}"
-												  Foreground="{ThemeResource OnPrimaryBrush}" />
+												  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+												  Foreground="{ThemeResource SurfaceBrush}" />
 									</ut:ControlExtensions.Icon>
 								</Button>
 							</utu:AutoLayout>
