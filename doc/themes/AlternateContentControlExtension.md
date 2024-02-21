@@ -10,7 +10,7 @@ The base `ToggleButton` control does not provide a way to switch its content whe
 
 ## Solution
 
-The Uno Themes library provides a set of attached properties grouped under the `ControlExtensions` class. One of these attached properties is the `AlternateContent` property. The Uno Material library provides custom styles for the `ToggleButton` that support the `AlternateContent` property.
+The [Uno Themes library](xref:Uno.Themes.Overview) provides a set of attached properties grouped under the `ControlExtensions` class. One of these attached properties is the `AlternateContent` property. The [Uno Material library](Uno.Themes.Material.GetStarted) provides custom styles for the `ToggleButton` that support the `AlternateContent` property.
 
 ### ToggleButton AlternateContent
 
