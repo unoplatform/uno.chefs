@@ -75,63 +75,66 @@
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
 
-		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
-							   Content="{Binding Cookbook.Name}"
-							   Foreground="{ThemeResource OnSurfaceInverseBrush}">
-				<utu:NavigationBar.MainCommand>
-					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
-						<not_mobile:AppBarButton.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
-						</not_mobile:AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.MainCommand>
-			</utu:NavigationBar>
+		<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
+						   Content="{Binding Cookbook.Name}"
+						   Foreground="{ThemeResource OnSurfaceInverseBrush}">
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+					<not_mobile:AppBarButton.Icon>
+						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+					</not_mobile:AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.MainCommand>
+		</utu:NavigationBar>
+		<utu:AutoLayout Padding="16"
+						utu:AutoLayout.PrimaryAlignment="Stretch"
+						Background="{ThemeResource BackgroundBrush}">
 			<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
 						  Source="{Binding Cookbook}">
 				<DataTemplate>
-					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
-					<ScrollViewer x:Name="RecipesScrollViewer"
-								  Padding="16"
-								  utu:AutoLayout.PrimaryAlignment="Stretch"
-								  HorizontalScrollMode="Disabled"
-								  VerticalScrollBarVisibility="Hidden">
-						<utu:AutoLayout>
-							<utu:AutoLayout Padding="0,0,0,16"
-											Justify="SpaceBetween"
-											Orientation="Horizontal">
-								<TextBlock utu:AutoLayout.CounterAlignment="Center"
-										   Style="{StaticResource BodyLarge}">
-									<Run Text="{Binding Data.Recipes.Count}" />
-									<Run Text="results" />
-								</TextBlock>
+					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+						<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
+						<ScrollViewer x:Name="RecipesScrollViewer"
+									  utu:AutoLayout.PrimaryAlignment="Stretch"
+									  HorizontalScrollMode="Disabled"
+									  VerticalScrollBarVisibility="Hidden">
+							<utu:AutoLayout>
+								<utu:AutoLayout Padding="0,0,0,16"
+												Justify="SpaceBetween"
+												Orientation="Horizontal">
+									<TextBlock utu:AutoLayout.CounterAlignment="Center"
+											   Style="{StaticResource BodyLarge}">
+										<Run Text="{Binding Data.Recipes.Count}" />
+										<Run Text="results" />
+									</TextBlock>
 
+								</utu:AutoLayout>
+								<utu:AutoLayout Padding="0,16">
+									<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
+														ItemTemplate="{StaticResource RecipeTemplate}"
+														ItemsSource="{Binding Data.Recipes}"
+														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																				Wide={StaticResource WideGridLayout}}" />
+								</utu:AutoLayout>
 							</utu:AutoLayout>
-							<utu:AutoLayout Padding="0,16">
-								<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
-													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data.Recipes}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																			Wide={StaticResource WideGridLayout}}" />
-							</utu:AutoLayout>
-						</utu:AutoLayout>
-					</ScrollViewer>
+						</ScrollViewer>
+						<Button x:Name="FabButton"
+								HorizontalAlignment="Right"
+								VerticalAlignment="Bottom"
+								uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay}"
+								uen:Navigation.Request="UpdateCookbook"
+								utu:AutoLayout.IsIndependentLayout="True"
+								CornerRadius="56"
+								Style="{StaticResource FabStyle}">
+							<ut:ControlExtensions.Icon>
+								<FontIcon Glyph="{StaticResource Icon_Edit}"
+										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+										  Foreground="{ThemeResource SurfaceBrush}" />
+							</ut:ControlExtensions.Icon>
+						</Button>
+					</utu:AutoLayout>
 				</DataTemplate>
 			</uer:FeedView>
 		</utu:AutoLayout>
-		<Button x:Name="FabButton"
-				Margin="13,10"
-				HorizontalAlignment="Right"
-				VerticalAlignment="Bottom"
-				uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay}"
-				uen:Navigation.Request="UpdateCookbook"
-				utu:AutoLayout.IsIndependentLayout="True"
-				CornerRadius="60"
-				Style="{StaticResource FabStyle}">
-			<ut:ControlExtensions.Icon>
-				<FontIcon Glyph="{StaticResource Icon_Edit}"
-						  Foreground="{ThemeResource SurfaceBrush}" />
-			</ut:ControlExtensions.Icon>
-		</Button>
 	</utu:AutoLayout>
 </Page>
