@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ItemsRepeaterExtensions
 ---
 
-# How to enable common selection policies on the ItemsRepeater control
+# How to enable selection on the ItemsRepeater control
 
 ## Problem
 
@@ -16,9 +16,6 @@ The `ItemsRepeater` extensions library provides attached properties that enable 
 <muxc:ItemsRepeater ItemsSource="{Binding Times}"
                     utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
                     utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
-    <muxc:ItemsRepeater.Layout>
-    ...
-    </muxc:ItemsRepeater.Layout>
     <muxc:ItemsRepeater.ItemTemplate>
         <DataTemplate>
         ...
@@ -33,7 +30,7 @@ The above code has the following effect:
     <th>SingleOrNone Selection Mode</th>
   </tr>
   <tr>
-   <td><img src="../assets/itemsrepeater-extensions-single.gif" width="400px" alt="ItemsRepeaterExtensions Single Selection Example"/></td>
+    <td><img src="../assets/itemsrepeater-extensions-single.gif" width="400px" alt="ItemsRepeaterExtensions Single Selection Example"/></td>
   </tr>
 </table>
 
