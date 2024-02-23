@@ -173,7 +173,7 @@
 					CornerRadius="4"
 					Style="{StaticResource TextButtonStyle}" />
 			<Button Height="59"
-					Padding="24,20"
+					Padding="4,20"
 					utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
 					Command="{Binding Submit}"
