@@ -29,8 +29,12 @@
 		 <UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
 		<!-- Improve performance with AOT builds https://aka.platform.uno/wasm-aot -->
 		<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
-		<!-- Temporarily uncomment to generate an AOT profile https://aka.platform.uno/wasm-aot-profile -->
-		<!-- <WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile> -->
+		
+		<!-- Uncomment this block to generate a profile -->
+		<!--<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>
+		<WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
+		<UnoXamlResourcesTrimming>false</UnoXamlResourcesTrimming>
+		<WasmShellEnableJiterpreter>false</WasmShellEnableJiterpreter>-->
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
 		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
@@ -38,6 +42,7 @@
 	</PropertyGroup>
 	<ItemGroup Condition="'$(Configuration)'=='Release'">
 		<WasmShellExtraEmccFlags Include="-s INITIAL_MEMORY=32MB" />
+		<WasmShellEnableAotProfile Include="aot.profile" />
 	</ItemGroup>
 	<ItemGroup>
 		<Content Include="manifest.webmanifest" />
