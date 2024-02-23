@@ -99,7 +99,7 @@
 				<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
 								Padding="0,0,0,16">
 
-					<utu:AutoLayout Padding="16,24,16,0"
+					<utu:AutoLayout Padding="16,24,16,8"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Trending Now"
@@ -135,7 +135,7 @@
 					</uer:FeedView>
 
 					<!-- This title autolayout has more padding than the others because it has no button -->
-					<utu:AutoLayout Padding="16,32,16,8"
+					<utu:AutoLayout Padding="16,32,16,16"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Categories"
@@ -188,7 +188,7 @@
 						</DataTemplate>
 					</uer:FeedView>
 
-					<utu:AutoLayout Padding="16,24,16,0"
+					<utu:AutoLayout Padding="16,24,16,8"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Recently Added"
@@ -252,7 +252,7 @@
 						</DataTemplate>
 					</uer:FeedView>
 
-					<utu:AutoLayout Padding="16,24,16,0"
+					<utu:AutoLayout Padding="16,24,16,8"
 									Justify="SpaceBetween"
 									Orientation="Horizontal">
 						<TextBlock Text="Popular Contributors"
