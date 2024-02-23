@@ -75,11 +75,12 @@ public partial class CreateUpdateCookbookModel
 		var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
 		var cookbook = await Cookbook;
 
-		if (selectedRecipes is not null && cookbook is not null && selectedRecipes.Count > 0 && !cookbook!.Name.IsNullOrEmpty())
+		if (selectedRecipes is { Count: > 0 } && (cookbook?.Name.HasValueTrimmed() ?? false))
 		{
 
-			var response = IsCreate ? await _cookbookService.Create(cookbook.Name!, selectedRecipes.ToImmutableList(), ct)
-				: await _cookbookService.Update(cookbook!, selectedRecipes, ct);
+			var response = IsCreate 
+				? await _cookbookService.Create(cookbook.Name!, selectedRecipes.ToImmutableList(), ct)
+				: await _cookbookService.Update(cookbook, selectedRecipes, ct);
 
 			if (IsCreate)
 			{
