@@ -21,7 +21,7 @@ The `ResponsiveExtension` class is a markup extension that enables the customiza
   </tr>
 </table>
 
-`ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:uno.recipes.responsiveview) control.
+`ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:Uno.Recipes.ResponsiveView) control.
 
 ```xml
 <utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}">
@@ -39,7 +39,7 @@ The above code has the following effect:
   </tr>
 </table>
 
-### Source Code
+## Source Code
 
 Chefs app
 - [Main Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/MainPage.xaml#L44)
@@ -52,6 +52,6 @@ Chefs app
 - [Live Cooking Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LiveCookingPage.xaml#L34)
 - [Chart Control](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/Controls/ChartControl.xaml#L36)
 
-### Documentation
+## Documentation
 
 - [ResponsiveExtension documentation](xref:Toolkit.Helpers.ResponsiveExtension)

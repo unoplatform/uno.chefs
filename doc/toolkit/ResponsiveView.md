@@ -15,11 +15,11 @@ XAML currently lacks a simple and flexible approach for creating responsive layo
     <th>Typical scenario</th>
   </tr>
   <tr>
-   <td><img src="../assets/responsiveview-sample.gif" width="1200px" alt="ResponsiveView Scenario"/></td>
+   <td><img src="../assets/responsiveview-sample.gif" width="800px" alt="ResponsiveView Scenario"/></td>
   </tr>
 </table>
 
-`ResponsiveView` is conceived with more complex scenarios in mind, where the UI structure changes significantly based on screen size. For a lightweight approach, consider using the [`ResponsiveExtension`](xref:uno.recipes.responsiveextension).
+`ResponsiveView` is conceived with more complex scenarios in mind, where the UI structure changes significantly based on screen size. For a lightweight approach, consider using the [`ResponsiveExtension`](xref:Uno.Recipes.ResponsiveExtension).
 
 ```xml
 <utu:ResponsiveView>
@@ -49,12 +49,12 @@ The above code has the following effect:
   </tr>
 </table>
 
-### Source Code
+## Source Code
 
 Chefs app
 - [Welcome Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/WelcomePage.xaml#L59)
 - [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/RecipeDetailsPage.xaml#L74)
 
-### Documentation
+## Documentation
 
 - [ResponsiveView documentation](xref:Toolkit.Controls.ResponsiveView)
