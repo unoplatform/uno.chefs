@@ -1,7 +1,6 @@
 namespace Chefs.Business.Models;
 
-
 public record SearchHistory
 {
-	public IImmutableList<string> Searches { get; init; } = ImmutableList<string>.Empty;
+	public List<string> Searches { get; init; } = new();
 }
