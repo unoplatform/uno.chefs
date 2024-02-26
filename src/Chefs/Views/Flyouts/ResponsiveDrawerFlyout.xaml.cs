@@ -50,8 +50,9 @@ public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMes
 	{
 		// Workaround for https://github.com/unoplatform/uno.chefs/issues/1017
 #if WINDOWS
-		_ = DispatcherQueue.TryEnqueue(() => {
-				MainLayout.RequestedTheme = message.IsDark ? ElementTheme.Dark : ElementTheme.Light;
+		_ = DispatcherQueue.TryEnqueue(() =>
+		{
+			MainLayout.RequestedTheme = message.IsDark ? ElementTheme.Dark : ElementTheme.Light;
 		});
 #endif
 	}
