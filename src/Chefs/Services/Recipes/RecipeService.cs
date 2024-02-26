@@ -5,7 +5,7 @@ public class RecipeService : IRecipeService
 	private readonly IRecipeEndpoint _recipeEndpoint;
 	private readonly IWritableOptions<SearchHistory> _searchOptions;
 	private readonly IMessenger _messenger;
-	private int lastTextLength = 0;
+	private int _lastTextLength = 0;
 
 	public RecipeService(IRecipeEndpoint recipeEndpoint, IWritableOptions<SearchHistory> searchHistory, IMessenger messenger)
 		=> (_recipeEndpoint, _searchOptions, _messenger) = (recipeEndpoint, searchHistory, messenger);
@@ -49,7 +49,7 @@ public class RecipeService : IRecipeService
 	{
 		if (term.IsNullOrEmpty())
 		{
-			lastTextLength = 0;
+			_lastTextLength = 0;
 			return (await _recipeEndpoint.GetAll(ct)).Select(r => new Recipe(r)).ToImmutableList();
 		}
 		else
@@ -60,7 +60,7 @@ public class RecipeService : IRecipeService
 		}
 	}
 
-	public IImmutableList<string> GetSearchHistory() => (_searchOptions.Value).Searches.Reverse().Take(3).ToImmutableList();
+	public IImmutableList<string> GetSearchHistory() => _searchOptions.Value.Searches.Take(3).ToImmutableList();
 
 	public async ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct)
 		=> (await _recipeEndpoint.GetAll(ct))
@@ -127,23 +127,22 @@ public class RecipeService : IRecipeService
 
 	private async Task SaveSearchHistory(string text)
 	{
-		if (lastTextLength <= text.Count()) lastTextLength = text.Count();
+		if (_lastTextLength <= text.Count()) _lastTextLength = text.Count();
 
-		var searchHistory = _searchOptions.Value.Searches;
+		var searchHistory = _searchOptions.Value.Searches; 
 		if (searchHistory is not null && !text.IsNullOrEmpty())
 		{
-			if (searchHistory.Count == 0 || lastTextLength == 1)
+			if (searchHistory.Count == 0 || _lastTextLength == 1)
 			{
-				await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Add(text) });
+				await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Prepend(text).ToList() });
 			}
-			else if ((text.Contains(searchHistory.LastOrDefault()!)
-				|| searchHistory.LastOrDefault()!.Contains(text))
-				&& lastTextLength == text.Count())
+			else if (searchHistory.FirstOrDefault() is { } latestTerm
+				&& (text.Contains(latestTerm) || latestTerm.Contains(text))
+				&& _lastTextLength == text.Count())
 			{
 				await _searchOptions.UpdateAsync(h => h with
 				{
-					Searches = searchHistory.Replace(searchHistory.LastOrDefault()
-					?? string.Empty, text)
+					Searches = searchHistory.Skip(1).Prepend(text).ToList(),
 				});
 			}
 		}
