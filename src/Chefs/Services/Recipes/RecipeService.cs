@@ -129,7 +129,7 @@ public class RecipeService : IRecipeService
 	{
 		if (_lastTextLength <= text.Count()) _lastTextLength = text.Count();
 
-		var searchHistory = _searchOptions.Value.Searches; 
+		var searchHistory = _searchOptions.Value.Searches;
 		if (searchHistory is not null && !text.IsNullOrEmpty())
 		{
 			if (searchHistory.Count == 0 || _lastTextLength == 1)
