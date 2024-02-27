@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Storage
 ---
 
-# How to persist or access serialized data into your application
+# How to persist or access serialized data in your application
 
 ## Problem
 
@@ -57,7 +57,7 @@ public class RecipeEndpoint : IRecipeEndpoint
   {
     if (_recipes == null)
     {
-      _recipes = (await _dataService.ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
+      _recipes = (await _dataService.ReadPackageFileAsync<List<RecipeData>>(_serializer, "Recipes.json"));
     }
 
     return _recipes ?? new List<RecipeData>();
@@ -74,69 +74,14 @@ public class RecipeEndpoint : IRecipeEndpoint
     "UserId": "bb708644-d5cd-45ad-b565-07a0c4d0b320",
     "Id": "0dc51562-67b7-4de8-91fa-a0a4a538d919",
     "Steps": [
-      {
-        "Name": "Getting started",
-        "CookTime": "00:05:00",
-        "Cookware": [ "Fork", "Knife", "Skillet", "Spatula" ],
-        "Description": "Melt butter in a skillet over medium-low heat.\n\nCrack eggs into the skillet side by side and cook until eggs are white on the bottom layer and firm enough to flip, 2 to 3 minutes.",
-        "Ingredients": [ "Eggs", "Olive oil" ],
-        "Number": 1,
-        "UrlVideo": ""
-      },
-      {
-        "Name": "Next step",
-        "CookTime": "00:04:00",
-        "Cookware": [ "Skillet", "Spatula" ],
-        "Description": "Flip eggs, trying not to crack the yolk, and cook until the egg reaches desired doneness, 2 to 4 minutes more.",
-        "Ingredients": [ "Bread" ],
-        "Number": 2,
-        "UrlVideo": ""
-      },
-      {
-        "Name": "Final step",
-        "CookTime": "00:01:00",
-        "Cookware": [ "Fork", "Knife", "Bowl", "Cutting Boards" ],
-        "Description": "Meanwhile, toast bread slices to desired doneness, 3 to 4 minutes.",
-        "Ingredients": [ "Avocado", "Lemon juice", "Salt and pepper" ],
-        "Number": 3,
-        "UrlVideo": ""
-      }
+      ...
     ],
     "ImageUrl": "ms-appx:///Chefs/Assets/Recipes/avocado_toast.png",
     "Serves": 1,
     "CookTime": "00:10:00",
     "Difficulty": 1,
     "Ingredients": [
-      {
-        "UrlIcon": "ms-appx:///Chefs/Assets/Icons/avocado.png",
-        "Name": "Avocado",
-        "Quantity": "250 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Chefs/Assets/Icons/egg.png",
-        "Name": "Eggs",
-        "Quantity": "2"
-      },
-      {
-        "UrlIcon": "ms-appx:///Chefs/Assets/Icons/baguette_bread.png",
-        "Name": "Bread",
-        "Quantity": "300 g"
-      },
-      {
-        "UrlIcon": "ms-appx:///Chefs/Assets/Icons/lemon.png",
-        "Name": "Lemon juice",
-        "Quantity": "80 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Chefs/Assets/Icons/olive.png",
-        "Name": "Olive oil",
-        "Quantity": "50 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Chefs/Assets/Icons/salt.png",
-        "Name": "Salt and pepper",
-        "Quantity": "salt to taste"
-      }
+      ...
     ],
     "Calories": "250 kcal",
     "Reviews": [],
