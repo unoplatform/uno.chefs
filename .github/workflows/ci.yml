@@ -46,7 +46,7 @@ jobs:
       - name: Build app
         run: |
           cd src/Chefs.Wasm
-          dotnet build -c Release "/p:PackageVersion=${{ steps.gitversion.outputs.fullSemVer }}" /p:DisableNetMobileTargets=True /bl:./artifacts-logs/build.binlog
+          dotnet build -c Release "/p:PackageVersion=${{ steps.gitversion.outputs.fullSemVer }}" /p:OverrideTargetFramework=net8.0 /bl:./artifacts-logs/build.binlog
 
       - uses: actions/upload-artifact@v2
         with:

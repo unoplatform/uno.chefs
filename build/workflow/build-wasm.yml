@@ -33,7 +33,7 @@ jobs:
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
   - bash: |
-      dotnet build /ds /m /r /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet build /ds /m /r /p:OverrideTargetFramework=net8.0 /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2

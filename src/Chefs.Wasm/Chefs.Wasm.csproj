@@ -1,15 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Uno.Sdk">
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>$(DotNetVersion)</TargetFramework>
 		<NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
 		<DefineConstants>$(DefineConstants);WINUI</DefineConstants>
 		<!-- Disabled due to issue with Central Package Management with implicit using -->
 		<ImplicitUsings>disable</ImplicitUsings>
 		<WasmPWAManifestFile>manifest.webmanifest</WasmPWAManifestFile>
 		<AppDesignerFolder>Properties</AppDesignerFolder>
-		<!-- Changing the root of the app to have the correct path for the images -->
-		<!-- Related details here : https://github.com/unoplatform/uno.chefs/issues/404 -->
+		<!--
+		Supports Deep Linking Routes
+		https://aka.platform.uno/wasm-deeplink
+		-->
 		<WasmShellWebAppBasePath>/</WasmShellWebAppBasePath>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -86,6 +88,7 @@
 		<PackageReference Include="Uno.Extensions.Reactive.Messaging" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
 		<PackageReference Include="Mapsui.Uno.WinUI" />
+		 <PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" />
 		<PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" GeneratePathProperty="true" />
 		<!-- Use ILLink package to improve XAML trimming performance -->
 		<PackageReference Include="Microsoft.NET.ILLink.Tasks" />
@@ -93,5 +96,11 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
 	</ItemGroup>
-	<Import Project="..\Chefs.Base\base.props" />
+	<Import Project="..\Chefs.Shared\base.props" />
+
+	<Target Name="ValidateOverrides" BeforeTargets="Restore;_CheckForUnsupportedTargetFramework" Condition="'$(OverrideTargetFramework)' != ''">
+		<Error
+			Text="OverrideTargetFramework set to '$(OverrideTargetFramework)' is invalid. Set OverrideTargetFramework to $([MSBuild]::Escape('$'))(DotNetVersion) or skip building this project (eg unload the project in Visual Studio)"
+			Condition="'$(OverrideTargetFramework)'!='$(DotNetVersion)'" />
+	</Target>
 </Project>

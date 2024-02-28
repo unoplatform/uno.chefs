@@ -1,11 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Uno.Sdk">
 	<PropertyGroup>
 		<OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
 		<OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>$(DotNetVersion)</TargetFramework>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
 	</PropertyGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="Package.appxmanifest" />
+		<Manifest Include="$(ApplicationManifest)" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -34,11 +36,19 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
 		<PackageReference Include="SkiaSharp.Views.Uno.WinUI" />
 		<PackageReference Include="SkiaSharp.Skottie" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux" />
+		<PackageReference Include="SkiaSharp.NativeAssets.macOS" />
 		<PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
 		<PackageReference Include="Mapsui.Uno.WinUI" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Chefs\Chefs.csproj" />
 	</ItemGroup>
-	<Import Project="..\Chefs.Base\base.props" />
+	<Import Project="..\Chefs.Shared\base.props" />
+
+	<Target Name="ValidateOverrides" BeforeTargets="Restore;_CheckForUnsupportedTargetFramework" Condition="'$(OverrideTargetFramework)' != ''">
+		<Error
+			Text="OverrideTargetFramework set to '$(OverrideTargetFramework)' is invalid. Set OverrideTargetFramework to $([MSBuild]::Escape('$'))(DotNetVersion) or skip building this project (eg unload the project in Visual Studio)"
+			Condition="'$(OverrideTargetFramework)'!='$(DotNetVersion)'" />
+	</Target>
 </Project>

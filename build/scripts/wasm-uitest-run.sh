@@ -20,7 +20,7 @@ export UNO_UITEST_NUGET_URL=https://dist.nuget.org/win-x86-commandline/v5.7.0/nu
 cd $BUILD_SOURCESDIRECTORY
 
 dotnet build /r /p:Configuration=Release $UNO_UITEST_PROJECT
-dotnet build /p:Configuration=Release $UNO_UITEST_WASM_PROJECT /p:IsUiAutomationMappingEnabled=True /p:DisableNetMobileTargets=True
+dotnet build /p:Configuration=Release $UNO_UITEST_WASM_PROJECT /p:IsUiAutomationMappingEnabled=True /p:OverrideTargetFramework=net8.0
 
 # install dotnet serve / Remove as needed
 dotnet tool uninstall dotnet-serve -g || true
