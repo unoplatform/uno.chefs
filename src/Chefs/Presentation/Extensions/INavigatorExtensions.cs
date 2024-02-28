@@ -32,4 +32,9 @@ public static class INavigatorExtensions
 	{
 		return navigator.NavigateRouteAsync(sender, "Notifications", qualifier: Qualifiers.Dialog);
 	}
+
+	public static Task<NavigationResponse?> ShowDialog(this INavigator navigator, object sender, DialogInfo dialogInfo, CancellationToken ct)
+	{
+		return navigator.NavigateDataAsync(sender, new DialogInfo(dialogInfo.Title, dialogInfo.Content), cancellation: ct);
+	}
 }

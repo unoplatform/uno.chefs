@@ -1,3 +1,6 @@
+using Chefs.Presentation.Extensions;
+using Windows.UI.Popups;
+
 namespace Chefs.Presentation;
 
 public partial class CreateUpdateCookbookModel
@@ -90,8 +93,7 @@ public partial class CreateUpdateCookbookModel
 		}
 		else
 		{
-			await _navigator
-				.ShowMessageDialogAsync(this, content: "Please write a cookbook name and select one recipe", title: "Error");
+			await _navigator.ShowDialog(this, new DialogInfo("Error", "Please write a cookbook name and select one recipe."), ct);
 		}
 	}
 }

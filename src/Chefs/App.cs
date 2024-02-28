@@ -109,7 +109,8 @@ public class App : Application
 			new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
-			new ViewMap<MapPage, MapModel>()
+			new ViewMap<MapPage, MapModel>(),
+			new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>())
 		);
 
 		routes.Register(
@@ -170,9 +171,10 @@ public class App : Application
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),
 					new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>()),
 					new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
-					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn:"Profile"),
-
+					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn: "Profile"),
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
+					new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main"),
+					new RouteMap("Dialog", View: views.FindByView<GenericDialog>())
 				}
 			)
 		);
