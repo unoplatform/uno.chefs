@@ -63,4 +63,18 @@ public partial class RecipeDetailsModel
 
 	public async ValueTask Share(CancellationToken ct) =>
 		throw new NotSupportedException("to define");
+
+	public IState<Recipe> RecipeState => State.Value(this, () => Recipe);
+
+	public async Task ToggleFavorite(CancellationToken ct)
+	{
+		await RecipeState.UpdateAsync(x =>
+		{
+			return x! with { Save = !x.Save };
+		}, ct);
+
+		var recipe = await RecipeState.Value(ct);
+
+		await Save(recipe!, ct);
+	}
 }

@@ -1,4 +1,5 @@
 using Chefs.Presentation.Extensions;
+using CommunityToolkit.Mvvm.Messaging;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Chefs.Presentation;
@@ -8,17 +9,21 @@ public partial class HomeModel
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly IUserService _userService;
+	private readonly IMessenger _messenger;
 
-	public HomeModel(INavigator navigator, IRecipeService recipe, IUserService userService)
+	public HomeModel(INavigator navigator, IRecipeService recipe, IUserService userService, IMessenger messenger)
 	{
 		_navigator = navigator;
 		_recipeService = recipe;
 		_userService = userService;
+		_messenger = messenger;
+
+		_messenger.Observe(TrendingNow, r => r.Id);
 	}
 
 	private IListFeed<Recipe> Recipes => ListFeed.Async(_recipeService.GetAll);
 
-	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
+	public IListState<Recipe> TrendingNow => ListState.FromFeed(this, _recipeService.TrendingNow);
 
 	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategories);
 

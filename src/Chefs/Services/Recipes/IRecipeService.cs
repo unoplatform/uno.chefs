@@ -49,6 +49,11 @@ public interface IRecipeService
 	IListFeed<Recipe> SavedRecipes { get; }
 
 	/// <summary>
+	/// Trending now recipes.
+	/// </summary>
+	IListFeed<Recipe> TrendingNow { get; }
+
+	/// <summary>
 	/// Recipes with a specific category
 	/// </summary>
 	/// <param name="categoryId">The specific category to filter recipes</param>

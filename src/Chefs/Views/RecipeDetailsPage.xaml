@@ -63,7 +63,8 @@
 						<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/share_recipe.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}"
+							  Command="{Binding ToggleFavorite}">
 					<AppBarButton.Icon>
 						<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/favorite_heart.png" />
 					</AppBarButton.Icon>

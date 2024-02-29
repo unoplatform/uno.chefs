@@ -96,6 +96,10 @@ public class RecipeService : IRecipeService
 
 	public IListFeed<Recipe> SavedRecipes => ListFeed<Recipe>.Async(GetSaved);
 
+	public IListFeed<Recipe> TrendingNow => TrendingNowState;
+
+	private IListState<Recipe> TrendingNowState => ListState.Async<IRecipeService, Recipe>(this, GetTrending);
+
 	public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct)
 		=> (await _recipeEndpoint.GetSaved(ct))
 			.Select(r => new Recipe(r))
@@ -104,6 +108,16 @@ public class RecipeService : IRecipeService
 	public async ValueTask Save(Recipe recipe, CancellationToken ct)
 	{
 		await _recipeEndpoint.Save(recipe.ToData(), ct);
+		await TrendingNowState.UpdateAsync(x =>
+		{
+			var oldList = x.ToList();
+			var changedRecipeIndex = oldList.IndexOf(recipe);
+			var isSaved = !oldList[changedRecipeIndex].Save;
+
+			oldList[changedRecipeIndex] = oldList[changedRecipeIndex] with { Save = isSaved};
+
+			return oldList.ToImmutableList();
+		});
 		_messenger.Send(new EntityMessage<Recipe>(recipe.Save ? EntityChange.Created : EntityChange.Deleted, recipe));
 	}
 
