@@ -60,7 +60,7 @@
 								utu:AutoLayout.CounterAlignment="Center"
 								Command="{Binding SearchPopular}"
 								Content="View popular recipes"
-								CornerRadius="4"
+								CornerRadius="20"
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
 							<ut:ControlExtensions.Icon>
@@ -176,7 +176,7 @@
 								Visibility="{Binding HasFilter, Converter={StaticResource TrueToVisible}}"
 								Command="{Binding ResetFilters}"
 								Margin="0,0,8,0"
-								CornerRadius="4"
+								CornerRadius="20"
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
 							<ut:ControlExtensions.Icon>
@@ -193,7 +193,7 @@
 									uen:Navigation.Request="!Filter"
 									utu:AutoLayout.CounterAlignment="Center"
 									Content="Filters"
-									CornerRadius="4"
+									CornerRadius="20"
 									Foreground="{ThemeResource PrimaryBrush}"
 									Style="{StaticResource TextButtonStyle}">
 								<ut:ControlExtensions.Icon>

@@ -65,7 +65,7 @@
 						uen:Navigation.Request="!CreateCookbook"
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="Create cookbook"
-						CornerRadius="4"
+						CornerRadius="20"
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
@@ -139,7 +139,7 @@
 													uen:Navigation.Data="{Binding}"
 													uen:Navigation.Request="CreateCookbook"
 													Background="{ThemeResource BackgroundBrush}"
-													CornerRadius="12"
+													CornerRadius="20"
 													Style="{StaticResource TextButtonStyle}"
 													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 												<Button.Content>
@@ -197,7 +197,7 @@
 						VerticalContentAlignment="Center"
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="See popular recipes"
-						CornerRadius="4"
+						CornerRadius="20"
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>

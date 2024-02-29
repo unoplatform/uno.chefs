@@ -48,7 +48,7 @@
 							Padding="12,10,16,10"
 							utu:AutoLayout.CounterAlignment="Center"
 							Foreground="{ThemeResource PrimaryBrush}"
-							CornerRadius="4"
+							CornerRadius="20"
 							Style="{StaticResource TextButtonStyle}">
 						<ut:ControlExtensions.Icon>
 							<FontIcon Glyph="{StaticResource Icon_Add}"
