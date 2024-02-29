@@ -9,12 +9,14 @@ public partial class SearchModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
+	private readonly IMessenger _messenger;
 	private bool hideSearches = false;
 
-	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
+	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService, IMessenger messenger)
 	{
 		_navigator = navigator;
 		_recipeService = recipeService;
+		_messenger = messenger;
 
 		Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null, null));
 	}
@@ -38,7 +40,7 @@ public partial class SearchModel
 
 	public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetFromChefs);
 
-	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
+	public IListState<string> SearchHistory => ListState.FromFeed(this, _recipeService.SearchHistory);
 
 	public async ValueTask ApplyHistory(string term, CancellationToken ct)
 	{
@@ -70,7 +72,6 @@ public partial class SearchModel
 		return recipesByCategory.Intersect(recipesByTerm).Where(p => inputs.filter.Match(p)).ToImmutableList();
 	}
 
-
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
 
 	public async ValueTask CloseSearches(CancellationToken ct)
@@ -93,4 +94,9 @@ public partial class SearchModel
 
 	public async ValueTask ResetFilters(CancellationToken ct) =>
 		await Filter.Update(current => new SearchFilter(null, null, null, null, null), ct);
+
+	public async ValueTask SetSearch(string newTerm)
+	{
+		await Term.SetAsync(newTerm);
+	}
 }

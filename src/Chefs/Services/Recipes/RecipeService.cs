@@ -54,10 +54,21 @@ public class RecipeService : IRecipeService
 		}
 		else
 		{
-			await SaveSearchHistory(term);
+			_ = OnSearchChanged(term);
+
 			return GetRecipesByText((await _recipeEndpoint.GetAll(ct))
 					   .Select(r => new Recipe(r)), term);
 		}
+	}
+
+	private CancellationTokenSource? searchCancellationToken = null;
+
+	public async Task OnSearchChanged(string term)
+	{
+		searchCancellationToken?.Cancel();
+		searchCancellationToken = new CancellationTokenSource();
+		await Task.Delay(2000, searchCancellationToken.Token);
+		await SaveSearchHistory(term);
 	}
 
 	public IImmutableList<string> GetSearchHistory() => _searchOptions.Value.Searches.Take(3).ToImmutableList();
@@ -132,21 +143,37 @@ public class RecipeService : IRecipeService
 		var searchHistory = _searchOptions.Value.Searches;
 		if (searchHistory is not null && !text.IsNullOrEmpty())
 		{
-			if (searchHistory.Count == 0 || _lastTextLength == 1)
+			//if (searchHistory.Count == 0 || _lastTextLength == 1)
+			//{
+			//	await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Prepend(text).ToList() });
+			//	_messenger.Send(new EntityMessage<string>(EntityChange.Updated, text));
+			//}
+			//else if (searchHistory.FirstOrDefault() is { } latestTerm
+			//	&& (text.Contains(latestTerm) || latestTerm.Contains(text))
+			//	&& _lastTextLength == text.Count())
+			//{
+			//	await _searchOptions.UpdateAsync(h => h with
+			//	{
+			//		Searches = searchHistory.Skip(1).Prepend(text).ToList(),
+			//	});
+			//	_messenger.Send(new EntityMessage<string>(EntityChange.Updated, text));
+			//}
+
+			if (_lastTextLength == 1 || searchHistory.Contains(text))
 			{
-				await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Prepend(text).ToList() });
+				return;
 			}
-			else if (searchHistory.FirstOrDefault() is { } latestTerm
-				&& (text.Contains(latestTerm) || latestTerm.Contains(text))
-				&& _lastTextLength == text.Count())
-			{
-				await _searchOptions.UpdateAsync(h => h with
-				{
-					Searches = searchHistory.Skip(1).Prepend(text).ToList(),
-				});
-			}
+
+			searchHistory.Insert(0, text);
+			await _searchOptions.UpdateAsync(h => h with { Searches = searchHistory.Take(3).ToList() });
+
+			await _searchHistoryState.UpdateAsync(_ => searchHistory.Take(3).ToImmutableList());
 		}
 	}
+
+	public IListFeed<string> SearchHistory => _searchHistoryState;
+
+	public IListState<string> _searchHistoryState => ListState.Async<IRecipeService, string>(this, async ct => GetSearchHistory());
 
 	private IImmutableList<Recipe> GetRecipesByText(IEnumerable<Recipe> recipes, string text)
 		=> recipes

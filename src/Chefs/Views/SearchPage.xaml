@@ -149,26 +149,61 @@
 													 Wide='40,40,40,24'}"
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
-				<TextBox utu:CommandExtensions.Command="{Binding Search}"
-						 BorderBrush="{ThemeResource OnSurfaceBrush}"
-						 BorderThickness="1"
-						 CornerRadius="28"
-						 Foreground="{ThemeResource OnSurfaceBrush}"
-						 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-						 PlaceholderText="Search"
-						 Style="{StaticResource OutlinedTextBoxStyle}"
-						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Search}"
-								  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-					</ut:ControlExtensions.Icon>
-				</TextBox>
+
+
+				<utu:AutoLayout Spacing="16">
+					<TextBox utu:CommandExtensions.Command="{Binding Search}"
+							 BorderBrush="{ThemeResource OnSurfaceBrush}"
+							 BorderThickness="1"
+							 CornerRadius="28"
+							 Foreground="{ThemeResource OnSurfaceBrush}"
+							 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+							 PlaceholderText="Search"
+							 Style="{StaticResource OutlinedTextBoxStyle}"
+							 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+						<ut:ControlExtensions.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Search}"
+									  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+						</ut:ControlExtensions.Icon>
+					</TextBox>
+
+				</utu:AutoLayout>
+
+				<uer:FeedView Source="{Binding SearchHistory}">
+					<DataTemplate>
+						<muxc:ItemsRepeater ItemsSource="{Binding Data}"
+											utu:ItemsRepeaterExtensions.SelectionMode="None">
+							<muxc:ItemsRepeater.ItemTemplate>
+								<DataTemplate>
+									<StackPanel Orientation="Horizontal">
+										<utu:Chip Background="{ThemeResource SurfaceBrush}"
+												  Content="{Binding}"
+												  CommandParameter="{Binding}"
+												  Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.SetSearch}"
+												  Foreground="{ThemeResource OnSurfaceVariantBrush}"
+												  Style="{StaticResource MaterialChipStyle}"/>
+									</StackPanel>
+								</DataTemplate>
+							</muxc:ItemsRepeater.ItemTemplate>
+							<muxc:ItemsRepeater.Layout>
+								<muxc:UniformGridLayout ItemsJustification="Start"
+														MinItemWidth="100"
+														MinColumnSpacing="8"
+														ItemsStretch="None"
+														MaximumRowsOrColumns="4"
+														Orientation="Horizontal" />
+							</muxc:ItemsRepeater.Layout>
+						</muxc:ItemsRepeater>
+					</DataTemplate>
+				</uer:FeedView>
 
 				<utu:AutoLayout Justify="SpaceBetween"
 								Orientation="Horizontal">
+
 					<TextBlock utu:AutoLayout.CounterAlignment="Center"
 							   Style="{StaticResource BodyLarge}"
 							   Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
+
 					<utu:AutoLayout Orientation="Horizontal">
 						<Button utu:AutoLayout.PrimaryAlignment="Auto"
 								utu:AutoLayout.CounterAlignment="Center"

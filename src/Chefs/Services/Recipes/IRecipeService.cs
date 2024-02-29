@@ -176,4 +176,9 @@ public interface IRecipeService
 	ValueTask<IImmutableList<Recipe>> GetFromChefs(CancellationToken ct);
 
 	IImmutableList<string> GetSearchHistory();
+
+	/// <summary>
+	/// Saved search history.
+	/// </summary>
+	IListFeed<string> SearchHistory { get; }
 }
