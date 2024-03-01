@@ -10,7 +10,7 @@ Mobile and desktop applications often need to display complex data in an easy-to
  
 ## Solution
 
-**LiveCharts** is a flexible and customizable charting library that can be integrated into any .NET application, including Uno platform apps. It provides various chart types, from basic line and bar charts to more complex heat maps and financial charts.
+**LiveCharts** is a flexible and customizable charting library that can be integrated into any .NET application, including Uno Platform apps. It provides various chart types, from basic line and bar charts to more complex heat maps and financial charts.
 
 ### App startup configuration
 
@@ -43,9 +43,6 @@ public class App : Application
 <UserControl xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI">
 
   <!-- Code omitted for brevity -->
-
-  <!-- UserControl used for LiveCharts2 components to avoid having to data-bind the chart properties to the Model -->
-  <!-- Currently a bug in LiveCharts2 that causes a crash when setting DataContext to null: https://github.com/beto-rodriguez/LiveCharts2/issues/1422 -->
 
   <lvc:PieChart x:Name="pieChart" />
 
@@ -87,102 +84,12 @@ public sealed partial class ChartControl : UserControl
 
   private void BuildColumnChart()
   {
-    //Build column chart
-    var _chartdata = new NutritionChartItem[]
-    {
-      new(nameof(Nutrition.Fat),_recipe?.Nutrition.Fat,_recipe?.Nutrition.FatBase,GetNutritionColorPaint(nameof(Nutrition.Fat))),
-      new(nameof(Nutrition.Carbs),_recipe?.Nutrition.Carbs,_recipe?.Nutrition.CarbsBase,GetNutritionColorPaint(nameof(Nutrition.Carbs))),
-      new(nameof(Nutrition.Protein),_recipe?.Nutrition.Protein,_recipe?.Nutrition.ProteinBase, GetNutritionColorPaint(nameof(Nutrition.Protein)))
-    };
-
-    var rowSeries = new RowSeries<NutritionChartItem>
-    {
-      Values = _chartdata,
-      DataLabelsPaint = new SolidColorPaint(GetSKColorFromResource("NutritionDataLabelColor")),
-      DataLabelsPosition = DataLabelsPosition.Right,
-      DataLabelsFormatter = point => $"{point.Model!.Name} {point.Model!.ChartProgressVal}/{point.Model!.MaxValueRef}g",
-      DataLabelsSize = 13,
-      IgnoresBarPosition = true,
-      MaxBarWidth = 22,
-      Padding = 1,
-
-      IsVisibleAtLegend = true
-    }.OnPointMeasured(point =>
-    {
-      if (point.Visual is null) return;
-      point.Visual.Fill = point.Model!.ColumnColor;
-    });
-    //End
-
-    //Build column background
-    var chartlimit = new NutritionChartItem[]
-    {
-      new(),
-      new(),
-      new()
-    };
-
-    var rowSeriesLimit = new RowSeries<NutritionChartItem>
-    {
-      Values = chartlimit,
-      IgnoresBarPosition = true,
-      MaxBarWidth = 22,
-      Padding = 1,
-      Fill = new SolidColorPaint(GetSKColorFromResource("NutritionTrackBackgroundColor"))
-    };
-    //End
-
-    cartesianChart.Series = new[] { rowSeriesLimit, rowSeries };
-    cartesianChart.XAxes = new[] { new Axis { IsVisible = false, MaxLimit = 1000 } };
-    cartesianChart.YAxes = new[] { new Axis { IsVisible = false } };
+    // Code omitted for brevity
   }
 
   private void BuildDoughnutChart()
   {
-    var c = new ISeries[]
-    {
-      new PieSeries<int>
-      {
-        Values = new []{ 5 },
-        Fill = GetNutritionColorPaint(nameof(Nutrition.Fat)),
-        InnerRadius = 60,
-      },
-      new PieSeries<int>
-      {
-        Values = new []{ 5},
-        Fill = GetNutritionColorPaint(nameof(Nutrition.Protein)),
-        InnerRadius = 60,
-      },
-      new PieSeries<int>
-      {
-        Values = new []{ 5 },
-        Fill = GetNutritionColorPaint(nameof(Nutrition.Carbs)),
-        InnerRadius = 60,
-      }
-    };
-
-    pieChart.Series = c;
-  }
-
-  private SolidColorPaint GetNutritionColorPaint(string name)
-  {
-    return name switch
-    {
-      nameof(Nutrition.Carbs) => new SolidColorPaint(GetSKColorFromResource("NutritionCarbsValColor")),
-      nameof(Nutrition.Protein) => new SolidColorPaint(GetSKColorFromResource("NutritionProteinValColor")),
-      nameof(Nutrition.Fat) => new SolidColorPaint(GetSKColorFromResource("NutritionFatValColor")),
-      _ => new SolidColorPaint(SKColors.Yellow),
-    };
-  }
-
-  private SKColor GetSKColorFromResource(string resourceKey)
-  {
-    if (Resources.TryGetValue(resourceKey, out var resource) && resource is Color color)
-    {
-      return new SKColor(color.R, color.G, color.B, color.A);
-    }
-
-    return SKColor.Empty;
+    // Code omitted for brevity
   }
 }
 ```
