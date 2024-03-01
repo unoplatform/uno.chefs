@@ -1,3 +1,4 @@
+using Chefs.Presentation.Messages;
 using Uno.Extensions.Toolkit;
 using Windows.Management.Deployment;
 using AppTheme = Uno.Extensions.Toolkit.AppTheme;
@@ -23,8 +24,11 @@ public partial class SettingsModel
 		{
 			if (settings is { })
 			{
-				await _themeService.SetThemeAsync((settings.IsDark ?? false) ? AppTheme.Dark : AppTheme.Light);
+				var isDark = (settings.IsDark ?? false);
+				await _themeService.SetThemeAsync(isDark ? AppTheme.Dark : AppTheme.Light);
 				await _userService.SetSettings(settings, ct);
+
+				WeakReferenceMessenger.Default.Send(new ThemeChangedMessage(isDark));
 			}
 		});
 
