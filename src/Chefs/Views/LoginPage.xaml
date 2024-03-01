@@ -92,6 +92,7 @@
 											utu:AutoLayout.PrimaryAlignment="Stretch">
 								<Button Content="Forgot password?"
 										utu:AutoLayout.CounterAlignment="End"
+										CornerRadius="20"
 										Style="{StaticResource TextButtonStyle}" />
 							</utu:AutoLayout>
 						</utu:AutoLayout>
@@ -138,6 +139,7 @@
 						<Button Content="Register Now"
 								utu:AutoLayout.CounterAlignment="Center"
 								Command="{Binding ToggleRegister}"
+								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
@@ -222,6 +224,7 @@
 						<Button Content="Login Now"
 								Command="{Binding ToggleRegister}"
 								utu:AutoLayout.CounterAlignment="Center"
+								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
