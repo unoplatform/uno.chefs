@@ -28,10 +28,9 @@
 			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 						  HorizontalScrollMode="Disabled">
 				<utu:AutoLayout Spacing="24"
-								Padding="{utu:Responsive Narrow=32,
-														 Wide=40}"
-								PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
-																	  Wide=Center}">
+								Padding="{utu:Responsive Narrow=0,
+														 Wide=48}"
+								PrimaryAxisAlignment="Center">
 					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 									Orientation="Horizontal">
 						<TextBlock FontSize="22"
@@ -139,7 +138,9 @@
 			</utu:AutoLayout>
 
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-							Justify="SpaceBetween">
+							Justify="SpaceBetween"
+							Padding="{utu:Responsive Narrow=32,
+													 Wide=40}">
 				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
 				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
@@ -148,19 +149,16 @@
 						  ItemTemplate="{StaticResource StepTemplate}"
 						  ItemsSource="{Binding Steps}"
 						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-				<utu:AutoLayout Padding="16,0,16,16"
-								CornerRadius="8"
-								Spacing="16">
+				<utu:AutoLayout CornerRadius="8">
 					<muxc:PipsPager x:Name="pipsPager"
 									Margin="0,0,0,16"
 									utu:AutoLayout.CounterAlignment="Center"
 									Style="{StaticResource PipsPagerStyle}" />
-					<utu:AutoLayout Height="70"
+					<utu:AutoLayout Height="59"
 									utu:AutoLayout.PrimaryAlignment="Stretch"
 									Orientation="Horizontal"
 									PrimaryAxisAlignment="Center"
-									Padding="8,0"
-									Spacing="24">
+									Spacing="16">
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Content="Back"
@@ -200,10 +198,11 @@
 			</utu:AutoLayout>
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
 							PrimaryAlignment="Stretch"
-							Margin="{utu:Responsive Narrow=0, Wide=48}" >
+							Padding="{utu:Responsive Narrow=32,
+													 Wide=40}">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
-								Padding="{utu:Responsive Narrow=32,
-														 Wide=40}"
+								Padding="{utu:Responsive Narrow=0,
+														 Wide=48}"
 								Spacing="24">
 					<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
 								utu:AutoLayout.CounterAlignment="Center"
@@ -238,8 +237,6 @@
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								CounterAxisAlignment="End"
 								Orientation="Horizontal"
-								Padding="32,0"
-								CornerRadius="8"
 								Spacing="16">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Height="59"
