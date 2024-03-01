@@ -438,15 +438,19 @@
 						</ScrollViewer>
 
 						<Button Content="Start Cooking!"
-								Style="{StaticResource FabStyle}"
+								Style="{StaticResource PrimaryFabStyle}"
 								Command="{Binding LiveCooking}"
 								VerticalAlignment="Bottom"
 								HorizontalAlignment="Right"
 								utu:AutoLayout.IsIndependentLayout="True"
 								Padding="24,20"
 								Margin="0,0,16,16"
-								CornerRadius="4" />
-
+								CornerRadius="4">
+							<ut:ControlExtensions.Icon>
+								<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+									  Glyph="{StaticResource Icon_Carrot}" />
+							</ut:ControlExtensions.Icon>
+						</Button>
 					</utu:AutoLayout>
 				</DataTemplate>
 			</utu:ResponsiveView.NarrowTemplate>
@@ -827,14 +831,19 @@
 							</utu:AutoLayout>
 						</utu:AutoLayout>
 						<Button Content="Start Cooking!"
-								Style="{StaticResource FabStyle}"
+								Style="{StaticResource PrimaryFabStyle}"
 								Command="{Binding LiveCooking}"
 								VerticalAlignment="Bottom"
 								HorizontalAlignment="Right"
 								utu:AutoLayout.IsIndependentLayout="True"
 								Padding="24,20"
 								Margin="0,0,16,16"
-								CornerRadius="4" />
+								CornerRadius="4">
+							<ut:ControlExtensions.Icon>
+								<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+										  Glyph="{StaticResource Icon_Carrot}" />
+							</ut:ControlExtensions.Icon>
+						</Button>
 					</utu:AutoLayout>
 				</DataTemplate>
 			</utu:ResponsiveView.WideTemplate>

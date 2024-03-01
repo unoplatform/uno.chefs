@@ -28,9 +28,8 @@
 			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 						  HorizontalScrollMode="Disabled">
 				<utu:AutoLayout Spacing="24"
-								Padding="{utu:Responsive Narrow=0,
-														 Wide=48}"
-								PrimaryAxisAlignment="Center">
+								Padding="40"
+								PrimaryAxisAlignment="Start">
 					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 									Orientation="Horizontal">
 						<TextBlock FontSize="22"
@@ -139,8 +138,7 @@
 
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Justify="SpaceBetween"
-							Padding="{utu:Responsive Narrow=32,
-													 Wide=40}">
+							Padding="0,40">
 				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
 				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
@@ -149,7 +147,8 @@
 						  ItemTemplate="{StaticResource StepTemplate}"
 						  ItemsSource="{Binding Steps}"
 						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-				<utu:AutoLayout CornerRadius="8">
+				<utu:AutoLayout CornerRadius="8"
+								Padding="40,0">
 					<muxc:PipsPager x:Name="pipsPager"
 									Margin="0,0,0,16"
 									utu:AutoLayout.CounterAlignment="Center"
