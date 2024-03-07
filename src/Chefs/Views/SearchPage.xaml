@@ -73,8 +73,9 @@
 			</DataTemplate>
 
 			<DataTemplate x:Key="RecipeTemplate">
-				<utu:AutoLayout>
+				<utu:AutoLayout Margin="8">
 					<utu:CardContentControl x:Name="RecipeTemplateCard"
+											MaxWidth="300"
 											HorizontalAlignment="Stretch"
 											VerticalAlignment="Stretch"
 											Background="{ThemeResource SurfaceBrush}"
@@ -216,30 +217,19 @@
 								  Source="{Binding Items}">
 						<DataTemplate>
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-								<utu:AutoLayout.Resources>
-									<muxc:UniformGridLayout x:Key="NarrowGridLayout"
-															ItemsStretch="Fill"
-															MaximumRowsOrColumns="2"
-															MinColumnSpacing="8"
-															MinItemWidth="155"
-															MinRowSpacing="8" />
-
-									<muxc:UniformGridLayout x:Key="WideGridLayout"
-															ItemsStretch="Fill"
-															MaximumRowsOrColumns="8"
-															MinColumnSpacing="16"
-															MinItemWidth="240"
-															MinRowSpacing="16" />
-								</utu:AutoLayout.Resources>
-
-								<muxc:ItemsRepeater x:Name="SearchRepeater"
-													Margin="{utu:Responsive Narrow='16,0,16,16',
-																			Wide='40,0,40,40'}"
-													uen:Navigation.Request="SearchRecipeDetails"
-													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																			Wide={StaticResource WideGridLayout}}" />
+								<GridView x:Name="SearchRepeater"
+										  utu:AutoLayout.PrimaryAlignment="Stretch"
+										  Margin="{utu:Responsive Narrow='16,0,16,16',
+																  Wide='40,0,40,40'}"
+										  uen:Navigation.Request="SearchRecipeDetails"
+										  ItemTemplate="{StaticResource RecipeTemplate}"
+										  ItemsSource="{Binding Data}">
+									<GridView.ItemsPanel>
+										<ItemsPanelTemplate>
+											<ItemsWrapGrid Orientation="Horizontal" HorizontalAlignment="Center"/>
+										</ItemsPanelTemplate>
+									</GridView.ItemsPanel>
+								</GridView>
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>
