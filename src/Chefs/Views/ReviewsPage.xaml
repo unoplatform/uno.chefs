@@ -53,7 +53,7 @@
                 <utu:NavigationBar.PrimaryCommands>
                     <AppBarButton Command="{Binding Exit}">
                         <AppBarButton.Icon>
-                            <BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/close.png" />
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
                         </AppBarButton.Icon>
                     </AppBarButton>
                 </utu:NavigationBar.PrimaryCommands>

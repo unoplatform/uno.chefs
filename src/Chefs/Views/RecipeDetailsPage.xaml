@@ -60,12 +60,12 @@
 			<utu:NavigationBar.PrimaryCommands>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/share_recipe.png" />
+						<BitmapIcon UriSource="ms-appx:///Assets/Icons/share_recipe.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/favorite_heart.png" />
+						<BitmapIcon UriSource="ms-appx:///Assets/Icons/favorite_heart.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>

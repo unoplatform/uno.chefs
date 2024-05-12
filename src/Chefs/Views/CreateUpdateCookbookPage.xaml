@@ -71,7 +71,7 @@
 																   Text="{Binding Name}"
 																   TextWrapping="NoWrap"
 																   TextTrimming="CharacterEllipsis" />
-														<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+														<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																   Style="{StaticResource CaptionMedium}"
 																   utu:AutoLayout.PrimaryAlignment="Stretch"
 																   Text="{Binding TimeCal}"
