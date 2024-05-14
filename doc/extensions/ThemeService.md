@@ -1,16 +1,16 @@
 ---
-uid: Uno.Recipes.ThemeService.md
+uid: Uno.Recipes.ThemeService
 ---
 
-# Using ThemeService in Uno
+# How to change the app theme from anywhere
 
 ## Problem
 
-You need a way to manage and switch application themes dynamically at runtime in an Uno Platform application.
+Currently, there is no way to switch application themes at runtime from any layer, including view models. There is also a need to have a way to store the current theme and be able to initialize the app to the persisted theme preference.
 
 ## Solution
 
-The `ThemeService` in Uno.Extensions allows for easy management and switching of themes within your application. 
+The **Uno.Extensions** library addresses this problem by providing an injectable implementation of an `IThemeService` interface that can be registered as part of the `IHostBuilder` from `Uno.Extensions.Hosting`.
 
 ### Adding ThemeService
 
@@ -21,13 +21,13 @@ To integrate `ThemeService` in your Uno application, follow these steps:
 1. Register the ThemeService in your app startup:
 
 ``` csharp
-public class App : Application
+public partial class App : Application
 {
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         var builder = this.CreateBuilder(args)
             .Configure(host => host
-                .UseThemeService() // Register ThemeService
+                .UseThemeSwitching()
             );
             // Code omitted for brevity
     }
@@ -36,21 +36,25 @@ public class App : Application
 2. Consume the ThemeService in your application:
 
 ```csharp
-public partial class MainPage : Page
+public class SettingsModel
 {
     private readonly IThemeService _themeService;
 
-    public MainPage(IThemeService themeService)
+    public SettingsModel(IThemeService themeService)
     {
         _themeService = themeService;
-        this.InitializeComponent();
+
+        Settings.ForEachAsync(async (settings, ct) =>
+        {
+            if (settings is { })
+            {
+                var isDark = (settings.IsDark ?? false);
+                await _themeService.SetThemeAsync(isDark ? AppTheme.Dark : AppTheme.Light);
+            }
+        });
     }
 
-    private void ToggleTheme(object sender, RoutedEventArgs e)
-    {
-        var newTheme = _themeService.CurrentTheme == ApplicationTheme.Dark ? ApplicationTheme.Light : ApplicationTheme.Dark;
-        _themeService.SetTheme(newTheme);
-    }
+    public IState<AppConfig> Settings { get; set; }
 }
 ```
 3. Using ThemeService in ViewModels:
@@ -81,27 +85,9 @@ public partial class MainViewModel : ObservableObject
 }
 ```
 
-## Implementation Details
-
-The `ThemeService` implementation can be found [here](https://github.com/unoplatform/uno.extensions/blob/51c9c1ef14f686363f946588733faecc5a1863ff/src/Uno.Extensions.Core.UI/Toolkit/ThemeService.cs). It provides methods to get and set the current theme.
-
 ### Example Usage in Workshop
 
 An example usage of the ThemeService can be found in the [Simple Calc workshop](https://platform.uno/docs/articles/external/workshops/simple-calc/modules/MVVM-XAML/05-Finish%20the%20App/README.html#adding-the-themeservice).
-
-### Platform-Specific Customization
-
-To customize the `ThemeService` behavior per platform, you can use platform-specific properties defined in your project file.
-
-```xml
-<PropertyGroup>
-    <IsAndroid>true</IsAndroid>
-    <IsIOS>false</IsIOS>
-    <IsMacCatalyst>false</IsMacCatalyst>
-    <IsWinAppSdk>false</IsWinAppSdk>
-    <IsBrowserWasm>true</IsBrowserWasm>
-</PropertyGroup>
-```
 
 ## Source Code
 
