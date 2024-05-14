@@ -94,3 +94,5 @@ An example usage of the ThemeService can be found in the [Simple Calc workshop](
 Chefs app
 
 - [App Startup](https://github.com/unoplatform/uno.chefs/blob/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/App.cs#L43)
+
+- [SettingsModel](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Presentation/SettingsModel.cs#L27-L28)
