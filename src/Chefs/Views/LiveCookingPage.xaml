@@ -82,7 +82,7 @@
 										<FontIcon Glyph="{StaticResource Icon_Check_Circle}"
 												  FontSize="14"
 												  VerticalAlignment="Center"
-												  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 										<TextBlock Text="{x:Bind}"
 												   VerticalAlignment="Center"
 												   TextWrapping="NoWrap"

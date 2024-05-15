@@ -68,7 +68,7 @@
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton>
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/close.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
@@ -76,7 +76,7 @@
 					<AppBarButton Command="{Binding NavigateToSettings}"
 								  Visibility="{Binding Profile.IsCurrent}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/settings.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/settings.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
@@ -224,7 +224,7 @@
 																				   Style="{StaticResource TitleSmall}"
 																				   Text="{Binding Name}"
 																				   TextWrapping="Wrap" />
-																		<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+																		<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																				   Style="{StaticResource CaptionMedium}"
 																				   Text="{Binding TimeCal}"
 																				   TextWrapping="Wrap" />

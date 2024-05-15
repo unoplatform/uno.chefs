@@ -71,7 +71,7 @@
 											Spacing="24">
 								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
 									   MaxHeight="270"
-									   Source="ms-appx:///Chefs/Assets/Welcome/first_splash_screen.png"
+									   Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
 									   Stretch="UniformToFill" />
 								<Image Width="160"
 									   Height="90"
@@ -96,7 +96,7 @@
 											Spacing="24">
 								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
 									   MaxHeight="270"
-									   Source="ms-appx:///Chefs/Assets/Welcome/second_splash_screen.png"
+									   Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
 									   Stretch="UniformToFill" />
 								<Image Width="160"
 									   Height="90"
@@ -121,7 +121,7 @@
 											Spacing="24">
 								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
 									   MaxHeight="270"
-									   Source="ms-appx:///Chefs/Assets/Welcome/third_splash_screen.png"
+									   Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
 									   Stretch="UniformToFill" />
 								<Image Width="160"
 									   Height="90"
@@ -164,17 +164,17 @@
 								<!-- First Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 									<Image utu:AutoLayout.PrimaryAlignment="Stretch"
-										   Source="ms-appx:///Chefs/Assets/Welcome/first_splash_wide_screen.png"
+										   Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
 								<!-- Second Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image Source="ms-appx:///Chefs/Assets/Welcome/second_splash_wide_screen.png"
+									<Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
 								<!-- Third Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image Source="ms-appx:///Chefs/Assets/Welcome/third_splash_wide_screen.png"
+									<Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
 							</FlipView.Items>

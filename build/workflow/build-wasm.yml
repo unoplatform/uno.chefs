@@ -33,20 +33,20 @@ jobs:
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
   - bash: |
-      dotnet build /ds /m /r /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs.Wasm/Chefs.Wasm.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet build /ds /m /r /p:TargetFramework=net8.0-browserwasm /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
     displayName: Copy Wasm output
     inputs:
-      SourceFolder: src/Chefs.Wasm/bin/Release/net8.0/dist
+      SourceFolder: src/Chefs/bin/Release/net8.0-browserwasm/dist
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)
 
   - task: CopyFiles@2
     displayName: Copy version information
     inputs:
-      Contents: src/Chefs.Wasm/Version.txt
+      Contents: src/Chefs/Version.txt
       TargetFolder: $(build.artifactstagingdirectory)
       FlattenFolders: true
 

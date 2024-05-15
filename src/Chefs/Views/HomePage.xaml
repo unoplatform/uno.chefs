@@ -41,7 +41,7 @@
 										   Style="{StaticResource TitleSmall}" />
 								<TextBlock TextWrapping="Wrap"
 										   Text="{Binding TimeCal}"
-										   Foreground="{ThemeResource OnSurfaceLowBrush}"
+										   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 										   Style="{StaticResource CaptionMedium}" />
 							</utu:AutoLayout>
 							<ToggleButton Style="{StaticResource IconToggleButtonStyle}"
@@ -84,13 +84,13 @@
 					<AppBarButton Command="{Binding ShowCurrentProfile}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 					<AppBarButton Command="{Binding ShowNotifications}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
@@ -239,7 +239,7 @@
 																	   Style="{StaticResource TitleSmall}" />
 															<TextBlock TextWrapping="Wrap"
 																	   Text="{Binding Calories}"
-																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
+																	   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																	   Style="{StaticResource CaptionMedium}" />
 														</utu:AutoLayout>
 													</utu:AutoLayout>
@@ -312,7 +312,7 @@
 																									  Wide=Start}"
 																	   Text="{Binding Recipes, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
 																	   TextWrapping="Wrap"
-																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
+																	   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																	   Style="{StaticResource LabelMedium}" />
 														</utu:AutoLayout>
 													</utu:AutoLayout>

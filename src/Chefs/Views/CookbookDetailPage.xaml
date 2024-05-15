@@ -62,7 +62,7 @@
 												   Style="{StaticResource TitleSmall}"
 												   Text="{Binding Name}"
 												   TextWrapping="Wrap" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+										<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 												   Style="{StaticResource CaptionMedium}"
 												   Text="{Binding TimeCal}"
 												   TextWrapping="Wrap" />
