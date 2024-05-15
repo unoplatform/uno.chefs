@@ -2,18 +2,18 @@
 uid: Uno.Recipes.NavigateTabBar
 ---
 
-# How to Navigate Using a TabBar in Uno
+# How to Navigate Using a TabBar
 
 ## Problem
 Navigating between different sections or categories in an Uno Platform application can be challenging without an intuitive and accessible UI component.
 
 ## Solution
-The `TabBar` control in Uno Platform, part of the **Uno.Extensions** library, offers a streamlined way to include bottom navigation within your app. It allows users to switch between main areas of the app effortlessly.
+The `TabBar` control in Uno Platform, part of the **Uno.Extensions** library, offers a streamlined way to include navigation within your app. It allows users to switch between main areas of the app effortlessly.
 
 * [Include](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Views/MainPage.xaml#L9-L10) the Uno Extensions Navigation and Toolkit namespace in your XAML:
 ```xml
-	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
-	  xmlns:utu="using:Uno.Toolkit.UI"
+xmlns:uen="using:Uno.Extensions.Navigation.UI"
+xmlns:utu="using:Uno.Toolkit.UI"
 ```
 
 * Define a TabBar in your MainPage XAML to handle main navigation between core sections like Home, Search, and Favorites in the `Chefs` app.
