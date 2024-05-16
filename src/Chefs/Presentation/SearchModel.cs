@@ -25,8 +25,6 @@ public partial class SearchModel
 		.Select(ApplyFilter)
 		.AsListFeed<Recipe>();
 
-	public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSearches);
-
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
 	public IFeed<bool> HasFilter => Filter.Select(f => f.HasFilter);
@@ -69,12 +67,16 @@ public partial class SearchModel
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
 
+<<<<<<< HEAD
 	public async ValueTask CloseSearches()
 	{
 		await IsSearchesClosed.UpdateAsync(hideSearches => !hideSearches);
 	}
 
 	public async ValueTask SearchPopular() =>
+=======
+	public async ValueTask SearchPopular(CancellationToken ct) =>
+>>>>>>> 443a661 (chore: remove unused IsSearchesClosed)
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
 
 	public async ValueTask ShowCurrentProfile()
