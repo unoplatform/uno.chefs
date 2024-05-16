@@ -40,9 +40,6 @@ public partial class HomeModel
 		return categoriesWithCount.ToImmutableList();
 	}
 
-	public async ValueTask Search(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
-
 	public async ValueTask ShowAll(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
 
@@ -51,9 +48,6 @@ public partial class HomeModel
 
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categoryWithCount.Category));
-
-	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
 
 	public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<ProfileModel>(this, data: user, cancellation: ct);
