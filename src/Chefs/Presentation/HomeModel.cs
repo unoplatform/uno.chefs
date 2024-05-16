@@ -50,7 +50,7 @@ public partial class HomeModel
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup.Recent, null, null, null, null));
 
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categoryWithCount.Category));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(Category: categoryWithCount.Category));
 
 	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);

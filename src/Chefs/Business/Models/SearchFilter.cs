@@ -22,14 +22,9 @@ public record SearchFilter(
 			_ => TimeSpan.Zero,
 		};
 
-		if ((Difficulty == null || recipe.Difficulty == Difficulty) &&
-			(Time == null || recipe.CookTime < time) &&
-			(Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
-			(Serves == null || Serves == recipe.Serves))
-		{
-			return true;
-		}
-
-		return false;
+		return (Difficulty == null || recipe.Difficulty == Difficulty) &&
+			   (Time == null || recipe.CookTime < time) &&
+			   (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
+			   (Serves == null || Serves == recipe.Serves);
 	}
 }

@@ -16,7 +16,7 @@ public partial class SearchModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 
-		Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null, null));
+		Filter = State.Value(this, () => filter ?? new SearchFilter());
 	}
 
 	public IState<string> Term => State<string>.Value(this, () => string.Empty);
@@ -92,5 +92,5 @@ public partial class SearchModel
 	}
 
 	public async ValueTask ResetFilters(CancellationToken ct) =>
-		await Filter.Update(current => new SearchFilter(null, null, null, null, null), ct);
+		await Filter.Update(current => new SearchFilter(), ct);
 }
