@@ -16,9 +16,9 @@ The **Uno.Extensions** library addresses this problem by providing an injectable
 
 To integrate `ThemeService` in your Uno application, follow these steps:
 
-#### App startup Configuration
+#### App Startup Configuration
 
-1. Register the ThemeService in your app startup:
+1. Register the `IThemeService` in your app startup:
 
 ``` csharp
 public partial class App : Application
@@ -33,6 +33,7 @@ public partial class App : Application
     }
 }
 ```
+
 2. Consume the ThemeService in your application:
 
 ```csharp
@@ -57,7 +58,9 @@ public class SettingsModel
     public IState<AppConfig> Settings { get; set; }
 }
 ```
+
 3. Using ThemeService in ViewModels:
+
 ```csharp
 public partial class MainViewModel : ObservableObject
 {
