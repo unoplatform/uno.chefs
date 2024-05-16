@@ -52,9 +52,12 @@ public partial class HomeModel
 	public async ValueTask RecipeDetails(Recipe recipe) =>
 		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
 
+<<<<<<< HEAD
 	public async ValueTask ProfileCreator(User user) =>
 		await _navigator.NavigateViewModelAsync<ProfileModel>(this, data: user);
 
+=======
+>>>>>>> 628e333 (chore: remove unused ProfileCreator)
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
 
