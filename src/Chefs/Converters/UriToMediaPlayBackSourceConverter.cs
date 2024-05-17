@@ -3,11 +3,16 @@ using Windows.Media.Core;
 
 namespace Chefs.Converters;
 
-public class UriToMediaPlayBackSourceConverter : IValueConverter
+public class StringToMediaPlayBackSourceConverter : IValueConverter
 {
 	public object Convert(object value, Type targetType, object parameter, string language)
 	{
-		return MediaSource.CreateFromUri((Uri)value);
+		if (value is string uriString)
+		{
+			return MediaSource.CreateFromUri(new Uri(uriString));
+		}
+		
+		return MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/Videos/CookingVideo.mp4"));
 	}
 
 	public object ConvertBack(object value, Type targetType, object parameter, string language)

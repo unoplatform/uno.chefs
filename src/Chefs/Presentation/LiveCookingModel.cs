@@ -1,3 +1,5 @@
+using System;
+
 namespace Chefs.Presentation;
 
 public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
@@ -10,14 +12,13 @@ public partial class LiveCookingModel
 	{
 		Steps = parameter.Steps;
 		Recipe = parameter.Recipe;
-		VideoSource = new Uri("ms-appx:///Assets/Videos/CookingVideo.mp4");
 
 		_recipeService = recipeService;
 	}
 
 	public IImmutableList<Step> Steps { get; }
-
-	public Uri VideoSource { get; set; }
+	
+	public IState<Step> CurrentStep => State.Value(this, () => Steps.FirstOrDefault() ?? new Step(new StepData()));
 
 	public IState<int> SelectedIndex => State.Value(this, () => 0);
 
@@ -30,6 +31,12 @@ public partial class LiveCookingModel
 	public IState<bool> Completed => State.Value(this, () => false);
 
 	public Recipe Recipe { get; }
+
+	public async ValueTask ChangeStep(CancellationToken ct)
+	{
+		var index = await SelectedIndex + 1;
+		await CurrentStep.UpdateAsync(s => s = Steps.FirstOrDefault(s => s.Number == index));
+	}
 
 	public async ValueTask Complete(CancellationToken ct)
 	{
