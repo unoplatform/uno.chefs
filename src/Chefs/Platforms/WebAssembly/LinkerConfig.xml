@@ -1,0 +1,11 @@
+<linker>
+	<assembly fullname="Chefs" />
+	<assembly fullname="System.Core">
+		<!-- This is required by JSon.NET and any expression.Compile caller -->
+		<type fullname="System.Linq.Expressions*" />
+	</assembly>
+	<assembly fullname="System.Collections.Immutable">
+		<!-- This is required by System.Text.Json to properly deserialize ImmutableList across the App -->
+		<type fullname="System.Collections.Immutable.ImmutableList*" />
+	</assembly>
+</linker>

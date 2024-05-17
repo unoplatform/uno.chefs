@@ -60,7 +60,7 @@
 								utu:AutoLayout.CounterAlignment="Center"
 								Command="{Binding SearchPopular}"
 								Content="View popular recipes"
-								CornerRadius="4"
+								CornerRadius="20"
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
 							<ut:ControlExtensions.Icon>
@@ -101,7 +101,7 @@
 													   Style="{StaticResource TitleSmall}"
 													   Text="{x:Bind Name}"
 													   TextWrapping="Wrap" />
-											<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+											<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 													   Style="{StaticResource CaptionMedium}"
 													   Text="{x:Bind TimeCal}"
 													   TextWrapping="Wrap" />
@@ -133,13 +133,13 @@
 					<AppBarButton Command="{Binding ShowCurrentProfile}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 					<AppBarButton Command="{Binding ShowNotifications}"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
@@ -160,7 +160,7 @@
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Search}"
-								  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+								  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 					</ut:ControlExtensions.Icon>
 				</TextBox>
 
@@ -176,7 +176,7 @@
 								Visibility="{Binding HasFilter, Converter={StaticResource TrueToVisible}}"
 								Command="{Binding ResetFilters}"
 								Margin="0,0,8,0"
-								CornerRadius="4"
+								CornerRadius="20"
 								Foreground="{ThemeResource PrimaryBrush}"
 								Style="{StaticResource TextButtonStyle}">
 							<ut:ControlExtensions.Icon>
@@ -193,7 +193,7 @@
 									uen:Navigation.Request="!Filter"
 									utu:AutoLayout.CounterAlignment="Center"
 									Content="Filters"
-									CornerRadius="4"
+									CornerRadius="20"
 									Foreground="{ThemeResource PrimaryBrush}"
 									Style="{StaticResource TextButtonStyle}">
 								<ut:ControlExtensions.Icon>

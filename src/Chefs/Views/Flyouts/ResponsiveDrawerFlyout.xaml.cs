@@ -1,6 +1,8 @@
+using Chefs.Presentation.Messages;
+
 namespace Chefs.Views.Flyouts;
 
-public partial class ResponsiveDrawerFlyout : Flyout
+public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMessage>
 {
 	private const int WideBreakpoint = 800;
 	private const int WidestBreakpoint = 1080;
@@ -10,6 +12,7 @@ public partial class ResponsiveDrawerFlyout : Flyout
 	public ResponsiveDrawerFlyout()
 	{
 		this.InitializeComponent();
+		WeakReferenceMessenger.Default.Register(this);
 	}
 
 	private void OnOpening(object? sender, object e)
@@ -41,5 +44,16 @@ public partial class ResponsiveDrawerFlyout : Flyout
 		_presenter = basePresenter as FlyoutPresenter;
 
 		return basePresenter;
+	}
+
+	void IRecipient<ThemeChangedMessage>.Receive(ThemeChangedMessage message)
+	{
+		// Workaround for https://github.com/unoplatform/uno.chefs/issues/1017
+#if WINDOWS
+		_ = DispatcherQueue.TryEnqueue(() =>
+		{
+			MainLayout.RequestedTheme = message.IsDark ? ElementTheme.Dark : ElementTheme.Light;
+		});
+#endif
 	}
 }

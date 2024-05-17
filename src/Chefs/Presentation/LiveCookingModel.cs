@@ -10,7 +10,7 @@ public partial class LiveCookingModel
 	{
 		Steps = parameter.Steps;
 		Recipe = parameter.Recipe;
-		VideoSource = new Uri("ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4");
+		VideoSource = new Uri("ms-appx:///Assets/Videos/CookingVideo.mp4");
 
 		_recipeService = recipeService;
 	}

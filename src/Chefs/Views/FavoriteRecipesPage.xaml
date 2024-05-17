@@ -65,11 +65,12 @@
 						uen:Navigation.Request="!CreateCookbook"
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="Create cookbook"
-						CornerRadius="4"
+						CornerRadius="20"
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Add}"
+								  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</ut:ControlExtensions.Icon>
 				</Button>
@@ -138,12 +139,12 @@
 													uen:Navigation.Data="{Binding}"
 													uen:Navigation.Request="CreateCookbook"
 													Background="{ThemeResource BackgroundBrush}"
-													CornerRadius="12"
+													CornerRadius="20"
 													Style="{StaticResource TextButtonStyle}"
 													Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 												<Button.Content>
 													<FontIcon Glyph="{StaticResource Icon_Add}"
-															  FontFamily="{StaticResource MaterialIconFontFamily}"
+															  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 															  Foreground="{ThemeResource OnSurfaceBrush}" />
 												</Button.Content>
 											</Button>
@@ -157,7 +158,7 @@
 											   Style="{StaticResource TitleSmall}"
 											   Text="{Binding Name}"
 											   TextWrapping="NoWrap" />
-									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource CaptionMedium}"
 											   Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
 											   TextWrapping="NoWrap" />
@@ -196,7 +197,7 @@
 						VerticalContentAlignment="Center"
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="See popular recipes"
-						CornerRadius="4"
+						CornerRadius="20"
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
@@ -234,7 +235,7 @@
 											   Style="{StaticResource TitleSmall}"
 											   Text="{Binding Name}"
 											   TextWrapping="Wrap" />
-									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource CaptionMedium}"
 											   Text="{Binding TimeCal}"
 											   TextWrapping="Wrap" />
@@ -266,14 +267,14 @@
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"
-									UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+									UriSource="ms-appx:///Assets/Icons/user_profile.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 				<AppBarButton Command="{Binding ShowNotifications}">
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"
-									UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+									UriSource="ms-appx:///Assets/Icons/notification.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
@@ -358,8 +359,7 @@
 																				Wide={StaticResource WideGridLayout}}" />
 								</ScrollViewer>
 
-								<Button Margin="0,0,8,8"
-										HorizontalAlignment="Right"
+								<Button HorizontalAlignment="Right"
 										VerticalAlignment="Bottom"
 										uen:Navigation.Request="CreateCookbook"
 										utu:AutoLayout.IsIndependentLayout="True"
@@ -367,8 +367,8 @@
 										Style="{StaticResource FabStyle}">
 									<ut:ControlExtensions.Icon>
 										<FontIcon Glyph="{StaticResource Icon_Add}"
-												  FontFamily="{StaticResource MaterialIconFontFamily}"
-												  Foreground="{ThemeResource OnPrimaryBrush}" />
+												  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+												  Foreground="{ThemeResource SurfaceBrush}" />
 									</ut:ControlExtensions.Icon>
 								</Button>
 							</utu:AutoLayout>

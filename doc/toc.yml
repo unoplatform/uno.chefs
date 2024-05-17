@@ -1,3 +1,9 @@
+- name: Themes
+  items:
+  - name: Icon ControlExtensions
+    href: xref:Uno.Recipes.IconControlExtension
+  - name: Icon ControlExtensions
+    href: xref:Uno.Recipes.AlternateContentControlExtension
 - name: Toolkit
   items:
   - name: SafeArea
@@ -10,5 +16,23 @@
     href: xref:Uno.Recipes.ResponsiveView
   - name: ResponsiveExtensions
     href: xref:Uno.Recipes.ResponsiveExtension
+  - name: ExtendedSplashScreen
+    href: xref:Uno.Recipes.ExtendedSplashScreen
+  - name: ItemsRepeaterExtensions
+    href: xref:Uno.Recipes.ItemsRepeaterExtensions
   - name: StatusBarExtensions
     href: xref:Uno.Recipes.StatusBarExtension
+  - name: AncestorBinding
+    href: xref:Uno.Recipes.AncestorBinding
+- name: Resizetizer
+  items:
+  - name: App Icons
+    href: xref:Uno.Recipes.AppIcons
+  - name: Splash Screen
+    href: xref:Uno.Recipes.SplashScreen
+- name: Extensions
+  items:
+  - name: Serialization
+    href: xref:Uno.Recipes.Serialization
+  - name: Storage
+    href: xref:Uno.Recipes.Storage

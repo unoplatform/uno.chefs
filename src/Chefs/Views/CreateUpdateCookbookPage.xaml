@@ -71,7 +71,7 @@
 																   Text="{Binding Name}"
 																   TextWrapping="NoWrap"
 																   TextTrimming="CharacterEllipsis" />
-														<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+														<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																   Style="{StaticResource CaptionMedium}"
 																   utu:AutoLayout.PrimaryAlignment="Stretch"
 																   Text="{Binding TimeCal}"
@@ -173,7 +173,7 @@
 					CornerRadius="4"
 					Style="{StaticResource TextButtonStyle}" />
 			<Button Height="59"
-					Padding="24,20"
+					Padding="4,20"
 					utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
 					Command="{Binding Submit}"

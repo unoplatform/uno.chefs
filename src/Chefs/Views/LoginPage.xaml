@@ -92,6 +92,7 @@
 											utu:AutoLayout.PrimaryAlignment="Stretch">
 								<Button Content="Forgot password?"
 										utu:AutoLayout.CounterAlignment="End"
+										CornerRadius="20"
 										Style="{StaticResource TextButtonStyle}" />
 							</utu:AutoLayout>
 						</utu:AutoLayout>
@@ -138,6 +139,7 @@
 						<Button Content="Register Now"
 								utu:AutoLayout.CounterAlignment="Center"
 								Command="{Binding ToggleRegister}"
+								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
@@ -170,7 +172,7 @@
 								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Person_Outline}"
-										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+										  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 							</ut:ControlExtensions.Icon>
 						</TextBox>
 						<TextBox PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
@@ -187,7 +189,7 @@
 								 IsSpellCheckEnabled="False">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Mail_Outline}"
-										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+										  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 							</ut:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="RegistrationPassword"
@@ -200,7 +202,7 @@
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Lock}"
-										  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+										  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 							</ut:ControlExtensions.Icon>
 						</PasswordBox>
 						<Button HorizontalContentAlignment="Center"
@@ -222,6 +224,7 @@
 						<Button Content="Login Now"
 								Command="{Binding ToggleRegister}"
 								utu:AutoLayout.CounterAlignment="Center"
+								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
