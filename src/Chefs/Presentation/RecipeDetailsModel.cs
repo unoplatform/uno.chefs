@@ -27,14 +27,12 @@ public partial class RecipeDetailsModel
 
 	public async ValueTask Like(Review review, CancellationToken ct)
 	{
-		var reviewUpdated = await _recipeService.LikeReview(review, ct);
-		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
+		await _recipeService.LikeReview(review, ct);
 	}
 
 	public async ValueTask Dislike(Review review, CancellationToken ct)
 	{
-		var reviewUpdated = await _recipeService.DislikeReview(review, ct);
-		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
+		await _recipeService.DislikeReview(review, ct);
 	}
 
 	public async ValueTask LiveCooking(IImmutableList<Step> steps)
