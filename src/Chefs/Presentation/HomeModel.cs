@@ -40,7 +40,8 @@ public partial class HomeModel
 		return categoriesWithCount.ToImmutableList();
 	}
 
-
+	public async ValueTask Search(CancellationToken ct) =>
+		await _navigator.NavigateViewModelAsync<SearchModel>(this);
 
 	public async ValueTask ShowAll(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
