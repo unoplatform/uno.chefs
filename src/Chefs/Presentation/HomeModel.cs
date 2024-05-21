@@ -20,7 +20,7 @@ public partial class HomeModel
 
 	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
 
-	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategories);
+	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategoriesWithCount);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
@@ -28,17 +28,8 @@ public partial class HomeModel
 
 	public IFeed<User> UserProfile => _userService.User;
 
-	public async ValueTask<ImmutableList<CategoryWithCount>> GetCategories(CancellationToken ct)
-	{
-		var categories = await _recipeService.GetCategories(ct);
-		var categoriesWithCount = new List<CategoryWithCount>();
-		foreach (var category in categories)
-		{
-			var recipesByCategory = await _recipeService.GetByCategory((int)category!.Id!, ct);
-			categoriesWithCount.Add(new CategoryWithCount(recipesByCategory.Count, category));
-		}
-		return categoriesWithCount.ToImmutableList();
-	}
+	public async ValueTask<ImmutableList<CategoryWithCount>> GetCategoriesWithCount(CancellationToken ct) =>
+		(await _recipeService.GetCategoriesWithCount(ct)).ToImmutableList();
 
 	public async ValueTask Search(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);

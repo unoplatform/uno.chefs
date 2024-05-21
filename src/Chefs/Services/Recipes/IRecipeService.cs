@@ -68,6 +68,15 @@ public interface IRecipeService
 	ValueTask<IImmutableList<Category>> GetCategories(CancellationToken ct);
 
 	/// <summary>
+	/// Categories from api with count
+	/// </summary>
+	/// <param name="ct"></param>
+	/// <returns>
+	/// Get each category from api with their corresponding count
+	/// </returns>
+	ValueTask<IImmutableList<CategoryWithCount>> GetCategoriesWithCount(CancellationToken ct);
+
+	/// <summary>
 	/// Recipes in trending
 	/// </summary>
 	/// <param name="ct"></param>
