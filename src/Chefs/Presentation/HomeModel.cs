@@ -1,5 +1,4 @@
 using Chefs.Presentation.Extensions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Chefs.Presentation;
 
@@ -15,9 +14,7 @@ public partial class HomeModel
 		_recipeService = recipe;
 		_userService = userService;
 	}
-
-	private IListFeed<Recipe> Recipes => ListFeed.Async(_recipeService.GetAll);
-
+	
 	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
 
 	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategories);
@@ -40,23 +37,23 @@ public partial class HomeModel
 		return categoriesWithCount.ToImmutableList();
 	}
 
-	public async ValueTask Search(CancellationToken ct) =>
+	public async ValueTask Search() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
 
-	public async ValueTask ShowAll(CancellationToken ct) =>
+	public async ValueTask ShowAll() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
 
-	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
+	public async ValueTask ShowAllRecentlyAdded() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Recent, null, null, null, null));
 
-	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
+	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categoryWithCount.Category));
 
-	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
+	public async ValueTask RecipeDetails(Recipe recipe) =>
 		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
 
-	public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<ProfileModel>(this, data: user, cancellation: ct);
+	public async ValueTask ProfileCreator(User user) =>
+		await _navigator.NavigateViewModelAsync<ProfileModel>(this, data: user);
 
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);

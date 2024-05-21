@@ -38,7 +38,7 @@ public partial class RecipeDetailsModel
 		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
 	}
 
-	public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken ct)
+	public async ValueTask LiveCooking(IImmutableList<Step> steps)
 	{
 		var route = _navigator?.Route?.Base switch
 		{
@@ -49,14 +49,14 @@ public partial class RecipeDetailsModel
 			_ => throw new InvalidOperationException("Navigating from unknown route")
 		};
 
-		await _navigator.NavigateRouteAsync(this, route, data: new LiveCookingParameter(Recipe, steps), cancellation: ct);
+		await _navigator.NavigateRouteAsync(this, route, data: new LiveCookingParameter(Recipe, steps));
 	}
 
 	public async ValueTask IngredientsChecklist(CancellationToken ct)
 		=> await IngredientsCheck.Update(c => !c, ct);
 
-	public async ValueTask Review(IImmutableList<Review> reviews, CancellationToken ct) =>
-		await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog, cancellation: ct);
+	public async ValueTask Review(IImmutableList<Review> reviews) =>
+		await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog);
 
 	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
