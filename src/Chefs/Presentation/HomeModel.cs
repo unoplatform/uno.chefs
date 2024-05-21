@@ -44,10 +44,10 @@ public partial class HomeModel
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
 
 	public async ValueTask ShowAll(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(RecipeCategoryType.Popular, null, null, null, null));
 
 	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Recent, null, null, null, null));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(RecipeCategoryType.Recent, null, null, null, null));
 
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categoryWithCount.Category));

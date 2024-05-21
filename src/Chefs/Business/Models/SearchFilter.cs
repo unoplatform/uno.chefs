@@ -2,7 +2,7 @@ namespace Chefs.Business.Models;
 
 
 public record SearchFilter(
-	OrganizeCategory? OrganizeCategory,
+	RecipeCategoryType? OrganizeCategory,
 	Time? Time,
 	Difficulty? Difficulty,
 	int? Serves,
