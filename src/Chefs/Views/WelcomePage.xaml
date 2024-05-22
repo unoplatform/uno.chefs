@@ -63,7 +63,7 @@
 					<FlipView x:Name="flipView"
 							  utu:AutoLayout.PrimaryAlignment="Stretch"
 							  Background="Transparent"
-							  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							  SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 						<FlipView.Items>
 							<!-- First onboarding page -->
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -159,7 +159,7 @@
 								  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 								  Background="Transparent"
 								  IsEnabled="False"
-								  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+								  SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<FlipView.Items>
 								<!-- First Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -186,7 +186,7 @@
 							<FlipView x:Name="flipView"
 									  utu:AutoLayout.PrimaryAlignment="Stretch"
 									  Background="Transparent"
-									  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+									  SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<FlipView.Items>
 									<!-- First onboarding page -->
 									<utu:AutoLayout Padding="32,0"

@@ -1,29 +1,42 @@
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 namespace Chefs.Presentation;
 
-public partial class WelcomeModel
+public partial class WelcomeModel(INavigator navigator) : INotifyPropertyChanged
 {
-	private readonly INavigator _navigator;
-
-	private const int PageCount = 3;
-
-	public WelcomeModel(INavigator navigator)
+	private readonly Iterable<int> _pages = new(Enumerable.Range(0, 3).ToList());
+	
+	public int CurrentIndex => _pages.CurrentIndex;
+	
+	public event PropertyChangedEventHandler? PropertyChanged;
+	
+	protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
 	{
-		_navigator = navigator;
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}
-
-	public IState<int> NextPage => State.Value(this, () => 0);
-
-	public IFeed<bool> HasNext => NextPage.Select(x => x < PageCount - 1);
-
-	public async ValueTask Next(int nextPage)
+	
+	public bool HasNext => _pages.HasNext;
+	
+	public async ValueTask Next()
 	{
-		if (nextPage >= 2)
+		if (HasNext)
 		{
-			await _navigator.NavigateViewModelAsync<LoginModel>(this, Qualifiers.ClearBackStack);
+			_pages.Next();
+			OnPropertyChanged(nameof(CurrentIndex));
 		}
 		else
 		{
-			await NextPage.SetAsync(nextPage += 1);
+			await navigator.NavigateViewModelAsync<LoginModel>(this, Qualifiers.ClearBackStack);
 		}
+	}
+	
+	public void Previous()
+	{
+		if (!_pages.HasPrevious)
+		{
+			return;
+		}
+		_pages.Previous();
+		OnPropertyChanged(nameof(CurrentIndex));
 	}
 }
