@@ -81,7 +81,7 @@
 					</utu:AutoLayout>
 				</utu:NavigationBar.Content>
 				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton uen:Navigation.Request="!./Profile"
+					<AppBarButton uen:Navigation.Request="!Profile"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
 							<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
