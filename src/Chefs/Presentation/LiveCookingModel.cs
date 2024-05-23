@@ -1,45 +1,63 @@
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 namespace Chefs.Presentation;
 
 public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
-public partial class LiveCookingModel
+public partial class LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService)
+	: INotifyPropertyChanged
 {
-	private readonly IRecipeService _recipeService;
+	private readonly Iterable<Step> _steps = new(parameter.Steps.ToList());
+	
+	public event PropertyChangedEventHandler? PropertyChanged;
 
-	public LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService)
-	{
-		Steps = parameter.Steps;
-		Recipe = parameter.Recipe;
-
-		_recipeService = recipeService;
-	}
-
-	public IImmutableList<Step> Steps { get; }
-
-	public IState<int> SelectedIndex => State.Value(this, () => 0);
-
-	public IFeed<Step> CurrentStep => SelectedIndex.Select(x => (x >= 0 && x < Steps.Count) ? Steps[x] : Steps[0]);
+	public IImmutableList<Step> Steps => _steps.Items.ToImmutableList();
+	public Uri VideoSource { get; set; } = new("ms-appx:///Assets/Videos/CookingVideo.mp4");
+	
+	public IState<int> SelectedIndex => State.Value(this, () => _steps.CurrentIndex);
 
 	public IFeed<bool> CanFinish => SelectedIndex.Select(x => x == Steps.Count - 1);
-
-	public IFeed<bool> CanGoNext => SelectedIndex.Select(x => (x + 1) < Steps.Count);
-
-	public IFeed<bool> CanGoBack => SelectedIndex.Select(x => (x - 1) >= 0);
+	public IFeed<bool> CanGoNext => SelectedIndex.Select(x => x < Steps.Count - 1);
+	public IFeed<bool> CanGoBack => SelectedIndex.Select(x => x > 0);
 
 	public IState<bool> Completed => State.Value(this, () => false);
 
-	public Recipe Recipe { get; }
+	public Recipe Recipe { get; } = parameter.Recipe;
+	
+	protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+	{
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+	}
 
 	public async ValueTask Complete()
 	{
 		await Completed.SetAsync(true);
 	}
 
-	public async ValueTask BackToLastStep()
+	public void Previous()
 	{
-		await Completed.SetAsync(false);
+		if (_steps.HasPrevious)
+		{
+			_steps.Previous();
+			OnPropertyChanged(nameof(SelectedIndex));
+		}
 	}
 
-	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
-		await _recipeService.Save(recipe, ct);
+	public async ValueTask Next(CancellationToken ct)
+	{
+		if (_steps.HasNext)
+		{
+			_steps.Next();
+			OnPropertyChanged(nameof(SelectedIndex));
+		}
+		else
+		{
+			await Complete(ct);
+		}
+	}
+
+	public async ValueTask Save(Recipe recipe, CancellationToken ct)
+	{
+		await recipeService.Save(recipe, ct);
+	}
 }
