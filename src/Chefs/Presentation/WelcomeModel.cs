@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+
 namespace Chefs.Presentation;
 
 public partial class WelcomeModel(INavigator navigator) : INotifyPropertyChanged
@@ -36,6 +37,7 @@ public partial class WelcomeModel(INavigator navigator) : INotifyPropertyChanged
 		{
 			return;
 		}
+		
 		_pages.Previous();
 		OnPropertyChanged(nameof(CurrentIndex));
 	}
