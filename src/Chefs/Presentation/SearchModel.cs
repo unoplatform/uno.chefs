@@ -54,9 +54,9 @@ public partial class SearchModel
 		IImmutableList<Recipe> recipesByCategory;
 		recipesByCategory = recipesByTerm = inputs.recipes;
 
-		if (inputs.filter.OrganizeCategory is not null)
+		if (inputs.filter.RecipeCategoryType is not null)
 		{
-			var selectedOrganizedCategory = inputs.filter.OrganizeCategory;
+			var selectedOrganizedCategory = inputs.filter.RecipeCategoryType;
 
 			recipesByCategory = selectedOrganizedCategory switch
 			{
