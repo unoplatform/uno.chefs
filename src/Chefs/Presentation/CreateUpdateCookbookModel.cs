@@ -93,7 +93,7 @@ public partial class CreateUpdateCookbookModel
 		}
 		else
 		{
-			await _navigator.ShowDialog(this, new DialogInfo("Error", "Please write a cookbook name and select one recipe."),CancellationToken.None);
+			await _navigator.ShowDialog(this, new DialogInfo("Error", "Please write a cookbook name and select one recipe."), ct:default);
 		}
 	}
 }

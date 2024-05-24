@@ -33,14 +33,14 @@ public partial class LiveCookingModel
 
 	public async ValueTask Complete()
 	{
-		await Completed.Set(true,CancellationToken.None);
+		await Completed.Set(true, CancellationToken.None);
 	}
 
 	public async ValueTask BackToLastStep()
 	{
-		await Completed.Set(false,CancellationToken.None);
+		await Completed.Set(false, CancellationToken.None);
 	}
 
 	public async ValueTask Save(Recipe recipe) =>
-		await _recipeService.Save(recipe,CancellationToken.None);
+		await _recipeService.Save(recipe, CancellationToken.None);
 }
