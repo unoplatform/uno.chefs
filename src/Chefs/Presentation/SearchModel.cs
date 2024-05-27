@@ -52,15 +52,15 @@ public partial class SearchModel
 		IImmutableList<Recipe> recipesByCategory;
 		recipesByCategory = recipesByTerm = inputs.recipes;
 
-		if (inputs.filter.OrganizeCategory is not null)
+		if (inputs.filter.FilterGroup is not null)
 		{
-			var selectedOrganizedCategory = inputs.filter.OrganizeCategory;
+			var selectedOrganizedCategory = inputs.filter.FilterGroup;
 
 			recipesByCategory = selectedOrganizedCategory switch
 			{
-				OrganizeCategory.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
-				OrganizeCategory.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
-				OrganizeCategory.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
+				FilterGroup.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
+				FilterGroup.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
+				FilterGroup.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
 				_ => recipesByCategory
 			};
 		}
@@ -72,7 +72,7 @@ public partial class SearchModel
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
 
 	public async ValueTask SearchPopular(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));
 
 	public async ValueTask ShowCurrentProfile()
 	{

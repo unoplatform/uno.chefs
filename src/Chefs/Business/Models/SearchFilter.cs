@@ -2,13 +2,13 @@ namespace Chefs.Business.Models;
 
 
 public record SearchFilter(
-	OrganizeCategory? OrganizeCategory = null,
+	FilterGroup? FilterGroup = null,
 	Time? Time = null,
 	Difficulty? Difficulty = null,
 	int? Serves = null,
 	Category? Category = null)
 {
-	public bool HasFilter => OrganizeCategory != null || Time != null ||
+	public bool HasFilter => FilterGroup != null || Time != null ||
 		Difficulty != null || Category != null || Serves != null;
 
 	public bool Match(Recipe recipe)
