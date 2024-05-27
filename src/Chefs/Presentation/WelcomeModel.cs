@@ -23,7 +23,7 @@ public partial class WelcomeModel
 		}
 		else
 		{
-			await NextPage.Set(nextPage += 1, CancellationToken.None);
+			await NextPage.SetAsync(nextPage += 1);
 		}
 	}
 }

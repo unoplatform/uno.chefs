@@ -39,7 +39,7 @@ public partial class SearchModel
 
 	public async ValueTask ApplyHistory(string term)
 	{
-		await Term.Update(s => term,CancellationToken.None);
+		await Term.SetAsync(term);
 	}
 
 	private IFeed<IImmutableList<Recipe>> Results => Term
@@ -71,7 +71,7 @@ public partial class SearchModel
 
 	public async ValueTask CloseSearches()
 	{
-		await IsSearchesClosed.Update(_ => !hideSearches, CancellationToken.None);
+		await IsSearchesClosed.UpdateAsync(hideSearches => !hideSearches);
 	}
 
 	public async ValueTask SearchPopular() =>
@@ -88,5 +88,5 @@ public partial class SearchModel
 	}
 
 	public async ValueTask ResetFilters() =>
-		await Filter.Update(current => new SearchFilter(null, null, null, null, null), CancellationToken.None);
+		await Filter.UpdateAsync(current => new SearchFilter(null, null, null, null, null));
 }
