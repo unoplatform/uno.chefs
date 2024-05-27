@@ -60,9 +60,9 @@ public partial class SearchModel
 
 			recipesByCategory = selectedOrganizedCategory switch
 			{
-				RecipeCategoryType.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
-				RecipeCategoryType.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
-				RecipeCategoryType.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
+				FilterGroup.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
+				FilterGroup.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
+				FilterGroup.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
 				_ => recipesByCategory
 			};
 		}
@@ -79,7 +79,7 @@ public partial class SearchModel
 	}
 
 	public async ValueTask SearchPopular(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(RecipeCategoryType.Popular, null, null, null, null));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup.Popular, null, null, null, null));
 
 	public async ValueTask ShowCurrentProfile()
 	{
