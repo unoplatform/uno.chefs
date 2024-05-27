@@ -48,13 +48,13 @@
 			MediaElement;
 			Skia;
 			ThemeService;
+			Authentication;
 		</UnoFeatures>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Mapsui.Uno.WinUI" />
 		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
-		<PackageReference Include="Uno.Extensions.Authentication" />
 	</ItemGroup>
 
 	<ItemGroup>

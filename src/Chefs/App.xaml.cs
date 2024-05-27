@@ -20,7 +20,6 @@ public partial class App : Application
 	protected async override void OnLaunched(LaunchActivatedEventArgs args)
 	{
 		var builder = this.CreateBuilder(args)
-			
 			// Add navigation support for toolkit controls such as TabBar and NavigationView
 			.UseToolkitNavigation()
 			.Configure(host => host
@@ -45,7 +44,7 @@ public partial class App : Application
 									{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
 									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
 								};
-								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
+								return ValueTask.FromResult<IDictionary<string, string>?>(null);
 								
 								// Fail the login if username is missing or empty
 							})
@@ -62,7 +61,7 @@ public partial class App : Application
 									// Update the tokens and expiry
 									tokenDictionary[TokenCacheExtensions.AccessTokenKey] = "NewSampleToken";
 									tokenDictionary["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
-									return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
+									return ValueTask.FromResult<IDictionary<string, string>?>(null);
 								}
 								
 								// Fail the refresh if tokens are invalid or expired
