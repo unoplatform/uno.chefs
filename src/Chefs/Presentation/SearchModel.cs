@@ -13,7 +13,7 @@ public partial class SearchModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 
-		Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null, null));
+		Filter = State.Value(this, () => filter ?? new SearchFilter());
 	}
 
 	public IState<string> Term => State<string>.Value(this, () => string.Empty);
@@ -67,17 +67,13 @@ public partial class SearchModel
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
 
-<<<<<<< HEAD
 	public async ValueTask CloseSearches()
 	{
 		await IsSearchesClosed.UpdateAsync(hideSearches => !hideSearches);
 	}
 
 	public async ValueTask SearchPopular() =>
-=======
-	public async ValueTask SearchPopular(CancellationToken ct) =>
->>>>>>> 443a661 (chore: remove unused IsSearchesClosed)
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
 	public async ValueTask ShowCurrentProfile()
 	{
@@ -90,5 +86,5 @@ public partial class SearchModel
 	}
 
 	public async ValueTask ResetFilters() =>
-		await Filter.UpdateAsync(current => new SearchFilter(null, null, null, null, null));
+		await Filter.UpdateAsync(current => new SearchFilter());
 }
