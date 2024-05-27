@@ -39,7 +39,11 @@ public partial class SearchModel
 
 	public async ValueTask ApplyHistory(string term)
 	{
+<<<<<<< HEAD
 		await Term.SetAsync(term);
+=======
+		await Term.Update(s => term, CancellationToken.None);
+>>>>>>> a82d2f01e7817dc65a3b294471943d2122924d23
 	}
 
 	private IFeed<IImmutableList<Recipe>> Results => Term
