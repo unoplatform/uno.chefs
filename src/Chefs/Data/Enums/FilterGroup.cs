@@ -1,6 +1,6 @@
 namespace Chefs.Data;
 
-public enum RecipeCategoryType
+public enum FilterGroup
 {
 	Popular,
 	Trending,
