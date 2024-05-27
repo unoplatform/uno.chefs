@@ -1,3 +1,5 @@
+using Windows.ApplicationModel.DataTransfer;
+
 namespace Chefs.Presentation;
 
 public partial class RecipeDetailsModel
@@ -52,9 +54,24 @@ public partial class RecipeDetailsModel
 	public async ValueTask Review(IImmutableList<Review> reviews, CancellationToken ct) =>
 		await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog, cancellation: ct);
 
-	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
-		await _recipeService.Save(recipe, ct);
+	public async ValueTask Save(CancellationToken ct) =>
+		await _recipeService.Save(Recipe, ct);
 
-	public async ValueTask Share(CancellationToken ct) =>
-		throw new NotSupportedException("to define");
+	public async ValueTask Share(CancellationToken ct)
+	{
+#if WINDOWS
+
+#else
+		var dataTransferManager = DataTransferManager.GetForCurrentView();
+		dataTransferManager.DataRequested += DataRequested;
+		DataTransferManager.ShowShareUI();
+#endif
+	}
+
+	private void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+	{
+		args.Request.Data.Properties.Title = $"Sharing {Recipe.Name}";
+		args.Request.Data.Properties.Description = "Description";
+		args.Request.Data.SetText(Recipe.Details ?? "");
+	}
 }

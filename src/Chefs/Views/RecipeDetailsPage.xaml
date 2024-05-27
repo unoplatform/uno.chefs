@@ -58,12 +58,14 @@
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Share}"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
 						<BitmapIcon UriSource="ms-appx:///Assets/Icons/share_recipe.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Save}"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
 						<BitmapIcon UriSource="ms-appx:///Assets/Icons/favorite_heart.png" />
 					</AppBarButton.Icon>
