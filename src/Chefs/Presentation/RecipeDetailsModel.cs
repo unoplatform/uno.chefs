@@ -49,16 +49,8 @@ public partial class RecipeDetailsModel
 		await _navigator.NavigateRouteAsync(this, route, data: new LiveCookingParameter(Recipe, steps));
 	}
 
-<<<<<<< HEAD
-	public async ValueTask IngredientsChecklist(CancellationToken ct)
-		=> await IngredientsCheck.Update(c => !c, ct);
-
 	public async ValueTask Review(IImmutableList<Review> reviews) =>
 		await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog);
-=======
-	public async ValueTask Review(IImmutableList<Review> reviews, CancellationToken ct) =>
-		await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog, cancellation: ct);
->>>>>>> 4c1cb93 (chore: remove unused IngredientsCheck)
 
 	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
