@@ -107,11 +107,17 @@ public class RecipeService : IRecipeService
 		_messenger.Send(new EntityMessage<Recipe>(recipe.Save ? EntityChange.Created : EntityChange.Deleted, recipe));
 	}
 
-	public async ValueTask<Review> LikeReview(Review review, CancellationToken ct)
-		=> new(await _recipeEndpoint.LikeReview(review.ToData(), ct));
+	public async ValueTask LikeReview(Review review, CancellationToken ct)
+	{
+		var updatedReview = new Review(await _recipeEndpoint.LikeReview(review.ToData(), ct));
+		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
+	}
 
-	public async ValueTask<Review> DislikeReview(Review review, CancellationToken ct)
-		=> new(await _recipeEndpoint.DislikeReview(review.ToData(), ct));
+	public async ValueTask DislikeReview(Review review, CancellationToken ct)
+	{
+		var updatedReview = new Review(await _recipeEndpoint.DislikeReview(review.ToData(), ct));
+		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
+	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct)
 		=> (await _recipeEndpoint.GetAll(ct))
