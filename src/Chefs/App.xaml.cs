@@ -44,9 +44,9 @@ public partial class App : Application
 									{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
 									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
 								};
-								return ValueTask.FromResult<IDictionary<string, string>?>(null);
+								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
 								
-								// Fail the login if username is missing or empty
+								
 							})
 							.Refresh((sp, tokenDictionary, cancellationToken) =>
 							{
@@ -61,7 +61,7 @@ public partial class App : Application
 									// Update the tokens and expiry
 									tokenDictionary[TokenCacheExtensions.AccessTokenKey] = "NewSampleToken";
 									tokenDictionary["Expiry"] = DateTime.Now.AddMinutes(5).ToString("g");
-									return ValueTask.FromResult<IDictionary<string, string>?>(null);
+									return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
 								}
 								
 								// Fail the refresh if tokens are invalid or expired
