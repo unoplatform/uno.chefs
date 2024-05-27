@@ -72,7 +72,8 @@ public partial class SearchModel
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
 
 	public async ValueTask SearchPopular(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup.Popular, null, null, null, null));
+
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
 	public async ValueTask ShowCurrentProfile()
 	{
