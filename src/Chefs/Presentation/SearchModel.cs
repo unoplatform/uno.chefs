@@ -13,7 +13,7 @@ public partial class SearchModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 
-		Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null, null));
+		Filter = State.Value(this, () => filter ?? new SearchFilter());
 	}
 
 	public IState<string> Term => State<string>.Value(this, () => string.Empty);
@@ -24,8 +24,6 @@ public partial class SearchModel
 		.Combine(Results, Filter)
 		.Select(ApplyFilter)
 		.AsListFeed<Recipe>();
-
-	public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSearches);
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
@@ -39,11 +37,7 @@ public partial class SearchModel
 
 	public async ValueTask ApplyHistory(string term)
 	{
-<<<<<<< HEAD
 		await Term.SetAsync(term);
-=======
-		await Term.Update(s => term, CancellationToken.None);
->>>>>>> a82d2f01e7817dc65a3b294471943d2122924d23
 	}
 
 	private IFeed<IImmutableList<Recipe>> Results => Term
@@ -79,7 +73,7 @@ public partial class SearchModel
 	}
 
 	public async ValueTask SearchPopular() =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
 	public async ValueTask ShowCurrentProfile()
 	{
@@ -91,6 +85,7 @@ public partial class SearchModel
 		await _navigator.NavigateToNotifications(this);
 	}
 
+
 	public async ValueTask ResetFilters() =>
-		await Filter.UpdateAsync(current => new SearchFilter(null, null, null, null, null));
+		await Filter.UpdateAsync(current => new SearchFilter());
 }
