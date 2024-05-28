@@ -20,16 +20,13 @@ public partial class HomeModel
 
 	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
 
-	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategoriesWithCount);
+	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(_recipeService.GetCategoriesWithCount);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
 	public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
 	public IFeed<User> UserProfile => _userService.User;
-
-	public async ValueTask<ImmutableList<CategoryWithCount>> GetCategoriesWithCount(CancellationToken ct) =>
-		(await _recipeService.GetCategoriesWithCount(ct)).ToImmutableList();
 
 	public async ValueTask Search(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
