@@ -49,9 +49,6 @@ public partial class RecipeDetailsModel
 		await _navigator.NavigateRouteAsync(this, route, data: new LiveCookingParameter(Recipe, steps));
 	}
 
-	public async ValueTask Review(IImmutableList<Review> reviews) =>
-		await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog);
-
 	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
 
