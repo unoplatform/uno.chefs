@@ -2,30 +2,43 @@ namespace Chefs.Business.Models;
 
 public record Iterable<T>
 {
-	private readonly IList<T> _items;
+	private Action? _onChanged;
 	
 	public Iterable(IList<T> items)
 	{
-		_items = items ?? throw new ArgumentNullException(nameof(items));
+		Items = items ?? throw new ArgumentNullException(nameof(items));
 		CurrentIndex = 0;
 	}
 	
-	public int Count => _items.Count;
-	public IList<T> Items => _items;
-	public bool HasNext => CurrentIndex < _items.Count - 1;
-	public bool HasPrevious => CurrentIndex > 0;
-	public T CurrentItem => _items[CurrentIndex];
+	public int Count => Items.Count;
+	public IList<T> Items { get; }
+	public T CurrentItem => Items[CurrentIndex];
 	public int CurrentIndex { get; private set; }
 	
-	public void Next()
+	public event Action? OnChanged
 	{
-		if (HasNext)
-			CurrentIndex++;
+		add { _onChanged += value; }
+		remove { _onChanged -= value; }
+	}
+	public bool CanMoveNext => CurrentIndex < Items.Count - 1;
+	public bool CanMovePrevious => CurrentIndex > 0;
+	public void MoveNext()
+	{
+		if (!CanMoveNext)
+		{
+			return;
+		}
+		CurrentIndex++;
+		_onChanged?.Invoke();
 	}
 	
-	public void Previous()
+	public void MovePrevious()
 	{
-		if (HasPrevious)
-			CurrentIndex--;
+		if (!CanMovePrevious)
+		{
+			return;
+		}
+		CurrentIndex--;
+		_onChanged?.Invoke();
 	}
 }
