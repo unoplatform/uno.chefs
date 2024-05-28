@@ -46,7 +46,7 @@ public partial class ReviewsModel
 	private bool CanComment(string comment) =>
 		!string.IsNullOrEmpty(comment);
 
-	public async ValueTask Exit(CancellationToken ct) => await _navigator.NavigateBackWithResultAsync(this);
+	public async ValueTask Exit() => await _navigator.NavigateBackWithResultAsync(this);
 
 	private async ValueTask Review(string comment, CancellationToken ct)
 	{

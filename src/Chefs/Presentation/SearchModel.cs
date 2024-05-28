@@ -1,7 +1,4 @@
 using Chefs.Presentation.Extensions;
-using Uno.Extensions.Navigation;
-using Uno.Extensions.Reactive;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Chefs.Presentation;
 
@@ -38,9 +35,9 @@ public partial class SearchModel
 
 	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
 
-	public async ValueTask ApplyHistory(string term, CancellationToken ct)
+	public async ValueTask ApplyHistory(string term)
 	{
-		await Term.Update(s => term, ct);
+		await Term.SetAsync(term);
 	}
 
 	private IFeed<IImmutableList<Recipe>> Results => Term
@@ -49,8 +46,7 @@ public partial class SearchModel
 	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs)
 	{
 		IImmutableList<Recipe> recipesByTerm;
-		IImmutableList<Recipe> recipesByCategory;
-		recipesByCategory = recipesByTerm = inputs.recipes;
+		IImmutableList<Recipe> recipesByCategory = recipesByTerm = inputs.recipes;
 
 		if (inputs.filter.OrganizeCategory is not null)
 		{
@@ -69,9 +65,10 @@ public partial class SearchModel
 	}
 
 
-	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
+	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
 
-	public async ValueTask SearchPopular(CancellationToken ct) =>
+
+	public async ValueTask SearchPopular() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
 	public async ValueTask ShowCurrentProfile()
@@ -84,6 +81,6 @@ public partial class SearchModel
 		await _navigator.NavigateToNotifications(this);
 	}
 
-	public async ValueTask ResetFilters(CancellationToken ct) =>
-		await Filter.Update(current => new SearchFilter(), ct);
+	public async ValueTask ResetFilters() =>
+		await Filter.UpdateAsync(current => new SearchFilter());
 }
