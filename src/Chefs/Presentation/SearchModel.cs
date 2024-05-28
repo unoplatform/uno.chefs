@@ -1,7 +1,4 @@
 using Chefs.Presentation.Extensions;
-using Uno.Extensions.Navigation;
-using Uno.Extensions.Reactive;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Chefs.Presentation;
 
@@ -16,7 +13,7 @@ public partial class SearchModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 
-		Filter = State.Value(this, () => filter ?? new SearchFilter(null, null, null, null, null));
+		Filter = State.Value(this, () => filter ?? new SearchFilter());
 	}
 
 	public IState<string> Term => State<string>.Value(this, () => string.Empty);
@@ -28,8 +25,6 @@ public partial class SearchModel
 		.Select(ApplyFilter)
 		.AsListFeed<Recipe>();
 
-	public IState<bool> IsSearchesClosed => State<bool>.Value(this, () => hideSearches);
-
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
 	public IFeed<bool> HasFilter => Filter.Select(f => f.HasFilter);
@@ -40,9 +35,9 @@ public partial class SearchModel
 
 	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
 
-	public async ValueTask ApplyHistory(string term, CancellationToken ct)
+	public async ValueTask ApplyHistory(string term)
 	{
-		await Term.Update(s => term, ct);
+		await Term.SetAsync(term);
 	}
 
 	private IFeed<IImmutableList<Recipe>> Results => Term
@@ -51,8 +46,7 @@ public partial class SearchModel
 	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs)
 	{
 		IImmutableList<Recipe> recipesByTerm;
-		IImmutableList<Recipe> recipesByCategory;
-		recipesByCategory = recipesByTerm = inputs.recipes;
+		IImmutableList<Recipe> recipesByCategory = recipesByTerm = inputs.recipes;
 
 		if (inputs.filter.OrganizeCategory is not null)
 		{
@@ -71,15 +65,11 @@ public partial class SearchModel
 	}
 
 
-	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter ? true : !inputs.term.IsNullOrEmpty();
+	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
 
-	public async ValueTask CloseSearches(CancellationToken ct)
-	{
-		await IsSearchesClosed.Update(_ => !hideSearches, ct);
-	}
 
-	public async ValueTask SearchPopular(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
+	public async ValueTask SearchPopular() =>
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
 	public async ValueTask ShowCurrentProfile()
 	{
@@ -91,6 +81,6 @@ public partial class SearchModel
 		await _navigator.NavigateToNotifications(this);
 	}
 
-	public async ValueTask ResetFilters(CancellationToken ct) =>
-		await Filter.Update(current => new SearchFilter(null, null, null, null, null), ct);
+	public async ValueTask ResetFilters() =>
+		await Filter.UpdateAsync(current => new SearchFilter());
 }

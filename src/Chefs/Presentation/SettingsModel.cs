@@ -1,6 +1,4 @@
 using Chefs.Presentation.Messages;
-using Uno.Extensions.Toolkit;
-using Windows.Management.Deployment;
 using AppTheme = Uno.Extensions.Toolkit.AppTheme;
 
 namespace Chefs.Presentation;
