@@ -32,22 +32,23 @@ public partial class LiveCookingModel
 
 	public Recipe Recipe { get; }
 
-	public async ValueTask ChangeStep(CancellationToken ct)
+	public async ValueTask ChangeStep()
 	{
 		var index = await SelectedIndex + 1;
 		await CurrentStep.UpdateAsync(s => s = Steps.FirstOrDefault(s => s.Number == index));
 	}
 
-	public async ValueTask Complete(CancellationToken ct)
+	public async ValueTask Complete()
 	{
-		await Completed.Set(true, ct);
+		await Completed.SetAsync(true);
 	}
 
-	public async ValueTask BackToLastStep(CancellationToken ct)
+	public async ValueTask BackToLastStep()
 	{
-		await Completed.Set(false, ct);
+		await Completed.SetAsync(false);
 	}
 
 	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
+
 }
