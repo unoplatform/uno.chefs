@@ -33,14 +33,12 @@ public partial class ReviewsModel
 
 	public async ValueTask Like(Review review, CancellationToken ct)
 	{
-		var reviewUpdated = await _recipeService.LikeReview(review, ct);
-		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
+		await _recipeService.LikeReview(review, ct);
 	}
 
 	public async ValueTask Dislike(Review review, CancellationToken ct)
 	{
-		var reviewUpdated = await _recipeService.DislikeReview(review, ct);
-		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, reviewUpdated));
+		await _recipeService.DislikeReview(review, ct);
 	}
 
 	public ICommand AddReview => Command.Create(b => b.Given(Comment).When(CanComment).Then(Review));
@@ -48,7 +46,7 @@ public partial class ReviewsModel
 	private bool CanComment(string comment) =>
 		!string.IsNullOrEmpty(comment);
 
-	public async ValueTask Exit(CancellationToken ct) => await _navigator.NavigateBackWithResultAsync(this);
+	public async ValueTask Exit() => await _navigator.NavigateBackWithResultAsync(this);
 
 	private async ValueTask Review(string comment, CancellationToken ct)
 	{

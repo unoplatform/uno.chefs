@@ -28,6 +28,20 @@ public class RecipeService : IRecipeService
 		   .Select(c => new Category(c))
 		   .ToImmutableList();
 
+	public async ValueTask<IImmutableList<CategoryWithCount>> GetCategoriesWithCount(CancellationToken ct)
+	{
+		var categories = await GetCategories(ct);
+		var categoriesWithCount = new List<CategoryWithCount>();
+		
+		foreach (var category in categories)
+		{
+			var recipesByCategory = await GetByCategory((int)category!.Id!, ct);
+			categoriesWithCount.Add(new CategoryWithCount(recipesByCategory.Count, category));
+		}
+		
+		return categoriesWithCount.ToImmutableList();
+	}
+
 	public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct)
 		=> (await _recipeEndpoint.GetAll(ct))
 		   .Select(r => new Recipe(r))
@@ -107,11 +121,17 @@ public class RecipeService : IRecipeService
 		_messenger.Send(new EntityMessage<Recipe>(recipe.Save ? EntityChange.Created : EntityChange.Deleted, recipe));
 	}
 
-	public async ValueTask<Review> LikeReview(Review review, CancellationToken ct)
-		=> new(await _recipeEndpoint.LikeReview(review.ToData(), ct));
+	public async ValueTask LikeReview(Review review, CancellationToken ct)
+	{
+		var updatedReview = new Review(await _recipeEndpoint.LikeReview(review.ToData(), ct));
+		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
+	}
 
-	public async ValueTask<Review> DislikeReview(Review review, CancellationToken ct)
-		=> new(await _recipeEndpoint.DislikeReview(review.ToData(), ct));
+	public async ValueTask DislikeReview(Review review, CancellationToken ct)
+	{
+		var updatedReview = new Review(await _recipeEndpoint.DislikeReview(review.ToData(), ct));
+		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
+	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct)
 		=> (await _recipeEndpoint.GetAll(ct))
