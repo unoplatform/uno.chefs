@@ -7,7 +7,7 @@ public class StringToMediaPlayBackSourceConverter : IValueConverter
 {
 	public object Convert(object value, Type targetType, object parameter, string language)
 	{
-		if (value is string uriString)
+		if (value is string uriString && !uriString.IsNullOrEmpty())
 		{
 			return MediaSource.CreateFromUri(new Uri(uriString));
 		}
