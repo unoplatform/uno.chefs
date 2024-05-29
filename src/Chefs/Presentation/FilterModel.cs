@@ -21,10 +21,10 @@ public partial class FilterModel
 	public IEnumerable<int> Serves => new int[] { 1, 2, 3, 4, 5 };
 	
 	public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
-	
-	public async ValueTask Search(SearchFilter filter, CancellationToken ct) =>
-		await _navigator.NavigateBackWithResultAsync(this, data: filter, cancellation: ct);
-	
+
+	public async ValueTask Search(SearchFilter filter) =>
+		await _navigator.NavigateBackWithResultAsync(this, data: filter);
+
 	public async ValueTask Reset(CancellationToken ct) =>
 		await Filter.Update(current => new SearchFilter(), ct);
 }
