@@ -89,7 +89,8 @@
 		<utu:AutoLayout Padding="16"
 						utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource BackgroundBrush}">
-			<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
+			<uer:FeedView x:Name="CookbookFeedView"
+						  utu:AutoLayout.PrimaryAlignment="Stretch"
 						  Source="{Binding Cookbook}">
 				<DataTemplate>
 					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -121,7 +122,7 @@
 						<Button x:Name="FabButton"
 								HorizontalAlignment="Right"
 								VerticalAlignment="Bottom"
-								uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay}"
+								uen:Navigation.Data="{Binding DataContext.Cookbook.Value, Mode=TwoWay, ElementName=CookbookFeedView}"
 								uen:Navigation.Request="UpdateCookbook"
 								utu:AutoLayout.IsIndependentLayout="True"
 								CornerRadius="56"
