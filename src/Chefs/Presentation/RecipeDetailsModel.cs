@@ -23,6 +23,7 @@ public partial class RecipeDetailsModel
 	}
 
 	public Recipe Recipe { get; }
+	public IState<bool> IsSaved => State.Value(this, () => Recipe.Save);
 	public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct));
 	public IFeed<User> CurrentUser => Feed.Async(async ct => await _userService.GetCurrent(ct));
 	public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
@@ -52,10 +53,15 @@ public partial class RecipeDetailsModel
 	public async ValueTask Review(IImmutableList<Review> reviews, CancellationToken ct) =>
 		await _navigator.NavigateRouteAsync(this, "Reviews", data: new ReviewParameter(Recipe.Id, reviews), qualifier: Qualifiers.Dialog, cancellation: ct);
 
-	public async ValueTask Save(CancellationToken ct) =>
+	public async ValueTask Save(CancellationToken ct)
+	{
 		await _recipeService.Save(Recipe, ct);
 
-	[ComImport, Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
+		var isSaved = await IsSaved;
+		await IsSaved.UpdateAsync(_ => !isSaved);
+	}
+
+	/*[ComImport, Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
 	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 	interface IDataTransferManagerInterop
 	{
@@ -64,12 +70,12 @@ public partial class RecipeDetailsModel
 	}
 
 	static readonly Guid _dtm_iid =
-		new Guid(0xa5caee9b, 0x8708, 0x49d1, 0x8d, 0x36, 0x67, 0xd2, 0x5a, 0x8d, 0xa0, 0x0c);
+		new Guid(0xa5caee9b, 0x8708, 0x49d1, 0x8d, 0x36, 0x67, 0xd2, 0x5a, 0x8d, 0xa0, 0x0c);*/
 
 	public async ValueTask Share(CancellationToken ct)
 	{
 #if WINDOWS
-		var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+		/*var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
 		var DataTransferManagerInterop = (IDataTransferManagerInterop)WindowsRuntimeMarshal.GetActivationFactory(typeof(DataTransferManager));
 
 		var dtm = DataTransferManagerInterop.GetForWindow(hwnd, _dtm_iid);
@@ -86,7 +92,7 @@ public partial class RecipeDetailsModel
 		//	args.Request.Data.RequestedOperation = DataPackageOperation.Copy;
 		//};
 
-		//interop.ShowShareUIForWindow(hWnd);
+		//interop.ShowShareUIForWindow(hWnd);*/
 #else
         var dataTransferManager = DataTransferManager.GetForCurrentView();
         dataTransferManager.DataRequested += DataRequested;

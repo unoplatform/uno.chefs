@@ -9,7 +9,7 @@ class BooleanToHeartUriSourceConverter : IValueConverter
 		if (value is bool isSaved)
 		{
 			return isSaved
-				? "ms-appx:///Assets/Icons/full_heart.png"
+				? "ms-appx:///Assets/Icons/favorite_heart_full.png"
 				: "ms-appx:///Assets/Icons/favorite_heart.png";
 		}
 
