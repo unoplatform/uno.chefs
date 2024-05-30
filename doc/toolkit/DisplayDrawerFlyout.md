@@ -55,12 +55,27 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
 
 * Injecting Custom Flyout for Navigation:
 
-    To ensure the `ResponsiveDrawerFlyout` is used consistently across the application, it is injected into the navigation service configuration in `App.xaml.cs.` This setup uses the **"!"** qualifier to specify when the custom flyout should be employed:
+    To ensure the `ResponsiveDrawerFlyout` is used consistently across the application, it is injected into the navigation service configuration in `App.xaml.cs.`:
 
     ```csharp
     private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)
     {
         services.AddTransient<Flyout, ResponsiveDrawerFlyout>();
+    }
+    ```
+    Here's an example of invoking a modal navigation with the "!" qualifier from the chefs app:
+
+    ```csharp
+    // Navigation method example
+    public static Task NavigateToNotifications(this INavigator navigator, object sender)
+    {
+        return navigator.NavigateRouteAsync(sender, "Notifications",        qualifier: Qualifiers.Dialog);
+    }
+
+    // Qualifiers definition
+    public static class Qualifiers
+    {
+        public const string Dialog = "!"; 
     }
     ```
 
