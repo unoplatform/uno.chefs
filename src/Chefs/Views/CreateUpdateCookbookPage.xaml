@@ -146,11 +146,14 @@
 							<utu:AutoLayout Padding="0,0,0,16"
 											HorizontalAlignment="Center"
 											Spacing="8">
-								<muxc:ItemsRepeater utu:CommandExtensions.Command="{Binding Parent.SelectRecipe}"
-													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																			Wide={StaticResource WideGridLayout}}" />
+								<muxc:GridView ItemTemplate="{StaticResource RecipeTemplate}"
+											   ItemsSource="{Binding Data}">
+									<muxc:GridView.ItemsPanel>
+										<ItemsPanelTemplate>
+											<ItemsWrapGrid Orientation="Horizontal" ItemWidth="300"/>
+										</ItemsPanelTemplate>
+									</muxc:GridView.ItemsPanel>
+								</muxc:GridView>
 							</utu:AutoLayout>
 						</DataTemplate>
 					</uer:FeedView>
