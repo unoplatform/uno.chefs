@@ -1,44 +1,22 @@
 namespace Chefs.Business.Models;
 
-public record Iterable<T>
+public sealed record Iterable<T>(IImmutableList<T> Items)
 {
-	private Action? _onChanged;
+	public int CurrentIndex { get; init; }
 	
-	public Iterable(IList<T> items)
-	{
-		Items = items ?? throw new ArgumentNullException(nameof(items));
-		CurrentIndex = 0;
-	}
-	
-	public int Count => Items.Count;
-	public IList<T> Items { get; }
 	public T CurrentItem => Items[CurrentIndex];
-	public int CurrentIndex { get; private set; }
-	
-	public event Action? OnChanged
-	{
-		add { _onChanged += value; }
-		remove { _onChanged -= value; }
-	}
+	public int Count => Items.Count;
+	public bool CurrentIsLast => CurrentIndex == Items.Count - 1;
 	public bool CanMoveNext => CurrentIndex < Items.Count - 1;
 	public bool CanMovePrevious => CurrentIndex > 0;
-	public void MoveNext()
-	{
-		if (!CanMoveNext)
-		{
-			return;
-		}
-		CurrentIndex++;
-		_onChanged?.Invoke();
-	}
 	
-	public void MovePrevious()
-	{
-		if (!CanMovePrevious)
-		{
-			return;
-		}
-		CurrentIndex--;
-		_onChanged?.Invoke();
-	}
+	public Iterable<T> MoveNext()
+		=> CanMoveNext
+			? this with { CurrentIndex = CurrentIndex + 1 }
+			: this;
+	
+	public Iterable<T> MovePrevious()
+		=> CanMovePrevious
+			? this with { CurrentIndex = CurrentIndex - 1 }
+			: this;
 }
