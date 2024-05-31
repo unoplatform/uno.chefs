@@ -20,6 +20,7 @@ public partial class CreateUpdateCookbookModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 		_cookbookService = cookbookService;
+
 		if (cookbook is not null)
 		{
 			_cookbook = cookbook;
@@ -35,8 +36,8 @@ public partial class CreateUpdateCookbookModel
 			SaveButtonContent = "Create cookbook";
 			IsCreate = true;
 		}
-		messenger.Observe(Cookbook, cb => cb.Id);
 
+		messenger.Observe(Cookbook, cb => cb.Id);
 	}
 	public bool IsCreate { get; }
 
@@ -48,34 +49,13 @@ public partial class CreateUpdateCookbookModel
 
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
 
-	public async ValueTask SelectRecipe(Recipe recipe, CancellationToken ct)
-	{
-		await Recipes.UpdateAsync(r => r.Id == recipe.Id, recipe =>
-		{
-			return recipe with { Selected = !recipe.Selected };
-		}, ct);
-	}
+	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetSaved).Selection(SelectedRecipes);
 
-	public IListState<Recipe> Recipes => ListState.Async(this, async ct =>
-	{
-		var cookbook = await Cookbook;
-
-		var recipes = await _recipeService.GetSaved(ct);
-		var recipesExceptCookbook = cookbook?.Recipes is null
-			? recipes
-			: recipes.Select(r =>
-			{
-				if (cookbook.Recipes.Any(cbR => r.Id == cbR.Id)) r = r with { Selected = true };
-				return r;
-			})
-			.ToImmutableList();
-
-		return recipesExceptCookbook;
-	});
+	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
 
 	public async ValueTask Submit(CancellationToken ct)
 	{
-		var selectedRecipes = (await Recipes).Where(x => x.Selected).ToImmutableList();
+		var selectedRecipes = await SelectedRecipes;
 		var cookbook = await Cookbook;
 
 		if (selectedRecipes is { Count: > 0 } && cookbook is not null && cookbook.Name.HasValueTrimmed())
