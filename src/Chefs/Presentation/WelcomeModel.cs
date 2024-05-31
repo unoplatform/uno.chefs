@@ -3,27 +3,20 @@ using System.Runtime.CompilerServices;
 
 namespace Chefs.Presentation;
 
-public partial class WelcomeModel(INavigator navigator) : INotifyPropertyChanged
+public partial class WelcomeModel(INavigator navigator)
 {
-	private readonly Iterable<int> _pages = new(Enumerable.Range(0, 3).ToList());
+	private readonly Iterable<int> _pages = new(Enumerable.Range(0, 3).ToImmutableList());
 	
 	public int CurrentIndex => _pages.CurrentIndex;
 	
-	public event PropertyChangedEventHandler? PropertyChanged;
 	
-	protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-	}
-	
-	public bool HasNext => _pages.HasNext;
+	public bool HasNext => _pages.CanMoveNext;
 	
 	public async ValueTask Next()
 	{
 		if (HasNext)
 		{
-			_pages.Next();
-			OnPropertyChanged(nameof(CurrentIndex));
+			_pages.MoveNext();
 		}
 		else
 		{
@@ -33,12 +26,11 @@ public partial class WelcomeModel(INavigator navigator) : INotifyPropertyChanged
 	
 	public void Previous()
 	{
-		if (!_pages.HasPrevious)
+		if (!_pages.CanMovePrevious)
 		{
 			return;
 		}
 		
-		_pages.Previous();
-		OnPropertyChanged(nameof(CurrentIndex));
+		_pages.MovePrevious();
 	}
 }
