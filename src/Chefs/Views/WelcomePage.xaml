@@ -31,7 +31,7 @@
 								NumberOfPages="3"
 								MaxVisiblePips="3"
 								Orientation="Horizontal"
-								SelectedPageIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								SelectedPageIndex="{Binding Pages.Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								Style="{StaticResource PipsPagerStyle}" />
 
 				<!-- Buttons -->
@@ -39,7 +39,7 @@
 						HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
 						utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
-						Command="{Binding Next}"
+						Command="{Binding NextPage}"
 						Content="Next"
 						CornerRadius="4"
 						Foreground="{ThemeResource OnPrimaryBrush}" />
@@ -63,7 +63,7 @@
 					<FlipView x:Name="flipView"
 							  utu:AutoLayout.PrimaryAlignment="Stretch"
 							  Background="Transparent"
-							  SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 						<FlipView.Items>
 							<!-- First onboarding page -->
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -159,7 +159,7 @@
 								  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 								  Background="Transparent"
 								  IsEnabled="False"
-								  SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+								  SelectedIndex="{Binding Pages.Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<FlipView.Items>
 								<!-- First Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -186,7 +186,7 @@
 							<FlipView x:Name="flipView"
 									  utu:AutoLayout.PrimaryAlignment="Stretch"
 									  Background="Transparent"
-									  SelectedIndex="{Binding CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+									  SelectedIndex="{Binding Pages.Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<FlipView.Items>
 									<!-- First onboarding page -->
 									<utu:AutoLayout Padding="32,0"

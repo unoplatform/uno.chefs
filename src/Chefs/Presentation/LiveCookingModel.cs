@@ -9,11 +9,6 @@ public partial class LiveCookingModel(LiveCookingParameter parameter, IRecipeSer
 	public IState<Iterable<Step>> Steps => State<Iterable<Step>>.Value(this, () => _steps);
 	public Uri VideoSource { get; set; } = new("ms-appx:///Assets/Videos/CookingVideo.mp4");
 	
-	// public int SelectedIndex => Steps.CurrentIndex;
-	// public bool CanFinish => Steps.CurrentIsLast;
-	// public bool CanGoNext => Steps.CanMoveNext;
-	// public bool CanGoBack => Steps.CanMovePrevious;
-	
 	public IState<bool> Completed => State.Value(this, () => false);
 	
 	public Recipe Recipe { get; } = parameter.Recipe;
