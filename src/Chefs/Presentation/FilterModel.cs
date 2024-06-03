@@ -22,7 +22,7 @@ public partial class FilterModel
 
 	public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
 
-	public async ValueTask Search(SearchFilter filter) =>
+	public async ValueTask ApplySearchFilter(SearchFilter filter) =>
 		await _navigator.NavigateBackWithResultAsync(this, data: filter);
 
 	public async ValueTask Reset(CancellationToken ct) =>
