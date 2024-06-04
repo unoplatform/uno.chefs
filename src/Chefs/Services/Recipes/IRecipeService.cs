@@ -79,7 +79,7 @@ public interface IRecipeService
 	/// </summary>
 	/// <param name="ct"></param>
 	/// <returns>
-	/// Get recipes filter in trending now
+	/// Get trending recipes
 	/// </returns>
 	ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct);
 
@@ -88,7 +88,7 @@ public interface IRecipeService
 	/// </summary>
 	/// <param name="ct"></param>
 	/// <returns>
-	/// Get popular recipes filter 
+	/// Get popular recipes
 	/// </returns>
 	ValueTask<IImmutableList<Recipe>> GetPopular(CancellationToken ct);
 

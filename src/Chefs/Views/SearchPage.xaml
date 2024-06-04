@@ -149,8 +149,7 @@
 													 Wide='40,40,40,24'}"
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
-				<TextBox utu:CommandExtensions.Command="{Binding Search}"
-						 BorderBrush="{ThemeResource OnSurfaceBrush}"
+				<TextBox BorderBrush="{ThemeResource OnSurfaceBrush}"
 						 BorderThickness="1"
 						 CornerRadius="28"
 						 Foreground="{ThemeResource OnSurfaceBrush}"

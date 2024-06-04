@@ -45,41 +45,37 @@ public partial class SearchModel
 
 	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs)
 	{
-		IImmutableList<Recipe> recipesByTerm;
-		IImmutableList<Recipe> recipesByCategory = recipesByTerm = inputs.recipes;
+		IImmutableList<Recipe> recipesByCategory = inputs.recipes;
 
-		if (inputs.filter.OrganizeCategory is not null)
+		if (inputs.filter.OrganizeCategory is OrganizeCategory category)
 		{
-			var selectedOrganizedCategory = inputs.filter.OrganizeCategory;
-
-			recipesByCategory = selectedOrganizedCategory switch
-			{
-				OrganizeCategory.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
-				OrganizeCategory.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
-				OrganizeCategory.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
-				_ => recipesByCategory
-			};
+			recipesByCategory = FilterByCategory(category);
 		}
 
-		return recipesByCategory.Intersect(recipesByTerm).Where(p => inputs.filter.Match(p)).ToImmutableList();
+		return recipesByCategory.Intersect(inputs.recipes).Where(p => inputs.filter.Match(p)).ToImmutableList();
 	}
 
+	private IImmutableList<Recipe> FilterByCategory(OrganizeCategory category)
+	{
+		return category switch
+		{
+			OrganizeCategory.Popular => _recipeService.GetPopular(new CancellationToken()).Result,
+			OrganizeCategory.Trending => _recipeService.GetTrending(new CancellationToken()).Result,
+			OrganizeCategory.Recent => _recipeService.GetRecent(new CancellationToken()).Result,
+			_ => ImmutableList<Recipe>.Empty
+		};
+	}
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
-
 
 	public async ValueTask SearchPopular() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
-	public async ValueTask ShowCurrentProfile()
-	{
+	public async ValueTask ShowCurrentProfile() => 
 		await _navigator.NavigateToProfile(this);
-	}
 
-	public async ValueTask ShowNotifications()
-	{
+	public async ValueTask ShowNotifications() => 
 		await _navigator.NavigateToNotifications(this);
-	}
 
 	public async ValueTask ResetFilters() =>
 		await Filter.UpdateAsync(current => new SearchFilter());
