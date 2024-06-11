@@ -1,5 +1,4 @@
 using Chefs.Presentation.Extensions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Chefs.Presentation;
 
@@ -24,7 +23,7 @@ public partial class HomeModel
 
 	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
 
-	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategories);
+	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(_recipeService.GetCategoriesWithCount);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
@@ -44,9 +43,6 @@ public partial class HomeModel
 		return categoriesWithCount.ToImmutableList();
 	}
 
-	public async ValueTask Search(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
-
 	public async ValueTask ShowAll(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
@@ -55,9 +51,6 @@ public partial class HomeModel
 
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(Category: categoryWithCount.Category));
-
-	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
 
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);

@@ -23,8 +23,8 @@ public partial class ProfileModel
 		.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct))
 		.AsListFeed();
 
-	public async ValueTask NavigateToSettings(CancellationToken ct)
+	public async ValueTask NavigateToSettings()
 	{
-		await _navigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile, cancellation: ct);
+		await _navigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile);
 	}
 }

@@ -10,16 +10,15 @@ public partial class LiveCookingModel
 	{
 		Steps = parameter.Steps;
 		Recipe = parameter.Recipe;
-		VideoSource = new Uri("ms-appx:///Assets/Videos/CookingVideo.mp4");
 
 		_recipeService = recipeService;
 	}
 
 	public IImmutableList<Step> Steps { get; }
 
-	public Uri VideoSource { get; set; }
-
 	public IState<int> SelectedIndex => State.Value(this, () => 0);
+
+	public IFeed<Step> CurrentStep => SelectedIndex.Select(x => (x >= 0 && x < Steps.Count) ? Steps[x] : Steps[0]);
 
 	public IFeed<bool> CanFinish => SelectedIndex.Select(x => x == Steps.Count - 1);
 
@@ -31,14 +30,14 @@ public partial class LiveCookingModel
 
 	public Recipe Recipe { get; }
 
-	public async ValueTask Complete(CancellationToken ct)
+	public async ValueTask Complete()
 	{
-		await Completed.Set(true, ct);
+		await Completed.SetAsync(true);
 	}
 
-	public async ValueTask BackToLastStep(CancellationToken ct)
+	public async ValueTask BackToLastStep()
 	{
-		await Completed.Set(false, ct);
+		await Completed.SetAsync(false);
 	}
 
 	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>

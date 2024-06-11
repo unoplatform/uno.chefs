@@ -28,6 +28,20 @@ public class RecipeService : IRecipeService
 		   .Select(c => new Category(c))
 		   .ToImmutableList();
 
+	public async ValueTask<IImmutableList<CategoryWithCount>> GetCategoriesWithCount(CancellationToken ct)
+	{
+		var categories = await GetCategories(ct);
+		var categoriesWithCount = new List<CategoryWithCount>();
+		
+		foreach (var category in categories)
+		{
+			var recipesByCategory = await GetByCategory((int)category!.Id!, ct);
+			categoriesWithCount.Add(new CategoryWithCount(recipesByCategory.Count, category));
+		}
+		
+		return categoriesWithCount.ToImmutableList();
+	}
+
 	public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct)
 		=> (await _recipeEndpoint.GetAll(ct))
 		   .Select(r => new Recipe(r))

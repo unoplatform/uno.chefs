@@ -21,7 +21,7 @@
 
 	<Page.Resources>
 
-		<converters:UriToMediaPlayBackSourceConverter x:Key="UriToMediaPlaybackSource" />
+		<converters:StringToMediaPlayBackSourceConverter x:Key="StringToMediaPlaybackSource" />
 
 		<DataTemplate x:Key="StepTemplate">
 
@@ -129,7 +129,7 @@
 							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
 																  Wide=Center}">
 				<MediaPlayerElement AreTransportControlsEnabled="True"
-									Source="{Binding VideoSource, Converter={StaticResource UriToMediaPlaybackSource}}">
+									Source="{Binding CurrentStep.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
