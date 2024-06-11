@@ -11,7 +11,6 @@
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:converters="using:Chefs.Converters"
 	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  HorizontalAlignment="Stretch"
@@ -21,8 +20,6 @@
 	  mc:Ignorable="d">
 
 	<Page.Resources>
-		<converters:BooleanToHeartUriSourceConverter x:Key="BooleanToHeartUriSource" />
-
 		<DataTemplate x:Key="EmptyTemplate">
 			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
 													 Wide='40'}"
