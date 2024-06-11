@@ -1,11 +1,19 @@
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.ApplicationModel.DataTransfer;
+using WinRT;
+using WinRT.Interop;
 
 namespace Chefs.Presentation;
 
 public partial class RecipeDetailsModel
 {
+	private static readonly Guid _dtm_iid = new Guid("a5caee9b-8708-49d1-8d36-67d25a8da00c");
+
+#if WINDOWS
+	static IDataTransferManagerInterop DataTransferManagerInterop => DataTransferManager.As<IDataTransferManagerInterop>();
+#endif
+
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly IUserService _userService;
@@ -55,49 +63,53 @@ public partial class RecipeDetailsModel
 	public async ValueTask Save(CancellationToken ct) => 
 		await _recipeService.Save(Recipe, ct);
 
-	/*[ComImport, Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
-	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-	interface IDataTransferManagerInterop
-	{
-		DataTransferManager GetForWindow([In] IntPtr appWindow, [In] ref Guid riid);
-		void ShowShareUIForWindow(IntPtr appWindow);
-	}
-
-	static readonly Guid _dtm_iid =
-		new Guid(0xa5caee9b, 0x8708, 0x49d1, 0x8d, 0x36, 0x67, 0xd2, 0x5a, 0x8d, 0xa0, 0x0c);*/
-
 	public async ValueTask Share(CancellationToken ct)
 	{
 #if WINDOWS
-		/*var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-		var DataTransferManagerInterop = (IDataTransferManagerInterop)WindowsRuntimeMarshal.GetActivationFactory(typeof(DataTransferManager));
-
-		var dtm = DataTransferManagerInterop.GetForWindow(hwnd, _dtm_iid);
-		//dtm.DataRequested += OnDataRequested;
-
-		//IntPtr dataTransferManagerPtr = interop.GetForWindow(hWnd, _dtm_iid);
-		//var dataTransferManager = Marshal.GetObjectForIUnknown(dataTransferManagerPtr) as DataTransferManager;
-
-		//dataTransferManager.DataRequested += (sender, args) =>
-		//{
-		//	args.Request.Data.Properties.Title = $"Sharing {Recipe.Name}";
-		//	args.Request.Data.Properties.Description = "Description";
-		//	args.Request.Data.SetText(Recipe.Details ?? "Details");
-		//	args.Request.Data.RequestedOperation = DataPackageOperation.Copy;
-		//};
-
-		//interop.ShowShareUIForWindow(hWnd);*/
+		IntPtr result;
+		var hwnd = WindowNative.GetWindowHandle(App.MainWindow); 
+		result = DataTransferManagerInterop.GetForWindow(hwnd, _dtm_iid);
+		DataTransferManager dataTransferManager = MarshalInterface<DataTransferManager>.FromAbi(result);
+		dataTransferManager.DataRequested += DataRequested;
+		DataTransferManagerInterop.ShowShareUIForWindow(hwnd, null);
 #else
-        var dataTransferManager = DataTransferManager.GetForCurrentView();
+		var dataTransferManager = DataTransferManager.GetForCurrentView();
         dataTransferManager.DataRequested += DataRequested;
         DataTransferManager.ShowShareUI();
 #endif
 	}
 
-	private void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+	private async void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
 	{
 		args.Request.Data.Properties.Title = $"Sharing {Recipe.Name}";
-		args.Request.Data.Properties.Description = "Description";
-		args.Request.Data.SetText(Recipe.Details ?? "Details");
+		args.Request.Data.Properties.Description = Recipe.Details ?? "Chefs Recipe";
+		args.Request.Data.SetText(await CreateShareText());
 	}
+
+	private async ValueTask<string> CreateShareText()
+	{
+		var shareTextBuilder = new StringBuilder();
+		var steps = await Steps;
+
+		foreach (var step in steps)
+		{
+			shareTextBuilder.AppendLine($"Step {step.Number}: {step.Name}")
+							.AppendLine($"Ingredients: {string.Join(", ", step.Ingredients ?? ImmutableList<string>.Empty)}")
+							.AppendLine($"Description: {step.Description}")
+							.AppendLine();
+		}
+
+		return shareTextBuilder.ToString();
+	}
+
+#if WINDOWS
+	[ComImport]
+	[Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
+	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+	public interface IDataTransferManagerInterop
+	{
+		IntPtr GetForWindow([In] IntPtr appWindow, [In] ref Guid riid);
+		void ShowShareUIForWindow(IntPtr appWindow, ShareUIOptions options);
+	}
+#endif
 }
