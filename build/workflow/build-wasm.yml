@@ -32,8 +32,14 @@ jobs:
 
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core SDK 8.0.300'
+    inputs:
+      packageType: sdk
+      version: 8.0.300
+
   - bash: |
-      dotnet build /ds /m /r /p:TargetFramework=net8.0-browserwasm /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet build /ds /m /r /p:TargetFramework=net8.0-browserwasm /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
