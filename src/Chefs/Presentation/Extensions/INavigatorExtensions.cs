@@ -15,17 +15,22 @@ public static class INavigatorExtensions
 	// - Navigate to "Recipe" and for navigation to work out that it needs to close the current dialog and then,
 	// - Navigate to Recipe on the main window.
 	// This is the blocker issue right now for this - https://github.com/unoplatform/uno.extensions/issues/1394
-	public static async ValueTask NavigateToProfile(this INavigator navigator, object sender, User? profile = null)
-	{
-		var response = await navigator.NavigateRouteForResultAsync<Recipe?>(sender, "Profile", qualifier: Qualifiers.Dialog, data: profile);
-		var result = await response!.Result;
+	//public static async ValueTask NavigateToProfile(this INavigator navigator, object sender, User? profile = null)
+	//{
+	//	var response = await navigator.NavigateRouteForResultAsync<Recipe?>(sender, "Profile", qualifier: Qualifiers.Dialog, data: profile);
+	//	var result = await response!.Result;
 
-		//If a Recipe was selected, navigate to the RecipeDetails. Otherwise, do nothing
-		await (result.SomeOrDefault() switch
-		{
-			Recipe recipe => navigator.NavigateDataAsync(sender, recipe),
-			_ => Task.CompletedTask,
-		});
+	//	//If a Recipe was selected, navigate to the RecipeDetails. Otherwise, do nothing
+	//	await (result.SomeOrDefault() switch
+	//	{
+	//		Recipe recipe => navigator.NavigateDataAsync(sender, recipe),
+	//		_ => Task.CompletedTask,
+	//	});
+	//}
+
+	public static Task NavigateToProfile(this INavigator navigator, object sender, User? profile = null)
+	{
+		return navigator.NavigateRouteAsync(sender, "Profile", qualifier: Qualifiers.Dialog, data: profile);
 	}
 
 	public static Task NavigateToNotifications(this INavigator navigator, object sender)
