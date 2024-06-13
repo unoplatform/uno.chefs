@@ -58,16 +58,27 @@
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Share}"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
 						<BitmapIcon UriSource="ms-appx:///Assets/Icons/share_recipe.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
-					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/favorite_heart.png" />
-					</AppBarButton.Icon>
-				</AppBarButton>
+				<AppBarToggleButton Style="{StaticResource IconToggleButtonStyle}"
+									VerticalAlignment="Center"
+									Command="{Binding Save}"
+									IsChecked="{Binding Recipe.Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+					<AppBarToggleButton.Content>
+						<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+								  Glyph="{StaticResource Icon_Favorite}"
+								  Foreground="{ThemeResource SurfaceBrush}" />
+					</AppBarToggleButton.Content>
+					<ut:ControlExtensions.AlternateContent>
+						<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+								  Glyph="{StaticResource Icon_Favorite}"
+								  Foreground="{ThemeResource SurfaceBrush}" />
+					</ut:ControlExtensions.AlternateContent>
+				</AppBarToggleButton>
 			</utu:NavigationBar.PrimaryCommands>
 		</utu:NavigationBar>
 
