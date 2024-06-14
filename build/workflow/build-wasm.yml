@@ -2,7 +2,7 @@ jobs:
 - job: WASM
   timeoutInMinutes: 90
   pool:
-    vmImage: ubuntu-20.04
+    vmImage: ubuntu-latest
 
   container: unoplatform/wasm-build:3.0
 
