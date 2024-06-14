@@ -16,12 +16,10 @@ public partial class HomeModel
 		_userService = userService;
 		_messenger = messenger;
 
-		_messenger.Observe(Recipes, r => r.Id);
+		_messenger.Observe(TrendingNow, r => r.Id);
 	}
-
-	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetAll);
 	
-	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
+	public IListState<Recipe> TrendingNow => ListState.Async(this, _recipeService.GetTrending);
 
 	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(_recipeService.GetCategoriesWithCount);
 
