@@ -50,9 +50,9 @@ public partial class SearchModel
 
 		if (inputs.filter.FilterGroup is not null)
 		{
-			var selectedOrganizedCategory = inputs.filter.FilterGroup;
+			var selectedFilterGroup = inputs.filter.FilterGroup;
 
-			recipesByCategory = selectedOrganizedCategory switch
+			recipesByCategory = selectedFilterGroup switch
 			{
 				FilterGroup.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
 				FilterGroup.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
