@@ -2,28 +2,34 @@ namespace Chefs.Presentation;
 
 public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
-public partial class LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService)
-
+public partial class LiveCookingModel
 {
-	private readonly Iterable<Step> _steps = new(parameter.Steps.ToImmutableList());
-	public IState<Iterable<Step>> Steps => State<Iterable<Step>>.Value(this, () => _steps);
+	public IState<StepIterable> Steps { get; }
 	public Uri VideoSource { get; set; } = new("ms-appx:///Assets/Videos/CookingVideo.mp4");
+	public IState<bool> Completed { get; }
+	public Recipe Recipe { get; }
 	
-	public IState<bool> Completed => State.Value(this, () => false);
+	private readonly IRecipeService _recipeService;
 	
-	public Recipe Recipe { get; } = parameter.Recipe;
-
-
+	public LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService)
+	{
+		Recipe = parameter.Recipe;
+		_recipeService = recipeService;
+		
+		Steps = State.Value(this, () => new StepIterable(parameter.Steps.ToImmutableList()));
+		Completed = State.Value(this, () => false);
+	}
+	
 	public async ValueTask Complete()
 	{
 		await Completed.SetAsync(true);
 	}
 	
 	public ValueTask Previous()
-		=> Steps.UpdateAsync(steps => steps!.MovePrevious());
+		=> Steps.UpdateAsync(steps => steps!.MovePrevious() as StepIterable);
 	
 	public ValueTask Next()
-		=> Steps.UpdateAsync(steps => steps!.MoveNext());
+		=> Steps.UpdateAsync(steps => steps!.MoveNext() as StepIterable);
 	
 	public async ValueTask BackToLastStep(CancellationToken ct)
 	{
@@ -31,6 +37,7 @@ public partial class LiveCookingModel(LiveCookingParameter parameter, IRecipeSer
 	}
 	public async ValueTask Save(Recipe recipe, CancellationToken ct)
 	{
-		await recipeService.Save(recipe, ct);
+		await _recipeService.Save(recipe, ct);
 	}
 }
+public record StepIterable(IImmutableList<Step> Items) : Iterable<Step>(Items);

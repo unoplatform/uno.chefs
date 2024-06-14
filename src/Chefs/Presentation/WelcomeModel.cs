@@ -6,13 +6,11 @@ public partial class WelcomeModel
 	
 	public IState<IntIterable> Pages => State.Value(this, () => new IntIterable(Enumerable.Range(0, 3).ToImmutableList()));
 
-
 	public WelcomeModel(INavigator navigator)
 	{
 		_navigator = navigator;
 	}
 	
-
 	public async ValueTask NextPage()
 	{
 		var pages = await Pages;
@@ -26,11 +24,4 @@ public partial class WelcomeModel
 		}
 	}
 }
-
-
-public record IntIterable : Iterable<int>
-{
-	public IntIterable(IImmutableList<int> items) : base(items)
-	{
-	}
-}
+public record IntIterable(IImmutableList<int> Items) : Iterable<int>(Items);
