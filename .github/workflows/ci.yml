@@ -47,7 +47,7 @@ jobs:
         shell: pwsh
         run: |
           & dotnet tool install --global --version 1.24.0 uno.check
-          & ~/.dotnet/tools/uno-check --ci --fix --non-interactive --verbose
+          & ~/.dotnet/tools/uno-check --ci --fix --non-interactive --verbose --skip openjdk 
 
       - name: Build app
         run: |
