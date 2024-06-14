@@ -1,9 +1,11 @@
 namespace Chefs.Business.Models;
 
-public sealed record Iterable<T>(IImmutableList<T> Items)
+public record Iterable<T>(IImmutableList<T> Items)
 {
-	public int CurrentIndex { get; init; }
+	public int CurrentIndex { get; init; } = 0;
+
 	
+
 	public T CurrentItem => Items[CurrentIndex];
 	public int Count => Items.Count;
 	public bool CurrentIsLast => CurrentIndex == Items.Count - 1;

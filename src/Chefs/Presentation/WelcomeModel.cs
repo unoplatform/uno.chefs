@@ -2,28 +2,35 @@ namespace Chefs.Presentation;
 
 public partial class WelcomeModel
 {
-	private readonly Iterable<int> _pages = new(Enumerable.Range(0, 3).ToImmutableList());
-	private readonly IState<Iterable<int>> Pages;
 	private readonly INavigator _navigator;
+	
+	public IState<IntIterable> Pages => State.Value(this, () => new IntIterable(Enumerable.Range(0, 3).ToImmutableList()));
+
 
 	public WelcomeModel(INavigator navigator)
 	{
 		_navigator = navigator;
-		Pages = State<Iterable<int>>.Value(this, () => _pages);
 	}
 	
-	public bool HasNext => _pages.CanMoveNext;
 
 	public async ValueTask NextPage()
 	{
-		if (HasNext)
+		var pages = await Pages;
+		if (pages?.CanMoveNext ?? false)
 		{
-			await Pages.UpdateAsync(p => p.MoveNext());
+			await Pages.UpdateAsync(p => p?.MoveNext() as IntIterable);
 		}
 		else
 		{
 			await _navigator.NavigateViewModelAsync<LoginModel>(this, Qualifiers.ClearBackStack);
 		}
 	}
-	
+}
+
+
+public record IntIterable : Iterable<int>
+{
+	public IntIterable(IImmutableList<int> items) : base(items)
+	{
+	}
 }
