@@ -169,19 +169,19 @@
 								CornerRadius="4"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
 								Style="{StaticResource TextButtonStyle}"
-								Visibility="{Binding Previous, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.CanMovePrevious,  Converter={StaticResource TrueToVisible}}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Content="Next"
 								CornerRadius="4"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
-								Visibility="{Binding Next, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.CanMoveNext,  Converter={StaticResource TrueToVisible}}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Command="{Binding Complete}"
 								Content="Done!"
 								CornerRadius="4"
-								Visibility="{Binding Steps.CurrentIsLast, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.CanMoveNext, Converter={StaticResource InvertBool}}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
@@ -244,7 +244,7 @@
 								Spacing="16">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Height="59"
-							Command="{Binding Back}"
+							Command="{Binding BackToLastStep}"
 							Content="Previous"
 							CornerRadius="4"
 							Style="{StaticResource TextButtonStyle}" />

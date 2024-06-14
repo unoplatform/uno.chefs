@@ -25,6 +25,10 @@ public partial class LiveCookingModel(LiveCookingParameter parameter, IRecipeSer
 	public ValueTask Next()
 		=> Steps.UpdateAsync(steps => steps!.MoveNext());
 	
+	public async ValueTask BackToLastStep(CancellationToken ct)
+	{
+		await Completed.Set(false, ct);
+	}
 	public async ValueTask Save(Recipe recipe, CancellationToken ct)
 	{
 		await recipeService.Save(recipe, ct);

@@ -31,7 +31,7 @@
 								NumberOfPages="3"
 								MaxVisiblePips="3"
 								Orientation="Horizontal"
-								SelectedPageIndex="{Binding Pages.Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								SelectedPageIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								Style="{StaticResource PipsPagerStyle}" />
 
 				<!-- Buttons -->
@@ -159,7 +159,7 @@
 								  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 								  Background="Transparent"
 								  IsEnabled="False"
-								  SelectedIndex="{Binding Pages.Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+								  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<FlipView.Items>
 								<!-- First Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
@@ -186,7 +186,7 @@
 							<FlipView x:Name="flipView"
 									  utu:AutoLayout.PrimaryAlignment="Stretch"
 									  Background="Transparent"
-									  SelectedIndex="{Binding Pages.Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+									  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<FlipView.Items>
 									<!-- First onboarding page -->
 									<utu:AutoLayout Padding="32,0"
