@@ -2,7 +2,7 @@ jobs:
 - job: WASM
   timeoutInMinutes: 90
   pool:
-    vmImage: ubuntu-20.04
+    vmImage: ubuntu-latest
 
   container: unoplatform/wasm-build:3.0
 
@@ -32,8 +32,10 @@ jobs:
 
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
+  - template: templates/dotnet-install-linux.yml
+
   - bash: |
-      dotnet build /ds /m /r /p:TargetFramework=net8.0-browserwasm /p:DisableNetMobileTargets=True /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet build /ds /m /r /p:TargetFramework=net8.0-browserwasm /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
