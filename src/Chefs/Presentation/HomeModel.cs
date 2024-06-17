@@ -43,24 +43,11 @@ public partial class HomeModel
 	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Recent));
 
-	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
+	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct)
+	{ 
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(Category: categoryWithCount.Category));
+	}
 
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
-
-	public async ValueTask ShowProfile(User profile)
-	{
-		await _navigator.NavigateToProfile(this, profile);
-	}
-
-	public async ValueTask ShowCurrentProfile()
-	{
-		await _navigator.NavigateToProfile(this);
-	}
-
-	public async ValueTask ShowNotifications()
-	{
-		await _navigator.NavigateToNotifications(this);
-	}
 }
