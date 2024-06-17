@@ -41,6 +41,10 @@ The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offer
   </utu:TabBar>
   ```
 
+- Using Region-Based Navigation
+
+  This solution combines the `TabBar` from Uno Toolkit with the `Navigation Extensions` from Uno Extensions, utilizing region-based navigation. Region-based navigation allows for more advanced navigation scenarios by specifying the navigator type and setting up regions. For more information, refer to the [How To Use TabBar](https://platform.uno/docs/articles/external/uno.extensions/doc/Learn/Navigation/Advanced/HowTo-UseTabBar.html#3-set-up-regions-and-specify-navigator-type) documentation.  
+
 # Example Usage in Chefs
 The above code has the following effect:
 
