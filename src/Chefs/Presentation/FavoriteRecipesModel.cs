@@ -26,7 +26,7 @@ public partial class FavoriteRecipesModel
 
 	public IListState<Cookbook> SavedCookbooks => ListState.FromFeed(this, _cookbookService.SavedCookbooks);
 
-	public IListState<Recipe> SavedRecipes => ListState.FromFeed(this, _recipeService.SavedRecipes);
+	public IListState<Recipe> SavedRecipes => _recipeService.SavedRecipes;
 
 	public async Task ShowCurrentProfile()
 	{
