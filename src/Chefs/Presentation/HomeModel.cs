@@ -48,19 +48,4 @@ public partial class HomeModel
 
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
-
-	public async ValueTask ShowProfile(User profile)
-	{
-		await _navigator.NavigateToProfile(this, profile);
-	}
-
-	public async ValueTask ShowCurrentProfile()
-	{
-		await _navigator.NavigateToProfile(this);
-	}
-
-	public async ValueTask ShowNotifications()
-	{
-		await _navigator.NavigateToNotifications(this);
-	}
 }
