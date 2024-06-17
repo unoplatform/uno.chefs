@@ -67,7 +67,7 @@
 				<AppBarToggleButton Style="{StaticResource IconToggleButtonStyle}"
 									VerticalAlignment="Center"
 									Command="{Binding Save}"
-									IsChecked="{Binding Recipe.Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+									IsChecked="{Binding Recipe.Save}">
 					<AppBarToggleButton.Content>
 						<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
 								  Glyph="{StaticResource Icon_Favorite}"

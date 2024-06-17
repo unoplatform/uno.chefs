@@ -45,7 +45,7 @@
 										   Style="{StaticResource CaptionMedium}" />
 							</utu:AutoLayout>
 							<ToggleButton Style="{StaticResource IconToggleButtonStyle}"
-										  IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+										  IsChecked="{Binding Save}"
 										  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																		Path=DataContext.SaveRecipe}"
 										  CommandParameter="{Binding}">
