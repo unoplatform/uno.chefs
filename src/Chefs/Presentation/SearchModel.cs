@@ -71,16 +71,6 @@ public partial class SearchModel
 	public async ValueTask SearchPopular() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
 
-	public async ValueTask ShowCurrentProfile()
-	{
-		await _navigator.NavigateToProfile(this);
-	}
-
-	public async ValueTask ShowNotifications()
-	{
-		await _navigator.NavigateToNotifications(this);
-	}
-
 	public async ValueTask ResetFilters() =>
 		await Filter.UpdateAsync(current => new SearchFilter());
 }
