@@ -117,8 +117,9 @@ public class RecipeService : IRecipeService
 
 	public async ValueTask Save(Recipe recipe, CancellationToken ct)
 	{
-		await _recipeEndpoint.Save(recipe.ToData(), ct);
-		_messenger.Send(new EntityMessage<Recipe>(EntityChange.Updated, recipe with { Save = !recipe.Save }));
+		var updatedRecipe = recipe with { Save = !recipe.Save };
+		await _recipeEndpoint.Save(updatedRecipe.ToData(), ct);
+		_messenger.Send(new EntityMessage<Recipe>(EntityChange.Updated, updatedRecipe));
 	}
 
 	public async ValueTask LikeReview(Review review, CancellationToken ct)
