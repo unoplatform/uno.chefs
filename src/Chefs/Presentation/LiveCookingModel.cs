@@ -40,4 +40,4 @@ public partial class LiveCookingModel
 		await _recipeService.Save(recipe, ct);
 	}
 }
-public record StepIterable(IImmutableList<Step> Items) : Iterable<Step>(Items);
+public record StepIterable(IImmutableList<Step> Items) : Iterator<Step>(Items);
