@@ -1,12 +1,14 @@
 <Project Sdk="Uno.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>
+			net8.0-android;
+			net8.0-ios;
+			net8.0-maccatalyst;
 			net8.0-windows10.0.19041;
 			net8.0;
 			net8.0-desktop;
 			net8.0-browserwasm;
 		</TargetFrameworks>
-		<TargetFrameworks Condition="'$(DisableNetMobileTargets)'==''">$(TargetFrameworks);net8.0-ios;net8.0-android;net8.0-maccatalyst</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<UnoSingleProject>true</UnoSingleProject>
 
@@ -69,7 +71,24 @@
 		<UnoSplashScreenColor>#313033</UnoSplashScreenColor>
 		<UnoIconForegroundScale>0.5</UnoIconForegroundScale>
 		<UnoSplashScreenBaseSize>350,300</UnoSplashScreenBaseSize>
+		<UnoIconForegroundFile Condition="'$(IsCanaryBranch)'=='true'">Assets\Icons\icon_foreground_canary.svg</UnoIconForegroundFile>
+		<UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets\Splash\splash_screen_canary.svg</UnoSplashScreenFile>
 	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(IsCanaryBranch)'=='true'">
+			<ItemGroup>
+				<UnoImage Include="Assets\Icons\chefslogo_canary.svg" Link="Assets\Icons\chefslogosignature.svg" />
+				<UnoImage Include="Assets\Icons\chefslogo_dark_canary.svg" Link="Assets\Icons\chefslogosignature_dark.svg" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<UnoImage Include="Assets\Icons\chefslogo.svg" Link="Assets\Icons\chefslogosignature.svg" />
+				<UnoImage Include="Assets\Icons\chefslogo_dark.svg" Link="Assets\Icons\chefslogosignature_dark.svg" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
 
 	<Choose>
 		<When Condition="$(IsAndroid) or $(IsIOSOrCatalyst)">

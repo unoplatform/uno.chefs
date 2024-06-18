@@ -51,8 +51,8 @@
 								   Text="Recipe Categories"
 								   TextWrapping="Wrap" />
 						<!-- It's important to put the ItemsSource bove the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
-						<muxc:ItemsRepeater ItemsSource="{Binding OrganizeCategories}"
-											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}"
+						<muxc:ItemsRepeater ItemsSource="{Binding FilterGroups}"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.FilterGroup, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>

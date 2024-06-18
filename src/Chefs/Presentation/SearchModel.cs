@@ -48,15 +48,15 @@ public partial class SearchModel
 		IImmutableList<Recipe> recipesByTerm;
 		IImmutableList<Recipe> recipesByCategory = recipesByTerm = inputs.recipes;
 
-		if (inputs.filter.OrganizeCategory is not null)
+		if (inputs.filter.FilterGroup is not null)
 		{
-			var selectedOrganizedCategory = inputs.filter.OrganizeCategory;
+			var selectedFilterGroup = inputs.filter.FilterGroup;
 
-			recipesByCategory = selectedOrganizedCategory switch
+			recipesByCategory = selectedFilterGroup switch
 			{
-				OrganizeCategory.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
-				OrganizeCategory.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
-				OrganizeCategory.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
+				FilterGroup.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
+				FilterGroup.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
+				FilterGroup.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
 				_ => recipesByCategory
 			};
 		}
@@ -69,17 +69,7 @@ public partial class SearchModel
 
 
 	public async ValueTask SearchPopular() =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory: OrganizeCategory.Popular));
-
-	public async ValueTask ShowCurrentProfile()
-	{
-		await _navigator.NavigateToProfile(this);
-	}
-
-	public async ValueTask ShowNotifications()
-	{
-		await _navigator.NavigateToNotifications(this);
-	}
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));
 
 	public async ValueTask ResetFilters() =>
 		await Filter.UpdateAsync(current => new SearchFilter());
