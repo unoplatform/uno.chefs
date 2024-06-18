@@ -22,9 +22,4 @@ public partial class ProfileModel
 	public IListFeed<Recipe> Recipes => Profile
 		.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct))
 		.AsListFeed();
-
-	public async ValueTask NavigateToSettings()
-	{
-		await _navigator.NavigateViewModelAsync<SettingsModel>(this, data: await Profile);
-	}
 }

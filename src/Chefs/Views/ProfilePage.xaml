@@ -73,7 +73,8 @@
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton Command="{Binding NavigateToSettings}"
+					<AppBarButton uen:Navigation.Request="Settings"
+								  uen:Navigation.Data="{Binding Profile.Value}"
 								  Visibility="{Binding Profile.IsCurrent}">
 						<AppBarButton.Icon>
 							<BitmapIcon UriSource="ms-appx:///Assets/Icons/settings.png" />
