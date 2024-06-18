@@ -46,6 +46,7 @@ variables:
   IsReleaseBranch: $[or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))]
 
 jobs:
+- template: build-windows.yml
 - template: build-android.yml
 - template: build-ios-catalyst.yml
 - template: build-wasm.yml
