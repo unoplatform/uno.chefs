@@ -263,14 +263,14 @@
 				</utu:AutoLayout>
 			</utu:NavigationBar.Content>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Command="{Binding ShowCurrentProfile}">
+				<AppBarButton uen:Navigation.Request="!Profile">
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"
 									UriSource="ms-appx:///Assets/Icons/user_profile.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Command="{Binding ShowNotifications}">
+				<AppBarButton uen:Navigation.Request="!Notifications">
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"

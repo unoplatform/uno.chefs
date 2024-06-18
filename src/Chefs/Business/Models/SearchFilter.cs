@@ -2,13 +2,13 @@ namespace Chefs.Business.Models;
 
 
 public record SearchFilter(
-	OrganizeCategory? OrganizeCategory,
-	Time? Time,
-	Difficulty? Difficulty,
-	int? Serves,
-	Category? Category)
+	FilterGroup? FilterGroup = null,
+	Time? Time = null,
+	Difficulty? Difficulty = null,
+	int? Serves = null,
+	Category? Category = null)
 {
-	public bool HasFilter => OrganizeCategory != null || Time != null ||
+	public bool HasFilter => FilterGroup != null || Time != null ||
 		Difficulty != null || Category != null || Serves != null;
 
 	public bool Match(Recipe recipe)
@@ -22,14 +22,9 @@ public record SearchFilter(
 			_ => TimeSpan.Zero,
 		};
 
-		if ((Difficulty == null || recipe.Difficulty == Difficulty) &&
-			(Time == null || recipe.CookTime < time) &&
-			(Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
-			(Serves == null || Serves == recipe.Serves))
-		{
-			return true;
-		}
-
-		return false;
+		return (Difficulty == null || recipe.Difficulty == Difficulty) &&
+			   (Time == null || recipe.CookTime < time) &&
+			   (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
+			   (Serves == null || Serves == recipe.Serves);
 	}
 }

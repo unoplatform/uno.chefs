@@ -1,5 +1,4 @@
 using Chefs.Presentation.Extensions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Chefs.Presentation;
 
@@ -15,12 +14,10 @@ public partial class HomeModel
 		_recipeService = recipe;
 		_userService = userService;
 	}
-
-	private IListFeed<Recipe> Recipes => ListFeed.Async(_recipeService.GetAll);
-
+	
 	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
 
-	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(GetCategories);
+	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(_recipeService.GetCategoriesWithCount);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);
 
@@ -40,39 +37,15 @@ public partial class HomeModel
 		return categoriesWithCount.ToImmutableList();
 	}
 
-	public async ValueTask Search(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.Separator);
-
 	public async ValueTask ShowAll(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Popular, null, null, null, null));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));
 
 	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(OrganizeCategory.Recent, null, null, null, null));
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Recent));
 
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(null, null, null, null, categoryWithCount.Category));
-
-	public async ValueTask RecipeDetails(Recipe recipe, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<RecipeDetailsModel>(this, data: recipe);
-
-	public async ValueTask ProfileCreator(User user, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<ProfileModel>(this, data: user, cancellation: ct);
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(Category: categoryWithCount.Category));
 
 	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Save(recipe, ct);
-
-	public async ValueTask ShowProfile(User profile)
-	{
-		await _navigator.NavigateToProfile(this, profile);
-	}
-
-	public async ValueTask ShowCurrentProfile()
-	{
-		await _navigator.NavigateToProfile(this);
-	}
-
-	public async ValueTask ShowNotifications()
-	{
-		await _navigator.NavigateToNotifications(this);
-	}
 }

@@ -121,7 +121,7 @@
 						<Button x:Name="FabButton"
 								HorizontalAlignment="Right"
 								VerticalAlignment="Bottom"
-								uen:Navigation.Data="{Binding Cookbook.Value, Mode=TwoWay}"
+								uen:Navigation.Data="{Binding Data, Mode=TwoWay}"
 								uen:Navigation.Request="UpdateCookbook"
 								utu:AutoLayout.IsIndependentLayout="True"
 								CornerRadius="56"

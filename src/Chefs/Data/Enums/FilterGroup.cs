@@ -1,6 +1,6 @@
 namespace Chefs.Data;
 
-public enum OrganizeCategory
+public enum FilterGroup
 {
 	Popular,
 	Trending,
