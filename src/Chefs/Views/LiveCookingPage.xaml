@@ -150,8 +150,8 @@
 						  Background="Transparent"
 						  utu:AutoLayout.PrimaryAlignment="Stretch"
 						  ItemTemplate="{StaticResource StepTemplate}"
-						  ItemsSource="{Binding Steps.Items}"
-						  SelectedIndex="{Binding Steps.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						  ItemsSource="{Binding Steps.Value.Items}"
+						  SelectedIndex="{Binding Steps.Value.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				<utu:AutoLayout CornerRadius="8"
 								Padding="40,0">
 					<muxc:PipsPager x:Name="pipsPager"
@@ -169,19 +169,19 @@
 								CornerRadius="4"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
 								Style="{StaticResource TextButtonStyle}"
-								Visibility="{Binding Steps.CanMovePrevious}" />
+								Visibility="{Binding Steps.Value.CanMovePrevious, Converter={StaticResource TrueToVisible}}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Content="Next"
 								CornerRadius="4"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
-								Visibility="{Binding Steps.CanMoveNext}" />
+								Visibility="{Binding Steps.Value.CanMoveNext}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Command="{Binding Complete}"
 								Content="Done!"
 								CornerRadius="4"
-								Visibility="{Binding Steps.CanMoveNext}" />
+								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>

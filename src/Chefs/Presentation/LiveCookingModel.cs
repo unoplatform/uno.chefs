@@ -4,9 +4,9 @@ public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
 public partial class LiveCookingModel
 {
-	public IState<StepIterable> Steps { get; }
-	public Uri VideoSource { get; set; } = new("ms-appx:///Assets/Videos/CookingVideo.mp4");
-	public IState<bool> Completed { get; }
+	private readonly StepIterable _steps;
+	public IState<StepIterable> Steps => State.Value(this, () => _steps);
+	public IState<bool> Completed => State.Value(this, () => false);
 	public Recipe Recipe { get; }
 	
 	private readonly IRecipeService _recipeService;
@@ -15,9 +15,7 @@ public partial class LiveCookingModel
 	{
 		Recipe = parameter.Recipe;
 		_recipeService = recipeService;
-		
-		Steps = State.Value(this, () => new StepIterable(parameter.Steps.ToImmutableList()));
-		Completed = State.Value(this, () => false);
+		_steps = new StepIterable(parameter.Steps.ToImmutableList());
 	}
 	
 	public async ValueTask Complete()
