@@ -9,6 +9,27 @@ In applications, especially on mobile, managing screen space efficiently is cruc
 ## Solution
 The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for implementing adaptive drawer flyouts.
 
+* Basic Drawer Flyout Example
+
+    To start with a basic drawer flyout, you can use one of the FlyoutPresenterStyles provided by the Uno Toolkit. Here’s how you can create a simple drawer flyout:
+
+    ```xml
+    <Button Content="Open Flyout">
+        <Button.Flyout>
+            <Flyout Placement="Left">
+                <Flyout.FlyoutPresenterStyle>
+                    <Style TargetType="FlyoutPresenter">
+                        <Setter Property="Width" Value="300" />
+                        <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" />
+                    </Style>
+                </Flyout.FlyoutPresenterStyle>
+                <TextBlock Text="This is a basic flyout!" Margin="12" />
+            </Flyout>
+        </Button.Flyout>
+    </Button>
+    ```
+### Customizing the Drawer Flyout
+
 * Creating the ResponsiveDrawerFlyout: 
 
     ```xml
