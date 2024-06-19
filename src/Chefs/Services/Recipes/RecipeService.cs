@@ -119,8 +119,14 @@ public class RecipeService : IRecipeService
 		var updatedRecipe = recipe with { Save = !recipe.Save };
 		await _recipeEndpoint.Save(updatedRecipe.ToData(), ct);
 
-		var savedRecipes = await GetSaved(ct);
-		await SavedRecipes.UpdateAsync(s => s = savedRecipes);
+		if (updatedRecipe.Save)
+		{
+			await SavedRecipes.AddAsync(updatedRecipe);
+		}
+		else
+		{
+			await SavedRecipes.RemoveAllAsync(r => r.Id == updatedRecipe.Id);
+		}
 
 		_messenger.Send(new EntityMessage<Recipe>(EntityChange.Updated, updatedRecipe));
 	}

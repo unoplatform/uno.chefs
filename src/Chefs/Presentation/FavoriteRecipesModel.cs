@@ -21,7 +21,6 @@ public partial class FavoriteRecipesModel
 		_messenger = messenger;
 
 		_messenger.Observe(SavedCookbooks, cb => cb.Id);
-		_messenger.Observe(SavedRecipes, r => r.Id);
 	}
 
 	public IListState<Cookbook> SavedCookbooks => ListState.FromFeed(this, _cookbookService.SavedCookbooks);
