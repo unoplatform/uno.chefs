@@ -16,18 +16,14 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
     ```xml
     <Button Content="Open Flyout">
         <Button.Flyout>
-            <Flyout Placement="Left">
-                <Flyout.FlyoutPresenterStyle>
-                    <Style TargetType="FlyoutPresenter">
-                        <Setter Property="Width" Value="300" />
-                        <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" />
-                    </Style>
-                </Flyout.FlyoutPresenterStyle>
-                <TextBlock Text="This is a basic flyout!" Margin="12" />
+            <Flyout Placement="Left" FlyoutPresenterStyle="{StaticResource LeftDrawerFlyoutPresenterStyle}">
+            <TextBlock Text="This is a basic flyout with Uno Toolkit Style!" Margin="12" />
             </Flyout>
         </Button.Flyout>
     </Button>
     ```
+    This example uses `LeftDrawerFlyoutPresenterStyle`, one of the pre-built styles from Uno Toolkit, which configures the Flyout to open from the left with a drawer-like experience.
+    
 ### Customizing the Drawer Flyout
 
 * Creating the ResponsiveDrawerFlyout: 
@@ -84,13 +80,13 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
         services.AddTransient<Flyout, ResponsiveDrawerFlyout>();
     }
     ```
-    Here's an example of invoking a modal navigation with the "!" qualifier from the chefs app:
+    Here's an example of invoking a modal navigation with the "!" qualifier from the Chefs app:
 
     ```csharp
     // Navigation method example
     public static Task NavigateToNotifications(this INavigator navigator, object sender)
     {
-        return navigator.NavigateRouteAsync(sender, "Notifications",        qualifier: Qualifiers.Dialog);
+        return navigator.NavigateRouteAsync(sender, "Notifications", qualifier: Qualifiers.Dialog);
     }
 
     // Qualifiers definition
