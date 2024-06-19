@@ -128,9 +128,11 @@
 																			 Wide=Stretch}"
 							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
 																  Wide=Center}">
-				<!-- MediaPlayerElement currently isn't supported on Skia Desktop, videos are not be playable 
-					 It is listed as a future improvement: https://platform.uno/docs/articles/controls/MediaPlayerElement.html#future-improvement
-                	 Related issue: https://github.com/unoplatform/Uno.Samples/issues/725 -->
+				<!--
+					MediaPlayerElement currently isn't supported on Skia Desktop, videos are not be playable
+					It is listed as a future improvement: https://platform.uno/docs/articles/controls/MediaPlayerElement.html#future-improvement
+					Related issue: https://github.com/unoplatform/Uno.Samples/issues/725
+				-->
 				<MediaPlayerElement AreTransportControlsEnabled="True"
 									Source="{Binding CurrentStep.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
 					<MediaPlayerElement.TransportControls>
