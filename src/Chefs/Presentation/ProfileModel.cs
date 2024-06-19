@@ -13,8 +13,8 @@ public partial class ProfileModel
 	{
 		_navigator = navigator;
 		_recipeService = recipeService;
-
-		Profile = user != null ? State.Value(this, () => user) : userService.User;
+		
+		Profile = Feed.Async(async (ct) => user ?? await userService.GetCurrent(ct));
 	}
 
 	public IFeed<User> Profile { get; }
