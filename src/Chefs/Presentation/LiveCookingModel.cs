@@ -4,8 +4,8 @@ public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
 public partial class LiveCookingModel
 {
-	private readonly StepIterable _steps;
-	public IState<StepIterable> Steps => State.Value(this, () => _steps);
+	private readonly StepIterator _steps;
+	public IState<StepIterator> Steps => State.Value(this, () => _steps);
 	public IState<bool> Completed => State.Value(this, () => false);
 	public Recipe Recipe { get; }
 	
@@ -15,7 +15,7 @@ public partial class LiveCookingModel
 	{
 		Recipe = parameter.Recipe;
 		_recipeService = recipeService;
-		_steps = new StepIterable(parameter.Steps.ToImmutableList());
+		_steps = new StepIterator(parameter.Steps);
 	}
 	
 	public async ValueTask Complete()
@@ -24,10 +24,10 @@ public partial class LiveCookingModel
 	}
 	
 	public ValueTask Previous()
-		=> Steps.UpdateAsync(steps => steps!.MovePrevious() as StepIterable);
+		=> Steps.UpdateAsync(steps => steps!.MovePrevious() as StepIterator);
 	
 	public ValueTask Next()
-		=> Steps.UpdateAsync(steps => steps!.MoveNext() as StepIterable);
+		=> Steps.UpdateAsync(steps => steps!.MoveNext() as StepIterator);
 	
 	public async ValueTask BackToLastStep(CancellationToken ct)
 	{
@@ -38,4 +38,3 @@ public partial class LiveCookingModel
 		await _recipeService.Save(recipe, ct);
 	}
 }
-public record StepIterable(IImmutableList<Step> Items) : Iterator<Step>(Items);

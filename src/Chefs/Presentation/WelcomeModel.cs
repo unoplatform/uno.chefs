@@ -2,9 +2,9 @@ namespace Chefs.Presentation;
 
 public partial record WelcomeModel(INavigator navigator)
 {
-	public IState<Iterator<int>> Pages => State<Iterator<int>>.Value(this, () => new Iterator<int>(Enumerable.Range(0, 3).ToImmutableList()));
+	public IState<IntIterator> Pages => State<IntIterator>.Value(this, () => new IntIterator(Enumerable.Range(0, 3).ToImmutableList()));
 	
-	public async ValueTask NextPage(Iterator<int> pages)
+	public async ValueTask NextPage(IntIterator pages)
 	{
 		if (!pages.CanMoveNext)
 		{
