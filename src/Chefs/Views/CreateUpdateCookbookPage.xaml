@@ -112,7 +112,6 @@
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar x:Name="NavBarLayout"
-							   toolkit:UIElementExtensions.Elevation="0"
 							   Background="{ThemeResource SurfaceInverseBrush}"
 							   Content="{Binding Title}"
 							   Foreground="{ThemeResource OnSurfaceInverseBrush}">
