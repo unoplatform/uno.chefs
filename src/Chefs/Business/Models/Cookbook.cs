@@ -8,8 +8,8 @@ public partial record Cookbook : IChefEntity
 		UserId = cookbookData.UserId;
 		Name = cookbookData.Name;
 		Recipes = cookbookData.Recipes?
-			.Select(c => new Recipe(c))
-			.ToImmutableList();
+			.Select(c => new Recipe(c) { Selected = true })
+			.ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 		CookbookImages = new CookbookImages(cookbookData.Recipes?.ToImmutableList() ?? ImmutableList<RecipeData>.Empty);
 	}
 
@@ -19,7 +19,7 @@ public partial record Cookbook : IChefEntity
 	public Guid UserId { get; init; }
 	public string? Name { get; init; }
 	public int PinsNumber => Recipes?.Count ?? 0;
-	public IImmutableList<Recipe>? Recipes { get; init; }
+	public IImmutableList<Recipe> Recipes { get; init; }
 	public CookbookImages? CookbookImages { get; init; }
 
 	internal CookbookData ToData() => new()
