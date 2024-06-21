@@ -230,6 +230,7 @@
 
 								<utu:AutoLayout Padding="16"
 												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Start"
 												Spacing="4">
 									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 											   Style="{StaticResource TitleSmall}"
