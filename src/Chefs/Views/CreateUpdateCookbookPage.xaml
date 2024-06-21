@@ -46,9 +46,9 @@
 								<Border x:Name="ImageLayout"
 										Height="144">
 									<Image Source="{Binding ImageUrl}"
-											Stretch="UniformToFill"
-											VerticalAlignment="Center"
-											HorizontalAlignment="Center" />
+										   Stretch="UniformToFill"
+										   VerticalAlignment="Center"
+										   HorizontalAlignment="Center" />
 								</Border>
 
 								<utu:AutoLayout>
@@ -61,16 +61,16 @@
 												<utu:AutoLayout Spacing="4"
 																PrimaryAxisAlignment="Center">
 													<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-																Style="{StaticResource TitleSmall}"
-																Text="{Binding Name}"
-																TextWrapping="NoWrap"
-																TextTrimming="CharacterEllipsis" />
+															   Style="{StaticResource TitleSmall}"
+															   Text="{Binding Name}"
+															   TextWrapping="NoWrap"
+															   TextTrimming="CharacterEllipsis" />
 													<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-																Style="{StaticResource CaptionMedium}"
-																utu:AutoLayout.PrimaryAlignment="Stretch"
-																Text="{Binding TimeCal}"
-																TextWrapping="NoWrap"
-																TextTrimming="CharacterEllipsis" />
+															   Style="{StaticResource CaptionMedium}"
+															   utu:AutoLayout.PrimaryAlignment="Stretch"
+															   Text="{Binding TimeCal}"
+															   TextWrapping="NoWrap"
+															   TextTrimming="CharacterEllipsis" />
 												</utu:AutoLayout>
 											</utu:AutoLayout>
 										</utu:AutoLayout>
@@ -81,16 +81,16 @@
 												<Border utu:AutoLayout.CounterAlignment="Start"
 														Visibility="{Binding Converter={StaticResource TrueToCollapsed}, ElementName=RecipeTemplateCard, Path=IsSelected}">
 													<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																Glyph="{StaticResource Icon_Favorite}"
-																DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																Foreground="{ThemeResource OnSurfaceBrush}" />
+															  Glyph="{StaticResource Icon_Favorite}"
+															  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+															  Foreground="{ThemeResource OnSurfaceBrush}" />
 												</Border>
 												<Border utu:AutoLayout.CounterAlignment="Start"
 														Visibility="{Binding ElementName=RecipeTemplateCard, Path=IsSelected}">
 													<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																Glyph="{StaticResource Icon_Favorite}"
-																DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																Foreground="{ThemeResource PrimaryBrush}" />
+															  Glyph="{StaticResource Icon_Favorite}"
+															  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+															  Foreground="{ThemeResource PrimaryBrush}" />
 												</Border>
 											</utu:AutoLayout>
 										</utu:AutoLayout>
