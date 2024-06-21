@@ -14,7 +14,7 @@ public partial class App : Application
 		this.InitializeComponent();
 	}
 	
-	private static Window? _window;
+	public static Window? MainWindow;
 	public static IHost? Host { get; private set; }
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
 	{
@@ -96,13 +96,13 @@ public partial class App : Application
 					return new(point, nutritionChartItem.Value);
 				})
 		);
-		_window = builder.Window;
+		MainWindow = builder.Window;
 
 		Host = await builder.NavigateAsync<ShellControl>();
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
 		var userService = Host.Services.GetRequiredService<IUserService>();
-		var themeService = _window.GetThemeService();
+		var themeService = MainWindow.GetThemeService();
 		var appTheme = config.Value?.IsDark switch
 		{
 			true => AppTheme.Dark,

@@ -7,15 +7,19 @@ public partial class HomeModel
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly IUserService _userService;
+	private readonly IMessenger _messenger;
 
-	public HomeModel(INavigator navigator, IRecipeService recipe, IUserService userService)
+	public HomeModel(INavigator navigator, IRecipeService recipe, IUserService userService, IMessenger messenger)
 	{
 		_navigator = navigator;
 		_recipeService = recipe;
 		_userService = userService;
+		_messenger = messenger;
+
+		_messenger.Observe(TrendingNow, r => r.Id);
 	}
 	
-	public IListFeed<Recipe> TrendingNow => ListFeed.Async(_recipeService.GetTrending);
+	public IListState<Recipe> TrendingNow => ListState.Async(this, _recipeService.GetTrending);
 
 	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(_recipeService.GetCategoriesWithCount);
 

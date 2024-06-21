@@ -44,7 +44,7 @@ public interface IRecipeService
 	/// <summary>
 	/// Saved recipes.
 	/// </summary>
-	IListFeed<Recipe> SavedRecipes { get; }
+	IListState<Recipe> SavedRecipes { get; }
 
 	/// <summary>
 	/// Recipes with a specific category

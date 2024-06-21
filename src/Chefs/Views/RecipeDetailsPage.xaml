@@ -12,6 +12,7 @@
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:ut="using:Uno.Themes"
+	  xmlns:converters="using:Chefs.Converters"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  HorizontalAlignment="Stretch"
 	  VerticalAlignment="Stretch"
@@ -20,6 +21,10 @@
 	  mc:Ignorable="d">
 
 	<Page.Resources>
+		<converters:BoolToObjectConverter x:Key="BooleanToHeartFontIconStyle"
+										  TrueValue="{StaticResource FontAwesomeSolidFontIconStyle}"
+										  FalseValue="{StaticResource FontAwesomeRegularFontIconStyle}" />
+
 		<DataTemplate x:Key="EmptyTemplate">
 			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
 													 Wide='40'}"
@@ -57,14 +62,18 @@
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Share}"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
 						<BitmapIcon UriSource="ms-appx:///Assets/Icons/share_recipe.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Save}"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/favorite_heart.png" />
+						<FontIcon Style="{Binding IsSaved, Converter={StaticResource BooleanToHeartFontIconStyle}}"
+								  Glyph="{StaticResource Icon_Favorite}"
+								  Foreground="{ThemeResource SurfaceBrush}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
