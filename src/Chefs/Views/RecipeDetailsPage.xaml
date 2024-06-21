@@ -46,7 +46,6 @@
 	</Page.Resources>
 	<utu:AutoLayout>
 		<utu:NavigationBar x:Name="NavBar"
-						   toolkit:UIElementExtensions.Elevation="0"
 						   Background="{ThemeResource SurfaceInverseBrush}"
 						   Content="{Binding Recipe.Name}"
 						   Foreground="{ThemeResource OnSurfaceInverseBrush}">
