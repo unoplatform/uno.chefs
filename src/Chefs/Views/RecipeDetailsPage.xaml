@@ -26,7 +26,8 @@
 										  FalseValue="{StaticResource FontAwesomeRegularFontIconStyle}" />
 
 		<DataTemplate x:Key="EmptyTemplate">
-			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40'}"
+			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
+													 Wide='40'}"
 							utu:AutoLayout.PrimaryAlignment="Stretch"
 							PrimaryAxisAlignment="Center">
 				<utu:AutoLayout Padding="32,0"
@@ -342,7 +343,8 @@
 																						<ToggleButton HorizontalContentAlignment="Center"
 																									  VerticalContentAlignment="Center"
 																									  utu:AutoLayout.CounterAlignment="Start"
-																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.Like}"
+																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																																	Path=DataContext.Like}"
 																									  CommandParameter="{Binding}"
 																									  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}}">
 																							<ToggleButton.Content>
@@ -375,7 +377,8 @@
 																						<ToggleButton HorizontalContentAlignment="Center"
 																									  VerticalContentAlignment="Center"
 																									  utu:AutoLayout.CounterAlignment="Start"
-																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.Dislike}"
+																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																																	Path=DataContext.Dislike}"
 																									  CommandParameter="{Binding}"
 																									  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}}">
 																							<ToggleButton.Content>
@@ -728,7 +731,8 @@
 																					<ToggleButton HorizontalContentAlignment="Center"
 																								  VerticalContentAlignment="Center"
 																								  utu:AutoLayout.CounterAlignment="Center"
-																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.Like}"
+																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																																Path=DataContext.Like}"
 																								  CommandParameter="{Binding}"
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}}">
 																						<ToggleButton.Content>
@@ -766,7 +770,8 @@
 																					<ToggleButton HorizontalContentAlignment="Center"
 																								  VerticalContentAlignment="Center"
 																								  utu:AutoLayout.CounterAlignment="Center"
-																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.Dislike}"
+																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																																Path=DataContext.Dislike}"
 																								  CommandParameter="{Binding}"
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}}">
 																						<ToggleButton.Content>
