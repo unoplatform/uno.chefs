@@ -1,5 +1,9 @@
 namespace Chefs.Business.Models;
 
+// WORKAROUND
+// This is a workaround until the following issue is resolved: https://github.com/unoplatform/uno.extensions/issues/2383
+// Once the issue is resolved, we should be able to use a single Iterator<T> class for both Step and int types.
+
 public record StepIterator(IImmutableList<Step> Items)
 {
 	public int CurrentIndex { get; init; } = 0;
