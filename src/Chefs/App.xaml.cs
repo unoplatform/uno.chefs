@@ -131,7 +131,22 @@ public partial class App : Application
 			new ViewMap<LoginPage, LoginModel>(ResultData: typeof(Credentials)),
 			new ViewMap<RegistrationPage, RegistrationModel>(),
 			new ViewMap<NotificationsPage, NotificationsModel>(),
-			new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>(), ResultData: typeof(IChefEntity)),
+			new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>(
+				ToQuery: user => new Dictionary<string, string> 
+				{
+					{ nameof(User.Id), user.Id.ToString() }
+				},
+				FromQuery: async (sp, query) =>
+				{
+					var userService = sp.GetRequiredService<IUserService>();
+					if (Guid.TryParse($"{query[nameof(User.Id)]}", out var guid))
+					{
+						 return await userService.GetById(guid, default);
+					}
+
+					return await userService.GetCurrent(default);
+				}
+			)),
 			new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
 			new ViewMap<FavoriteRecipesPage, FavoriteRecipesModel>(),
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
