@@ -35,7 +35,7 @@ public partial class SearchModel
 	public async ValueTask ApplyHistory(string term) => await Term.SetAsync(term);
 
 	private IFeed<IImmutableList<Recipe>> Results => Feed
-		.Combine(Term, Filter.Select(f => f.FilterGroup))
+		.Combine(Term, Filter)
 		.SelectAsync(_recipeService.Search);
 	
 	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipesToFilter, SearchFilter filter) inputs)

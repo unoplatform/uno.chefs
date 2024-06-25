@@ -59,9 +59,9 @@ public class RecipeService : IRecipeService
 		   .Select(r => new Recipe(r))
 		   .ToImmutableList();
 
-	public async ValueTask<IImmutableList<Recipe>> Search((string term, FilterGroup filterGroup) inputs, CancellationToken ct)
+	public async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
 	{
-		var recipesToSearch = inputs.filterGroup switch
+		var recipesToSearch = inputs.filter.FilterGroup switch
 		{
 			FilterGroup.Popular => await GetPopular(ct),
 			FilterGroup.Trending => await GetTrending(ct),
