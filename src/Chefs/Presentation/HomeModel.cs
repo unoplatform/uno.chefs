@@ -50,6 +50,6 @@ public partial class HomeModel
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.ClearBackStack, data: new SearchFilter(Category: categoryWithCount.Category));
 
-	public async ValueTask SaveRecipe(Recipe recipe, CancellationToken ct) =>
-		await _recipeService.Save(recipe, ct);
+	public async ValueTask FavoriteRecipe(Recipe recipe, CancellationToken ct) =>
+		await _recipeService.Favorite(recipe, ct);
 }

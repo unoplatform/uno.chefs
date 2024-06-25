@@ -31,7 +31,7 @@ public partial class RecipeDetailsModel
 	}
 
 	public Recipe Recipe { get; }
-	public IState<bool> IsSaved => State.Value(this, () => Recipe.Save);
+	public IState<bool> IsFavorited => State.Value(this, () => Recipe.IsFavorite);
 	public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct));
 	public IFeed<User> CurrentUser => Feed.Async(async ct => await _userService.GetCurrent(ct));
 	public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
@@ -58,10 +58,10 @@ public partial class RecipeDetailsModel
 		await _navigator.NavigateRouteAsync(this, route, data: new LiveCookingParameter(Recipe, steps));
 	}
 
-	public async ValueTask Save(CancellationToken ct)
+	public async ValueTask Favorite(CancellationToken ct)
 	{
-		await _recipeService.Save(Recipe, ct);
-		await IsSaved.UpdateAsync(s => !s);
+		await _recipeService.Favorite(Recipe, ct);
+		await IsFavorited.UpdateAsync(s => !s);
 	}
 
 	public async ValueTask Share(CancellationToken ct)

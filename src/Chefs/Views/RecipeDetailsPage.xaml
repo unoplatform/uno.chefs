@@ -68,10 +68,10 @@
 						<BitmapIcon UriSource="ms-appx:///Assets/Icons/share_recipe.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Command="{Binding Save}"
+				<AppBarButton Command="{Binding Favorite}"
 							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<AppBarButton.Icon>
-						<FontIcon Style="{Binding IsSaved, Converter={StaticResource BooleanToHeartFontIconStyle}}"
+						<FontIcon Style="{Binding IsFavorited, Converter={StaticResource BooleanToHeartFontIconStyle}}"
 								  Glyph="{StaticResource Icon_Favorite}"
 								  Foreground="{ThemeResource SurfaceBrush}" />
 					</AppBarButton.Icon>

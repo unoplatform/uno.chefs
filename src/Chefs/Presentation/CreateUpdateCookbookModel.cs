@@ -49,7 +49,7 @@ public partial class CreateUpdateCookbookModel
 
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
 
-	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetSaved).Selection(SelectedRecipes);
+	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetFavorited).Selection(SelectedRecipes);
 
 	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
 
