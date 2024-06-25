@@ -141,17 +141,21 @@
 				</MediaPlayerElement>
 			</utu:AutoLayout>
 
+			<!--
+				WORKAROUND
+				Binding to the Steps.Value property instead of directly on the Steps entity until
+				https://github.com/unoplatform/uno.extensions/issues/2391 is fixed
+			-->
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Justify="SpaceBetween"
 							Padding="0,40">
-				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
 				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 						  Background="Transparent"
 						  utu:AutoLayout.PrimaryAlignment="Stretch"
 						  ItemTemplate="{StaticResource StepTemplate}"
-						  ItemsSource="{Binding Steps}"
-						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						  ItemsSource="{Binding Steps.Value.Items}"
+						  SelectedIndex="{Binding Steps.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				<utu:AutoLayout CornerRadius="8"
 								Padding="40,0">
 					<muxc:PipsPager x:Name="pipsPager"
@@ -169,19 +173,19 @@
 								CornerRadius="4"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
 								Style="{StaticResource TextButtonStyle}"
-								Visibility="{Binding CanGoBack, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.Value.CanMovePrevious}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Content="Next"
 								CornerRadius="4"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
-								Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.Value.CanMoveNext}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Command="{Binding Complete}"
 								Content="Done!"
 								CornerRadius="4"
-								Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
@@ -189,7 +193,7 @@
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
-						Visibility="{Binding Completed, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
+						Visibility="{Binding Completed}"
 						Orientation="{utu:Responsive Narrow=Vertical,
 													 Wide=Horizontal}">
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
