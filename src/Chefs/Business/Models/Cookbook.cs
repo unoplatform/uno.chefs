@@ -8,7 +8,7 @@ public partial record Cookbook : IChefEntity
 		UserId = cookbookData.UserId;
 		Name = cookbookData.Name;
 		Recipes = cookbookData.Recipes?
-			.Select(c => new Recipe(c) { Selected = true })
+			.Select(c => new Recipe(c))
 			.ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 		CookbookImages = new CookbookImages(cookbookData.Recipes?.ToImmutableList() ?? ImmutableList<RecipeData>.Empty);
 	}
