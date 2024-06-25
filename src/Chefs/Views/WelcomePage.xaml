@@ -35,6 +35,11 @@
 								Style="{StaticResource PipsPagerStyle}" />
 
 				<!-- Buttons -->
+				<!--
+					WORKAROUND
+					Binding to the Steps.Value property instead of directly on the Steps entity until
+					https://github.com/unoplatform/uno.extensions/issues/2391 is fixed
+				-->
 				<utu:AutoLayout Spacing="16"
 								PrimaryAxisAlignment="Center">
 					<utu:AutoLayout Spacing="16"

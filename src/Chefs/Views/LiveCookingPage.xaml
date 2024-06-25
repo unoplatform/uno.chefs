@@ -141,10 +141,14 @@
 				</MediaPlayerElement>
 			</utu:AutoLayout>
 
+			<!--
+				WORKAROUND
+				Binding to the Steps.Value property instead of directly on the Steps entity until
+				https://github.com/unoplatform/uno.extensions/issues/2391 is fixed
+			-->
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Justify="SpaceBetween"
 							Padding="0,40">
-				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
 				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 						  Background="Transparent"
