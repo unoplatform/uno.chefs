@@ -1,6 +1,6 @@
 namespace Chefs.Business.Models;
 
-public struct Step
+public record Step
 {
 	public Step(StepData stepData)
 	{
