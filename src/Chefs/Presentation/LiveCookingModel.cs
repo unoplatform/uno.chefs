@@ -26,9 +26,9 @@ public partial class LiveCookingModel
 		await Completed.SetAsync(true);
 	}
 	
-	public async ValueTask BackToLastStep(CancellationToken ct)
+	public async ValueTask BackToLastStep()
 	{
-		await Completed.Set(false, ct);
+		await Completed.SetAsync(false);
 	}
 
 	public async ValueTask Save(Recipe recipe, CancellationToken ct)
