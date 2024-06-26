@@ -6,15 +6,11 @@ namespace Chefs.Business.Models;
 
 public record StepIterator(IImmutableList<Step> Items)
 {
-	private readonly int _currentIndex;
-	public int CurrentIndex
-	{
-		get => _currentIndex;
-		init
-		{
-			_currentIndex = value < 0 || value >= Items.Count ? 0 : value;
-		}
-	}
+	public int CurrentIndex { get; init; } = 0;
+	public Step? CurrentItem => CurrentIndex >= 0 && CurrentIndex < Items.Count
+		? Items[CurrentIndex]
+		: null;
+	
 	public int Count => Items.Count;
 	public bool CanMoveNext => CurrentIndex < Items.Count - 1;
 	public bool CanMovePrevious => CurrentIndex > 0;
