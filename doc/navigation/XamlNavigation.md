@@ -38,31 +38,13 @@ The string value specified is the route to be navigated to, here _RecipeDetails_
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI">
 ```
 
-A conventional route that is defined for navigating back is "-". Here's an example from the _ReviewsPage_:
-
-```xml
-<Button uen:Navigation.Request="-"
-		utu:AutoLayout.CounterAlignment="End"
-	    Style="{StaticResource IconButtonStyle}">
-```
+Navigation Extensions provides multiple [qualifiers](xref:Reference.Navigation.Qualifiers) that you can add to the `Navigation.Request`. There's also more [advanced techniques](xref:Uno.Extensions.Navigation.Advanced.PageNavigation) you can put in place to better handle the navigation back-stack.
 
 ### 2. Navigation.Data
 
 Navigating with data is made easy with the `Navigation.Data` attached property. We can define the data to be attached to the navigation request, which can be accessed by the route's view model using constructor injection. Let's see how the _RecipeDetails_ page receives the correct data when a user clicks on a specific recipe.
 
-First of all, we're going to need to define the type of data that will be attached to the navigation request. Here, it's a recipe record:
-
-```csharp
-public partial record Recipe : IChefEntity
-{
-    public string? ImageUrl { get; init; }
-	public string? Name { get; init; }
-	public int Serves { get; init; }
-    ...
-}
-```
-
-When we're registering the routes in the _App.cs_ file, we should add a `DataMap` parameter to the `ViewMap` for _RecipeDetailsPage_. This allows the Recipe to be injected into the _RecipeDetailsModel_ during navigation.
+When we're registering the routes in the _App.cs_ file, we should add a `DataMap` parameter to the `ViewMap` for _RecipeDetailsPage_. This allows the Recipe record to be injected into the _RecipeDetailsModel_ during navigation.
 
 ```csharp
 private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
