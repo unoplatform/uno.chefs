@@ -1,5 +1,11 @@
 <linker>
 	<assembly fullname="Chefs" />
+	<assembly fullname="Uno.Extensions.Authentication">
+		<type fullname="Uno.Extensions.Authentication.Custom.CustomAuthenticationProvider" />
+	</assembly>
+	<assembly fullname="Uno.Extensions.Storage">
+		<type fullname="Uno.Extensions.Storage.KeyValueStorage.InMemoryKeyValueStorage" />
+	</assembly>
 	<assembly fullname="System.Core">
 		<!-- This is required by JSon.NET and any expression.Compile caller -->
 		<type fullname="System.Linq.Expressions*" />

@@ -30,7 +30,6 @@ public partial record Recipe : IChefEntity
 	public Category Category { get; init; }
 	public DateTime Date { get; init; }
 	public bool IsFavorite { get; init; }
-	public bool Selected { get; init; }
 	public Nutrition Nutrition { get; init; }
 
 	//remove "kcal" unit from Calories property
