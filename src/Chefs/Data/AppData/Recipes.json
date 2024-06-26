@@ -237,28 +237,33 @@
     "Serves": 1,
     "CookTime": "00:11:00",
     "Difficulty": 0,
-    "Ingredients": [
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/leafy_green.png",
-        "Name": "Spinach",
-        "Quantity": "200 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
-        "Name": "Rosemary",
-        "Quantity": "10 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
-        "Name": "Tomatoes",
-        "Quantity": "100 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/butter.png",
-        "Name": "Fresh burrata",
-        "Quantity": "50 g"
-      }
-    ],
+		"Ingredients": [
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/leafy_green.png",
+				"Name": "Spinach",
+				"Quantity": "200 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/salmon.png",
+				"Name": "Salmon",
+				"Quantity": "200 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
+				"Name": "Rosemary",
+				"Quantity": "10 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
+				"Name": "Tomatoes",
+				"Quantity": "100 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/butter.png",
+				"Name": "Fresh burrata",
+				"Quantity": "50 g"
+			}
+		],
     "Calories": "200 kcal",
     "Reviews": [
       {
@@ -807,101 +812,116 @@
     "Date": "2022-10-15T00:00:00Z",
     "Save": false
   },
-  {
-    "Name": "Walnut and nuts",
-    "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
-    "Id": "f649eefe-93cb-4bca-93a2-af707966d217",
-    "Steps": [
-      {
-        "Name": "Getting started",
-        "CookTime": "00:02:00",
-        "Cookware": [ "Bowl" ],
-        "Description": "In a bowl, combine flour and sugar.\n\nCut in butter until mixture resembles coarse crumbs.\n\nCombine egg yolks and milk; stir into flour mixture until blended.\n\nWith lightly floured hands, press dough onto the bottom and 1 in.",
-        "Ingredients": [ "Flour", "Sugar", "Eggs", "Milk" ],
-        "Number": 1,
-        "UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
-      },
-      {
-        "Name": "Second Step",
-        "CookTime": "00:10:00",
-        "Cookware": [ "Knife", "Baking Sheet", "Pan" ],
-        "Description": "Up the sides of a 12-in.\n\nTart pan with removable bottom.\n\nLine unpricked crust with a double thickness of heavy-duty foil.\n\nFill with pie weights.\n\nPlace pan on a baking sheet.\n\nBake at 375° until edges are lightly browned, 12-15 minutes.",
-        "Ingredients": [ "Eggs", "Milk" ],
-        "Number": 2,
-        "UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
-      },
-      {
-        "Name": "Final step",
-        "CookTime": "00:20:00",
-        "Cookware": [ "SaucePan", "Spoon", "Wire rack" ],
-        "Description": "Meanwhile, in a saucepan, combine the sugar, cream, cinnamon and salt.\n\nBring to a boil over medium heat, stirring constantly.\n\nRemove from the heat; stir in walnuts.\n\nRemove foil from crust; pour filling into crust.\n\nBake until golden brown, 20-25 minutes.\n\nCool on a wire rack.\n\nStore in the refrigerator.",
-        "Ingredients": [ "Sugar", "Cream", "Cinnamon", "Salt", "Peanuts" ],
-        "Number": 3,
-        "UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
-      }
-    ],
-    "ImageUrl": "ms-appx:///Assets/Recipes/walnut_and_nuts.png",
-    "Serves": 1,
-    "CookTime": "00:32:00",
-    "Difficulty": 0,
-    "Ingredients": [
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/peanuts.png",
-        "Name": "Peanuts",
-        "Quantity": "10 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/egg.png",
-        "Name": "Eggs",
-        "Quantity": "5"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/green_apple.png",
-        "Name": "Applesauce",
-        "Quantity": "300 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
-        "Name": "Salt",
-        "Quantity": "30 gr"
-      }
-    ],
-    "Calories": "150 kcal",
-    "Reviews": [
-      {
-        "Id": "92ebde78-0049-4e8c-af6f-4e7dc6d6c0b2",
-        "RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
-        "PublisherName": "Roberta any",
-        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
-        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
-        "Date": "2022-07-12T00:00:00Z",
-        "Description": "Awesome recipe",
-        "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
-        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
-      }
-    ],
-    "Details": "Walnuts recipe to get very taste dessert",
-    "Creator": {
-      "Id": "3c896419-e280-40e7-8552-240635566fed",
-      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
-      "FullName": "James Bondi",
-      "Description": "Passionate about food and life",
-      "Email": "james.bondi@gmail.com",
-      "PhoneNumber": "",
-      "Password": "123",
-      "Followers": 450,
-      "Following": 124,
-      "Recipes": 0
-    },
-    "Category": {
-      "Id": 1,
-      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
-      "Name": "Breakfast",
-      "Color": "#7A67F8"
-    },
-    "Date": "2022-10-15T00:00:00Z",
-    "Save": false
-  },
+	{
+		"Name": "Walnut and Nuts",
+		"UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+		"Id": "f649eefe-93cb-4bca-93a2-af707966d217",
+		"Steps": [
+			{
+				"Name": "Getting Started",
+				"CookTime": "00:05:00",
+				"Cookware": [ "Bowl", "Spoon" ],
+				"Description": "Combine all the nuts in a large bowl. Mix well to combine.",
+				"Ingredients": [ "Walnuts", "Almonds", "Cashews", "Pecans" ],
+				"Number": 1,
+				"UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
+			},
+			{
+				"Name": "Second Step",
+				"CookTime": "00:05:00",
+				"Cookware": [ "Bowl", "Spoon" ],
+				"Description": "Add salt, cinnamon, and honey to the mixed nuts. Stir well until all the nuts are evenly coated.",
+				"Ingredients": [ "Salt", "Cinnamon", "Honey" ],
+				"Number": 2,
+				"UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
+			},
+			{
+				"Name": "Final Step",
+				"CookTime": "00:20:00",
+				"Cookware": [ "Baking Sheet", "Parchment Paper", "Oven" ],
+				"Description": "Preheat the oven to 350°F (175°C). Spread the seasoned nuts in a single layer on a baking sheet lined with parchment paper. Bake for 15-20 minutes, stirring halfway through, until the nuts are golden and fragrant.\n\nRemove the nuts from the oven and let them cool completely on a wire rack. Once cooled, transfer to a serving bowl and enjoy.",
+				"Ingredients": [],
+				"Number": 3,
+				"UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
+			}
+		],
+		"ImageUrl": "ms-appx:///Assets/Recipes/walnut_and_nuts.png",
+		"Serves": 4,
+		"CookTime": "00:40:00",
+		"Difficulty": 0,
+		"Ingredients": [
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/walnuts.png",
+				"Name": "Walnuts",
+				"Quantity": "100 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/almonds.png",
+				"Name": "Almonds",
+				"Quantity": "100 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/cashews.png",
+				"Name": "Cashews",
+				"Quantity": "100 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/pecans.png",
+				"Name": "Pecans",
+				"Quantity": "100 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+				"Name": "Salt",
+				"Quantity": "1 tsp"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/cinnamon.png",
+				"Name": "Cinnamon",
+				"Quantity": "1 tsp"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/honey.png",
+				"Name": "Honey",
+				"Quantity": "2 tbsp"
+			}
+		],
+		"Calories": "150 kcal",
+		"Reviews": [
+			{
+				"Id": "92ebde78-0049-4e8c-af6f-4e7dc6d6c0b2",
+				"RecipeId": "f649eefe-93cb-4bca-93a2-af707966d217",
+				"PublisherName": "Roberta any",
+				"UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+				"CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+				"Date": "2022-07-12T00:00:00Z",
+				"Description": "Awesome recipe",
+				"Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
+				"Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
+			}
+		],
+		"Details": "Walnuts recipe to get very taste dessert",
+		"Creator": {
+			"Id": "3c896419-e280-40e7-8552-240635566fed",
+			"UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+			"FullName": "James Bondi",
+			"Description": "Passionate about food and life",
+			"Email": "james.bondi@gmail.com",
+			"PhoneNumber": "",
+			"Password": "123",
+			"Followers": 450,
+			"Following": 124,
+			"Recipes": 0
+		},
+		"Category": {
+			"Id": 1,
+			"UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
+			"Name": "Breakfast",
+			"Color": "#7A67F8"
+		},
+		"Date": "2022-10-15T00:00:00Z",
+		"Save": false
+	},
   {
     "Name": "Avocado Salad",
     "UserId": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
@@ -1199,11 +1219,6 @@
         "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
         "Name": "Sugar",
         "Quantity": "10 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/water.png",
-        "Name": "Water",
-        "Quantity": "150 gr"
       },
       {
         "UrlIcon": "ms-appx:///Assets/Icons/water.png",
@@ -2055,7 +2070,7 @@
         "Quantity": "425 gr"
       },
       {
-        "UrlIcon": "ms-appx:///Assets/Icons/potatoe.png",
+        "UrlIcon": "ms-appx:///Assets/Icons/potato.png",
         "Name": "Potato",
         "Quantity": "156 gr"
       },
