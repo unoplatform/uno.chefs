@@ -17,9 +17,9 @@ public partial class SearchModel
 
 	public IState<SearchFilter> Filter { get; }
 
-	public IListFeed<Recipe> Items => Feed
-		.Combine(Results, Filter)
-		.Select(ApplyFilter)
+	public IListFeed<Recipe> Results => Feed
+		.Combine(Term, Filter)
+		.SelectAsync(Search)
 		.AsListFeed();
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
@@ -33,14 +33,11 @@ public partial class SearchModel
 	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
 
 	public async ValueTask ApplyHistory(string term) => await Term.SetAsync(term);
-
-	private IFeed<IImmutableList<Recipe>> Results => Feed
-		.Combine(Term, Filter)
-		.SelectAsync(_recipeService.Search);
 	
-	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipesToFilter, SearchFilter filter) inputs)
+	private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
 	{
-		return inputs.recipesToFilter.Where(inputs.filter.Match).ToImmutableList();
+		var searchedRecipes = await _recipeService.Search(inputs.term, inputs.filter, ct);
+		return searchedRecipes.Where(inputs.filter.Match).ToImmutableList();
 	}
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
