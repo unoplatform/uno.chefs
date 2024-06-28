@@ -1773,130 +1773,107 @@
     "Date": "2022-10-15T00:00:00Z",
     "Save": false
   },
-  {
-    "Name": "Tomato and garlic pasta",
-    "UserId": "7f7cddd2-2e1e-4a99-a6e3-88575d2f66f1",
-    "Id": "f947eefe-27cb-6bca-18a2-af356012d237",
-    "Steps": [
-      {
-        "Name": "Getting start",
-        "CookTime": "00:05:00",
-        "Cookware": [ "Broiler", "Tablespoon" ],
-        "Description": "Preheat the broiler to low heat.\n\nWhisk together the chili garlic sauce, 2 tablespoons of soy sauce, 1 tablespoon of sesame oil, sugar and vinegar until combined.",
-        "Ingredients": [ "Chili", "Garlic", "Sauce", "Soy", "Oil", "Sugar", "Vinegar" ],
-        "Number": 1,
-        "UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
-      },
-      {
-        "Name": "First step",
-        "CookTime": "00:15:00",
-        "Cookware": [ "Bowl", "Cookie sheet", "Non-Stick Foil", "Broiler" ],
-        "Description": "Add the cut up salmon to the bowl and mix until coated.\n\nLine a cookie sheet with Non-Stick Foil and evenly spread out the salmon and cook under the broiler for 8 to 10 minutes or until browned and cooked throughout.",
-        "Ingredients": [ "Salmon" ],
-        "Number": 2,
-        "UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
-      },
-      {
-        "Name": "Second step",
-        "CookTime": "00:10:00",
-        "Cookware": [ "Pan", "Tablespoon" ],
-        "Description": "Pour the remaining 1 tablespoon of sesame oil into a large frying pan on high heat and add in the bell peppers, snow peas and carrot and stir-fry for 3 to 4 minutes.\n\nFinish the vegetables by adding the remaining 1 tablespoon of soy sauce.",
-        "Ingredients": [ "Pepper", "Peas", "Carrot" ],
-        "Number": 3,
-        "UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
-      },
-      {
-        "Name": "Final step",
-        "CookTime": "00:05:00",
-        "Cookware": [ "Bowl", "Plate" ],
-        "Description": "Divide the rice into 4 portions and serve the cooked salmon and vegetables evenly.\n\nOptional Servings: Serve with a hard boiled egg or a fried egg.",
-        "Ingredients": [ "Rice", "Salmon" ],
-        "Number": 4,
-        "UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
-      }
-    ],
-    "ImageUrl": "ms-appx:///Assets/Recipes/tomato_garlic_pasta.png",
-    "Serves": 1,
-    "CookTime": "00:35:00",
-    "Difficulty": 0,
-    "Ingredients": [
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/hot_pepper.png",
-        "Name": "Chili",
-        "Quantity": "10 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
-        "Name": "Garlic",
-        "Quantity": "2"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/sauce.png",
-        "Name": "Sauce",
-        "Quantity": "20 ml"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/sugar.png",
-        "Name": "Sugar",
-        "Quantity": "7,5 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/salmon.png",
-        "Name": "Salmon",
-        "Quantity": "170 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/salt.png",
-        "Name": "Pepper",
-        "Quantity": "170 gr"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/carrot.png",
-        "Name": "Carrot",
-        "Quantity": "4"
-      },
-      {
-        "UrlIcon": "ms-appx:///Assets/Icons/rice.png",
-        "Name": "Rice",
-        "Quantity": "800 gr"
-      }
-    ],
-    "Calories": "190 kcal",
-    "Reviews": [
-      {
-        "Id": "43717c2a-bb04-48d8-ba2a-c16070f26299",
-        "RecipeId": "f947eefe-27cb-6bca-18a2-af356012d237",
-        "PublisherName": "Roberta any",
-        "UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
-        "CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
-        "Date": "2022-07-12T00:00:00Z",
-        "Description": "Awesome recipe",
-        "Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
-        "Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
-      }
-    ],
-    "Details": "Tomato and garlic pasta good mix between carbs and vegetables",
-    "Creator": {
-      "Id": "3c896419-e280-40e7-8552-240635566fed",
-      "UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
-      "FullName": "James Bondi",
-      "Description": "Passionate about food and life",
-      "Email": "james.bondi@gmail.com",
-      "PhoneNumber": "",
-      "Password": "123",
-      "Followers": 450,
-      "Following": 124,
-      "Recipes": 0
-    },
-    "Category": {
-      "Id": 2,
-      "UrlIcon": "ms-appx:///Assets/Icons/pancakes.png",
-      "Name": "Lunch",
-      "Color": "#507FF7"
-    },
-    "Date": "2022-10-15T00:00:00Z",
-    "Save": false
-  },
+	{
+		"Name": "Tomato and garlic pasta",
+		"UserId": "7f7cddd2-2e1e-4a99-a6e3-88575d2f66f1",
+		"Id": "f947eefe-27cb-6bca-18a2-af356012d237",
+		"Steps": [
+			{
+				"Name": "Preparing the ingredients",
+				"CookTime": "00:10:00",
+				"Cookware": [ "Pot", "Strainer" ],
+				"Description": "Boil the pasta in salted water according to package instructions until al dente. Drain and set aside.",
+				"Ingredients": [ "Pasta", "Salt" ],
+				"Number": 1,
+				"UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
+			},
+			{
+				"Name": "Making the sauce",
+				"CookTime": "00:10:00",
+				"Cookware": [ "Pan", "Wooden Spoon" ],
+				"Description": "Heat olive oil in a pan over medium heat. Add minced garlic and cook until fragrant. Add chopped tomatoes and cook until they soften. Season with salt and pepper.",
+				"Ingredients": [ "Olive Oil", "Garlic", "Tomatoes", "Salt", "Pepper" ],
+				"Number": 2,
+				"UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
+			},
+			{
+				"Name": "Combining pasta and sauce",
+				"CookTime": "00:05:00",
+				"Cookware": [ "Pan", "Wooden Spoon" ],
+				"Description": "Add the cooked pasta to the pan with the sauce. Toss to combine and heat through. Adjust seasoning as needed.",
+				"Ingredients": [ "Cooked Pasta", "Tomato Sauce" ],
+				"Number": 3,
+				"UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
+			},
+			{
+				"Name": "Serving",
+				"CookTime": "00:05:00",
+				"Cookware": [ "Plate", "Grater" ],
+				"Description": "Serve the pasta hot, garnish with fresh basil if desired.",
+				"Ingredients": ["Basil"],
+				"Number": 4,
+				"UrlVideo": "ms-appx:///Assets/Videos/CookingVideo.mp4"
+			}
+		],
+		"ImageUrl": "ms-appx:///Assets/Recipes/tomato_garlic_pasta.png",
+		"Serves": 2,
+		"CookTime": "00:30:00",
+		"Difficulty": 1,
+		"Ingredients": [
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/pasta.png",
+				"Name": "Pasta",
+				"Quantity": "200 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/garlic.png",
+				"Name": "Garlic",
+				"Quantity": "3 cloves"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/tomato.png",
+				"Name": "Tomatoes",
+				"Quantity": "400 gr"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/salt.png",
+				"Name": "Salt",
+				"Quantity": "to taste"
+			},
+			{
+				"UrlIcon": "ms-appx:///Assets/Icons/basil.png",
+				"Name": "Basil",
+				"Quantity": "for garnish"
+			}
+		],
+		"Calories": "450 kcal",
+		"Reviews": [
+			{
+				"Id": "43717c2a-bb04-48d8-ba2a-c16070f26299",
+				"RecipeId": "f947eefe-27cb-6bca-18a2-af356012d237",
+				"PublisherName": "Roberta Any",
+				"UrlAuthorImage": "ms-appx:///Assets/Profiles/roberta_any.png",
+				"CreatedBy": "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc",
+				"Date": "2022-07-12T00:00:00Z",
+				"Description": "Awesome recipe",
+				"Likes": [ "bb708644-d5cd-45ad-b565-07a0c4d0b320", "56f7e50b-bcc1-4d74-b9eb-c861fc17dbcc", "61c8aae0-e41d-4ac0-aa10-eabe72ea1fbe" ],
+				"Dislikes": [ "02cbd790-905f-4f07-bd67-bfe3a6a8c56c", "3f848dba-f972-493a-bf52-0cd93958f4b2" ]
+			}
+		],
+		"Details": "Tomato and garlic pasta is a delicious blend of fresh tomatoes, aromatic garlic, and al dente pasta, topped with parmesan and basil.",
+		"Creator": {
+			"Id": "3c896419-e280-40e7-8552-240635566fed",
+			"UrlProfileImage": "ms-appx:///Assets/Profiles/james_bondi.png",
+			"FullName": "James Bondi",
+			"Description": "Passionate about food and life",
+			"Email": "james.bondi@gmail.com",
+			"PhoneNumber": "",
+			"Password": "123",
+			"Followers": 450,
+			"Following": 124,
+			"Recipes": 0
+		}
+	},
   {
     "Name": "Homemade lasagna",
     "UserId": "cf12f68f-ccc4-4740-87b3-acc984ac6821",
