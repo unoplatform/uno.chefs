@@ -25,11 +25,13 @@
 							<StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
 							<StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
 							<StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+							<x:Double x:Key="ButtonMinHeight">60</x:Double>
 						</ResourceDictionary>
 						<ResourceDictionary x:Key="Dark">
 							<StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
 							<StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
 							<StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+							<x:Double x:Key="ButtonMinHeight">60</x:Double>
 						</ResourceDictionary>
 					</ResourceDictionary.ThemeDictionaries>
 				</ResourceDictionary>

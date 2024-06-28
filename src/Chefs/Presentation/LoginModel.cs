@@ -6,8 +6,9 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 	
 	public IState<Credentials> UserCredentials => State<Credentials>.Value(this, () => new Credentials());
 	
-	public async ValueTask Login(Credentials userCredentials)
+	public async ValueTask Login()
 	{
+		var userCredentials = await UserCredentials;
 		var username = userCredentials?.Username ?? string.Empty;
 		var password = userCredentials?.Password ?? string.Empty;
 		
