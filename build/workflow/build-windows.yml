@@ -20,6 +20,13 @@ jobs:
       logProjectEvents: false
       createLogFile: false
 
+  - task: CopyFiles@2
+    displayName: Copy WinAppSDK output
+    inputs:
+      SourceFolder: src/Chefs/bin/Release/net8.0-windows10.0.19041
+      Contents: '**/*.*'
+      TargetFolder: $(build.artifactstagingdirectory)
+
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
