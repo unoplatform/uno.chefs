@@ -109,7 +109,7 @@ public interface IRecipeService
 	/// <returns>
 	/// Get recipes filter by different options selected by the user
 	/// </returns>
-	ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct);
+	ValueTask<IImmutableList<Recipe>> Search(string term, SearchFilter filter, CancellationToken ct);
 
 	/// <summary>
 	/// Get recipe's reviews

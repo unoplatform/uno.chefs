@@ -59,18 +59,25 @@ public class RecipeService : IRecipeService
 		   .Select(r => new Recipe(r))
 		   .ToImmutableList();
 
-	public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)
+	public async ValueTask<IImmutableList<Recipe>> Search(string term, SearchFilter filter, CancellationToken ct)
 	{
+		var recipesToSearch = filter.FilterGroup switch
+		{
+			FilterGroup.Popular => await GetPopular(ct),
+			FilterGroup.Trending => await GetTrending(ct),
+			FilterGroup.Recent => await GetRecent(ct),
+			_ => await GetAll(ct)
+		};
+
 		if (term.IsNullOrEmpty())
 		{
 			_lastTextLength = 0;
-			return (await _recipeEndpoint.GetAll(ct)).Select(r => new Recipe(r)).ToImmutableList();
+			return recipesToSearch.ToImmutableList();
 		}
 		else
 		{
 			await SaveSearchHistory(term);
-			return GetRecipesByText((await _recipeEndpoint.GetAll(ct))
-					   .Select(r => new Recipe(r)), term);
+			return GetRecipesByText(recipesToSearch, term);
 		}
 	}
 
