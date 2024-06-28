@@ -94,17 +94,22 @@
 												   Source="{x:Bind ImageUrl}"
 												   Stretch="UniformToFill" />
 										</Border>
-										<utu:AutoLayout Padding="16"
-														PrimaryAxisAlignment="Center"
+										<utu:AutoLayout PrimaryAxisAlignment="Center"
 														Spacing="4">
+											<!--
+												WORKAROUND: Using Margin on TextBlocks instead of Padding on AutoLayout due to AutoLayout bug
+												Issue link: https://github.com/unoplatform/uno.chefs/issues/1206
+											-->
 											<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 													   Style="{StaticResource TitleSmall}"
 													   Text="{x:Bind Name}"
-													   TextWrapping="Wrap" />
+													   TextWrapping="Wrap"
+													   Margin="16,16,16,0" />
 											<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 													   Style="{StaticResource CaptionMedium}"
 													   Text="{x:Bind TimeCal}"
-													   TextWrapping="Wrap" />
+													   TextWrapping="Wrap"
+													   Margin="16,0,16,16" />
 										</utu:AutoLayout>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
