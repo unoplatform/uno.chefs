@@ -104,12 +104,12 @@
 													   Style="{StaticResource TitleSmall}"
 													   Text="{x:Bind Name}"
 													   TextWrapping="Wrap"
-													   Margin="16,0,16,0" />
+													   Margin="16,16,16,0" />
 											<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 													   Style="{StaticResource CaptionMedium}"
 													   Text="{x:Bind TimeCal}"
 													   TextWrapping="Wrap"
-													   Margin="16,0,16,0" />
+													   Margin="16,0,16,16" />
 										</utu:AutoLayout>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
