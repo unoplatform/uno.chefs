@@ -306,7 +306,7 @@
 					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
-								  Source="{Binding SavedRecipes}">
+								  Source="{Binding FavoriteRecipes}">
 						<DataTemplate>
 							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer x:Name="RecipesScrollViewer"

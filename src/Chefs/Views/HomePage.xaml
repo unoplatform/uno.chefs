@@ -45,9 +45,9 @@
 										   Style="{StaticResource CaptionMedium}" />
 							</utu:AutoLayout>
 							<ToggleButton Style="{StaticResource IconToggleButtonStyle}"
-										  IsChecked="{Binding Save}"
+										  IsChecked="{Binding IsFavorite}"
 										  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-																		Path=DataContext.SaveRecipe}"
+																		Path=DataContext.FavoriteRecipe}"
 										  CommandParameter="{Binding}">
 								<ToggleButton.Content>
 									<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"

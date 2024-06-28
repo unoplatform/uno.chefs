@@ -31,8 +31,6 @@ public partial class LiveCookingModel
 		await Completed.SetAsync(false);
 	}
 
-	public async ValueTask Save(Recipe recipe, CancellationToken ct)
-	{
-		await _recipeService.Save(recipe, ct);
-	}
+	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
+		await _recipeService.Favorite(recipe, ct);
 }
