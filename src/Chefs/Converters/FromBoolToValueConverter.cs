@@ -1,14 +1,8 @@
 using System;
 using Microsoft.UI.Xaml.Data;
 
-#if WinUI
-using Microsoft.UI.Xaml.Data;
-#else
-using Windows.UI.Xaml.Data;
-#endif
-
 namespace Chefs.Converters;
-public class FromBoolToValueConverter2 : IValueConverter
+public class FromBoolToValueConverter : IValueConverter
 {
 	public object NullValue { get; set; }
 
@@ -44,6 +38,10 @@ public class FromBoolToValueConverter2 : IValueConverter
 			return FalseValue;
 		}
 	}
+
+	//Issue 642:[Windows] Binding not properly setting value to ToggleButton
+	//https://github.com/unoplatform/uno.chefs/issues/642
+	//We needed to use two-way binding to prevent the {Binding} from being cleared when modified by the control (ex: ToggleButton's IsChecked when pressed) and with that, it should no longer throw not-suppported for ConvertBack.
 
 	public object ConvertBack(object value, Type targetType, object parameter, string language)
 	{

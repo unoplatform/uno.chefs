@@ -48,12 +48,12 @@
 										NullValue="PrimaryMediumBrush"
 										TrueValue="PrimaryMediumBrush" />
 
-	<converters:FromBoolToValueConverter2 x:Key="UserLikeCheckedConverter"
+	<converters:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
 								 FalseValue="False"
 								 TrueValue="True"
 								 NullValue="False" />
 
-	<converters:FromBoolToValueConverter2 x:Key="UserDislikeCheckedConverter"
+	<converters:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
 								 FalseValue="True"
 								 TrueValue="False"
 								 NullValue="False" />
