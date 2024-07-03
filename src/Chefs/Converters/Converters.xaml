@@ -49,14 +49,14 @@
 										TrueValue="PrimaryMediumBrush" />
 
 	<converters:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
-								 FalseValue="False"
-								 TrueValue="True"
-								 NullValue="False" />
+										 FalseValue="False"
+										 TrueValue="True"
+										 NullValue="False" />
 
 	<converters:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
-								 FalseValue="True"
-								 TrueValue="False"
-								 NullValue="False" />
+										 FalseValue="True"
+										 TrueValue="False"
+										 NullValue="False" />
 
 	<converters:BoolToResourceConverter x:Key="BoolToNotificationColor"
 										TrueValue="SurfaceBrush"
