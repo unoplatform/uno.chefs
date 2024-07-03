@@ -110,15 +110,8 @@ Navigation Shell Structure:
 
 For more detailed information and advanced use cases of navigation with TabBar, refer to the [Advanced TabBar Navigation documentation](xref:Uno.Extensions.Navigation.Advanced.TabBar).
 
-### Example Usage in Workshop
-
-An example usage of the ThemeService can be found in the [Simple Calc workshop](https://platform.uno/docs/articles/external/workshops/simple-calc/modules/MVVM-XAML/05-Finish%20the%20App/README.html#adding-the-themeservice).
-
-
 ## Source Code
 
 Chefs app
 
-- [App Startup](https://github.com/unoplatform/uno.chefs/blob/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/App.cs#L43)
-
-- [SettingsModel](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Presentation/SettingsModel.cs#L27-L28)
+- [MainPage.xaml](https://github.com/unoplatform/uno.chefs/blob/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/App.cs#L43)
