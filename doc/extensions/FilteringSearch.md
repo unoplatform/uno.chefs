@@ -10,7 +10,7 @@ Filtering search results live as the user types is a common feature in modern ap
 
 ## Solution
 
-The **Uno.Extensions** library provides a seamless way to live filter search results using `IState<string>` and `SelectAsync` on the IState to react to term changes. This allows for a dynamic and responsive search experience.
+The **Uno.Extensions** library specifically MVUX provides a seamless way to live filter search results using `IState<string>` and `SelectAsync` on the IState to react to term changes. This allows for a dynamic and responsive search experience.
 
 ### Using MVUX to Filter Search Results
 
@@ -44,30 +44,19 @@ In the Chefs app, for the Search page, we use `IState<string>` to hold the searc
 2. Bind the Term state to a TextBox and display the filtered results in a FeedView:
 
     ```xml
-    <TextBox utu:CommandExtensions.Command="{Binding Search}"
-        BorderBrush="{ThemeResource OnSurfaceBrush}"
-        BorderThickness="1"
-        CornerRadius="28"
-        Foreground="{ThemeResource OnSurfaceBrush}"
-        PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
+    <TextBox
         PlaceholderText="Search"
-        Style="{StaticResource OutlinedTextBoxStyle}"
-         Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-        <ut:ControlExtensions.Icon>
-            <FontIcon Glyph="{StaticResource Icon_Search}"
-                    Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-        </ut:ControlExtensions.Icon>
-    </TextBox>
+        Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
     <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-						  VerticalScrollBarVisibility="Hidden">
-				<uer:FeedView x:Name="SearchFeed"
-							  NoneTemplate="{StaticResource EmptyTemplate}"
-							  Source="{Binding Results}">
-					<DataTemplate>
-						<!--Code omitted for brevity-->
-					</DataTemplate>
-				</uer:FeedView>
+                VerticalScrollBarVisibility="Hidden">
+        <uer:FeedView x:Name="SearchFeed"
+                    NoneTemplate="{StaticResource EmptyTemplate}"
+                    Source="{Binding Results}">
+            <DataTemplate>
+                <!-- Code omitted for brevity -->
+            </DataTemplate>
+        </uer:FeedView>
     </ScrollViewer>
     ```
     The `FeedView` control automatically updates the displayed list of recipes whenever the `Results` feed is updated, providing a dynamic and responsive search experience.
@@ -78,7 +67,7 @@ Chefs app
 
 - [Search Model](https://github.com/unoplatform/uno.chefs/blob/92105f64923058b9ace3897bbea17cdb3b354fe9/src/Chefs/Presentation/SearchModel.cs#L22)
 
-- [Search Page](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Views/SearchPage.xaml)
+- [Search Page](https://github.com/unoplatform/uno.chefs/blob/d226a4baf0e04641b23e9f8324112b05c47abfde/src/Chefs/Views/SearchPage.xaml)
 
 ## Documentation
 
