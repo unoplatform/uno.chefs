@@ -15,10 +15,10 @@
 	</mobile:Style>
 
 	<mobile:Style x:Key="ChefsNavigationBarStyle"
-	TargetType="utu:NavigationBar">
+				  TargetType="utu:NavigationBar">
 		<Setter Property="MainCommandStyle" Value="{StaticResource ChefsMainCommandStyle}" />
 	</mobile:Style>
 
 	<mobile:Style BasedOn="{StaticResource ChefsNavigationBarStyle}"
-	TargetType="utu:NavigationBar" />
+				  TargetType="utu:NavigationBar" />
 </ResourceDictionary>
