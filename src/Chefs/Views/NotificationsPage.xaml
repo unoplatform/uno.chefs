@@ -88,8 +88,7 @@
 	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
 					PrimaryAxisAlignment="Stretch">
-		<utu:NavigationBar Content="Notifications"
-						   Style="{StaticResource ModalNavigationBarStyle}">
+		<utu:NavigationBar Content="Notifications">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<AppBarButton.Icon>

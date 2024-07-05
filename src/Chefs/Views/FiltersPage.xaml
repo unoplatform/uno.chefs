@@ -26,8 +26,7 @@
 		</utu:AutoLayout.Resources>
 		<utu:AutoLayout uen:Region.Attached="True"
 						utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Content="Filters"
-							   Style="{StaticResource ModalNavigationBarStyle}">
+			<utu:NavigationBar Content="Filters">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton uen:Navigation.Request="-">
 						<AppBarButton.Icon>
