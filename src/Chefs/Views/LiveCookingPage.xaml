@@ -107,8 +107,7 @@
 						   utu:AutoLayout.PrimaryAlignment="Auto"
 						   Background="{ThemeResource SurfaceInverseBrush}"
 						   Foreground="{ThemeResource OnSurfaceInverseBrush}"
-						   Content="{Binding Recipe.Name}"
-						   Style="{StaticResource PrimaryModalNavigationBarStyle}">
+						   Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<not_mobile:AppBarButton.Icon>
