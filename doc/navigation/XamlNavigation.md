@@ -2,15 +2,15 @@
 uid: Uno.Recipes.XamlNavigation
 ---
 
-# How-To: Navigate in Xaml
+# How to Navigate with Xaml
 
 ## Problem
 
-Navigation implementations vary between platforms, and it can be time-consuming to create and manage all the different navigation methods with each their own destination and data.
+Navigating between pages often involves managing code-behind logic to handle different navigation methods as well as maintaining states, often with data that's already available in the view layer of the app. This can make the code feel bulkier than it needs to be, and it tightly couples the UI layer with navigation methods in the model.
 
 ## Solution
 
-Uno Navigation simplifies development by abstracting away platform-specific navigation implementations and promotes code reusability, which allows you to focus on building features rather than managing navigation intricacies.
+Uno Navigation Extensions allows you to streamline XAML navigation by leveraging attached properties such as Navigation.Request and Navigation.Data. This approach simplifies the process of navigating and passing data between pages, allowing it to all be done directly in XAML. In most cases it promotes better readability and separation of concerns by keeping everything navigation related in the view layer.
 
 ### Chefs Example
 
