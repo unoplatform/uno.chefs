@@ -1,12 +1,9 @@
-using Chefs.Presentation.Extensions;
-
 namespace Chefs.Presentation;
 
 public partial class SearchModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
-	private bool hideSearches = false;
 
 	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
 	{
@@ -20,10 +17,10 @@ public partial class SearchModel
 
 	public IState<SearchFilter> Filter { get; }
 
-	public IListFeed<Recipe> Items => Feed
-		.Combine(Results, Filter)
-		.Select(ApplyFilter)
-		.AsListFeed<Recipe>();
+	public IListFeed<Recipe> Results => Feed
+		.Combine(Term, Filter)
+		.SelectAsync(Search)
+		.AsListFeed();
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
@@ -35,38 +32,15 @@ public partial class SearchModel
 
 	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
 
-	public async ValueTask ApplyHistory(string term)
+	public async ValueTask ApplyHistory(string term) => await Term.SetAsync(term);
+	
+	private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
 	{
-		await Term.SetAsync(term);
+		var searchedRecipes = await _recipeService.Search(inputs.term, inputs.filter, ct);
+		return searchedRecipes.Where(inputs.filter.Match).ToImmutableList();
 	}
-
-	private IFeed<IImmutableList<Recipe>> Results => Term
-		.SelectAsync(_recipeService.Search);
-
-	private IImmutableList<Recipe> ApplyFilter((IImmutableList<Recipe> recipes, SearchFilter filter) inputs)
-	{
-		IImmutableList<Recipe> recipesByTerm;
-		IImmutableList<Recipe> recipesByCategory = recipesByTerm = inputs.recipes;
-
-		if (inputs.filter.FilterGroup is not null)
-		{
-			var selectedFilterGroup = inputs.filter.FilterGroup;
-
-			recipesByCategory = selectedFilterGroup switch
-			{
-				FilterGroup.Popular => _recipeService.GetPopular(CancellationToken.None).Result,
-				FilterGroup.Trending => _recipeService.GetTrending(CancellationToken.None).Result,
-				FilterGroup.Recent => _recipeService.GetRecent(CancellationToken.None).Result,
-				_ => recipesByCategory
-			};
-		}
-
-		return recipesByCategory.Intersect(recipesByTerm).Where(p => inputs.filter.Match(p)).ToImmutableList();
-	}
-
 
 	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
-
 
 	public async ValueTask SearchPopular() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));

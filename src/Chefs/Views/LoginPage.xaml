@@ -57,7 +57,7 @@
 								 ios:ReturnKeyType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
 								 IsSpellCheckEnabled="False"
-								 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+								 Text="{Binding UserCredentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
 							</ut:ControlExtensions.Icon>
@@ -66,7 +66,7 @@
 									 android:ImeOptions="Done"
 									 ios:ReturnKeyType="Done"
 									 utu:CommandExtensions.Command="{Binding Login}"
-									 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+									 Password="{Binding UserCredentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									 PlaceholderText="Password"
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
@@ -80,7 +80,7 @@
 											utu:AutoLayout.PrimaryAlignment="Stretch">
 								<CheckBox Content="Remember me"
 										  utu:AutoLayout.CounterAlignment="Start"
-										  IsChecked="{Binding Credentials.SaveCredentials, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+										  IsChecked="{Binding UserCredentials.SaveCredentials, Mode=TwoWay}" />
 							</utu:AutoLayout>
 							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 											utu:AutoLayout.PrimaryAlignment="Stretch">

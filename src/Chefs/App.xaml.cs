@@ -156,11 +156,7 @@ public partial class App : Application
 						#region Main Tabs
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
-						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>(), Nested: new[]
-						{
-							new RouteMap("MyRecipes"),
-							new RouteMap("Cookbooks")
-						}),
+						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
 						#endregion
 
 						#region Cookbooks
@@ -170,16 +166,7 @@ public partial class App : Application
 						#endregion
 
 						#region Recipe Details
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home", Nested: new[] {
-							new RouteMap("IngredientsTabWide"),
-							new RouteMap("StepsTabWide"),
-							new RouteMap("ReviewsTabWide"),
-							new RouteMap("NutritionTabWide"),
-							new RouteMap("IngredientsTab"),
-							new RouteMap("StepsTab"),
-							new RouteMap("ReviewsTab"),
-							new RouteMap("NutritionTab"),
-						}),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
 						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
@@ -194,12 +181,7 @@ public partial class App : Application
 
 						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
 					}),
-					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>(), Nested: new RouteMap[]
-					{
-						new RouteMap("AllTab"),
-						new RouteMap("UnreadTab"),
-						new RouteMap("ReadTab"),
-					}),
+					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),
 					new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>()),
 					new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),

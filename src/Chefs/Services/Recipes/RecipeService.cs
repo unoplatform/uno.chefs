@@ -59,18 +59,25 @@ public class RecipeService : IRecipeService
 		   .Select(r => new Recipe(r))
 		   .ToImmutableList();
 
-	public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)
+	public async ValueTask<IImmutableList<Recipe>> Search(string term, SearchFilter filter, CancellationToken ct)
 	{
+		var recipesToSearch = filter.FilterGroup switch
+		{
+			FilterGroup.Popular => await GetPopular(ct),
+			FilterGroup.Trending => await GetTrending(ct),
+			FilterGroup.Recent => await GetRecent(ct),
+			_ => await GetAll(ct)
+		};
+
 		if (term.IsNullOrEmpty())
 		{
 			_lastTextLength = 0;
-			return (await _recipeEndpoint.GetAll(ct)).Select(r => new Recipe(r)).ToImmutableList();
+			return recipesToSearch.ToImmutableList();
 		}
 		else
 		{
 			await SaveSearchHistory(term);
-			return GetRecipesByText((await _recipeEndpoint.GetAll(ct))
-					   .Select(r => new Recipe(r)), term);
+			return GetRecipesByText(recipesToSearch, term);
 		}
 	}
 
@@ -107,25 +114,25 @@ public class RecipeService : IRecipeService
 	public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct)
 		=> new(await _recipeEndpoint.CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct));
 
-	public IListState<Recipe> SavedRecipes => ListState<Recipe>.Async(this, GetSaved);
+	public IListState<Recipe> FavoritedRecipes => ListState<Recipe>.Async(this, GetFavorited);
 
-	public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct)
-		=> (await _recipeEndpoint.GetSaved(ct))
+	public async ValueTask<IImmutableList<Recipe>> GetFavorited(CancellationToken ct)
+		=> (await _recipeEndpoint.GetFavorited(ct))
 			.Select(r => new Recipe(r))
 			.ToImmutableList();
 
-	public async ValueTask Save(Recipe recipe, CancellationToken ct)
+	public async ValueTask Favorite(Recipe recipe, CancellationToken ct)
 	{
-		var updatedRecipe = recipe with { Save = !recipe.Save };
+		var updatedRecipe = recipe with { IsFavorite = !recipe.IsFavorite };
 		await _recipeEndpoint.Save(updatedRecipe.ToData(), ct);
 
-		if (updatedRecipe.Save)
+		if (updatedRecipe.IsFavorite)
 		{
-			await SavedRecipes.AddAsync(updatedRecipe);
+			await FavoritedRecipes.AddAsync(updatedRecipe);
 		}
 		else
 		{
-			await SavedRecipes.RemoveAllAsync(r => r.Id == updatedRecipe.Id);
+			await FavoritedRecipes.RemoveAllAsync(r => r.Id == updatedRecipe.Id);
 		}
 
 		_messenger.Send(new EntityMessage<Recipe>(EntityChange.Updated, updatedRecipe));

@@ -34,7 +34,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 		.ToImmutableList()
 		?? ImmutableList<RecipeData>.Empty;
 
-	public async ValueTask<IImmutableList<RecipeData>> GetSaved(CancellationToken ct)
+	public async ValueTask<IImmutableList<RecipeData>> GetFavorited(CancellationToken ct)
 	{
 		var currentUser = await _userEndpoint.GetCurrent(ct);
 
@@ -49,7 +49,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 				.Where(x => savedRecipes.SavedRecipes.Any(y => y == x.Id))
 				.Select(recipe =>
 				{
-					recipe.Save = true;
+					recipe.IsFavorite = true;
 					return recipe;
 				})
 				.ToImmutableList() ?? ImmutableList<RecipeData>.Empty;
@@ -195,7 +195,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 		{
 			_recipes = (await _dataService
 				.ReadPackageFileAsync<List<RecipeData>>(_serializer, Constants.RecipeDataFile));
-			var saved = await GetSaved(CancellationToken.None);
+			var saved = await GetFavorited(CancellationToken.None);
 
 			var currentUser = await _userEndpoint.GetCurrent(CancellationToken.None);
 			if (_recipes is not null)
@@ -219,7 +219,7 @@ public class RecipeEndpoint : IRecipeEndpoint
 						}
 					}
 				}
-				_recipes?.ForEach(x => x.Save = saved.Contains(x));
+				_recipes?.ForEach(x => x.IsFavorite = saved.Contains(x));
 			}
 		}
 

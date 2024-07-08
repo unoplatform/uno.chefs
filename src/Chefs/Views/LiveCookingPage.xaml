@@ -134,7 +134,7 @@
 					Related issue: https://github.com/unoplatform/Uno.Samples/issues/725
 				-->
 				<MediaPlayerElement AreTransportControlsEnabled="True"
-									Source="{Binding CurrentStep.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
+									Source="{Binding Steps.CurrentItem.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
@@ -255,7 +255,7 @@
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Height="59"
 							Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-														  Path=DataContext.Save}"
+														  Path=DataContext.IsFavorite}"
 							Content="Favorite"
 							CornerRadius="4">
 						<ut:ControlExtensions.Icon>

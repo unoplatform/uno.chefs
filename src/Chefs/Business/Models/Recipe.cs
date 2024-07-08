@@ -15,7 +15,7 @@ public partial record Recipe : IChefEntity
 		Details = recipeData.Details;
 		Category = new Category(recipeData.Category);
 		Date = recipeData.Date;
-		Save = recipeData.Save;
+		IsFavorite = recipeData.IsFavorite;
 		Nutrition = new Nutrition(recipeData?.Nutrition);
 	}
 	public Guid Id { get; init; }
@@ -29,7 +29,7 @@ public partial record Recipe : IChefEntity
 	public string? Details { get; init; }
 	public Category Category { get; init; }
 	public DateTime Date { get; init; }
-	public bool Save { get; init; }
+	public bool IsFavorite { get; init; }
 	public Nutrition Nutrition { get; init; }
 
 	//remove "kcal" unit from Calories property
