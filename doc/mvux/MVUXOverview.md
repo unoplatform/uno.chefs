@@ -2,7 +2,7 @@
 uid: Uno.Recipes.MVUXOverview
 ---
 
-# How to persist or access serialized data in your application
+# How to Use MVUX in Your Application
 
 ## Problem
 
