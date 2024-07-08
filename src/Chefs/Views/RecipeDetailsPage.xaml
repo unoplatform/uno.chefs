@@ -345,7 +345,7 @@
 																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																																	Path=DataContext.Like}"
 																									  CommandParameter="{Binding}"
-																									  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}}">
+																									  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
 																							<ToggleButton.Content>
 																								<utu:AutoLayout Orientation="Horizontal"
 																												Spacing="5">
@@ -379,7 +379,7 @@
 																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																																	Path=DataContext.Dislike}"
 																									  CommandParameter="{Binding}"
-																									  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}}">
+																									  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
 																							<ToggleButton.Content>
 																								<utu:AutoLayout Orientation="Horizontal"
 																												Spacing="5">
@@ -733,7 +733,7 @@
 																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																																Path=DataContext.Like}"
 																								  CommandParameter="{Binding}"
-																								  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}}">
+																								  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
@@ -772,7 +772,7 @@
 																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																																Path=DataContext.Dislike}"
 																								  CommandParameter="{Binding}"
-																								  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}}">
+																								  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
 																											Spacing="8">
