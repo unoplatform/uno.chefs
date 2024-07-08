@@ -1,5 +1,5 @@
 ---
-uid: Uno.Recipes.NavigationRequest
+uid: Uno.Recipes.PassingNavigationData
 ---
 
 # How to Pass Data Across Navigation Requests in the Chefs App
