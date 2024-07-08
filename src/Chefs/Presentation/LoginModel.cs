@@ -11,8 +11,8 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 	private bool CanLogin(Credentials userCredentials)
 	{
 		return userCredentials is not null &&
-			   !string.IsNullOrEmpty(userCredentials.Username) &&
-			   !string.IsNullOrEmpty(userCredentials.Password);
+			   !string.IsNullOrWhiteSpace(userCredentials.Username) &&
+			   !string.IsNullOrWhiteSpace(userCredentials.Password);
 	}
 
 	private async ValueTask DoLogin(Credentials userCredentials, CancellationToken ct)
