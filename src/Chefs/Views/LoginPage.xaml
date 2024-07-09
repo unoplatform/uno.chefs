@@ -53,8 +53,7 @@
 								 Foreground="{ThemeResource OnSurfaceBrush}"
 								 Style="{StaticResource OutlinedTextBoxStyle}"
 								 BorderBrush="{ThemeResource OutlineVariantBrush}"
-								 android:ImeOptions="Next"
-								 ios:ReturnKeyType="Next"
+								 utu:InputExtensions.ReturnType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding UserCredentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
@@ -63,8 +62,7 @@
 							</ut:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="LoginPassword"
-									 android:ImeOptions="Done"
-									 ios:ReturnKeyType="Done"
+									 utu:InputExtensions.ReturnType="Done"
 									 utu:CommandExtensions.Command="{Binding Login}"
 									 Password="{Binding UserCredentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									 PlaceholderText="Password"
