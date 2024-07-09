@@ -158,7 +158,7 @@
 											   Style="{StaticResource TitleSmall}"
 											   Text="{Binding Name}"
 											   TextWrapping="NoWrap" />
-									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource CaptionMedium}"
 											   Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
 											   TextWrapping="NoWrap" />
@@ -230,12 +230,13 @@
 
 								<utu:AutoLayout Padding="16"
 												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Start"
 												Spacing="4">
 									<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 											   Style="{StaticResource TitleSmall}"
 											   Text="{Binding Name}"
 											   TextWrapping="Wrap" />
-									<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource CaptionMedium}"
 											   Text="{Binding TimeCal}"
 											   TextWrapping="Wrap" />
@@ -263,18 +264,18 @@
 				</utu:AutoLayout>
 			</utu:NavigationBar.Content>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Command="{Binding ShowCurrentProfile}">
+				<AppBarButton uen:Navigation.Request="!Profile">
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"
-									UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+									UriSource="ms-appx:///Assets/Icons/user_profile.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Command="{Binding ShowNotifications}">
+				<AppBarButton uen:Navigation.Request="!Notifications">
 					<AppBarButton.Icon>
 						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
 									ShowAsMonochrome="True"
-									UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+									UriSource="ms-appx:///Assets/Icons/notification.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
@@ -305,7 +306,7 @@
 					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
-								  Source="{Binding SavedRecipes}">
+								  Source="{Binding FavoriteRecipes}">
 						<DataTemplate>
 							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer x:Name="RecipesScrollViewer"

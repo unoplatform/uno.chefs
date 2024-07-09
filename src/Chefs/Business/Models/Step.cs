@@ -10,6 +10,7 @@ public record Step
 		Cookware = stepData.Cookware?.ToImmutableList() ?? ImmutableList<string>.Empty;
 		Ingredients = stepData.Ingredients?.ToImmutableList() ?? ImmutableList<string>.Empty;
 		Description = stepData.Description;
+		UrlVideo = stepData.UrlVideo;
 	}
 
 	public int Number { get; init; }
@@ -18,6 +19,7 @@ public record Step
 	public IImmutableList<string>? Cookware { get; init; }
 	public IImmutableList<string>? Ingredients { get; init; }
 	public string? Description { get; init; }
+	public string? UrlVideo { get; init; }
 
 	internal StepData ToData() => new()
 	{
@@ -26,6 +28,7 @@ public record Step
 		CookTime = CookTime,
 		Cookware = Cookware?.ToList(),
 		Ingredients = Ingredients?.ToList(),
-		Description = Description
+		Description = Description,
+		UrlVideo = UrlVideo
 	};
 }

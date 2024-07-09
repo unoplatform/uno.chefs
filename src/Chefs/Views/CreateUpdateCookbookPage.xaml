@@ -37,82 +37,74 @@
 		<utu:AutoLayout.Resources>
 			<DataTemplate x:Key="RecipeTemplate"
 						  x:DataType="models:Recipe">
-				<!--
-					Using an x:bind for windows as a workaround for now regarding this WinUI issue:
-					https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013
-				-->
-				<Border win:DataContext="{x:Bind}">
-					<utu:CardContentControl x:Name="RecipeTemplateCard"
-											Background="{ThemeResource SurfaceBrush}"
-											CornerRadius="4"
-											Style="{StaticResource FilledCardContentControlStyle}">
-						<utu:CardContentControl.ContentTemplate>
-							<DataTemplate>
-								<utu:AutoLayout CornerRadius="4">
-									<Border x:Name="ImageLayout"
-											Height="144">
-										<Image Source="{Binding ImageUrl}"
-											   Stretch="UniformToFill"
-											   VerticalAlignment="Center"
-											   HorizontalAlignment="Center" />
-									</Border>
+				<ListViewItem x:Name="RecipeTemplateCard"
+							  Background="{ThemeResource SurfaceBrush}"
+							  CornerRadius="4">
+					<ListViewItem.ContentTemplate>
+						<DataTemplate>
+							<utu:AutoLayout CornerRadius="4">
+								<Border x:Name="ImageLayout"
+										Height="144">
+									<Image Source="{Binding ImageUrl}"
+										   Stretch="UniformToFill"
+										   VerticalAlignment="Center"
+										   HorizontalAlignment="Center" />
+								</Border>
 
-									<utu:AutoLayout>
-										<utu:AutoLayout Spacing="16"
-														Orientation="Horizontal"
-														Padding="16">
-											<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-															utu:AutoLayout.PrimaryAlignment="Stretch">
-												<utu:AutoLayout PrimaryAxisAlignment="Center">
-													<utu:AutoLayout Spacing="4"
-																	PrimaryAxisAlignment="Center">
-														<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-																   Style="{StaticResource TitleSmall}"
-																   Text="{Binding Name}"
-																   TextWrapping="NoWrap"
-																   TextTrimming="CharacterEllipsis" />
-														<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
-																   Style="{StaticResource CaptionMedium}"
-																   utu:AutoLayout.PrimaryAlignment="Stretch"
-																   Text="{Binding TimeCal}"
-																   TextWrapping="NoWrap"
-																   TextTrimming="CharacterEllipsis" />
-													</utu:AutoLayout>
+								<utu:AutoLayout>
+									<utu:AutoLayout Spacing="16"
+													Orientation="Horizontal"
+													Padding="16">
+										<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
+														utu:AutoLayout.PrimaryAlignment="Stretch">
+											<utu:AutoLayout PrimaryAxisAlignment="Center">
+												<utu:AutoLayout Spacing="4"
+																PrimaryAxisAlignment="Center">
+													<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+															   Style="{StaticResource TitleSmall}"
+															   Text="{Binding Name}"
+															   TextWrapping="NoWrap"
+															   TextTrimming="CharacterEllipsis" />
+													<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+															   Style="{StaticResource CaptionMedium}"
+															   utu:AutoLayout.PrimaryAlignment="Stretch"
+															   Text="{Binding TimeCal}"
+															   TextWrapping="NoWrap"
+															   TextTrimming="CharacterEllipsis" />
 												</utu:AutoLayout>
 											</utu:AutoLayout>
-											<utu:AutoLayout Orientation="Horizontal"
-															utu:AutoLayout.CounterAlignment="Center">
-												<utu:AutoLayout PrimaryAxisAlignment="End"
-																Orientation="Horizontal">
-													<Border utu:AutoLayout.CounterAlignment="Start"
-															Visibility="{Binding Selected, Converter={StaticResource TrueToCollapsed}}">
-														<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																  Glyph="{StaticResource Icon_Favorite}"
-																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																  Foreground="{ThemeResource OnSurfaceBrush}" />
-													</Border>
-													<Border utu:AutoLayout.CounterAlignment="Start"
-															Visibility="{Binding Selected, Converter={StaticResource TrueToVisible}}">
-														<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																  Glyph="{StaticResource Icon_Favorite}"
-																  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-																  Foreground="{ThemeResource PrimaryBrush}" />
-													</Border>
-												</utu:AutoLayout>
+										</utu:AutoLayout>
+										<utu:AutoLayout Orientation="Horizontal"
+														utu:AutoLayout.CounterAlignment="Center">
+											<utu:AutoLayout PrimaryAxisAlignment="End"
+															Orientation="Horizontal">
+												<Border utu:AutoLayout.CounterAlignment="Start"
+														Visibility="{Binding Converter={StaticResource TrueToCollapsed}, ElementName=RecipeTemplateCard, Path=IsSelected}">
+													<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+															  Glyph="{StaticResource Icon_Favorite}"
+															  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+															  Foreground="{ThemeResource OnSurfaceBrush}" />
+												</Border>
+												<Border utu:AutoLayout.CounterAlignment="Start"
+														Visibility="{Binding ElementName=RecipeTemplateCard, Path=IsSelected}">
+													<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+															  Glyph="{StaticResource Icon_Favorite}"
+															  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+															  Foreground="{ThemeResource PrimaryBrush}" />
+												</Border>
 											</utu:AutoLayout>
 										</utu:AutoLayout>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
-							</DataTemplate>
-						</utu:CardContentControl.ContentTemplate>
-					</utu:CardContentControl>
-				</Border>
+							</utu:AutoLayout>
+						</DataTemplate>
+					</ListViewItem.ContentTemplate>
+				</ListViewItem>
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar x:Name="NavBarLayout"
-							   toolkit:UIElementExtensions.Elevation="0"
 							   Background="{ThemeResource SurfaceInverseBrush}"
 							   Content="{Binding Title}"
 							   Foreground="{ThemeResource OnSurfaceInverseBrush}">
@@ -139,16 +131,17 @@
 							   utu:AutoLayout.CounterAlignment="Start"
 							   Style="{StaticResource BodyLarge}"
 							   Text="{Binding SubTitle}" />
-					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
+					<uer:FeedView x:Name="RecipesFeedView"
+								  utu:AutoLayout.CounterAlignment="Stretch"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  Source="{Binding Recipes}">
 						<DataTemplate>
 							<utu:AutoLayout Padding="0,0,0,16"
 											HorizontalAlignment="Center"
 											Spacing="8">
-								<muxc:ItemsRepeater utu:CommandExtensions.Command="{Binding Parent.SelectRecipe}"
-													ItemTemplate="{StaticResource RecipeTemplate}"
+								<muxc:ItemsRepeater ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
+													utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
 													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
 																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>

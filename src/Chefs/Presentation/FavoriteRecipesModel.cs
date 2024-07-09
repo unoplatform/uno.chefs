@@ -21,20 +21,9 @@ public partial class FavoriteRecipesModel
 		_messenger = messenger;
 
 		_messenger.Observe(SavedCookbooks, cb => cb.Id);
-		_messenger.Observe(SavedRecipes, r => r.Id);
 	}
 
 	public IListState<Cookbook> SavedCookbooks => ListState.FromFeed(this, _cookbookService.SavedCookbooks);
 
-	public IListState<Recipe> SavedRecipes => ListState.FromFeed(this, _recipeService.SavedRecipes);
-
-	public async Task ShowCurrentProfile()
-	{
-		await _navigator.NavigateToProfile(this);
-	}
-
-	public async ValueTask ShowNotifications()
-	{
-		await _navigator.NavigateToNotifications(this);
-	}
+	public IListState<Recipe> FavoriteRecipes => _recipeService.FavoritedRecipes;
 }
