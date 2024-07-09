@@ -1,0 +1,40 @@
+﻿<Application x:Class="Chefs.App"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:utu="using:Uno.Toolkit.UI">
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+
+				<XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+
+				<MaterialToolkitTheme xmlns="using:Uno.Toolkit.UI.Material"
+									  ColorOverrideSource="ms-appx:///Styles/ColorPaletteOverride.xaml"
+									  FontOverrideSource="ms-appx:///Styles/MaterialFontsOverride.xaml" />
+
+				<ResourceDictionary Source="ms-appx:///Converters/Converters.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/FeedView.xaml" />
+				<ResourceDictionary Source="ms-appx:///Views/Templates/ItemTemplates.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/Strings.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/CustomFonts.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/Images.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/Fab.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/MainCommand.xaml" />
+				<ResourceDictionary>
+					<ResourceDictionary.ThemeDictionaries>
+						<ResourceDictionary x:Key="Light">
+							<StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
+							<StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
+							<StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+						</ResourceDictionary>
+						<ResourceDictionary x:Key="Dark">
+							<StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
+							<StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
+							<StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+						</ResourceDictionary>
+					</ResourceDictionary.ThemeDictionaries>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

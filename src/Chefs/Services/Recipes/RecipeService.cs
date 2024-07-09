@@ -28,6 +28,20 @@ public class RecipeService : IRecipeService
 		   .Select(c => new Category(c))
 		   .ToImmutableList();
 
+	public async ValueTask<IImmutableList<CategoryWithCount>> GetCategoriesWithCount(CancellationToken ct)
+	{
+		var categories = await GetCategories(ct);
+		var categoriesWithCount = new List<CategoryWithCount>();
+		
+		foreach (var category in categories)
+		{
+			var recipesByCategory = await GetByCategory((int)category!.Id!, ct);
+			categoriesWithCount.Add(new CategoryWithCount(recipesByCategory.Count, category));
+		}
+		
+		return categoriesWithCount.ToImmutableList();
+	}
+
 	public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct)
 		=> (await _recipeEndpoint.GetAll(ct))
 		   .Select(r => new Recipe(r))
@@ -45,18 +59,25 @@ public class RecipeService : IRecipeService
 		   .Select(r => new Recipe(r))
 		   .ToImmutableList();
 
-	public async ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct)
+	public async ValueTask<IImmutableList<Recipe>> Search(string term, SearchFilter filter, CancellationToken ct)
 	{
+		var recipesToSearch = filter.FilterGroup switch
+		{
+			FilterGroup.Popular => await GetPopular(ct),
+			FilterGroup.Trending => await GetTrending(ct),
+			FilterGroup.Recent => await GetRecent(ct),
+			_ => await GetAll(ct)
+		};
+
 		if (term.IsNullOrEmpty())
 		{
 			_lastTextLength = 0;
-			return (await _recipeEndpoint.GetAll(ct)).Select(r => new Recipe(r)).ToImmutableList();
+			return recipesToSearch.ToImmutableList();
 		}
 		else
 		{
 			await SaveSearchHistory(term);
-			return GetRecipesByText((await _recipeEndpoint.GetAll(ct))
-					   .Select(r => new Recipe(r)), term);
+			return GetRecipesByText(recipesToSearch, term);
 		}
 	}
 
@@ -93,25 +114,41 @@ public class RecipeService : IRecipeService
 	public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct)
 		=> new(await _recipeEndpoint.CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct));
 
+	public IListState<Recipe> FavoritedRecipes => ListState<Recipe>.Async(this, GetFavorited);
 
-	public IListFeed<Recipe> SavedRecipes => ListFeed<Recipe>.Async(GetSaved);
-
-	public async ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct)
-		=> (await _recipeEndpoint.GetSaved(ct))
+	public async ValueTask<IImmutableList<Recipe>> GetFavorited(CancellationToken ct)
+		=> (await _recipeEndpoint.GetFavorited(ct))
 			.Select(r => new Recipe(r))
 			.ToImmutableList();
 
-	public async ValueTask Save(Recipe recipe, CancellationToken ct)
+	public async ValueTask Favorite(Recipe recipe, CancellationToken ct)
 	{
-		await _recipeEndpoint.Save(recipe.ToData(), ct);
-		_messenger.Send(new EntityMessage<Recipe>(recipe.Save ? EntityChange.Created : EntityChange.Deleted, recipe));
+		var updatedRecipe = recipe with { IsFavorite = !recipe.IsFavorite };
+		await _recipeEndpoint.Save(updatedRecipe.ToData(), ct);
+
+		if (updatedRecipe.IsFavorite)
+		{
+			await FavoritedRecipes.AddAsync(updatedRecipe);
+		}
+		else
+		{
+			await FavoritedRecipes.RemoveAllAsync(r => r.Id == updatedRecipe.Id);
+		}
+
+		_messenger.Send(new EntityMessage<Recipe>(EntityChange.Updated, updatedRecipe));
 	}
 
-	public async ValueTask<Review> LikeReview(Review review, CancellationToken ct)
-		=> new(await _recipeEndpoint.LikeReview(review.ToData(), ct));
+	public async ValueTask LikeReview(Review review, CancellationToken ct)
+	{
+		var updatedReview = new Review(await _recipeEndpoint.LikeReview(review.ToData(), ct));
+		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
+	}
 
-	public async ValueTask<Review> DislikeReview(Review review, CancellationToken ct)
-		=> new(await _recipeEndpoint.DislikeReview(review.ToData(), ct));
+	public async ValueTask DislikeReview(Review review, CancellationToken ct)
+	{
+		var updatedReview = new Review(await _recipeEndpoint.DislikeReview(review.ToData(), ct));
+		_messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
+	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct)
 		=> (await _recipeEndpoint.GetAll(ct))

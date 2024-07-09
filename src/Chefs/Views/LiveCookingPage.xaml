@@ -21,7 +21,7 @@
 
 	<Page.Resources>
 
-		<converters:UriToMediaPlayBackSourceConverter x:Key="UriToMediaPlaybackSource" />
+		<converters:StringToMediaPlayBackSourceConverter x:Key="StringToMediaPlaybackSource" />
 
 		<DataTemplate x:Key="StepTemplate">
 
@@ -82,7 +82,7 @@
 										<FontIcon Glyph="{StaticResource Icon_Check_Circle}"
 												  FontSize="14"
 												  VerticalAlignment="Center"
-												  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 										<TextBlock Text="{x:Bind}"
 												   VerticalAlignment="Center"
 												   TextWrapping="NoWrap"
@@ -107,8 +107,7 @@
 						   utu:AutoLayout.PrimaryAlignment="Auto"
 						   Background="{ThemeResource SurfaceInverseBrush}"
 						   Foreground="{ThemeResource OnSurfaceInverseBrush}"
-						   Content="{Binding Recipe.Name}"
-						   Style="{StaticResource PrimaryModalNavigationBarStyle}">
+						   Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<not_mobile:AppBarButton.Icon>
@@ -128,25 +127,34 @@
 																			 Wide=Stretch}"
 							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
 																  Wide=Center}">
+				<!--
+					MediaPlayerElement currently isn't supported on Skia Desktop, videos are not be playable
+					It is listed as a future improvement: https://platform.uno/docs/articles/controls/MediaPlayerElement.html#future-improvement
+					Related issue: https://github.com/unoplatform/Uno.Samples/issues/725
+				-->
 				<MediaPlayerElement AreTransportControlsEnabled="True"
-									Source="{Binding VideoSource, Converter={StaticResource UriToMediaPlaybackSource}}">
+									Source="{Binding Steps.CurrentItem.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
 				</MediaPlayerElement>
 			</utu:AutoLayout>
 
+			<!--
+				WORKAROUND
+				Binding to the Steps.Value property instead of directly on the Steps entity until
+				https://github.com/unoplatform/uno.extensions/issues/2391 is fixed
+			-->
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Justify="SpaceBetween"
 							Padding="0,40">
-				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
 				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 						  Background="Transparent"
 						  utu:AutoLayout.PrimaryAlignment="Stretch"
 						  ItemTemplate="{StaticResource StepTemplate}"
-						  ItemsSource="{Binding Steps}"
-						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						  ItemsSource="{Binding Steps.Value.Items}"
+						  SelectedIndex="{Binding Steps.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				<utu:AutoLayout CornerRadius="8"
 								Padding="40,0">
 					<muxc:PipsPager x:Name="pipsPager"
@@ -164,19 +172,19 @@
 								CornerRadius="4"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
 								Style="{StaticResource TextButtonStyle}"
-								Visibility="{Binding CanGoBack, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.Value.CanMovePrevious}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Content="Next"
 								CornerRadius="4"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
-								Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.Value.CanMoveNext}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 								Height="59"
 								Command="{Binding Complete}"
 								Content="Done!"
 								CornerRadius="4"
-								Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}" />
+								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
@@ -184,7 +192,7 @@
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
-						Visibility="{Binding Completed, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
+						Visibility="{Binding Completed}"
 						Orientation="{utu:Responsive Narrow=Vertical,
 													 Wide=Horizontal}">
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
@@ -246,7 +254,7 @@
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Height="59"
 							Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-														  Path=DataContext.Save}"
+														  Path=DataContext.IsFavorite}"
 							Content="Favorite"
 							CornerRadius="4">
 						<ut:ControlExtensions.Icon>
