@@ -1,5 +1,5 @@
 ---
-uid: Uno.Recipes.MvuxNavigation
+uid: Uno.Recipes.NavigationCodeBehind
 ---
 
 # How-To: Navigate in MVUX Model
