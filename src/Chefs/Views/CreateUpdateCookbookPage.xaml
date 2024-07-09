@@ -105,11 +105,10 @@
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 			<utu:NavigationBar x:Name="NavBarLayout"
-							   Background="{ThemeResource SurfaceInverseBrush}"
 							   Content="{Binding Title}"
-							   Foreground="{ThemeResource OnSurfaceInverseBrush}">
+							   Style="{StaticResource ChefsNavigationBarStyle}">
 				<utu:NavigationBar.MainCommand>
-					<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+					<AppBarButton>
 						<not_mobile:AppBarButton.Icon>
 							<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>

@@ -51,11 +51,10 @@
 	</Page.Resources>
 	<utu:AutoLayout>
 		<utu:NavigationBar x:Name="NavBar"
-						   Background="{ThemeResource SurfaceInverseBrush}"
-						   Content="{Binding Recipe.Name}"
-						   Foreground="{ThemeResource OnSurfaceInverseBrush}">
+						   Style="{StaticResource ChefsNavigationBarStyle}"
+						   Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>

@@ -123,8 +123,7 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 
 			<utu:NavigationBar x:Name="NavBar"
-							   Background="{ThemeResource SurfaceInverseBrush}"
-							   Style="{StaticResource PrimaryNavigationBarStyle}">
+							   Style="{StaticResource ChefsNavigationBarStyle}">
 				<utu:NavigationBar.Content>
 					<utu:AutoLayout Padding="12,0,0,0"
 									Orientation="Horizontal">
