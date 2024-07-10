@@ -6,14 +6,14 @@ uid: Uno.Recipes.InputExtensions.ReturnType
 
 ## Problem
 
-There is no easy way to set the return type for input controls like `TextBox` and `PasswordBox` to control the keyboard behavior can often be inconsistent and verbose across different platforms.
+There is no cross-platform method to set the on-screen keyboard's return key for input controls like `TextBox` and `PasswordBox`. Normally, you would need to use platform conditionals to set the `ImeOptions` or the `ReturnKeyType` properties for Android and iOS, respectively.
 
 ## Solution
 
-The `InputExtensions` class provides the `InputExtensions.ReturnType` property provided by **Uno.Toolkit** simplifies setting the return type for input controls, ensuring a consistent user experience across all platforms.
+The `InputExtensions` class, provided by **Uno.Toolkit**, includes the `InputExtensions.ReturnType` property which simplifies setting the return type for input controls, ensuring a consistent user experience across all platforms.
 
 
-In the Chefs app, we can use `InputExtensions.ReturnType` to set the return type.In the `LoginPage`, we can set the return type for `TextBox` and `PasswordBox` controls without needing platform specific properties:
+In the Chefs app, the `LoginPage` sets the return type for `TextBox` and `PasswordBox` controls without needing platform specific properties:
 
 ```xml
 ...
@@ -32,11 +32,12 @@ In the Chefs app, we can use `InputExtensions.ReturnType` to set the return type
 The above code has the following effect:
 <table>
   <tr>
-    <th>InputExtensions.AutoFocusNextElement</th>
+    <th>ReturnType.Next</th>
+    <th>ReturnType.Done</th>
   </tr>
   <tr>
      <td><img src="../assets/inputextensions-returnType-2.png" width="400px" alt="InputExtensions.ReturnType='Done'"/></td>
-   <td><img src="../assets/inputextensions-returnType-1.png" width="400px" alt="InputExtensions.ReturnType='Done'"/></td>
+     <td><img src="../assets/inputextensions-returnType-1.png" width="400px" alt="InputExtensions.ReturnType='Next'"/></td>
   </tr>
 </table>
 
