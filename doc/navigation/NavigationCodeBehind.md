@@ -6,11 +6,11 @@ uid: Uno.Recipes.NavigationCodeBehind
 
 ## Problem
 
-Navigating between pages using Xaml alone can be limiting and often requires handling navigation logic within the view, which can make it more difficult to maintain. For complex navigation logic it can feel less flexible and reusable.
+Navigation logic can often become complex when it has to handle different states and pass data. These situations can lead to decreased readability and reusability.
 
 ## Solution
 
-Uno Extensions Navigation lets you achieve a cleaner separation of concerns for complex navigation by abstracting its logic from the app's view layer. You can [invoke navigation](xref:Uno.Extensions.Navigation.HowToNavigateInCode) with `INavigator` through commands defined in the view model, enabling more flexibility and more maintainable code. It is also possible to [navigate between pages](xref:Uno.Extensions.Navigation.HowToNavigateInCode#1-navigating-to-a-new-page).
+Uno Extensions Navigation lets you easily [invoke navigation](xref:Uno.Extensions.Navigation.HowToNavigateInCode) with `INavigator` through commands defined in the view model, enabling more flexibility and more maintainable code. It is also possible to [navigate between pages](xref:Uno.Extensions.Navigation.HowToNavigateInCode#1-navigating-to-a-new-page).
 
 ### 1. NavigateViewModelAsync
 
@@ -18,7 +18,7 @@ This method navigates to a route that matches the specified view model type. Let
 
 ```csharp
 public async ValueTask SearchPopular() =>
-	await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));
+    await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));
 ```
 
 ### 2. NavigateDataAsync
@@ -29,6 +29,21 @@ This method navigates to a route that is registered for the specified data type.
 public static Task<NavigationResponse?> ShowDialog(this INavigator navigator, object sender, DialogInfo dialogInfo, CancellationToken ct)
 {
     return navigator.NavigateDataAsync(sender, new DialogInfo(dialogInfo.Title, dialogInfo.Content), cancellation: ct);
+}
+```
+
+```csharp
+private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
+{
+    views.Register(
+        /* other routes */,
+        new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>())
+    );
+    
+    routes.Register(
+        /* other routes */,
+        new RouteMap("Dialog", View: views.FindByView<GenericDialog>())
+    );
 }
 ```
 
@@ -45,11 +60,21 @@ private async Task NavigateBack()
 
 ### 4. NavigateBackWithResultAsync
 
-This method navigates back to the previous view model with data. Let's say the previous page the user was on was the search page and it was displaying recipes with a certain filter. What if the user navigates to the filter page, changes the search filters, and once submitted is navigated back to the search page? We could use `NavigateViewModelAsync` but that would mean remaking the `SearchModel`. That's why we should use `NavigateBackWithResultAsync` and pass the new filter as data.
+This method navigates back to the previous frame on the back-stack with data. Let's say the previous page the user was on was the search page and it was displaying recipes with a certain filter. What if the user navigates to the filter page, changes the search filters, and once submitted is navigated back to the search page? We could use `NavigateViewModelAsync` but that would mean remaking the `SearchModel`. That's why we should use `NavigateBackWithResultAsync` and pass the new filter as data. We can define a `DataViewMap` to register that the route is expecting a SearchFilter as a parameter when being navigated to.
+
+```csharp
+private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
+{
+    views.Register(
+        /* other routes */,
+        new DataViewMap<SearchPage, SearchModel, SearchFilter>()
+    );
+}
+```
 
 ```csharp
 public async ValueTask ApplySearchFilter(SearchFilter filter) =>
-	await _navigator.NavigateBackWithResultAsync(this, data: filter);
+    await _navigator.NavigateBackWithResultAsync(this, data: filter);
 ```
 
 ### 5. NavigateRouteAsync
