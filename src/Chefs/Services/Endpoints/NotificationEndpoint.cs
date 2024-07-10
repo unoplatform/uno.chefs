@@ -12,14 +12,6 @@ public class NotificationEndpoint : INotificationEndpoint
 	public async ValueTask<IImmutableList<NotificationData>> GetAll(CancellationToken ct)
 		=> (await Load(ct)).ToImmutableList() ?? ImmutableList<NotificationData>.Empty;
 
-	public async ValueTask<IImmutableList<NotificationData>> GetRead(CancellationToken ct) => (await Load(ct))
-		.Where(x => x.Read)
-		.ToImmutableList() ?? ImmutableList<NotificationData>.Empty;
-
-	public async ValueTask<IImmutableList<NotificationData>> GetUnread(CancellationToken ct) => (await Load(ct))
-		.Where(x => !x.Read)
-		.ToImmutableList() ?? ImmutableList<NotificationData>.Empty;
-
 	private async ValueTask<IList<NotificationData>> Load(CancellationToken ct)
 	{
 		if (_notifications == null)
