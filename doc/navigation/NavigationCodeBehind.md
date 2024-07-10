@@ -23,7 +23,7 @@ public async ValueTask SearchPopular() =>
 
 ### 2. NavigateDataAsync
 
-This method navigates to a route that is registered for the specified data type. In the root App.xaml.cs, since we defined that the `GenericDialogModel` is registered to a _DialogInfo_ _DataMap_, it will choose the "Dialog" route.
+This method navigates to a route that is registered for the specified data type. In the root App.xaml.cs, since we defined that the `GenericDialogModel` is registered to a `DialogInfo` through the `DataMap`, it will choose the "Dialog" route.
 
 ```csharp
 public static Task<NavigationResponse?> ShowDialog(this INavigator navigator, object sender, DialogInfo dialogInfo, CancellationToken ct)
@@ -34,7 +34,7 @@ public static Task<NavigationResponse?> ShowDialog(this INavigator navigator, ob
 
 ### 3. NavigateBackAsync
 
-This method navigates back to the previous frame on the back-stack, eliminating the need to remake the view model.
+This method navigates back to the previous frame on the back-stack.
 
 ```csharp
 private async Task NavigateBack()
