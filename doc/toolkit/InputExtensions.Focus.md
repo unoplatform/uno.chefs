@@ -1,5 +1,5 @@
 ---
-uid: Uno.Recipes.InputExtensions
+uid: Uno.Recipes.InputExtensions.Focus
 ---
 
 # How to manage focus between input controls using the Enter key in XAML
