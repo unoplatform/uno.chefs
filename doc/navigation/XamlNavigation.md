@@ -19,24 +19,31 @@ Uno Navigation Extensions allows you to streamline XAML navigation by leveraging
 On the Chefs home page there are some `ItemRepeater` controls that each display a list of filtered clickable recipes. When a user clicks on a recipe, they are brought to that specific recipe's details page.
 
 ```xml
-<uer:FeedView x:Name="TrendingNowFeed"
-              Source="{Binding TrendingNow}">
-    <DataTemplate>
-        <ScrollViewer>
-            <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                                uen:Navigation.Request="RecipeDetails"
-                                uen:Navigation.Data="{Binding Data}"
-                                ItemTemplate="{StaticResource HomeLargeItemTemplate}">
-                <muxc:ItemsRepeater.Layout>
-                    ...
-                </muxc:ItemsRepeater.Layout>
-            </muxc:ItemsRepeater>
-        </ScrollViewer>
-    </DataTemplate>
-</uer:FeedView>
+<ScrollViewer>
+    <muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                        uen:Navigation.Request="RecipeDetails"
+                        uen:Navigation.Data="{Binding Data}"
+                        ItemTemplate="{StaticResource HomeLargeItemTemplate}">
+        <muxc:ItemsRepeater.Layout>
+            ...
+        </muxc:ItemsRepeater.Layout>
+    </muxc:ItemsRepeater>
+</ScrollViewer>
 ```
 
-Clicking on a specific recipe will bring the user to the `RecipeDetailsPage` with the `Recipe` as its `Data` parameter. This page can now display all the details of the recipe in question. You can find more information about Navigation Requests [here](xref:Uno.Extensions.Navigation.HowToNavigateInXAML#1-navigationrequest).
+Clicking on a specific recipe will bring the user to the `RecipeDetailsPage` with the `Recipe` as its `Data` parameter. This page will display all the details of the recipe in question. The `Navigation.Request` property will resolve to the `RecipeDetails` route as registered in the root App.xaml.cs file.
+
+```csharp
+private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
+{
+    routes.Register(
+        /* other routes */,
+        new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home")
+    );
+}
+```
+
+You can find more information about Navigation Requests [here](xref:Uno.Extensions.Navigation.HowToNavigateInXAML#1-navigationrequest).
 
 #### Qualifiers
 
@@ -57,4 +64,4 @@ On the Welcome page in Chefs when allowing the user to skip some content, we are
 
 ## Documentation
 
-- [How-To: Navigate in Xaml](xref:Uno.Extensions.Navigation.HowToNavigateInXAML)
+- [How-To: Navigate in XAML](xref:Uno.Extensions.Navigation.HowToNavigateInXAML)
