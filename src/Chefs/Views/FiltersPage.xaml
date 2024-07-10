@@ -25,7 +25,7 @@
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
 		<utu:AutoLayout uen:Region.Attached="True"
-						utu:AutoLayout.PrimaryAlignment="Stretch">
+						PrimaryAxisAlignment="Stretch">
 			<utu:NavigationBar Content="Filters">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton uen:Navigation.Request="-">
@@ -35,8 +35,7 @@
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 			</utu:NavigationBar>
-			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-						  HorizontalScrollMode="Disabled">
+			<ScrollViewer HorizontalScrollMode="Disabled">
 				<!--
 					The use of UniformGridLayout in the ItemsRepeater makes the spacing between
 					the Chips inconsistent and sometimes the Chip content is truncated too
@@ -49,7 +48,7 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Recipe Categories"
 								   TextWrapping="Wrap" />
-						<!-- It's important to put the ItemsSource bove the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
+						<!-- It's important to put the ItemsSource above the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
 						<muxc:ItemsRepeater ItemsSource="{Binding FilterGroups}"
 											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.FilterGroup, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
@@ -136,24 +135,22 @@
 		</utu:AutoLayout>
 		<utu:AutoLayout Height="100"
 						Padding="16,24"
-						utu:AutoLayout.CounterAlignment="Start"
 						Background="{ThemeResource SurfaceBrush}"
 						Orientation="Horizontal"
 						PrimaryAxisAlignment="Center"
+						CounterAxisAlignment="Start"
 						Spacing="16">
-			<Button utu:AutoLayout.CounterAlignment="Start"
-					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Content="Reset"
+			<Button Content="Reset"
 					Height="60"
 					Command="{Binding Reset}"
 					CornerRadius="4"
-					Style="{StaticResource TextButtonStyle}" />
-			<Button utu:AutoLayout.CounterAlignment="Start"
-					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Content="Apply filter"
+					Style="{StaticResource TextButtonStyle}"
+					utu:AutoLayout.PrimaryAlignment="Stretch" />
+			<Button Content="Apply filter"
 					Height="60"
 					Command="{Binding ApplySearchFilter}"
-					CornerRadius="4" />
+					CornerRadius="4"
+					utu:AutoLayout.PrimaryAlignment="Stretch" />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>

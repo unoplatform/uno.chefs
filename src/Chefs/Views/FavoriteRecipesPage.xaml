@@ -35,17 +35,15 @@
 			<utu:AutoLayout Height="546"
 							Padding="32,0"
 							PrimaryAxisAlignment="Center"
+							CounterAxisAlignment="Center"
 							Spacing="24">
 				<utu:AutoLayout Width="72"
-								Height="72"
-								utu:AutoLayout.CounterAlignment="Center">
+								Height="72">
 					<utu:AutoLayout HorizontalAlignment="Stretch"
 									VerticalAlignment="Stretch"
-									utu:AutoLayout.IsIndependentLayout="True"
-									PrimaryAxisAlignment="Center">
+									utu:AutoLayout.IsIndependentLayout="True">
 						<BitmapIcon Width="56"
 									Height="72"
-									utu:AutoLayout.CounterAlignment="Center"
 									UriSource="{ThemeResource Empty_Box}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
@@ -347,9 +345,8 @@
 								  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
 								  Source="{Binding SavedCookbooks}">
 						<DataTemplate>
-							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+							<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 								<ScrollViewer x:Name="RecipesScrollViewer"
-											  utu:AutoLayout.PrimaryAlignment="Stretch"
 											  HorizontalScrollMode="Disabled"
 											  VerticalScrollBarVisibility="Hidden">
 									<muxc:ItemsRepeater Margin="0,0,0,16"

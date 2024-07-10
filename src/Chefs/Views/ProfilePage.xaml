@@ -24,11 +24,10 @@
 								Padding="32,0"
 								utu:AutoLayout.PrimaryAlignment="Stretch">
 					<utu:AutoLayout PrimaryAxisAlignment="Center"
-									utu:AutoLayout.CounterAlignment="Center"
+									CounterAxisAlignment="Center"
 									Width="72"
 									Height="72">
 						<BitmapIcon UriSource="{ThemeResource Empty_Box}"
-									utu:AutoLayout.CounterAlignment="Center"
 									Width="64"
 									Height="72.201614" />
 					</utu:AutoLayout>

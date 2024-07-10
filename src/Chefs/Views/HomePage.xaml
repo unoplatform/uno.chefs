@@ -170,13 +170,11 @@
 														   Width="60"
 														   Height="60" />
 													<utu:AutoLayout PrimaryAxisAlignment="Center"
-																	utu:AutoLayout.CounterAlignment="Center">
+																	CounterAxisAlignment="Start">
 														<TextBlock Text="{Binding Category.Name}"
-																   utu:AutoLayout.CounterAlignment="Start"
 																   Foreground="{ThemeResource OnSurfaceBrush}"
 																   Style="{StaticResource TitleMedium}" />
 														<TextBlock Text="{Binding Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes', UpdateSourceTrigger=PropertyChanged}"
-																   utu:AutoLayout.CounterAlignment="Start"
 																   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 													</utu:AutoLayout>
 												</utu:AutoLayout>

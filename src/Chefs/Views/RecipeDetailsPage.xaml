@@ -89,13 +89,12 @@
 							<utu:AutoLayout Padding="0,0,0,92">
 								<utu:AutoLayout Spacing="8"
 												Orientation="Horizontal"
-												Padding="16">
-									<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-												   ProfilePicture="{Binding User.UrlProfileImage}"
+												Padding="16"
+												CounterAxisAlignment="Center">
+									<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
 												   Width="32"
 												   Height="32" />
 									<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
-											   utu:AutoLayout.CounterAlignment="Center"
 											   Foreground="{ThemeResource OnBackgroundMediumBrush}"
 											   Style="{StaticResource BodySmall}" />
 								</utu:AutoLayout>
@@ -104,8 +103,7 @@
 										<utu:AutoLayout Spacing="8"
 														utu:AutoLayout.CounterAlignment="Stretch"
 														Height="250">
-											<Border Height="195"
-													utu:AutoLayout.CounterAlignment="Start">
+											<Border Height="195">
 												<Image Source="{Binding Recipe.ImageUrl}"
 													   HorizontalAlignment="Center"
 													   VerticalAlignment="Center"
@@ -126,7 +124,6 @@
 																VerticalAlignment="Stretch"
 																HorizontalAlignment="Stretch">
 													<StackPanel Spacing="4"
-																utu:AutoLayout.CounterAlignment="Start"
 																utu:AutoLayout.PrimaryAlignment="Stretch">
 														<FontIcon Glyph="{StaticResource Icon_Timer}"
 																  HorizontalAlignment="Center"
@@ -467,13 +464,12 @@
 					<utu:AutoLayout>
 						<utu:AutoLayout Spacing="8"
 										Orientation="Horizontal"
-										Padding="16">
-							<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-										   ProfilePicture="{Binding User.UrlProfileImage}"
+										Padding="16"
+										CounterAxisAlignment="Center">
+							<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
 										   Width="32"
 										   Height="32" />
 							<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
-									   utu:AutoLayout.CounterAlignment="Center"
 									   Foreground="{ThemeResource OnBackgroundMediumBrush}"
 									   Style="{StaticResource BodySmall}" />
 						</utu:AutoLayout>
@@ -736,28 +732,26 @@
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
 																										  FontSize="20"
 																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Likes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
 																						</ToggleButton.Content>
 																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
 																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 																										  FontSize="20"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Likes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
@@ -775,28 +769,26 @@
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
 																										  FontSize="20"
 																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Dislikes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
 																						</ToggleButton.Content>
 																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
 																										  FontSize="20"
 																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Dislikes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>

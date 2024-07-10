@@ -101,9 +101,9 @@
 							<utu:AutoLayout>
 								<utu:AutoLayout Padding="0,0,0,16"
 												Justify="SpaceBetween"
-												Orientation="Horizontal">
-									<TextBlock utu:AutoLayout.CounterAlignment="Center"
-											   Style="{StaticResource BodyLarge}">
+												Orientation="Horizontal"
+												utu:AutoLayout.CounterAlignment="Center">
+									<TextBlock Style="{StaticResource BodyLarge}">
 										<Run Text="{Binding Data.Recipes.Count}" />
 										<Run Text="results" />
 									</TextBlock>

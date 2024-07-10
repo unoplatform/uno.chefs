@@ -124,14 +124,13 @@
 						</Button>
 					</utu:AutoLayout>
 					<utu:AutoLayout PrimaryAxisAlignment="Center"
+									CounterAxisAlignment="Center"
 									Orientation="Horizontal"
 									Spacing="4">
 						<TextBlock Text="Not a member?"
-								   utu:AutoLayout.CounterAlignment="Center"
 								   Foreground="{ThemeResource OnSurfaceBrush}"
 								   Style="{StaticResource LabelLarge}" />
 						<Button Content="Register Now"
-								utu:AutoLayout.CounterAlignment="Center"
 								uen:Navigation.Request="-/Register"
 								CornerRadius="20"
 								Style="{StaticResource TextButtonStyle}" />
