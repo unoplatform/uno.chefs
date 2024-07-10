@@ -10,7 +10,7 @@ Navigating between pages often involves managing code-behind logic to handle dif
 
 ## Solution
 
-Uno Navigation Extensions allows you to streamline Xaml navigation by leveraging attached properties such as Navigation.Request and Navigation.Data. This approach simplifies the process of navigating and passing data between pages, allowing it to [all be done directly in Xaml](xref:Uno.Extensions.Navigation.HowToNavigateInXAML). In most cases it promotes better readability and separation of concerns by keeping everything navigation related in the view layer.
+Uno Navigation Extensions allows you to streamline XAML navigation by leveraging attached properties such as `Navigation.Request` and `Navigation.Data`. This approach simplifies the process of navigating and passing data between pages, allowing it to [all be done directly in XAML](xref:Uno.Extensions.Navigation.HowToNavigateInXAML). In most cases it promotes better readability and separation of concerns by keeping everything navigation related in the view layer.
 
 ### Chefs Examples
 
@@ -36,7 +36,7 @@ On the Chefs home page there are some `ItemRepeater` controls that each display 
 </uer:FeedView>
 ```
 
-We can see that the `ItemsSource` is bound to the Data of the current context, which is from the `FeedView` control's `Source` _TrendingNow_ (of type `IListFeed<Recipe>`). Therefore, we will get a list of recipes, and clicking on a specific recipe will bring the user to the _RecipeDetailsPage_ with the _Data_ as its recipe. This page can now display all the details of the recipe in question. You can find more information about Navigation Requests [here](xref:Uno.Extensions.Navigation.HowToNavigateInXAML#1-navigationrequest).
+Clicking on a specific recipe will bring the user to the `RecipeDetailsPage` with the `Recipe` as its `Data` parameter. This page can now display all the details of the recipe in question. You can find more information about Navigation Requests [here](xref:Uno.Extensions.Navigation.HowToNavigateInXAML#1-navigationrequest).
 
 #### Qualifiers
 
