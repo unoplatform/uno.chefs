@@ -46,27 +46,24 @@
 										Background="{ThemeResource SurfaceBrush}"
 										CornerRadius="8"
 										Spacing="16">
-							<TextBox BorderBrush="{ThemeResource OutlineVariantBrush}"
-									 PlaceholderText="Name"
-									 Style="{StaticResource OutlinedTextBoxStyle}"
+							<TextBox PlaceholderText="Name"
+									 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 									 Text="{Binding Profile.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<ut:ControlExtensions.Icon>
 									<FontIcon Glyph="{StaticResource Icon_Person_Outline}"
 											  Foreground="{ThemeResource PrimaryBrush}" />
 								</ut:ControlExtensions.Icon>
 							</TextBox>
-							<TextBox BorderBrush="{ThemeResource OutlineVariantBrush}"
-									 PlaceholderText="Email"
-									 Style="{StaticResource OutlinedTextBoxStyle}"
+							<TextBox PlaceholderText="Email"
+									 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 									 Text="{Binding Profile.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<ut:ControlExtensions.Icon>
 									<FontIcon Glyph="{StaticResource Icon_Mail_Outline}"
 											  Foreground="{ThemeResource PrimaryBrush}" />
 								</ut:ControlExtensions.Icon>
 							</TextBox>
-							<TextBox BorderBrush="{ThemeResource OutlineVariantBrush}"
-									 PlaceholderText="Mobile Number"
-									 Style="{StaticResource OutlinedTextBoxStyle}"
+							<TextBox PlaceholderText="Mobile Number"
+									 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 									 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<ut:ControlExtensions.Icon>
 									<FontIcon Glyph="{StaticResource Icon_Phone_Iphone}"
