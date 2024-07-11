@@ -44,11 +44,6 @@ public interface ICookbookService
 	ValueTask<IImmutableList<Cookbook>> GetSaved(CancellationToken ct);
 
 	/// <summary>
-	/// Current cookbook.
-	/// </summary>
-	IListFeed<Cookbook> SavedCookbooks { get; }
-
-	/// <summary>
 	/// Cookbooks by user
 	/// </summary>
 	/// <param name="ct"></param>

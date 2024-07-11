@@ -21,9 +21,12 @@ public partial class FavoriteRecipesModel
 		_messenger = messenger;
 
 		_messenger.Observe(SavedCookbooks, cb => cb.Id);
+		_messenger.Observe(FavoriteRecipes, r => r.Id);
+
+		FavoriteRecipes.ForEachAsync(async (_, ct) => FavoriteRecipes.RequestRefresh());
 	}
 
-	public IListState<Cookbook> SavedCookbooks => ListState.FromFeed(this, _cookbookService.SavedCookbooks);
+	public IListState<Cookbook> SavedCookbooks => ListState.Async(this, _cookbookService.GetSaved);
 
-	public IListState<Recipe> FavoriteRecipes => _recipeService.FavoritedRecipes;
+	public IListState<Recipe> FavoriteRecipes => ListState.Async(this, _recipeService.GetFavorited);
 }

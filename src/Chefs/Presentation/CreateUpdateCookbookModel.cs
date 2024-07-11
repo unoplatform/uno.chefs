@@ -8,6 +8,7 @@ public partial class CreateUpdateCookbookModel
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
+	private readonly IMessenger? _messenger;
 	private readonly Cookbook? _cookbook;
 
 	public CreateUpdateCookbookModel(
@@ -20,6 +21,7 @@ public partial class CreateUpdateCookbookModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 		_cookbookService = cookbookService;
+		_messenger = messenger;
 
 		if (cookbook is not null)
 		{
@@ -37,7 +39,8 @@ public partial class CreateUpdateCookbookModel
 			IsCreate = true;
 		}
 
-		messenger.Observe(Cookbook, cb => cb.Id);
+		_messenger.Observe(Cookbook, cb => cb.Id);
+		_messenger.Observe(Recipes, r => r.Id);
 	}
 	public bool IsCreate { get; }
 

@@ -114,8 +114,6 @@ public class RecipeService : IRecipeService
 	public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct)
 		=> new(await _recipeEndpoint.CreateReview(new ReviewData { RecipeId = recipeId, Description = review }, ct));
 
-	public IListState<Recipe> FavoritedRecipes => ListState<Recipe>.Async(this, GetFavorited);
-
 	public async ValueTask<IImmutableList<Recipe>> GetFavorited(CancellationToken ct)
 		=> (await _recipeEndpoint.GetFavorited(ct))
 			.Select(r => new Recipe(r))
@@ -125,16 +123,6 @@ public class RecipeService : IRecipeService
 	{
 		var updatedRecipe = recipe with { IsFavorite = !recipe.IsFavorite };
 		await _recipeEndpoint.Save(updatedRecipe.ToData(), ct);
-
-		if (updatedRecipe.IsFavorite)
-		{
-			await FavoritedRecipes.AddAsync(updatedRecipe);
-		}
-		else
-		{
-			await FavoritedRecipes.RemoveAllAsync(r => r.Id == updatedRecipe.Id);
-		}
-
 		_messenger.Send(new EntityMessage<Recipe>(EntityChange.Updated, updatedRecipe));
 	}
 

@@ -42,11 +42,6 @@ public interface IRecipeService
 	ValueTask<int> GetCount(Guid userId, CancellationToken ct);
 
 	/// <summary>
-	/// Favorited recipes.
-	/// </summary>
-	IListState<Recipe> FavoritedRecipes { get; }
-
-	/// <summary>
 	/// Recipes with a specific category
 	/// </summary>
 	/// <param name="categoryId">The specific category to filter recipes</param>
@@ -167,7 +162,6 @@ public interface IRecipeService
 	/// User's recipes
 	/// </returns>
 	ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct);
-
 
 	/// <summary>
 	/// Recipes favorited by the current user
