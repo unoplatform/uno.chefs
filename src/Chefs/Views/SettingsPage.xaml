@@ -64,15 +64,15 @@
 											  Foreground="{ThemeResource PrimaryBrush}" />
 								</ut:ControlExtensions.Icon>
 							</TextBox>
-							<TextBox BorderBrush="{ThemeResource OutlineVariantBrush}"
-									 PlaceholderText="Mobile Number"
-									 Style="{StaticResource OutlinedTextBoxStyle}"
-									 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							<NumberBox BorderBrush="{ThemeResource OutlineVariantBrush}"
+									   PlaceholderText="Mobile Number"
+									   Style="{StaticResource OutlinedTextBoxStyle}"
+									   Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<ut:ControlExtensions.Icon>
 									<FontIcon Glyph="{StaticResource Icon_Phone_Iphone}"
 											  Foreground="{ThemeResource PrimaryBrush}" />
 								</ut:ControlExtensions.Icon>
-							</TextBox>
+							</NumberBox>
 						</utu:AutoLayout>
 					</utu:AutoLayout>
 					<utu:AutoLayout>
