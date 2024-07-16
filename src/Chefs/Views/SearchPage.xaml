@@ -156,6 +156,7 @@
 							Spacing="24">
 				<TextBox utu:CommandExtensions.Command="{Binding Search}"
 						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+						 CornerRadius="28"
 						 PlaceholderText="Search"
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<ut:ControlExtensions.Icon>
