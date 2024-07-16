@@ -65,7 +65,9 @@
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="Create cookbook"
 						Foreground="{ThemeResource PrimaryBrush}"
-						Style="{StaticResource ChefsPrimaryButtonStyle}">
+						Padding="12,10,16,10"
+						CornerRadius="20"
+						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Add}"
 								  Style="{StaticResource FontAwesomeSolidFontIconStyle}"

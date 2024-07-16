@@ -38,4 +38,12 @@
 		<Setter Property="BorderThickness" Value="1" />
 	</Style>
 
+	<Style x:Key="ChefsFabButtonStyle"
+	       TargetType="Button"
+	       BasedOn="{StaticResource PrimaryFabStyle}">
+		<Setter Property="Padding" Value="24,20" />
+		<Setter Property="CornerRadius" Value="4" />
+		<Setter Property="Margin" Value="0,0,16,16" />
+	</Style>
+
 </ResourceDictionary>
