@@ -3,7 +3,7 @@
 
 	<Style x:Key="ChefsPrimaryButtonStyle"
 		   TargetType="Button"
-                   BasedOn="{StaticResource FilledButtonStyle}">
+		   BasedOn="{StaticResource FilledButtonStyle}">
 		<Setter Property="Padding" Value="24,20" />
 		<Setter Property="CornerRadius" Value="4" />
 		<Setter Property="Height" Value="59" />
@@ -39,8 +39,8 @@
 	</Style>
 
 	<Style x:Key="ChefsFabButtonStyle"
-	       TargetType="Button"
-	       BasedOn="{StaticResource PrimaryFabStyle}">
+		   TargetType="Button"
+		   BasedOn="{StaticResource PrimaryFabStyle}">
 		<Setter Property="Padding" Value="24,20" />
 		<Setter Property="CornerRadius" Value="4" />
 		<Setter Property="Margin" Value="0,0,16,16" />
