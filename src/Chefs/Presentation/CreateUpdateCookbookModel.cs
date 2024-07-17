@@ -8,7 +8,7 @@ public partial class CreateUpdateCookbookModel
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
-	private readonly IMessenger? _messenger;
+	private readonly IMessenger _messenger;
 	private readonly Cookbook? _cookbook;
 
 	public CreateUpdateCookbookModel(
