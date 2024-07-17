@@ -14,20 +14,6 @@
 	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d android ios not_win">
 
-	<Page.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.ThemeDictionaries>
-				<ResourceDictionary x:Key="Light">
-					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-				</ResourceDictionary>
-				<ResourceDictionary x:Key="Default">
-					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-				</ResourceDictionary>
-			</ResourceDictionary.ThemeDictionaries>
-		</ResourceDictionary>
-	</Page.Resources>
 	<utu:AutoLayout x:Name="RegisterLayout"
 					Margin="32"
 					HorizontalAlignment="Stretch"
@@ -70,6 +56,20 @@
 						 PlaceholderText="Password"
 						 Style="{StaticResource OutlinedPasswordBoxStyle}"
 						 BorderBrush="{ThemeResource OutlineVariantBrush}">
+				<PasswordBox.Resources>
+					<ResourceDictionary>
+						<ResourceDictionary.ThemeDictionaries>
+							<ResourceDictionary x:Key="Light">
+								<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+								<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+							</ResourceDictionary>
+							<ResourceDictionary x:Key="Default">
+								<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+								<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+							</ResourceDictionary>
+						</ResourceDictionary.ThemeDictionaries>
+					</ResourceDictionary>
+				</PasswordBox.Resources>
 				<ut:ControlExtensions.Icon>
 					<FontIcon Glyph="{StaticResource Icon_Lock}"
 							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
