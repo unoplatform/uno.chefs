@@ -55,14 +55,14 @@
 						   Text="It looks like you haven't created any cookbooks yet. Cookbooks are a great way to organize your recipes into collections. "
 						   TextAlignment="Center"
 						   TextWrapping="Wrap" />
-				<Button Padding="12,10,16,10"
-						HorizontalContentAlignment="Center"
+				<Button HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
 						uen:Navigation.Request="!CreateCookbook"
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="Create cookbook"
-						CornerRadius="20"
 						Foreground="{ThemeResource PrimaryBrush}"
+						Padding="12,10,16,10"
+						CornerRadius="20"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Add}"

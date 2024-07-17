@@ -14,20 +14,6 @@
 	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d android ios not_win">
 
-	<Page.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.ThemeDictionaries>
-				<ResourceDictionary x:Key="Light">
-					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-				</ResourceDictionary>
-				<ResourceDictionary x:Key="Default">
-					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-				</ResourceDictionary>
-			</ResourceDictionary.ThemeDictionaries>
-		</ResourceDictionary>
-	</Page.Resources>
 	<utu:AutoLayout x:Name="RegisterLayout"
 					Margin="32"
 					HorizontalAlignment="Stretch"
@@ -40,15 +26,9 @@
 			   Width="160"
 			   Height="90" />
 		<utu:AutoLayout Spacing="16">
-			<TextBox PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-					 PlaceholderText="Username"
-					 BorderThickness="1"
-					 CornerRadius="4"
-					 Foreground="{ThemeResource OnSurfaceBrush}"
-					 Style="{StaticResource OutlinedTextBoxStyle}"
-					 BorderBrush="{ThemeResource OutlineVariantBrush}"
-					 android:ImeOptions="Next"
-					 ios:ReturnKeyType="Next"
+			<TextBox PlaceholderText="Username"
+					 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+					 utu:InputExtensions.ReturnType="Next"
 					 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
 					 InputScope="Text"
 					 IsSpellCheckEnabled="False"
@@ -58,16 +38,10 @@
 							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 				</ut:ControlExtensions.Icon>
 			</TextBox>
-			<TextBox PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-					 PlaceholderText="Email"
-					 BorderThickness="1"
-					 CornerRadius="4"
-					 Foreground="{ThemeResource OnSurfaceBrush}"
-					 Style="{StaticResource OutlinedTextBoxStyle}"
-					 BorderBrush="{ThemeResource OutlineVariantBrush}"
+			<TextBox PlaceholderText="Email"
+					 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 					 x:Name="RegistrationEmail"
-					 android:ImeOptions="Next"
-					 ios:ReturnKeyType="Next"
+					 utu:InputExtensions.ReturnType="Next"
 					 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
 					 IsSpellCheckEnabled="False">
 				<ut:ControlExtensions.Icon>
@@ -76,13 +50,26 @@
 				</ut:ControlExtensions.Icon>
 			</TextBox>
 			<PasswordBox x:Name="RegistrationPassword"
-						 android:ImeOptions="Done"
-						 ios:ReturnKeyType="Done"
+						 utu:InputExtensions.ReturnType="Done"
 						 utu:CommandExtensions.Command="{Binding Login}"
 						 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 						 PlaceholderText="Password"
 						 Style="{StaticResource OutlinedPasswordBoxStyle}"
 						 BorderBrush="{ThemeResource OutlineVariantBrush}">
+				<PasswordBox.Resources>
+					<ResourceDictionary>
+						<ResourceDictionary.ThemeDictionaries>
+							<ResourceDictionary x:Key="Light">
+								<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+								<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+							</ResourceDictionary>
+							<ResourceDictionary x:Key="Default">
+								<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+								<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+							</ResourceDictionary>
+						</ResourceDictionary.ThemeDictionaries>
+					</ResourceDictionary>
+				</PasswordBox.Resources>
 				<ut:ControlExtensions.Icon>
 					<FontIcon Glyph="{StaticResource Icon_Lock}"
 							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
@@ -91,11 +78,8 @@
 			<Button HorizontalContentAlignment="Center"
 					VerticalContentAlignment="Center"
 					Content="Sign Up"
-					Padding="24,20"
-					Height="59"
-					Foreground="{ThemeResource OnPrimaryBrush}"
-					CornerRadius="4"
-					Command="{Binding Register}" />
+					Command="{Binding Register}"
+					Style="{StaticResource ChefsPrimaryButtonStyle}" />
 		</utu:AutoLayout>
 		<utu:AutoLayout PrimaryAxisAlignment="Center"
 						Orientation="Horizontal"

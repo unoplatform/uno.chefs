@@ -160,7 +160,7 @@
 					utu:AutoLayout.PrimaryAlignment="Stretch"
 					Command="{Binding Submit}"
 					Content="{Binding SaveButtonContent}"
-					CornerRadius="4" />
+					Style="{StaticResource ChefsPrimaryButtonStyle}" />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>

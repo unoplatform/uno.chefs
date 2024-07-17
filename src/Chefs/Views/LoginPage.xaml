@@ -14,20 +14,6 @@
 	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d android ios not_win">
 
-	<Page.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.ThemeDictionaries>
-				<ResourceDictionary x:Key="Light">
-					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-				</ResourceDictionary>
-				<ResourceDictionary x:Key="Default">
-					<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-					<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-				</ResourceDictionary>
-			</ResourceDictionary.ThemeDictionaries>
-		</ResourceDictionary>
-	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
 		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 					  HorizontalAlignment="Center"
@@ -46,15 +32,9 @@
 						   Stretch="Uniform" />
 					<utu:AutoLayout Spacing="16"
 									PrimaryAxisAlignment="Center">
-						<TextBox PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-								 PlaceholderText="Username"
-								 BorderThickness="1"
-								 CornerRadius="4"
-								 Foreground="{ThemeResource OnSurfaceBrush}"
-								 Style="{StaticResource OutlinedTextBoxStyle}"
-								 BorderBrush="{ThemeResource OutlineVariantBrush}"
-								 android:ImeOptions="Next"
-								 ios:ReturnKeyType="Next"
+						<TextBox PlaceholderText="Username"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+								 utu:InputExtensions.ReturnType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
 								 IsSpellCheckEnabled="False"
 								 Text="{Binding UserCredentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
@@ -63,13 +43,26 @@
 							</ut:ControlExtensions.Icon>
 						</TextBox>
 						<PasswordBox x:Name="LoginPassword"
-									 android:ImeOptions="Done"
-									 ios:ReturnKeyType="Done"
+									 utu:InputExtensions.ReturnType="Done"
 									 utu:CommandExtensions.Command="{Binding Login}"
 									 Password="{Binding UserCredentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 									 PlaceholderText="Password"
 									 Style="{StaticResource OutlinedPasswordBoxStyle}"
 									 BorderBrush="{ThemeResource OutlineVariantBrush}">
+							<PasswordBox.Resources>
+								<ResourceDictionary>
+									<ResourceDictionary.ThemeDictionaries>
+										<ResourceDictionary x:Key="Light">
+											<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+											<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+										</ResourceDictionary>
+										<ResourceDictionary x:Key="Default">
+											<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+											<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+										</ResourceDictionary>
+									</ResourceDictionary.ThemeDictionaries>
+								</ResourceDictionary>
+							</PasswordBox.Resources>
 							<ut:ControlExtensions.Icon>
 								<FontIcon Glyph="{StaticResource Icon_Lock}" />
 							</ut:ControlExtensions.Icon>
@@ -90,8 +83,7 @@
 							</utu:AutoLayout>
 						</utu:AutoLayout>
 						<Button Content="Login"
-								Padding="24,20"
-								CornerRadius="4"
+								Style="{StaticResource ChefsPrimaryButtonStyle}"
 								Command="{Binding Login}" />
 					</utu:AutoLayout>
 					<utu:Divider Style="{StaticResource DividerStyle}" />
@@ -99,9 +91,7 @@
 					<utu:AutoLayout Spacing="8"
 									PrimaryAxisAlignment="Center">
 						<Button Content="Sign in with Apple"
-								Padding="16,20,24,20"
-								CornerRadius="4"
-								Style="{StaticResource FilledTonalButtonStyle}">
+								Style="{StaticResource ChefsTonalButtonStyle}">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
 										  VerticalAlignment="Center"
@@ -111,9 +101,7 @@
 							</ut:ControlExtensions.Icon>
 						</Button>
 						<Button Content="Sign in with Google"
-								Padding="16,20,24,20"
-								CornerRadius="4"
-								Style="{StaticResource FilledTonalButtonStyle}">
+								Style="{StaticResource ChefsTonalButtonStyle}">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
 										  Glyph="{StaticResource Icon_Google_Brand}"
@@ -135,7 +123,6 @@
 								Style="{StaticResource TextButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
-
 			</Grid>
 		</ScrollViewer>
 	</utu:AutoLayout>
