@@ -25,6 +25,7 @@
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
 		<utu:AutoLayout uen:Region.Attached="True"
+						utu:AutoLayout.PrimaryAlignment="Stretch"
 						PrimaryAxisAlignment="Stretch">
 			<utu:NavigationBar Content="Filters">
 				<utu:NavigationBar.MainCommand>

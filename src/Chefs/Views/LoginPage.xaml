@@ -79,7 +79,6 @@
 							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 											utu:AutoLayout.PrimaryAlignment="Stretch">
 								<CheckBox Content="Remember me"
-										  utu:AutoLayout.CounterAlignment="Start"
 										  IsChecked="{Binding UserCredentials.SaveCredentials, Mode=TwoWay}" />
 							</utu:AutoLayout>
 							<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"

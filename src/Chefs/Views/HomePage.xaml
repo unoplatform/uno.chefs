@@ -163,13 +163,13 @@
 															CornerRadius="4">
 												<utu:AutoLayout Spacing="8"
 																Padding="8,0,16,0"
-																Orientation="Horizontal"
-																utu:AutoLayout.CounterAlignment="Start">
+																Orientation="Horizontal">
 													<Image Source="{Binding Category.UrlIcon}"
 														   utu:AutoLayout.CounterAlignment="Center"
 														   Width="60"
 														   Height="60" />
 													<utu:AutoLayout PrimaryAxisAlignment="Center"
+																	utu:AutoLayout.CounterAlignment="Center"
 																	CounterAxisAlignment="Start">
 														<TextBlock Text="{Binding Category.Name}"
 																   Foreground="{ThemeResource OnSurfaceBrush}"

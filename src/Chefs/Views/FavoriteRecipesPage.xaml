@@ -39,13 +39,11 @@
 							Spacing="24">
 				<utu:AutoLayout Width="72"
 								Height="72">
-					<utu:AutoLayout HorizontalAlignment="Stretch"
-									VerticalAlignment="Stretch"
-									utu:AutoLayout.IsIndependentLayout="True">
-						<BitmapIcon Width="56"
-									Height="72"
-									UriSource="{ThemeResource Empty_Box}" />
-					</utu:AutoLayout>
+					<BitmapIcon Width="56"
+								Height="72"
+								HorizontalAlignment="Stretch"
+								VerticalAlignment="Stretch"
+								UriSource="{ThemeResource Empty_Box}" />
 				</utu:AutoLayout>
 				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 						   Style="{StaticResource TitleLarge}"
@@ -94,8 +92,7 @@
 												utu:AutoLayout.CounterAlignment="Stretch"
 												Orientation="Horizontal"
 												Spacing="4">
-									<Border utu:AutoLayout.CounterAlignment="Stretch"
-											utu:AutoLayout.PrimaryAlignment="Stretch"
+									<Border utu:AutoLayout.PrimaryAlignment="Stretch"
 											CornerRadius="12">
 										<Image HorizontalAlignment="Center"
 											   VerticalAlignment="Center"
@@ -104,14 +101,12 @@
 									</Border>
 
 									<Grid RowSpacing="4"
-										  utu:AutoLayout.CounterAlignment="Stretch"
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 										<Grid.RowDefinitions>
 											<RowDefinition Height="*" />
 											<RowDefinition Height="*" />
 										</Grid.RowDefinitions>
-										<Border utu:AutoLayout.CounterAlignment="Stretch"
-												utu:AutoLayout.PrimaryAlignment="Stretch"
+										<Border utu:AutoLayout.PrimaryAlignment="Stretch"
 												Background="{ThemeResource BackgroundBrush}"
 												CornerRadius="12">
 											<Image HorizontalAlignment="Center"
@@ -122,7 +117,6 @@
 										</Border>
 
 										<Grid Grid.Row="1"
-											  utu:AutoLayout.CounterAlignment="Stretch"
 											  utu:AutoLayout.PrimaryAlignment="Stretch"
 											  CornerRadius="12">
 											<Image HorizontalAlignment="Center"
@@ -345,7 +339,8 @@
 								  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
 								  Source="{Binding SavedCookbooks}">
 						<DataTemplate>
-							<utu:AutoLayout PrimaryAxisAlignment="Stretch">
+							<utu:AutoLayout PrimaryAxisAlignment="Stretch"
+											utu:AutoLayout.PrimaryAlignment="Stretch">
 								<ScrollViewer x:Name="RecipesScrollViewer"
 											  HorizontalScrollMode="Disabled"
 											  VerticalScrollBarVisibility="Hidden">
