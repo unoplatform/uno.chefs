@@ -2,14 +2,14 @@
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 	<Style x:Key="ChefsPrimaryButtonStyle"
-		   TargetType="Button">
+		   TargetType="Button"
+                   BasedOn="{StaticResource FilledButtonStyle}">
 		<Setter Property="Padding" Value="24,20" />
 		<Setter Property="CornerRadius" Value="4" />
 		<Setter Property="Height" Value="59" />
 		<Setter Property="Background" Value="{ThemeResource PrimaryBrush}" />
 		<Setter Property="Foreground" Value="{ThemeResource OnPrimaryBrush}" />
 		<Setter Property="BorderBrush" Value="{ThemeResource PrimaryBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
 	</Style>
 
 	<Style x:Key="ChefsSecondaryButtonStyle"
