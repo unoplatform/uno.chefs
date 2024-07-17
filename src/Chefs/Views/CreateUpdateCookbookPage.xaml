@@ -142,6 +142,7 @@
 								<muxc:ItemsRepeater ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
 													utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
+													utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
 													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
 																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>

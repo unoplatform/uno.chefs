@@ -5,6 +5,8 @@ namespace Chefs.Presentation;
 
 public partial class CreateUpdateCookbookModel
 {
+	const uint DefaultPageSize = 20;
+
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
@@ -49,7 +51,12 @@ public partial class CreateUpdateCookbookModel
 
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
 
-	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetFavorited).Selection(SelectedRecipes);
+	public IListFeed<Recipe> PaginatedRecipes => ListFeed.PaginatedAsync(
+		async (PageRequest pageRequest, CancellationToken ct) =>
+			await _recipeService.GetFavoritedWithPagination(pageRequest.DesiredSize ?? DefaultPageSize, pageRequest.CurrentCount, ct)
+	);
+
+	public IListFeed<Recipe> Recipes => PaginatedRecipes.Selection(SelectedRecipes);
 
 	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
 

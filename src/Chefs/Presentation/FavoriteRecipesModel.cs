@@ -25,5 +25,5 @@ public partial class FavoriteRecipesModel
 
 	public IListState<Cookbook> SavedCookbooks => ListState.FromFeed(this, _cookbookService.SavedCookbooks);
 
-	public IListState<Recipe> FavoriteRecipes => _recipeService.FavoritedRecipes;
+	public IListFeed<Recipe> FavoriteRecipes => _recipeService.FavoritedRecipes;
 }

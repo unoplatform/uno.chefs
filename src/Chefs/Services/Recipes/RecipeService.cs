@@ -121,6 +121,18 @@ public class RecipeService : IRecipeService
 			.Select(r => new Recipe(r))
 			.ToImmutableList();
 
+	public async ValueTask<IImmutableList<Recipe>> GetFavoritedWithPagination(uint pageSize, uint firstItemIndex, CancellationToken ct)
+	{
+		var (size, count) = ((int)pageSize, (int)firstItemIndex);
+
+		var favoritedRecipes = await FavoritedRecipes;
+
+		return favoritedRecipes
+			.Skip(count)
+			.Take(size)
+			.ToImmutableList();
+	}
+
 	public async ValueTask Favorite(Recipe recipe, CancellationToken ct)
 	{
 		var updatedRecipe = recipe with { IsFavorite = !recipe.IsFavorite };
