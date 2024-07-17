@@ -46,13 +46,8 @@
 						   Stretch="Uniform" />
 					<utu:AutoLayout Spacing="16"
 									PrimaryAxisAlignment="Center">
-						<TextBox PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
-								 PlaceholderText="Username"
-								 BorderThickness="1"
-								 CornerRadius="4"
-								 Foreground="{ThemeResource OnSurfaceBrush}"
-								 Style="{StaticResource OutlinedTextBoxStyle}"
-								 BorderBrush="{ThemeResource OutlineVariantBrush}"
+						<TextBox PlaceholderText="Username"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 								 utu:InputExtensions.ReturnType="Next"
 								 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
 								 IsSpellCheckEnabled="False"

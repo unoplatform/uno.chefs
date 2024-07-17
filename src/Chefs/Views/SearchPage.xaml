@@ -155,13 +155,9 @@
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
 				<TextBox utu:CommandExtensions.Command="{Binding Search}"
-						 BorderBrush="{ThemeResource OnSurfaceBrush}"
-						 BorderThickness="1"
+						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 						 CornerRadius="28"
-						 Foreground="{ThemeResource OnSurfaceBrush}"
-						 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
 						 PlaceholderText="Search"
-						 Style="{StaticResource OutlinedTextBoxStyle}"
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Search}"
