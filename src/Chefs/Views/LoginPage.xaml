@@ -84,8 +84,7 @@
 							</utu:AutoLayout>
 						</utu:AutoLayout>
 						<Button Content="Login"
-								Padding="24,20"
-								CornerRadius="4"
+								Style="{StaticResource ChefsPrimaryButtonStyle}"
 								Command="{Binding Login}" />
 					</utu:AutoLayout>
 					<utu:Divider Style="{StaticResource DividerStyle}" />
@@ -93,9 +92,7 @@
 					<utu:AutoLayout Spacing="8"
 									PrimaryAxisAlignment="Center">
 						<Button Content="Sign in with Apple"
-								Padding="16,20,24,20"
-								CornerRadius="4"
-								Style="{StaticResource FilledTonalButtonStyle}">
+								Style="{StaticResource ChefsTonalButtonStyle}">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
 										  VerticalAlignment="Center"
@@ -105,9 +102,7 @@
 							</ut:ControlExtensions.Icon>
 						</Button>
 						<Button Content="Sign in with Google"
-								Padding="16,20,24,20"
-								CornerRadius="4"
-								Style="{StaticResource FilledTonalButtonStyle}">
+								Style="{StaticResource ChefsTonalButtonStyle}">
 							<ut:ControlExtensions.Icon>
 								<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
 										  Glyph="{StaticResource Icon_Google_Brand}"

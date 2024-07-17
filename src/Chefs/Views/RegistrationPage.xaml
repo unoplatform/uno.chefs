@@ -78,11 +78,8 @@
 			<Button HorizontalContentAlignment="Center"
 					VerticalContentAlignment="Center"
 					Content="Sign Up"
-					Padding="24,20"
-					Height="59"
-					Foreground="{ThemeResource OnPrimaryBrush}"
-					CornerRadius="4"
-					Command="{Binding Register}" />
+					Command="{Binding Register}"
+					Style="{StaticResource ChefsPrimaryButtonStyle}" />
 		</utu:AutoLayout>
 		<utu:AutoLayout PrimaryAxisAlignment="Center"
 						Orientation="Horizontal"
