@@ -72,8 +72,9 @@
 														   TextTrimming="CharacterEllipsis" />
 											</utu:AutoLayout>
 										</utu:AutoLayout>
-										<utu:AutoLayout Orientation="Horizontal"
-														PrimaryAxisAlignment="End">
+										<utu:AutoLayout PrimaryAxisAlignment="End"
+														CounterAxisAlignment="Start"
+														Orientation="Horizontal">
 											<Border Visibility="{Binding Converter={StaticResource TrueToCollapsed}, ElementName=RecipeTemplateCard, Path=IsSelected}">
 												<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
 														  Glyph="{StaticResource Icon_Favorite}"
