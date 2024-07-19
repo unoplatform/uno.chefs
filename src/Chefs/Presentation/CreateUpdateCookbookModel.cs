@@ -40,7 +40,6 @@ public partial class CreateUpdateCookbookModel
 		}
 
 		_messenger.Observe(Cookbook, cb => cb.Id);
-		_messenger.Observe(Recipes, r => r.Id);
 	}
 	public bool IsCreate { get; }
 
@@ -52,7 +51,7 @@ public partial class CreateUpdateCookbookModel
 
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
 
-	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetFavorited).Selection(SelectedRecipes);
+	public IListState<Recipe> Recipes => _recipeService.FavoritedRecipes.Selection(SelectedRecipes);
 
 	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
 
