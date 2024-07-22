@@ -89,9 +89,9 @@
 							<utu:AutoLayout Padding="0,0,0,92">
 								<utu:AutoLayout Spacing="8"
 												Orientation="Horizontal"
-												Padding="16">
-									<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-												   ProfilePicture="{Binding User.UrlProfileImage}"
+												Padding="16"
+												CounterAxisAlignment="Center">
+									<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
 												   Width="32"
 												   Height="32" />
 									<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"

@@ -16,8 +16,7 @@
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-						PrimaryAxisAlignment="Stretch">
+		<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 			<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
 							   Foreground="{ThemeResource OnSurfaceInverseBrush}"
 							   Content="Near me">

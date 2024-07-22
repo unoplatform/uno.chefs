@@ -23,15 +23,11 @@
 								PrimaryAxisAlignment="Center"
 								Padding="32,0"
 								utu:AutoLayout.PrimaryAlignment="Stretch">
-					<utu:AutoLayout PrimaryAxisAlignment="Center"
-									utu:AutoLayout.CounterAlignment="Center"
-									CounterAxisAlignment="Center"
-									Width="72"
-									Height="72">
-						<BitmapIcon UriSource="{ThemeResource Empty_Box}"
-									Width="64"
-									Height="72.201614" />
-					</utu:AutoLayout>
+					<BitmapIcon UriSource="{ThemeResource Empty_Box}"
+								Width="64"
+								Height="72.201614"
+								utu:AutoLayout.PrimaryAlignment="Auto"
+								utu:AutoLayout.CounterAlignment="Center" />
 					<TextBlock TextAlignment="Center"
 							   TextWrapping="Wrap"
 							   Text="No Recipes Created"
