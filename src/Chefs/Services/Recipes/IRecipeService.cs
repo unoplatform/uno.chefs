@@ -181,7 +181,7 @@ public interface IRecipeService
 	/// <summary>
 	/// Recipes favorited by the current user, supports pagination
 	/// </summary>
-	/// <param name="pageSize">number of items to display</param>
+	/// <param name="pageSize">number of items to display per page</param>
 	/// <param name="firstItemIndex">index of the first item on the requested page</param>
 	/// <param name="ct"></param>
 	/// <returns>
