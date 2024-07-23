@@ -8,6 +8,7 @@ public partial class CreateUpdateCookbookModel
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
+	private readonly IMessenger _messenger;
 	private readonly Cookbook? _cookbook;
 
 	public CreateUpdateCookbookModel(
@@ -20,6 +21,7 @@ public partial class CreateUpdateCookbookModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 		_cookbookService = cookbookService;
+		_messenger = messenger;
 
 		if (cookbook is not null)
 		{
@@ -37,7 +39,7 @@ public partial class CreateUpdateCookbookModel
 			IsCreate = true;
 		}
 
-		messenger.Observe(Cookbook, cb => cb.Id);
+		_messenger.Observe(Cookbook, cb => cb.Id);
 	}
 	public bool IsCreate { get; }
 
@@ -49,7 +51,7 @@ public partial class CreateUpdateCookbookModel
 
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
 
-	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetFavorited).Selection(SelectedRecipes);
+	public IListState<Recipe> Recipes => _recipeService.FavoritedRecipes.Selection(SelectedRecipes);
 
 	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
 

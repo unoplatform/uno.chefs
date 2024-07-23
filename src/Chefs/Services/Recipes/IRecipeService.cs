@@ -168,16 +168,6 @@ public interface IRecipeService
 	/// </returns>
 	ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct);
 
-
-	/// <summary>
-	/// Recipes favorited by the current user
-	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Current user's recipes
-	/// </returns>
-	ValueTask<IImmutableList<Recipe>> GetFavorited(CancellationToken ct);
-
 	ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct);
 
 	ValueTask<IImmutableList<Recipe>> GetFromChefs(CancellationToken ct);
