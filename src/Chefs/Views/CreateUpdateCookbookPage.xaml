@@ -142,6 +142,7 @@
 								<muxc:ItemsRepeater ItemTemplate="{StaticResource RecipeTemplate}"
 													ItemsSource="{Binding Data}"
 													utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
+													utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
 													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
 																			Wide={StaticResource WideGridLayout}}" />
 							</utu:AutoLayout>
@@ -157,21 +158,16 @@
 						Background="{ThemeResource SurfaceBrush}"
 						Orientation="Horizontal"
 						Spacing="16">
-			<Button Height="59"
-					Padding="12,20"
-					uen:Navigation.Request="-"
+			<Button uen:Navigation.Request="-"
 					utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
 					Content="Cancel"
-					CornerRadius="4"
-					Style="{StaticResource TextButtonStyle}" />
-			<Button Height="59"
-					Padding="4,20"
-					utu:AutoLayout.CounterAlignment="Start"
+					Style="{StaticResource ChefsSecondaryButtonStyle}" />
+			<Button utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
 					Command="{Binding Submit}"
 					Content="{Binding SaveButtonContent}"
-					CornerRadius="4" />
+					Style="{StaticResource ChefsPrimaryButtonStyle}" />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>

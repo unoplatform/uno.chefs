@@ -3,14 +3,10 @@ namespace Chefs.Presentation;
 public class ShellModel
 {
 	private readonly INavigator _navigator;
-	private readonly IWritableOptions<Credentials> _credentialsSettings;
 
-	public ShellModel(
-		INavigator navigator,
-		IWritableOptions<Credentials> credentials)
+	public ShellModel(INavigator navigator)
 	{
 		_navigator = navigator;
-		_credentialsSettings = credentials;
 
 		_ = Start();
 	}

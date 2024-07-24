@@ -11,14 +11,4 @@ public class NotificationService : INotificationService
 		=> (await _notificationEndpoint.GetAll(ct))
 			.Select(n => new Notification(n))
 			.ToImmutableList();
-
-	public async ValueTask<IImmutableList<Notification>> GetRead(CancellationToken ct)
-		=> (await _notificationEndpoint.GetRead(ct))
-			.Select(n => new Notification(n))
-			.ToImmutableList();
-
-	public async ValueTask<IImmutableList<Notification>> GetUnread(CancellationToken ct)
-		=> (await _notificationEndpoint.GetUnread(ct))
-			.Select(n => new Notification(n))
-			.ToImmutableList();
 }
