@@ -23,7 +23,7 @@ public partial class FavoriteRecipesModel
 		_messenger.Observe(SavedCookbooks, cb => cb.Id);
 	}
 
-	public IListState<Cookbook> SavedCookbooks => ListState.FromFeed(this, _cookbookService.SavedCookbooks);
+	public IListState<Cookbook> SavedCookbooks => ListState.Async(this, _cookbookService.GetSaved);
 
 	public IListState<Recipe> FavoriteRecipes => _recipeService.FavoritedRecipes;
 }

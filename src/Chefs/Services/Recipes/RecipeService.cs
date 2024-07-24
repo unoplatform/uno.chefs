@@ -116,11 +116,6 @@ public class RecipeService : IRecipeService
 
 	public IListState<Recipe> FavoritedRecipes => ListState<Recipe>.Async(this, GetFavorited);
 
-	public async ValueTask<IImmutableList<Recipe>> GetFavorited(CancellationToken ct)
-		=> (await _recipeEndpoint.GetFavorited(ct))
-			.Select(r => new Recipe(r))
-			.ToImmutableList();
-
 	public async ValueTask<IImmutableList<Recipe>> GetFavoritedWithPagination(uint pageSize, uint firstItemIndex, CancellationToken ct)
 	{
 		var (size, count) = ((int)pageSize, (int)firstItemIndex);
@@ -173,6 +168,11 @@ public class RecipeService : IRecipeService
 		   .Select(r => new Recipe(r)).OrderBy(x => new Random(2).Next())
 		   .Take(4)
 		   .ToImmutableList();
+
+	private async ValueTask<IImmutableList<Recipe>> GetFavorited(CancellationToken ct)
+		=> (await _recipeEndpoint.GetFavorited(ct))
+			.Select(r => new Recipe(r))
+			.ToImmutableList();
 
 	private async Task SaveSearchHistory(string text)
 	{

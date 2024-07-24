@@ -144,16 +144,13 @@
 			<Button utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
 					Content="Reset"
-					Height="60"
 					Command="{Binding Reset}"
-					CornerRadius="4"
-					Style="{StaticResource TextButtonStyle}" />
+					Style="{StaticResource ChefsSecondaryButtonStyle}" />
 			<Button utu:AutoLayout.CounterAlignment="Start"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
 					Content="Apply filter"
-					Height="60"
 					Command="{Binding ApplySearchFilter}"
-					CornerRadius="4" />
+					Style="{StaticResource ChefsPrimaryButtonStyle}" />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>
