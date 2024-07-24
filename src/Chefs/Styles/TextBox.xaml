@@ -3,7 +3,7 @@
 
 	<!-- Workaround for winui/windows -->
 	<x:String x:Key="DummyResource">test</x:String>
-	
+
 	<Style x:Key="ChefsPrimaryTextBoxStyle"
 		   TargetType="TextBox"
 		   BasedOn="{StaticResource OutlinedTextBoxStyle}">
