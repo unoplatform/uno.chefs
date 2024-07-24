@@ -125,5 +125,5 @@
 				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">Uno Chefs Canary (Catalyst)</CodesignProvision>
 			</PropertyGroup>
 		</When>
-	</Choose>	
+	</Choose>
 </Project>
