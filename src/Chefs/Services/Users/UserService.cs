@@ -17,8 +17,6 @@ public class UserService : IUserService
 
 	public IFeed<User> User => _user;
 
-	public IState<AppConfig> Settings => State.Async(this, GetSettings);
-
 	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
 		=> _chefAppOptions.Value;
 
@@ -39,7 +37,6 @@ public class UserService : IUserService
 		};
 
 		await _chefAppOptions.UpdateAsync(_ => settings);
-		await Settings.UpdateAsync(_ => settings, ct);
 	}
 
 	public async Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null)
