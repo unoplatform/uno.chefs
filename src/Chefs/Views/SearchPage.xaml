@@ -94,17 +94,22 @@
 												   Source="{x:Bind ImageUrl}"
 												   Stretch="UniformToFill" />
 										</Border>
-										<utu:AutoLayout Padding="16"
-														PrimaryAxisAlignment="Center"
+										<utu:AutoLayout PrimaryAxisAlignment="Center"
 														Spacing="4">
+											<!--
+												WORKAROUND: Using Margin on TextBlocks instead of Padding on AutoLayout due to AutoLayout bug
+												Issue link: https://github.com/unoplatform/uno.chefs/issues/1206
+											-->
 											<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 													   Style="{StaticResource TitleSmall}"
 													   Text="{x:Bind Name}"
-													   TextWrapping="Wrap" />
-											<TextBlock Foreground="{ThemeResource OnSurfaceLowBrush}"
+													   TextWrapping="Wrap"
+													   Margin="16,16,16,0" />
+											<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 													   Style="{StaticResource CaptionMedium}"
 													   Text="{x:Bind TimeCal}"
-													   TextWrapping="Wrap" />
+													   TextWrapping="Wrap"
+													   Margin="16,0,16,16" />
 										</utu:AutoLayout>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
@@ -130,16 +135,16 @@
 					</utu:AutoLayout>
 				</utu:NavigationBar.Content>
 				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton Command="{Binding ShowCurrentProfile}"
+					<AppBarButton uen:Navigation.Request="!Profile"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-					<AppBarButton Command="{Binding ShowNotifications}"
+					<AppBarButton uen:Navigation.Request="!Notifications"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
@@ -150,17 +155,13 @@
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
 				<TextBox utu:CommandExtensions.Command="{Binding Search}"
-						 BorderBrush="{ThemeResource OnSurfaceBrush}"
-						 BorderThickness="1"
+						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 						 CornerRadius="28"
-						 Foreground="{ThemeResource OnSurfaceBrush}"
-						 PlaceholderForeground="{ThemeResource OnSurfaceMediumBrush}"
 						 PlaceholderText="Search"
-						 Style="{StaticResource OutlinedTextBoxStyle}"
 						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Search}"
-								  Foreground="{ThemeResource OnSurfaceLowBrush}" />
+								  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 					</ut:ControlExtensions.Icon>
 				</TextBox>
 
@@ -168,7 +169,7 @@
 								Orientation="Horizontal">
 					<TextBlock utu:AutoLayout.CounterAlignment="Center"
 							   Style="{StaticResource BodyLarge}"
-							   Text="{Binding Items.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
+							   Text="{Binding Results.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
 					<utu:AutoLayout Orientation="Horizontal">
 						<Button utu:AutoLayout.PrimaryAlignment="Auto"
 								utu:AutoLayout.CounterAlignment="Center"
@@ -213,7 +214,7 @@
 							  VerticalScrollBarVisibility="Hidden">
 					<uer:FeedView x:Name="SearchFeed"
 								  NoneTemplate="{StaticResource EmptyTemplate}"
-								  Source="{Binding Items}">
+								  Source="{Binding Results}">
 						<DataTemplate>
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 								<utu:AutoLayout.Resources>

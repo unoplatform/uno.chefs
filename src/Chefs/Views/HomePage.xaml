@@ -41,13 +41,13 @@
 										   Style="{StaticResource TitleSmall}" />
 								<TextBlock TextWrapping="Wrap"
 										   Text="{Binding TimeCal}"
-										   Foreground="{ThemeResource OnSurfaceLowBrush}"
+										   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 										   Style="{StaticResource CaptionMedium}" />
 							</utu:AutoLayout>
 							<ToggleButton Style="{StaticResource IconToggleButtonStyle}"
-										  IsChecked="{Binding Save, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+										  IsChecked="{Binding IsFavorite}"
 										  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-																		Path=DataContext.SaveRecipe}"
+																		Path=DataContext.FavoriteRecipe}"
 										  CommandParameter="{Binding}">
 								<ToggleButton.Content>
 									<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
@@ -81,16 +81,16 @@
 					</utu:AutoLayout>
 				</utu:NavigationBar.Content>
 				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton Command="{Binding ShowCurrentProfile}"
+					<AppBarButton uen:Navigation.Request="!Profile"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/user_profile.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
-					<AppBarButton Command="{Binding ShowNotifications}"
+					<AppBarButton uen:Navigation.Request="!Notifications"
 								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/notification.png" />
+							<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
@@ -163,20 +163,18 @@
 															CornerRadius="4">
 												<utu:AutoLayout Spacing="8"
 																Padding="8,0,16,0"
-																Orientation="Horizontal"
-																utu:AutoLayout.CounterAlignment="Start">
+																Orientation="Horizontal">
 													<Image Source="{Binding Category.UrlIcon}"
 														   utu:AutoLayout.CounterAlignment="Center"
 														   Width="60"
 														   Height="60" />
 													<utu:AutoLayout PrimaryAxisAlignment="Center"
-																	utu:AutoLayout.CounterAlignment="Center">
+																	utu:AutoLayout.CounterAlignment="Center"
+																	CounterAxisAlignment="Start">
 														<TextBlock Text="{Binding Category.Name}"
-																   utu:AutoLayout.CounterAlignment="Start"
 																   Foreground="{ThemeResource OnSurfaceBrush}"
 																   Style="{StaticResource TitleMedium}" />
 														<TextBlock Text="{Binding Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes', UpdateSourceTrigger=PropertyChanged}"
-																   utu:AutoLayout.CounterAlignment="Start"
 																   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 													</utu:AutoLayout>
 												</utu:AutoLayout>
@@ -239,7 +237,7 @@
 																	   Style="{StaticResource TitleSmall}" />
 															<TextBlock TextWrapping="Wrap"
 																	   Text="{Binding Calories}"
-																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
+																	   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																	   Style="{StaticResource CaptionMedium}" />
 														</utu:AutoLayout>
 													</utu:AutoLayout>
@@ -275,7 +273,8 @@
 										  VerticalScrollBarVisibility="Disabled"
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 								<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-													utu:CommandExtensions.Command="{Binding Parent.ShowProfile}">
+													uen:Navigation.Request="!Profile"
+													uen:Navigation.Data="{Binding}">
 									<muxc:ItemsRepeater.Layout>
 										<muxc:StackLayout Orientation="Horizontal"
 														  Spacing="16" />
@@ -312,7 +311,7 @@
 																									  Wide=Start}"
 																	   Text="{Binding Recipes, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
 																	   TextWrapping="Wrap"
-																	   Foreground="{ThemeResource OnSurfaceLowBrush}"
+																	   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																	   Style="{StaticResource LabelMedium}" />
 														</utu:AutoLayout>
 													</utu:AutoLayout>

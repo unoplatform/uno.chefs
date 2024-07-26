@@ -31,27 +31,45 @@
 								NumberOfPages="3"
 								MaxVisiblePips="3"
 								Orientation="Horizontal"
-								SelectedPageIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								SelectedPageIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								Style="{StaticResource PipsPagerStyle}" />
 
 				<!-- Buttons -->
-				<Button Height="61"
-						HorizontalContentAlignment="Center"
-						VerticalContentAlignment="Center"
-						utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
-						Command="{Binding Next}"
-						Content="Next"
-						CornerRadius="4"
-						Foreground="{ThemeResource OnPrimaryBrush}" />
-
-				<Button Height="61"
-						HorizontalContentAlignment="Center"
-						VerticalContentAlignment="Center"
-						uen:Navigation.Request="-/Login"
-						Content="Skip"
-						CornerRadius="4"
-						Foreground="{ThemeResource PrimaryBrush}"
-						Style="{StaticResource TextButtonStyle}" />
+				<!--
+					WORKAROUND
+					Binding to the Steps.Value property instead of directly on the Steps entity until
+					https://github.com/unoplatform/uno.extensions/issues/2391 is fixed
+				-->
+				<utu:AutoLayout Spacing="16"
+								PrimaryAxisAlignment="Center">
+					<utu:AutoLayout Spacing="16"
+									PrimaryAxisAlignment="Center"
+									CounterAxisAlignment="Center"
+									Orientation="Horizontal">
+						<Button HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Content="Previous"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
+								utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
+								Style="{StaticResource ChefsOutlinedButtonStyle}"
+								IsEnabled="{Binding Pages.Value.CanMovePrevious}" />
+						<Button HorizontalContentAlignment="Center"
+								VerticalContentAlignment="Center"
+								Content="Next"
+								utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
+								Style="{StaticResource ChefsPrimaryButtonStyle}"
+								IsEnabled="{Binding Pages.Value.CanMoveNext}" />
+					</utu:AutoLayout>
+					<Button HorizontalContentAlignment="Center"
+							VerticalContentAlignment="Center"
+							Content="Skip"
+							Padding="12,20"
+							uen:Navigation.Request="-/Login"
+							Foreground="{ThemeResource PrimaryBrush}"
+							CornerRadius="4"
+							Style="{StaticResource TextButtonStyle}" />
+				</utu:AutoLayout>
 			</utu:AutoLayout>
 		</DataTemplate>
 	</Page.Resources>
@@ -63,7 +81,7 @@
 					<FlipView x:Name="flipView"
 							  utu:AutoLayout.PrimaryAlignment="Stretch"
 							  Background="Transparent"
-							  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 						<FlipView.Items>
 							<!-- First onboarding page -->
 							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -71,7 +89,7 @@
 											Spacing="24">
 								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
 									   MaxHeight="270"
-									   Source="ms-appx:///Chefs/Assets/Welcome/first_splash_screen.png"
+									   Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
 									   Stretch="UniformToFill" />
 								<Image Width="160"
 									   Height="90"
@@ -96,7 +114,7 @@
 											Spacing="24">
 								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
 									   MaxHeight="270"
-									   Source="ms-appx:///Chefs/Assets/Welcome/second_splash_screen.png"
+									   Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
 									   Stretch="UniformToFill" />
 								<Image Width="160"
 									   Height="90"
@@ -121,7 +139,7 @@
 											Spacing="24">
 								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
 									   MaxHeight="270"
-									   Source="ms-appx:///Chefs/Assets/Welcome/third_splash_screen.png"
+									   Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
 									   Stretch="UniformToFill" />
 								<Image Width="160"
 									   Height="90"
@@ -156,25 +174,24 @@
 								PrimaryAxisAlignment="Stretch">
 					<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 						<FlipView x:Name="MyImages"
-								  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 								  Background="Transparent"
 								  IsEnabled="False"
-								  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+								  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<FlipView.Items>
 								<!-- First Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
 									<Image utu:AutoLayout.PrimaryAlignment="Stretch"
-										   Source="ms-appx:///Chefs/Assets/Welcome/first_splash_wide_screen.png"
+										   Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
 								<!-- Second Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image Source="ms-appx:///Chefs/Assets/Welcome/second_splash_wide_screen.png"
+									<Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
 								<!-- Third Splash image -->
 								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image Source="ms-appx:///Chefs/Assets/Welcome/third_splash_wide_screen.png"
+									<Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
 										   Stretch="UniformToFill" />
 								</Grid>
 							</FlipView.Items>
@@ -186,7 +203,7 @@
 							<FlipView x:Name="flipView"
 									  utu:AutoLayout.PrimaryAlignment="Stretch"
 									  Background="Transparent"
-									  SelectedIndex="{Binding NextPage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+									  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 								<FlipView.Items>
 									<!-- First onboarding page -->
 									<utu:AutoLayout Padding="32,0"

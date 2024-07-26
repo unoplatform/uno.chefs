@@ -10,7 +10,7 @@ public interface IRecipeEndpoint
 
 	ValueTask<IImmutableList<RecipeData>> GetPopular(CancellationToken ct);
 
-	ValueTask<IImmutableList<RecipeData>> GetSaved(CancellationToken ct);
+	ValueTask<IImmutableList<RecipeData>> GetFavorited(CancellationToken ct);
 
 	ValueTask Save(RecipeData recipe, CancellationToken ct);
 

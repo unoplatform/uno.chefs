@@ -11,8 +11,6 @@ public class CookbookService : ICookbookService
 		_messenger = messenger;
 	}
 
-	public IListFeed<Cookbook> SavedCookbooks => ListFeed.Async(GetSaved);
-
 	public async ValueTask<Cookbook> Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct)
 	{
 		var cookbookData = new CookbookData

@@ -24,10 +24,8 @@
 							Padding="16"
 							Spacing="16">
 				<FontIcon Glyph="{StaticResource Icon_Notifications_Active}"
-						  utu:AutoLayout.CounterAlignment="Start"
 						  Foreground="{ThemeResource PrimaryBrush}" />
-				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-								utu:AutoLayout.PrimaryAlignment="Stretch"
+				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								Spacing="8"
 								PrimaryAxisAlignment="Center">
 					<TextBlock TextWrapping="Wrap"
@@ -88,12 +86,11 @@
 	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
 					PrimaryAxisAlignment="Stretch">
-		<utu:NavigationBar Content="Notifications"
-						   Style="{StaticResource ModalNavigationBarStyle}">
+		<utu:NavigationBar Content="Notifications">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/close.png" />
+						<BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>

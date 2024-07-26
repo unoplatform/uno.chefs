@@ -6,41 +6,31 @@ public partial class LiveCookingModel
 {
 	private readonly IRecipeService _recipeService;
 
-	public LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService)
-	{
-		Steps = parameter.Steps;
-		Recipe = parameter.Recipe;
-		VideoSource = new Uri("ms-appx:///Chefs/Assets/Videos/CookingVideo.mp4");
-
-		_recipeService = recipeService;
-	}
-
-	public IImmutableList<Step> Steps { get; }
-
-	public Uri VideoSource { get; set; }
-
-	public IState<int> SelectedIndex => State.Value(this, () => 0);
-
-	public IFeed<bool> CanFinish => SelectedIndex.Select(x => x == Steps.Count - 1);
-
-	public IFeed<bool> CanGoNext => SelectedIndex.Select(x => (x + 1) < Steps.Count);
-
-	public IFeed<bool> CanGoBack => SelectedIndex.Select(x => (x - 1) >= 0);
-
-	public IState<bool> Completed => State.Value(this, () => false);
+	private readonly IImmutableList<Step> _steps;
 
 	public Recipe Recipe { get; }
 
-	public async ValueTask Complete(CancellationToken ct)
+	public IState<StepIterator> Steps => State.Value(this, () => new StepIterator(_steps));
+
+	public IState<bool> Completed => State.Value(this, () => false);
+
+	public LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService)
 	{
-		await Completed.Set(true, ct);
+		Recipe = parameter.Recipe;
+		_recipeService = recipeService;
+		_steps = parameter.Steps;
 	}
 
-	public async ValueTask BackToLastStep(CancellationToken ct)
+	public async ValueTask Complete()
 	{
-		await Completed.Set(false, ct);
+		await Completed.SetAsync(true);
+	}
+	
+	public async ValueTask BackToLastStep()
+	{
+		await Completed.SetAsync(false);
 	}
 
 	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
-		await _recipeService.Save(recipe, ct);
+		await _recipeService.Favorite(recipe, ct);
 }
