@@ -107,8 +107,7 @@
 						   utu:AutoLayout.PrimaryAlignment="Auto"
 						   Background="{ThemeResource SurfaceInverseBrush}"
 						   Foreground="{ThemeResource OnSurfaceInverseBrush}"
-						   Content="{Binding Recipe.Name}"
-						   Style="{StaticResource PrimaryModalNavigationBarStyle}">
+						   Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
 					<not_mobile:AppBarButton.Icon>
@@ -134,7 +133,7 @@
 					Related issue: https://github.com/unoplatform/Uno.Samples/issues/725
 				-->
 				<MediaPlayerElement AreTransportControlsEnabled="True"
-									Source="{Binding CurrentStep.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
+									Source="{Binding Steps.CurrentItem.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
@@ -168,24 +167,20 @@
 									PrimaryAxisAlignment="Center"
 									Spacing="16">
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Height="59"
 								Content="Back"
-								CornerRadius="4"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
-								Style="{StaticResource TextButtonStyle}"
+								Style="{StaticResource ChefsSecondaryButtonStyle}"
 								Visibility="{Binding Steps.Value.CanMovePrevious}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Height="59"
 								Content="Next"
-								CornerRadius="4"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
-								Visibility="{Binding Steps.Value.CanMoveNext}" />
+								Visibility="{Binding Steps.Value.CanMoveNext}"
+								Style="{StaticResource ChefsPrimaryButtonStyle}" />
 						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Height="59"
 								Command="{Binding Complete}"
 								Content="Done!"
-								CornerRadius="4"
-								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}}" />
+								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}}"
+								Style="{StaticResource ChefsPrimaryButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
@@ -247,11 +242,9 @@
 								Orientation="Horizontal"
 								Spacing="16">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-							Height="59"
 							Command="{Binding BackToLastStep}"
 							Content="Previous"
-							CornerRadius="4"
-							Style="{StaticResource TextButtonStyle}" />
+							Style="{StaticResource ChefsSecondaryButtonStyle}" />
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Height="59"
 							Command="{utu:AncestorBinding AncestorType=uer:FeedView,

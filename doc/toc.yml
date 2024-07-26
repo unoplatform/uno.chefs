@@ -10,8 +10,10 @@
     href: xref:Uno.Recipes.SafeArea
   - name: CommandExtensions
     href: xref:Uno.Recipes.CommandExtensions
-  - name: InputExtensions
-    href: xref:Uno.Recipes.InputExtensions
+  - name: InputExtensions Focus
+    href: xref:Uno.Recipes.InputExtensions.Focus
+  - name: InputExtensions ReturnType
+    href: xref:Uno.Recipes.InputExtensions.ReturnType  
   - name: ResponsiveView
     href: xref:Uno.Recipes.ResponsiveView
   - name: ResponsiveExtensions
@@ -34,7 +36,21 @@
   items:
   - name: Reactive Messaging
     href: xref:Uno.Recipes.ReactiveMessaging
+  - name: CommandBuilder
+    href: xref:Uno.Recipes.CommandBuilder
   - name: Serialization
     href: xref:Uno.Recipes.Serialization
   - name: Storage
     href: xref:Uno.Recipes.Storage
+- name: MVUX
+  items:
+  - name: MVUXOverview
+    href: xref:Uno.Recipes.MVUXOverview
+- name: Navigation
+  items:
+  - name: Overview
+    href: xref:Uno.Recipes.NavigationOverview
+  - name: Navigation via code behind
+    href: Uno.Recipes.NavigationCodeBehind
+  - name: Navigation via XAML
+    href: Uno.Recipes.XamlNavigation

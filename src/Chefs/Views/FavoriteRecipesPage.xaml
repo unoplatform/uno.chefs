@@ -35,19 +35,15 @@
 			<utu:AutoLayout Height="546"
 							Padding="32,0"
 							PrimaryAxisAlignment="Center"
+							CounterAxisAlignment="Center"
 							Spacing="24">
 				<utu:AutoLayout Width="72"
+								Height="72">
+					<BitmapIcon Width="56"
 								Height="72"
-								utu:AutoLayout.CounterAlignment="Center">
-					<utu:AutoLayout HorizontalAlignment="Stretch"
-									VerticalAlignment="Stretch"
-									utu:AutoLayout.IsIndependentLayout="True"
-									PrimaryAxisAlignment="Center">
-						<BitmapIcon Width="56"
-									Height="72"
-									utu:AutoLayout.CounterAlignment="Center"
-									UriSource="{ThemeResource Empty_Box}" />
-					</utu:AutoLayout>
+								HorizontalAlignment="Stretch"
+								VerticalAlignment="Stretch"
+								UriSource="{ThemeResource Empty_Box}" />
 				</utu:AutoLayout>
 				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 						   Style="{StaticResource TitleLarge}"
@@ -59,14 +55,14 @@
 						   Text="It looks like you haven't created any cookbooks yet. Cookbooks are a great way to organize your recipes into collections. "
 						   TextAlignment="Center"
 						   TextWrapping="Wrap" />
-				<Button Padding="12,10,16,10"
-						HorizontalContentAlignment="Center"
+				<Button HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
 						uen:Navigation.Request="!CreateCookbook"
 						utu:AutoLayout.CounterAlignment="Center"
 						Content="Create cookbook"
-						CornerRadius="20"
 						Foreground="{ThemeResource PrimaryBrush}"
+						Padding="12,10,16,10"
+						CornerRadius="20"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Add}"
@@ -96,8 +92,7 @@
 												utu:AutoLayout.CounterAlignment="Stretch"
 												Orientation="Horizontal"
 												Spacing="4">
-									<Border utu:AutoLayout.CounterAlignment="Stretch"
-											utu:AutoLayout.PrimaryAlignment="Stretch"
+									<Border utu:AutoLayout.PrimaryAlignment="Stretch"
 											CornerRadius="12">
 										<Image HorizontalAlignment="Center"
 											   VerticalAlignment="Center"
@@ -106,14 +101,12 @@
 									</Border>
 
 									<Grid RowSpacing="4"
-										  utu:AutoLayout.CounterAlignment="Stretch"
 										  utu:AutoLayout.PrimaryAlignment="Stretch">
 										<Grid.RowDefinitions>
 											<RowDefinition Height="*" />
 											<RowDefinition Height="*" />
 										</Grid.RowDefinitions>
-										<Border utu:AutoLayout.CounterAlignment="Stretch"
-												utu:AutoLayout.PrimaryAlignment="Stretch"
+										<Border utu:AutoLayout.PrimaryAlignment="Stretch"
 												Background="{ThemeResource BackgroundBrush}"
 												CornerRadius="12">
 											<Image HorizontalAlignment="Center"
@@ -124,7 +117,6 @@
 										</Border>
 
 										<Grid Grid.Row="1"
-											  utu:AutoLayout.CounterAlignment="Stretch"
 											  utu:AutoLayout.PrimaryAlignment="Stretch"
 											  CornerRadius="12">
 											<Image HorizontalAlignment="Center"
@@ -347,9 +339,9 @@
 								  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
 								  Source="{Binding SavedCookbooks}">
 						<DataTemplate>
-							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+							<utu:AutoLayout PrimaryAxisAlignment="Stretch"
+											utu:AutoLayout.PrimaryAlignment="Stretch">
 								<ScrollViewer x:Name="RecipesScrollViewer"
-											  utu:AutoLayout.PrimaryAlignment="Stretch"
 											  HorizontalScrollMode="Disabled"
 											  VerticalScrollBarVisibility="Hidden">
 									<muxc:ItemsRepeater Margin="0,0,0,16"

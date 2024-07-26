@@ -22,6 +22,7 @@
 		   BasedOn="{StaticResource DefaultFontIconStyle}"
 		   TargetType="FontIcon">
 		<Setter Property="FontFamily" Value="{StaticResource FontAwesomeSolidFontFamily}" />
+		<Setter Property="FontWeight" Value="Bold" />
 	</Style>
 
 	<Style x:Key="FontAwesomeBrandsFontIconStyle"
