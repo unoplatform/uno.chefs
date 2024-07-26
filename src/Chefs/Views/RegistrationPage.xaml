@@ -83,13 +83,12 @@
 		</utu:AutoLayout>
 		<utu:AutoLayout PrimaryAxisAlignment="Center"
 						Orientation="Horizontal"
-						Spacing="4">
+						Spacing="4"
+						CounterAxisAlignment="Center">
 			<TextBlock Text="Already a member?"
-					   utu:AutoLayout.CounterAlignment="Center"
 					   Foreground="{ThemeResource OnSurfaceBrush}"
 					   Style="{StaticResource LabelLarge}" />
 			<Button Content="Login Now"
-					utu:AutoLayout.CounterAlignment="Center"
 					uen:Navigation.Request="-/Login"
 					CornerRadius="20"
 					Style="{StaticResource TextButtonStyle}" />

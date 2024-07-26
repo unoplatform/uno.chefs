@@ -89,13 +89,12 @@
 							<utu:AutoLayout Padding="0,0,0,92">
 								<utu:AutoLayout Spacing="8"
 												Orientation="Horizontal"
-												Padding="16">
-									<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-												   ProfilePicture="{Binding User.UrlProfileImage}"
+												Padding="16"
+												CounterAxisAlignment="Center">
+									<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
 												   Width="32"
 												   Height="32" />
 									<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
-											   utu:AutoLayout.CounterAlignment="Center"
 											   Foreground="{ThemeResource OnBackgroundMediumBrush}"
 											   Style="{StaticResource BodySmall}" />
 								</utu:AutoLayout>
@@ -104,8 +103,7 @@
 										<utu:AutoLayout Spacing="8"
 														utu:AutoLayout.CounterAlignment="Stretch"
 														Height="250">
-											<Border Height="195"
-													utu:AutoLayout.CounterAlignment="Start">
+											<Border Height="195">
 												<Image Source="{Binding Recipe.ImageUrl}"
 													   HorizontalAlignment="Center"
 													   VerticalAlignment="Center"
@@ -120,14 +118,12 @@
 												<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
 																Padding="0,16"
 																CornerRadius="4"
-																PrimaryAxisAlignment="Center"
+																PrimaryAxisAlignment="Stretch"
 																Orientation="Horizontal"
 																utu:AutoLayout.IsIndependentLayout="True"
 																VerticalAlignment="Stretch"
 																HorizontalAlignment="Stretch">
-													<StackPanel Spacing="4"
-																utu:AutoLayout.CounterAlignment="Start"
-																utu:AutoLayout.PrimaryAlignment="Stretch">
+													<StackPanel Spacing="4">
 														<FontIcon Glyph="{StaticResource Icon_Timer}"
 																  HorizontalAlignment="Center"
 																  Foreground="{ThemeResource OnSurfaceBrush}" />
@@ -138,9 +134,7 @@
 																   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 																   Style="{StaticResource BodySmall}" />
 													</StackPanel>
-													<StackPanel utu:AutoLayout.CounterAlignment="Start"
-																utu:AutoLayout.PrimaryAlignment="Stretch"
-																Spacing="4">
+													<StackPanel Spacing="4">
 														<FontIcon HorizontalAlignment="Center"
 																  Glyph="{StaticResource Icon_Star_Rate}"
 																  Foreground="{ThemeResource OnSurfaceBrush}" />
@@ -151,9 +145,7 @@
 																   TextAlignment="Center"
 																   TextWrapping="Wrap" />
 													</StackPanel>
-													<StackPanel utu:AutoLayout.CounterAlignment="Start"
-																utu:AutoLayout.PrimaryAlignment="Stretch"
-																Spacing="4">
+													<StackPanel Spacing="4">
 														<FontIcon HorizontalAlignment="Center"
 																  Glyph="{StaticResource Icon_Local_Fire_Department}"
 																  Foreground="{ThemeResource OnSurfaceBrush}" />
@@ -233,8 +225,7 @@
 																									CornerRadius="4"
 																									Orientation="Horizontal"
 																									PrimaryAxisAlignment="End">
-																						<TextBlock utu:AutoLayout.CounterAlignment="Start"
-																								   Foreground="{ThemeResource OnSecondaryContainerBrush}"
+																						<TextBlock Foreground="{ThemeResource OnSecondaryContainerBrush}"
 																								   Style="{StaticResource BodySmall}"
 																								   Text="{Binding Quantity}"
 																								   TextAlignment="End" />
@@ -317,15 +308,13 @@
 																							Orientation="Horizontal">
 																				<Border Width="60"
 																						Height="60"
-																						CornerRadius="60"
-																						utu:AutoLayout.CounterAlignment="Start">
+																						CornerRadius="60">
 																					<Image Source="{Binding UrlAuthorImage}"
 																						   Stretch="UniformToFill"
 																						   HorizontalAlignment="Center"
 																						   VerticalAlignment="Center" />
 																				</Border>
-																				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-																								utu:AutoLayout.PrimaryAlignment="Stretch">
+																				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 																					<utu:AutoLayout Spacing="8"
 																									PrimaryAxisAlignment="Center">
 																						<TextBlock TextWrapping="Wrap"
@@ -336,12 +325,10 @@
 																								   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 																					</utu:AutoLayout>
 																					<utu:AutoLayout Padding="0,16,0,16"
-																									utu:AutoLayout.CounterAlignment="Start"
 																									Orientation="Horizontal"
 																									Spacing="8">
 																						<ToggleButton HorizontalContentAlignment="Center"
 																									  VerticalContentAlignment="Center"
-																									  utu:AutoLayout.CounterAlignment="Start"
 																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																																	Path=DataContext.Like}"
 																									  CommandParameter="{Binding}"
@@ -375,7 +362,6 @@
 																						</ToggleButton>
 																						<ToggleButton HorizontalContentAlignment="Center"
 																									  VerticalContentAlignment="Center"
-																									  utu:AutoLayout.CounterAlignment="Start"
 																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
 																																	Path=DataContext.Dislike}"
 																									  CommandParameter="{Binding}"
@@ -464,13 +450,12 @@
 					<utu:AutoLayout>
 						<utu:AutoLayout Spacing="8"
 										Orientation="Horizontal"
-										Padding="16">
-							<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-										   ProfilePicture="{Binding User.UrlProfileImage}"
+										Padding="16"
+										CounterAxisAlignment="Center">
+							<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
 										   Width="32"
 										   Height="32" />
 							<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
-									   utu:AutoLayout.CounterAlignment="Center"
 									   Foreground="{ThemeResource OnBackgroundMediumBrush}"
 									   Style="{StaticResource BodySmall}" />
 						</utu:AutoLayout>
@@ -585,7 +570,6 @@
 																						Padding="8,0,16,0">
 																			<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
 																				<utu:AutoLayout Orientation="Horizontal"
-																								utu:AutoLayout.CounterAlignment="Start"
 																								Height="60">
 																					<Image Width="40"
 																						   Source="{Binding UrlIcon}" />
@@ -610,13 +594,12 @@
 																							utu:AutoLayout.CounterAlignment="Center">
 																				<utu:AutoLayout PrimaryAxisAlignment="End"
 																								Orientation="Horizontal">
-																					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start">
+																					<utu:AutoLayout>
 																						<utu:AutoLayout PrimaryAxisAlignment="End"
 																										Orientation="Horizontal"
 																										utu:AutoLayout.CounterAlignment="End">
 																							<TextBlock TextAlignment="End"
 																									   Text="{Binding Quantity}"
-																									   utu:AutoLayout.CounterAlignment="Start"
 																									   Foreground="{ThemeResource OnSecondaryContainerBrush}"
 																									   Style="{StaticResource BodySmall}" />
 																						</utu:AutoLayout>
@@ -654,8 +637,7 @@
 																					CornerRadius="4">
 																		<utu:AutoLayout Orientation="Horizontal"
 																						Padding="16">
-																			<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-																							utu:AutoLayout.PrimaryAlignment="Stretch">
+																			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 																				<utu:AutoLayout PrimaryAxisAlignment="Center">
 																					<utu:AutoLayout Spacing="8"
 																									PrimaryAxisAlignment="Center">
@@ -706,12 +688,10 @@
 																					CornerRadius="4"
 																					Orientation="Horizontal"
 																					Padding="16">
-																		<PersonPicture utu:AutoLayout.CounterAlignment="Start"
-																					   Width="60"
+																		<PersonPicture Width="60"
 																					   Height="60"
 																					   ProfilePicture="{Binding UrlAuthorImage}" />
 																		<utu:AutoLayout Spacing="8"
-																						utu:AutoLayout.CounterAlignment="Start"
 																						utu:AutoLayout.PrimaryAlignment="Stretch">
 																			<TextBlock TextWrapping="Wrap"
 																					   Text="{Binding Description}"
@@ -722,8 +702,7 @@
 																			<utu:AutoLayout Spacing="24"
 																							Orientation="Horizontal"
 																							Padding="0,16,0,0">
-																				<utu:AutoLayout Orientation="Horizontal"
-																								utu:AutoLayout.CounterAlignment="Start">
+																				<utu:AutoLayout Orientation="Horizontal">
 																					<ToggleButton HorizontalContentAlignment="Center"
 																								  VerticalContentAlignment="Center"
 																								  utu:AutoLayout.CounterAlignment="Center"
@@ -733,36 +712,33 @@
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
 																										  FontSize="20"
 																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Likes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
 																						</ToggleButton.Content>
 																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
 																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 																										  FontSize="20"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Likes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
 																						</ut:ControlExtensions.AlternateContent>
 																					</ToggleButton>
 																				</utu:AutoLayout>
-																				<utu:AutoLayout Orientation="Horizontal"
-																								utu:AutoLayout.CounterAlignment="Start">
+																				<utu:AutoLayout Orientation="Horizontal">
 																					<ToggleButton HorizontalContentAlignment="Center"
 																								  VerticalContentAlignment="Center"
 																								  utu:AutoLayout.CounterAlignment="Center"
@@ -772,28 +748,26 @@
 																								  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
 																						<ToggleButton.Content>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
 																										  FontSize="20"
 																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Dislikes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
 																						</ToggleButton.Content>
 																						<ut:ControlExtensions.AlternateContent>
 																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
+																											Spacing="8"
+																											CounterAxisAlignment="Center">
 																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
 																										  FontSize="20"
 																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
 																										  Foreground="{ThemeResource PrimaryBrush}" />
 																								<TextBlock Text="{Binding Dislikes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
 																										   Foreground="{ThemeResource PrimaryBrush}"
 																										   Style="{StaticResource LabelLarge}" />
 																							</utu:AutoLayout>
