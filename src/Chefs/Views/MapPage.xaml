@@ -16,7 +16,7 @@
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+		<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 			<utu:NavigationBar Style="{StaticResource ChefsNavigationBarStyle}"
 							   Content="Near me">
 				<utu:NavigationBar.MainCommand>
@@ -28,8 +28,7 @@
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 			</utu:NavigationBar>
-			<map:MapControl x:Name="MapControl"
-							utu:AutoLayout.PrimaryAlignment="Stretch" />
+			<map:MapControl x:Name="MapControl" />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>

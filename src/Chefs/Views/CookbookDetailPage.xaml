@@ -98,16 +98,13 @@
 									  HorizontalScrollMode="Disabled"
 									  VerticalScrollBarVisibility="Hidden">
 							<utu:AutoLayout>
-								<utu:AutoLayout Padding="0,0,0,16"
-												Justify="SpaceBetween"
-												Orientation="Horizontal">
-									<TextBlock utu:AutoLayout.CounterAlignment="Center"
-											   Style="{StaticResource BodyLarge}">
-										<Run Text="{Binding Data.Recipes.Count}" />
-										<Run Text="results" />
-									</TextBlock>
-
-								</utu:AutoLayout>
+								<TextBlock Padding="0,0,0,16"
+										   HorizontalAlignment="Stretch"
+										   utu:AutoLayout.CounterAlignment="Center"
+										   Style="{StaticResource BodyLarge}">
+									<Run Text="{Binding Data.Recipes.Count}" />
+									<Run Text="results" />
+								</TextBlock>
 								<utu:AutoLayout Padding="0,16">
 									<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
 														ItemTemplate="{StaticResource RecipeTemplate}"
