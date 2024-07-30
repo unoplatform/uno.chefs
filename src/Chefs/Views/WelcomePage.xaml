@@ -74,209 +74,146 @@
 		</DataTemplate>
 	</Page.Resources>
 
-	<utu:ResponsiveView>
-		<utu:ResponsiveView.NarrowTemplate>
-			<DataTemplate>
-				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-					<FlipView x:Name="flipView"
-							  utu:AutoLayout.PrimaryAlignment="Stretch"
-							  Background="Transparent"
-							  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-						<FlipView.Items>
-							<!-- First onboarding page -->
-							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-											PrimaryAxisAlignment="Stretch"
-											Spacing="24">
-								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
-									   MaxHeight="270"
-									   Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-									   Stretch="UniformToFill" />
-								<Image Width="160"
-									   Height="90"
-									   utu:AutoLayout.CounterAlignment="Center"
-									   Source="{ThemeResource ChefsLogoWithIcon}" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleLarge}"
-										   Text="Welcome to Your App!"
-										   TextAlignment="Center"
-										   Padding="32,0"
-										   TextWrapping="Wrap" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleMedium}"
-										   Padding="32,0"
-										   Text="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences."
-										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
-							</utu:AutoLayout>
-							<!-- Second onboarding page -->
-							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-											PrimaryAxisAlignment="Stretch"
-											Spacing="24">
-								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
-									   MaxHeight="270"
-									   Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
-									   Stretch="UniformToFill" />
-								<Image Width="160"
-									   Height="90"
-									   utu:AutoLayout.CounterAlignment="Center"
-									   Source="{ThemeResource ChefsLogoWithIcon}" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleLarge}"
-										   Text="Explore Thousands of Recipes"
-										   Padding="32,0"
-										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleMedium}"
-										   Padding="32,0"
-										   Text="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes."
-										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
-							</utu:AutoLayout>
-							<!-- Third onboarding page -->
-							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-											PrimaryAxisAlignment="Stretch"
-											Spacing="24">
-								<Image utu:AutoLayout.PrimaryAlignment="Stretch"
-									   MaxHeight="270"
-									   Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
-									   Stretch="UniformToFill" />
-								<Image Width="160"
-									   Height="90"
-									   utu:AutoLayout.CounterAlignment="Center"
-									   Source="{ThemeResource ChefsLogoWithIcon}" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleLarge}"
-										   Padding="32,0"
-										   Text="Personalize Your Recipe Journey"
-										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleMedium}"
-										   Padding="32,0"
-										   Text="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community."
-										   TextAlignment="Center"
-										   TextWrapping="Wrap" />
-							</utu:AutoLayout>
-						</FlipView.Items>
-					</FlipView>
-
-					<!-- Pips and Buttons -->
-					<muxc:ContentPresenter ContentTemplate="{StaticResource PipsAndButtonsTemplate}" />
-				</utu:AutoLayout>
-			</DataTemplate>
-		</utu:ResponsiveView.NarrowTemplate>
-
-		<utu:ResponsiveView.WideTemplate>
-			<DataTemplate>
-				<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-								Orientation="Horizontal"
-								PrimaryAxisAlignment="Stretch">
+	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+					Orientation="{utu:Responsive Narrow=Vertical,
+												 Wide=Horizontal}"
+					PrimaryAxisAlignment="Stretch">
+		<Grid Visibility="{utu:Responsive Narrow=Collapsed,
+										  Wide=Visible}"
+			  utu:AutoLayout.PrimaryAlignment="Stretch">
+			<FlipView x:Name="MyImages"
+					  Background="Transparent"
+					  IsEnabled="False"
+					  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+				<FlipView.Items>
+					<!-- First Splash image -->
 					<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-						<FlipView x:Name="MyImages"
-								  Background="Transparent"
-								  IsEnabled="False"
-								  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-							<FlipView.Items>
-								<!-- First Splash image -->
-								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image utu:AutoLayout.PrimaryAlignment="Stretch"
-										   Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
-										   Stretch="UniformToFill" />
-								</Grid>
-								<!-- Second Splash image -->
-								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
-										   Stretch="UniformToFill" />
-								</Grid>
-								<!-- Third Splash image -->
-								<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
-										   Stretch="UniformToFill" />
-								</Grid>
-							</FlipView.Items>
-						</FlipView>
+						<Image utu:AutoLayout.PrimaryAlignment="Stretch"
+							   Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
+							   Stretch="UniformToFill" />
 					</Grid>
+					<!-- Second Splash image -->
+					<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
+						<Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
+							   Stretch="UniformToFill" />
+					</Grid>
+					<!-- Third Splash image -->
+					<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
+						<Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
+							   Stretch="UniformToFill" />
+					</Grid>
+				</FlipView.Items>
+			</FlipView>
+		</Grid>
 
-					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-						<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
-							<FlipView x:Name="flipView"
-									  utu:AutoLayout.PrimaryAlignment="Stretch"
-									  Background="Transparent"
-									  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-								<FlipView.Items>
-									<!-- First onboarding page -->
-									<utu:AutoLayout Padding="32,0"
-													MaxWidth="500"
-													utu:AutoLayout.PrimaryAlignment="Stretch"
-													PrimaryAxisAlignment="Center"
-													Spacing="24">
-										<Image Width="160"
-											   Height="90"
-											   utu:AutoLayout.CounterAlignment="Center"
-											   Source="{ThemeResource ChefsLogoWithIcon}" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleLarge}"
-												   Text="Welcome to Your App!"
-												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleMedium}"
-												   Text="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences."
-												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
-									</utu:AutoLayout>
-									<!-- Second onboarding page -->
-									<utu:AutoLayout MaxWidth="500"
-													Padding="32,0"
-													utu:AutoLayout.PrimaryAlignment="Stretch"
-													PrimaryAxisAlignment="Center"
-													Spacing="24">
-										<Image Width="160"
-											   Height="90"
-											   utu:AutoLayout.CounterAlignment="Center"
-											   Source="{ThemeResource ChefsLogoWithIcon}" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleLarge}"
-												   Text="Explore Thousands of Recipes"
-												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleMedium}"
-												   Text="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes."
-												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
-									</utu:AutoLayout>
-									<!-- Third onboarding page -->
-									<utu:AutoLayout MaxWidth="500"
-													Padding="32,0"
-													utu:AutoLayout.PrimaryAlignment="Stretch"
-													PrimaryAxisAlignment="Center"
-													Spacing="24">
-										<Image Width="160"
-											   Height="90"
-											   utu:AutoLayout.CounterAlignment="Center"
-											   Source="{ThemeResource ChefsLogoWithIcon}" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleLarge}"
-												   Text="Personalize Your Recipe Journey"
-												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleMedium}"
-												   Text="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community."
-												   TextAlignment="Center"
-												   TextWrapping="Wrap" />
-									</utu:AutoLayout>
-								</FlipView.Items>
-							</FlipView>
-						</Grid>
+		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+			<Grid utu:AutoLayout.PrimaryAlignment="Stretch">
+				<FlipView x:Name="flipView"
+						  utu:AutoLayout.PrimaryAlignment="Stretch"
+						  Background="Transparent"
+						  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+					<FlipView.Items>
+						<!-- First onboarding page -->
+						<utu:AutoLayout Padding="{utu:Responsive Narrow=0,
+																 Wide='32,0'}"
+										MaxWidth="{utu:Responsive Narrow=800,
+																  Wide=500}"
+										utu:AutoLayout.PrimaryAlignment="Stretch"
+										PrimaryAxisAlignment="Center"
+										Spacing="24">
+							<Image Visibility="{utu:Responsive Narrow=Visible,
+															   Wide=Collapsed}"
+								   utu:AutoLayout.PrimaryAlignment="Stretch"
+								   MaxHeight="270"
+								   Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
+								   Stretch="UniformToFill" />
+							<Image Width="160"
+								   Height="90"
+								   utu:AutoLayout.CounterAlignment="Center"
+								   Source="{ThemeResource ChefsLogoWithIcon}" />
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Style="{StaticResource TitleLarge}"
+									   Text="Welcome to Your App!"
+									   Padding="{utu:Responsive Narrow='32,0',
+																Wide=0}"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Style="{StaticResource TitleMedium}"
+									   Text="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences."
+									   Padding="{utu:Responsive Narrow='32,0',
+																Wide=0}"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+						</utu:AutoLayout>
+						<!-- Second onboarding page -->
+						<utu:AutoLayout Padding="{utu:Responsive Narrow=0,
+																 Wide='32,0'}"
+										utu:AutoLayout.PrimaryAlignment="Stretch"
+										PrimaryAxisAlignment="Center"
+										Spacing="24">
+							<Image Visibility="{utu:Responsive Narrow=Visible,
+															   Wide=Collapsed}"
+								   utu:AutoLayout.PrimaryAlignment="Stretch"
+								   MaxHeight="270"
+								   Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
+								   Stretch="UniformToFill" />
+							<Image Width="160"
+								   Height="90"
+								   utu:AutoLayout.CounterAlignment="Center"
+								   Source="{ThemeResource ChefsLogoWithIcon}" />
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Style="{StaticResource TitleLarge}"
+									   Text="Explore Thousands of Recipes"
+									   Padding="{utu:Responsive Narrow='32,0',
+																Wide=0}"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Style="{StaticResource TitleMedium}"
+									   Text="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes."
+									   Padding="{utu:Responsive Narrow='32,0',
+																Wide=0}"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+						</utu:AutoLayout>
+						<!-- Third onboarding page -->
+						<utu:AutoLayout Padding="{utu:Responsive Narrow=0,
+																 Wide='32,0'}"
+										utu:AutoLayout.PrimaryAlignment="Stretch"
+										PrimaryAxisAlignment="Center"
+										Spacing="24">
+							<Image Visibility="{utu:Responsive Narrow=Visible,
+															   Wide=Collapsed}"
+								   utu:AutoLayout.PrimaryAlignment="Stretch"
+								   MaxHeight="270"
+								   Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
+								   Stretch="UniformToFill" />
+							<Image Width="160"
+								   Height="90"
+								   utu:AutoLayout.CounterAlignment="Center"
+								   Source="{ThemeResource ChefsLogoWithIcon}" />
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Style="{StaticResource TitleLarge}"
+									   Text="Personalize Your Recipe Journey"
+									   Padding="{utu:Responsive Narrow='32,0',
+																Wide=0}"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Style="{StaticResource TitleMedium}"
+									   Text="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community."
+									   Padding="{utu:Responsive Narrow='32,0',
+																Wide=0}"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+						</utu:AutoLayout>
+					</FlipView.Items>
+				</FlipView>
+			</Grid>
 
-						<!-- Pips and Buttons -->
-						<muxc:ContentPresenter ContentTemplate="{StaticResource PipsAndButtonsTemplate}" />
-					</utu:AutoLayout>
-				</utu:AutoLayout>
-			</DataTemplate>
-		</utu:ResponsiveView.WideTemplate>
-	</utu:ResponsiveView>
+			<!-- Pips and Buttons -->
+			<muxc:ContentPresenter ContentTemplate="{StaticResource PipsAndButtonsTemplate}" />
+		</utu:AutoLayout>
+	</utu:AutoLayout>
 </Page>
