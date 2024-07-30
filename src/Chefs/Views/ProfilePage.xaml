@@ -73,7 +73,7 @@
 								  uen:Navigation.Data="{Binding Profile.Value}"
 								  Visibility="{Binding Profile.IsCurrent}">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Assets/Icons/settings.png" />
+							<FontIcon Glyph="{StaticResource Icon_Settings}" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.PrimaryCommands>
