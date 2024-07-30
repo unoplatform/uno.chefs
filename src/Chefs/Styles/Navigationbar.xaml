@@ -16,5 +16,6 @@
 		<Setter Property="Foreground" Value="{ThemeResource OnSurfaceInverseBrush}" />
 	</Style>
 
-	<Style TargetType="utu:NavigationBar" BasedOn="{StaticResource ChefsNavigationBarStyle}" />
+	<Style TargetType="utu:NavigationBar"
+		   BasedOn="{StaticResource ChefsNavigationBarStyle}" />
 </ResourceDictionary>
