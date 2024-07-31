@@ -17,8 +17,7 @@
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout PrimaryAxisAlignment="Stretch">
-			<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
-							   Foreground="{ThemeResource OnSurfaceInverseBrush}"
+			<utu:NavigationBar Style="{StaticResource ChefsNavigationBarStyle}"
 							   Content="Near me">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton>

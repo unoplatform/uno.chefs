@@ -75,11 +75,10 @@
 			</DataTemplate>
 		</utu:AutoLayout.Resources>
 
-		<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
-						   Content="{Binding Cookbook.Name}"
-						   Foreground="{ThemeResource OnSurfaceInverseBrush}">
+		<utu:NavigationBar Content="{Binding Cookbook.Name}"
+						   Style="{StaticResource ChefsNavigationBarStyle}">
 			<utu:NavigationBar.MainCommand>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
