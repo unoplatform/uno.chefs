@@ -52,11 +52,23 @@ public partial class CreateUpdateCookbookModel
 	public string SaveButtonContent { get; }
 
 	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
-
+	
 	public IListFeed<Recipe> Recipes => ListFeed
-		.PaginatedAsync(
+		.PaginatedAsync<Recipe>(
 			async (PageRequest pageRequest, CancellationToken ct) =>
-				await _recipeService.GetFavoritedWithPagination(pageRequest.DesiredSize ?? DefaultPageSize, pageRequest.CurrentCount, ct)
+			{
+				var pageSize = pageRequest.DesiredSize ?? DefaultPageSize;
+				var selectedRecipes = await SelectedRecipes;
+				var selectedRecipeIds = new HashSet<Guid>(selectedRecipes!.Select(r => r.Id));
+				
+				var allRecipes =
+					await _recipeService.GetFavoritedWithPagination(pageSize, pageRequest.CurrentCount, ct);
+				var nonSelectedRecipes = allRecipes.Where(r => !selectedRecipeIds.Contains(r.Id)).ToImmutableList();
+				
+				return pageRequest.CurrentCount == 0
+					? selectedRecipes!.Concat(nonSelectedRecipes).ToImmutableList()
+					: nonSelectedRecipes;
+			}
 		).Selection(SelectedRecipes);
 
 	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
