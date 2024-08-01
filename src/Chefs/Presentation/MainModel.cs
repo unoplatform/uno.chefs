@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public partial class MainModel
+public partial record MainModel
 {
 	public string? Title { get; }
 

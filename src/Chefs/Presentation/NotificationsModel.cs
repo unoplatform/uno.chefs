@@ -1,5 +1,5 @@
 namespace Chefs.Presentation;
-public partial class NotificationsModel
+public partial record NotificationsModel
 {
 	private readonly INavigator _navigator;
 	private readonly INotificationService _notificationService;
@@ -19,14 +19,4 @@ public partial class NotificationsModel
 
 	public IFeed<GroupedNotification> Read => Notifications.Select(group =>
 		new GroupedNotification(group.GetAll().Where(n => n.Read).ToImmutableList()));
-
-	public async Task CloseNotificationPage()
-	{
-		await NavigateBack();
-	}
-
-	private async Task NavigateBack()
-	{
-		await _navigator.NavigateBackAsync(this);
-	}
 }

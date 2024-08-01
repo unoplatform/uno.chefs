@@ -1,9 +1,10 @@
 namespace Chefs.Presentation;
 
-public partial class FilterModel
+public partial record FilterModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
+
 	public FilterModel(SearchFilter filters, INavigator navigator, IRecipeService recipeService)
 	{
 		_navigator = navigator;
@@ -21,5 +22,5 @@ public partial class FilterModel
 		await _navigator.NavigateBackWithResultAsync(this, data: filter);
 
 	public async ValueTask Reset(CancellationToken ct) =>
-		await Filter.Update(current => new SearchFilter(), ct);
+		await Filter.UpdateAsync(current => new SearchFilter(), ct);
 }

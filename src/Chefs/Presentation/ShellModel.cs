@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public class ShellModel
+public partial record ShellModel
 {
 	private readonly INavigator _navigator;
 

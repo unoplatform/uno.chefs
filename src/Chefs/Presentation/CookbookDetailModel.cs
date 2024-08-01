@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public partial class CookbookDetailModel
+public partial record CookbookDetailModel
 {
 	public CookbookDetailModel(Cookbook cookbook, IMessenger messenger)
 	{

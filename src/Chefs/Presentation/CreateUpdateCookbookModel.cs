@@ -1,9 +1,8 @@
 using Chefs.Presentation.Extensions;
-using Windows.UI.Popups;
 
 namespace Chefs.Presentation;
 
-public partial class CreateUpdateCookbookModel
+public partial record CreateUpdateCookbookModel
 {
 	const uint DefaultPageSize = 20;
 
