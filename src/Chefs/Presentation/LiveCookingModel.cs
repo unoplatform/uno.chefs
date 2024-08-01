@@ -7,6 +7,7 @@ public partial class LiveCookingModel
 	private readonly IRecipeService _recipeService;
 
 	private readonly IImmutableList<Step> _steps;
+	private readonly INavigator _navigator;
 
 	public Recipe Recipe { get; }
 
@@ -14,10 +15,11 @@ public partial class LiveCookingModel
 
 	public IState<bool> Completed => State.Value(this, () => false);
 
-	public LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService)
+	public LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService, INavigator navigator)
 	{
 		Recipe = parameter.Recipe;
 		_recipeService = recipeService;
+		_navigator = navigator;
 		_steps = parameter.Steps;
 	}
 
@@ -30,7 +32,10 @@ public partial class LiveCookingModel
 	{
 		await Completed.SetAsync(false);
 	}
-
-	public async ValueTask Save(Recipe recipe, CancellationToken ct) =>
-		await _recipeService.Favorite(recipe, ct);
+	
+	public async ValueTask Save(CancellationToken ct)
+	{
+		await _recipeService.Favorite(Recipe, ct);
+		await _navigator.NavigateViewModelAsync<HomeModel>(this, qualifier: Qualifiers.ClearBackStack); ;
+	}
 }
