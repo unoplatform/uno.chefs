@@ -2,7 +2,7 @@ using Chefs.Presentation.Extensions;
 
 namespace Chefs.Presentation;
 
-public partial class HomeModel
+public partial record HomeModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
@@ -28,18 +28,6 @@ public partial class HomeModel
 	public IListFeed<User> PopularCreators => ListFeed.Async(_userService.GetPopularCreators);
 
 	public IFeed<User> UserProfile => _userService.User;
-
-	public async ValueTask<ImmutableList<CategoryWithCount>> GetCategories(CancellationToken ct)
-	{
-		var categories = await _recipeService.GetCategories(ct);
-		var categoriesWithCount = new List<CategoryWithCount>();
-		foreach (var category in categories)
-		{
-			var recipesByCategory = await _recipeService.GetByCategory((int)category!.Id!, ct);
-			categoriesWithCount.Add(new CategoryWithCount(recipesByCategory.Count, category));
-		}
-		return categoriesWithCount.ToImmutableList();
-	}
 
 	public async ValueTask ShowAll(CancellationToken ct) =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));

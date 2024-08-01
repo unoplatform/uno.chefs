@@ -3,7 +3,7 @@ using AppTheme = Uno.Extensions.Toolkit.AppTheme;
 
 namespace Chefs.Presentation;
 
-public partial class SettingsModel
+public partial record SettingsModel
 {
 	private readonly IUserService _userService;
 	private readonly IThemeService _themeService;
@@ -43,5 +43,5 @@ public partial class SettingsModel
 
 	public IState<User> Profile => State.Value(this, () => _user);
 
-	public IState<AppConfig> Settings => State.Async(this, async ct => await _userService.GetSettings(ct));
+	public IState<AppConfig> Settings => State.Async(this, _userService.GetSettings);
 }

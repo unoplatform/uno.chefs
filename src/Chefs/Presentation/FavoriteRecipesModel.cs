@@ -2,7 +2,7 @@ using Chefs.Presentation.Extensions;
 
 namespace Chefs.Presentation;
 
-public partial class FavoriteRecipesModel
+public partial record FavoriteRecipesModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;

@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public partial class SearchModel
+public partial record SearchModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;

@@ -75,7 +75,7 @@
 						Foreground="{ThemeResource OnSecondaryContainerBrush}"
 						CornerRadius="4"
 						Style="{StaticResource FilledTonalButtonStyle}"
-						Command="{Binding CloseNotificationPage}">
+						uen:Navigation.Request="-">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Glyph="{StaticResource Icon_Close}"
 								  Foreground="{ThemeResource OnSecondaryContainerBrush}" />
@@ -86,7 +86,8 @@
 	</Page.Resources>
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
 					PrimaryAxisAlignment="Stretch">
-		<utu:NavigationBar Content="Notifications">
+		<utu:NavigationBar Content="Notifications"
+						   Style="{StaticResource ChefsNavigationBarStyle}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<AppBarButton.Icon>

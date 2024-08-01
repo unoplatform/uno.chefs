@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
+public partial record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);
 
 public partial class LiveCookingModel
 {

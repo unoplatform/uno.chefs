@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public partial class GenericDialogModel
+public partial record GenericDialogModel
 {
 	public GenericDialogModel(DialogInfo dialogInfo)
 	{

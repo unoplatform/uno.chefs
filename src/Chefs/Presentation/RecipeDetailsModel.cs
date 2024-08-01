@@ -6,7 +6,7 @@ using WinRT.Interop;
 
 namespace Chefs.Presentation;
 
-public partial class RecipeDetailsModel
+public partial record RecipeDetailsModel
 {
 	private static readonly Guid _dtm_iid = new Guid("a5caee9b-8708-49d1-8d36-67d25a8da00c");
 
@@ -33,7 +33,7 @@ public partial class RecipeDetailsModel
 	public Recipe Recipe { get; }
 	public IState<bool> IsFavorited => State.Value(this, () => Recipe.IsFavorite);
 	public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct));
-	public IFeed<User> CurrentUser => Feed.Async(async ct => await _userService.GetCurrent(ct));
+	public IFeed<User> CurrentUser => Feed.Async(_userService.GetCurrent);
 	public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
 	public IListState<Review> Reviews => ListState.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct));
 	public IListFeed<Step> Steps => ListFeed.Async(async ct => await _recipeService.GetSteps(Recipe.Id, ct));
