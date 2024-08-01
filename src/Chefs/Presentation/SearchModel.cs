@@ -4,23 +4,25 @@ public partial class SearchModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
+	private readonly IMessenger _messenger;
 
-	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
+	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService, IMessenger messenger)
 	{
 		_navigator = navigator;
 		_recipeService = recipeService;
+		_messenger = messenger;
 
 		Filter = State.Value(this, () => filter ?? new SearchFilter());
+		_messenger.Observe(Results, r => r.Id);
 	}
 
 	public IState<string> Term => State<string>.Value(this, () => string.Empty);
 
 	public IState<SearchFilter> Filter { get; }
-
-	public IListFeed<Recipe> Results => Feed
+	public IListState<Recipe> Results => ListState.FromFeed(this, Feed
 		.Combine(Term, Filter)
 		.SelectAsync(Search)
-		.AsListFeed();
+		.AsListFeed());
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
