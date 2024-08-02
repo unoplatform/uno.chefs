@@ -1,5 +1,9 @@
+using Chefs.Services.Clients;
 using Chefs.Views.Flyouts;
 using LiveChartsCore;
+using Microsoft.Kiota.Abstractions;
+using Microsoft.Kiota.Abstractions.Authentication;
+using Microsoft.Kiota.Http.HttpClientLibrary;
 
 namespace Chefs;
 
@@ -13,9 +17,10 @@ public partial class App : Application
 	{
 		this.InitializeComponent();
 	}
-	
+
 	public static Window? MainWindow;
 	public static IHost? Host { get; private set; }
+
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
 	{
 		var builder = this.CreateBuilder(args)
@@ -30,25 +35,28 @@ public partial class App : Application
 							{
 								// Check for username to simulate credential processing
 								if (!(credentials?.TryGetValue("Username", out var username) ??
-								      false && !string.IsNullOrEmpty(username)))
-								
+									  false && !string.IsNullOrEmpty(username)))
+
 								{
 									return ValueTask.FromResult<IDictionary<string, string>?>(null);
 								}
-								
+
 								// Simulate successful authentication by creating a dummy token dictionary
 								var tokenDictionary = new Dictionary<string, string>
 								{
 									{ TokenCacheExtensions.AccessTokenKey, "SampleToken" },
 									{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
 									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
-								};
+                                };
 								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
-								
-								
+
+
 							});
 					}, name: "CustomAuth")
 				)
+				.UseHttp((context, services) =>
+				{
+				})
 #if DEBUG
 				// Switch to Development environment when running in DEBUG
 				.UseEnvironment(Environments.Development)
@@ -66,28 +74,41 @@ public partial class App : Application
 						.Section<Credentials>()
 						.Section<SearchHistory>()
 				)
-				
+
 				// Enable localization (see appsettings.json for supported languages)
 				.UseLocalization()
-				
+
 				// Register Json serializers (ISerializer and ISerializer)
 				.UseSerialization()
 				.ConfigureServices((context, services) =>
 				{
+					services.AddSingleton<IRequestAdapter, HttpClientRequestAdapter>(sp =>
+					{
+						var authenticationProvider = new AnonymousAuthenticationProvider();
+						var parseNodeFactory = new Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory();
+						var serializationWriterFactory = new Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory();
+						var httpClient = new HttpClient();
+						var adapter = new HttpClientRequestAdapter(authenticationProvider, parseNodeFactory, serializationWriterFactory, httpClient);
+						adapter.BaseUrl = "https://localhost:5002";
+						return adapter;
+					});
+					
+					services.AddSingleton<ChefsApiClient>(sp =>
+					{
+						var requestAdapter = sp.GetRequiredService<IRequestAdapter>();
+						return new ChefsApiClient(requestAdapter);
+					});
+					
 					services
 						.AddSingleton<INotificationService, NotificationService>()
 						.AddSingleton<IRecipeService, RecipeService>()
 						.AddSingleton<IUserService, UserService>()
 						.AddSingleton<ICookbookService, CookbookService>()
-						.AddSingleton<IMessenger, WeakReferenceMessenger>()
-						.AddSingleton<INotificationEndpoint, NotificationEndpoint>()
-						.AddSingleton<IRecipeEndpoint, RecipeEndpoint>()
-						.AddSingleton<IUserEndpoint, UserEndpoint>()
-						.AddSingleton<ICookbookEndpoint, CookbookEndpoint>();
+						.AddSingleton<IMessenger, WeakReferenceMessenger>();
 				})
 				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes,
 					configureServices: ConfigureNavServices));
-		
+
 		LiveCharts.Configure(config =>
 			config
 				.HasMap<NutritionChartItem>((nutritionChartItem, point) =>
@@ -152,33 +173,33 @@ public partial class App : Application
 					new RouteMap("Register", View: views.FindByViewModel<RegistrationModel>()),
 					new RouteMap("Main", View: views.FindByViewModel<MainModel>(), Nested: new RouteMap[]
 					{
-						#region Main Tabs
-						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
+                        #region Main Tabs
+                        new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
 						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
-						#endregion
+                        #endregion
 
-						#region Cookbooks
-						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
+                        #region Cookbooks
+                        new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("UpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
-						#endregion
+                        #endregion
 
-						#region Recipe Details
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
+                        #region Recipe Details
+                        new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
 						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
-						#endregion
+                        #endregion
 
-						#region Live Cooking
-						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
+                        #region Live Cooking
+                        new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
 						new RouteMap("SearchLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "SearchRecipeDetails"),
 						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
 						new RouteMap("CookbookLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "CookbookRecipeDetails"),
-						#endregion
+                        #endregion
 
-						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
+                        new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
 					}),
 					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),

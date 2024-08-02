@@ -1,3 +1,4 @@
+using CategoryData = Chefs.Services.Clients.Models.CategoryData;
 namespace Chefs.Business.Models;
 
 public partial record Category

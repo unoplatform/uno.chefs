@@ -10,7 +10,6 @@ global using Chefs.Business.Models;
 global using Chefs.Data;
 global using Chefs.Presentation;
 global using Chefs.Services.Cookbooks;
-global using Chefs.Services.Endpoints;
 global using Chefs.Services.Notifications;
 global using Chefs.Services.Recipes;
 global using Chefs.Services.Users;
