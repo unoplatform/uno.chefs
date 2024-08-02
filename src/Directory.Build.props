@@ -11,5 +11,6 @@
 			PRI257: Ignore default language (en) not being one of the included resources (eg en-us, en-uk)
 		-->
 		<NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
+		<UnoExtensionsVersion>5.3.0-dev.117</UnoExtensionsVersion>
 	</PropertyGroup>
 </Project>
