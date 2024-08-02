@@ -1,0 +1,450 @@
+openapi: 3.0.0
+info:
+  title: Chefs API
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+paths:
+  /recipes:
+    get:
+      summary: Get all recipes
+      responses:
+        '200':
+          description: A list of recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecipeData'
+    post:
+      summary: Save a recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeData'
+      responses:
+        '201':
+          description: Recipe saved
+  /recipes/count:
+    get:
+      summary: Get recipe count
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Number of recipes
+          content:
+            application/json:
+              schema:
+                type: integer
+  /recipes/trending:
+    get:
+      summary: Get trending recipes
+      responses:
+        '200':
+          description: A list of trending recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecipeData'
+  /recipes/popular:
+    get:
+      summary: Get popular recipes
+      responses:
+        '200':
+          description: A list of popular recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecipeData'
+  /recipes/favorited:
+    get:
+      summary: Get favorited recipes
+      responses:
+        '200':
+          description: A list of favorited recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecipeData'
+  /recipes/review:
+    post:
+      summary: Create a review for a recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewData'
+      responses:
+        '201':
+          description: Review created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewData'
+  /recipes/review/like:
+    post:
+      summary: Like a review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewData'
+      responses:
+        '200':
+          description: Review liked
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewData'
+  /recipes/review/dislike:
+    post:
+      summary: Dislike a review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewData'
+      responses:
+        '200':
+          description: Review disliked
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewData'
+  /recipes/categories:
+    get:
+      summary: Get recipe categories
+      responses:
+        '200':
+          description: A list of recipe categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryData'
+  /cookbooks:
+    get:
+      summary: Get all cookbooks
+      responses:
+        '200':
+          description: A list of cookbooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CookbookData'
+    post:
+      summary: Create a cookbook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CookbookData'
+      responses:
+        '201':
+          description: Cookbook created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CookbookData'
+  /cookbooks/{cookbookId}:
+    put:
+      summary: Update a cookbook
+      parameters:
+        - name: cookbookId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CookbookData'
+      responses:
+        '200':
+          description: Cookbook updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CookbookData'
+  /cookbooks/saved:
+    get:
+      summary: Get saved cookbooks
+      responses:
+        '200':
+          description: A list of saved cookbooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CookbookData'
+  /notifications:
+    get:
+      summary: Get all notifications
+      responses:
+        '200':
+          description: A list of notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotificationData'
+  /users/authenticate:
+    post:
+      summary: Authenticate user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: Authentication result
+          content:
+            application/json:
+              schema:
+                type: boolean
+  /users/popular:
+    get:
+      summary: Get popular creators
+      responses:
+        '200':
+          description: A list of popular creators
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserData'
+  /users/current:
+    get:
+      summary: Get current user
+      responses:
+        '200':
+          description: Current user data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserData'
+  /users/{userId}:
+    get:
+      summary: Get user by ID
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: User data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserData'
+components:
+  schemas:
+    RecipeData:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        UserId:
+          type: string
+          format: uuid
+        ImageUrl:
+          type: string
+        Name:
+          type: string
+        Serves:
+          type: integer
+        CookTime:
+          type: string
+          format: duration
+        Difficulty:
+          type: string
+        Calories:
+          type: string
+        Details:
+          type: string
+        Category:
+          $ref: '#/components/schemas/CategoryData'
+        Date:
+          type: string
+          format: date-time
+        IsFavorite:
+          type: boolean
+        Nutrition:
+          $ref: '#/components/schemas/NutritionData'
+        Steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/StepData'
+        Reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReviewData'
+    CookbookData:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        UserId:
+          type: string
+          format: uuid
+        Name:
+          type: string
+        Recipes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecipeData'
+    CategoryData:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        Name:
+          type: string
+        UrlIcon:
+          type: string
+        Color:
+          type: string
+    UserData:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        UrlProfileImage:
+          type: string
+        FullName:
+          type: string
+        Description:
+          type: string
+        Email:
+          type: string
+          format: email
+        PhoneNumber:
+          type: string
+        Followers:
+          type: integer
+        Following:
+          type: integer
+        Recipes:
+          type: integer
+        IsCurrent:
+          type: boolean
+    NotificationData:
+      type: object
+      properties:
+        Title:
+          type: string
+        Description:
+          type: string
+        Read:
+          type: boolean
+        Date:
+          type: string
+          format: date-time
+    ReviewData:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        RecipeId:
+          type: string
+          format: uuid
+        CreatedBy:
+          type: string
+          format: uuid
+        PublisherName:
+          type: string
+        Date:
+          type: string
+          format: date-time
+        Description:
+          type: string
+        UrlAuthorImage:
+          type: string
+        Likes:
+          type: array
+          items:
+            type: string
+            format: uuid
+        Dislikes:
+          type: array
+          items:
+            type: string
+            format: uuid
+        UserLike:
+          type: boolean
+    StepData:
+      type: object
+      properties:
+        Number:
+          type: integer
+        Name:
+          type: string
+        CookTime:
+          type: string
+          format: duration
+        Cookware:
+          type: array
+          items:
+            type: string
+        Ingredients:
+          type: array
+          items:
+            type: string
+        Description:
+          type: string
+        UrlVideo:
+          type: string
+    NutritionData:
+      type: object
+      properties:
+        Protein:
+          type: string
+        Carbohydrates:
+          type: string
+        Fats:
+          type: string
+        ProteinBase:
+          type: string
+        CarbsBase:
+          type: string
+        FatBase:
+          type: string

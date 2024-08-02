@@ -57,6 +57,12 @@
 	<ItemGroup>
 		<PackageReference Include="Mapsui.Uno.WinUI" />
 		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
+		<PackageReference Include="Microsoft.Kiota.Abstractions" />
+		<PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" />
+		<PackageReference Include="Microsoft.Kiota.Serialization.Form" />
+		<PackageReference Include="Microsoft.Kiota.Serialization.Json" />
+		<PackageReference Include="Microsoft.Kiota.Serialization.Multipart" />
+		<PackageReference Include="Microsoft.Kiota.Serialization.Text" />
 	</ItemGroup>
 
 	<ItemGroup>
