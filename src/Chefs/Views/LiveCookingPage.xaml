@@ -246,8 +246,7 @@
 							Style="{StaticResource ChefsSecondaryButtonStyle}" />
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Height="59"
-							Command="{Binding Save}"
-							CommandParameter="{Binding Recipe}"
+							Command="{Binding Favorite}"
 							Content="Favorite"
 							CornerRadius="4">
 						<ut:ControlExtensions.Icon>

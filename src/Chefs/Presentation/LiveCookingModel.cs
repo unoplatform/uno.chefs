@@ -33,7 +33,7 @@ public partial class LiveCookingModel
 		await Completed.SetAsync(false);
 	}
 	
-	public async ValueTask Save(CancellationToken ct)
+	public async ValueTask Favorite(CancellationToken ct)
 	{
 		await _recipeService.Favorite(Recipe, ct);
 		await _navigator.NavigateViewModelAsync<HomeModel>(this, qualifier: Qualifiers.ClearBackStack); ;
