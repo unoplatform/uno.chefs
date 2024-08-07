@@ -45,7 +45,8 @@
 						</utu:AutoLayout>
 						<ToggleButton Style="{StaticResource IconToggleButtonStyle}"
 									  IsChecked="{Binding IsFavorite}"
-									  Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.FavoriteRecipe}"
+									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																	Path=DataContext.FavoriteRecipe}"
 									  CommandParameter="{Binding}">
 							<ToggleButton.Content>
 								<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
@@ -124,7 +125,7 @@
 					</DataTemplate>
 				</uer:FeedView>
 
-				<!--  This title autolayout has more padding than the others because it has no button  -->
+				<!-- This title autolayout has more padding than the others because it has no button -->
 
 				<TextBlock Text="Categories"
 						   Padding="16,32,16,16"
@@ -268,7 +269,8 @@
 										<utu:CardContentControl Margin="0"
 																Style="{StaticResource FilledCardContentControlStyle}">
 											<utu:AutoLayout Spacing="8"
-															Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}"
+															Orientation="{utu:Responsive Narrow=Vertical,
+																						 Wide=Horizontal}"
 															CornerRadius="12"
 															Padding="10,8"
 															PrimaryAxisAlignment="Center"
@@ -282,13 +284,15 @@
 												</Border>
 												<utu:AutoLayout Spacing="4"
 																PrimaryAxisAlignment="Center">
-													<TextBlock TextAlignment="{utu:Responsive Narrow=Center, Wide=Start}"
+													<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
+																							  Wide=Start}"
 															   TextWrapping="Wrap"
 															   Text="{Binding FullName}"
 															   Foreground="{ThemeResource OnSurfaceBrush}"
 															   Style="{StaticResource TitleSmall}" />
 
-													<TextBlock TextAlignment="{utu:Responsive Narrow=Center, Wide=Start}"
+													<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
+																							  Wide=Start}"
 															   Text="{Binding Recipes, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
 															   TextWrapping="Wrap"
 															   Foreground="{ThemeResource OnSurfaceMediumBrush}"

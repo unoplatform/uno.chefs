@@ -68,8 +68,8 @@
 
 		<DataTemplate x:Key="CookbookTemplate"
 					  x:DataType="models:Cookbook">
-			<!--  Using an x:bind for windows as a workaround for now regarding this WinUI issue:  -->
-			<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
+			<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+			<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
 			<Border win:DataContext="{x:Bind}">
 				<utu:CardContentControl x:Name="CookbookTemplateCard"
 										HorizontalAlignment="Stretch"
@@ -195,8 +195,8 @@
 
 		<DataTemplate x:Key="RecipeTemplate"
 					  x:DataType="models:Recipe">
-			<!--  Using an x:bind for windows as a workaround for now regarding this WinUI issue:  -->
-			<!--  https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013  -->
+			<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
+			<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
 			<Border win:DataContext="{x:Bind}">
 				<utu:CardContentControl x:Name="RecipeTemplateCard"
 										Background="{ThemeResource SurfaceBrush}"
@@ -293,7 +293,7 @@
 								  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
 								  Source="{Binding FavoriteRecipes}">
 						<DataTemplate>
-							<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer x:Name="RecipesScrollViewer"
 										  utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
@@ -309,7 +309,8 @@
 									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 														ItemTemplate="{StaticResource RecipeTemplate}"
 														ItemsSource="{Binding Data}"
-														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
+														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																				Wide={StaticResource WideGridLayout}}" />
 								</utu:AutoLayout>
 							</ScrollViewer>
 						</DataTemplate>
@@ -318,7 +319,7 @@
 				</Grid>
 				<Grid uen:Region.Name="Cookbooks"
 					  Visibility="Collapsed">
-					<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 
 					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -332,7 +333,8 @@
 													uen:Navigation.Request="CookbookDetails"
 													ItemTemplate="{StaticResource CookbookTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</ScrollViewer>
 						</DataTemplate>
 					</uer:FeedView>

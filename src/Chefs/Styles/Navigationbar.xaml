@@ -24,7 +24,8 @@
 		   BasedOn="{StaticResource ChefsAppBarButtonStyle}"
 		   TargetType="AppBarButton">
 		<!-- Set the MainCommand content to an empty string to remove the default "Back" text on iOS -->
-		<mobile:Setter Property="Content" Value="" />
+		<mobile:Setter Property="Content"
+					   Value="" />
 	</Style>
 
 	<Style TargetType="utu:NavigationBar"
