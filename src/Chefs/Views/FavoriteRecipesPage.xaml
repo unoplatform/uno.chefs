@@ -306,7 +306,6 @@
 										<Run Text="{Binding Data.Count}" />
 										<Run Text="results" />
 									</TextBlock>
-									<!--  Check to see if this pr https://github.com/unoplatform/uno.toolkit.ui/pull/634 fixes the issue on android where the Margin from line 260 becomes negative.  -->
 									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 														ItemTemplate="{StaticResource RecipeTemplate}"
 														ItemsSource="{Binding Data}"
