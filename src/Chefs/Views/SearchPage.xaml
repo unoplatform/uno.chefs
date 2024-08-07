@@ -71,50 +71,39 @@
 		</DataTemplate>
 
 		<DataTemplate x:Key="RecipeTemplate">
-			<utu:AutoLayout>
-				<utu:CardContentControl x:Name="RecipeTemplateCard"
-										HorizontalAlignment="Stretch"
-										VerticalAlignment="Stretch"
+			<utu:CardContentControl x:Name="RecipeTemplateCard"
+									HorizontalAlignment="Stretch"
+									VerticalAlignment="Stretch"
+									Background="{ThemeResource SurfaceBrush}"
+									Style="{StaticResource FilledCardContentControlStyle}">
+				<utu:CardContentControl.ContentTemplate>
+					<DataTemplate>
+						<utu:AutoLayout HorizontalAlignment="Stretch"
 										Background="{ThemeResource SurfaceBrush}"
-										Style="{StaticResource FilledCardContentControlStyle}">
-					<utu:CardContentControl.ContentTemplate>
-						<!--  Using x:DataType along with x:Bind to avoid freezing/crashing on Windows  -->
-						<!--  Github issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6689  -->
-						<DataTemplate x:DataType="data:Recipe">
-							<utu:AutoLayout HorizontalAlignment="Stretch"
-											Background="{ThemeResource SurfaceBrush}"
-											CornerRadius="4"
-											PrimaryAxisAlignment="Center">
-								<utu:AutoLayout CornerRadius="4">
-									<Border Height="144">
-										<Image HorizontalAlignment="Center"
-											   VerticalAlignment="Center"
-											   Source="{x:Bind ImageUrl}"
-											   Stretch="UniformToFill" />
-									</Border>
-									<utu:AutoLayout PrimaryAxisAlignment="Center"
-													Spacing="4">
-										<!--
-											WORKAROUND: Using Margin on TextBlocks instead of Padding on AutoLayout due to AutoLayout bug
-											Issue link: https://github.com/unoplatform/uno.chefs/issues/1206
-										-->
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleSmall}"
-												   Text="{x:Bind Name}"
-												   TextWrapping="Wrap"
-												   Margin="16,16,16,0" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-												   Style="{StaticResource CaptionMedium}"
-												   Text="{x:Bind TimeCal}"
-												   TextWrapping="Wrap"
-												   Margin="16,0,16,16" />
-									</utu:AutoLayout>
-								</utu:AutoLayout>
+										CornerRadius="4"
+										PrimaryAxisAlignment="Center">
+							<Border Height="144">
+								<Image HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Source="{Binding ImageUrl}"
+									   Stretch="UniformToFill" />
+							</Border>
+							<utu:AutoLayout PrimaryAxisAlignment="Center"
+											Spacing="4"
+											Padding="16">
+								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+										   Style="{StaticResource TitleSmall}"
+										   Text="{Binding Name}"
+										   TextWrapping="Wrap" />
+								<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+										   Style="{StaticResource CaptionMedium}"
+										   Text="{Binding TimeCal}"
+										   TextWrapping="Wrap" />
 							</utu:AutoLayout>
-						</DataTemplate>
-					</utu:CardContentControl.ContentTemplate>
-				</utu:CardContentControl>
-			</utu:AutoLayout>
+						</utu:AutoLayout>
+					</DataTemplate>
+				</utu:CardContentControl.ContentTemplate>
+			</utu:CardContentControl>
 		</DataTemplate>
 
 		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
