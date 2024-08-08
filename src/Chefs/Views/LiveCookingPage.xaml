@@ -101,12 +101,15 @@
 		</utu:NavigationBar>
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-						Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}"
+						Orientation="{utu:Responsive Narrow=Vertical,
+													 Wide=Horizontal}"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed, Converter={StaticResource TrueToCollapsed}}">
 			<utu:AutoLayout Background="{ThemeResource BrandBlackBrush}"
-							utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto, Wide=Stretch}"
-							PrimaryAxisAlignment="{utu:Responsive Narrow=Start, Wide=Center}">
+							utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+																			 Wide=Stretch}"
+							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
+																  Wide=Center}">
 				<!--
 					MediaPlayerElement currently isn't supported on Skia Desktop, videos are not be playable
 					It is listed as a future improvement: https://platform.uno/docs/articles/controls/MediaPlayerElement.html#future-improvement
@@ -167,16 +170,20 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed}"
-						Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+						Orientation="{utu:Responsive Narrow=Vertical,
+													 Wide=Horizontal}">
 			<Image Source="{Binding Recipe.ImageUrl}"
 				   Stretch="UniformToFill"
-				   Visibility="{utu:Responsive Narrow=Collapsed, Wide=Visible}"
+				   Visibility="{utu:Responsive Narrow=Collapsed,
+											   Wide=Visible}"
 				   utu:AutoLayout.PrimaryAlignment="Stretch" />
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
 							PrimaryAlignment="Stretch"
-							Padding="{utu:Responsive Narrow=32, Wide=40}">
+							Padding="{utu:Responsive Narrow=32,
+													 Wide=40}">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
-								Padding="{utu:Responsive Narrow=0, Wide=48}"
+								Padding="{utu:Responsive Narrow=0,
+														 Wide=48}"
 								Spacing="24">
 					<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
 								utu:AutoLayout.CounterAlignment="Center"
@@ -201,8 +208,8 @@
 								   Text="Tell us how was your cooking experience!"
 								   TextAlignment="Center"
 								   TextWrapping="Wrap" />
-						<!--  TODO  -->
-						<!--  Save rating  -->
+						<!-- TODO -->
+						<!-- Save rating -->
 						<muxc:RatingControl utu:AutoLayout.CounterAlignment="Center"
 											MaxRating="5"
 											Style="{StaticResource RatingControlStyle}" />
