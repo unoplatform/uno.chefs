@@ -32,19 +32,13 @@
 								MinRowSpacing="15" />
 
 		<DataTemplate x:Key="CookbookEmptyTemplate">
-			<utu:AutoLayout Height="546"
-							Padding="32,0"
+			<utu:AutoLayout Padding="32,0"
 							PrimaryAxisAlignment="Center"
 							CounterAxisAlignment="Center"
 							Spacing="24">
-				<utu:AutoLayout Width="72"
-								Height="72">
-					<BitmapIcon Width="56"
-								Height="72"
-								HorizontalAlignment="Stretch"
-								VerticalAlignment="Stretch"
-								UriSource="{ThemeResource Empty_Box}" />
-				</utu:AutoLayout>
+				<BitmapIcon Width="56"
+							Height="72"
+							UriSource="{ThemeResource Empty_Box}" />
 				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 						   Style="{StaticResource TitleLarge}"
 						   Text="No Cookbooks Created"
@@ -58,7 +52,6 @@
 				<Button HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
 						uen:Navigation.Request="!CreateCookbook"
-						utu:AutoLayout.CounterAlignment="Center"
 						Content="Create cookbook"
 						Foreground="{ThemeResource PrimaryBrush}"
 						Padding="12,10,16,10"
@@ -276,7 +269,6 @@
 						utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource BackgroundBrush}"
 						Spacing="16">
-			<!-- Added a MaxHeight here because of this issue: https://github.com/unoplatform/uno.chefs/issues/625 -->
 			<utu:TabBar uen:Region.Attached="True"
 						Background="{ThemeResource BackgroundBrush}"
 						Style="{StaticResource TopTabBarStyle}">
@@ -294,6 +286,8 @@
 				  utu:AutoLayout.CounterAlignment="Stretch"
 				  utu:AutoLayout.PrimaryAlignment="Stretch">
 				<Grid uen:Region.Name="MyRecipes">
+
+
 					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
@@ -305,29 +299,23 @@
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
 								<utu:AutoLayout>
-									<utu:AutoLayout Padding="0,0,0,16"
-													Justify="SpaceBetween"
-													Orientation="Horizontal">
-										<TextBlock utu:AutoLayout.CounterAlignment="Center"
-												   Style="{StaticResource BodyLarge}">
-											<Run Text="{Binding Data.Count}" />
-											<Run Text="results" />
-										</TextBlock>
-										<!-- Check to see if this pr https://github.com/unoplatform/uno.toolkit.ui/pull/634 fixes the issue on android where the Margin from line 260 becomes negative. -->
-									</utu:AutoLayout>
-									<utu:AutoLayout Padding="0,0,0,16"
-													HorizontalAlignment="Center"
-													Spacing="8">
-										<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
-															ItemTemplate="{StaticResource RecipeTemplate}"
-															ItemsSource="{Binding Data}"
-															Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																					Wide={StaticResource WideGridLayout}}" />
-									</utu:AutoLayout>
+
+									<TextBlock utu:AutoLayout.CounterAlignment="Start"
+											   Margin="0,0,0,10"
+											   Style="{StaticResource BodyLarge}">
+										<Run Text="{Binding Data.Count}" />
+										<Run Text="results" />
+									</TextBlock>
+									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
+														ItemTemplate="{StaticResource RecipeTemplate}"
+														ItemsSource="{Binding Data}"
+														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																				Wide={StaticResource WideGridLayout}}" />
 								</utu:AutoLayout>
 							</ScrollViewer>
 						</DataTemplate>
 					</uer:FeedView>
+
 				</Grid>
 				<Grid uen:Region.Name="Cookbooks"
 					  Visibility="Collapsed">
@@ -338,36 +326,32 @@
 								  NoneTemplate="{StaticResource CookbookEmptyTemplate}"
 								  Source="{Binding SavedCookbooks}">
 						<DataTemplate>
-							<utu:AutoLayout PrimaryAxisAlignment="Stretch"
-											utu:AutoLayout.PrimaryAlignment="Stretch">
-								<ScrollViewer x:Name="RecipesScrollViewer"
-											  HorizontalScrollMode="Disabled"
-											  VerticalScrollBarVisibility="Hidden">
-									<muxc:ItemsRepeater Margin="0,0,0,16"
-														uen:Navigation.Request="CookbookDetails"
-														ItemTemplate="{StaticResource CookbookTemplate}"
-														ItemsSource="{Binding Data}"
-														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																				Wide={StaticResource WideGridLayout}}" />
-								</ScrollViewer>
-
-								<Button HorizontalAlignment="Right"
-										VerticalAlignment="Bottom"
-										uen:Navigation.Request="CreateCookbook"
-										utu:AutoLayout.IsIndependentLayout="True"
-										CornerRadius="56"
-										Style="{StaticResource FabStyle}">
-									<ut:ControlExtensions.Icon>
-										<FontIcon Glyph="{StaticResource Icon_Add}"
-												  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-												  Foreground="{ThemeResource SurfaceBrush}" />
-									</ut:ControlExtensions.Icon>
-								</Button>
-							</utu:AutoLayout>
+							<ScrollViewer x:Name="RecipesScrollViewer"
+										  HorizontalScrollMode="Disabled"
+										  VerticalScrollBarVisibility="Hidden">
+								<muxc:ItemsRepeater Margin="0,0,0,16"
+													uen:Navigation.Request="CookbookDetails"
+													ItemTemplate="{StaticResource CookbookTemplate}"
+													ItemsSource="{Binding Data}"
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
+							</ScrollViewer>
 						</DataTemplate>
 					</uer:FeedView>
+					<Button HorizontalAlignment="Right"
+							VerticalAlignment="Bottom"
+							uen:Navigation.Request="CreateCookbook"
+							CornerRadius="56"
+							Style="{StaticResource FabStyle}">
+						<ut:ControlExtensions.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Add}"
+									  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+									  Foreground="{ThemeResource SurfaceBrush}" />
+						</ut:ControlExtensions.Icon>
+					</Button>
 				</Grid>
 			</Grid>
+
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>

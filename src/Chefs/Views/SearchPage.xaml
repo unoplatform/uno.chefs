@@ -18,233 +18,202 @@
 	  NavigationCacheMode="Enabled"
 	  mc:Ignorable="d android ios">
 
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout.Resources>
-
-			<DataTemplate x:Key="EmptyTemplate">
-				<utu:AutoLayout Height="492"
-								Width="500"
-								Padding="16,0,16,16"
-								Background="{ThemeResource BackgroundBrush}">
-					<utu:AutoLayout Padding="32,0"
-									utu:AutoLayout.PrimaryAlignment="Stretch"
-									PrimaryAxisAlignment="Center"
-									Spacing="24">
-						<utu:AutoLayout Width="72"
+	<Page.Resources>
+		<DataTemplate x:Key="EmptyTemplate">
+			<utu:AutoLayout Height="492"
+							Width="500"
+							Padding="16,0,16,16"
+							Background="{ThemeResource BackgroundBrush}">
+				<utu:AutoLayout Padding="32,0"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
+								PrimaryAxisAlignment="Center"
+								Spacing="24">
+					<utu:AutoLayout Width="72"
+									Height="72"
+									utu:AutoLayout.CounterAlignment="Center">
+						<utu:AutoLayout Margin="3,0,-3,0"
+										HorizontalAlignment="Stretch"
+										VerticalAlignment="Stretch"
+										utu:AutoLayout.IsIndependentLayout="True"
+										PrimaryAxisAlignment="Center">
+							<BitmapIcon Width="72"
 										Height="72"
-										utu:AutoLayout.CounterAlignment="Center">
-							<utu:AutoLayout Margin="3,0,-3,0"
-											HorizontalAlignment="Stretch"
-											VerticalAlignment="Stretch"
-											utu:AutoLayout.IsIndependentLayout="True"
-											PrimaryAxisAlignment="Center">
-								<BitmapIcon Width="72"
-											Height="72"
-											utu:AutoLayout.CounterAlignment="Center"
-											UriSource="{ThemeResource Empty_Box}" />
-							</utu:AutoLayout>
-						</utu:AutoLayout>
-						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleLarge}"
-								   Text="No Results Found"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleMedium}"
-								   Text="We couldn't find any recipes matching your search. Try adjusting your keywords or filters, or explore our popular categories to discover something delicious!"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<Button Padding="12,10,16,10"
-								HorizontalContentAlignment="Center"
-								VerticalContentAlignment="Center"
-								utu:AutoLayout.CounterAlignment="Center"
-								Command="{Binding SearchPopular}"
-								Content="View popular recipes"
-								CornerRadius="20"
-								Foreground="{ThemeResource PrimaryBrush}"
-								Style="{StaticResource TextButtonStyle}">
-							<ut:ControlExtensions.Icon>
-								<FontIcon Glyph="{StaticResource Icon_Star_Outline}"
-										  Foreground="{ThemeResource PrimaryBrush}" />
-							</ut:ControlExtensions.Icon>
-						</Button>
-					</utu:AutoLayout>
-				</utu:AutoLayout>
-			</DataTemplate>
-
-			<DataTemplate x:Key="RecipeTemplate">
-				<utu:AutoLayout>
-					<utu:CardContentControl x:Name="RecipeTemplateCard"
-											HorizontalAlignment="Stretch"
-											VerticalAlignment="Stretch"
-											Background="{ThemeResource SurfaceBrush}"
-											Style="{StaticResource FilledCardContentControlStyle}">
-						<utu:CardContentControl.ContentTemplate>
-							<!-- Using x:DataType along with x:Bind to avoid freezing/crashing on Windows -->
-							<!-- Github issue: https://github.com/microsoft/microsoft-ui-xaml/issues/6689 -->
-							<DataTemplate x:DataType="data:Recipe">
-								<utu:AutoLayout HorizontalAlignment="Stretch"
-												Background="{ThemeResource SurfaceBrush}"
-												CornerRadius="4"
-												PrimaryAxisAlignment="Center">
-									<utu:AutoLayout CornerRadius="4">
-										<Border Height="144">
-											<Image HorizontalAlignment="Center"
-												   VerticalAlignment="Center"
-												   Source="{x:Bind ImageUrl}"
-												   Stretch="UniformToFill" />
-										</Border>
-										<utu:AutoLayout PrimaryAxisAlignment="Center"
-														Spacing="4">
-											<!--
-												WORKAROUND: Using Margin on TextBlocks instead of Padding on AutoLayout due to AutoLayout bug
-												Issue link: https://github.com/unoplatform/uno.chefs/issues/1206
-											-->
-											<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource TitleSmall}"
-													   Text="{x:Bind Name}"
-													   TextWrapping="Wrap"
-													   Margin="16,16,16,0" />
-											<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-													   Style="{StaticResource CaptionMedium}"
-													   Text="{x:Bind TimeCal}"
-													   TextWrapping="Wrap"
-													   Margin="16,0,16,16" />
-										</utu:AutoLayout>
-									</utu:AutoLayout>
-								</utu:AutoLayout>
-							</DataTemplate>
-						</utu:CardContentControl.ContentTemplate>
-					</utu:CardContentControl>
-				</utu:AutoLayout>
-			</DataTemplate>
-		</utu:AutoLayout.Resources>
-
-		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-
-			<utu:NavigationBar x:Name="NavBar"
-							   Style="{StaticResource ChefsNavigationBarStyle}">
-				<utu:NavigationBar.Content>
-					<utu:AutoLayout Padding="12,0,0,0"
-									Orientation="Horizontal">
-						<Image utu:AutoLayout.CounterAlignment="Center"
-							   Source="{ThemeResource ChefsAppSignature}"
-							   Width="128"
-							   Height="40" />
-					</utu:AutoLayout>
-				</utu:NavigationBar.Content>
-				<utu:NavigationBar.PrimaryCommands>
-					<AppBarButton uen:Navigation.Request="!Profile"
-								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
-						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-					<AppBarButton uen:Navigation.Request="!Notifications"
-								  Foreground="{ThemeResource OnSurfaceInverseBrush}">
-						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.PrimaryCommands>
-			</utu:NavigationBar>
-
-			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
-													 Wide='40,40,40,24'}"
-							PrimaryAxisAlignment="Center"
-							Spacing="24">
-				<TextBox utu:CommandExtensions.Command="{Binding Search}"
-						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-						 CornerRadius="28"
-						 PlaceholderText="Search"
-						 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Search}"
-								  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-					</ut:ControlExtensions.Icon>
-				</TextBox>
-
-				<utu:AutoLayout Justify="SpaceBetween"
-								Orientation="Horizontal">
-					<TextBlock utu:AutoLayout.CounterAlignment="Center"
-							   Style="{StaticResource BodyLarge}"
-							   Text="{Binding Results.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
-					<utu:AutoLayout Orientation="Horizontal">
-						<Button utu:AutoLayout.PrimaryAlignment="Auto"
-								utu:AutoLayout.CounterAlignment="Center"
-								Content="Clear filters"
-								Visibility="{Binding HasFilter, Converter={StaticResource TrueToVisible}}"
-								Command="{Binding ResetFilters}"
-								Margin="0,0,8,0"
-								CornerRadius="20"
-								Foreground="{ThemeResource PrimaryBrush}"
-								Style="{StaticResource TextButtonStyle}">
-							<ut:ControlExtensions.Icon>
-								<FontIcon Glyph="{StaticResource Icon_Close}"
-										  Foreground="{ThemeResource PrimaryBrush}" />
-							</ut:ControlExtensions.Icon>
-						</Button>
-						<utu:AutoLayout x:Name="FilterButtonHost"
-										DataContext="{Binding Filter}">
-							<Button x:Name="FiltersButton"
-									HorizontalContentAlignment="Center"
-									VerticalContentAlignment="Center"
-									uen:Navigation.Data="{Binding DataContext.Value, ElementName=FilterButtonHost, Mode=TwoWay}"
-									uen:Navigation.Request="!Filter"
-									utu:AutoLayout.CounterAlignment="Center"
-									Content="Filters"
-									CornerRadius="20"
-									Foreground="{ThemeResource PrimaryBrush}"
-									Style="{StaticResource TextButtonStyle}">
-								<ut:ControlExtensions.Icon>
-									<FontIcon Glyph="{StaticResource Icon_Tune}"
-											  Foreground="{ThemeResource PrimaryBrush}" />
-								</ut:ControlExtensions.Icon>
-							</Button>
+										utu:AutoLayout.CounterAlignment="Center"
+										UriSource="{ThemeResource Empty_Box}" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
+					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+							   Style="{StaticResource TitleLarge}"
+							   Text="No Results Found"
+							   TextAlignment="Center"
+							   TextWrapping="Wrap" />
+					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+							   Style="{StaticResource TitleMedium}"
+							   Text="We couldn't find any recipes matching your search. Try adjusting your keywords or filters, or explore our popular categories to discover something delicious!"
+							   TextAlignment="Center"
+							   TextWrapping="Wrap" />
+					<Button Padding="12,10,16,10"
+							HorizontalContentAlignment="Center"
+							VerticalContentAlignment="Center"
+							utu:AutoLayout.CounterAlignment="Center"
+							Command="{Binding SearchPopular}"
+							Content="View popular recipes"
+							CornerRadius="20"
+							Foreground="{ThemeResource PrimaryBrush}"
+							Style="{StaticResource TextButtonStyle}">
+						<ut:ControlExtensions.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Star_Outline}"
+									  Foreground="{ThemeResource PrimaryBrush}" />
+						</ut:ControlExtensions.Icon>
+					</Button>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
+		</DataTemplate>
 
-			<utu:AutoLayout x:Name="ItemsLayout"
-							utu:AutoLayout.CounterAlignment="Stretch"
-							utu:AutoLayout.PrimaryAlignment="Stretch">
-				<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-							  VerticalScrollBarVisibility="Hidden">
-					<uer:FeedView x:Name="SearchFeed"
-								  NoneTemplate="{StaticResource EmptyTemplate}"
-								  Source="{Binding Results}">
-						<DataTemplate>
-							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-								<utu:AutoLayout.Resources>
-									<muxc:UniformGridLayout x:Key="NarrowGridLayout"
-															ItemsStretch="Fill"
-															MaximumRowsOrColumns="2"
-															MinColumnSpacing="8"
-															MinItemWidth="155"
-															MinRowSpacing="8" />
-
-									<muxc:UniformGridLayout x:Key="WideGridLayout"
-															ItemsStretch="Fill"
-															MaximumRowsOrColumns="8"
-															MinColumnSpacing="16"
-															MinItemWidth="240"
-															MinRowSpacing="16" />
-								</utu:AutoLayout.Resources>
-
-								<muxc:ItemsRepeater x:Name="SearchRepeater"
-													Margin="{utu:Responsive Narrow='16,0,16,16',
-																			Wide='40,0,40,40'}"
-													uen:Navigation.Request="SearchRecipeDetails"
-													ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																			Wide={StaticResource WideGridLayout}}" />
+		<DataTemplate x:Key="RecipeTemplate">
+			<utu:CardContentControl x:Name="RecipeTemplateCard"
+									HorizontalAlignment="Stretch"
+									VerticalAlignment="Stretch"
+									Background="{ThemeResource SurfaceBrush}"
+									Style="{StaticResource FilledCardContentControlStyle}">
+				<utu:CardContentControl.ContentTemplate>
+					<DataTemplate>
+						<utu:AutoLayout HorizontalAlignment="Stretch"
+										Background="{ThemeResource SurfaceBrush}"
+										CornerRadius="4"
+										PrimaryAxisAlignment="Center">
+							<Border Height="144">
+								<Image HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Source="{Binding ImageUrl}"
+									   Stretch="UniformToFill" />
+							</Border>
+							<utu:AutoLayout PrimaryAxisAlignment="Center"
+											Spacing="4"
+											Padding="16">
+								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+										   Style="{StaticResource TitleSmall}"
+										   Text="{Binding Name}"
+										   TextWrapping="Wrap" />
+								<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+										   Style="{StaticResource CaptionMedium}"
+										   Text="{Binding TimeCal}"
+										   TextWrapping="Wrap" />
 							</utu:AutoLayout>
-						</DataTemplate>
-					</uer:FeedView>
-				</ScrollViewer>
+						</utu:AutoLayout>
+					</DataTemplate>
+				</utu:CardContentControl.ContentTemplate>
+			</utu:CardContentControl>
+		</DataTemplate>
+
+		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="2"
+								MinColumnSpacing="8"
+								MinItemWidth="155"
+								MinRowSpacing="8" />
+
+		<muxc:UniformGridLayout x:Key="WideGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="8"
+								MinColumnSpacing="16"
+								MinItemWidth="240"
+								MinRowSpacing="16" />
+	</Page.Resources>
+	<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+
+		<utu:NavigationBar Style="{StaticResource ChefsNavigationBarStyle}">
+			<utu:NavigationBar.Content>
+				<Image Source="{ThemeResource ChefsAppSignature}"
+					   Width="128"
+					   Height="40" />
+			</utu:NavigationBar.Content>
+			<utu:NavigationBar.PrimaryCommands>
+				<AppBarButton uen:Navigation.Request="!Profile"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+					<AppBarButton.Icon>
+						<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+				<AppBarButton uen:Navigation.Request="!Notifications"
+							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+					<AppBarButton.Icon>
+						<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.PrimaryCommands>
+		</utu:NavigationBar>
+
+		<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
+												 Wide='40,40,40,24'}"
+						PrimaryAxisAlignment="Center"
+						Spacing="24">
+			<TextBox utu:CommandExtensions.Command="{Binding Search}"
+					 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+					 CornerRadius="28"
+					 PlaceholderText="Search"
+					 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+				<ut:ControlExtensions.Icon>
+					<FontIcon Glyph="{StaticResource Icon_Search}"
+							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+				</ut:ControlExtensions.Icon>
+			</TextBox>
+
+			<utu:AutoLayout Justify="SpaceBetween"
+							Orientation="Horizontal"
+							CounterAxisAlignment="Center">
+				<TextBlock Style="{StaticResource BodyLarge}"
+						   Text="{Binding Results.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} results', UpdateSourceTrigger=PropertyChanged}" />
+				<utu:AutoLayout Orientation="Horizontal">
+					<Button utu:AutoLayout.PrimaryAlignment="Auto"
+							Content="Clear filters"
+							Visibility="{Binding HasFilter, Converter={StaticResource TrueToVisible}}"
+							Command="{Binding ResetFilters}"
+							Margin="0,0,8,0"
+							CornerRadius="20"
+							Foreground="{ThemeResource PrimaryBrush}"
+							Style="{StaticResource TextButtonStyle}">
+						<ut:ControlExtensions.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Close}"
+									  Foreground="{ThemeResource PrimaryBrush}" />
+						</ut:ControlExtensions.Icon>
+					</Button>
+					<Button x:Name="FiltersButton"
+							HorizontalContentAlignment="Center"
+							VerticalContentAlignment="Center"
+							uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay}"
+							uen:Navigation.Request="!Filter"
+							Content="Filters"
+							CornerRadius="20"
+							Foreground="{ThemeResource PrimaryBrush}"
+							Style="{StaticResource TextButtonStyle}">
+						<ut:ControlExtensions.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Tune}"
+									  Foreground="{ThemeResource PrimaryBrush}" />
+						</ut:ControlExtensions.Icon>
+					</Button>
+				</utu:AutoLayout>
 			</utu:AutoLayout>
 		</utu:AutoLayout>
+
+
+		<uer:FeedView x:Name="SearchFeed"
+					  NoneTemplate="{StaticResource EmptyTemplate}"
+					  utu:AutoLayout.PrimaryAlignment="Stretch"
+					  Source="{Binding Results}">
+			<DataTemplate>
+				<ScrollViewer VerticalScrollBarVisibility="Hidden">
+					<muxc:ItemsRepeater x:Name="SearchRepeater"
+										Margin="{utu:Responsive Narrow='16,0,16,16',
+																Wide='40,0,40,40'}"
+										uen:Navigation.Request="SearchRecipeDetails"
+										ItemTemplate="{StaticResource RecipeTemplate}"
+										ItemsSource="{Binding Data}"
+										Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																Wide={StaticResource WideGridLayout}}" />
+				</ScrollViewer>
+
+			</DataTemplate>
+		</uer:FeedView>
 	</utu:AutoLayout>
 </Page>
