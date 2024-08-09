@@ -30,31 +30,16 @@
 				<utu:AutoLayout Spacing="24"
 								Padding="40"
 								PrimaryAxisAlignment="Start">
-					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-									Orientation="Horizontal">
-						<TextBlock FontSize="22"
-								   FontWeight="SemiBold"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleLarge}"
-								   Text="{Binding Number}"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<TextBlock Margin="0,0,5,0"
-								   FontSize="22"
-								   FontWeight="SemiBold"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleLarge}"
-								   Text="-"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<TextBlock FontSize="22"
-								   FontWeight="SemiBold"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleLarge}"
-								   Text="{Binding Name}"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-					</utu:AutoLayout>
+					<TextBlock FontSize="22"
+							   FontWeight="SemiBold"
+							   Foreground="{ThemeResource OnSurfaceBrush}"
+							   Style="{StaticResource TitleLarge}"
+							   TextAlignment="Center"
+							   TextWrapping="Wrap">
+						<Run Text="{Binding Number}" />
+						<Run Text=" - " />
+						<Run Text="{Binding Name}" />
+					</TextBlock>
 					<utu:AutoLayout Padding="16"
 									Background="{ThemeResource BackgroundBrush}"
 									CornerRadius="8"
@@ -75,16 +60,15 @@
 													MinRowSpacing="12" />
 							</muxc:ItemsRepeater.Layout>
 							<muxc:ItemsRepeater.ItemTemplate>
-								<DataTemplate x:DataType="x:String">
+								<DataTemplate>
 									<utu:AutoLayout Spacing="4"
 													PrimaryAxisAlignment="Center"
+													CounterAxisAlignment="Center"
 													Orientation="Horizontal">
 										<FontIcon Glyph="{StaticResource Icon_Check_Circle}"
 												  FontSize="14"
-												  VerticalAlignment="Center"
 												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-										<TextBlock Text="{x:Bind}"
-												   VerticalAlignment="Center"
+										<TextBlock Text="{Binding}"
 												   TextWrapping="NoWrap"
 												   Foreground="{ThemeResource OnSurfaceBrush}" />
 									</utu:AutoLayout>
@@ -155,28 +139,26 @@
 						  ItemsSource="{Binding Steps.Value.Items}"
 						  SelectedIndex="{Binding Steps.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				<utu:AutoLayout CornerRadius="8"
+								PrimaryAxisAlignment="Stretch"
 								Padding="40,0">
 					<muxc:PipsPager x:Name="pipsPager"
 									Margin="0,0,0,16"
+									utu:AutoLayout.PrimaryAlignment="Auto"
 									utu:AutoLayout.CounterAlignment="Center"
 									Style="{StaticResource PipsPagerStyle}" />
 					<utu:AutoLayout Height="59"
-									utu:AutoLayout.PrimaryAlignment="Stretch"
 									Orientation="Horizontal"
 									PrimaryAxisAlignment="Center"
 									Spacing="16">
-						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Content="Back"
+						<Button Content="Back"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
 								Style="{StaticResource ChefsSecondaryButtonStyle}"
 								Visibility="{Binding Steps.Value.CanMovePrevious}" />
-						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Content="Next"
+						<Button Content="Next"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
 								Visibility="{Binding Steps.Value.CanMoveNext}"
 								Style="{StaticResource ChefsPrimaryButtonStyle}" />
-						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Command="{Binding Complete}"
+						<Button Command="{Binding Complete}"
 								Content="Done!"
 								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}}"
 								Style="{StaticResource ChefsPrimaryButtonStyle}" />
@@ -190,14 +172,11 @@
 						Visibility="{Binding Completed}"
 						Orientation="{utu:Responsive Narrow=Vertical,
 													 Wide=Horizontal}">
-			<utu:AutoLayout PrimaryAxisAlignment="Center"
-							utu:AutoLayout.PrimaryAlignment="Stretch"
-							Visibility="{utu:Responsive Narrow=Collapsed,
-														Wide=Visible}">
-				<Image Source="{Binding Recipe.ImageUrl}"
-					   Stretch="UniformToFill"
-					   utu:AutoLayout.PrimaryAlignment="Stretch" />
-			</utu:AutoLayout>
+			<Image Source="{Binding Recipe.ImageUrl}"
+				   Stretch="UniformToFill"
+				   Visibility="{utu:Responsive Narrow=Collapsed,
+											   Wide=Visible}"
+				   utu:AutoLayout.PrimaryAlignment="Stretch" />
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
 							PrimaryAlignment="Stretch"
 							Padding="{utu:Responsive Narrow=32,
@@ -238,6 +217,7 @@
 				</utu:AutoLayout>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								CounterAxisAlignment="End"
+								PrimaryAxisAlignment="Stretch"
 								Orientation="Horizontal"
 								Spacing="16">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
