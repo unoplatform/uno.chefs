@@ -31,74 +31,71 @@
 								MinColumnSpacing="15"
 								MinItemWidth="240"
 								MinRowSpacing="15" />
-	</Page.Resources>
 
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout.Resources>
-			<DataTemplate x:Key="RecipeTemplate"
-						  x:DataType="models:Recipe">
-				<ListViewItem x:Name="RecipeTemplateCard"
-							  Background="{ThemeResource SurfaceBrush}"
-							  CornerRadius="4">
-					<ListViewItem.ContentTemplate>
-						<DataTemplate>
-							<utu:AutoLayout CornerRadius="4">
-								<Border x:Name="ImageLayout"
-										Height="144">
-									<Image Source="{Binding ImageUrl}"
-										   Stretch="UniformToFill"
-										   VerticalAlignment="Center"
-										   HorizontalAlignment="Center" />
-								</Border>
+		<DataTemplate x:Key="RecipeTemplate"
+					  x:DataType="models:Recipe">
+			<ListViewItem x:Name="RecipeTemplateCard"
+						  Background="{ThemeResource SurfaceBrush}"
+						  CornerRadius="4">
+				<ListViewItem.ContentTemplate>
+					<DataTemplate>
+						<utu:AutoLayout CornerRadius="4">
+							<Border x:Name="ImageLayout"
+									Height="144">
+								<Image Source="{Binding ImageUrl}"
+									   Stretch="UniformToFill"
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center" />
+							</Border>
 
-								<utu:AutoLayout>
-									<utu:AutoLayout Spacing="16"
-													Orientation="Horizontal"
-													Padding="16">
-										<utu:AutoLayout PrimaryAxisAlignment="Center"
-														Spacing="4"
-														utu:AutoLayout.CounterAlignment="Center"
-														utu:AutoLayout.PrimaryAlignment="Stretch">
-											<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-													   Style="{StaticResource TitleSmall}"
-													   Text="{Binding Name}"
-													   TextWrapping="NoWrap"
-													   TextTrimming="CharacterEllipsis" />
-											<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-													   Style="{StaticResource CaptionMedium}"
-													   utu:AutoLayout.PrimaryAlignment="Stretch"
-													   Text="{Binding TimeCal}"
-													   TextWrapping="NoWrap"
-													   TextTrimming="CharacterEllipsis" />
-										</utu:AutoLayout>
-										<utu:AutoLayout PrimaryAxisAlignment="End"
-														CounterAxisAlignment="Start"
-														Orientation="Horizontal">
-											<Border Visibility="{Binding Converter={StaticResource TrueToCollapsed}, ElementName=RecipeTemplateCard, Path=IsSelected}">
-												<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-														  Glyph="{StaticResource Icon_Favorite}"
-														  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-														  Foreground="{ThemeResource OnSurfaceBrush}" />
-											</Border>
-											<Border Visibility="{Binding ElementName=RecipeTemplateCard, Path=IsSelected}">
-												<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-														  Glyph="{StaticResource Icon_Favorite}"
-														  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
-														  Foreground="{ThemeResource PrimaryBrush}" />
-											</Border>
-										</utu:AutoLayout>
+							<utu:AutoLayout>
+								<utu:AutoLayout Spacing="16"
+												Orientation="Horizontal"
+												Padding="16">
+									<utu:AutoLayout PrimaryAxisAlignment="Center"
+													Spacing="4"
+													utu:AutoLayout.CounterAlignment="Center"
+													utu:AutoLayout.PrimaryAlignment="Stretch">
+										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+												   Style="{StaticResource TitleSmall}"
+												   Text="{Binding Name}"
+												   TextWrapping="NoWrap"
+												   TextTrimming="CharacterEllipsis" />
+										<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+												   Style="{StaticResource CaptionMedium}"
+												   utu:AutoLayout.PrimaryAlignment="Stretch"
+												   Text="{Binding TimeCal}"
+												   TextWrapping="NoWrap"
+												   TextTrimming="CharacterEllipsis" />
+									</utu:AutoLayout>
+									<utu:AutoLayout PrimaryAxisAlignment="End"
+													CounterAxisAlignment="Start"
+													Orientation="Horizontal">
+										<Border Visibility="{Binding Converter={StaticResource TrueToCollapsed}, ElementName=RecipeTemplateCard, Path=IsSelected}">
+											<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+													  Glyph="{StaticResource Icon_Favorite}"
+													  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+													  Foreground="{ThemeResource OnSurfaceBrush}" />
+										</Border>
+										<Border Visibility="{Binding ElementName=RecipeTemplateCard, Path=IsSelected}">
+											<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+													  Glyph="{StaticResource Icon_Favorite}"
+													  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
+													  Foreground="{ThemeResource PrimaryBrush}" />
+										</Border>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
 							</utu:AutoLayout>
-						</DataTemplate>
-					</ListViewItem.ContentTemplate>
-				</ListViewItem>
-			</DataTemplate>
-		</utu:AutoLayout.Resources>
+						</utu:AutoLayout>
+					</DataTemplate>
+				</ListViewItem.ContentTemplate>
+			</ListViewItem>
+		</DataTemplate>
+	</Page.Resources>
 
+	<utu:AutoLayout>
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar x:Name="NavBarLayout"
-							   Content="{Binding Title}"
+			<utu:NavigationBar Content="{Binding Title}"
 							   Style="{StaticResource ChefsNavigationBarStyle}">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton>
@@ -109,9 +106,8 @@
 				</utu:NavigationBar.MainCommand>
 			</utu:NavigationBar>
 
-			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
-			<ScrollViewer x:Name="RecipesScrollViewer"
-						  utu:AutoLayout.PrimaryAlignment="Stretch"
+			<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 						  HorizontalScrollMode="Disabled"
 						  VerticalScrollBarVisibility="Hidden">
 				<utu:AutoLayout Margin="16"
@@ -122,21 +118,15 @@
 					<TextBlock Margin="0,16,0,8"
 							   Style="{StaticResource BodyLarge}"
 							   Text="{Binding SubTitle}" />
-					<uer:FeedView x:Name="RecipesFeedView"
-								  utu:AutoLayout.CounterAlignment="Stretch"
+					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  Source="{Binding Recipes}">
 						<DataTemplate>
-							<utu:AutoLayout Padding="0,0,0,16"
-											HorizontalAlignment="Center"
-											Spacing="8">
-								<muxc:ItemsRepeater ItemTemplate="{StaticResource RecipeTemplate}"
-													ItemsSource="{Binding Data}"
-													utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
-													utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																			Wide={StaticResource WideGridLayout}}" />
-							</utu:AutoLayout>
+							<muxc:ItemsRepeater ItemTemplate="{StaticResource RecipeTemplate}"
+												ItemsSource="{Binding Data}"
+												utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
+												utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
+												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
 						</DataTemplate>
 					</uer:FeedView>
 				</utu:AutoLayout>
@@ -147,6 +137,7 @@
 						HorizontalAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
 						Orientation="Horizontal"
+						PrimaryAxisAlignment="Start"
 						Spacing="16">
 			<Button uen:Navigation.Request="-"
 					utu:AutoLayout.PrimaryAlignment="Stretch"
