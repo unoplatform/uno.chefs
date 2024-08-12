@@ -106,7 +106,7 @@
 				</utu:NavigationBar.MainCommand>
 			</utu:NavigationBar>
 
-			<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 						  HorizontalScrollMode="Disabled"
 						  VerticalScrollBarVisibility="Hidden">
@@ -126,7 +126,8 @@
 												ItemsSource="{Binding Data}"
 												utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
 												utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
-												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
+												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																		Wide={StaticResource WideGridLayout}}" />
 						</DataTemplate>
 					</uer:FeedView>
 				</utu:AutoLayout>

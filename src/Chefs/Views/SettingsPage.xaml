@@ -28,7 +28,7 @@
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 		</utu:NavigationBar>
-		<!--  Horizontal scrolling is disabled due to this bug: https://github.com/unoplatform/uno/issues/12871  -->
+		<!-- Horizontal scrolling is disabled due to this bug: https://github.com/unoplatform/uno/issues/12871 -->
 		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 					  HorizontalScrollMode="Disabled">
 			<utu:AutoLayout Padding="16,24"

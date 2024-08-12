@@ -264,7 +264,7 @@
 								  NoneTemplate="{StaticResource RecipeEmptyTemplate}"
 								  Source="{Binding FavoriteRecipes}">
 						<DataTemplate>
-							<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+							<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 							<ScrollViewer x:Name="RecipesScrollViewer"
 										  utu:AutoLayout.PrimaryAlignment="Stretch"
 										  HorizontalScrollMode="Disabled"
@@ -280,7 +280,8 @@
 									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 														ItemTemplate="{StaticResource RecipeTemplate}"
 														ItemsSource="{Binding Data}"
-														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
+														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																				Wide={StaticResource WideGridLayout}}" />
 								</utu:AutoLayout>
 							</ScrollViewer>
 						</DataTemplate>
@@ -289,7 +290,7 @@
 				</Grid>
 				<Grid uen:Region.Name="Cookbooks"
 					  Visibility="Collapsed">
-					<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 
 					<uer:FeedView utu:AutoLayout.CounterAlignment="Stretch"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -303,7 +304,8 @@
 													uen:Navigation.Request="CookbookDetails"
 													ItemTemplate="{StaticResource CookbookTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
+													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																			Wide={StaticResource WideGridLayout}}" />
 							</ScrollViewer>
 						</DataTemplate>
 					</uer:FeedView>

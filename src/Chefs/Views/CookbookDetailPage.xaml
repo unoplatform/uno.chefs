@@ -84,7 +84,7 @@
 			<DataTemplate>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								Padding="16">
-					<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 					<ScrollViewer x:Name="RecipesScrollViewer"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  HorizontalScrollMode="Disabled"
@@ -100,7 +100,8 @@
 							<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
 												ItemTemplate="{StaticResource RecipeTemplate}"
 												ItemsSource="{Binding Data.Recipes}"
-												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout}, Wide={StaticResource WideGridLayout}}" />
+												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																		Wide={StaticResource WideGridLayout}}" />
 						</utu:AutoLayout>
 					</ScrollViewer>
 					<Button x:Name="FabButton"

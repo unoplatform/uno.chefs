@@ -109,7 +109,7 @@
 				<Grid uen:Region.Attached="True"
 					  uen:Region.Navigator="Visibility">
 
-					<!--  All Notifications  -->
+					<!-- All Notifications -->
 					<Grid Padding="0,16"
 						  uen:Region.Name="AllTab"
 						  Visibility="Visible">
@@ -118,7 +118,7 @@
 									  NoneTemplate="{StaticResource EmptyTemplate}">
 							<DataTemplate>
 								<utu:AutoLayout>
-									<!--  Today  -->
+									<!-- Today -->
 									<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -135,7 +135,7 @@
 										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
 
-									<!--  Yesterday  -->
+									<!-- Yesterday -->
 									<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -152,7 +152,7 @@
 										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
 
-									<!--  Older  -->
+									<!-- Older -->
 									<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -173,7 +173,7 @@
 						</uer:FeedView>
 					</Grid>
 
-					<!--  Unread  -->
+					<!-- Unread -->
 					<Grid Padding="0,16"
 						  uen:Region.Name="UnreadTab"
 						  Visibility="Collapsed">
@@ -182,7 +182,7 @@
 									  NoneTemplate="{StaticResource EmptyTemplate}">
 							<DataTemplate>
 								<utu:AutoLayout>
-									<!--  Today  -->
+									<!-- Today -->
 									<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -199,7 +199,7 @@
 										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
 
-									<!--  Yesterday  -->
+									<!-- Yesterday -->
 									<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -216,7 +216,7 @@
 										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
 
-									<!--  Older  -->
+									<!-- Older -->
 									<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -237,7 +237,7 @@
 						</uer:FeedView>
 					</Grid>
 
-					<!--  Read  -->
+					<!-- Read -->
 					<Grid Padding="0,16"
 						  uen:Region.Name="ReadTab"
 						  Visibility="Collapsed">
@@ -246,7 +246,7 @@
 									  NoneTemplate="{StaticResource EmptyTemplate}">
 							<DataTemplate>
 								<utu:AutoLayout>
-									<!--  Today  -->
+									<!-- Today -->
 									<utu:AutoLayout Visibility="{Binding Data.HasTodayNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -263,7 +263,7 @@
 										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
 
-									<!--  Yesterday  -->
+									<!-- Yesterday -->
 									<utu:AutoLayout Visibility="{Binding Data.HasYesterdayNotifications}"
 													Padding="0,16"
 													Spacing="16">
@@ -280,7 +280,7 @@
 										</muxc:ItemsRepeater>
 									</utu:AutoLayout>
 
-									<!--  Older  -->
+									<!-- Older -->
 									<utu:AutoLayout Visibility="{Binding Data.HasOlderNotifications}"
 													Padding="0,16"
 													Spacing="16">
