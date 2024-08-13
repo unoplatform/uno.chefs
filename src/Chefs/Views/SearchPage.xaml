@@ -89,7 +89,7 @@
 									   Stretch="UniformToFill" />
 							</Border>
 							<utu:AutoLayout PrimaryAxisAlignment="Center"
-											Spacing="4"
+											CounterAxisAlignment="Start"
 											Padding="16">
 								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 										   Style="{StaticResource TitleSmall}"
