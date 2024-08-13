@@ -13,6 +13,7 @@
 	  xmlns:converters="using:Chefs.Converters"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
+	  Background="{ThemeResource BackgroundBrush}"
 	  mc:Ignorable="d">
 
 	<Page.Resources>
@@ -42,21 +43,11 @@
 		<DataTemplate x:Key="EmptyTemplate">
 			<utu:AutoLayout Spacing="24"
 							PrimaryAxisAlignment="Center"
-							Padding="32,0"
-							utu:AutoLayout.PrimaryAlignment="Stretch">
-				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-								Width="72"
-								Height="72">
-					<utu:AutoLayout PrimaryAxisAlignment="Center"
-									utu:AutoLayout.IsIndependentLayout="True"
-									VerticalAlignment="Stretch"
-									HorizontalAlignment="Stretch">
-						<BitmapIcon UriSource="{ThemeResource Empty_Notification}"
-									utu:AutoLayout.CounterAlignment="Center"
-									Width="72"
-									Height="70" />
-					</utu:AutoLayout>
-				</utu:AutoLayout>
+							CounterAxisAlignment="Center"
+							Padding="32,0">
+				<BitmapIcon UriSource="{ThemeResource Empty_Notification}"
+							Width="72"
+							Height="70" />
 				<TextBlock TextAlignment="Center"
 						   TextWrapping="Wrap"
 						   Text="No Notifications Yet"
@@ -71,7 +62,6 @@
 						VerticalContentAlignment="Center"
 						Content="Close"
 						Padding="16,10,24,10"
-						utu:AutoLayout.CounterAlignment="Center"
 						Foreground="{ThemeResource OnSecondaryContainerBrush}"
 						CornerRadius="4"
 						Style="{StaticResource FilledTonalButtonStyle}"
@@ -84,9 +74,9 @@
 			</utu:AutoLayout>
 		</DataTemplate>
 	</Page.Resources>
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
-					PrimaryAxisAlignment="Stretch">
+	<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 		<utu:NavigationBar Content="Notifications"
+						   utu:AutoLayout.PrimaryAlignment="Auto"
 						   Style="{StaticResource ChefsNavigationBarStyle}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>

@@ -9,21 +9,20 @@
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d">
 
-	<!-- Workaround used here by separating the FilterPage / FilterContentPage into two files -->
-	<!-- Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482 -->
-	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-		<utu:AutoLayout.Resources>
-			<DataTemplate x:Key="FilterChipTemplate">
-				<utu:Chip Background="{ThemeResource SurfaceBrush}"
-						  Content="{Binding}"
-						  HorizontalAlignment="Stretch"
-						  Foreground="{ThemeResource OnSurfaceVariantBrush}"
-						  BorderThickness="1"
-						  Style="{StaticResource MaterialChipStyle}" />
-			</DataTemplate>
-		</utu:AutoLayout.Resources>
+	<Page.Resources>
+		<DataTemplate x:Key="FilterChipTemplate">
+			<utu:Chip Background="{ThemeResource SurfaceBrush}"
+					  Content="{Binding}"
+					  HorizontalAlignment="Stretch"
+					  Foreground="{ThemeResource OnSurfaceVariantBrush}"
+					  BorderThickness="1"
+					  Style="{StaticResource MaterialChipStyle}" />
+		</DataTemplate>
+	</Page.Resources>
+	<utu:AutoLayout>
 		<utu:AutoLayout uen:Region.Attached="True"
 						utu:AutoLayout.PrimaryAlignment="Stretch"
 						PrimaryAxisAlignment="Stretch">
@@ -37,11 +36,6 @@
 				</utu:NavigationBar.MainCommand>
 			</utu:NavigationBar>
 			<ScrollViewer HorizontalScrollMode="Disabled">
-				<!--
-					The use of UniformGridLayout in the ItemsRepeater makes the spacing between
-					the Chips inconsistent and sometimes the Chip content is truncated too
-				-->
-				<!-- Details available here: https://github.com/unoplatform/uno/issues/12820 -->
 				<utu:AutoLayout Padding="16"
 								Background="{ThemeResource SurfaceBrush}"
 								Spacing="32">

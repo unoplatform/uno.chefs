@@ -31,52 +31,46 @@
 								MinColumnSpacing="15"
 								MinItemWidth="240"
 								MinRowSpacing="15" />
+
+		<DataTemplate x:Key="RecipeTemplate">
+			<utu:CardContentControl x:Name="RecipeTemplateCard"
+									Background="{ThemeResource SurfaceBrush}"
+									CornerRadius="4"
+									Style="{StaticResource FilledCardContentControlStyle}">
+				<utu:CardContentControl.ContentTemplate>
+					<DataTemplate>
+						<utu:AutoLayout CornerRadius="4">
+							<Border x:Name="ImageLayout"
+									Height="144">
+								<Image HorizontalAlignment="Center"
+									   VerticalAlignment="Center"
+									   Source="{Binding ImageUrl}"
+									   Stretch="UniformToFill" />
+							</Border>
+							<utu:AutoLayout Padding="16"
+											PrimaryAxisAlignment="Center"
+											Spacing="4">
+
+								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+										   Style="{StaticResource TitleSmall}"
+										   Text="{Binding Name}"
+										   TextWrapping="Wrap" />
+								<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+										   Style="{StaticResource CaptionMedium}"
+										   Text="{Binding TimeCal}"
+										   TextWrapping="Wrap" />
+							</utu:AutoLayout>
+						</utu:AutoLayout>
+					</DataTemplate>
+				</utu:CardContentControl.ContentTemplate>
+			</utu:CardContentControl>
+		</DataTemplate>
 	</Page.Resources>
 
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout.Resources>
-			<DataTemplate x:Key="RecipeTemplate"
-						  x:DataType="models:Recipe">
-				<!-- Using an x:bind for windows as a workaround for now regarding this WinUI issue: -->
-				<!-- https://github.com/unoplatform/uno.chefs/issues/144#issuecomment-1400665013 -->
-				<Border win:DataContext="{x:Bind}">
-					<utu:CardContentControl x:Name="RecipeTemplateCard"
-											Background="{ThemeResource SurfaceBrush}"
-											CornerRadius="4"
-											Style="{StaticResource FilledCardContentControlStyle}">
-						<utu:CardContentControl.ContentTemplate>
-							<DataTemplate>
-								<utu:AutoLayout CornerRadius="4">
-									<Border x:Name="ImageLayout"
-											Height="144">
-										<Image HorizontalAlignment="Center"
-											   VerticalAlignment="Center"
-											   Source="{Binding ImageUrl}"
-											   Stretch="UniformToFill" />
-									</Border>
-									<utu:AutoLayout Padding="16"
-													PrimaryAxisAlignment="Center"
-													Spacing="4">
-
-										<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-												   Style="{StaticResource TitleSmall}"
-												   Text="{Binding Name}"
-												   TextWrapping="Wrap" />
-										<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-												   Style="{StaticResource CaptionMedium}"
-												   Text="{Binding TimeCal}"
-												   TextWrapping="Wrap" />
-									</utu:AutoLayout>
-								</utu:AutoLayout>
-							</DataTemplate>
-						</utu:CardContentControl.ContentTemplate>
-					</utu:CardContentControl>
-				</Border>
-			</DataTemplate>
-		</utu:AutoLayout.Resources>
-
+	<utu:AutoLayout>
 		<utu:NavigationBar Content="{Binding Cookbook.Name}"
-						   Style="{StaticResource ChefsNavigationBarStyle}">
+						   Style="{StaticResource ChefsNavigationBarStyle}"
+						   utu:AutoLayout.PrimaryAlignment="Auto">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
@@ -85,52 +79,46 @@
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 		</utu:NavigationBar>
-		<utu:AutoLayout Padding="16"
-						utu:AutoLayout.PrimaryAlignment="Stretch"
-						Background="{ThemeResource BackgroundBrush}">
-			<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
-						  Source="{Binding Cookbook}">
-				<DataTemplate>
-					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-						<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
-						<ScrollViewer x:Name="RecipesScrollViewer"
-									  utu:AutoLayout.PrimaryAlignment="Stretch"
-									  HorizontalScrollMode="Disabled"
-									  VerticalScrollBarVisibility="Hidden">
-							<utu:AutoLayout>
-								<TextBlock Padding="0,0,0,16"
-										   HorizontalAlignment="Stretch"
-										   utu:AutoLayout.CounterAlignment="Center"
-										   Style="{StaticResource BodyLarge}">
-									<Run Text="{Binding Data.Recipes.Count}" />
-									<Run Text="results" />
-								</TextBlock>
-								<utu:AutoLayout Padding="0,16">
-									<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
-														ItemTemplate="{StaticResource RecipeTemplate}"
-														ItemsSource="{Binding Data.Recipes}"
-														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																				Wide={StaticResource WideGridLayout}}" />
-								</utu:AutoLayout>
-							</utu:AutoLayout>
-						</ScrollViewer>
-						<Button x:Name="FabButton"
-								HorizontalAlignment="Right"
-								VerticalAlignment="Bottom"
-								uen:Navigation.Data="{Binding Data, Mode=TwoWay}"
-								uen:Navigation.Request="UpdateCookbook"
-								utu:AutoLayout.IsIndependentLayout="True"
-								CornerRadius="56"
-								Style="{StaticResource FabStyle}">
-							<ut:ControlExtensions.Icon>
-								<FontIcon Glyph="{StaticResource Icon_Edit}"
-										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-										  Foreground="{ThemeResource SurfaceBrush}" />
-							</ut:ControlExtensions.Icon>
-						</Button>
-					</utu:AutoLayout>
-				</DataTemplate>
-			</uer:FeedView>
-		</utu:AutoLayout>
+		<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
+					  Source="{Binding Cookbook}">
+			<DataTemplate>
+				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+								Padding="16">
+					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
+					<ScrollViewer x:Name="RecipesScrollViewer"
+								  utu:AutoLayout.PrimaryAlignment="Stretch"
+								  HorizontalScrollMode="Disabled"
+								  VerticalScrollBarVisibility="Hidden">
+						<utu:AutoLayout>
+							<TextBlock Padding="0,0,0,16"
+									   HorizontalAlignment="Stretch"
+									   utu:AutoLayout.CounterAlignment="Center"
+									   Style="{StaticResource BodyLarge}">
+								<Run Text="{Binding Data.Recipes.Count}" />
+								<Run Text="results" />
+							</TextBlock>
+							<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
+												ItemTemplate="{StaticResource RecipeTemplate}"
+												ItemsSource="{Binding Data.Recipes}"
+												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
+																		Wide={StaticResource WideGridLayout}}" />
+						</utu:AutoLayout>
+					</ScrollViewer>
+					<Button x:Name="FabButton"
+							HorizontalAlignment="Right"
+							VerticalAlignment="Bottom"
+							uen:Navigation.Data="{Binding Data, Mode=TwoWay}"
+							uen:Navigation.Request="UpdateCookbook"
+							utu:AutoLayout.IsIndependentLayout="True"
+							CornerRadius="56"
+							Style="{StaticResource PrimaryFabStyle}">
+						<ut:ControlExtensions.Icon>
+							<FontIcon Glyph="{StaticResource Icon_Edit}"
+									  Style="{StaticResource FontAwesomeSolidFontIconStyle}" />
+						</ut:ControlExtensions.Icon>
+					</Button>
+				</utu:AutoLayout>
+			</DataTemplate>
+		</uer:FeedView>
 	</utu:AutoLayout>
 </Page>
