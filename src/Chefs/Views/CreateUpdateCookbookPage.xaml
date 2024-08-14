@@ -72,14 +72,12 @@
 													CounterAxisAlignment="Start"
 													Orientation="Horizontal">
 										<Border Visibility="{Binding Converter={StaticResource TrueToCollapsed}, ElementName=RecipeTemplateCard, Path=IsSelected}">
-											<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-													  Glyph="{StaticResource Icon_Favorite}"
+											<PathIcon Data="{StaticResource Icon_Heart}"
 													  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
 													  Foreground="{ThemeResource OnSurfaceBrush}" />
 										</Border>
 										<Border Visibility="{Binding ElementName=RecipeTemplateCard, Path=IsSelected}">
-											<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-													  Glyph="{StaticResource Icon_Favorite}"
+											<PathIcon Data="{StaticResource Icon_Heart_Filled}"
 													  DataContext="{utu:AncestorBinding AncestorType=uer:FeedView}"
 													  Foreground="{ThemeResource PrimaryBrush}" />
 										</Border>
@@ -95,12 +93,11 @@
 
 	<utu:AutoLayout>
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Content="{Binding Title}"
-							   Style="{StaticResource ChefsNavigationBarStyle}">
+			<utu:NavigationBar Content="{Binding Title}">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton>
 						<not_mobile:AppBarButton.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 						</not_mobile:AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>

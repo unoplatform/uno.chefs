@@ -69,12 +69,11 @@
 
 	<utu:AutoLayout>
 		<utu:NavigationBar Content="{Binding Cookbook.Name}"
-						   Style="{StaticResource ChefsNavigationBarStyle}"
 						   utu:AutoLayout.PrimaryAlignment="Auto">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
@@ -107,14 +106,13 @@
 					<Button x:Name="FabButton"
 							HorizontalAlignment="Right"
 							VerticalAlignment="Bottom"
+							Content="Edit"
 							uen:Navigation.Data="{Binding Data, Mode=TwoWay}"
 							uen:Navigation.Request="UpdateCookbook"
 							utu:AutoLayout.IsIndependentLayout="True"
-							CornerRadius="56"
-							Style="{StaticResource PrimaryFabStyle}">
+							Style="{StaticResource ChefsFabButtonStyle}">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Edit}"
-									  Style="{StaticResource FontAwesomeSolidFontIconStyle}" />
+							<PathIcon Data="{StaticResource Icon_Edit}" />
 						</ut:ControlExtensions.Icon>
 					</Button>
 				</utu:AutoLayout>

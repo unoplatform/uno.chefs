@@ -62,7 +62,7 @@
 							Foreground="{ThemeResource PrimaryBrush}"
 							Style="{StaticResource TextButtonStyle}">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Star_Outline}"
+							<PathIcon Data="{StaticResource Icon_Star_Outline}"
 									  Foreground="{ThemeResource PrimaryBrush}" />
 						</ut:ControlExtensions.Icon>
 					</Button>
@@ -122,7 +122,7 @@
 	</Page.Resources>
 	<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 
-		<utu:NavigationBar Style="{StaticResource ChefsNavigationBarStyle}">
+		<utu:NavigationBar>
 			<utu:NavigationBar.Content>
 				<Grid>
 					<Image Source="{ThemeResource ChefsAppSignature}"
@@ -132,16 +132,14 @@
 				</Grid>
 			</utu:NavigationBar.Content>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton uen:Navigation.Request="!Profile"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton uen:Navigation.Request="!Profile">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
+						<PathIcon Data="{StaticResource Icon_Person_Outline}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton uen:Navigation.Request="!Notifications"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton uen:Navigation.Request="!Notifications">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
+						<PathIcon Data="{StaticResource Icon_Notification_Bell}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
@@ -157,7 +155,7 @@
 					 PlaceholderText="Search"
 					 Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 				<ut:ControlExtensions.Icon>
-					<FontIcon Glyph="{StaticResource Icon_Search}"
+					<PathIcon Data="{StaticResource Icon_Search}"
 							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 				</ut:ControlExtensions.Icon>
 			</TextBox>
@@ -177,13 +175,11 @@
 							Foreground="{ThemeResource PrimaryBrush}"
 							Style="{StaticResource TextButtonStyle}">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Close}"
+							<PathIcon Data="{StaticResource Icon_Close}"
 									  Foreground="{ThemeResource PrimaryBrush}" />
 						</ut:ControlExtensions.Icon>
 					</Button>
 					<Button x:Name="FiltersButton"
-							HorizontalContentAlignment="Center"
-							VerticalContentAlignment="Center"
 							uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay}"
 							uen:Navigation.Request="!Filter"
 							Content="Filters"
@@ -191,7 +187,7 @@
 							Foreground="{ThemeResource PrimaryBrush}"
 							Style="{StaticResource TextButtonStyle}">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Tune}"
+							<PathIcon Data="{StaticResource Icon_Tune}"
 									  Foreground="{ThemeResource PrimaryBrush}" />
 						</ut:ControlExtensions.Icon>
 					</Button>

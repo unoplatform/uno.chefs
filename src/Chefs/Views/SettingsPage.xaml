@@ -21,9 +21,9 @@
 		<utu:NavigationBar Content="Settings"
 						   utu:AutoLayout.PrimaryAlignment="Auto">
 			<utu:NavigationBar.MainCommand>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceBrush}">
+				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
@@ -47,7 +47,7 @@
 								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 								 Text="{Binding Profile.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<ut:ControlExtensions.Icon>
-								<FontIcon Glyph="{StaticResource Icon_Person_Outline}"
+								<PathIcon Data="{StaticResource Icon_Person_Outline}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 							</ut:ControlExtensions.Icon>
 						</TextBox>
@@ -55,7 +55,7 @@
 								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 								 Text="{Binding Profile.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<ut:ControlExtensions.Icon>
-								<FontIcon Glyph="{StaticResource Icon_Mail_Outline}"
+								<PathIcon Data="{StaticResource Icon_Mail_Outline}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 							</ut:ControlExtensions.Icon>
 						</TextBox>
@@ -63,7 +63,7 @@
 								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 								 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 							<ut:ControlExtensions.Icon>
-								<FontIcon Glyph="{StaticResource Icon_Phone_Iphone}"
+								<PathIcon Data="{StaticResource Icon_Phone_Iphone}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 							</ut:ControlExtensions.Icon>
 						</TextBox>
@@ -88,7 +88,7 @@
 											Orientation="Horizontal"
 											CounterAxisAlignment="Center"
 											utu:AutoLayout.CounterAlignment="Center">
-								<FontIcon Glyph="{StaticResource Icon_Notifications_None}"
+								<PathIcon Data="{StaticResource Icon_Notifications_None}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 										   Style="{StaticResource TitleMedium}"
@@ -109,7 +109,7 @@
 											Orientation="Horizontal"
 											CounterAxisAlignment="Center"
 											utu:AutoLayout.CounterAlignment="Center">
-								<FontIcon Glyph="{StaticResource Icon_Night_Mode}"
+								<PathIcon Data="{StaticResource Icon_Night_Mode}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 										   Style="{StaticResource TitleMedium}"

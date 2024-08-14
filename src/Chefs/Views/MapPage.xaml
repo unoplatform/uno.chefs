@@ -17,13 +17,11 @@
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
 		<utu:AutoLayout PrimaryAxisAlignment="Stretch">
-			<utu:NavigationBar Style="{StaticResource ChefsNavigationBarStyle}"
-							   Content="Near me">
+			<utu:NavigationBar Content="Near me">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton>
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Assets/Icons/arrow_back.png"
-										Foreground="{ThemeResource OnSurfaceInverseBrush}" />
+							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
