@@ -219,9 +219,12 @@
 	<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 		<utu:NavigationBar Style="{StaticResource ChefsNavigationBarStyle}">
 			<utu:NavigationBar.Content>
-				<Image Source="{ThemeResource ChefsAppSignature}"
-					   Width="128"
-					   Height="40" />
+				<Grid>
+					<Image Source="{ThemeResource ChefsAppSignature}"
+						HorizontalAlignment="Left"
+						Width="128"
+						Height="40" />
+				</Grid>
 			</utu:NavigationBar.Content>
 			<utu:NavigationBar.PrimaryCommands>
 				<AppBarButton uen:Navigation.Request="!Profile">
