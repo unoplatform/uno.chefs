@@ -148,19 +148,25 @@
 									Style="{StaticResource PipsPagerStyle}" />
 					<utu:AutoLayout Height="59"
 									Orientation="Horizontal"
-									PrimaryAxisAlignment="Center"
+									PrimaryAxisAlignment="Stretch"
+									CounterAxisAlignment="End"
+									utu:AutoLayout.PrimaryAlignment="Stretch"
+									utu:AutoLayout.CounterAlignment="Stretch"
 									Spacing="16">
 						<Button Content="Back"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
 								Style="{StaticResource ChefsSecondaryButtonStyle}"
-								Visibility="{Binding Steps.Value.CanMovePrevious}" />
+								Visibility="{Binding Steps.Value.CanMovePrevious, FallbackValue=Collapsed, TargetNullValue=Collapsed}" />
 						<Button Content="Next"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
 								Visibility="{Binding Steps.Value.CanMoveNext}"
 								Style="{StaticResource ChefsPrimaryButtonStyle}" />
 						<Button Command="{Binding Complete}"
 								Content="Done!"
-								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}}"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
+								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
 								Style="{StaticResource ChefsPrimaryButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
