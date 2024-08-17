@@ -163,7 +163,7 @@
 					  utu:AutoLayout.PrimaryAlignment="Stretch"
 					  NoneTemplate="{StaticResource RecipeEmptyTemplate}">
 			<DataTemplate>
-				<!--  It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871  -->
+				<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 				<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 							  HorizontalScrollMode="Disabled"
 							  VerticalScrollBarVisibility="Hidden">
