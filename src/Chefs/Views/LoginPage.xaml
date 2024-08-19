@@ -33,7 +33,7 @@
 						 IsSpellCheckEnabled="False"
 						 Text="{Binding UserCredentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
+						<PathIcon Data="{StaticResource Icon_Person_Outline}" />
 					</ut:ControlExtensions.Icon>
 				</TextBox>
 				<PasswordBox x:Name="LoginPassword"
@@ -58,7 +58,7 @@
 						</ResourceDictionary>
 					</PasswordBox.Resources>
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Lock}" />
+						<PathIcon Data="{StaticResource Icon_Lock}" />
 					</ut:ControlExtensions.Icon>
 				</PasswordBox>
 				<utu:AutoLayout Spacing="24"

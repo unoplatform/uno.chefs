@@ -65,8 +65,7 @@
 													PrimaryAxisAlignment="Center"
 													CounterAxisAlignment="Center"
 													Orientation="Horizontal">
-										<FontIcon Glyph="{StaticResource Icon_Check_Circle}"
-												  FontSize="14"
+										<PathIcon Data="{StaticResource Icon_Check_Circle}"
 												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 										<TextBlock Text="{Binding}"
 												   TextWrapping="NoWrap"
@@ -94,7 +93,7 @@
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
@@ -236,8 +235,7 @@
 							Content="Favorite"
 							CornerRadius="4">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-									  Glyph="{StaticResource Icon_Favorite}" />
+							<PathIcon Data="{StaticResource Icon_Heart}" />
 						</ut:ControlExtensions.Icon>
 					</Button>
 				</utu:AutoLayout>

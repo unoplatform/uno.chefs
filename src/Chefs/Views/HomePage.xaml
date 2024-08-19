@@ -49,13 +49,11 @@
 																	Path=DataContext.FavoriteRecipe}"
 									  CommandParameter="{Binding}">
 							<ToggleButton.Content>
-								<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-										  Glyph="{StaticResource Icon_Favorite}"
+								<PathIcon Data="{StaticResource Icon_Heart}"
 										  Foreground="{ThemeResource OnSurfaceBrush}" />
 							</ToggleButton.Content>
 							<ut:ControlExtensions.AlternateContent>
-								<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-										  Glyph="{StaticResource Icon_Favorite}"
+								<PathIcon Data="{StaticResource Icon_Heart_Filled}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 							</ut:ControlExtensions.AlternateContent>
 						</ToggleButton>
@@ -76,16 +74,14 @@
 				</Grid>
 			</utu:NavigationBar.Content>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton uen:Navigation.Request="!Profile"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton uen:Navigation.Request="!Profile">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/user_profile.png" />
+						<PathIcon Data="{StaticResource Icon_Person_Outline}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton uen:Navigation.Request="!Notifications"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton uen:Navigation.Request="!Notifications">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/notification.png" />
+						<PathIcon Data="{StaticResource Icon_Notification_Bell}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>

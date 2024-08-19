@@ -14,11 +14,15 @@
 		<Setter Property="FontSize" Value="24" />
 	</Style>
 
-	<Style x:Key="ChefsAppBarButtonStyle"
+	<Style x:Key="MaterialAppBarButtonStyle"
 		   BasedOn="{StaticResource AppBarButtonStyle}"
 		   TargetType="AppBarButton">
 		<Setter Property="Foreground" Value="{ThemeResource OnSurfaceInverseBrush}" />
 	</Style>
+
+	<Style x:Key="ChefsAppBarButtonStyle"
+		   TargetType="AppBarButton"
+		   BasedOn="{StaticResource MaterialAppBarButtonStyle}" />
 
 	<Style x:Key="ChefsMainCommandStyle"
 		   BasedOn="{StaticResource ChefsAppBarButtonStyle}"

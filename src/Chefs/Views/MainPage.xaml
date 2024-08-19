@@ -41,21 +41,21 @@
 			<utu:TabBarItem uen:Region.Name="Home"
 							Content="Home">
 				<utu:TabBarItem.Icon>
-					<FontIcon Glyph="{StaticResource Icon_Home}" />
+					<PathIcon Data="{StaticResource Icon_Home}" />
 				</utu:TabBarItem.Icon>
 			</utu:TabBarItem>
 
 			<utu:TabBarItem uen:Region.Name="Search"
 							Content="Search">
 				<utu:TabBarItem.Icon>
-					<FontIcon Glyph="{StaticResource Icon_Search}" />
+					<PathIcon Data="{StaticResource Icon_Search}" />
 				</utu:TabBarItem.Icon>
 			</utu:TabBarItem>
 
 			<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
 							Content="Favorites">
 				<utu:TabBarItem.Icon>
-					<FontIcon Glyph="{StaticResource Icon_Heart}" />
+					<PathIcon Data="{StaticResource Icon_Heart}" />
 				</utu:TabBarItem.Icon>
 			</utu:TabBarItem>
 		</utu:TabBar>
@@ -72,21 +72,21 @@
 				<utu:TabBarItem uen:Region.Name="Home"
 								Content="Home">
 					<utu:TabBarItem.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Home}" />
+						<PathIcon Data="{StaticResource Icon_Home}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
 				<utu:TabBarItem uen:Region.Name="Search"
 								Content="Search">
 					<utu:TabBarItem.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Search}" />
+						<PathIcon Data="{StaticResource Icon_Search}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
 				<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
 								Content="Favorites">
 					<utu:TabBarItem.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Heart}" />
+						<PathIcon Data="{StaticResource Icon_Heart}" />
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 			</utu:TabBar>

@@ -33,7 +33,7 @@
 						 IsSpellCheckEnabled="False"
 						 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
+						<PathIcon Data="{StaticResource Icon_Person_Outline}" />
 					</ut:ControlExtensions.Icon>
 				</TextBox>
 				<TextBox PlaceholderText="Email"
@@ -43,7 +43,7 @@
 						 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
 						 IsSpellCheckEnabled="False">
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Mail_Outline}" />
+						<PathIcon Data="{StaticResource Icon_Mail_Outline}" />
 					</ut:ControlExtensions.Icon>
 				</TextBox>
 				<PasswordBox x:Name="RegistrationPassword"
@@ -68,7 +68,7 @@
 						</ResourceDictionary>
 					</PasswordBox.Resources>
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Lock}" />
+						<PathIcon Data="{StaticResource Icon_Lock}" />
 					</ut:ControlExtensions.Icon>
 				</PasswordBox>
 				<Button HorizontalContentAlignment="Center"

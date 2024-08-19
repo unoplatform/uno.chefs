@@ -58,7 +58,7 @@
 						CornerRadius="20"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Add}"
+						<PathIcon Data="{StaticResource Icon_Add}"
 								  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</ut:ControlExtensions.Icon>
@@ -123,7 +123,7 @@
 												Style="{StaticResource TextButtonStyle}"
 												Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 											<Button.Content>
-												<FontIcon Glyph="{StaticResource Icon_Add}"
+												<PathIcon Data="{StaticResource Icon_Add}"
 														  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 														  Foreground="{ThemeResource OnSurfaceBrush}" />
 											</Button.Content>
@@ -174,7 +174,7 @@
 						Foreground="{ThemeResource PrimaryBrush}"
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Star_Outline}"
+						<PathIcon Data="{StaticResource Icon_Star_Outline}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</ut:ControlExtensions.Icon>
 				</Button>
@@ -217,7 +217,7 @@
 	</Page.Resources>
 
 	<utu:AutoLayout PrimaryAxisAlignment="Stretch">
-		<utu:NavigationBar Style="{StaticResource ChefsNavigationBarStyle}">
+		<utu:NavigationBar>
 			<utu:NavigationBar.Content>
 				<Grid>
 					<Image Source="{ThemeResource ChefsAppSignature}"
@@ -229,14 +229,12 @@
 			<utu:NavigationBar.PrimaryCommands>
 				<AppBarButton uen:Navigation.Request="!Profile">
 					<AppBarButton.Icon>
-						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
-									UriSource="ms-appx:///Assets/Icons/user_profile.png" />
+						<PathIcon Data="{StaticResource Icon_Person_Outline}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 				<AppBarButton uen:Navigation.Request="!Notifications">
 					<AppBarButton.Icon>
-						<BitmapIcon Foreground="{ThemeResource OnSurfaceInverseBrush}"
-									UriSource="ms-appx:///Assets/Icons/notification.png" />
+						<PathIcon Data="{StaticResource Icon_Notification_Bell}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
@@ -315,11 +313,10 @@
 					<Button HorizontalAlignment="Right"
 							VerticalAlignment="Bottom"
 							uen:Navigation.Request="CreateCookbook"
-							CornerRadius="56"
-							Style="{StaticResource PrimaryFabStyle}">
+							Content="Add"
+							Style="{StaticResource ChefsFabButtonStyle}">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Glyph="{StaticResource Icon_Add}"
-									  Style="{StaticResource FontAwesomeSolidFontIconStyle}" />
+							<PathIcon Data="{StaticResource Icon_Add}" />
 						</ut:ControlExtensions.Icon>
 					</Button>
 				</Grid>

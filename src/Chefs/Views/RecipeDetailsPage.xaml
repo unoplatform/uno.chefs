@@ -21,9 +21,9 @@
 	  mc:Ignorable="d">
 
 	<Page.Resources>
-		<converters:BoolToObjectConverter x:Key="BooleanToHeartFontIconStyle"
-										  TrueValue="{StaticResource FontAwesomeSolidFontIconStyle}"
-										  FalseValue="{StaticResource FontAwesomeRegularFontIconStyle}" />
+		<converters:BoolToObjectConverter x:Key="BoolToHeartIconConverter"
+										  TrueValue="{StaticResource Icon_Heart_Filled}"
+										  FalseValue="{StaticResource Icon_Heart}" />
 
 		<DataTemplate x:Key="EmptyTemplate">
 			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
@@ -44,29 +44,23 @@
 	</Page.Resources>
 
 	<utu:AutoLayout>
-		<utu:NavigationBar x:Name="NavBar"
-						   Style="{StaticResource ChefsNavigationBarStyle}"
-						   Content="{Binding Recipe.Name}">
+		<utu:NavigationBar Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Command="{Binding Share}"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Share}">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/share_recipe.png" />
+						<PathIcon Data="{StaticResource Icon_Share}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Command="{Binding Favorite}"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Favorite}">
 					<AppBarButton.Icon>
-						<FontIcon Style="{Binding IsFavorited, Converter={StaticResource BooleanToHeartFontIconStyle}}"
-								  Glyph="{StaticResource Icon_Favorite}"
-								  Foreground="{ThemeResource SurfaceBrush}" />
+						<PathIcon Data="{Binding IsFavorited, Converter={StaticResource BoolToHeartIconConverter}, FallbackValue={StaticResource Icon_Heart}, TargetNullValue={StaticResource Icon_Heart}}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
@@ -136,25 +130,23 @@
 											HorizontalAlignment="Stretch">
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<FontIcon Glyph="{StaticResource Icon_Timer}"
-											  HorizontalAlignment="Center"
+									<PathIcon Data="{StaticResource Icon_Timer}"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
 									<TextBlock TextAlignment="Center"
 											   TextWrapping="Wrap"
-											   HorizontalAlignment="Center"
 											   Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
 											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource BodySmall}" />
 								</utu:AutoLayout>
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<FontIcon HorizontalAlignment="Center"
-											  Glyph="{StaticResource Icon_Star_Rate}"
+									<PathIcon Data="{StaticResource Icon_Star_Outline}"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
-									<TextBlock HorizontalAlignment="Center"
-											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource BodySmall}"
 											   Text="{Binding Recipe.Difficulty}"
 											   TextAlignment="Center"
@@ -162,12 +154,11 @@
 								</utu:AutoLayout>
 								<utu:AutoLayout Spacing="4"
 												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Center"
 												utu:AutoLayout.PrimaryAlignment="Stretch">
-									<FontIcon HorizontalAlignment="Center"
-											  Glyph="{StaticResource Icon_Local_Fire_Department}"
+									<PathIcon Data="{StaticResource Icon_Fire}"
 											  Foreground="{ThemeResource OnSurfaceBrush}" />
-									<TextBlock HorizontalAlignment="Center"
-											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource BodySmall}"
 											   Text="{Binding Recipe.Calories}"
 											   TextAlignment="Center"
@@ -363,9 +354,7 @@
 																							Spacing="{utu:Responsive Narrow=5,
 																													 Wide=8}"
 																							CounterAxisAlignment="Center">
-																				<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
-																						  FontSize="20"
-																						  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+																				<PathIcon Data="{StaticResource Icon_Thumb_Up_Off}"
 																						  Foreground="{ThemeResource PrimaryBrush}" />
 																				<TextBlock Text="{Binding Likes.Count}"
 																						   Foreground="{ThemeResource PrimaryBrush}"
@@ -377,9 +366,7 @@
 																							Spacing="{utu:Responsive Narrow=5,
 																													 Wide=8}"
 																							CounterAxisAlignment="Center">
-																				<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
-																						  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																						  FontSize="20"
+																				<PathIcon Data="{StaticResource Icon_Thumb_Up}"
 																						  Foreground="{ThemeResource PrimaryBrush}" />
 																				<TextBlock Text="{Binding Likes.Count}"
 																						   Foreground="{ThemeResource PrimaryBrush}"
@@ -398,9 +385,7 @@
 																							Spacing="{utu:Responsive Narrow=5,
 																													 Wide=8}"
 																							CounterAxisAlignment="Center">
-																				<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
-																						  FontSize="20"
-																						  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
+																				<PathIcon Data="{StaticResource Icon_Thumb_Down_Off}"
 																						  Foreground="{ThemeResource PrimaryBrush}" />
 																				<TextBlock Text="{Binding Dislikes.Count}"
 																						   Foreground="{ThemeResource PrimaryBrush}"
@@ -411,9 +396,7 @@
 																			<utu:AutoLayout Orientation="Horizontal"
 																							Spacing="8"
 																							CounterAxisAlignment="Center">
-																				<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
-																						  FontSize="20"
-																						  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+																				<PathIcon Data="{StaticResource Icon_Thumb_Down}"
 																						  Foreground="{ThemeResource PrimaryBrush}" />
 																				<TextBlock Text="{Binding Dislikes.Count}"
 																						   Foreground="{ThemeResource PrimaryBrush}"
