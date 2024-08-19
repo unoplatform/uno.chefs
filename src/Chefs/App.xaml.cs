@@ -82,23 +82,11 @@ public partial class App : Application
 				.UseSerialization()
 				.ConfigureServices((context, services) =>
 				{
-					services.AddSingleton<IRequestAdapter, HttpClientRequestAdapter>(sp =>
-					{
-						var authenticationProvider = new AnonymousAuthenticationProvider();
-						var parseNodeFactory = new Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory();
-						var serializationWriterFactory = new Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory();
-						var httpClient = new HttpClient();
-						var adapter = new HttpClientRequestAdapter(authenticationProvider, parseNodeFactory, serializationWriterFactory, httpClient);
-						adapter.BaseUrl = "https://localhost:5002";
-						return adapter;
-					});
-					
-					services.AddSingleton<ChefsApiClient>(sp =>
-					{
-						var requestAdapter = sp.GetRequiredService<IRequestAdapter>();
-						return new ChefsApiClient(requestAdapter);
-					});
-					
+					services.AddKiotaClient<ChefsApiClient>(
+						context,
+						options: new EndpointOptions { Url = "https://localhost:5002" }
+					);
+
 					services
 						.AddSingleton<INotificationService, NotificationService>()
 						.AddSingleton<IRecipeService, RecipeService>()
