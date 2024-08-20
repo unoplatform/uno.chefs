@@ -53,10 +53,20 @@
 		</UnoFeatures>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Mapsui.Uno.WinUI" />
-		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
-	</ItemGroup>
+	<Choose>
+		<When Condition="$(IsWinAppSdk)">
+			<ItemGroup>
+				<PackageReference Include="Mapsui.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.WinUI" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<PackageReference Include="Mapsui.Uno.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
 
 	<ItemGroup>
 		<Content Include="Data\**\*.json" />
