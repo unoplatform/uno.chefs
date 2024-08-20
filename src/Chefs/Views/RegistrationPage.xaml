@@ -14,84 +14,80 @@
 	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d android ios not_win">
 
-	<utu:AutoLayout x:Name="RegisterLayout"
-					Margin="32"
-					HorizontalAlignment="Stretch"
-					MaxWidth="500"
-					PrimaryAxisAlignment="Center"
-					Spacing="32">
-		<Image Source="{ThemeResource ChefsLogoWithIcon}"
-			   Stretch="Uniform"
-			   utu:AutoLayout.CounterAlignment="Center"
-			   Width="160"
-			   Height="90" />
-		<utu:AutoLayout Spacing="16">
-			<TextBox PlaceholderText="Username"
-					 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-					 utu:InputExtensions.ReturnType="Next"
-					 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
-					 InputScope="Text"
-					 IsSpellCheckEnabled="False"
-					 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-				<ut:ControlExtensions.Icon>
-					<FontIcon Glyph="{StaticResource Icon_Person_Outline}"
-							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-				</ut:ControlExtensions.Icon>
-			</TextBox>
-			<TextBox PlaceholderText="Email"
-					 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-					 x:Name="RegistrationEmail"
-					 utu:InputExtensions.ReturnType="Next"
-					 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
-					 IsSpellCheckEnabled="False">
-				<ut:ControlExtensions.Icon>
-					<FontIcon Glyph="{StaticResource Icon_Mail_Outline}"
-							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-				</ut:ControlExtensions.Icon>
-			</TextBox>
-			<PasswordBox x:Name="RegistrationPassword"
-						 utu:InputExtensions.ReturnType="Done"
-						 utu:CommandExtensions.Command="{Binding Login}"
-						 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-						 PlaceholderText="Password"
-						 Style="{StaticResource OutlinedPasswordBoxStyle}"
-						 BorderBrush="{ThemeResource OutlineVariantBrush}">
-				<PasswordBox.Resources>
-					<ResourceDictionary>
-						<ResourceDictionary.ThemeDictionaries>
-							<ResourceDictionary x:Key="Light">
-								<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-								<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-							</ResourceDictionary>
-							<ResourceDictionary x:Key="Default">
-								<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-								<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
-							</ResourceDictionary>
-						</ResourceDictionary.ThemeDictionaries>
-					</ResourceDictionary>
-				</PasswordBox.Resources>
-				<ut:ControlExtensions.Icon>
-					<FontIcon Glyph="{StaticResource Icon_Lock}"
-							  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-				</ut:ControlExtensions.Icon>
-			</PasswordBox>
-			<Button HorizontalContentAlignment="Center"
-					VerticalContentAlignment="Center"
-					Content="Sign Up"
-					Command="{Binding Register}"
-					Style="{StaticResource ChefsPrimaryButtonStyle}" />
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<utu:AutoLayout Padding="32"
+						MaxWidth="500"
+						PrimaryAxisAlignment="Center"
+						Spacing="32">
+			<Image Source="{ThemeResource ChefsLogoWithIcon}"
+				   Stretch="Uniform"
+				   utu:AutoLayout.CounterAlignment="Center"
+				   Width="160"
+				   Height="90" />
+			<utu:AutoLayout Spacing="16">
+				<TextBox PlaceholderText="Username"
+						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+						 utu:InputExtensions.ReturnType="Next"
+						 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
+						 InputScope="Text"
+						 IsSpellCheckEnabled="False"
+						 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+					<ut:ControlExtensions.Icon>
+						<FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
+					</ut:ControlExtensions.Icon>
+				</TextBox>
+				<TextBox PlaceholderText="Email"
+						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+						 x:Name="RegistrationEmail"
+						 utu:InputExtensions.ReturnType="Next"
+						 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
+						 IsSpellCheckEnabled="False">
+					<ut:ControlExtensions.Icon>
+						<FontIcon Glyph="{StaticResource Icon_Mail_Outline}" />
+					</ut:ControlExtensions.Icon>
+				</TextBox>
+				<PasswordBox x:Name="RegistrationPassword"
+							 utu:InputExtensions.ReturnType="Done"
+							 utu:CommandExtensions.Command="{Binding Register}"
+							 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							 PlaceholderText="Password"
+							 Style="{StaticResource OutlinedPasswordBoxStyle}"
+							 BorderBrush="{ThemeResource OutlineVariantBrush}">
+					<PasswordBox.Resources>
+						<ResourceDictionary>
+							<ResourceDictionary.ThemeDictionaries>
+								<ResourceDictionary x:Key="Light">
+									<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+									<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+								</ResourceDictionary>
+								<ResourceDictionary x:Key="Default">
+									<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+									<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+								</ResourceDictionary>
+							</ResourceDictionary.ThemeDictionaries>
+						</ResourceDictionary>
+					</PasswordBox.Resources>
+					<ut:ControlExtensions.Icon>
+						<FontIcon Glyph="{StaticResource Icon_Lock}" />
+					</ut:ControlExtensions.Icon>
+				</PasswordBox>
+				<Button HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						Content="Sign Up"
+						Command="{Binding Register}"
+						Style="{StaticResource ChefsPrimaryButtonStyle}" />
+			</utu:AutoLayout>
+			<utu:AutoLayout PrimaryAxisAlignment="Center"
+							Orientation="Horizontal"
+							Spacing="4"
+							CounterAxisAlignment="Center">
+				<TextBlock Text="Already a member?"
+						   Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource LabelLarge}" />
+				<Button Content="Login Now"
+						uen:Navigation.Request="-/Login"
+						Style="{StaticResource TextButtonStyle}" />
+			</utu:AutoLayout>
 		</utu:AutoLayout>
-		<utu:AutoLayout PrimaryAxisAlignment="Center"
-						Orientation="Horizontal"
-						Spacing="4"
-						CounterAxisAlignment="Center">
-			<TextBlock Text="Already a member?"
-					   Foreground="{ThemeResource OnSurfaceBrush}"
-					   Style="{StaticResource LabelLarge}" />
-			<Button Content="Login Now"
-					uen:Navigation.Request="-/Login"
-					CornerRadius="20"
-					Style="{StaticResource TextButtonStyle}" />
-		</utu:AutoLayout>
-	</utu:AutoLayout>
+	</ScrollViewer>
 </Page>
