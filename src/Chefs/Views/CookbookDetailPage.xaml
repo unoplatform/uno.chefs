@@ -96,7 +96,7 @@
 								<Run Text="{Binding Data.Recipes.Count}" />
 								<Run Text="results" />
 							</TextBlock>
-							<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
+							<muxc:ItemsRepeater uen:Navigation.Request="CookbookDetails/RecipeDetails"
 												ItemTemplate="{StaticResource RecipeTemplate}"
 												ItemsSource="{Binding Data.Recipes}"
 												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},

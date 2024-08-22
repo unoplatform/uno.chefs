@@ -205,7 +205,7 @@
 					<muxc:ItemsRepeater x:Name="SearchRepeater"
 										Margin="{utu:Responsive Narrow='16,0,16,16',
 																Wide='40,0,40,40'}"
-										uen:Navigation.Request="SearchRecipeDetails"
+										uen:Navigation.Request="Search/RecipeDetails"
 										ItemTemplate="{StaticResource RecipeTemplate}"
 										ItemsSource="{Binding Data}"
 										Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},

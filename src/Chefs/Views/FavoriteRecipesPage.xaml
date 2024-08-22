@@ -278,7 +278,7 @@
 										<Run Text="{Binding Data.Count}" />
 										<Run Text="results" />
 									</TextBlock>
-									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
+									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipes/RecipeDetails"
 														ItemTemplate="{StaticResource RecipeTemplate}"
 														ItemsSource="{Binding Data}"
 														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},

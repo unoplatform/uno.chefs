@@ -155,7 +155,7 @@ public partial class App : Application
 						#region Main Tabs
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
-						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
+						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>(), DependsOn: "Home"),
 						#endregion
 
 						#region Cookbooks
@@ -165,10 +165,7 @@ public partial class App : Application
 						#endregion
 
 						#region Recipe Details
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
-						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
-						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
-						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						#endregion
 
 						#region Live Cooking
