@@ -132,12 +132,40 @@ public partial class App : Application
 			new ViewMap<RegistrationPage, RegistrationModel>(),
 			new ViewMap<NotificationsPage, NotificationsModel>(),
 			new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>(), ResultData: typeof(IChefEntity)),
-			new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
+			new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>(
+				ToQuery: recipe => new Dictionary<string, string> {{ nameof(Recipe.Id), recipe.Id.ToString() }},
+				FromQuery: async (sp, query) =>
+				{
+					if (query.TryGetValue(string.Empty, out var recipe) && recipe is Recipe r)
+					{
+						return r;
+					}
+
+					var recipeId = Guid.Parse(query[nameof(Recipe.Id)] + string.Empty);
+					var recipeService = sp.GetRequiredService<IRecipeService>();
+					var recipes = await recipeService.GetAll(default);
+
+					return recipes.FirstOrDefault(r => r.Id == recipeId);	
+				})),
 			new ViewMap<FavoriteRecipesPage, FavoriteRecipesModel>(),
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
 			new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
-			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
+			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>(
+				ToQuery: cookbook => new Dictionary<string, string> {{ nameof(Cookbook.Id), cookbook.Id.ToString() }},
+				FromQuery: async (sp, query) =>
+				{
+					if (query.TryGetValue(string.Empty, out var cookbook) && cookbook is Cookbook c)
+					{
+						return c;
+					}
+
+					var cookbookId = Guid.Parse(query[nameof(Cookbook.Id)] + string.Empty);
+					var cookbookService = sp.GetRequiredService<ICookbookService>();
+					var cookbooks = await cookbookService.GetSaved(default);
+
+					return cookbooks.FirstOrDefault(c => c.Id == cookbookId);	
+				})),
 			new ViewMap<CompletedDialog>(),
 			new ViewMap<MapPage, MapModel>(),
 			new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>())
