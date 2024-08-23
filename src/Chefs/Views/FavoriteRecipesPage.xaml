@@ -218,6 +218,11 @@
 
 	<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 		<utu:NavigationBar>
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton Width="0"
+							  Height="0"
+							  Visibility="Collapsed" />
+			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.Content>
 				<Grid>
 					<Image Source="{ThemeResource ChefsAppSignature}"

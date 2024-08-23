@@ -164,17 +164,8 @@ public partial class App : Application
 						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
 						#endregion
 
-						#region Recipe Details
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
-						#endregion
-
-						#region Live Cooking
 						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
-						new RouteMap("SearchLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "SearchRecipeDetails"),
-						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
-						new RouteMap("CookbookLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "CookbookRecipeDetails"),
-						#endregion
-
 						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
 					}),
 					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
