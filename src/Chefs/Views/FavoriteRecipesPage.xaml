@@ -218,11 +218,6 @@
 
 	<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 		<utu:NavigationBar>
-			<utu:NavigationBar.MainCommand>
-				<AppBarButton Width="0"
-							  Height="0"
-							  Visibility="Collapsed" />
-			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.Content>
 				<Grid>
 					<Image Source="{ThemeResource ChefsAppSignature}"
@@ -283,7 +278,7 @@
 										<Run Text="{Binding Data.Count}" />
 										<Run Text="results" />
 									</TextBlock>
-									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipes/RecipeDetails"
+									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 														ItemTemplate="{StaticResource RecipeTemplate}"
 														ItemsSource="{Binding Data}"
 														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
