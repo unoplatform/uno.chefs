@@ -183,7 +183,7 @@ public partial class App : Application
 						#region Main Tabs
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
-						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>(), DependsOn: "Home"),
+						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
 						#endregion
 
 						#region Cookbooks
