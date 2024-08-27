@@ -24,6 +24,6 @@ public partial record GroupedNotification
 	private static bool IsSameDate(DateTime date1, DateTime date2)
 	{
 		// Accessing Date property makes sure we are ignoring the time component of DateTime
-		return instance.Date.Equals(unit.Date);
+		return date1.Date.Equals(date2.Date);
 	}
 }
