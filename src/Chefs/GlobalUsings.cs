@@ -35,3 +35,4 @@ global using Uno.Extensions.Storage;
 global using Uno.Toolkit.UI;
 global using Notification = Chefs.Business.Models.Notification;
 global using Application = Microsoft.UI.Xaml.Application;
+[assembly: Uno.Extensions.Reactive.Config.BindableGenerationTool(3)]
