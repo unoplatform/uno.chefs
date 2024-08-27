@@ -7,8 +7,8 @@ public partial record GroupedNotification
 	public GroupedNotification(IEnumerable<Notification> notifications)
 	{
 		_all = notifications.ToImmutableList();
-		Today = _all.Where(x => x.Date.Equals(DateTime.Today)).ToImmutableList();
-		Yesterday = _all.Where(x => x.Date.Equals(DateTime.Now.AddDays(-1))).ToImmutableList();
+		Today = _all.Where(x => IsSameDate(x.Date, DateTime.Today)).ToImmutableList();
+		Yesterday = _all.Where(x => IsSameDate(x.Date, DateTime.Now.AddDays(-1))).ToImmutableList();
 		Older = _all.Where(x => x.Date < DateTime.Now.AddDays(-1)).ToImmutableList();
 	}
 
@@ -20,4 +20,10 @@ public partial record GroupedNotification
 	public bool HasOlderNotifications => Older.Any();
 
 	public IImmutableList<Notification> GetAll() => _all;
+
+	private static bool IsSameDate(DateTime date1, DateTime date2)
+	{
+		// Accessing Date property makes sure we are ignoring the time component of DateTime
+		return instance.Date.Equals(unit.Date);
+	}
 }
