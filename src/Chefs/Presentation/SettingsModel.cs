@@ -18,7 +18,7 @@ public partial record SettingsModel
 		_themeService = themeService;
 		_user = user;
 
-		Settings.ForEachAsync(async (settings, ct) =>
+		Settings.ForEach(async (settings, ct) =>
 		{
 			if (settings is { })
 			{
@@ -30,7 +30,7 @@ public partial record SettingsModel
 			}
 		});
 
-		Profile.ForEachAsync(async (profile, ct) =>
+		Profile.ForEach(async (profile, ct) =>
 		{
 			if (profile is null)
 			{
