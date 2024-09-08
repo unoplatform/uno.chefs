@@ -39,8 +39,6 @@ public partial record CreateUpdateCookbookModel
 			SaveButtonContent = "Create cookbook";
 			IsCreate = true;
 		}
-
-		_messenger.Observe(Cookbook, cb => cb.Id);
 	}
 	public bool IsCreate { get; }
 
@@ -50,16 +48,19 @@ public partial record CreateUpdateCookbookModel
 
 	public string SaveButtonContent { get; }
 
-	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
+	public IState<Cookbook> Cookbook => State
+		.Value(this, () => _cookbook ?? new Cookbook())
+		.Observe(_messenger, cb => cb.Id);
 
 	public IListFeed<Recipe> Recipes => ListFeed
 		.PaginatedAsync(
 			async (PageRequest pageRequest, CancellationToken ct) =>
 				await _recipeService.GetFavoritedWithPagination(pageRequest.DesiredSize ?? DefaultPageSize, pageRequest.CurrentCount, ct)
-		).Selection(SelectedRecipes);
+		)
+		.Selection(SelectedRecipes);
 
-	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
-
+	public IState<IImmutableList<Recipe>> SelectedRecipes => State
+		.FromFeed(this, Cookbook.Select(c => c.Recipes));
 	public async ValueTask Submit(CancellationToken ct)
 	{
 		var selectedRecipes = await SelectedRecipes;

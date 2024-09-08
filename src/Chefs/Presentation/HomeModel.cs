@@ -15,12 +15,12 @@ public partial record HomeModel
 		_recipeService = recipe;
 		_userService = userService;
 		_messenger = messenger;
-
-		_messenger.Observe(TrendingNow, r => r.Id);
 	}
 	
-	public IListState<Recipe> TrendingNow => ListState.Async(this, _recipeService.GetTrending);
-
+	public IListState<Recipe> TrendingNow => ListState
+		.Async(this, _recipeService.GetTrending)
+		.Observe(_messenger, r => r.Id);
+	
 	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(_recipeService.GetCategoriesWithCount);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);

@@ -1,13 +1,15 @@
+using CommunityToolkit.Mvvm.Messaging;
 namespace Chefs.Presentation;
 
 public partial record CookbookDetailModel
 {
+	private readonly IMessenger _messenger;
 	public CookbookDetailModel(Cookbook cookbook, IMessenger messenger)
 	{
-		Cookbook = State<Cookbook>.Value(this, () => cookbook ?? new Cookbook());
-
-		messenger.Observe(Cookbook, cb => cb.Id);
+		_messenger = messenger; 
 	}
-
-	public IState<Cookbook> Cookbook { get; }
+	
+	public IState<Cookbook> Cookbook => State
+		.Value(this, () => new Cookbook())
+		.Observe(_messenger, cb => cb.Id);
 }
