@@ -31,7 +31,7 @@
 								MinItemWidth="240"
 								MinRowSpacing="15" />
 
-		<DataTemplate x:Key="RecipeTemplate"
+		<DataTemplate x:Key="CookbookRecipeTemplate"
 					  x:DataType="models:Recipe">
 			<ListViewItem x:Name="RecipeTemplateCard"
 						  Background="{ThemeResource SurfaceBrush}"
@@ -118,7 +118,7 @@
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  Source="{Binding Recipes}">
 						<DataTemplate>
-							<muxc:ItemsRepeater ItemTemplate="{StaticResource RecipeTemplate}"
+							<muxc:ItemsRepeater ItemTemplate="{StaticResource CookbookRecipeTemplate}"
 												ItemsSource="{Binding Data}"
 												utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
 												utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"

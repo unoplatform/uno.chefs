@@ -69,42 +69,6 @@
 			</utu:AutoLayout>
 		</DataTemplate>
 
-		<DataTemplate x:Key="RecipeTemplate">
-			<utu:CardContentControl x:Name="RecipeTemplateCard"
-									HorizontalAlignment="Stretch"
-									VerticalAlignment="Stretch"
-									Background="{ThemeResource SurfaceBrush}"
-									Style="{StaticResource FilledCardContentControlStyle}">
-				<utu:CardContentControl.ContentTemplate>
-					<DataTemplate>
-						<utu:AutoLayout HorizontalAlignment="Stretch"
-										Background="{ThemeResource SurfaceBrush}"
-										CornerRadius="4"
-										PrimaryAxisAlignment="Center">
-							<Border Height="144">
-								<Image HorizontalAlignment="Center"
-									   VerticalAlignment="Center"
-									   Source="{Binding ImageUrl}"
-									   Stretch="UniformToFill" />
-							</Border>
-							<utu:AutoLayout PrimaryAxisAlignment="Center"
-											CounterAxisAlignment="Start"
-											Padding="16">
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleSmall}"
-										   Text="{Binding Name}"
-										   TextWrapping="Wrap" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-										   Style="{StaticResource CaptionMedium}"
-										   Text="{Binding TimeCal}"
-										   TextWrapping="Wrap" />
-							</utu:AutoLayout>
-						</utu:AutoLayout>
-					</DataTemplate>
-				</utu:CardContentControl.ContentTemplate>
-			</utu:CardContentControl>
-		</DataTemplate>
-
 		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
 								ItemsStretch="Fill"
 								MaximumRowsOrColumns="2"
