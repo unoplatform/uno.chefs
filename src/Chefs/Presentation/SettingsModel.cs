@@ -17,20 +17,24 @@ public partial record SettingsModel
 		_userService = userService;
 		_themeService = themeService;
 		_user = user;
+	}
 
-		Settings.ForEachAsync(async (settings, ct) =>
+	public IState<AppConfig> Settings => State
+		.Async(this, _userService.GetSettings)
+		.ForEach(async (settings, ct) =>
 		{
 			if (settings is { })
 			{
 				var isDark = (settings.IsDark ?? false);
-				await _themeService.SetThemeAsync(isDark ? AppTheme.Dark : AppTheme.Light);
+				await _themeService.SetThemeAsync(isDark ? Uno.Extensions.Toolkit.AppTheme.Dark : Uno.Extensions.Toolkit.AppTheme.Light);
 				await _userService.SetSettings(settings, ct);
 
 				WeakReferenceMessenger.Default.Send(new ThemeChangedMessage(isDark));
 			}
 		});
-
-		Profile.ForEachAsync(async (profile, ct) =>
+	public IState<User> Profile => State
+		.Value(this, () => _user)
+		.ForEach(async (profile, ct) =>
 		{
 			if (profile is null)
 			{
@@ -39,9 +43,4 @@ public partial record SettingsModel
 
 			await _userService.Update(profile, ct);
 		});
-	}
-
-	public IState<User> Profile => State.Value(this, () => _user);
-
-	public IState<AppConfig> Settings => State.Async(this, _userService.GetSettings);
 }
