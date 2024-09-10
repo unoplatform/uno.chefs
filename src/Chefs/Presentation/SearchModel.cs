@@ -12,17 +12,19 @@ public partial record SearchModel
 		_recipeService = recipeService;
 		_messenger = messenger;
 
-		Filter = State.Value(this, () => filter ?? new SearchFilter());
-		_messenger.Observe(Results, r => r.Id);
+		Filter = State.Value(this, () => filter ?? new SearchFilter())
+			.Observe(_messenger, f => f);
 	}
-
-	public IState<string> Term => State<string>.Value(this, () => string.Empty);
+	
+	public IState<string> Term => State<string>.Value(this, () => string.Empty)
+		.Observe(_messenger, t => t);
 
 	public IState<SearchFilter> Filter { get; }
 	public IListState<Recipe> Results => ListState.FromFeed(this, Feed
 		.Combine(Term, Filter)
 		.SelectAsync(Search)
-		.AsListFeed());
+		.AsListFeed())
+		.Observe(_messenger, r => r.Id);
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 
