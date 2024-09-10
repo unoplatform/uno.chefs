@@ -179,40 +179,6 @@
 				</Button>
 			</utu:AutoLayout>
 		</DataTemplate>
-
-		<DataTemplate x:Key="RecipeTemplate">
-			<utu:CardContentControl Background="{ThemeResource SurfaceBrush}"
-									CornerRadius="4"
-									Style="{StaticResource FilledCardContentControlStyle}">
-				<utu:CardContentControl.ContentTemplate>
-					<DataTemplate>
-						<utu:AutoLayout CornerRadius="4">
-							<Border x:Name="ImageLayout"
-									Height="144">
-								<Image HorizontalAlignment="Center"
-									   VerticalAlignment="Center"
-									   Source="{Binding ImageUrl}"
-									   Stretch="UniformToFill" />
-							</Border>
-
-							<utu:AutoLayout Padding="16"
-											PrimaryAxisAlignment="Center"
-											CounterAxisAlignment="Start"
-											Spacing="4">
-								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-										   Style="{StaticResource TitleSmall}"
-										   Text="{Binding Name}"
-										   TextWrapping="Wrap" />
-								<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-										   Style="{StaticResource CaptionMedium}"
-										   Text="{Binding TimeCal}"
-										   TextWrapping="Wrap" />
-							</utu:AutoLayout>
-						</utu:AutoLayout>
-					</DataTemplate>
-				</utu:CardContentControl.ContentTemplate>
-			</utu:CardContentControl>
-		</DataTemplate>
 	</Page.Resources>
 
 	<utu:AutoLayout PrimaryAxisAlignment="Stretch">

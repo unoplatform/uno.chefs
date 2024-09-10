@@ -168,6 +168,7 @@
 							  HorizontalScrollMode="Disabled"
 							  VerticalScrollBarVisibility="Hidden">
 					<muxc:ItemsRepeater ItemsSource="{Binding Data}"
+										ItemTemplate="{StaticResource RecipeTemplate}"
 										uen:Navigation.Request="RecipeDetails"
 										Margin="16,0,16,16">
 						<muxc:ItemsRepeater.Layout>
@@ -177,47 +178,6 @@
 													MinRowSpacing="8"
 													ItemsStretch="Fill" />
 						</muxc:ItemsRepeater.Layout>
-						<muxc:ItemsRepeater.ItemTemplate>
-							<!--
-								Using an x:bind for windows as a workaround for now regarding this WinUI issue:
-								https://github.com/microsoft/microsoft-ui-xaml/issues/6689
-							-->
-							<DataTemplate x:DataType="models:Recipe">
-								<Border win:DataContext="{x:Bind}">
-									<utu:CardContentControl x:Name="RecipeTemplateCard"
-															Background="{ThemeResource SurfaceBrush}"
-															CornerRadius="4"
-															Style="{StaticResource FilledCardContentControlStyle}">
-										<utu:CardContentControl.ContentTemplate>
-											<DataTemplate>
-												<utu:AutoLayout CornerRadius="4">
-													<Border x:Name="ImageLayout"
-															Height="144">
-														<Image HorizontalAlignment="Center"
-															   VerticalAlignment="Center"
-															   Source="{Binding ImageUrl}"
-															   Stretch="UniformToFill" />
-													</Border>
-
-													<utu:AutoLayout Padding="16"
-																	PrimaryAxisAlignment="Center"
-																	Spacing="4">
-														<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-																   Style="{StaticResource TitleSmall}"
-																   Text="{Binding Name}"
-																   TextWrapping="Wrap" />
-														<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-																   Style="{StaticResource CaptionMedium}"
-																   Text="{Binding TimeCal}"
-																   TextWrapping="Wrap" />
-													</utu:AutoLayout>
-												</utu:AutoLayout>
-											</DataTemplate>
-										</utu:CardContentControl.ContentTemplate>
-									</utu:CardContentControl>
-								</Border>
-							</DataTemplate>
-						</muxc:ItemsRepeater.ItemTemplate>
 					</muxc:ItemsRepeater>
 				</ScrollViewer>
 			</DataTemplate>
