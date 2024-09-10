@@ -29,10 +29,10 @@ public partial class RecipeDetailsModel
     public IListState<Review> Reviews => ListState.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct));
 
     public async ValueTask Like(Review review, CancellationToken ct) =>
-	    await _recipeService.LikeReview(review, ct);
+        await _recipeService.LikeReview(review, ct);
 
     public async ValueTask Dislike(Review review, CancellationToken ct) =>
-	    await _recipeService.DislikeReview(review, ct);
+        await _recipeService.DislikeReview(review, ct);
 }
 ```
 

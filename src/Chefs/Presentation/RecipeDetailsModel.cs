@@ -24,10 +24,11 @@ public partial class RecipeDetailsModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 		_userService = userService;
-		_messenger = messenger;
 
 		Recipe = recipe;
-		_messenger.Observe(Reviews, x => x.Id);
+		_messenger = messenger;
+
+		messenger.Observe(Reviews, x => x.Id);
 	}
 
 	public Recipe Recipe { get; }
