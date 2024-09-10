@@ -27,7 +27,6 @@ public partial class RecipeDetailsModel
 
 		Recipe = recipe;
 		_messenger = messenger;
-
 		messenger.Observe(Reviews, x => x.Id);
 	}
 
