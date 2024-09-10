@@ -61,7 +61,8 @@
 						</TextBox>
 						<TextBox PlaceholderText="Mobile Number"
 								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-								 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+								 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								 TextChanging="TextBox_TextChanging">
 							<ut:ControlExtensions.Icon>
 								<PathIcon Data="{StaticResource Icon_Phone_Iphone}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
