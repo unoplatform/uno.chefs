@@ -19,14 +19,17 @@ Each `RecipeDetailsModel` has a ListState of `Reviews` that the user can like or
 ```csharp
 public partial class RecipeDetailsModel
 {
+    private readonly IMessenger _messenger;
+
     public RecipeDetailsModel(..., IRecipeService recipeService, IMessenger messenger)
     {
         _recipeService = recipeService;
-
-        messenger.Observe(Reviews, x => x.Id);
+        _messenger = messenger;
     }
 
-    public IListState<Review> Reviews => ListState.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct));
+    public IListState<Review> Reviews => ListState
+        .Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct))
+        .Observe(_messenger, r => r.Id);
 
     public async ValueTask Like(Review review, CancellationToken ct) =>
         await _recipeService.LikeReview(review, ct);
