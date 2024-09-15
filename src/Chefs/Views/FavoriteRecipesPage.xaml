@@ -16,19 +16,12 @@
 	  NavigationCacheMode="Enabled"
 	  mc:Ignorable="d">
 	<Page.Resources>
-		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="2"
-								MinColumnSpacing="8"
-								MinItemWidth="155"
-								MinRowSpacing="8" />
-
-		<muxc:UniformGridLayout x:Key="WideGridLayout"
-								ItemsStretch="Fill"
-								MaximumRowsOrColumns="7"
-								MinColumnSpacing="15"
-								MinItemWidth="240"
-								MinRowSpacing="15" />
+								MaximumRowsOrColumns="{utu:Responsive Narrow=2, Wide=7}"
+								MinColumnSpacing="{utu:Responsive Narrow=8, Wide=15}"
+								MinItemWidth="{utu:Responsive Narrow=155, Wide=240}"
+								MinRowSpacing="{utu:Responsive Narrow=8, Wide=15}" />
 
 		<DataTemplate x:Key="CookbookEmptyTemplate">
 			<utu:AutoLayout Padding="32,0"
@@ -236,7 +229,6 @@
 										  HorizontalScrollMode="Disabled"
 										  VerticalScrollBarVisibility="Hidden">
 								<utu:AutoLayout>
-
 									<TextBlock utu:AutoLayout.CounterAlignment="Start"
 											   Margin="0,0,0,10"
 											   Style="{StaticResource BodyLarge}">
@@ -246,14 +238,13 @@
 									<muxc:ItemsRepeater uen:Navigation.Request="FavoriteRecipeDetails"
 														ItemTemplate="{StaticResource RecipeTemplate}"
 														ItemsSource="{Binding Data}"
-														Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																				Wide={StaticResource WideGridLayout}}" />
+														Layout="{StaticResource ResponsiveGridLayout}" />
 								</utu:AutoLayout>
 							</ScrollViewer>
 						</DataTemplate>
 					</uer:FeedView>
-
 				</Grid>
+
 				<Grid uen:Region.Name="Cookbooks"
 					  Visibility="Collapsed">
 					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
@@ -270,8 +261,7 @@
 													uen:Navigation.Request="CookbookDetails"
 													ItemTemplate="{StaticResource CookbookTemplate}"
 													ItemsSource="{Binding Data}"
-													Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																			Wide={StaticResource WideGridLayout}}" />
+													Layout="{StaticResource ResponsiveGridLayout}" />
 							</ScrollViewer>
 						</DataTemplate>
 					</uer:FeedView>

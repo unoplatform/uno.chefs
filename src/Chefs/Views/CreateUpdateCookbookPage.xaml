@@ -17,19 +17,12 @@
 	  mc:Ignorable="d">
 
 	<Page.Resources>
-		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="2"
-								MinColumnSpacing="6"
-								MinItemWidth="155"
-								MinRowSpacing="6" />
-
-		<muxc:UniformGridLayout x:Key="WideGridLayout"
-								ItemsStretch="Fill"
-								MaximumRowsOrColumns="7"
-								MinColumnSpacing="15"
-								MinItemWidth="240"
-								MinRowSpacing="15" />
+								MaximumRowsOrColumns="{utu:Responsive Narrow=2, Wide=7}"
+								MinColumnSpacing="{utu:Responsive Narrow=6, Wide=15}"
+								MinItemWidth="{utu:Responsive Narrow=155, Wide=240}"
+								MinRowSpacing="{utu:Responsive Narrow=6, Wide=15}" />
 
 		<DataTemplate x:Key="CookbookRecipeTemplate"
 					  x:DataType="models:Recipe">
@@ -122,8 +115,7 @@
 												ItemsSource="{Binding Data}"
 												utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
 												utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
-												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																		Wide={StaticResource WideGridLayout}}" />
+												Layout="{StaticResource ResponsiveGridLayout}" />
 						</DataTemplate>
 					</uer:FeedView>
 				</utu:AutoLayout>
