@@ -1,3 +1,5 @@
+using System.Text.Json;
+using Chefs.Services;
 using Chefs.Services.Clients;
 using Chefs.Views.Flyouts;
 using LiveChartsCore;
@@ -82,10 +84,45 @@ public partial class App : Application
 				.UseSerialization()
 				.ConfigureServices((context, services) =>
 				{
-					services.AddKiotaClient<ChefsApiClient>(
-						context,
-						options: new EndpointOptions { Url = "https://localhost:5002" }
-					);
+					services.AddSingleton<IRequestAdapter, HttpClientRequestAdapter>(sp =>
+					{
+						var mockHttpMessageHandler = new MockHttpMessageHandler();
+						
+						var httpClient = new HttpClient(mockHttpMessageHandler)
+						{
+							BaseAddress = new Uri("https://localhost:5002")
+						};
+						var authenticationProvider = new AnonymousAuthenticationProvider();
+						var parseNodeFactory = new Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory();
+						var serializationWriterFactory = new Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory();
+						
+						return new HttpClientRequestAdapter(authenticationProvider, parseNodeFactory, serializationWriterFactory, httpClient);
+					});
+
+					services.AddSingleton<ChefsApiClient>(sp =>
+					{
+						var requestAdapter = sp.GetRequiredService<IRequestAdapter>();
+						return new ChefsApiClient(requestAdapter);
+					});
+					
+					//UNCOMMENT THE CODE BELOW TO USE THE REAL API (WITH THE SERVER PROJECT) INSTEAD OF THE MOCK API 
+
+					/*services.AddSingleton<IRequestAdapter, HttpClientRequestAdapter>(sp =>
+					{
+						var authenticationProvider = new AnonymousAuthenticationProvider();
+						var parseNodeFactory = new Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory();
+						var serializationWriterFactory = new Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory();
+						var httpClient = new HttpClient();
+						var adapter = new HttpClientRequestAdapter(authenticationProvider, parseNodeFactory, serializationWriterFactory, httpClient);
+						adapter.BaseUrl = "https://localhost:5002";
+						return adapter;
+					});
+					
+					services.AddSingleton<ChefsApiClient>(sp =>
+					{
+						var requestAdapter = sp.GetRequiredService<IRequestAdapter>();
+						return new ChefsApiClient(requestAdapter);
+					});*/
 
 					services
 						.AddSingleton<INotificationService, NotificationService>()
