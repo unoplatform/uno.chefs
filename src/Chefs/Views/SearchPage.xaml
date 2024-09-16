@@ -71,10 +71,14 @@
 
 		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="{utu:Responsive Narrow=2, Wide=8}"
-								MinColumnSpacing="{utu:Responsive Narrow=8, Wide=16}"
-								MinItemWidth="{utu:Responsive Narrow=155, Wide=240}"
-								MinRowSpacing="{utu:Responsive Narrow=8, Wide=16}" />
+								MaximumRowsOrColumns="{utu:Responsive Narrow=2,
+																	  Wide=8}"
+								MinColumnSpacing="{utu:Responsive Narrow=8,
+																  Wide=16}"
+								MinItemWidth="{utu:Responsive Narrow=155,
+															  Wide=240}"
+								MinRowSpacing="{utu:Responsive Narrow=8,
+															   Wide=16}" />
 	</Page.Resources>
 
 	<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
