@@ -69,20 +69,18 @@
 			</utu:AutoLayout>
 		</DataTemplate>
 
-		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="2"
-								MinColumnSpacing="8"
-								MinItemWidth="155"
-								MinRowSpacing="8" />
-
-		<muxc:UniformGridLayout x:Key="WideGridLayout"
-								ItemsStretch="Fill"
-								MaximumRowsOrColumns="8"
-								MinColumnSpacing="16"
-								MinItemWidth="240"
-								MinRowSpacing="16" />
+								MaximumRowsOrColumns="{utu:Responsive Narrow=2,
+																	  Wide=8}"
+								MinColumnSpacing="{utu:Responsive Narrow=8,
+																  Wide=16}"
+								MinItemWidth="{utu:Responsive Narrow=155,
+															  Wide=240}"
+								MinRowSpacing="{utu:Responsive Narrow=8,
+															   Wide=16}" />
 	</Page.Resources>
+
 	<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
 
 		<utu:NavigationBar>
@@ -171,8 +169,7 @@
 										uen:Navigation.Request="SearchRecipeDetails"
 										ItemTemplate="{StaticResource RecipeTemplate}"
 										ItemsSource="{Binding Data}"
-										Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																Wide={StaticResource WideGridLayout}}" />
+										Layout="{StaticResource ResponsiveGridLayout}" />
 				</ScrollViewer>
 
 			</DataTemplate>

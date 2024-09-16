@@ -17,19 +17,16 @@
 	  mc:Ignorable="d">
 
 	<Page.Resources>
-		<muxc:UniformGridLayout x:Key="NarrowGridLayout"
+		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="2"
-								MinColumnSpacing="6"
-								MinItemWidth="155"
-								MinRowSpacing="6" />
-
-		<muxc:UniformGridLayout x:Key="WideGridLayout"
-								ItemsStretch="Fill"
-								MaximumRowsOrColumns="7"
-								MinColumnSpacing="15"
-								MinItemWidth="240"
-								MinRowSpacing="15" />
+								MaximumRowsOrColumns="{utu:Responsive Narrow=2,
+																	  Wide=7}"
+								MinColumnSpacing="{utu:Responsive Narrow=6,
+																  Wide=15}"
+								MinItemWidth="{utu:Responsive Narrow=155,
+															  Wide=240}"
+								MinRowSpacing="{utu:Responsive Narrow=6,
+															   Wide=15}" />
 	</Page.Resources>
 
 	<utu:AutoLayout>
@@ -48,7 +45,6 @@
 			<DataTemplate>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								Padding="16">
-					<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 					<ScrollViewer x:Name="RecipesScrollViewer"
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  HorizontalScrollMode="Disabled"
@@ -64,8 +60,7 @@
 							<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
 												ItemTemplate="{StaticResource RecipeTemplate}"
 												ItemsSource="{Binding Data.Recipes}"
-												Layout="{utu:Responsive Narrow={StaticResource NarrowGridLayout},
-																		Wide={StaticResource WideGridLayout}}" />
+												Layout="{StaticResource ResponsiveGridLayout}" />
 						</utu:AutoLayout>
 					</ScrollViewer>
 					<Button x:Name="FabButton"
