@@ -10,7 +10,7 @@ Applying consistent and efficient styles across an application can be challengin
 
 ## Solution
 
-**Uno.Toolkit** provides lightweight styling capabilities, which allow you to create reusable styles that can be easily applied across your application. This approach helps in creating a consistent look and feel by allowing you to override resources at different levels, such as app-level, page-level, or control-level.
+Lightweight styling allows you to create reusable styles that can be applied across your application. This is a general capability of XAML styles, where you can define ThemeResources to achieve this. Both **Uno.Toolkit** and **Uno.Themes** provide styles that work seamlessly with lightweight styling, making it easier to maintain consistency across your app.
 
 1. App-Level Resource Overrides:
 
@@ -47,34 +47,37 @@ Applying consistent and efficient styles across an application can be challengin
     </Application>
     ```
 
-2. Page-Level Resource Overrides:
+    To see all the available resources for styling FloatingActionButton (FAB), refer to the Uno Themes [FloatingActionButton]( xref:Uno.Themes.Styles.FloatingActionButton).
 
-    At the page level, you can override resources, which will apply to all controls within that page, here is an example from the `LoginPage` in Chefs:
+2. Control-Level Resource Overrides:
+
+   You can also apply lightweight styling directly on specific controls for more granular control over their appearance. For example, in the `LoginPage` in the Chefs app, the `OutlinedPasswordBoxPlaceholderForeground` resource is overridden directly on the `PasswordBox` control:
 
     ```xml
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light">
-                    <StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-                </ResourceDictionary>
-                <ResourceDictionary x:Key="Default">
-                    <StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-                </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>    
+     <PasswordBox.Resources> 
+ 	<ResourceDictionary> 
+ 		<ResourceDictionary.ThemeDictionaries> 
+ 			<ResourceDictionary x:Key="Light"> 
+ 				<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" /> 
+ 				<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String> 
+ 			</ResourceDictionary> 
+ 			<ResourceDictionary x:Key="Default"> 
+ 				<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" /> 
+ 				<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String> 
+ 			</ResourceDictionary> 
+ 		</ResourceDictionary.ThemeDictionaries> 
+ 	</ResourceDictionary> 
+ </PasswordBox.Resources> 
     ```
 
 ## Source Code
 
 Chefs app
 
-- [App.xaml](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/App.xaml)
+- [App.xaml](https://github.com/unoplatform/uno.chefs/blob/023f952fa87a47ee9edb85eeecf351a17a002477/src/Chefs/App.xaml)
 
 - [Login.xaml](https://github.com/unoplatform/uno.chefs/blob/6edfea34e5adc1245f0d0ae1c71c1b0193d15b06/src/Chefs/Views/LoginPage.xaml#L17-L30)
 
 ## Documentation
 
-- [Uno Toolkit Resource Extensions](xref:Uno.Toolkit.Helpers.ResourceExtensions)
 - [Uno Toolkit Lightweight Styling](xref:Uno.Toolkit.LightweightStyling)
