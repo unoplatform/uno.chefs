@@ -1,2 +1,7 @@
 <Project>
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' OR $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'macos'">
+		<!-- Workaround: For iOS/macOS builds, System.Private.Uri is pulled implicitly with a vulnerable version -->
+		<!-- There is a bit of related discussions in https://github.com/dotnet/sdk/issues/30659 -->
+		<PackageReference Include="System.Private.Uri" Version="4.3.2" />
+	</ItemGroup>
 </Project>
