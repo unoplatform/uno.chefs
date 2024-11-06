@@ -74,6 +74,14 @@
 		<Content Include="Data\**\*.json" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
+	</ItemGroup>
+
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
 		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
 		<DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>

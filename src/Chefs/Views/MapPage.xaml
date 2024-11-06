@@ -10,23 +10,23 @@
 	  xmlns:local="using:Chefs.Views"
 	  xmlns:map="using:Mapsui.UI.WinUI"
 	  x:Class="Chefs.Views.MapPage"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  mc:Ignorable="d"
 	  Background="{ThemeResource BackgroundBrush}"
 	  utu:StatusBar.Foreground="Dark"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout PrimaryAxisAlignment="Stretch">
-			<utu:NavigationBar Content="Near me">
-				<utu:NavigationBar.MainCommand>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.MainCommand>
-			</utu:NavigationBar>
-			<map:MapControl x:Name="MapControl" />
-		</utu:AutoLayout>
+	<utu:AutoLayout>
+		<utu:NavigationBar Content="Near me">
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton>
+					<not_mobile:AppBarButton.Icon>
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+					</not_mobile:AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.MainCommand>
+		</utu:NavigationBar>
+		<map:MapControl x:Name="MapControl"
+						utu:AutoLayout.PrimaryAlignment="Stretch" />
 	</utu:AutoLayout>
 </Page>
