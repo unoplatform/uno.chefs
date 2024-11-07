@@ -11,7 +11,8 @@
 	  mc:Ignorable="d"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
-	  NavigationCacheMode="Enabled">
+	  NavigationCacheMode="Enabled"
+	  Background="{ThemeResource BackgroundBrush}">
 	<Page.Resources>
 		<DataTemplate x:Key="HomeLargeItemTemplate">
 			<utu:CardContentControl Margin="0"

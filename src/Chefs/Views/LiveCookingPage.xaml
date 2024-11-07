@@ -18,7 +18,7 @@
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
-	  Background="Transparent"
+	  Background="{ThemeResource BackgroundBrush}"
 	  mc:Ignorable="d not_win skia">
 
 	<Page.Resources>
