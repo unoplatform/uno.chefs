@@ -117,7 +117,7 @@ public sealed partial class ChartControl : UserControl
 			},
 			new PieSeries<int>
 			{
-				Values = new []{ 5},
+				Values = new []{ 5 },
 				Fill = GetNutritionColorPaint(nameof(Nutrition.Protein)),
 				InnerRadius = 60,
 			},
