@@ -124,11 +124,12 @@
 				</not_skia:MediaPlayerElement>
 
 				<skia:AutoLayout PrimaryAxisAlignment="Center"
-								 CounterAxisAlignment="Center"
 								 Padding="24">
-					<BitmapIcon Width="56"
+					<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
+								Width="56"
 								Height="72"
-								UriSource="{ThemeResource Empty_Box}" />
+								UriSource="{ThemeResource Empty_Box}"
+								Foreground="#FFFFFF" />
 					<TextBlock Foreground="#FFFFFF"
 							   Style="{StaticResource TitleLarge}"
 							   Text="Media Player is currently not supported on this platform."
