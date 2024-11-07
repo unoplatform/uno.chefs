@@ -14,7 +14,8 @@
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
 	  NavigationCacheMode="Enabled"
-	  mc:Ignorable="d">
+	  mc:Ignorable="d"
+	  Background="{ThemeResource BackgroundBrush}">
 	<Page.Resources>
 		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"

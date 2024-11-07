@@ -15,7 +15,8 @@
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
 	  NavigationCacheMode="Enabled"
-	  mc:Ignorable="d android ios">
+	  mc:Ignorable="d android ios"
+	  Background="{ThemeResource BackgroundBrush}">
 
 	<Page.Resources>
 		<DataTemplate x:Key="EmptyTemplate">

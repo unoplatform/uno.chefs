@@ -17,7 +17,8 @@
 	  HorizontalAlignment="Stretch"
 	  VerticalAlignment="Stretch"
 	  NavigationCacheMode="Enabled"
-	  mc:Ignorable="d">
+	  mc:Ignorable="d"
+	  Background="{ThemeResource BackgroundBrush}">
 
 	<Page.Resources>
 		<converters:BoolToObjectConverter x:Key="BoolToHeartIconConverter"
