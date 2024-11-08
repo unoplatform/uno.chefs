@@ -278,15 +278,15 @@
 														Width="96"
 														Height="96"
 														CornerRadius="80"
-														Margin="10,8,10,8">
-													<!-- Added Margin as a workaround -->
+														Margin="10,0,10,8">
+													<!-- Autolayout arranges margins differently workaround:https://github.com/unoplatform/uno.toolkit.ui/issues/1279 -->
 													<Image Source="{Binding UrlProfileImage}"
 														   Stretch="UniformToFill" />
 												</Border>
 												<utu:AutoLayout Spacing="4"
 																PrimaryAxisAlignment="Center"
-																Margin="10,8,10,8">
-													<!-- Added Margin as a workaround -->
+																Margin="10,0,10,8">
+													<!-- Autolayout arranges margins differently workaround:https://github.com/unoplatform/uno.toolkit.ui/issues/1279 -->
 													<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
 																							  Wide=Start}"
 															   TextWrapping="Wrap"
