@@ -116,11 +116,14 @@
 								  utu:AutoLayout.PrimaryAlignment="Stretch"
 								  Source="{Binding Recipes}">
 						<DataTemplate>
-							<muxc:ItemsRepeater ItemTemplate="{StaticResource CookbookRecipeTemplate}"
-												ItemsSource="{Binding Data}"
-												utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
-												utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
-												Layout="{StaticResource ResponsiveGridLayout}" />
+							<ScrollViewer>
+								<muxc:ItemsRepeater Grid.Row="1"
+													ItemTemplate="{StaticResource CookbookRecipeTemplate}"
+													ItemsSource="{Binding Data}"
+													utu:ItemsRepeaterExtensions.SelectionMode="Multiple"
+													utu:ItemsRepeaterExtensions.SupportsIncrementalLoading="True"
+													Layout="{StaticResource ResponsiveGridLayout}" />
+							</ScrollViewer>
 						</DataTemplate>
 					</uer:FeedView>
 				</utu:AutoLayout>
