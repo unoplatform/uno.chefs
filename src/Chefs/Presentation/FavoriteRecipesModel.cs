@@ -1,5 +1,3 @@
-using Chefs.Presentation.Extensions;
-
 namespace Chefs.Presentation;
 
 public partial record FavoriteRecipesModel
