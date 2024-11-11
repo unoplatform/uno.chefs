@@ -82,6 +82,10 @@
 	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Uno.UI.HotDesign" />
+	</ItemGroup>
+
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
 		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
 		<DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
