@@ -101,15 +101,16 @@
 							   HorizontalAlignment="Center"
 							   VerticalAlignment="Center"
 							   utu:AutoLayout.PrimaryAlignment="Stretch" />
-						<Image Source="{Binding Recipe.ImageUrl}"
-							   Visibility="{utu:Responsive Narrow=Visible,
-														   Wide=Collapsed}"
-							   Height="195"
-							   Stretch="UniformToFill"
-							   VerticalAlignment="Center"
-							   HorizontalAlignment="Center" />
+						<Border Visibility="{utu:Responsive Narrow=Visible,
+															Wide=Collapsed}"
+								Height="300">
+							<Image HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   Source="{Binding Recipe.ImageUrl}"
+								   Stretch="UniformToFill" />
+						</Border>
 						<utu:AutoLayout utu:AutoLayout.IsIndependentLayout="True"
-										Margin="{utu:Responsive Narrow='16,159,16,0',
+										Margin="{utu:Responsive Narrow='16,263,16,0',
 																Wide='14,14,0,0'}"
 										VerticalAlignment="{utu:Responsive Narrow=Center,
 																		   Wide=Top}"
