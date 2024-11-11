@@ -36,7 +36,7 @@ public partial record CreateUpdateCookbookModel
 		{
 			Title = "Create Cookbook";
 			SubTitle = "Add recipes";
-			SaveButtonContent = "Create cookbook";
+			SaveButtonContent = "Create Cookbook";
 			IsCreate = true;
 		}
 	}
