@@ -16,9 +16,4 @@
 		<PackageVersion Include="Xamarin.UITest" Version="4.1.2" />
 		<PackageVersion Include="System.Private.Uri" Version="4.3.2" />
 	</ItemGroup>
-
-	<PropertyGroup>
-		<!-- TOOD: Remove once new Uno.Sdk is released with the Toolkit changes s-->
-		<UnoToolkitVersion>6.4.0-dev.51</UnoToolkitVersion>
-	</PropertyGroup>
 </Project>

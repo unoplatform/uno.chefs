@@ -271,25 +271,28 @@
 															Orientation="{utu:Responsive Narrow=Vertical,
 																						 Wide=Horizontal}"
 															CornerRadius="12"
-															Padding="10,8"
 															PrimaryAxisAlignment="Center"
 															utu:AutoLayout.CounterAlignment="Center">
+												<!-- Workaround: Using Margin on child elements instead of Padding on AutoLayout to avoid crash on Windows:https://github.com/unoplatform/uno.toolkit.ui/issues/1278 -->
 												<Border utu:AutoLayout.CounterAlignment="Center"
 														Width="96"
 														Height="96"
-														CornerRadius="80">
+														CornerRadius="80"
+														Margin="10,8,10,0">
+													<!-- Autolayout arranges margins differently workaround:https://github.com/unoplatform/uno.toolkit.ui/issues/1279 -->
 													<Image Source="{Binding UrlProfileImage}"
 														   Stretch="UniformToFill" />
 												</Border>
 												<utu:AutoLayout Spacing="4"
-																PrimaryAxisAlignment="Center">
+																PrimaryAxisAlignment="Center"
+																Margin="10,0,10,8">
+													<!-- Autolayout arranges margins differently workaround:https://github.com/unoplatform/uno.toolkit.ui/issues/1279 -->
 													<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
 																							  Wide=Start}"
 															   TextWrapping="Wrap"
 															   Text="{Binding FullName}"
 															   Foreground="{ThemeResource OnSurfaceBrush}"
 															   Style="{StaticResource TitleSmall}" />
-
 													<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
 																							  Wide=Start}"
 															   Text="{Binding Recipes, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
@@ -298,6 +301,7 @@
 															   Style="{StaticResource LabelMedium}" />
 												</utu:AutoLayout>
 											</utu:AutoLayout>
+
 										</utu:CardContentControl>
 									</DataTemplate>
 								</muxc:ItemsRepeater.ItemTemplate>
