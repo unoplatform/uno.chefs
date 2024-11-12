@@ -1,3 +1,6 @@
+using LiveChartsCore;
+using LiveChartsCore.Kernel.Sketches;
+
 namespace Chefs.Business.Models;
 
 public partial record Recipe : IChefEntity
@@ -53,4 +56,8 @@ public partial record Recipe : IChefEntity
 		Category = Category.ToData(),
 		Date = Date
 	};
+
+	public IReadOnlyCollection<ISeries> Series { get; set; } = [];
+	public IReadOnlyCollection<ICartesianAxis> XAxes { get; set; } = [];
+	public IReadOnlyCollection<ICartesianAxis> YAxes { get; set; } = [];
 }

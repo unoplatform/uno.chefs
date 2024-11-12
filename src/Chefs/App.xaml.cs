@@ -13,7 +13,7 @@ public partial class App : Application
 	{
 		this.InitializeComponent();
 	}
-	
+
 	public static Window? MainWindow;
 	public static IHost? Host { get; private set; }
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
@@ -30,12 +30,12 @@ public partial class App : Application
 							{
 								// Check for username to simulate credential processing
 								if (!(credentials?.TryGetValue("Username", out var username) ??
-								      false && !string.IsNullOrEmpty(username)))
-								
+									  false && !string.IsNullOrEmpty(username)))
+
 								{
 									return ValueTask.FromResult<IDictionary<string, string>?>(null);
 								}
-								
+
 								// Simulate successful authentication by creating a dummy token dictionary
 								var tokenDictionary = new Dictionary<string, string>
 								{
@@ -44,8 +44,8 @@ public partial class App : Application
 									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
 								};
 								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
-								
-								
+
+
 							});
 					}, name: "CustomAuth")
 				)
@@ -66,10 +66,10 @@ public partial class App : Application
 						.Section<Credentials>()
 						.Section<SearchHistory>()
 				)
-				
+
 				// Enable localization (see appsettings.json for supported languages)
 				.UseLocalization()
-				
+
 				// Register Json serializers (ISerializer and ISerializer)
 				.UseSerialization()
 				.ConfigureServices((context, services) =>
@@ -87,7 +87,7 @@ public partial class App : Application
 				})
 				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes,
 					configureServices: ConfigureNavServices));
-		
+
 		LiveCharts.Configure(config =>
 			config
 				.HasMap<NutritionChartItem>((nutritionChartItem, point) =>
@@ -97,6 +97,9 @@ public partial class App : Application
 				})
 		);
 		MainWindow = builder.Window;
+#if DEBUG
+		MainWindow.UseStudio();
+#endif
 
 		Host = await builder.NavigateAsync<ShellControl>();
 

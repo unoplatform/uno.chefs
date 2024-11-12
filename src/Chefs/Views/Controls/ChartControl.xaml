@@ -33,7 +33,7 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 
-	<Grid RowSpacing="{utu:Responsive Narrow=5, Wide=24}">
+	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="140" />
 			<RowDefinition Height="120" />
@@ -50,8 +50,9 @@
 					   Text="Calories" />
 		</StackPanel>
 
-		<lvc:CartesianChart x:Name="cartesianChart"
+		<!--<lvc:CartesianChart x:Name="cartesianChart"
 							Grid.Row="1"
-							TooltipPosition="Hidden" />
+							TooltipPosition="Hidden" />-->
+
 	</Grid>
 </UserControl>
