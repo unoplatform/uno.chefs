@@ -98,6 +98,10 @@ public partial class App : Application
 		);
 		MainWindow = builder.Window;
 
+#if DEBUG
+		MainWindow.UseStudio();
+#endif
+
 		Host = await builder.NavigateAsync<ShellControl>();
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
