@@ -157,15 +157,17 @@
 								Content="Previous"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
-								Style="{StaticResource ChefsOutlinedButtonStyle}"
+								Style="{StaticResource DefaultButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMovePrevious}" />
+						<!--Style="{StaticResource ChefsOutlinedButtonStyle}"-->
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Next"
 								utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
-								Style="{StaticResource ChefsPrimaryButtonStyle}"
+								Style="{StaticResource DefaultButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMoveNext}" />
+						<!--Style="{StaticResource ChefsPrimaryButtonStyle}"-->
 					</utu:AutoLayout>
 					<Button HorizontalContentAlignment="Center"
 							VerticalContentAlignment="Center"

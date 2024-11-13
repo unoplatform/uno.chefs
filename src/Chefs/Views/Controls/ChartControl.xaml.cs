@@ -120,7 +120,7 @@ public sealed partial class ChartControl : UserControl
 			}
 		};
 
-		pieChart.Series = c;
+		//pieChart.Series = c;
 	}
 
 	private SolidColorPaint GetNutritionColorPaint(string name)
