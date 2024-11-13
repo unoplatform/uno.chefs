@@ -33,12 +33,12 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 
-	<Grid>
-		<Grid.RowDefinitions>
+	<Grid Height="200" >
+		<!--<Grid.RowDefinitions>
 			<RowDefinition Height="140" />
 			<RowDefinition Height="120" />
-		</Grid.RowDefinitions>
-		<lvc:PieChart x:Name="pieChart" />
+		</Grid.RowDefinitions>-->
+		<!--<lvc:PieChart x:Name="pieChart" />
 
 		<StackPanel HorizontalAlignment="Center"
 					VerticalAlignment="Center">
@@ -48,11 +48,12 @@
 			<TextBlock HorizontalAlignment="Center"
 					   FontSize="14"
 					   Text="Calories" />
-		</StackPanel>
+		</StackPanel>-->
 
 		<!--<lvc:CartesianChart x:Name="cartesianChart"
 							Grid.Row="1"
 							TooltipPosition="Hidden" />-->
 
+ <!--<lvc:CartesianChart Series="{Binding Series}" />-->
 	</Grid>
 </UserControl>
