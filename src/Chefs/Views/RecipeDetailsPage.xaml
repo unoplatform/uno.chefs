@@ -213,17 +213,18 @@
 											   Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} items'}"
 											   TextWrapping="Wrap" />
 									<utu:AutoLayout Spacing="{utu:Responsive Narrow=2, Wide=0}">
-										<uer:FeedView x:Name="IngredientsFeed"
+										<!--<uer:FeedView x:Name="IngredientsFeed"
 													  Source="{Binding Ingredients}">
-											<DataTemplate>
-												<muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Stretch,
+											<uer:FeedView.ValueTemplate>
+											<DataTemplate>-->
+												<ListView utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Stretch,
 																													 Wide=Auto}"
-																	ItemsSource="{Binding Data}">
-													<muxc:ItemsRepeater.Layout>
+															  ItemsSource="{Binding Ingredients}">
+													<!--<muxc:ItemsRepeater.Layout>
 														<muxc:StackLayout Orientation="Vertical"
 																		  Spacing="2" />
-													</muxc:ItemsRepeater.Layout>
-													<muxc:ItemsRepeater.ItemTemplate>
+													</muxc:ItemsRepeater.Layout>-->
+													<ListView.ItemTemplate>
 														<DataTemplate>
 															<utu:AutoLayout Spacing="16"
 																			Height="60"
@@ -255,10 +256,11 @@
 																</Border>
 															</utu:AutoLayout>
 														</DataTemplate>
-													</muxc:ItemsRepeater.ItemTemplate>
-												</muxc:ItemsRepeater>
-											</DataTemplate>
-										</uer:FeedView>
+													</ListView.ItemTemplate>
+												</ListView>
+										<!--</DataTemplate>
+											</uer:FeedView.ValueTemplate>
+										</uer:FeedView>-->
 									</utu:AutoLayout>
 								</utu:AutoLayout>
 
