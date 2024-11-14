@@ -27,14 +27,14 @@ public partial record CreateUpdateCookbookModel
 		if (cookbook is not null)
 		{
 			_cookbook = cookbook;
-			Title = "Update cookbook";
+			Title = "Update Cookbook";
 			SubTitle = "Manage cookbook's recipes";
 			SaveButtonContent = "Apply change";
 			IsCreate = false;
 		}
 		else
 		{
-			Title = "Create cookbook";
+			Title = "Create Cookbook";
 			SubTitle = "Add recipes";
 			SaveButtonContent = "Create cookbook";
 			IsCreate = true;

@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.Messaging;
 namespace Chefs.Presentation;
 
 public partial record CookbookDetailModel
