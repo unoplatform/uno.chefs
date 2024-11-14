@@ -28,7 +28,7 @@ public partial record CreateUpdateCookbookModel
 		{
 			_cookbook = cookbook;
 			Title = "Update Cookbook";
-			SubTitle = "Manage Cookbook's recipes";
+			SubTitle = "Manage cookbook's recipes";
 			SaveButtonContent = "Apply change";
 			IsCreate = false;
 		}
@@ -36,7 +36,7 @@ public partial record CreateUpdateCookbookModel
 		{
 			Title = "Create Cookbook";
 			SubTitle = "Add recipes";
-			SaveButtonContent = "Create Cookbook";
+			SaveButtonContent = "Create cookbook";
 			IsCreate = true;
 		}
 	}
