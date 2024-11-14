@@ -83,9 +83,7 @@
 						<Image Source="{Binding User.UrlProfileImage}"
 							   Stretch="UniformToFill" />
 					</Border>
-					<!--<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
-					               Width="32"
-					               Height="32" />-->
+					<!-- WORKAROUND for PersonPicture issue on iOS: https://github.com/unoplatform/uno/issues/13543 -->
 					<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
 							   Foreground="{ThemeResource OnBackgroundMediumBrush}"
 							   Style="{StaticResource BodySmall}" />
