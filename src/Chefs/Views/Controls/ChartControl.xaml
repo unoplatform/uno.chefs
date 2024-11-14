@@ -20,40 +20,22 @@
 					<Color x:Key="NutritionProteinValColor">#159BFF</Color>
 					<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
 					<Color x:Key="NutritionFatValColor">#F85977</Color>
-					<StaticResource x:Key="NutritionDataLabelColor" ResourceKey="OnSurfaceColor" />
+					<StaticResource x:Key="NutritionDataLabelColor"
+									ResourceKey="OnSurfaceColor" />
 				</ResourceDictionary>
 				<ResourceDictionary x:Key="Dark">
 					<Color x:Key="NutritionTrackBackgroundColor">#242629</Color>
 					<Color x:Key="NutritionProteinValColor">#159BFF</Color>
 					<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
 					<Color x:Key="NutritionFatValColor">#F85977</Color>
-					<StaticResource x:Key="NutritionDataLabelColor" ResourceKey="OnSurfaceColor" />
+					<StaticResource x:Key="NutritionDataLabelColor"
+									ResourceKey="OnSurfaceColor" />
 				</ResourceDictionary>
 			</ResourceDictionary.ThemeDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
 
-	<Grid Height="200" >
-		<!--<Grid.RowDefinitions>
-			<RowDefinition Height="140" />
-			<RowDefinition Height="120" />
-		</Grid.RowDefinitions>-->
-		<!--<lvc:PieChart x:Name="pieChart" />
+	<Grid Height="200">
 
-		<StackPanel HorizontalAlignment="Center"
-					VerticalAlignment="Center">
-			<TextBlock HorizontalAlignment="Center"
-					   FontSize="22"
-					   Text="{Binding CaloriesAmount}" />
-			<TextBlock HorizontalAlignment="Center"
-					   FontSize="14"
-					   Text="Calories" />
-		</StackPanel>-->
-
-		<!--<lvc:CartesianChart x:Name="cartesianChart"
-							Grid.Row="1"
-							TooltipPosition="Hidden" />-->
-
- <!--<lvc:CartesianChart Series="{Binding Series}" />-->
 	</Grid>
 </UserControl>
