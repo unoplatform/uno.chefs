@@ -1,10 +1,13 @@
+using System.ComponentModel;
 using LiveChartsCore;
 using LiveChartsCore.Kernel.Sketches;
 
 namespace Chefs.Business.Models;
 
-public partial record Recipe : IChefEntity
+public partial record Recipe : IChefEntity, INotifyPropertyChanged
 {
+	private IReadOnlyCollection<ISeries> series = [];
+
 	internal Recipe(RecipeData recipeData)
 	{
 		Id = recipeData.Id;
@@ -42,6 +45,8 @@ public partial record Recipe : IChefEntity
 		String.Format("{0:%h} hour {0:%m} mins • {1}", CookTime, Calories) :
 		String.Format("{0:%m} mins • {1}", CookTime, Calories);
 
+	public event PropertyChangedEventHandler? PropertyChanged;
+
 	internal RecipeData ToData() => new()
 	{
 		Id = Id,
@@ -57,7 +62,15 @@ public partial record Recipe : IChefEntity
 		Date = Date
 	};
 
-	public IReadOnlyCollection<ISeries> Series { get; set; } = [];
+	public IReadOnlyCollection<ISeries> Series
+	{
+		get => series;
+		set
+		{
+			series = value;
+			PropertyChanged?.Invoke(this, new(nameof(Series)));
+		}
+	}
 	public IReadOnlyCollection<ICartesianAxis> XAxes { get; set; } = [];
 	public IReadOnlyCollection<ICartesianAxis> YAxes { get; set; } = [];
 }
