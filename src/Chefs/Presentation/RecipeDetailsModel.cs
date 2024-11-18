@@ -53,9 +53,9 @@ public partial record RecipeDetailsModel
 		var route = _navigator?.Route?.Base switch
 		{
 			"RecipeDetails" => "LiveCooking",
-			"SearchRecipeDetails" => "SearchLiveCooking",
-			"FavoriteRecipeDetails" => "FavoriteLiveCooking",
-			"CookbookRecipeDetails" => "CookbookLiveCooking",
+			"SearchRecipeDetails" => "LiveCooking",
+			"FavoriteRecipeDetails" => "LiveCooking",
+			"CookbookRecipeDetails" => "LiveCooking",
 			_ => throw new InvalidOperationException("Navigating from unknown route")
 		};
 
