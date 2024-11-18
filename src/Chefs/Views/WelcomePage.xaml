@@ -24,7 +24,7 @@
 				  Visibility="{utu:Responsive Narrow=Collapsed,
 											  Wide=Visible}"
 				  utu:AutoLayout.PrimaryAlignment="Stretch"
-				  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+				  SelectedIndex="{Binding Pages.CurrentIndex}">
 			<FlipView.Items>
 				<!-- First Splash image -->
 				<Image Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
