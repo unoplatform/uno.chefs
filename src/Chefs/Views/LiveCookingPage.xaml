@@ -229,11 +229,8 @@
 								   Text="Tell us how was your cooking experience!"
 								   TextAlignment="Center"
 								   TextWrapping="Wrap" />
-						<!-- TODO -->
-						<!-- Save rating -->
 						<muxc:RatingControl utu:AutoLayout.CounterAlignment="Center"
-											MaxRating="5"
-											Style="{StaticResource RatingControlStyle}" />
+											MaxRating="5" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"

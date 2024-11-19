@@ -95,7 +95,6 @@ public sealed partial class MapPage : Page
 
 	private static void AddMyLocationLayer()
 	{
-		// TODO: Get real location
 		var startingPosition = _map!.Layers.ElementAt(1).Extent!.Centroid;
 
 		_myLocationLayer = new MyLocationLayer(_map!)

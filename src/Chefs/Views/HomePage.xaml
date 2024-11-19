@@ -273,13 +273,11 @@
 															CornerRadius="12"
 															PrimaryAxisAlignment="Center"
 															utu:AutoLayout.CounterAlignment="Center">
-												<!-- Workaround: Using Margin on child elements instead of Padding on AutoLayout to avoid crash on Windows:https://github.com/unoplatform/uno.toolkit.ui/issues/1278 -->
 												<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
 																Margin="10,8">
 													<Border Width="96"
 															Height="96"
 															CornerRadius="48">
-														<!-- Autolayout arranges margins differently workaround:https://github.com/unoplatform/uno.toolkit.ui/issues/1279 -->
 														<Image Source="{Binding UrlProfileImage}"
 															   Stretch="UniformToFill" />
 													</Border>
@@ -287,7 +285,6 @@
 												<utu:AutoLayout Spacing="4"
 																PrimaryAxisAlignment="Center"
 																Margin="10,0,10,8">
-													<!-- Autolayout arranges margins differently workaround:https://github.com/unoplatform/uno.toolkit.ui/issues/1279 -->
 													<TextBlock TextAlignment="{utu:Responsive Narrow=Center,
 																							  Wide=Start}"
 															   TextWrapping="Wrap"

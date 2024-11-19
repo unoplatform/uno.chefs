@@ -48,7 +48,7 @@ public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMes
 
 	void IRecipient<ThemeChangedMessage>.Receive(ThemeChangedMessage message)
 	{
-		// Workaround for https://github.com/unoplatform/uno.chefs/issues/1017
+		// Windows requires that this be run on the UI Thread
 #if WINDOWS
 		_ = DispatcherQueue.TryEnqueue(() =>
 		{
