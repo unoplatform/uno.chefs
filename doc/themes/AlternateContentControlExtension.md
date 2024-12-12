@@ -17,20 +17,24 @@ The [Uno Themes library](xref:Uno.Themes.Overview) provides a set of attached pr
 Given the following XAML:
 
 ```xml
-xmlns:ut="using:Uno.Themes"
+<Page ...
+      xmlns:ut="using:Uno.Themes">
 
-<ToggleButton Style="{StaticResource IconToggleButtonStyle}">
-    <ToggleButton.Content>
-        <FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-                  Glyph="{StaticResource Icon_Favorite}"
-                  Foreground="{ThemeResource OnSurfaceBrush}" />
-    </ToggleButton.Content>
-    <ut:ControlExtensions.AlternateContent>
-        <FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-                  Glyph="{StaticResource Icon_Favorite}"
-                  Foreground="{ThemeResource PrimaryBrush}" />
-    </ut:ControlExtensions.AlternateContent>
-</ToggleButton>
+    <ToggleButton Style="{StaticResource IconToggleButtonStyle}"
+                IsChecked="{Binding IsFavorite}"
+                Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.FavoriteRecipe}"
+                CommandParameter="{Binding}">
+        <ToggleButton.Content>
+            <PathIcon Data="{StaticResource Icon_Heart}"
+                        Foreground="{ThemeResource OnSurfaceBrush}" />
+        </ToggleButton.Content>
+        <ut:ControlExtensions.AlternateContent>
+            <PathIcon Data="{StaticResource Icon_Heart_Filled}"
+                        Foreground="{ThemeResource PrimaryBrush}" />
+        </ut:ControlExtensions.AlternateContent>
+    </ToggleButton>
+
+</Page>
 ```
 
 ![ToggleButton with AlternateContent](../assets/toggle-alternate-content.gif)
@@ -39,8 +43,8 @@ xmlns:ut="using:Uno.Themes"
 
 Chefs app
 
-- [Home Page](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/HomePage.xaml#L57-L61)
-- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/RecipeDetailsPage.xaml#L353-L365)
+- [Home Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/HomePage.xaml#L55-L58)
+- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/RecipeDetailsPage.xaml#L370-L381)
 
 ## Documentation
 
