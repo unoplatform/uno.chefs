@@ -16,6 +16,8 @@ Chefs contains many UI/UX patterns that we would like to offer as standalone wid
 - [Share function](#share-function)
 - [Reviews](#reviews)
 
+[Used styles](#styles-used)
+
 ## Welcome/Login
 
 ### Large Carousel
