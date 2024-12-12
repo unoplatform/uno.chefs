@@ -24,7 +24,7 @@ Chefs contains many UI/UX patterns that we would like to offer as standalone wid
 
 A large carousel widget, like the one on the WelcomePage with `Next` and `Previous` buttons. The image only `FlipView` is hidden when screen size is small.
 
-- The [XAML](https://github.com/unoplatform/uno.chefs/blob/be397784a5a6a7183b617531c1b6d921c15332e6/src/Chefs/Views/WelcomePage.xaml#L22-L181) is pretty much the whole WelcomePage. It's made of two `FlipView`s and then the buttons that control them. One `FlipView` is for the images and the other one is for the text, these could be combined.
+- The [XAML](https://github.com/unoplatform/uno.chefs/blob/be397784a5a6a7183b617531c1b6d921c15332e6/src/Chefs/Views/WelcomePage.xaml#L22-L181) is pretty much the whole WelcomePage. It's made of two `FlipView`s and then the buttons that control them. One `FlipView` is for the images and the other one is for the text.
 
 ```xml
 <utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
