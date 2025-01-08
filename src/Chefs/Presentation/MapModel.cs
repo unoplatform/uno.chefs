@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public partial class MapModel
+public partial record MapModel
 {
 
 }

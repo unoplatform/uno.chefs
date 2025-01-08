@@ -31,6 +31,7 @@
 			must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
 		-->
 		<!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
+		<WindowsSdkPackageVersion>10.0.19041.38</WindowsSdkPackageVersion>
 
 		<!--
 			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
@@ -54,13 +55,31 @@
 		</UnoFeatures>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Mapsui.Uno.WinUI" />
-		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
-	</ItemGroup>
+	<Choose>
+		<When Condition="$(IsWinAppSdk)">
+			<ItemGroup>
+				<PackageReference Include="Mapsui.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.WinUI" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<PackageReference Include="Mapsui.Uno.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
 
 	<ItemGroup>
 		<Content Include="Data\**\*.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">

@@ -10,10 +10,13 @@
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:ut="using:Uno.Themes"
 	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:mobile="http://platform.uno/mobile"
 	  xmlns:converters="using:Chefs.Converters"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
-	  mc:Ignorable="d">
+	  Background="{ThemeResource BackgroundBrush}"
+	  mc:Ignorable="d mobile">
 
 	<Page.Resources>
 		<DataTemplate x:Key="NotificationTemplate">
@@ -23,11 +26,9 @@
 							Orientation="Horizontal"
 							Padding="16"
 							Spacing="16">
-				<FontIcon Glyph="{StaticResource Icon_Notifications_Active}"
-						  utu:AutoLayout.CounterAlignment="Start"
+				<PathIcon Data="{StaticResource Icon_Notifications_Active}"
 						  Foreground="{ThemeResource PrimaryBrush}" />
-				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-								utu:AutoLayout.PrimaryAlignment="Stretch"
+				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								Spacing="8"
 								PrimaryAxisAlignment="Center">
 					<TextBlock TextWrapping="Wrap"
@@ -44,21 +45,11 @@
 		<DataTemplate x:Key="EmptyTemplate">
 			<utu:AutoLayout Spacing="24"
 							PrimaryAxisAlignment="Center"
-							Padding="32,0"
-							utu:AutoLayout.PrimaryAlignment="Stretch">
-				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-								Width="72"
-								Height="72">
-					<utu:AutoLayout PrimaryAxisAlignment="Center"
-									utu:AutoLayout.IsIndependentLayout="True"
-									VerticalAlignment="Stretch"
-									HorizontalAlignment="Stretch">
-						<BitmapIcon UriSource="{ThemeResource Empty_Notification}"
-									utu:AutoLayout.CounterAlignment="Center"
-									Width="72"
-									Height="70" />
-					</utu:AutoLayout>
-				</utu:AutoLayout>
+							CounterAxisAlignment="Center"
+							Padding="32,0">
+				<BitmapIcon UriSource="{ThemeResource Empty_Notification}"
+							Width="72"
+							Height="70" />
 				<TextBlock TextAlignment="Center"
 						   TextWrapping="Wrap"
 						   Text="No Notifications Yet"
@@ -73,27 +64,26 @@
 						VerticalContentAlignment="Center"
 						Content="Close"
 						Padding="16,10,24,10"
-						utu:AutoLayout.CounterAlignment="Center"
 						Foreground="{ThemeResource OnSecondaryContainerBrush}"
 						CornerRadius="4"
 						Style="{StaticResource FilledTonalButtonStyle}"
-						Command="{Binding CloseNotificationPage}">
+						uen:Navigation.Request="-">
 					<ut:ControlExtensions.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Close}"
+						<PathIcon Data="{StaticResource Icon_Close}"
 								  Foreground="{ThemeResource OnSecondaryContainerBrush}" />
 					</ut:ControlExtensions.Icon>
 				</Button>
 			</utu:AutoLayout>
 		</DataTemplate>
 	</Page.Resources>
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
-					PrimaryAxisAlignment="Stretch">
+	<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 		<utu:NavigationBar Content="Notifications"
-						   Style="{StaticResource ModalNavigationBarStyle}">
+						   utu:AutoLayout.PrimaryAlignment="Auto">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
+						<not_mobile:PathIcon Data="{StaticResource Icon_Close}" />
+						<mobile:BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>

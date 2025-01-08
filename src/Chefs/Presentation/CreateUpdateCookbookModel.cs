@@ -1,13 +1,15 @@
 using Chefs.Presentation.Extensions;
-using Windows.UI.Popups;
 
 namespace Chefs.Presentation;
 
-public partial class CreateUpdateCookbookModel
+public partial record CreateUpdateCookbookModel
 {
+	const uint DefaultPageSize = 20;
+
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
+	private readonly IMessenger _messenger;
 	private readonly Cookbook? _cookbook;
 
 	public CreateUpdateCookbookModel(
@@ -20,24 +22,23 @@ public partial class CreateUpdateCookbookModel
 		_navigator = navigator;
 		_recipeService = recipeService;
 		_cookbookService = cookbookService;
+		_messenger = messenger;
 
 		if (cookbook is not null)
 		{
 			_cookbook = cookbook;
-			Title = "Update cookbook";
+			Title = "Update Cookbook";
 			SubTitle = "Manage cookbook's recipes";
 			SaveButtonContent = "Apply change";
 			IsCreate = false;
 		}
 		else
 		{
-			Title = "Create cookbook";
+			Title = "Create Cookbook";
 			SubTitle = "Add recipes";
 			SaveButtonContent = "Create cookbook";
 			IsCreate = true;
 		}
-
-		messenger.Observe(Cookbook, cb => cb.Id);
 	}
 	public bool IsCreate { get; }
 
@@ -47,12 +48,19 @@ public partial class CreateUpdateCookbookModel
 
 	public string SaveButtonContent { get; }
 
-	public IState<Cookbook> Cookbook => State.Value(this, () => _cookbook ?? new Cookbook());
+	public IState<Cookbook> Cookbook => State
+		.Value(this, () => _cookbook ?? new Cookbook())
+		.Observe(_messenger, cb => cb.Id);
 
-	public IListState<Recipe> Recipes => ListState.Async(this, _recipeService.GetFavorited).Selection(SelectedRecipes);
+	public IListFeed<Recipe> Recipes => ListFeed
+		.PaginatedAsync(
+			async (PageRequest pageRequest, CancellationToken ct) =>
+				await _recipeService.GetFavoritedWithPagination(pageRequest.DesiredSize ?? DefaultPageSize, pageRequest.CurrentCount, ct)
+		)
+		.Selection(SelectedRecipes);
 
-	public IState<IImmutableList<Recipe>> SelectedRecipes => State.FromFeed(this, Cookbook.Select(c => c.Recipes));
-
+	public IState<IImmutableList<Recipe>> SelectedRecipes => State
+		.FromFeed(this, Cookbook.Select(c => c.Recipes));
 	public async ValueTask Submit(CancellationToken ct)
 	{
 		var selectedRecipes = await SelectedRecipes;

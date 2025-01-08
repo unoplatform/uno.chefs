@@ -98,6 +98,10 @@ public partial class App : Application
 		);
 		MainWindow = builder.Window;
 
+#if DEBUG
+		MainWindow.UseStudio();
+#endif
+
 		Host = await builder.NavigateAsync<ShellControl>();
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
@@ -137,7 +141,6 @@ public partial class App : Application
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
 			new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
-			new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
 			new ViewMap<MapPage, MapModel>(),
@@ -156,11 +159,7 @@ public partial class App : Application
 						#region Main Tabs
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
-						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>(), Nested: new[]
-						{
-							new RouteMap("MyRecipes"),
-							new RouteMap("Cookbooks")
-						}),
+						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
 						#endregion
 
 						#region Cookbooks
@@ -170,16 +169,7 @@ public partial class App : Application
 						#endregion
 
 						#region Recipe Details
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home", Nested: new[] {
-							new RouteMap("IngredientsTabWide"),
-							new RouteMap("StepsTabWide"),
-							new RouteMap("ReviewsTabWide"),
-							new RouteMap("NutritionTabWide"),
-							new RouteMap("IngredientsTab"),
-							new RouteMap("StepsTab"),
-							new RouteMap("ReviewsTab"),
-							new RouteMap("NutritionTab"),
-						}),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
 						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
@@ -194,14 +184,8 @@ public partial class App : Application
 
 						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
 					}),
-					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>(), Nested: new RouteMap[]
-					{
-						new RouteMap("AllTab"),
-						new RouteMap("UnreadTab"),
-						new RouteMap("ReadTab"),
-					}),
+					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),
-					new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>()),
 					new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
 					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn: "Profile"),
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),

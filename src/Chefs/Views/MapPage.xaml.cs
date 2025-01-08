@@ -7,7 +7,7 @@ using Mapsui.Providers;
 using Mapsui.Styles;
 using Mapsui.Tiling.Layers;
 using Mapsui.Utilities;
-using Mapsui.Widgets.Zoom;
+using Mapsui.Widgets.ButtonWidgets;
 
 namespace Chefs.Views;
 
@@ -47,8 +47,8 @@ public sealed partial class MapPage : Page
 
 	private static void AddBaseLayer()
 	{
-		_map!.Layers.Add(layers: new TileLayer(KnownTileSources.Create(KnownTileSource.BingRoads)));
-		_map!.Widgets.Add(new ZoomInOutWidget { MarginX = 36, MarginY = 36 });
+		_map!.Layers.Add(layers: [new TileLayer(KnownTileSources.Create(KnownTileSource.BingRoads))]);
+		_map!.Widgets.Add(new ZoomInOutWidget { Margin = new MRect(36) });
 	}
 
 	private static void AddPinsLayer()
@@ -67,9 +67,9 @@ public sealed partial class MapPage : Page
 			Features = new MemoryProvider(pins).Features,
 			Style = new SymbolStyle()
 			{
-				BitmapId = typeof(MapPage).LoadSvgId(@"Assets.Maps.location_pin.svg"),
+				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_pin.svg").ToString(),
 				SymbolScale = 1,
-				SymbolOffset = new Offset(x: 0.0, y: 0.5, isRelative: true)
+				SymbolOffset = new RelativeOffset(new Offset(x: 0.0, y: 0.5))
 			}
 		};
 
@@ -88,7 +88,6 @@ public sealed partial class MapPage : Page
 			SubtitleFontColor = Color.FromArgb(97, 28, 27, 31),
 			Type = CalloutType.Detail,
 			MaxWidth = 120,
-			RectRadius = 10,
 			Enabled = false,
 			SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
 		};
@@ -97,14 +96,14 @@ public sealed partial class MapPage : Page
 	private static void AddMyLocationLayer()
 	{
 		// TODO: Get real location
-		var startingPosition = _map!.Layers[1].Extent!.Centroid;
+		var startingPosition = _map!.Layers.ElementAt(1).Extent!.Centroid;
 
 		_myLocationLayer = new MyLocationLayer(_map!)
 		{
 			CalloutText = "My location",
 			Style = new SymbolStyle
 			{
-				BitmapId = typeof(MapPage).LoadSvgId(@"Assets.Maps.location_circle.svg"),
+				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_circle.svg").ToString(),
 				SymbolScale = 1
 			}
 		};
@@ -116,7 +115,7 @@ public sealed partial class MapPage : Page
 
 	private static void CenterOnPoint(MPoint point, int resolution)
 	{
-		_map!.Home = navigator => navigator.CenterOnAndZoomTo(point, navigator.Resolutions[resolution]);
+		_map!.Navigator.CenterOnAndZoomTo(point, resolution);
 	}
 
 	private static void MapOnInfo(object? sender, MapInfoEventArgs e)

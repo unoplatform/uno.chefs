@@ -16,7 +16,7 @@ jobs:
         BuildCommand: build
         VersionCodeOffset: 50
   pool:
-    vmImage: macos-12
+    vmImage: macos-14
   
   variables:
   - group: 'unoplatform.apple.ios.appstore.distribution'
