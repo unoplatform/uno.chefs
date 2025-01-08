@@ -1,5 +1,5 @@
 ---
-uid: Uno.Recipes.ReactiveSearch
+uid: Uno.Recipes.MVUX.ReactiveSearch
 ---
 
 # How to Create a Reactive Search Experience with MVUX
@@ -10,86 +10,95 @@ Filtering search results live as the user types is a common feature in modern ap
 
 ## Solution
 
-The **Uno.Extensions** library, specifically MVUX, provides a seamless way to live filter search results using `IState<string>` and `SelectAsync` on the IState to react to state changes. This allows for a dynamic and responsive search experience.
+**Uno.Extensions.MVUX** provides a seamless way to live filter search results using `IState<string>` and `SelectAsync` on the IState to react to state changes. This allows for a dynamic and responsive search experience.
 
 ### Using MVUX to Create a Reactive Search Experience
 
-In the Chefs app, for the Search page, we use `IState<string>` to hold the search term and `IListFeed<Recipe>` for the search results. The search results are updated every time the search term changes.
+In the Chefs search page, we use `IState<string>` to hold the search term and `IListFeed<Recipe>` for the search results. The search results are updated every time the search term changes.
 
-Below is a simplified version of the way search is done in the Chefs app. See the Source Code section below for references to the full implementation.
+#### 1. `SearchModel.cs`
 
-1. `SearchModel.cs`
+```csharp
+public partial class SearchModel
+{
+    private readonly INavigator _navigator;
+    private readonly IRecipeService _recipeService;
+    private readonly IMessenger _messenger;
 
-    ```csharp
-    namespace Chefs.Presentation;
-
-    public partial class SearchModel
+    public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService, IMessenger messenger)
     {
-        private readonly INavigator _navigator;
-        private readonly IRecipeService _recipeService;
+        _navigator = navigator;
+        _recipeService = recipeService;
+        _messenger = messenger;
 
-        public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
-        {
-            _navigator = navigator;
-            _recipeService = recipeService;
-
-            Filter = State.Value(this, () => filter ?? new SearchFilter());
-        }
-
-        public IState<string> Term => State<string>.Value(this, () => string.Empty);
-
-        public IState<SearchFilter> Filter { get; }
-
-        public IListFeed<Recipe> Results => Feed
-            .Combine(Term, Filter)
-            .SelectAsync(Search)
-            .AsListFeed();
-
-        public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
-
-        private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
-        {
-            var searchedRecipes = await _recipeService.Search(inputs.term, inputs.filter, ct);
-            return searchedRecipes.Where(inputs.filter.Match).ToImmutableList();
-        }
+        Filter = State.Value(this, () => filter ?? new SearchFilter())
+            .Observe(_messenger, f => f);
     }
-    ```
 
-    The `Search` method in the `IRecipeService` is called whenever the Term state changes, and it returns the filtered list of recipes.
+    public IState<string> Term => State<string>.Value(this, () => string.Empty)
+        .Observe(_messenger, t => t);
 
-2. `SearchPage.xaml`
+    public IState<SearchFilter> Filter { get; }
 
-    ```xml
-    <TextBox
-        PlaceholderText="Search"
-        Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+    public IListState<Recipe> Results => ListState.FromFeed(this, Feed
+        .Combine(Term, Filter)
+        .SelectAsync(Search)
+        .AsListFeed())
+        .Observe(_messenger, r => r.Id);
 
-    <ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-                VerticalScrollBarVisibility="Hidden">
-        <uer:FeedView x:Name="SearchFeed"
-                    NoneTemplate="{StaticResource EmptyTemplate}"
-                    Source="{Binding Results}">
-            <DataTemplate>
-                <!-- Code omitted for brevity -->
-            </DataTemplate>
-        </uer:FeedView>
-    </ScrollViewer>
-    ```
-    The `FeedView` control automatically updates the displayed list of recipes whenever the `Results` feed is updated, providing a dynamic and responsive search experience.
+    private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
+    {
+        var searchedRecipes = await _recipeService.Search(inputs.term, inputs.filter, ct);
+        return searchedRecipes.Where(inputs.filter.Match).ToImmutableList();
+    }
+}
+```
+
+The `Search` method in the `IRecipeService` is called whenever the **Term** state changes, and it returns the filtered list of recipes.
+
+#### 2. `SearchPage.xaml`
+
+```xml
+<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
+    <utu:AutoLayout>
+        <TextBox utu:CommandExtensions.Command="{Binding Search}"
+                Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+                CornerRadius="28"
+                PlaceholderText="Search"
+                Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+    </utu:AutoLayout>
+
+    <uer:FeedView x:Name="SearchFeed"
+                NoneTemplate="{StaticResource EmptyTemplate}"
+                utu:AutoLayout.PrimaryAlignment="Stretch"
+                Source="{Binding Results}">
+        <DataTemplate>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <muxc:ItemsRepeater x:Name="SearchRepeater"
+                                    Margin="{utu:Responsive Narrow='16,0,16,16', Wide='40,0,40,40'}"
+                                    uen:Navigation.Request="SearchRecipeDetails"
+                                    ItemTemplate="{StaticResource RecipeTemplate}"
+                                    ItemsSource="{Binding Data}"
+                                    Layout="{StaticResource ResponsiveGridLayout}" />
+            </ScrollViewer>
+        </DataTemplate>
+    </uer:FeedView>
+</utu:AutoLayout>
+```
+
+The `FeedView` control automatically updates the displayed list of recipes whenever the `Results` feed is updated, providing a dynamic and responsive search experience.
 
 ### Using Custom Filter Logic
 
-In addition to the search term, you can also maintain a `filter` state to refine search results further. The `Filter` property in the `SearchModel` allows you to define custom filter logic.
-
-The `Filter` property is explained in a separate Recipe Book entry on [how to use custom filter logic as part of a reactive search experience](xref:).
+In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic. See the recipe for [custom filtering logic](xref:Uno.Recipes.MVUX.SearchFilter) for more information.
 
 ## Source Code
 
 Chefs app
 
-- [Search Model](https://github.com/unoplatform/uno.chefs/blob/92105f64923058b9ace3897bbea17cdb3b354fe9/src/Chefs/Presentation/SearchModel.cs#L22)
-
-- [Search Page](https://github.com/unoplatform/uno.chefs/blob/d226a4baf0e04641b23e9f8324112b05c47abfde/src/Chefs/Views/SearchPage.xaml)
+- [SearchModel.cs](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Presentation/SearchModel.cs#L5-L45)
+- [SearchPage.xaml (Search Term)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SearchPage.xaml#L114-L118)
+- [SearchPage.xaml (FeedView)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SearchPage.xaml#L161-L177)
 
 ## Documentation
 
