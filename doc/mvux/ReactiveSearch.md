@@ -90,7 +90,78 @@ The `FeedView` control automatically updates the displayed list of recipes whene
 
 ### Using Custom Filter Logic
 
-In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic. See the recipe for [custom filtering logic](xref:Uno.Recipes.MVUX.SearchFilter) for more information.
+In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic.
+
+#### 1. `FilterModel.cs`
+
+```csharp
+public partial record FilterModel
+{
+    private readonly INavigator _navigator;
+    private readonly IRecipeService _recipeService;
+
+    public FilterModel(SearchFilter filters, INavigator navigator, IRecipeService recipeService)
+    {
+        _navigator = navigator;
+        _recipeService = recipeService;
+
+        Filter = State.Value(this, () => filters);
+    }
+
+    public IState<SearchFilter> Filter { get; }
+
+    // The different possible filters
+    public IEnumerable<FilterGroup> FilterGroups => Enum.GetValues(typeof(FilterGroup)).Cast<FilterGroup>();
+    public IEnumerable<Time> Times => Enum.GetValues(typeof(Time)).Cast<Time>();
+    public IEnumerable<Difficulty> Difficulties => Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>();
+    public IEnumerable<int> Serves => new int[] { 1, 2, 3, 4, 5 };
+    public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
+}
+```
+
+#### 2. `FiltersPage.cs`
+
+For each recipe filter, we define an `ItemsRepeater` that displays the possible values that filter can take. Each filter will display its possible values following the `FilterChipTemplate` resource defined at the page level.
+
+```xml
+<Page.Resources>
+    <DataTemplate x:Key="FilterChipTemplate">
+        <utu:Chip Background="{ThemeResource SurfaceBrush}"
+                    Content="{Binding}"
+                    HorizontalAlignment="Stretch"
+                    Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                    BorderThickness="1"
+                    Style="{StaticResource MaterialChipStyle}" />
+    </DataTemplate>
+</Page.Resources>
+
+<muxc:ItemsRepeater ItemsSource="{Binding FilterGroups}"
+                    utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.FilterGroup, Mode=TwoWay}"
+                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
+                    ItemTemplate="{StaticResource FilterChipTemplate}">
+    <muxc:ItemsRepeater.Layout>
+        <muxc:UniformGridLayout ItemsJustification="Start"
+                                MinColumnSpacing="8"
+                                MinRowSpacing="8"
+                                MinItemWidth="120"
+                                ItemsStretch="Fill"
+                                MaximumRowsOrColumns="4"
+                                Orientation="Horizontal" />
+    </muxc:ItemsRepeater.Layout>
+</muxc:ItemsRepeater>
+```
+
+When the user is done selecting filters for their search, they click on the "Apply filters" button which fires the `ApplySearchFilter()` method. This uses `NavigateBackWithResultAsync()` from `Uno.Extensions.Navigation`. This will redirect the user to the previous page (the search page) while injecting the chosen filters into the search model. See [How to Navigate with Code Behind](Uno.Recipes.NavigationCodeBehind) for more information.
+
+```csharp
+public partial record FilterModel
+{
+    ...
+
+    public async ValueTask ApplySearchFilter(SearchFilter filter) =>
+        await _navigator.NavigateBackWithResultAsync(this, data: filter);
+}
+```
 
 ## Source Code
 
@@ -99,6 +170,8 @@ Chefs app
 - [SearchModel.cs](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Presentation/SearchModel.cs#L5-L45)
 - [SearchPage.xaml (Search Term)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SearchPage.xaml#L114-L118)
 - [SearchPage.xaml (FeedView)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SearchPage.xaml#L161-L177)
+- [FilterModel.cs](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Presentation/FilterModel.cs#L3C1-L26C2)
+- [FiltersPage.xaml](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/FiltersPage.xaml#L17-L154)
 
 ## Documentation
 
