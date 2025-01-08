@@ -6,7 +6,7 @@ uid: Uno.Recipes.ImplicitCommands
 
 ## Problem
 
-Implementing commands requires custom implementations of the ICommand interface and handling `INotifyPropertyChanged` manually, adding boilerplate code and complexity. These challenges can make command handling cumbersome, especially for asynchronous operations.
+Implementing commands requires custom implementations of the ICommand interface as well as handling `INotifyPropertyChanged` and other events manually which adds boilerplate code and complexity. These challenges can make command handling cumbersome, especially for asynchronous operations.
 
 ## Solution
 
