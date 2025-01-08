@@ -1,5 +1,5 @@
 ---
-uid: Uno.Recipes.MVUX.ReactiveSearch
+uid: Uno.Recipes.ReactiveSearch
 ---
 
 # How to Create a Reactive Search Experience with MVUX
