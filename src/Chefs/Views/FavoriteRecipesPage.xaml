@@ -272,7 +272,7 @@
 					</uer:FeedView>
 					<Button HorizontalAlignment="Right"
 							VerticalAlignment="Bottom"
-							uen:Navigation.Request="CreateCookbook"
+							Command="{Binding TestCommand}"
 							Content="Add"
 							Style="{StaticResource ChefsFabButtonStyle}">
 						<ut:ControlExtensions.Icon>

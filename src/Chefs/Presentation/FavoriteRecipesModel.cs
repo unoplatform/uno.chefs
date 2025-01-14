@@ -25,4 +25,9 @@ public partial record FavoriteRecipesModel
 		.Observe(_messenger, cb => cb.Id);
 	
 	public IListState<Recipe> FavoriteRecipes => _recipeService.FavoritedRecipes;
+
+	public async ValueTask TestCommand()
+	{
+		await _navigator.NavigateRouteAsync(this, "CreateCookbook");
+	}
 }
