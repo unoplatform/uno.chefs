@@ -19,6 +19,11 @@ public partial record ProfileModel
 
 	public IFeed<User> Profile { get; }
 
+	public async ValueTask ToSettings()
+	{
+		await _navigator.NavigateRouteAsync(this, route: "Settings", data: Profile);
+	}
+
 	public IListFeed<Recipe> Recipes => Profile
 		.SelectAsync((user, ct) => _recipeService.GetByUser(user.Id, ct))
 		.AsListFeed();

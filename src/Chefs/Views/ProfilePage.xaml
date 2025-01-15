@@ -68,8 +68,7 @@
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton uen:Navigation.Request="Settings"
-							  uen:Navigation.Data="{Binding Profile.Value}"
+				<AppBarButton Command="{Binding ToSettings}"
 							  Visibility="{Binding Profile.Value.IsCurrent}">
 					<AppBarButton.Icon>
 						<PathIcon Data="{StaticResource Icon_Settings}" />
