@@ -97,9 +97,6 @@ public partial class App : Application
 				})
 		);
 		MainWindow = builder.Window;
-#if DEBUG
-		MainWindow.UseStudio();
-#endif
 
 #if DEBUG
 		MainWindow.UseStudio();
