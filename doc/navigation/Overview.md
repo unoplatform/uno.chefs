@@ -2,6 +2,8 @@
 uid: Uno.Recipes.NavigationOverview
 ---
 
+# How to Use Uno Navigation in Your Application
+
 ## Problem
 
 Navigation implementations vary between platforms, and it can be time-consuming to create and manage all the different navigation methods with each their own destination and data.

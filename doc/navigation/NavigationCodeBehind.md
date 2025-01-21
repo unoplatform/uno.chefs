@@ -92,7 +92,6 @@ public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken
 
 - [NavigateViewModelAsync](https://github.com/unoplatform/uno.chefs/blob/5b7bf94fca19eee93de38fc81e08aa1f40804c47/src/Chefs/Presentation/SearchModel.cs#L71-L72)
 - [NavigateDataAsync](https://github.com/unoplatform/uno.chefs/blob/5b7bf94fca19eee93de38fc81e08aa1f40804c47/src/Chefs/Presentation/Extensions/INavigatorExtensions.cs#L13-L16)
-- [NavigateBackAsync](https://github.com/unoplatform/uno.chefs/blob/5b7bf94fca19eee93de38fc81e08aa1f40804c47/src/Chefs/Presentation/NotificationsModel.cs#L32-L35)
 - [NavigateBackWithResultAsync](https://github.com/unoplatform/uno.chefs/blob/5b7bf94fca19eee93de38fc81e08aa1f40804c47/src/Chefs/Presentation/FilterModel.cs#L20-L21)
 - [NavigateRouteAsync](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Presentation/RecipeDetailsModel.cs#L41-L53)
 

@@ -17,13 +17,16 @@ The Uno Themes library provides a set of attached properties grouped under the `
 Given the following XAML:
 
 ```xml
-xmlns:ut="using:Uno.Themes"
+<Page ...
+      xmlns:ut="using:Uno.Themes">
 
-<Button Style="{StaticResource FabStyle}">
-    <ut:ControlExtensions.Icon>
-        <SymbolIcon Symbol="Edit" />
-    </ut:ControlExtensions.Icon>
-</Button>
+    <Button Style="{StaticResource FabStyle}">
+        <ut:ControlExtensions.Icon>
+            <SymbolIcon Symbol="Edit" />
+        </ut:ControlExtensions.Icon>
+    </Button>
+
+</Page>
 ```
 
 ![FAB with Icon](../assets/fab-icon.png)
@@ -31,22 +34,23 @@ xmlns:ut="using:Uno.Themes"
 ### TextBox/PasswordBox Icon
 
 ```xml
-xmlns:ut="using:Uno.Themes"
+<Page ...
+      xmlns:ut="using:Uno.Themes">
 
-<!-- Omitted code -->
+    <TextBox PlaceholderText="Username"
+            Style="{StaticResource OutlinedTextBoxStyle}">
+        <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
+        </ut:ControlExtensions.Icon>
+    </TextBox>
+    <PasswordBox PlaceholderText="Password"
+                Style="{StaticResource OutlinedPasswordBoxStyle}">
+        <ut:ControlExtensions.Icon>
+            <FontIcon Glyph="{StaticResource Icon_Lock}" />
+        </ut:ControlExtensions.Icon>
+    </PasswordBox>
 
-<TextBox PlaceholderText="Username"
-         Style="{StaticResource OutlinedTextBoxStyle}">
-    <ut:ControlExtensions.Icon>
-        <FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
-    </ut:ControlExtensions.Icon>
-</TextBox>
-<PasswordBox PlaceholderText="Password"
-             Style="{StaticResource OutlinedPasswordBoxStyle}">
-    <ut:ControlExtensions.Icon>
-        <FontIcon Glyph="{StaticResource Icon_Lock}" />
-    </ut:ControlExtensions.Icon>
-</PasswordBox>
+</Page>
 ```
 
 ![Login Controls with Icon](../assets/login-icon.png)
@@ -55,12 +59,12 @@ xmlns:ut="using:Uno.Themes"
 
 Chefs app
 
-- [Login Page (1)](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/LoginPage.xaml#L67-L69)
-- [Login Page (2)](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/LoginPage.xaml#L79-L81)
-- [Settings Page](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/SettingsPage.xaml#L53-L56)
-- [Favorite Recipes Page](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/FavoriteRecipesPage.xaml#L71-L74)
-- [Profile Page](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/ProfilePage.xaml#L53-L56)
-- [Live Cooking Page](https://github.com/unoplatform/uno.chefs/blob/08d57612e22fd6796e9f0ee7a8a48ba252e7440a/src/Chefs/Views/LiveCookingPage.xaml#L255-L258)
+- [Login Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/LoginPage.xaml#L35-L37)
+- [Login Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/LoginPage.xaml#L60-L62)
+- [Settings Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SettingsPage.xaml#L49-L52)
+- [Favorite Recipes Page (Button)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/FavoriteRecipesPage.xaml#L57-L61)
+- [Profile Page (Button)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/ProfilePage.xaml#L49-L52)
+- [Live Cooking Page (Button)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/LiveCookingPage.xaml#L253-L255)
 
 ## Documentation
 

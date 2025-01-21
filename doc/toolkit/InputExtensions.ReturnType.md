@@ -12,41 +12,26 @@ There is no cross-platform method to set the on-screen keyboard's return key for
 
 The `InputExtensions` class, provided by **Uno.Toolkit**, includes the `InputExtensions.ReturnType` property which simplifies setting the return type for input controls, ensuring a consistent user experience across all platforms.
 
-
-In the Chefs app, the `LoginPage` sets the return type for `TextBox` and `PasswordBox` controls without needing platform specific properties:
+In the Chefs app, the `RegistrationPage` sets the return type for `TextBox` and `PasswordBox` controls without needing platform specific properties:
 
 ```xml
-...
-
 <TextBox PlaceholderText="Username"
          utu:InputExtensions.ReturnType="Next" />
 
+<TextBox x:Name="RegistrationEmail"
+         PlaceholderText="Email"
+         utu:InputExtensions.ReturnType="Next" />
 
-
-<PasswordBox x:Name="LoginPassword"
-             utu:InputExtensions.ReturnType="Done"/>
-             
-...
+<PasswordBox x:Name="RegistrationPassword"
+             PlaceholderText="Password"
+             utu:InputExtensions.ReturnType="Done" />
 ```
-
-The above code has the following effect:
-<table>
-  <tr>
-    <th>ReturnType.Next</th>
-    <th>ReturnType.Done</th>
-  </tr>
-  <tr>
-     <td><img src="../assets/inputextensions-returnType-2.png" width="400px" alt="InputExtensions.ReturnType='Done'"/></td>
-     <td><img src="../assets/inputextensions-returnType-1.png" width="400px" alt="InputExtensions.ReturnType='Next'"/></td>
-  </tr>
-</table>
 
 ## Source Code
 
-Chefs app
-
-- [Login Page](https://github.com/unoplatform/uno.chefs/blob/57492ecaf328df3437fe42777f1c085e6fda8212/src/Chefs/Views/LoginPage.xaml)
-- [Registration Page](https://github.com/unoplatform/uno.chefs/blob/57492ecaf328df3437fe42777f1c085e6fda8212/src/Chefs/Views/RegistrationPage.xaml)
+- [Registration Page (1)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/RegistrationPage.xaml#L30)
+- [Registration Page (2)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/RegistrationPage.xaml#L42)
+- [Registration Page (3)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/RegistrationPage.xaml#L50)
 
 ## Documentation
 
