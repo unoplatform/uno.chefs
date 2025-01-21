@@ -29,7 +29,9 @@ MVUX (Model-View-Update-eXtended) in **Uno Extensions** simplifies the developme
   </UnoFeatures>
   ```
 
-  Once the feature is included, you can start using MVUX in your application.
+  Once the feature is included, you can start using MVUX in your application. Here are some examples from Chefs using the MVUX extension:
+
+- [Using Implicit Commands with MVUX](xref:Uno.Recipes.ImplicitCommands)
 
 ## Documentation
 
