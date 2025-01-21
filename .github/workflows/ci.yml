@@ -54,12 +54,12 @@ jobs:
           cd src/Chefs
           dotnet build -c Release /p:TargetFramework=net8.0-browserwasm "/p:PackageVersion=${{ steps.gitversion.outputs.fullSemVer }}" /bl:./artifacts-logs/build.binlog
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: wasm-site
           path: ${{ env.DIST_PATH }}
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: logs
           path: artifacts-logs

@@ -1,6 +1,6 @@
 namespace Chefs.Presentation;
 
-public partial class ProfileModel
+public partial record ProfileModel
 {
 	private readonly IRecipeService _recipeService;
 	private readonly INavigator _navigator;

@@ -98,6 +98,10 @@ public partial class App : Application
 		);
 		MainWindow = builder.Window;
 
+#if DEBUG
+		MainWindow.UseStudio();
+#endif
+
 		Host = await builder.NavigateAsync<ShellControl>();
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
@@ -137,7 +141,6 @@ public partial class App : Application
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
 			new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
-			new ViewMap<ReviewsPage, ReviewsModel>(Data: new DataMap<ReviewParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
 			new ViewMap<MapPage, MapModel>(),
@@ -183,7 +186,6 @@ public partial class App : Application
 					}),
 					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),
-					new RouteMap("Reviews", View: views.FindByViewModel<ReviewsModel>()),
 					new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
 					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn: "Profile"),
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),

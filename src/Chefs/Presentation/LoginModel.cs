@@ -18,6 +18,6 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 	private async ValueTask DoLogin(Credentials userCredentials, CancellationToken ct)
 	{
 		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", userCredentials.Username! }, { "Password", userCredentials.Password! } });
-		await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack);
+		await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack, cancellation: ct);
 	}
 }
