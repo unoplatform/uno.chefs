@@ -28,18 +28,10 @@ public partial record DialogInfo
 }
 ```
 
-We can then create a generic dialog that will have its own DialogInfo: 
+We can then create a generic dialog that will have its own DialogInfo:
 
 ```csharp
-public partial class GenericDialogModel
-{
-    public GenericDialogModel(DialogInfo dialogInfo)
-    {
-        DialogInfo = dialogInfo;
-    }
-
-    public DialogInfo DialogInfo { get; }
-}
+public partial record GenericDialogModel(DialogInfo DialogInfo);
 ```
 
 We should then create a GenericDialog.xaml file which will take care of the bindings. We will be able to re-use this `ContentDialog` throughout the app:
