@@ -14,7 +14,7 @@ Implementing commands requires custom implementations of the ICommand interface 
 
 ### Using Implicit Commands
 
-As an example, in Chefs when a user submits a new cookbook they are running the **Submit()** `ValueTask`. This `ValueTask` implicitly creates a **Submit** command for the model.
+As an example, in Chefs when a user submits a new cookbook they are invoking the `Submit` ICommand on its `DataContext`. This `ICommand` is implicitly created by MVUX from the `public async ValueTask Submit()` method defined in the `CreateUpdateCookbookModel`.
 
 ```csharp
 public partial record CreateUpdateCookbookModel
@@ -23,26 +23,7 @@ public partial record CreateUpdateCookbookModel
 
     public async ValueTask Submit(CancellationToken ct)
     {
-        var selectedRecipes = await SelectedRecipes;
-        var cookbook = await Cookbook;
-
-        if (selectedRecipes is { Count: > 0 } && cookbook is not null && cookbook.Name.HasValueTrimmed())
-        {
-            var response = IsCreate
-                ? await _cookbookService.Create(cookbook.Name!, selectedRecipes.ToImmutableList(), ct)
-                : await _cookbookService.Update(cookbook, selectedRecipes, ct);
-
-            if (IsCreate)
-            {
-                await _cookbookService.Save(response!, ct);
-            }
-
-            await _navigator.NavigateBackWithResultAsync(this, data: response);
-        }
-        else
-        {
-            await _navigator.ShowDialog(this, new DialogInfo("Error", "Please write a cookbook name and select one recipe."), ct);
-        }
+        ...
     }
 }
 ```
