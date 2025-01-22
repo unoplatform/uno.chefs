@@ -43,7 +43,7 @@ public partial record FilterModel
 }
 ```
 
-#### 2. `FiltersPage.cs`
+#### 2. `FiltersPage.xaml`
 
 For each recipe filter, we define an `ItemsRepeater` that displays the possible values that filter can take. Each filter will display its possible values following the `FilterChipTemplate` resource defined at the page level.
 
@@ -86,3 +86,14 @@ public partial record FilterModel
         await _navigator.NavigateBackWithResultAsync(this, data: filter);
 }
 ```
+
+## Souce Code
+
+Chefs app
+
+- [FilterModel.cs](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Presentation/FilterModel.cs#L3C1-L26C2)
+- [FiltersPage.xaml](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/FiltersPage.xaml#L17-L154)
+
+## Documentation
+
+- [MVUX FeedView](xref:Uno.Extensions.Mvux.FeedView)
