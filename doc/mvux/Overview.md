@@ -31,6 +31,8 @@ MVUX (Model-View-Update-eXtended) in **Uno Extensions** simplifies the developme
 
   Once the feature is included, you can start using MVUX in your application. Here are some examples from Chefs using the MVUX extension:
 
+- [Reactive Search Results with MVUX](xref:Uno.Recipes.ReactiveSearch)
+- [Custom Search Filters with MVUX](xref:Uno.Recipes.SearchFilters)
 - [Using Implicit Commands with MVUX](xref:Uno.Recipes.ImplicitCommands)
 
 ## Documentation

@@ -6,15 +6,13 @@ uid: Uno.Recipes.ReactiveSearch
 
 ## Problem
 
-Filtering search results live as the user types is a common feature in modern applications. This requires updating the search results every time the search term changes, either per key-press or on submission. Without a proper mechanism, managing this can be complex and inefficient.
+Displaying live search results as the user types is a common feature in modern applications. This requires updating the search results every time the search term changes, either per key-press or on submission. Without a proper mechanism, managing this can be complex and inefficient.
 
 ## Solution
 
-**Uno.Extensions.MVUX** provides a seamless way to live filter search results using `IState<string>` and `SelectAsync` on the IState to react to state changes. This allows for a dynamic and responsive search experience.
+**Uno.Extensions.MVUX** provides a seamless way to live update search results using `IState<string>` and `SelectAsync` on the IState to react to state changes. This allows for a dynamic and responsive search experience.
 
 ### Using MVUX to Create a Reactive Search Experience
-
-In the Chefs search page, we use `IState<string>` to hold the search term and `IListFeed<Recipe>` for the search results. The search results are updated every time the search term changes.
 
 #### 1. `SearchModel.cs`
 
@@ -90,78 +88,7 @@ The `FeedView` control automatically updates the displayed list of recipes whene
 
 ### Using Custom Filter Logic
 
-In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic.
-
-#### 1. `FilterModel.cs`
-
-```csharp
-public partial record FilterModel
-{
-    private readonly INavigator _navigator;
-    private readonly IRecipeService _recipeService;
-
-    public FilterModel(SearchFilter filters, INavigator navigator, IRecipeService recipeService)
-    {
-        _navigator = navigator;
-        _recipeService = recipeService;
-
-        Filter = State.Value(this, () => filters);
-    }
-
-    public IState<SearchFilter> Filter { get; }
-
-    // The different possible filters
-    public IEnumerable<FilterGroup> FilterGroups => Enum.GetValues(typeof(FilterGroup)).Cast<FilterGroup>();
-    public IEnumerable<Time> Times => Enum.GetValues(typeof(Time)).Cast<Time>();
-    public IEnumerable<Difficulty> Difficulties => Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>();
-    public IEnumerable<int> Serves => new int[] { 1, 2, 3, 4, 5 };
-    public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
-}
-```
-
-#### 2. `FiltersPage.cs`
-
-For each recipe filter, we define an `ItemsRepeater` that displays the possible values that filter can take. Each filter will display its possible values following the `FilterChipTemplate` resource defined at the page level.
-
-```xml
-<Page.Resources>
-    <DataTemplate x:Key="FilterChipTemplate">
-        <utu:Chip Background="{ThemeResource SurfaceBrush}"
-                    Content="{Binding}"
-                    HorizontalAlignment="Stretch"
-                    Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                    BorderThickness="1"
-                    Style="{StaticResource MaterialChipStyle}" />
-    </DataTemplate>
-</Page.Resources>
-
-<muxc:ItemsRepeater ItemsSource="{Binding FilterGroups}"
-                    utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.FilterGroup, Mode=TwoWay}"
-                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
-                    ItemTemplate="{StaticResource FilterChipTemplate}">
-    <muxc:ItemsRepeater.Layout>
-        <muxc:UniformGridLayout ItemsJustification="Start"
-                                MinColumnSpacing="8"
-                                MinRowSpacing="8"
-                                MinItemWidth="120"
-                                ItemsStretch="Fill"
-                                MaximumRowsOrColumns="4"
-                                Orientation="Horizontal" />
-    </muxc:ItemsRepeater.Layout>
-</muxc:ItemsRepeater>
-```
-
-When the user is done selecting filters for their search, they click on the "Apply filters" button which fires the `ApplySearchFilter()` method. This uses `NavigateBackWithResultAsync()` from `Uno.Extensions.Navigation`. This will redirect the user to the previous page (the search page) while injecting the chosen filters into the search model. See [How to Navigate with Code Behind](Uno.Recipes.NavigationCodeBehind) for more information.
-
-```csharp
-public partial record FilterModel
-{
-    ...
-
-    public async ValueTask ApplySearchFilter(SearchFilter filter) =>
-        await _navigator.NavigateBackWithResultAsync(this, data: filter);
-}
-```
+In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic. See [How to Create Custom MVUX Search Filters](xref:Uno.Recipes.SearchFilters) for a closer look.
 
 ## Source Code
 
