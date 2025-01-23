@@ -58,7 +58,7 @@
 								<Run Text="{Binding Data.Recipes.Count}" />
 								<Run Text="results" />
 							</TextBlock>
-							<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
+							<muxc:ItemsRepeater uen:Navigation.Request="/Main/FavoriteRecipes/RecipeDetails"
 												ItemTemplate="{StaticResource RecipeTemplate}"
 												ItemsSource="{Binding Data.Recipes}"
 												Layout="{StaticResource ResponsiveGridLayout}" />

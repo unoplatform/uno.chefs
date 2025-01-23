@@ -149,8 +149,8 @@ public partial class App : Application
 
 		routes.Register(
 			new RouteMap("", View: views.FindByViewModel<ShellModel>(),
-				Nested: new RouteMap[]
-				{
+				Nested:
+				[
 					new RouteMap("Welcome", View: views.FindByViewModel<WelcomeModel>()),
 					new RouteMap("Login", View: views.FindByViewModel<LoginModel>()),
 					new RouteMap("Register", View: views.FindByViewModel<RegistrationModel>()),
@@ -169,17 +169,11 @@ public partial class App : Application
 						#endregion
 
 						#region Recipe Details
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
-						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
-						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
-						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						#endregion
 
 						#region Live Cooking
-						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
-						new RouteMap("SearchLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "SearchRecipeDetails"),
-						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
-						new RouteMap("CookbookLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "CookbookRecipeDetails"),
+						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>()),
 						#endregion
 
 						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
@@ -191,7 +185,7 @@ public partial class App : Application
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
 					new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main"),
 					new RouteMap("Dialog", View: views.FindByView<GenericDialog>())
-				}
+				]
 			)
 		);
 	}

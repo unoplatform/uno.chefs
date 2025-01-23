@@ -112,7 +112,7 @@
 									  VerticalScrollBarVisibility="Disabled"
 									  utu:AutoLayout.PrimaryAlignment="Stretch">
 							<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-												uen:Navigation.Request="RecipeDetails"
+												uen:Navigation.Request="/Main/Home/RecipeDetails"
 												uen:Navigation.Data="{Binding Data}"
 												ItemTemplate="{StaticResource HomeLargeItemTemplate}">
 								<muxc:ItemsRepeater.Layout>
@@ -195,7 +195,7 @@
 									  VerticalScrollBarVisibility="Disabled"
 									  utu:AutoLayout.PrimaryAlignment="Stretch">
 							<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-												uen:Navigation.Request="RecipeDetails"
+												uen:Navigation.Request="/Main/Home/RecipeDetails"
 												uen:Navigation.Data="{Binding Data}">
 								<muxc:ItemsRepeater.Layout>
 									<muxc:StackLayout Orientation="Horizontal"

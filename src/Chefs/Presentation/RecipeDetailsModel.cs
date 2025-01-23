@@ -50,16 +50,7 @@ public partial record RecipeDetailsModel
 
 	public async ValueTask LiveCooking(IImmutableList<Step> steps)
 	{
-		var route = _navigator?.Route?.Base switch
-		{
-			"RecipeDetails" => "LiveCooking",
-			"SearchRecipeDetails" => "SearchLiveCooking",
-			"FavoriteRecipeDetails" => "FavoriteLiveCooking",
-			"CookbookRecipeDetails" => "CookbookLiveCooking",
-			_ => throw new InvalidOperationException("Navigating from unknown route")
-		};
-
-		await _navigator.NavigateRouteAsync(this, route, data: new LiveCookingParameter(Recipe, steps));
+		await _navigator.NavigateRouteAsync(this, "LiveCooking", data: new LiveCookingParameter(Recipe, steps));
 	}
 
 	public async ValueTask Favorite(CancellationToken ct)
