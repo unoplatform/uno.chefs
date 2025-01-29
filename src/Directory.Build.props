@@ -11,5 +11,8 @@
 			PRI257: Ignore default language (en) not being one of the included resources (eg en-us, en-uk)
 		-->
 		<NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
+
+		<UnoHotDesignVersion>1.3.0-dev.19</UnoHotDesignVersion>
+		<SkiaSharpVersion>2.88.9</SkiaSharpVersion>
 	</PropertyGroup>
 </Project>

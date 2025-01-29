@@ -1,40 +1,83 @@
-﻿<Page x:Class="Chefs.Views.WelcomePage"
-	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:android="http://uno.ui/android#using:Uno.Toolkit.UI"
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	  xmlns:ios="http://uno.ui/ios#using:Uno.Toolkit.UI"
-	  xmlns:local="using:Chefs.Views"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
-	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
-	  xmlns:ut="using:Uno.Themes"
-	  xmlns:utu="using:Uno.Toolkit.UI"
-	  android:StatusBar.Background="{ThemeResource SurfaceBrush}"
-	  android:StatusBar.Foreground="Auto"
-	  ios:StatusBar.Foreground="Auto"
-	  utu:SafeArea.Insets="VisibleBounds"
-	  NavigationCacheMode="Required"
-	  mc:Ignorable="d android ios"
-	  Background="{ThemeResource SurfaceBrush}">
+﻿<Page
+    x:Class="Chefs.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:android="http://uno.ui/android#using:Uno.Toolkit.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:ios="http://uno.ui/ios#using:Uno.Toolkit.UI"
+    xmlns:local="using:Chefs.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:uen="using:Uno.Extensions.Navigation.UI"
+    xmlns:uer="using:Uno.Extensions.Reactive.UI"
+    xmlns:ut="using:Uno.Themes"
+    xmlns:utu="using:Uno.Toolkit.UI"
+    android:StatusBar.Background="{ThemeResource SurfaceBrush}"
+    android:StatusBar.Foreground="Auto"
+    ios:StatusBar.Foreground="Auto"
+    utu:SafeArea.Insets="VisibleBounds"
+    Background="{ThemeResource SurfaceBrush}"
+    NavigationCacheMode="Required"
+    mc:Ignorable="d android ios">
 
-	<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+    <!--<ContentControl x:Name="SUT">
+        <ContentControl.ContentTemplate>
+            <DataTemplate>
+                <StackPanel>
+                    <Button Content="Button">
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image />
+                                </StackPanel>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <StackPanel />
+                    <TextBox Text="TextBox1" FontSize="15" />
+					<TextBox Text="TextBox2" FontSize="20" />
+					<TextBox Text="TextBox3" FontSize="25" />
+					<TextBox Text="TextBox4" FontSize="30" />
+					<TextBox Text="TextBox5" FontSize="35" />
+					<TextBox Text="TextBox6" FontSize="40" />
+					<TextBox Text="TextBox7" FontSize="45" />
+                    <Button Content="Button" />
+                    <Button Content="Button" />
+                    <Button Content="Button" />
+                    <Border />
+                    <Button Content="Button" />
+                </StackPanel>
+            </DataTemplate>
+        </ContentControl.ContentTemplate>
+    </ContentControl>-->
+
+	<local:SpecialContentControl
+        Margin="100"
+        Content="123"
+        FontSize="50" />
+
+    <!--<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
 		<FlipView IsEnabled="False"
 				  Visibility="{utu:Responsive Narrow=Collapsed,
 											  Wide=Visible}"
 				  utu:AutoLayout.PrimaryAlignment="Stretch"
 				  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 			<FlipView.Items>
-				<!-- First Splash image -->
+				-->
+    <!--  First Splash image  -->
+    <!--
 				<Image Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
 					   Stretch="UniformToFill" />
 
-				<!-- Second Splash image -->
+				-->
+    <!--  Second Splash image  -->
+    <!--
 				<Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
 					   Stretch="UniformToFill" />
 
-				<!-- Third Splash image -->
+				-->
+    <!--  Third Splash image  -->
+    <!--
 				<Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
 					   Stretch="UniformToFill" />
 			</FlipView.Items>
@@ -46,7 +89,9 @@
 					  Background="Transparent"
 					  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 				<FlipView.Items>
-					<!-- First onboarding page -->
+					-->
+    <!--  First onboarding page  -->
+    <!--
 					<utu:AutoLayout CounterAxisAlignment="Center"
 									Spacing="24">
 						<Image Visibility="{utu:Responsive Narrow=Visible,
@@ -73,7 +118,9 @@
 									   TextWrapping="Wrap" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-					<!-- Second onboarding page -->
+					-->
+    <!--  Second onboarding page  -->
+    <!--
 					<utu:AutoLayout CounterAxisAlignment="Center"
 									Spacing="24">
 						<Image Visibility="{utu:Responsive Narrow=Visible,
@@ -102,7 +149,9 @@
 									   TextWrapping="Wrap" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-					<!-- Third onboarding page -->
+					-->
+    <!--  Third onboarding page  -->
+    <!--
 					<utu:AutoLayout CounterAxisAlignment="Center"
 									Spacing="24">
 						<Image Visibility="{utu:Responsive Narrow=Visible,
@@ -135,7 +184,9 @@
 			<utu:AutoLayout Padding="32,0,32,15"
 							PrimaryAxisAlignment="End"
 							Spacing="16">
-				<!-- Pips -->
+				-->
+    <!--  Pips  -->
+    <!--
 				<muxc:PipsPager x:Name="PipsPager"
 								Margin="0,0,0,10"
 								utu:AutoLayout.CounterAlignment="Center"
@@ -145,7 +196,9 @@
 								SelectedPageIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								Style="{StaticResource PipsPagerStyle}" />
 
-				<!-- Buttons -->
+				-->
+    <!--  Buttons  -->
+    <!--
 				<utu:AutoLayout Spacing="16"
 								PrimaryAxisAlignment="Center">
 					<utu:AutoLayout Spacing="16"
@@ -159,7 +212,9 @@
 								utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
 								Style="{StaticResource DefaultButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMovePrevious}" />
-						<!--Style="{StaticResource ChefsOutlinedButtonStyle}"-->
+						-->
+    <!--  Style="{StaticResource ChefsOutlinedButtonStyle}"  -->
+    <!--
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Next"
@@ -167,7 +222,9 @@
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								Style="{StaticResource DefaultButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMoveNext}" />
-						<!--Style="{StaticResource ChefsPrimaryButtonStyle}"-->
+						-->
+    <!--  Style="{StaticResource ChefsPrimaryButtonStyle}"  -->
+    <!--
 					</utu:AutoLayout>
 					<Button HorizontalContentAlignment="Center"
 							VerticalContentAlignment="Center"
@@ -180,5 +237,5 @@
 				</utu:AutoLayout>
 			</utu:AutoLayout>
 		</utu:AutoLayout>
-	</utu:AutoLayout>
+	</utu:AutoLayout>-->
 </Page>
