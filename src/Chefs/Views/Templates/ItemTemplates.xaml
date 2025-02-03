@@ -9,16 +9,11 @@
 						Margin="0,8">
 			<utu:AutoLayout Spacing="16"
 							Orientation="Horizontal">
-				<Border utu:AutoLayout.CounterAlignment="Start"
-						Width="60"
-						Height="60"
-						CornerRadius="20"
-						Margin="16,18,0,18">
-					<Image Source="{Binding UrlAuthorImage}"
-						   Stretch="UniformToFill"
-						   VerticalAlignment="Center"
-						   HorizontalAlignment="Center" />
-				</Border>
+				<PersonPicture utu:AutoLayout.CounterAlignment="Start"
+							   Width="60"
+							   Height="60"
+							   ProfilePicture="{Binding UrlAuthorImage}"
+							   Margin="16,18,0,18" />
 				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								Padding="0,18,16,18"
