@@ -4,19 +4,19 @@ jobs:
     maxParallel: 2
     matrix:
       iOS:
-        BuildTargetFramework: net8.0-ios
+        BuildTargetFramework: net9.0-ios
         ArtifactName: iOS
         ApplicationBuildNumberOffset: 50
         BuildCommand: publish
         VersionCodeOffset: 50
       Catalyst:
-        BuildTargetFramework: net8.0-maccatalyst
+        BuildTargetFramework: net9.0-maccatalyst
         ArtifactName: Catalyst
         ApplicationBuildNumberOffset: 50
         BuildCommand: build
         VersionCodeOffset: 50
   pool:
-    vmImage: macos-14
+    vmImage: macos-15
   
   variables:
   - group: 'unoplatform.apple.ios.appstore.distribution'
@@ -64,14 +64,23 @@ jobs:
       provisioningProfileLocation: 'secureFiles'
       provProfileSecureFile: Uno_Chefs_Canary_iOS.mobileprovision
 
+  - bash: |
+      echo 'Xcode Root to $(XCODE_ROOT)'
+      echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'$(XCODE_ROOT)
+      sudo xcode-select --switch $(XCODE_ROOT)/Contents/Developer
+
+    displayName: Select Xcode
+
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
   - template: templates/dotnet-install-mac.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-ios --tfm net9.0-maccatalyst'
 
   - bash: |
       cd $(build.sourcesdirectory)/src/Chefs
       echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
-      dotnet $(BuildCommand) -f $(BuildTargetFramework) -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
+      dotnet $(BuildCommand) -f $(BuildTargetFramework) /p:TargetFrameworkOverride=$(BuildTargetFramework) -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
     displayName: Build project for Release - $(BuildTargetFramework)
 
   - task: CopyFiles@2
