@@ -1,13 +1,13 @@
 jobs:
 - job: Android
- strategy:
-  matrix:
-    Android:
-      UseSkiaRendering: false
-      VariantName: Native
-    Android_Skia:
-      UseSkiaRendering: true
-      VariantName: Skia
+  strategy:
+    matrix:
+      Android:
+        UseSkiaRendering: false
+        VariantName: Native
+      Android_Skia:
+        UseSkiaRendering: true
+        VariantName: Skia
 
   pool:
     vmImage: windows-2022
