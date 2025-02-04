@@ -14,7 +14,7 @@ on:
 jobs:
   build_and_deploy_job_azure_static_apps:
     env:
-      DIST_PATH: src/Chefs/bin/Release/net8.0-browserwasm/dist
+      DIST_PATH: src/Chefs/bin/Release/net9.0-browserwasm/dist
 
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
@@ -38,21 +38,21 @@ jobs:
           useConfigFile: true
           configFilePath: build/gitversion.yml
 
-      - name: Setup dotnet 8.0.301
+      - name: Setup dotnet 9.0.100
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: '8.0.301'
+          dotnet-version: '9.0.100'
 
       - name: Install .NET Workloads
         shell: pwsh
         run: |
-          & dotnet tool install --global --version 1.24.0 uno.check
+          & dotnet tool install --global --version 1.28.3 uno.check
           & ~/.dotnet/tools/uno-check --ci --fix --non-interactive --verbose --skip openjdk 
 
       - name: Build app
         run: |
           cd src/Chefs
-          dotnet build -c Release /p:TargetFramework=net8.0-browserwasm "/p:PackageVersion=${{ steps.gitversion.outputs.fullSemVer }}" /bl:./artifacts-logs/build.binlog
+          dotnet build -c Release /p:TargetFramework=net9.0-browserwasm "/p:PackageVersion=${{ steps.gitversion.outputs.fullSemVer }}" /bl:./artifacts-logs/build.binlog
 
       - uses: actions/upload-artifact@v2
         with:

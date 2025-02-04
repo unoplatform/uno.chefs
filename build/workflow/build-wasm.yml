@@ -10,11 +10,32 @@ jobs:
     SkipUnknownFrameworks: true
   
   steps:
+  - bash: |
+      # This list is based on what the base image contains and
+      # may need to be adjusted as new software gets installed.
+      # Use the `du` command below to determine what can be
+      # uninstalled.
+      
+      rm -fR ~/.cargo
+      rm -fR ~/.rustup
+      rm -fR ~/.dotnet
+      sudo rm -fR /usr/share/swift
+      sudo rm -fR /opt/microsoft/msedge
+      sudo rm -fR /usr/local/.ghcup
+      sudo rm -fR /usr/lib/mono
+      sudo snap remove lxd
+      sudo snap remove core20
+      sudo apt remove snapd
+
+      df -h
+      # du -h -d 3 /
+    displayName: 'Cleanup unused image dependencies (Linux)'
+    condition: eq(variables['Agent.OS'], 'Linux')
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 8.0.100
+      version: 9.0.100
 
   - task: UseDotNet@2
     displayName: 'Use .NET Core SDK 5.0.400'
@@ -33,15 +54,17 @@ jobs:
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
   - template: templates/dotnet-install-linux.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-browserwasm'
 
   - bash: |
-      dotnet build /ds /m /r /p:TargetFramework=net8.0-browserwasm /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
     displayName: Copy Wasm output
     inputs:
-      SourceFolder: src/Chefs/bin/Release/net8.0-browserwasm/dist
+      SourceFolder: src/Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)
 

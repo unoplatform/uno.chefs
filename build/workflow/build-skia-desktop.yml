@@ -14,12 +14,12 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       solution: src\Chefs\Chefs.csproj
-      msbuildArguments: /ds /m /r /p:TargetFramework=net8.0 /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/build-desktop.binlog
+      msbuildArguments: /ds /m /r /p:TargetFramework=net9.0-desktop /p:TargetFrameworkOverride=net9.0-desktop /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/build-desktop.binlog
 
   - task: CopyFiles@2
     displayName: Copy Skia output
     inputs:
-      SourceFolder: src\Chefs\bin\Release\net8.0
+      SourceFolder: src\Chefs\bin\Release\net9.0-desktop
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/bin
 
