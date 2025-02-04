@@ -9,12 +9,32 @@ jobs:
         ApplicationBuildNumberOffset: 50
         BuildCommand: publish
         VersionCodeOffset: 50
+        UseSkiaRendering: false
+        VariantName: Native
       Catalyst:
-        BuildTargetFramework: net9.0-maccatalyst
         ArtifactName: Catalyst
+        BuildTargetFramework: net9.0-maccatalyst
         ApplicationBuildNumberOffset: 50
         BuildCommand: build
         VersionCodeOffset: 50
+        UseSkiaRendering: false
+        VariantName: Native
+      iOS_Skia:
+        ArtifactName: iOS
+        BuildTargetFramework: net9.0-ios
+        ApplicationBuildNumberOffset: 50
+        BuildCommand: publish
+        VersionCodeOffset: 50
+        UseSkiaRendering: true
+        VariantName: Skia
+      Catalyst_Skia:
+        ArtifactName: iOS
+        BuildTargetFramework: net9.0-maccatalyst
+        ApplicationBuildNumberOffset: 50
+        BuildCommand: build
+        VersionCodeOffset: 50
+        UseSkiaRendering: true
+        VariantName: Skia
   pool:
     vmImage: macos-15
   
@@ -80,7 +100,7 @@ jobs:
   - bash: |
       cd $(build.sourcesdirectory)/src/Chefs
       echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
-      dotnet $(BuildCommand) -f $(BuildTargetFramework) /p:TargetFrameworkOverride=$(BuildTargetFramework) -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
+      dotnet $(BuildCommand) -f $(BuildTargetFramework) -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:TargetFrameworkOverride=$(BuildTargetFramework) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
     displayName: Build project for Release - $(BuildTargetFramework)
 
   - task: CopyFiles@2
@@ -101,5 +121,5 @@ jobs:
     condition: always()
     inputs:
       PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: $(ArtifactName)
+      ArtifactName: $(ArtifactName)-$(VariantName)-is_skia_$(UseSkiaRendering)
       ArtifactType: Container

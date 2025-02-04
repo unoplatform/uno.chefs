@@ -1,5 +1,13 @@
 jobs:
 - job: WASM
+strategy:
+  matrix:
+    WASM:
+      UseSkiaRendering: false
+      ArtifactName: WASM
+    WASM_Skia:
+      UseSkiaRendering: true
+      ArtifactName: WASM_Skia
   timeoutInMinutes: 90
   pool:
     vmImage: ubuntu-latest
@@ -58,7 +66,7 @@ jobs:
       UnoCheckParameters: '--tfm net9.0-browserwasm'
 
   - bash: |
-      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:UseSkiaRendering=$(UseSkiaRendering) /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
@@ -79,5 +87,5 @@ jobs:
     condition: always()
     inputs:
       PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: WASM
+      ArtifactName: $(ArtifactName)
       ArtifactType: Container

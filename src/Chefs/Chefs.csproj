@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk">
+<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -19,9 +19,9 @@
 		<!-- Display name -->
 		<ApplicationTitle>Chefs</ApplicationTitle>
 		<!-- App Identifier -->
-		<ApplicationId>uno.platform.chefs</ApplicationId>
-		<ApplicationId Condition="'$(IsCanaryBranch)'=='true'">uno.platform.chefs-canary</ApplicationId>
-		<!-- Versions -->
+		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true'">uno.platform.chefs</ApplicationId>
+		<ApplicationId Condition="'$(UseSkiaRendering)' == 'true'">uno.platform.chefs.skia</ApplicationId>
+
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 		<UseMocks>True</UseMocks>
@@ -40,6 +40,17 @@
 			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
 			https://aka.platform.uno/singleproject-features
 		-->
+
+		<!-- Uncomment to use skia rendering -->
+		<UseSkiaRendering>true</UseSkiaRendering>
+		
+		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND '$(TargetFramework)'=='net9.0-browserwasm'">true</IsSkiaWasm>
+		<IsSkiaWasm Condition="'$(IsSkiaWasm)'==''">false</IsSkiaWasm>
+		<IsSkiaAndroid Condition="'$(UseSkiaRendering)'=='true' AND '$(TargetFramework)'=='net9.0-android'">true</IsSkiaAndroid>
+		<IsSkiaAndroid Condition="'$(IsSkiaAndroid)'==''">false</IsSkiaAndroid>
+		<IsSkiaUIKit Condition="'$(UseSkiaRendering)'=='true' AND ('$(TargetFramework)'=='net9.0-ios' OR '$(TargetFramework)'=='net9.0-maccatalyst')">true</IsSkiaUIKit>
+		<IsSkiaUIKit Condition="'$(IsSkiaUIKit)'==''">false</IsSkiaUIKit>
+
 		<UnoFeatures>
 			Material;
 			Hosting;
@@ -56,6 +67,15 @@
 			ThemeService;
 			Authentication;
 		</UnoFeatures>
+		<UnoFeatures Condition="$(IsSkiaWasm)">$(UnoFeatures)WebAssemblySkiaRenderer;</UnoFeatures>
+		<UnoFeatures Condition="$(IsSkiaAndroid)">$(UnoFeatures)AndroidSkiaRenderer;</UnoFeatures>
+		<UnoFeatures Condition="$(IsSkiaUIKit)">$(UnoFeatures)AppleUIKitSkiaRenderer;</UnoFeatures>
+		<UnoFeatures Condition="!$(IsSkiaWasm) AND !$(IsSkiaAndroid)">$(UnoFeatures)MediaElement;</UnoFeatures>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DefaultItemExcludes Condition="$(IsSkiaWasm) OR $(IsSkiaAndroid)">$(DefaultItemExcludes);**\MediaPlayer*.*</DefaultItemExcludes>
+		<DefineConstants Condition="$(IsSkiaWasm)">$(DefineConstants);IS_WASM_SKIA</DefineConstants>
+		<DefineConstants Condition="$(IsSkiaAndroid)">$(DefineConstants);IS_ANDROID_SKIA</DefineConstants>
+		<DefineConstants Condition="$(IsSkiaUIKit)">$(DefineConstants);IS_UIKIT_SKIA</DefineConstants>
 	</PropertyGroup>
 
 	<Choose>

@@ -14,7 +14,7 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       solution: src\Chefs\Chefs.csproj
-      msbuildArguments: /ds /m /r /p:TargetFramework=net9.0-desktop /p:TargetFrameworkOverride=net9.0-desktop /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/build-desktop.binlog
+      msbuildArguments: /ds /m /r /p:TargetFramework=net9.0-desktop /p:Configuration=Release /p:TargetFrameworkOverride=net9.0-desktop "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/build-desktop.binlog
 
   - task: CopyFiles@2
     displayName: Copy Skia output
