@@ -116,8 +116,14 @@
 					It is listed as a future improvement: https://platform.uno/docs/articles/controls/MediaPlayerElement.html#future-improvement
 					Related issue: https://github.com/unoplatform/Uno.Samples/issues/725
 				-->
+
+				<!--
+					Workaround: Setting the MPE Source to the same UriSource causes the player to be stuck in loading mode
+					So we're hardcoding the video source for now
+					Related issue: https://github.com/unoplatform/uno.chefs/issues/1402
+				-->
 				<not_skia:MediaPlayerElement AreTransportControlsEnabled="True"
-											 Source="{Binding Steps.CurrentItem.UrlVideo, Converter={StaticResource StringToMediaPlaybackSource}}">
+											 Source="ms-appx:///Assets/Videos/CookingVideo.mp4">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
