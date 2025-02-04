@@ -12,6 +12,7 @@ jobs:
         UseSkiaRendering: false
         VariantName: Native
       Catalyst:
+        BuildTargetFramework: net9.0-maccatalyst
         ArtifactName: Catalyst
         BuildTargetFramework: net9.0-maccatalyst
         ApplicationBuildNumberOffset: 50
@@ -100,7 +101,7 @@ jobs:
   - bash: |
       cd $(build.sourcesdirectory)/src/Chefs
       echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
-      dotnet $(BuildCommand) -f $(BuildTargetFramework) -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:TargetFrameworkOverride=$(BuildTargetFramework) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
+      dotnet $(BuildCommand) -f $(BuildTargetFramework) /p:TargetFrameworkOverride=$(BuildTargetFramework) -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
     displayName: Build project for Release - $(BuildTargetFramework)
 
   - task: CopyFiles@2

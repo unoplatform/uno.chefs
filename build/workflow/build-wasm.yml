@@ -39,7 +39,6 @@ jobs:
       # du -h -d 3 /
     displayName: 'Cleanup unused image dependencies (Linux)'
     condition: eq(variables['Agent.OS'], 'Linux')
-
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
     inputs:
@@ -67,7 +66,7 @@ jobs:
       UnoCheckParameters: '--tfm net9.0-browserwasm'
 
   - bash: |
-      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:UseSkiaRendering=$(UseSkiaRendering) /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
