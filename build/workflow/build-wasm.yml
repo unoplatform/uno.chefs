@@ -1,13 +1,13 @@
 jobs:
 - job: WASM
-strategy:
-  matrix:
-    WASM:
-      UseSkiaRendering: false
-      ArtifactName: WASM
-    WASM_Skia:
-      UseSkiaRendering: true
-      ArtifactName: WASM_Skia
+  strategy:
+    matrix:
+      WASM:
+        UseSkiaRendering: false
+        ArtifactName: WASM
+      WASM_Skia:
+        UseSkiaRendering: true
+        ArtifactName: WASM_Skia
   timeoutInMinutes: 90
   pool:
     vmImage: ubuntu-latest
