@@ -27,7 +27,8 @@ Use `Section<T>()` inside `UseConfiguration`. You can chain multiple configs.
 #### UserService.cs
 
 1. Inject `IWritableOptions<AppConfig>` in the constructor.
-:::code language="csharp" source="../../src/Chefs/Services/Users/UserService.cs" range="10-14":::
+
+[!code-csharp[](../../src/Chefs/Services/Users/UserService.cs#L10-L14)]
 :::code language="csharp" source="../../src/Chefs/Services/Users/UserService.cs" range="6":::
 
 2. Implement the logic to read and write to the configuration.
