@@ -31,6 +31,7 @@
 			must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
 		-->
 		<!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
+		<WinAppSdkVersion>1.5.240802000</WinAppSdkVersion>
 
 		<!--
 			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
@@ -57,12 +58,7 @@
 	<ItemGroup>
 		<PackageReference Include="Mapsui.Uno.WinUI" />
 		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
-		<PackageReference Include="Microsoft.Kiota.Abstractions" />
-		<PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" />
-		<PackageReference Include="Microsoft.Kiota.Serialization.Form" />
-		<PackageReference Include="Microsoft.Kiota.Serialization.Json" />
-		<PackageReference Include="Microsoft.Kiota.Serialization.Multipart" />
-		<PackageReference Include="Microsoft.Kiota.Serialization.Text" />
+		<PackageReference Include="Uno.Extensions.Http.Kiota" />
 	</ItemGroup>
 
 	<ItemGroup>
