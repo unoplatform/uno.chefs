@@ -107,7 +107,6 @@ public class UserController : ControllerBase
                 Recipes = user.Recipes
             };
 
-            System.IO.File.WriteAllText(_usersFilePath, JsonSerializer.Serialize(users));
             return Ok(users[userIndex]);
         }
 

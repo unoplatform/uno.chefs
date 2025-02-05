@@ -125,9 +125,7 @@ public class RecipeController : ControllerBase
         {
             savedRecipes.Add(new SavedRecipesData { UserId = userId, SavedRecipes = new[] { recipeId } });
         }
-        
-        System.IO.File.WriteAllText(_savedRecipesFilePath, JsonSerializer.Serialize(savedRecipes));
-        
+
         return NoContent();
     }
     
@@ -159,8 +157,6 @@ public class RecipeController : ControllerBase
             savedRecipes.Add(new SavedRecipesData { UserId = userId, SavedRecipes = new[] { recipe.Id } });
         }
 
-        System.IO.File.WriteAllText(_savedRecipesFilePath, JsonSerializer.Serialize(savedRecipes));
-
         return NoContent();
     }
 
@@ -181,8 +177,6 @@ public class RecipeController : ControllerBase
             reviewData.CreatedBy = userId;
             reviewData.Date = DateTime.Now;
             recipe.Reviews?.Add(reviewData);
-
-            System.IO.File.WriteAllText(_recipesFilePath, JsonSerializer.Serialize(recipes));
 
             return Created("", reviewData);
         }
@@ -228,8 +222,6 @@ public class RecipeController : ControllerBase
                 review.UserLike = true;
             }
 
-            System.IO.File.WriteAllText(_recipesFilePath, JsonSerializer.Serialize(recipes));
-
             return Ok(review);
         }
         else
@@ -273,8 +265,6 @@ public class RecipeController : ControllerBase
                 review.Dislikes.Add(userId);
                 review.UserLike = false;
             }
-
-            System.IO.File.WriteAllText(_recipesFilePath, JsonSerializer.Serialize(recipes));
 
             return Ok(review);
         }

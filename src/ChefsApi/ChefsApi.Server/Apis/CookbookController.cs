@@ -38,8 +38,6 @@ public class CookbookController : ControllerBase
         cookbook.UserId = userId;
         cookbooks.Add(cookbook);
 
-        System.IO.File.WriteAllText(_cookbooksFilePath, JsonSerializer.Serialize(cookbooks));
-
         return Created("", cookbook);
     }
 
@@ -58,8 +56,6 @@ public class CookbookController : ControllerBase
         {
             cookbookItem.Name = cookbook.Name;
             cookbookItem.Recipes = cookbook.Recipes;
-
-            System.IO.File.WriteAllText(_cookbooksFilePath, JsonSerializer.Serialize(cookbooks));
 
             return Ok(cookbookItem);
         }
@@ -96,8 +92,6 @@ public class CookbookController : ControllerBase
         {
             savedCookbooks.Add(new SavedCookbooksData { UserId = userId, SavedCookbooks = new List<Guid> { cookbook.Id } });
         }
-
-        System.IO.File.WriteAllText(_savedCookbooksFilePath, JsonSerializer.Serialize(savedCookbooks));
 
         return NoContent();
     }
