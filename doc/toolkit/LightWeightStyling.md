@@ -1,12 +1,12 @@
 ---
-uid: Uno.Recipes.BasicLightweightStyling
+uid: Uno.Recipes.LightweightStyling
 ---
 
-# How to Apply Basic Lightweight Styling
+# How to Apply Lightweight Styling
 
 ## Problem
 
-Applying consistent and efficient styles across an application can be challenging, especially when dealing with complex UI elements. Lightweight styling allows for a more modular and efficient approach to applying styles.
+Applying consistent and efficient styles across an application can be challenging, especially when dealing with complex UI elements. Lightweight styling allows for a more modular and efficient approach to applying styles. [Lightweight Styling.](learn.microsoft.com/en-us/windows/apps/develop/platform/xaml/xaml-styles#lightweight-styling)
 
 ## Solution
 
@@ -14,7 +14,7 @@ Lightweight styling allows you to create reusable styles that can be applied acr
 
 1. App-Level Resource Overrides:
 
-    At the app level, you can override certain resources using basic lightweight styling. These overrides will apply to the entire application, here is an example from the `Chefs` app:
+    At the app level, you can override certain resources using lightweight styling. These overrides will apply to the entire application, here is an example from the `Chefs` app:
 
     ```xml
     <Application x:Class="Chefs.App"
@@ -59,15 +59,13 @@ Lightweight styling allows you to create reusable styles that can be applied acr
  		<ResourceDictionary.ThemeDictionaries> 
  			<ResourceDictionary x:Key="Light"> 
  				<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" /> 
- 				<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String> 
  			</ResourceDictionary> 
  			<ResourceDictionary x:Key="Default"> 
- 				<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" /> 
- 				<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String> 
+ 				<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />  
  			</ResourceDictionary> 
  		</ResourceDictionary.ThemeDictionaries> 
  	</ResourceDictionary> 
- </PasswordBox.Resources> 
+    </PasswordBox.Resources> 
     ```
 
 ## Source Code
@@ -81,3 +79,4 @@ Chefs app
 ## Documentation
 
 - [Uno Toolkit Lightweight Styling](xref:Uno.Toolkit.LightweightStyling)
+- [Uno Themes Lightweight Styling](xref:Uno.Themes.LightweightStyling)
