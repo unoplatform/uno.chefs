@@ -20,7 +20,7 @@ steps:
     displayName: 'Canary Update (skia-everywhere)'
     condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/skia-everywhere')
     inputs:
-      solution: '$(build.sourcesdirectory)'
+      solution: 'src/Chefs.sln'
       usePrivateFeed: false
       useNuGetOrg: true
       mergeBranch: true
