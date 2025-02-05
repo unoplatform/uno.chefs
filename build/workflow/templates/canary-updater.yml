@@ -42,7 +42,7 @@ steps:
           $a = $_.fullname; ( get-content $a ) |
           foreach-object { $_ -replace "uno.platform.chefs.skia","uno.platform.chefs.skia-canary" } |
           set-content $a }
-    displayName: 'Adjust AndroidManifest.xml package name'
+    displayName: 'Adjust Application ID (Skia)'
     condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/skia-everywhere')
 
   - pwsh: |
@@ -51,5 +51,5 @@ steps:
           $a = $_.fullname; ( get-content $a ) |
           foreach-object { $_ -replace "uno.platform.chefs","uno.platform.chefs-canary" } |
           set-content $a }
-    displayName: 'Adjust AndroidManifest.xml package name'
+    displayName: 'Adjust Application ID'
     condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/dev')
