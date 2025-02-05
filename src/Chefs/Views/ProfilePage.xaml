@@ -84,13 +84,10 @@
 								Padding="32"
 								Background="{ThemeResource SurfaceBrush}">
 					<utu:AutoLayout Spacing="16">
-						<Border utu:AutoLayout.CounterAlignment="Center"
-								Width="88"
-								Height="88"
-								CornerRadius="44">
-							<Image Source="{Binding Data.UrlProfileImage}"
-								   Stretch="UniformToFill" />
-						</Border>
+						<PersonPicture utu:AutoLayout.CounterAlignment="Center"
+									   Width="88"
+									   Height="88"
+									   ProfilePicture="{Binding Data.UrlProfileImage}" />
 						<utu:AutoLayout Spacing="4">
 							<TextBlock TextAlignment="Center"
 									   TextWrapping="Wrap"
