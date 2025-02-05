@@ -39,6 +39,7 @@ jobs:
       # du -h -d 3 /
     displayName: 'Cleanup unused image dependencies (Linux)'
     condition: eq(variables['Agent.OS'], 'Linux')
+
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
     inputs:
