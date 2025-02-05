@@ -1,50 +1,23 @@
 namespace Chefs.Presentation;
 
-public partial class LoginModel
+public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, IAuthenticationService Authentication)
 {
-	private readonly INavigator _navigator;
-	private readonly IUserService _userService;
-	private readonly IWritableOptions<Credentials> _credentialOptions;
-	//private bool isRegisterToggle = false;
+	public string Title { get; } = "Login";
+	
+	public IState<Credentials> UserCredentials => State<Credentials>.Value(this, () => new Credentials());
 
-	public LoginModel(
-		INavigator navigator,
-		IUserService userService,
-		IWritableOptions<Credentials> credentialOptions)
+    public ICommand Login => Command.Create(b => b.Given(UserCredentials).When(CanLogin).Then(DoLogin));
+
+	private bool CanLogin(Credentials userCredentials)
 	{
-		_navigator = navigator;
-		_userService = userService;
-		_credentialOptions = credentialOptions;
+		return userCredentials is not null &&
+			   !string.IsNullOrWhiteSpace(userCredentials.Username) &&
+			   !string.IsNullOrWhiteSpace(userCredentials.Password);
 	}
 
-	public IState<Credentials> Credentials => State<Credentials>.Async(this, async _ => new Credentials()
+	private async ValueTask DoLogin(Credentials userCredentials, CancellationToken ct)
 	{
-		Username = _credentialOptions.Value != null
-			? _credentialOptions.Value.Username!
-			: string.Empty,
-		Password = string.Empty,
-		SkipWelcome = false,
-		SaveCredentials = _credentialOptions.Value != null
-			? _credentialOptions.Value.SaveCredentials!
-			: false,
-	});
-
-	public IState<bool> IsRegisterToggle => State<bool>.Value(this, () => false);
-
-	public ICommand Login => Command.Create(b => b.Given(Credentials).When(CanLogin).Then(DoLogin));
-
-
-	public async ValueTask ToggleRegister(CancellationToken ct)
-	{
-		var isRegister = await IsRegisterToggle;
-		await IsRegisterToggle.Update(_ => !isRegister, ct);
-	}
-
-	private bool CanLogin(Credentials credentials)
-		=> credentials is { Username.Length: > 0 } and { Password.Length: > 0 };
-
-	private async ValueTask DoLogin(Credentials credentials, CancellationToken ct)
-	{
-		await _navigator.NavigateViewModelAsync<MainModel>(this, Qualifiers.ClearBackStack, Option.Some(credentials), ct);
+		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", userCredentials.Username! }, { "Password", userCredentials.Password! } });
+		await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack, cancellation: ct);
 	}
 }

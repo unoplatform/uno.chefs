@@ -1,13 +1,17 @@
 namespace Chefs.Presentation;
 
-public partial class CookbookDetailModel
+public partial record CookbookDetailModel
 {
+	private readonly IMessenger _messenger;
+
+	private readonly Cookbook _cookbook;
 	public CookbookDetailModel(Cookbook cookbook, IMessenger messenger)
 	{
-		Cookbook = State<Cookbook>.Value(this, () => cookbook ?? new Cookbook());
-
-		messenger.Observe(Cookbook, cb => cb.Id);
+		_messenger = messenger;
+		_cookbook = cookbook ?? new Cookbook();
 	}
-
-	public IState<Cookbook> Cookbook { get; }
+	
+	public IState<Cookbook> Cookbook => State
+		.Value(this, () => _cookbook ?? new Cookbook())
+		.Observe(_messenger, cb => cb.Id);
 }
