@@ -6,7 +6,7 @@ steps:
   - task: unoplatformCanaryUpdater@1
     displayName: 'Canary Update'
     retryCountOnTaskFailure: 3
-    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries')
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/dev')
     inputs:
       solution: 'src/Chefs.sln'
       branchToMerge: main
