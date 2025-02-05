@@ -1,20 +1,14 @@
 steps:
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
-    displayName: 'Use .Net Core runtime 7.0.5'
+    displayName: 'Use .NET Runtime'
     inputs:
-      packageType: runtime
-      version: 7.0.5
-
-  # Restore nuget.org to the list of existing sources, .NET 6 Pre 2 may somehow remove it
-  - powershell: |
-      dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org | Out-Null
-      $global:LASTEXITCODE = 0
-    displayName: Adjust nuget.org source 
+      version: 9.0.101
 
   - task: gitversion/setup@0
+    retryCountOnTaskFailure: 3
     inputs:
-      versionSpec: '5.x'
+      versionSpec: '5.10.3'
 
   - task: gitversion/execute@0
     inputs:
