@@ -56,7 +56,6 @@
 						Style="{StaticResource TextButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<PathIcon Data="{StaticResource Icon_Add}"
-								  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 								  Foreground="{ThemeResource PrimaryBrush}" />
 					</ut:ControlExtensions.Icon>
 				</Button>
@@ -121,7 +120,6 @@
 												Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
 											<Button.Content>
 												<PathIcon Data="{StaticResource Icon_Add}"
-														  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
 														  Foreground="{ThemeResource OnSurfaceBrush}" />
 											</Button.Content>
 										</Button>
