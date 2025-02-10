@@ -5,6 +5,7 @@ namespace Chefs.Presentation;
 public partial record CreateUpdateCookbookModel
 {
 	const uint DefaultPageSize = 20;
+	public IState<IImmutableList<Recipe>> SelectedRecipes { get; }
 
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
@@ -39,6 +40,8 @@ public partial record CreateUpdateCookbookModel
 			SaveButtonContent = "Create cookbook";
 			IsCreate = true;
 		}
+		SelectedRecipes = State.Value(this, () => _cookbook?.Recipes ?? ImmutableList<Recipe>.Empty);
+
 	}
 	public bool IsCreate { get; }
 
@@ -59,8 +62,6 @@ public partial record CreateUpdateCookbookModel
 		)
 		.Selection(SelectedRecipes);
 
-	public IState<IImmutableList<Recipe>> SelectedRecipes => State
-		.FromFeed(this, Cookbook.Select(c => c.Recipes));
 	public async ValueTask Submit(CancellationToken ct)
 	{
 		var selectedRecipes = await SelectedRecipes;
