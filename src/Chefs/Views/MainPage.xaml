@@ -45,7 +45,7 @@
 				</utu:TabBarItem.Icon>
 			</utu:TabBarItem>
 
-			<utu:TabBarItem uen:Region.Name="Search"
+			<utu:TabBarItem uen:Region.Name="-/Search"
 							Content="Search">
 				<utu:TabBarItem.Icon>
 					<PathIcon Data="{StaticResource Icon_Search}" />
@@ -76,7 +76,7 @@
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
-				<utu:TabBarItem uen:Region.Name="Search"
+				<utu:TabBarItem uen:Region.Name="-/Search"
 								Content="Search">
 					<utu:TabBarItem.Icon>
 						<PathIcon Data="{StaticResource Icon_Search}" />
