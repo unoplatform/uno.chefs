@@ -43,7 +43,7 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 9.0.100
+      version: 9.0.101
 
   - task: UseDotNet@2
     displayName: 'Use .NET Core SDK 5.0.400'

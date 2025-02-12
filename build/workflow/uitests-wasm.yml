@@ -14,7 +14,7 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       packageType: sdk
-      version: 9.0.100
+      version: 9.0.101
 
   - bash: |
       bash build/scripts/wasm-uitest-run.sh
