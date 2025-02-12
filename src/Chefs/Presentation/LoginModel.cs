@@ -6,7 +6,7 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 	
 	public IState<Credentials> UserCredentials => State<Credentials>.Value(this, () => new Credentials());
 
-    public ICommand Login => Command.Create(b => b.Given(UserCredentials).When(CanLogin).Then(DoLogin));
+	public ICommand Login => Command.Create(b => b.Given(UserCredentials).When(CanLogin).Then(DoLogin));
 
 	private bool CanLogin(Credentials userCredentials)
 	{
@@ -18,6 +18,21 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 	private async ValueTask DoLogin(Credentials userCredentials, CancellationToken ct)
 	{
 		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", userCredentials.Username! }, { "Password", userCredentials.Password! } });
-		await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack, cancellation: ct);
+		await NavigateToMain(ct);
 	}
+
+	public async ValueTask LoginWithGoogle(CancellationToken ct)
+	{
+		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", "GoogleUser" }, { "Password", "uno123" } });
+		await NavigateToMain(ct);
+	}
+
+	public async ValueTask LoginWithApple(CancellationToken ct)
+	{
+		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", "AppleUser" }, { "Password", "uno123" } });
+		await NavigateToMain(ct);
+	}
+
+	private async ValueTask NavigateToMain(CancellationToken ct)
+		=> await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack, cancellation: ct);
 }

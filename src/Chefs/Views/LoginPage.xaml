@@ -82,6 +82,7 @@
 			<utu:AutoLayout Spacing="8"
 							PrimaryAxisAlignment="Center">
 				<Button Content="Sign in with Apple"
+						Command="{Binding LoginWithApple}"
 						Style="{StaticResource ChefsTonalButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
@@ -91,6 +92,7 @@
 					</ut:ControlExtensions.Icon>
 				</Button>
 				<Button Content="Sign in with Google"
+						Command="{Binding LoginWithGoogle}"
 						Style="{StaticResource ChefsTonalButtonStyle}">
 					<ut:ControlExtensions.Icon>
 						<FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
