@@ -8,7 +8,7 @@ steps:
     retryCountOnTaskFailure: 3
     condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/dev')
     inputs:
-      solution: 'src/Chefs.sln'
+      solution: '$(build.sourcesdirectory)'
       branchToMerge: main
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
       resultFile: '$(Build.ArtifactStagingDirectory)/result.json'
@@ -20,7 +20,7 @@ steps:
     displayName: 'Canary Update (skia-everywhere)'
     condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/skia-everywhere')
     inputs:
-      solution: 'src/Chefs.sln'
+      solution: '$(build.sourcesdirectory)'
       usePrivateFeed: false
       useNuGetOrg: true
       mergeBranch: true
