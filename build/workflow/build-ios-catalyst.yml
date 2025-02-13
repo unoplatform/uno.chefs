@@ -78,7 +78,7 @@ jobs:
       UnoCheckParameters: '--tfm net9.0-ios --tfm net9.0-maccatalyst'
 
   - bash: |
-      cd $(build.sourcesdirectory)/src/Chefs
+      cd $(build.sourcesdirectory)/Chefs
       echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
       dotnet $(BuildCommand) -f $(BuildTargetFramework) /p:TargetFrameworkOverride=$(BuildTargetFramework) -c Release /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
     displayName: Build project for Release - $(BuildTargetFramework)
@@ -86,7 +86,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Publish Binaries'
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Chefs/bin/Release/
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/
       Contents:  |
         **/*.apk
         **/*.ipa

@@ -43,12 +43,12 @@
 		<Message Text="%0A" Importance="$(_MessageImportance)" />
 
 		<PropertyGroup>
-			<_SourceBasePath>$(MSBuildThisFileDirectory)../../src/$(AppName)/</_SourceBasePath>
+			<_SourceBasePath>$(MSBuildThisFileDirectory)../../$(AppName)/</_SourceBasePath>
 			<_ManifestPath>$(_SourceBasePath)Platforms/Android/AndroidManifest.xml</_ManifestPath>
 			<_PlistFilePath>$(_SourceBasePath)Platforms/iOS/Info.plist</_PlistFilePath>
 			<_AppxManifestPath>$(_SourceBasePath)Package.appxmanifest</_AppxManifestPath>
 
-			<_mobileSourceBasePath>../../src/$(AppName)/</_mobileSourceBasePath>
+			<_mobileSourceBasePath>../../$(AppName)/</_mobileSourceBasePath>
 			<_MobileAndroidManifestPath>$(_mobileSourceBasePath)Platforms/Android/AndroidManifest.xml</_MobileAndroidManifestPath>
 			<_catalystPlistFilePath>$(_mobileSourceBasePath)Platforms/MacCatalyst/Info.plist</_catalystPlistFilePath>
 			<_MobileiOSPlistFilePath>$(_mobileSourceBasePath)Platforms/iOS/Info.plist</_MobileiOSPlistFilePath>
