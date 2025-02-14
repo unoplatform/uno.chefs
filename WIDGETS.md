@@ -1729,3 +1729,19 @@ Here's a list of the Chefs defined styles used in various areas above:
     <Setter Property="FontSize" Value="24" />
 </Style>
 ```
+
+## Improvements for Hot Design QoL
+
+1. Standard Page Shell with NavBar & Content Region
+
+- Every page uses a grid (or similar container) with two rows.
+- Row 0: A section hosting the NavigationBar (with back/close buttons).
+- Row 1: A flexible content area (often wrapped in a ScrollViewer) containing the page's main UI.
+
+2. FeedView with ItemsRepeater for List/Grid Displays
+
+- Multiple pages (e.g., HomePage, NotificationsPage, RecipeDetails, SearchPage, FavoriteRecipesPage) display collections of items using a combination of `<uer:FeedView>` and `<muxc:ItemsRepeater>`.
+
+3. FlipView Carousel
+
+- Both the WelcomePage and LiveCookingPage implement a carousel using FlipView(s) (with navigation buttons and a pips pager) to display sequential content.
