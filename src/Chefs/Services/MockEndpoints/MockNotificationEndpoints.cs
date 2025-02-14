@@ -2,11 +2,11 @@ using System.Text.Json;
 
 namespace Chefs.Services;
 
-public class MockNotificationEndpoints(string basePath, JsonSerializerOptions serializerOptions)
+public class MockNotificationEndpoints(string basePath, JsonSerializerOptions serializerOptions) : BaseMockEndpoint
 {
 	public string HandleNotificationsRequest(HttpRequestMessage request)
 	{
-		var notificationsData = File.ReadAllText(Path.Combine(basePath, "Notifications.json"));
+		var notificationsData = LoadData("Notifications.json");
 		var notifications = JsonSerializer.Deserialize<List<NotificationData>>(notificationsData, serializerOptions);
 		
 		//Get all notifications

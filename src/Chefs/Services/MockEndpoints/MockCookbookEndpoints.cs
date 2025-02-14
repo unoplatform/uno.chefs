@@ -2,11 +2,11 @@ using System.Text.Json;
 
 namespace Chefs.Services;
 
-public class MockCookbookEndpoints(string basePath, JsonSerializerOptions serializerOptions)
+public class MockCookbookEndpoints(string basePath, JsonSerializerOptions serializerOptions) : BaseMockEndpoint
 {
 	public string HandleCookbooksRequest(HttpRequestMessage request)
 	{
-		var cookbooksData = File.ReadAllText(Path.Combine(basePath, "Cookbooks.json"));
+		var cookbooksData = LoadData("Cookbooks.json");
 		var cookbooks = JsonSerializer.Deserialize<List<CookbookData>>(cookbooksData, serializerOptions);
 
 		if (request.RequestUri.AbsolutePath == "/api/cookbook")
@@ -19,7 +19,7 @@ public class MockCookbookEndpoints(string basePath, JsonSerializerOptions serial
 		{
 			var queryParams = request.RequestUri.Query;
 			var userId = ExtractUserIdFromQuery(queryParams);
-			var savedCookbooksData = File.ReadAllText(Path.Combine(basePath, "SavedCookbooks.json"));
+			var savedCookbooksData = LoadData("SavedCookbooks.json");
 			var savedCookbooks = JsonSerializer.Deserialize<List<SavedCookbooksData>>(savedCookbooksData, serializerOptions);
 			var userSavedCookbookIds = savedCookbooks?.FirstOrDefault(x => x.UserId == Guid.Parse(userId))?.SavedCookbooks ?? new List<Guid>();
 

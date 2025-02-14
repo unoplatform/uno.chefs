@@ -59,6 +59,14 @@ public partial class App : Application
 				)
 				.UseHttp((context, services) =>
 				{
+					services.AddTransient<MockHttpMessageHandler>();
+					services.AddKiotaClient<ChefsApiClient>(
+						context,
+						options: new EndpointOptions { Url = "http://localhost:5116" }
+#if USE_MOCKS
+						, configure: (builder, endpoint) => builder.ConfigurePrimaryAndInnerHttpMessageHandler<MockHttpMessageHandler>()
+#endif
+					);
 				})
 #if DEBUG
 				// Switch to Development environment when running in DEBUG
@@ -85,34 +93,6 @@ public partial class App : Application
 				.UseSerialization()
 				.ConfigureServices((context, services) =>
 				{
-					services.AddSingleton<IRequestAdapter, HttpClientRequestAdapter>(sp =>
-					{
-						var mockHttpMessageHandler = new MockHttpMessageHandler();
-						
-						var httpClient = new HttpClient(mockHttpMessageHandler)
-						{
-							BaseAddress = new Uri("https://localhost:5002")
-						};
-						var authenticationProvider = new AnonymousAuthenticationProvider();
-						var parseNodeFactory = new Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory();
-						var serializationWriterFactory = new Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory();
-						
-						return new HttpClientRequestAdapter(authenticationProvider, parseNodeFactory, serializationWriterFactory, httpClient);
-					});
-
-					services.AddSingleton<ChefsApiClient>(sp =>
-					{
-						var requestAdapter = sp.GetRequiredService<IRequestAdapter>();
-						return new ChefsApiClient(requestAdapter);
-					});
-
-					//UNCOMMENT THE CODE BELOW TO USE THE REAL API (WITH THE SERVER PROJECT) INSTEAD OF THE MOCK API 
-					
-					// services.AddKiotaClient<ChefsApiClient>(
-					// 	context,
-					// 	options: new EndpointOptions { Url = "https://localhost:5002" }
-					// );
-
 					services
 						.AddSingleton<INotificationService, NotificationService>()
 						.AddSingleton<IRecipeService, RecipeService>()
@@ -191,31 +171,31 @@ public partial class App : Application
 					new RouteMap("Register", View: views.FindByViewModel<RegistrationModel>()),
 					new RouteMap("Main", View: views.FindByViewModel<MainModel>(), Nested: new RouteMap[]
 					{
-                        #region Main Tabs
+						#region Main Tabs
                         new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
 						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
-                        #endregion
+						#endregion
 
-                        #region Cookbooks
+						#region Cookbooks
                         new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("UpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
-                        #endregion
+						#endregion
 
-                        #region Recipe Details
+						#region Recipe Details
                         new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
 						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
 						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
 						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
-                        #endregion
+						#endregion
 
-                        #region Live Cooking
+						#region Live Cooking
                         new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
 						new RouteMap("SearchLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "SearchRecipeDetails"),
 						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
 						new RouteMap("CookbookLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "CookbookRecipeDetails"),
-                        #endregion
+						#endregion
 
                         new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
 					}),

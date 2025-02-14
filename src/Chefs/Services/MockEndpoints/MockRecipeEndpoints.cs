@@ -2,12 +2,11 @@ using System.Text.Json;
 
 namespace Chefs.Services;
 
-public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializerOptions)
+public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializerOptions) : BaseMockEndpoint
 {
 	public string HandleRecipesRequest(HttpRequestMessage request)
-	
 	{
-		var recipesData = File.ReadAllText(Path.Combine(basePath, "Recipes.json"));
+		var recipesData = LoadData("Recipes.json");
 		var allRecipes = JsonSerializer.Deserialize<List<RecipeData>>(recipesData, serializerOptions);
 		
 		//Get all categories
@@ -103,7 +102,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 	
 	private string HandleCategoriesRequest()
 	{
-		var categoriesData = File.ReadAllText(Path.Combine(basePath, "categories.json"));
+		var categoriesData = LoadData("categories.json");
 		var allCategories = JsonSerializer.Deserialize<List<CategoryData>>(categoriesData, serializerOptions);
 		return JsonSerializer.Serialize(allCategories, serializerOptions);
 	}
@@ -158,7 +157,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 	
 	private string GetFavoritedRecipes(List<RecipeData> allRecipes, HttpRequestMessage request)
 	{
-		var savedRecipesData = File.ReadAllText(Path.Combine(basePath, "SavedRecipes.json"));
+		var savedRecipesData = LoadData("SavedRecipes.json");
 		var savedRecipes = JsonSerializer.Deserialize<List<SavedRecipesData>>(savedRecipesData, serializerOptions);
 		
 		var queryParams = request.RequestUri.Query;

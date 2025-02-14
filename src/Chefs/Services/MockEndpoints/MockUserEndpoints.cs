@@ -4,11 +4,12 @@ using UserData = Chefs.Data.UserData;
 
 namespace Chefs.Services;
 
-public class MockUserEndpoints(string basePath, JsonSerializerOptions serializerOptions)
+public class MockUserEndpoints(string basePath, JsonSerializerOptions serializerOptions) : BaseMockEndpoint
 {
 	public string HandleUsersRequest(HttpRequestMessage request)
 	{
-		var usersData = File.ReadAllText(Path.Combine(basePath, "Users.json"));
+		this.GetType().Assembly.GetManifestResourceStream(Constants.RecipeDataFile);
+		var usersData = LoadData("Users.json");
 		var users = JsonSerializer.Deserialize<List<UserData>>(usersData, serializerOptions);
 
 		//authenticate user
