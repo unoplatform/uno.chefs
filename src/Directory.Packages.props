@@ -2,6 +2,9 @@
 	<PropertyGroup>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 	</PropertyGroup>
+	<PropertyGroup>
+		<UnoExtensionsVersion>5.3.0-dev.125</UnoExtensionsVersion>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageVersion Include="coverlet.collector" Version="3.2.0" />
 		<PackageVersion Include="FluentAssertions" Version="6.10.0" />
@@ -15,5 +18,7 @@
 		<PackageVersion Include="NUnit3TestAdapter" Version="4.4.2" />
 		<PackageVersion Include="Xamarin.UITest" Version="4.1.2" />
 		<PackageVersion Include="System.Private.Uri" Version="4.3.2" />
+		<PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+		<PackageVersion Include="Uno.Extensions.Http.Kiota" Version="5.3.0-dev.125" />
 	</ItemGroup>
 </Project>

@@ -1,30 +1,39 @@
-namespace Chefs.Business.Models;
+using Chefs.Services.Clients.Models;
 
+namespace Chefs.Business.Models;
 
 public record SearchFilter(
 	FilterGroup? FilterGroup = null,
-	Time? Time = null,
+	Data.Time? Time = null,
 	Difficulty? Difficulty = null,
 	int? Serves = null,
 	Category? Category = null)
 {
 	public bool HasFilter => FilterGroup != null || Time != null ||
-		Difficulty != null || Category != null || Serves != null;
-
+	                         Difficulty != null || Category != null || Serves != null;
+	
 	public bool Match(Recipe recipe)
 	{
-		var time = Time switch
+		var maxTime = Time switch
 		{
-			Data.Time.Under15min => new TimeSpan(0, 15, 0),
-			Data.Time.Under30min => new TimeSpan(0, 30, 0),
-			Data.Time.Under60min => new TimeSpan(0, 60, 0),
-
-			_ => TimeSpan.Zero,
+			Data.Time.Under15min => TimeSpan.FromMinutes(15),
+			Data.Time.Under30min => TimeSpan.FromMinutes(30),
+			Data.Time.Under60min => TimeSpan.FromMinutes(60),
+			_ => TimeSpan.MaxValue,
 		};
-
+		
+		var cookTimeSpan = ToTimeSpan(recipe.CookTime);
+		
 		return (Difficulty == null || recipe.Difficulty == Difficulty) &&
-			   (Time == null || recipe.CookTime < time) &&
-			   (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
-			   (Serves == null || Serves == recipe.Serves);
+		       (Time == null || cookTimeSpan < maxTime) &&
+		       (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
+		       (Serves == null || Serves == recipe.Serves);
+	}
+	private static TimeSpan ToTimeSpan(TimeSpanObject timeSpanObject)
+	{
+		return new TimeSpan(
+			timeSpanObject?.Hours ?? 0,
+			timeSpanObject?.Minutes ?? 0,
+			timeSpanObject?.Seconds ?? 0);
 	}
 }

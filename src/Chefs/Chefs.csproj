@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk">
+﻿<Project Sdk="Uno.Sdk">
 	<PropertyGroup>
 			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -24,6 +24,7 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
+		<UseMocks>True</UseMocks>
 		<!--
 			If you encounter this error message:
 
@@ -72,8 +73,26 @@
 		</Otherwise>
 	</Choose>
 
+	<PropertyGroup Condition="'$(UseMocks)'=='True'">
+		<DefineConstants>$(DefineConstants);USE_MOCKS</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Uno.Extensions.Http.Kiota" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<Content Include="Data\**\*.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="Data\AppData\categories.json" />
+	  <Content Remove="Data\AppData\Cookbooks.json" />
+	  <Content Remove="Data\AppData\Notifications.json" />
+	  <Content Remove="Data\AppData\Recipes.json" />
+	  <Content Remove="Data\AppData\SavedCookbooks.json" />
+	  <Content Remove="Data\AppData\SavedRecipes.json" />
+	  <Content Remove="Data\AppData\Users.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -82,6 +101,13 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
+	  <EmbeddedResource Include="Data\AppData\categories.json" />
+	  <EmbeddedResource Include="Data\AppData\Cookbooks.json" />
+	  <EmbeddedResource Include="Data\AppData\Notifications.json" />
+	  <EmbeddedResource Include="Data\AppData\Recipes.json" />
+	  <EmbeddedResource Include="Data\AppData\SavedCookbooks.json" />
+	  <EmbeddedResource Include="Data\AppData\SavedRecipes.json" />
+	  <EmbeddedResource Include="Data\AppData\Users.json" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
