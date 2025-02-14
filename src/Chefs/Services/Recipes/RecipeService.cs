@@ -2,10 +2,10 @@ using System.Text.Json;
 using Chefs.Services.Clients;
 using Microsoft.Kiota.Abstractions.Serialization;
 using CategoryData = Chefs.Services.Clients.Models.CategoryData;
+using IngredientData = Chefs.Services.Clients.Models.IngredientData;
 using RecipeData = Chefs.Services.Clients.Models.RecipeData;
 using ReviewData = Chefs.Services.Clients.Models.ReviewData;
 using StepData = Chefs.Services.Clients.Models.StepData;
-using IngredientData = Chefs.Services.Clients.Models.IngredientData;
 
 namespace Chefs.Services.Recipes;
 
