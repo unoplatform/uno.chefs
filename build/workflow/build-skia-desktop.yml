@@ -19,7 +19,7 @@ jobs:
   - task: CopyFiles@2
     displayName: Copy Skia output
     inputs:
-      SourceFolder: src\Chefs\bin\Release\net9.0-desktop
+      SourceFolder: Chefs\bin\Release\net9.0-desktop
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/bin
 
