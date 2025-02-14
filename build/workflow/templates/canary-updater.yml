@@ -25,7 +25,7 @@ steps:
       useNuGetOrg: true
       mergeBranch: true
       branchToMerge: main
-      nugetUpdaterVersion: 1.1.1
+      nugetUpdaterVersion: '1.1.0'
       nugetVersion: 'feature.skia-everywhere'
       packageAuthor: 'unoplatform,uno platform'
       summaryFile: '$(Build.ArtifactStagingDirectory)/Summary.md'
