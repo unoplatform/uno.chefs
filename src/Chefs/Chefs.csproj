@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk.Private">
+﻿<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -62,7 +62,6 @@
 			Serialization;
 			Localization;
 			Navigation;
-			MediaElement;
 			Skia;
 			ThemeService;
 			Authentication;
@@ -87,7 +86,7 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Mapsui.Uno.WinUI" />
+				<!--<PackageReference Include="Mapsui.Uno.WinUI" />-->
 				<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
 			</ItemGroup>
 		</Otherwise>

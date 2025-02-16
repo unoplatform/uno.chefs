@@ -10,8 +10,10 @@ public class Program
 		static int Main(string[] args)
 #endif
 		{
+#if !IS_WASM_SKIA
 			Uno.UI.Xaml.Media.FontFamilyHelper.PreloadAsync("ms-appx:///Assets/Fonts/MaterialIcons-Regular.ttf#Material Symbols Outlined");
 			Uno.UI.Xaml.Media.FontFamilyHelper.PreloadAsync("ms-appx:///Assets/Fonts/FontAwesome-Brands.otf#Font Awesome 6 Brands");
+#endif
 
 #if IS_WASM_SKIA
 			var host = new Uno.UI.Runtime.Skia.WebAssembly.Browser.PlatformHost(() => _app = new App());
