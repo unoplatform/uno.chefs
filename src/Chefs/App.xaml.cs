@@ -158,7 +158,9 @@ public partial class App : Application
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
+#if !IS_WASM_SKIA
 			new ViewMap<MapPage, MapModel>(),
+#endif
 			new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>())
 		);
 
@@ -196,8 +198,9 @@ public partial class App : Application
 						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
 						new RouteMap("CookbookLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "CookbookRecipeDetails"),
 						#endregion
-
+#if !IS_WASM_SKIA
                         new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
+#endif
 					}),
 					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),
