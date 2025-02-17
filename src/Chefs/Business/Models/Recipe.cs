@@ -1,21 +1,24 @@
+using Chefs.Services.Clients.Models;
+using RecipeData = Chefs.Services.Clients.Models.RecipeData;
+
 namespace Chefs.Business.Models;
 
 public partial record Recipe : IChefEntity
 {
 	internal Recipe(RecipeData recipeData)
 	{
-		Id = recipeData.Id;
-		UserId = recipeData.UserId;
+		Id = recipeData.Id ?? Guid.Empty;
+		UserId = recipeData.UserId ?? Guid.Empty;
 		ImageUrl = recipeData.ImageUrl;
 		Name = recipeData.Name;
-		Serves = recipeData.Serves;
-		CookTime = recipeData.CookTime;
-		Difficulty = recipeData.Difficulty;
+		Serves = recipeData.Serves ?? 0;
+		CookTime = recipeData.CookTime ?? new TimeSpanObject();
+		Difficulty = (Difficulty)(recipeData.Difficulty ?? 0);
 		Calories = recipeData.Calories;
 		Details = recipeData.Details;
 		Category = new Category(recipeData.Category);
-		Date = recipeData.Date;
-		IsFavorite = recipeData.IsFavorite;
+		Date = recipeData.Date ?? DateTime.MinValue;
+		IsFavorite = recipeData.IsFavorite ?? false;
 		Nutrition = new Nutrition(recipeData?.Nutrition);
 	}
 	public Guid Id { get; init; }
@@ -23,21 +26,27 @@ public partial record Recipe : IChefEntity
 	public string? ImageUrl { get; init; }
 	public string? Name { get; init; }
 	public int Serves { get; init; }
-	public TimeSpan CookTime { get; init; }
+	public TimeSpanObject CookTime { get; init; }
 	public Difficulty Difficulty { get; init; }
 	public string? Calories { get; init; }
 	public string? Details { get; init; }
 	public Category Category { get; init; }
-	public DateTime Date { get; init; }
+	public DateTimeOffset Date { get; init; }
 	public bool IsFavorite { get; init; }
 	public Nutrition Nutrition { get; init; }
 
 	//remove "kcal" unit from Calories property
-	public string? CaloriesAmount => Calories?.Remove(Calories.Length - 4);
-
-	public string TimeCal => CookTime > TimeSpan.FromHours(1) ?
-		String.Format("{0:%h} hour {0:%m} mins • {1}", CookTime, Calories) :
-		String.Format("{0:%m} mins • {1}", CookTime, Calories);
+	public string? CaloriesAmount => Calories?.Length > 4 ? Calories.Remove(Calories.Length - 4) : Calories;
+	public string TimeCal
+	{
+		get
+		{
+			var timeSpan = ToTimeSpan(CookTime);
+			return timeSpan > TimeSpan.FromHours(1)
+				? $"{timeSpan:%h} hour {timeSpan:%m} mins • {Calories}"
+				: $"{timeSpan:%m} mins • {Calories}";
+		}
+	}
 
 	internal RecipeData ToData() => new()
 	{
@@ -47,10 +56,17 @@ public partial record Recipe : IChefEntity
 		Name = Name,
 		Serves = Serves,
 		CookTime = CookTime,
-		Difficulty = Difficulty,
+		Difficulty = (int)Difficulty,
 		Calories = Calories,
 		Details = Details,
 		Category = Category.ToData(),
 		Date = Date
 	};
+	private static TimeSpan ToTimeSpan(TimeSpanObject timeSpanObject)
+	{
+		return new TimeSpan(
+			timeSpanObject?.Hours ?? 0,
+			timeSpanObject?.Minutes ?? 0,
+			timeSpanObject?.Seconds ?? 0);
+	}
 }

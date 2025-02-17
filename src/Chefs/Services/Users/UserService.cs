@@ -1,32 +1,39 @@
+using Chefs.Services.Clients;
+using Microsoft.Kiota.Abstractions.Serialization;
+using UserData = Chefs.Services.Clients.Models.UserData;
+
 namespace Chefs.Services.Users;
 
-public class UserService : IUserService
+public class UserService(
+	ChefsApiClient client,
+	IWritableOptions<AppConfig> chefAppOptions,
+	IWritableOptions<Credentials> credentialOptions)
+	: IUserService
 {
-	private readonly IUserEndpoint _userEndpoint;
-	private readonly IWritableOptions<AppConfig> _chefAppOptions;
-	private readonly IWritableOptions<Credentials> _credentialOptions;
-
-
-	public UserService(
-		IUserEndpoint userEndpoint,
-		IWritableOptions<AppConfig> chefAppOptions,
-		IWritableOptions<Credentials> credentialOptions)
-		=> (_userEndpoint, _chefAppOptions, _credentialOptions) = (userEndpoint, chefAppOptions, credentialOptions);
-
+	private readonly IWritableOptions<Credentials> _credentialOptions = credentialOptions;
+	
 	private IState<User> _user => State.Async(this, GetCurrent);
 
 	public IFeed<User> User => _user;
 
-	public IState<AppConfig> Settings => State.Async(this, GetSettings);
-
 	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
-		=> _chefAppOptions.Value;
+		=> chefAppOptions.Value;
 
 	public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
-		=> (await _userEndpoint.GetPopularCreators(ct)).Select(data => new User(data)).ToImmutableList();
+	{
+		await using var responseStream = await client.Api.User.PopularCreators.GetAsync(cancellationToken: ct);
+		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
+		var popularCreatorsData = await KiotaJsonSerializer.DeserializeCollectionAsync<UserData>(jsonResponse, cancellationToken: ct);
+		return popularCreatorsData?.Select(data => new User(data)).ToImmutableList() ?? ImmutableList<User>.Empty;
+	}
 
 	public async ValueTask<User> GetCurrent(CancellationToken ct)
-		=> new(await _userEndpoint.GetCurrent(ct));
+	{
+		await using var responseStream = await client.Api.User.Current.GetAsync(cancellationToken: ct);
+		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
+		var currentUserData = await KiotaJsonSerializer.DeserializeAsync<UserData>(jsonResponse, cancellationToken: ct);
+		return new User(currentUserData);
+	}
 
 	public async Task SetSettings(AppConfig chefSettings, CancellationToken ct)
 	{
@@ -38,8 +45,7 @@ public class UserService : IUserService
 			AccentColor = chefSettings.AccentColor,
 		};
 
-		await _chefAppOptions.UpdateAsync(_ => settings);
-		await Settings.UpdateAsync(_ => settings, ct);
+		await chefAppOptions.UpdateAsync(_ => settings);
 	}
 
 	public async Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null)
@@ -58,11 +64,16 @@ public class UserService : IUserService
 	}
 
 	public async ValueTask<User> GetById(Guid userId, CancellationToken ct)
-		=> new(await _userEndpoint.GetById(userId, ct));
+	{
+		await using var responseStream = await client.Api.User[userId].GetAsync(cancellationToken: ct);
+		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
+		var userData = await KiotaJsonSerializer.DeserializeAsync<UserData>(jsonResponse, cancellationToken: ct);
+		return new User(userData);
+	}
 
 	public async ValueTask Update(User user, CancellationToken ct)
 	{
-		await _userEndpoint.Update(user.ToData(), ct);
+		await client.Api.User.PutAsync(user.ToData(), cancellationToken: ct);
 		await _user.UpdateAsync(_ => user, ct);
 	}
 

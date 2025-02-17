@@ -1,11 +1,13 @@
+using CookbookData = Chefs.Services.Clients.Models.CookbookData;
+using RecipeData = Chefs.Services.Clients.Models.RecipeData;
 namespace Chefs.Business.Models;
 
 public partial record Cookbook : IChefEntity
 {
 	internal Cookbook(CookbookData cookbookData)
 	{
-		Id = cookbookData.Id;
-		UserId = cookbookData.UserId;
+		Id = cookbookData.Id ?? Guid.Empty;
+		UserId = cookbookData.UserId ?? Guid.Empty;
 		Name = cookbookData.Name;
 		Recipes = cookbookData.Recipes?
 			.Select(c => new Recipe(c))
@@ -31,8 +33,8 @@ public partial record Cookbook : IChefEntity
 			.Select(c => c.ToData())
 			.ToList()
 	};
-
-	internal CookbookData ToData(IImmutableList<Recipe> recipes) => new()
+	
+	internal CookbookData ToData(IImmutableList<Recipe>? recipes) => new()
 	{
 		Id = Id,
 		UserId = UserId,

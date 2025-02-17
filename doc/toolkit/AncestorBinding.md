@@ -16,16 +16,17 @@ The `AncestorBinding` markup extension in the Uno Toolkit provides a way to find
 
 ```xml
 <uer:FeedView Source="{Binding TrendingNow}">
-        <muxc:ItemsRepeater ItemsSource="{Binding Data}">
-                <muxc:ItemsRepeater.ItemTemplate>
-                        <DataTemplate>
-                                <!-- Omitted code -->
-                                <ToggleButton Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.SaveRecipe}"
-                                              CommandParameter="{Binding}">
-                                 <!-- Omitted code -->
-                        </DataTemplate>
-                </muxc:ItemsRepeater.ItemTemplate>
-        </muxc:ItemsRepeater>
+    <muxc:ItemsRepeater ItemsSource="{Binding Data}">
+        <muxc:ItemsRepeater.ItemTemplate>
+            <DataTemplate>
+                <ToggleButton Style="{StaticResource IconToggleButtonStyle}"
+                            IsChecked="{Binding IsFavorite}"
+                            Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.FavoriteRecipe}"
+                            CommandParameter="{Binding}">
+                </ToggleButton>
+            </DataTemplate>
+        </muxc:ItemsRepeater.ItemTemplate>
+    </muxc:ItemsRepeater>
 </uer:FeedView>
 ```
 
@@ -33,8 +34,8 @@ The `AncestorBinding` markup extension in the Uno Toolkit provides a way to find
 
 Chefs app
 
-- [Home Page](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs/Views/HomePage.xaml#L49)
-- [Create/Update Cookbook Page](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs/Views/CreateUpdateCookbookPage.xaml#L91)
+- [Home Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/HomePage.xaml#L46-L50)
+- [Create/Update Cookbook Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/CreateUpdateCookbookPage.xaml#L71-L80)
 - [Recipe Details Page (1)](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs/Views/RecipeDetailsPage.xaml#L336)
 - [Recipe Details Page (2)](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs/Views/RecipeDetailsPage.xaml#L379)
 - [Recipe Details Page (3)](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs/Views/RecipeDetailsPage.xaml#L719)

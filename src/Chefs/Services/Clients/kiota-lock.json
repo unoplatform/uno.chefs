@@ -1,0 +1,33 @@
+{
+  "descriptionHash": "E70D903575DFAE48F931C113E475A9CE90785579A58C6682A0625F15A5E83ED9B26E0DC9AA0D3608E83B132F87E3BACE331EB672BF475110F87DE8EEB147CE5D",
+  "descriptionLocation": "https://localhost:5002/swagger/v1/swagger.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.16.0",
+  "clientClassName": "ChefsApiClient",
+  "clientNamespaceName": "Chefs.Services.Clients",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}
