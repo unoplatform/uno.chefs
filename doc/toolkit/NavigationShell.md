@@ -2,7 +2,7 @@
 uid: Uno.Recipes.NavigationShell
 ---
 
-# How to Create a Navigation Shell 
+# How to Create a Responsive Navigation Shell
 
 ## Problem
 
@@ -90,7 +90,6 @@ Here is the `MainPage.xaml` from the Chefs app.
 **Main Grid**: The MainGrid hosts the navigation content and the TabBar.
 
 - `uen:Region.Attached="True"`: Attaches the region to enable navigation.
-- `utu:AutoLayout.CounterAlignment="Start"` and `utu:AutoLayout.PrimaryAlignment="Stretch"`: Ensures the layout is responsive and aligned correctly.
 
 **NavigationGrid**: Hosts the pages within the main content area.
 
@@ -107,6 +106,37 @@ Navigation Shell Structure:
 - `MainPage`: Acts as the shell hosting the TabBar and the NavigationGrid.
 - `TabBar`: Always visible at the bottom, providing consistent navigation.
 - `NavigationGrid`: Dynamically displays the content of the selected page.
+
+### Making the Navigation Shell Responsive
+
+In `MainPage.xaml`, we define two TabBar elements with different layouts:
+
+- Horizontal TabBar: Visible when the window is narrow.
+
+- Vertical TabBar: Visible when the window is wide.
+
+``` xml
+<!-- Horizontal TabBar for narrow screens -->
+<utu:TabBar Grid.Row="1"
+            Grid.Column="1"
+            Visibility="{utu:Responsive Narrow=Visible, Wide=Collapsed}"
+            uen:Region.Attached="True"
+            Style="{StaticResource BottomTabBarStyle}">
+</utu:TabBar>
+
+<!-- Vertical TabBar for wide screens -->
+<utu:AutoLayout Grid.RowSpan="2"
+                Background="{ThemeResource SurfaceBrush}"
+                Visibility="{utu:Responsive Narrow=Collapsed, Wide=Visible}"
+                Width="120">
+<utu:TabBar uen:Region.Attached="True"
+            Style="{StaticResource VerticalTabBarStyle}"
+            utu:AutoLayout.PrimaryAlignment="Stretch">
+</utu:TabBar>
+</utu:AutoLayout>
+```
+
+The [ResponsiveExtension](xref:Uno.Recipes.ResponsiveExtension) from `Uno.Toolkit` dynamically adjusts the Visibility of each TabBar based on the window size.
 
 For more detailed information and advanced use cases of navigation with TabBar, refer to the [Advanced TabBar Navigation documentation](xref:Uno.Extensions.Navigation.Advanced.TabBar).
 
