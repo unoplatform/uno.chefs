@@ -1,4 +1,10 @@
+global using System;
 global using Uno.UITest;
 global using Uno.UITest.Helpers;
 global using Uno.UITest.Helpers.Queries;
-
+global using System.Drawing;
+global using Chefs.UITest.TestFramework;
+global using System.Runtime.CompilerServices;
+global using FluentAssertions.Execution;
+global using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+global using static System.Math;

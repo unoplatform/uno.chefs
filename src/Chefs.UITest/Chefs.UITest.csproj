@@ -15,6 +15,15 @@
     <PackageReference Include="NUnit3TestAdapter" VersionOverride="4.5.0" />
     <PackageReference Include="Uno.UITest.Helpers" VersionOverride="1.1.0-dev.70" />
     <PackageReference Include="Xamarin.UITest" VersionOverride="4.3.4" />
+    <PackageReference Include="SkiaSharp" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" />
+    <PackageReference Include="MSTest.TestFramework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageVersion Include="SkiaSharp" Version="2.88.8" />
+    <PackageVersion Include="SkiaSharp.NativeAssets.Linux" Version="2.88.8" />
+    <PackageVersion Include="MSTest.TestFramework" Version="2.2.9" />
   </ItemGroup>
 
 </Project>

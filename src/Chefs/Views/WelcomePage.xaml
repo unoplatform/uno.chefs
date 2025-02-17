@@ -61,7 +61,8 @@
 							<Image Width="160"
 								   Height="90"
 								   Source="{ThemeResource ChefsLogoWithIcon}" />
-							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+							<TextBlock AutomationProperties.AutomationId="WelcomePageFirstOnboardingTextBlock"
+									   Foreground="{ThemeResource OnSurfaceBrush}"
 									   Style="{StaticResource TitleLarge}"
 									   Text="Welcome to Your App!"
 									   Padding="32,0"
@@ -90,7 +91,8 @@
 								   Height="90"
 								   utu:AutoLayout.CounterAlignment="Center"
 								   Source="{ThemeResource ChefsLogoWithIcon}" />
-							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+							<TextBlock AutomationProperties.AutomationId="WelcomePageSecondOnboardingTextBlock"
+									   Foreground="{ThemeResource OnSurfaceBrush}"
 									   Style="{StaticResource TitleLarge}"
 									   Text="Explore Thousands of Recipes"
 									   Padding="32,0"
@@ -111,7 +113,8 @@
 							   MaxHeight="270"
 							   Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
 							   Stretch="UniformToFill" />
-						<utu:AutoLayout PrimaryAxisAlignment="Center"
+						<utu:AutoLayout AutomationProperties.AutomationId="WelcomePageThirdOnboardingTextBlock"
+										PrimaryAxisAlignment="Center"
 										CounterAxisAlignment="Center"
 										utu:AutoLayout.PrimaryAlignment="Stretch"
 										Spacing="24">
@@ -152,14 +155,16 @@
 									PrimaryAxisAlignment="Center"
 									CounterAxisAlignment="Center"
 									Orientation="Horizontal">
-						<Button HorizontalContentAlignment="Center"
+						<Button AutomationProperties.AutomationId="WelcomePagePreviousButton"
+								HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Previous"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
 								Style="{StaticResource ChefsOutlinedButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMovePrevious}" />
-						<Button HorizontalContentAlignment="Center"
+						<Button AutomationProperties.AutomationId="WelcomePageNextButton"
+								HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Next"
 								utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
@@ -167,11 +172,11 @@
 								Style="{StaticResource ChefsPrimaryButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMoveNext}" />
 					</utu:AutoLayout>
-					<Button HorizontalContentAlignment="Center"
+					<Button AutomationProperties.AutomationId="WelcomePageLoginButton"
+							HorizontalContentAlignment="Center"
 							VerticalContentAlignment="Center"
 							Content="Skip"
 							Padding="12,20"
-							AutomationProperties.AutomationId="WelcomePageLoginButton"
 							uen:Navigation.Request="-/Login"
 							Foreground="{ThemeResource PrimaryBrush}"
 							CornerRadius="4"
