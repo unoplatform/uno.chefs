@@ -171,6 +171,7 @@
 							VerticalContentAlignment="Center"
 							Content="Skip"
 							Padding="12,20"
+							AutomationProperties.AutomationId="WelcomePageLoginButton"
 							uen:Navigation.Request="-/Login"
 							Foreground="{ThemeResource PrimaryBrush}"
 							CornerRadius="4"

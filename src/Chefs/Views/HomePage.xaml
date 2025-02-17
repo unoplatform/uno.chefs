@@ -63,7 +63,8 @@
 		</DataTemplate>
 	</Page.Resources>
 	<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-		<utu:NavigationBar x:Name="NavBar"
+		<utu:NavigationBar AutomationProperties.AutomationId="HomePageNavigationBar"
+						   x:Name="NavBar"
 						   Style="{StaticResource ChefsNavigationBarStyle}">
 			<utu:NavigationBar.Content>
 				<Grid>
