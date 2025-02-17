@@ -7,6 +7,8 @@
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:not_win="http://uno.ui/not_win"
+	  xmlns:skia="http://uno.ui/skia#using:Uno.Toolkit.UI"
+	  xmlns:not_skia="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  xmlns:toolkit="using:Uno.UI.Toolkit"
 	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
@@ -16,12 +18,12 @@
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  utu:StatusBar.Foreground="AutoInverse"
-	  Background="Transparent"
-	  mc:Ignorable="d not_win">
+	  Background="{ThemeResource BackgroundBrush}"
+	  mc:Ignorable="d not_win skia">
 
 	<Page.Resources>
 
-		<converters:UriToMediaPlayBackSourceConverter x:Key="UriToMediaPlaybackSource" />
+		<converters:StringToMediaPlayBackSourceConverter x:Key="StringToMediaPlaybackSource" />
 
 		<DataTemplate x:Key="StepTemplate">
 
@@ -30,31 +32,16 @@
 				<utu:AutoLayout Spacing="24"
 								Padding="40"
 								PrimaryAxisAlignment="Start">
-					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-									Orientation="Horizontal">
-						<TextBlock FontSize="22"
-								   FontWeight="SemiBold"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleLarge}"
-								   Text="{Binding Number}"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<TextBlock Margin="0,0,5,0"
-								   FontSize="22"
-								   FontWeight="SemiBold"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleLarge}"
-								   Text="-"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<TextBlock FontSize="22"
-								   FontWeight="SemiBold"
-								   Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource TitleLarge}"
-								   Text="{Binding Name}"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-					</utu:AutoLayout>
+					<TextBlock FontSize="22"
+							   FontWeight="SemiBold"
+							   Foreground="{ThemeResource OnSurfaceBrush}"
+							   Style="{StaticResource TitleLarge}"
+							   TextAlignment="Center"
+							   TextWrapping="Wrap">
+						<Run Text="{Binding Number}" />
+						<Run Text=" - " />
+						<Run Text="{Binding Name}" />
+					</TextBlock>
 					<utu:AutoLayout Padding="16"
 									Background="{ThemeResource BackgroundBrush}"
 									CornerRadius="8"
@@ -75,16 +62,14 @@
 													MinRowSpacing="12" />
 							</muxc:ItemsRepeater.Layout>
 							<muxc:ItemsRepeater.ItemTemplate>
-								<DataTemplate x:DataType="x:String">
+								<DataTemplate>
 									<utu:AutoLayout Spacing="4"
 													PrimaryAxisAlignment="Center"
+													CounterAxisAlignment="Center"
 													Orientation="Horizontal">
-										<FontIcon Glyph="{StaticResource Icon_Check_Circle}"
-												  FontSize="14"
-												  VerticalAlignment="Center"
-												  Foreground="{ThemeResource OnSurfaceLowBrush}" />
-										<TextBlock Text="{x:Bind}"
-												   VerticalAlignment="Center"
+										<PathIcon Data="{StaticResource Icon_Check_Circle}"
+												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+										<TextBlock Text="{Binding}"
 												   TextWrapping="NoWrap"
 												   Foreground="{ThemeResource OnSurfaceBrush}" />
 									</utu:AutoLayout>
@@ -105,14 +90,12 @@
 	<utu:AutoLayout x:Name="MainLayout">
 		<utu:NavigationBar x:Name="NavBar"
 						   utu:AutoLayout.PrimaryAlignment="Auto"
-						   Background="{ThemeResource SurfaceInverseBrush}"
-						   Foreground="{ThemeResource OnSurfaceInverseBrush}"
-						   Content="{Binding Recipe.Name}"
-						   Style="{StaticResource PrimaryModalNavigationBarStyle}">
+						   Style="{StaticResource ChefsNavigationBarStyle}"
+						   Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
@@ -128,55 +111,84 @@
 																			 Wide=Stretch}"
 							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
 																  Wide=Center}">
-				<MediaPlayerElement AreTransportControlsEnabled="True"
-									Source="{Binding VideoSource, Converter={StaticResource UriToMediaPlaybackSource}}">
+				<!--
+					MediaPlayerElement currently isn't supported on Skia Desktop, videos are not be playable
+					It is listed as a future improvement: https://platform.uno/docs/articles/controls/MediaPlayerElement.html#future-improvement
+					Related issue: https://github.com/unoplatform/Uno.Samples/issues/725
+				-->
+
+				<!--
+					Workaround: Setting the MPE Source to the same UriSource causes the player to be stuck in loading mode
+					So we're hardcoding the video source for now
+					Related issue: https://github.com/unoplatform/uno.chefs/issues/1402
+				-->
+				<not_skia:MediaPlayerElement AreTransportControlsEnabled="True"
+											 Source="ms-appx:///Assets/Videos/CookingVideo.mp4">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
-				</MediaPlayerElement>
+				</not_skia:MediaPlayerElement>
+
+				<skia:AutoLayout PrimaryAxisAlignment="Center"
+								 Padding="24">
+					<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
+								Width="56"
+								Height="72"
+								UriSource="{ThemeResource Empty_Box}"
+								Foreground="#FFFFFF" />
+					<TextBlock Foreground="#FFFFFF"
+							   Style="{StaticResource TitleLarge}"
+							   Text="Media Player is currently not supported on this platform."
+							   TextAlignment="Center"
+							   TextWrapping="Wrap" />
+				</skia:AutoLayout>
 			</utu:AutoLayout>
 
+			<!--
+				WORKAROUND
+				Binding to the Steps.Value property instead of directly on the Steps entity until
+				https://github.com/unoplatform/uno.extensions/issues/2391 is fixed
+			-->
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Justify="SpaceBetween"
 							Padding="0,40">
-				<!-- We must hardcode the height of the flipview because of this issue. https://github.com/unoplatform/uno/issues/13944 -->
 				<FlipView x:Name="StepsFlipView"
 						  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 						  Background="Transparent"
 						  utu:AutoLayout.PrimaryAlignment="Stretch"
 						  ItemTemplate="{StaticResource StepTemplate}"
-						  ItemsSource="{Binding Steps}"
-						  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+						  ItemsSource="{Binding Steps.Value.Items}"
+						  SelectedIndex="{Binding Steps.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 				<utu:AutoLayout CornerRadius="8"
+								PrimaryAxisAlignment="Stretch"
 								Padding="40,0">
 					<muxc:PipsPager x:Name="pipsPager"
 									Margin="0,0,0,16"
+									utu:AutoLayout.PrimaryAlignment="Auto"
 									utu:AutoLayout.CounterAlignment="Center"
 									Style="{StaticResource PipsPagerStyle}" />
 					<utu:AutoLayout Height="59"
-									utu:AutoLayout.PrimaryAlignment="Stretch"
 									Orientation="Horizontal"
-									PrimaryAxisAlignment="Center"
+									PrimaryAxisAlignment="Stretch"
+									CounterAxisAlignment="End"
+									utu:AutoLayout.PrimaryAlignment="Stretch"
+									utu:AutoLayout.CounterAlignment="Stretch"
 									Spacing="16">
-						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Height="59"
-								Content="Back"
-								CornerRadius="4"
+						<Button Content="Back"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=StepsFlipView}"
-								Style="{StaticResource TextButtonStyle}"
-								Visibility="{Binding CanGoBack, Converter={StaticResource TrueToVisible}}" />
-						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Height="59"
-								Content="Next"
-								CornerRadius="4"
+								Style="{StaticResource ChefsSecondaryButtonStyle}"
+								Visibility="{Binding Steps.Value.CanMovePrevious, FallbackValue=Collapsed, TargetNullValue=Collapsed}" />
+						<Button Content="Next"
+								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Next="{Binding ElementName=StepsFlipView}"
-								Visibility="{Binding CanGoNext, Converter={StaticResource TrueToVisible}}" />
-						<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-								Height="59"
-								Command="{Binding Complete}"
+								Visibility="{Binding Steps.Value.CanMoveNext}"
+								Style="{StaticResource ChefsPrimaryButtonStyle}" />
+						<Button Command="{Binding Complete}"
 								Content="Done!"
-								CornerRadius="4"
-								Visibility="{Binding CanFinish, Converter={StaticResource TrueToVisible}}" />
+								utu:AutoLayout.PrimaryAlignment="Stretch"
+								Visibility="{Binding Steps.Value.CanMoveNext, Converter={StaticResource InvertBool}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
+								Style="{StaticResource ChefsPrimaryButtonStyle}" />
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
@@ -184,17 +196,14 @@
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
-						Visibility="{Binding Completed, Converter={StaticResource TrueToVisible}, FallbackValue=Collapsed, TargetNullValue=Collapsed}"
+						Visibility="{Binding Completed}"
 						Orientation="{utu:Responsive Narrow=Vertical,
 													 Wide=Horizontal}">
-			<utu:AutoLayout PrimaryAxisAlignment="Center"
-							utu:AutoLayout.PrimaryAlignment="Stretch"
-							Visibility="{utu:Responsive Narrow=Collapsed,
-														Wide=Visible}">
-				<Image Source="{Binding Recipe.ImageUrl}"
-					   Stretch="UniformToFill"
-					   utu:AutoLayout.PrimaryAlignment="Stretch" />
-			</utu:AutoLayout>
+			<Image Source="{Binding Recipe.ImageUrl}"
+				   Stretch="UniformToFill"
+				   Visibility="{utu:Responsive Narrow=Collapsed,
+											   Wide=Visible}"
+				   utu:AutoLayout.PrimaryAlignment="Stretch" />
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
 							PrimaryAlignment="Stretch"
 							Padding="{utu:Responsive Narrow=32,
@@ -235,23 +244,20 @@
 				</utu:AutoLayout>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								CounterAxisAlignment="End"
+								PrimaryAxisAlignment="Stretch"
 								Orientation="Horizontal"
 								Spacing="16">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-							Height="59"
 							Command="{Binding BackToLastStep}"
 							Content="Previous"
-							CornerRadius="4"
-							Style="{StaticResource TextButtonStyle}" />
+							Style="{StaticResource ChefsSecondaryButtonStyle}" />
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Height="59"
-							Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-														  Path=DataContext.Save}"
+							Command="{Binding Favorite}"
 							Content="Favorite"
 							CornerRadius="4">
 						<ut:ControlExtensions.Icon>
-							<FontIcon Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-									  Glyph="{StaticResource Icon_Favorite}" />
+							<PathIcon Data="{StaticResource Icon_Heart}" />
 						</ut:ControlExtensions.Icon>
 					</Button>
 				</utu:AutoLayout>

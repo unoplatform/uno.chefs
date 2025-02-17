@@ -15,28 +15,13 @@ The `ItemsRepeater` extensions library provides attached properties that enable 
 ```xml
 <muxc:ItemsRepeater ItemsSource="{Binding Times}"
                     utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
-                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
-    <muxc:ItemsRepeater.ItemTemplate>
-        <DataTemplate>
-        ...
-        </DataTemplate>
-    </muxc:ItemsRepeater.ItemTemplate>
-</muxc:ItemsRepeater>
+                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone" />
 ```
 
-The above code has the following effect:
-<table>
-  <tr>
-    <th>SingleOrNone Selection Mode</th>
-  </tr>
-  <tr>
-    <td><img src="../assets/itemsrepeater-extensions-single.gif" width="400px" alt="ItemsRepeaterExtensions Single Selection Example"/></td>
-  </tr>
-</table>
+![ItemsRepeaterExtensions Single Selection ExampleItemsRepeaterExtensions Single Selection Example](../assets/itemsrepeater-extensions-single.gif)
 
 ## Source Code
 
-Chefs app
 - [Filters Page (1)](https://github.com/unoplatform/uno.chefs/blob/1c8e881d6b2f824ea460da2c449daf82dd38e165/src/Chefs/Views/FiltersPage.xaml#L55)
 - [Filters Page (2)](https://github.com/unoplatform/uno.chefs/blob/1c8e881d6b2f824ea460da2c449daf82dd38e165/src/Chefs/Views/FiltersPage.xaml#L74)
 - [Filters Page (3)](https://github.com/unoplatform/uno.chefs/blob/1c8e881d6b2f824ea460da2c449daf82dd38e165/src/Chefs/Views/FiltersPage.xaml#L102)

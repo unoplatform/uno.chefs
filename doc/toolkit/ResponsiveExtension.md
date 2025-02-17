@@ -12,37 +12,22 @@ XAML currently lacks a simple and flexible approach for creating responsive layo
 
 The `ResponsiveExtension` class is a markup extension that enables the customization of `UIElement` properties based on screen size.
 
-<table>
-  <tr>
-    <th>Typical scenario</th>
-  </tr>
-  <tr>
-   <td><img src="../assets/responsiveview-sample.gif" width="800px" alt="ResponsiveView Scenario"/></td>
-  </tr>
-</table>
+![ResponsiveView Scenario](../assets/responsiveview-sample.gif)
 
 `ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:Uno.Recipes.ResponsiveView) control.
 
 ```xml
-<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}">
+<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}" />
                 ...
 </utu:AutoLayout>
 ```
 
-The above code has the following effect:
-<table>
-  <tr>
-    <th>Responsive Markup Extension</th>
-  </tr>
-  <tr>
-   <td><img src="../assets/responsiveextension-animated.gif" width="800px" alt="Responsive Extension Animation"/></td>
-  </tr>
-</table>
+![Responsive Extension Animation"](../assets/responsiveextension-animated.gif)
 
 ## Source Code
 
-Chefs app
-- [Main Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/MainPage.xaml#L44)
+- [Main Page (1)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/MainPage.xaml#L37-L38)
+- [Main Page (2)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/MainPage.xaml#L65-L66)
 - [Search Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/SearchPage.xaml#L148)
 - [Home Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/HomePage.xaml#L290)
 - [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/RecipeDetailsPage.xaml#L24)

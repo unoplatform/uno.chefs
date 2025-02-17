@@ -43,16 +43,15 @@
 		<Message Text="%0A" Importance="$(_MessageImportance)" />
 
 		<PropertyGroup>
-			<_SourceBasePath>$(MSBuildThisFileDirectory)../../src/$(AppName)/$(AppName)</_SourceBasePath>
-			<_ManifestPath>$(_SourceBasePath).Droid/Properties/AndroidManifest.xml</_ManifestPath>
-			<_PlistFilePath>$(_SourceBasePath).iOS/Info.plist</_PlistFilePath>
-			<_macPlistFilePath>$(_SourceBasePath).macOS/Info.plist</_macPlistFilePath>
-			<_AppxManifestPath>$(_SourceBasePath).UWP/Package.appxmanifest</_AppxManifestPath>
+			<_SourceBasePath>$(MSBuildThisFileDirectory)../../src/$(AppName)/</_SourceBasePath>
+			<_ManifestPath>$(_SourceBasePath)Platforms/Android/AndroidManifest.xml</_ManifestPath>
+			<_PlistFilePath>$(_SourceBasePath)Platforms/iOS/Info.plist</_PlistFilePath>
+			<_AppxManifestPath>$(_SourceBasePath)Package.appxmanifest</_AppxManifestPath>
 
-			<_mobileSourceBasePath>../../src/$(AppName).Mobile</_mobileSourceBasePath>
-			<_MobileAndroidManifestPath>$(_mobileSourceBasePath)/Android/AndroidManifest.xml</_MobileAndroidManifestPath>
-			<_catalystPlistFilePath>$(_mobileSourceBasePath)/MacCatalyst/Info.plist</_catalystPlistFilePath>
-			<_MobileiOSPlistFilePath>$(_mobileSourceBasePath)/iOS/Info.plist</_MobileiOSPlistFilePath>
+			<_mobileSourceBasePath>../../src/$(AppName)/</_mobileSourceBasePath>
+			<_MobileAndroidManifestPath>$(_mobileSourceBasePath)Platforms/Android/AndroidManifest.xml</_MobileAndroidManifestPath>
+			<_catalystPlistFilePath>$(_mobileSourceBasePath)Platforms/MacCatalyst/Info.plist</_catalystPlistFilePath>
+			<_MobileiOSPlistFilePath>$(_mobileSourceBasePath)Platforms/iOS/Info.plist</_MobileiOSPlistFilePath>
 
 			<_AndroidNamespace>
 				<Namespace Prefix="android" Uri="http://schemas.android.com/apk/res/android" />
@@ -115,15 +114,15 @@
 		<XmlPoke Condition="Exists('$(_AppxManifestPath)')" XmlInputPath="$(_AppxManifestPath)" Query="/x:Package/x:Identity/@Version" Value="$(_UWPVersion)" Namespaces="$(_WindowsNamespace)" />
 	</Target>
 
-	<UsingTask TaskName="_XmlUpdate" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)/Microsoft.Build.Tasks.v12.0.dll">
+	<UsingTask TaskName="_XmlUpdate"
+			   TaskFactory="RoslynCodeTaskFactory"
+			   AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
 		<ParameterGroup>
 			<XmlFileName Required="True" />
 			<XPath Required="True" />
 			<Value Required="True" />
 		</ParameterGroup>
 		<Task>
-			<Reference Include="System.Xml" />
-			<Reference Include="System.Xml.Linq" />
 			<Using Namespace="System"/>
 			<Using Namespace="System.Xml.XPath"/>
 			<!-- The following code is from the MSBuildTasks library (https://github.com/loresoft/msbuildtasks/blob/6196d43e7eb6807f306e9861b286fe61c8bb0993/Source/MSBuild.Community.Tasks/XmlUpdate.cs) -->

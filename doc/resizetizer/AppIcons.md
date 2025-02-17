@@ -2,44 +2,65 @@
 uid: Uno.Recipes.AppIcons
 ---
 
-# How to use generated app icons with Uno Resizetizer
+# How to use generated app icons and splash screens with Uno Resizetizer
 
 ## Problem
 
-App icon requirements can vary between platforms, and it can be time-consuming to create and manage all the different sizes and formats. 
+App icon requirements can vary between platforms, and it can be time-consuming to create and manage all the different sizes and formats.
 
 ## Solution
 
-The Uno Resizetizer tool can generate all the required app icons for you from a single asset. This is done through the `UnoIcon` build action:
+The Uno Resizetizer tool can generate all the required app icons and splash screens for you from a single asset each.
 
-### UnoIcon Usage
+### Retaining image file names
+
+When you create a new Uno Platform application, an **Icons** folder is automatically generated under the **Assets** directory. This folder contains two files named `icon.svg` and `icon_foreground.svg`. You can replace the images while retaining the file names and Uno Resisetizer will handle the rest.
+
+### Using custom image file names
+
+In Chefs, we use the Uno Platform SDK properties relating to `UnoIcon` and `UnoSplashScreen` to define our own file names for both the icon and splash screen when the current build is from the canary branch:
 
 Given the following `.svg` files:
 
-- [`iconapp.svg`](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs.Base/Icons/iconapp.svg) (the icon background)
-    <img src="../assets/iconapp.svg" width="100px" alt="Icon background" style="border-style:solid"/>
-- [`appiconfg.svg`](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs.Base/Icons/appiconfg.svg) (the main icon)
-    <img src="../assets/appiconfg.svg" width="100px" alt="Icon foreground"/>
+- [`icon_foreground_canary.svg`](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Assets/Icons/icon_foreground_canary.svg)
+- [`splash_screen_canary.svg`](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Assets/Splash/splash_screen_canary.svg)
+
+And in the project properties file:
 
 ```xml
-<ItemGroup>
-    <UnoIcon Include="$(MSBuildThisFileDirectory)Icons\iconapp.svg"
-             ForegroundFile="$(MSBuildThisFileDirectory)Icons\appiconfg.svg"
-             ForegroundScale="0.5"
-             Color="#00000000" />
-</ItemGroup>
+<PropertyGroup>
+    <UnoSplashScreenColor>#313033</UnoSplashScreenColor>
+    <UnoIconForegroundScale>0.5</UnoIconForegroundScale>
+    <UnoSplashScreenBaseSize>350,300</UnoSplashScreenBaseSize>
+    <UnoIconForegroundFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Icons/icon_foreground_canary.svg</UnoIconForegroundFile>
+    <UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
+</PropertyGroup>
 ```
+
+For more information on the different `UnoIcon` and `UnoSplashScreen` properties you can refer to the [documentation](xref:Uno.Resizetizer.GettingStarted#unoicon).
+
+#### App Icon
 
 iOS|Android|Windows|WASM (PWA Icon)
 -|-|-|-
-<img src="../assets/ios-icon.png" width="100px" alt="iOS Icon"/>|<img src="../assets/android-icon.png" width="100px" alt="Android Icon"/>|<img src="../assets/windows-icon.png" width="100px" alt="Windows Icon"/>|<img src="../assets/wasm-icon.png" width="100px" alt="WASM Icon"/>
+![iOS Icon](../assets/ios-icon.png)|![Android Icon](../assets/android-icon.png)|![Windows Icon](../assets/windows-icon.png)|![WASM Icon](../assets/wasm-icon.png)
+
+#### Splash screen
+
+iOS|Android
+-|-
+![iOS Splash ScreeniOS Splash Screen](../assets/ios-splash.png)|![Android Splash Screen](../assets/android-splash.png)
+
+#### Desktop
+
+Windows|WASM
+-|-
+![Windows Splash Screen](../assets/windows-splash.png)|![WASM Splash Screen](../assets/wasm-splash.png)
 
 ## Source Code
 
-Chefs app
-
-- [`base.props`](https://github.com/unoplatform/uno.chefs/blob/e02a4dce407e13b933d2e8e6c764d237ebc11d33/src/Chefs.Base/base.props#L37-L44)
+- [`Chefs.csproj`](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Chefs.csproj#L90-L96)
 
 ## Documentation
 
-- [Resizetizer UnoIcon documentation](xref:Uno.Resizetizer.GettingStarted#unoicon)
+- [Uno Resizetizer documentation](xref:Uno.Resizetizer.GettingStarted)

@@ -5,6 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Uno Platform Mobile",
+      "type": "Uno",
+      "request": "launch",
+      // any Uno* task will do, this is simply to satisfy vscode requirement when a launch.json is present
+      "preLaunchTask": "Uno: android | Debug | android-x64"
+    },
+    {
       // Use IntelliSense to find out which attributes exist for C# debugging
       // Use hover for the description of the existing attributes
       // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
@@ -12,42 +19,38 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:5000",
-      "webRoot": "${workspaceFolder}/Chefs.Wasm",
+      "webRoot": "${workspaceFolder}/Chefs",
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "timeout": 30000,
+      "preLaunchTask": "build-wasm",
       "server": {
         "runtimeExecutable": "dotnet",
         "program": "run",
+        "args": ["--no-build","-f","net9.0-browserwasm","--launch-profile", "Chefs (WebAssembly)"],
         "outputCapture": "std",
         "timeout": 30000,
-        "cwd": "${workspaceFolder}/Chefs.Wasm"
+        "cwd": "${workspaceFolder}/Chefs"
       }
     },
     {
       // Use IntelliSense to find out which attributes exist for C# debugging
       // Use hover for the description of the existing attributes
       // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-      "name": "Skia.GTK (Debug)",
+      "name": "Uno Platform Desktop (Debug)",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build-skia-gtk",
+      "preLaunchTask": "build-desktop",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/Chefs.Skia.Gtk/bin/Debug/net7.0/Chefs.Skia.Gtk.dll",
+      "program": "${workspaceFolder}/Chefs/bin/Debug/net9.0-desktop/Chefs.dll",
       "args": [],
+      "launchSettingsProfile": "Chefs (Desktop)",
       "env": {
         "DOTNET_MODIFIABLE_ASSEMBLIES": "debug"
       },
-      "cwd": "${workspaceFolder}/Chefs.Skia.Gtk",
+      "cwd": "${workspaceFolder}/Chefs",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
       "console": "internalConsole",
       "stopAtEntry": false
     },
-    {
-      "name": "Uno Platform Mobile",
-      "type": "Uno",
-      "request": "launch",
-      // any Uno* task will do, this is simply to satisfy vscode requirement when a launch.json is present
-      "preLaunchTask": "Uno: android | Debug | android-x64"
-    }
   ]
 }

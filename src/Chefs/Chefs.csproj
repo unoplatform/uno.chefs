@@ -1,108 +1,176 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Uno.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);net8.0-windows10.0.19041</TargetFrameworks>
-		<TargetFrameworks>$(TargetFrameworks);net8.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(DisableNetMobileTargets)'==''">$(TargetFrameworks);net8.0-ios;net8.0-android;net8.0-maccatalyst</TargetFrameworks>
+			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
+		<!-- which will force us to install all workloads even if not needed -->
+		<!-- To prevent that, we will pass TargetFrameworkOverride as a global property (i.e, dotnet build -p:TargetFrameworkOverride=net9.0-platform) -->
+		<!-- That way, we set TargetFrameworks property to only the needed TargetFramework -->
+		<TargetFramework Condition="'$(TargetFrameworkOverride)'!=''">$(TargetFrameworkOverride)</TargetFramework>
+		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'==''">
+			net9.0-android;
+			net9.0-ios;
+			net9.0-maccatalyst;
+			net9.0-windows10.0.19041;
+			net9.0-desktop;
+			net9.0-browserwasm;
+		</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<UnoSingleProject>true</UnoSingleProject>
 
-		<!-- Ensures the .xr.xml files are generated in a proper layout folder -->
-		<GenerateLibraryLayout>true</GenerateLibraryLayout>
+		<!-- Display name -->
+		<ApplicationTitle>Chefs</ApplicationTitle>
+		<!-- App Identifier -->
+		<ApplicationId>uno.platform.chefs</ApplicationId>
+		<ApplicationId Condition="'$(IsCanaryBranch)'=='true'">uno.platform.chefs-canary</ApplicationId>
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+		<UseMocks>True</UseMocks>
+		<!--
+			If you encounter this error message:
+
+			error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
+			Please update to a newer .NET SDK in order to reference this assembly.
+
+			This means that the two packages below must be aligned with the "build" version number of
+			the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
+			must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
+		-->
+		<!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
+		<!--
+			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
+			https://aka.platform.uno/singleproject-features
+		-->
+		<UnoFeatures>
+			Material;
+			Hosting;
+			Toolkit;
+			Logging;
+			MVUX;
+			Configuration;
+			Http;
+			Serialization;
+			Localization;
+			Navigation;
+			MediaElement;
+			Skia;
+			ThemeService;
+			Authentication;
+		</UnoFeatures>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Mapsui.Uno.WinUI" />
-		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
-		<PackageReference Include="Uno.Dsp.Tasks" />
-		<PackageReference Include="Uno.Material.WinUI" />
-		<PackageReference Include="Uno.WinUI" />
-		<PackageReference Include="Uno.Resizetizer" />
-		<PackageReference Include="Uno.Extensions.Configuration" />
-		<PackageReference Include="Uno.Extensions.Core" />
-		<PackageReference Include="Uno.Extensions.Http" />
-		<PackageReference Include="Uno.Extensions.Http.Refit" />
-		<PackageReference Include="Uno.Extensions.Logging.WinUI" />
-		<PackageReference Include="Uno.Extensions.Serialization.Http" />
-		<PackageReference Include="Uno.Extensions.Serialization.Refit" />
-		<PackageReference Include="Uno.Toolkit.WinUI.Material" />
-		<PackageReference Include="Uno.Extensions.Authentication.WinUI" />
-		<PackageReference Include="Uno.Extensions.Hosting.WinUI" />
-		<PackageReference Include="Uno.Extensions.Localization.WinUI" />
-		<PackageReference Include="Uno.Extensions.Navigation.Toolkit.WinUI" />
-		<PackageReference Include="Uno.Extensions.Navigation.WinUI" />
-		<PackageReference Include="Uno.Extensions.Reactive.WinUI" />
-		<PackageReference Include="Uno.Extensions.Reactive.Messaging" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Console" />
-	</ItemGroup>
 
 	<Choose>
 		<When Condition="$(IsWinAppSdk)">
 			<ItemGroup>
-				<PackageReference Include="Microsoft.WindowsAppSDK" />
-				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
-			</ItemGroup>
-
-			<ItemGroup>
-				<!--
-				If you encounter this error message:
-
-					error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
-					Please update to a newer .NET SDK in order to reference this assembly.
-
-				This means that the two packages below must be aligned with the "build" version number of
-				the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
-				must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
-				-->
-				<!-- <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22621.28" />
-				<FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22621.28" /> -->
+				<PackageReference Include="Mapsui.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.WinUI" />
 			</ItemGroup>
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<Content Include="Assets\**" />
-				<Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
-				<Compile Update="**\*.xaml.cs">
-					<DependentUpon>%(Filename)</DependentUpon>
-				</Compile>
-				<PRIResource Include="**\*.resw" />
+				<PackageReference Include="Mapsui.Uno.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
 
-	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
+	<PropertyGroup Condition="'$(UseMocks)'=='True'">
+		<DefineConstants>$(DefineConstants);USE_MOCKS</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<UnoDspImportColors Include="Styles\*.zip" Generator="Xaml" />
-		<UnoImage Include="Assets\**\*.svg" />
-		<Content Include="Data\**\*.json" />
-		<EmbeddedResource Include="appsettings.json" />
-		<EmbeddedResource Include="Assets\Maps\location_circle.svg" />
-		<EmbeddedResource Include="Assets\Maps\location_pin.svg" />
-		<EmbeddedResource Include="appsettings.*.json" DependentUpon="appsettings.json" />
-		<UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
+		<PackageReference Include="Uno.Extensions.Http.Kiota" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <UnoImage Remove="Assets\Maps\location_circle.svg" />
-	  <UnoImage Remove="Assets\Maps\location_pin.svg" />
+		<Content Include="Data\**\*.json" />
 	</ItemGroup>
 
-	<!-- Workaround to avoid including Uno.Toolkit.UI XBFs in the PRI file -->
-	<Target Name="AdjustGetPackagingOutput1" AfterTargets="GetMrtPackagingOutputs">
-		<Message Importance="high" Text="Applying NuGet packaging workaround for dependent PRI files exclusion" />
-		<ItemGroup>
-			<_OtherPriFiles Include="@(PackagingOutputs)" Condition="'%(Extension)' == '.pri' and ('%(PackagingOutputs.ReferenceSourceTarget)' == 'ProjectReference' or '%(PackagingOutputs.NugetSourceType)'=='Package')" />
-			<PackagingOutputs Remove="@(_OtherPriFiles)" />
-		</ItemGroup>
-	</Target>
-	
-	<Target Name="AdjustGetPackagingOutput2" BeforeTargets="AddPriPayloadFilesToCopyToOutputDirectoryItems">
-		<Message Importance="high" Text="Applying NuGet packaging workaround for dependent PRI files exclusion" />
-		<ItemGroup>
-			<_OtherPriFiles1 Include="@(_ReferenceRelatedPaths)" Condition="'%(Extension)' == '.pri' and ('%(_ReferenceRelatedPaths.ReferenceSourceTarget)' == 'ProjectReference' or '%(_ReferenceRelatedPaths.NugetSourceType)'=='Package')" />
-			<_ReferenceRelatedPaths Remove="@(_OtherPriFiles1)" />
-			<_OtherPriFiles2 Include="@(ReferenceCopyLocalPaths)" Condition="'%(Extension)' == '.pri' and ('%(ReferenceCopyLocalPaths.ReferenceSourceTarget)' == 'ProjectReference' or '%(ReferenceCopyLocalPaths.NugetSourceType)'=='Package')" />
-			<ReferenceCopyLocalPaths Remove="@(_OtherPriFiles2)" />
-		</ItemGroup>
-	</Target>
+	<ItemGroup>
+	  <Content Remove="Data\AppData\categories.json" />
+	  <Content Remove="Data\AppData\Cookbooks.json" />
+	  <Content Remove="Data\AppData\Notifications.json" />
+	  <Content Remove="Data\AppData\Recipes.json" />
+	  <Content Remove="Data\AppData\SavedCookbooks.json" />
+	  <Content Remove="Data\AppData\SavedRecipes.json" />
+	  <Content Remove="Data\AppData\Users.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
+	  <EmbeddedResource Include="Data\AppData\categories.json" />
+	  <EmbeddedResource Include="Data\AppData\Cookbooks.json" />
+	  <EmbeddedResource Include="Data\AppData\Notifications.json" />
+	  <EmbeddedResource Include="Data\AppData\Recipes.json" />
+	  <EmbeddedResource Include="Data\AppData\SavedCookbooks.json" />
+	  <EmbeddedResource Include="Data\AppData\SavedRecipes.json" />
+	  <EmbeddedResource Include="Data\AppData\Users.json" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
+		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
+		<DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<UnoSplashScreenColor>#313033</UnoSplashScreenColor>
+		<UnoIconForegroundScale>0.5</UnoIconForegroundScale>
+		<UnoSplashScreenBaseSize>350,300</UnoSplashScreenBaseSize>
+		<UnoIconForegroundFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Icons/icon_foreground_canary.svg</UnoIconForegroundFile>
+		<UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
+	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(IsCanaryBranch)'=='true'">
+			<ItemGroup>
+				<UnoImage Include="Assets\Icons\chefslogo_canary.svg" Link="Assets\Icons\chefslogosignature.svg" />
+				<UnoImage Include="Assets\Icons\chefslogo_dark_canary.svg" Link="Assets\Icons\chefslogosignature_dark.svg" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<UnoImage Include="Assets\Icons\chefslogo.svg" Link="Assets\Icons\chefslogosignature.svg" />
+				<UnoImage Include="Assets\Icons\chefslogo_dark.svg" Link="Assets\Icons\chefslogosignature_dark.svg" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<Choose>
+		<When Condition="$(IsAndroid) or $(IsIOSOrCatalyst)">
+			<ItemGroup>
+				<IncludeXamlNamespaces Include="mobile" />
+				<ExcludeXamlNamespaces Include="not_mobile" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<IncludeXamlNamespaces Include="not_mobile" />
+				<ExcludeXamlNamespaces Include="mobile" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<Choose>
+		<When Condition="$(IsIOS)">
+			<PropertyGroup Condition="'$(Configuration)'=='Release'">
+				<CodesignKey>iPhone Distribution</CodesignKey>
+			</PropertyGroup>
+		</When>
+		<When Condition="$(IsMacCatalyst)">
+			<PropertyGroup Condition="'$(Configuration)'=='Release'">
+				<MtouchUseLlvm>true</MtouchUseLlvm>
+				<CodeSigningKey>Apple Distribution: Uno Platform Inc. (PD74CHS9Z5)</CodeSigningKey>
+				<PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
+				<CreatePackage>true</CreatePackage>
+				<EnablePackageSigning>true</EnablePackageSigning>
+				<EnableCodeSigning>true</EnableCodeSigning>
+
+				<CodesignProvision>Uno Chefs (Catalyst)</CodesignProvision>
+				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">Uno Chefs Canary (Catalyst)</CodesignProvision>
+			</PropertyGroup>
+		</When>
+	</Choose>
 </Project>
