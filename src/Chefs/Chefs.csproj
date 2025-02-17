@@ -82,32 +82,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Data\**\*.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Remove="Data\AppData\categories.json" />
-	  <Content Remove="Data\AppData\Cookbooks.json" />
-	  <Content Remove="Data\AppData\Notifications.json" />
-	  <Content Remove="Data\AppData\Recipes.json" />
-	  <Content Remove="Data\AppData\SavedCookbooks.json" />
-	  <Content Remove="Data\AppData\SavedRecipes.json" />
-	  <Content Remove="Data\AppData\Users.json" />
+		<EmbeddedResource Include="Data\**\*.json" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
-	  <EmbeddedResource Include="Data\AppData\categories.json" />
-	  <EmbeddedResource Include="Data\AppData\Cookbooks.json" />
-	  <EmbeddedResource Include="Data\AppData\Notifications.json" />
-	  <EmbeddedResource Include="Data\AppData\Recipes.json" />
-	  <EmbeddedResource Include="Data\AppData\SavedCookbooks.json" />
-	  <EmbeddedResource Include="Data\AppData\SavedRecipes.json" />
-	  <EmbeddedResource Include="Data\AppData\Users.json" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
