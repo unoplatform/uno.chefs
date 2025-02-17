@@ -5,6 +5,7 @@ uid: Uno.Recipes.NavigateTabBar
 # How to Navigate Using a TabBar
 
 ## Problem
+
 Navigating between different sections or categories in an Uno Platform application can be challenging without an intuitive and accessible UI component.
 
 ## Solution
@@ -46,6 +47,7 @@ The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offer
   This solution combines the `TabBar` from Uno Toolkit with the `Navigation Extensions` from Uno Extensions, utilizing region-based navigation. Region-based navigation allows for more advanced navigation scenarios by specifying the navigator type and setting up regions. For more information, refer to the [How To Use TabBar](https://platform.uno/docs/articles/external/uno.extensions/doc/Learn/Navigation/Advanced/HowTo-UseTabBar.html#3-set-up-regions-and-specify-navigator-type) documentation.  
 
 # Example Usage in Chefs
+
 The above code has the following effect:
 
 - Main Navigation Tab Bar:
