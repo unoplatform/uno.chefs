@@ -1,10 +1,11 @@
+using UserData = Chefs.Services.Clients.Models.UserData;
 namespace Chefs.Business.Models;
 
 public partial record User
 {
 	internal User(UserData user)
 	{
-		Id = user.Id;
+		Id = (Guid)user.Id;
 		UrlProfileImage = user.UrlProfileImage;
 		FullName = user.FullName;
 		Description = user.Description;
@@ -13,7 +14,7 @@ public partial record User
 		Followers = user.Followers;
 		Following = user.Following;
 		Recipes = user.Recipes;
-		IsCurrent = user.IsCurrent;
+		IsCurrent = (bool)user.IsCurrent;
 	}
 
 	public Guid Id { get; init; }

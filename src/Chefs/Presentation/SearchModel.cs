@@ -1,26 +1,30 @@
 namespace Chefs.Presentation;
 
-public partial class SearchModel
+public partial record SearchModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
+	private readonly IMessenger _messenger;
 
-	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService)
+	public SearchModel(SearchFilter? filter, INavigator navigator, IRecipeService recipeService, IMessenger messenger)
 	{
 		_navigator = navigator;
 		_recipeService = recipeService;
+		_messenger = messenger;
 
-		Filter = State.Value(this, () => filter ?? new SearchFilter());
+		Filter = State.Value(this, () => filter ?? new SearchFilter())
+			.Observe(_messenger, f => f);
 	}
-
-	public IState<string> Term => State<string>.Value(this, () => string.Empty);
+	
+	public IState<string> Term => State<string>.Value(this, () => string.Empty)
+		.Observe(_messenger, t => t);
 
 	public IState<SearchFilter> Filter { get; }
-
-	public IListFeed<Recipe> Results => Feed
+	public IListState<Recipe> Results => ListState.FromFeed(this, Feed
 		.Combine(Term, Filter)
 		.SelectAsync(Search)
-		.AsListFeed();
+		.AsListFeed())
+		.Observe(_messenger, r => r.Id);
 
 	public IFeed<bool> Searched => Feed.Combine(Filter, Term).Select(GetSearched);
 

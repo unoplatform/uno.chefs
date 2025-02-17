@@ -16,845 +16,444 @@
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  HorizontalAlignment="Stretch"
 	  VerticalAlignment="Stretch"
-	  Background="{ThemeResource BackgroundBrush}"
 	  NavigationCacheMode="Enabled"
-	  mc:Ignorable="d">
+	  mc:Ignorable="d"
+	  Background="{ThemeResource BackgroundBrush}">
 
 	<Page.Resources>
-		<converters:BoolToObjectConverter x:Key="BooleanToHeartFontIconStyle"
-										  TrueValue="{StaticResource FontAwesomeSolidFontIconStyle}"
-										  FalseValue="{StaticResource FontAwesomeRegularFontIconStyle}" />
+		<converters:BoolToObjectConverter x:Key="BoolToHeartIconConverter"
+										  TrueValue="{StaticResource Icon_Heart_Filled}"
+										  FalseValue="{StaticResource Icon_Heart}" />
 
 		<DataTemplate x:Key="EmptyTemplate">
 			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
 													 Wide='40'}"
-							utu:AutoLayout.PrimaryAlignment="Stretch"
-							PrimaryAxisAlignment="Center">
-				<utu:AutoLayout Padding="32,0"
-								PrimaryAxisAlignment="Center"
-								Spacing="24">
-					<utu:AutoLayout Width="72"
-									Height="72"
-									utu:AutoLayout.CounterAlignment="Center"
-									PrimaryAxisAlignment="Center">
-						<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
-									UriSource="{ThemeResource Empty_Recipe}" />
-					</utu:AutoLayout>
-					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleLarge}"
-							   Text="No Reviews Yet"
-							   TextAlignment="Center"
-							   TextWrapping="Wrap" />
-				</utu:AutoLayout>
+							PrimaryAxisAlignment="Center"
+							Spacing="24">
+				<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
+							Width="72"
+							Height="72"
+							UriSource="{ThemeResource Empty_Recipe}" />
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleLarge}"
+						   Text="No Reviews Yet"
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
 			</utu:AutoLayout>
 		</DataTemplate>
 	</Page.Resources>
+
 	<utu:AutoLayout>
-		<utu:NavigationBar x:Name="NavBar"
-						   Background="{ThemeResource SurfaceInverseBrush}"
-						   Content="{Binding Recipe.Name}"
-						   Foreground="{ThemeResource OnSurfaceInverseBrush}">
+		<utu:NavigationBar Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
-				<AppBarButton Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton>
 					<not_mobile:AppBarButton.Icon>
-						<FontIcon Glyph="{StaticResource Icon_Arrow_Back}" />
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
 					</not_mobile:AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Command="{Binding Share}"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Share}">
 					<AppBarButton.Icon>
-						<BitmapIcon UriSource="ms-appx:///Assets/Icons/share_recipe.png" />
+						<PathIcon Data="{StaticResource Icon_Share}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
-				<AppBarButton Command="{Binding Favorite}"
-							  Foreground="{ThemeResource OnSurfaceInverseBrush}">
+				<AppBarButton Command="{Binding Favorite}">
 					<AppBarButton.Icon>
-						<FontIcon Style="{Binding IsFavorited, Converter={StaticResource BooleanToHeartFontIconStyle}}"
-								  Glyph="{StaticResource Icon_Favorite}"
-								  Foreground="{ThemeResource SurfaceBrush}" />
+						<PathIcon Data="{Binding IsFavorited, Converter={StaticResource BoolToHeartIconConverter}, FallbackValue={StaticResource Icon_Heart}, TargetNullValue={StaticResource Icon_Heart}}" />
 					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.PrimaryCommands>
 		</utu:NavigationBar>
 
-		<utu:ResponsiveView Background="{ThemeResource BackgroundBrush}"
-							utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:ResponsiveView.NarrowTemplate>
-				<DataTemplate>
-					<utu:AutoLayout>
-						<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-									  HorizontalScrollMode="Disabled">
-							<utu:AutoLayout Padding="0,0,0,92">
-								<utu:AutoLayout Spacing="8"
-												Orientation="Horizontal"
-												Padding="16">
-									<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-												   ProfilePicture="{Binding User.UrlProfileImage}"
-												   Width="32"
-												   Height="32" />
-									<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
-											   utu:AutoLayout.CounterAlignment="Center"
-											   Foreground="{ThemeResource OnBackgroundMediumBrush}"
+		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+					  HorizontalScrollMode="Disabled"
+					  VerticalScrollBarVisibility="{utu:Responsive Narrow=Visible,
+																   Wide=Hidden}"
+					  VerticalScrollMode="{utu:Responsive Narrow=Enabled,
+														  Wide=Disabled}">
+			<utu:AutoLayout Padding="{utu:Responsive Narrow='0,0,0,92', Wide=0}">
+				<utu:AutoLayout Spacing="8"
+								Orientation="Horizontal"
+								Padding="16"
+								CounterAxisAlignment="Center">
+					<PersonPicture ProfilePicture="{Binding User.UrlProfileImage}"
+								   Width="32"
+								   Height="32" />
+					<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
+							   Foreground="{ThemeResource OnBackgroundMediumBrush}"
+							   Style="{StaticResource BodySmall}" />
+				</utu:AutoLayout>
+				<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical,
+															 Wide=Horizontal}"
+								Justify="{utu:Responsive Narrow=SpaceBetween,
+														 Wide=Stack}"
+								utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+																				 Wide=Stretch}">
+					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+																					 Wide=Stretch}"
+									Spacing="{utu:Responsive Narrow=8,
+															 Wide=0}">
+						<Image Visibility="{utu:Responsive Narrow=Collapsed,
+														   Wide=Visible}"
+							   Source="{Binding Recipe.ImageUrl}"
+							   Stretch="UniformToFill"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center"
+							   utu:AutoLayout.PrimaryAlignment="Stretch" />
+						<Border Visibility="{utu:Responsive Narrow=Visible,
+															Wide=Collapsed}"
+								Height="300">
+							<Image HorizontalAlignment="Center"
+								   VerticalAlignment="Center"
+								   Source="{Binding Recipe.ImageUrl}"
+								   Stretch="UniformToFill" />
+						</Border>
+						<utu:AutoLayout utu:AutoLayout.IsIndependentLayout="True"
+										Margin="{utu:Responsive Narrow='16,263,16,0',
+																Wide='14,14,0,0'}"
+										VerticalAlignment="{utu:Responsive Narrow=Center,
+																		   Wide=Top}"
+										HorizontalAlignment="{utu:Responsive Narrow=Center,
+																			 Wide=Left}"
+										CornerRadius="4">
+							<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+											Orientation="{utu:Responsive Narrow=Horizontal,
+																		 Wide=Vertical}"
+											PrimaryAxisAlignment="Stretch"
+											Width="{utu:Responsive Narrow=358,
+																   Wide=98}"
+											Height="{utu:Responsive Narrow=74,
+																	Wide=317}"
+											Padding="{utu:Responsive Narrow='0,4',
+																	 Wide='0,40'}"
+											VerticalAlignment="Stretch"
+											HorizontalAlignment="Stretch">
+								<utu:AutoLayout Spacing="4"
+												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Center"
+												utu:AutoLayout.PrimaryAlignment="Stretch">
+									<PathIcon Data="{StaticResource Icon_Timer}"
+											  Foreground="{ThemeResource OnSurfaceBrush}" />
+									<TextBlock TextAlignment="Center"
+											   TextWrapping="Wrap"
+											   Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
+											   Foreground="{ThemeResource OnSurfaceMediumBrush}"
 											   Style="{StaticResource BodySmall}" />
 								</utu:AutoLayout>
-								<utu:AutoLayout Justify="SpaceBetween">
-									<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-										<utu:AutoLayout Spacing="8"
-														utu:AutoLayout.CounterAlignment="Stretch"
-														Height="250">
-											<Border Height="195"
-													utu:AutoLayout.CounterAlignment="Start">
-												<Image Source="{Binding Recipe.ImageUrl}"
-													   HorizontalAlignment="Center"
-													   VerticalAlignment="Center"
-													   Stretch="UniformToFill" />
-											</Border>
-											<utu:AutoLayout utu:AutoLayout.IsIndependentLayout="True"
-															Margin="16,159,16,0"
-															VerticalAlignment="Top"
-															HorizontalAlignment="Center"
-															Width="358"
-															Height="74">
-												<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-																Padding="0,16"
-																CornerRadius="4"
-																PrimaryAxisAlignment="Center"
-																Orientation="Horizontal"
-																utu:AutoLayout.IsIndependentLayout="True"
-																VerticalAlignment="Stretch"
-																HorizontalAlignment="Stretch">
-													<StackPanel Spacing="4"
-																utu:AutoLayout.CounterAlignment="Start"
-																utu:AutoLayout.PrimaryAlignment="Stretch">
-														<FontIcon Glyph="{StaticResource Icon_Timer}"
-																  HorizontalAlignment="Center"
-																  Foreground="{ThemeResource OnSurfaceBrush}" />
-														<TextBlock TextAlignment="Center"
-																   TextWrapping="Wrap"
-																   HorizontalAlignment="Center"
-																   Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
-																   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-																   Style="{StaticResource BodySmall}" />
-													</StackPanel>
-													<StackPanel utu:AutoLayout.CounterAlignment="Start"
-																utu:AutoLayout.PrimaryAlignment="Stretch"
-																Spacing="4">
-														<FontIcon HorizontalAlignment="Center"
-																  Glyph="{StaticResource Icon_Star_Rate}"
-																  Foreground="{ThemeResource OnSurfaceBrush}" />
-														<TextBlock HorizontalAlignment="Center"
-																   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-																   Style="{StaticResource BodySmall}"
-																   Text="{Binding Recipe.Difficulty}"
-																   TextAlignment="Center"
-																   TextWrapping="Wrap" />
-													</StackPanel>
-													<StackPanel utu:AutoLayout.CounterAlignment="Start"
-																utu:AutoLayout.PrimaryAlignment="Stretch"
-																Spacing="4">
-														<FontIcon HorizontalAlignment="Center"
-																  Glyph="{StaticResource Icon_Local_Fire_Department}"
-																  Foreground="{ThemeResource OnSurfaceBrush}" />
-														<TextBlock HorizontalAlignment="Center"
-																   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-																   Style="{StaticResource BodySmall}"
-																   Text="{Binding Recipe.Calories}"
-																   TextAlignment="Center"
-																   TextWrapping="Wrap" />
-													</StackPanel>
-												</utu:AutoLayout>
-											</utu:AutoLayout>
-										</utu:AutoLayout>
-										<utu:AutoLayout x:Name="TabsLayout"
-														uen:Region.Attached="True"
-														Background="{ThemeResource BackgroundBrush}"
-														utu:AutoLayout.PrimaryAlignment="Stretch">
-											<utu:TabBar uen:Region.Attached="True"
-														Background="{ThemeResource BackgroundBrush}"
-														Style="{StaticResource TopTabBarStyle}">
-												<utu:TabBarItem uen:Region.Name="IngredientsTab"
-																Content="Ingredients"
-																IsSelected="True" />
-												<utu:TabBarItem uen:Region.Name="StepsTab"
-																Content="Steps"
-																Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-												<utu:TabBarItem uen:Region.Name="ReviewsTab"
-																Content="Reviews"
-																Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-												<utu:TabBarItem uen:Region.Name="NutritionTab"
-																Content="Nutrition"
-																Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-											</utu:TabBar>
-
-											<Grid x:Name="TabNavGrid"
-												  uen:Region.Attached="True"
-												  uen:Region.Navigator="Visibility">
-												<utu:AutoLayout Padding="16,24,16,16"
-																uen:Region.Name="IngredientsTab"
-																Spacing="8">
-													<TextBlock Style="{StaticResource BodyLarge}"
-															   Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} items'}"
-															   TextWrapping="Wrap" />
-													<utu:AutoLayout Spacing="2">
-														<uer:FeedView x:Name="IngredientsFeed"
-																	  Source="{Binding Ingredients}">
-															<DataTemplate>
-																<muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="Stretch"
-																					ItemsSource="{Binding Data}">
-																	<muxc:ItemsRepeater.Layout>
-																		<muxc:StackLayout Orientation="Vertical"
-																						  Spacing="2" />
-																	</muxc:ItemsRepeater.Layout>
-																	<muxc:ItemsRepeater.ItemTemplate>
-																		<DataTemplate>
-																			<utu:AutoLayout Height="60"
-																							Background="{ThemeResource SurfaceBrush}"
-																							CornerRadius="4"
-																							PrimaryAxisAlignment="Center">
-																				<utu:AutoLayout Padding="8,0,16,0"
-																								Orientation="Horizontal"
-																								Spacing="16">
-																					<Image Width="40"
-																						   Height="40"
-																						   utu:AutoLayout.CounterAlignment="Center"
-																						   Source="{Binding UrlIcon}" />
-																					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-																									utu:AutoLayout.PrimaryAlignment="Stretch">
-																						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-																								   Style="{StaticResource TitleMedium}"
-																								   Text="{Binding Name}"
-																								   TextWrapping="Wrap" />
-																					</utu:AutoLayout>
-																					<utu:AutoLayout Padding="8"
-																									utu:AutoLayout.CounterAlignment="Center"
-																									Background="{ThemeResource BackgroundBrush}"
-																									CornerRadius="4"
-																									Orientation="Horizontal"
-																									PrimaryAxisAlignment="End">
-																						<TextBlock utu:AutoLayout.CounterAlignment="Start"
-																								   Foreground="{ThemeResource OnSecondaryContainerBrush}"
-																								   Style="{StaticResource BodySmall}"
-																								   Text="{Binding Quantity}"
-																								   TextAlignment="End" />
-																					</utu:AutoLayout>
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-
-																		</DataTemplate>
-																	</muxc:ItemsRepeater.ItemTemplate>
-																</muxc:ItemsRepeater>
-															</DataTemplate>
-														</uer:FeedView>
-													</utu:AutoLayout>
-												</utu:AutoLayout>
-
-												<utu:AutoLayout Padding="16,24"
-																uen:Region.Name="StepsTab"
-																Spacing="8"
-																Visibility="Collapsed">
-													<TextBlock Style="{StaticResource BodyLarge}"
-															   Text="{Binding Steps.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} steps'}"
-															   TextWrapping="Wrap" />
-													<utu:AutoLayout Spacing="2">
-														<uer:FeedView x:Name="StepsFeed"
-																	  Source="{Binding Steps}">
-															<DataTemplate>
-																<muxc:ItemsRepeater ItemsSource="{Binding Data}">
-																	<muxc:ItemsRepeater.Layout>
-																		<muxc:StackLayout Orientation="Vertical"
-																						  Spacing="2" />
-																	</muxc:ItemsRepeater.Layout>
-																	<muxc:ItemsRepeater.ItemTemplate>
-																		<DataTemplate>
-																			<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-																							CornerRadius="4">
-																				<utu:AutoLayout Padding="16"
-																								PrimaryAxisAlignment="Center"
-																								Spacing="8">
-																					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-																							   Style="{StaticResource TitleSmall}"
-																							   Text="{Binding Name}"
-																							   TextWrapping="Wrap" />
-																					<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-																							   Text="{Binding Description}"
-																							   TextWrapping="Wrap" />
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-																		</DataTemplate>
-																	</muxc:ItemsRepeater.ItemTemplate>
-																</muxc:ItemsRepeater>
-															</DataTemplate>
-														</uer:FeedView>
-													</utu:AutoLayout>
-												</utu:AutoLayout>
-
-												<utu:AutoLayout Padding="16,24"
-																uen:Region.Name="ReviewsTab"
-																Spacing="8"
-																Visibility="Collapsed">
-													<TextBlock Style="{StaticResource BodyLarge}"
-															   Text="{Binding Reviews.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} comments'}"
-															   TextWrapping="Wrap"
-															   Visibility="{Binding Reviews.Count, Converter={StaticResource GreaterThanZeroToVisibleConverter}}" />
-													<uer:FeedView x:Name="ReviewsFeed"
-																  VerticalContentAlignment="Center"
-																  NoneTemplate="{StaticResource EmptyTemplate}"
-																  Source="{Binding Reviews}">
+								<utu:AutoLayout Spacing="4"
+												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Center"
+												utu:AutoLayout.PrimaryAlignment="Stretch">
+									<PathIcon Data="{StaticResource Icon_Star_Outline}"
+											  Foreground="{ThemeResource OnSurfaceBrush}" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+											   Style="{StaticResource BodySmall}"
+											   Text="{Binding Recipe.Difficulty}"
+											   TextAlignment="Center"
+											   TextWrapping="Wrap" />
+								</utu:AutoLayout>
+								<utu:AutoLayout Spacing="4"
+												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Center"
+												utu:AutoLayout.PrimaryAlignment="Stretch">
+									<PathIcon Data="{StaticResource Icon_Fire}"
+											  Foreground="{ThemeResource OnSurfaceBrush}" />
+									<TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
+											   Style="{StaticResource BodySmall}"
+											   Text="{Binding Recipe.Calories}"
+											   TextAlignment="Center"
+											   TextWrapping="Wrap" />
+								</utu:AutoLayout>
+							</utu:AutoLayout>
+						</utu:AutoLayout>
+					</utu:AutoLayout>
+					<utu:AutoLayout x:Name="TabsLayout"
+									uen:Region.Attached="True"
+									Background="{ThemeResource BackgroundBrush}"
+									utu:AutoLayout.PrimaryAlignment="Stretch">
+						<utu:TabBar uen:Region.Attached="True"
+									utu:AutoLayout.CounterAlignment="{utu:Responsive Narrow=Start,
+																					 Wide=Center}"
+									Margin="{utu:Responsive Narrow=0,
+															Wide='40,0'}"
+									Background="{ThemeResource BackgroundBrush}"
+									Style="{StaticResource TopTabBarStyle}">
+							<utu:TabBarItem uen:Region.Name="IngredientsTab"
+											Content="Ingredients"
+											IsSelected="True" />
+							<utu:TabBarItem uen:Region.Name="StepsTab"
+											Content="Steps"
+											Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+							<utu:TabBarItem uen:Region.Name="ReviewsTab"
+											Content="Reviews"
+											Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+							<utu:TabBarItem uen:Region.Name="NutritionTab"
+											Content="Nutrition"
+											Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+						</utu:TabBar>
+						<ScrollViewer utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+																					   Wide=Stretch}"
+									  HorizontalScrollMode="Disabled">
+							<Grid x:Name="TabNavGrid"
+								  uen:Region.Attached="True"
+								  uen:Region.Navigator="Visibility">
+								<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+																		 Wide=16}"
+												Padding="{utu:Responsive Narrow='16,24,16,16',
+																		 Wide=40}"
+												uen:Region.Name="IngredientsTab">
+									<TextBlock Style="{StaticResource BodyLarge}"
+											   Foreground="{ThemeResource OnSurfaceBrush}"
+											   Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} items'}"
+											   TextWrapping="Wrap" />
+									<utu:AutoLayout Spacing="{utu:Responsive Narrow=2, Wide=0}">
+										<uer:FeedView x:Name="IngredientsFeed"
+													  Source="{Binding Ingredients}">
+											<DataTemplate>
+												<muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Stretch,
+																													 Wide=Auto}"
+																	ItemsSource="{Binding Data}">
+													<muxc:ItemsRepeater.Layout>
+														<muxc:StackLayout Orientation="Vertical"
+																		  Spacing="2" />
+													</muxc:ItemsRepeater.Layout>
+													<muxc:ItemsRepeater.ItemTemplate>
 														<DataTemplate>
-															<muxc:ItemsRepeater ItemsSource="{Binding Data}">
-																<muxc:ItemsRepeater.Layout>
-																	<muxc:StackLayout Orientation="Vertical"
-																					  Spacing="2" />
-																</muxc:ItemsRepeater.Layout>
-																<muxc:ItemsRepeater.ItemTemplate>
-																	<DataTemplate>
-																		<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-																						CornerRadius="4">
-																			<utu:AutoLayout Spacing="16"
-																							Padding="16"
-																							Orientation="Horizontal">
-																				<Border Width="60"
-																						Height="60"
-																						CornerRadius="60"
-																						utu:AutoLayout.CounterAlignment="Start">
-																					<Image Source="{Binding UrlAuthorImage}"
-																						   Stretch="UniformToFill"
-																						   HorizontalAlignment="Center"
-																						   VerticalAlignment="Center" />
-																				</Border>
-																				<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-																								utu:AutoLayout.PrimaryAlignment="Stretch">
-																					<utu:AutoLayout Spacing="8"
-																									PrimaryAxisAlignment="Center">
-																						<TextBlock TextWrapping="Wrap"
-																								   Text="{Binding Description}"
-																								   Foreground="{ThemeResource OnSurfaceBrush}" />
-																						<TextBlock TextWrapping="Wrap"
-																								   Text="{Binding PublisherName}"
-																								   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-																					</utu:AutoLayout>
-																					<utu:AutoLayout Padding="0,16,0,16"
-																									utu:AutoLayout.CounterAlignment="Start"
-																									Orientation="Horizontal"
-																									Spacing="8">
-																						<ToggleButton HorizontalContentAlignment="Center"
-																									  VerticalContentAlignment="Center"
-																									  utu:AutoLayout.CounterAlignment="Start"
-																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-																																	Path=DataContext.Like}"
-																									  CommandParameter="{Binding}"
-																									  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
-																							<ToggleButton.Content>
-																								<utu:AutoLayout Orientation="Horizontal"
-																												Spacing="5">
-																									<FontIcon FontSize="20"
-																											  utu:AutoLayout.CounterAlignment="Center"
-																											  Glyph="{StaticResource Icon_Thumb_Up}"
-																											  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																											  Foreground="{ThemeResource PrimaryBrush}" />
-																									<TextBlock utu:AutoLayout.CounterAlignment="Center"
-																											   Foreground="{ThemeResource PrimaryBrush}"
-																											   Text="{Binding Likes.Count}" />
-																								</utu:AutoLayout>
-																							</ToggleButton.Content>
-																							<ut:ControlExtensions.AlternateContent>
-																								<utu:AutoLayout Orientation="Horizontal"
-																												Spacing="5">
-																									<FontIcon FontSize="20"
-																											  utu:AutoLayout.CounterAlignment="Center"
-																											  Glyph="{StaticResource Icon_Thumb_Up}"
-																											  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																											  Foreground="{ThemeResource PrimaryBrush}" />
-																									<TextBlock utu:AutoLayout.CounterAlignment="Center"
-																											   Foreground="{ThemeResource PrimaryBrush}"
-																											   Text="{Binding Likes.Count}" />
-																								</utu:AutoLayout>
-																							</ut:ControlExtensions.AlternateContent>
-																						</ToggleButton>
-																						<ToggleButton HorizontalContentAlignment="Center"
-																									  VerticalContentAlignment="Center"
-																									  utu:AutoLayout.CounterAlignment="Start"
-																									  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-																																	Path=DataContext.Dislike}"
-																									  CommandParameter="{Binding}"
-																									  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
-																							<ToggleButton.Content>
-																								<utu:AutoLayout Orientation="Horizontal"
-																												Spacing="5">
-																									<FontIcon FontSize="20"
-																											  utu:AutoLayout.CounterAlignment="Center"
-																											  Glyph="{StaticResource Icon_Thumb_Down}"
-																											  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																											  Foreground="{ThemeResource PrimaryBrush}" />
-																									<TextBlock utu:AutoLayout.CounterAlignment="Center"
-																											   Foreground="{ThemeResource PrimaryBrush}"
-																											   Text="{Binding Dislikes.Count}" />
-																								</utu:AutoLayout>
-																							</ToggleButton.Content>
-																							<ut:ControlExtensions.AlternateContent>
-																								<utu:AutoLayout Orientation="Horizontal"
-																												Spacing="5">
-																									<FontIcon FontSize="20"
-																											  utu:AutoLayout.CounterAlignment="Center"
-																											  Glyph="{StaticResource Icon_Thumb_Down}"
-																											  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																											  Foreground="{ThemeResource PrimaryBrush}" />
-																									<TextBlock utu:AutoLayout.CounterAlignment="Center"
-																											   Foreground="{ThemeResource PrimaryBrush}"
-																											   Text="{Binding Dislikes.Count}" />
-																								</utu:AutoLayout>
-																							</ut:ControlExtensions.AlternateContent>
-																						</ToggleButton>
-																					</utu:AutoLayout>
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-																		</utu:AutoLayout>
-																	</DataTemplate>
-																</muxc:ItemsRepeater.ItemTemplate>
-															</muxc:ItemsRepeater>
+															<utu:AutoLayout Spacing="16"
+																			Height="60"
+																			Background="{ThemeResource SurfaceBrush}"
+																			CornerRadius="4"
+																			Orientation="Horizontal"
+																			CounterAxisAlignment="Center"
+																			Justify="SpaceBetween"
+																			Padding="8,0,16,0">
+																<utu:AutoLayout Orientation="Horizontal"
+																				CounterAxisAlignment="Center"
+																				Spacing="16">
+																	<Image Width="40"
+																		   Height="40"
+																		   Source="{Binding UrlIcon}" />
+																	<TextBlock TextWrapping="Wrap"
+																			   Text="{Binding Name}"
+																			   Foreground="{ThemeResource OnSurfaceBrush}"
+																			   Style="{StaticResource TitleMedium}" />
+																</utu:AutoLayout>
+
+																<Border Background="{ThemeResource BackgroundBrush}"
+																		Padding="8"
+																		CornerRadius="4">
+																	<TextBlock TextAlignment="End"
+																			   Text="{Binding Quantity}"
+																			   Foreground="{ThemeResource OnSecondaryContainerBrush}"
+																			   Style="{StaticResource BodySmall}" />
+																</Border>
+															</utu:AutoLayout>
 														</DataTemplate>
-													</uer:FeedView>
-												</utu:AutoLayout>
-
-												<Grid uen:Region.Name="NutritionTab"
-													  Visibility="Collapsed">
-													<Grid Margin="16"
-														  Padding="16"
-														  Background="{ThemeResource SurfaceColor}"
-														  CornerRadius="24"
-														  RowSpacing="5">
-														<Grid.RowDefinitions>
-															<RowDefinition Height="Auto" />
-															<RowDefinition Height="Auto" />
-														</Grid.RowDefinitions>
-														<TextBlock HorizontalAlignment="Center"
-																   FontSize="22"
-																   Text="Intake per serving" />
-
-														<ctrl:ChartControl DataContext="{Binding Recipe}"
-																		   Grid.Row="1" />
-													</Grid>
-												</Grid>
-											</Grid>
-
-										</utu:AutoLayout>
+													</muxc:ItemsRepeater.ItemTemplate>
+												</muxc:ItemsRepeater>
+											</DataTemplate>
+										</uer:FeedView>
 									</utu:AutoLayout>
 								</utu:AutoLayout>
-							</utu:AutoLayout>
+
+								<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+																		 Wide=16}"
+												Padding="{utu:Responsive Narrow='16,24',
+																		 Wide=40}"
+												uen:Region.Name="StepsTab"
+												Visibility="Collapsed">
+									<TextBlock Style="{StaticResource BodyLarge}"
+											   Foreground="{ThemeResource OnSurfaceBrush}"
+											   Text="{Binding Steps.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} steps'}"
+											   TextWrapping="Wrap" />
+									<uer:FeedView x:Name="StepsFeed"
+												  Source="{Binding Steps}">
+										<DataTemplate>
+											<muxc:ItemsRepeater ItemsSource="{Binding Data}">
+												<muxc:ItemsRepeater.Layout>
+													<muxc:StackLayout Orientation="Vertical"
+																	  Spacing="2" />
+												</muxc:ItemsRepeater.Layout>
+												<muxc:ItemsRepeater.ItemTemplate>
+													<DataTemplate>
+														<Border Background="{ThemeResource SurfaceBrush}"
+																CornerRadius="4">
+															<utu:AutoLayout Spacing="8"
+																			PrimaryAxisAlignment="Center"
+																			Padding="16">
+																<TextBlock TextWrapping="Wrap"
+																		   Text="{Binding Name}"
+																		   Foreground="{ThemeResource OnSurfaceBrush}"
+																		   Style="{StaticResource TitleSmall}" />
+																<TextBlock TextWrapping="Wrap"
+																		   Text="{Binding Description}"
+																		   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+															</utu:AutoLayout>
+														</Border>
+													</DataTemplate>
+												</muxc:ItemsRepeater.ItemTemplate>
+											</muxc:ItemsRepeater>
+										</DataTemplate>
+									</uer:FeedView>
+								</utu:AutoLayout>
+
+								<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+																		 Wide=16}"
+												Padding="{utu:Responsive Narrow='16,24',
+																		 Wide=40}"
+												uen:Region.Name="ReviewsTab"
+												Visibility="Collapsed">
+									<TextBlock Style="{StaticResource BodyLarge}"
+											   Foreground="{ThemeResource OnSurfaceBrush}"
+											   Text="{Binding Reviews.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} comments'}"
+											   TextWrapping="Wrap"
+											   Visibility="{Binding Reviews.Count, Converter={StaticResource GreaterThanZeroToVisibleConverter}}" />
+									<uer:FeedView x:Name="ReviewsFeed"
+												  VerticalContentAlignment="Center"
+												  NoneTemplate="{StaticResource EmptyTemplate}"
+												  Source="{Binding Reviews}">
+										<DataTemplate>
+											<muxc:ItemsRepeater ItemsSource="{Binding Data}">
+												<muxc:ItemsRepeater.Layout>
+													<muxc:StackLayout Orientation="Vertical"
+																	  Spacing="2" />
+												</muxc:ItemsRepeater.Layout>
+												<muxc:ItemsRepeater.ItemTemplate>
+													<DataTemplate>
+														<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
+																		Spacing="16"
+																		CornerRadius="4"
+																		Orientation="Horizontal"
+																		Padding="16">
+															<PersonPicture Width="60"
+																		   Height="60"
+																		   ProfilePicture="{Binding UrlAuthorImage}" />
+															<utu:AutoLayout Spacing="8"
+																			utu:AutoLayout.PrimaryAlignment="Stretch"
+																			PrimaryAxisAlignment="Center">
+																<TextBlock TextWrapping="Wrap"
+																		   Text="{Binding Description}"
+																		   Foreground="{ThemeResource OnSurfaceBrush}" />
+																<TextBlock TextWrapping="Wrap"
+																		   Text="{Binding PublisherName}"
+																		   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+																<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+																										 Wide=24}"
+																				Orientation="Horizontal"
+																				CounterAxisAlignment="Center"
+																				Padding="{utu:Responsive Narrow='0,16,0,16',
+																										 Wide='0,16,0,0'}">
+																	<ToggleButton HorizontalContentAlignment="Center"
+																				  VerticalContentAlignment="Center"
+																				  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																												Path=DataContext.Like}"
+																				  CommandParameter="{Binding}"
+																				  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
+																		<ToggleButton.Content>
+																			<utu:AutoLayout Orientation="Horizontal"
+																							Spacing="{utu:Responsive Narrow=5,
+																													 Wide=8}"
+																							CounterAxisAlignment="Center">
+																				<PathIcon Data="{StaticResource Icon_Thumb_Up_Off}"
+																						  Foreground="{ThemeResource PrimaryBrush}" />
+																				<TextBlock Text="{Binding Likes.Count}"
+																						   Foreground="{ThemeResource PrimaryBrush}"
+																						   Style="{StaticResource LabelLarge}" />
+																			</utu:AutoLayout>
+																		</ToggleButton.Content>
+																		<ut:ControlExtensions.AlternateContent>
+																			<utu:AutoLayout Orientation="Horizontal"
+																							Spacing="{utu:Responsive Narrow=5,
+																													 Wide=8}"
+																							CounterAxisAlignment="Center">
+																				<PathIcon Data="{StaticResource Icon_Thumb_Up}"
+																						  Foreground="{ThemeResource PrimaryBrush}" />
+																				<TextBlock Text="{Binding Likes.Count}"
+																						   Foreground="{ThemeResource PrimaryBrush}"
+																						   Style="{StaticResource LabelLarge}" />
+																			</utu:AutoLayout>
+																		</ut:ControlExtensions.AlternateContent>
+																	</ToggleButton>
+																	<ToggleButton HorizontalContentAlignment="Center"
+																				  VerticalContentAlignment="Center"
+																				  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+																												Path=DataContext.Dislike}"
+																				  CommandParameter="{Binding}"
+																				  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
+																		<ToggleButton.Content>
+																			<utu:AutoLayout Orientation="Horizontal"
+																							Spacing="{utu:Responsive Narrow=5,
+																													 Wide=8}"
+																							CounterAxisAlignment="Center">
+																				<PathIcon Data="{StaticResource Icon_Thumb_Down_Off}"
+																						  Foreground="{ThemeResource PrimaryBrush}" />
+																				<TextBlock Text="{Binding Dislikes.Count}"
+																						   Foreground="{ThemeResource PrimaryBrush}"
+																						   Style="{StaticResource LabelLarge}" />
+																			</utu:AutoLayout>
+																		</ToggleButton.Content>
+																		<ut:ControlExtensions.AlternateContent>
+																			<utu:AutoLayout Orientation="Horizontal"
+																							Spacing="8"
+																							CounterAxisAlignment="Center">
+																				<PathIcon Data="{StaticResource Icon_Thumb_Down}"
+																						  Foreground="{ThemeResource PrimaryBrush}" />
+																				<TextBlock Text="{Binding Dislikes.Count}"
+																						   Foreground="{ThemeResource PrimaryBrush}"
+																						   Style="{StaticResource LabelLarge}" />
+																			</utu:AutoLayout>
+																		</ut:ControlExtensions.AlternateContent>
+																	</ToggleButton>
+																</utu:AutoLayout>
+															</utu:AutoLayout>
+														</utu:AutoLayout>
+													</DataTemplate>
+												</muxc:ItemsRepeater.ItemTemplate>
+											</muxc:ItemsRepeater>
+										</DataTemplate>
+									</uer:FeedView>
+								</utu:AutoLayout>
+
+								<Grid uen:Region.Name="NutritionTab"
+									  Visibility="Collapsed">
+									<Grid Margin="{utu:Responsive Narrow=16,
+																  Wide=40}"
+										  Padding="{utu:Responsive Narrow=16,
+																   Wide=24}"
+										  Background="{ThemeResource SurfaceBrush}"
+										  CornerRadius="24"
+										  RowSpacing="{utu:Responsive Narrow=5,
+																	  Wide=24}">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto" />
+											<RowDefinition Height="Auto" />
+										</Grid.RowDefinitions>
+										<TextBlock TextAlignment="Center"
+												   Text="Intake per serving"
+												   Foreground="{ThemeResource OnBackgroundBrush}"
+												   Style="{StaticResource TitleLarge}" />
+										<ctrl:ChartControl DataContext="{Binding Recipe}"
+														   Grid.Row="1" />
+									</Grid>
+								</Grid>
+							</Grid>
 						</ScrollViewer>
-
-						<Button Content="Start Cooking!"
-								Style="{StaticResource PrimaryFabStyle}"
-								Command="{Binding LiveCooking}"
-								VerticalAlignment="Bottom"
-								HorizontalAlignment="Right"
-								utu:AutoLayout.IsIndependentLayout="True"
-								Padding="24,20"
-								Margin="0,0,16,16"
-								CornerRadius="4">
-							<ut:ControlExtensions.Icon>
-								<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-										  Glyph="{StaticResource Icon_Carrot}" />
-							</ut:ControlExtensions.Icon>
-						</Button>
 					</utu:AutoLayout>
-				</DataTemplate>
-			</utu:ResponsiveView.NarrowTemplate>
-			<utu:ResponsiveView.WideTemplate>
-				<DataTemplate>
-					<utu:AutoLayout>
-						<utu:AutoLayout Spacing="8"
-										Orientation="Horizontal"
-										Padding="16">
-							<PersonPicture utu:AutoLayout.CounterAlignment="Center"
-										   ProfilePicture="{Binding User.UrlProfileImage}"
-										   Width="32"
-										   Height="32" />
-							<TextBlock Text="{Binding User.FullName, Converter={StaticResource StringFormatter}, ConverterParameter='By {0}'}"
-									   utu:AutoLayout.CounterAlignment="Center"
-									   Foreground="{ThemeResource OnBackgroundMediumBrush}"
-									   Style="{StaticResource BodySmall}" />
-						</utu:AutoLayout>
-						<utu:AutoLayout Orientation="Horizontal"
-										utu:AutoLayout.PrimaryAlignment="Stretch">
+				</utu:AutoLayout>
+			</utu:AutoLayout>
+		</ScrollViewer>
 
-							<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-								<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-									<Image Source="{Binding Recipe.ImageUrl}"
-										   Stretch="UniformToFill"
-										   VerticalAlignment="Center"
-										   HorizontalAlignment="Center"
-										   utu:AutoLayout.PrimaryAlignment="Stretch" />
-								</utu:AutoLayout>
-								<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-												CornerRadius="4"
-												Padding="0,16"
-												utu:AutoLayout.IsIndependentLayout="True"
-												Margin="14,14,0,0"
-												VerticalAlignment="Top"
-												HorizontalAlignment="Left"
-												Width="98"
-												Height="317">
-									<utu:AutoLayout Spacing="4"
-													PrimaryAxisAlignment="Center"
-													utu:AutoLayout.PrimaryAlignment="Stretch">
-										<FontIcon Glyph="{StaticResource Icon_Timer}"
-												  utu:AutoLayout.CounterAlignment="Center"
-												  Foreground="{ThemeResource OnSurfaceBrush}" />
-										<TextBlock TextAlignment="Center"
-												   TextWrapping="Wrap"
-												   Text="{Binding Recipe.CookTime, Converter={StaticResource TimeSpanToStringConverter}}"
-												   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-												   Style="{StaticResource BodySmall}" />
-									</utu:AutoLayout>
-									<utu:AutoLayout Spacing="4"
-													PrimaryAxisAlignment="Center"
-													utu:AutoLayout.PrimaryAlignment="Stretch">
-										<FontIcon Glyph="{StaticResource Icon_Star_Rate}"
-												  utu:AutoLayout.CounterAlignment="Center"
-												  Foreground="{ThemeResource OnSurfaceBrush}" />
-										<TextBlock TextAlignment="Center"
-												   TextWrapping="Wrap"
-												   Text="{Binding Recipe.Difficulty}"
-												   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-												   Style="{StaticResource BodySmall}" />
-									</utu:AutoLayout>
-									<utu:AutoLayout Spacing="4"
-													PrimaryAxisAlignment="Center"
-													utu:AutoLayout.PrimaryAlignment="Stretch">
-										<FontIcon Glyph="{StaticResource Icon_Local_Fire_Department}"
-												  utu:AutoLayout.CounterAlignment="Center"
-												  Foreground="{ThemeResource OnSurfaceBrush}" />
-										<TextBlock TextAlignment="Center"
-												   TextWrapping="Wrap"
-												   Text="{Binding Recipe.Calories}"
-												   Foreground="{ThemeResource OnSurfaceMediumBrush}"
-												   Style="{StaticResource BodySmall}" />
-									</utu:AutoLayout>
-								</utu:AutoLayout>
-							</utu:AutoLayout>
-							<utu:AutoLayout x:Name="TabsLayoutWide"
-											uen:Region.Attached="True"
-											Background="{ThemeResource BackgroundBrush}"
-											utu:AutoLayout.PrimaryAlignment="Stretch">
-								<utu:TabBar uen:Region.Attached="True"
-											utu:AutoLayout.CounterAlignment="Center"
-											Margin="40,0"
-											Background="{ThemeResource BackgroundBrush}"
-											Style="{StaticResource TopTabBarStyle}">
-									<utu:TabBarItem uen:Region.Name="IngredientsTabWide"
-													Content="Ingredients"
-													IsSelected="True" />
-									<utu:TabBarItem uen:Region.Name="StepsTabWide"
-													Content="Steps"
-													Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-									<utu:TabBarItem uen:Region.Name="ReviewsTabWide"
-													Content="Reviews"
-													Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-									<utu:TabBarItem uen:Region.Name="NutritionTabWide"
-													Content="Nutrition"
-													Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-								</utu:TabBar>
-								<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-											  HorizontalScrollMode="Disabled">
-									<utu:AutoLayout Justify="SpaceBetween">
-										<Grid uen:Region.Attached="True"
-											  uen:Region.Navigator="Visibility"
-											  utu:AutoLayout.PrimaryAlignment="Stretch">
-											<utu:AutoLayout Spacing="16"
-															Padding="40"
-															uen:Region.Name="IngredientsTabWide">
-												<TextBlock Style="{StaticResource BodyLarge}"
-														   Foreground="{ThemeResource OnSurfaceBrush}"
-														   Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} items'}"
-														   TextWrapping="Wrap" />
-												<uer:FeedView x:Name="IngredientsFeedWide"
-															  Source="{Binding Ingredients}">
-													<DataTemplate>
-														<muxc:ItemsRepeater ItemsSource="{Binding Data}">
-															<muxc:ItemsRepeater.Layout>
-																<muxc:StackLayout Orientation="Vertical"
-																				  Spacing="2" />
-															</muxc:ItemsRepeater.Layout>
-															<muxc:ItemsRepeater.ItemTemplate>
-																<DataTemplate>
-																	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-																					CornerRadius="4"
-																					PrimaryAxisAlignment="Center">
-																		<utu:AutoLayout Spacing="16"
-																						Orientation="Horizontal"
-																						Padding="8,0,16,0">
-																			<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center">
-																				<utu:AutoLayout Orientation="Horizontal"
-																								utu:AutoLayout.CounterAlignment="Start"
-																								Height="60">
-																					<Image Width="40"
-																						   Source="{Binding UrlIcon}" />
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-																			<utu:AutoLayout utu:AutoLayout.CounterAlignment="Center"
-																							utu:AutoLayout.PrimaryAlignment="Stretch">
-																				<utu:AutoLayout PrimaryAxisAlignment="Center">
-																					<utu:AutoLayout PrimaryAxisAlignment="Center">
-																						<TextBlock TextWrapping="Wrap"
-																								   Text="{Binding Name}"
-																								   Foreground="{ThemeResource OnSurfaceBrush}"
-																								   Style="{StaticResource TitleMedium}" />
-																					</utu:AutoLayout>
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-																			<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
-																							CornerRadius="4"
-																							PrimaryAxisAlignment="End"
-																							Orientation="Horizontal"
-																							Padding="8"
-																							utu:AutoLayout.CounterAlignment="Center">
-																				<utu:AutoLayout PrimaryAxisAlignment="End"
-																								Orientation="Horizontal">
-																					<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start">
-																						<utu:AutoLayout PrimaryAxisAlignment="End"
-																										Orientation="Horizontal"
-																										utu:AutoLayout.CounterAlignment="End">
-																							<TextBlock TextAlignment="End"
-																									   Text="{Binding Quantity}"
-																									   utu:AutoLayout.CounterAlignment="Start"
-																									   Foreground="{ThemeResource OnSecondaryContainerBrush}"
-																									   Style="{StaticResource BodySmall}" />
-																						</utu:AutoLayout>
-																					</utu:AutoLayout>
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-																		</utu:AutoLayout>
-																	</utu:AutoLayout>
-																</DataTemplate>
-															</muxc:ItemsRepeater.ItemTemplate>
-														</muxc:ItemsRepeater>
-													</DataTemplate>
-												</uer:FeedView>
-											</utu:AutoLayout>
-
-											<utu:AutoLayout Spacing="16"
-															Padding="40"
-															uen:Region.Name="StepsTabWide"
-															Visibility="Collapsed">
-												<TextBlock Style="{StaticResource BodyLarge}"
-														   Foreground="{ThemeResource OnSurfaceBrush}"
-														   Text="{Binding Steps.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} steps'}"
-														   TextWrapping="Wrap" />
-												<uer:FeedView x:Name="StepsFeedWide"
-															  Source="{Binding Steps}">
-													<DataTemplate>
-														<muxc:ItemsRepeater ItemsSource="{Binding Data}">
-															<muxc:ItemsRepeater.Layout>
-																<muxc:StackLayout Orientation="Vertical"
-																				  Spacing="2" />
-															</muxc:ItemsRepeater.Layout>
-															<muxc:ItemsRepeater.ItemTemplate>
-																<DataTemplate>
-																	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-																					CornerRadius="4">
-																		<utu:AutoLayout Orientation="Horizontal"
-																						Padding="16">
-																			<utu:AutoLayout utu:AutoLayout.CounterAlignment="Start"
-																							utu:AutoLayout.PrimaryAlignment="Stretch">
-																				<utu:AutoLayout PrimaryAxisAlignment="Center">
-																					<utu:AutoLayout Spacing="8"
-																									PrimaryAxisAlignment="Center">
-																						<TextBlock TextWrapping="Wrap"
-																								   Text="{Binding Name}"
-																								   Foreground="{ThemeResource OnSurfaceBrush}"
-																								   Style="{StaticResource TitleSmall}" />
-																						<TextBlock TextWrapping="Wrap"
-																								   Text="{Binding Description}"
-																								   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-																					</utu:AutoLayout>
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-																		</utu:AutoLayout>
-																	</utu:AutoLayout>
-																</DataTemplate>
-															</muxc:ItemsRepeater.ItemTemplate>
-														</muxc:ItemsRepeater>
-													</DataTemplate>
-												</uer:FeedView>
-											</utu:AutoLayout>
-
-											<utu:AutoLayout Spacing="16"
-															Padding="40"
-															uen:Region.Name="ReviewsTabWide"
-															Visibility="Collapsed">
-												<TextBlock Style="{StaticResource BodyLarge}"
-														   Foreground="{ThemeResource OnSurfaceBrush}"
-														   Text="{Binding Reviews.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} comments'}"
-														   TextWrapping="Wrap"
-														   Visibility="{Binding Reviews.Count, Converter={StaticResource GreaterThanZeroToVisibleConverter}}" />
-
-												<uer:FeedView x:Name="ReviewsFeedWide"
-															  VerticalContentAlignment="Center"
-															  NoneTemplate="{StaticResource EmptyTemplate}"
-															  Source="{Binding Reviews}">
-													<DataTemplate>
-														<muxc:ItemsRepeater ItemsSource="{Binding Data}">
-															<muxc:ItemsRepeater.Layout>
-																<muxc:StackLayout Orientation="Vertical"
-																				  Spacing="2" />
-															</muxc:ItemsRepeater.Layout>
-															<muxc:ItemsRepeater.ItemTemplate>
-																<DataTemplate>
-
-																	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-																					Spacing="16"
-																					CornerRadius="4"
-																					Orientation="Horizontal"
-																					Padding="16">
-																		<PersonPicture utu:AutoLayout.CounterAlignment="Start"
-																					   Width="60"
-																					   Height="60"
-																					   ProfilePicture="{Binding UrlAuthorImage}" />
-																		<utu:AutoLayout Spacing="8"
-																						utu:AutoLayout.CounterAlignment="Start"
-																						utu:AutoLayout.PrimaryAlignment="Stretch">
-																			<TextBlock TextWrapping="Wrap"
-																					   Text="{Binding Description}"
-																					   Foreground="{ThemeResource OnSurfaceBrush}" />
-																			<TextBlock TextWrapping="Wrap"
-																					   Text="{Binding PublisherName}"
-																					   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-																			<utu:AutoLayout Spacing="24"
-																							Orientation="Horizontal"
-																							Padding="0,16,0,0">
-																				<utu:AutoLayout Orientation="Horizontal"
-																								utu:AutoLayout.CounterAlignment="Start">
-																					<ToggleButton HorizontalContentAlignment="Center"
-																								  VerticalContentAlignment="Center"
-																								  utu:AutoLayout.CounterAlignment="Center"
-																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-																																Path=DataContext.Like}"
-																								  CommandParameter="{Binding}"
-																								  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
-																						<ToggleButton.Content>
-																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
-																										  FontSize="20"
-																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
-																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock Text="{Binding Likes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
-																										   Foreground="{ThemeResource PrimaryBrush}"
-																										   Style="{StaticResource LabelLarge}" />
-																							</utu:AutoLayout>
-																						</ToggleButton.Content>
-																						<ut:ControlExtensions.AlternateContent>
-																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Up}"
-																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																										  FontSize="20"
-																										  utu:AutoLayout.CounterAlignment="Center"
-																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock Text="{Binding Likes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
-																										   Foreground="{ThemeResource PrimaryBrush}"
-																										   Style="{StaticResource LabelLarge}" />
-																							</utu:AutoLayout>
-																						</ut:ControlExtensions.AlternateContent>
-																					</ToggleButton>
-																				</utu:AutoLayout>
-																				<utu:AutoLayout Orientation="Horizontal"
-																								utu:AutoLayout.CounterAlignment="Start">
-																					<ToggleButton HorizontalContentAlignment="Center"
-																								  VerticalContentAlignment="Center"
-																								  utu:AutoLayout.CounterAlignment="Center"
-																								  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
-																																Path=DataContext.Dislike}"
-																								  CommandParameter="{Binding}"
-																								  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
-																						<ToggleButton.Content>
-																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
-																										  FontSize="20"
-																										  Style="{StaticResource FontAwesomeRegularFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
-																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock Text="{Binding Dislikes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
-																										   Foreground="{ThemeResource PrimaryBrush}"
-																										   Style="{StaticResource LabelLarge}" />
-																							</utu:AutoLayout>
-																						</ToggleButton.Content>
-																						<ut:ControlExtensions.AlternateContent>
-																							<utu:AutoLayout Orientation="Horizontal"
-																											Spacing="8">
-																								<FontIcon Glyph="{StaticResource Icon_Thumb_Down}"
-																										  FontSize="20"
-																										  Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-																										  utu:AutoLayout.CounterAlignment="Center"
-																										  Foreground="{ThemeResource PrimaryBrush}" />
-																								<TextBlock Text="{Binding Dislikes.Count}"
-																										   utu:AutoLayout.CounterAlignment="Center"
-																										   Foreground="{ThemeResource PrimaryBrush}"
-																										   Style="{StaticResource LabelLarge}" />
-																							</utu:AutoLayout>
-																						</ut:ControlExtensions.AlternateContent>
-																					</ToggleButton>
-																				</utu:AutoLayout>
-																			</utu:AutoLayout>
-																		</utu:AutoLayout>
-																	</utu:AutoLayout>
-																</DataTemplate>
-															</muxc:ItemsRepeater.ItemTemplate>
-														</muxc:ItemsRepeater>
-													</DataTemplate>
-												</uer:FeedView>
-											</utu:AutoLayout>
-
-											<Grid uen:Region.Name="NutritionTabWide"
-												  Visibility="Collapsed">
-												<Grid Margin="40"
-													  Padding="24"
-													  Background="{ThemeResource SurfaceColor}"
-													  CornerRadius="24"
-													  RowSpacing="24">
-													<Grid.RowDefinitions>
-														<RowDefinition Height="Auto" />
-														<RowDefinition Height="Auto" />
-													</Grid.RowDefinitions>
-													<TextBlock TextAlignment="Center"
-															   Text="Intake per serving"
-															   Foreground="{ThemeResource OnBackgroundBrush}"
-															   Style="{StaticResource TitleLarge}" />
-
-													<ctrl:ChartControl DataContext="{Binding Recipe}"
-																	   Grid.Row="1" />
-												</Grid>
-											</Grid>
-										</Grid>
-									</utu:AutoLayout>
-								</ScrollViewer>
-							</utu:AutoLayout>
-						</utu:AutoLayout>
-						<Button Content="Start Cooking!"
-								Style="{StaticResource PrimaryFabStyle}"
-								Command="{Binding LiveCooking}"
-								VerticalAlignment="Bottom"
-								HorizontalAlignment="Right"
-								utu:AutoLayout.IsIndependentLayout="True"
-								Padding="24,20"
-								Margin="0,0,16,16"
-								CornerRadius="4">
-							<ut:ControlExtensions.Icon>
-								<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-										  Glyph="{StaticResource Icon_Carrot}" />
-							</ut:ControlExtensions.Icon>
-						</Button>
-					</utu:AutoLayout>
-				</DataTemplate>
-			</utu:ResponsiveView.WideTemplate>
-		</utu:ResponsiveView>
+		<Button Content="Start Cooking!"
+				Style="{StaticResource ChefsFabButtonStyle}"
+				Command="{Binding LiveCooking}"
+				VerticalAlignment="Bottom"
+				HorizontalAlignment="Right"
+				utu:AutoLayout.IsIndependentLayout="True">
+			<ut:ControlExtensions.Icon>
+				<FontIcon Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+						  Glyph="{StaticResource Icon_Carrot}" />
+			</ut:ControlExtensions.Icon>
+		</Button>
 	</utu:AutoLayout>
 </Page>

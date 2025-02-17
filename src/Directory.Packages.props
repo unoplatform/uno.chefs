@@ -1,16 +1,24 @@
 <Project>
-  <PropertyGroup>
-    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageVersion Include="coverlet.collector" Version="3.2.0" />
-    <PackageVersion Include="FluentAssertions" Version="6.10.0" />
-    <PackageVersion Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc2" />
-    <PackageVersion Include="Mapsui.Uno.WinUI" Version="4.1.2" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
-    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageVersion Include="NUnit" Version="3.13.3" />
-    <PackageVersion Include="NUnit3TestAdapter" Version="4.4.2" />
-    <PackageVersion Include="Xamarin.UITest" Version="4.1.2" />
-  </ItemGroup>
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+	<PropertyGroup>
+		<UnoExtensionsVersion>5.3.0-dev.125</UnoExtensionsVersion>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageVersion Include="coverlet.collector" Version="3.2.0" />
+		<PackageVersion Include="FluentAssertions" Version="6.10.0" />
+		<PackageVersion Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc4.5" />
+		<PackageVersion Include="Mapsui.Uno.WinUI" Version="5.0.0-beta.4" />
+		<PackageVersion Include="LiveChartsCore.SkiaSharpView.WinUI" Version="2.0.0-rc4.5" />
+		<PackageVersion Include="Mapsui.WinUI" Version="5.0.0-beta.4" />
+		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+		<PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageVersion Include="NUnit" Version="3.13.3" />
+		<PackageVersion Include="NUnit3TestAdapter" Version="4.4.2" />
+		<PackageVersion Include="Xamarin.UITest" Version="4.1.2" />
+		<PackageVersion Include="System.Private.Uri" Version="4.3.2" />
+		<PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+		<PackageVersion Include="Uno.Extensions.Http.Kiota" Version="5.3.0-dev.125" />
+	</ItemGroup>
 </Project>

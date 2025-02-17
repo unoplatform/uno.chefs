@@ -1,3 +1,5 @@
+using RecipeData = Chefs.Services.Clients.Models.RecipeData;
+
 namespace Chefs.Business.Models;
 
 public class CookbookImages

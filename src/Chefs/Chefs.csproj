@@ -1,13 +1,17 @@
-<Project Sdk="Uno.Sdk">
+﻿<Project Sdk="Uno.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>
-			net8.0-android;
-			net8.0-ios;
-			net8.0-maccatalyst;
-			net8.0-windows10.0.19041;
-			net8.0;
-			net8.0-desktop;
-			net8.0-browserwasm;
+			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
+		<!-- which will force us to install all workloads even if not needed -->
+		<!-- To prevent that, we will pass TargetFrameworkOverride as a global property (i.e, dotnet build -p:TargetFrameworkOverride=net9.0-platform) -->
+		<!-- That way, we set TargetFrameworks property to only the needed TargetFramework -->
+		<TargetFramework Condition="'$(TargetFrameworkOverride)'!=''">$(TargetFrameworkOverride)</TargetFramework>
+		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'==''">
+			net9.0-android;
+			net9.0-ios;
+			net9.0-maccatalyst;
+			net9.0-windows10.0.19041;
+			net9.0-desktop;
+			net9.0-browserwasm;
 		</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<UnoSingleProject>true</UnoSingleProject>
@@ -20,6 +24,7 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
+		<UseMocks>True</UseMocks>
 		<!--
 			If you encounter this error message:
 
@@ -31,7 +36,6 @@
 			must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
 		-->
 		<!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
-
 		<!--
 			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
 			https://aka.platform.uno/singleproject-features
@@ -54,13 +58,56 @@
 		</UnoFeatures>
 	</PropertyGroup>
 
+	<Choose>
+		<When Condition="$(IsWinAppSdk)">
+			<ItemGroup>
+				<PackageReference Include="Mapsui.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.WinUI" />
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<PackageReference Include="Mapsui.Uno.WinUI" />
+				<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
+
+	<PropertyGroup Condition="'$(UseMocks)'=='True'">
+		<DefineConstants>$(DefineConstants);USE_MOCKS</DefineConstants>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Mapsui.Uno.WinUI" />
-		<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
+		<PackageReference Include="Uno.Extensions.Http.Kiota" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Content Include="Data\**\*.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="Data\AppData\categories.json" />
+	  <Content Remove="Data\AppData\Cookbooks.json" />
+	  <Content Remove="Data\AppData\Notifications.json" />
+	  <Content Remove="Data\AppData\Recipes.json" />
+	  <Content Remove="Data\AppData\SavedCookbooks.json" />
+	  <Content Remove="Data\AppData\SavedRecipes.json" />
+	  <Content Remove="Data\AppData\Users.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
+	  <EmbeddedResource Include="Data\AppData\categories.json" />
+	  <EmbeddedResource Include="Data\AppData\Cookbooks.json" />
+	  <EmbeddedResource Include="Data\AppData\Notifications.json" />
+	  <EmbeddedResource Include="Data\AppData\Recipes.json" />
+	  <EmbeddedResource Include="Data\AppData\SavedCookbooks.json" />
+	  <EmbeddedResource Include="Data\AppData\SavedRecipes.json" />
+	  <EmbeddedResource Include="Data\AppData\Users.json" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">

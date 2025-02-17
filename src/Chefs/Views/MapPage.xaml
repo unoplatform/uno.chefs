@@ -1,4 +1,4 @@
-<Page xmlns:uen="using:Uno.Extensions.Navigation.UI"
+﻿<Page xmlns:uen="using:Uno.Extensions.Navigation.UI"
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:utum="using:Uno.Toolkit.UI.Material"
@@ -10,27 +10,23 @@
 	  xmlns:local="using:Chefs.Views"
 	  xmlns:map="using:Mapsui.UI.WinUI"
 	  x:Class="Chefs.Views.MapPage"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	  mc:Ignorable="d"
 	  Background="{ThemeResource BackgroundBrush}"
 	  utu:StatusBar.Foreground="Dark"
 	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
 	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<utu:AutoLayout Background="{ThemeResource BackgroundBrush}">
-		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Background="{ThemeResource SurfaceInverseBrush}"
-							   Foreground="{ThemeResource OnSurfaceInverseBrush}"
-							   Content="Near me">
-				<utu:NavigationBar.MainCommand>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Assets/Icons/arrow_back.png"
-										Foreground="{ThemeResource OnSurfaceInverseBrush}" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.MainCommand>
-			</utu:NavigationBar>
-			<map:MapControl x:Name="MapControl"
-							utu:AutoLayout.PrimaryAlignment="Stretch" />
-		</utu:AutoLayout>
+	<utu:AutoLayout>
+		<utu:NavigationBar Content="Near me">
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton>
+					<not_mobile:AppBarButton.Icon>
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+					</not_mobile:AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.MainCommand>
+		</utu:NavigationBar>
+		<map:MapControl x:Name="MapControl"
+						utu:AutoLayout.PrimaryAlignment="Stretch" />
 	</utu:AutoLayout>
 </Page>
