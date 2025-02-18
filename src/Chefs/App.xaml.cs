@@ -158,7 +158,7 @@ public partial class App : Application
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
-#if !IS_WASM_SKIA
+#if !IS_WASM_SKIA && !IS_ANDROID_SKIA
 			new ViewMap<MapPage, MapModel>(),
 #endif
 			new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>())
