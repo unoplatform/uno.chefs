@@ -1,0 +1,11 @@
+parameters:
+  DotNetVersion: '9.0.100'
+
+steps:
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core SDK ${{ parameters.DotNetVersion }}'
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: sdk
+      version: ${{ parameters.DotNetVersion }}
+      includePreviewVersions: true
