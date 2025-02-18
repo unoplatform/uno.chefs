@@ -30,6 +30,7 @@
 		<Grid Grid.Row="0"
 			  Grid.Column="1"
 			  uen:Region.Attached="True"
+			  x:Name="RootGrid"
 			  uen:Region.Navigator="Visibility" />
 
 		<utu:TabBar Grid.Row="1"
@@ -39,6 +40,7 @@
 					uen:Region.Attached="True"
 					Style="{StaticResource BottomTabBarStyle}">
 			<utu:TabBarItem uen:Region.Name="Home"
+							utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
 							Content="Home">
 				<utu:TabBarItem.Icon>
 					<PathIcon Data="{StaticResource Icon_Home}" />
@@ -46,6 +48,7 @@
 			</utu:TabBarItem>
 
 			<utu:TabBarItem uen:Region.Name="-/Search"
+							utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
 							Content="Search">
 				<utu:TabBarItem.Icon>
 					<PathIcon Data="{StaticResource Icon_Search}" />
@@ -53,6 +56,7 @@
 			</utu:TabBarItem>
 
 			<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
+							utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
 							Content="Favorites">
 				<utu:TabBarItem.Icon>
 					<PathIcon Data="{StaticResource Icon_Heart}" />
@@ -70,6 +74,8 @@
 						utu:AutoLayout.PrimaryAlignment="Stretch">
 
 				<utu:TabBarItem uen:Region.Name="Home"
+								utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
+								utu:TabBarItemExtensions.OnClickBehaviorsTarget="{Binding ElementName=RootGrid}"
 								Content="Home">
 					<utu:TabBarItem.Icon>
 						<PathIcon Data="{StaticResource Icon_Home}" />
@@ -77,6 +83,8 @@
 				</utu:TabBarItem>
 
 				<utu:TabBarItem uen:Region.Name="-/Search"
+								utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
+								utu:TabBarItemExtensions.OnClickBehaviorsTarget="{Binding ElementName=RootGrid}"
 								Content="Search">
 					<utu:TabBarItem.Icon>
 						<PathIcon Data="{StaticResource Icon_Search}" />
@@ -84,6 +92,8 @@
 				</utu:TabBarItem>
 
 				<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
+								utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
+								utu:TabBarItemExtensions.OnClickBehaviorsTarget="{Binding ElementName=RootGrid}"
 								Content="Favorites">
 					<utu:TabBarItem.Icon>
 						<PathIcon Data="{StaticResource Icon_Heart}" />
