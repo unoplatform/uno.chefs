@@ -18,6 +18,11 @@ jobs:
     SkipUnknownFrameworks: true
   
   steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
   - bash: |
       # This list is based on what the base image contains and
       # may need to be adjusted as new software gets installed.

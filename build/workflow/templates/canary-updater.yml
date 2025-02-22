@@ -1,8 +1,4 @@
 steps:
-  - checkout: self	
-    fetchDepth: 0	
-    persistCredentials: true
-
   - task: unoplatformCanaryUpdater@1
     displayName: 'Canary Update'
     retryCountOnTaskFailure: 3
