@@ -4,6 +4,11 @@ jobs:
     vmImage: windows-2022
 
   steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
   - template: templates/dotnet-install-windows.yml

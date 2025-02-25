@@ -42,6 +42,12 @@ jobs:
   - group: 'unoplatform.apple.ios.appstore.distribution'
 
   steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
+
   - task: InstallAppleCertificate@2
     displayName: Install Certificate
     inputs:
