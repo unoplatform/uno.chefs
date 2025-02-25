@@ -89,7 +89,7 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<!--<PackageReference Include="Mapsui.Uno.WinUI" />-->
+				<PackageReference Include="Mapsui.Uno.WinUI" />
 				<PackageReference Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
 			</ItemGroup>
 		</Otherwise>
