@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk.Private">
+﻿<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -174,19 +174,35 @@
 				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">Uno Chefs Canary (Catalyst)</CodesignProvision>
 			</PropertyGroup>
 		</When>
+		<When Condition=" '$(TargetFramework)' == 'net9.0-browserwasm' ">
+			<ItemGroup>
+				<PackageReference Include="Uno.Wasm.Bootstrap" />
+			</ItemGroup>
+		</When>
 	</Choose>
 
-	<Target Name="__RemoveUnoRuntimeWasm"
-		AfterTargets="UnoImplicitPackages"
-		Condition=" $(IsSkiaWasm) OR $(IsSkiaAndroid) OR $(IsSkiaUIKit) ">
-		<!--
-		Disable explicit references to Uno.WinUI.Runtime.WebAssembly in order to avoid using JSInvoke directly
-		This change is done manually here to avoid 
-		-->
+	<!-- https://github.com/dotnet/runtime/issues/109289 -->
+	<Target Name="Issue109289_Workaround" AfterTargets="_BrowserWasmWriteRspForLinking" Condition=" $(NETCoreSdkVersion.Contains('9.0.')) ">
 		<ItemGroup>
-			<PackageReference Remove="Uno.WinUI.Runtime.WebAssembly"
-							  Condition="'$(IsUnoHead)' != 'true' AND $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'browserwasm'" />
+			<_WasmLinkStepArgs Remove="@(_EmccLinkStepArgs)" />
+			<_EmccLinkStepArgs Remove="&quot;%(_WasmNativeFileForLinking.Identity)&quot;" />
+			<_WasmLinkDependencies Remove="@(_WasmNativeFileForLinking)" />
+
+			<_SkiaSharpToReorder Include="@(_WasmNativeFileForLinking)" Condition="$([System.String]::Copy('%(FullPath)').Contains('SkiaSharp'))" />
+			<_WasmNativeFileForLinking Remove="@(_SkiaSharpToReorder)" />
+			<_WasmNativeFileForLinking Include="@(_SkiaSharpToReorder)" />
+
+			<_EmccLinkStepArgs Include="&quot;%(_WasmNativeFileForLinking.Identity)&quot;" />
+			<_WasmLinkDependencies Include="@(_WasmNativeFileForLinking)" />
+			<_WasmLinkStepArgs Include="@(_EmccLinkStepArgs)" />
 		</ItemGroup>
 	</Target>
-	
+
+	<Target Name="AdjustStrip" BeforeTargets="_WasmCommonPrepareForWasmBuildNative">
+		<PropertyGroup>
+			<!-- Enable debug symbols for release mode to profiling -->
+			<WasmNativeStrip>false</WasmNativeStrip>
+			<WasmNativeDebugSymbols>true</WasmNativeDebugSymbols>
+		</PropertyGroup>
+	</Target>
 </Project>

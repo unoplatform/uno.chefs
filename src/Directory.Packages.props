@@ -20,5 +20,8 @@
 		<PackageVersion Include="System.Private.Uri" Version="4.3.2" />
 		<PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
 		<PackageVersion Include="Uno.Extensions.Http.Kiota" Version="$(UnoExtensionsVersion)" />
+
+		<!-- Required for uno.sdk.private -->
+		<PackageVersion Include="Uno.Wasm.Bootstrap" Version="9.0.14" />
 	</ItemGroup>
 </Project>
