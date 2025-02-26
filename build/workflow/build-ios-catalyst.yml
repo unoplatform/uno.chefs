@@ -106,7 +106,7 @@ jobs:
   - bash: |
       cd $(build.sourcesdirectory)/src/Chefs
       echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
-      dotnet $(BuildCommand) -f $(BuildTargetFramework) /p:TargetFrameworkOverride=$(BuildTargetFramework) -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$GITVERSION_INFORMATIONALVERSION" 
+      dotnet $(BuildCommand) -f $(BuildTargetFramework) /p:TargetFrameworkOverride=$(BuildTargetFramework) -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$NBGV_InformationalVersion" 
     displayName: Build project for Release - $(BuildTargetFramework)
 
   - task: CopyFiles@2

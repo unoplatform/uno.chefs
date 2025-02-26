@@ -73,7 +73,7 @@ jobs:
 
 
   - bash: |
-      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%GITVERSION_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
