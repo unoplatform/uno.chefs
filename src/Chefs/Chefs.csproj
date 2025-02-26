@@ -1,4 +1,4 @@
-﻿<Project Sdk="Uno.Sdk.Private">
+<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -41,8 +41,9 @@
 			https://aka.platform.uno/singleproject-features
 		-->
 
-		<!-- Uncomment to use skia rendering -->
+		<!-- Uncomment to use skia rendering
 		<UseSkiaRendering>true</UseSkiaRendering>
+		-->
 		
 		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND '$(TargetFramework)'=='net9.0-browserwasm'">true</IsSkiaWasm>
 		<IsSkiaWasm Condition="'$(IsSkiaWasm)'==''">false</IsSkiaWasm>
