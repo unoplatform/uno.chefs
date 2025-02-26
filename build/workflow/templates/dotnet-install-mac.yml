@@ -18,6 +18,6 @@ steps:
 
   - bash: |
       dotnet tool update --global uno.check --version ${{ parameters.UnoCheck_Version }} --add-source https://api.nuget.org/v3/index.json
-      uno-check --ci --non-interactive --fix --skip gtk3 --skip xcode --skip vswin --skip androidemulator --skip vsmac --pre-major ${{ parameters.UnoCheckParameters }}
+      uno-check --ci --non-interactive --fix --skip gtk3 --skip xcode --skip vswin --skip androidemulator --skip vsmac --skip dotnetnewunotemplates --skip unosdk ${{ parameters.UnoCheckParameters }}
     displayName: Install .NET Workloads
     condition: and(succeeded(), eq(variables['Agent.OS'], 'Darwin'))
