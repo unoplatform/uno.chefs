@@ -1,4 +1,4 @@
-﻿<Project Sdk="Uno.Sdk.Private">
+<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -175,4 +175,18 @@
 			</PropertyGroup>
 		</When>
 	</Choose>
+
+	<Target Name="__RemoveUnoRuntimeWasm"
+		AfterTargets="UnoImplicitPackages"
+		Condition=" $(IsSkiaWasm) OR $(IsSkiaAndroid) OR $(IsSkiaUIKit) ">
+		<!--
+		Disable explicit references to Uno.WinUI.Runtime.WebAssembly in order to avoid using JSInvoke directly
+		This change is done manually here to avoid 
+		-->
+		<ItemGroup>
+			<PackageReference Remove="Uno.WinUI.Runtime.WebAssembly"
+							  Condition="'$(IsUnoHead)' != 'true' AND $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'browserwasm'" />
+		</ItemGroup>
+	</Target>
+	
 </Project>
