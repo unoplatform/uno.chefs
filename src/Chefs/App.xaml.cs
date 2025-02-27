@@ -79,13 +79,13 @@ public partial class App : Application
 				//	logBuilder.SetMinimumLevel(
 				//		context.HostingEnvironment.IsDevelopment() ? LogLevel.Information : LogLevel.Warning);
 				//}, enableUnoLogging: true)
-				//.UseConfiguration(configure: configBuilder =>
-				//	configBuilder
-				//		.EmbeddedSource<App>()
-				//		.Section<AppConfig>()
-				//		.Section<Credentials>()
-				//		.Section<SearchHistory>()
-				//)
+				.UseConfiguration(configure: configBuilder =>
+					configBuilder
+						.EmbeddedSource<App>()
+						.Section<AppConfig>()
+						.Section<Credentials>()
+						.Section<SearchHistory>()
+				)
 
 				// Enable localization (see appsettings.json for supported languages)
 				.UseLocalization()
