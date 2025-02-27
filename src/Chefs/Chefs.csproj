@@ -20,7 +20,7 @@
 		<ApplicationTitle>Chefs</ApplicationTitle>
 		<!-- App Identifier -->
 
-		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true')">uno.platform.chefs</ApplicationId>
+		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true'">uno.platform.chefs</ApplicationId>
 		<ApplicationId Condition="'$(UseSkiaRendering)' == 'true'">uno.platform.chefs.skia</ApplicationId>
 
 		<ApplicationId Condition="$(IsCanaryBranch)">$(ApplicationId)-canary</ApplicationId>
