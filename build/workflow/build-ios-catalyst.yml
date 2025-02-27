@@ -88,6 +88,30 @@ jobs:
     displayName: 'Install Apple Provisioning Profile'
     inputs:
       provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Skia_Canary_iOS.mobileprovision
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Skia_Catalyst.provisionprofile
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Skia_Canary_Catalyst.provisionprofile
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Skia_iOS.mobileprovision
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
       provProfileSecureFile: Uno_Chefs_Canary_iOS.mobileprovision
 
   - bash: |
