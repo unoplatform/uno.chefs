@@ -115,7 +115,7 @@ public partial class App : Application
 		MainWindow = builder.Window;
 
 #if DEBUG
-		MainWindow.UseStudio();
+		// MainWindow.UseStudio();
 #endif
 
 		Host = await builder.NavigateAsync<ShellControl>();
@@ -159,9 +159,7 @@ public partial class App : Application
 			new ViewMap<LiveCookingPage, LiveCookingModel>(Data: new DataMap<LiveCookingParameter>()),
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
-#if !IS_WASM_SKIA && !IS_ANDROID_SKIA
 			new ViewMap<MapPage, MapModel>(),
-#endif
 			new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>())
 		);
 
@@ -242,9 +240,9 @@ public partial class App : Application
 			builder.SetMinimumLevel(LogLevel.Information);
 
 			// Default filters for Uno Platform namespaces
-			builder.AddFilter("Uno", LogLevel.Warning);
-			builder.AddFilter("Windows", LogLevel.Warning);
-			builder.AddFilter("Microsoft", LogLevel.Warning);
+			builder.AddFilter("Uno", LogLevel.Information);
+			builder.AddFilter("Windows", LogLevel.Information);
+			builder.AddFilter("Microsoft", LogLevel.Information);
 
 			// Generic Xaml events
 			// builder.AddFilter("Microsoft.UI.Xaml", LogLevel.Debug );
