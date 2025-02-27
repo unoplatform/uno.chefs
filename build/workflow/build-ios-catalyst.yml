@@ -1,7 +1,6 @@
 jobs:
 - job: iOS_Catalyst
   strategy:
-    maxParallel: 2
     matrix:
       iOS:
         BuildTargetFramework: net9.0-ios
