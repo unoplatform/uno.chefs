@@ -43,7 +43,7 @@ steps:
           foreach-object { $_ -replace "uno.platform.chefs.skia","uno.platform.chefs.skia-canary" } |
           set-content $a }
     displayName: 'Adjust Application ID (Skia)'
-    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/skia-everywhere')
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries')
 
   - pwsh: |
       gci -r -include "Chefs.csproj" |
@@ -52,4 +52,4 @@ steps:
           foreach-object { $_ -replace "uno.platform.chefs","uno.platform.chefs-canary" } |
           set-content $a }
     displayName: 'Adjust Application ID'
-    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/dev')
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries')
