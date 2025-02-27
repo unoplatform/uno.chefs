@@ -174,8 +174,10 @@
 				<EnablePackageSigning>true</EnablePackageSigning>
 				<EnableCodeSigning>true</EnableCodeSigning>
 
-				<CodesignProvision>Uno Chefs (Catalyst)</CodesignProvision>
-				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">Uno Chefs Canary (Catalyst)</CodesignProvision>
+				<_BaseCodesignProvision>Uno Chefs</_BaseCodesignProvision>
+				<_BaseCodesignProvision Condition="$(UseSkiaRendering)">Uno Chefs Skia</_BaseCodesignProvision>
+				<CodesignProvision>$(_BaseCodesignProvision) (Catalyst)</CodesignProvision>
+				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">$(_BaseCodesignProvision) Canary (Catalyst)</CodesignProvision>
 			</PropertyGroup>
 		</When>
 		<When Condition=" '$(TargetFramework)' == 'net9.0-browserwasm' ">
