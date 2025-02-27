@@ -73,7 +73,7 @@ jobs:
 
 
   - bash: |
-      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/build-wasm.binlog
+      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/logs/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
@@ -81,18 +81,26 @@ jobs:
     inputs:
       SourceFolder: src/Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot
       Contents: '**/*.*'
-      TargetFolder: $(build.artifactstagingdirectory)
+      TargetFolder: $(build.artifactstagingdirectory)/wwwroot
 
   - task: CopyFiles@2
     displayName: Copy version information
     inputs:
       Contents: src/Chefs/Version.txt
-      TargetFolder: $(build.artifactstagingdirectory)
+      TargetFolder: $(build.artifactstagingdirectory)/wwwroot
       FlattenFolders: true
 
   - task: PublishBuildArtifacts@1
     condition: always()
+    displayName: Publish build logs
     inputs:
-      PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: $(ArtifactName)
+      PathtoPublish: $(build.artifactstagingdirectory)/logs
+      ArtifactName: $(ArtifactName)-logs
       ArtifactType: Container
+
+  - task: PublishPipelineArtifact@1
+    retryCountOnTaskFailure: 3
+    displayName: Publish artifacts
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/wwwroot
+      artifactName: $(ArtifactName)

@@ -22,7 +22,7 @@ jobs:
     retryCountOnTaskFailure: 3
     inputs:
       solution: src\Chefs\Chefs.csproj
-      msbuildArguments: /ds /m /r /p:TargetFramework=net9.0-desktop /p:TargetFrameworkOverride=net9.0-desktop /p:Configuration=Release "/p:InformationalVersion=%NBGV_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/build-desktop.binlog
+      msbuildArguments: /ds /m /r /p:TargetFramework=net9.0-desktop /p:TargetFrameworkOverride=net9.0-desktop /p:Configuration=Release "/p:InformationalVersion=%NBGV_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/logs/build-desktop.binlog
 
   - task: CopyFiles@2
     displayName: Copy Skia output
@@ -34,6 +34,12 @@ jobs:
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
-      PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: skia-desktop
+      PathtoPublish: $(build.artifactstagingdirectory)/logs
+      ArtifactName: skia-desktop-logs
       ArtifactType: Container
+
+  - task: PublishPipelineArtifact@1
+    retryCountOnTaskFailure: 3
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/bin
+      artifactName: skia-desktop

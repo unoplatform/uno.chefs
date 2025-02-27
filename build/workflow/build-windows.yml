@@ -19,7 +19,7 @@ jobs:
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x64
-      msbuildArguments: /r /t:Publish /m /v:m /p:TargetFramework=net9.0-windows10.0.19041 /p:TargetFrameworkOverride=net9.0-windows10.0.19041 /p:Configuration=Release /p:GenerateAppxPackageOnBuild=true /detailedsummary /bl:$(build.artifactstagingdirectory)/build-winappsdk.binlog
+      msbuildArguments: /r /t:Publish /m /v:m /p:TargetFramework=net9.0-windows10.0.19041 /p:TargetFrameworkOverride=net9.0-windows10.0.19041 /p:Configuration=Release /p:GenerateAppxPackageOnBuild=true /detailedsummary /bl:$(build.artifactstagingdirectory)/logs/build-winappsdk.binlog
       clean: false
       restoreNugetPackages: false
       logProjectEvents: false
@@ -30,11 +30,18 @@ jobs:
     inputs:
       SourceFolder: src/Chefs/bin/Release/net9.0-windows10.0.19041/AppPackages
       Contents: '**/*.*'
-      TargetFolder: $(build.artifactstagingdirectory)
+      TargetFolder: $(build.artifactstagingdirectory)/bin
 
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
-      PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: WinAppSDK
+      PathtoPublish: $(build.artifactstagingdirectory)/logs
+      ArtifactName: WinAppSDK-logs
       ArtifactType: Container
+
+  - task: PublishPipelineArtifact@1
+    retryCountOnTaskFailure: 3
+    displayName: Publish artifacts
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/bin
+      artifactName: WinAppSDK
