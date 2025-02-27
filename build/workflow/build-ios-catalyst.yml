@@ -27,7 +27,7 @@ jobs:
         UseSkiaRendering: true
         VariantName: Skia
       Catalyst_Skia:
-        ArtifactName: iOS
+        ArtifactName: Catalyst
         BuildTargetFramework: net9.0-maccatalyst
         ApplicationBuildNumberOffset: 50
         BuildCommand: build
