@@ -19,8 +19,11 @@
 		<!-- Display name -->
 		<ApplicationTitle>Chefs</ApplicationTitle>
 		<!-- App Identifier -->
-		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true'">uno.platform.chefs</ApplicationId>
+
+		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true')">uno.platform.chefs</ApplicationId>
 		<ApplicationId Condition="'$(UseSkiaRendering)' == 'true'">uno.platform.chefs.skia</ApplicationId>
+
+		<ApplicationId Condition="$(IsCanaryBranch)">$(ApplicationId)-canary</ApplicationId>
 
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
