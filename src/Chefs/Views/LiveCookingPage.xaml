@@ -111,37 +111,14 @@
 																			 Wide=Stretch}"
 							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
 																  Wide=Center}">
-				<!--
-					MediaPlayerElement currently isn't supported on Skia Desktop, videos are not be playable
-					It is listed as a future improvement: https://platform.uno/docs/articles/controls/MediaPlayerElement.html#future-improvement
-					Related issue: https://github.com/unoplatform/Uno.Samples/issues/725
-				-->
-
-				<!--
-					Workaround: Setting the MPE Source to the same UriSource causes the player to be stuck in loading mode
-					So we're hardcoding the video source for now
-					Related issue: https://github.com/unoplatform/uno.chefs/issues/1402
-				-->
-				<not_skia:MediaPlayerElement AreTransportControlsEnabled="True"
-											 Source="ms-appx:///Assets/Videos/CookingVideo.mp4">
+				<MediaPlayerElement AreTransportControlsEnabled="True"
+									AutoPlay="True"
+									Source="ms-appx:///Assets/Videos/CookingVideo.mp4">
 					<MediaPlayerElement.TransportControls>
 						<MediaTransportControls IsCompact="True" />
 					</MediaPlayerElement.TransportControls>
-				</not_skia:MediaPlayerElement>
+				</MediaPlayerElement>
 
-				<skia:AutoLayout PrimaryAxisAlignment="Center"
-								 Padding="24">
-					<BitmapIcon utu:AutoLayout.CounterAlignment="Center"
-								Width="56"
-								Height="72"
-								UriSource="{ThemeResource Empty_Box}"
-								Foreground="#FFFFFF" />
-					<TextBlock Foreground="#FFFFFF"
-							   Style="{StaticResource TitleLarge}"
-							   Text="Media Player is currently not supported on this platform."
-							   TextAlignment="Center"
-							   TextWrapping="Wrap" />
-				</skia:AutoLayout>
 			</utu:AutoLayout>
 
 			<!--
