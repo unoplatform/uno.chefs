@@ -27,7 +27,7 @@
 
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-		<UseMocks>True</UseMocks>
+		<UseMocks>true</UseMocks>
 		<!--
 			If you encounter this error message:
 
@@ -48,11 +48,11 @@
 		<UseSkiaRendering>true</UseSkiaRendering>
 		-->
 		
-		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND '$(TargetFramework)'=='net9.0-browserwasm'">true</IsSkiaWasm>
+		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND $(IsBrowserWasm)">true</IsSkiaWasm>
 		<IsSkiaWasm Condition="'$(IsSkiaWasm)'==''">false</IsSkiaWasm>
-		<IsSkiaAndroid Condition="'$(UseSkiaRendering)'=='true' AND '$(TargetFramework)'=='net9.0-android'">true</IsSkiaAndroid>
+		<IsSkiaAndroid Condition="'$(UseSkiaRendering)'=='true' AND $(IsAndroid)">true</IsSkiaAndroid>
 		<IsSkiaAndroid Condition="'$(IsSkiaAndroid)'==''">false</IsSkiaAndroid>
-		<IsSkiaUIKit Condition="'$(UseSkiaRendering)'=='true' AND ('$(TargetFramework)'=='net9.0-ios' OR '$(TargetFramework)'=='net9.0-maccatalyst')">true</IsSkiaUIKit>
+		<IsSkiaUIKit Condition="'$(UseSkiaRendering)'=='true' AND $(IsIOSOrCatalyst)">true</IsSkiaUIKit>
 		<IsSkiaUIKit Condition="'$(IsSkiaUIKit)'==''">false</IsSkiaUIKit>
 
 		<UnoFeatures>
@@ -97,7 +97,7 @@
 		</Otherwise>
 	</Choose>
 
-	<PropertyGroup Condition="'$(UseMocks)'=='True'">
+	<PropertyGroup Condition="'$(UseMocks)'=='true'">
 		<DefineConstants>$(DefineConstants);USE_MOCKS</DefineConstants>
 	</PropertyGroup>
 
@@ -125,6 +125,13 @@
 		<UnoSplashScreenBaseSize>350,300</UnoSplashScreenBaseSize>
 		<UnoIconForegroundFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Icons/icon_foreground_canary.svg</UnoIconForegroundFile>
 		<UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(IsBrowserWasm) AND '$(Configuration)' == 'Release'">
+		<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
+		<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
+		<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
+		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
 	</PropertyGroup>
 
 	<Choose>
@@ -178,10 +185,14 @@
 				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">$(_BaseCodesignProvision) Canary (Catalyst)</CodesignProvision>
 			</PropertyGroup>
 		</When>
-		<When Condition=" '$(TargetFramework)' == 'net9.0-browserwasm' ">
+		<When Condition="$(IsBrowserWasm)">
 			<ItemGroup>
 				<PackageReference Include="Uno.Wasm.Bootstrap" />
 			</ItemGroup>
+			<PropertyGroup Condition="'$(Configuration)'=='Release' and '$(WasmShellMonoRuntimeExecutionMode)'=='InterpreterAndAOT'">
+				<WasmAotFileName Condition="'$(UseSkiaRendering)' != 'true' ">aot.profile</WasmAotFileName>
+				<WasmAotFileName Condition="'$(UseSkiaRendering)' == 'true' ">aot-skia.profile</WasmAotFileName>
+			</PropertyGroup>
 		</When>
 	</Choose>
 
