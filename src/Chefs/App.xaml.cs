@@ -232,6 +232,7 @@ public partial class App : Application
 			builder.AddProvider(new global::Uno.Extensions.Logging.WebAssembly.WebAssemblyConsoleLoggerProvider());
 #elif __IOS__ || __MACCATALYST__
             builder.AddProvider(new global::Uno.Extensions.Logging.OSLogLoggerProvider());
+            builder.AddConsole();
 #else
             builder.AddConsole();
 #endif
