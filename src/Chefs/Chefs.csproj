@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk.Private">
+﻿<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 		<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -169,6 +169,10 @@
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<CodesignKey>iPhone Distribution</CodesignKey>
 			</PropertyGroup>
+			
+			<!-- BEGIN Workaround - AOT fails currently uno-private #648 -->
+			<MtouchUseLlvm>false</MtouchUseLlvm>
+			<!-- END Workaround -->
 		</When>
 		<When Condition="$(IsMacCatalyst)">
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
