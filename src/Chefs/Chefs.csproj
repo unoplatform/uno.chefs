@@ -1,10 +1,10 @@
 <Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
-			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
+		<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
 		<!-- To prevent that, we will pass TargetFrameworkOverride as a global property (i.e, dotnet build -p:TargetFrameworkOverride=net9.0-platform) -->
 		<!-- That way, we set TargetFrameworks property to only the needed TargetFramework -->
-		<TargetFramework Condition="'$(TargetFrameworkOverride)'!=''">$(TargetFrameworkOverride)</TargetFramework>
+		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'!=''">$(TargetFrameworkOverride)</TargetFrameworks>
 		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'==''">
 			net9.0-android;
 			net9.0-ios;
