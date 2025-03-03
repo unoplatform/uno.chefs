@@ -168,10 +168,6 @@
 		<When Condition="$(IsIOS)">
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<CodesignKey>iPhone Distribution</CodesignKey>
-
-				<!-- BEGIN Workaround - AOT fails currently uno-private #648 -->
-				<MtouchUseLlvm>false</MtouchUseLlvm>
-				<!-- END Workaround -->
 			</PropertyGroup>
 		</When>
 		<When Condition="$(IsMacCatalyst)">
