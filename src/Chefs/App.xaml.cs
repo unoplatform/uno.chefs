@@ -218,7 +218,7 @@ public partial class App : Application
 	public static void InitializeLogging()
 	{
 		//-:cnd:noEmit
-#if DEBUG
+#if true // DEBUG
 		// Logging is disabled by default for release builds, as it incurs a significant
 		// initialization cost from Microsoft.Extensions.Logging setup. If startup performance
 		// is a concern for your application, keep this disabled. If you're running on the web or
