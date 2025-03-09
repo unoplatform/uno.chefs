@@ -14,7 +14,7 @@
 	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d android ios not_win">
 
-	<ScrollViewer VerticalScrollBarVisibility="Auto">
+	<!--<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<utu:AutoLayout Spacing="32"
 						MaxWidth="500"
 						PrimaryAxisAlignment="Center"
@@ -114,5 +114,5 @@
 						Style="{StaticResource TextButtonStyle}" />
 			</utu:AutoLayout>
 		</utu:AutoLayout>
-	</ScrollViewer>
+	</ScrollViewer>-->
 </Page>

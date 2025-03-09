@@ -19,22 +19,22 @@
 	  mc:Ignorable="d android ios"
 	  Background="{ThemeResource SurfaceBrush}">
 
-	<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+	<!--<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
 		<FlipView IsEnabled="False"
 				  Visibility="{utu:Responsive Narrow=Collapsed,
 											  Wide=Visible}"
 				  utu:AutoLayout.PrimaryAlignment="Stretch"
 				  SelectedIndex="{Binding Pages.CurrentIndex}">
 			<FlipView.Items>
-				<!-- First Splash image -->
+				--><!-- First Splash image --><!--
 				<Image Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
 					   Stretch="UniformToFill" />
 
-				<!-- Second Splash image -->
+				--><!-- Second Splash image --><!--
 				<Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
 					   Stretch="UniformToFill" />
 
-				<!-- Third Splash image -->
+				--><!-- Third Splash image --><!--
 				<Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
 					   Stretch="UniformToFill" />
 			</FlipView.Items>
@@ -46,7 +46,7 @@
 					  Background="Transparent"
 					  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 				<FlipView.Items>
-					<!-- First onboarding page -->
+					--><!-- First onboarding page --><!--
 					<utu:AutoLayout CounterAxisAlignment="Center"
 									Spacing="24">
 						<Image Visibility="{utu:Responsive Narrow=Visible,
@@ -73,7 +73,7 @@
 									   TextWrapping="Wrap" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-					<!-- Second onboarding page -->
+					--><!-- Second onboarding page --><!--
 					<utu:AutoLayout CounterAxisAlignment="Center"
 									Spacing="24">
 						<Image Visibility="{utu:Responsive Narrow=Visible,
@@ -102,7 +102,7 @@
 									   TextWrapping="Wrap" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
-					<!-- Third onboarding page -->
+					--><!-- Third onboarding page --><!--
 					<utu:AutoLayout CounterAxisAlignment="Center"
 									Spacing="24">
 						<Image Visibility="{utu:Responsive Narrow=Visible,
@@ -135,7 +135,7 @@
 			<utu:AutoLayout Padding="32,0,32,15"
 							PrimaryAxisAlignment="End"
 							Spacing="16">
-				<!-- Pips -->
+				--><!-- Pips --><!--
 				<muxc:PipsPager x:Name="PipsPager"
 								Margin="0,0,0,10"
 								utu:AutoLayout.CounterAlignment="Center"
@@ -145,7 +145,7 @@
 								SelectedPageIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 								Style="{StaticResource PipsPagerStyle}" />
 
-				<!-- Buttons -->
+				--><!-- Buttons --><!--
 				<utu:AutoLayout Spacing="16"
 								PrimaryAxisAlignment="Center">
 					<utu:AutoLayout Spacing="16"
@@ -178,5 +178,5 @@
 				</utu:AutoLayout>
 			</utu:AutoLayout>
 		</utu:AutoLayout>
-	</utu:AutoLayout>
+	</utu:AutoLayout>-->
 </Page>
