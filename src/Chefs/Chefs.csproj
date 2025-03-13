@@ -47,6 +47,7 @@
 		<!-- Uncomment to use skia rendering
 		<UseSkiaRendering>true</UseSkiaRendering>
 		-->
+		<UseSkiaRendering>true</UseSkiaRendering>
 		
 		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND $(IsBrowserWasm)">true</IsSkiaWasm>
 		<IsSkiaWasm Condition="'$(IsSkiaWasm)'==''">false</IsSkiaWasm>
