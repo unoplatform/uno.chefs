@@ -2,16 +2,15 @@ using System.Text.Json;
 
 namespace Chefs.Services;
 
-public class MockCookbookEndpoints(string basePath, JsonSerializerOptions serializerOptions) : BaseMockEndpoint
+public class MockCookbookEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
 {
 	public string HandleCookbooksRequest(HttpRequestMessage request)
 	{
 		var cookbooksData = LoadData("Cookbooks.json");
-		var cookbooks = JsonSerializer.Deserialize<List<CookbookData>>(cookbooksData, serializerOptions);
-
+		var cookbooks = serializer.FromString<List<CookbookData>>(cookbooksData);
 		if (request.RequestUri.AbsolutePath == "/api/cookbook")
 		{
-			return JsonSerializer.Serialize(cookbooks, serializerOptions);
+			return serializer.ToString(cookbooks);
 		}
 
 		//Retrieving saved cookbooks for a user
@@ -20,39 +19,39 @@ public class MockCookbookEndpoints(string basePath, JsonSerializerOptions serial
 			var queryParams = request.RequestUri.Query;
 			var userId = ExtractUserIdFromQuery(queryParams);
 			var savedCookbooksData = LoadData("SavedCookbooks.json");
-			var savedCookbooks = JsonSerializer.Deserialize<List<SavedCookbooksData>>(savedCookbooksData, serializerOptions);
+			var savedCookbooks = serializer.FromString<List<SavedCookbooksData>>(savedCookbooksData);
 			var userSavedCookbookIds = savedCookbooks?.FirstOrDefault(x => x.UserId == Guid.Parse(userId))?.SavedCookbooks ?? new List<Guid>();
 
 			var userSavedCookbooks = cookbooks?.Where(cb => userSavedCookbookIds.Contains(cb.Id)).ToList();
-			return JsonSerializer.Serialize(userSavedCookbooks, serializerOptions);
+			return serializer.ToString(userSavedCookbooks);
 		}
 
 		//Creating a new cookbook
 		if (request.RequestUri.AbsolutePath == "/api/cookbook" && request.Method == HttpMethod.Post)
 		{
-			var cookbook = JsonSerializer.Deserialize<CookbookData>(request.Content.ReadAsStringAsync().Result, serializerOptions);
+			var cookbook = serializer.FromString<CookbookData>(request.Content.ReadAsStringAsync().Result);
 			var queryParams = request.RequestUri.Query;
 			var userId = ExtractUserIdFromQuery(queryParams);
 			cookbook.UserId = Guid.Parse(userId);
 
 			cookbooks?.Add(cookbook);
-			File.WriteAllText(Path.Combine(basePath, "Cookbooks.json"), JsonSerializer.Serialize(cookbooks, serializerOptions));
+			File.WriteAllText(Path.Combine(basePath, "Cookbooks.json"), serializer.ToString(cookbooks));
 
-			return JsonSerializer.Serialize(cookbook, serializerOptions);
+			return serializer.ToString(cookbook);
 		}
 
 		//Updating a cookbook
 		if (request.RequestUri.AbsolutePath == "/api/cookbook" && request.Method == HttpMethod.Put)
 		{
-			var updatedCookbook = JsonSerializer.Deserialize<CookbookData>(request.Content.ReadAsStringAsync().Result, serializerOptions);
+			var updatedCookbook = serializer.FromString<CookbookData>(request.Content.ReadAsStringAsync().Result);
 			var cookbookItem = cookbooks?.FirstOrDefault(c => updatedCookbook != null && c.Id == updatedCookbook.Id);
 
 			if (cookbookItem != null)
 			{
 				cookbookItem.Name = updatedCookbook?.Name;
 				cookbookItem.Recipes = updatedCookbook?.Recipes;
-				File.WriteAllText(Path.Combine(basePath, "Cookbooks.json"), JsonSerializer.Serialize(cookbooks, serializerOptions));
-				return JsonSerializer.Serialize(cookbookItem, serializerOptions);
+				File.WriteAllText(Path.Combine(basePath, "Cookbooks.json"), serializer.ToString(cookbooks));
+				return serializer.ToString(cookbookItem);
 			}
 
 			return "NotFound";

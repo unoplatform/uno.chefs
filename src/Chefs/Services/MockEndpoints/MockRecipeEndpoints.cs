@@ -2,12 +2,12 @@ using System.Text.Json;
 
 namespace Chefs.Services;
 
-public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializerOptions) : BaseMockEndpoint
+public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
 {
 	public string HandleRecipesRequest(HttpRequestMessage request)
 	{
 		var recipesData = LoadData("Recipes.json");
-		var allRecipes = JsonSerializer.Deserialize<List<RecipeData>>(recipesData, serializerOptions);
+		var allRecipes = serializer.FromString<List<RecipeData>>(recipesData);
 		
 		//Get all categories
 		if (request.RequestUri.AbsolutePath.Contains("/api/recipe/categories"))
@@ -18,13 +18,13 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 		//Get trending recipes
 		if (request.RequestUri.AbsolutePath.Contains("/api/recipe/trending"))
 		{
-			return JsonSerializer.Serialize(allRecipes.Take(10), serializerOptions);
+			return serializer.ToString(allRecipes.Take(10));
 		}
 		
 		//Get popular recipes
 		if (request.RequestUri.AbsolutePath.Contains("/api/recipe/popular"))
 		{
-			return JsonSerializer.Serialize(allRecipes.Take(10), serializerOptions);
+			return serializer.ToString(allRecipes.Take(10));
 		}
 		
 		//Get favorited recipes
@@ -57,7 +57,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 		//Get all recipes
 		if (request.RequestUri.AbsolutePath == "/api/recipe")
 		{
-			return JsonSerializer.Serialize(allRecipes, serializerOptions);
+			return serializer.ToString(allRecipes);
 		}
 		
 		//Like a review
@@ -66,7 +66,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 			var userId = ExtractUserIdFromQuery(request.RequestUri.Query);
 			var parsedUserId = Guid.TryParse(userId, out var validUserId) ? validUserId : Guid.NewGuid();
 			var reviewData =
-				JsonSerializer.Deserialize<ReviewData>(request.Content.ReadAsStringAsync().Result, serializerOptions);
+				serializer.FromString<ReviewData>(request.Content.ReadAsStringAsync().Result);
 			return LikeReview(allRecipes, reviewData, parsedUserId);
 		}
 		
@@ -76,7 +76,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 			var userId = ExtractUserIdFromQuery(request.RequestUri.Query);
 			var parsedUserId = Guid.TryParse(userId, out var validUserId) ? validUserId : Guid.NewGuid();
 			var reviewData =
-				JsonSerializer.Deserialize<ReviewData>(request.Content.ReadAsStringAsync().Result, serializerOptions);
+				serializer.FromString<ReviewData>(request.Content.ReadAsStringAsync().Result);
 			return DislikeReview(allRecipes, reviewData, parsedUserId);
 		}
 		
@@ -93,7 +93,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 			var recipe = allRecipes.FirstOrDefault(r => r.Id == parsedId);
 			if (recipe != null)
 			{
-				return JsonSerializer.Serialize(recipe, serializerOptions);
+				return serializer.ToString(recipe);
 			}
 		}
 		
@@ -103,8 +103,8 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 	private string HandleCategoriesRequest()
 	{
 		var categoriesData = LoadData("categories.json");
-		var allCategories = JsonSerializer.Deserialize<List<CategoryData>>(categoriesData, serializerOptions);
-		return JsonSerializer.Serialize(allCategories, serializerOptions);
+		var allCategories = serializer.FromString<List<CategoryData>>(categoriesData);
+		return serializer.ToString(allCategories);
 	}
 	
 	private string GetRecipeSteps(List<RecipeData> allRecipes, string recipeId)
@@ -116,7 +116,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 			var recipe = allRecipes.FirstOrDefault(r => r.Id == parsedId);
 			if (recipe != null && recipe.Steps != null)
 			{
-				return JsonSerializer.Serialize(recipe.Steps, serializerOptions);
+				return serializer.ToString(recipe.Steps);
 			}
 		}
 		
@@ -132,7 +132,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 			var recipe = allRecipes.FirstOrDefault(r => r.Id == parsedId);
 			if (recipe != null && recipe.Ingredients != null)
 			{
-				return JsonSerializer.Serialize(recipe.Ingredients, serializerOptions);
+				return serializer.ToString(recipe.Ingredients);
 			}
 		}
 		
@@ -148,7 +148,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 			var recipe = allRecipes.FirstOrDefault(r => r.Id == parsedId);
 			if (recipe != null && recipe.Reviews != null)
 			{
-				return JsonSerializer.Serialize(recipe.Reviews, serializerOptions);
+				return serializer.ToString(recipe.Reviews);
 			}
 		}
 		
@@ -158,14 +158,14 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 	private string GetFavoritedRecipes(List<RecipeData> allRecipes, HttpRequestMessage request)
 	{
 		var savedRecipesData = LoadData("SavedRecipes.json");
-		var savedRecipes = JsonSerializer.Deserialize<List<SavedRecipesData>>(savedRecipesData, serializerOptions);
+		var savedRecipes = serializer.FromString<List<SavedRecipesData>>(savedRecipesData);
 		
 		var queryParams = request.RequestUri.Query;
 		var userId = ExtractUserIdFromQuery(queryParams);
 		var userSavedRecipes = savedRecipes?.FirstOrDefault(sr => sr.UserId == Guid.Parse(userId))?.SavedRecipes;
 		
 		var favoritedRecipes = allRecipes?.Where(r => userSavedRecipes != null);
-		return JsonSerializer.Serialize(favoritedRecipes, serializerOptions);
+		return serializer.ToString(favoritedRecipes);
 	}
 	
 	private string LikeReview(List<RecipeData> allRecipes, ReviewData reviewData, Guid userId)
@@ -193,7 +193,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 				review.UserLike = true;
 			}
 			
-			return JsonSerializer.Serialize(review, serializerOptions);
+			return serializer.ToString(review);
 		}
 		
 		return "{}";
@@ -224,7 +224,7 @@ public class MockRecipeEndpoints(string basePath, JsonSerializerOptions serializ
 				review.UserLike = false;
 			}
 			
-			return JsonSerializer.Serialize(review, serializerOptions);
+			return serializer.ToString(review);
 		}
 		
 		return "{}";

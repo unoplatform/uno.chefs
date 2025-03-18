@@ -4,22 +4,22 @@ using UserData = Chefs.Data.UserData;
 
 namespace Chefs.Services;
 
-public class MockUserEndpoints(string basePath, JsonSerializerOptions serializerOptions) : BaseMockEndpoint
+public class MockUserEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
 {
 	public string HandleUsersRequest(HttpRequestMessage request)
 	{
 		this.GetType().Assembly.GetManifestResourceStream(Constants.RecipeDataFile);
 		var usersData = LoadData("Users.json");
-		var users = JsonSerializer.Deserialize<List<UserData>>(usersData, serializerOptions);
+		var users = serializer.FromString<List<UserData>>(usersData);
 
 		//authenticate user
 		if (request.RequestUri.AbsolutePath.Contains("/api/user/authenticate") && request.Method == HttpMethod.Post)
 		{
-			var loginRequest = JsonSerializer.Deserialize<LoginRequest>(request.Content.ReadAsStringAsync().Result, serializerOptions);
+			var loginRequest = serializer.FromString<LoginRequest>(request.Content.ReadAsStringAsync().Result);
 			var user = users?.FirstOrDefault(u => u.Email == loginRequest?.Email && u.Password == loginRequest.Password);
 			if (user != null)
 			{
-				return JsonSerializer.Serialize(user.Id, serializerOptions);
+				return serializer.ToString(user.Id);
 			}
 			return "Unauthorized";
 		}
@@ -27,7 +27,7 @@ public class MockUserEndpoints(string basePath, JsonSerializerOptions serializer
 		if (request.RequestUri.AbsolutePath.Contains("/api/user/popular-creators"))
 		{
 			var popularCreators = users?.Where(u => u.Id != Guid.Parse("3c896419-e280-40e7-8552-240635566fed")).ToList();
-			return JsonSerializer.Serialize(popularCreators, serializerOptions);
+			return serializer.ToString(popularCreators);
 		}
 		//Get current user
 		if (request.RequestUri.AbsolutePath.Contains("/api/user/current"))
@@ -36,7 +36,7 @@ public class MockUserEndpoints(string basePath, JsonSerializerOptions serializer
 			if (currentUser != null)
 			{
 				currentUser.IsCurrent = true;
-				return JsonSerializer.Serialize(currentUser, serializerOptions);
+				return serializer.ToString(currentUser);
 			}
 			return "NotFound";
 		}
@@ -46,12 +46,12 @@ public class MockUserEndpoints(string basePath, JsonSerializerOptions serializer
 			var user = users?.FirstOrDefault(u => u.Id == userId);
 			if (user != null)
 			{
-				return JsonSerializer.Serialize(user, serializerOptions);
+				return serializer.ToString(user);
 			}
 			return "NotFound";
 		}
 
-		return JsonSerializer.Serialize(users, serializerOptions);
+		return serializer.ToString(users);
 	}
 
 }

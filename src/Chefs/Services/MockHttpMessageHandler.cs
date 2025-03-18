@@ -7,22 +7,18 @@ namespace Chefs.Services;
 public class MockHttpMessageHandler : HttpMessageHandler
 {
 	private readonly string _basePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "AppData");
-	private readonly JsonSerializerOptions _serializerOptions = new()
-	{
-		PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-		PropertyNameCaseInsensitive = true,
-	};
+
 	private readonly MockRecipeEndpoints _mockRecipeEndpoints;
 	private readonly MockUserEndpoints _mockUserEndpoints;
 	private readonly MockCookbookEndpoints _mockCookbookEndpoints;
 	private readonly MockNotificationEndpoints _mockNotificationEndpoints;
 
-	public MockHttpMessageHandler()
+	public MockHttpMessageHandler(ISerializer serializer)
 	{
-		_mockRecipeEndpoints = new MockRecipeEndpoints(_basePath, _serializerOptions);
-		_mockUserEndpoints = new MockUserEndpoints(_basePath, _serializerOptions);
-		_mockCookbookEndpoints = new MockCookbookEndpoints(_basePath, _serializerOptions);
-		_mockNotificationEndpoints = new MockNotificationEndpoints(_basePath, _serializerOptions);
+		_mockRecipeEndpoints = new MockRecipeEndpoints(_basePath, serializer);
+		_mockUserEndpoints = new MockUserEndpoints(_basePath,serializer);
+		_mockCookbookEndpoints = new MockCookbookEndpoints(_basePath, serializer);
+		_mockNotificationEndpoints = new MockNotificationEndpoints(_basePath, serializer);
 	}
 
 	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
