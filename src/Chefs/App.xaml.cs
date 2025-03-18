@@ -91,7 +91,8 @@ public partial class App : Application
 				.UseLocalization()
 
 				// Register Json serializers (ISerializer and ISerializer)
-				.UseSerialization()
+				.UseSerialization((context, services) => services
+					.AddContentSerializer(context))
 				.ConfigureServices((context, services) =>
 				{
 					services
