@@ -1,5 +1,6 @@
 jobs:
 - job: iOS_Catalyst
+  timeoutInMinutes: 90
   strategy:
     maxParallel: 2
     matrix:
