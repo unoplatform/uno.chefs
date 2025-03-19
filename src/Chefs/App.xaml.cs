@@ -107,6 +107,10 @@ public partial class App : Application
 					.AddJsonTypeInfo(MockEndpointContext.Default.UserData)
 					.AddJsonTypeInfo(MockEndpointContext.Default.Guid)
 					.AddJsonTypeInfo(MockEndpointContext.Default.ReviewData)
+					.AddJsonTypeInfo(MockEndpointContext.Default.SavedCookbooksData)
+					.AddJsonTypeInfo(MockEndpointContext.Default.SavedRecipesData)
+					.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData)
+					.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableSavedRecipesData)
 					.AddContentSerializer(context))
 
 				.ConfigureServices((context, services) =>

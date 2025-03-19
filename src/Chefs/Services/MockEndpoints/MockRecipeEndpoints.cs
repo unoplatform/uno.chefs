@@ -7,8 +7,20 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 	public string HandleRecipesRequest(HttpRequestMessage request)
 	{
 		var recipesData = LoadData("Recipes.json");
+		var savedRecipesData = LoadData("SavedRecipes.json");
+
 		var allRecipes = serializer.FromString<List<RecipeData>>(recipesData);
-		
+		var savedRecipes = serializer.FromString<List<SavedRecipesData>>(savedRecipesData);
+		var userSavedRecipes = savedRecipes.FirstOrDefault(sr => sr.UserId == Guid.Parse("3c896419-e280-40e7-8552-240635566fed"))?.SavedRecipes ?? new Guid[0];
+
+		allRecipes = allRecipes.Where(r => userSavedRecipes.Contains(r.Id))
+			.Select(r =>
+			{
+				r.IsFavorite = true;
+				return r;
+			})
+			.ToList();
+
 		//Get all categories
 		if (request.RequestUri.AbsolutePath.Contains("/api/recipe/categories"))
 		{

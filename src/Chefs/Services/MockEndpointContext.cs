@@ -19,6 +19,9 @@ namespace Chefs.Data;
 [JsonSerializable(typeof(UserData))]
 [JsonSerializable(typeof(Guid))]
 [JsonSerializable(typeof(ReviewData))]
+[JsonSerializable(typeof(IEnumerable<RecipeData>))]
+[JsonSerializable(typeof(IEnumerable<SavedRecipesData>))]
+[JsonSerializable(typeof(SavedRecipesData))]
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase, PropertyNameCaseInsensitive = true)]
 public partial class MockEndpointContext : JsonSerializerContext
 {
