@@ -25,7 +25,7 @@
 		   BasedOn="{StaticResource MaterialAppBarButtonStyle}" />
 
 	<Style x:Key="ChefsMainCommandStyle"
-		   BasedOn="{StaticResource ChefsAppBarButtonStyle}"
+		   BasedOn="{StaticResource MaterialMainCommandStyle}"
 		   TargetType="AppBarButton">
 		<!-- Set the MainCommand content to an empty string to remove the default "Back" text on iOS -->
 		<mobile:Setter Property="Content"
