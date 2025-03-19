@@ -94,9 +94,9 @@
 						   Content="{Binding Recipe.Name}">
 			<utu:NavigationBar.MainCommand>
 				<AppBarButton>
-					<not_mobile:AppBarButton.Icon>
+					<AppBarButton.Icon>
 						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
-					</not_mobile:AppBarButton.Icon>
+					</AppBarButton.Icon>
 				</AppBarButton>
 			</utu:NavigationBar.MainCommand>
 		</utu:NavigationBar>
