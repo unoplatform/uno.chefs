@@ -57,6 +57,11 @@
 			Authentication;
 		</UnoFeatures>
 	</PropertyGroup>
+	
+	<!-- TODO: Remove this once https://github.com/unoplatform/uno.extensions/issues/2719 is fixed -->
+	<PropertyGroup>
+		<JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
+	</PropertyGroup>
 
 	<Choose>
 		<When Condition="$(IsWinAppSdk)">
