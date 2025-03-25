@@ -34,6 +34,12 @@ public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMes
 				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(1, GridUnitType.Star));
 				DrawerFlyoutPresenter.SetIsGestureEnabled(presenter, false);
 			}
+
+			// Workaround for https://github.com/unoplatform/uno.chefs/issues/1436
+			// Not explicitly setting thickness causes thickness to be set to a value greater than 1 sometime during runtime
+#if __IOS__
+			presenter.BorderThickness = new Thickness(0);
+#endif
 		}
 	}
 
