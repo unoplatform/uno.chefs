@@ -45,6 +45,6 @@ public class FromBoolToValueConverter : IValueConverter
 
 	public object ConvertBack(object value, Type targetType, object parameter, string language)
 	{
-		return DependencyProperty.UnsetValue;
+		return value;
 	}
 }
