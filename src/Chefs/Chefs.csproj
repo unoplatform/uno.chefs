@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk">
+<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -24,6 +24,7 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
+		<UseMocks>True</UseMocks>
 		<!--
 			If you encounter this error message:
 
@@ -53,7 +54,13 @@
 			MediaElement;
 			Skia;
 			ThemeService;
+			Authentication;
 		</UnoFeatures>
+	</PropertyGroup>
+	
+	<!-- TODO: Remove this once https://github.com/unoplatform/uno.extensions/issues/2719 is fixed -->
+	<PropertyGroup>
+		<JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
 	</PropertyGroup>
 
 	<Choose>
@@ -71,8 +78,21 @@
 		</Otherwise>
 	</Choose>
 
+	<PropertyGroup Condition="'$(UseMocks)'=='True'">
+		<DefineConstants>$(DefineConstants);USE_MOCKS</DefineConstants>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<Content Include="Data\**\*.json" />
+		<PackageReference Include="Uno.Extensions.Http.Kiota" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Data\**\*.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
+	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">

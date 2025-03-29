@@ -10,8 +10,10 @@
     href: xref:Uno.Recipes.SafeArea
   - name: CommandExtensions
     href: xref:Uno.Recipes.CommandExtensions
-  - name: InputExtensions
-    href: xref:Uno.Recipes.InputExtensions
+  - name: InputExtensions Focus
+    href: xref:Uno.Recipes.InputExtensions.Focus
+  - name: InputExtensions ReturnType
+    href: xref:Uno.Recipes.InputExtensions.ReturnType  
   - name: ResponsiveView
     href: xref:Uno.Recipes.ResponsiveView
   - name: ResponsiveExtensions
@@ -24,6 +26,16 @@
     href: xref:Uno.Recipes.StatusBarExtension
   - name: AncestorBinding
     href: xref:Uno.Recipes.AncestorBinding
+  - name: NavigateTabBar
+    href: xref:Uno.Recipes.Uno.Recipes.NavigateTabBar
+  - name: DisplayDrawerFlyout
+    href: xref:Uno.Recipes.DisplayDrawerFlyout
+  - name: Resource Extensions
+    href: xref:Uno.Recipes.ResourceExtensions
+  - name: Basic Lightweight Styling
+    href: xref:Uno.Recipes.LightweightStyling
+  - name: NavigationShell
+    href: xref:Uno.Recipes.NavigationShell
 - name: Resizetizer
   items:
   - name: App Icons
@@ -32,7 +44,37 @@
     href: xref:Uno.Recipes.SplashScreen
 - name: Extensions
   items:
+  - name: CommandBuilder
+    href: xref:Uno.Recipes.CommandBuilder
   - name: Serialization
     href: xref:Uno.Recipes.Serialization
   - name: Storage
     href: xref:Uno.Recipes.Storage
+  - name: Passing Navigation Data
+    href: xref:Uno.Recipes.PassingNavigationData  
+  - name: ContentDialog
+    href: xref:Uno.Recipes.ContentDialog
+  - name: Configuration
+    href: xref:Uno.Recipes.Configuration
+  - name: Hosting
+    href: xref:Uno.Recipes.Hosting
+- name: MVUX
+  items:
+  - name: MVUXOverview
+    href: xref:Uno.Recipes.MVUXOverview
+  - name: Implicit Commands
+    href: xref:Uno.Recipes.ImplicitCommands
+  - name: Reactive Search
+    href: xref:Uno.Recipes.ReactiveSearch
+  - name: Search Filters
+    href: xref:Uno.Recipes.SearchFilters
+  - name: IMessenger
+    href: xref:Uno.Recipes.IMessenger
+- name: Navigation
+  items:
+  - name: Overview
+    href: xref:Uno.Recipes.NavigationOverview
+  - name: Navigation via code behind
+    href: Uno.Recipes.NavigationCodeBehind
+  - name: Navigation via XAML
+    href: Uno.Recipes.XamlNavigation

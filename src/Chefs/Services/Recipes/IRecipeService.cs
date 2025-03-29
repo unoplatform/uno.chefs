@@ -42,9 +42,9 @@ public interface IRecipeService
 	ValueTask<int> GetCount(Guid userId, CancellationToken ct);
 
 	/// <summary>
-	/// Saved recipes.
+	/// Favorited recipes.
 	/// </summary>
-	IListFeed<Recipe> SavedRecipes { get; }
+	IListState<Recipe> FavoritedRecipes { get; }
 
 	/// <summary>
 	/// Recipes with a specific category
@@ -109,7 +109,7 @@ public interface IRecipeService
 	/// <returns>
 	/// Get recipes filter by different options selected by the user
 	/// </returns>
-	ValueTask<IImmutableList<Recipe>> Search(string term, CancellationToken ct);
+	ValueTask<IImmutableList<Recipe>> Search(string term, SearchFilter filter, CancellationToken ct);
 
 	/// <summary>
 	/// Get recipe's reviews
@@ -138,7 +138,7 @@ public interface IRecipeService
 	/// <param name="ct"></param>
 	/// <returns>
 	/// </returns>
-	ValueTask Save(Recipe recipe, CancellationToken ct);
+	ValueTask Favorite(Recipe recipe, CancellationToken ct);
 
 	/// <summary>
 	/// Create review for a recipe
@@ -168,15 +168,16 @@ public interface IRecipeService
 	/// </returns>
 	ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct);
 
-
 	/// <summary>
-	/// Recipes saved from current user
+	/// Recipes favorited by the current user, supports pagination
 	/// </summary>
+	/// <param name="pageSize">number of items to display per page</param>
+	/// <param name="firstItemIndex">index of the first item on the requested page</param>
 	/// <param name="ct"></param>
 	/// <returns>
-	/// Current user's recipes
+	/// Current user's recipes within the requested page
 	/// </returns>
-	ValueTask<IImmutableList<Recipe>> GetSaved(CancellationToken ct);
+	ValueTask<IImmutableList<Recipe>> GetFavoritedWithPagination(uint pageSize, uint firstItemIndex, CancellationToken ct);
 
 	ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct);
 

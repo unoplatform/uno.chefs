@@ -1,5 +1,5 @@
 jobs:
-- job: Skia_GTK
+- job: Skia_Desktop
   timeoutInMinutes: 90
   pool:
     vmImage: windows-2022
@@ -27,5 +27,5 @@ jobs:
     condition: always()
     inputs:
       PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: skia-gtk
+      ArtifactName: skia-desktop
       ArtifactType: Container

@@ -1,14 +1,13 @@
-using Chefs.Presentation.Extensions;
-
 namespace Chefs.Presentation;
 
-public partial class FavoriteRecipesModel
+public partial record FavoriteRecipesModel
 {
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly ICookbookService _cookbookService;
 	private readonly IMessenger _messenger;
 
+	
 	public FavoriteRecipesModel(
 		INavigator navigator,
 		IRecipeService recipeService,
@@ -19,12 +18,11 @@ public partial class FavoriteRecipesModel
 		_recipeService = recipeService;
 		_cookbookService = cookbookService;
 		_messenger = messenger;
-
-		_messenger.Observe(SavedCookbooks, cb => cb.Id);
-		_messenger.Observe(SavedRecipes, r => r.Id);
 	}
-
-	public IListState<Cookbook> SavedCookbooks => ListState.FromFeed(this, _cookbookService.SavedCookbooks);
-
-	public IListState<Recipe> SavedRecipes => ListState.FromFeed(this, _recipeService.SavedRecipes);
+	
+	public IListState<Cookbook> SavedCookbooks => ListState
+		.Async(this, _cookbookService.GetSaved)
+		.Observe(_messenger, cb => cb.Id);
+	
+	public IListState<Recipe> FavoriteRecipes => _recipeService.FavoritedRecipes;
 }

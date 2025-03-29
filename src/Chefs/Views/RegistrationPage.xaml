@@ -1,0 +1,93 @@
+﻿<Page x:Class="Chefs.Views.RegistrationPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:android="http://uno.ui/android"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:ios="http://uno.ui/ios"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:not_win="http://uno.ui/not_win"
+	  xmlns:ut="using:Uno.Themes"
+	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  utu:StatusBar.Background="{ThemeResource SurfaceBrush}"
+	  utu:StatusBar.Foreground="Auto"
+	  Background="{ThemeResource SurfaceBrush}"
+	  mc:Ignorable="d android ios not_win">
+
+	<ScrollViewer VerticalScrollBarVisibility="Auto">
+		<utu:AutoLayout Padding="32"
+						MaxWidth="500"
+						PrimaryAxisAlignment="Center"
+						Spacing="32">
+			<Image Source="{ThemeResource ChefsLogoWithIcon}"
+				   Stretch="Uniform"
+				   utu:AutoLayout.CounterAlignment="Center"
+				   Width="160"
+				   Height="90" />
+			<utu:AutoLayout Spacing="16">
+				<TextBox PlaceholderText="Username"
+						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+						 utu:InputExtensions.ReturnType="Next"
+						 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
+						 InputScope="Text"
+						 IsSpellCheckEnabled="False"
+						 Text="{Binding Credentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+					<ut:ControlExtensions.Icon>
+						<PathIcon Data="{StaticResource Icon_Person_Outline}" />
+					</ut:ControlExtensions.Icon>
+				</TextBox>
+				<TextBox PlaceholderText="Email"
+						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+						 x:Name="RegistrationEmail"
+						 utu:InputExtensions.ReturnType="Next"
+						 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
+						 IsSpellCheckEnabled="False">
+					<ut:ControlExtensions.Icon>
+						<PathIcon Data="{StaticResource Icon_Mail_Outline}" />
+					</ut:ControlExtensions.Icon>
+				</TextBox>
+				<PasswordBox x:Name="RegistrationPassword"
+							 utu:InputExtensions.ReturnType="Done"
+							 utu:CommandExtensions.Command="{Binding Register}"
+							 Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							 PlaceholderText="Password"
+							 Style="{StaticResource OutlinedPasswordBoxStyle}"
+							 BorderBrush="{ThemeResource OutlineVariantBrush}">
+					<PasswordBox.Resources>
+						<ResourceDictionary>
+							<ResourceDictionary.ThemeDictionaries>
+								<ResourceDictionary x:Key="Light">
+									<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+									<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+								</ResourceDictionary>
+								<ResourceDictionary x:Key="Default">
+									<StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
+									<x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
+								</ResourceDictionary>
+							</ResourceDictionary.ThemeDictionaries>
+						</ResourceDictionary>
+					</PasswordBox.Resources>
+					<ut:ControlExtensions.Icon>
+						<PathIcon Data="{StaticResource Icon_Lock}" />
+					</ut:ControlExtensions.Icon>
+				</PasswordBox>
+				<Button HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						Content="Sign Up"
+						Command="{Binding Register}"
+						Style="{StaticResource ChefsPrimaryButtonStyle}" />
+			</utu:AutoLayout>
+			<utu:AutoLayout PrimaryAxisAlignment="Center"
+							Orientation="Horizontal"
+							Spacing="4"
+							CounterAxisAlignment="Center">
+				<TextBlock Text="Already a member?"
+						   Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource LabelLarge}" />
+				<Button Content="Login Now"
+						uen:Navigation.Request="-/Login"
+						Style="{StaticResource TextButtonStyle}" />
+			</utu:AutoLayout>
+		</utu:AutoLayout>
+	</ScrollViewer>
+</Page>
