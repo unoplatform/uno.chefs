@@ -1,4 +1,4 @@
-﻿<Project Sdk="Uno.Sdk.Private">
+<Project Sdk="Uno.Sdk.Private">
 	<PropertyGroup>
 		<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
@@ -196,6 +196,20 @@
 			<PropertyGroup Condition="'$(Configuration)'=='Release' and '$(WasmShellMonoRuntimeExecutionMode)'=='InterpreterAndAOT'">
 				<WasmAotFileName Condition="'$(UseSkiaRendering)' != 'true' ">aot.profile</WasmAotFileName>
 				<WasmAotFileName Condition="'$(UseSkiaRendering)' == 'true' ">aot-skia.profile</WasmAotFileName>
+			</PropertyGroup>
+
+			<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+				<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
+				<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
+				<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
+
+				<!--
+				Uncomment this block to generate a profile
+				<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>
+				<WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
+				<UnoXamlResourcesTrimming>false</UnoXamlResourcesTrimming>
+				<WasmShellEnableJiterpreter>false</WasmShellEnableJiterpreter>
+				-->
 			</PropertyGroup>
 		</When>
 	</Choose>
