@@ -7,8 +7,9 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/Chefs.Wasm/Chefs.Wasm.csproj",
+        "${workspaceFolder}/Chefs/Chefs.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net9.0-browserwasm",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
@@ -19,32 +20,35 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/Chefs.Wasm/Chefs.Wasm.csproj",
+        "${workspaceFolder}/Chefs/Chefs.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net9.0-browserwasm",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "build-skia-gtk",
+      "label": "build-desktop",
       "command": "dotnet",
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/Chefs.Skia.Gtk/Chefs.Skia.Gtk.csproj",
+        "${workspaceFolder}/Chefs/Chefs.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net9.0-desktop",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "publish-skia-gtk",
+      "label": "publish-desktop",
       "command": "dotnet",
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/Chefs.Skia.Gtk/Chefs.Skia.Gtk.csproj",
+        "${workspaceFolder}/Chefs/Chefs.csproj",
         "/property:GenerateFullPaths=true",
+        "/property:TargetFramework=net9.0-desktop",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"

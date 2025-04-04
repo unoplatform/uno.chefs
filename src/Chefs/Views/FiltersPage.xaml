@@ -9,40 +9,37 @@
 	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
 	  xmlns:utu="using:Uno.Toolkit.UI"
 	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  mc:Ignorable="d">
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:mobile="http://platform.uno/mobile"
+	  Background="{ThemeResource SurfaceBrush}"
+	  mc:Ignorable="d mobile">
 
-	<!-- Workaround used here by separating the FilterPage / FilterContentPage into two files -->
-	<!-- Details available here: https://github.com/unoplatform/uno.toolkit.ui/issues/482 -->
-	<utu:AutoLayout Background="{ThemeResource SurfaceBrush}">
-		<utu:AutoLayout.Resources>
-			<DataTemplate x:Key="FilterChipTemplate">
-				<utu:Chip Background="{ThemeResource SurfaceBrush}"
-						  Content="{Binding}"
-						  HorizontalAlignment="Stretch"
-						  Foreground="{ThemeResource OnSurfaceVariantBrush}"
-						  BorderThickness="1"
-						  Style="{StaticResource MaterialChipStyle}" />
-			</DataTemplate>
-		</utu:AutoLayout.Resources>
+	<Page.Resources>
+		<DataTemplate x:Key="FilterChipTemplate">
+			<utu:Chip Background="{ThemeResource SurfaceBrush}"
+					  Content="{Binding}"
+					  HorizontalAlignment="Stretch"
+					  Foreground="{ThemeResource OnSurfaceVariantBrush}"
+					  BorderThickness="1"
+					  Style="{StaticResource MaterialChipStyle}" />
+		</DataTemplate>
+	</Page.Resources>
+	<utu:AutoLayout>
 		<utu:AutoLayout uen:Region.Attached="True"
-						utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Content="Filters"
-							   Style="{StaticResource ModalNavigationBarStyle}">
+						utu:AutoLayout.PrimaryAlignment="Stretch"
+						PrimaryAxisAlignment="Stretch">
+			<utu:NavigationBar Content="Filters">
 				<utu:NavigationBar.MainCommand>
 					<AppBarButton uen:Navigation.Request="-">
 						<AppBarButton.Icon>
-							<BitmapIcon UriSource="ms-appx:///Chefs/Assets/Icons/close.png" />
+							<not_mobile:PathIcon Data="{StaticResource Icon_Close}" />
+							<mobile:BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
 						</AppBarButton.Icon>
 					</AppBarButton>
 				</utu:NavigationBar.MainCommand>
 			</utu:NavigationBar>
-			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-						  HorizontalScrollMode="Disabled">
-				<!--
-					The use of UniformGridLayout in the ItemsRepeater makes the spacing between
-					the Chips inconsistent and sometimes the Chip content is truncated too
-				-->
-				<!-- Details available here: https://github.com/unoplatform/uno/issues/12820 -->
+			<ScrollViewer HorizontalScrollMode="Disabled"
+						  utu:AutoLayout.PrimaryAlignment="Stretch">
 				<utu:AutoLayout Padding="16"
 								Background="{ThemeResource SurfaceBrush}"
 								Spacing="32">
@@ -50,9 +47,9 @@
 						<TextBlock Style="{StaticResource TitleSmall}"
 								   Text="Recipe Categories"
 								   TextWrapping="Wrap" />
-						<!-- It's important to put the ItemsSource bove the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
-						<muxc:ItemsRepeater ItemsSource="{Binding OrganizeCategories}"
-											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.OrganizeCategory, Mode=TwoWay}"
+						<!-- It's important to put the ItemsSource above the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
+						<muxc:ItemsRepeater ItemsSource="{Binding FilterGroups}"
+											utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.FilterGroup, Mode=TwoWay}"
 											utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
 											ItemTemplate="{StaticResource FilterChipTemplate}">
 							<muxc:ItemsRepeater.Layout>
@@ -137,24 +134,22 @@
 		</utu:AutoLayout>
 		<utu:AutoLayout Height="100"
 						Padding="16,24"
-						utu:AutoLayout.CounterAlignment="Start"
 						Background="{ThemeResource SurfaceBrush}"
 						Orientation="Horizontal"
 						PrimaryAxisAlignment="Center"
+						CounterAxisAlignment="Start"
 						Spacing="16">
-			<Button utu:AutoLayout.CounterAlignment="Start"
-					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Content="Reset"
+			<Button Content="Reset"
 					Height="60"
 					Command="{Binding Reset}"
 					CornerRadius="4"
-					Style="{StaticResource TextButtonStyle}" />
-			<Button utu:AutoLayout.CounterAlignment="Start"
-					utu:AutoLayout.PrimaryAlignment="Stretch"
-					Content="Apply filter"
+					Style="{StaticResource TextButtonStyle}"
+					utu:AutoLayout.PrimaryAlignment="Stretch" />
+			<Button Content="Apply filter"
 					Height="60"
-					Command="{Binding Search}"
-					CornerRadius="4" />
+					Command="{Binding ApplySearchFilter}"
+					CornerRadius="4"
+					utu:AutoLayout.PrimaryAlignment="Stretch" />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </Page>

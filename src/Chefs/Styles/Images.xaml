@@ -10,18 +10,18 @@
 	<!-- Themed colors -->
 	<ResourceDictionary.ThemeDictionaries>
 		<ResourceDictionary x:Key="Light">
-			<x:String x:Key="ChefsAppSignature">ms-appx:///Chefs/Assets/Images/chefsappsignature_light.png</x:String>
-			<x:String x:Key="Empty_Recipe">ms-appx:///Chefs/Assets/Images/empty_recipe_light.png</x:String>
-			<x:String x:Key="Empty_Box">ms-appx:///Chefs/Assets/Images/empty_box_light.png</x:String>
-			<x:String x:Key="Empty_Notification">ms-appx:///Chefs/Assets/Images/empty_notification_light.png</x:String>
-			<x:String x:Key="LiveCooking_Success">ms-appx:///Chefs/Assets/Images/success.png</x:String>
+			<x:String x:Key="ChefsAppSignature">ms-appx:///Assets/Images/chefsappsignature_light.png</x:String>
+			<x:String x:Key="Empty_Recipe">ms-appx:///Assets/Images/empty_recipe_light.png</x:String>
+			<x:String x:Key="Empty_Box">ms-appx:///Assets/Images/empty_box_light.png</x:String>
+			<x:String x:Key="Empty_Notification">ms-appx:///Assets/Images/empty_notification_light.png</x:String>
+			<x:String x:Key="LiveCooking_Success">ms-appx:///Assets/Images/success_light.png</x:String>
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Dark">
-			<x:String x:Key="ChefsAppSignature">ms-appx:///Chefs/Assets/Images/chefsappsignature_dark.png</x:String>
-			<x:String x:Key="Empty_Recipe">ms-appx:///Chefs/Assets/Images/empty_recipe_dark.png</x:String>
-			<x:String x:Key="Empty_Box">ms-appx:///Chefs/Assets/Images/empty_box_dark.png</x:String>
-			<x:String x:Key="Empty_Notification">ms-appx:///Chefs/Assets/Images/empty_notification_dark.png</x:String>
-			<x:String x:Key="LiveCooking_Success">ms-appx:///Chefs/Assets/Images/success.png</x:String>
+			<x:String x:Key="ChefsAppSignature">ms-appx:///Assets/Images/chefsappsignature_dark.png</x:String>
+			<x:String x:Key="Empty_Recipe">ms-appx:///Assets/Images/empty_recipe_dark.png</x:String>
+			<x:String x:Key="Empty_Box">ms-appx:///Assets/Images/empty_box_dark.png</x:String>
+			<x:String x:Key="Empty_Notification">ms-appx:///Assets/Images/empty_notification_dark.png</x:String>
+			<x:String x:Key="LiveCooking_Success">ms-appx:///Assets/Images/success_dark.png</x:String>
 		</ResourceDictionary>
 	</ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

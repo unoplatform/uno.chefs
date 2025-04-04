@@ -15,14 +15,8 @@ The `CommandExtensions` class in the Uno Toolkit provides `Command`/`CommandPara
 ### PasswordBox Enter Key
 
 ```xml
-...
 <PasswordBox PlaceholderText="Password"
-             utu:CommandExtensions.Command="{Binding Login}"
-             ... />
-...
-<Button Content="Login"
-        Command="{Binding Login}" />
-...
+             utu:CommandExtensions.Command="{Binding Login}" />
 ```
 
 > [!TIP]
@@ -31,19 +25,17 @@ The `CommandExtensions` class in the Uno Toolkit provides `Command`/`CommandPara
 ### ItemsRepeater Item Tapped
 
 ```xml
-<muxc:ItemsRepeater utu:CommandExtensions.Command="{Binding SelectRecipe}"
-                    ItemTemplate="{StaticResource RecipeTemplate}"
-                    ItemsSource="{Binding Recipes}" />
+<muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                    utu:CommandExtensions.Command="{Binding Parent.CategorySearch}">
 ```
 
 ## Source Code
 
 Chefs app
 
-- [Login Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LoginPage.xaml#L74)
-- [Home Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/HomePage.xaml#L155)
-- [Search Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/SearchPage.xaml#L152)
-- [CreateUpdateCookbook Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/CreateUpdateCookbookPage.xaml#L149)
+- [Login Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LoginPage.xaml#L74)
+- [Home Page (ItemsRepeater)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/HomePage.xaml#L155)
+- [Search Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/SearchPage.xaml#L152)
 
 ## Documentation
 

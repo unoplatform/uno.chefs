@@ -1,6 +1,8 @@
+using Chefs.Presentation.Messages;
+
 namespace Chefs.Views.Flyouts;
 
-public partial class ResponsiveDrawerFlyout : Flyout
+public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMessage>
 {
 	private const int WideBreakpoint = 800;
 	private const int WidestBreakpoint = 1080;
@@ -10,6 +12,7 @@ public partial class ResponsiveDrawerFlyout : Flyout
 	public ResponsiveDrawerFlyout()
 	{
 		this.InitializeComponent();
+		WeakReferenceMessenger.Default.Register(this);
 	}
 
 	private void OnOpening(object? sender, object e)
@@ -31,6 +34,12 @@ public partial class ResponsiveDrawerFlyout : Flyout
 				DrawerFlyoutPresenter.SetDrawerLength(presenter, new GridLength(1, GridUnitType.Star));
 				DrawerFlyoutPresenter.SetIsGestureEnabled(presenter, false);
 			}
+
+			// Workaround for https://github.com/unoplatform/uno.chefs/issues/1436
+			// Not explicitly setting thickness causes thickness to be set to a value greater than 1 sometime during runtime
+#if __IOS__
+			presenter.BorderThickness = new Thickness(0);
+#endif
 		}
 	}
 
@@ -41,5 +50,16 @@ public partial class ResponsiveDrawerFlyout : Flyout
 		_presenter = basePresenter as FlyoutPresenter;
 
 		return basePresenter;
+	}
+
+	void IRecipient<ThemeChangedMessage>.Receive(ThemeChangedMessage message)
+	{
+		// Workaround for https://github.com/unoplatform/uno.chefs/issues/1017
+#if WINDOWS
+		_ = DispatcherQueue.TryEnqueue(() =>
+		{
+			MainLayout.RequestedTheme = message.IsDark ? ElementTheme.Dark : ElementTheme.Light;
+		});
+#endif
 	}
 }
