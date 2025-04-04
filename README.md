@@ -5,17 +5,20 @@
 ### WebAssembly
 
 - [Latest `main`](https://green-wave-0d2d8e10f.2.azurestaticapps.net/)
-- [Canary](https://green-wave-0d2d8e10f-canary.eastus2.2.azurestaticapps.net/)
+- [Canary (Native)](https://green-wave-0d2d8e10f-canary.eastus2.2.azurestaticapps.net/)
+- [Canary (Skia)](https://green-wave-0d2d8e10f-canaryskia.eastus2.2.azurestaticapps.net/)
 
 ### Android (AppCenter)
 
 - [Latest `main`](https://appcenter.ms/orgs/unoplatform/apps/Uno-Chefs/distribute/releases)
-- [Canary](https://appcenter.ms/orgs/unoplatform/apps/Uno-Chefs-Canary/distribute/releases)
+- [Canary (Native)](https://appcenter.ms/orgs/unoplatform/apps/Uno-Chefs-Canary/distribute/releases)
+- [Canary (Skia)](https://play.google.com/store/apps/details?id=uno.platform.chefs.skia_canary)
 
 ### iOS (TestFlight)
 
 - [Latest `main`](https://testflight.apple.com/v1/app/6448395831)
-- [Canary](https://testflight.apple.com/v1/app/6448395831)
+- [Canary (Native)](https://testflight.apple.com/v1/app/6448395937)
+- [Canary (Skia)](https://testflight.apple.com/v1/app/6742193286)
 
 ## Contributing
 

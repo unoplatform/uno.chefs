@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Uno.Sdk">
 	<PropertyGroup>
-			<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
+		<!-- Building with dotnet build -f net9.0-platform will still cause restore to happen for all TargetFrameworks -->
 		<!-- which will force us to install all workloads even if not needed -->
 		<!-- To prevent that, we will pass TargetFrameworkOverride as a global property (i.e, dotnet build -p:TargetFrameworkOverride=net9.0-platform) -->
 		<!-- That way, we set TargetFrameworks property to only the needed TargetFramework -->
-		<TargetFramework Condition="'$(TargetFrameworkOverride)'!=''">$(TargetFrameworkOverride)</TargetFramework>
+		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'!=''">$(TargetFrameworkOverride)</TargetFrameworks>
 		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'==''">
 			net9.0-android;
 			net9.0-ios;
@@ -19,12 +19,15 @@
 		<!-- Display name -->
 		<ApplicationTitle>Chefs</ApplicationTitle>
 		<!-- App Identifier -->
-		<ApplicationId>uno.platform.chefs</ApplicationId>
-		<ApplicationId Condition="'$(IsCanaryBranch)'=='true'">uno.platform.chefs-canary</ApplicationId>
-		<!-- Versions -->
+
+		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true'">uno.platform.chefs</ApplicationId>
+		<ApplicationId Condition="'$(UseSkiaRendering)' == 'true'">uno.platform.chefs.skia</ApplicationId>
+
+		<ApplicationId Condition="'$(IsCanaryBranch)'=='true'">$(ApplicationId)-canary</ApplicationId>
+
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-		<UseMocks>True</UseMocks>
+		<UseMocks>true</UseMocks>
 		<!--
 			If you encounter this error message:
 
@@ -40,6 +43,18 @@
 			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
 			https://aka.platform.uno/singleproject-features
 		-->
+
+		<!-- Uncomment to use skia rendering
+		<UseSkiaRendering>true</UseSkiaRendering>
+		-->
+		
+		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND $(IsBrowserWasm)">true</IsSkiaWasm>
+		<IsSkiaWasm Condition="'$(IsSkiaWasm)'==''">false</IsSkiaWasm>
+		<IsSkiaAndroid Condition="'$(UseSkiaRendering)'=='true' AND $(IsAndroid)">true</IsSkiaAndroid>
+		<IsSkiaAndroid Condition="'$(IsSkiaAndroid)'==''">false</IsSkiaAndroid>
+		<IsSkiaUIKit Condition="'$(UseSkiaRendering)'=='true' AND $(IsIOSOrCatalyst)">true</IsSkiaUIKit>
+		<IsSkiaUIKit Condition="'$(IsSkiaUIKit)'==''">false</IsSkiaUIKit>
+
 		<UnoFeatures>
 			Material;
 			Hosting;
@@ -56,6 +71,16 @@
 			ThemeService;
 			Authentication;
 		</UnoFeatures>
+		<UnoFeatures Condition="$(IsSkiaWasm)">$(UnoFeatures)SkiaRenderer;</UnoFeatures>
+		<UnoFeatures Condition="$(IsSkiaAndroid)">$(UnoFeatures)SkiaRenderer;</UnoFeatures>
+		<UnoFeatures Condition="$(IsSkiaUIKit)">$(UnoFeatures)SkiaRenderer;</UnoFeatures>
+		<!-- <UnoFeatures Condition="!$(IsSkiaWasm) AND !$(IsSkiaAndroid)">$(UnoFeatures)MediaElement;</UnoFeatures> -->
+
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DefineConstants Condition="$(IsSkiaWasm)">$(DefineConstants);IS_WASM_SKIA</DefineConstants>
+		<DefineConstants Condition="$(IsSkiaAndroid)">$(DefineConstants);IS_ANDROID_SKIA</DefineConstants>
+		<DefineConstants Condition="$(IsSkiaUIKit)">$(DefineConstants);IS_UIKIT_SKIA</DefineConstants>
+		<DefineConstants Condition="'$(UseSkiaRendering)'=='true'">$(DefineConstants);HAS_SKIA_RENDERER</DefineConstants>
 	</PropertyGroup>
 	
 	<!-- TODO: Remove this once https://github.com/unoplatform/uno.extensions/issues/2719 is fixed -->
@@ -78,7 +103,7 @@
 		</Otherwise>
 	</Choose>
 
-	<PropertyGroup Condition="'$(UseMocks)'=='True'">
+	<PropertyGroup Condition="'$(UseMocks)'=='true'">
 		<DefineConstants>$(DefineConstants);USE_MOCKS</DefineConstants>
 	</PropertyGroup>
 
@@ -106,6 +131,13 @@
 		<UnoSplashScreenBaseSize>350,300</UnoSplashScreenBaseSize>
 		<UnoIconForegroundFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Icons/icon_foreground_canary.svg</UnoIconForegroundFile>
 		<UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(IsBrowserWasm) AND '$(Configuration)' == 'Release'">
+		<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
+		<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
+		<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
+		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
 	</PropertyGroup>
 
 	<Choose>
@@ -142,6 +174,10 @@
 		<When Condition="$(IsIOS)">
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<CodesignKey>iPhone Distribution</CodesignKey>
+
+				<!-- BEGIN Workaround - AOT fails currently uno-private #648, not fixed in 9.0.200 -->
+				<MtouchUseLlvm>false</MtouchUseLlvm>
+				<!-- END Workaround -->
 			</PropertyGroup>
 		</When>
 		<When Condition="$(IsMacCatalyst)">
@@ -153,9 +189,59 @@
 				<EnablePackageSigning>true</EnablePackageSigning>
 				<EnableCodeSigning>true</EnableCodeSigning>
 
-				<CodesignProvision>Uno Chefs (Catalyst)</CodesignProvision>
-				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">Uno Chefs Canary (Catalyst)</CodesignProvision>
+				<_BaseCodesignProvision>Uno Chefs</_BaseCodesignProvision>
+				<_BaseCodesignProvision Condition="$(UseSkiaRendering)">Uno Chefs Skia</_BaseCodesignProvision>
+				<CodesignProvision>$(_BaseCodesignProvision) (Catalyst)</CodesignProvision>
+				<CodesignProvision Condition="$(BUILD_SOURCEBRANCH.StartsWith('refs/heads/canaries'))">$(_BaseCodesignProvision) Canary (Catalyst)</CodesignProvision>
+			</PropertyGroup>
+		</When>
+		<When Condition="$(IsBrowserWasm)">
+			<ItemGroup>
+				<PackageReference Include="Uno.Wasm.Bootstrap" />
+			</ItemGroup>
+			<PropertyGroup Condition="'$(Configuration)'=='Release' and '$(WasmShellMonoRuntimeExecutionMode)'=='InterpreterAndAOT'">
+				<WasmAotFileName Condition="'$(UseSkiaRendering)' != 'true' ">aot.profile</WasmAotFileName>
+				<WasmAotFileName Condition="'$(UseSkiaRendering)' == 'true' ">aot-skia.profile</WasmAotFileName>
+			</PropertyGroup>
+
+			<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+				<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
+				<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
+				<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
+
+				<!--
+				Uncomment this block to generate a profile
+				<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>
+				<WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
+				<UnoXamlResourcesTrimming>false</UnoXamlResourcesTrimming>
+				<WasmShellEnableJiterpreter>false</WasmShellEnableJiterpreter>
+				-->
 			</PropertyGroup>
 		</When>
 	</Choose>
+
+	<!-- https://github.com/dotnet/runtime/issues/109289 -->
+	<Target Name="Issue109289_Workaround" AfterTargets="_BrowserWasmWriteRspForLinking" Condition=" $(NETCoreSdkVersion.Contains('9.0.')) ">
+		<ItemGroup>
+			<_WasmLinkStepArgs Remove="@(_EmccLinkStepArgs)" />
+			<_EmccLinkStepArgs Remove="&quot;%(_WasmNativeFileForLinking.Identity)&quot;" />
+			<_WasmLinkDependencies Remove="@(_WasmNativeFileForLinking)" />
+
+			<_SkiaSharpToReorder Include="@(_WasmNativeFileForLinking)" Condition="$([System.String]::Copy('%(FullPath)').Contains('SkiaSharp'))" />
+			<_WasmNativeFileForLinking Remove="@(_SkiaSharpToReorder)" />
+			<_WasmNativeFileForLinking Include="@(_SkiaSharpToReorder)" />
+
+			<_EmccLinkStepArgs Include="&quot;%(_WasmNativeFileForLinking.Identity)&quot;" />
+			<_WasmLinkDependencies Include="@(_WasmNativeFileForLinking)" />
+			<_WasmLinkStepArgs Include="@(_EmccLinkStepArgs)" />
+		</ItemGroup>
+	</Target>
+
+	<Target Name="AdjustStrip" BeforeTargets="_WasmCommonPrepareForWasmBuildNative">
+		<PropertyGroup>
+			<!-- Enable debug symbols for release mode to profiling -->
+			<WasmNativeStrip>false</WasmNativeStrip>
+			<WasmNativeDebugSymbols>true</WasmNativeDebugSymbols>
+		</PropertyGroup>
+	</Target>
 </Project>
