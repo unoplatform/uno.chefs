@@ -12,7 +12,7 @@ public class EntryPoint
 			// you can specify it here.
 			UIApplication.Main(args, null, typeof(App));
 #else
-			var host = new Uno.UI.Runtime.Skia.AppleUIKit.PlatformHost(() => new App());
+			var host = new Uno.UI.Runtime.Skia.AppleUIKit.AppleUIKitHost(() => new App());
 			host.Run();
 #endif
 	}
