@@ -81,7 +81,7 @@
 		<DefineConstants Condition="$(IsSkiaUIKit)">$(DefineConstants);IS_UIKIT_SKIA</DefineConstants>
 		<DefineConstants Condition="'$(UseSkiaRendering)'=='true'">$(DefineConstants);HAS_SKIA_RENDERER</DefineConstants>
 	</PropertyGroup>
-	
+
 	<!-- TODO: Remove this once https://github.com/unoplatform/uno.extensions/issues/2719 is fixed -->
 	<PropertyGroup>
 		<JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
@@ -115,8 +115,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
-	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
+		<EmbeddedResource Include="Assets\Maps\location_pin.svg" />
+		<EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
@@ -153,6 +153,14 @@
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
+
+	<ItemGroup>
+		<UnoImage Include="Assets\Recipes\*.png" />
+		<UnoImage Include="Assets\Profiles\*.png" />
+		<UnoImage Include="Assets\Categories\*.png" />
+		<UnoImage Include="Assets\Welcome\*.png" />
+		<UnoImage Include="Assets\Icons\*.png" />
+	</ItemGroup>
 
 	<Choose>
 		<When Condition="$(IsAndroid) or $(IsIOSOrCatalyst)">
