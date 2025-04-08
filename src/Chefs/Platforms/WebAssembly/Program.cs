@@ -18,7 +18,7 @@ public class Program
 #endif
 
 #if IS_WASM_SKIA
-			var host = new Uno.UI.Runtime.Skia.WebAssembly.Browser.PlatformHost(() => _app = new App());
+			var host = new Uno.UI.Runtime.Skia.WebAssembly.Browser.WebAssemblyBrowserHost(() => _app = new App());
 			await host.Run();
 #else
 			Microsoft.UI.Xaml.Application.Start(_ => _app = new App());
