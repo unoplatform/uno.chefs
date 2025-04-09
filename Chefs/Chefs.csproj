@@ -46,7 +46,6 @@
 			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
 			https://aka.platform.uno/singleproject-features
 		-->
-		
 		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND $(IsBrowserWasm)">true</IsSkiaWasm>
 		<IsSkiaWasm Condition="'$(IsSkiaWasm)'==''">false</IsSkiaWasm>
 		<IsSkiaAndroid Condition="'$(UseSkiaRendering)'=='true' AND $(IsAndroid)">true</IsSkiaAndroid>
@@ -195,9 +194,6 @@
 			</PropertyGroup>
 		</When>
 		<When Condition="$(IsBrowserWasm)">
-			<ItemGroup>
-				<PackageReference Include="Uno.Wasm.Bootstrap" />
-			</ItemGroup>
 			<PropertyGroup Condition="'$(Configuration)'=='Release' and '$(WasmShellMonoRuntimeExecutionMode)'=='InterpreterAndAOT'">
 				<WasmAotFileName Condition="'$(UseSkiaRendering)' != 'true' ">aot.profile</WasmAotFileName>
 				<WasmAotFileName Condition="'$(UseSkiaRendering)' == 'true' ">aot-skia.profile</WasmAotFileName>

@@ -49,7 +49,7 @@ variables:
 jobs:
 - template: build-windows.yml
 - template: build-android.yml
-# Disable iOS/Catalyst until certificates are fixed
-# - template: build-ios-catalyst.yml
+# Disable iOS/Catalyst builds until certificates are fixed
+#- template: build-ios-catalyst.yml
 - template: build-wasm.yml
 - template: build-skia-desktop.yml
