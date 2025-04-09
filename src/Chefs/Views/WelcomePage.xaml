@@ -14,12 +14,11 @@
 	  android:StatusBar.Background="{ThemeResource SurfaceBrush}"
 	  android:StatusBar.Foreground="Auto"
 	  ios:StatusBar.Foreground="Auto"
-	  utu:SafeArea.Insets="VisibleBounds"
 	  NavigationCacheMode="Required"
 	  mc:Ignorable="d android ios"
 	  Background="{ThemeResource SurfaceBrush}">
 
-	<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+	<utu:AutoLayout utu:SafeArea.Insets="VisibleBounds" Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
 		<FlipView IsEnabled="False"
 				  Visibility="{utu:Responsive Narrow=Collapsed,
 											  Wide=Visible}"
