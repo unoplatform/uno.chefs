@@ -18,7 +18,8 @@
 	  mc:Ignorable="d android ios"
 	  Background="{ThemeResource SurfaceBrush}">
 
-	<utu:AutoLayout utu:SafeArea.Insets="VisibleBounds" Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+	<utu:AutoLayout utu:SafeArea.Insets="VisibleBounds"
+					Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
 		<FlipView IsEnabled="False"
 				  Visibility="{utu:Responsive Narrow=Collapsed,
 											  Wide=Visible}"
