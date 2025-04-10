@@ -155,11 +155,12 @@
 	</Choose>
 
 	<ItemGroup>
-		<UnoImage Include="Assets\Recipes\*.png" BaseSize="600,600"/>
-		<UnoImage Include="Assets\Profiles\*.png" BaseSize="600,600"/>
+		<UnoImage Include="Assets\Recipes\*.png" BaseSize="300,300"/>
+		<UnoImage Include="Assets\Profiles\*.png" BaseSize="300,206"/>
 		<UnoImage Include="Assets\Categories\*.png" BaseSize="48,48"/>
-		<UnoImage Include="Assets\Welcome\*.png" BaseSize="100,100"/>
-		<UnoImage Include="Assets\Icons\*.png" BaseSize="24,24"/>
+		<UnoImage Include="Assets\Welcome\*.png" BaseSize="390,271"/>
+		<UnoImage Include="Assets\Welcome\Wide\*.png" BaseSize="683,982"/>
+		<UnoImage Include="Assets\Icons\*.png" BaseSize="48,48"/>
 	</ItemGroup>
 
 	<Choose>
