@@ -50,7 +50,7 @@ For the Visual Studio extension, make sure to set the [External Configuration Fi
 For the dotnet CLI tool, make sure to provide the path for the `xaml-styler.json` file in the `--config` argument. The following command will format all XAML files in the `src` folder:
 
 ```bash
-xstyler --recursive --config xaml-styler.json --directory src
+xstyler --recursive --config xaml-styler.json --directory Chefs
 ```
 
 ## Contributing and Debugging the Chefs Recipe Books documentation
