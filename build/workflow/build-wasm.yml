@@ -73,20 +73,20 @@ jobs:
 
 
   - bash: |
-      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" src/Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/logs/build-wasm.binlog
+      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/logs/build-wasm.binlog
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
     displayName: Copy Wasm output
     inputs:
-      SourceFolder: src/Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot
+      SourceFolder: Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/wwwroot
 
   - task: CopyFiles@2
     displayName: Copy version information
     inputs:
-      Contents: src/Chefs/Version.txt
+      Contents: Chefs/Version.txt
       TargetFolder: $(build.artifactstagingdirectory)/wwwroot
       FlattenFolders: true
 

@@ -8,13 +8,13 @@ Using `Uno.Extensions.Hosting` enables registration of services via dependency i
 
 In "`OnLaunched(LaunchActivatedEventArgs args)`", use `CreateBuilder()` and `.Configure()` to configure the host.
 
-:::code language="csharp" source="../../src/Chefs/App.xaml.cs" range="19-24":::
+:::code language="csharp" source="../../Chefs/App.xaml.cs" range="19-24":::
 
 ## Configure the Host
 
 The `IApplicationBuilder` has many extension methods to configure the host. Here are some of the most common ones:
 
-:::code language="csharp" source="../../src/Chefs/App.xaml.cs" range="62-75":::
+:::code language="csharp" source="../../Chefs/App.xaml.cs" range="62-75":::
 
 
 ## Source Code

@@ -18,9 +18,9 @@ jobs:
       with:
         dotnet-version: 9.0.x
     - name: Restore dependencies
-      run: dotnet restore src/Chefs.sln
+      run: dotnet restore Chefs.sln
     # current bug causing bad whitespace changes
     # - name: Verify whitespace
-    #   run: dotnet format whitespace src/Chefs.sln --verify-no-changes --verbosity diagnostic
+    #   run: dotnet format whitespace Chefs.sln --verify-no-changes --verbosity diagnostic
     - name: Verify code style
-      run: dotnet format style src/Chefs.sln --verify-no-changes --verbosity diagnostic
+      run: dotnet format style Chefs.sln --verify-no-changes --verbosity diagnostic

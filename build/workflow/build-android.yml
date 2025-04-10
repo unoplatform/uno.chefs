@@ -36,14 +36,14 @@ jobs:
       secureFile: unoplatform.jks
 
   - script: |
-      cd $(build.sourcesdirectory)/src/Chefs
+      cd $(build.sourcesdirectory)/Chefs
       dotnet publish -f:net9.0-android /p:TargetFrameworkOverride=net9.0-android -c:Release -p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" /p:AndroidSigningKeyStore=$(keyStore.secureFilePath) /p:AndroidSigningStorePass=$(AndroidSigningStorePass) /p:AndroidSigningKeyPass=$(AndroidSigningKeyPass) /p:AndroidSigningKeyAlias=$(AndroidSigningKeyAlias) /p:AndroidKeyStore=true /bl:$(build.artifactstagingdirectory)/logs/build-android.binlog 
     displayName: 'Build Android'
 
   - task: CopyFiles@2
     displayName: 'Publish Binaries'
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Chefs/bin/Release/
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/
       Contents:  |
         **/*.apk
         **/*.aab

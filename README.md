@@ -30,27 +30,27 @@ Uno Chefs uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.
 
 ### C# Coding Style
 
-Automated checks are performed on all pull requests to ensure that the C# code follows the **style** and **whitespace** conventions defined in the [`.editorconfig`](https://github.com/unoplatform/uno.chefs/blob/main/src/.editorconfig) file.
+Automated checks are performed on all pull requests to ensure that the C# code follows the **style** and **whitespace** conventions defined in the [`.editorconfig`](https://github.com/unoplatform/uno.chefs/blob/main/.editorconfig) file.
 
 It is recommended to run the following commands from the root directory of the repo before submitting a pull request:
 
 ```bash
-dotnet format style src\Chefs.sln
-dotnet format whitespace src\Chefs.sln
+dotnet format style Chefs.sln
+dotnet format whitespace Chefs.sln
 ```
 
 ### XAML Coding Style
 
-Automated checks are performed on all pull requests to ensure that the XAML code follows the styling conventions defined in the [`xaml-styler.json`](https://github.com/unoplatform/uno.chefs/blob/main/src/xaml-styler.json) file.
+Automated checks are performed on all pull requests to ensure that the XAML code follows the styling conventions defined in the [`xaml-styler.json`](https://github.com/unoplatform/uno.chefs/blob/main/xaml-styler.json) file.
 
 The [XAML Styler](https://github.com/Xavalon/XamlStyler/wiki) tool is used to automatically format the XAML code. It is recommended to install the [Visual Studio extension](https://marketplace.visualstudio.com/items?itemName=TeamXavalon.XAMLStyler2022) as well as the [dotnet CLI tool](https://www.nuget.org/packages/XamlStyler.Console).
 
-For the Visual Studio extension, make sure to set the [External Configuration File](https://github.com/Xavalon/XamlStyler/wiki/XAML-Styler-Configuration#external-configuration-file) within the extension settings to point to the [`xaml-styler.json`](https://github.com/unoplatform/uno.chefs/blob/main/src/xaml-styler.json) file.
+For the Visual Studio extension, make sure to set the [External Configuration File](https://github.com/Xavalon/XamlStyler/wiki/XAML-Styler-Configuration#external-configuration-file) within the extension settings to point to the [`xaml-styler.json`](https://github.com/unoplatform/uno.chefs/blob/main/xaml-styler.json) file.
 
-For the dotnet CLI tool, make sure to provide the path for the `xaml-styler.json` file in the `--config` argument. The following command will format all XAML files in the `src` folder:
+For the dotnet CLI tool, make sure to provide the path for the `xaml-styler.json` file in the `--config` argument. The following command will format all XAML files in the `Chefs` folder:
 
 ```bash
-xstyler --recursive --config src\xaml-styler.json --directory src
+xstyler --recursive --config xaml-styler.json --directory Chefs
 ```
 
 ## Contributing and Debugging the Chefs Recipe Books documentation
