@@ -14,24 +14,24 @@ Writable configuration from `Uno.Extensions.Configuration` provides you an inter
 
 ### Create a new record
 
-:::code language="csharp" source="../../src/Chefs/Business/Models/AppConfig.cs":::
+:::code language="csharp" source="../../Chefs/Business/Models/AppConfig.cs":::
 
 ### Add to your `IConfigBuilder`
 
 Use `Section<T>()` inside `UseConfiguration`. You can chain multiple configs.
 
-:::code language="csharp" source="../../src/Chefs/App.xaml.cs" range="62-68":::
+:::code language="csharp" source="../../Chefs/App.xaml.cs" range="62-68":::
 
 ### Get and Update the value
 
 #### UserService.cs
 
 1. Inject `IWritableOptions<AppConfig>` in the constructor.
-:::code language="csharp" source="../../src/Chefs/Services/Users/UserService.cs" range="10-14":::
-:::code language="csharp" source="../../src/Chefs/Services/Users/UserService.cs" range="6":::
+:::code language="csharp" source="../../Chefs/Services/Users/UserService.cs" range="10-14":::
+:::code language="csharp" source="../../Chefs/Services/Users/UserService.cs" range="6":::
 
 2. Implement the logic to read and write to the configuration.
-:::code language="csharp" source="../../src/Chefs/Services/Users/UserService.cs" range="20-52":::
+:::code language="csharp" source="../../Chefs/Services/Users/UserService.cs" range="20-52":::
 
 ## Source Code
 

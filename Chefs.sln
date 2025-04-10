@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.targets = Directory.Build.targets
 		Directory.Packages.props = Directory.Packages.props
 		global.json = global.json
+		nuget.config = nuget.config
+		xaml-styler.json = xaml-styler.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chefs", "Chefs\Chefs.csproj", "{DAD54CCD-25BF-437D-915B-77E8205C74A8}"

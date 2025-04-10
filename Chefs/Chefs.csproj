@@ -18,8 +18,11 @@
 
 		<!-- Display name -->
 		<ApplicationTitle>Chefs</ApplicationTitle>
-		<!-- App Identifier -->
 
+		<!-- Comment to use native rendering -->
+		<UseSkiaRendering Condition="'$(UseSkiaRendering)'==''">true</UseSkiaRendering>
+		
+		<!-- App Identifier -->
 		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true'">uno.platform.chefs</ApplicationId>
 		<ApplicationId Condition="'$(UseSkiaRendering)' == 'true'">uno.platform.chefs.skia</ApplicationId>
 
@@ -42,10 +45,6 @@
 		<!--
 			UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
 			https://aka.platform.uno/singleproject-features
-		-->
-
-		<!-- Uncomment to use skia rendering
-		<UseSkiaRendering>true</UseSkiaRendering>
 		-->
 		
 		<IsSkiaWasm Condition="'$(UseSkiaRendering)'=='true' AND $(IsBrowserWasm)">true</IsSkiaWasm>
@@ -174,6 +173,10 @@
 		<When Condition="$(IsIOS)">
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
 				<CodesignKey>iPhone Distribution</CodesignKey>
+
+				<!-- BEGIN Workaround - AOT fails currently uno-private #648, not fixed in 9.0.200 -->
+				<MtouchUseLlvm>false</MtouchUseLlvm>
+				<!-- END Workaround -->
 			</PropertyGroup>
 		</When>
 		<When Condition="$(IsMacCatalyst)">
