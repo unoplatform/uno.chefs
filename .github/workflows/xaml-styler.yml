@@ -20,4 +20,4 @@ jobs:
     - name: Install XAML Styler 
       run: dotnet tool update --global XamlStyler.Console
     - name: Verify XAML Styling
-      run: xstyler -r -l Verbose -c src/xaml-styler.json -d "." --passive
+      run: xstyler -r -l Verbose -c xaml-styler.json -d "src" --passive

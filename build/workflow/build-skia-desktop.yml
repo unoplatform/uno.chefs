@@ -21,13 +21,13 @@ jobs:
     displayName: Build project
     retryCountOnTaskFailure: 3
     inputs:
-      solution: src\Chefs\Chefs.csproj
+      solution: Chefs\Chefs.csproj
       msbuildArguments: /ds /m /r /p:TargetFramework=net9.0-desktop /p:TargetFrameworkOverride=net9.0-desktop /p:Configuration=Release "/p:InformationalVersion=%NBGV_InformationalVersion%" /bl:$(build.artifactstagingdirectory)/logs/build-desktop.binlog
 
   - task: CopyFiles@2
     displayName: Copy Skia output
     inputs:
-      SourceFolder: src\Chefs\bin\Release\net9.0-desktop
+      SourceFolder: Chefs\bin\Release\net9.0-desktop
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/bin
 

@@ -66,7 +66,7 @@ What if instead of updating an entity in a list we want to add or delete one? MV
 
 ## Source Code
 
-- [RecipeDetailsModel](https://github.com/unoplatform/uno.chefs/blob/main/src/Chefs/Presentation/RecipeDetailsModel.cs)
+- [RecipeDetailsModel](https://github.com/unoplatform/uno.chefs/blob/main/Chefs/Presentation/RecipeDetailsModel.cs)
 - [RecipeService LikeReview and DislikeReview](https://github.com/unoplatform/uno.chefs/blob/9541aa5e0fbbc1c1598dfce4153a9a7fc4e95ccd/src/Chefs/Services/Recipes/RecipeService.cs#L141-L151)
 
 ## Documentation
