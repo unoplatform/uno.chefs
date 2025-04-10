@@ -20,7 +20,7 @@
 		<ApplicationTitle>Chefs</ApplicationTitle>
 
 		<!-- Comment to use native rendering -->
-		<UseSkiaRendering>true</UseSkiaRendering>
+		<UseSkiaRendering Condition="'$(UseSkiaRendering)'==''">true</UseSkiaRendering>
 		
 		<!-- App Identifier -->
 		<ApplicationId Condition="'$(UseSkiaRendering)' != 'true'">uno.platform.chefs</ApplicationId>
