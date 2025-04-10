@@ -69,6 +69,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
+          skip_app_comment: true
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "${{ env.DIST_PATH }}" # App source code path
@@ -76,6 +77,24 @@ jobs:
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
           deployment_environment: "${{ matrix.renderer }}"
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gh
+
+      - name: Post custom comment to PR
+        if: github.event_name == 'pull_request'
+        run: |
+          if [ "${{ matrix.renderer }}" = "skia" ]; then
+            comment="🖼️ Azure Static Web App deployed with **Skia** renderer! Visit it here: ${{ steps.builddeploy_uno.outputs.static_site_url }}"
+          else
+            comment="⚙️ Azure Static Web App deployed with **Native** renderer! Visit it here: ${{ steps.builddeploy_uno.outputs.static_site_url }}"
+          fi
+          gh pr comment "$PR_URL" --body "$comment"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
