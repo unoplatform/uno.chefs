@@ -26,64 +26,61 @@
 		<converters:StringToMediaPlayBackSourceConverter x:Key="StringToMediaPlaybackSource" />
 
 		<DataTemplate x:Key="StepTemplate">
-
-			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
-						  HorizontalScrollMode="Disabled">
-				<utu:AutoLayout Spacing="24"
-								Padding="40"
-								PrimaryAxisAlignment="Start">
-					<TextBlock FontSize="22"
-							   FontWeight="SemiBold"
-							   Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleLarge}"
-							   TextAlignment="Center"
-							   TextWrapping="Wrap">
-						<Run Text="{Binding Number}" />
-						<Run Text=" - " />
-						<Run Text="{Binding Name}" />
-					</TextBlock>
-					<utu:AutoLayout Padding="16"
-									Background="{ThemeResource BackgroundBrush}"
-									CornerRadius="8"
-									Spacing="16">
-						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-								   Style="{StaticResource CaptionLarge}"
-								   Text="Ingredients:"
-								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<muxc:ItemsRepeater ItemsSource="{Binding Ingredients}"
-											utu:AutoLayout.PrimaryAlignment="Stretch">
-							<muxc:ItemsRepeater.Layout>
-								<win:LinedFlowLayout ItemsJustification="Center"
-													 MinItemSpacing="16" />
-
-								<not_win:FlowLayout LineAlignment="Center"
-													MinColumnSpacing="16"
-													MinRowSpacing="12" />
-							</muxc:ItemsRepeater.Layout>
-							<muxc:ItemsRepeater.ItemTemplate>
-								<DataTemplate>
-									<utu:AutoLayout Spacing="4"
-													PrimaryAxisAlignment="Center"
-													CounterAxisAlignment="Center"
-													Orientation="Horizontal">
-										<PathIcon Data="{StaticResource Icon_Check_Circle}"
-												  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-										<TextBlock Text="{Binding}"
-												   TextWrapping="NoWrap"
-												   Foreground="{ThemeResource OnSurfaceBrush}" />
-									</utu:AutoLayout>
-								</DataTemplate>
-							</muxc:ItemsRepeater.ItemTemplate>
-						</muxc:ItemsRepeater>
-					</utu:AutoLayout>
+			<!-- Workaround: Removed the ScrollViewer that was previously wrapping the content here: https://github.com/unoplatform/uno/issues/19917 -->
+			<utu:AutoLayout Spacing="24"
+							Padding="40"
+							PrimaryAxisAlignment="Start">
+				<TextBlock FontSize="22"
+						   FontWeight="SemiBold"
+						   Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleLarge}"
+						   TextAlignment="Center"
+						   TextWrapping="Wrap">
+					<Run Text="{Binding Number}" />
+					<Run Text=" - " />
+					<Run Text="{Binding Name}" />
+				</TextBlock>
+				<utu:AutoLayout Padding="16"
+								Background="{ThemeResource BackgroundBrush}"
+								CornerRadius="8"
+								Spacing="16">
 					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleMedium}"
-							   Text="{Binding Description}"
+							   Style="{StaticResource CaptionLarge}"
+							   Text="Ingredients:"
 							   TextAlignment="Center"
 							   TextWrapping="Wrap" />
+					<muxc:ItemsRepeater ItemsSource="{Binding Ingredients}"
+										utu:AutoLayout.PrimaryAlignment="Stretch">
+						<muxc:ItemsRepeater.Layout>
+							<win:LinedFlowLayout ItemsJustification="Center"
+												 MinItemSpacing="16" />
+
+							<not_win:FlowLayout LineAlignment="Center"
+												MinColumnSpacing="16"
+												MinRowSpacing="12" />
+						</muxc:ItemsRepeater.Layout>
+						<muxc:ItemsRepeater.ItemTemplate>
+							<DataTemplate>
+								<utu:AutoLayout Spacing="4"
+												PrimaryAxisAlignment="Center"
+												CounterAxisAlignment="Center"
+												Orientation="Horizontal">
+									<PathIcon Data="{StaticResource Icon_Check_Circle}"
+											  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+									<TextBlock Text="{Binding}"
+											   TextWrapping="NoWrap"
+											   Foreground="{ThemeResource OnSurfaceBrush}" />
+								</utu:AutoLayout>
+							</DataTemplate>
+						</muxc:ItemsRepeater.ItemTemplate>
+					</muxc:ItemsRepeater>
 				</utu:AutoLayout>
-			</ScrollViewer>
+				<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+						   Style="{StaticResource TitleMedium}"
+						   Text="{Binding Description}"
+						   TextAlignment="Center"
+						   TextWrapping="Wrap" />
+			</utu:AutoLayout>
 		</DataTemplate>
 	</Page.Resources>
 
