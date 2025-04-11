@@ -28,15 +28,15 @@
 				  SelectedIndex="{Binding Pages.CurrentIndex}">
 			<FlipView.Items>
 				<!-- First Splash image -->
-				<Image Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
+				<Image Source="ms-appx:///Assets/Welcome/Wide/first_splash_screen.png"
 					   Stretch="UniformToFill" />
 
 				<!-- Second Splash image -->
-				<Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
+				<Image Source="ms-appx:///Assets/Welcome/Wide/second_splash_screen.png"
 					   Stretch="UniformToFill" />
 
 				<!-- Third Splash image -->
-				<Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
+				<Image Source="ms-appx:///Assets/Welcome/Wide/third_splash_screen.png"
 					   Stretch="UniformToFill" />
 			</FlipView.Items>
 		</FlipView>
