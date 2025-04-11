@@ -4,7 +4,8 @@
 
 ### WebAssembly
 
-- [Latest `main`](https://green-wave-0d2d8e10f.2.azurestaticapps.net/)
+- [Latest `main` (Native)](https://green-wave-0d2d8e10f-native.eastus2.2.azurestaticapps.net/)
+- [Latest `main` (Skia)](https://green-wave-0d2d8e10f-skia.eastus2.2.azurestaticapps.net/)
 - [Canary (Native)](https://green-wave-0d2d8e10f-canary.eastus2.2.azurestaticapps.net/)
 - [Canary (Skia)](https://green-wave-0d2d8e10f-canaryskia.eastus2.2.azurestaticapps.net/)
 
