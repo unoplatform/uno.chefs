@@ -5,43 +5,29 @@
 
 ## Releases
 
-### Status
+### Canary
 
-#### Stable
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/244?logo=webassembly&logoColor=%23FFFFFF&label=WASM%20(Skia))
+](https://green-wave-0d2d8e10f-canaryskia.eastus2.2.azurestaticapps.net/)[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/240?logo=webassembly&logoColor=%23FFFFFF&label=WASM%20(Native))
+](https://green-wave-0d2d8e10f-canary.eastus2.2.azurestaticapps.net/)
 
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/248?logo=android&label=Play%20Store%20(Skia))
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/245?logo=apple&label=TestFlight%20(Skia))](https://testflight.apple.com/v1/app/6742193286)
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/215?logo=apple&label=TestFlight%20(Native))](https://testflight.apple.com/v1/app/6448395937)
 
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/247?logo=apple&label=TestFlight%20(Skia))
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/211?logo=apple&label=TestFlight%20(Native))
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/246?logo=android&label=Play%20Store%20(Skia))](https://play.google.com/store/apps/details?id=uno.platform.chefs.skia_canary)
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/213?logo=android&label=AppCenter%20(Native))](https://appcenter.ms/orgs/unoplatform/apps/Uno-Chefs-Canary/distribute/releases)
 
-#### Canary
+### Stable
 
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/244?logo=webassembly&label=WASM%20(Skia))
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/240?logo=webassembly&label=WASM%20(Native))
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/250?logo=webassembly&logoColor=%23FFFFFF&label=WASM%20(Skia))
+](https://green-wave-0d2d8e10f-skia.eastus2.2.azurestaticapps.net/)[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/249?logo=webassembly&logoColor=%23FFFFFF&label=WASM%20(Native))
+](https://green-wave-0d2d8e10f-native.eastus2.2.azurestaticapps.net/)
 
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/246?logo=android&label=Play%20Store%20(Skia))
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/247?logo=apple&label=TestFlight%20(Skia))](https://testflight.apple.com/v1/app/6742193353)
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/211?logo=apple&label=TestFlight%20(Native))](https://testflight.apple.com/v1/app/6448395831)
 
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/245?logo=apple&label=TestFlight%20(Skia))
-![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/83/215?logo=apple&label=TestFlight%20(Native))
-
-### WebAssembly
-
-- [Latest Stable (Native)](https://green-wave-0d2d8e10f-native.eastus2.2.azurestaticapps.net/)
-- [Latest Stable (Skia)](https://green-wave-0d2d8e10f-skia.eastus2.2.azurestaticapps.net/)
-- [Canary (Native)](https://green-wave-0d2d8e10f-canary.eastus2.2.azurestaticapps.net/)
-- [Canary (Skia)](https://green-wave-0d2d8e10f-canaryskia.eastus2.2.azurestaticapps.net/)
-
-### Android (AppCenter)
-
-- [Latest Stable](https://appcenter.ms/orgs/unoplatform/apps/Uno-Chefs/distribute/releases)
-- [Canary (Native)](https://appcenter.ms/orgs/unoplatform/apps/Uno-Chefs-Canary/distribute/releases)
-- [Canary (Skia)](https://play.google.com/store/apps/details?id=uno.platform.chefs.skia_canary)
-
-### iOS (TestFlight)
-
-- [Latest Stable](https://testflight.apple.com/v1/app/6448395831)
-- [Canary (Native)](https://testflight.apple.com/v1/app/6448395937)
-- [Canary (Skia)](https://testflight.apple.com/v1/app/6742193286)
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/248?logo=android&label=Play%20Store%20(Skia))](https://play.google.com/store/apps/details?id=uno.platform.chefs.skia)
+[![Azure DevOps releases](https://img.shields.io/azure-devops/release/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/82/212?logo=android&label=AppCenter%20(Native))](https://appcenter.ms/orgs/unoplatform/apps/Uno-Chefs/distribute/releases)
 
 ## Contributing
 
