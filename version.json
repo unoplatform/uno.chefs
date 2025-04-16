@@ -10,6 +10,7 @@
     "^refs/heads/release/stable/\\d+(?:\\.\\d+)?$"
   ],
   "cloudBuild": {
+    "setAllVariables": true,
     "buildNumber": {
       "enabled": true
     }
