@@ -79,11 +79,6 @@
 		<DefineConstants Condition="$(IsSkiaUIKit)">$(DefineConstants);IS_UIKIT_SKIA</DefineConstants>
 		<DefineConstants Condition="'$(UseSkiaRendering)'=='true'">$(DefineConstants);HAS_SKIA_RENDERER</DefineConstants>
 	</PropertyGroup>
-	
-	<!-- TODO: Remove this once https://github.com/unoplatform/uno.extensions/issues/2719 is fixed -->
-	<PropertyGroup>
-		<JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
-	</PropertyGroup>
 
 	<Choose>
 		<When Condition="$(IsWinAppSdk)">
