@@ -11,6 +11,7 @@ public record AppConfig
 }
 
 [JsonSerializable(typeof(AppConfig))]
+[JsonSerializable(typeof(Dictionary<string, AppConfig>))]
 public partial class AppConfigContext : JsonSerializerContext
 {
 }
