@@ -16,21 +16,13 @@ Uno Extensions Navigation lets you easily [invoke navigation](xref:Uno.Extension
 
 This method navigates to a route that matches the specified view model type. Let's say we want to navigate to the search page and display popular recipes. To do so, we can use `NavigateViewModelAsync` to navigate to the _SearchModel_ and we can add a `SearchFilter` as data to specify that the recipes should be organized by popularity.
 
-```csharp
-public async ValueTask SearchPopular() =>
-    await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));
-```
+[!code-csharp[](../../Chefs/Presentation/SearchModel.cs#L49-L50)]
 
 ### 2. NavigateDataAsync
 
 This method navigates to a route that is registered for the specified data type. In the root App.xaml.cs, since we defined that the `GenericDialogModel` is registered to a `DialogInfo` through the `DataMap`, it will choose the "Dialog" route.
 
-```csharp
-public static Task<NavigationResponse?> ShowDialog(this INavigator navigator, object sender, DialogInfo dialogInfo, CancellationToken ct)
-{
-    return navigator.NavigateDataAsync(sender, new DialogInfo(dialogInfo.Title, dialogInfo.Content), cancellation: ct);
-}
-```
+[!code-csharp[](../../Chefs/Presentation/Extensions/INavigatorExtensions.cs#L13-L16)]
 
 ```csharp
 private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
@@ -72,10 +64,7 @@ private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
 }
 ```
 
-```csharp
-public async ValueTask ApplySearchFilter(SearchFilter filter) =>
-    await _navigator.NavigateBackWithResultAsync(this, data: filter);
-```
+[!code-csharp[](../../Chefs/Presentation/FilterModel.cs#L21-L22)]
 
 ### 5. NavigateRouteAsync
 
@@ -90,10 +79,10 @@ public async ValueTask LiveCooking(IImmutableList<Step> steps, CancellationToken
 
 ## Source Code
 
-- [NavigateViewModelAsync](https://github.com/unoplatform/uno.chefs/blob/5b7bf94fca19eee93de38fc81e08aa1f40804c47/src/Chefs/Presentation/SearchModel.cs#L71-L72)
-- [NavigateDataAsync](https://github.com/unoplatform/uno.chefs/blob/5b7bf94fca19eee93de38fc81e08aa1f40804c47/src/Chefs/Presentation/Extensions/INavigatorExtensions.cs#L13-L16)
-- [NavigateBackWithResultAsync](https://github.com/unoplatform/uno.chefs/blob/5b7bf94fca19eee93de38fc81e08aa1f40804c47/src/Chefs/Presentation/FilterModel.cs#L20-L21)
-- [NavigateRouteAsync](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Presentation/RecipeDetailsModel.cs#L41-L53)
+- [NavigateViewModelAsync](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/SearchModel.cs#L49-L50)
+- [NavigateDataAsync](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/Extensions/INavigatorExtensions.cs#L13-L16)
+- [NavigateBackWithResultAsync]https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/FilterModel.cs#L21-L22)
+- [NavigateRouteAsync]https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/RecipeDetailsModel.cs#L51-L63)
 
 ## Documentation
 

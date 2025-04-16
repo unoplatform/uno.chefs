@@ -14,28 +14,22 @@ The `CommandExtensions` class in the Uno Toolkit provides `Command`/`CommandPara
 
 ### PasswordBox Enter Key
 
-```xml
-<PasswordBox PlaceholderText="Password"
-             utu:CommandExtensions.Command="{Binding Login}" />
-```
+[!code-xml[](../../Chefs/Views/LoginPage.xaml#L39-L41)]
 
 > [!TIP]
 > Usage on `TextBox`/`PasswordBox` will also cause the keyboard dismiss on enter. Similar to the `InputExtensions.AutoDismiss` behavior, covered in the [InputExtensions](xref:Uno.Recipes.InputExtensions) recipe.
 
 ### ItemsRepeater Item Tapped
 
-```xml
-<muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                    utu:CommandExtensions.Command="{Binding Parent.CategorySearch}">
-```
+[!code-xml[](../../Chefs/Views/HomePage.xaml#L142-L143)]
 
 ## Source Code
 
 Chefs app
 
-- [Login Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LoginPage.xaml#L74)
-- [Home Page (ItemsRepeater)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/HomePage.xaml#L155)
-- [Search Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/SearchPage.xaml#L152)
+- [Login Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LoginPage.xaml#L41)
+- [Home Page (ItemsRepeater)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L143)
+- [Search Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L114)
 
 ## Documentation
 

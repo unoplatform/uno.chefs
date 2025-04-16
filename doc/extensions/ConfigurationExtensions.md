@@ -14,33 +14,36 @@ Writable configuration from `Uno.Extensions.Configuration` provides you an inter
 
 ### Create a new record
 
-:::code language="csharp" source="../../Chefs/Business/Models/AppConfig.cs":::
+[!code-csharp[](../../Chefs/Business/Models/AppConfig.cs#L3-L9)]
 
 ### Add to your `IConfigBuilder`
 
 Use `Section<T>()` inside `UseConfiguration`. You can chain multiple configs.
 
-:::code language="csharp" source="../../Chefs/App.xaml.cs" range="62-68":::
+[!code-csharp[](../../Chefs/App.xaml.cs#L82-L88)]
 
 ### Get and Update the value
 
 #### UserService.cs
 
 1. Inject `IWritableOptions<AppConfig>` in the constructor.
-:::code language="csharp" source="../../Chefs/Services/Users/UserService.cs" range="10-14":::
-:::code language="csharp" source="../../Chefs/Services/Users/UserService.cs" range="6":::
+
+[!code-csharp[](../../Chefs/Services/Users/UserService.cs#L7-L11)]
 
 2. Implement the logic to read and write to the configuration.
-:::code language="csharp" source="../../Chefs/Services/Users/UserService.cs" range="20-52":::
+
+[!code-csharp[](../../Chefs/Services/Users/UserService.cs#L19-L20)]
+
+[!code-csharp[](../../Chefs/Services/Users/UserService.cs#L38-L49)]
 
 ## Source Code
 
 Chefs app
-- [App UseConfiguration](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/App.cs#L31)
-- [App UserService](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/App.cs#L83)
-- [UserService](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Services/Users/UserService.cs)
-- [SettingModel](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Presentation/SettingsModel.cs#L22)
-- [SettingPage](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/SettingsPage.xaml#L125)
+- [App UseConfiguration](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L82-L88)
+- [App UserService](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L155)
+- [UserService](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Services/Users/UserService.cs)
+- [SettingModel](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/SettingsModel.cs#L22-L34)
+- [SettingPage](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SettingsPage.xaml#L120)
 
 ## Documentation
 

@@ -26,12 +26,12 @@ The `InputExtensions` class provides a set of attached properties that can be us
 
 The above code has the following effect:
 
-![InputExtensions Animation](../assets/inputextensions-animated.gif)
+<img src="../assets/inputextensions-animated.gif" alt="InputExtensions Animation" width="300" />
 
 ## Source Code
 
-- [Registration Page (1)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/RegistrationPage.xaml#L31)
-- [Registration Page (2)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/RegistrationPage.xaml#L43)
+- [Registration Page (1)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L31)
+- [Registration Page (2)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L43)
 
 ## Documentation
 

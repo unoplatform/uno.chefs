@@ -48,7 +48,7 @@ Alternatively, when using Navigation, you can use the Navigate callback to add a
 
 ## Source Code
 
-- [ShellControl.xaml](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/ShellControl.xaml#L12)
+- [ShellControl.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/ShellControl.xaml#L12)
 
 ## Documentation
 

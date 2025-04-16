@@ -31,26 +31,19 @@ Given the following XAML:
 
 ![FAB with Icon](../assets/fab-icon.png)
 
-### TextBox/PasswordBox Icon
+### TextBox Icon
+
+[!code-xml[](../../Chefs/Views/LoginPage.xaml#L29-L38)]
+
+### PasswordBox Icon
 
 ```xml
-<Page ...
-      xmlns:ut="using:Uno.Themes">
-
-    <TextBox PlaceholderText="Username"
-            Style="{StaticResource OutlinedTextBoxStyle}">
-        <ut:ControlExtensions.Icon>
-            <FontIcon Glyph="{StaticResource Icon_Person_Outline}" />
-        </ut:ControlExtensions.Icon>
-    </TextBox>
     <PasswordBox PlaceholderText="Password"
-                Style="{StaticResource OutlinedPasswordBoxStyle}">
+                 Style="{StaticResource OutlinedPasswordBoxStyle}">
         <ut:ControlExtensions.Icon>
             <FontIcon Glyph="{StaticResource Icon_Lock}" />
         </ut:ControlExtensions.Icon>
     </PasswordBox>
-
-</Page>
 ```
 
 ![Login Controls with Icon](../assets/login-icon.png)
@@ -59,12 +52,12 @@ Given the following XAML:
 
 Chefs app
 
-- [Login Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/LoginPage.xaml#L35-L37)
-- [Login Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/LoginPage.xaml#L60-L62)
-- [Settings Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SettingsPage.xaml#L49-L52)
-- [Favorite Recipes Page (Button)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/FavoriteRecipesPage.xaml#L57-L61)
-- [Profile Page (Button)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/ProfilePage.xaml#L49-L52)
-- [Live Cooking Page (Button)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/LiveCookingPage.xaml#L253-L255)
+- [Login Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LoginPage.xaml#L35-L37)
+- [Login Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LoginPage.xaml#L60-L62)
+- [Settings Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SettingsPage.xaml#L49-L52)
+- [Favorite Recipes Page (Button)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FavoriteRecipesPage.xaml#L57-L60)
+- [Profile Page (Button)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/ProfilePage.xaml#L49-L52)
+- [Live Cooking Page (Button)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LiveCookingPage.xaml#L233-L235)
 
 ## Documentation
 

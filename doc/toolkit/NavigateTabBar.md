@@ -12,7 +12,7 @@ Navigating between different sections or categories in an Uno Platform applicati
 
 The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offers a streamlined way to include navigation within your app. It allows users to switch between main areas of the app effortlessly.
 
-- [Include](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Views/MainPage.xaml#L9-L10) the Uno Extensions Navigation and Toolkit namespace in your XAML:
+- [Include](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L9-L10) the Uno Extensions Navigation and Toolkit namespace in your XAML:
 
     ```xml
     xmlns:uen="using:Uno.Extensions.Navigation.UI"
@@ -35,10 +35,10 @@ The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offer
 
   ```xml
   <utu:TabBar x:Name="DetailTabs">
-  <utu:TabBarItem Label="Ingredients" />
-  <utu:TabBarItem Label="Steps" />
-  <utu:TabBarItem Label="Reviews" />
-  <utu:TabBarItem Label="Nutrition" />
+      <utu:TabBarItem Label="Ingredients" />
+      <utu:TabBarItem Label="Steps" />
+      <utu:TabBarItem Label="Reviews" />
+      <utu:TabBarItem Label="Nutrition" />
   </utu:TabBar>
   ```
 
@@ -48,33 +48,7 @@ The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offer
 
   To enable region-based navigation, you must set the Region.Attached property:
 
-  ```xml
-    <utu:TabBar uen:Region.Attached="True"
-						Style="{StaticResource VerticalTabBarStyle}"
-						utu:AutoLayout.PrimaryAlignment="Stretch">
-
-				<utu:TabBarItem uen:Region.Name="Home"
-								Content="Home">
-					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Home}" />
-					</utu:TabBarItem.Icon>
-				</utu:TabBarItem>
-
-				<utu:TabBarItem uen:Region.Name="-/Search"
-								Content="Search">
-					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Search}" />
-					</utu:TabBarItem.Icon>
-				</utu:TabBarItem>
-
-				<utu:TabBarItem uen:Region.Name="FavoriteRecipes"
-								Content="Favorites">
-					<utu:TabBarItem.Icon>
-						<PathIcon Data="{StaticResource Icon_Heart}" />
-					</utu:TabBarItem.Icon>
-				</utu:TabBarItem>
-		</utu:TabBar>
-  ```
+  [!code-xml[](../../Chefs/Views/MainPage.xaml#L36-L65)]
   
   `uen:Region.Name="..."` on each `TabBarItem` links each tab to a specific content region.
 
@@ -90,9 +64,9 @@ The above code has the following effect:
 
 ## Source Code
 
-- [Main Navigation TabBar](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Views/MainPage.xaml#L41-L74)
+- [Main Navigation TabBar](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L36-L65)
 
-- [Recipe Detail Top TabBar](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Views/RecipeDetailsPage.xaml#L166-L181)
+- [Recipe Detail Top TabBar](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L173-L192)
 
 ## Documentation
 

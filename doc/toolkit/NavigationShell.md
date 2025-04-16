@@ -144,4 +144,4 @@ For more detailed information and advanced use cases of navigation with TabBar, 
 
 Chefs app
 
-- [MainPage.xaml](https://github.com/unoplatform/uno.chefs/blob/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/App.cs#L43)
+- [MainPage.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml)

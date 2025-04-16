@@ -10,32 +10,14 @@ The base `ToggleButton` control does not provide a way to switch its content whe
 
 ## Solution
 
-The [Uno Themes library](xref:Uno.Themes.Overview) provides a set of attached properties grouped under the `ControlExtensions` class. One of these attached properties is the `AlternateContent` property. The [Uno Material library](Uno.Themes.Material.GetStarted) provides custom styles for the `ToggleButton` that support the `AlternateContent` property.
+The [Uno Themes library](xref:Uno.Themes.Overview) provides a set of attached properties grouped under the `ControlExtensions` class. One of these attached properties is the `AlternateContent` property. The [Uno Material library](xref:Uno.Themes.Material.GetStarted) provides custom styles for the `ToggleButton` that support the `AlternateContent` property.
 
 ### ToggleButton AlternateContent
 
 Given the following XAML:
 
-```xml
-<Page ...
-      xmlns:ut="using:Uno.Themes">
+[!code-xml[](../../Chefs/Views/HomePage.xaml#L46-L59)]
 
-    <ToggleButton Style="{StaticResource IconToggleButtonStyle}"
-                IsChecked="{Binding IsFavorite}"
-                Command="{utu:AncestorBinding AncestorType=uer:FeedView, Path=DataContext.FavoriteRecipe}"
-                CommandParameter="{Binding}">
-        <ToggleButton.Content>
-            <PathIcon Data="{StaticResource Icon_Heart}"
-                        Foreground="{ThemeResource OnSurfaceBrush}" />
-        </ToggleButton.Content>
-        <ut:ControlExtensions.AlternateContent>
-            <PathIcon Data="{StaticResource Icon_Heart_Filled}"
-                        Foreground="{ThemeResource PrimaryBrush}" />
-        </ut:ControlExtensions.AlternateContent>
-    </ToggleButton>
-
-</Page>
-```
 
 ![ToggleButton with AlternateContent](../assets/toggle-alternate-content.gif)
 
@@ -43,8 +25,8 @@ Given the following XAML:
 
 Chefs app
 
-- [Home Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/HomePage.xaml#L55-L58)
-- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/RecipeDetailsPage.xaml#L370-L381)
+- [Home Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L55-L58)
+- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L363-L374)
 
 ## Documentation
 
