@@ -115,6 +115,7 @@ public partial class App : Application
 					.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableSavedRecipesData)
 #endif
 					.AddJsonTypeInfo(AppConfigContext.Default.AppConfig)
+					.AddJsonTypeInfo(AppConfigContext.Default.DictionaryStringAppConfig)
 					.AddContentSerializer(context))
 
 				.ConfigureServices((context, services) =>
