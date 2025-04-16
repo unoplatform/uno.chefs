@@ -1,5 +1,7 @@
 using Android.App;
+using Android.OS;
 using Android.Views;
+using Java.Interop;
 
 namespace Chefs.Droid;
 
@@ -10,4 +12,8 @@ namespace Chefs.Droid;
 )]
 public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
 {
+#if USE_UITESTS
+	[Export("GetCurrentPage")]
+	public string GetCurrentPage(string unused) => App.GetCurrentPage();
+#endif
 }

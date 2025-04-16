@@ -1,0 +1,12 @@
+<Project ToolsVersion="15.0">
+	<PropertyGroup>
+		<!-- Uncomment each line for each platform that you want to build: -->
+
+		<!-- <TargetFrameworkOverride Condition="''!='hint: WinUI'">$(TargetFrameworkOverride);net9.0-windows10.0.19041</TargetFrameworkOverride> -->
+		<!-- <TargetFrameworkOverride Condition="''!='hint: WASM'">$(TargetFrameworkOverride);net9.0-browserwasm</TargetFrameworkOverride> -->
+		<!-- <TargetFrameworkOverride Condition="''!='hint: Desktop'">$(TargetFrameworkOverride);net9.0-desktop</TargetFrameworkOverride> -->
+		<!-- <TargetFrameworkOverride Condition="''!='hint: iOS'">$(TargetFrameworkOverride);net9.0-ios</TargetFrameworkOverride> -->
+		<!-- <TargetFrameworkOverride Condition="''!='hint: Android'">$(TargetFrameworkOverride);net9.0-android</TargetFrameworkOverride> -->
+		<!-- <TargetFrameworkOverride Condition="''!='hint: macOS Catalyst'">$(TargetFrameworkOverride);net9.0-maccatalyst</TargetFrameworkOverride> -->
+	</PropertyGroup>
+</Project>

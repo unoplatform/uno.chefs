@@ -23,4 +23,3 @@ steps:
     errorActionPreference: continue
     ignoreLASTEXITCODE: true
     retryCountOnTaskFailure: 3
-    condition: and(succeeded(), eq(variables['Agent.OS'], 'Darwin'))

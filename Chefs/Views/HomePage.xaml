@@ -103,6 +103,7 @@
 				</utu:AutoLayout>
 
 				<uer:FeedView x:Name="TrendingNowFeed"
+							  AutomationProperties.AutomationId="TrendingNowFeed"
 							  Source="{Binding TrendingNow}">
 					<DataTemplate>
 						<ScrollViewer Padding="16,0"

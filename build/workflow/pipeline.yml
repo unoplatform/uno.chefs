@@ -52,3 +52,6 @@ jobs:
 - template: build-ios-catalyst.yml
 - template: build-wasm.yml
 - template: build-skia-desktop.yml
+- template: stage-uitests-ios.yml
+- template: stage-uitests-android.yml
+- template: stage-uitests-wasm.yml

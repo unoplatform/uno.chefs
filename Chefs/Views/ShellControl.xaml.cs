@@ -1,3 +1,5 @@
+using Uno.UI.Extensions;
+
 namespace Chefs.Views;
 
 public sealed partial class ShellControl : UserControl, IContentControlProvider
@@ -10,4 +12,6 @@ public sealed partial class ShellControl : UserControl, IContentControlProvider
 	}
 
 	public ContentControl ContentControl => Splash;
+
+	public Frame? RootFrame => Splash.FindFirstDescendant<Frame>();
 }

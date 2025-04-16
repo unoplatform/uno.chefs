@@ -1,0 +1,74 @@
+﻿jobs:
+- job: Android_UITests_Run
+  dependsOn: Android_UITest_Build
+  displayName: 'Run Android UI Tests'
+  timeoutInMinutes: 120
+  variables:
+    CI_Build: true
+    SourceLinkEnabled: false
+
+  strategy:
+    maxParallel: 2
+    matrix:
+      Native:
+        UseSkiaRendering: false
+        VariantName: Native
+        PackageName: uno.platform.chefs
+      Skia:
+        UseSkiaRendering: true
+        PackageName: uno.platform.chefs.skia
+        VariantName: Skia
+
+  pool:
+    vmImage: 'macOS-14'
+
+  steps:
+  - checkout: self
+    clean: true
+
+  - task: PowerShell@2
+    displayName: 'Install coreutils'
+    inputs:
+      targetType: inline
+      script: |
+        brew install coreutils
+
+  - task: DownloadBuildArtifacts@0
+    displayName: 'Download Android Chefs App'
+    inputs:
+        artifactName: Android_UITest_$(VariantName)
+        downloadPath: '$(build.sourcesdirectory)/build'
+
+  - template: templates/dotnet-install-mac.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-android'
+
+  - template: templates/canary-updater.yml
+
+  - bash: |
+      chmod +x $(build.sourcesdirectory)/build/scripts/android-uitest-run.sh
+      $(build.sourcesdirectory)/build/scripts/android-uitest-run.sh
+    displayName: Run Android UITests ($(VariantName))
+    retryCountOnTaskFailure: 3
+    env:
+      VARIANT_NAME: "$(VariantName)"
+      USE_SKIA_RENDERING: "$(UseSkiaRendering)"
+      PACKAGE_NAME: "$(PackageName)"
+
+  - task: PublishTestResults@2
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      testRunTitle: 'Android UITest Run ($(VariantName))'
+      testResultsFormat: 'NUnit'
+      testResultsFiles: '$(build.sourcesdirectory)/build/android-uitest-results-$(VariantName).xml'
+      failTaskOnFailedTests: true
+      failTaskOnMissingResultsFile: true
+
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: chefs-uitests-android-$(VariantName)
+      ArtifactType: Container

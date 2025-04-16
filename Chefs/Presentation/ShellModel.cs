@@ -7,7 +7,7 @@ public partial record ShellModel
 	public ShellModel(INavigator navigator)
 	{
 		_navigator = navigator;
-
+		
 		_ = Start();
 	}
 

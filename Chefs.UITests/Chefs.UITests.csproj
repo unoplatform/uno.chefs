@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<IsTestProject>true</IsTestProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		
+		<!-- Comment to use native rendering -->
+		<UseSkiaRendering Condition="'$(UseSkiaRendering)'==''">true</UseSkiaRendering>
+		
+		<DefineConstants Condition="$(TargetFrameworkOverride.ToLowerInvariant().EndsWith('-android'))">$(DefineConstants);TARGET_FRAMEWORK_OVERRIDE_ANDROID</DefineConstants>
+		<DefineConstants Condition="$(TargetFrameworkOverride.ToLowerInvariant().Contains('-ios'))">$(DefineConstants);TARGET_FRAMEWORK_OVERRIDE_IOS</DefineConstants>
+		<DefineConstants Condition="'$(UseSkiaRendering)'=='true'">$(DefineConstants);HAS_SKIA_RENDERER</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="NUnit" VersionOverride="3.14.0" />
+		<PackageReference Include="FluentAssertions" VersionOverride="6.12.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" VersionOverride="17.9.0" />
+		<PackageReference Include="Newtonsoft.Json" VersionOverride="13.0.3" />
+		<PackageReference Include="NUnit3TestAdapter" VersionOverride="4.2.0" />
+		<PackageReference Include="Uno.UITest.Helpers" VersionOverride="1.1.0-dev.82" />
+		<PackageReference Include="Xamarin.UITest" VersionOverride="4.4.0" />
+		<PackageReference Include="NunitXml.TestLogger" VersionOverride="3.1.15" />
+	</ItemGroup>
+
+</Project>
