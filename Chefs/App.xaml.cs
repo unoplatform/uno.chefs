@@ -90,8 +90,9 @@ public partial class App : Application
 				// Enable localization (see appsettings.json for supported languages)
 				.UseLocalization()
 
-				// Register Json serializers (ISerializer and ISerializer)
+				// Register Json serializers (ISerializer)
 				.UseSerialization((context, services) => services
+#if USE_MOCKS
 					.AddJsonTypeInfo(MockEndpointContext.Default.ListCookbookData)
 					.AddJsonTypeInfo(MockEndpointContext.Default.ListSavedCookbooksData)
 					.AddJsonTypeInfo(MockEndpointContext.Default.CookbookData)
@@ -112,6 +113,9 @@ public partial class App : Application
 					.AddJsonTypeInfo(MockEndpointContext.Default.SavedRecipesData)
 					.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData)
 					.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableSavedRecipesData)
+#endif
+					.AddJsonTypeInfo(AppConfigContext.Default.AppConfig)
+					.AddJsonTypeInfo(AppConfigContext.Default.DictionaryStringAppConfig)
 					.AddContentSerializer(context))
 
 				.ConfigureServices((context, services) =>

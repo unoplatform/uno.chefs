@@ -13,13 +13,10 @@ on:
 
 jobs:
   build_and_deploy_job_azure_static_apps:
-    strategy:
-      matrix:
-        renderer: ["native", "skia"]
     env:
       DIST_PATH: Chefs/bin/Release/net9.0-browserwasm/wwwroot
 
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
     runs-on: ubuntu-latest
     container: 'unoplatform/wasm-build:3.0'
     name: Build Azure Static Apps
@@ -49,16 +46,16 @@ jobs:
       - name: Build app
         run: |
           cd Chefs
-          dotnet build -c Release "/p:UseSkiaRendering=${{ matrix.renderer == 'skia' }}" /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" /bl:./artifacts-logs/build.binlog
+          dotnet build -c Release /p:UseSkiaRendering=true /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" /bl:artifacts-logs/wasm-github-ci-build.binlog
 
       - uses: actions/upload-artifact@v4
         with:
-          name: wasm-site-${{ matrix.renderer }}
+          name: wasm-site-skia
           path: ${{ env.DIST_PATH }}
 
       - uses: actions/upload-artifact@v4
         with:
-          name: logs-${{ matrix.renderer }}
+          name: logs-skia
           path: artifacts-logs
 
       - name: Publish to Azure Static WebApps
@@ -75,15 +72,12 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
-          deployment_environment: "${{ matrix.renderer }}"
+          deployment_environment: "skia"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
-    strategy:
-      matrix:
-        renderer: ["native", "skia"]
     steps:
       - name: Close Pull Request
         id: closepullrequest
@@ -91,4 +85,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           action: "close"
-          deployment_environment: "${{ matrix.renderer }}"
+          deployment_environment: "skia"
