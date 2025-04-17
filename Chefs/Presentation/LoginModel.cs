@@ -17,19 +17,19 @@ public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, I
 
 	private async ValueTask DoLogin(Credentials userCredentials, CancellationToken ct)
 	{
-		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", userCredentials.Username! }, { "Password", userCredentials.Password! } });
+		//await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", userCredentials.Username! }, { "Password", userCredentials.Password! } });
 		await NavigateToMain(ct);
 	}
 
 	public async ValueTask LoginWithGoogle(CancellationToken ct)
 	{
-		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", "GoogleUser" }, { "Password", "uno123" } });
+		//await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", "GoogleUser" }, { "Password", "uno123" } });
 		await NavigateToMain(ct);
 	}
 
 	public async ValueTask LoginWithApple(CancellationToken ct)
 	{
-		await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", "AppleUser" }, { "Password", "uno123" } });
+		//await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", "AppleUser" }, { "Password", "uno123" } });
 		await NavigateToMain(ct);
 	}
 
