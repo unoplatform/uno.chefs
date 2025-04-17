@@ -237,4 +237,8 @@
 			<WasmNativeDebugSymbols>true</WasmNativeDebugSymbols>
 		</PropertyGroup>
 	</Target>
+
+	<ItemGroup>
+		<LinkerDescriptor Include="Platforms\WebAssembly\LinkerConfig.xml" />
+	</ItemGroup>
 </Project>
