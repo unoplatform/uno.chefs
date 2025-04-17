@@ -4,20 +4,17 @@ using UserData = Chefs.Services.Clients.Models.UserData;
 
 namespace Chefs.Services.Users;
 
-public class UserService(
-	ChefsApiClient client,
-	IWritableOptions<AppConfig> chefAppOptions,
-	IWritableOptions<Credentials> credentialOptions)
+public class UserService(ChefsApiClient client)
 	: IUserService
 {
-	private readonly IWritableOptions<Credentials> _credentialOptions = credentialOptions;
+	//private readonly IWritableOptions<Credentials> _credentialOptions = credentialOptions;
 	
 	private IState<User> _user => State.Async(this, GetCurrent);
 
 	public IFeed<User> User => _user;
 
 	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
-		=> chefAppOptions.Value;
+		=> new();
 
 	public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
 	{
@@ -45,7 +42,7 @@ public class UserService(
 			AccentColor = chefSettings.AccentColor,
 		};
 
-		await chefAppOptions.UpdateAsync(_ => settings);
+		//await chefAppOptions.UpdateAsync(_ => settings);
 	}
 
 	public async Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null)
