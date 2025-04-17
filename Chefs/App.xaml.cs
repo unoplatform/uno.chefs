@@ -77,7 +77,7 @@ public partial class App : Application
 				//{
 				//	// Configure log levels for different categories of logging
 				//	logBuilder.SetMinimumLevel(
-				//		context.HostingEnvironment.IsDevelopment() ? LogLevel.Information : LogLevel.Warning);
+				//		context.HostingEnvironment.IsDevelopment() ? LogLevel.Trace : LogLevel.Warning);
 				//}, enableUnoLogging: true)
 				.UseConfiguration(configure: configBuilder =>
 					configBuilder
@@ -243,8 +243,6 @@ public partial class App : Application
 	/// </summary>
 	public static void InitializeLogging()
 	{
-		//-:cnd:noEmit
-#if true // DEBUG
 		// Logging is disabled by default for release builds, as it incurs a significant
 		// initialization cost from Microsoft.Extensions.Logging setup. If startup performance
 		// is a concern for your application, keep this disabled. If you're running on the web or
@@ -264,12 +262,12 @@ public partial class App : Application
 #endif
 
 			// Exclude logs below this level
-			builder.SetMinimumLevel(LogLevel.Information);
+			builder.SetMinimumLevel(LogLevel.Trace);
 
 			// Default filters for Uno Platform namespaces
-			builder.AddFilter("Uno", LogLevel.Information);
-			builder.AddFilter("Windows", LogLevel.Information);
-			builder.AddFilter("Microsoft", LogLevel.Information);
+			builder.AddFilter("Uno", LogLevel.Trace);
+			builder.AddFilter("Windows", LogLevel.Trace);
+			builder.AddFilter("Microsoft", LogLevel.Trace);
 
 			// Generic Xaml events
 			// builder.AddFilter("Microsoft.UI.Xaml", LogLevel.Debug );
@@ -293,10 +291,11 @@ public partial class App : Application
 			// builder.AddFilter("Uno.UI.DataBinding.BinderReferenceHolder", LogLevel.Debug );
 
 			// DevServer and HotReload related
-			// builder.AddFilter("Uno.UI.RemoteControl", LogLevel.Information);
+			// builder.AddFilter("Uno.UI.RemoteControl", LogLevel.Trace);
 
 			// Debug JS interop
-			// builder.AddFilter("Uno.Foundation.WebAssemblyRuntime", LogLevel.Debug );
+			builder.AddFilter("Uno.Foundation.WebAssemblyRuntime", LogLevel.Trace);
+			builder.AddFilter("Uno.Extensions", LogLevel.Trace);
 		});
 
 		global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory = factory;
@@ -304,7 +303,5 @@ public partial class App : Application
 #if HAS_UNO
 		global::Uno.UI.Adapter.Microsoft.Extensions.Logging.LoggingAdapter.Initialize();
 #endif
-#endif
-		//+:cnd:noEmit
 	}
 }
