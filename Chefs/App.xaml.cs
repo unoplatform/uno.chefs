@@ -36,11 +36,13 @@ public partial class App : Application
 						custom
 							.Login((sp, dispatcher, credentials, cancellationToken) =>
 							{
+								Console.WriteLine("Custom authentication triggered");
 								// Check for username to simulate credential processing
 								if (!(credentials?.TryGetValue("Username", out var username) ??
 									  false && !string.IsNullOrEmpty(username)))
 
 								{
+									Console.WriteLine("No username provided");
 									return ValueTask.FromResult<IDictionary<string, string>?>(null);
 								}
 
@@ -51,11 +53,12 @@ public partial class App : Application
 									{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
 									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
                                 };
+								Console.WriteLine($"Custom authentication successful for user: {username}");
 								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
 
 
 							});
-					}, name: "CustomAuth")
+					}, name: "Custom")
 				)
 				.UseHttp((context, services) =>
 				{
