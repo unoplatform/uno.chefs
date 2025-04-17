@@ -89,35 +89,11 @@ public partial class App : Application
 
 				// Enable localization (see appsettings.json for supported languages)
 				.UseLocalization()
-
 				// Register Json serializers (ISerializer)
 				.UseSerialization((context, services) => services
-#if USE_MOCKS
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListCookbookData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListSavedCookbooksData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.CookbookData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.RecipeData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListNotificationData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListRecipeData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListCategoryData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListSavedRecipesData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListIngredientData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListUserData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListStepData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ListReviewData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.LoginRequest)
-					.AddJsonTypeInfo(MockEndpointContext.Default.UserData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.Guid)
-					.AddJsonTypeInfo(MockEndpointContext.Default.ReviewData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.SavedCookbooksData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.SavedRecipesData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData)
-					.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableSavedRecipesData)
-#endif
-					.AddJsonTypeInfo(AppConfigContext.Default.AppConfig)
-					.AddJsonTypeInfo(AppConfigContext.Default.DictionaryStringAppConfig)
-					.AddContentSerializer(context))
-
+					.AddSerializationTypeInfo()
+					.AddContentSerializer(context)
+				)
 				.ConfigureServices((context, services) =>
 				{
 					services
