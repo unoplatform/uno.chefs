@@ -11,11 +11,19 @@ public class TimeSpanObjectConverter : JsonConverter<TimeSpan>
 			return TimeSpan.Zero;
 		}
 
-		using (JsonDocument doc = JsonDocument.ParseValue(ref reader))
+		using var doc = JsonDocument.ParseValue(ref reader);
+		var root = doc.RootElement;
+		switch (root.ValueKind)
 		{
-			var root = doc.RootElement;
-			var ticks = root.GetProperty("ticks").GetInt64();
-			return new TimeSpan(ticks);
+			case JsonValueKind.String:
+				return TimeSpan.Parse(root.GetString() ?? string.Empty);
+			case JsonValueKind.Object when root.TryGetProperty("ticks", out var ticksElement):
+				return new TimeSpan(ticksElement.GetInt64());
+			default:
+			{
+				var ticks = root.GetProperty("ticks").GetInt64().ToString();
+				return new TimeSpan(Convert.ToInt64(ticks));
+			}
 		}
 	}
 
