@@ -46,7 +46,7 @@ jobs:
       - name: Build app
         run: |
           cd Chefs
-          dotnet build -c Release /p:UseSkiaRendering=true /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" /bl:artifacts-logs/wasm-github-ci-build.binlog
+          dotnet build -c Release /p:UseSkiaRendering=true /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" -bl:wasm-github-ci-build.binlog
 
       - uses: actions/upload-artifact@v4
         with:
@@ -56,7 +56,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: logs-skia
-          path: artifacts-logs
+          path: Chefs/wasm-github-ci-build.binlog
 
       - name: Publish to Azure Static WebApps
         continue-on-error: true
