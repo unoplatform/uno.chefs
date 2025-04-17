@@ -1,5 +1,14 @@
 jobs:
 - job: Android
+  strategy:
+    matrix:
+      Android:
+        UseSkiaRendering: false
+        VariantName: Native
+      Android_Skia:
+        UseSkiaRendering: true
+        VariantName: Skia
+
   pool:
     vmImage: windows-2022
 
@@ -9,6 +18,11 @@ jobs:
     value: 1
 
   steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
   - template: templates/dotnet-install-windows.yml
@@ -22,18 +36,18 @@ jobs:
       secureFile: unoplatform.jks
 
   - script: |
-      cd $(build.sourcesdirectory)/src/Chefs
-      dotnet publish -f:net9.0-android /p:TargetFrameworkOverride=net9.0-android -c:Release "/p:InformationalVersion=%GITVERSION_InformationalVersion%" /p:AndroidSigningKeyStore=$(keyStore.secureFilePath) /p:AndroidSigningStorePass=$(AndroidSigningStorePass) /p:AndroidSigningKeyPass=$(AndroidSigningKeyPass) /p:AndroidSigningKeyAlias=$(AndroidSigningKeyAlias) /p:AndroidKeyStore=true /bl:$(build.artifactstagingdirectory)/build-android.binlog 
+      cd $(build.sourcesdirectory)/Chefs
+      dotnet publish -f:net9.0-android /p:TargetFrameworkOverride=net9.0-android -c:Release -p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" /p:AndroidSigningKeyStore=$(keyStore.secureFilePath) /p:AndroidSigningStorePass=$(AndroidSigningStorePass) /p:AndroidSigningKeyPass=$(AndroidSigningKeyPass) /p:AndroidSigningKeyAlias=$(AndroidSigningKeyAlias) /p:AndroidKeyStore=true /bl:$(build.artifactstagingdirectory)/logs/build-android.binlog 
     displayName: 'Build Android'
 
   - task: CopyFiles@2
     displayName: 'Publish Binaries'
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/src/Chefs/bin/Release/
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/
       Contents:  |
         **/*.apk
         **/*.aab
-      TargetFolder: $(build.artifactstagingdirectory)
+      TargetFolder: $(build.artifactstagingdirectory)/bin
       CleanTargetFolder: false
       OverWrite: false
       flattenFolders: false
@@ -41,6 +55,13 @@ jobs:
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
-      PathtoPublish: $(build.artifactstagingdirectory)
-      ArtifactName: Android
+      PathtoPublish: $(build.artifactstagingdirectory)/logs
+      ArtifactName: android-is_skia_$(UseSkiaRendering)-logs
       ArtifactType: Container
+
+  - task: PublishPipelineArtifact@1
+    retryCountOnTaskFailure: 3
+    displayName: Publish artifacts
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/bin
+      artifactName: android-is_skia_$(UseSkiaRendering)

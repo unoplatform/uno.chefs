@@ -1,0 +1,32 @@
+﻿<Page xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
+	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:utum="using:Uno.Toolkit.UI.Material"
+	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	  xmlns:ut="using:Uno.Themes"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:local="using:Chefs.Views"
+	  xmlns:map="using:Mapsui.UI.WinUI"
+	  x:Class="Chefs.Views.MapPage"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  mc:Ignorable="d"
+	  Background="{ThemeResource BackgroundBrush}"
+	  utu:StatusBar.Foreground="Dark"
+	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<utu:AutoLayout>
+		<utu:NavigationBar Content="Near me">
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton>
+					<AppBarButton.Icon>
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.MainCommand>
+		</utu:NavigationBar>
+		<map:MapControl x:Name="MapControl"
+						utu:AutoLayout.PrimaryAlignment="Stretch" />
+	</utu:AutoLayout>
+</Page>

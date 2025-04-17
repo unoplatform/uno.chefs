@@ -1,6 +1,6 @@
 parameters:
-  DotNetVersion: '9.0.100'
-  UnoCheck_Version: '1.28.3'
+  DotNetVersion: '9.0.200'
+  UnoCheck_Version: '1.31.0-dev.12'
   Dotnet_Tools: '~/.dotnet/tools'
   UnoCheckParameters: ''
 
@@ -17,6 +17,7 @@ steps:
 
   - bash: |
       dotnet tool update --global uno.check --version ${{ parameters.UnoCheck_Version }} --add-source https://api.nuget.org/v3/index.json
-      uno-check --verbose --ci --non-interactive --fix --skip gtk3 --skip androidsdk --pre-major ${{ parameters.UnoCheckParameters }}
+      uno-check --verbose --ci --non-interactive --fix --skip gtk3 --skip androidsdk --skip dotnetnewunotemplates --skip unosdk ${{ parameters.UnoCheckParameters }}
     displayName: Install .NET Workloads
+    retryCountOnTaskFailure: 3
     condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))

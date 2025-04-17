@@ -1,0 +1,83 @@
+﻿<Page x:Class="Chefs.Views.CookbookDetailPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:local="using:Chefs.Views"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:models="using:Chefs.Business.Models"
+	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:toolkit="using:Uno.UI.Toolkit"
+	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
+	  xmlns:ut="using:Uno.Themes"
+	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  NavigationCacheMode="Enabled"
+	  mc:Ignorable="d"
+	  Background="{ThemeResource BackgroundBrush}">
+
+	<Page.Resources>
+		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
+								ItemsStretch="Fill"
+								MaximumRowsOrColumns="{utu:Responsive Narrow=2,
+																	  Wide=7}"
+								MinColumnSpacing="{utu:Responsive Narrow=6,
+																  Wide=15}"
+								MinItemWidth="{utu:Responsive Narrow=155,
+															  Wide=240}"
+								MinRowSpacing="{utu:Responsive Narrow=6,
+															   Wide=15}" />
+	</Page.Resources>
+
+	<utu:AutoLayout>
+		<utu:NavigationBar Content="{Binding Cookbook.Name}"
+						   utu:AutoLayout.PrimaryAlignment="Auto">
+			<utu:NavigationBar.MainCommand>
+				<AppBarButton>
+					<AppBarButton.Icon>
+						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
+					</AppBarButton.Icon>
+				</AppBarButton>
+			</utu:NavigationBar.MainCommand>
+		</utu:NavigationBar>
+		<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
+					  Source="{Binding Cookbook}">
+			<DataTemplate>
+				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
+								Padding="16">
+					<ScrollViewer x:Name="RecipesScrollViewer"
+								  utu:AutoLayout.PrimaryAlignment="Stretch"
+								  HorizontalScrollMode="Disabled"
+								  VerticalScrollBarVisibility="Hidden">
+						<utu:AutoLayout>
+							<TextBlock Padding="0,0,0,16"
+									   HorizontalAlignment="Stretch"
+									   utu:AutoLayout.CounterAlignment="Center"
+									   Style="{StaticResource BodyLarge}">
+								<Run Text="{Binding Data.Recipes.Count}" />
+								<Run Text="results" />
+							</TextBlock>
+							<muxc:ItemsRepeater uen:Navigation.Request="CookbookRecipeDetails"
+												ItemTemplate="{StaticResource RecipeTemplate}"
+												ItemsSource="{Binding Data.Recipes}"
+												Layout="{StaticResource ResponsiveGridLayout}" />
+						</utu:AutoLayout>
+					</ScrollViewer>
+					<Button x:Name="FabButton"
+							HorizontalAlignment="Right"
+							VerticalAlignment="Bottom"
+							Content="Edit"
+							uen:Navigation.Data="{Binding Data, Mode=TwoWay}"
+							uen:Navigation.Request="UpdateCookbook"
+							utu:AutoLayout.IsIndependentLayout="True"
+							Style="{StaticResource ChefsFabButtonStyle}">
+						<ut:ControlExtensions.Icon>
+							<PathIcon Data="{StaticResource Icon_Edit}" />
+						</ut:ControlExtensions.Icon>
+					</Button>
+				</utu:AutoLayout>
+			</DataTemplate>
+		</uer:FeedView>
+	</utu:AutoLayout>
+</Page>
