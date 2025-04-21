@@ -30,19 +30,14 @@ public partial record CreateUpdateCookbookModel
 
 In the XAML, we simply bind the submit button's `Command` property to the **Submit** command of the model.
 
-```xml
-<Button utu:AutoLayout.PrimaryAlignment="Stretch"
-        Command="{Binding Submit}"
-        Content="{Binding SaveButtonContent}"
-        Style="{StaticResource ChefsPrimaryButtonStyle}" />
-```
+[!code-xml[](../../Chefs/Views/CreateUpdateCookbookPage.xaml#L143-L146)]
 
 ## Source Code
 
 Chefs app
 
-- [CreateUpdateCookbookModel.cs](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Presentation/CreateUpdateCookbookModel.cs#L64-L86)
-- [CreateUpdateCookbookModel.xaml](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/CreateUpdateCookbookPage.xaml#L143-L146)
+- [CreateUpdateCookbookModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/CreateUpdateCookbookModel.cs#L65-L87)
+- [CreateUpdateCookbookModel.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/CreateUpdateCookbookPage.xaml#L143-L146)
 
 ## Documentation
 

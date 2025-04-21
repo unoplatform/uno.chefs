@@ -10,15 +10,7 @@ In a mobile platform context, UI elements can be obscured by device-specific fea
 
 ## Solution
 
-```xml
-<Page ...
-      xmlns:utu="using:Uno.Toolkit.UI"
-      utu:SafeArea.Insets="VisibleBounds">
-
-    ...
-
-</Page>
-```
+[!code-xml[](../../Chefs/Views/WelcomePage.xaml#L21)]
 
 Without SafeArea|SafeArea applied
 -|-
@@ -26,7 +18,7 @@ Without SafeArea|SafeArea applied
 
 ## Source Code
 
-- [Welcome Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/WelcomePage.xaml#L17)
+- [Welcome Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/WelcomePage.xaml#L21)
 
 ## Documentation
 

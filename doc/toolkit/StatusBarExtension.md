@@ -39,8 +39,8 @@ Not set|Light mode|Dark mode
 
 ## Source Code
 
-- [Home Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/HomePage.xaml#L12-L13)
-- [Login Page](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/LoginPage.xaml#L12-L13)
+- [Home Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L12-L13)
+- [Login Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LoginPage.xaml#L12-L13)
 
 ## Documentation
 

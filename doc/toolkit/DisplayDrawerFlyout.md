@@ -1,7 +1,7 @@
 ---
 uid: Uno.Recipes.DisplayDrawerFlyout
 ---
-# How to Display a Drawer Flyout
+# How to Display a Drawer Flyout for Screen Space Management
 
 ## Problem
 In applications, especially on mobile, managing screen space efficiently is crucial. A common UI pattern is a drawer flyout, which can house navigation links or other content without permanently taking up screen real estate.
@@ -97,11 +97,12 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
     ```
 
 ## Example Usage in Chefs
-The Chefs app implements a [ResponsiveDrawerFlyout]() to provide a flexible navigation drawer that adjusts based on the application state and device orientation.
+
+The Chefs app uses a **ResponsiveDrawerFlyout** to provide a flexible navigation drawer that adapts to the application's state and the device's orientation. Refer to the **Source Code** section for the implementation details.
 
 ## Source Code
-- [Responsive Drawer Flyout XAML](https://github.com/unoplatform/uno.chefs/blob/92105f64923058b9ace3897bbea17cdb3b354fe9/src/Chefs/Views/Flyouts/ResponsiveDrawerFlyout.xaml)
-- [ResponsiveDrawerFlyout Code-Behind](https://github.com/unoplatform/uno.chefs/blob/92105f64923058b9ace3897bbea17cdb3b354fe9/src/Chefs/Views/Flyouts/ResponsiveDrawerFlyout.xaml.cs)
+- [Responsive Drawer Flyout XAML](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Flyouts/ResponsiveDrawerFlyout.xaml)
+- [ResponsiveDrawerFlyout Code-Behind](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Flyouts/ResponsiveDrawerFlyout.xaml.cs)
 
 ## Documentation
 - [Drawer Flyout Presenter](xref:Toolkit.Controls.DrawerFlyoutPresenter)

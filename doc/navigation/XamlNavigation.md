@@ -18,18 +18,7 @@ Uno Navigation Extensions allows you to streamline XAML navigation by leveraging
 
 On the Chefs home page there are some `ItemRepeater` controls that each display a list of filtered clickable recipes. When a user clicks on a recipe, they are brought to that specific recipe's details page.
 
-```xml
-<ScrollViewer>
-    <muxc:ItemsRepeater ItemsSource="{Binding Data}"
-                        uen:Navigation.Request="RecipeDetails"
-                        uen:Navigation.Data="{Binding Data}"
-                        ItemTemplate="{StaticResource HomeLargeItemTemplate}">
-        <muxc:ItemsRepeater.Layout>
-            ...
-        </muxc:ItemsRepeater.Layout>
-    </muxc:ItemsRepeater>
-</ScrollViewer>
-```
+[!code-xml[](../../Chefs/Views/HomePage.xaml#L114-L117)]
 
 Clicking on a specific recipe will bring the user to the `RecipeDetailsPage` with the `Recipe` as its `Data` parameter. This page will display all the details of the recipe in question. The `Navigation.Request` property will resolve to the `RecipeDetails` route as registered in the root App.xaml.cs file.
 
@@ -59,8 +48,8 @@ On the Welcome page in Chefs when allowing the user to skip some content, we are
 
 ## Source Code
 
-- [ItemsRepeater navigation request](https://github.com/unoplatform/uno.chefs/blob/f7ccfcc2d47d7d45e2ae34a1a251d8c95311c309/src/Chefs/Views/HomePage.xaml#L115-L135)
-- [Skipping to the Login Page with the -/ Qualifier](https://github.com/unoplatform/uno.chefs/blob/40918c8347386e63237f5ff4c93a61e315fec7d1/src/Chefs/Views/WelcomePage.xaml#L77)
+- [ItemsRepeater navigation request](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L105-L125)
+- [Skipping to the Login Page with the -/ Qualifier](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/WelcomePage.xaml#L175)
 
 ## Documentation
 
