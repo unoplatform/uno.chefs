@@ -1,7 +1,7 @@
 ---
 uid: Uno.Recipes.DisplayDrawerFlyout
 ---
-# How to Display a Drawer Flyout
+# How to Display a Drawer Flyout for Screen Space Management
 
 ## Problem
 In applications, especially on mobile, managing screen space efficiently is crucial. A common UI pattern is a drawer flyout, which can house navigation links or other content without permanently taking up screen real estate.

@@ -20,42 +20,42 @@ In the `Chefs` app, we can utilize the `ResourceExtensions.Resources` attached p
 The `Fab.xaml` file from Chefs demonstrates how to define a custom style with resource overrides packaged as part of the style using the `ResourceExtensions.Resources` attached property:
 
 ```xml
-    <Setter Property="utu:ResourceExtensions.Resources">
-                <Setter.Value>
-                    <ResourceDictionary>
-                        <ResourceDictionary.ThemeDictionaries>
-                            <ResourceDictionary x:Key="Default">
-                                <StaticResource x:Key="FabForeground" ResourceKey="OnPrimaryBrush" />
-                                <StaticResource x:Key="FabForegroundPressed" ResourceKey="OnPrimaryBrush" />
-                                <StaticResource x:Key="FabForegroundPointerOver" ResourceKey="OnPrimaryBrush" />
-                                <StaticResource x:Key="FabForegroundDisabled" ResourceKey="OnSurfaceDisabledBrush" />
-                                <StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
-                                <StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
-                                <StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
-                                <StaticResource x:Key="FabBackgroundDisabled" ResourceKey="SystemControlTransparentBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackground" ResourceKey="SystemControlTransparentBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackgroundPointerOver" ResourceKey="OnPrimaryHoverBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackgroundFocused" ResourceKey="OnPrimaryFocusedBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackgroundPressed" ResourceKey="OnPrimaryPressedBrush" />
-                            </ResourceDictionary>
-                            <ResourceDictionary x:Key="Light">
-                                <StaticResource x:Key="FabForeground" ResourceKey="OnPrimaryBrush" />
-                                <StaticResource x:Key="FabForegroundPressed" ResourceKey="OnPrimaryBrush" />
-                                <StaticResource x:Key="FabForegroundPointerOver" ResourceKey="OnPrimaryBrush" />
-                                <StaticResource x:Key="FabForegroundDisabled" ResourceKey="OnSurfaceDisabledBrush" />
-                                <StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
-                                <StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
-                                <StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
-                                <StaticResource x:Key="FabBackgroundDisabled" ResourceKey="SystemControlTransparentBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackground" ResourceKey="SystemControlTransparentBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackgroundPointerOver" ResourceKey="OnPrimaryHoverBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackgroundFocused" ResourceKey="OnPrimaryFocusedBrush" />
-                                <StaticResource x:Key="FabStateOverlayBackgroundPressed" ResourceKey="OnPrimaryPressedBrush" />
-                            </ResourceDictionary>
-                        </ResourceDictionary.ThemeDictionaries>
-                    </ResourceDictionary>
-                </Setter.Value>
-            </Setter>
+<Setter Property="utu:ResourceExtensions.Resources">
+    <Setter.Value>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <StaticResource x:Key="FabForeground" ResourceKey="OnPrimaryBrush" />
+                    <StaticResource x:Key="FabForegroundPressed" ResourceKey="OnPrimaryBrush" />
+                    <StaticResource x:Key="FabForegroundPointerOver" ResourceKey="OnPrimaryBrush" />
+                    <StaticResource x:Key="FabForegroundDisabled" ResourceKey="OnSurfaceDisabledBrush" />
+                    <StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
+                    <StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
+                    <StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+                    <StaticResource x:Key="FabBackgroundDisabled" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackground" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackgroundPointerOver" ResourceKey="OnPrimaryHoverBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackgroundFocused" ResourceKey="OnPrimaryFocusedBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackgroundPressed" ResourceKey="OnPrimaryPressedBrush" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <StaticResource x:Key="FabForeground" ResourceKey="OnPrimaryBrush" />
+                    <StaticResource x:Key="FabForegroundPressed" ResourceKey="OnPrimaryBrush" />
+                    <StaticResource x:Key="FabForegroundPointerOver" ResourceKey="OnPrimaryBrush" />
+                    <StaticResource x:Key="FabForegroundDisabled" ResourceKey="OnSurfaceDisabledBrush" />
+                    <StaticResource x:Key="FabBackground" ResourceKey="PrimaryBrush" />
+                    <StaticResource x:Key="FabBackgroundPressed" ResourceKey="PrimaryBrush" />
+                    <StaticResource x:Key="FabBackgroundPointerOver" ResourceKey="PrimaryBrush" />
+                    <StaticResource x:Key="FabBackgroundDisabled" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackground" ResourceKey="SystemControlTransparentBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackgroundPointerOver" ResourceKey="OnPrimaryHoverBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackgroundFocused" ResourceKey="OnPrimaryFocusedBrush" />
+                    <StaticResource x:Key="FabStateOverlayBackgroundPressed" ResourceKey="OnPrimaryPressedBrush" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Setter.Value>
+</Setter>
 ```
 
 For more detailed examples of basic lightweight styling, please refer to the [Basic Lightweight Styling recipe book](xref:Uno.Recipes.LightweightStyling).

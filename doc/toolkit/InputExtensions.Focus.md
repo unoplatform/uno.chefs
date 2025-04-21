@@ -2,7 +2,7 @@
 uid: Uno.Recipes.InputExtensions.Focus
 ---
 
-# How to manage focus between input controls using the Enter key in XAML
+# How to navigate between input controls with the keyboard
 
 ## Problem
 

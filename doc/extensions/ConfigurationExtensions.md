@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Configuration
 ---
 
-# How to read/write configuration data for your application
+# How to manage writable configuration data for your application
 
 ## Problem
 

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.CommandExtensions
 ---
 
-# How to invoke an ICommand in XAML for common scenarios without a Command property
+# How to call an ICommand in XAML when the control has no Command property
 
 ## Problem
 

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.InputExtensions.ReturnType
 ---
 
-# How to Use the InputExtensions.ReturnType Property
+# How to Customize Return Key for Input Controls
 
 ## Problem
 

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Hosting
 ---
 
-# Building a Hosted Application
+# How to Build a Hosted Application
 
 Using `Uno.Extensions.Hosting` enables registration of services via dependency injection.
 
