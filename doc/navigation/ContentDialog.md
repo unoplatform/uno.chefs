@@ -55,8 +55,7 @@ public class App : Application
 
 We add our own `ShowDialog` method to `INavigatorExtensions`:
 
-[code-csharp[](../../Chefs/Presentation/Extensions/INavigatorExtensions.cs#L11-L17)]
-
+[!code-csharp[](../../Chefs/Presentation/Extensions/INavigatorExtensions.cs#L11-L17)]
 We are now ready to show a dialog with custom `DialogInfo` wherever we are using navigation. Here's an example where we show the user an error message in our dialog under a condition:
 
 ```csharp
