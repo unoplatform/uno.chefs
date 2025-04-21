@@ -47,10 +47,8 @@
 - name: Building a Hosted Application
   href: xref:Uno.Recipes.Hosting
 
-- name: Data and Storage
+- name: Data and Configuration
   items:
-  - name: Managing Serialized Data
-    href: xref:Uno.Recipes.Storage
   - name: Injecting Serializer Objects as Dependencies
     href: xref:Uno.Recipes.Serialization
   - name: Managing Writable Configuration
