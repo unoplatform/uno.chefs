@@ -78,7 +78,7 @@ public partial record CreateUpdateCookbookModel
 				await _cookbookService.Save(response!, ct);
 			}
 
-			await _navigator.NavigateBackWithResultAsync(this, data: response);
+			await _navigator.NavigateBackAsync(this);
 		}
 		else
 		{
