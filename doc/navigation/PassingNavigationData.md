@@ -14,37 +14,38 @@ The `INavigator` interface provided by `Uno.Extensions` allows robust mechanisms
 
 ### Passing Data Between ViewModels
 
-In the Chefs app, when creating/updating a Cookbook, we use the `NavigateBackWithResultAsync` method from the `INavigator` interface.
+In the Chefs app, when applying filters on the **SearchPage**, we use the `NavigateBackWithResultAsync` method from the `INavigator` interface.
 
-[!code-csharp[](../../Chefs/Presentation/CreateUpdateCookbookModel.cs#L65-L87)]
+[!code-csharp[](../../Chefs/Presentation/FilterModel.cs#L21-L22)]
 
-### Creating or Updating a Cookbook
+### Applying filters on the Search page
 
-The `CreateUpdateCookbookModel` handles the creation or updating of a `Cookbook` entity. When navigating to `CreateUpdateCookbookModel`, a `Cookbook` entity can be passed and used for updating an existing `Cookbook`. If no `Cookbook` is passed as a navigation parameter, we can assume that we will be creating a new `Cookbook`.
+The `FilterModel` handles the updating of a `SearchFilter` entity. When navigating to `FilterModel` from the **SearchPage**, a `SearchFilter` entity can be passed and used for updating an existing `SearchFilter`.
 
-To return the created or updated Cookbook to the previous view:
+The code snippet below shows a `Button` that opens the `FiltersPage`. The key part is `uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay}"`, which passes the current `Filter` value from the `SearchModel` to the `FilterModel`. Because it's a `TwoWay` binding, any changes made in the `FiltersPage` are reflected back in the original model after navigation completes.
 
-```csharp
-// Passing the updated or newly created Cookbook back
-await _navigator.NavigateBackWithResultAsync(this, data: response);
-```
+[!code-xml[](../../Chefs/Views/SearchPage.xaml#L144-L147)]
+
+To return the updated `SearchFilter` with the new filters choices to the **SearchPage**:
+
+[!code-csharp[](../../Chefs/Presentation/FilterModel.cs#L22)]
 
 To enable data passing, make sure the navigation routes are properly configured in `App.xaml.cs`:
 
 In the `RegisterRoutes` method, within the view registration block, configure a `DataViewMap` like this:
 
-[!code-csharp[](../../Chefs/App.xaml.cs#L172)]
+[!code-csharp[](../../Chefs/App.xaml.cs#L174)]
 
 Then, in the route registration block, configure the `RouteMap`s like this:
 
-[!code-csharp[](../../Chefs/App.xaml.cs#L205-L206)]
+[!code-csharp[](../../Chefs/App.xaml.cs#L231)]
 
 ## Source Code
 
 Chefs app
 
-- [Create Update Cookbook Model](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/CreateUpdateCookbookModel.cs#L14)
-- [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L172)
+- [NavigateBackWithResultAsync](https://github.com/unoplatform/uno.chefs/blob/4c94f3ec749e1295470950018cd960f74a109ca3/Chefs/App.xaml.cs#L174)
+- [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/419ddbc6730da4f3742e74ecc9a780dc851b6d5a/Chefs/App.xaml.cs#L174)
 
 ## Documentation
 
