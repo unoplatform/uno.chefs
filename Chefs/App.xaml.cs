@@ -116,6 +116,7 @@ public partial class App : Application
 #endif
 					.AddJsonTypeInfo(AppConfigContext.Default.AppConfig)
 					.AddJsonTypeInfo(AppConfigContext.Default.DictionaryStringAppConfig)
+					.AddJsonTypeInfo(AppConfigContext.Default.String)
 					.AddContentSerializer(context))
 
 				.ConfigureServices((context, services) =>
