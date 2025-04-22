@@ -44,8 +44,8 @@ Then, in the route registration block, configure the `RouteMap`s like this:
 
 Chefs app
 
-- [NavigateBackWithResultAsync](https://github.com/unoplatform/uno.chefs/blob/4c94f3ec749e1295470950018cd960f74a109ca3/Chefs/App.xaml.cs#L174)
-- [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/419ddbc6730da4f3742e74ecc9a780dc851b6d5a/Chefs/App.xaml.cs#L174)
+- [NavigateBackWithResultAsync](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/FilterModel.cs#L21-L22)
+- [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/4c94f3ec749e1295470950018cd960f74a109ca3/Chefs/App.xaml.cs#L174)
 
 ## Documentation
 
