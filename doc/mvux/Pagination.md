@@ -10,7 +10,9 @@ Loading large lists all at once can hurt performance and user experience. Manual
 
 ## Solution
 
-`Uno.Extensions.MVUX` makes pagination easier through the `.PaginatedAsync()` method. This method helps load data in pages and works out-of-the-box with controls that support incremental loading like `ItemsRepeater` or `ListView`.
+`Uno.Extensions.MVUX` makes pagination easier through the `.PaginatedAsync()` method. This method helps load data in pages and works out-of-the-box with controls like `ListView` that support incremental loading when bound to an `ItemsSource` implementing [ISupportIncrementalLoading](https://learn.microsoft.com/en-us/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.data.isupportincrementalloading?view=windows-app-sdk-1.7).
+
+When using `ItemsRepeater`, incremental loading is not supported by default. To make it work, we use the `ItemsRepeaterExtensions` from `Uno.Toolkit.UI`, which adds support for incremental loading.
 
 ## Using Pagination
 
@@ -20,7 +22,7 @@ As an example, in Chefs we show a list of favorite recipes when creating or edit
 
 The `PaginatedAsync` method takes a function that returns the next page of data. It provides the page size and current item count, so we can ask the service only for the new items we need.
 
-In the UI, the pagination works automatically with ItemsRepeater using `SupportsIncrementalLoading="True"`:
+In the UI, pagination works automatically with `ListView` since it supports incremental loading by default. For controls like `ItemsRepeater`, we enable incremental loading using `SupportsIncrementalLoading="True"` from `Uno.Toolkit.UI`:
 
 ```xml
 xmlns:uer="using:Uno.Extensions.Reactive.UI"
@@ -54,3 +56,4 @@ Chefs app
 ## Documentation
 
 - [MVUX Pagination](xref:Uno.Extensions.Mvux.Advanced.Pagination)
+- [Toolkit IncrementalLoading](xref:Toolkit.Helpers.ItemRepeaterExtensions#incremental-loading)
