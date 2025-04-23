@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Selection
 ---
 
-# Selecting items from a list
+# Selecting items from a list with MVUX
 
 ## Problem
 
@@ -14,7 +14,7 @@ Selecting items from dynamic lists can be tricky, especially when using paginate
 
 ### Using Selection
 
-As an example, in Chefs it is possible to create and edit Cookbooks that are a list of recipes. On the **Favorites** page, under the **My Cookbooks** tabs there is a list of existing Cookbooks and the recipes associated to the Cookbook are represented by:
+As an example, in Chefs it is possible to create and edit Cookbooks that are a list of recipes. On the **Favorites** page, under the **My Cookbooks** tab, there is a list of existing Cookbooks and the recipes associated to the Cookbook are represented by:
 
 [!code-csharp[](../../Chefs/Presentation/CreateUpdateCookbookModel.cs#L58-L62)]
 
