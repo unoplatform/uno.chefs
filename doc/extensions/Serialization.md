@@ -38,72 +38,24 @@ public class App : Application
 
 ### Consume `ISerializer` as dependency in data services
 
-```csharp
-public class NotificationEndpoint : INotificationEndpoint
-{
-  private readonly IStorage _dataService;
-  private readonly ISerializer _serializer;
-  private List<NotificationData>? _notifications;
-
-  public NotificationEndpoint(IStorage dataService, ISerializer serializer)
-    => (_dataService, _serializer) = (dataService, serializer);
-
-  public async ValueTask<IImmutableList<NotificationData>> GetAll(CancellationToken ct)
-    => (await Load(ct)).ToImmutableList() ?? ImmutableList<NotificationData>.Empty;
-
-  private async ValueTask<IList<NotificationData>> Load(CancellationToken ct)
-  {
-    if (_notifications == null)
-    {
-      _notifications = await _dataService.ReadPackageFileAsync<List<NotificationData>>(_serializer, "notifications.json")
-    }
-
-    return _notifications ?? new List<NotificationData>();
-  }
-}
-```
+[!code-csharp[](../../Chefs/Services/MockEndpoints/MockNotificationEndpoints.cs#L5-L20)]
 
 ### Notification JSON data (notifications.json)
 
-```json
-﻿[
-  {
-    "Title": "New recipe!",
-    "Description": "Far far away, behind the word mountains, far from the countries.",
-    "Read": true,
-    "Date": "2022-10-18T00:00:00Z"
-  },
-  {
-    "Title": "Don’t forget to try your saved recipe",
-    "Description": "Far far away, behind the word mountains, far from the countries.",
-    "Read": true,
-    "Date": "2022-10-18T00:00:00Z"
-  },
-
-  ...
-]
-```
+[!code-json[](../../Chefs/Data/AppData/Notifications.json#L2-L13)]
 
 ### NotificationData model object
 
-```csharp
-public class NotificationData
-{
-  public string? Title { get; set; }
-  public string? Description { get; set; }
-  public bool Read { get; set; }
-  public DateTime Date { get; set; }
-}
-```
+[!code-csharp[](../../Chefs/Data/Entities/NotificationData.cs#L3-L9)]
 
 ## Source Code
 
 Chefs app
 
-- [App Startup](https://github.com/unoplatform/uno.chefs/blob/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/App.cs#L43)
-- [Notification Data Service](https://github.com/unoplatform/uno.chefs/blob/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/Services/Endpoints/NotificationEndpoint.cs#L6)
-- [Notification Data Model](https://github.com/unoplatform/uno.chefs/blob/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/Data/Entities/NotificationData.cs)
-- [JSON Data Files](https://github.com/unoplatform/uno.chefs/tree/a623c4e601f705621eb9ae622aa6e0f6984ee415/src/Chefs/Data/AppData)
+- [App Startup](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L94)
+- [Notification Data Service](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Services/MockEndpoints/MockNotificationEndpoints.cs#L5)
+- [Notification Data Model](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Data/Entities/NotificationData.cs)
+- [JSON Data Files](https://github.com/unoplatform/uno.chefs/tree/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Data/AppData)
 
 ## Documentation
 

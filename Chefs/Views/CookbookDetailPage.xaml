@@ -68,7 +68,7 @@
 							HorizontalAlignment="Right"
 							VerticalAlignment="Bottom"
 							Content="Edit"
-							uen:Navigation.Data="{Binding Data, Mode=TwoWay}"
+							uen:Navigation.Data="{Binding Data}"
 							uen:Navigation.Request="UpdateCookbook"
 							utu:AutoLayout.IsIndependentLayout="True"
 							Style="{StaticResource ChefsFabButtonStyle}">

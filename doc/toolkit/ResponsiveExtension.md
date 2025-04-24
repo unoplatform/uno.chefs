@@ -14,28 +14,24 @@ The `ResponsiveExtension` class is a markup extension that enables the customiza
 
 ![ResponsiveView Scenario](../assets/responsiveview-sample.gif)
 
-`ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:Uno.Recipes.ResponsiveView) control.
+`ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:Toolkit.Controls.ResponsiveView) control.
 
-```xml
-<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}" />
-                ...
-</utu:AutoLayout>
-```
+[!code-xml[](../../Chefs/Views/SearchPage.xaml#L110-L111)]
 
 ![Responsive Extension Animation"](../assets/responsiveextension-animated.gif)
 
 ## Source Code
 
-- [Main Page (1)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/MainPage.xaml#L37-L38)
-- [Main Page (2)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/MainPage.xaml#L65-L66)
-- [Search Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/SearchPage.xaml#L148)
-- [Home Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/HomePage.xaml#L290)
-- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/RecipeDetailsPage.xaml#L24)
-- [Create/Update Cookbook Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/CreateUpdateCookbookPage.xaml#L152)
-- [Cookbook Details Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/CookbookDetailPage.xaml#L114)
-- [Favorite Recipes Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/FavoriteRecipesPage.xaml#L331)
-- [Live Cooking Page](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/LiveCookingPage.xaml#L34)
-- [Chart Control](https://github.com/unoplatform/uno.chefs/blob/c39edbc737dfd899b31cb3ba24d017c9e8351861/src/Chefs/Views/Controls/ChartControl.xaml#L36)
+- [Main Page (1)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L38-L39)
+- [Main Page (2)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L69-L70)
+- [Search Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L110-L111)
+- [Home Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L271-L272)
+- [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L29-L30)
+- [Create/Update Cookbook Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/CreateUpdateCookbookPage.xaml#L23-L30)
+- [Cookbook Details Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/CookbookDetailPage.xaml#L23-L30)
+- [Favorite Recipes Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FavoriteRecipesPage.xaml#L22-L29)
+- [Live Cooking Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LiveCookingPage.xaml#L34)
+- [Chart Control](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml#L36)
 
 ## Documentation
 

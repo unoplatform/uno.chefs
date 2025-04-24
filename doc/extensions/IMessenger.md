@@ -16,27 +16,27 @@ The `IMessenger` interface provided by `Uno.Extensions` allows components to com
 
 Ensure `IMessenger` is registered in your application's services during startup in the `ConfigureServices` method:
 
-:::code language="csharp" source="../../Chefs/App.xaml.cs" range="61":::
+[!code-csharp[](../../Chefs/App.xaml.cs#L124)]
 
 ### Using IMessenger in Services
 
 Inject the `IMessenger` into the `CookbookService`:
 
-:::code language="csharp" source="../../Chefs/Services/Cookbooks/CookbookService.cs" range="6-12":::
+[!code-csharp[](../../Chefs/Services/Cookbooks/CookbookService.cs#L7)]
 
 When a cookbook is created, updated, or deleted, send a message to notify subscribers:
 
-:::code language="csharp" source="../../Chefs/Services/Cookbooks/CookbookService.cs" range="40-44":::
+[!code-csharp[](../../Chefs/Services/Cookbooks/CookbookService.cs#L38-L44)]
 
 ### Reacting to Changes in ViewModels
 
 Subscribe to messages in the ViewModel to react to changes in the service:
 
-:::code language="csharp" source="../../Chefs/Presentation/CreateUpdateCookbookModel.cs" range="40-44":::
+[!code-csharp[](../../Chefs/Presentation/CreateUpdateCookbookModel.cs#L54-L56)]
 
 This pattern will automatically update the provided `IState` property when a message is received.
 
 ## Source Code
 
-- [CreateUpdateCookbookModel](https://github.com/unoplatform/uno.chefs/blob/e9a6daf64b4db7eb51b905cf666f2fddcb3986c2/src/Chefs/Presentation/CreateUpdateCookbookModel.cs#L51-L53)
-- [CookbookService](https://github.com/unoplatform/uno.chefs/blob/92105f64923058b9ace3897bbea17cdb3b354fe9/src/Chefs/Services/Cookbooks/CookbookService.cs#L49)
+- [CreateUpdateCookbookModel](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/CreateUpdateCookbookModel.cs#L54-L56)
+- [CookbookService](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Services/Cookbooks/CookbookService.cs#L56)

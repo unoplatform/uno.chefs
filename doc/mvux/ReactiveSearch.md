@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ReactiveSearch
 ---
 
-# How to Create a Reactive Search Experience with MVUX
+# How to Build a Real-Time Search with MVUX
 
 ## Problem
 
@@ -44,6 +44,8 @@ public partial class SearchModel
         .AsListFeed())
         .Observe(_messenger, r => r.Id);
 
+    ...
+
     private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
     {
         var searchedRecipes = await _recipeService.Search(inputs.term, inputs.filter, ct);
@@ -56,33 +58,13 @@ The `Search` method in the `IRecipeService` is called whenever the **Term** stat
 
 #### 2. `SearchPage.xaml`
 
-```xml
-<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-    <utu:AutoLayout>
-        <TextBox utu:CommandExtensions.Command="{Binding Search}"
-                Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-                CornerRadius="28"
-                PlaceholderText="Search"
-                Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-    </utu:AutoLayout>
+Search Term
 
-    <uer:FeedView x:Name="SearchFeed"
-                NoneTemplate="{StaticResource EmptyTemplate}"
-                utu:AutoLayout.PrimaryAlignment="Stretch"
-                Source="{Binding Results}">
-        <DataTemplate>
-            <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                <muxc:ItemsRepeater x:Name="SearchRepeater"
-                                    Margin="{utu:Responsive Narrow='16,0,16,16', Wide='40,0,40,40'}"
-                                    uen:Navigation.Request="SearchRecipeDetails"
-                                    ItemTemplate="{StaticResource RecipeTemplate}"
-                                    ItemsSource="{Binding Data}"
-                                    Layout="{StaticResource ResponsiveGridLayout}" />
-            </ScrollViewer>
-        </DataTemplate>
-    </uer:FeedView>
-</utu:AutoLayout>
-```
+[!code-xml[](../../Chefs/Views/SearchPage.xaml#L114-L118)]
+
+FeedView
+
+[!code-xml[](../../Chefs/Views/SearchPage.xaml#L161-L177)]
 
 The `FeedView` control automatically updates the displayed list of recipes whenever the `Results` feed is updated, providing a dynamic and responsive search experience.
 
@@ -94,9 +76,9 @@ In addition to the search term, you can also maintain a **filter state** to refi
 
 Chefs app
 
-- [SearchModel.cs](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Presentation/SearchModel.cs#L5-L45)
-- [SearchPage.xaml (Search Term)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SearchPage.xaml#L114-L118)
-- [SearchPage.xaml (FeedView)](https://github.com/unoplatform/uno.chefs/blob/19ace5c583ef4ef55f019589dd1eb07e43000de9/src/Chefs/Views/SearchPage.xaml#L161-L177)
+- [SearchModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/SearchModel.cs)
+- [SearchPage.xaml (Search Term)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L114-L118)
+- [SearchPage.xaml (FeedView)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L161-L177)
 
 ## Documentation
 
