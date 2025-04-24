@@ -21,9 +21,8 @@ public class TimeSpanObjectConverter : JsonConverter<TimeSpan>
 				return new TimeSpan(ticksElement.GetInt64());
 			default:
 			{
-				var ticks = root.GetProperty("ticks").GetInt64().ToString();
-				return new TimeSpan(Convert.ToInt64(ticks));
-			}
+				return new TimeSpan(root.GetProperty("ticks").GetInt64());
+				}
 		}
 	}
 
