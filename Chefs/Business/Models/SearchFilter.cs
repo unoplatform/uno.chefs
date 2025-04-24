@@ -31,9 +31,6 @@ public record SearchFilter(
 	}
 	private static TimeSpan ToTimeSpan(TimeSpanObject timeSpanObject)
 	{
-		return new TimeSpan(
-			timeSpanObject?.Hours ?? 0,
-			timeSpanObject?.Minutes ?? 0,
-			timeSpanObject?.Seconds ?? 0);
+		return new TimeSpan(timeSpanObject?.Ticks ?? 0);
 	}
 }
