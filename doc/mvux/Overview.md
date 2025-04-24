@@ -36,8 +36,7 @@ MVUX (Model-View-Update-eXtended) in **Uno Extensions** simplifies the developme
 - [Using Implicit Commands with MVUX](xref:Uno.Recipes.ImplicitCommands)
 - [Updating Feeds with IMessenger with MVUX](xref:Uno.Recipes.IMessenger)
 - [Selecting items from a list with MVUX](xref:Uno.Recipes.Selection)
-- [Implementing pagination for lists with MVUX](xref:Uno.Recipes.Pagination )
-
+- [Implementing pagination for lists with MVUX](xref:Uno.Recipes.Pagination)
 ## Documentation
 
 - [Uno.Extensions documentation](xref:Uno.Extensions.Overview)
