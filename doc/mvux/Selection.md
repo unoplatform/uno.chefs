@@ -35,7 +35,7 @@ public IListFeed<Recipe> Recipes => ListFeed
 
 Now, when saving the changes we can dynamically access the selected recipes:
 
-[!code-csharp[](../../Chefs/Presentation/CreateUpdateCookbookModel.cs#L65-L88)]
+[!code-csharp[](../../Chefs/Presentation/CreateUpdateCookbookModel.cs#L65-L87)]
 
 ## Source Code
 

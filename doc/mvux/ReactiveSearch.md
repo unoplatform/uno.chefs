@@ -70,7 +70,7 @@ The `FeedView` control automatically updates the displayed list of recipes whene
 
 ### Using Custom Filter Logic
 
-In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic. See [How to Create Custom MVUX Search Filters](xref:Uno.Recipes.SearchFilters) for a closer look.
+In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic. See [How to Filter Search Results Dynamically with MVUX](xref:Uno.Recipes.SearchFilters) for a closer look.
 
 ## Source Code
 

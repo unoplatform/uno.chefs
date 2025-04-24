@@ -16,7 +16,7 @@ The `IMessenger` interface provided by `Uno.Extensions` allows components to com
 
 Ensure `IMessenger` is registered in your application's services during startup in the `ConfigureServices` method:
 
-[!code-csharp[](../../Chefs/App.xaml.cs#L124)]
+[!code-csharp[](../../Chefs/App.xaml.cs#L129)]
 
 ### Using IMessenger in Services
 

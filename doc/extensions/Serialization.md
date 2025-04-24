@@ -17,22 +17,22 @@ The Uno.Extensions library provides a set of abstractions for serialization and 
 ```csharp
 public class App : Application
 {
-  // Code omitted for brevity
+    // Code omitted for brevity
 
-  protected async override void OnLaunched(LaunchActivatedEventArgs args)
-  {
-    var builder = this.CreateBuilder(args)
-      .Configure(host => host
-        // Code omitted for brevity
-        
-        // Register Json serializers (ISerializer and ISerializer)
-        .UseSerialization()
+    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    {
+      var builder = this.CreateBuilder(args)
+        .Configure(host => host
+          // Code omitted for brevity
 
-        // Code omitted for brevity
-    );
-  
-  // Code omitted for brevity
-  }
+          // Register Json serializers (ISerializer and ISerializer)
+          .UseSerialization()
+
+          // Code omitted for brevity
+      );
+
+    // Code omitted for brevity
+    }
 }
 ```
 
