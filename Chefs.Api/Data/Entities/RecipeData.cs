@@ -1,3 +1,6 @@
+using System.Text.Json.Serialization;
+using Chefs.Api.Converters;
+
 namespace Chefs.Api.Data;
 
 public class RecipeData
@@ -8,6 +11,7 @@ public class RecipeData
 	public string? ImageUrl { get; set; }
 	public string? Name { get; set; }
 	public int Serves { get; set; }
+	[JsonConverter(typeof(TimeSpanObjectConverter))]
 	public TimeSpan CookTime { get; set; }
 	public Difficulty Difficulty { get; set; }
 	public List<IngredientData>? Ingredients { get; set; }
