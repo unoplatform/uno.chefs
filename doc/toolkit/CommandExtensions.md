@@ -17,7 +17,7 @@ The `CommandExtensions` class in the Uno Toolkit provides `Command`/`CommandPara
 [!code-xml[](../../Chefs/Views/LoginPage.xaml#L39-L41)]
 
 > [!TIP]
-> Usage on `TextBox`/`PasswordBox` will also cause the keyboard dismiss on enter. Similar to the `InputExtensions.AutoDismiss` behavior, covered in the [InputExtensions](xref:Uno.Recipes.InputExtensions) recipe.
+> Usage on `TextBox`/`PasswordBox` will also cause the keyboard dismiss on enter. Similar to the `InputExtensions.AutoDismiss` behavior, which is explained in the [InputExtensions documentation](xref:Toolkit.Helpers.InputExtensions).
 
 ### ItemsRepeater Item Tapped
 

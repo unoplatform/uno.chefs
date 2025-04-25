@@ -12,7 +12,7 @@ Filtering search results requires updating the displayed results every time the 
 
 **Uno.Extensions.MVUX** provides a seamless way to filter live search results using `IState<string>` and `SelectAsync` on the IState to react to state changes. This allows for a dynamic and responsive search experience.
 
-For more details on implementing the search itself, see [How to Create a Reactive Search Experience with MVUX](xref:Uno.Recipes.ReactiveSearch).
+For more details on implementing the search itself, see [How to Build a Real-Time Search with MVUX](xref:Uno.Recipes.ReactiveSearch).
 
 ### Using Custom Filter Logic
 
@@ -28,7 +28,7 @@ For each recipe filter, we define an `ItemsRepeater` that displays the possible 
 
 [!code-xml[](../../Chefs/Views/FiltersPage.xaml#L51-L64)]
 
-When the user is done selecting filters for their search, they invoke the `ApplySearchFilter()` method. This uses `NavigateBackWithResultAsync()` from `Uno.Extensions.Navigation`. This will redirect the user to the previous page (the search page) while injecting the chosen filters into the search model. See [How to Navigate with Code Behind](Uno.Recipes.NavigationCodeBehind) for more information.
+When the user is done selecting filters for their search, they invoke the `ApplySearchFilter()` method. This uses `NavigateBackWithResultAsync()` from `Uno.Extensions.Navigation`. This will redirect the user to the previous page (the search page) while injecting the chosen filters into the search model. See [How to Navigate with Code Behind](xref:Uno.Recipes.NavigationCodeBehind) for more information.
 
 [!code-csharp[](../../Chefs/Presentation/FilterModel.cs#L21-L22)]
 

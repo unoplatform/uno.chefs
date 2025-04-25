@@ -31,10 +31,12 @@ MVUX (Model-View-Update-eXtended) in **Uno Extensions** simplifies the developme
 
   Once the feature is included, you can start using MVUX in your application. Here are some examples from Chefs using the MVUX extension:
 
-- [Reactive Search Results with MVUX](xref:Uno.Recipes.ReactiveSearch)
-- [Custom Search Filters with MVUX](xref:Uno.Recipes.SearchFilters)
+- [Building a Real-Time Search with MVUX](xref:Uno.Recipes.ReactiveSearch)
+- [Filtering Search Results with MVUX](xref:Uno.Recipes.SearchFilters)
 - [Using Implicit Commands with MVUX](xref:Uno.Recipes.ImplicitCommands)
-
+- [Updating Feeds with IMessenger with MVUX](xref:Uno.Recipes.IMessenger)
+- [Selecting items from a list with MVUX](xref:Uno.Recipes.Selection)
+- [Implementing pagination for lists with MVUX](xref:Uno.Recipes.Pagination)
 ## Documentation
 
 - [Uno.Extensions documentation](xref:Uno.Extensions.Overview)
