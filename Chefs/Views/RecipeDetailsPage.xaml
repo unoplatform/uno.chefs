@@ -222,13 +222,10 @@
 																			Justify="SpaceBetween"
 																			Padding="8,0,16,0">
 																<utu:AutoLayout Orientation="Horizontal"
-																				CounterAxisAlignment="Center"
-																				Spacing="16">
-																	<Image Width="40"
-																		   Height="40"
-																		   Source="{Binding UrlIcon}" />
+																				CounterAxisAlignment="Center">
 																	<TextBlock TextWrapping="Wrap"
 																			   Text="{Binding Name}"
+																			   Padding="16"
 																			   Foreground="{ThemeResource OnSurfaceBrush}"
 																			   Style="{StaticResource TitleMedium}" />
 																</utu:AutoLayout>
