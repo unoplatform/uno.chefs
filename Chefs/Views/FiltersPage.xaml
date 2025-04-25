@@ -28,16 +28,8 @@
 		<utu:AutoLayout uen:Region.Attached="True"
 						utu:AutoLayout.PrimaryAlignment="Stretch"
 						PrimaryAxisAlignment="Stretch">
-			<utu:NavigationBar Content="Filters">
-				<utu:NavigationBar.MainCommand>
-					<AppBarButton uen:Navigation.Request="-">
-						<AppBarButton.Icon>
-							<not_mobile:PathIcon Data="{StaticResource Icon_Close}" />
-							<mobile:BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.MainCommand>
-			</utu:NavigationBar>
+			<utu:NavigationBar Content="Filters"
+							   Style="{StaticResource ChefsModalNavigationBarStyle}" />
 			<ScrollViewer HorizontalScrollMode="Disabled"
 						  utu:AutoLayout.PrimaryAlignment="Stretch">
 				<utu:AutoLayout Padding="16"

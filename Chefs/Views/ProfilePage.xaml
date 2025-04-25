@@ -58,15 +58,8 @@
 
 	<utu:AutoLayout>
 		<utu:NavigationBar Content="Profile"
+						   Style="{StaticResource ChefsModalNavigationBarStyle}"
 						   utu:AutoLayout.PrimaryAlignment="Auto">
-			<utu:NavigationBar.MainCommand>
-				<AppBarButton>
-					<AppBarButton.Icon>
-						<not_mobile:PathIcon Data="{StaticResource Icon_Close}" />
-						<mobile:BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
-					</AppBarButton.Icon>
-				</AppBarButton>
-			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
 				<AppBarButton uen:Navigation.Request="Settings"
 							  uen:Navigation.Data="{Binding Profile.Value}"

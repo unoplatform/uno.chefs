@@ -45,11 +45,6 @@
 
 	<utu:AutoLayout>
 		<utu:NavigationBar Content="{Binding Recipe.Name}">
-			<utu:NavigationBar.MainCommand>
-				<AppBarButton>
-					<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
-				</AppBarButton>
-			</utu:NavigationBar.MainCommand>
 			<utu:NavigationBar.PrimaryCommands>
 				<AppBarButton Command="{Binding Share}">
 					<AppBarButton.Icon>

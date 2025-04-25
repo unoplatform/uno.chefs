@@ -90,15 +90,7 @@
 
 	<utu:AutoLayout>
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
-			<utu:NavigationBar Content="{Binding Title}">
-				<utu:NavigationBar.MainCommand>
-					<AppBarButton>
-						<AppBarButton.Icon>
-							<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
-						</AppBarButton.Icon>
-					</AppBarButton>
-				</utu:NavigationBar.MainCommand>
-			</utu:NavigationBar>
+			<utu:NavigationBar Content="{Binding Title}" />
 
 			<!-- It is necessary to disable the HorizontalScrollMode because of this issue: https://github.com/unoplatform/uno/issues/12871 -->
 			<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"

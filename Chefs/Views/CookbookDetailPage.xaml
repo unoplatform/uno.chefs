@@ -32,15 +32,7 @@
 
 	<utu:AutoLayout>
 		<utu:NavigationBar Content="{Binding Cookbook.Name}"
-						   utu:AutoLayout.PrimaryAlignment="Auto">
-			<utu:NavigationBar.MainCommand>
-				<AppBarButton>
-					<AppBarButton.Icon>
-						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
-					</AppBarButton.Icon>
-				</AppBarButton>
-			</utu:NavigationBar.MainCommand>
-		</utu:NavigationBar>
+						   utu:AutoLayout.PrimaryAlignment="Auto" />
 		<uer:FeedView utu:AutoLayout.PrimaryAlignment="Stretch"
 					  Source="{Binding Cookbook}">
 			<DataTemplate>
