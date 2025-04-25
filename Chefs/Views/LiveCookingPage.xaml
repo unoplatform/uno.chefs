@@ -88,15 +88,7 @@
 		<utu:NavigationBar x:Name="NavBar"
 						   utu:AutoLayout.PrimaryAlignment="Auto"
 						   Style="{StaticResource ChefsNavigationBarStyle}"
-						   Content="{Binding Recipe.Name}">
-			<utu:NavigationBar.MainCommand>
-				<AppBarButton>
-					<AppBarButton.Icon>
-						<PathIcon Data="{StaticResource Icon_Arrow_Back}" />
-					</AppBarButton.Icon>
-				</AppBarButton>
-			</utu:NavigationBar.MainCommand>
-		</utu:NavigationBar>
+						   Content="{Binding Recipe.Name}" />
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Orientation="{utu:Responsive Narrow=Vertical,

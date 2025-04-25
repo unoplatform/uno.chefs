@@ -78,16 +78,8 @@
 	</Page.Resources>
 	<utu:AutoLayout PrimaryAxisAlignment="Stretch">
 		<utu:NavigationBar Content="Notifications"
-						   utu:AutoLayout.PrimaryAlignment="Auto">
-			<utu:NavigationBar.MainCommand>
-				<AppBarButton>
-					<AppBarButton.Icon>
-						<not_mobile:PathIcon Data="{StaticResource Icon_Close}" />
-						<mobile:BitmapIcon UriSource="ms-appx:///Assets/Icons/close.png" />
-					</AppBarButton.Icon>
-				</AppBarButton>
-			</utu:NavigationBar.MainCommand>
-		</utu:NavigationBar>
+						   Style="{StaticResource ChefsModalNavigationBarStyle}"
+						   utu:AutoLayout.PrimaryAlignment="Auto" />
 		<utu:AutoLayout Background="{ThemeResource BackgroundBrush}"
 						uen:Region.Attached="True"
 						utu:AutoLayout.PrimaryAlignment="Stretch"
