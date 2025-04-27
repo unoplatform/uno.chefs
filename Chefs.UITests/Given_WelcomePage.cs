@@ -19,24 +19,14 @@ public class Given_WelcomePage : TestBase
 	[AutoRetry]
 	public void When_SmokeTest()
 	{
+		Helpers.Wait(seconds: 3);
+
 #if HAS_SKIA_RENDERER
-		if (AppInitializer.GetLocalPlatform() == Platform.Android)
-		{
-			App.WaitForElement(q => q.Class("UnoSKCanvasView"));
-		}
-		else if (AppInitializer.GetLocalPlatform() == Platform.iOS)
-		{
-			App.WaitForElement(q => q.Class("UnoSKMetalView"));
-		}
-		else if (AppInitializer.GetLocalPlatform() == Platform.Browser)
-		{
-			App.WaitForElement(q => q.Id("uno-canvas"), timeoutMessage: "Timed out waiting for uno-canvas element");
-		}
-		// PlatformHelpers.On(
-		// 	iOS: () => App.WaitForElement(q => q.Class("UnoSKMetalView")),
-		// 	Android: () => App.WaitForElement(q => q.Class("UnoSKCanvasView")),
-		// 	Browser: () => App.WaitForElement(q => q.Id("uno-canvas"))
-		// );
+		PlatformHelpers.On(
+			iOS: () => App.WaitForElement(q => q.Class("UnoSKMetalView")),
+			Android: () => App.WaitForElement(q => q.Class("UnoSKCanvasView")),
+			Browser: () => App.WaitForElement(q => q.Id("uno-canvas"))
+		);
 #endif
 
 		TakeScreenshot("Launched");
@@ -54,7 +44,6 @@ public class Given_WelcomePage : TestBase
 		Login();
 #endif
 
-		
 	}
 
 	private void AssertWelcomePage()

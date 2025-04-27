@@ -16,7 +16,7 @@ public class Constants
 		"uno.platform.chefs";
 #endif
 
-	public readonly static string WebAssemblyDefaultUri = "http://localhost:63248/";
+	public readonly static string WebAssemblyDefaultUri = "http://localhost:51480/";
 	public readonly static string iOSAppName = ApplicationId;
 	public readonly static string AndroidAppName = ApplicationId;
 	public readonly static string iOSDeviceNameOrId = "5998761C-5F52-4209-8EF6-FFAF2A76F393";
