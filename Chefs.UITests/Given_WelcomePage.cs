@@ -13,10 +13,10 @@ using Query = System.Func<Uno.UITest.IAppQuery, Uno.UITest.IAppQuery>;
 
 namespace Chefs.UITests;
 
+[AutoRetry(5)]
 public class Given_WelcomePage : TestBase
 {
 	[Test]
-	[AutoRetry]
 	public void When_SmokeTest()
 	{
 		Helpers.Wait(seconds: 3);

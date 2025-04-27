@@ -63,6 +63,7 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 		/// <returns>A TestResult</returns>
 		public override NUnit.Framework.Internal.TestResult Execute(TestExecutionContext context)
 		{
+			Console.WriteLine($"RETRY: Test {context.CurrentTest.FullName} started");
 			int count = _tryCount;
 
 			while (count-- > 0)
