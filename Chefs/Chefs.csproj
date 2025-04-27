@@ -115,6 +115,7 @@
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
 		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
 		<DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
+		<EmbedAssembliesIntoApk Condition="$(IsAndroid)">true</EmbedAssembliesIntoApk>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -175,6 +176,9 @@
 				<MtouchUseLlvm>false</MtouchUseLlvm>
 				<!-- END Workaround -->
 			</PropertyGroup>
+			<ItemGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
+				<PackageReference Include="Xamarin.TestCloud.Agent" />
+			</ItemGroup>
 		</When>
 		<When Condition="$(IsMacCatalyst)">
 			<PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -210,6 +214,21 @@
 				<WasmShellEnableJiterpreter>false</WasmShellEnableJiterpreter>
 				-->
 			</PropertyGroup>
+
+			<ItemGroup>
+				<EmbeddedResource Include="Platforms\WebAssembly\WasmCSS\**\*.css" />
+				<EmbeddedResource Include="Platforms\WebAssembly\WasmScripts\**\*.js" />
+				<UpToDateCheckInput Include="Platforms\WebAssembly\WasmCSS\**\*" />
+				<UpToDateCheckInput Include="Platforms\WebAssembly\WasmScripts\**\*" />
+			</ItemGroup>
+
+			<ItemGroup>
+				<None Remove="Platforms\WebAssembly\WasmScripts\TestRunner.js" />
+			</ItemGroup>
+
+			<ItemGroup>
+				<UpToDateCheckInput Remove="Platforms\WebAssembly\WasmScripts\TestRunner.js" />
+			</ItemGroup>
 		</When>
 	</Choose>
 

@@ -14,6 +14,7 @@ jobs:
   - template: templates/dotnet-install-windows.yml
 
   - task: MSBuild@1
+    retryCountOnTaskFailure: 3
     inputs:
       solution: $(build.sourcesdirectory)/Chefs/Chefs.csproj
       msbuildLocationMethod: version

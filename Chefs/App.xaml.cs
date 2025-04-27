@@ -1,7 +1,11 @@
+using System.Diagnostics;
 using System.Text.Json;
 using Chefs.Services;
 using Chefs.Services.Clients;
 using Chefs.Views.Flyouts;
+#if __IOS__
+using Foundation;
+#endif
 using LiveChartsCore;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
@@ -22,10 +26,15 @@ public partial class App : Application
 	}
 
 	public static Window? MainWindow;
+
+	public static ShellControl? Shell;
 	public static IHost? Host { get; private set; }
 
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
 	{
+#if __IOS__ && !__MACCATALYST__ && USE_UITESTS
+		Xamarin.Calabash.Start();
+#endif
 		var builder = this.CreateBuilder(args)
 			// Add navigation support for toolkit controls such as TabBar and NavigationView
 			.UseToolkitNavigation()
@@ -50,7 +59,7 @@ public partial class App : Application
 									{ TokenCacheExtensions.AccessTokenKey, "SampleToken" },
 									{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
 									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
-                                };
+								};
 								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
 
 
@@ -146,6 +155,8 @@ public partial class App : Application
 #endif
 
 		Host = await builder.NavigateAsync<ShellControl>();
+
+		Shell = MainWindow.Content as ShellControl;
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
 		var userService = Host.Services.GetRequiredService<IUserService>();
@@ -258,10 +269,10 @@ public partial class App : Application
 #if __WASM__
 			builder.AddProvider(new global::Uno.Extensions.Logging.WebAssembly.WebAssemblyConsoleLoggerProvider());
 #elif __IOS__ || __MACCATALYST__
-            builder.AddProvider(new global::Uno.Extensions.Logging.OSLogLoggerProvider());
-            builder.AddConsole();
+			builder.AddProvider(new global::Uno.Extensions.Logging.OSLogLoggerProvider());
+			builder.AddConsole();
 #else
-            builder.AddConsole();
+			builder.AddConsole();
 #endif
 
 			// Exclude logs below this level
@@ -308,4 +319,16 @@ public partial class App : Application
 #endif
 		//+:cnd:noEmit
 	}
+#if USE_UITESTS
+
+#if __IOS__
+	[Export("getCurrentPage:")]
+	public NSString GetCurrentPageBackdoor(NSString value) => new NSString(App.GetCurrentPage());
+#endif
+
+#if __WASM__
+	[System.Runtime.InteropServices.JavaScript.JSExport]
+#endif
+	public static string GetCurrentPage() => Shell?.RootFrame?.CurrentSourcePageType.ToString() ?? string.Empty;
+#endif
 }

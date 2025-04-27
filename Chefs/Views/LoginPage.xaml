@@ -27,6 +27,8 @@
 			<utu:AutoLayout Spacing="16"
 							PrimaryAxisAlignment="Center">
 				<TextBox PlaceholderText="Username"
+						 x:Name="LoginUsername"
+						 AutomationProperties.AutomationId="LoginUsername"
 						 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
 						 utu:InputExtensions.ReturnType="Next"
 						 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
@@ -37,6 +39,7 @@
 					</ut:ControlExtensions.Icon>
 				</TextBox>
 				<PasswordBox x:Name="LoginPassword"
+							 AutomationProperties.AutomationId="LoginPassword"
 							 utu:InputExtensions.ReturnType="Done"
 							 utu:CommandExtensions.Command="{Binding Login}"
 							 Password="{Binding UserCredentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -73,6 +76,8 @@
 							Style="{StaticResource TextButtonStyle}" />
 				</utu:AutoLayout>
 				<Button Content="Login"
+						x:Name="LoginButton"
+						AutomationProperties.AutomationId="LoginButton"
 						Style="{StaticResource ChefsPrimaryButtonStyle}"
 						Command="{Binding Login}" />
 			</utu:AutoLayout>

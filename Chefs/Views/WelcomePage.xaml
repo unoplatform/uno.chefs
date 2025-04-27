@@ -104,6 +104,8 @@
 							uen:Navigation.Request="-/Login"
 							Foreground="{ThemeResource PrimaryBrush}"
 							CornerRadius="4"
+							AutomationProperties.AutomationId="SkipButton"
+							x:Name="SkipButton"
 							Style="{StaticResource TextButtonStyle}" />
 				</utu:AutoLayout>
 			</utu:AutoLayout>
