@@ -27,8 +27,6 @@ public class TestBase
 		Console.WriteLine("*** WARNING Running Chrome with a head, this will fail when running in CI ***");
 		AppInitializer.TestEnvironment.WebAssemblyHeadless = false;
 #endif
-		AppInitializer.TestEnvironment.WebAssemblyHeadless = false;
-
 		AppInitializer.ColdStartApp();
 	}
 
