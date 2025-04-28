@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
@@ -22,7 +22,7 @@
 		<PackageReference Include="NUnit3TestAdapter" VersionOverride="4.2.0" />
 		<PackageReference Include="Uno.UITest.Helpers" VersionOverride="1.1.0-dev.82" />
 		<PackageReference Include="Xamarin.UITest" VersionOverride="4.4.0" />
-		<PackageReference Include="NunitXml.TestLogger" VersionOverride="3.1.15" />
+		<PackageReference Include="NunitXml.TestLogger" VersionOverride="6.1.0" />
 	</ItemGroup>
 
 </Project>
