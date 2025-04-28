@@ -145,8 +145,7 @@
 		</DataTemplate>
 
 		<DataTemplate x:Key="RecipeEmptyTemplate">
-			<utu:AutoLayout Height="546"
-							Margin="32,0"
+			<utu:AutoLayout Margin="32,0"
 							PrimaryAxisAlignment="Center"
 							CounterAxisAlignment="Center"
 							Spacing="24">
