@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
@@ -19,7 +19,7 @@
 		<PackageReference Include="FluentAssertions" VersionOverride="6.12.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" VersionOverride="17.9.0" />
 		<PackageReference Include="Newtonsoft.Json" VersionOverride="13.0.3" />
-		<PackageReference Include="NUnit3TestAdapter" VersionOverride="4.2.0" />
+		<PackageReference Include="NUnit3TestAdapter" VersionOverride="5.0.0" />
 		<PackageReference Include="Uno.UITest.Helpers" VersionOverride="1.1.0-dev.82" />
 		<PackageReference Include="Xamarin.UITest" VersionOverride="4.4.0" />
 		<PackageReference Include="NunitXml.TestLogger" VersionOverride="3.1.15" />
