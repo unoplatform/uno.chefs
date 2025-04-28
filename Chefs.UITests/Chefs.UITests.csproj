@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="NUnit" VersionOverride="3.14.0" />
+		<PackageReference Include="NUnit" VersionOverride="4.3.2" />
 		<PackageReference Include="FluentAssertions" VersionOverride="6.12.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" VersionOverride="17.9.0" />
 		<PackageReference Include="Newtonsoft.Json" VersionOverride="13.0.3" />
