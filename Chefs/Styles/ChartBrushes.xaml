@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<ResourceDictionary.ThemeDictionaries>
+		<ResourceDictionary x:Key="Light">
+			<SolidColorBrush x:Key="NutritionTrackBackgroundBrush">#1C1B1F14</SolidColorBrush>
+			<SolidColorBrush x:Key="NutritionProteinValBrush">#159BFF</SolidColorBrush>
+			<SolidColorBrush x:Key="NutritionCarbsValBrush">#7A67F8</SolidColorBrush>
+			<SolidColorBrush x:Key="NutritionFatValBrush">#F85977</SolidColorBrush>
+			<StaticResource x:Key="NutritionDataLabelBrush" ResourceKey="OnSurfaceBrush" />
+		</ResourceDictionary>
+		<ResourceDictionary x:Key="Dark">
+			<SolidColorBrush x:Key="NutritionTrackBackgroundBrush">#242629</SolidColorBrush>
+			<SolidColorBrush x:Key="NutritionProteinValBrush">#159BFF</SolidColorBrush>
+			<SolidColorBrush x:Key="NutritionCarbsValBrush">#7A67F8</SolidColorBrush>
+			<SolidColorBrush x:Key="NutritionFatValBrush">#F85977</SolidColorBrush>
+			<StaticResource x:Key="NutritionDataLabelBrush" ResourceKey="OnSurfaceBrush" />
+		</ResourceDictionary>
+	</ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

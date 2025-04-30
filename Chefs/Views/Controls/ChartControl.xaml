@@ -12,27 +12,6 @@
 	<!-- UserControl used for LiveCharts2 components to avoid having to data-bind the chart properties to the Model -->
 	<!-- Currently a bug in LiveCharts2 that causes a crash when setting DataContext to null: https://github.com/beto-rodriguez/LiveCharts2/issues/1422 -->
 
-	<UserControl.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.ThemeDictionaries>
-				<ResourceDictionary x:Key="Light">
-					<Color x:Key="NutritionTrackBackgroundColor">#1C1B1F14</Color>
-					<Color x:Key="NutritionProteinValColor">#159BFF</Color>
-					<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
-					<Color x:Key="NutritionFatValColor">#F85977</Color>
-					<StaticResource x:Key="NutritionDataLabelColor" ResourceKey="OnSurfaceColor" />
-				</ResourceDictionary>
-				<ResourceDictionary x:Key="Dark">
-					<Color x:Key="NutritionTrackBackgroundColor">#242629</Color>
-					<Color x:Key="NutritionProteinValColor">#159BFF</Color>
-					<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
-					<Color x:Key="NutritionFatValColor">#F85977</Color>
-					<StaticResource x:Key="NutritionDataLabelColor" ResourceKey="OnSurfaceColor" />
-				</ResourceDictionary>
-			</ResourceDictionary.ThemeDictionaries>
-		</ResourceDictionary>
-	</UserControl.Resources>
-
 	<Grid RowSpacing="{utu:Responsive Narrow=5, Wide=24}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="140" />
