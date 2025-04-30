@@ -53,11 +53,11 @@ public class App : Application
 
 ### Chart control code-behind
 
-[!code-csharp[](../../Chefs/Views/Controls/ChartControl.xaml.cs#L28-L54)]
+[!code-csharp[](../../Chefs/Views/Controls/ChartControl.xaml.cs#L10)]
 
 ### Using ChartControl
 
-[!code-xml[](../../Chefs/Views/RecipeDetailsPage.xaml#L434)]
+[!code-xml[](../../Chefs/Views/RecipeDetailsPage.xaml#L426-L432)]
 
 Doughtnut and horizontal bars chart on the Recipe details page:
 <table>
@@ -74,9 +74,9 @@ Doughtnut and horizontal bars chart on the Recipe details page:
 Chefs app
 
 - [App Startup](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L129)
-- [Custom Chart Control](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml#L2)
-- [Chart Control Code-Behind](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml.cs#L28)
-- [Chart Item Model](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Business/Models/NutritionChartItem.cs#L5)
+- [Custom Chart Control](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml)
+- [Chart Control Code-Behind](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml.cs#)
+- [Chart Item Model](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Business/Models/NutritionChartItem.c)
 - [Chart Control Instance](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L434-L435)
 
 ## Documentation

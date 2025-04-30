@@ -424,8 +424,8 @@
 												   Foreground="{ThemeResource OnBackgroundBrush}"
 												   Style="{StaticResource TitleLarge}" />
 										<ctrl:ChartControl DataContext="{Binding Recipe}"
-														   CarbBrush="{ThemeResource NutritionCarbsValBrush}"
-														   ProteinBrush="{ThemeResource NutritionProteinValBrush}"
+														   CarbBrush="Black"
+														   ProteinBrush="Aqua"
 														   FatBrush="{ThemeResource NutritionFatValBrush}"
 														   DataLabelBrush="{ThemeResource NutritionDataLabelBrush}"
 														   TrackBackgroundBrush="{ThemeResource NutritionTrackBackgroundBrush}"
