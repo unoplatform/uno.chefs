@@ -25,6 +25,7 @@
   steps:
   - checkout: self
     clean: true
+    persistCredentials: true
 
   - task: PowerShell@2
     displayName: 'Install coreutils'

@@ -5,9 +5,16 @@ IFS=$'\n\t'
 # echo commands
 set -x
 
+if [[ "$VARIANT_NAME" == "Native" ]]; then
+	export APK_NAME="uno.platform.chefs"
+else
+	export APK_NAME="uno.platform.chefs.skia"
+fi
+
 export BUILDCONFIGURATION=Release
 export UNO_UITEST_PLATFORM=Android
 export ANDROID_SIMULATOR_APILEVEL=28
+
 
 export UNO_UITEST_ANDROID_PROJECT_PATH=$BUILD_SOURCESDIRECTORY/Chefs
 export BASE_ARTIFACTS_PATH=$BUILD_ARTIFACTSTAGINGDIRECTORY/android/
@@ -19,7 +26,7 @@ export UNO_UITEST_NUNIT_VERSION=3.12.0
 export UNO_UITEST_NUGET_URL=https://dist.nuget.org/win-x86-commandline/v5.7.0/nuget.exe
 export UNO_ORIGINAL_TEST_RESULTS=$BUILD_SOURCESDIRECTORY/build/android-uitest-results-$VARIANT_NAME.xml
 export UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH=$UNO_ORIGINAL_TEST_RESULTS
-export UNO_UITEST_ANDROIDAPK_PATH=$BUILD_SOURCESDIRECTORY/build/Android_UITest_$VARIANT_NAME/android-uitest/$PACKAGE_NAME-Signed.apk
+export UNO_UITEST_ANDROIDAPK_PATH=$BUILD_SOURCESDIRECTORY/build/Android_UITest_$VARIANT_NAME/android-uitest/$APK_NAME-Signed.apk
 export UNO_EMULATOR_INSTALLED=$BUILD_SOURCESDIRECTORY/build/.emulator_started
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UITEST_TEST_TIMEOUT=60m

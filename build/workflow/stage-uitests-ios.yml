@@ -23,6 +23,7 @@
   steps:
   - checkout: self
     clean: true
+    persistCredentials: true
 
   - task: DownloadBuildArtifacts@0
     displayName: 'Download iOS Chefs App'
