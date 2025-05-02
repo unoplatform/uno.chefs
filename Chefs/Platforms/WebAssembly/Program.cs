@@ -1,9 +1,9 @@
+using Uno.UI.Hosting;
+
 namespace Chefs;
 
 public class Program
 {
-	private static App _app;
-
 #if IS_WASM_SKIA
 		static async Task Main(string[] args)
 #else
@@ -18,10 +18,14 @@ public class Program
 #endif
 
 #if IS_WASM_SKIA
-			var host = new Uno.UI.Runtime.Skia.WebAssembly.Browser.WebAssemblyBrowserHost(() => _app = new App());
-			await host.Run();
+			var host = UnoPlatformHostBuilder.Create()
+				.App(() => new App())
+				.UseWebAssembly()
+				.Build();
+
+			await host.RunAsync();
 #else
-			Microsoft.UI.Xaml.Application.Start(_ => _app = new App());
+			Microsoft.UI.Xaml.Application.Start(_ => new App());
 			return 0;
 #endif
 		}
