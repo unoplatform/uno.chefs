@@ -208,43 +208,27 @@ public partial class App : Application
 					new RouteMap("Welcome", View: views.FindByViewModel<WelcomeModel>()),
 					new RouteMap("Login", View: views.FindByViewModel<LoginModel>()),
 					new RouteMap("Register", View: views.FindByViewModel<RegistrationModel>()),
-					new RouteMap("Main", View: views.FindByViewModel<MainModel>(), Nested: new RouteMap[]
-					{
+					new RouteMap("Main", View: views.FindByViewModel<MainModel>(), Nested:
+					[
 						#region Main Tabs
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
 						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
 						#endregion
 
-						#region Cookbooks
-						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>(), DependsOn: "FavoriteRecipes"),
-						new RouteMap("UpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
-						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>(), DependsOn: "FavoriteRecipes"),
-						#endregion
-
-						#region Recipe Details
-						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home"),
-						new RouteMap("SearchRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Search"),
-						new RouteMap("FavoriteRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
-						new RouteMap("CookbookRecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "FavoriteRecipes"),
-						#endregion
-
-						#region Live Cooking
-						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "RecipeDetails"),
-						new RouteMap("SearchLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "SearchRecipeDetails"),
-						new RouteMap("FavoriteLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "FavoriteRecipeDetails"),
-						new RouteMap("CookbookLiveCooking", View: views.FindByViewModel<LiveCookingModel>(), DependsOn: "CookbookRecipeDetails"),
-						#endregion
+						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>()),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
+						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>()),
 #if !IS_WASM_SKIA
-						new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Home"),
+						new RouteMap("Map", View: views.FindByViewModel<MapModel>()),
 #endif
-					}),
+					]),
 					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),
 					new RouteMap("Profile", View: views.FindByViewModel<ProfileModel>()),
-					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>(), DependsOn: "Profile"),
+					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>()),
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
-					new RouteMap("Map", View: views.FindByViewModel<MapModel>(), DependsOn: "Main"),
+					new RouteMap("Map", View: views.FindByViewModel<MapModel>()),
 					new RouteMap("Dialog", View: views.FindByView<GenericDialog>())
 				}
 			)

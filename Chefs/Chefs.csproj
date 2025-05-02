@@ -60,7 +60,7 @@
 			Logging;
 			MVUX;
 			Configuration;
-			Http;
+			HttpKiota;
 			Serialization;
 			Localization;
 			Navigation;
@@ -98,10 +98,6 @@
 	<PropertyGroup Condition="'$(UseMocks)'=='true'">
 		<DefineConstants>$(DefineConstants);USE_MOCKS</DefineConstants>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Uno.Extensions.Http.Kiota" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="Data\**\*.json" />

@@ -27,7 +27,7 @@ private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
 {
     routes.Register(
         /* other routes */,
-        new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>(), DependsOn: "Home")
+        new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>())
     );
 }
 ```
