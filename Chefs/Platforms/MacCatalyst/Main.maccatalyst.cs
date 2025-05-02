@@ -1,4 +1,5 @@
 using UIKit;
+using Uno.UI.Hosting;
 
 namespace Chefs.MacCatalyst;
 
@@ -12,8 +13,12 @@ public class EntryPoint
 			// you can specify it here.
 			UIApplication.Main(args, null, typeof(App));
 #else
-			var host = new Uno.UI.Runtime.Skia.AppleUIKit.AppleUIKitHost(() => new App());
-			host.Run();
+		var host = UnoPlatformHostBuilder.Create()
+			.App(() => new App())
+			.UseAppleUIKit()
+			.Build();
+
+		host.Run();
 #endif
 	}
 }
