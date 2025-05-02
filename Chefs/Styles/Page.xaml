@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!-- Workaround for winui/windows -->
+	<x:String x:Key="DummyResource">test</x:String>
+	<Style TargetType="Page">
+		<Setter Property="Background" Value="{ThemeResource BackgroundBrush}" />
+	</Style>
+
+</ResourceDictionary>

@@ -1,0 +1,120 @@
+﻿<Page x:Class="Chefs.Views.SettingsPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:converters="using:Chefs.Converters"
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	  xmlns:local="using:Chefs.Views"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	  xmlns:not_mobile="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:toolkit="using:Uno.UI.Toolkit"
+	  xmlns:uen="using:Uno.Extensions.Navigation.UI"
+	  xmlns:uer="using:Uno.Extensions.Reactive.UI"
+	  xmlns:ut="using:Uno.Themes"
+	  xmlns:utu="using:Uno.Toolkit.UI"
+	  xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  utu:StatusBar.Background="{ThemeResource SurfaceInverseBrush}"
+	  utu:StatusBar.Foreground="AutoInverse"
+	  Background="{ThemeResource BackgroundBrush}"
+	  mc:Ignorable="d">
+
+	<utu:AutoLayout>
+		<utu:NavigationBar Content="Settings"
+						   utu:AutoLayout.PrimaryAlignment="Auto" />
+		<!-- Horizontal scrolling is disabled due to this bug: https://github.com/unoplatform/uno/issues/12871 -->
+		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
+					  HorizontalScrollMode="Disabled">
+			<utu:AutoLayout Padding="16,24"
+							Spacing="16">
+				<utu:AutoLayout>
+					<TextBlock utu:AutoLayout.CounterAlignment="Start"
+							   Foreground="{ThemeResource OnBackgroundBrush}"
+							   Style="{StaticResource BodyLarge}"
+							   Padding="8"
+							   Text="Personal Information" />
+					<utu:AutoLayout Padding="16"
+									Background="{ThemeResource SurfaceBrush}"
+									CornerRadius="8"
+									Spacing="16">
+						<TextBox PlaceholderText="Name"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+								 Text="{Binding Profile.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							<ut:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Person_Outline}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+							</ut:ControlExtensions.Icon>
+						</TextBox>
+						<TextBox PlaceholderText="Email"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+								 Text="{Binding Profile.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							<ut:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Mail_Outline}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+							</ut:ControlExtensions.Icon>
+						</TextBox>
+						<TextBox PlaceholderText="Mobile Number"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+								 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								 TextChanging="TextBox_TextChanging">
+							<ut:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Phone_Iphone}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+							</ut:ControlExtensions.Icon>
+						</TextBox>
+					</utu:AutoLayout>
+				</utu:AutoLayout>
+				<utu:AutoLayout>
+					<TextBlock utu:AutoLayout.CounterAlignment="Start"
+							   Foreground="{ThemeResource OnBackgroundBrush}"
+							   Style="{StaticResource BodyLarge}"
+							   Padding="8"
+							   Text="Application settings " />
+					<utu:AutoLayout Padding="16"
+									Background="{ThemeResource SurfaceBrush}"
+									CornerRadius="8"
+									Spacing="16">
+						<utu:AutoLayout PrimaryAxisAlignment="Stretch"
+										Justify="SpaceBetween"
+										Orientation="Horizontal"
+										CounterAxisAlignment="Center">
+							<utu:AutoLayout Spacing="16"
+											Margin="16"
+											Orientation="Horizontal"
+											CounterAxisAlignment="Center"
+											utu:AutoLayout.CounterAlignment="Center">
+								<PathIcon Data="{StaticResource Icon_Notifications_None}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+										   Style="{StaticResource TitleMedium}"
+										   Text="Notifications"
+										   TextWrapping="Wrap" />
+							</utu:AutoLayout>
+							<ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+										  Style="{StaticResource ToggleSwitchStyle}" />
+						</utu:AutoLayout>
+						<utu:Divider Foreground="{ThemeResource OutlineVariantBrush}"
+									 Style="{StaticResource DividerStyle}" />
+						<utu:AutoLayout PrimaryAxisAlignment="Stretch"
+										Justify="SpaceBetween"
+										Orientation="Horizontal"
+										CounterAxisAlignment="Center">
+							<utu:AutoLayout Spacing="16"
+											Margin="16"
+											Orientation="Horizontal"
+											CounterAxisAlignment="Center"
+											utu:AutoLayout.CounterAlignment="Center">
+								<PathIcon Data="{StaticResource Icon_Night_Mode}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+										   Style="{StaticResource TitleMedium}"
+										   Text="Night Mode"
+										   TextWrapping="Wrap" />
+							</utu:AutoLayout>
+							<ToggleSwitch IsOn="{Binding Settings.IsDark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+										  Style="{StaticResource ToggleSwitchStyle}" />
+						</utu:AutoLayout>
+					</utu:AutoLayout>
+				</utu:AutoLayout>
+			</utu:AutoLayout>
+		</ScrollViewer>
+	</utu:AutoLayout>
+</Page>

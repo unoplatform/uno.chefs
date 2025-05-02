@@ -1,0 +1,60 @@
+jobs:
+- job: Wasm_UITests
+  displayName: 'WebAssembly UI Tests'
+  container: unoplatform/wasm-build:3.0
+  strategy:
+    maxParallel: 2
+    matrix:
+      Native:
+        UseSkiaRendering: false
+        VariantName: Native
+      Skia:
+        UseSkiaRendering: true
+        VariantName: Skia
+  pool:
+    vmImage: ubuntu-latest
+
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '20.x'
+
+  - template: templates/dotnet-install-linux.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-browserwasm'
+
+  - bash: |
+      bash build/scripts/wasm-uitest-run.sh
+    env:
+      BUILD_SOURCESDIRECTORY: "$(build.sourcesdirectory)"
+      BUILD_ARTIFACTSTAGINGDIRECTORY: "$(build.artifactstagingdirectory)"
+      VARIANT_NAME: "$(VariantName)"
+      USE_SKIA_RENDERING: "$(UseSkiaRendering)"
+    retryCountOnTaskFailure: 3
+    displayName: Run WebAssembly UITests ($(VariantName))
+
+  - task: CopyFiles@2
+    displayName: 'Publish Binaries'
+    retryCountOnTaskFailure: 3
+    inputs:
+      SourceFolder: Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot
+      Contents: '**/*.*'
+      TargetFolder: $(build.artifactstagingdirectory)/wwwroot
+
+  - task: PublishTestResults@2
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      testRunTitle: 'WebAssembly Test Run ($(VariantName))'
+      testResultsFormat: 'NUnit'
+      testResultsFiles: '$(build.sourcesdirectory)/build/wasm-uitest-results-$(VariantName).xml'
+      failTaskOnFailedTests: true
+
+  - task: PublishBuildArtifacts@1
+    retryCountOnTaskFailure: 3
+    condition: always()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: chefs-uitests-wasm-$(VariantName)
+      ArtifactType: Container

@@ -1,0 +1,88 @@
+name: CI Build
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+      - release/*
+
+jobs:
+  build_and_deploy_job_azure_static_apps:
+    env:
+      DIST_PATH: Chefs/bin/Release/net9.0-browserwasm/wwwroot
+
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    container: 'unoplatform/wasm-build:3.0'
+    name: Build Azure Static Apps
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Required for gitversion
+          submodules: true
+
+      - name: Setup dotnet 9.0.101
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '9.0.101'
+
+      - uses: dotnet/nbgv@f088059084cb5d872e9d1a994433ca6440c2bf72 # v0.4.2
+        id: nbgv
+        with:
+          toolVersion: 3.6.139
+          setAllVars: true
+
+      - name: Install .NET Workloads
+        shell: pwsh
+        run: |
+          & dotnet tool install --global --version 1.28.3 uno.check
+          & ~/.dotnet/tools/uno-check --ci --fix --non-interactive --verbose --skip openjdk 
+
+      - name: Build app
+        run: |
+          cd Chefs
+          dotnet build -c Release /p:UseSkiaRendering=true /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" -bl:wasm-github-ci-build.binlog
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wasm-site-skia
+          path: ${{ env.DIST_PATH }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: logs-skia
+          path: Chefs/wasm-github-ci-build.binlog
+
+      - name: Publish to Azure Static WebApps
+        continue-on-error: true
+        id: builddeploy_uno
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "${{ env.DIST_PATH }}" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+          deployment_environment: "skia"
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: "close"
+          deployment_environment: "skia"

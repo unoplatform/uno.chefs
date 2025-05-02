@@ -1,0 +1,69 @@
+﻿jobs:
+- job: iOS_UITests_Run
+  dependsOn: iOS_UITest_Build
+  displayName: 'Run iOS UI Tests'
+  timeoutInMinutes: 120
+  variables:
+    CI_Build: true
+    SourceLinkEnabled: false
+
+  strategy:
+    maxParallel: 2
+    matrix:
+      Native:
+        UseSkiaRendering: false
+        VariantName: Native
+      Skia:
+        UseSkiaRendering: true
+        VariantName: Skia
+
+  pool:
+    vmImage: 'macOS-14'
+
+  steps:
+  - checkout: self
+    clean: true
+    persistCredentials: true
+
+  - task: DownloadBuildArtifacts@0
+    displayName: 'Download iOS Chefs App'
+    inputs:
+        artifactName: iOS_UITest_$(VariantName)
+        downloadPath: '$(build.sourcesdirectory)/build'
+
+  - template: templates/dotnet-install-mac.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-ios'
+
+  - template: templates/canary-updater.yml
+  
+  - template: templates/xcode-select.yml
+    parameters:
+      xCodeRoot: $(XCODE_ROOT)
+
+  - bash: |
+      chmod +x $(build.sourcesdirectory)/build/scripts/ios-uitest-run.sh
+      $(build.sourcesdirectory)/build/scripts/ios-uitest-run.sh
+    displayName: Run iOS UITests ($(VariantName))
+    retryCountOnTaskFailure: 3
+    env:
+      VARIANT_NAME: "$(VariantName)"
+      USE_SKIA_RENDERING: "$(UseSkiaRendering)"
+
+  - task: PublishTestResults@2
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      testRunTitle: 'iOS UITest Run ($(VariantName))'
+      testResultsFormat: 'NUnit'
+      testResultsFiles: '$(build.sourcesdirectory)/build/ios-uitest-results-$(VariantName).xml'
+      failTaskOnFailedTests: true
+      failTaskOnMissingResultsFile: true
+
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      ArtifactName: chefs-uitests-ios-$(VariantName)
+      ArtifactType: Container

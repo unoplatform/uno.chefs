@@ -1,0 +1,216 @@
+jobs:
+- job: iOS_UITest_Build
+  timeoutInMinutes: 90
+  strategy:
+    matrix:
+      iOS:
+        UseSkiaRendering: false
+        VariantName: Native
+      iOS_Skia:
+        UseSkiaRendering: true
+        VariantName: Skia
+  pool:
+    vmImage: macos-15
+
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
+  - template: templates/xcode-select.yml
+    parameters:
+      xCodeRoot: $(XCODE_ROOT)
+
+  - template: templates/canary-updater.yml
+  - template: templates/dotnet-install-mac.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-ios'
+
+  - bash: |
+      chmod +x $(build.sourcesdirectory)/build/scripts/ios-uitest-build.sh
+      $(build.sourcesdirectory)/build/scripts/ios-uitest-build.sh
+
+    displayName: Build iOS App for UI Tests
+    env:
+      VARIANT_NAME: "$(VariantName)"
+      USE_SKIA_RENDERING: "$(UseSkiaRendering)"
+
+  - task: CopyFiles@2
+    displayName: 'Publish Binaries'
+    retryCountOnTaskFailure: 3
+    inputs:
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/net9.0-ios/iossimulator-x64/Chefs.app
+      Contents: '**'
+      TargetFolder: $(build.artifactstagingdirectory)/ios-uitest/Chefs.app
+      CleanTargetFolder: false
+      OverWrite: false
+      flattenFolders: false
+
+  - task: PublishBuildArtifacts@1
+    retryCountOnTaskFailure: 3
+    condition: always()
+    inputs:
+      ArtifactName: iOS_UITest_$(VariantName)
+  
+- job: iOS_Catalyst
+  timeoutInMinutes: 90
+  strategy:
+    matrix:
+      iOS:
+        BuildTargetFramework: net9.0-ios
+        ArtifactName: iOS
+        ApplicationBuildNumberOffset: 50
+        BuildCommand: publish
+        VersionCodeOffset: 50
+        UseSkiaRendering: false
+        VariantName: Native
+      # Catalyst:
+      #   BuildTargetFramework: net9.0-maccatalyst
+      #   ArtifactName: Catalyst
+      #   ApplicationBuildNumberOffset: 50
+      #   BuildCommand: build
+      #   VersionCodeOffset: 50
+      #   UseSkiaRendering: false
+      #   VariantName: Native
+      iOS_Skia:
+        ArtifactName: iOS
+        BuildTargetFramework: net9.0-ios
+        ApplicationBuildNumberOffset: 50
+        BuildCommand: publish
+        VersionCodeOffset: 50
+        UseSkiaRendering: true
+        VariantName: Skia
+      # Catalyst_Skia:
+      #   ArtifactName: Catalyst
+      #   BuildTargetFramework: net9.0-maccatalyst
+      #   ApplicationBuildNumberOffset: 50
+      #   BuildCommand: build
+      #   VersionCodeOffset: 50
+      #   UseSkiaRendering: true
+      #   VariantName: Skia
+  pool:
+    vmImage: macos-15
+  
+  variables:
+  - group: 'unoplatform.apple.ios.appstore.distribution'
+
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
+
+  - task: InstallAppleCertificate@2
+    displayName: Install Certificate
+    inputs:
+      certSecureFile: UnoPlatform-Apple-Distribution.p12
+      certPwd: $(appleappstorecertificatepassword)
+      keychain: temp
+      # disabled because of azure devops failing to uninstall as of 2022-11-16
+      # deleteCert: true
+
+  - task: InstallAppleCertificate@2
+    displayName: Install Certificate
+    inputs:
+      certSecureFile: UnoPlatform-MacInstaller.p12
+      certPwd: $(appleappstorecertificatepassword)
+      keychain: temp
+      # disabled because of azure devops failing to uninstall as of 2022-11-16
+      # deleteCert: true
+
+  # - task: InstallAppleProvisioningProfile@1
+  #   displayName: 'Install Apple Provisioning Profile'
+  #   inputs:
+  #     provisioningProfileLocation: 'secureFiles'
+  #     provProfileSecureFile: Uno_Chefs_Catalyst.provisionprofile
+
+  # - task: InstallAppleProvisioningProfile@1
+  #   displayName: 'Install Apple Provisioning Profile'
+  #   inputs:
+  #     provisioningProfileLocation: 'secureFiles'
+  #     provProfileSecureFile: Uno_Chefs_Canary_Catalyst.provisionprofile
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_iOS.mobileprovision
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Skia_Canary_iOS.mobileprovision
+
+  # - task: InstallAppleProvisioningProfile@1
+  #   displayName: 'Install Apple Provisioning Profile'
+  #   inputs:
+  #     provisioningProfileLocation: 'secureFiles'
+  #     provProfileSecureFile: Uno_Chefs_Skia_Catalyst.provisionprofile
+
+  # - task: InstallAppleProvisioningProfile@1
+  #   displayName: 'Install Apple Provisioning Profile'
+  #   inputs:
+  #     provisioningProfileLocation: 'secureFiles'
+  #     provProfileSecureFile: Uno_Chefs_Skia_Canary_Catalyst.provisionprofile
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Skia_iOS.mobileprovision
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install Apple Provisioning Profile'
+    inputs:
+      provisioningProfileLocation: 'secureFiles'
+      provProfileSecureFile: Uno_Chefs_Canary_iOS.mobileprovision
+
+  - template: templates/xcode-select.yml
+    parameters:
+      xCodeRoot: $(XCODE_ROOT)
+
+  - template: templates/canary-updater.yml
+  - template: templates/gitversion.yml
+  - template: templates/dotnet-install-mac.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-ios'
+
+  - bash: |
+      cd $(build.sourcesdirectory)/Chefs
+      echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
+      dotnet $(BuildCommand) -f $(BuildTargetFramework) /p:TargetFrameworkOverride=$(BuildTargetFramework) -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/logs/build-$(BuildTargetFramework).binlog "/p:InformationalVersion=$NBGV_InformationalVersion" 
+    displayName: Build project for Release - $(BuildTargetFramework)
+    retryCountOnTaskFailure: 3
+
+  - task: CopyFiles@2
+    displayName: 'Publish Binaries'
+    retryCountOnTaskFailure: 3
+    inputs:
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/
+      Contents:  |
+        **/*.apk
+        **/*.ipa
+        **/*.dSym/**
+        **/*.pkg
+      TargetFolder: $(build.artifactstagingdirectory)/bin
+      CleanTargetFolder: false
+      OverWrite: false
+      flattenFolders: false
+
+  - task: PublishBuildArtifacts@1
+    retryCountOnTaskFailure: 3
+    condition: always()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)/logs
+      ArtifactName: $(ArtifactName)-$(VariantName)-is_skia_$(UseSkiaRendering)-logs
+      ArtifactType: Container
+
+  - task: PublishPipelineArtifact@1
+    retryCountOnTaskFailure: 3
+    displayName: Publish artifacts
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/bin
+      artifactName: $(ArtifactName)-$(VariantName)-is_skia_$(UseSkiaRendering)

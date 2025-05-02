@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:converters="using:Chefs.Converters"
+					xmlns:ut="using:Uno.Themes">
+
+	<converters:StringFormatter x:Key="StringFormatter" />
+
+	<converters:StringSeparatorConverter x:Key="DotStringSeparator"
+										 Separator=" ∙ " />
+
+	<converters:CookingTimeFormatter x:Key="CookingTimeFormatter" />
+
+	<converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
+
+	<converters:BoolInverter x:Key="InvertBool" />
+
+	<converters:GreaterThanZeroToVisibleConverter x:Key="GreaterThanZeroToVisibleConverter" />
+
+	<converters:CertainNumberToVisible x:Key="CertainNumberToVisibleConverter"
+									   Number="2" />
+
+	<converters:FromNullToVisibilityConverter x:Key="NullToCollapsed" />
+
+	<converters:FromNullToVisibilityConverter x:Key="NullToVisible"
+											  Invert="True" />
+
+	<converters:StringReplacerConverter x:Key="WhiteSpaceToLineBreakConverter"
+										NewValue="&#x0a;"
+										OldValue=" " />
+
+	<ut:FromBoolToValueConverter x:Key="TrueToVisible"
+								 FalseValue="Collapsed"
+								 NullValue="Collapsed"
+								 TrueValue="Visible" />
+
+	<ut:FromBoolToValueConverter x:Key="TrueToCollapsed"
+								 FalseValue="Visible"
+								 NullValue="Visible"
+								 TrueValue="Collapsed" />
+
+	<converters:BoolToResourceConverter x:Key="UserLikeColorConverter"
+										FalseValue="PrimaryMediumBrush"
+										NullValue="PrimaryMediumBrush"
+										TrueValue="PrimaryBrush" />
+
+	<converters:BoolToResourceConverter x:Key="UserDislikeColorConverter"
+										FalseValue="PrimaryBrush"
+										NullValue="PrimaryMediumBrush"
+										TrueValue="PrimaryMediumBrush" />
+
+	<converters:FromBoolToValueConverter x:Key="UserLikeCheckedConverter"
+										 FalseValue="False"
+										 TrueValue="True"
+										 NullValue="False" />
+
+	<converters:FromBoolToValueConverter x:Key="UserDislikeCheckedConverter"
+										 FalseValue="True"
+										 TrueValue="False"
+										 NullValue="False" />
+
+	<converters:BoolToResourceConverter x:Key="BoolToNotificationColor"
+										TrueValue="SurfaceBrush"
+										FalseValue="SurfaceTintBrush" />
+
+	<converters:BoolToResourceConverter x:Key="PrimarySurfaceColorConverter"
+										FalseValue="PrimaryBrush"
+										TrueValue="SurfaceBrush" />
+
+	<converters:BoolToResourceConverter x:Key="FilterButtonBackgroundColor"
+										FalseValue="SurfaceBrush"
+										TrueValue="PrimaryBrush" />
+</ResourceDictionary>

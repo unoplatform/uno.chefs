@@ -1,0 +1,97 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+					xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+					xmlns:uen="using:Uno.Extensions.Navigation.UI"
+					xmlns:uer="using:Uno.Extensions.Reactive.UI"
+					xmlns:ut="using:Uno.Themes"
+					xmlns:utu="using:Uno.Toolkit.UI">
+	<!-- Themed colors -->
+	<ResourceDictionary.ThemeDictionaries>
+		<ResourceDictionary x:Key="Light">
+			<Color x:Key="StatusBarForegroundColor">#000000</Color>
+			<Color x:Key="SurfaceColor">#FFFFFF</Color>
+			<Color x:Key="OnSurfaceColor">#1C1B1F</Color>
+			<Color x:Key="PrimaryColor">#ED3F64</Color>
+			<Color x:Key="OnSurfaceVariantColor">#5A3E3E</Color>
+			<Color x:Key="OnPrimaryColor">#FFFFFF</Color>
+			<Color x:Key="OnSecondaryContainerColor">#1F182B</Color>
+			<Color x:Key="SecondaryContainerColor">#EEECDE</Color>
+			<Color x:Key="PrimaryInverseColor">#F48CA2</Color>
+			<Color x:Key="PrimaryContainerColor">#F48CA2</Color>
+			<Color x:Key="OnPrimaryContainerColor">#FFFFFF</Color>
+			<Color x:Key="PrimaryVariantLightColor">#F48CA2</Color>
+			<Color x:Key="PrimaryVariantDarkColor">#910030</Color>
+			<Color x:Key="SecondaryColor">#C5C2A8</Color>
+			<Color x:Key="SecondaryVariantDarkColor">#9C9986</Color>
+			<Color x:Key="SecondaryVariantLightColor">#E8E6D6</Color>
+			<Color x:Key="OnSecondaryColor">#1F182B</Color>
+			<Color x:Key="BackgroundColor">#F5F8FD</Color>
+			<Color x:Key="OnBackgroundColor">#1C1B1F</Color>
+			<Color x:Key="SurfaceInverseColor">#313033</Color>
+			<Color x:Key="SurfaceTintColor">#EDF0F6</Color>
+			<Color x:Key="OnSurfaceInverseColor">#F4EFF4</Color>
+			<Color x:Key="SurfaceVariantColor">#FADDE3</Color>
+			<Color x:Key="OutlineColor">#79747E</Color>
+			<Color x:Key="OutlineVariantColor">#C9C5D0</Color>
+			<Color x:Key="ErrorColor">#B3261E</Color>
+			<Color x:Key="OnErrorColor">#FFFFFF</Color>
+			<Color x:Key="ErrorContainerColor">#F9DEDC</Color>
+			<Color x:Key="OnErrorContainerColor">#410E0B</Color>
+			<Color x:Key="TertiaryColor">#F7F5DD</Color>
+			<Color x:Key="OnTertiaryColor">#000000</Color>
+			<Color x:Key="TertiaryContainerColor">#F5F3CB</Color>
+			<Color x:Key="OnTertiaryContainerColor">#001D36</Color>
+
+			<Color x:Key="NutritionTrackBackgroundColor">#1C1B1F14</Color>
+			<Color x:Key="NutritionProteinValColor">#159BFF</Color>
+			<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
+			<Color x:Key="NutritionFatValColor">#F85977</Color>
+			<x:String x:Key="ChefsLogoWithIcon">ms-appx:///Assets/Icons/chefslogosignature.png</x:String>
+		</ResourceDictionary>
+		<ResourceDictionary x:Key="Dark">
+			<Color x:Key="PrimaryColor">#FFA3B6</Color>
+			<Color x:Key="PrimaryInverseColor">#9C0021</Color>
+			<Color x:Key="OnPrimaryColor">#620015</Color>
+			<Color x:Key="PrimaryContainerColor">#B72746</Color>
+			<Color x:Key="OnPrimaryContainerColor">#FFE7EC</Color>
+			<Color x:Key="PrimaryVariantLightColor">#FFBFCC</Color>
+			<Color x:Key="PrimaryVariantDarkColor">#AD2340</Color>
+			<Color x:Key="SecondaryColor">#C5C2A8</Color>
+			<Color x:Key="OnSecondaryColor">#2B291E</Color>
+			<Color x:Key="SecondaryContainerColor">#494636</Color>
+			<Color x:Key="OnSecondaryContainerColor">#FFFCEE</Color>
+			<Color x:Key="BackgroundColor">#232528</Color>
+			<Color x:Key="OnBackgroundColor">#F5F8FD</Color>
+			<Color x:Key="SurfaceColor">#0F1012</Color>
+			<Color x:Key="SurfaceInverseColor">#E3E4E7</Color>
+			<Color x:Key="SurfaceTintColor">#444A55</Color>
+			<Color x:Key="SurfaceVariantColor">#494B4F</Color>
+			<Color x:Key="OnSurfaceColor">#EBECF0</Color>
+			<Color x:Key="OnSurfaceInverseColor">#191A1C</Color>
+			<Color x:Key="OnSurfaceVariantColor">#C4C8CF</Color>
+			<Color x:Key="OutlineColor">#92969C</Color>
+			<Color x:Key="OutlineVariantColor">#53565A</Color>
+			<Color x:Key="ErrorColor">#FFB4AB</Color>
+			<Color x:Key="OnErrorColor">#690005</Color>
+			<Color x:Key="ErrorContainerColor">#93000A</Color>
+			<Color x:Key="OnErrorContainerColor">#FFDAD6</Color>
+			<Color x:Key="TertiaryColor">#F7F5DD</Color>
+			<Color x:Key="OnTertiaryColor">#000000</Color>
+			<Color x:Key="TertiaryContainerColor">#F5F3CB</Color>
+			<Color x:Key="OnTertiaryContainerColor">#2A2800</Color>
+			<Color x:Key="StatusBarForegroundColor">#FFFFFF</Color>
+
+			<Color x:Key="NutritionTrackBackgroundColor">#242629</Color>
+			<Color x:Key="NutritionProteinValColor">#159BFF</Color>
+			<Color x:Key="NutritionCarbsValColor">#7A67F8</Color>
+			<Color x:Key="NutritionFatValColor">#F85977</Color>
+			<x:String x:Key="ChefsLogoWithIcon">ms-appx:///Assets/Icons/chefslogosignature_dark.png</x:String>
+		</ResourceDictionary>
+	</ResourceDictionary.ThemeDictionaries>
+
+	<Color x:Key="BrandBlackColor">#242424</Color>
+	<SolidColorBrush x:Key="BrandBlackBrush"
+					 Color="{StaticResource BrandBlackColor}" />
+</ResourceDictionary>

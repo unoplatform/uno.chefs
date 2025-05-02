@@ -1,0 +1,57 @@
+trigger:
+  branches:
+    include:
+      - main
+      - beta
+      - release/beta/*
+      - stable
+      - release/stable/*
+
+  paths:
+    include:
+    - '/'
+    exclude:
+    - .dependabot/
+    - .github/
+    # don't trigger the CI if only docs files are changed
+    - doc/*
+    - '**/*.md'
+    - '*.md'
+
+pr: 
+  branches:
+    include:
+      - main
+      - beta
+      - release/beta/*
+      - stable
+      - release/stable/*
+
+  paths:
+    include:
+    - '/'
+    exclude:
+    - .dependabot/
+    - .github/
+    # don't trigger the CI if only docs files are changed
+    - doc/*
+    - '**/*.md'
+    - '*.md'
+
+variables:
+  # Path where packages (nuget or app packages) will be copied to.
+  PackageOutputPath: $(build.artifactstagingdirectory)
+
+  IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
+  IsReleaseBranch: $[or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))]
+  XCODE_ROOT: '/Applications/Xcode_16.2.app'
+
+jobs:
+- template: build-windows.yml
+- template: build-android.yml
+- template: build-ios-catalyst.yml
+- template: build-wasm.yml
+- template: build-skia-desktop.yml
+- template: stage-uitests-ios.yml
+- template: stage-uitests-android.yml
+- template: stage-uitests-wasm.yml

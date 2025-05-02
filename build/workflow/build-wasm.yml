@@ -1,0 +1,106 @@
+jobs:
+- job: WASM
+  strategy:
+    matrix:
+      WASM:
+        UseSkiaRendering: false
+        ArtifactName: WASM
+      WASM_Skia:
+        UseSkiaRendering: true
+        ArtifactName: WASM_Skia
+  timeoutInMinutes: 90
+  pool:
+    vmImage: ubuntu-latest
+
+  container: unoplatform/wasm-build:3.0
+
+  variables:
+    SkipUnknownFrameworks: true
+  
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
+  - bash: |
+      # This list is based on what the base image contains and
+      # may need to be adjusted as new software gets installed.
+      # Use the `du` command below to determine what can be
+      # uninstalled.
+      
+      rm -fR ~/.cargo
+      rm -fR ~/.rustup
+      rm -fR ~/.dotnet
+      sudo rm -fR /usr/share/swift
+      sudo rm -fR /opt/microsoft/msedge
+      sudo rm -fR /usr/local/.ghcup
+      sudo rm -fR /usr/lib/mono
+      sudo snap remove lxd
+      sudo snap remove core20
+      sudo apt remove snapd
+
+      df -h
+      # du -h -d 3 /
+    displayName: 'Cleanup unused image dependencies (Linux)'
+    condition: eq(variables['Agent.OS'], 'Linux')
+  - task: UseDotNet@2
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: sdk
+      version: 9.0.101
+
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core SDK 5.0.400'
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: sdk
+      version: 5.0.400
+      
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core SDK 3.1.406'
+    retryCountOnTaskFailure: 3
+    inputs:
+      packageType: sdk
+      version: 3.1.406
+
+  - template: templates/gitversion.yml
+  - template: templates/dotnet-install-linux.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-browserwasm'
+
+  - template: templates/canary-updater.yml
+
+
+  - bash: |
+      dotnet publish /ds /m /r /p:TargetFramework=net9.0-browserwasm /p:TargetFrameworkOverride=net9.0-browserwasm /p:Configuration=Release /p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" Chefs/Chefs.csproj /bl:$(build.artifactstagingdirectory)/logs/build-wasm.binlog
+    retryCountOnTaskFailure: 3
+
+  - task: CopyFiles@2
+    displayName: Copy Wasm output
+    inputs:
+      SourceFolder: Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot
+      Contents: '**/*.*'
+      TargetFolder: $(build.artifactstagingdirectory)/wwwroot
+
+  - task: CopyFiles@2
+    displayName: Copy version information
+    inputs:
+      Contents: Chefs/Version.txt
+      TargetFolder: $(build.artifactstagingdirectory)/wwwroot
+      FlattenFolders: true
+
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    displayName: Publish build logs
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)/logs
+      ArtifactName: $(ArtifactName)-logs
+      ArtifactType: Container
+
+  - task: PublishPipelineArtifact@1
+    retryCountOnTaskFailure: 3
+    displayName: Publish artifacts
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/wwwroot
+      artifactName: $(ArtifactName)

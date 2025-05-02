@@ -1,0 +1,23 @@
+name: Xaml Styler
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  xaml-styler:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4.0.1
+      with:
+        dotnet-version: 8.0.100
+    - name: Install XAML Styler 
+      run: dotnet tool update --global XamlStyler.Console
+    - name: Verify XAML Styling
+      run: xstyler -r -l Verbose -c xaml-styler.json -d "Chefs" --passive

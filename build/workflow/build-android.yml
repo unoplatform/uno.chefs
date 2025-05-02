@@ -1,0 +1,120 @@
+jobs:
+- job: Android_UITest_Build
+  timeoutInMinutes: 90
+  strategy:
+    matrix:
+      Native:
+        UseSkiaRendering: false
+        VariantName: Native
+      Skia:
+        UseSkiaRendering: true
+        VariantName: Skia
+  pool:
+    vmImage: macOS-14
+ 
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+ 
+  - template: templates/canary-updater.yml
+  - template: templates/dotnet-install-mac.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-android'
+ 
+  - bash: |
+      chmod +x $(build.sourcesdirectory)/build/scripts/android-uitest-build.sh
+      $(build.sourcesdirectory)/build/scripts/android-uitest-build.sh
+ 
+    displayName: Build Android App for UI Tests
+    env:
+      VARIANT_NAME: "$(VariantName)"
+      USE_SKIA_RENDERING: "$(UseSkiaRendering)"
+ 
+  - task: CopyFiles@2
+    displayName: 'Publish Binaries'
+    retryCountOnTaskFailure: 3
+    inputs:
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/net8.0-android/android-x64/publish
+      Contents: '*-Signed.apk'
+      TargetFolder: $(build.artifactstagingdirectory)/android-uitest
+      CleanTargetFolder: false
+      OverWrite: false
+      flattenFolders: false
+ 
+  - task: PublishBuildArtifacts@1
+    retryCountOnTaskFailure: 3
+    condition: always()
+    inputs:
+      ArtifactName: Android_UITest_$(VariantName)
+
+- job: Android
+  strategy:
+    matrix:
+      Android:
+        UseSkiaRendering: false
+        VariantName: Native
+      Android_Skia:
+        UseSkiaRendering: true
+        VariantName: Skia
+
+  pool:
+    vmImage: windows-2022
+
+  variables:
+  - group: 'UnoPlatform KeyStore'
+  - name: VersionCodeOffset
+    value: 1
+
+  steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 0
+    persistCredentials: true
+
+  - template: templates/canary-updater.yml
+  - template: templates/gitversion.yml
+  - template: templates/dotnet-install-windows.yml
+    parameters:
+      UnoCheckParameters: '--tfm net9.0-android'
+
+  - task: DownloadSecureFile@1
+    name: keyStore
+    displayName: "Download keystore from secure files"
+    inputs:
+      secureFile: unoplatform.jks
+
+  - script: |
+      cd $(build.sourcesdirectory)/Chefs
+      dotnet publish -f:net9.0-android /p:TargetFrameworkOverride=net9.0-android -c:Release -p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" /p:AndroidSigningKeyStore=$(keyStore.secureFilePath) /p:AndroidSigningStorePass=$(AndroidSigningStorePass) /p:AndroidSigningKeyPass=$(AndroidSigningKeyPass) /p:AndroidSigningKeyAlias=$(AndroidSigningKeyAlias) /p:AndroidKeyStore=true /bl:$(build.artifactstagingdirectory)/logs/build-android.binlog 
+    displayName: 'Build Android'
+    retryCountOnTaskFailure: 3
+
+  - task: CopyFiles@2
+    displayName: 'Publish Binaries'
+    retryCountOnTaskFailure: 3
+    inputs:
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/
+      Contents:  |
+        **/*.apk
+        **/*.aab
+      TargetFolder: $(build.artifactstagingdirectory)/bin
+      CleanTargetFolder: false
+      OverWrite: false
+      flattenFolders: false
+
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    retryCountOnTaskFailure: 3
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)/logs
+      ArtifactName: android-is_skia_$(UseSkiaRendering)-logs
+      ArtifactType: Container
+
+  - task: PublishPipelineArtifact@1
+    retryCountOnTaskFailure: 3
+    displayName: Publish artifacts
+    inputs:
+      targetPath: $(build.artifactstagingdirectory)/bin
+      artifactName: android-is_skia_$(UseSkiaRendering)
