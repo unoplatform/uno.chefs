@@ -53,6 +53,7 @@ unzip -o $CMDLINETOOLS -d $ANDROID_HOME/cmdline-tools
 rm $CMDLINETOOLS
 mv $ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools $LATEST_CMDLINE_TOOLS_PATH
 
+TEST_FAILED_FLAG=.tests-failed
 AVD_NAME=xamarin_android_emulator
 AVD_CONFIG_FILE=~/.android/avd/$AVD_NAME.avd/config.ini
 EMU_UPDATE_FILE=~/.android/emu-update-last-check.ini
@@ -142,12 +143,21 @@ cd $UNO_UITEST_PROJECT_PATH
 dotnet build /r /p:TargetFrameworkOverride=net9.0-android "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
 
 ## Run tests
-dotnet test $UNO_UITEST_BINARY \
+if dotnet test $UNO_UITEST_BINARY \
 	-l:"console;verbosity=normal" \
 	--logger "nunit;LogFileName=$UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH" \
 	--blame-hang-timeout $UITEST_TEST_TIMEOUT \
-	-v m \
-	|| true
+	-v m; 
+then
+	echo "Tests passed"
+	rm -f $TEST_FAILED_FLAG
+else
+	echo "Tests failed"
+	if [[ ! -f $TEST_FAILED_FLAG ]];
+	then
+		touch $TEST_FAILED_FLAG
+	fi
+fi
 
 ## Copy the results file to the results folder
 cp $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH $BASE_ARTIFACTS_PATH
@@ -157,5 +167,10 @@ $ANDROID_HOME/platform-tools/adb shell logcat -d > $UNO_UITEST_SCREENSHOT_PATH/a
 
 if [[ ! -f $UNO_ORIGINAL_TEST_RESULTS ]]; then
 	echo "ERROR: The test results file $UNO_ORIGINAL_TEST_RESULTS does not exist (did nunit crash ?)"
+	return 1
+fi
+
+if [[ -f $TEST_FAILED_FLAG ]]; then
+	echo "ERROR: The tests failed"
 	return 1
 fi

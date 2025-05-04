@@ -20,6 +20,8 @@ export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net9.
 
 export UITEST_TEST_TIMEOUT=120m
 
+TEST_FAILED_FLAG=.tests-failed
+
 echo "Listing iOS simulators"
 xcrun simctl list devices --json
 
@@ -78,12 +80,21 @@ cd $UNO_UITEST_PROJECT_PATH
 dotnet build /r /p:TargetFrameworkOverride=net9.0-android "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
 
 ## Run tests
-dotnet test $UNO_UITEST_BINARY \
+if dotnet test $UNO_UITEST_BINARY \
 	-l:"console;verbosity=normal" \
 	--logger "nunit;LogFileName=$UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH" \
 	--blame-hang-timeout $UITEST_TEST_TIMEOUT \
-	-v m \
-	|| true
+	-v m;
+then
+	echo "Tests passed"
+	rm -f $TEST_FAILED_FLAG
+else
+	echo "Tests failed"
+	if [[ ! -f $TEST_FAILED_FLAG ]];
+	then
+		touch $TEST_FAILED_FLAG
+	fi
+fi
 
 echo "Current system date"
 date
@@ -98,3 +109,13 @@ export LOG_FILEPATH_FULL=$LOG_FILEPATH/DeviceLog-`date +"%Y%m%d%H%M%S"`.txt
 
 xcrun simctl spawn booted log collect --output $TMP_LOG_FILEPATH
 log show --style syslog $TMP_LOG_FILEPATH > $LOG_FILEPATH_FULL
+
+if [[ ! -f $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH ]]; then
+	echo "ERROR: The test results file $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH does not exist (did nunit crash ?)"
+	return 1
+fi
+
+if [[ -f $TEST_FAILED_FLAG ]]; then
+	echo "ERROR: The tests failed"
+	return 1
+fi
