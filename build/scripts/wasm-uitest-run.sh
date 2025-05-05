@@ -20,6 +20,7 @@ export UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH=$UNO_ORIGINAL_TEST_RESULTS
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UITEST_TEST_TIMEOUT=60m
 export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net9.0/Chefs.UITests.dll
+TEST_FAILED_FLAG=.tests-failed
 
 cd $UNO_UITEST_WASM_PROJECT
 
@@ -55,16 +56,33 @@ echo "  Timeout=$UITEST_TEST_TIMEOUT"
 
 cd $BUILD_SOURCESDIRECTORY/Chefs.UITests
 
-dotnet test \
+if dotnet test \
 	-l:"console;verbosity=diag" \
 	-c Release \
 	--logger "nunit;LogFileName=$UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH" \
 	--blame-hang-timeout $UITEST_TEST_TIMEOUT \
 	-v m \
-	"/p:UseSkiaRendering=$USE_SKIA_RENDERING" \
-	|| true
+	"/p:UseSkiaRendering=$USE_SKIA_RENDERING";
+then
+	echo "Tests passed"
+	rm -f $TEST_FAILED_FLAG
+else
+	echo "Tests failed"
+	if [[ ! -f $TEST_FAILED_FLAG ]];
+	then
+		touch $TEST_FAILED_FLAG
+	fi
+fi
 
 ## Copy the results file to the results folder
 cp --backup=t $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH $UNO_UITEST_SCREENSHOT_PATH
 
-kill %%
+if [[ ! -f $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH ]]; then
+	echo "ERROR: The test results file $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH does not exist (did nunit crash ?)"
+	return 1
+fi
+
+if [[ -f $TEST_FAILED_FLAG ]]; then
+	echo "ERROR: The tests failed"
+	return 1
+fi
