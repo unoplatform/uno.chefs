@@ -14,15 +14,40 @@ uid: Uno.Recipes.ContentDialog
 
 We can first create our own `DialogInfo` object that can hold whatever useful information we want to display:
 
-[!code-csharp[](../../Chefs/Business/Models/DialogInfo.cs#L3-L13)]
+```csharp
+public partial record DialogInfo
+{
+    public DialogInfo(string title, string content)
+    {
+        Title = title;
+        Content = content;
+    }
+
+    public string Title { get; init; }
+    public string Content { get; init; }
+}
+```
 
 We can then create a generic dialog that will have its own DialogInfo:
 
-[!code-csharp[](../../Chefs/Presentation/GenericDialogModel.cs#L3)]
+```csharp
+public partial record GenericDialogModel(DialogInfo DialogInfo);
+```
 
 We should then create a GenericDialog.xaml file which will take care of the bindings. We will be able to re-use this `ContentDialog` throughout the app:
 
-[!code-xml[](../../Chefs/Views/Dialogs/GenericDialog.xaml)]
+```xml
+﻿<ContentDialog x:Class="Chefs.Views.GenericDialog"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:local="using:Chefs.Presentation.Dialogs"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                Title="{Binding DialogInfo.Title}"
+                Background="{ThemeResource SurfaceBrush}"
+                CloseButtonText="Close"
+                Content="{Binding DialogInfo.Content}"
+                Style="{StaticResource MaterialContentDialogStyle}" />
+```
 
 ### Using the GenericDialogModel with the Uno Navigation Extension
 
@@ -55,7 +80,16 @@ public class App : Application
 
 We add our own `ShowDialog` method to `INavigatorExtensions`:
 
-[!code-csharp[](../../Chefs/Presentation/Extensions/INavigatorExtensions.cs#L11-L17)]
+```csharp
+public static class INavigatorExtensions
+{
+    public static Task<NavigationResponse?> ShowDialog(this INavigator navigator, object sender, DialogInfo dialogInfo, CancellationToken ct)
+    {
+        return navigator.NavigateDataAsync(sender, new DialogInfo(dialogInfo.Title, dialogInfo.Content), cancellation: ct);
+    }
+}
+```
+
 We are now ready to show a dialog with custom `DialogInfo` wherever we are using navigation. Here's an example where we show the user an error message in our dialog under a condition:
 
 ```csharp

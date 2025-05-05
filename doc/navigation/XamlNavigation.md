@@ -18,7 +18,12 @@ Uno Navigation Extensions allows you to streamline XAML navigation by leveraging
 
 On the Chefs home page there are some `ItemRepeater` controls that each display a list of filtered clickable recipes. When a user clicks on a recipe, they are brought to that specific recipe's details page.
 
-[!code-xml[](../../Chefs/Views/HomePage.xaml#L114-L117)]
+```xml
+<muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                    uen:Navigation.Request="RecipeDetails"
+                    uen:Navigation.Data="{Binding Data}"
+                    ItemTemplate="{StaticResource HomeLargeItemTemplate}">
+```
 
 Clicking on a specific recipe will bring the user to the `RecipeDetailsPage` with the `Recipe` as its `Data` parameter. This page will display all the details of the recipe in question. The `Navigation.Request` property will resolve to the `RecipeDetails` route as registered in the root App.xaml.cs file.
 

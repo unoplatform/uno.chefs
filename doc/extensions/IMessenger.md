@@ -16,23 +16,47 @@ The `IMessenger` interface provided by `Uno.Extensions` allows components to com
 
 Ensure `IMessenger` is registered in your application's services during startup in the `ConfigureServices` method:
 
-[!code-csharp[](../../Chefs/App.xaml.cs#L129)]
+```csharp
+host.ConfigureServices((context, services) =>
+{
+    services
+        ... // other services
+        .AddSingleton<IMessenger, WeakReferenceMessenger>();
+})
+```
 
 ### Using IMessenger in Services
 
 Inject the `IMessenger` into the `CookbookService`:
 
-[!code-csharp[](../../Chefs/Services/Cookbooks/CookbookService.cs#L7)]
+```csharp
+public class CookbookService(ChefsApiClient client, IMessenger messenger, IUserService userService): ICookbookService
+{
+    ...
+}
+```
 
 When a cookbook is created, updated, or deleted, send a message to notify subscribers:
 
-[!code-csharp[](../../Chefs/Services/Cookbooks/CookbookService.cs#L38-L44)]
+```csharp
+public async ValueTask Update(Cookbook cookbook, CancellationToken ct)
+{
+    var cookbookData = cookbook.ToData();
+
+    await client.Api.Cookbook.PutAsync(cookbookData, cancellationToken: ct);
+    messenger.Send(new EntityMessage<Cookbook>(EntityChange.Updated, cookbook));
+}
+```
 
 ### Reacting to Changes in ViewModels
 
 Subscribe to messages in the ViewModel to react to changes in the service:
 
-[!code-csharp[](../../Chefs/Presentation/CreateUpdateCookbookModel.cs#L54-L56)]
+```csharp
+public IState<Cookbook> Cookbook => State
+    .Value(this, () => _cookbook ?? new Cookbook())
+    .Observe(_messenger, cb => cb.Id);
+```
 
 This pattern will automatically update the provided `IState` property when a message is received.
 

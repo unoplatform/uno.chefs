@@ -58,13 +58,37 @@ The `Search` method in the `IRecipeService` is called whenever the **Term** stat
 
 #### 2. `SearchPage.xaml`
 
-Search Term
+Search Term:
 
-[!code-xml[](../../Chefs/Views/SearchPage.xaml#L114-L118)]
+```xml
+<TextBox utu:CommandExtensions.Command="{Binding Search}"
+         Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+         CornerRadius="28"
+         PlaceholderText="Search"
+         Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+```
 
-FeedView
+FeedView:
 
-[!code-xml[](../../Chefs/Views/SearchPage.xaml#L161-L177)]
+```xml
+<uer:FeedView x:Name="SearchFeed"
+              NoneTemplate="{StaticResource EmptyTemplate}"
+              utu:AutoLayout.PrimaryAlignment="Stretch"
+              Source="{Binding Results}">
+    <DataTemplate>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <muxc:ItemsRepeater x:Name="SearchRepeater"
+                                Margin="{utu:Responsive Narrow='16,0,16,16',
+                                                        Wide='40,0,40,40'}"
+                                uen:Navigation.Request="RecipeDetails"
+                                ItemTemplate="{StaticResource RecipeTemplate}"
+                                ItemsSource="{Binding Data}"
+                                Layout="{StaticResource ResponsiveGridLayout}" />
+        </ScrollViewer>
+
+    </DataTemplate>
+</uer:FeedView>
+```
 
 The `FeedView` control automatically updates the displayed list of recipes whenever the `Results` feed is updated, providing a dynamic and responsive search experience.
 
