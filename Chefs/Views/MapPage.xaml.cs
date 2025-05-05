@@ -15,6 +15,7 @@ public sealed partial class MapPage : Page
 {
 	private static Mapsui.Map? _map;
 	private static MyLocationLayer? _myLocationLayer;
+	private static MemoryLayer? _pinsLayer;
 
 	private static List<Contributor> Contributors => new List<Contributor>
 	{
@@ -42,7 +43,7 @@ public sealed partial class MapPage : Page
 		AddBaseLayer();
 		AddPinsLayer();
 		AddMyLocationLayer();
-		_map.Info += MapOnInfo;
+		_map.Tapped += OnMapTapped;
 	}
 
 	private static void AddBaseLayer()
@@ -60,20 +61,20 @@ public sealed partial class MapPage : Page
 			return (IFeature)feature;
 		});
 
-		var pinsLayer = new MemoryLayer
+		_pinsLayer = new MemoryLayer
 		{
 			Name = "Contributor pins with callouts",
-			IsMapInfoLayer = true,
+			
 			Features = new MemoryProvider(pins).Features,
-			Style = new SymbolStyle()
+			Style = new CalloutStyle()
 			{
-				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_pin.svg").ToString(),
+				Image = new Mapsui.Styles.Image { Source = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_pin.svg").ToString() },
 				SymbolScale = 1,
-				SymbolOffset = new RelativeOffset(new Offset(x: 0.0, y: 0.5))
+				RelativeOffset = new RelativeOffset(x: 0.0, y: 0.5)
 			}
 		};
 
-		_map!.Layers.Add(pinsLayer);
+		_map!.Layers.Add(_pinsLayer);
 	}
 
 	private static CalloutStyle CreateCalloutStyle(string title, string subtitle)
@@ -89,7 +90,7 @@ public sealed partial class MapPage : Page
 			Type = CalloutType.Detail,
 			MaxWidth = 120,
 			Enabled = false,
-			SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
+			Offset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
 		};
 	}
 
@@ -101,9 +102,9 @@ public sealed partial class MapPage : Page
 		_myLocationLayer = new MyLocationLayer(_map!)
 		{
 			CalloutText = "My location",
-			Style = new SymbolStyle
+			Style = new CalloutStyle
 			{
-				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_circle.svg").ToString(),
+				Image = new Mapsui.Styles.Image { Source = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_circle.svg").ToString() },
 				SymbolScale = 1
 			}
 		};
@@ -117,14 +118,19 @@ public sealed partial class MapPage : Page
 	{
 		_map!.Navigator.CenterOnAndZoomTo(point, resolution);
 	}
-
-	private static void MapOnInfo(object? sender, MapInfoEventArgs e)
+	private void OnMapTapped(object? sender, MapEventArgs e)
 	{
-		var calloutStyle = e.MapInfo?.Feature?.Styles.Where(s => s is CalloutStyle).Cast<CalloutStyle>().FirstOrDefault();
+		if (_myLocationLayer is null || _pinsLayer is null)
+		{
+			return;
+		}
+
+		var mapInfo = e.GetMapInfo([_myLocationLayer, _pinsLayer]);
+		var calloutStyle = mapInfo?.Feature?.Styles.Where(s => s is CalloutStyle).Cast<CalloutStyle>().FirstOrDefault();
 		if (calloutStyle != null)
 		{
 			calloutStyle.Enabled = !calloutStyle.Enabled;
-			e.MapInfo?.Layer?.DataHasChanged();
+			mapInfo?.Layer?.DataHasChanged();
 		}
 	}
 }
