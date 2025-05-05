@@ -16,7 +16,9 @@ The `ResponsiveExtension` class is a markup extension that enables the customiza
 
 `ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:Toolkit.Controls.ResponsiveView) control.
 
-[!code-xml[](../../Chefs/Views/SearchPage.xaml#L110-L111)]
+```xml
+<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}"
+```
 
 ![Responsive Extension Animation"](../assets/responsiveextension-animated.gif)
 

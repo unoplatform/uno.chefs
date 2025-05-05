@@ -27,7 +27,15 @@ Given the following `.svg` files:
 
 And in the project properties file:
 
-[!code-xml[](../../Chefs/Chefs.csproj#L120-L126)]
+```xml
+<PropertyGroup>
+    <UnoSplashScreenColor>#313033</UnoSplashScreenColor>
+    <UnoIconForegroundScale>0.5</UnoIconForegroundScale>
+    <UnoSplashScreenBaseSize>350,300</UnoSplashScreenBaseSize>
+    <UnoIconForegroundFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Icons/icon_foreground_canary.svg</UnoIconForegroundFile>
+    <UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
+</PropertyGroup>
+```
 
 For more information on the different `UnoIcon` and `UnoSplashScreen` properties you can refer to the [documentation](xref:Uno.Resizetizer.GettingStarted#unoicon).
 

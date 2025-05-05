@@ -16,8 +16,22 @@ The [Uno Themes library](xref:Uno.Themes.Overview) provides a set of attached pr
 
 Given the following XAML:
 
-[!code-xml[](../../Chefs/Views/HomePage.xaml#L46-L59)]
-
+```xml
+<ToggleButton Style="{StaticResource IconToggleButtonStyle}"
+              IsChecked="{Binding IsFavorite}"
+              Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+                                            Path=DataContext.FavoriteRecipe}"
+              CommandParameter="{Binding}">
+    <ToggleButton.Content>
+        <PathIcon Data="{StaticResource Icon_Heart}"
+                  Foreground="{ThemeResource OnSurfaceBrush}" />
+    </ToggleButton.Content>
+    <ut:ControlExtensions.AlternateContent>
+        <PathIcon Data="{StaticResource Icon_Heart_Filled}"
+                  Foreground="{ThemeResource PrimaryBrush}" />
+    </ut:ControlExtensions.AlternateContent>
+</ToggleButton>
+```
 
 ![ToggleButton with AlternateContent](../assets/toggle-alternate-content.gif)
 

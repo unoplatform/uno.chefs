@@ -53,11 +53,31 @@ public class App : Application
 
 ### Chart control code-behind
 
-[!code-csharp[](../../Chefs/Views/Controls/ChartControl.xaml.cs#L10)]
+```csharp
+public sealed partial class ChartControl : UserControl
+{
+ private Recipe? _recipe;
+ public ChartControl()
+ {
+    this.InitializeComponent();
+
+    _recipe = DataContext as Recipe;
+    if (_recipe != null)
+    {
+      BuildColumnChart();
+      BuildDoughnutChart();
+    }
+
+    DataContextChanged += OnDataContextChanged;
+ }
+ ...
+```
 
 ### Using ChartControl
 
-[!code-xml[](../../Chefs/Views/RecipeDetailsPage.xaml#L426-L432)]
+```xml
+<ctrl:ChartControl DataContext="{Binding Recipe}" Grid.Row="1" />
+```
 
 Doughtnut and horizontal bars chart on the Recipe details page:
 <table>
@@ -76,7 +96,7 @@ Chefs app
 - [App Startup](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L129)
 - [Custom Chart Control](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml)
 - [Chart Control Code-Behind](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml.cs#)
-- [Chart Item Model](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Business/Models/NutritionChartItem.c)
+- [Chart Item Model](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Business/Models/NutritionChartItem.cs)
 - [Chart Control Instance](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L434-L435)
 
 ## Documentation

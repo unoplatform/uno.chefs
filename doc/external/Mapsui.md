@@ -18,7 +18,10 @@ Mapsui is a map library for .NET that works on multiple platforms. It lets you a
 
 Start by adding the map element in your page.
 
-[!code-xml[](../../Chefs/Views/MapPage.xaml#L29-L30)]
+```xml
+<map:MapControl x:Name="MapControl"
+                utu:AutoLayout.PrimaryAlignment="Stretch" />
+```
 
 ### Setting up the map page
 

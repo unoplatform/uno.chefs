@@ -12,7 +12,6 @@ Applying consistent and efficient styles across an application can be challengin
 
 **Uno.Toolkit** provides a lightweight styling mechanism using the Resources Extensions. This extension facilitates assigning a specific ResourceDictionary directly to a control's style. It simplifies [lightweight styling](xref:Toolkit.LightweightStyling) by eliminating the necessity to declare each resource on the page explicitly, enabling the easy creation of diverse visual elements with shared styles but varied attributes.
 
-
 ### Applying Resource Extensions
 
 In the `Chefs` app, we can utilize the `ResourceExtensions.Resources` attached property to ensure a consistent look and feel across different controls.

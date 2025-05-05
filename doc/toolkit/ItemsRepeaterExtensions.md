@@ -12,7 +12,11 @@ While the [`ItemsRepeater` control](https://learn.microsoft.com/en-us/windows/ap
 
 The `ItemsRepeater` extensions library provides attached properties that enable common selection policies on the `ItemsRepeater` control. This allows you to easily implement single, multiple, and single-or-none selection modes on the `ItemsRepeater` control.
 
-[!code-xml[](../../Chefs/Views/FiltersPage.xaml#L70-L72)]
+```xml
+<muxc:ItemsRepeater ItemsSource="{Binding Times}"
+                    utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
+                    utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
+```
 
 ![ItemsRepeaterExtensions Single Selection ExampleItemsRepeaterExtensions Single Selection Example](../assets/itemsrepeater-extensions-single.gif)
 
