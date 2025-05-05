@@ -8,7 +8,15 @@ Using `Uno.Extensions.Hosting` enables registration of services via dependency i
 
 In "`OnLaunched(LaunchActivatedEventArgs args)`", use `CreateBuilder()` and `.Configure()` to configure the host. The `IApplicationBuilder` has many extension methods to configure the host. Here are some of the most common ones:
 
-[!code-csharp[](../../Chefs/App.xaml.cs#L27-L32)]
+```csharp
+protected override async void OnLaunched(LaunchActivatedEventArgs args)
+{
+    var builder = this.CreateBuilder(args)
+        // Add navigation support for toolkit controls such as TabBar and NavigationView
+            .UseToolkitNavigation()
+            .Configure(host => host
+...
+```
 
 ## Source Code
 

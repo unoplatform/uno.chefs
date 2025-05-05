@@ -4,9 +4,11 @@ uid: Uno.Recipes.DisplayDrawerFlyout
 # How to Display a Drawer Flyout for Screen Space Management
 
 ## Problem
+
 In applications, especially on mobile, managing screen space efficiently is crucial. A common UI pattern is a drawer flyout, which can house navigation links or other content without permanently taking up screen real estate.
 
 ## Solution
+
 The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for implementing adaptive drawer flyouts.
 
 * Basic Drawer Flyout Example
@@ -22,11 +24,12 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
         </Button.Flyout>
     </Button>
     ```
+
     This example uses `LeftDrawerFlyoutPresenterStyle`, one of the pre-built styles from Uno Toolkit, which configures the Flyout to open from the left with a drawer-like experience.
-    
+
 ### Customizing the Drawer Flyout
 
-* Creating the ResponsiveDrawerFlyout: 
+* Creating the ResponsiveDrawerFlyout:
 
     ```xml
     <Flyout x:Class="Chefs.Views.Flyouts.ResponsiveDrawerFlyout"
@@ -80,6 +83,7 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
         services.AddTransient<Flyout, ResponsiveDrawerFlyout>();
     }
     ```
+
     Here's an example of invoking a modal navigation with the "!" qualifier from the Chefs app:
 
     ```csharp
@@ -101,8 +105,10 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
 The Chefs app uses a **ResponsiveDrawerFlyout** to provide a flexible navigation drawer that adapts to the application's state and the device's orientation. Refer to the **Source Code** section for the implementation details.
 
 ## Source Code
+
 - [Responsive Drawer Flyout XAML](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Flyouts/ResponsiveDrawerFlyout.xaml)
 - [ResponsiveDrawerFlyout Code-Behind](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Flyouts/ResponsiveDrawerFlyout.xaml.cs)
 
 ## Documentation
+
 - [Drawer Flyout Presenter](xref:Toolkit.Controls.DrawerFlyoutPresenter)

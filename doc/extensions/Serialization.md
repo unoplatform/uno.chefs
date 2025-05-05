@@ -38,15 +38,54 @@ public class App : Application
 
 ### Consume `ISerializer` as dependency in data services
 
-[!code-csharp[](../../Chefs/Services/MockEndpoints/MockNotificationEndpoints.cs#L5-L20)]
+```csharp
+public class MockNotificationEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
+{
+  public string HandleNotificationsRequest(HttpRequestMessage request)
+  {
+    var notificationsData = LoadData("Notifications.json");
+    var notifications = serializer.FromString<List<NotificationData>>(notificationsData);
+  
+    //Get all notifications
+    if (request.RequestUri.AbsolutePath == "/api/notification" && request.Method == HttpMethod.Get)
+    {
+    return serializer.ToString(notifications);
+    }
+  
+    return "{}";
+  }
+}
+```
 
 ### Notification JSON data (notifications.json)
 
-[!code-json[](../../Chefs/Data/AppData/Notifications.json#L2-L13)]
+```json
+  {
+    "Title": "New recipe!",
+    "Description": "Far far away, behind the word mountains, far from the countries.",
+    "Read": true,
+    "Date": "2022-10-18T00:00:00Z"
+  },
+  {
+    "Title": "Don’t forget to try your saved recipe",
+    "Description": "Far far away, behind the word mountains, far from the countries.",
+    "Read": true,
+    "Date": "2022-10-18T00:00:00Z"
+  },
+...
+```
 
 ### NotificationData model object
 
-[!code-csharp[](../../Chefs/Data/Entities/NotificationData.cs#L3-L9)]
+```csharp
+public class NotificationData
+{
+  public string? Title { get; set; }
+  public string? Description { get; set; }
+  public bool Read { get; set; }
+  public DateTime Date { get; set; }
+}
+```
 
 ## Source Code
 

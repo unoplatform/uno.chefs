@@ -33,17 +33,30 @@ Given the following XAML:
 
 ### TextBox Icon
 
-[!code-xml[](../../Chefs/Views/LoginPage.xaml#L29-L38)]
+```xml
+<TextBox PlaceholderText="Username"
+         x:Name="LoginUsername"
+         AutomationProperties.AutomationId="LoginUsername"
+         Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+         utu:InputExtensions.ReturnType="Next"
+         utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
+         IsSpellCheckEnabled="False"
+         Text="{Binding UserCredentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+    <ut:ControlExtensions.Icon>
+        <PathIcon Data="{StaticResource Icon_Person_Outline}" />
+    </ut:ControlExtensions.Icon>
+</TextBox>
+```
 
 ### PasswordBox Icon
 
 ```xml
-    <PasswordBox PlaceholderText="Password"
-                 Style="{StaticResource OutlinedPasswordBoxStyle}">
-        <ut:ControlExtensions.Icon>
-            <FontIcon Glyph="{StaticResource Icon_Lock}" />
-        </ut:ControlExtensions.Icon>
-    </PasswordBox>
+<PasswordBox PlaceholderText="Password"
+            Style="{StaticResource OutlinedPasswordBoxStyle}">
+    <ut:ControlExtensions.Icon>
+        <FontIcon Glyph="{StaticResource Icon_Lock}" />
+    </ut:ControlExtensions.Icon>
+</PasswordBox>
 ```
 
 ![Login Controls with Icon](../assets/login-icon.png)

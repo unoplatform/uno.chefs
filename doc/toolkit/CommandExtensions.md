@@ -14,14 +14,21 @@ The `CommandExtensions` class in the Uno Toolkit provides `Command`/`CommandPara
 
 ### PasswordBox Enter Key
 
-[!code-xml[](../../Chefs/Views/LoginPage.xaml#L39-L41)]
+```xml
+<PasswordBox x:Name="LoginPassword"
+             utu:InputExtensions.ReturnType="Done"
+             utu:CommandExtensions.Command="{Binding Login}"
+```
 
 > [!TIP]
 > Usage on `TextBox`/`PasswordBox` will also cause the keyboard dismiss on enter. Similar to the `InputExtensions.AutoDismiss` behavior, which is explained in the [InputExtensions documentation](xref:Toolkit.Helpers.InputExtensions).
 
 ### ItemsRepeater Item Tapped
 
-[!code-xml[](../../Chefs/Views/HomePage.xaml#L142-L143)]
+```xml
+<muxc:ItemsRepeater ItemsSource="{Binding Data}"
+                    utu:CommandExtensions.Command="{Binding Parent.CategorySearch}">
+```
 
 ## Source Code
 
