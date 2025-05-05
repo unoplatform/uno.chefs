@@ -16,8 +16,8 @@ The `CommandExtensions` class in the Uno Toolkit provides `Command`/`CommandPara
 
 ```xml
 <PasswordBox x:Name="LoginPassword"
-                            utu:InputExtensions.ReturnType="Done"
-                            utu:CommandExtensions.Command="{Binding Login}"
+             utu:InputExtensions.ReturnType="Done"
+             utu:CommandExtensions.Command="{Binding Login}"
 ```
 
 > [!TIP]

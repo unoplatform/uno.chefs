@@ -32,8 +32,8 @@ And in the project properties file:
     <UnoSplashScreenColor>#313033</UnoSplashScreenColor>
     <UnoIconForegroundScale>0.5</UnoIconForegroundScale>
     <UnoSplashScreenBaseSize>350,300</UnoSplashScreenBaseSize>
-    <UnoIconForegroundFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Icons/icon_foreground_canary.svg</UnoIconForegroundFile>
-    <UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
+    <UnoIconForegroundFile>Assets/Icons/icon_foreground_canary.svg</UnoIconForegroundFile>
+    <UnoSplashScreenFile>Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
 </PropertyGroup>
 ```
 

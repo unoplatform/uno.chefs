@@ -74,11 +74,9 @@ Lightweight styling allows you to create reusable styles that can be applied acr
                 <ResourceDictionary.ThemeDictionaries>
                     <ResourceDictionary x:Key="Light">
                         <StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-                        <x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
                     </ResourceDictionary>
                     <ResourceDictionary x:Key="Default">
                         <StaticResource x:Key="OutlinedPasswordBoxPlaceholderForeground" ResourceKey="OnSurfaceMediumBrush" />
-                        <x:String x:Key="WorkAroundDummy">WorkAroundDummy</x:String>
                     </ResourceDictionary>
                 </ResourceDictionary.ThemeDictionaries>
             </ResourceDictionary>
