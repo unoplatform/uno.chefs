@@ -3,6 +3,7 @@
 	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	  xmlns:local="using:Chefs.Views"
+	  xmlns:ctrl="using:Chefs.Views.Controls"
 	  xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
 	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
@@ -422,6 +423,13 @@
 												   Text="Intake per serving"
 												   Foreground="{ThemeResource OnBackgroundBrush}"
 												   Style="{StaticResource TitleLarge}" />
+										<ctrl:ChartControl DataContext="{Binding Recipe}"
+														   CarbBrush="{ThemeResource NutritionCarbsValBrush}"
+														   ProteinBrush="{ThemeResource NutritionProteinValBrush}"
+														   FatBrush="{ThemeResource NutritionFatValBrush}"
+														   DataLabelBrush="{ThemeResource NutritionDataLabelBrush}"
+														   TrackBackgroundBrush="{ThemeResource NutritionTrackBackgroundBrush}"
+														   Grid.Row="1" />
 									</Grid>
 								</Grid>
 							</Grid>
