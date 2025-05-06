@@ -14,7 +14,7 @@ Selecting items from dynamic lists can be tricky, especially when using paginate
 
 ### Using Selection
 
-As an example, in Chefs it is possible to create and edit Cookbooks that are a list of recipes. On the **Favorites** page, under the **My Cookbooks** tab, there is a list of existing Cookbooks and the recipes associated to the Cookbook are represented by the Recipes `ListFeed`:
+As an example, in Chefs, it is possible to create and edit Cookbooks that are a list of recipes. On the **Favorites** page, under the **My Cookbooks** tab, there is a list of existing Cookbooks, and the recipes associated with the Cookbook are represented by the Recipes `ListFeed`:
 
 ```csharp
 public IListFeed<Recipe> Recipes => ListFeed
@@ -25,7 +25,7 @@ public IListFeed<Recipe> Recipes => ListFeed
 	.Selection(SelectedRecipes);
 ```
 
-When creating or editing a Cookbook we need to have access to the selected recipes that will be linked to the Cookbook. In order to dynamically access it we use the `.Selection()` method to link the selected recipes to the `SelectedRecipes` property. Now, when saving the changes we can dynamically access the selected recipes:
+When creating or editing a Cookbook, we need to have access to the selected recipes that will be linked to the Cookbook. In order to dynamically access it, we use the `.Selection()` method to link the selected recipes to the `SelectedRecipes` property. Now, when saving the changes, we can dynamically access the selected recipes:
 
 ```csharp
 public async ValueTask Submit(CancellationToken ct)
