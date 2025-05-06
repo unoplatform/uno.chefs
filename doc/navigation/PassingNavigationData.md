@@ -16,7 +16,10 @@ The `INavigator` interface provided by `Uno.Extensions` allows robust mechanisms
 
 In the Chefs app, when applying filters on the **SearchPage**, we use the `NavigateBackWithResultAsync` method from the `INavigator` interface.
 
-[!code-csharp[](../../Chefs/Presentation/FilterModel.cs#L21-L22)]
+```csharp
+public async ValueTask ApplySearchFilter(SearchFilter filter) =>
+    await _navigator.NavigateBackWithResultAsync(this, data: filter);
+```
 
 ### Applying filters on the Search page
 
@@ -24,21 +27,37 @@ The `FilterModel` handles the updating of a `SearchFilter` entity. When navigati
 
 The code snippet below shows a `Button` that opens the `FiltersPage`. The key part is `uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay}"`, which passes the current `Filter` value from the `SearchModel` to the `FilterModel`. Because it's a `TwoWay` binding, any changes made in the `FiltersPage` are reflected back in the original model after navigation completes.
 
-[!code-xml[](../../Chefs/Views/SearchPage.xaml#L144-L147)]
+```xml
+<Button x:Name="FiltersButton"
+        uen:Navigation.Data="{Binding Filter.Value, Mode=TwoWay}"
+        uen:Navigation.Request="!Filter"
+        Content="Filters"
+        CornerRadius="20"
+        Foreground="{ThemeResource PrimaryBrush}"
+        Style="{StaticResource TextButtonStyle}">
+    <ut:ControlExtensions.Icon>
+        <PathIcon Data="{StaticResource Icon_Tune}"
+                    Foreground="{ThemeResource PrimaryBrush}" />
+    </ut:ControlExtensions.Icon>
+</Button>
+```
 
-To return the updated `SearchFilter` with the new filters choices to the **SearchPage**:
-
-[!code-csharp[](../../Chefs/Presentation/FilterModel.cs#L22)]
+The updated `SearchFilter` with the new filter choices is returned to the **SearchPage** via `NavigateBackWithResultAsync`.
 
 To enable data passing, make sure the navigation routes are properly configured in `App.xaml.cs`:
 
 In the `RegisterRoutes` method, within the view registration block, configure a `DataViewMap` like this:
 
-[!code-csharp[](../../Chefs/App.xaml.cs#L174)]
+```csharp
+new DataViewMap<SearchPage, SearchModel, SearchFilter>()
+```
 
 Then, in the route registration block, configure the `RouteMap`s like this:
 
-[!code-csharp[](../../Chefs/App.xaml.cs#L231)]
+```csharp
+new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
+new RouteMap("Filter", View: views.FindByViewModel<FilterModel>())
+```
 
 ## Source Code
 

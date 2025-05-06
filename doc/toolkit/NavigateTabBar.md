@@ -48,9 +48,40 @@ The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offer
 
   To enable region-based navigation, you must set the Region.Attached property:
 
-  [!code-xml[](../../Chefs/Views/MainPage.xaml#L36-L65)]
-  
-  `uen:Region.Name="..."` on each `TabBarItem` links each tab to a specific content region.
+  ```xml
+    <utu:TabBar Grid.Row="1"
+                Grid.Column="1"
+                Visibility="{utu:Responsive Narrow=Visible,
+                              Wide=Collapsed}"
+                uen:Region.Attached="True"
+                Style="{StaticResource BottomTabBarStyle}">
+        <utu:TabBarItem uen:Region.Name="Home"
+                utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
+                Content="Home">
+          <utu:TabBarItem.Icon>
+            <PathIcon Data="{StaticResource Icon_Home}" />
+          </utu:TabBarItem.Icon>
+        </utu:TabBarItem>
+
+        <utu:TabBarItem uen:Region.Name="-/Search"
+                utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
+                Content="Search">
+          <utu:TabBarItem.Icon>
+            <PathIcon Data="{StaticResource Icon_Search}" />
+          </utu:TabBarItem.Icon>
+        </utu:TabBarItem>
+
+        <utu:TabBarItem uen:Region.Name="FavoriteRecipes"
+                utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
+                Content="Favorites">
+          <utu:TabBarItem.Icon>
+            <PathIcon Data="{StaticResource Icon_Heart}" />
+          </utu:TabBarItem.Icon>
+        </utu:TabBarItem>
+    </utu:TabBar>
+  ```
+
+  The `uen:Region.Name="..."` on each `TabBarItem` links each tab to a specific content region.
 
 ## Example Usage in Chefs
 

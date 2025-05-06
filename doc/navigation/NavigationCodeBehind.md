@@ -16,13 +16,21 @@ Uno Extensions Navigation lets you easily [invoke navigation](xref:Uno.Extension
 
 This method navigates to a route that matches the specified view model type. Let's say we want to navigate to the search page and display popular recipes. To do so, we can use `NavigateViewModelAsync` to navigate to the _SearchModel_ and we can add a `SearchFilter` as data to specify that the recipes should be organized by popularity.
 
-[!code-csharp[](../../Chefs/Presentation/SearchModel.cs#L49-L50)]
+```csharp
+public async ValueTask SearchPopular() =>
+    await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));
+```
 
 ### 2. NavigateDataAsync
 
 This method navigates to a route that is registered for the specified data type. In the root App.xaml.cs, since we defined that the `GenericDialogModel` is registered to a `DialogInfo` through the `DataMap`, it will choose the "Dialog" route.
 
-[!code-csharp[](../../Chefs/Presentation/Extensions/INavigatorExtensions.cs#L13-L16)]
+```csharp
+public static Task<NavigationResponse?> ShowDialog(this INavigator navigator, object sender, DialogInfo dialogInfo, CancellationToken ct)
+{
+    return navigator.NavigateDataAsync(sender, new DialogInfo(dialogInfo.Title, dialogInfo.Content), cancellation: ct);
+}
+```
 
 ```csharp
 private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
@@ -64,7 +72,10 @@ private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
 }
 ```
 
-[!code-csharp[](../../Chefs/Presentation/FilterModel.cs#L21-L22)]
+```csharp
+public async ValueTask ApplySearchFilter(SearchFilter filter) =>
+    await _navigator.NavigateBackWithResultAsync(this, data: filter);
+```
 
 ### 5. NavigateRouteAsync
 
