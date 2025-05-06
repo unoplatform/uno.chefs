@@ -27,13 +27,11 @@
 			<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 					   Style="{StaticResource TitleLarge}"
 					   Text="{Binding Title}"
-					   Padding="32,0"
-					   TextWrapping="Wrap" />
+					    />
 			<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 					   Style="{StaticResource TitleMedium}"
 					   Text="{Binding Description}"
-					   Padding="32,0"
-					   TextWrapping="Wrap" />
+					   />
 		</utu:AutoLayout>
 	</utu:AutoLayout>
 </UserControl>

@@ -20,11 +20,8 @@
 	  Background="{ThemeResource SurfaceBrush}">
 
 	<utu:AutoLayout utu:SafeArea.Insets="VisibleBounds"
-					Orientation="{utu:Responsive Narrow=Vertical,
-												 Wide=Horizontal}">
+					Orientation="Horizontal">
 		<FlipView IsEnabled="False"
-				  Visibility="{utu:Responsive Narrow=Collapsed,
-											  Wide=Visible}"
 				  utu:AutoLayout.PrimaryAlignment="Stretch"
 				  SelectedIndex="{Binding Pages.CurrentIndex}">
 			<FlipView.Items>
@@ -82,19 +79,21 @@
 									PrimaryAxisAlignment="Center"
 									CounterAxisAlignment="Center"
 									Orientation="Horizontal">
-						<Button HorizontalContentAlignment="Center"
+						
+						<!--Style="{StaticResource ChefsOutlinedButtonStyle}"-->
+						<Button Style="{StaticResource ChefsOutlinedButtonStyle}" HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Previous"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
-								Style="{StaticResource ChefsOutlinedButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMovePrevious}" />
-						<Button HorizontalContentAlignment="Center"
+
+						<!--Style="{StaticResource ChefsPrimaryButtonStyle}"-->
+						<Button Style="{StaticResource ChefsPrimaryButtonStyle}" HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Next"
 								utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
-								Style="{StaticResource ChefsPrimaryButtonStyle}"
 								IsEnabled="{Binding Pages.Value.CanMoveNext}" />
 					</utu:AutoLayout>
 					<Button HorizontalContentAlignment="Center"

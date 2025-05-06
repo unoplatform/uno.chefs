@@ -14,7 +14,14 @@
 	  Background="{ThemeResource SurfaceBrush}"
 	  mc:Ignorable="d android ios not_win">
 
-	<ScrollViewer VerticalScrollBarVisibility="Auto">
+	<Grid>
+		<TextBlock Text="STEVE TODO: Implement Login Page by MAY 1ST!!!"
+				   FontSize="40"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Center" />
+	</Grid>
+
+	<!--<ScrollViewer VerticalScrollBarVisibility="Auto">
 		<utu:AutoLayout Spacing="32"
 						MaxWidth="500"
 						PrimaryAxisAlignment="Center"
@@ -119,5 +126,5 @@
 						Style="{StaticResource TextButtonStyle}" />
 			</utu:AutoLayout>
 		</utu:AutoLayout>
-	</ScrollViewer>
+	</ScrollViewer>-->
 </Page>
