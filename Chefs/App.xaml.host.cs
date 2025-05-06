@@ -1,5 +1,5 @@
-using Chefs.Services.Clients;
 using Chefs.Services;
+using Chefs.Services.Clients;
 using Chefs.Views.Flyouts;
 using Uno.Extensions.Http.Kiota;
 
