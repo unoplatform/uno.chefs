@@ -31,8 +31,6 @@ public partial class App : Application
 
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
 	{
-		ConfigureLiveCharts();
-
 #if __IOS__ && !__MACCATALYST__ && USE_UITESTS
 		Xamarin.Calabash.Start();
 #endif
@@ -48,18 +46,6 @@ public partial class App : Application
 		Host = await builder.NavigateAsync<ShellControl>();
 		Shell = MainWindow.Content as ShellControl;
 		await InitializeUserSettings();
-	}
-
-	private static void ConfigureLiveCharts()
-	{
-		LiveCharts.Configure(config =>
-			config
-				.HasMap<NutritionChartItem>((nutritionChartItem, point) =>
-				{
-					// here we use the index as X, and the nutrition value as Y 
-					return new(point, nutritionChartItem.Value);
-				})
-		);
 	}
 
 	private async Task InitializeUserSettings()
