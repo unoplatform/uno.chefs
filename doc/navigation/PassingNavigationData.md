@@ -44,7 +44,7 @@ The code snippet below shows a `Button` that opens the `FiltersPage`. The key pa
 
 The updated `SearchFilter` with the new filter choices is returned to the **SearchPage** via `NavigateBackWithResultAsync`.
 
-To enable data passing, make sure the navigation routes are properly configured in `App.xaml.cs`:
+To enable data passing, make sure the navigation routes are properly configured in `App.xaml.host.cs`:
 
 In the `RegisterRoutes` method, within the view registration block, configure a `DataViewMap` like this:
 
@@ -64,7 +64,7 @@ new RouteMap("Filter", View: views.FindByViewModel<FilterModel>())
 Chefs app
 
 - [NavigateBackWithResultAsync](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/FilterModel.cs#L21-L22)
-- [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/4c94f3ec749e1295470950018cd960f74a109ca3/Chefs/App.xaml.cs#L174)
+- [App.xaml.host.cs](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L134)
 
 ## Documentation
 

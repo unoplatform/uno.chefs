@@ -25,7 +25,7 @@ On the Chefs home page there are some `ItemRepeater` controls that each display 
                     ItemTemplate="{StaticResource HomeLargeItemTemplate}">
 ```
 
-Clicking on a specific recipe will bring the user to the `RecipeDetailsPage` with the `Recipe` as its `Data` parameter. This page will display all the details of the recipe in question. The `Navigation.Request` property will resolve to the `RecipeDetails` route as registered in the root App.xaml.cs file.
+Clicking on a specific recipe will bring the user to the `RecipeDetailsPage` with the `Recipe` as its `Data` parameter. This page will display all the details of the recipe in question. The `Navigation.Request` property will resolve to the `RecipeDetails` route as registered in the root App.xaml.host.cs file.
 
 ```csharp
 private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
