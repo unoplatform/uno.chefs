@@ -6,23 +6,48 @@ uid: Uno.Recipes.Hosting
 
 Using `Uno.Extensions.Hosting` enables registration of services via dependency injection.
 
-In "`OnLaunched(LaunchActivatedEventArgs args)`", use `CreateBuilder()` and `.Configure()` to configure the host. The `IApplicationBuilder` has many extension methods to configure the host. Here are some of the most common ones:
+In "`OnLaunched(LaunchActivatedEventArgs args)`", use `CreateBuilder()` to create an `IApplicationBuilder`. It has many extension methods to configure the host. In Chefs, we configure the host in a separate file: **App.xaml.host.cs**.
+
+In App.xaml.cs:
 
 ```csharp
 protected override async void OnLaunched(LaunchActivatedEventArgs args)
 {
-    var builder = this.CreateBuilder(args)
-        // Add navigation support for toolkit controls such as TabBar and NavigationView
-            .UseToolkitNavigation()
-            .Configure(host => host
-...
+    ...
+
+    var builder = this.CreateBuilder(args);
+    ConfigureAppBuilder(builder);
+    MainWindow = builder.Window;
+
+    ...
+
+    Host = await builder.NavigateAsync<ShellControl>();
+    Shell = MainWindow.Content as ShellControl;
+    
+    ...
+}
+```
+
+In App.xaml.host.cs:
+
+```csharp
+private void ConfigureAppBuilder(IApplicationBuilder builder)
+{
+    builder
+        .Configure(host => host
+            ...
+        )
+
+    ...
+}
 ```
 
 ## Source Code
 
 Chefs app
 
-- [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L29)
+- [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.cs#L38)
+- [App.xaml.host.cs](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L12-L88)
 
 ## Documentation
 

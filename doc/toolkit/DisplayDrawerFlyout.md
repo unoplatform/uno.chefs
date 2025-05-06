@@ -11,7 +11,7 @@ In applications, especially on mobile, managing screen space efficiently is cruc
 
 The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for implementing adaptive drawer flyouts.
 
-* Basic Drawer Flyout Example
+- Basic Drawer Flyout Example
 
     To start with a basic drawer flyout, you can use one of the FlyoutPresenterStyles provided by the Uno Toolkit. Here’s how you can create a simple drawer flyout:
 
@@ -29,7 +29,7 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
 
 ### Customizing the Drawer Flyout
 
-* Creating the ResponsiveDrawerFlyout:
+- Creating the ResponsiveDrawerFlyout:
 
     ```xml
     <Flyout x:Class="Chefs.Views.Flyouts.ResponsiveDrawerFlyout"
@@ -44,7 +44,7 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
     </Flyout>
     ```
 
-* The drawer can be adjusted on the fly to provide an optimal user experience:
+- The drawer can be adjusted on the fly to provide an optimal user experience:
 
     ```csharp
     public ResponsiveDrawerFlyout()
@@ -73,9 +73,9 @@ The `DrawerFlyout` from the **Uno.Toolkit** provides a versatile solution for im
     }
     ```
 
-* Injecting Custom Flyout for Navigation:
+- Injecting Custom Flyout for Navigation:
 
-    To ensure the `ResponsiveDrawerFlyout` is used consistently across the application, it is injected into the navigation service configuration in `App.xaml.cs.`:
+    To ensure the `ResponsiveDrawerFlyout` is used consistently across the application, it is injected into the navigation service configuration in `App.xaml.host.cs`:
 
     ```csharp
     private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)

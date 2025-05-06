@@ -15,13 +15,11 @@ The Uno.Extensions library provides a set of abstractions for serialization and 
 ### App Startup Configuration
 
 ```csharp
-public class App : Application
+public partial class App : Application
 {
-    // Code omitted for brevity
-
-    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    private void ConfigureAppBuilder(IApplicationBuilder builder)
     {
-      var builder = this.CreateBuilder(args)
+      builder
         .Configure(host => host
           // Code omitted for brevity
 
@@ -29,12 +27,9 @@ public class App : Application
           .UseSerialization()
 
           // Code omitted for brevity
-      );
-
-    // Code omitted for brevity
+        );
     }
 }
-```
 
 ### Consume `ISerializer` as dependency in data services
 
@@ -91,7 +86,7 @@ public class NotificationData
 
 Chefs app
 
-- [App Startup](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml.cs#L94)
+- [App Startup](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L77)
 - [Notification Data Service](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Services/MockEndpoints/MockNotificationEndpoints.cs#L5)
 - [Notification Data Model](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Data/Entities/NotificationData.cs)
 - [JSON Data Files](https://github.com/unoplatform/uno.chefs/tree/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Data/AppData)
