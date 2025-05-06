@@ -217,6 +217,9 @@ public partial class App : Application
 						#endregion
 
 						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>()),
+						new RouteMap("UpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
+						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
+
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>()),
 #if !IS_WASM_SKIA
