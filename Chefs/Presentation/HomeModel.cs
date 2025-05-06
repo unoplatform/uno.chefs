@@ -34,7 +34,7 @@ public partial record HomeModel
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Recent), cancellation: ct);
 
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, qualifier: Qualifiers.ClearBackStack, data: new SearchFilter(Category: categoryWithCount.Category), cancellation: ct);
+		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(Category: categoryWithCount.Category), cancellation: ct);
 
 	public async ValueTask FavoriteRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Favorite(recipe, ct);
