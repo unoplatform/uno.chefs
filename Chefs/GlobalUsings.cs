@@ -32,6 +32,8 @@ global using Uno.Extensions.Reactive.Messaging;
 global using Uno.Extensions.Serialization;
 global using Uno.Extensions.Storage;
 global using Uno.Toolkit.UI;
+global using Chefs.Services.Clients.Models;
+global using Chefs.Services.MockEndpoints;
 global using Application = Microsoft.UI.Xaml.Application;
 global using Notification = Chefs.Business.Models.Notification;
 [assembly: Uno.Extensions.Reactive.Config.BindableGenerationTool(3)]

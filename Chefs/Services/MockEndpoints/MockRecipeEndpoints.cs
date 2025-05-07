@@ -2,68 +2,16 @@ using System.Web;
 
 namespace Chefs.Services;
 
-public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
+public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
 {
-	private static Dictionary<Guid, List<Guid>>? _userFavorites;
 
 	public string HandleRecipesRequest(HttpRequestMessage request)
 	{
-		if (_userFavorites == null)
-		{
-			_userFavorites = new Dictionary<Guid, List<Guid>>();
-			var savedData = LoadData("SavedRecipes.json");
-			var savedList = serializer.FromString<List<SavedRecipesData>>(savedData);
-			foreach (var entry in savedList!)
-			{
-				_userFavorites[entry.UserId] = entry.SavedRecipes?.ToList() ?? [];
-			}
-		}
+		var savedList = LoadData<List<Guid>>("SavedRecipes.json") ?? [];
 
-		var recipesJson = LoadData("Recipes.json");
-		var allRecipes = serializer.FromString<List<RecipeData>>(recipesJson);
+		var allRecipes = LoadData<List<RecipeData>>("Recipes.json") ?? [];
 
-		var userIdParam = ExtractUserIdFromQuery(request.RequestUri.Query)
-						  ?? "3c896419-e280-40e7-8552-240635566fed";
-		if (!Guid.TryParse(userIdParam, out var currentUserId))
-		{
-			currentUserId = Guid.Parse("3c896419-e280-40e7-8552-240635566fed");
-		}
-
-		if (!_userFavorites.ContainsKey(currentUserId))
-		{
-			_userFavorites[currentUserId] = [];
-		}
-
-		if (request.Method == HttpMethod.Post
-			&& request.RequestUri.AbsolutePath.Contains("/api/recipe/favorited"))
-		{
-			var userId = _userFavorites[currentUserId];
-			var queryParam = HttpUtility.ParseQueryString(request.RequestUri.Query);
-			if (Guid.TryParse(queryParam["RecipeId"], out var recipeId))
-			{
-				if (userId.Contains(recipeId))
-				{
-					userId.Remove(recipeId);
-				}
-				else
-				{
-					userId.Add(recipeId);
-				}
-			}
-
-			var updated = allRecipes
-				.Where(r => userId.Contains(r.Id))
-				.Select(r =>
-				{
-					r.IsFavorite = true;
-					return r;
-				})
-				.ToList();
-			return serializer.ToString(updated);
-		}
-
-		var favs = _userFavorites[currentUserId];
-		allRecipes.ForEach(r => r.IsFavorite = favs.Contains(r.Id));
+		allRecipes.ForEach((_, r) => r.IsFavorite = savedList.Contains(r.Id ?? Guid.Empty));
 
 		var path = request.RequestUri.AbsolutePath;
 		if (path.Contains("/api/recipe/categories"))
@@ -83,7 +31,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 
 		if (path.Contains("/api/recipe/favorited"))
 		{
-			return serializer.ToString(allRecipes.Where(r => r.IsFavorite).ToList());
+			return serializer.ToString(allRecipes.Where(r => r.IsFavorite ?? false).ToList());
 		}
 
 		if (path.Contains("/steps"))
@@ -140,8 +88,8 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 
 	private string HandleCategoriesRequest()
 	{
-		var categoriesData = LoadData("categories.json");
-		var allCategories = serializer.FromString<List<CategoryData>>(categoriesData);
+		var allCategories = LoadData<List<CategoryData>>("categories.json")
+		                 ?? new List<CategoryData>();
 		return serializer.ToString(allCategories);
 	}
 
@@ -204,7 +152,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 
 			if (review.Likes == null)
 			{
-				review.Likes = new List<Guid>();
+				review.Likes = [];
 			}
 
 			if (review.Likes.Contains(userId))
@@ -235,7 +183,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 
 			if (review.Dislikes == null)
 			{
-				review.Dislikes = new List<Guid>();
+				review.Dislikes = [];
 			}
 
 			if (review.Dislikes.Contains(userId))
