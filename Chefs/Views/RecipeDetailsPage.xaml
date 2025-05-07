@@ -43,6 +43,28 @@
 	</Page.Resources>
 
 	<uer:FeedView Source="{Binding RecipeDetails}">
+		<uer:FeedView.ProgressTemplate>
+			<DataTemplate>
+				<Grid>
+					<TextBlock Text="LOADING"
+							   FontSize="40"
+							   Foreground="Red"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center" />
+				</Grid>
+			</DataTemplate>
+		</uer:FeedView.ProgressTemplate>
+		<uer:FeedView.NoneTemplate>
+			<DataTemplate>
+				<Grid>
+					<TextBlock Text="NONE"
+							   FontSize="40"
+							   Foreground="Red"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center" />
+				</Grid>
+			</DataTemplate>
+		</uer:FeedView.NoneTemplate>
 		<DataTemplate>
 			<utu:AutoLayout>
 				<utu:NavigationBar Content="{Binding Recipe.Name}">
