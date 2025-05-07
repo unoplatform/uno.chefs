@@ -19,11 +19,7 @@ public partial class App : Application
 					auth.AddCustom(custom =>
 					{
 						custom
-							.Login((sp, dispatcher, credentials, cancellationToken) =>
-							{
-								var tokens = ProcessCredentials(credentials);
-								return ValueTask.FromResult(tokens);
-							});
+							.Login(async (sp, dispatcher, credentials, cancellationToken) => await ProcessCredentials(credentials));
 					}, name: "CustomAuth")
 				)
 				.UseHttp((context, services) =>
@@ -76,7 +72,7 @@ public partial class App : Application
 					configureServices: ConfigureNavServices));
 	}
 
-	private IDictionary<string, string>? ProcessCredentials(IDictionary<string, string> credentials)
+	private async ValueTask<IDictionary<string, string>?> ProcessCredentials(IDictionary<string, string> credentials)
 	{
 		// Check for username to simulate credential processing
 		if (!(credentials?.TryGetValue("Username", out var username) ??
@@ -93,7 +89,7 @@ public partial class App : Application
 			{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
 		};
 
-		return new Dictionary<string, string>(tokenDictionary);
+		return tokenDictionary;
 	}
 
 	private void ConfigureSerialization(HostBuilderContext context, IServiceCollection services)

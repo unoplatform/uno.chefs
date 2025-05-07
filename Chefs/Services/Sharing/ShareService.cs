@@ -30,8 +30,8 @@ public class ShareService() : IShareService
 		DataTransferManagerInterop.ShowShareUIForWindow(hwnd, null);
 #else
 		var dataTransferManager = DataTransferManager.GetForCurrentView();
-        dataTransferManager.DataRequested += DataRequested;
-        DataTransferManager.ShowShareUI();
+		dataTransferManager.DataRequested += DataRequested;
+		DataTransferManager.ShowShareUI();
 #endif
 	}
 	private async void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
