@@ -1,6 +1,5 @@
 using System.Runtime.InteropServices;
 using System.Text;
-using Android.Health.Connect.DataTypes;
 using Chefs.Services.Sharing;
 using Uno.Extensions.Reactive;
 using Windows.ApplicationModel.DataTransfer;
@@ -16,7 +15,7 @@ public partial record RecipeDetailsModel
 	private readonly IUserService _userService;
 	private readonly IMessenger _messenger;
 	private readonly IShareService _shareService;
-	private readonly Recipe _recipe;
+	private readonly RecipeFeedProvider _recipeFeed;
 
 	public RecipeDetailsModel(
 		Recipe recipe,
@@ -31,31 +30,11 @@ public partial record RecipeDetailsModel
 		_userService = userService;
 		_messenger = messenger;
 		_shareService = shareService;
-		_recipe = recipe;
 
+		_recipeFeed = new(recipe, _recipeService, _userService);
 	}
 
-	private IFeed<RecipeInfo> RecipeDetails => Feed.Combine(Recipe, User, Ingredients, Steps, Reviews)
-		.Select(ToRecipeInfo);
-
-	private RecipeInfo ToRecipeInfo((Recipe recipe, User user, IImmutableList<Ingredient> ingredients, IImmutableList<Step> steps, IImmutableList<Review> reviews) values) 
-		=> new RecipeInfo(
-			values.recipe,
-			values.user,
-			values.steps,
-			values.ingredients,
-			values.reviews);
-
-	private IState<Recipe> Recipe => State.Value(this, () => _recipe)
-		.Observe(_messenger, r => r.Id);
-
-	private IFeed<User> User => Recipe.SelectAsync(async (r, ct) => await _userService.GetById(r.UserId, ct));
-
-	private IFeed<IImmutableList<Ingredient>> Ingredients => Recipe.SelectAsync(async (r, ct) => await _recipeService.GetIngredients(r.Id, ct));
-
-	private IFeed<IImmutableList<Step>> Steps => Recipe.SelectAsync(async (r, ct) => await _recipeService.GetSteps(r.Id, ct));
-
-	private IFeed<IImmutableList<Review>> Reviews => Recipe.SelectAsync(async (r, ct) => await _recipeService.GetReviews(r.Id, ct));
+	public IFeed<RecipeInfo> RecipeDetails => _recipeFeed.Feed;
 
 	public async ValueTask Like(Review review, CancellationToken ct) =>
 		await _recipeService.LikeReview(review, ct);
@@ -66,15 +45,35 @@ public partial record RecipeDetailsModel
 	public async ValueTask LiveCooking(Recipe recipe, IImmutableList<Step> steps) =>
 		await _navigator.NavigateDataAsync(this, data: new LiveCookingParameter(recipe, steps));
 
-	public async ValueTask Favorite(Recipe recipe, CancellationToken ct)
+	public async ValueTask Favorite(Recipe recipe, CancellationToken ct) 
+		=> await _recipeService.Favorite(recipe, ct);
+
+	public async Task Share(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct) 
+		=> await _shareService.ShareRecipe(recipe, steps, ct);
+
+	private class RecipeFeedProvider(Recipe recipe, IRecipeService recipeService, IUserService userService)
 	{
-		await _recipeService.Favorite(recipe, ct);
+		public IFeed<RecipeInfo> Feed => Uno.Extensions.Reactive.Feed.Combine(_recipe, _user, _ingredients, _steps, _reviews)
+			.Select(ToRecipeInfo);
+
+		private IFeed<Recipe> _recipe => State.Value(this, () => recipe);
+
+		private IFeed<User> _user => _recipe.SelectAsync(async (r, ct) => await userService.GetById(r.UserId, ct));
+
+		private IFeed<IImmutableList<Ingredient>> _ingredients => _recipe.SelectAsync(async (r, ct) => await recipeService.GetIngredients(r.Id, ct));
+
+		private IFeed<IImmutableList<Step>> _steps => _recipe.SelectAsync(async (r, ct) => await recipeService.GetSteps(r.Id, ct));
+
+		private IFeed<IImmutableList<Review>> _reviews => _recipe.SelectAsync(async (r, ct) => await recipeService.GetReviews(r.Id, ct));
+
+		private RecipeInfo ToRecipeInfo((Recipe recipe, User user, IImmutableList<Ingredient> ingredients, IImmutableList<Step> steps, IImmutableList<Review> reviews) values) 
+			=> new RecipeInfo(
+				values.recipe,
+				values.user,
+				values.steps,
+				values.ingredients,
+				values.reviews);
 	}
 
-	public async Task Share(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct)
-	{
-		await _shareService.ShareRecipe(recipe, steps, ct);
-	}
-
-	private record RecipeInfo(Recipe Recipe, User User, IImmutableList<Step> Steps, IImmutableList<Ingredient> Ingredients, IImmutableList<Review> Reviews);
+	public record RecipeInfo(Recipe Recipe, User User, IImmutableList<Step> Steps, IImmutableList<Ingredient> Ingredients, IImmutableList<Review> Reviews);
 }

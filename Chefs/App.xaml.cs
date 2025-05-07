@@ -12,6 +12,8 @@ using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using Uno.Extensions.Http.Kiota;
+using Windows.Foundation;
+using Windows.UI.ViewManagement;
 
 namespace Chefs;
 
@@ -40,6 +42,7 @@ public partial class App : Application
 		var builder = this.CreateBuilder(args);
 		ConfigureAppBuilder(builder);
 		MainWindow = builder.Window;
+
 
 #if DEBUG
 		MainWindow.UseStudio();
