@@ -35,17 +35,16 @@ public partial record RecipeDetailsModel
 
 	}
 
-	private IState<RecipeInfo> RecipeDetails => State<RecipeInfo>.FromFeed(this, Feed.Combine(Recipe, User, Ingredients, Steps, Reviews).Select(ToRecipeInfo));
+	private IFeed<RecipeInfo> RecipeDetails => Feed.Combine(Recipe, User, Ingredients, Steps, Reviews)
+		.Select(ToRecipeInfo);
 
-	private RecipeInfo ToRecipeInfo((Recipe recipe, User user, IImmutableList<Ingredient> ingredients, IImmutableList<Step> steps, IImmutableList<Review> reviews) values)
-	{
-		return new RecipeInfo(
+	private RecipeInfo ToRecipeInfo((Recipe recipe, User user, IImmutableList<Ingredient> ingredients, IImmutableList<Step> steps, IImmutableList<Review> reviews) values) 
+		=> new RecipeInfo(
 			values.recipe,
 			values.user,
 			values.steps,
 			values.ingredients,
 			values.reviews);
-	}
 
 	private IState<Recipe> Recipe => State.Value(this, () => _recipe)
 		.Observe(_messenger, r => r.Id);
