@@ -138,7 +138,19 @@ public partial class App : Application
 			new ViewMap<RegistrationPage, RegistrationModel>(),
 			new ViewMap<NotificationsPage, NotificationsModel>(),
 			new ViewMap<ProfilePage, ProfileModel>(Data: new DataMap<User>(), ResultData: typeof(IChefEntity)),
-			new ViewMap<RecipeDetailsPage, RecipeDetailsModel>(Data: new DataMap<Recipe>()),
+			new DataViewMap<RecipeDetailsPage, RecipeDetailsModel, Recipe>(
+				ToQuery: recipe => new Dictionary<string, string>
+				{
+					{ nameof(Recipe.Id), $"{recipe.Id}" }
+				},
+				FromQuery: async (sp, query) =>
+				{
+					var id = query[nameof(Recipe.Id)].ToString();
+					var recipeService = sp.GetRequiredService<IRecipeService>();
+					var recipes = await recipeService.GetAll(default);
+
+					return recipes.FirstOrDefault(r => r.Id.ToString() == id);
+				}),
 			new ViewMap<FavoriteRecipesPage, FavoriteRecipesModel>(),
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
 			new ViewMap<SettingsPage, SettingsModel>(Data: new DataMap<User>()),
