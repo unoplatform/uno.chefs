@@ -100,10 +100,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Data\**\*.json" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
 	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 	</ItemGroup>
@@ -131,6 +127,10 @@
 
 	<ItemGroup>
 		<Content Include="Assets\**\*.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Chefs.DataContracts\Chefs.DataContracts.csproj" />
 	</ItemGroup>
 
 	<Choose>

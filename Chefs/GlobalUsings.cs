@@ -14,6 +14,7 @@ global using Chefs.Services.Notifications;
 global using Chefs.Services.Recipes;
 global using Chefs.Services.Users;
 global using Chefs.Views;
+global using Chefs.DataContracts.Entities;
 global using CommunityToolkit.Mvvm.Messaging;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;

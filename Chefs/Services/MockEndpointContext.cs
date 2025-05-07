@@ -1,5 +1,13 @@
 using System.Text.Json.Serialization;
 using Chefs.Services.Clients.Models;
+using CategoryData = Chefs.DataContracts.Entities.CategoryData;
+using CookbookData = Chefs.DataContracts.Entities.CookbookData;
+using IngredientData = Chefs.DataContracts.Entities.IngredientData;
+using NotificationData = Chefs.DataContracts.Entities.NotificationData;
+using RecipeData = Chefs.DataContracts.Entities.RecipeData;
+using ReviewData = Chefs.DataContracts.Entities.ReviewData;
+using StepData = Chefs.DataContracts.Entities.StepData;
+using UserData = Chefs.DataContracts.Entities.UserData;
 
 namespace Chefs.Data;
 

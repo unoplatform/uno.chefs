@@ -1,3 +1,5 @@
+using Chefs.DataContracts;
+
 namespace Chefs.Api.Controllers;
 
 /// <summary>
@@ -7,7 +9,7 @@ namespace Chefs.Api.Controllers;
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
-	private readonly string _usersFilePath = "Data/AppData/Users.json";
+	private readonly string _usersFilePath = "Users.json";
 	private Guid? _currentUserId = new Guid("3c896419-e280-40e7-8552-240635566fed");
 
 	/// <summary>
@@ -132,11 +134,11 @@ public class UserController : ControllerBase
 	/// Loads data from a specified JSON file.
 	/// </summary>
 	/// <typeparam name="T">The type of data to load.</typeparam>
-	/// <param name="filePath">The file path of the JSON file.</param>
+	/// <param name="fileName">The file name of the JSON file.</param>
 	/// <returns>The loaded data.</returns>
-	private T LoadData<T>(string filePath)
+	private T LoadData<T>(string fileName)
 	{
-		var json = System.IO.File.ReadAllText(filePath);
+		var json = EmbeddedJsonLoader.Load(fileName);
 		return JsonSerializer.Deserialize<T>(json);
 	}
 }
