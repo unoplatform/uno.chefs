@@ -7,7 +7,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="..\AppData\*.json" LinkBase="AppData" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="AppData\" />
 	</ItemGroup>
 
 </Project>

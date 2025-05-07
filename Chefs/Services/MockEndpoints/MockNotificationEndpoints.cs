@@ -1,13 +1,14 @@
-using System.Text.Json;
+
+using Chefs.Services.MockEndpoints;
 
 namespace Chefs.Services;
 
-public class MockNotificationEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
+public class MockNotificationEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
 {
 	public string HandleNotificationsRequest(HttpRequestMessage request)
 	{
-		var notificationsData = LoadData("Notifications.json");
-		var notifications = serializer.FromString<List<NotificationData>>(notificationsData);
+		var notifications = LoadData<List<NotificationData>>("Notifications.json")
+		                    ?? [];
 
 		//Get all notifications
 		if (request.RequestUri.AbsolutePath == "/api/notification" && request.Method == HttpMethod.Get)

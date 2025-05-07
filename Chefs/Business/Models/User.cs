@@ -14,7 +14,7 @@ public partial record User
 		Followers = user.Followers;
 		Following = user.Following;
 		Recipes = user.Recipes;
-		IsCurrent = (bool)user.IsCurrent;
+		IsCurrent = user.IsCurrent ?? false;
 	}
 
 	public Guid Id { get; init; }

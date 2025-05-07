@@ -1,16 +1,10 @@
-using System.Text.Json;
-using Chefs.Services.Clients.Models;
-using UserData = Chefs.Data.UserData;
-
 namespace Chefs.Services;
 
-public class MockUserEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
+public class MockUserEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
 {
 	public string HandleUsersRequest(HttpRequestMessage request)
 	{
-		this.GetType().Assembly.GetManifestResourceStream(Constants.RecipeDataFile);
-		var usersData = LoadData("Users.json");
-		var users = serializer.FromString<List<UserData>>(usersData);
+		var users = LoadData<List<UserData>>("Users.json") ?? [];
 
 		//authenticate user
 		if (request.RequestUri.AbsolutePath.Contains("/api/user/authenticate") && request.Method == HttpMethod.Post)

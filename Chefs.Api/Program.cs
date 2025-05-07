@@ -1,8 +1,12 @@
+using Chefs.Api.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+	.AddJsonOptions(o => o.JsonSerializerOptions.TypeInfoResolver = ChefsContext.Default);
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 

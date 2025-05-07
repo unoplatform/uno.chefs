@@ -99,10 +99,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Data\**\*.json" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <EmbeddedResource Include="Assets\Maps\location_pin.svg" />
 	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 	</ItemGroup>
@@ -130,6 +126,16 @@
 
 	<ItemGroup>
 		<Content Include="Assets\**\*.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="..\AppData\*.json" LinkBase="AppData">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="AppData\" />
 	</ItemGroup>
 
 	<Choose>

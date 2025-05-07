@@ -5,10 +5,10 @@ namespace Chefs.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-public class CookbookController : ControllerBase
+public class CookbookController() : ChefsControllerBase
 {
-	private readonly string _cookbooksFilePath = "Data/AppData/Cookbooks.json";
-	private readonly string _savedCookbooksFilePath = "Data/AppData/SavedCookbooks.json";
+	private readonly string _cookbooksFilePath = "Cookbooks.json";
+	private readonly string _savedCookbooksFilePath = "SavedCookbooks.json";
 
 	/// <summary>
 	/// Retrieves all cookbooks.
@@ -70,25 +70,7 @@ public class CookbookController : ControllerBase
 	[HttpPost("save")]
 	public IActionResult Save([FromBody] CookbookData cookbook, [FromQuery] Guid userId)
 	{
-		var savedCookbooks = LoadData<List<SavedCookbooksData>>(_savedCookbooksFilePath);
-		var userSavedCookbooks = savedCookbooks.FirstOrDefault(x => x.UserId == userId);
-
-		if (userSavedCookbooks != null)
-		{
-			if (userSavedCookbooks.SavedCookbooks.Contains(cookbook.Id))
-			{
-				userSavedCookbooks.SavedCookbooks = userSavedCookbooks.SavedCookbooks.Where(id => id != cookbook.Id).ToList();
-			}
-			else
-			{
-				userSavedCookbooks.SavedCookbooks.Add(cookbook.Id);
-			}
-		}
-		else
-		{
-			savedCookbooks.Add(new SavedCookbooksData { UserId = userId, SavedCookbooks = new List<Guid> { cookbook.Id } });
-		}
-
+		// We do not persist the saved state in this example.
 		return NoContent();
 	}
 
@@ -100,24 +82,11 @@ public class CookbookController : ControllerBase
 	[HttpGet("saved")]
 	public IActionResult GetSaved([FromQuery] Guid userId)
 	{
-		var savedCookbooks = LoadData<List<SavedCookbooksData>>(_savedCookbooksFilePath);
-		var userSavedCookbookIds = savedCookbooks.FirstOrDefault(x => x.UserId == userId)?.SavedCookbooks ?? new List<Guid>();
+		var savedCookbooks = LoadData<List<Guid>>(_savedCookbooksFilePath);
 
 		var cookbooks = LoadData<List<CookbookData>>(_cookbooksFilePath);
-		var savedCookbooksList = cookbooks.Where(cb => userSavedCookbookIds.Contains(cb.Id)).ToImmutableList();
+		var savedCookbooksList = cookbooks.Where(cb => savedCookbooks.Contains(cb.Id)).ToImmutableList();
 
 		return Ok(savedCookbooksList);
-	}
-
-	/// <summary>
-	/// Loads data from a specified JSON file.
-	/// </summary>
-	/// <typeparam name="T">The type of data to load.</typeparam>
-	/// <param name="filePath">The file path of the JSON file.</param>
-	/// <returns>The loaded data.</returns>
-	private T LoadData<T>(string filePath)
-	{
-		var json = System.IO.File.ReadAllText(filePath);
-		return JsonSerializer.Deserialize<T>(json);
 	}
 }
