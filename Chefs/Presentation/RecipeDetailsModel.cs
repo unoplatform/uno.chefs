@@ -1,6 +1,8 @@
 using System.Runtime.InteropServices;
 using System.Text;
+using Android.Health.Connect.DataTypes;
 using Chefs.Services.Sharing;
+using Uno.Extensions.Reactive;
 using Windows.ApplicationModel.DataTransfer;
 using WinRT;
 using WinRT.Interop;
@@ -14,6 +16,7 @@ public partial record RecipeDetailsModel
 	private readonly IUserService _userService;
 	private readonly IMessenger _messenger;
 	private readonly IShareService _shareService;
+	private readonly Recipe _recipe;
 
 	public RecipeDetailsModel(
 		Recipe recipe,
@@ -28,23 +31,32 @@ public partial record RecipeDetailsModel
 		_userService = userService;
 		_messenger = messenger;
 		_shareService = shareService;
+		_recipe = recipe;
 
-		Recipe = recipe;
 	}
 
-	public Recipe Recipe { get; }
-	public IState<bool> IsFavorited => State.Value(this, () => Recipe.IsFavorite);
+	private IState<RecipeInfo> RecipeDetails => State<RecipeInfo>.FromFeed(this, Feed.Combine(Recipe, User, Ingredients, Steps, Reviews).Select(ToRecipeInfo));
 
-	public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct))
-		.Observe(_messenger, u => u.Id);
-	
-	public IFeed<User> CurrentUser => Feed.Async(_userService.GetCurrent);
-	public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
-	public IListFeed<Step> Steps => ListFeed.Async(async ct => await _recipeService.GetSteps(Recipe.Id, ct));
+	private RecipeInfo ToRecipeInfo((Recipe recipe, User user, IImmutableList<Ingredient> ingredients, IImmutableList<Step> steps, IImmutableList<Review> reviews) values)
+	{
+		return new RecipeInfo(
+			values.recipe,
+			values.user,
+			values.steps,
+			values.ingredients,
+			values.reviews);
+	}
 
-	public IListState<Review> Reviews => ListState
-		.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct))
+	private IState<Recipe> Recipe => State.Value(this, () => _recipe)
 		.Observe(_messenger, r => r.Id);
+
+	private IFeed<User> User => Recipe.SelectAsync(async (r, ct) => await _userService.GetById(r.UserId, ct));
+
+	private IFeed<IImmutableList<Ingredient>> Ingredients => Recipe.SelectAsync(async (r, ct) => await _recipeService.GetIngredients(r.Id, ct));
+
+	private IFeed<IImmutableList<Step>> Steps => Recipe.SelectAsync(async (r, ct) => await _recipeService.GetSteps(r.Id, ct));
+
+	private IFeed<IImmutableList<Review>> Reviews => Recipe.SelectAsync(async (r, ct) => await _recipeService.GetReviews(r.Id, ct));
 
 	public async ValueTask Like(Review review, CancellationToken ct) =>
 		await _recipeService.LikeReview(review, ct);
@@ -52,17 +64,18 @@ public partial record RecipeDetailsModel
 	public async ValueTask Dislike(Review review, CancellationToken ct) =>
 		await _recipeService.DislikeReview(review, ct);
 
-	public async ValueTask LiveCooking(IImmutableList<Step> steps) =>
-		await _navigator.NavigateRouteAsync(this, "LiveCooking", data: new LiveCookingParameter(Recipe, steps));
+	public async ValueTask LiveCooking(Recipe recipe, IImmutableList<Step> steps) =>
+		await _navigator.NavigateDataAsync(this, data: new LiveCookingParameter(recipe, steps));
 
-	public async ValueTask Favorite(CancellationToken ct)
+	public async ValueTask Favorite(Recipe recipe, CancellationToken ct)
 	{
-		await _recipeService.Favorite(Recipe, ct);
-		await IsFavorited.UpdateAsync(s => !s);
+		await _recipeService.Favorite(recipe, ct);
 	}
 
-	public async Task Share(CancellationToken ct)
+	public async Task Share(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct)
 	{
-		await _shareService.ShareRecipe(Recipe, await Steps, ct);
+		await _shareService.ShareRecipe(recipe, steps, ct);
 	}
+
+	private record RecipeInfo(Recipe Recipe, User User, IImmutableList<Step> Steps, IImmutableList<Ingredient> Ingredients, IImmutableList<Review> Reviews);
 }
