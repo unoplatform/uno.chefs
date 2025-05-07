@@ -1,5 +1,7 @@
 using Chefs.Services;
 using Chefs.Services.Clients;
+using Chefs.Services.Settings;
+using Chefs.Services.Sharing;
 using Chefs.Views.Flyouts;
 using Uno.Extensions.Http.Kiota;
 
@@ -17,27 +19,7 @@ public partial class App : Application
 					auth.AddCustom(custom =>
 					{
 						custom
-							.Login((sp, dispatcher, credentials, cancellationToken) =>
-							{
-								// Check for username to simulate credential processing
-								if (!(credentials?.TryGetValue("Username", out var username) ??
-									  false && !string.IsNullOrEmpty(username)))
-
-								{
-									return ValueTask.FromResult<IDictionary<string, string>?>(null);
-								}
-
-								// Simulate successful authentication by creating a dummy token dictionary
-								var tokenDictionary = new Dictionary<string, string>
-								{
-									{ TokenCacheExtensions.AccessTokenKey, "SampleToken" },
-									{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
-									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
-								};
-								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
-
-
-							});
+							.Login(async (sp, dispatcher, credentials, cancellationToken) => await ProcessCredentials(credentials));
 					}, name: "CustomAuth")
 				)
 				.UseHttp((context, services) =>
@@ -78,14 +60,36 @@ public partial class App : Application
 				.ConfigureServices((context, services) =>
 				{
 					services
+						.AddSingleton<ICookbookService, CookbookService>()
+						.AddSingleton<IMessenger, WeakReferenceMessenger>()
 						.AddSingleton<INotificationService, NotificationService>()
 						.AddSingleton<IRecipeService, RecipeService>()
-						.AddSingleton<IUserService, UserService>()
-						.AddSingleton<ICookbookService, CookbookService>()
-						.AddSingleton<IMessenger, WeakReferenceMessenger>();
+						.AddSingleton<IShareService, ShareService>()
+						.AddSingleton<ISettingsService, SettingsService>()
+						.AddSingleton<IUserService, UserService>();
 				})
 				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes,
 					configureServices: ConfigureNavServices));
+	}
+
+	private async ValueTask<IDictionary<string, string>?> ProcessCredentials(IDictionary<string, string> credentials)
+	{
+		// Check for username to simulate credential processing
+		if (!(credentials?.TryGetValue("Username", out var username) ??
+				false && !string.IsNullOrEmpty(username)))
+		{
+			return null;
+		}
+
+		// Simulate successful authentication by creating a dummy token dictionary
+		var tokenDictionary = new Dictionary<string, string>
+		{
+			{ TokenCacheExtensions.AccessTokenKey, "SampleToken" },
+			{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
+			{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
+		};
+
+		return tokenDictionary;
 	}
 
 	private void ConfigureSerialization(HostBuilderContext context, IServiceCollection services)

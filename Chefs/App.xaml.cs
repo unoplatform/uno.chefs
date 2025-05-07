@@ -2,6 +2,8 @@ using System.Diagnostics;
 using System.Text.Json;
 using Chefs.Services;
 using Chefs.Services.Clients;
+using Chefs.Services.Settings;
+
 #if __IOS__
 using Foundation;
 #endif
@@ -56,7 +58,7 @@ public partial class App : Application
 		}
 
 		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
-		var userService = Host.Services.GetRequiredService<IUserService>();
+		var settingsService = Host.Services.GetRequiredService<ISettingsService>();
 		var themeService = MainWindow.GetThemeService();
 		var appTheme = config.Value?.IsDark switch
 		{
@@ -65,7 +67,7 @@ public partial class App : Application
 			_ => AppTheme.System
 		};
 
-		await userService.UpdateSettings(CancellationToken.None, isDark: themeService.IsDark);
+		await settingsService.UpdateSettings(CancellationToken.None, isDark: themeService.IsDark);
 		await themeService.SetThemeAsync(appTheme);
 	}
 
