@@ -141,15 +141,22 @@ public partial class App : Application
 			new DataViewMap<RecipeDetailsPage, RecipeDetailsModel, Recipe>(
 				ToQuery: recipe => new Dictionary<string, string>
 				{
-					{ nameof(Recipe.Id), $"{recipe.Id}" }
+					{ nameof(Recipe.Id), recipe.Id.ToString() }
 				},
 				FromQuery: async (sp, query) =>
 				{
-					var id = query[nameof(Recipe.Id)].ToString();
 					var recipeService = sp.GetRequiredService<IRecipeService>();
 					var recipes = await recipeService.GetAll(default);
 
-					return recipes.FirstOrDefault(r => r.Id.ToString() == id);
+					if (query.TryGetValue(nameof(Recipe.Id), out var idValue) &&
+						idValue is string idString &&
+						Guid.TryParse(idString, out var guid))
+					{
+						var recipe = recipes.FirstOrDefault(r => r.Id == guid);
+						return recipe;
+					}
+
+					return null;
 				}),
 			new ViewMap<FavoriteRecipesPage, FavoriteRecipesModel>(),
 			new DataViewMap<SearchPage, SearchModel, SearchFilter>(),
