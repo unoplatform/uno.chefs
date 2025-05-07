@@ -1,5 +1,6 @@
 using Chefs.Services;
 using Chefs.Services.Clients;
+using Chefs.Services.Settings;
 using Chefs.Services.Sharing;
 using Chefs.Views.Flyouts;
 using Uno.Extensions.Http.Kiota;
@@ -79,12 +80,13 @@ public partial class App : Application
 				.ConfigureServices((context, services) =>
 				{
 					services
-						.AddSingleton<INotificationService, NotificationService>()
-						.AddSingleton<IRecipeService, RecipeService>()
-						.AddSingleton<IUserService, UserService>()
 						.AddSingleton<ICookbookService, CookbookService>()
 						.AddSingleton<IMessenger, WeakReferenceMessenger>()
-						.AddSingleton<IShareService, ShareService>();
+						.AddSingleton<INotificationService, NotificationService>()
+						.AddSingleton<IRecipeService, RecipeService>()
+						.AddSingleton<IShareService, ShareService>()
+						.AddSingleton<ISettingsService, SettingsService>()
+						.AddSingleton<IUserService, UserService>();
 				})
 				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes,
 					configureServices: ConfigureNavServices));
