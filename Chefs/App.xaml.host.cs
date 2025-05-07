@@ -21,24 +21,8 @@ public partial class App : Application
 						custom
 							.Login((sp, dispatcher, credentials, cancellationToken) =>
 							{
-								// Check for username to simulate credential processing
-								if (!(credentials?.TryGetValue("Username", out var username) ??
-									  false && !string.IsNullOrEmpty(username)))
-
-								{
-									return ValueTask.FromResult<IDictionary<string, string>?>(null);
-								}
-
-								// Simulate successful authentication by creating a dummy token dictionary
-								var tokenDictionary = new Dictionary<string, string>
-								{
-									{ TokenCacheExtensions.AccessTokenKey, "SampleToken" },
-									{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
-									{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
-								};
-								return ValueTask.FromResult<IDictionary<string, string>?>(tokenDictionary);
-
-
+								var tokens = ProcessCredentials(credentials);
+								return ValueTask.FromResult(tokens);
 							});
 					}, name: "CustomAuth")
 				)
@@ -90,6 +74,26 @@ public partial class App : Application
 				})
 				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes,
 					configureServices: ConfigureNavServices));
+	}
+
+	private IDictionary<string, string>? ProcessCredentials(IDictionary<string, string> credentials)
+	{
+		// Check for username to simulate credential processing
+		if (!(credentials?.TryGetValue("Username", out var username) ??
+				false && !string.IsNullOrEmpty(username)))
+		{
+			return null;
+		}
+
+		// Simulate successful authentication by creating a dummy token dictionary
+		var tokenDictionary = new Dictionary<string, string>
+		{
+			{ TokenCacheExtensions.AccessTokenKey, "SampleToken" },
+			{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
+			{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
+		};
+
+		return new Dictionary<string, string>(tokenDictionary);
 	}
 
 	private void ConfigureSerialization(HostBuilderContext context, IServiceCollection services)
