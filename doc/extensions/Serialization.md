@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Serialization
 ---
 
-# How to inject serializer objects as dependencies into your application
+# Serialization
 
 ## Problem
 

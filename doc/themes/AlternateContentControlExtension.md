@@ -2,7 +2,7 @@
 uid: Uno.Recipes.AlternateContentControlExtension
 ---
 
-# How to switch ToggleButton Content when toggled
+# ToggleButton Alternate Icons
 
 ## Problem
 

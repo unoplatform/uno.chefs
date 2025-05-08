@@ -2,7 +2,7 @@
 uid: Uno.Recipes.SearchFilters
 ---
 
-# How to Filter Search Results Dynamically with MVUX
+# Filtering Search Results
 
 ## Problem
 

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.StatusBarExtension
 ---
 
-# How to customize the colors of the status bar on mobile devices
+# Customizing Status Bar Colors on Mobile
 
 ## Problem
 

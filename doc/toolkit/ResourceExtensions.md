@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ResourceExtensions
 ---
 
-# How to utilize the Resource Extensions
+# Using Resource Extensions for Lightweight Styling
 
 ## Problem
 

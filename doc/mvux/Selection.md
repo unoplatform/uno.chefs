@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Selection
 ---
 
-# Selecting items from a list with MVUX
+# Selecting Items from a List
 
 ## Problem
 

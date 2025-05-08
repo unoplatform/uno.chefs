@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Mapsui
 ---
 
-# How to set up an interactive map
+# Setting Up an Interactive Map
 
 ## Problem
 

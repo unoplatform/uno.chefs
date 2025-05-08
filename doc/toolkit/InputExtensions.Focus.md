@@ -2,7 +2,7 @@
 uid: Uno.Recipes.InputExtensions.Focus
 ---
 
-# How to navigate between input controls with the keyboard
+# Navigating Between Input Controls with the Keyboard
 
 ## Problem
 

@@ -46,7 +46,7 @@
         href: xref:Uno.Recipes.ExtendedSplashScreen
       - name: Using DrawerFlyout for Screen Space Management
         href: xref:Uno.Recipes.DisplayDrawerFlyout
-      - name: Creating Clean Commands with ICommandBuilder
+      - name: Creating Clean Commands
         href: xref:Uno.Recipes.CommandBuilder
       - name: Binding to Elements Outside of a DataTemplate in XAML
         href: xref:Uno.Recipes.AncestorBinding
@@ -59,7 +59,7 @@
       items:
       - name: MVUX Overview
         href: xref:Uno.Recipes.MVUXOverview
-      - name: Using Implicit Commands
+      - name: Implicit Commands
         href: xref:Uno.Recipes.ImplicitCommands
       - name: Building a Real-Time Search
         href: xref:Uno.Recipes.ReactiveSearch
@@ -80,11 +80,11 @@
         href: xref:Uno.Recipes.XamlNavigation
       - name: Navigation via Code Behind
         href: xref:Uno.Recipes.NavigationCodeBehind
-      - name: Managing Navigation with TabBar
+      - name: Tab Navigation
         href: xref:Uno.Recipes.NavigateTabBar
       - name: Passing Navigation Data
         href: xref:Uno.Recipes.PassingNavigationData
-      - name: Using ContentDialog with Navigation Extensions
+      - name: Displaying a Custom Dialog
         href: xref:Uno.Recipes.ContentDialog
       - name: Creating a Responsive Navigation Shell
         href: xref:Uno.Recipes.NavigationShell

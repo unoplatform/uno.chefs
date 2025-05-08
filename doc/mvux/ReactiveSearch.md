@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ReactiveSearch
 ---
 
-# How to Build a Real-Time Search with MVUX
+# Building a Real-Time Search
 
 ## Problem
 
