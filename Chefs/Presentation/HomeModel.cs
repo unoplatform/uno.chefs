@@ -28,13 +28,13 @@ public partial record HomeModel
 	public IFeed<User> UserProfile => _userService.User;
 
 	public async ValueTask ShowAll(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular), cancellation: ct);
+		await _navigator.NavigateRouteAsync(this, route: "/Main/-/Search", data: new SearchFilter(FilterGroup: FilterGroup.Popular), cancellation: ct);
 
 	public async ValueTask ShowAllRecentlyAdded(CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Recent), cancellation: ct);
+		await _navigator.NavigateRouteAsync(this, route: "/Main/-/Search", data: new SearchFilter(FilterGroup: FilterGroup.Recent), cancellation: ct);
 
 	public async ValueTask CategorySearch(CategoryWithCount categoryWithCount, CancellationToken ct) =>
-		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(Category: categoryWithCount.Category), cancellation: ct);
+		await _navigator.NavigateRouteAsync(this, route: "/Main/-/Search", data: new SearchFilter(Category: categoryWithCount.Category), cancellation: ct);
 
 	public async ValueTask FavoriteRecipe(Recipe recipe, CancellationToken ct) =>
 		await _recipeService.Favorite(recipe, ct);
