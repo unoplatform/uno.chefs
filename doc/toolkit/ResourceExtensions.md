@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ResourceExtensions
 ---
 
-# Using Resource Extensions for Lightweight Styling
+# Page and App Level Lightweight Styles
 
 ## Problem
 
