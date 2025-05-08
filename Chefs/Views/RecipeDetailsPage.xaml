@@ -42,7 +42,7 @@
 		</DataTemplate>
 	</Page.Resources>
 
-	<uer:FeedView Source="{Binding RecipeDetails}">
+	<uer:FeedView Source="{Binding RecipeDetails}" Style="{StaticResource CompositeFeedViewStyle}">
 		<uer:FeedView.ProgressTemplate>
 			<DataTemplate>
 				<Grid>
@@ -65,6 +65,17 @@
 				</Grid>
 			</DataTemplate>
 		</uer:FeedView.NoneTemplate>
+		<uer:FeedView.UndefinedTemplate>
+			<DataTemplate>
+				<Grid>
+					<TextBlock Text="UndefinedTemplate"
+							   FontSize="40"
+							   Foreground="Red"
+							   HorizontalAlignment="Center"
+							   VerticalAlignment="Center" />
+				</Grid>
+			</DataTemplate>
+		</uer:FeedView.UndefinedTemplate>
 		<DataTemplate>
 			<utu:AutoLayout>
 				<utu:NavigationBar Content="{Binding Recipe.Name}">
