@@ -9,17 +9,17 @@
     items:
     - name: Customization
       items:
-      - name: Adding custom icons to controls
+      - name: Adding Custom Icons to Controls
         href: xref:Uno.Recipes.IconControlExtension
       - name: Lightweight Styling for UI Elements
         href: xref:Uno.Recipes.LightweightStyling
       - name: Using Resource Extensions for Lightweight Styling
         href: xref:Uno.Recipes.ResourceExtensions
-      - name: Switching ToggleButton Content Dynamically
+      - name: ToggleButton Alternate Icons
         href: xref:Uno.Recipes.AlternateContentControlExtension
-      - name: App Icons Management with Resizetizer
+      - name: App Icons and Splash Screen
         href: xref:Uno.Recipes.AppIcons
-      - name: Customizing Status Bar Colors on Mobile Devices
+      - name: Customizing Status Bar Colors on Mobile
         href: xref:Uno.Recipes.StatusBarExtension
 
     - name: Responsive
@@ -31,13 +31,13 @@
 
     - name: Interactions
       items:
-      - name: Navigating between input controls with the keyboard
+      - name: Navigating Between Input Controls with the Keyboard
         href: xref:Uno.Recipes.InputExtensions.Focus
       - name: Customizing Return Key for Input Controls
         href: xref:Uno.Recipes.InputExtensions.ReturnType
       - name: Enabling Selection in ItemsRepeater Control
         href: xref:Uno.Recipes.ItemsRepeaterExtensions
-      - name: Calling an ICommand in XAML when the control has no Command property
+      - name: Calling an ICommand in XAML when the Control Has No Command Property
         href: xref:Uno.Recipes.CommandExtensions
 
     - name: Advanced
@@ -52,7 +52,7 @@
         href: xref:Uno.Recipes.AncestorBinding
       - name: Integrating LiveCharts Controls
         href: xref:Uno.Recipes.LiveCharts
-      - name: Setting up an interactive map
+      - name: Setting Up an Interactive Map
         href: xref:Uno.Recipes.Mapsui
 
     - name: State Management
@@ -65,11 +65,11 @@
         href: xref:Uno.Recipes.ReactiveSearch
       - name: Filtering Search Results
         href: xref:Uno.Recipes.SearchFilters
-      - name: Updating Feeds with IMessenger
+      - name: Propagating Changes Across the App
         href: xref:Uno.Recipes.IMessenger
-      - name: Selecting items from a list
+      - name: Selecting Items from a List
         href: xref:Uno.Recipes.Selection
-      - name: Implementing pagination for lists
+      - name: Pagination
         href: xref:Uno.Recipes.Pagination
 
     - name: Navigation
@@ -78,7 +78,7 @@
         href: xref:Uno.Recipes.NavigationOverview
       - name: Navigation via XAML
         href: xref:Uno.Recipes.XamlNavigation
-      - name: Navigation via code behind
+      - name: Navigation via Code Behind
         href: xref:Uno.Recipes.NavigationCodeBehind
       - name: Managing Navigation with TabBar
         href: xref:Uno.Recipes.NavigateTabBar
@@ -92,7 +92,7 @@
     items:
     - name: Data & Configuration
     items:
-      - name: Injecting Serializer Objects as Dependencies
+      - name: Serialization
         href: xref:Uno.Recipes.Serialization
-      - name: Managing Writable Configuration
+      - name: Persistent App Settings
         href: xref:Uno.Recipes.Configuration
