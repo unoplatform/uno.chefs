@@ -217,7 +217,9 @@
 								CounterAxisAlignment="End"
 								PrimaryAxisAlignment="Stretch"
 								Orientation="Horizontal"
-								Spacing="16">
+								Spacing="16"
+								Margin="{utu:Responsive Narrow=0,
+														 Wide=48}">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Command="{Binding BackToLastStep}"
 							Content="Previous"
