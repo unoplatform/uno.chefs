@@ -6,7 +6,7 @@ uid: Uno.Chefs.Overview
 
 ## Overview
 
-**Uno Chefs** is a modern, interactive recipe app built to show what Uno Platform can really do in a real-world, delightful scenario.
+**Uno Chefs** is a modern, interactive recipe app built to show what Uno Platform can really do in a real-world, production-ready application.
 
 With Uno Chefs, you can dive into a world of cooking inspiration! Register, log in, and start exploring recipes with step-by-step instructions and video tutorials. You’ll be able to check nutritional info through charts, check reviews, favorite your top picks, and filter results to match your taste.
 
@@ -35,7 +35,7 @@ In addition, when running the application, users can choose to use **mock data**
 
 ## Source Code
 
-You can find the full solution on GitHub: [UnoChefs GitHub Repository](https://github.com/unoplatform/uno.chefs)
+You can find the full solution on the [Chefs GitHub Repository](https://github.com/unoplatform/uno.chefs)
 
 ## Recipe Books
 
