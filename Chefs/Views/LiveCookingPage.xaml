@@ -91,14 +91,14 @@
 						   Content="{Binding Recipe.Name}" />
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-						Orientation="{utu:Responsive Narrow=Vertical,
+						Orientation="{utu:Responsive Normal=Vertical,
 													 Wide=Horizontal}"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed, Converter={StaticResource TrueToCollapsed}}">
 			<utu:AutoLayout Background="{ThemeResource BrandBlackBrush}"
-							utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+							utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
 																			 Wide=Stretch}"
-							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
+							PrimaryAxisAlignment="{utu:Responsive Normal=Start,
 																  Wide=Center}">
 				<MediaPlayerElement AreTransportControlsEnabled="True"
 									AutoPlay="True"
@@ -163,19 +163,19 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed}"
-						Orientation="{utu:Responsive Narrow=Vertical,
+						Orientation="{utu:Responsive Normal=Vertical,
 													 Wide=Horizontal}">
 			<Image Source="{Binding Recipe.ImageUrl}"
 				   Stretch="UniformToFill"
-				   Visibility="{utu:Responsive Narrow=Collapsed,
+				   Visibility="{utu:Responsive Normal=Collapsed,
 											   Wide=Visible}"
 				   utu:AutoLayout.PrimaryAlignment="Stretch" />
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
 							PrimaryAlignment="Stretch"
-							Padding="{utu:Responsive Narrow=32,
+							Padding="{utu:Responsive Normal=32,
 													 Wide=40}">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
-								Padding="{utu:Responsive Narrow=0,
+								Padding="{utu:Responsive Normal=0,
 														 Wide=48}"
 								Spacing="24">
 					<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"

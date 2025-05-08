@@ -12,7 +12,7 @@
 	<utu:AutoLayout CounterAxisAlignment="Center"
 					Spacing="24">
 
-		<Image Visibility="{utu:Responsive Narrow=Visible,
+		<Image Visibility="{utu:Responsive Normal=Visible,
 										   Wide=Collapsed}"
 			   Source="{Binding ImageUrl}"
 			   Height="270"
