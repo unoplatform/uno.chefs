@@ -27,4 +27,4 @@ This app demonstrates the use of many Uno Platform capabilities, such as:
 - **Authentication**
 - **Skia rendering**
 
-In addition, when running the application, users can choose to use **mock data** or connect to the **included API project** in the Chefs solution.# Uno Chefs
+In addition, when running the application, users can choose to use **mock data** or connect to the **included API project** in the Chefs solution.
