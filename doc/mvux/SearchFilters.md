@@ -81,7 +81,7 @@ For each recipe filter, we define an `ItemsRepeater` that displays the possible 
 
 When the user is done selecting filters for their search, they invoke the `ApplySearchFilter()` method as seen above. This uses `NavigateBackWithResultAsync()` from `Uno.Extensions.Navigation`. This will redirect the user to the previous page (the search page) while injecting the chosen filters into the search model. See [How to Navigate with Code Behind](xref:Uno.Recipes.NavigationCodeBehind) for more information.
 
-## Souce Code
+## Source Code
 
 - [FilterModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/FilterModel.cs)
 - [FiltersPage.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L17-L154)
