@@ -40,6 +40,13 @@
       - name: Calling an ICommand in XAML when the Control Has No Command Property
         href: xref:Uno.Recipes.CommandExtensions
 
+    - name: Third-party Components
+      items:
+      - name: Integrating LiveCharts Controls
+        href: xref:Uno.Recipes.LiveCharts
+      - name: Setting Up an Interactive Map
+        href: xref:Uno.Recipes.Mapsui
+
     - name: Advanced
       items:
       - name: Extending Splash Screen Duration for Custom Loading
@@ -50,10 +57,6 @@
         href: xref:Uno.Recipes.CommandBuilder
       - name: Binding to Elements Outside of a DataTemplate in XAML
         href: xref:Uno.Recipes.AncestorBinding
-      - name: Integrating LiveCharts Controls
-        href: xref:Uno.Recipes.LiveCharts
-      - name: Setting Up an Interactive Map
-        href: xref:Uno.Recipes.Mapsui
 
     - name: State Management
       items:
