@@ -2,7 +2,7 @@
 uid: Uno.Recipes.IconControlExtension
 ---
 
-# How to add custom icons to supported controls
+# Adding Custom Icons to Controls
 
 ## Problem
 

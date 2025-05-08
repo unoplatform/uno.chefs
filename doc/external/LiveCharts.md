@@ -2,7 +2,7 @@
 uid: Uno.Recipes.LiveCharts
 ---
 
-# How to integrate LiveCharts controls
+# Integrating LiveCharts Controls
 
 ## Problem
 

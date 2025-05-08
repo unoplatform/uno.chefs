@@ -2,7 +2,7 @@
 uid: Uno.Recipes.LightweightStyling
 ---
 
-# How to Apply Lightweight Styling
+# Lightweight Styling for UI Elements
 
 ## Problem
 

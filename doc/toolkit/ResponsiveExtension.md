@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ResponsiveExtension
 ---
 
-# How to adapt properties based on screen size in XAML
+# Making the App Responsive to Screen Sizes
 
 ## Problem
 

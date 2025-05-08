@@ -2,7 +2,7 @@
 uid: Uno.Recipes.NavigationShell
 ---
 
-# How to Create a Responsive Navigation Shell
+# Creating a Responsive Navigation Shell
 
 ## Problem
 

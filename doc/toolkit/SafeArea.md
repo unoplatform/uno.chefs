@@ -2,7 +2,7 @@
 uid: Uno.Recipes.SafeArea
 ---
 
-# How to restrict page content to the Safe Area on mobile devices
+# Adapting to Safe Area on Mobile
 
 ## Problem
 

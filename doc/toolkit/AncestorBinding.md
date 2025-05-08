@@ -2,7 +2,7 @@
 uid: Uno.Recipes.AncestorBinding
 ---
 
-# How to bind to elements outside of a DataTemplate in XAML
+# Binding to Elements Outside of a DataTemplate in XAML
 
 ## Problem
 

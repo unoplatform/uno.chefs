@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ItemsRepeaterExtensions
 ---
 
-# How to enable selection on the ItemsRepeater control
+# Enabling Selection in ItemsRepeater Control
 
 ## Problem
 

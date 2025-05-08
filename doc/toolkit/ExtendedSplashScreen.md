@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ExtendedSplashScreen
 ---
 
-# How to extend the duration of the splash screen
+# Extending Splash Screen Duration for Custom Loading
 
 ## Problem
 

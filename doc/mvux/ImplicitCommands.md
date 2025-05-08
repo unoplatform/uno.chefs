@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ImplicitCommands
 ---
 
-# How to Use Implicit Commands with MVUX
+# Implicit Commands
 
 ## Problem
 

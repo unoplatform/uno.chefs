@@ -2,7 +2,7 @@
 uid: Uno.Recipes.AppIcons
 ---
 
-# How to use generated app icons and splash screens with Uno Resizetizer
+# App Icons and Splash Screen
 
 ## Problem
 

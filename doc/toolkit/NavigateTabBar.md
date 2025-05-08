@@ -2,7 +2,7 @@
 uid: Uno.Recipes.NavigateTabBar
 ---
 
-# How to Navigate Using a TabBar
+# TabBar Navigation
 
 ## Problem
 

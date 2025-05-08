@@ -1,7 +1,7 @@
 ---
 uid: Uno.Recipes.DisplayDrawerFlyout
 ---
-# How to Display a Drawer Flyout for Screen Space Management
+# Using DrawerFlyout for Screen Space Management
 
 ## Problem
 

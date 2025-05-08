@@ -2,7 +2,7 @@
 uid: Uno.Recipes.CommandBuilder
 ---
 
-# How to create clean commands using ICommandBuilder
+# Creating Clean Commands
 
 ## Problem
 

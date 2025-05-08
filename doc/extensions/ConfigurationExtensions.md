@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Configuration
 ---
 
-# How to manage writable configuration data for your application
+# Persistent App Settings
 
 ## Problem
 

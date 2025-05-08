@@ -2,7 +2,7 @@
 uid: Uno.Recipes.PassingNavigationData
 ---
 
-# How to Pass Data Across Navigation Requests
+# Passing Navigation Data
 
 ## Problem
 

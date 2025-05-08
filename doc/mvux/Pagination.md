@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Pagination
 ---
 
-# Implementing pagination for lists
+# Pagination
 
 ## Problem
 
