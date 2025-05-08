@@ -35,7 +35,8 @@
 						   Foreground="{ThemeResource OnSurfaceBrush}"
 						   Style="{StaticResource TitleLarge}"
 						   TextAlignment="Center"
-						   TextWrapping="Wrap">
+						   TextWrapping="Wrap"
+						   utu:AutoLayout.CounterAlignment="Center">
 					<Run Text="{Binding Number}" />
 					<Run Text=" - " />
 					<Run Text="{Binding Name}" />
@@ -43,7 +44,8 @@
 				<utu:AutoLayout Padding="16"
 								Background="{ThemeResource BackgroundBrush}"
 								CornerRadius="8"
-								Spacing="16">
+								Spacing="16"
+								CounterAxisAlignment="Center">
 					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 							   Style="{StaticResource CaptionLarge}"
 							   Text="Ingredients:"
@@ -175,11 +177,11 @@
 							Padding="{utu:Responsive Narrow=32,
 													 Wide=40}">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
+								CounterAxisAlignment="Center"
 								Padding="{utu:Responsive Narrow=0,
 														 Wide=48}"
 								Spacing="24">
 					<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
-								utu:AutoLayout.CounterAlignment="Center"
 								Width="72"
 								Height="72" />
 					<TextBlock FontSize="22"
