@@ -44,8 +44,6 @@ private void ConfigureAppBuilder(IApplicationBuilder builder)
 
 ## Source Code
 
-Chefs app
-
 - [App.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.cs#L38)
 - [App.xaml.host.cs](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L12-L88)
 

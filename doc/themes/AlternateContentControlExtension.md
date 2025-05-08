@@ -37,8 +37,6 @@ Given the following XAML:
 
 ## Source Code
 
-Chefs app
-
 - [Home Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L55-L58)
 - [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L363-L374)
 
