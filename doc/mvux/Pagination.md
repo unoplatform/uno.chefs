@@ -55,8 +55,6 @@ Now, as the user scrolls, more recipes are automatically loaded and displayed â€
 
 ## Source Code
 
-Chefs app
-
 - [CreateUpdateCookbookModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/CreateUpdateCookbookModel.cs#L59-L62)
 - [CreateUpdateCookbookPage.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/CreateUpdateCookbookPage.xaml#L115-L128)
 

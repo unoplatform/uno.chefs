@@ -98,8 +98,6 @@ In addition to the search term, you can also maintain a **filter state** to refi
 
 ## Source Code
 
-Chefs app
-
 - [SearchModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/SearchModel.cs)
 - [SearchPage.xaml (Search Term)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L114-L118)
 - [SearchPage.xaml (FeedView)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L161-L177)
