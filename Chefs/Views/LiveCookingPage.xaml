@@ -173,42 +173,45 @@
 											   Wide=Visible}"
 				   utu:AutoLayout.PrimaryAlignment="Stretch" />
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
-							PrimaryAlignment="Stretch"
-							Padding="{utu:Responsive Narrow=32,
-													 Wide=40}">
+							PrimaryAlignment="Stretch">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
 								CounterAxisAlignment="Center"
-								Padding="{utu:Responsive Narrow=0,
+								Margin="{utu:Responsive Narrow=32,
+														Wide=40}">
+					<StackPanel Padding="{utu:Responsive Narrow=0,
 														 Wide=48}"
 								Spacing="24">
-					<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
-								Width="72"
-								Height="72" />
-					<TextBlock FontSize="22"
-							   FontWeight="SemiBold"
-							   Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleLarge}"
-							   Text="Hurray!"
-							   TextAlignment="Center" />
-					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleMedium}"
-							   Text="All steps are completed. Now it’s time to enjoy your meal!"
-							   TextAlignment="Center"
-							   TextWrapping="Wrap" />
-					<utu:AutoLayout Padding="16,32"
-									Background="{ThemeResource BackgroundBrush}"
-									CornerRadius="8"
-									Spacing="16">
-						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-								   Text="Tell us how was your cooking experience!"
+						<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
+									Width="72"
+									Height="72" />
+						<TextBlock FontSize="22"
+								   FontWeight="SemiBold"
+								   Foreground="{ThemeResource OnSurfaceBrush}"
+								   Style="{StaticResource TitleLarge}"
+								   Text="Hurray!"
 								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<!-- TODO -->
-						<!-- Save rating -->
-						<muxc:RatingControl utu:AutoLayout.CounterAlignment="Center"
-											MaxRating="5"
-											Style="{StaticResource RatingControlStyle}" />
-					</utu:AutoLayout>
+								   HorizontalAlignment="Center" />
+						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+								   Style="{StaticResource TitleMedium}"
+								   Text="All steps are completed. Now it’s time to enjoy your meal!"
+								   TextAlignment="Center"
+								   TextWrapping="Wrap"
+								   HorizontalAlignment="Center" />
+						<utu:AutoLayout Padding="16,32"
+										Background="{ThemeResource BackgroundBrush}"
+										CornerRadius="8"
+										Spacing="16">
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Text="Tell us how was your cooking experience!"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+							<!-- TODO -->
+							<!-- Save rating -->
+							<muxc:RatingControl utu:AutoLayout.CounterAlignment="Center"
+												MaxRating="5"
+												Style="{StaticResource RatingControlStyle}" />
+						</utu:AutoLayout>
+					</StackPanel>
 				</utu:AutoLayout>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								CounterAxisAlignment="End"
