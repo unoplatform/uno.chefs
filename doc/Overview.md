@@ -12,7 +12,7 @@ With Uno Chefs, you can dive into a world of cooking inspiration! Register, log 
 
 But there’s more! You can discover contributors and their creations, see who’s cooking nearby on an interactive map, build your own personalized cookbooks, check notifications, and access the settings page.
 
-<img src="assets/main-page.png" height="600px" alt="MainPage Image"/>
+![MainPage Image](assets/main-page.png)
 
 ## Features
 
