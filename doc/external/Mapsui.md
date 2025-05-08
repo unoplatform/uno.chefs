@@ -53,8 +53,6 @@ public sealed partial class MapPage : Page
 
 ## Source Code
 
-Chefs app
-
 - [MapPage.xaml.cs](https://github.com/unoplatform/uno.chefs/blob/c9d86cc309ee92f2eca71eb344b90869c0fa2885/Chefs/Views/MapPage.xaml.cs)
 - [MapPage.xaml](https://github.com/unoplatform/uno.chefs/blob/c9d86cc309ee92f2eca71eb344b90869c0fa2885/Chefs/Views/MapPage.xaml#L29-L30)
 

@@ -87,8 +87,6 @@ Doughtnut and horizontal bars chart on the Recipe details page:
 
 ## Source Code
 
-Chefs app
-
 - [Code behind Configuration](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/Views/RecipeDetailsPage.xaml.cs#L11-L18)
 - [Custom Chart Control](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml)
 - [Chart Control Code-Behind](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Controls/ChartControl.xaml.cs#)

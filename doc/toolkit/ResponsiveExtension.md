@@ -24,8 +24,8 @@ The `ResponsiveExtension` class is a markup extension that enables the customiza
 
 ## Source Code
 
-- [Main Page (1)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L38-L39)
-- [Main Page (2)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L69-L70)
+- [Main Page (Narrow Visible TabBar)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L38-L39)
+- [Main Page (Wide Visible TabBar)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L69-L70)
 - [Search Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L110-L111)
 - [Home Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L271-L272)
 - [Recipe Details Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L29-L30)

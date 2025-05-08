@@ -76,8 +76,6 @@ public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
 
 ## Source Code
 
-Chefs app
-
 - [App UseConfiguration](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L65-L71)
 - [App UserService](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.cs#L68)
 - [UserService](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Services/Users/UserService.cs)
