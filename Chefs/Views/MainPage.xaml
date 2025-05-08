@@ -47,7 +47,7 @@
 				</utu:TabBarItem.Icon>
 			</utu:TabBarItem>
 
-			<utu:TabBarItem uen:Region.Name="-/Search"
+			<utu:TabBarItem uen:Region.Name="Search"
 							utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
 							Content="Search">
 				<utu:TabBarItem.Icon>
@@ -82,7 +82,7 @@
 					</utu:TabBarItem.Icon>
 				</utu:TabBarItem>
 
-				<utu:TabBarItem uen:Region.Name="-/Search"
+				<utu:TabBarItem uen:Region.Name="Search"
 								utu:TabBarItemExtensions.OnClickBehaviors="BackNavigation"
 								utu:TabBarItemExtensions.OnClickBehaviorsTarget="{Binding ElementName=RootGrid}"
 								Content="Search">
