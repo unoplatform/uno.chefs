@@ -31,8 +31,11 @@ public partial record RecipeDetailsModel
 		_messenger = messenger;
 		_shareService = shareService;
 
+		Recipe = recipe;
 		_recipeFeed = new(recipe, _recipeService, _userService);
 	}
+
+	public Recipe Recipe { get; }
 
 	public IFeed<RecipeInfo> RecipeDetails => _recipeFeed.Feed;
 
