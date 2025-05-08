@@ -44,7 +44,7 @@
 	<utu:AutoLayout>
 		<utu:NavigationBar Content="{Binding RecipeDetails.Value.Recipe.Name}">
 			<utu:NavigationBar.PrimaryCommands>
-				<AppBarButton Command="{Binding Share}">
+				<AppBarButton>
 					<AppBarButton.Icon>
 						<PathIcon Data="{StaticResource Icon_Share}" />
 					</AppBarButton.Icon>
@@ -57,8 +57,7 @@
 			</utu:NavigationBar.PrimaryCommands>
 		</utu:NavigationBar>
 
-		<uer:FeedView Source="{Binding RecipeDetails}"
-					  Style="{StaticResource CompositeFeedViewStyle}">
+		<uer:FeedView Source="{Binding RecipeDetails}">
 			<uer:FeedView.ProgressTemplate>
 				<DataTemplate>
 					<Grid>
@@ -261,7 +260,7 @@
 															Visibility="Collapsed">
 												<TextBlock Style="{StaticResource BodyLarge}"
 														   Foreground="{ThemeResource OnSurfaceBrush}"
-														   Text="{Binding Steps.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} steps'}"
+														   Text="{Binding Data.Steps.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} steps'}"
 														   TextWrapping="Wrap" />
 												<muxc:ItemsRepeater ItemsSource="{Binding Data.Steps}">
 													<muxc:ItemsRepeater.Layout>
@@ -425,7 +424,7 @@
 
 					<Button Content="Start Cooking!"
 							Style="{StaticResource ChefsFabButtonStyle}"
-							Command="{Binding LiveCooking}"
+						
 							VerticalAlignment="Bottom"
 							HorizontalAlignment="Right"
 							utu:AutoLayout.IsIndependentLayout="True">
