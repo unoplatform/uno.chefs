@@ -2,7 +2,7 @@
 uid: Uno.Recipes.XamlNavigation
 ---
 
-# How to Navigate with Xaml
+# Navigation via XAML
 
 ## Problem
 

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ContentDialog
 ---
 
-# How to use the ContentDialog control with Navigation Extensions
+# Displaying a Custom Dialog
 
 ## Problem
 
@@ -37,16 +37,16 @@ public partial record GenericDialogModel(DialogInfo DialogInfo);
 We should then create a GenericDialog.xaml file which will take care of the bindings. We will be able to re-use this `ContentDialog` throughout the app:
 
 ```xml
-﻿<ContentDialog x:Class="Chefs.Views.GenericDialog"
-                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                xmlns:local="using:Chefs.Presentation.Dialogs"
-                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                Title="{Binding DialogInfo.Title}"
-                Background="{ThemeResource SurfaceBrush}"
-                CloseButtonText="Close"
-                Content="{Binding DialogInfo.Content}"
-                Style="{StaticResource MaterialContentDialogStyle}" />
+<ContentDialog x:Class="Chefs.Views.GenericDialog"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:local="using:Chefs.Presentation.Dialogs"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               Title="{Binding DialogInfo.Title}"
+               Background="{ThemeResource SurfaceBrush}"
+               CloseButtonText="Close"
+               Content="{Binding DialogInfo.Content}"
+               Style="{StaticResource MaterialContentDialogStyle}" />
 ```
 
 ### Using the GenericDialogModel with the Uno Navigation Extension
@@ -114,12 +114,10 @@ public partial class MyViewModel
 
 ## Source Code
 
-Chefs app
-
 - [CreateUpdateCookbookModel code](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/CreateUpdateCookbookModel.cs#L85)
 - [Navigation extension method](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/Extensions/INavigatorExtensions.cs#L15)
-- [App.xaml.host.cs setup (1)](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L149)
-- [App.xaml.host.cs setup (2)](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L183)
+- [App.xaml.host.cs setup (ViewMap)](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L149)
+- [App.xaml.host.cs setup (RouteMap)](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L183)
 - [GenericDialogModel](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/GenericDialogModel.cs)
 - [GenericDialog.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/Dialogs/GenericDialog.xaml)
 

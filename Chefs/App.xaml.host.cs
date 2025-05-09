@@ -3,6 +3,7 @@ using Chefs.Services.Clients;
 using Chefs.Services.Settings;
 using Chefs.Services.Sharing;
 using Chefs.Views.Flyouts;
+using Microsoft.Extensions.Configuration;
 using Uno.Extensions.Http.Kiota;
 
 namespace Chefs;
@@ -68,7 +69,18 @@ public partial class App : Application
 						.AddSingleton<ISettingsService, SettingsService>()
 						.AddSingleton<IUserService, UserService>();
 				})
+				.ConfigureAppConfiguration(config =>
+				{
+					// Clear any launchurl to make sure we always start at beginning
+					// Deeplinking issue https://github.com/unoplatform/uno.chefs/issues/738
+					var appsettingsPrefix = new Dictionary<string, string?>
+							{
+								{ HostingConstants.LaunchUrlKey, "" }
+							};
+					config.AddInMemoryCollection(appsettingsPrefix);
+				})
 				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes,
+					configure: navConfig => navConfig with { AddressBarUpdateEnabled = false },
 					configureServices: ConfigureNavServices));
 	}
 

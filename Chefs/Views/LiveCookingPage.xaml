@@ -93,14 +93,14 @@
 						   Content="{Binding Recipe.Name}" />
 
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
-						Orientation="{utu:Responsive Narrow=Vertical,
+						Orientation="{utu:Responsive Normal=Vertical,
 													 Wide=Horizontal}"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed, Converter={StaticResource TrueToCollapsed}}">
 			<utu:AutoLayout Background="{ThemeResource BrandBlackBrush}"
-							utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+							utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
 																			 Wide=Stretch}"
-							PrimaryAxisAlignment="{utu:Responsive Narrow=Start,
+							PrimaryAxisAlignment="{utu:Responsive Normal=Start,
 																  Wide=Center}">
 				<MediaPlayerElement AreTransportControlsEnabled="True"
 									AutoPlay="True"
@@ -165,11 +165,11 @@
 		<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 						Background="{ThemeResource SurfaceBrush}"
 						Visibility="{Binding Completed}"
-						Orientation="{utu:Responsive Narrow=Vertical,
+						Orientation="{utu:Responsive Normal=Vertical,
 													 Wide=Horizontal}">
 			<Image Source="{Binding Recipe.ImageUrl}"
 				   Stretch="UniformToFill"
-				   Visibility="{utu:Responsive Narrow=Collapsed,
+				   Visibility="{utu:Responsive Normal=Collapsed,
 											   Wide=Visible}"
 				   utu:AutoLayout.PrimaryAlignment="Stretch" />
 			<utu:AutoLayout PrimaryAxisAlignment="Center"

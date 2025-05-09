@@ -2,7 +2,7 @@
 uid: Uno.Recipes.InputExtensions.Focus
 ---
 
-# How to navigate between input controls with the keyboard
+# Navigating Between Input Controls with the Keyboard
 
 ## Problem
 
@@ -30,8 +30,8 @@ The above code has the following effect:
 
 ## Source Code
 
-- [Registration Page (1)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L31)
-- [Registration Page (2)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L43)
+- [Registration Page (Focus Email)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L31)
+- [Registration Page (Focus Password)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L43)
 
 ## Documentation
 

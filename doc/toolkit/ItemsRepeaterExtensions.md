@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ItemsRepeaterExtensions
 ---
 
-# How to enable selection on the ItemsRepeater control
+# Enabling Selection in ItemsRepeater Control
 
 ## Problem
 
@@ -22,10 +22,10 @@ The `ItemsRepeater` extensions library provides attached properties that enable 
 
 ## Source Code
 
-- [Filters Page (1)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L52)
-- [Filters Page (2)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L71)
-- [Filters Page (3)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L99)
-- [Filters Page (4)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L118)
+- [Filters Page (FilterGroups ItemsRepeater)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L52)
+- [Filters Page (Times ItemsRepeater)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L71)
+- [Filters Page (Difficulties ItemsRepeater)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L99)
+- [Filters Page (Serves ItemsRepeater)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/FiltersPage.xaml#L118)
 
 ## Documentation
 

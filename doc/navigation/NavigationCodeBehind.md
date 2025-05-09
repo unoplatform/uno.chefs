@@ -2,7 +2,7 @@
 uid: Uno.Recipes.NavigationCodeBehind
 ---
 
-# How to Navigate with Code Behind
+# Navigation via Code Behind
 
 ## Problem
 

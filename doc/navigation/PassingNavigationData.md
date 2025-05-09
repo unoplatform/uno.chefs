@@ -2,7 +2,7 @@
 uid: Uno.Recipes.PassingNavigationData
 ---
 
-# How to Pass Data Across Navigation Requests
+# Passing Navigation Data
 
 ## Problem
 
@@ -60,8 +60,6 @@ new RouteMap("Filter", View: views.FindByViewModel<FilterModel>())
 ```
 
 ## Source Code
-
-Chefs app
 
 - [NavigateBackWithResultAsync](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/FilterModel.cs#L21-L22)
 - [App.xaml.host.cs](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L134)

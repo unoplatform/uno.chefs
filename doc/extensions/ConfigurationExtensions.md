@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Configuration
 ---
 
-# How to manage writable configuration data for your application
+# Persistent App Settings
 
 ## Problem
 
@@ -75,8 +75,6 @@ public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
 ```
 
 ## Source Code
-
-Chefs app
 
 - [App UseConfiguration](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.host.cs#L65-L71)
 - [App UserService](https://github.com/unoplatform/uno.chefs/blob/04a93886dd0b530386997179b80453a59e832fbe/Chefs/App.xaml.cs#L68)

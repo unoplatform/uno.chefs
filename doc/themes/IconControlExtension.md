@@ -2,7 +2,7 @@
 uid: Uno.Recipes.IconControlExtension
 ---
 
-# How to add custom icons to supported controls
+# Adding Custom Icons to Controls
 
 ## Problem
 
@@ -62,8 +62,6 @@ Given the following XAML:
 ![Login Controls with Icon](../assets/login-icon.png)
 
 ## Source Code
-
-Chefs app
 
 - [Login Page (TextBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LoginPage.xaml#L35-L37)
 - [Login Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LoginPage.xaml#L60-L62)

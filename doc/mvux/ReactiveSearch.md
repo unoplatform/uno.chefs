@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ReactiveSearch
 ---
 
-# How to Build a Real-Time Search with MVUX
+# Building a Real-Time Search
 
 ## Problem
 
@@ -78,7 +78,7 @@ FeedView:
     <DataTemplate>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <muxc:ItemsRepeater x:Name="SearchRepeater"
-                                Margin="{utu:Responsive Narrow='16,0,16,16',
+                                Margin="{utu:Responsive Normal='16,0,16,16',
                                                         Wide='40,0,40,40'}"
                                 uen:Navigation.Request="RecipeDetails"
                                 ItemTemplate="{StaticResource RecipeTemplate}"
@@ -97,8 +97,6 @@ The `FeedView` control automatically updates the displayed list of recipes whene
 In addition to the search term, you can also maintain a **filter state** to refine search results further. In Chefs, the `Filter` property in the `SearchModel` defines custom filtering logic. See [How to Filter Search Results Dynamically with MVUX](xref:Uno.Recipes.SearchFilters) for a closer look.
 
 ## Source Code
-
-Chefs app
 
 - [SearchModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/SearchModel.cs)
 - [SearchPage.xaml (Search Term)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L114-L118)

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ImplicitCommands
 ---
 
-# How to Use Implicit Commands with MVUX
+# Implicit Commands
 
 ## Problem
 
@@ -38,8 +38,6 @@ In the XAML, we simply bind the submit button's `Command` property to the **Subm
 ```
 
 ## Source Code
-
-Chefs app
 
 - [CreateUpdateCookbookModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/CreateUpdateCookbookModel.cs#L65-L87)
 - [CreateUpdateCookbookModel.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/CreateUpdateCookbookPage.xaml#L143-L146)

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.ResourceExtensions
 ---
 
-# How to utilize the Resource Extensions
+# Page and App Level Lightweight Styles
 
 ## Problem
 
@@ -60,8 +60,6 @@ The `Fab.xaml` file from Chefs demonstrates how to define a custom style with re
 For more detailed examples of basic lightweight styling, please refer to the [Basic Lightweight Styling recipe book](xref:Uno.Recipes.LightweightStyling).
 
 ## Source Code
-
-Chefs app
 
 - [Fab Style](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Styles/Button.xaml#L45-L80)
 

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.InputExtensions.ReturnType
 ---
 
-# How to Customize Return Key for Input Controls
+# Customizing Return Key for Input Controls
 
 ## Problem
 
@@ -29,9 +29,9 @@ In the Chefs app, the `RegistrationPage` sets the return type for `TextBox` and 
 
 ## Source Code
 
-- [Registration Page (1)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L30)
-- [Registration Page (2)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L42)
-- [Registration Page (3)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L50)
+- [Registration Page (Username TextBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L30)
+- [Registration Page (Email TextBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L42)
+- [Registration Page (PasswordBox)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RegistrationPage.xaml#L50)
 
 ## Documentation
 

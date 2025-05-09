@@ -2,7 +2,7 @@
 uid: Uno.Recipes.LightweightStyling
 ---
 
-# How to Apply Lightweight Styling
+# Lightweight Styling for UI Elements
 
 ## Problem
 
@@ -85,10 +85,7 @@ Lightweight styling allows you to create reusable styles that can be applied acr
 
 ## Source Code
 
-Chefs app
-
 - [App.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/App.xaml)
-
 - [Login.xaml](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/LoginPage.xaml#L46-L59)
 
 ## Documentation
