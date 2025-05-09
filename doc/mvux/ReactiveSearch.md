@@ -78,7 +78,7 @@ FeedView:
     <DataTemplate>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <muxc:ItemsRepeater x:Name="SearchRepeater"
-                                Margin="{utu:Responsive Narrow='16,0,16,16',
+                                Margin="{utu:Responsive Normal='16,0,16,16',
                                                         Wide='40,0,40,40'}"
                                 uen:Navigation.Request="RecipeDetails"
                                 ItemTemplate="{StaticResource RecipeTemplate}"

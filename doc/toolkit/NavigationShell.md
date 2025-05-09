@@ -52,7 +52,7 @@ Here is the `MainPage.xaml` from the Chefs app.
             <utu:TabBar x:Name="Tabs"
                         Grid.Row="1"
                         Grid.Column="1"
-                        Visibility="{utu:Responsive Narrow=Visible, Wide=Collapsed}"
+                        Visibility="{utu:Responsive Normal=Visible, Wide=Collapsed}"
                         uen:Region.Attached="True"
                         Style="{StaticResource BottomTabBarStyle}">
                 <utu:TabBarItem uen:Region.Name="Home"
@@ -111,15 +111,15 @@ Navigation Shell Structure:
 
 In `MainPage.xaml`, we define two TabBar elements with different layouts:
 
-- Horizontal TabBar: Visible when the window is narrow.
+- Horizontal TabBar: Visible when the window is Normal.
 
 - Vertical TabBar: Visible when the window is wide.
 
 ``` xml
-<!-- Horizontal TabBar for narrow screens -->
+<!-- Horizontal TabBar for smaller screens -->
 <utu:TabBar Grid.Row="1"
             Grid.Column="1"
-            Visibility="{utu:Responsive Narrow=Visible, Wide=Collapsed}"
+            Visibility="{utu:Responsive Normal=Visible, Wide=Collapsed}"
             uen:Region.Attached="True"
             Style="{StaticResource BottomTabBarStyle}">
 </utu:TabBar>
@@ -127,7 +127,7 @@ In `MainPage.xaml`, we define two TabBar elements with different layouts:
 <!-- Vertical TabBar for wide screens -->
 <utu:AutoLayout Grid.RowSpan="2"
                 Background="{ThemeResource SurfaceBrush}"
-                Visibility="{utu:Responsive Narrow=Collapsed, Wide=Visible}"
+                Visibility="{utu:Responsive Normal=Collapsed, Wide=Visible}"
                 Width="120">
 <utu:TabBar uen:Region.Attached="True"
             Style="{StaticResource VerticalTabBarStyle}"

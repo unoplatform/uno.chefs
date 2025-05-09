@@ -17,14 +17,14 @@ The `ResponsiveExtension` class is a markup extension that enables the customiza
 `ResponsiveExtension` is conceived as a lightweight approach to responsiveness. For more complex scenarios, where the UI structure changes significantly based on screen size, consider using the [`ResponsiveView`](xref:Toolkit.Controls.ResponsiveView) control.
 
 ```xml
-<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24', Wide='40,40,40,24'}"
+<utu:AutoLayout Padding="{utu:Responsive Normal='16,24', Wide='40,40,40,24'}"
 ```
 
 ![Responsive Extension Animation"](../assets/responsiveextension-animated.gif)
 
 ## Source Code
 
-- [Main Page (Narrow Visible TabBar)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L38-L39)
+- [Main Page (Normal Visible TabBar)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L38-L39)
 - [Main Page (Wide Visible TabBar)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L69-L70)
 - [Search Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/SearchPage.xaml#L110-L111)
 - [Home Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L271-L272)

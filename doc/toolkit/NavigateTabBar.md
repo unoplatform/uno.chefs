@@ -51,7 +51,7 @@ The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offer
   ```xml
     <utu:TabBar Grid.Row="1"
                 Grid.Column="1"
-                Visibility="{utu:Responsive Narrow=Visible,
+                Visibility="{utu:Responsive Normal=Visible,
                               Wide=Collapsed}"
                 uen:Region.Attached="True"
                 Style="{StaticResource BottomTabBarStyle}">

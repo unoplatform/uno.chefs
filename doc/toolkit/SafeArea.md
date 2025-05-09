@@ -12,7 +12,7 @@ In a mobile platform context, UI elements can be obscured by device-specific fea
 
 ```xml
 <utu:AutoLayout utu:SafeArea.Insets="VisibleBounds"
-                Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+                Orientation="{utu:Responsive Normal=Vertical, Wide=Horizontal}">
 ```
 
 Without SafeArea|SafeArea applied
