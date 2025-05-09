@@ -1,100 +1,97 @@
 items:
-- name: Overview
-  href: xref:Uno.Chefs.Overview
-- name: Recipe Books
+- name: Recipe Books Overview
   href: xref:Uno.Recipes.Overview
+- name: UI
   items:
-  - name: UI
+  - name: Customization
     items:
-    - name: Customization
-      items:
-      - name: Adding Custom Icons to Controls
-        href: xref:Uno.Recipes.IconControlExtension
-      - name: Lightweight Styling for UI Elements
-        href: xref:Uno.Recipes.LightweightStyling
-      - name: Page and App Level Lightweight Styles
-        href: xref:Uno.Recipes.ResourceExtensions
-      - name: ToggleButton Alternate Icons
-        href: xref:Uno.Recipes.AlternateContentControlExtension
-      - name: App Icons and Splash Screen
-        href: xref:Uno.Recipes.AppIcons
-      - name: Customizing Status Bar Colors on Mobile
-        href: xref:Uno.Recipes.StatusBarExtension
+    - name: Adding Custom Icons to Controls
+      href: xref:Uno.Recipes.IconControlExtension
+    - name: Lightweight Styling for UI Elements
+      href: xref:Uno.Recipes.LightweightStyling
+    - name: Page and App Level Lightweight Styles
+      href: xref:Uno.Recipes.ResourceExtensions
+    - name: ToggleButton Alternate Icons
+      href: xref:Uno.Recipes.AlternateContentControlExtension
+    - name: App Icons and Splash Screen
+      href: xref:Uno.Recipes.AppIcons
+    - name: Customizing Status Bar Colors on Mobile
+      href: xref:Uno.Recipes.StatusBarExtension
 
-    - name: Responsive
-      items:
-      - name: Adapting to Safe Area on Mobile
-        href: xref:Uno.Recipes.SafeArea
-      - name: Making the App Responsive to Screen Sizes
-        href: xref:Uno.Recipes.ResponsiveExtension
-
-    - name: Interactions
-      items:
-      - name: Navigating Between Input Controls with the Keyboard
-        href: xref:Uno.Recipes.InputExtensions.Focus
-      - name: Customizing Return Key for Input Controls
-        href: xref:Uno.Recipes.InputExtensions.ReturnType
-      - name: Enabling Selection in ItemsRepeater Control
-        href: xref:Uno.Recipes.ItemsRepeaterExtensions
-      - name: Commands for Controls Without a Command Property
-        href: xref:Uno.Recipes.CommandExtensions
-
-    - name: Third-party Components
-      items:
-      - name: Integrating LiveCharts Controls
-        href: xref:Uno.Recipes.LiveCharts
-      - name: Setting Up an Interactive Map
-        href: xref:Uno.Recipes.Mapsui
-
-    - name: Advanced
-      items:
-      - name: Extending Splash Screen Duration for Custom Loading
-        href: xref:Uno.Recipes.ExtendedSplashScreen
-      - name: Using DrawerFlyout for Screen Space Management
-        href: xref:Uno.Recipes.DisplayDrawerFlyout
-      - name: Creating Clean Commands
-        href: xref:Uno.Recipes.CommandBuilder
-      - name: Binding to Elements Outside of a DataTemplate in XAML
-        href: xref:Uno.Recipes.AncestorBinding
-
-    - name: State Management
-      items:
-      - name: MVUX Overview
-        href: xref:Uno.Recipes.MVUXOverview
-      - name: Implicit Commands
-        href: xref:Uno.Recipes.ImplicitCommands
-      - name: Building a Real-Time Search
-        href: xref:Uno.Recipes.ReactiveSearch
-      - name: Filtering Search Results
-        href: xref:Uno.Recipes.SearchFilters
-      - name: Propagating Changes Across the App
-        href: xref:Uno.Recipes.IMessenger
-      - name: Selecting Items from a List
-        href: xref:Uno.Recipes.Selection
-      - name: Pagination
-        href: xref:Uno.Recipes.Pagination
-
-    - name: Navigation
-      items:
-      - name: Navigation Overview
-        href: xref:Uno.Recipes.NavigationOverview
-      - name: Navigation via XAML
-        href: xref:Uno.Recipes.XamlNavigation
-      - name: Navigation via Code Behind
-        href: xref:Uno.Recipes.NavigationCodeBehind
-      - name: Tab Navigation
-        href: xref:Uno.Recipes.NavigateTabBar
-      - name: Passing Navigation Data
-        href: xref:Uno.Recipes.PassingNavigationData
-      - name: Displaying a Custom Dialog
-        href: xref:Uno.Recipes.ContentDialog
-      - name: Creating a Responsive Navigation Shell
-        href: xref:Uno.Recipes.NavigationShell
-  - name: Non-UI
+  - name: Responsive
     items:
-    - name: Data & Configuration
-      items:
-      - name: Serialization
-        href: xref:Uno.Recipes.Serialization
-      - name: Persistent App Settings
-        href: xref:Uno.Recipes.Configuration
+    - name: Adapting to Safe Area on Mobile
+      href: xref:Uno.Recipes.SafeArea
+    - name: Making the App Responsive to Screen Sizes
+      href: xref:Uno.Recipes.ResponsiveExtension
+
+  - name: Interactions
+    items:
+    - name: Navigating Between Input Controls with the Keyboard
+      href: xref:Uno.Recipes.InputExtensions.Focus
+    - name: Customizing Return Key for Input Controls
+      href: xref:Uno.Recipes.InputExtensions.ReturnType
+    - name: Enabling Selection in ItemsRepeater Control
+      href: xref:Uno.Recipes.ItemsRepeaterExtensions
+    - name: Commands for Controls Without a Command Property
+      href: xref:Uno.Recipes.CommandExtensions
+
+  - name: Third-party Components
+    items:
+    - name: Integrating LiveCharts Controls
+      href: xref:Uno.Recipes.LiveCharts
+    - name: Setting Up an Interactive Map
+      href: xref:Uno.Recipes.Mapsui
+
+  - name: Advanced
+    items:
+    - name: Extending Splash Screen Duration for Custom Loading
+      href: xref:Uno.Recipes.ExtendedSplashScreen
+    - name: Using DrawerFlyout for Screen Space Management
+      href: xref:Uno.Recipes.DisplayDrawerFlyout
+    - name: Creating Clean Commands
+      href: xref:Uno.Recipes.CommandBuilder
+    - name: Binding to Elements Outside of a DataTemplate in XAML
+      href: xref:Uno.Recipes.AncestorBinding
+
+  - name: State Management
+    items:
+    - name: MVUX Overview
+      href: xref:Uno.Recipes.MVUXOverview
+    - name: Implicit Commands
+      href: xref:Uno.Recipes.ImplicitCommands
+    - name: Building a Real-Time Search
+      href: xref:Uno.Recipes.ReactiveSearch
+    - name: Filtering Search Results
+      href: xref:Uno.Recipes.SearchFilters
+    - name: Propagating Changes Across the App
+      href: xref:Uno.Recipes.IMessenger
+    - name: Selecting Items from a List
+      href: xref:Uno.Recipes.Selection
+    - name: Pagination
+      href: xref:Uno.Recipes.Pagination
+
+  - name: Navigation
+    items:
+    - name: Navigation Overview
+      href: xref:Uno.Recipes.NavigationOverview
+    - name: Navigation via XAML
+      href: xref:Uno.Recipes.XamlNavigation
+    - name: Navigation via Code Behind
+      href: xref:Uno.Recipes.NavigationCodeBehind
+    - name: Tab Navigation
+      href: xref:Uno.Recipes.NavigateTabBar
+    - name: Passing Navigation Data
+      href: xref:Uno.Recipes.PassingNavigationData
+    - name: Displaying a Custom Dialog
+      href: xref:Uno.Recipes.ContentDialog
+    - name: Creating a Responsive Navigation Shell
+      href: xref:Uno.Recipes.NavigationShell
+- name: Non-UI
+  items:
+  - name: Data & Configuration
+    items:
+    - name: Serialization
+      href: xref:Uno.Recipes.Serialization
+    - name: Persistent App Settings
+      href: xref:Uno.Recipes.Configuration
