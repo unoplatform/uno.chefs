@@ -173,7 +173,7 @@
 				<!-- END Workaround -->
 			</PropertyGroup>
 			<ItemGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
-				<PackageReference Include="Xamarin.TestCloud.Agent" />
+				<!-- <PackageReference Include="Xamarin.TestCloud.Agent" /> -->
 			</ItemGroup>
 		</When>
 		<When Condition="$(IsMacCatalyst)">

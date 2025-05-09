@@ -58,39 +58,6 @@
 		</utu:NavigationBar>
 
 		<uer:FeedView Source="{Binding RecipeDetails}">
-			<uer:FeedView.ProgressTemplate>
-				<DataTemplate>
-					<Grid>
-						<TextBlock Text="LOADING"
-								   FontSize="40"
-								   Foreground="Red"
-								   HorizontalAlignment="Center"
-								   VerticalAlignment="Center" />
-					</Grid>
-				</DataTemplate>
-			</uer:FeedView.ProgressTemplate>
-			<uer:FeedView.NoneTemplate>
-				<DataTemplate>
-					<Grid>
-						<TextBlock Text="NONE"
-								   FontSize="40"
-								   Foreground="Red"
-								   HorizontalAlignment="Center"
-								   VerticalAlignment="Center" />
-					</Grid>
-				</DataTemplate>
-			</uer:FeedView.NoneTemplate>
-			<uer:FeedView.UndefinedTemplate>
-				<DataTemplate>
-					<Grid>
-						<TextBlock Text="UndefinedTemplate"
-								   FontSize="40"
-								   Foreground="Red"
-								   HorizontalAlignment="Center"
-								   VerticalAlignment="Center" />
-					</Grid>
-				</DataTemplate>
-			</uer:FeedView.UndefinedTemplate>
 			<DataTemplate>
 				<utu:AutoLayout>
 					<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"

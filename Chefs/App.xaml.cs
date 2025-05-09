@@ -36,7 +36,7 @@ public partial class App : Application
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
 	{
 #if __IOS__ && !__MACCATALYST__ && USE_UITESTS
-		Xamarin.Calabash.Start();
+		//Xamarin.Calabash.Start();
 #endif
 
 		var builder = this.CreateBuilder(args);

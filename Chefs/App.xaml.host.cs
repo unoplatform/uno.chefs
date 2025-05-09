@@ -184,7 +184,7 @@ public partial class App : Application
 						new RouteMap("UpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 
-						new RouteMap("RecipeInfo", View: views.FindByViewModel<RecipeDetailsModel>()),
+						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>()),
 #if !IS_WASM_SKIA
 						new RouteMap("Map", View: views.FindByViewModel<MapModel>()),
