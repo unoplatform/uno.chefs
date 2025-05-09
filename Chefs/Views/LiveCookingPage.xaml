@@ -176,9 +176,9 @@
 							PrimaryAlignment="Stretch">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
 								CounterAxisAlignment="Center"
-								Margin="{utu:Responsive Narrow=32,
+								Margin="{utu:Responsive Normal=32,
 														Wide=40}">
-					<StackPanel Padding="{utu:Responsive Narrow=0,
+					<StackPanel Padding="{utu:Responsive Normal=0,
 														 Wide=48}"
 								Spacing="24">
 						<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
@@ -218,7 +218,7 @@
 								PrimaryAxisAlignment="Stretch"
 								Orientation="Horizontal"
 								Spacing="16"
-								Margin="{utu:Responsive Narrow=0,
+								Margin="{utu:Responsive Normal=0,
 														Wide=48}">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Command="{Binding BackToLastStep}"
