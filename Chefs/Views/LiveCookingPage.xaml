@@ -35,7 +35,8 @@
 						   Foreground="{ThemeResource OnSurfaceBrush}"
 						   Style="{StaticResource TitleLarge}"
 						   TextAlignment="Center"
-						   TextWrapping="Wrap">
+						   TextWrapping="Wrap"
+						   utu:AutoLayout.CounterAlignment="Center">
 					<Run Text="{Binding Number}" />
 					<Run Text=" - " />
 					<Run Text="{Binding Name}" />
@@ -43,7 +44,8 @@
 				<utu:AutoLayout Padding="16"
 								Background="{ThemeResource BackgroundBrush}"
 								CornerRadius="8"
-								Spacing="16">
+								Spacing="16"
+								CounterAxisAlignment="Center">
 					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 							   Style="{StaticResource CaptionLarge}"
 							   Text="Ingredients:"
@@ -171,48 +173,53 @@
 											   Wide=Visible}"
 				   utu:AutoLayout.PrimaryAlignment="Stretch" />
 			<utu:AutoLayout PrimaryAxisAlignment="Center"
-							PrimaryAlignment="Stretch"
-							Padding="{utu:Responsive Normal=32,
-													 Wide=40}">
+							PrimaryAlignment="Stretch">
 				<utu:AutoLayout PrimaryAxisAlignment="Center"
-								Padding="{utu:Responsive Normal=0,
+								CounterAxisAlignment="Center"
+								Margin="{utu:Responsive Normal=32,
+														Wide=40}">
+					<StackPanel Padding="{utu:Responsive Normal=0,
 														 Wide=48}"
 								Spacing="24">
-					<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
-								utu:AutoLayout.CounterAlignment="Center"
-								Width="72"
-								Height="72" />
-					<TextBlock FontSize="22"
-							   FontWeight="SemiBold"
-							   Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleLarge}"
-							   Text="Hurray!"
-							   TextAlignment="Center" />
-					<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-							   Style="{StaticResource TitleMedium}"
-							   Text="All steps are completed. Now it’s time to enjoy your meal!"
-							   TextAlignment="Center"
-							   TextWrapping="Wrap" />
-					<utu:AutoLayout Padding="16,32"
-									Background="{ThemeResource BackgroundBrush}"
-									CornerRadius="8"
-									Spacing="16">
-						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-								   Text="Tell us how was your cooking experience!"
+						<BitmapIcon UriSource="{ThemeResource LiveCooking_Success}"
+									Width="72"
+									Height="72" />
+						<TextBlock FontSize="22"
+								   FontWeight="SemiBold"
+								   Foreground="{ThemeResource OnSurfaceBrush}"
+								   Style="{StaticResource TitleLarge}"
+								   Text="Hurray!"
 								   TextAlignment="Center"
-								   TextWrapping="Wrap" />
-						<!-- TODO -->
-						<!-- Save rating -->
-						<muxc:RatingControl utu:AutoLayout.CounterAlignment="Center"
-											MaxRating="5"
-											Style="{StaticResource RatingControlStyle}" />
-					</utu:AutoLayout>
+								   HorizontalAlignment="Center" />
+						<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+								   Style="{StaticResource TitleMedium}"
+								   Text="All steps are completed. Now it’s time to enjoy your meal!"
+								   TextAlignment="Center"
+								   TextWrapping="Wrap"
+								   HorizontalAlignment="Center" />
+						<utu:AutoLayout Padding="16,32"
+										Background="{ThemeResource BackgroundBrush}"
+										CornerRadius="8"
+										Spacing="16">
+							<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+									   Text="Tell us how was your cooking experience!"
+									   TextAlignment="Center"
+									   TextWrapping="Wrap" />
+							<!-- TODO -->
+							<!-- Save rating -->
+							<muxc:RatingControl utu:AutoLayout.CounterAlignment="Center"
+												MaxRating="5"
+												Style="{StaticResource RatingControlStyle}" />
+						</utu:AutoLayout>
+					</StackPanel>
 				</utu:AutoLayout>
 				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 								CounterAxisAlignment="End"
 								PrimaryAxisAlignment="Stretch"
 								Orientation="Horizontal"
-								Spacing="16">
+								Spacing="16"
+								Margin="{utu:Responsive Normal=0,
+														Wide=48}">
 					<Button utu:AutoLayout.PrimaryAlignment="Stretch"
 							Command="{Binding BackToLastStep}"
 							Content="Previous"
