@@ -6,10 +6,10 @@
 	</picture>
 </p>
 
+## Releases
+
 [![Azure DevOps](https://img.shields.io/azure-devops/build/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/122/main?label=main)](https://uno-platform.visualstudio.com/Uno%20Platform/_build?definitionId=122&_a=summary&repositoryFilter=137&branchFilter=11232%2C11232%2C11232%2C11232%2C11232%2C11232)
 [![Azure DevOps](https://img.shields.io/azure-devops/build/uno-platform/1dd81cbd-cb35-41de-a570-b0df3571a196/128/canaries/dev?label=canary)](https://uno-platform.visualstudio.com/Uno%20Platform/_build?definitionId=128&_a=summary&repositoryFilter=137&branchFilter=14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458%2C14458)
-
-## Releases
 
 ### Canary
 
