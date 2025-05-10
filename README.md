@@ -1,4 +1,10 @@
-# Uno Chefs
+<p align="center">
+	<picture>
+	  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/e649c6d5-f83d-4aee-b304-403a66b75d8f">
+	  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d74719cf-c519-47b2-bb1d-eeb52395dc5d">
+		<img height="300px" src="https://github.com/user-attachments/assets/d74719cf-c519-47b2-bb1d-eeb52395dc5d"">
+	</picture>
+</p>
 
 ## Overview
 
@@ -28,3 +34,7 @@ This app demonstrates the use of many Uno Platform capabilities, such as:
 - **Skia rendering**
 
 In addition, when running the application, users can choose to use **mock data** or connect to the **included API project** in the Chefs solution.
+
+## Recipe Book
+
+There is a companion set of reference documentation known as the [Recipe Book](https://platform.uno/docs/articles/external/uno.chefs/doc/RecipeBooksOverview.html). These guidelines document how each feature of Chefs is implemented in an easy-to-read format.
