@@ -1,5 +1,4 @@
-
-namespace Chefs.Api.Data;
+namespace Chefs.DataContracts.Entities;
 
 public class NutritionData
 {

@@ -1,6 +1,7 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Chefs.Api.Converters;
+namespace Chefs.DataContracts.Converters;
 public class TimeSpanObjectConverter : JsonConverter<TimeSpan>
 {
 	public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

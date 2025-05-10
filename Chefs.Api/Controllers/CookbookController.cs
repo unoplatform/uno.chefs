@@ -1,3 +1,5 @@
+using Chefs.DataContracts;
+
 namespace Chefs.Api.Controllers;
 
 /// <summary>
@@ -7,8 +9,8 @@ namespace Chefs.Api.Controllers;
 [Route("api/[controller]")]
 public class CookbookController : ControllerBase
 {
-	private readonly string _cookbooksFilePath = "Data/AppData/Cookbooks.json";
-	private readonly string _savedCookbooksFilePath = "Data/AppData/SavedCookbooks.json";
+	private readonly string _cookbooksFilePath = "Cookbooks.json";
+	private readonly string _savedCookbooksFilePath = "SavedCookbooks.json";
 
 	/// <summary>
 	/// Retrieves all cookbooks.
@@ -113,11 +115,11 @@ public class CookbookController : ControllerBase
 	/// Loads data from a specified JSON file.
 	/// </summary>
 	/// <typeparam name="T">The type of data to load.</typeparam>
-	/// <param name="filePath">The file path of the JSON file.</param>
+	/// <param name="fileName">The file name of the JSON file.</param>
 	/// <returns>The loaded data.</returns>
-	private T LoadData<T>(string filePath)
+	private T LoadData<T>(string fileName)
 	{
-		var json = System.IO.File.ReadAllText(filePath);
+		var json = EmbeddedJsonLoader.Load(fileName);
 		return JsonSerializer.Deserialize<T>(json);
 	}
 }

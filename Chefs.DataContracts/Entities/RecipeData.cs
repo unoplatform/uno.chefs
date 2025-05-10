@@ -1,7 +1,8 @@
 using System.Text.Json.Serialization;
-using Chefs.Converters;
+using Chefs.Data;
+using Chefs.DataContracts.Converters;
 
-namespace Chefs.Data;
+namespace Chefs.DataContracts.Entities;
 
 public class RecipeData
 {

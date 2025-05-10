@@ -1,4 +1,4 @@
-namespace Chefs.Data;
+namespace Chefs.DataContracts.Entities;
 
 public class IngredientData
 {

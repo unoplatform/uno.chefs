@@ -1,6 +1,6 @@
-using System.Text.Json;
+using Chefs.DataContracts;
 using Chefs.Services.Clients.Models;
-using UserData = Chefs.Data.UserData;
+using UserData = Chefs.DataContracts.Entities.UserData;
 
 namespace Chefs.Services;
 

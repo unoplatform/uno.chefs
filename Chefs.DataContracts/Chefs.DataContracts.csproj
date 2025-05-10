@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AppData\categories.json" />
+    <EmbeddedResource Include="AppData\Cookbooks.json" />
+    <EmbeddedResource Include="AppData\Notifications.json" />
+    <EmbeddedResource Include="AppData\Recipes.json" />
+    <EmbeddedResource Include="AppData\SavedCookbooks.json" />
+    <EmbeddedResource Include="AppData\SavedRecipes.json" />
+    <EmbeddedResource Include="AppData\Users.json" />
+  </ItemGroup>
+
+</Project>
