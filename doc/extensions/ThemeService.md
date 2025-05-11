@@ -20,49 +20,71 @@ To integrate `ThemeService` in your Uno application, follow these steps:
 
 1. Register the `IThemeService` in your app startup:
 
-``` csharp
-public partial class App : Application
-{
-    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    ``` csharp
+    public partial class App : Application
     {
-        var builder = this.CreateBuilder(args)
-            .Configure(host => host
-                .UseThemeSwitching()
-            );
-            // Code omitted for brevity
+        protected async override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            var builder = this.CreateBuilder(args)
+                .Configure(host => host
+                    .UseThemeSwitching()
+                );
+                // Code omitted for brevity
+        }
     }
-}
-```
+    ```
 
 1. Consume the ThemeService in your view model:
 
-```csharp
-public partial record SettingsModel
-{
-    private readonly IThemeService _themeService;
-
-    public SettingsModel(IThemeService themeService)
+    ```csharp
+    public partial record SettingsModel
     {
-         _themeService = themeService;
+        private readonly IThemeService _themeService;
+
+        public SettingsModel(IThemeService themeService)
+        {
+            _themeService = themeService;
+        }
+
+        public IListFeed<AppTheme> ThemeOptions => State
+            .Value(this, () => Enum.GetValues(typeof(AppTheme)).Cast<AppTheme>().ToImmutableList())
+            .AsListFeed()
+            .Selection(Theme);
+
+        public IState<AppTheme> Theme => State
+            .Value(this, () => _themeService.Theme)
+            .ForEach(async (theme, _) => await _themeService.SetThemeAsync(theme));
     }
-
-    public IList<AppTheme> ThemeOptions => Enum.GetValues(typeof(AppTheme)).Cast<AppTheme>().ToList();
-
-    public IState<AppTheme> Theme => State
-        .Value(this, () => _themeService.Theme)
-        .ForEach(async (theme, _) => await _themeService.SetThemeAsync(theme));
-}
-```
+    ```
 
 1. Use the `Theme` `IState` in your XAML to bind to the current theme and allow the user to change it:
 
-```xml
-<ComboBox ItemsSource="{Binding ThemeOptions}"
+    ```xml
+    <ComboBox ItemsSource="{Binding ThemeOptions}"
           SelectedItem="{Binding Theme, Mode=TwoWay}"
           HorizontalAlignment="Right" />
+   ```
+
+## Listening to Theme Changes
+
+To listen for theme changes, you can subscribe to the `OnThemeChanged` event provided by the `IThemeService`. This allows you to react to theme changes in your application, such as updating UI elements or sending messages.
+
+```csharp
+    public SettingsModel(IThemeService themeService)
+    {
+        _themeService = themeService;
+        _themeService.ThemeChanged += OnThemeChanged; // Subscribe to theme changes
+    }
+
+private void OnThemeChanged(object? sender, AppTheme theme) => _messenger.Send(new ThemeChangedMessage(theme));
 ```
+
+**Visual Result:**
+
+![switching themes](../assets/switch-theme.gif)
 
 ## Source Code
 
-- [SettingsPage](https://github.com/unoplatform/uno.chefs/blob/47c1f7342a7f312719761f2089e3828d587e5c64/Chefs/Views/SettingsPage.xaml)
-- [SettingsModel](https://github.com/unoplatform/uno.chefs/blob/47c1f7342a7f312719761f2089e3828d587e5c64/Chefs/Presentation/SettingsModel.cs)
+- [SettingsPage](https://github.com/unoplatform/uno.chefs/blob/c87c6ab4cd4749a28485b8e9b403575b35f701de/Chefs/Views/SettingsPage.xaml)
+- [SettingsModel](https://github.com/unoplatform/uno.chefs/blob/c87c6ab4cd4749a28485b8e9b403575b35f701de/Chefs/Presentation/SettingsModel.cs)
+- [ThemeChangedMessage](https://github.com/unoplatform/uno.chefs/blob/c87c6ab4cd4749a28485b8e9b403575b35f701de/Chefs/Presentation/Messages/ThemeChangedMessage.cs)
