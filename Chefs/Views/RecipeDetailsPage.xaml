@@ -26,7 +26,7 @@
 										  FalseValue="{StaticResource Icon_Heart}" />
 
 		<DataTemplate x:Key="EmptyTemplate">
-			<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
+			<utu:AutoLayout Padding="{utu:Responsive Normal='16,24',
 													 Wide='40'}"
 							PrimaryAxisAlignment="Center"
 							Spacing="24">
@@ -61,11 +61,11 @@
 
 		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 					  HorizontalScrollMode="Disabled"
-					  VerticalScrollBarVisibility="{utu:Responsive Narrow=Visible,
+					  VerticalScrollBarVisibility="{utu:Responsive Normal=Visible,
 																   Wide=Hidden}"
-					  VerticalScrollMode="{utu:Responsive Narrow=Enabled,
+					  VerticalScrollMode="{utu:Responsive Normal=Enabled,
 														  Wide=Disabled}">
-			<utu:AutoLayout Padding="{utu:Responsive Narrow='0,0,0,92', Wide=0}">
+			<utu:AutoLayout Padding="{utu:Responsive Normal='0,0,0,92', Wide=0}">
 				<utu:AutoLayout Spacing="8"
 								Orientation="Horizontal"
 								Padding="16"
@@ -77,24 +77,24 @@
 							   Foreground="{ThemeResource OnBackgroundMediumBrush}"
 							   Style="{StaticResource BodySmall}" />
 				</utu:AutoLayout>
-				<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical,
+				<utu:AutoLayout Orientation="{utu:Responsive Normal=Vertical,
 															 Wide=Horizontal}"
-								Justify="{utu:Responsive Narrow=SpaceBetween,
+								Justify="{utu:Responsive Normal=SpaceBetween,
 														 Wide=Stack}"
-								utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+								utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
 																				 Wide=Stretch}">
-					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
 																					 Wide=Stretch}"
-									Spacing="{utu:Responsive Narrow=8,
+									Spacing="{utu:Responsive Normal=8,
 															 Wide=0}">
-						<Image Visibility="{utu:Responsive Narrow=Collapsed,
+						<Image Visibility="{utu:Responsive Normal=Collapsed,
 														   Wide=Visible}"
 							   Source="{Binding Recipe.ImageUrl}"
 							   Stretch="UniformToFill"
 							   HorizontalAlignment="Center"
 							   VerticalAlignment="Center"
 							   utu:AutoLayout.PrimaryAlignment="Stretch" />
-						<Border Visibility="{utu:Responsive Narrow=Visible,
+						<Border Visibility="{utu:Responsive Normal=Visible,
 															Wide=Collapsed}"
 								Height="300">
 							<Image HorizontalAlignment="Center"
@@ -103,22 +103,22 @@
 								   Stretch="UniformToFill" />
 						</Border>
 						<utu:AutoLayout utu:AutoLayout.IsIndependentLayout="True"
-										Margin="{utu:Responsive Narrow='16,263,16,0',
+										Margin="{utu:Responsive Normal='16,263,16,0',
 																Wide='14,14,0,0'}"
-										VerticalAlignment="{utu:Responsive Narrow=Center,
+										VerticalAlignment="{utu:Responsive Normal=Center,
 																		   Wide=Top}"
-										HorizontalAlignment="{utu:Responsive Narrow=Center,
+										HorizontalAlignment="{utu:Responsive Normal=Center,
 																			 Wide=Left}"
 										CornerRadius="4">
 							<utu:AutoLayout Background="{ThemeResource SurfaceBrush}"
-											Orientation="{utu:Responsive Narrow=Horizontal,
+											Orientation="{utu:Responsive Normal=Horizontal,
 																		 Wide=Vertical}"
 											PrimaryAxisAlignment="Stretch"
-											Width="{utu:Responsive Narrow=358,
+											Width="{utu:Responsive Normal=358,
 																   Wide=98}"
-											Height="{utu:Responsive Narrow=74,
+											Height="{utu:Responsive Normal=74,
 																	Wide=317}"
-											Padding="{utu:Responsive Narrow='0,4',
+											Padding="{utu:Responsive Normal='0,4',
 																	 Wide='0,40'}"
 											VerticalAlignment="Stretch"
 											HorizontalAlignment="Stretch">
@@ -166,9 +166,9 @@
 									Background="{ThemeResource BackgroundBrush}"
 									utu:AutoLayout.PrimaryAlignment="Stretch">
 						<utu:TabBar uen:Region.Attached="True"
-									utu:AutoLayout.CounterAlignment="{utu:Responsive Narrow=Start,
+									utu:AutoLayout.CounterAlignment="{utu:Responsive Normal=Start,
 																					 Wide=Center}"
-									Margin="{utu:Responsive Narrow=0,
+									Margin="{utu:Responsive Normal=0,
 															Wide='40,0'}"
 									Background="{ThemeResource BackgroundBrush}"
 									Style="{StaticResource TopTabBarStyle}">
@@ -185,26 +185,26 @@
 											Content="Nutrition"
 											Foreground="{ThemeResource OnSurfaceMediumBrush}" />
 						</utu:TabBar>
-						<ScrollViewer utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Auto,
+						<ScrollViewer utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
 																					   Wide=Stretch}"
 									  HorizontalScrollMode="Disabled">
 							<Grid x:Name="TabNavGrid"
 								  uen:Region.Attached="True"
 								  uen:Region.Navigator="Visibility">
-								<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+								<utu:AutoLayout Spacing="{utu:Responsive Normal=8,
 																		 Wide=16}"
-												Padding="{utu:Responsive Narrow='16,24,16,16',
+												Padding="{utu:Responsive Normal='16,24,16,16',
 																		 Wide=40}"
 												uen:Region.Name="IngredientsTab">
 									<TextBlock Style="{StaticResource BodyLarge}"
 											   Foreground="{ThemeResource OnSurfaceBrush}"
 											   Text="{Binding Ingredients.Count, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} items'}"
 											   TextWrapping="Wrap" />
-									<utu:AutoLayout Spacing="{utu:Responsive Narrow=2, Wide=0}">
+									<utu:AutoLayout Spacing="{utu:Responsive Normal=2, Wide=0}">
 										<uer:FeedView x:Name="IngredientsFeed"
 													  Source="{Binding Ingredients}">
 											<DataTemplate>
-												<muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="{utu:Responsive Narrow=Stretch,
+												<muxc:ItemsRepeater utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Stretch,
 																													 Wide=Auto}"
 																	ItemsSource="{Binding Data}">
 													<muxc:ItemsRepeater.Layout>
@@ -247,9 +247,9 @@
 									</utu:AutoLayout>
 								</utu:AutoLayout>
 
-								<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+								<utu:AutoLayout Spacing="{utu:Responsive Normal=8,
 																		 Wide=16}"
-												Padding="{utu:Responsive Narrow='16,24',
+												Padding="{utu:Responsive Normal='16,24',
 																		 Wide=40}"
 												uen:Region.Name="StepsTab"
 												Visibility="Collapsed">
@@ -288,9 +288,9 @@
 									</uer:FeedView>
 								</utu:AutoLayout>
 
-								<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+								<utu:AutoLayout Spacing="{utu:Responsive Normal=8,
 																		 Wide=16}"
-												Padding="{utu:Responsive Narrow='16,24',
+												Padding="{utu:Responsive Normal='16,24',
 																		 Wide=40}"
 												uen:Region.Name="ReviewsTab"
 												Visibility="Collapsed">
@@ -328,11 +328,11 @@
 																<TextBlock TextWrapping="Wrap"
 																		   Text="{Binding PublisherName}"
 																		   Foreground="{ThemeResource OnSurfaceMediumBrush}" />
-																<utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
+																<utu:AutoLayout Spacing="{utu:Responsive Normal=8,
 																										 Wide=24}"
 																				Orientation="Horizontal"
 																				CounterAxisAlignment="Center"
-																				Padding="{utu:Responsive Narrow='0,16,0,16',
+																				Padding="{utu:Responsive Normal='0,16,0,16',
 																										 Wide='0,16,0,0'}">
 																	<ToggleButton HorizontalContentAlignment="Center"
 																				  VerticalContentAlignment="Center"
@@ -342,7 +342,7 @@
 																				  IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
 																		<ToggleButton.Content>
 																			<utu:AutoLayout Orientation="Horizontal"
-																							Spacing="{utu:Responsive Narrow=5,
+																							Spacing="{utu:Responsive Normal=5,
 																													 Wide=8}"
 																							CounterAxisAlignment="Center">
 																				<PathIcon Data="{StaticResource Icon_Thumb_Up_Off}"
@@ -354,7 +354,7 @@
 																		</ToggleButton.Content>
 																		<ut:ControlExtensions.AlternateContent>
 																			<utu:AutoLayout Orientation="Horizontal"
-																							Spacing="{utu:Responsive Narrow=5,
+																							Spacing="{utu:Responsive Normal=5,
 																													 Wide=8}"
 																							CounterAxisAlignment="Center">
 																				<PathIcon Data="{StaticResource Icon_Thumb_Up}"
@@ -373,7 +373,7 @@
 																				  IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
 																		<ToggleButton.Content>
 																			<utu:AutoLayout Orientation="Horizontal"
-																							Spacing="{utu:Responsive Narrow=5,
+																							Spacing="{utu:Responsive Normal=5,
 																													 Wide=8}"
 																							CounterAxisAlignment="Center">
 																				<PathIcon Data="{StaticResource Icon_Thumb_Down_Off}"
@@ -407,13 +407,13 @@
 
 								<Grid uen:Region.Name="NutritionTab"
 									  Visibility="Collapsed">
-									<Grid Margin="{utu:Responsive Narrow=16,
+									<Grid Margin="{utu:Responsive Normal=16,
 																  Wide=40}"
-										  Padding="{utu:Responsive Narrow=16,
+										  Padding="{utu:Responsive Normal=16,
 																   Wide=24}"
 										  Background="{ThemeResource SurfaceBrush}"
 										  CornerRadius="24"
-										  RowSpacing="{utu:Responsive Narrow=5,
+										  RowSpacing="{utu:Responsive Normal=5,
 																	  Wide=24}">
 										<Grid.RowDefinitions>
 											<RowDefinition Height="Auto" />

@@ -2,7 +2,7 @@
 uid: Uno.Recipes.CommandBuilder
 ---
 
-# How to create clean commands using ICommandBuilder
+# Creating Clean Commands
 
 ## Problem
 
@@ -36,8 +36,6 @@ When the `Login` command is triggered, the __Given__ method will _get_ the curre
 We can see in this example that firstly the Login command is created, then it picks up the credentials of the user _UserCredentials_ to check if they _CanLogin_. If successful, then _DoLogin_ the user.
 
 ## Source Code
-
-Chefs app
 
 - [LoginModel ICommand](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/LoginModel.cs#L9)
 

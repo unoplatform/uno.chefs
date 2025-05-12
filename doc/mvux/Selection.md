@@ -2,7 +2,7 @@
 uid: Uno.Recipes.Selection
 ---
 
-# Selecting items from a list with MVUX
+# Selecting Items from a List
 
 ## Problem
 
@@ -54,8 +54,6 @@ public async ValueTask Submit(CancellationToken ct)
 ```
 
 ## Source Code
-
-Chefs app
 
 - [CreateUpdateCookbookModel.cs](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Presentation/CreateUpdateCookbookModel.cs#L63)
 

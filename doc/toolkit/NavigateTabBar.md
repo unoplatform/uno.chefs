@@ -2,7 +2,7 @@
 uid: Uno.Recipes.NavigateTabBar
 ---
 
-# How to Navigate Using a TabBar
+# TabBar Navigation
 
 ## Problem
 
@@ -51,7 +51,7 @@ The `TabBar` control in Uno Platform, part of the **Uno.Toolkit** library, offer
   ```xml
     <utu:TabBar Grid.Row="1"
                 Grid.Column="1"
-                Visibility="{utu:Responsive Narrow=Visible,
+                Visibility="{utu:Responsive Normal=Visible,
                               Wide=Collapsed}"
                 uen:Region.Attached="True"
                 Style="{StaticResource BottomTabBarStyle}">
@@ -96,7 +96,6 @@ The above code has the following effect:
 ## Source Code
 
 - [Main Navigation TabBar](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/MainPage.xaml#L36-L65)
-
 - [Recipe Detail Top TabBar](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L173-L192)
 
 ## Documentation

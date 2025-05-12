@@ -2,7 +2,7 @@
 uid: Uno.Recipes.IMessenger
 ---
 
-# MVUX - How to update your Feeds with IMessenger
+# Propagating Changes Across the App
 
 ## Problem
 

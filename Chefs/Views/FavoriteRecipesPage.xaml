@@ -19,13 +19,13 @@
 	<Page.Resources>
 		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="{utu:Responsive Narrow=2,
+								MaximumRowsOrColumns="{utu:Responsive Normal=2,
 																	  Wide=7}"
-								MinColumnSpacing="{utu:Responsive Narrow=8,
+								MinColumnSpacing="{utu:Responsive Normal=8,
 																  Wide=15}"
-								MinItemWidth="{utu:Responsive Narrow=155,
+								MinItemWidth="{utu:Responsive Normal=155,
 															  Wide=240}"
-								MinRowSpacing="{utu:Responsive Narrow=8,
+								MinRowSpacing="{utu:Responsive Normal=8,
 															   Wide=15}" />
 
 		<DataTemplate x:Key="CookbookEmptyTemplate">

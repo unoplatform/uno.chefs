@@ -20,10 +20,10 @@
 	  Background="{ThemeResource SurfaceBrush}">
 
 	<utu:AutoLayout utu:SafeArea.Insets="VisibleBounds"
-					Orientation="{utu:Responsive Narrow=Vertical,
+					Orientation="{utu:Responsive Normal=Vertical,
 												 Wide=Horizontal}">
 		<FlipView IsEnabled="False"
-				  Visibility="{utu:Responsive Narrow=Collapsed,
+				  Visibility="{utu:Responsive Normal=Collapsed,
 											  Wide=Visible}"
 				  utu:AutoLayout.PrimaryAlignment="Stretch"
 				  SelectedIndex="{Binding Pages.CurrentIndex}">

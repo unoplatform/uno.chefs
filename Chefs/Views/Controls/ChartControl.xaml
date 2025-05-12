@@ -12,7 +12,7 @@
 	<!-- UserControl used for LiveCharts2 components to avoid having to data-bind the chart properties to the Model -->
 	<!-- Currently a bug in LiveCharts2 that causes a crash when setting DataContext to null: https://github.com/beto-rodriguez/LiveCharts2/issues/1422 -->
 
-	<Grid RowSpacing="{utu:Responsive Narrow=5, Wide=24}">
+	<Grid RowSpacing="{utu:Responsive Normal=5, Wide=24}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="140" />
 			<RowDefinition Height="120" />

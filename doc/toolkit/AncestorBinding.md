@@ -2,7 +2,7 @@
 uid: Uno.Recipes.AncestorBinding
 ---
 
-# How to bind to elements outside of a DataTemplate in XAML
+# Binding to Elements Outside of a DataTemplate in XAML
 
 ## Problem
 
@@ -32,12 +32,10 @@ The `AncestorBinding` markup extension in the Uno Toolkit provides a way to find
 
 ## Source Code
 
-Chefs app
-
 - [Home Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/HomePage.xaml#L46-L50)
 - [Create/Update Cookbook Page](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/CreateUpdateCookbookPage.xaml#L71-L80)
-- [Recipe Details Page (1)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L347-L348)
-- [Recipe Details Page (2)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L378-L379)
+- [Recipe Details Page (ToggleButton Like Command)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L347-L348)
+- [Recipe Details Page (ToggleButton Dislike Command)](https://github.com/unoplatform/uno.chefs/blob/139edc9eab65b322e219efb7572583551c40ad32/Chefs/Views/RecipeDetailsPage.xaml#L378-L379)
 
 ## Documentation
 

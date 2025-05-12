@@ -69,13 +69,13 @@
 
 		<muxc:UniformGridLayout x:Key="ResponsiveGridLayout"
 								ItemsStretch="Fill"
-								MaximumRowsOrColumns="{utu:Responsive Narrow=2,
+								MaximumRowsOrColumns="{utu:Responsive Normal=2,
 																	  Wide=8}"
-								MinColumnSpacing="{utu:Responsive Narrow=8,
+								MinColumnSpacing="{utu:Responsive Normal=8,
 																  Wide=16}"
-								MinItemWidth="{utu:Responsive Narrow=155,
+								MinItemWidth="{utu:Responsive Normal=155,
 															  Wide=240}"
-								MinRowSpacing="{utu:Responsive Narrow=8,
+								MinRowSpacing="{utu:Responsive Normal=8,
 															   Wide=16}" />
 	</Page.Resources>
 
@@ -104,7 +104,7 @@
 			</utu:NavigationBar.PrimaryCommands>
 		</utu:NavigationBar>
 
-		<utu:AutoLayout Padding="{utu:Responsive Narrow='16,24',
+		<utu:AutoLayout Padding="{utu:Responsive Normal='16,24',
 												 Wide='40,40,40,24'}"
 						PrimaryAxisAlignment="Center"
 						Spacing="24">
@@ -162,7 +162,7 @@
 			<DataTemplate>
 				<ScrollViewer VerticalScrollBarVisibility="Hidden">
 					<muxc:ItemsRepeater x:Name="SearchRepeater"
-										Margin="{utu:Responsive Narrow='16,0,16,16',
+										Margin="{utu:Responsive Normal='16,0,16,16',
 																Wide='40,0,40,40'}"
 										uen:Navigation.Request="RecipeDetails"
 										ItemTemplate="{StaticResource RecipeTemplate}"

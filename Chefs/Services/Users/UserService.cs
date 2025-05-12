@@ -6,7 +6,6 @@ namespace Chefs.Services.Users;
 
 public class UserService(
 	ChefsApiClient client,
-	IWritableOptions<AppConfig> chefAppOptions,
 	IWritableOptions<Credentials> credentialOptions)
 	: IUserService
 {
@@ -15,9 +14,6 @@ public class UserService(
 	private IState<User> _user => State.Async(this, GetCurrent);
 
 	public IFeed<User> User => _user;
-
-	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
-		=> chefAppOptions.Value;
 
 	public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
 	{
@@ -33,34 +29,6 @@ public class UserService(
 		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
 		var currentUserData = await KiotaJsonSerializer.DeserializeAsync<UserData>(jsonResponse, cancellationToken: ct);
 		return new User(currentUserData);
-	}
-
-	public async Task SetSettings(AppConfig chefSettings, CancellationToken ct)
-	{
-		var settings = new AppConfig
-		{
-			Title = chefSettings.Title,
-			IsDark = chefSettings.IsDark,
-			Notification = chefSettings.Notification,
-			AccentColor = chefSettings.AccentColor,
-		};
-
-		await chefAppOptions.UpdateAsync(_ => settings);
-	}
-
-	public async Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null)
-	{
-		var currentSettings = await GetSettings(ct);
-
-		var settings = new AppConfig
-		{
-			Title = title ?? currentSettings.Title,
-			IsDark = isDark ?? currentSettings.IsDark,
-			Notification = notification ?? currentSettings.Notification,
-			AccentColor = accentColor ?? currentSettings.AccentColor,
-		};
-
-		await SetSettings(settings, ct);
 	}
 
 	public async ValueTask<User> GetById(Guid userId, CancellationToken ct)

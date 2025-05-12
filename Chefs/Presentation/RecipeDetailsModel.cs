@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using System.Text;
+using Chefs.Services.Sharing;
 using Windows.ApplicationModel.DataTransfer;
 using WinRT;
 using WinRT.Interop;
@@ -8,24 +9,27 @@ namespace Chefs.Presentation;
 
 public partial record RecipeDetailsModel
 {
-	private static readonly Guid _dtm_iid = new Guid("a5caee9b-8708-49d1-8d36-67d25a8da00c");
-
-#if WINDOWS
-	static IDataTransferManagerInterop DataTransferManagerInterop => DataTransferManager.As<IDataTransferManagerInterop>();
-#endif
-
 	private readonly INavigator _navigator;
 	private readonly IRecipeService _recipeService;
 	private readonly IUserService _userService;
 	private readonly IMessenger _messenger;
+	private readonly IShareService _shareService;
 
-	public RecipeDetailsModel(Recipe recipe, INavigator navigator, IRecipeService recipeService, IUserService userService, IMessenger messenger)
+	public RecipeDetailsModel(
+		Recipe recipe,
+		INavigator navigator,
+		IRecipeService recipeService,
+		IUserService userService,
+		IMessenger messenger,
+		IShareService shareService)
 	{
 		_navigator = navigator;
 		_recipeService = recipeService;
 		_userService = userService;
-		Recipe = recipe;
 		_messenger = messenger;
+		_shareService = shareService;
+
+		Recipe = recipe;
 	}
 
 	public Recipe Recipe { get; }
@@ -57,53 +61,8 @@ public partial record RecipeDetailsModel
 		await IsFavorited.UpdateAsync(s => !s);
 	}
 
-	public async ValueTask Share(CancellationToken ct)
+	public async Task Share(CancellationToken ct)
 	{
-#if WINDOWS
-		IntPtr result;
-		var hwnd = WindowNative.GetWindowHandle(App.MainWindow);
-		result = DataTransferManagerInterop.GetForWindow(hwnd, _dtm_iid);
-		DataTransferManager dataTransferManager = MarshalInterface<DataTransferManager>.FromAbi(result);
-		dataTransferManager.DataRequested += DataRequested;
-		DataTransferManagerInterop.ShowShareUIForWindow(hwnd, null);
-#else
-		var dataTransferManager = DataTransferManager.GetForCurrentView();
-        dataTransferManager.DataRequested += DataRequested;
-        DataTransferManager.ShowShareUI();
-#endif
+		await _shareService.ShareRecipe(Recipe, await Steps, ct);
 	}
-
-	private async void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
-	{
-		args.Request.Data.Properties.Title = $"Sharing {Recipe.Name}";
-		args.Request.Data.Properties.Description = Recipe.Details ?? "Chefs Recipe";
-		args.Request.Data.SetText(await CreateShareText());
-	}
-
-	private async ValueTask<string> CreateShareText()
-	{
-		var shareTextBuilder = new StringBuilder();
-		var steps = await Steps;
-
-		foreach (var step in steps)
-		{
-			shareTextBuilder.AppendLine($"Step {step.Number}: {step.Name}")
-							.AppendLine($"Ingredients: {string.Join(", ", step.Ingredients ?? ImmutableList<string>.Empty)}")
-							.AppendLine($"Description: {step.Description}")
-							.AppendLine();
-		}
-
-		return shareTextBuilder.ToString();
-	}
-
-#if WINDOWS
-	[ComImport]
-	[Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
-	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-	public interface IDataTransferManagerInterop
-	{
-		IntPtr GetForWindow([In] IntPtr appWindow, [In] ref Guid riid);
-		void ShowShareUIForWindow(IntPtr appWindow, ShareUIOptions options);
-	}
-#endif
 }
