@@ -37,7 +37,7 @@ public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMes
 
 			// Workaround for https://github.com/unoplatform/uno.chefs/issues/1436
 			// Not explicitly setting thickness causes thickness to be set to a value greater than 1 sometime during runtime
-#if __IOS__
+#if __IOS__ && __ANDROID__
 			presenter.BorderThickness = new Thickness(0);
 #endif
 		}
