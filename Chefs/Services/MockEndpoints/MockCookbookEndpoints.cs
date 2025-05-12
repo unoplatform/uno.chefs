@@ -1,13 +1,14 @@
 using Chefs.DataContracts;
+using Chefs.Services.MockEndpoints;
 
 namespace Chefs.Services;
 
-public class MockCookbookEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
+public class MockCookbookEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
 {
 	public string HandleCookbooksRequest(HttpRequestMessage request)
 	{
-		var cookbooksData = LoadData("Cookbooks.json");
-		var cookbooks = serializer.FromString<List<CookbookData>>(cookbooksData);
+		var cookbooks = LoadData<List<CookbookData>>("Cookbooks.json") ?? new List<CookbookData>();
+
 		if (request.RequestUri.AbsolutePath == "/api/cookbook")
 		{
 			return serializer.ToString(cookbooks);
@@ -18,8 +19,8 @@ public class MockCookbookEndpoints(string basePath, ISerializer serializer) : Ba
 		{
 			var queryParams = request.RequestUri.Query;
 			var userId = ExtractUserIdFromQuery(queryParams);
-			var savedCookbooksData = LoadData("SavedCookbooks.json");
-			var savedCookbooks = serializer.FromString<List<SavedCookbooksData>>(savedCookbooksData);
+			var savedCookbooks = LoadData<List<SavedCookbooksData>>("SavedCookbooks.json")
+			                ?? new List<SavedCookbooksData>();
 			var userSavedCookbookIds = savedCookbooks?.FirstOrDefault(x => x.UserId == Guid.Parse(userId))?.SavedCookbooks ?? new List<Guid>();
 
 			var userSavedCookbooks = cookbooks?.Where(cb => userSavedCookbookIds.Contains(cb.Id)).ToList();

@@ -1,8 +1,9 @@
 using System.Web;
+using Chefs.Services.MockEndpoints;
 
 namespace Chefs.Services;
 
-public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint
+public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
 {
 	private static Dictionary<Guid, List<Guid>>? _userFavorites;
 
@@ -11,16 +12,16 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 		if (_userFavorites == null)
 		{
 			_userFavorites = new Dictionary<Guid, List<Guid>>();
-			var savedData = LoadData("SavedRecipes.json");
-			var savedList = serializer.FromString<List<SavedRecipesData>>(savedData);
+			var savedList = LoadData<List<SavedRecipesData>>("SavedRecipes.json")
+			                ?? [];
 			foreach (var entry in savedList!)
 			{
 				_userFavorites[entry.UserId] = entry.SavedRecipes?.ToList() ?? [];
 			}
 		}
 
-		var recipesJson = LoadData("Recipes.json");
-		var allRecipes = serializer.FromString<List<RecipeData>>(recipesJson);
+		var allRecipes = LoadData<List<RecipeData>>("Recipes.json")
+		                 ?? [];
 
 		var userIdParam = ExtractUserIdFromQuery(request.RequestUri.Query)
 		                  ?? "3c896419-e280-40e7-8552-240635566fed";
@@ -140,8 +141,8 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 	
 	private string HandleCategoriesRequest()
 	{
-		var categoriesData = LoadData("categories.json");
-		var allCategories = serializer.FromString<List<CategoryData>>(categoriesData);
+		var allCategories = LoadData<List<CategoryData>>("categories.json")
+		                 ?? new List<CategoryData>();
 		return serializer.ToString(allCategories);
 	}
 	

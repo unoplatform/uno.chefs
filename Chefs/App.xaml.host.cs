@@ -1,3 +1,4 @@
+using Chefs.DataContracts;
 using Chefs.Services;
 using Chefs.Services.Clients;
 using Chefs.Services.Settings;
@@ -108,32 +109,32 @@ public partial class App : Application
 	{
 #if USE_MOCKS
 		services
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListCookbookData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListSavedCookbooksData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.CookbookData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.RecipeData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListNotificationData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListRecipeData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListCategoryData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListSavedRecipesData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListIngredientData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListUserData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListStepData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ListReviewData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.LoginRequest)
-			.AddJsonTypeInfo(MockEndpointContext.Default.UserData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.Guid)
-			.AddJsonTypeInfo(MockEndpointContext.Default.ReviewData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.SavedCookbooksData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.SavedRecipesData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableSavedRecipesData);
+			.AddJsonTypeInfo(ChefsContext.Default.ListCookbookData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListSavedCookbooksData)
+			.AddJsonTypeInfo(ChefsContext.Default.CookbookData)
+			.AddJsonTypeInfo(ChefsContext.Default.RecipeData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListNotificationData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListRecipeData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListCategoryData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListSavedRecipesData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListIngredientData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListUserData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListStepData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListReviewData)
+			.AddJsonTypeInfo(ChefsContext.Default.UserData)
+			.AddJsonTypeInfo(ChefsContext.Default.Guid)
+			.AddJsonTypeInfo(ChefsContext.Default.ReviewData)
+			.AddJsonTypeInfo(ChefsContext.Default.SavedCookbooksData)
+			.AddJsonTypeInfo(ChefsContext.Default.SavedRecipesData)
+			.AddJsonTypeInfo(ChefsContext.Default.IEnumerableRecipeData)
+			.AddJsonTypeInfo(ChefsContext.Default.IEnumerableSavedRecipesData);
 #endif
 
 		services
 			.AddJsonTypeInfo(AppConfigContext.Default.AppConfig)
 			.AddJsonTypeInfo(AppConfigContext.Default.DictionaryStringAppConfig)
-			.AddJsonTypeInfo(AppConfigContext.Default.String);
+			.AddJsonTypeInfo(AppConfigContext.Default.String)
+			.AddJsonTypeInfo(MockEndpointContext.Default.LoginRequest);
 	}
 
 	private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)
