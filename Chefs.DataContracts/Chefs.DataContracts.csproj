@@ -7,13 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="AppData\categories.json" />
-    <EmbeddedResource Include="AppData\Cookbooks.json" />
-    <EmbeddedResource Include="AppData\Notifications.json" />
-    <EmbeddedResource Include="AppData\Recipes.json" />
-    <EmbeddedResource Include="AppData\SavedCookbooks.json" />
-    <EmbeddedResource Include="AppData\SavedRecipes.json" />
-    <EmbeddedResource Include="AppData\Users.json" />
-  </ItemGroup>
+	  <Content CopyToOutputDirectory="PreserveNewest" Include="AppData\*.json" />
+	</ItemGroup>
 
 </Project>

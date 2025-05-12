@@ -9,7 +9,7 @@ using ReviewData = Chefs.DataContracts.Entities.ReviewData;
 using StepData = Chefs.DataContracts.Entities.StepData;
 using UserData = Chefs.DataContracts.Entities.UserData;
 
-namespace Chefs.DataContracts;
+namespace Chefs.DataContracts.Serialization;
 
 [JsonSerializable(typeof(List<CookbookData>))]
 [JsonSerializable(typeof(List<SavedCookbooksData>))]

@@ -7,10 +7,11 @@ namespace Chefs.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-public class CookbookController : ControllerBase
+public class CookbookController(IWebHostEnvironment env) : ControllerBase
 {
 	private readonly string _cookbooksFilePath = "Cookbooks.json";
 	private readonly string _savedCookbooksFilePath = "SavedCookbooks.json";
+	private readonly string _appDataPath = Path.Combine(env.ContentRootPath, "AppData");
 
 	/// <summary>
 	/// Retrieves all cookbooks.
@@ -117,9 +118,9 @@ public class CookbookController : ControllerBase
 	/// <typeparam name="T">The type of data to load.</typeparam>
 	/// <param name="fileName">The file name of the JSON file.</param>
 	/// <returns>The loaded data.</returns>
-	private T LoadData<T>(string fileName)
+	private T? LoadData<T>(string fileName)
 	{
-		var json = EmbeddedJsonLoader.Load(fileName);
+		var json = System.IO.File.ReadAllText(Path.Combine(_appDataPath, fileName));
 		return JsonSerializer.Deserialize<T>(json);
 	}
 }

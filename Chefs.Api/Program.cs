@@ -1,4 +1,5 @@
 using Chefs.DataContracts;
+using ChefsContext = Chefs.DataContracts.Serialization.ChefsContext;
 
 var builder = WebApplication.CreateBuilder(args);
 

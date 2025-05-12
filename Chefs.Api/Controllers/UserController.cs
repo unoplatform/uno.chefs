@@ -7,9 +7,10 @@ namespace Chefs.Api.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-public class UserController : ControllerBase
+public class UserController(IWebHostEnvironment env) : ControllerBase
 {
 	private readonly string _usersFilePath = "Users.json";
+	private readonly string _appDataPath = Path.Combine(env.ContentRootPath, "AppData");
 	private Guid? _currentUserId = new Guid("3c896419-e280-40e7-8552-240635566fed");
 
 	/// <summary>
@@ -136,9 +137,9 @@ public class UserController : ControllerBase
 	/// <typeparam name="T">The type of data to load.</typeparam>
 	/// <param name="fileName">The file name of the JSON file.</param>
 	/// <returns>The loaded data.</returns>
-	private T LoadData<T>(string fileName)
+	private T? LoadData<T>(string fileName)
 	{
-		var json = EmbeddedJsonLoader.Load(fileName);
+		var json = System.IO.File.ReadAllText(Path.Combine(_appDataPath, fileName));
 		return JsonSerializer.Deserialize<T>(json);
 	}
 }

@@ -6,6 +6,7 @@ using Chefs.Services.Sharing;
 using Chefs.Views.Flyouts;
 using Microsoft.Extensions.Configuration;
 using Uno.Extensions.Http.Kiota;
+using ChefsContext = Chefs.DataContracts.Serialization.ChefsContext;
 
 namespace Chefs;
 
