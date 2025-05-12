@@ -35,11 +35,12 @@ public interface IRecipeService
 	/// <summary>
 	/// Recipes method
 	/// </summary>
+	/// <param name="userId"></param>
 	/// <param name="ct"></param>
 	/// <returns>
 	/// Get recipes count by user
 	/// </returns>
-	ValueTask<int> GetCount(Guid userId, CancellationToken ct);
+	Task<int?> GetCount(Guid userId, CancellationToken ct);
 
 	/// <summary>
 	/// Favorited recipes.

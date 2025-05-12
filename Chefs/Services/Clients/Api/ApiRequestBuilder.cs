@@ -17,22 +17,22 @@ namespace Chefs.Services.Clients.Api
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     public partial class ApiRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The cookbook property</summary>
+        /// <summary>The Cookbook property</summary>
         public global::Chefs.Services.Clients.Api.Cookbook.CookbookRequestBuilder Cookbook
         {
             get => new global::Chefs.Services.Clients.Api.Cookbook.CookbookRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The notification property</summary>
+        /// <summary>The Notification property</summary>
         public global::Chefs.Services.Clients.Api.Notification.NotificationRequestBuilder Notification
         {
             get => new global::Chefs.Services.Clients.Api.Notification.NotificationRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The recipe property</summary>
+        /// <summary>The Recipe property</summary>
         public global::Chefs.Services.Clients.Api.Recipe.RecipeRequestBuilder Recipe
         {
             get => new global::Chefs.Services.Clients.Api.Recipe.RecipeRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The user property</summary>
+        /// <summary>The User property</summary>
         public global::Chefs.Services.Clients.Api.User.UserRequestBuilder User
         {
             get => new global::Chefs.Services.Clients.Api.User.UserRequestBuilder(PathParameters, RequestAdapter);

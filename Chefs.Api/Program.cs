@@ -1,4 +1,4 @@
-using Chefs.DataContracts;
+using Microsoft.OpenApi.Models;
 using ChefsContext = Chefs.DataContracts.Serialization.ChefsContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,15 +8,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers()
 	.AddJsonOptions(o => o.JsonSerializerOptions.TypeInfoResolver = ChefsContext.Default);
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+	c.SwaggerDoc("v1", new OpenApiInfo { Title = "Chefs API", Version = "v1" });
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.MapOpenApi();
+	app.UseSwagger();
+	app.UseSwaggerUI(c =>
+	{
+		c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chefs API V1");
+	});
 }
 
 app.UseHttpsRedirection();

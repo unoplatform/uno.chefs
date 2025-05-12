@@ -17,25 +17,19 @@ public class UserService(
 
 	public async ValueTask<IImmutableList<User>> GetPopularCreators(CancellationToken ct)
 	{
-		await using var responseStream = await client.Api.User.PopularCreators.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var popularCreatorsData = await KiotaJsonSerializer.DeserializeCollectionAsync<UserData>(jsonResponse, cancellationToken: ct);
+		var popularCreatorsData = await client.Api.User.PopularCreators.GetAsync(cancellationToken: ct);
 		return popularCreatorsData?.Select(data => new User(data)).ToImmutableList() ?? ImmutableList<User>.Empty;
 	}
 
 	public async ValueTask<User> GetCurrent(CancellationToken ct)
 	{
-		await using var responseStream = await client.Api.User.Current.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var currentUserData = await KiotaJsonSerializer.DeserializeAsync<UserData>(jsonResponse, cancellationToken: ct);
+		var currentUserData = await client.Api.User.Current.GetAsync(cancellationToken: ct);
 		return new User(currentUserData);
 	}
 
 	public async ValueTask<User> GetById(Guid userId, CancellationToken ct)
 	{
-		await using var responseStream = await client.Api.User[userId].GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var userData = await KiotaJsonSerializer.DeserializeAsync<UserData>(jsonResponse, cancellationToken: ct);
+		var userData = await client.Api.User[userId].GetAsync(cancellationToken: ct);
 		return new User(userData);
 	}
 

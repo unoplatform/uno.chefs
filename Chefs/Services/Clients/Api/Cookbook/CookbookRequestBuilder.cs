@@ -13,7 +13,7 @@ using System;
 namespace Chefs.Services.Clients.Api.Cookbook
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\cookbook
+    /// Builds and executes requests for operations under \api\Cookbook
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     public partial class CookbookRequestBuilder : BaseRequestBuilder
@@ -33,7 +33,7 @@ namespace Chefs.Services.Clients.Api.Cookbook
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CookbookRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/cookbook{?userId*}", pathParameters)
+        public CookbookRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Cookbook{?userId*}", pathParameters)
         {
         }
         /// <summary>
@@ -41,70 +41,69 @@ namespace Chefs.Services.Clients.Api.Cookbook
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public CookbookRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/cookbook{?userId*}", rawUrl)
+        public CookbookRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Cookbook{?userId*}", rawUrl)
         {
         }
-        /// <summary>
-        /// Retrieves all cookbooks.
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A List&lt;global::Chefs.Services.Clients.Models.CookbookData&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Chefs.Services.Clients.Models.ProblemDetails">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Chefs.Services.Clients.Models.CookbookData>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Chefs.Services.Clients.Models.CookbookData>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Chefs.Services.Clients.Models.ProblemDetails.CreateFromDiscriminatorValue },
+            };
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Chefs.Services.Clients.Models.CookbookData>(requestInfo, global::Chefs.Services.Clients.Models.CookbookData.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
-        /// <summary>
-        /// Creates a new cookbook.
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Chefs.Services.Clients.Models.CookbookData"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PostAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Cookbook.CookbookRequestBuilder.CookbookRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.CookbookData?> PostAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Cookbook.CookbookRequestBuilder.CookbookRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> PostAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Cookbook.CookbookRequestBuilder.CookbookRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.CookbookData> PostAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Cookbook.CookbookRequestBuilder.CookbookRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Chefs.Services.Clients.Models.CookbookData>(requestInfo, global::Chefs.Services.Clients.Models.CookbookData.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Updates an existing cookbook.
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Chefs.Services.Clients.Models.CookbookData"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Chefs.Services.Clients.Models.ProblemDetails">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PutAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.CookbookData?> PutAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> PutAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.CookbookData> PutAsync(global::Chefs.Services.Clients.Models.CookbookData body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Chefs.Services.Clients.Models.ProblemDetails.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Chefs.Services.Clients.Models.CookbookData>(requestInfo, global::Chefs.Services.Clients.Models.CookbookData.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Retrieves all cookbooks.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -118,11 +117,9 @@ namespace Chefs.Services.Clients.Api.Cookbook
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
-        /// <summary>
-        /// Creates a new cookbook.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -138,12 +135,10 @@ namespace Chefs.Services.Clients.Api.Cookbook
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
-        /// <summary>
-        /// Updates an existing cookbook.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -159,6 +154,7 @@ namespace Chefs.Services.Clients.Api.Cookbook
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
@@ -179,13 +175,11 @@ namespace Chefs.Services.Clients.Api.Cookbook
         public partial class CookbookRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
-        /// <summary>
-        /// Creates a new cookbook.
-        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        #pragma warning disable CS1591
         public partial class CookbookRequestBuilderPostQueryParameters 
+        #pragma warning restore CS1591
         {
-            /// <summary>The user ID.</summary>
             [QueryParameter("userId")]
             public Guid? UserId { get; set; }
         }

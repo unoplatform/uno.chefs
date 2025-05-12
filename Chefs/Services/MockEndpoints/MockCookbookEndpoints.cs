@@ -9,13 +9,13 @@ public class MockCookbookEndpoints(string basePath, ISerializer serializer) : Ba
 	{
 		var cookbooks = LoadData<List<CookbookData>>("Cookbooks.json") ?? new List<CookbookData>();
 
-		if (request.RequestUri.AbsolutePath == "/api/cookbook")
+		if (request.RequestUri.AbsolutePath == "/api/Cookbook")
 		{
 			return serializer.ToString(cookbooks);
 		}
 
 		//Retrieving saved cookbooks for a user
-		if (request.RequestUri.AbsolutePath.Contains("/api/cookbook/saved") && request.Method == HttpMethod.Get)
+		if (request.RequestUri.AbsolutePath.Contains("/api/Cookbook/saved") && request.Method == HttpMethod.Get)
 		{
 			var queryParams = request.RequestUri.Query;
 			var userId = ExtractUserIdFromQuery(queryParams);
@@ -28,7 +28,7 @@ public class MockCookbookEndpoints(string basePath, ISerializer serializer) : Ba
 		}
 
 		//Creating a new cookbook
-		if (request.RequestUri.AbsolutePath == "/api/cookbook" && request.Method == HttpMethod.Post)
+		if (request.RequestUri.AbsolutePath == "/api/Cookbook" && request.Method == HttpMethod.Post)
 		{
 			var cookbook = serializer.FromString<CookbookData>(request.Content.ReadAsStringAsync().Result);
 			var queryParams = request.RequestUri.Query;
@@ -42,7 +42,7 @@ public class MockCookbookEndpoints(string basePath, ISerializer serializer) : Ba
 		}
 
 		//Updating a cookbook
-		if (request.RequestUri.AbsolutePath == "/api/cookbook" && request.Method == HttpMethod.Put)
+		if (request.RequestUri.AbsolutePath == "/api/Cookbook" && request.Method == HttpMethod.Put)
 		{
 			var updatedCookbook = serializer.FromString<CookbookData>(request.Content.ReadAsStringAsync().Result);
 			var cookbookItem = cookbooks?.FirstOrDefault(c => updatedCookbook != null && c.Id == updatedCookbook.Id);

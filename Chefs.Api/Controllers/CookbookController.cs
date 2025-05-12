@@ -18,7 +18,10 @@ public class CookbookController(IWebHostEnvironment env) : ControllerBase
 	/// </summary>
 	/// <returns>A list of cookbooks.</returns>
 	[HttpGet]
-	public IActionResult GetAll()
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<CookbookData>), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<IEnumerable<CookbookData>> GetAll()
 	{
 		var cookbooks = LoadData<List<CookbookData>>(_cookbooksFilePath);
 		return Ok(cookbooks.ToImmutableList());
@@ -31,7 +34,9 @@ public class CookbookController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>The created cookbook.</returns>
 	[HttpPost]
-	public IActionResult Create([FromBody] CookbookData cookbook, [FromQuery] Guid userId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(CookbookData), 201)]
+	public ActionResult<CookbookData> Create([FromBody] CookbookData cookbook, [FromQuery] Guid userId)
 	{
 		var cookbooks = LoadData<List<CookbookData>>(_cookbooksFilePath);
 		cookbook.UserId = userId;
@@ -46,7 +51,10 @@ public class CookbookController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="cookbook">The updated cookbook data.</param>
 	/// <returns>The updated cookbook, or NotFound if the cookbook does not exist.</returns>
 	[HttpPut]
-	public IActionResult Update([FromBody] CookbookData cookbook)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(CookbookData), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<CookbookData> Update([FromBody] CookbookData cookbook)
 	{
 		var cookbooks = LoadData<List<CookbookData>>(_cookbooksFilePath);
 		var cookbookItem = cookbooks.FirstOrDefault(c => c.Id == cookbook.Id);
@@ -71,6 +79,7 @@ public class CookbookController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>No content.</returns>
 	[HttpPost("save")]
+	[ProducesResponseType(204)]
 	public IActionResult Save([FromBody] CookbookData cookbook, [FromQuery] Guid userId)
 	{
 		var savedCookbooks = LoadData<List<SavedCookbooksData>>(_savedCookbooksFilePath);
@@ -101,10 +110,12 @@ public class CookbookController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>A list of saved cookbooks.</returns>
 	[HttpGet("saved")]
-	public IActionResult GetSaved([FromQuery] Guid userId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<CookbookData>), 200)]
+	public ActionResult<IEnumerable<CookbookData>> GetSaved([FromQuery] Guid userId)
 	{
 		var savedCookbooks = LoadData<List<SavedCookbooksData>>(_savedCookbooksFilePath);
-		var userSavedCookbookIds = savedCookbooks.FirstOrDefault(x => x.UserId == userId)?.SavedCookbooks ?? new List<Guid>();
+		var userSavedCookbookIds = savedCookbooks.FirstOrDefault(x => x.UserId == userId)?.SavedCookbooks ?? [];
 
 		var cookbooks = LoadData<List<CookbookData>>(_cookbooksFilePath);
 		var savedCookbooksList = cookbooks.Where(cb => userSavedCookbookIds.Contains(cb.Id)).ToImmutableList();

@@ -4,7 +4,7 @@ namespace Chefs.Business.Models;
 
 public partial record Review
 {
-	public Review(ReviewData reviewData)
+	public Review(ReviewData? reviewData)
 	{
 		Id = reviewData.Id ?? Guid.NewGuid();
 		RecipeId = reviewData.RecipeId ?? Guid.Empty;

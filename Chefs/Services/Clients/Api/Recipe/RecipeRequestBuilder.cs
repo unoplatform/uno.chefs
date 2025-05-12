@@ -18,7 +18,7 @@ using System;
 namespace Chefs.Services.Clients.Api.Recipe
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\recipe
+    /// Builds and executes requests for operations under \api\Recipe
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     public partial class RecipeRequestBuilder : BaseRequestBuilder
@@ -53,8 +53,8 @@ namespace Chefs.Services.Clients.Api.Recipe
         {
             get => new global::Chefs.Services.Clients.Api.Recipe.Trending.TrendingRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Gets an item from the Chefs.Services.Clients.api.recipe.item collection</summary>
-        /// <param name="position">The recipe ID.</param>
+        /// <summary>Gets an item from the Chefs.Services.Clients.api.Recipe.item collection</summary>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Chefs.Services.Clients.Api.Recipe.Item.WithRecipeItemRequestBuilder"/></returns>
         public global::Chefs.Services.Clients.Api.Recipe.Item.WithRecipeItemRequestBuilder this[Guid position]
         {
@@ -65,8 +65,8 @@ namespace Chefs.Services.Clients.Api.Recipe
                 return new global::Chefs.Services.Clients.Api.Recipe.Item.WithRecipeItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Chefs.Services.Clients.api.recipe.item collection</summary>
-        /// <param name="position">The recipe ID.</param>
+        /// <summary>Gets an item from the Chefs.Services.Clients.api.Recipe.item collection</summary>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Chefs.Services.Clients.Api.Recipe.Item.WithRecipeItemRequestBuilder"/></returns>
         [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
         public global::Chefs.Services.Clients.Api.Recipe.Item.WithRecipeItemRequestBuilder this[string position]
@@ -83,7 +83,7 @@ namespace Chefs.Services.Clients.Api.Recipe
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecipeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/recipe{?userId*}", pathParameters)
+        public RecipeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Recipe{?userId*}", pathParameters)
         {
         }
         /// <summary>
@@ -91,30 +91,30 @@ namespace Chefs.Services.Clients.Api.Recipe
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RecipeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/recipe{?userId*}", rawUrl)
+        public RecipeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Recipe{?userId*}", rawUrl)
         {
         }
-        /// <summary>
-        /// Retrieves all recipes.
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A List&lt;global::Chefs.Services.Clients.Models.RecipeData&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Chefs.Services.Clients.Models.ProblemDetails">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Chefs.Services.Clients.Models.RecipeData>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Chefs.Services.Clients.Models.RecipeData>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Chefs.Services.Clients.Models.ProblemDetails.CreateFromDiscriminatorValue },
+            };
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Chefs.Services.Clients.Models.RecipeData>(requestInfo, global::Chefs.Services.Clients.Models.RecipeData.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
-        /// <summary>
-        /// Saves or unsaves a recipe for a specific user.
-        /// </summary>
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -132,9 +132,6 @@ namespace Chefs.Services.Clients.Api.Recipe
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Retrieves all recipes.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -148,11 +145,9 @@ namespace Chefs.Services.Clients.Api.Recipe
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
-        /// <summary>
-        /// Saves or unsaves a recipe for a specific user.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -188,13 +183,11 @@ namespace Chefs.Services.Clients.Api.Recipe
         public partial class RecipeRequestBuilderGetRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
-        /// <summary>
-        /// Saves or unsaves a recipe for a specific user.
-        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        #pragma warning disable CS1591
         public partial class RecipeRequestBuilderPostQueryParameters 
+        #pragma warning restore CS1591
         {
-            /// <summary>The user ID.</summary>
             [QueryParameter("userId")]
             public Guid? UserId { get; set; }
         }

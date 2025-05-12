@@ -19,7 +19,10 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// </summary>
 	/// <returns>A list of recipes.</returns>
 	[HttpGet]
-	public IActionResult GetAll()
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<RecipeData>), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<IEnumerable<RecipeData>> GetAll()
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		return Ok(recipes.ToImmutableList());
@@ -31,7 +34,9 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>The count of recipes for the user.</returns>
 	[HttpGet("count")]
-	public IActionResult GetCount([FromQuery] Guid userId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(int), 200)]
+	public ActionResult<int> GetCount([FromQuery] Guid userId)
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var count = recipes.Count(r => r.UserId == userId);
@@ -43,7 +48,10 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// </summary>
 	/// <returns>A list of categories.</returns>
 	[HttpGet("categories")]
-	public IActionResult GetCategories()
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<CategoryData>), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<IEnumerable<CategoryData>> GetCategories()
 	{
 		var categories = LoadData<List<CategoryData>>(_categoriesFilePath);
 		return Ok(categories.ToImmutableList());
@@ -54,7 +62,9 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// </summary>
 	/// <returns>A list of trending recipes.</returns>
 	[HttpGet("trending")]
-	public IActionResult GetTrending()
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<RecipeData>), 200)]
+	public ActionResult<IEnumerable<RecipeData>> GetTrending()
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var trending = recipes.Take(10).ToImmutableList();
@@ -66,7 +76,9 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// </summary>
 	/// <returns>A list of popular recipes.</returns>
 	[HttpGet("popular")]
-	public IActionResult GetPopular()
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<RecipeData>), 200)]
+	public ActionResult<IEnumerable<RecipeData>> GetPopular()
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var popular = recipes.Take(15).ToImmutableList();
@@ -79,10 +91,12 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>A list of favorited recipes.</returns>
 	[HttpGet("favorited")]
-	public IActionResult GetFavorited([FromQuery] Guid userId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<RecipeData>), 200)]
+	public ActionResult<IEnumerable<RecipeData>> GetFavorited([FromQuery] Guid userId)
 	{
 		var savedRecipes = LoadData<List<SavedRecipesData>>(_savedRecipesFilePath);
-		var userSavedRecipes = savedRecipes.FirstOrDefault(sr => sr.UserId == userId)?.SavedRecipes ?? new Guid[0];
+		var userSavedRecipes = savedRecipes.FirstOrDefault(sr => sr.UserId == userId)?.SavedRecipes ?? [];
 
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var favorited = recipes
@@ -104,6 +118,7 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>No content.</returns>
 	[HttpPost("favorited")]
+	[ProducesResponseType(204)]
 	public IActionResult ToggleFavorite([FromQuery] Guid recipeId, [FromQuery] Guid userId)
 	{
 		var savedRecipes = LoadData<List<SavedRecipesData>>(_savedRecipesFilePath);
@@ -117,12 +132,12 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 			}
 			else
 			{
-				userSavedRecipe.SavedRecipes = userSavedRecipe.SavedRecipes.Concat(new[] { recipeId }).ToArray();
+				userSavedRecipe.SavedRecipes = userSavedRecipe.SavedRecipes.Concat([recipeId]).ToArray();
 			}
 		}
 		else
 		{
-			savedRecipes.Add(new SavedRecipesData { UserId = userId, SavedRecipes = new[] { recipeId } });
+			savedRecipes.Add(new SavedRecipesData { UserId = userId, SavedRecipes = [recipeId] });
 		}
 
 		return NoContent();
@@ -148,12 +163,12 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 			}
 			else
 			{
-				userSavedRecipe.SavedRecipes = userSavedRecipe.SavedRecipes.Concat(new[] { recipe.Id }).ToArray();
+				userSavedRecipe.SavedRecipes = userSavedRecipe.SavedRecipes.Concat([recipe.Id]).ToArray();
 			}
 		}
 		else
 		{
-			savedRecipes.Add(new SavedRecipesData { UserId = userId, SavedRecipes = new[] { recipe.Id } });
+			savedRecipes.Add(new SavedRecipesData { UserId = userId, SavedRecipes = [recipe.Id] });
 		}
 
 		return NoContent();
@@ -166,7 +181,10 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>The created review.</returns>
 	[HttpPost("review")]
-	public IActionResult CreateReview([FromBody] ReviewData reviewData, [FromQuery] Guid userId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(ReviewData), 201)]
+	[ProducesResponseType(404)]
+	public ActionResult<ReviewData> CreateReview([FromBody] ReviewData reviewData, [FromQuery] Guid userId)
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var recipe = recipes.FirstOrDefault(r => r.Id == reviewData.RecipeId);
@@ -192,7 +210,9 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>The updated review.</returns>
 	[HttpPost("review/like")]
-	public IActionResult LikeReview([FromBody] ReviewData reviewData, [FromQuery] Guid userId)
+	[ProducesResponseType(typeof(ReviewData), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<ReviewData> LikeReview([FromBody] ReviewData reviewData, [FromQuery] Guid userId)
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var review = recipes.SelectMany(r => r.Reviews)
@@ -236,7 +256,10 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>The updated review.</returns>
 	[HttpPost("review/dislike")]
-	public IActionResult DislikeReview([FromBody] ReviewData reviewData, [FromQuery] Guid userId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(ReviewData), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<ReviewData> DislikeReview([FromBody] ReviewData reviewData, [FromQuery] Guid userId)
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var review = recipes.SelectMany(r => r.Reviews)
@@ -279,7 +302,10 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="recipeId">The recipe ID.</param>
 	/// <returns>A list of reviews.</returns>
 	[HttpGet("{recipeId}/reviews")]
-	public IActionResult GetReviews(Guid recipeId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<ReviewData>), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<IEnumerable<ReviewData>> GetReviews(Guid recipeId)
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var recipe = recipes.FirstOrDefault(r => r.Id == recipeId);
@@ -300,7 +326,10 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="recipeId">The recipe ID.</param>
 	/// <returns>A list of steps.</returns>
 	[HttpGet("{recipeId}/steps")]
-	public IActionResult GetSteps(Guid recipeId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<StepData>), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<IEnumerable<StepData>> GetSteps(Guid recipeId)
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var recipe = recipes.FirstOrDefault(r => r.Id == recipeId);
@@ -321,7 +350,10 @@ public class RecipeController(IWebHostEnvironment env) : ControllerBase
 	/// <param name="recipeId">The recipe ID.</param>
 	/// <returns>A list of ingredients.</returns>
 	[HttpGet("{recipeId}/ingredients")]
-	public IActionResult GetIngredients(Guid recipeId)
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<IngredientData>), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<IEnumerable<IngredientData>> GetIngredients(Guid recipeId)
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var recipe = recipes.FirstOrDefault(r => r.Id == recipeId);
