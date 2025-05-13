@@ -1,10 +1,13 @@
 using Microsoft.UI.Xaml.Data;
 
 namespace Chefs.Converters;
+
 class BoolToResourceConverter : IValueConverter
 {
 	public string? TrueValue { get; set; } = null;
+
 	public string? FalseValue { get; set; } = null;
+
 	public string? NullValue { get; set; } = null;
 
 	public object? Convert(object value, Type targetType, object parameter, string language)

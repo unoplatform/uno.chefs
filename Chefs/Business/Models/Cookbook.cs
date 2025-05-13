@@ -1,5 +1,6 @@
 using CookbookData = Chefs.Services.Clients.Models.CookbookData;
 using RecipeData = Chefs.Services.Clients.Models.RecipeData;
+
 namespace Chefs.Business.Models;
 
 public partial record Cookbook : IChefEntity
@@ -18,10 +19,15 @@ public partial record Cookbook : IChefEntity
 	internal Cookbook() { Recipes = ImmutableList<Recipe>.Empty; }
 
 	public Guid Id { get; init; }
+
 	public Guid UserId { get; init; }
+
 	public string? Name { get; init; }
+
 	public int PinsNumber => Recipes?.Count ?? 0;
+
 	public IImmutableList<Recipe> Recipes { get; init; }
+
 	public CookbookImages? CookbookImages { get; init; }
 
 	internal CookbookData ToData() => new()

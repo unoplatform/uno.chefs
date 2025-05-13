@@ -17,11 +17,17 @@ public record Step
 	}
 
 	public int Number { get; init; }
+
 	public string? Name { get; init; }
+
 	public TimeSpan CookTime { get; init; }
+
 	public IImmutableList<string>? Cookware { get; init; }
+
 	public IImmutableList<string>? Ingredients { get; init; }
+
 	public string? Description { get; init; }
+
 	public string? UrlVideo { get; init; }
 
 	internal StepData ToData() => new()
@@ -34,9 +40,6 @@ public record Step
 		Description = Description,
 		UrlVideo = UrlVideo
 	};
-	
-	private static TimeSpan ToTimeSpan(TimeSpanObject? timeSpanObject)
-	{
-		return new TimeSpan(timeSpanObject?.Ticks ?? 0);
-	}
+
+	private static TimeSpan ToTimeSpan(TimeSpanObject? timeSpanObject) => new TimeSpan(timeSpanObject?.Ticks ?? 0);
 }

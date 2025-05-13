@@ -29,10 +29,7 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 	/// </summary>
 	/// <param name="command">The command to be wrapped</param>
 	/// <returns>The wrapped command</returns>
-	public TestCommand Wrap(TestCommand command)
-	{
-		return new RetryCommand(command, _tryCount);
-	}
+	public TestCommand Wrap(TestCommand command) => new RetryCommand(command, _tryCount);
 
 	#endregion
 

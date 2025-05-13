@@ -20,6 +20,7 @@ public partial record SearchModel
 		.Observe(_messenger, t => t);
 
 	public IState<SearchFilter> Filter { get; }
+
 	public IListState<Recipe> Results => ListState.FromFeed(this, Feed
 		.Combine(Term, Filter)
 		.SelectAsync(Search)

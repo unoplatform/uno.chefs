@@ -4,7 +4,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-
+		<LangVersion>latest</LangVersion>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<!--
 			Adding NoWarn to remove build warnings
 			NU1507: Warning when there are multiple package sources when using CPM with no source mapping
@@ -12,7 +13,21 @@
 			PRI257: Ignore default language (en) not being one of the included resources (eg en-us, en-uk)
 		-->
 		<NoWarn>$(NoWarn);NU1507;NETSDK1201;PRI257</NoWarn>
-
-
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
+
+	<ItemGroup>
+	<PackageReference Include="StyleCop.Analyzers">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Visible="False" Pack="false" />
+	</ItemGroup>
 </Project>

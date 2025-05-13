@@ -23,16 +23,10 @@ public partial class LiveCookingModel
 		_steps = parameter.Steps;
 	}
 
-	public async ValueTask Complete()
-	{
-		await Completed.SetAsync(true);
-	}
-	
-	public async ValueTask BackToLastStep()
-	{
-		await Completed.SetAsync(false);
-	}
-	
+	public async ValueTask Complete() => await Completed.SetAsync(true);
+
+	public async ValueTask BackToLastStep() => await Completed.SetAsync(false);
+
 	public async ValueTask Favorite(CancellationToken ct)
 	{
 		await _recipeService.Favorite(Recipe, ct);

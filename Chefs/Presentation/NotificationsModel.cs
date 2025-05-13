@@ -1,4 +1,5 @@
 namespace Chefs.Presentation;
+
 public partial record NotificationsModel
 {
 	private readonly INavigator _navigator;
@@ -9,6 +10,7 @@ public partial record NotificationsModel
 		_notificationService = notificationService;
 		_navigator = navigator;
 	}
+
 	public IFeed<GroupedNotification> Notifications => Feed<GroupedNotification>.Async(async ct
 			=> await _notificationService.GetAll(ct) is { Count: > 0 } result
 			? new GroupedNotification(result)

@@ -136,10 +136,7 @@ public partial class App : Application
 			.AddJsonTypeInfo(AppConfigContext.Default.String);
 	}
 
-	private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)
-	{
-		services.AddTransient<Flyout, ResponsiveDrawerFlyout>();
-	}
+	private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services) => services.AddTransient<Flyout, ResponsiveDrawerFlyout>();
 
 	private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
 	{

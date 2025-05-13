@@ -5,10 +5,7 @@ public class SettingsService(IWritableOptions<AppConfig> chefAppOptions) : ISett
 	public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
 		=> chefAppOptions.Value;
 
-	public async Task SetSettings(AppConfig chefSettings, CancellationToken ct)
-	{
-		await chefAppOptions.UpdateAsync(_ => chefSettings);
-	}
+	public async Task SetSettings(AppConfig chefSettings, CancellationToken ct) => await chefAppOptions.UpdateAsync(_ => chefSettings);
 
 	public async Task UpdateSettings(CancellationToken ct, string? title = null, bool? isDark = null, bool? notification = null, string? accentColor = null)
 	{

@@ -29,6 +29,7 @@ public partial class App : Application
 	public static Window? MainWindow;
 
 	public static ShellControl? Shell;
+
 	public static IHost? Host { get; private set; }
 
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)

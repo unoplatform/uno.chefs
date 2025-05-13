@@ -13,7 +13,10 @@ public record Notification
 	}
 	
 	public string? Title { get; init; }
+
 	public string? Description { get; init; }
+
 	public bool Read { get; init; }
+
 	public DateTime Date { get; init; }
 }

@@ -5,6 +5,7 @@ namespace Chefs.Presentation;
 public partial record CreateUpdateCookbookModel
 {
 	const uint DefaultPageSize = 20;
+
 	public IState<IImmutableList<Recipe>> SelectedRecipes { get; }
 
 	private readonly INavigator _navigator;
@@ -43,6 +44,7 @@ public partial record CreateUpdateCookbookModel
 		SelectedRecipes = State.Value(this, () => _cookbook?.Recipes ?? ImmutableList<Recipe>.Empty);
 
 	}
+
 	public bool IsCreate { get; }
 
 	public string Title { get; }

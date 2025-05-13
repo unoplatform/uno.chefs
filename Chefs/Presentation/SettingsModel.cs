@@ -36,6 +36,7 @@ public partial record SettingsModel
 				WeakReferenceMessenger.Default.Send(new ThemeChangedMessage(isDark));
 			}
 		});
+
 	public IState<User> Profile => State
 		.Value(this, () => _user)
 		.ForEach(async (profile, ct) =>

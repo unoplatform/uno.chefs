@@ -7,6 +7,7 @@ using Microsoft.UI;
 using SkiaSharp;
 
 namespace Chefs.Views.Controls;
+
 public sealed partial class ChartControl : UserControl
 {
 	private Recipe? _recipe;
