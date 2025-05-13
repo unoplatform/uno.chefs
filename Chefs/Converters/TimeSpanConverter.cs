@@ -20,8 +20,8 @@ public class TimeSpanObjectConverter : JsonConverter<TimeSpan>
 			case JsonValueKind.Object when root.TryGetProperty("ticks", out var ticksElement):
 				return new TimeSpan(ticksElement.GetInt64());
 			default:
-			{
-				return new TimeSpan(root.GetProperty("ticks").GetInt64());
+				{
+					return new TimeSpan(root.GetProperty("ticks").GetInt64());
 				}
 		}
 	}

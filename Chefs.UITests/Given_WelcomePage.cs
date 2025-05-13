@@ -46,15 +46,9 @@ public class Given_WelcomePage : TestBase
 
 	}
 
-	private void AssertWelcomePage()
-	{
-		App.WaitFor(() => GetCurrentPage().EndsWithIgnoreCase("WelcomePage"), timeoutMessage: "Timed out waiting for WelcomePage");
-	}
+	private void AssertWelcomePage() => App.WaitFor(() => GetCurrentPage().EndsWithIgnoreCase("WelcomePage"), timeoutMessage: "Timed out waiting for WelcomePage");
 
-	private string GetCurrentPage()
-	{
-		return (App.InvokeGeneric("browser:SampleRunner|GetCurrentPage", "") as string) ?? string.Empty;
-	}
+	private string GetCurrentPage() => (App.InvokeGeneric("browser:SampleRunner|GetCurrentPage", "") as string) ?? string.Empty;
 
 #if !HAS_SKIA_RENDERER
 	private void Login()

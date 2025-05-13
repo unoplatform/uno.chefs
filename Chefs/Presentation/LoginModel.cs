@@ -3,7 +3,7 @@ namespace Chefs.Presentation;
 public partial record LoginModel(IDispatcher Dispatcher, INavigator Navigator, IAuthenticationService Authentication)
 {
 	public string Title { get; } = "Login";
-	
+
 	public IState<Credentials> UserCredentials => State<Credentials>.Value(this, () => new Credentials());
 
 	public ICommand Login => Command.Create(b => b.Given(UserCredentials).When(CanLogin).Then(DoLogin));

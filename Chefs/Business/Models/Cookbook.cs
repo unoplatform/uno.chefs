@@ -33,7 +33,7 @@ public partial record Cookbook : IChefEntity
 			.Select(c => c.ToData())
 			.ToList()
 	};
-	
+
 	internal CookbookData ToData(IImmutableList<Recipe>? recipes) => new()
 	{
 		Id = Id,

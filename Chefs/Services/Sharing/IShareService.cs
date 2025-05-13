@@ -13,5 +13,5 @@ public interface IShareService
 	/// <param name="ct"></param>
 	/// <returns>
 	/// </returns>
-	Task ShareRecipe(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct);	
+	Task ShareRecipe(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct);
 }

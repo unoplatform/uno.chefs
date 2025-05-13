@@ -16,7 +16,7 @@ public class MockHttpMessageHandler : HttpMessageHandler
 	public MockHttpMessageHandler(ISerializer serializer)
 	{
 		_mockRecipeEndpoints = new MockRecipeEndpoints(_basePath, serializer);
-		_mockUserEndpoints = new MockUserEndpoints(_basePath,serializer);
+		_mockUserEndpoints = new MockUserEndpoints(_basePath, serializer);
 		_mockCookbookEndpoints = new MockCookbookEndpoints(_basePath, serializer);
 		_mockNotificationEndpoints = new MockNotificationEndpoints(_basePath, serializer);
 	}

@@ -34,7 +34,7 @@ public record Step
 		Description = Description,
 		UrlVideo = UrlVideo
 	};
-	
+
 	private static TimeSpan ToTimeSpan(TimeSpanObject? timeSpanObject)
 	{
 		return new TimeSpan(timeSpanObject?.Ticks ?? 0);

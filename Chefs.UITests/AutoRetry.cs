@@ -17,10 +17,7 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 	/// Construct a <see cref="RetryAttribute" />
 	/// </summary>
 	/// <param name="tryCount">The maximum number of times the test should be run if it fails</param>
-	public AutoRetryAttribute(int tryCount = 3)
-	{
-		_tryCount = tryCount;
-	}
+	public AutoRetryAttribute(int tryCount = 3) => _tryCount = tryCount;
 
 	#region IRepeatTest Members
 
@@ -29,10 +26,7 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 	/// </summary>
 	/// <param name="command">The command to be wrapped</param>
 	/// <returns>The wrapped command</returns>
-	public TestCommand Wrap(TestCommand command)
-	{
-		return new RetryCommand(command, _tryCount);
-	}
+	public TestCommand Wrap(TestCommand command) => new RetryCommand(command, _tryCount);
 
 	#endregion
 
@@ -51,10 +45,7 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 		/// <param name="innerCommand">The inner command.</param>
 		/// <param name="tryCount">The maximum number of repetitions</param>
 		public RetryCommand(TestCommand innerCommand, int tryCount)
-			: base(innerCommand)
-		{
-			_tryCount = tryCount;
-		}
+			: base(innerCommand) => _tryCount = tryCount;
 
 		/// <summary>
 		/// Runs the test, saving a TestResult in the supplied TestExecutionContext.

@@ -15,7 +15,7 @@ public partial record SearchModel
 		Filter = State.Value(this, () => filter ?? new SearchFilter())
 			.Observe(_messenger, f => f);
 	}
-	
+
 	public IState<string> Term => State<string>.Value(this, () => string.Empty)
 		.Observe(_messenger, t => t);
 
@@ -37,7 +37,7 @@ public partial record SearchModel
 	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
 
 	public async ValueTask ApplyHistory(string term) => await Term.SetAsync(term);
-	
+
 	private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
 	{
 		var searchedRecipes = await _recipeService.Search(inputs.term, inputs.filter, ct);

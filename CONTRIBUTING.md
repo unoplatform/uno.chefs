@@ -13,8 +13,7 @@ Automated checks are performed on all pull requests to ensure that the C# code f
 It is recommended to run the following commands from the root directory of the repo before submitting a pull request:
 
 ```bash
-dotnet format style Chefs.sln
-dotnet format whitespace Chefs.sln
+dotnet format Chefs.sln
 ```
 
 ## XAML Coding Style

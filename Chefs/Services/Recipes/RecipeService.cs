@@ -17,7 +17,7 @@ public class RecipeService(
 	: IRecipeService
 {
 	private int _lastTextLength;
-	
+
 	public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct)
 	{
 		await using var responseStream = await api.Api.Recipe.GetAsync(cancellationToken: ct);
@@ -119,7 +119,7 @@ public class RecipeService(
 		var reviewsData = await KiotaJsonSerializer.DeserializeCollectionAsync<ReviewData>(jsonResponse, cancellationToken: ct);
 		return reviewsData?.Select(x => new Review(x)).ToImmutableList() ?? ImmutableList<Review>.Empty;
 	}
-	
+
 	public async ValueTask<IImmutableList<Step>> GetSteps(Guid recipeId, CancellationToken ct)
 	{
 		await using var responseStream = await api.Api.Recipe[recipeId].Steps.GetAsync(cancellationToken: ct);
@@ -127,7 +127,7 @@ public class RecipeService(
 		var stepsData = await KiotaJsonSerializer.DeserializeCollectionAsync<StepData>(jsonResponse, cancellationToken: ct);
 		return stepsData?.Select(x => new Step(x)).ToImmutableList() ?? ImmutableList<Step>.Empty;
 	}
-	
+
 	public async ValueTask<IImmutableList<Ingredient>> GetIngredients(Guid recipeId, CancellationToken ct)
 	{
 		await using var responseStream = await api.Api.Recipe[recipeId].Ingredients.GetAsync(cancellationToken: ct);

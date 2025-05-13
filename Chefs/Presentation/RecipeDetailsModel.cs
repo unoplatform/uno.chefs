@@ -37,7 +37,7 @@ public partial record RecipeDetailsModel
 
 	public IState<User> User => State.Async(this, async ct => await _userService.GetById(Recipe.UserId, ct))
 		.Observe(_messenger, u => u.Id);
-	
+
 	public IFeed<User> CurrentUser => Feed.Async(_userService.GetCurrent);
 	public IListFeed<Ingredient> Ingredients => ListFeed.Async(async ct => await _recipeService.GetIngredients(Recipe.Id, ct));
 	public IListFeed<Step> Steps => ListFeed.Async(async ct => await _recipeService.GetSteps(Recipe.Id, ct));

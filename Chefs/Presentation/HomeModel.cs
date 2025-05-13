@@ -14,11 +14,11 @@ public partial record HomeModel
 		_userService = userService;
 		_messenger = messenger;
 	}
-	
+
 	public IListState<Recipe> TrendingNow => ListState
 		.Async(this, _recipeService.GetTrending)
 		.Observe(_messenger, r => r.Id);
-	
+
 	public IListFeed<CategoryWithCount> Categories => ListFeed.Async(_recipeService.GetCategoriesWithCount);
 
 	public IListFeed<Recipe> RecentlyAdded => ListFeed.Async(_recipeService.GetRecent);

@@ -10,7 +10,7 @@ public record StepIterator(IImmutableList<Step> Items)
 	public Step? CurrentItem => CurrentIndex >= 0 && CurrentIndex < Items.Count
 		? Items[CurrentIndex]
 		: null;
-	
+
 	public int Count => Items.Count;
 	public bool CanMoveNext => CurrentIndex < Items.Count - 1;
 	public bool CanMovePrevious => CurrentIndex > 0;

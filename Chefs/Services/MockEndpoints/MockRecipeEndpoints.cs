@@ -23,7 +23,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 		var allRecipes = serializer.FromString<List<RecipeData>>(recipesJson);
 
 		var userIdParam = ExtractUserIdFromQuery(request.RequestUri.Query)
-		                  ?? "3c896419-e280-40e7-8552-240635566fed";
+						  ?? "3c896419-e280-40e7-8552-240635566fed";
 		if (!Guid.TryParse(userIdParam, out var currentUserId))
 		{
 			currentUserId = Guid.Parse("3c896419-e280-40e7-8552-240635566fed");
@@ -35,7 +35,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 		}
 
 		if (request.Method == HttpMethod.Post
-		    && request.RequestUri.AbsolutePath.Contains("/api/recipe/favorited"))
+			&& request.RequestUri.AbsolutePath.Contains("/api/recipe/favorited"))
 		{
 			var userId = _userFavorites[currentUserId];
 			var queryParam = HttpUtility.ParseQueryString(request.RequestUri.Query);
@@ -134,21 +134,21 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 			var recipe = allRecipes.FirstOrDefault(x => x.Id == gid);
 			if (recipe != null) return serializer.ToString(recipe);
 		}
-		
+
 		return "{}";
 	}
-	
+
 	private string HandleCategoriesRequest()
 	{
 		var categoriesData = LoadData("categories.json");
 		var allCategories = serializer.FromString<List<CategoryData>>(categoriesData);
 		return serializer.ToString(allCategories);
 	}
-	
+
 	private string GetRecipeSteps(List<RecipeData> allRecipes, string recipeId)
 	{
 		recipeId = recipeId.TrimEnd('/');
-		
+
 		if (Guid.TryParse(recipeId, out var parsedId))
 		{
 			var recipe = allRecipes.FirstOrDefault(r => r.Id == parsedId);
@@ -157,14 +157,14 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 				return serializer.ToString(recipe.Steps);
 			}
 		}
-		
+
 		return "[]";
 	}
-	
+
 	private string GetRecipeIngredients(List<RecipeData> allRecipes, string recipeId)
 	{
 		recipeId = recipeId.TrimEnd('/');
-		
+
 		if (Guid.TryParse(recipeId, out var parsedId))
 		{
 			var recipe = allRecipes.FirstOrDefault(r => r.Id == parsedId);
@@ -173,14 +173,14 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 				return serializer.ToString(recipe.Ingredients);
 			}
 		}
-		
+
 		return "[]";
 	}
-	
+
 	private string GetRecipeReviews(List<RecipeData> allRecipes, string recipeId)
 	{
 		recipeId = recipeId.TrimEnd('/');
-		
+
 		if (Guid.TryParse(recipeId, out var parsedId))
 		{
 			var recipe = allRecipes.FirstOrDefault(r => r.Id == parsedId);
@@ -189,24 +189,24 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 				return serializer.ToString(recipe.Reviews);
 			}
 		}
-		
+
 		return "[]";
 	}
-	
+
 	private string LikeReview(List<RecipeData> allRecipes, ReviewData reviewData, Guid userId)
 	{
 		var recipe = allRecipes.FirstOrDefault(r => r.Id == reviewData.RecipeId);
 		var review = recipe?.Reviews?.FirstOrDefault(r => r.Id == reviewData.Id);
-		
+
 		if (review != null)
 		{
 			review.Dislikes?.Remove(userId);
-			
+
 			if (review.Likes == null)
 			{
 				review.Likes = new List<Guid>();
 			}
-			
+
 			if (review.Likes.Contains(userId))
 			{
 				review.Likes.Remove(userId);
@@ -217,27 +217,27 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 				review.Likes.Add(userId);
 				review.UserLike = true;
 			}
-			
+
 			return serializer.ToString(review);
 		}
-		
+
 		return "{}";
 	}
-	
+
 	private string DislikeReview(List<RecipeData> allRecipes, ReviewData reviewData, Guid userId)
 	{
 		var recipe = allRecipes.FirstOrDefault(r => r.Id == reviewData.RecipeId);
 		var review = recipe?.Reviews?.FirstOrDefault(r => r.Id == reviewData.Id);
-		
+
 		if (review != null)
 		{
 			review.Likes?.Remove(userId);
-			
+
 			if (review.Dislikes == null)
 			{
 				review.Dislikes = new List<Guid>();
 			}
-			
+
 			if (review.Dislikes.Contains(userId))
 			{
 				review.Dislikes.Remove(userId);
@@ -248,13 +248,13 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 				review.Dislikes.Add(userId);
 				review.UserLike = false;
 			}
-			
+
 			return serializer.ToString(review);
 		}
-		
+
 		return "{}";
 	}
-	
+
 	private string? ExtractUserIdFromQuery(string queryParams)
 	{
 		var queryDictionary = System.Web.HttpUtility.ParseQueryString(queryParams);
