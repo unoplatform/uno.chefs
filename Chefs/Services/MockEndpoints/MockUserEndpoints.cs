@@ -1,7 +1,5 @@
-using Chefs.DataContracts;
 using Chefs.Services.Clients.Models;
 using Chefs.Services.MockEndpoints;
-using UserData = Chefs.DataContracts.Entities.UserData;
 
 namespace Chefs.Services;
 
@@ -9,7 +7,7 @@ public class MockUserEndpoints(string basePath, ISerializer serializer) : BaseMo
 {
 	public string HandleUsersRequest(HttpRequestMessage request)
 	{
-		this.GetType().Assembly.GetManifestResourceStream(Constants.RecipeDataFile);
+		this.GetType().Assembly.GetManifestResourceStream("AppData/Recipes.json");
 		var users = LoadData<List<UserData>>("Users.json")
 		                    ?? [];
 

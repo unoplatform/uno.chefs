@@ -18,7 +18,7 @@ public partial record Recipe : IChefEntity
 		Details = recipeData.Details;
 		Category = new Category(recipeData.Category);
 		Date = recipeData.Date ?? DateTime.MinValue;
-		IsFavorite = recipeData.IsFavorite ?? false;
+		IsFavorite = recipeData.IsFavorite;
 		Nutrition = new Nutrition(recipeData?.Nutrition);
 	}
 	public Guid Id { get; init; }

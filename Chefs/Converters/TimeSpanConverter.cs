@@ -1,35 +1,39 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Chefs.Services.Clients.Models;
 
 namespace Chefs.Converters;
-public class TimeSpanObjectConverter : JsonConverter<TimeSpan>
+public class TimeSpanObjectConverter : JsonConverter<TimeSpanObject>
 {
-	public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+	public override TimeSpanObject Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
 		if (reader.TokenType == JsonTokenType.Null)
-		{
-			return TimeSpan.Zero;
-		}
+			return new TimeSpanObject();
 
+		if (reader.TokenType == JsonTokenType.String)
+		{
+			var s = reader.GetString();
+			if (TimeSpan.TryParse(s, out var ts))
+				return new TimeSpanObject { Ticks = ts.Ticks };
+			throw new JsonException($"Cannot parse \"{s}\" as a TimeSpanObject");
+		}
+		
 		using var doc = JsonDocument.ParseValue(ref reader);
 		var root = doc.RootElement;
-		switch (root.ValueKind)
+		if (root.ValueKind == JsonValueKind.Object
+		    && root.TryGetProperty("ticks", out var tickElem))
 		{
-			case JsonValueKind.String:
-				return TimeSpan.Parse(root.GetString() ?? string.Empty);
-			case JsonValueKind.Object when root.TryGetProperty("ticks", out var ticksElement):
-				return new TimeSpan(ticksElement.GetInt64());
-			default:
-			{
-				return new TimeSpan(root.GetProperty("ticks").GetInt64());
-				}
+			return new TimeSpanObject { Ticks = tickElem.GetInt64() };
 		}
+
+		throw new JsonException($"Cannot parse {root} as a TimeSpanObject");
 	}
 
-	public override void Write(Utf8JsonWriter writer, TimeSpan value, JsonSerializerOptions options)
+	public override void Write(Utf8JsonWriter writer, TimeSpanObject value, JsonSerializerOptions options)
 	{
 		writer.WriteStartObject();
-		writer.WriteNumber("ticks", value.Ticks);
+		writer.WriteNumber("ticks", value.Ticks ?? 0);
 		writer.WriteEndObject();
 	}
 }
+

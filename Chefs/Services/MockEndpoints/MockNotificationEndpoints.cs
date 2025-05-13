@@ -1,4 +1,5 @@
 
+using Chefs.Services.Clients.Models;
 using Chefs.Services.MockEndpoints;
 
 namespace Chefs.Services;

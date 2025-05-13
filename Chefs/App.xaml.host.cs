@@ -1,4 +1,4 @@
-using Chefs.DataContracts;
+using Chefs.Serialization;
 using Chefs.Services;
 using Chefs.Services.Clients;
 using Chefs.Services.Settings;
@@ -6,7 +6,6 @@ using Chefs.Services.Sharing;
 using Chefs.Views.Flyouts;
 using Microsoft.Extensions.Configuration;
 using Uno.Extensions.Http.Kiota;
-using ChefsContext = Chefs.DataContracts.Serialization.ChefsContext;
 
 namespace Chefs;
 
@@ -128,14 +127,17 @@ public partial class App : Application
 			.AddJsonTypeInfo(ChefsContext.Default.SavedCookbooksData)
 			.AddJsonTypeInfo(ChefsContext.Default.SavedRecipesData)
 			.AddJsonTypeInfo(ChefsContext.Default.IEnumerableRecipeData)
-			.AddJsonTypeInfo(ChefsContext.Default.IEnumerableSavedRecipesData);
+			.AddJsonTypeInfo(ChefsContext.Default.IEnumerableSavedRecipesData)
+			.AddJsonTypeInfo(ChefsContext.Default.TimeSpanObject)
+			.AddJsonTypeInfo(ChefsContext.Default.StepData)
+			.AddJsonTypeInfo(ChefsContext.Default.ListStepData);
 #endif
 
 		services
 			.AddJsonTypeInfo(AppConfigContext.Default.AppConfig)
 			.AddJsonTypeInfo(AppConfigContext.Default.DictionaryStringAppConfig)
 			.AddJsonTypeInfo(AppConfigContext.Default.String)
-			.AddJsonTypeInfo(MockEndpointContext.Default.LoginRequest);
+			.AddJsonTypeInfo(Data.MockEndpointContext.Default.LoginRequest);
 	}
 
 	private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)

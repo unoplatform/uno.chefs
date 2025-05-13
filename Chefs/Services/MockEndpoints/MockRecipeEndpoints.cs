@@ -1,17 +1,18 @@
 using System.Web;
+using Chefs.Services.Clients.Models;
 using Chefs.Services.MockEndpoints;
 
 namespace Chefs.Services;
 
 public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
 {
-	private static Dictionary<Guid, List<Guid>>? _userFavorites;
+	private static Dictionary<Guid, List<Guid?>> _userFavorites;
 
 	public string HandleRecipesRequest(HttpRequestMessage request)
 	{
 		if (_userFavorites == null)
 		{
-			_userFavorites = new Dictionary<Guid, List<Guid>>();
+			_userFavorites = new Dictionary<Guid, List<Guid?>>();
 			var savedList = LoadData<List<SavedRecipesData>>("SavedRecipes.json")
 			                ?? [];
 			foreach (var entry in savedList!)
@@ -205,7 +206,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 			
 			if (review.Likes == null)
 			{
-				review.Likes = new List<Guid>();
+				review.Likes = new List<Guid?>();
 			}
 			
 			if (review.Likes.Contains(userId))
@@ -236,7 +237,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 			
 			if (review.Dislikes == null)
 			{
-				review.Dislikes = new List<Guid>();
+				review.Dislikes = new List<Guid?>();
 			}
 			
 			if (review.Dislikes.Contains(userId))

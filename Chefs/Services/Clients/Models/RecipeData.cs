@@ -66,7 +66,7 @@ namespace Chefs.Services.Clients.Models
         public List<global::Chefs.Services.Clients.Models.IngredientData> Ingredients { get; set; }
 #endif
         /// <summary>The isFavorite property</summary>
-        public bool? IsFavorite { get; set; }
+        public bool IsFavorite { get; set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -130,7 +130,7 @@ namespace Chefs.Services.Clients.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "imageUrl", n => { ImageUrl = n.GetStringValue(); } },
                 { "ingredients", n => { Ingredients = n.GetCollectionOfObjectValues<global::Chefs.Services.Clients.Models.IngredientData>(global::Chefs.Services.Clients.Models.IngredientData.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "isFavorite", n => { IsFavorite = n.GetBoolValue(); } },
+                { "isFavorite", n => { IsFavorite = (bool)n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "nutrition", n => { Nutrition = n.GetObjectValue<global::Chefs.Services.Clients.Models.NutritionData>(global::Chefs.Services.Clients.Models.NutritionData.CreateFromDiscriminatorValue); } },
                 { "reviews", n => { Reviews = n.GetCollectionOfObjectValues<global::Chefs.Services.Clients.Models.ReviewData>(global::Chefs.Services.Clients.Models.ReviewData.CreateFromDiscriminatorValue)?.AsList(); } },

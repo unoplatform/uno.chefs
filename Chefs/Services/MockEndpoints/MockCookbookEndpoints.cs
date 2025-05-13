@@ -1,4 +1,4 @@
-using Chefs.DataContracts;
+using Chefs.Services.Clients.Models;
 using Chefs.Services.MockEndpoints;
 
 namespace Chefs.Services;
@@ -21,7 +21,7 @@ public class MockCookbookEndpoints(string basePath, ISerializer serializer) : Ba
 			var userId = ExtractUserIdFromQuery(queryParams);
 			var savedCookbooks = LoadData<List<SavedCookbooksData>>("SavedCookbooks.json")
 			                ?? new List<SavedCookbooksData>();
-			var userSavedCookbookIds = savedCookbooks?.FirstOrDefault(x => x.UserId == Guid.Parse(userId))?.SavedCookbooks ?? new List<Guid>();
+			var userSavedCookbookIds = savedCookbooks?.FirstOrDefault(x => x.UserId == Guid.Parse(userId))?.SavedCookbooks;
 
 			var userSavedCookbooks = cookbooks?.Where(cb => userSavedCookbookIds.Contains(cb.Id)).ToList();
 			return serializer.ToString(userSavedCookbooks);
