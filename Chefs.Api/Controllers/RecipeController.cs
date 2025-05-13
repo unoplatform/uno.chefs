@@ -1,5 +1,3 @@
-
-
 namespace Chefs.Api.Controllers;
 
 /// <summary>
@@ -81,7 +79,7 @@ public class RecipeController : ControllerBase
 	public IActionResult GetFavorited([FromQuery] Guid userId)
 	{
 		var savedRecipes = LoadData<List<SavedRecipesData>>(_savedRecipesFilePath);
-		var userSavedRecipes = savedRecipes.FirstOrDefault(sr => sr.UserId == userId)?.SavedRecipes ?? new Guid[0];
+		var userSavedRecipes = savedRecipes.FirstOrDefault(sr => sr.UserId == userId)?.SavedRecipes ?? Array.Empty<Guid>();
 
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var favorited = recipes
@@ -176,7 +174,7 @@ public class RecipeController : ControllerBase
 			reviewData.Date = DateTime.Now;
 			recipe.Reviews?.Add(reviewData);
 
-			return Created("", reviewData);
+			return Created(string.Empty, reviewData);
 		}
 		else
 		{

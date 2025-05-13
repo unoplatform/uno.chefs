@@ -1,4 +1,3 @@
-
 namespace Chefs.Api.Data;
 
 public class NutritionData
@@ -24,5 +23,4 @@ public class NutritionData
 	public double Fat { get; }
 
 	public double FatBase { get; }
-
 }

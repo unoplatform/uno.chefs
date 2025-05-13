@@ -4,5 +4,5 @@ public enum Difficulty
 {
 	Beginner,
 	Intermediate,
-	Difficult
+	Difficult,
 }

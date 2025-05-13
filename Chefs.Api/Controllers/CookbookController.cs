@@ -34,7 +34,7 @@ public class CookbookController : ControllerBase
 		cookbook.UserId = userId;
 		cookbooks.Add(cookbook);
 
-		return Created("", cookbook);
+		return Created(string.Empty, cookbook);
 	}
 
 	/// <summary>

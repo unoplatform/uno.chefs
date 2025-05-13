@@ -100,7 +100,7 @@ public class UserController : ControllerBase
 				Password = user.Password,
 				Followers = user.Followers,
 				Following = user.Following,
-				Recipes = user.Recipes
+				Recipes = user.Recipes,
 			};
 
 			return Ok(users[userIndex]);
@@ -143,7 +143,7 @@ public class UserController : ControllerBase
 
 public class LoginRequest
 {
-	public string Email { get; set; }
+	public string? Email { get; set; }
 
-	public string Password { get; set; }
+	public string? Password { get; set; }
 }

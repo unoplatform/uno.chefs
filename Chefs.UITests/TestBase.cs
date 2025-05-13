@@ -10,7 +10,7 @@ namespace Chefs.UITests;
 
 public class TestBase
 {
-	private IApp _app;
+	private IApp? _app;
 	private DateTime _startTime;
 	private readonly string? _screenShotPath = Environment.GetEnvironmentVariable("UNO_UITEST_SCREENSHOT_PATH");
 
@@ -18,9 +18,9 @@ public class TestBase
 	{
 		AppInitializer.TestEnvironment.AndroidAppName = Constants.AndroidAppName;
 		AppInitializer.TestEnvironment.WebAssemblyDefaultUri = Constants.WebAssemblyDefaultUri;
-		AppInitializer.TestEnvironment.iOSAppName = Constants.iOSAppName;
+		AppInitializer.TestEnvironment.iOSAppName = Constants.IOSAppName;
 		AppInitializer.TestEnvironment.AndroidAppName = Constants.AndroidAppName;
-		AppInitializer.TestEnvironment.iOSDeviceNameOrId = Constants.iOSDeviceNameOrId;
+		AppInitializer.TestEnvironment.iOSDeviceNameOrId = Constants.IOSDeviceNameOrId;
 		AppInitializer.TestEnvironment.CurrentPlatform = Constants.CurrentPlatform;
 
 #if DEBUG
@@ -60,9 +60,9 @@ public class TestBase
 			.Replace(" ", "_")
 			.Replace(".", "_")
 			.Replace(":", "_")
-			.Replace("(", "")
-			.Replace(")", "")
-			.Replace("\"", "")
+			.Replace("(", string.Empty)
+			.Replace(")", string.Empty)
+			.Replace("\"", string.Empty)
 			.Replace(",", "_")
 			.Replace("__", "_");
 
@@ -118,5 +118,4 @@ public class TestBase
 
 		return fileInfo;
 	}
-
 }
