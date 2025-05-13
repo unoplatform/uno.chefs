@@ -26,7 +26,6 @@
 		<converters:StringToMediaPlayBackSourceConverter x:Key="StringToMediaPlaybackSource" />
 
 		<DataTemplate x:Key="StepTemplate">
-			<!-- Workaround: Removed the ScrollViewer that was previously wrapping the content here: https://github.com/unoplatform/uno/issues/19917 -->
 			<utu:AutoLayout Spacing="24"
 							PrimaryAxisAlignment="Start">
 				<TextBlock FontSize="22"
@@ -50,7 +49,7 @@
 							   Text="Ingredients:"
 							   TextAlignment="Center"
 							   TextWrapping="Wrap" />
-					<muxc:ItemsRepeater ItemsSource="{Binding Ingredients}"
+					<muxc:ItemsRepeater ItemsSource="{Binding Step.Ingredients}"
 										utu:AutoLayout.PrimaryAlignment="Stretch">
 						<muxc:ItemsRepeater.Layout>
 							<win:LinedFlowLayout ItemsJustification="Center"
@@ -111,11 +110,6 @@
 
 			</utu:AutoLayout>
 
-			<!--
-				WORKAROUND
-				Binding to the Steps.Value property instead of directly on the Steps entity until
-				https://github.com/unoplatform/uno.extensions/issues/2391 is fixed
-			-->
 			<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
 							Justify="SpaceBetween"
 							Padding="{utu:Responsive Normal=18,
@@ -205,8 +199,6 @@
 									   Text="Tell us how was your cooking experience!"
 									   TextAlignment="Center"
 									   TextWrapping="Wrap" />
-							<!-- TODO -->
-							<!-- Save rating -->
 							<muxc:RatingControl utu:AutoLayout.CounterAlignment="Center"
 												MaxRating="5"
 												Style="{StaticResource RatingControlStyle}" />
