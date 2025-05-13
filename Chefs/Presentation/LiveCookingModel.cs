@@ -19,7 +19,6 @@ public partial class LiveCookingModel
 
 	public LiveCookingModel(LiveCookingParameter parameter, IRecipeService recipeService, INavigator navigator)
 	{
-		Recipe = parameter.Recipe;
 		_recipeService = recipeService;
 		_navigator = navigator;
 		_steps = parameter.Steps;
