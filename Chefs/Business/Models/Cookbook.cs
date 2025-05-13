@@ -41,12 +41,23 @@ public partial record Cookbook : IChefEntity
 		Name = Name,
 		Recipes = recipes is null
 			? Recipes?
-				.Select(c => c.ToData())
+				.Select(r => r.ToData())
 				.ToList()
 			: recipes
-				.Select(c => c.ToData())
+				.Select(r => r.ToData())
 				.ToList()
 	};
+
+	internal static CookbookData CreateData(Guid userId, string name, IImmutableList<Recipe> recipes)
+	{
+		return new CookbookData
+		{
+			Id = Guid.NewGuid(),
+			Name = name,
+			UserId = userId,
+			Recipes = recipes?.Select(r => r.ToData()).ToList()
+		};
+	}
 
 	internal UpdateCookbook UpdateCookbook() => new(this);
 }

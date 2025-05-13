@@ -10,13 +10,7 @@ public class CookbookService(ChefsApiClient client, IMessenger messenger, IUserS
 	public async ValueTask<Cookbook> Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct)
 	{
 		var currentUser = await userService.GetCurrent(ct);
-		var cookbookData = new CookbookData
-		{
-			Id = Guid.NewGuid(),
-			Name = name,
-			UserId = currentUser.Id,
-			Recipes = recipes?.Select(i => i.ToData()).ToList()
-		};
+		var cookbookData = Cookbook.CreateData(currentUser.Id, name, recipes);
 
 		await client.Api.Cookbook.PostAsync(cookbookData, cancellationToken: ct);
 
@@ -25,9 +19,7 @@ public class CookbookService(ChefsApiClient client, IMessenger messenger, IUserS
 
 	public async ValueTask<Cookbook> Update(Cookbook cookbook, IImmutableList<Recipe> recipes, CancellationToken ct)
 	{
-		var updatedCookbookData = cookbook.ToData();
-		updatedCookbookData.Recipes = recipes.Select(r => r.ToData()).ToList();
-
+		var updatedCookbookData = cookbook.ToData(recipes);
 		await client.Api.Cookbook.PutAsync(updatedCookbookData, cancellationToken: ct);
 
 		var newCookbook = new Cookbook(updatedCookbookData);
