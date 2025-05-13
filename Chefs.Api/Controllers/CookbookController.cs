@@ -68,11 +68,9 @@ public class CookbookController() : ChefsControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>No content.</returns>
 	[HttpPost("save")]
-	public IActionResult Save([FromBody] CookbookData cookbook, [FromQuery] Guid userId)
-	{
+	public IActionResult Save([FromBody] CookbookData cookbook, [FromQuery] Guid userId) =>
 		// We do not persist the saved state in this example.
-		return NoContent();
-	}
+		NoContent();
 
 	/// <summary>
 	/// Retrieves saved cookbooks for a specific user.

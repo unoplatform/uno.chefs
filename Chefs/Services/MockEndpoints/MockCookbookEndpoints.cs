@@ -14,7 +14,7 @@ public class MockCookbookEndpoints(string basePath, ISerializer serializer) : Ba
 		//Retrieving saved cookbooks for a user
 		if (request.RequestUri.AbsolutePath.Contains("/api/cookbook/saved") && request.Method == HttpMethod.Get)
 		{
-			var savedCookbooks = LoadData<List<Guid>>("SavedCookbooks.json")?? new List<Guid>();
+			var savedCookbooks = LoadData<List<Guid>>("SavedCookbooks.json") ?? new List<Guid>();
 			return serializer.ToString(savedCookbooks);
 		}
 

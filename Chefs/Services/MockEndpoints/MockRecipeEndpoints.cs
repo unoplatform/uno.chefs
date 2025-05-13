@@ -89,7 +89,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 	private string HandleCategoriesRequest()
 	{
 		var allCategories = LoadData<List<CategoryData>>("categories.json")
-		                 ?? new List<CategoryData>();
+						 ?? new List<CategoryData>();
 		return serializer.ToString(allCategories);
 	}
 

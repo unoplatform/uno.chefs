@@ -109,13 +109,11 @@ public partial class App : Application
 #if USE_MOCKS
 		services
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListCookbookData)
-			//.AddJsonTypeInfo(MockEndpointContext.Default.ListSavedCookbooksData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.CookbookData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.RecipeData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListNotificationData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListRecipeData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListCategoryData)
-			//.AddJsonTypeInfo(MockEndpointContext.Default.ListSavedRecipesData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListIngredientData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListUserData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListStepData)
@@ -123,10 +121,7 @@ public partial class App : Application
 			.AddJsonTypeInfo(MockEndpointContext.Default.UserData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.Guid)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ReviewData)
-			//.AddJsonTypeInfo(MockEndpointContext.Default.SavedCookbooksData)
-			//.AddJsonTypeInfo(MockEndpointContext.Default.SavedRecipesData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData);
-			//.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableSavedRecipesData);
 #endif
 
 		services
