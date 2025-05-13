@@ -9,7 +9,7 @@ namespace Chefs.UITests;
 
 public class Constants
 {
-	public readonly static string ApplicationId = 
+	public readonly static string ApplicationId =
 #if HAS_SKIA_RENDERER
 		"uno.platform.chefs.skia";
 #else

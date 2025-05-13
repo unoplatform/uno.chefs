@@ -11,7 +11,7 @@ public class StringToMediaPlayBackSourceConverter : IValueConverter
 		{
 			return MediaSource.CreateFromUri(new Uri(uriString));
 		}
-		
+
 		return MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/Videos/CookingVideo.mp4"));
 	}
 

@@ -1,54 +1,56 @@
 namespace Chefs.Services.Cookbooks;
 
+/// <summary>
+/// Provides methods for creating, updating, saving, and retrieving cookbooks.
+/// </summary>
 public interface ICookbookService
 {
 	/// <summary>
-	/// Add cookbook created by the user
+	/// Creates a new cookbook with the specified name and recipes.
 	/// </summary>
-	/// <param name="name">Name of the cookbook to add</param>
-	/// <param name="ct"></param>
-	/// <returns></returns>
+	/// <param name="name">The name of the cookbook.</param>
+	/// <param name="recipes">The list of recipes to include in the cookbook.</param>
+	/// <param name="ct">A cancellation token.</param>
+	/// <returns>The created <see cref="Cookbook"/>.</returns>
 	ValueTask<Cookbook> Create(string name, IImmutableList<Recipe> recipes, CancellationToken ct);
 
 	/// <summary>
-	/// Add cookbook created by the user
+	/// Updates an existing cookbook with a new list of recipes.
 	/// </summary>
-	/// <param name="cookbook">Cookbook to add</param>
-	/// <param name="ct"></param>
-	/// <returns></returns>
+	/// <param name="cookbook">The cookbook to update.</param>
+	/// <param name="recipes">The updated list of recipes.</param>
+	/// <param name="ct">A cancellation token.</param>
+	/// <returns>The updated <see cref="Cookbook"/>.</returns>
 	ValueTask<Cookbook> Update(Cookbook cookbook, IImmutableList<Recipe> recipes, CancellationToken ct);
 
 	/// <summary>
-	/// Add cookbook created by the user
+	/// Updates the details of an existing cookbook.
 	/// </summary>
-	/// <param name="cookbook">Cookbook to add</param>
-	/// <param name="ct"></param>
-	/// <returns></returns>
+	/// <param name="cookbook">The cookbook to update.</param>
+	/// <param name="ct">A cancellation token.</param>
+	/// <returns>A task representing the asynchronous operation.</returns>
 	ValueTask Update(Cookbook cookbook, CancellationToken ct);
 
 	/// <summary>
-	/// Add cookbook that the user wants to save
+	/// Saves the specified cookbook.
 	/// </summary>
-	/// <param name="cookbook">Cookbook to add</param>
-	/// <param name="ct"></param>
-	/// <returns></returns>
+	/// <param name="cookbook">The cookbook to save.</param>
+	/// <param name="ct">A cancellation token.</param>
+	/// <returns>A task representing the asynchronous operation.</returns>
 	ValueTask Save(Cookbook cookbook, CancellationToken ct);
 
 	/// <summary>
-	/// Cookbooks saved from api
+	/// Retrieves the cookbooks saved by the current user.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get each cookbook from api that was saved
-	/// </returns>
+	/// <param name="ct">A cancellation token.</param>
+	/// <returns>A list of saved <see cref="Cookbook"/> objects.</returns>
 	ValueTask<IImmutableList<Cookbook>> GetSaved(CancellationToken ct);
 
 	/// <summary>
-	/// Cookbooks by user
+	/// Retrieves the cookbooks created by the specified user.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// User's cookbooks
-	/// </returns>
+	/// <param name="userId">The ID of the user whose cookbooks to retrieve.</param>
+	/// <param name="ct">A cancellation token.</param>
+	/// <returns>A list of <see cref="Cookbook"/> objects created by the user.</returns>
 	ValueTask<IImmutableList<Cookbook>> GetByUser(Guid userId, CancellationToken ct);
 }

@@ -11,7 +11,7 @@ public partial record CookbookDetailModel
 		_messenger = messenger;
 		_cookbook = cookbook ?? new Cookbook();
 	}
-	
+
 	public IState<Cookbook> Cookbook => State
 		.Value(this, () => _cookbook ?? new Cookbook())
 		.Observe(_messenger, cb => cb.Id);

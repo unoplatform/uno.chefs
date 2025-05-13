@@ -55,7 +55,7 @@ public class TestBase
 		WriteSystemLogs(GetCurrentStepTitle("log"));
 	}
 
-	private static string GetCurrentStepTitle(string stepName) 
+	private static string GetCurrentStepTitle(string stepName)
 		=> $"{TestContext.CurrentContext.Test.Name}_{stepName}"
 			.Replace(" ", "_")
 			.Replace(".", "_")
