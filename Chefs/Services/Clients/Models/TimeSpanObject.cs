@@ -4,11 +4,15 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
+using System.Text.Json.Serialization;
+using Chefs.Converters;
+
 namespace Chefs.Services.Clients.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-    #pragma warning disable CS1591
-    public partial class TimeSpanObject : IParsable
+#pragma warning disable CS1591
+	[JsonConverter(typeof(TimeSpanObjectConverter))]
+	public partial class TimeSpanObject : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>The days property</summary>

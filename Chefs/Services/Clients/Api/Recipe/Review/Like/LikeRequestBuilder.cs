@@ -11,7 +11,7 @@ using System;
 namespace Chefs.Services.Clients.Api.Recipe.Review.Like
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\recipe\review\like
+    /// Builds and executes requests for operations under \api\Recipe\review\like
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     public partial class LikeRequestBuilder : BaseRequestBuilder
@@ -21,7 +21,7 @@ namespace Chefs.Services.Clients.Api.Recipe.Review.Like
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LikeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/recipe/review/like{?userId*}", pathParameters)
+        public LikeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Recipe/review/like{?userId*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,32 +29,31 @@ namespace Chefs.Services.Clients.Api.Recipe.Review.Like
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public LikeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/recipe/review/like{?userId*}", rawUrl)
+        public LikeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Recipe/review/like{?userId*}", rawUrl)
         {
         }
-        /// <summary>
-        /// Likes a review for a recipe.
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Chefs.Services.Clients.Models.ReviewData"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Chefs.Services.Clients.Models.ProblemDetails">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PostAsync(global::Chefs.Services.Clients.Models.ReviewData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Recipe.Review.Like.LikeRequestBuilder.LikeRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.ReviewData?> PostAsync(global::Chefs.Services.Clients.Models.ReviewData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Recipe.Review.Like.LikeRequestBuilder.LikeRequestBuilderPostQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> PostAsync(global::Chefs.Services.Clients.Models.ReviewData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Recipe.Review.Like.LikeRequestBuilder.LikeRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.ReviewData> PostAsync(global::Chefs.Services.Clients.Models.ReviewData body, Action<RequestConfiguration<global::Chefs.Services.Clients.Api.Recipe.Review.Like.LikeRequestBuilder.LikeRequestBuilderPostQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Chefs.Services.Clients.Models.ProblemDetails.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Chefs.Services.Clients.Models.ReviewData>(requestInfo, global::Chefs.Services.Clients.Models.ReviewData.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Likes a review for a recipe.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -70,6 +69,7 @@ namespace Chefs.Services.Clients.Api.Recipe.Review.Like
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json, text/plain;q=0.9");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
@@ -82,13 +82,11 @@ namespace Chefs.Services.Clients.Api.Recipe.Review.Like
         {
             return new global::Chefs.Services.Clients.Api.Recipe.Review.Like.LikeRequestBuilder(rawUrl, RequestAdapter);
         }
-        /// <summary>
-        /// Likes a review for a recipe.
-        /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        #pragma warning disable CS1591
         public partial class LikeRequestBuilderPostQueryParameters 
+        #pragma warning restore CS1591
         {
-            /// <summary>The user ID.</summary>
             [QueryParameter("userId")]
             public Guid? UserId { get; set; }
         }

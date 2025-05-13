@@ -33,25 +33,25 @@ public class MockHttpMessageHandler : HttpMessageHandler
 	private string GetMockData(HttpRequestMessage request)
 	{
 		// Handle Recipes
-		if (request.RequestUri.AbsolutePath.Contains("/api/recipe"))
+		if (request.RequestUri.AbsolutePath.Contains("/api/Recipe"))
 		{
 			return _mockRecipeEndpoints.HandleRecipesRequest(request);
 		}
 
 		// Handle Users
-		if (request.RequestUri.AbsolutePath.Contains("/api/user"))
+		if (request.RequestUri.AbsolutePath.Contains("/api/User"))
 		{
 			return _mockUserEndpoints.HandleUsersRequest(request);
 		}
 
 		// Handle Cookbooks
-		if (request.RequestUri.AbsolutePath.Contains("/api/cookbook"))
+		if (request.RequestUri.AbsolutePath.Contains("/api/Cookbook"))
 		{
 			return _mockCookbookEndpoints.HandleCookbooksRequest(request);
 		}
 
 		// Handle Notifications
-		if (request.RequestUri.AbsolutePath.Contains("/api/notification"))
+		if (request.RequestUri.AbsolutePath.Contains("/api/Notification"))
 		{
 			return _mockNotificationEndpoints.HandleNotificationsRequest(request);
 		}

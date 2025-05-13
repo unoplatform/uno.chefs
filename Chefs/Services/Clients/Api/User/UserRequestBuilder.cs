@@ -15,7 +15,7 @@ using System;
 namespace Chefs.Services.Clients.Api.User
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\user
+    /// Builds and executes requests for operations under \api\User
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     public partial class UserRequestBuilder : BaseRequestBuilder
@@ -35,8 +35,8 @@ namespace Chefs.Services.Clients.Api.User
         {
             get => new global::Chefs.Services.Clients.Api.User.PopularCreators.PopularCreatorsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Gets an item from the Chefs.Services.Clients.api.user.item collection</summary>
-        /// <param name="position">The user ID.</param>
+        /// <summary>Gets an item from the Chefs.Services.Clients.api.User.item collection</summary>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Chefs.Services.Clients.Api.User.Item.UserItemRequestBuilder"/></returns>
         public global::Chefs.Services.Clients.Api.User.Item.UserItemRequestBuilder this[Guid position]
         {
@@ -47,8 +47,8 @@ namespace Chefs.Services.Clients.Api.User
                 return new global::Chefs.Services.Clients.Api.User.Item.UserItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
-        /// <summary>Gets an item from the Chefs.Services.Clients.api.user.item collection</summary>
-        /// <param name="position">The user ID.</param>
+        /// <summary>Gets an item from the Chefs.Services.Clients.api.User.item collection</summary>
+        /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Chefs.Services.Clients.Api.User.Item.UserItemRequestBuilder"/></returns>
         [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
         public global::Chefs.Services.Clients.Api.User.Item.UserItemRequestBuilder this[string position]
@@ -65,7 +65,7 @@ namespace Chefs.Services.Clients.Api.User
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/user", pathParameters)
+        public UserRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/User", pathParameters)
         {
         }
         /// <summary>
@@ -73,50 +73,47 @@ namespace Chefs.Services.Clients.Api.User
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/user", rawUrl)
+        public UserRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/User", rawUrl)
         {
         }
-        /// <summary>
-        /// Retrieves all users.
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A List&lt;global::Chefs.Services.Clients.Models.UserData&gt;</returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Chefs.Services.Clients.Models.UserData>?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<List<global::Chefs.Services.Clients.Models.UserData>> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<global::Chefs.Services.Clients.Models.UserData>(requestInfo, global::Chefs.Services.Clients.Models.UserData.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return collectionResult?.AsList();
         }
-        /// <summary>
-        /// Updates the current user.
-        /// </summary>
-        /// <returns>A <see cref="Stream"/></returns>
+        /// <returns>A <see cref="global::Chefs.Services.Clients.Models.UserData"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Chefs.Services.Clients.Models.ProblemDetails">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PutAsync(global::Chefs.Services.Clients.Models.UserData body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.UserData?> PutAsync(global::Chefs.Services.Clients.Models.UserData body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Stream> PutAsync(global::Chefs.Services.Clients.Models.UserData body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Chefs.Services.Clients.Models.UserData> PutAsync(global::Chefs.Services.Clients.Models.UserData body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Chefs.Services.Clients.Models.ProblemDetails.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Chefs.Services.Clients.Models.UserData>(requestInfo, global::Chefs.Services.Clients.Models.UserData.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
-        /// <summary>
-        /// Retrieves all users.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,11 +127,9 @@ namespace Chefs.Services.Clients.Api.User
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
-        /// <summary>
-        /// Updates the current user.
-        /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -150,6 +145,7 @@ namespace Chefs.Services.Clients.Api.User
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }

@@ -20,33 +20,25 @@ public class RecipeService(
 
 	public async ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var recipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var recipesData = await api.Api.Recipe.GetAsync(cancellationToken: ct);
 		return recipesData?.Select(r => new Recipe(r)).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
 	public async ValueTask<int> GetCount(Guid userId, CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.Count.GetAsync(q => q.QueryParameters.UserId = userId, cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var countData = JsonSerializer.Deserialize<int>(jsonResponse);
-		return countData;
+		var countData = await api.Api.Recipe.Count.GetAsync(q => q.QueryParameters.UserId = userId, cancellationToken: ct);
+		return (int)countData;
 	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetByCategory(int categoryId, CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var recipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var recipesData = await api.Api.Recipe.GetAsync(cancellationToken: ct);
 		return recipesData?.Where(r => r.Category?.Id == categoryId).Select(r => new Recipe(r)).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Category>> GetCategories(CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.Categories.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var categoriesData = await KiotaJsonSerializer.DeserializeCollectionAsync<CategoryData>(jsonResponse, cancellationToken: ct);
+		var categoriesData = await api.Api.Recipe.Categories.GetAsync(cancellationToken: ct);
 		return categoriesData?.Select(c => new Category(c)).ToImmutableList() ?? ImmutableList<Category>.Empty;
 	}
 
@@ -65,25 +57,19 @@ public class RecipeService(
 
 	public async ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var recipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var recipesData = await api.Api.Recipe.GetAsync(cancellationToken: ct);
 		return recipesData?.Select(r => new Recipe(r)).OrderByDescending(x => x.Date).Take(7).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.Trending.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var trendingRecipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var trendingRecipesData = await api.Api.Recipe.Trending.GetAsync(cancellationToken: ct);
 		return trendingRecipesData?.Select(r => new Recipe(r)).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetPopular(CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.Popular.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var popularRecipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var popularRecipesData = await api.Api.Recipe.Popular.GetAsync(cancellationToken: ct);
 		return popularRecipesData?.Select(r => new Recipe(r)).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
@@ -114,42 +100,32 @@ public class RecipeService(
 
 	public async ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe[recipeId].Reviews.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var reviewsData = await KiotaJsonSerializer.DeserializeCollectionAsync<ReviewData>(jsonResponse, cancellationToken: ct);
+		var reviewsData = await api.Api.Recipe[recipeId].Reviews.GetAsync(cancellationToken: ct);
 		return reviewsData?.Select(x => new Review(x)).ToImmutableList() ?? ImmutableList<Review>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Step>> GetSteps(Guid recipeId, CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe[recipeId].Steps.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var stepsData = await KiotaJsonSerializer.DeserializeCollectionAsync<StepData>(jsonResponse, cancellationToken: ct);
+		var stepsData = await api.Api.Recipe[recipeId].Steps.GetAsync(cancellationToken: ct);
 		return stepsData?.Select(x => new Step(x)).ToImmutableList() ?? ImmutableList<Step>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Ingredient>> GetIngredients(Guid recipeId, CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe[recipeId].Ingredients.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var ingredientsData = await KiotaJsonSerializer.DeserializeCollectionAsync<IngredientData>(jsonResponse, cancellationToken: ct);
+		var ingredientsData = await api.Api.Recipe[recipeId].Ingredients.GetAsync(cancellationToken: ct);
 		return ingredientsData?.Select(x => new Ingredient(x)).ToImmutableList() ?? ImmutableList<Ingredient>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var recipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var recipesData = await api.Api.Recipe.GetAsync(cancellationToken: ct);
 		return recipesData?.Where(r => r.UserId == userId).Select(x => new Recipe(x)).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
 	public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct)
 	{
 		var reviewData = new ReviewData { RecipeId = recipeId, Description = review };
-		await using var responseStream = await api.Api.Recipe.Review.PostAsync(reviewData);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var createdReviewData = await KiotaJsonSerializer.DeserializeAsync<ReviewData>(jsonResponse, cancellationToken: ct);
+		var createdReviewData = await api.Api.Recipe.Review.PostAsync(reviewData, cancellationToken: ct);
 		return new Review(createdReviewData);
 	}
 
@@ -176,11 +152,11 @@ public class RecipeService(
 
 		if (updatedRecipe.IsFavorite)
 		{
-			await FavoritedRecipes.AddAsync(updatedRecipe);
+			await FavoritedRecipes.AddAsync(updatedRecipe, ct: ct);
 		}
 		else
 		{
-			await FavoritedRecipes.RemoveAllAsync(r => r.Id == updatedRecipe.Id);
+			await FavoritedRecipes.RemoveAllAsync(r => r.Id == updatedRecipe.Id, ct: ct);
 		}
 
 		messenger.Send(new EntityMessage<Recipe>(EntityChange.Updated, updatedRecipe));
@@ -189,9 +165,7 @@ public class RecipeService(
 	public async ValueTask LikeReview(Review review, CancellationToken ct)
 	{
 		var reviewData = review.ToData();
-		await using var responseStream = await api.Api.Recipe.Review.Like.PostAsync(reviewData);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var updatedReviewData = await KiotaJsonSerializer.DeserializeAsync<ReviewData>(jsonResponse, cancellationToken: ct);
+		var updatedReviewData = await api.Api.Recipe.Review.Like.PostAsync(reviewData, cancellationToken: ct);
 		var updatedReview = new Review(updatedReviewData);
 		messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
 	}
@@ -199,35 +173,27 @@ public class RecipeService(
 	public async ValueTask DislikeReview(Review review, CancellationToken ct)
 	{
 		var reviewData = review.ToData();
-		await using var responseStream = await api.Api.Recipe.Review.Dislike.PostAsync(reviewData);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var updatedReviewData = await KiotaJsonSerializer.DeserializeAsync<ReviewData>(jsonResponse, cancellationToken: ct);
+		var updatedReviewData = await api.Api.Recipe.Review.Dislike.PostAsync(reviewData, cancellationToken: ct);
 		var updatedReview = new Review(updatedReviewData);
 		messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
 	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var recipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var recipesData = await api.Api.Recipe.GetAsync(cancellationToken: ct);
 		return recipesData?.Select(r => new Recipe(r)).OrderBy(_ => Guid.NewGuid()).Take(4).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Recipe>> GetFromChefs(CancellationToken ct)
 	{
-		await using var responseStream = await api.Api.Recipe.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var recipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var recipesData = await api.Api.Recipe.GetAsync(cancellationToken: ct);
 		return recipesData?.Select(r => new Recipe(r)).OrderBy(_ => Guid.NewGuid()).Take(4).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
 	private async ValueTask<IImmutableList<Recipe>> GetFavorited(CancellationToken ct)
 	{
 		var currentUser = await userService.GetCurrent(ct);
-		await using var responseStream = await api.Api.Recipe.Favorited.GetAsync(config => config.QueryParameters.UserId = currentUser.Id, cancellationToken: ct);
-		var jsonResponse = await new StreamReader(responseStream).ReadToEndAsync(ct);
-		var favoritedRecipesData = await KiotaJsonSerializer.DeserializeCollectionAsync<RecipeData>(jsonResponse, cancellationToken: ct);
+		var favoritedRecipesData = await api.Api.Recipe.Favorited.GetAsync(config => config.QueryParameters.UserId = currentUser.Id, cancellationToken: ct);
 		return favoritedRecipesData?.Select(r => new Recipe(r)).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
@@ -236,7 +202,7 @@ public class RecipeService(
 		if (_lastTextLength <= text.Length) _lastTextLength = text.Length;
 
 		var searchHistory = searchOptions.Value.Searches;
-		if (searchHistory is not null && !string.IsNullOrWhiteSpace(text))
+		if (!string.IsNullOrWhiteSpace(text))
 		{
 			if (searchHistory.Count == 0 || _lastTextLength == 1)
 			{

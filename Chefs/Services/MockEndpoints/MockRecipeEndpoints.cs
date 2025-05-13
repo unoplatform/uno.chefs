@@ -14,22 +14,22 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 		allRecipes.ForEach((_, r) => r.IsFavorite = savedList.Contains(r.Id ?? Guid.Empty));
 
 		var path = request.RequestUri.AbsolutePath;
-		if (path.Contains("/api/recipe/categories"))
+		if (path.Contains("/api/Recipe/categories"))
 		{
 			return HandleCategoriesRequest();
 		}
 
-		if (path.Contains("/api/recipe/trending"))
+		if (path.Contains("/api/Recipe/trending"))
 		{
 			return serializer.ToString(allRecipes.Take(10));
 		}
 
-		if (path.Contains("/api/recipe/popular"))
+		if (path.Contains("/api/Recipe/popular"))
 		{
 			return serializer.ToString(allRecipes.Take(10));
 		}
 
-		if (path.Contains("/api/recipe/favorited"))
+		if (path.Contains("/api/Recipe/favorited"))
 		{
 			return serializer.ToString(allRecipes.Where(r => r.IsFavorite ?? false).ToList());
 		}
@@ -49,12 +49,12 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 			return GetRecipeReviews(allRecipes, request.RequestUri.Segments[^2]);
 		}
 
-		if (request.Method == HttpMethod.Get && path == "/api/recipe")
+		if (request.Method == HttpMethod.Get && path == "/api/Recipe")
 		{
 			return serializer.ToString(allRecipes);
 		}
 
-		if (path.Contains("/api/recipe/review/like"))
+		if (path.Contains("/api/Recipe/review/like"))
 		{
 			var userId = ExtractUserIdFromQuery(request.RequestUri.Query);
 			var parsedUserId = Guid.TryParse(userId, out var validUserId) ? validUserId : Guid.NewGuid();
@@ -62,7 +62,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 			return LikeReview(allRecipes, reviewData, parsedUserId);
 		}
 
-		if (path.Contains("/api/recipe/review/dislike"))
+		if (path.Contains("/api/Recipe/review/dislike"))
 		{
 			var userId = ExtractUserIdFromQuery(request.RequestUri.Query);
 			var parsedUserId = Guid.TryParse(userId, out var validUserId) ? validUserId : Guid.NewGuid();

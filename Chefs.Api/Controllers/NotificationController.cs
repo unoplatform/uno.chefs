@@ -14,7 +14,10 @@ public class NotificationController() : ChefsControllerBase
 	/// </summary>
 	/// <returns>A list of notifications.</returns>
 	[HttpGet]
-	public IActionResult GetAll()
+	[Produces("application/json")]
+	[ProducesResponseType(typeof(IEnumerable<NotificationData>), 200)]
+	[ProducesResponseType(404)]
+	public ActionResult<IEnumerable<NotificationData>> GetAll()
 	{
 		var notifications = LoadData<List<NotificationData>>(_notificationsFilePath);
 		return Ok(notifications.ToImmutableList());

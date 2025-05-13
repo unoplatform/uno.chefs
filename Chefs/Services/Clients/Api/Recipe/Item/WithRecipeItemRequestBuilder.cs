@@ -11,7 +11,7 @@ using System;
 namespace Chefs.Services.Clients.Api.Recipe.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \api\recipe\{recipeId}
+    /// Builds and executes requests for operations under \api\Recipe\{recipeId}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     public partial class WithRecipeItemRequestBuilder : BaseRequestBuilder
@@ -36,7 +36,7 @@ namespace Chefs.Services.Clients.Api.Recipe.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithRecipeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/recipe/{recipeId}", pathParameters)
+        public WithRecipeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Recipe/{recipeId}", pathParameters)
         {
         }
         /// <summary>
@@ -44,7 +44,7 @@ namespace Chefs.Services.Clients.Api.Recipe.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithRecipeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/recipe/{recipeId}", rawUrl)
+        public WithRecipeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/Recipe/{recipeId}", rawUrl)
         {
         }
     }

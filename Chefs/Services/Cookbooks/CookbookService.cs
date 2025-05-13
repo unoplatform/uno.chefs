@@ -1,6 +1,4 @@
 using Chefs.Services.Clients;
-using Microsoft.Kiota.Abstractions.Serialization;
-using CookbookData = Chefs.Services.Clients.Models.CookbookData;
 
 namespace Chefs.Services.Cookbooks;
 
@@ -51,19 +49,13 @@ public class CookbookService(ChefsApiClient client, IMessenger messenger, IUserS
 	public async ValueTask<IImmutableList<Cookbook>> GetSaved(CancellationToken ct)
 	{
 		var currentUser = await userService.GetCurrent(ct);
-		await using var savedStream = await client.Api.Cookbook.Saved.GetAsync(config => config.QueryParameters.UserId = currentUser.Id, cancellationToken: ct);
-		var jsonResponse = await new StreamReader(savedStream).ReadToEndAsync(ct);
-		var savedCookbooksData = await KiotaJsonSerializer.DeserializeCollectionAsync<CookbookData>(jsonResponse, cancellationToken: ct);
-
+		var savedCookbooksData = await client.Api.Cookbook.Saved.GetAsync(config => config.QueryParameters.UserId = currentUser.Id, cancellationToken: ct);
 		return savedCookbooksData?.Select(c => new Cookbook(c)).ToImmutableList() ?? ImmutableList<Cookbook>.Empty;
 	}
 
 	public async ValueTask<IImmutableList<Cookbook>> GetByUser(Guid userId, CancellationToken ct)
 	{
-		await using var allCookbooksStream = await client.Api.Cookbook.GetAsync(cancellationToken: ct);
-		var jsonResponse = await new StreamReader(allCookbooksStream).ReadToEndAsync(ct);
-		var allCookbooksData = await KiotaJsonSerializer.DeserializeCollectionAsync<CookbookData>(jsonResponse, cancellationToken: ct);
-
+		var allCookbooksData = await client.Api.Cookbook.GetAsync(cancellationToken: ct);
 		return allCookbooksData?.Where(r => r.UserId == userId).Select(x => new Cookbook(x)).ToImmutableList() ?? ImmutableList<Cookbook>.Empty;
 	}
 }
