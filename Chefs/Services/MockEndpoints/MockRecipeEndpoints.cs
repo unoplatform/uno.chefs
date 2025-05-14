@@ -1,10 +1,7 @@
-using System.Web;
-
 namespace Chefs.Services;
 
 public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
 {
-
 	public string HandleRecipesRequest(HttpRequestMessage request)
 	{
 		var savedList = LoadData<List<Guid>>("SavedRecipes.json") ?? [];
@@ -80,7 +77,10 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 		if (Guid.TryParse(recipeId, out var gid))
 		{
 			var recipe = allRecipes.FirstOrDefault(x => x.Id == gid);
-			if (recipe != null) return serializer.ToString(recipe);
+			if (recipe != null)
+			{
+				return serializer.ToString(recipe);
+			}
 		}
 
 		return "{}";
@@ -89,7 +89,7 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 	private string HandleCategoriesRequest()
 	{
 		var allCategories = LoadData<List<CategoryData>>("categories.json")
-		                 ?? new List<CategoryData>();
+		                    ?? new List<CategoryData>();
 		return serializer.ToString(allCategories);
 	}
 

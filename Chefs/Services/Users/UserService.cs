@@ -1,6 +1,4 @@
 using Chefs.Services.Clients;
-using Microsoft.Kiota.Abstractions.Serialization;
-using UserData = Chefs.Services.Clients.Models.UserData;
 
 namespace Chefs.Services.Users;
 

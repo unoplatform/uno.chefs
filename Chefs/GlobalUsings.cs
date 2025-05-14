@@ -10,7 +10,9 @@ global using Chefs.Business.Models;
 global using Chefs.Data;
 global using Chefs.Presentation;
 global using Chefs.Services.Clients.Models;
+global using Chefs.Services.Clients.Models;
 global using Chefs.Services.Cookbooks;
+global using Chefs.Services.MockEndpoints;
 global using Chefs.Services.MockEndpoints;
 global using Chefs.Services.Notifications;
 global using Chefs.Services.Recipes;
@@ -34,8 +36,6 @@ global using Uno.Extensions.Reactive.Messaging;
 global using Uno.Extensions.Serialization;
 global using Uno.Extensions.Storage;
 global using Uno.Toolkit.UI;
-global using Chefs.Services.Clients.Models;
-global using Chefs.Services.MockEndpoints;
 global using Application = Microsoft.UI.Xaml.Application;
 global using Notification = Chefs.Business.Models.Notification;
 [assembly: Uno.Extensions.Reactive.Config.BindableGenerationTool(3)]

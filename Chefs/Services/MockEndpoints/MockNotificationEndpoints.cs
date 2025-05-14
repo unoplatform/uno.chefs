@@ -1,6 +1,3 @@
-
-using Chefs.Services.MockEndpoints;
-
 namespace Chefs.Services;
 
 public class MockNotificationEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
