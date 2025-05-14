@@ -82,7 +82,7 @@
 									Orientation="Horizontal">
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
-								Content="Prevs"
+								Content="Previous"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
 								Style="{StaticResource ChefsOutlinedButtonStyle}"
