@@ -101,13 +101,8 @@
 																			 Wide=Stretch}"
 							PrimaryAxisAlignment="{utu:Responsive Normal=Start,
 																  Wide=Center}">
-				<MediaPlayerElement AreTransportControlsEnabled="True"
-									AutoPlay="True"
-									Source="ms-appx:///Assets/Videos/CookingVideo.mp4">
-					<MediaPlayerElement.TransportControls>
-						<MediaTransportControls IsCompact="True" />
-					</MediaPlayerElement.TransportControls>
-				</MediaPlayerElement>
+				<Image Source="ms-appx:///Assets/Videos/CookingVideo.png"
+					   Stretch="UniformToFill" />
 
 			</utu:AutoLayout>
 
