@@ -35,8 +35,7 @@
 
 		<utu:TabBar Grid.Row="1"
 					Grid.Column="1"
-					Visibility="{utu:Responsive Normal=Visible,
-												Wide=Collapsed}"
+					Visibility="Collapsed"
 					uen:Region.Attached="True"
 					Style="{StaticResource BottomTabBarStyle}">
 			<utu:TabBarItem uen:Region.Name="Home"
@@ -66,8 +65,6 @@
 
 		<utu:AutoLayout Grid.RowSpan="2"
 						Background="{ThemeResource SurfaceBrush}"
-						Visibility="{utu:Responsive Normal=Collapsed,
-													Wide=Visible}"
 						Width="120">
 			<utu:TabBar uen:Region.Attached="True"
 						Style="{StaticResource VerticalTabBarStyle}"
