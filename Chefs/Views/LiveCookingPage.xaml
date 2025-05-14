@@ -49,7 +49,7 @@
 							   Text="Ingredients:"
 							   TextAlignment="Center"
 							   TextWrapping="Wrap" />
-					<muxc:ItemsRepeater ItemsSource="{Binding Step.Ingredients}"
+					<muxc:ItemsRepeater
 										utu:AutoLayout.PrimaryAlignment="Stretch">
 						<muxc:ItemsRepeater.Layout>
 							<win:LinedFlowLayout ItemsJustification="Center"
