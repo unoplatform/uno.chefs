@@ -114,11 +114,9 @@ public class RecipeController() : ChefsControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>No content.</returns>
 	[HttpPost("favorited")]
-	public IActionResult ToggleFavorite([FromQuery] Guid recipeId, [FromQuery] Guid userId)
-	{
+	public IActionResult ToggleFavorite([FromQuery] Guid recipeId, [FromQuery] Guid userId) =>
 		// We do not persist the favorite state in this example.
-		return NoContent();
-	}
+		NoContent();
 
 	/// <summary>
 	/// Saves or unsaves a recipe for a specific user.
@@ -127,11 +125,9 @@ public class RecipeController() : ChefsControllerBase
 	/// <param name="userId">The user ID.</param>
 	/// <returns>No content.</returns>
 	[HttpPost]
-	public IActionResult Save([FromBody] RecipeData recipe, [FromQuery] Guid userId)
-	{
+	public IActionResult Save([FromBody] RecipeData recipe, [FromQuery] Guid userId) =>
 		// We do not persist the favorite state in this example.
-		return NoContent();
-	}
+		NoContent();
 
 	/// <summary>
 	/// Creates a review for a recipe.

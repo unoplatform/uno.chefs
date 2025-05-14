@@ -3,8 +3,6 @@ using Chefs.Services.Clients.Models;
 
 namespace Chefs.Data;
 
-
-[JsonSerializable(typeof(LoginRequest))]
 [JsonSerializable(typeof(List<CookbookData>))]
 [JsonSerializable(typeof(CookbookData))]
 [JsonSerializable(typeof(RecipeData))]

@@ -1,5 +1,7 @@
 using Microsoft.OpenApi.Models;
 
+using Chefs.Api.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
