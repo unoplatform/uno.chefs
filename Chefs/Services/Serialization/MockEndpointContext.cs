@@ -18,6 +18,7 @@ namespace Chefs.Data;
 [JsonSerializable(typeof(ReviewData))]
 [JsonSerializable(typeof(IEnumerable<RecipeData>))]
 [JsonSerializable(typeof(TimeSpanObject))]
+[JsonSerializable(typeof(LoginRequest))]
 //[JsonSerializable(typeof(List<SavedCookbooksData>))]
 //[JsonSerializable(typeof(List<SavedRecipesData>))]
 //[JsonSerializable(typeof(IEnumerable<SavedRecipesData>))]

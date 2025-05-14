@@ -16,7 +16,6 @@ public class TimeSpanObjectConverter : JsonConverter<TimeSpanObject>
 				return new TimeSpanObject { Ticks = ts.Ticks };
 			throw new JsonException($"Cannot parse \"{s}\" as a TimeSpanObject");
 		}
-
 		using var doc = JsonDocument.ParseValue(ref reader);
 		var root = doc.RootElement;
 		if (root.ValueKind == JsonValueKind.Object
@@ -31,7 +30,7 @@ public class TimeSpanObjectConverter : JsonConverter<TimeSpanObject>
 	public override void Write(Utf8JsonWriter writer, TimeSpanObject value, JsonSerializerOptions options)
 	{
 		writer.WriteStartObject();
-		writer.WriteNumber("ticks", value.Ticks);
+		writer.WriteNumber("ticks", value.Ticks ?? 0);
 		writer.WriteEndObject();
 	}
 }
