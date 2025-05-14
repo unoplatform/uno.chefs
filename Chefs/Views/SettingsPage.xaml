@@ -20,48 +20,11 @@
 	<utu:AutoLayout>
 		<utu:NavigationBar Content="Settings"
 						   utu:AutoLayout.PrimaryAlignment="Auto" />
-		<!-- Horizontal scrolling is disabled due to this bug: https://github.com/unoplatform/uno/issues/12871 -->
+		<!--  Horizontal scrolling is disabled due to this bug: https://github.com/unoplatform/uno/issues/12871  -->
 		<ScrollViewer utu:AutoLayout.PrimaryAlignment="Stretch"
 					  HorizontalScrollMode="Disabled">
 			<utu:AutoLayout Padding="16,24"
 							Spacing="16">
-				<utu:AutoLayout>
-					<TextBlock utu:AutoLayout.CounterAlignment="Start"
-							   Foreground="{ThemeResource OnBackgroundBrush}"
-							   Style="{StaticResource BodyLarge}"
-							   Padding="8"
-							   Text="Personal Information" />
-					<utu:AutoLayout Padding="16"
-									Background="{ThemeResource SurfaceBrush}"
-									CornerRadius="8"
-									Spacing="16">
-						<TextBox PlaceholderText="Name"
-								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-								 Text="{Binding Profile.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-							<ut:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Person_Outline}"
-										  Foreground="{ThemeResource PrimaryBrush}" />
-							</ut:ControlExtensions.Icon>
-						</TextBox>
-						<TextBox PlaceholderText="Email"
-								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-								 Text="{Binding Profile.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-							<ut:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Mail_Outline}"
-										  Foreground="{ThemeResource PrimaryBrush}" />
-							</ut:ControlExtensions.Icon>
-						</TextBox>
-						<TextBox PlaceholderText="Mobile Number"
-								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-								 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-								 TextChanging="TextBox_TextChanging">
-							<ut:ControlExtensions.Icon>
-								<PathIcon Data="{StaticResource Icon_Phone_Iphone}"
-										  Foreground="{ThemeResource PrimaryBrush}" />
-							</ut:ControlExtensions.Icon>
-						</TextBox>
-					</utu:AutoLayout>
-				</utu:AutoLayout>
 				<utu:AutoLayout>
 					<TextBlock utu:AutoLayout.CounterAlignment="Start"
 							   Foreground="{ThemeResource OnBackgroundBrush}"
@@ -112,6 +75,43 @@
 							<ComboBox ItemsSource="{Binding ThemeOptions}"
 									  HorizontalAlignment="Right" />
 						</utu:AutoLayout>
+					</utu:AutoLayout>
+				</utu:AutoLayout>
+				<utu:AutoLayout>
+					<TextBlock utu:AutoLayout.CounterAlignment="Start"
+							   Foreground="{ThemeResource OnBackgroundBrush}"
+							   Style="{StaticResource BodyLarge}"
+							   Padding="8"
+							   Text="Settings" />
+					<utu:AutoLayout Padding="16"
+									Background="{ThemeResource SurfaceBrush}"
+									CornerRadius="8"
+									Spacing="16">
+						<TextBox PlaceholderText="Name"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+								 Text="{Binding Profile.FullName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							<ut:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Person_Outline}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+							</ut:ControlExtensions.Icon>
+						</TextBox>
+						<TextBox PlaceholderText="Email"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+								 Text="{Binding Profile.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+							<ut:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Mail_Outline}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+							</ut:ControlExtensions.Icon>
+						</TextBox>
+						<TextBox PlaceholderText="Mobile Number"
+								 Style="{StaticResource ChefsPrimaryTextBoxStyle}"
+								 Text="{Binding Profile.PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+								 TextChanging="TextBox_TextChanging">
+							<ut:ControlExtensions.Icon>
+								<PathIcon Data="{StaticResource Icon_Phone_Iphone}"
+										  Foreground="{ThemeResource PrimaryBrush}" />
+							</ut:ControlExtensions.Icon>
+						</TextBox>
 					</utu:AutoLayout>
 				</utu:AutoLayout>
 			</utu:AutoLayout>
