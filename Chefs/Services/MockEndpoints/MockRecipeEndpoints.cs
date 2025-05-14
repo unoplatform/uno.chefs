@@ -4,12 +4,12 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 {
 	public string HandleRecipesRequest(HttpRequestMessage request)
 	{
-			var savedList = LoadData<List<Guid>>("SavedRecipes.json") ?? [];
+		var savedList = LoadData<List<Guid>>("SavedRecipes.json") ?? [];
 
-			var allRecipes = LoadData<List<RecipeData>>("Recipes.json") ?? [];
+		var allRecipes = LoadData<List<RecipeData>>("Recipes.json") ?? [];
 
-			allRecipes.ForEach((_, r) => r.IsFavorite = savedList.Contains(r.Id ?? Guid.Empty));
-	
+		allRecipes.ForEach((_, r) => r.IsFavorite = savedList.Contains(r.Id ?? Guid.Empty));
+
 		var path = request.RequestUri.AbsolutePath;
 		if (path.Contains("/api/Recipe/categories"))
 		{
