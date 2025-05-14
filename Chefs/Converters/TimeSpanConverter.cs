@@ -26,7 +26,7 @@ public class TimeSpanObjectConverter : JsonConverter<TimeSpanObject>
 		using var doc = JsonDocument.ParseValue(ref reader);
 		var root = doc.RootElement;
 		if (root.ValueKind == JsonValueKind.Object
-		    && root.TryGetProperty("ticks", out var tickElem))
+			&& root.TryGetProperty("ticks", out var tickElem))
 		{
 			return new TimeSpanObject { Ticks = tickElem.GetInt64() };
 		}

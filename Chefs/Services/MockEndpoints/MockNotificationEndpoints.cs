@@ -5,7 +5,7 @@ public class MockNotificationEndpoints(string basePath, ISerializer serializer) 
 	public string HandleNotificationsRequest(HttpRequestMessage request)
 	{
 		var notifications = LoadData<List<NotificationData>>("Notifications.json")
-		                    ?? [];
+							?? [];
 
 		//Get all notifications
 		if (request.RequestUri.AbsolutePath == "/api/Notification" && request.Method == HttpMethod.Get)
