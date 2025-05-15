@@ -1,10 +1,10 @@
 namespace Chefs.Services;
 
-public class MockNotificationEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
+public class MockNotificationEndpoints(string basePath, ISerializer serializer, ILogger<BaseMockEndpoint> logger) : BaseMockEndpoint(serializer, logger)
 {
-	public string HandleNotificationsRequest(HttpRequestMessage request)
+	public async Task<string> HandleNotificationsRequest(HttpRequestMessage request)
 	{
-		var notifications = LoadData<List<NotificationData>>("Notifications.json")
+		var notifications = await LoadData<List<NotificationData>>("Notifications.json")
 							?? [];
 
 		//Get all notifications

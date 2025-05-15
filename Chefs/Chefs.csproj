@@ -249,7 +249,9 @@
 	</Target>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="..\AppData\*.json" LinkBase="AppData" />
+		<Content Include="..\AppData\*.json" LinkBase="AppData">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 </Project>

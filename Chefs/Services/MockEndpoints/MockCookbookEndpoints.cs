@@ -1,10 +1,11 @@
 namespace Chefs.Services;
 
-public class MockCookbookEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
+public class MockCookbookEndpoints(string basePath, ISerializer serializer, ILogger<BaseMockEndpoint> logger)
+	: BaseMockEndpoint(serializer, logger)
 {
-	public string HandleCookbooksRequest(HttpRequestMessage request)
+	public async Task<string> HandleCookbooksRequest(HttpRequestMessage request)
 	{
-		var cookbooks = LoadData<List<CookbookData>>("Cookbooks.json") ?? new List<CookbookData>();
+		var cookbooks = await LoadData<List<CookbookData>>("Cookbooks.json") ?? new List<CookbookData>();
 
 		if (request.RequestUri.AbsolutePath == "/api/Cookbook")
 		{
@@ -14,7 +15,7 @@ public class MockCookbookEndpoints(string basePath, ISerializer serializer) : Ba
 		//Retrieving saved cookbooks for a user
 		if (request.RequestUri.AbsolutePath.Contains("/api/Cookbook/saved") && request.Method == HttpMethod.Get)
 		{
-			var savedCookbooksIds = LoadData<List<Guid>>("SavedCookbooks.json") ?? new List<Guid>();
+			var savedCookbooksIds = await LoadData<List<Guid>>("SavedCookbooks.json") ?? new List<Guid>();
 			var savedCookbooks = cookbooks
 				.Where(cb => savedCookbooksIds.Contains((Guid)cb.Id))
 				.ToList();

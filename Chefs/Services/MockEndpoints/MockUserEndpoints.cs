@@ -1,10 +1,10 @@
 namespace Chefs.Services;
 
-public class MockUserEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
+public class MockUserEndpoints(string basePath, ISerializer serializer, ILogger<BaseMockEndpoint> logger) : BaseMockEndpoint(serializer, logger)
 {
-	public string HandleUsersRequest(HttpRequestMessage request)
+	public async Task<string> HandleUsersRequest(HttpRequestMessage request)
 	{
-		var users = LoadData<List<UserData>>("Users.json") ?? [];
+		var users = await LoadData<List<UserData>>("Users.json") ?? [];
 
 		//authenticate user
 		if (request.RequestUri.AbsolutePath.Contains("/api/User/authenticate") && request.Method == HttpMethod.Post)

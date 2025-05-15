@@ -1,19 +1,18 @@
 namespace Chefs.Services;
 
-public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
+public class MockRecipeEndpoints(string basePath, ISerializer serializer, ILogger<BaseMockEndpoint> logger) : BaseMockEndpoint(serializer, logger)
 {
-	public string HandleRecipesRequest(HttpRequestMessage request)
+	public async Task<string> HandleRecipesRequest(HttpRequestMessage request)
 	{
-		var savedList = LoadData<List<Guid>>("SavedRecipes.json") ?? [];
-
-		var allRecipes = LoadData<List<RecipeData>>("Recipes.json") ?? [];
+		var savedList = await LoadData<List<Guid>>("SavedRecipes.json") ?? [];
+		var allRecipes = await LoadData<List<RecipeData>>("Recipes.json") ?? [];
 
 		allRecipes.ForEach((_, r) => r.IsFavorite = savedList.Contains(r.Id ?? Guid.Empty));
 
 		var path = request.RequestUri.AbsolutePath;
 		if (path.Contains("/api/Recipe/categories"))
 		{
-			return HandleCategoriesRequest();
+			return await HandleCategoriesRequest();
 		}
 
 		if (path.Contains("/api/Recipe/trending"))
@@ -86,9 +85,9 @@ public class MockRecipeEndpoints(string basePath, ISerializer serializer) : Base
 		return "{}";
 	}
 
-	private string HandleCategoriesRequest()
+	private async Task<string> HandleCategoriesRequest()
 	{
-		var allCategories = LoadData<List<CategoryData>>("categories.json")
+		var allCategories = await LoadData<List<CategoryData>>("categories.json")
 							?? new List<CategoryData>();
 		return serializer.ToString(allCategories);
 	}
