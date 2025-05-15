@@ -1,0 +1,10 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:utu="using:Uno.Toolkit.UI">
+
+	<Style TargetType="MediaPlayerElement">
+		<Setter Property="Source" Value="ms-appx:///Assets/Videos/CookingVideo.mp4" />
+		<Setter Property="AutoPlay" Value="True" />
+	</Style>
+
+</ResourceDictionary>
