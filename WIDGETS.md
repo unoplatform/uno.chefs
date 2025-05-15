@@ -2,7 +2,7 @@
 
 Chefs contains many UI/UX patterns that we would like to offer as standalone widgets in the Hot Design Toolbox. Below is a comprehensive list of areas within Chefs we could turn into widgets:
 
-- [Welcome carousel](#large-carousel)
+- [Welcome carousel](#responsive-large-carousel)
 - [Login form](#login-form)
 - [HomePage TopBar](#general-navbar-with-notifications-and-more)
 - [Settings](#settings)
@@ -20,11 +20,11 @@ Chefs contains many UI/UX patterns that we would like to offer as standalone wid
 
 ## Welcome/Login
 
-### Large Carousel
+### Responsive Large Carousel
 
 A large carousel widget, like the one on the WelcomePage that uses `PipsPager` along with with Next and Previous buttons.
 
-- The [XAML](https://github.com/unoplatform/uno.chefs/blob/e53fbcb60600714abbd0a93d41378b44f667fd48/Chefs/Views/WelcomePage.xaml#L22-L113) is pretty much the whole WelcomePage. It's made of two `FlipView`s and then the buttons that control them. The image only `FlipView` is hidden when screen size is small.
+- The [XAML](https://github.com/unoplatform/uno.chefs/blob/e53fbcb60600714abbd0a93d41378b44f667fd48/Chefs/Views/WelcomePage.xaml#L22-L113) is the whole WelcomePage. It's made of two `FlipView`s and then the buttons that control them. The image only `FlipView` is hidden when screen size is small.
 
 ```xml
 <utu:AutoLayout utu:SafeArea.Insets="VisibleBounds"
