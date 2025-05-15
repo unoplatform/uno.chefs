@@ -1,6 +1,6 @@
 # Uno.Chefs Widgets
 
-Chefs contains many UI/UX patterns that we would like to offer as standalone widgets in the Hot Design Toolbox. Here is a comprehensive list of areas within Chefs we could turn into widgets :
+Chefs contains many UI/UX patterns that we would like to offer as standalone widgets in the Hot Design Toolbox. Below is a comprehensive list of areas within Chefs we could turn into widgets:
 
 - [Welcome carousel](#large-carousel)
 - [Login form](#login-form)
@@ -22,129 +22,65 @@ Chefs contains many UI/UX patterns that we would like to offer as standalone wid
 
 ### Large Carousel
 
-A large carousel widget, like the one on the WelcomePage with `Next` and `Previous` buttons. The image only `FlipView` is hidden when screen size is small.
+A large carousel widget, like the one on the WelcomePage that uses `PipsPager` along with with Next and Previous buttons.
 
-- The [XAML](https://github.com/unoplatform/uno.chefs/blob/be397784a5a6a7183b617531c1b6d921c15332e6/src/Chefs/Views/WelcomePage.xaml#L22-L181) is pretty much the whole WelcomePage. It's made of two `FlipView`s and then the buttons that control them. One `FlipView` is for the images and the other one is for the text.
+- The [XAML](https://github.com/unoplatform/uno.chefs/blob/e53fbcb60600714abbd0a93d41378b44f667fd48/Chefs/Views/WelcomePage.xaml#L22-L113) is pretty much the whole WelcomePage. It's made of two `FlipView`s and then the buttons that control them. The image only `FlipView` is hidden when screen size is small.
 
 ```xml
-<utu:AutoLayout Orientation="{utu:Responsive Narrow=Vertical, Wide=Horizontal}">
+<utu:AutoLayout utu:SafeArea.Insets="VisibleBounds"
+                Orientation="{utu:Responsive Normal=Vertical,
+                                             Wide=Horizontal}">
     <FlipView IsEnabled="False"
-                Visibility="{utu:Responsive Narrow=Collapsed, Wide=Visible}"
-                utu:AutoLayout.PrimaryAlignment="Stretch"
-                SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+              Visibility="{utu:Responsive Normal=Collapsed,
+                                          Wide=Visible}"
+              utu:AutoLayout.PrimaryAlignment="Stretch"
+              SelectedIndex="{Binding Pages.CurrentIndex}">
         <FlipView.Items>
-            <Image Source="ms-appx:///Assets/Welcome/first_splash_wide_screen.png"
-                    Stretch="UniformToFill" />
-            <Image Source="ms-appx:///Assets/Welcome/second_splash_wide_screen.png"
-                    Stretch="UniformToFill" />
-            <Image Source="ms-appx:///Assets/Welcome/third_splash_wide_screen.png"
-                    Stretch="UniformToFill" />
+            <!-- First Splash image -->
+            <Image Source="ms-appx:///Assets/Welcome/Wide/first_splash_screen.jpg"
+                   Stretch="UniformToFill" />
+
+            <!-- Second Splash image -->
+            <Image Source="ms-appx:///Assets/Welcome/Wide/second_splash_screen.jpg"
+                   Stretch="UniformToFill" />
+
+            <!-- Third Splash image -->
+            <Image Source="ms-appx:///Assets/Welcome/Wide/third_splash_screen.jpg"
+                   Stretch="UniformToFill" />
         </FlipView.Items>
     </FlipView>
 
     <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
         <FlipView x:Name="flipView"
-                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                    Background="Transparent"
-                    SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                  utu:AutoLayout.PrimaryAlignment="Stretch"
+                  Background="Transparent"
+                  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
+                  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <FlipView.Items>
-                <!-- First onboarding page -->
-                <utu:AutoLayout CounterAxisAlignment="Center"
-                                Spacing="24">
-                    <Image Visibility="{utu:Responsive Narrow=Visible,
-                                                        Wide=Collapsed}"
-                            MaxHeight="270"
-                            Source="ms-appx:///Assets/Welcome/first_splash_screen.png"
-                            Stretch="UniformToFill" />
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                    CounterAxisAlignment="Center"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    Spacing="24">
-                        <Image Width="160"
-                                Height="90"
-                                Source="{ThemeResource ChefsLogoWithIcon}" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                    Style="{StaticResource TitleLarge}"
-                                    Text="Welcome to Your App!"
-                                    Padding="32,0"
-                                    TextWrapping="Wrap" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                    Style="{StaticResource TitleMedium}"
-                                    Text="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences."
-                                    Padding="32,0"
-                                    TextWrapping="Wrap" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
-                <!-- Second onboarding page -->
-                <utu:AutoLayout CounterAxisAlignment="Center"
-                                Spacing="24">
-                    <Image Visibility="{utu:Responsive Narrow=Visible,
-                                                        Wide=Collapsed}"
-                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                            MaxHeight="270"
-                            Source="ms-appx:///Assets/Welcome/second_splash_screen.png"
-                            Stretch="UniformToFill" />
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                    CounterAxisAlignment="Center"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    Spacing="24">
-                        <Image Width="160"
-                                Height="90"
-                                utu:AutoLayout.CounterAlignment="Center"
-                                Source="{ThemeResource ChefsLogoWithIcon}" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                    Style="{StaticResource TitleLarge}"
-                                    Text="Explore Thousands of Recipes"
-                                    Padding="32,0"
-                                    TextWrapping="Wrap" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                    Style="{StaticResource TitleMedium}"
-                                    Text="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes."
-                                    Padding="32,0"
-                                    TextWrapping="Wrap" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
-                <!-- Third onboarding page -->
-                <utu:AutoLayout CounterAxisAlignment="Center"
-                                Spacing="24">
-                    <Image Visibility="{utu:Responsive Narrow=Visible,
-                                                        Wide=Collapsed}"
-                            utu:AutoLayout.PrimaryAlignment="Stretch"
-                            MaxHeight="270"
-                            Source="ms-appx:///Assets/Welcome/third_splash_screen.png"
-                            Stretch="UniformToFill" />
-                    <utu:AutoLayout PrimaryAxisAlignment="Center"
-                                    CounterAxisAlignment="Center"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                                    Spacing="24">
-                        <Image Width="160"
-                                Height="90"
-                                Source="{ThemeResource ChefsLogoWithIcon}" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                    Style="{StaticResource TitleLarge}"
-                                    Text="Personalize Your Recipe Journey"
-                                    Padding="32,0"
-                                    TextWrapping="Wrap" />
-                        <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                    Style="{StaticResource TitleMedium}"
-                                    Text="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community."
-                                    Padding="32,0"
-                                    TextWrapping="Wrap" />
-                    </utu:AutoLayout>
-                </utu:AutoLayout>
+                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/first_splash_screen.jpg"
+                                  Title="Welcome to your App!"
+                                  VerticalContentAlignment="Bottom"
+                                  Description="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences." />
+                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/second_splash_screen.jpg"
+                                  VerticalContentAlignment="Bottom"
+                                  Title="Explore Thousands of Recipes"
+                                  Description="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes." />
+                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/third_splash_screen.jpg"
+                                  Title="Personalize Your Recipe Journey"
+                                  VerticalContentAlignment="Bottom"
+                                  Description="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community." />
             </FlipView.Items>
         </FlipView>
         <utu:AutoLayout Padding="32,0,32,15"
                         PrimaryAxisAlignment="End"
                         Spacing="16">
             <!-- Pips -->
-            <muxc:PipsPager x:Name="PipsPager"
+            <muxc:PipsPager x:Name="pipsPager"
                             Margin="0,0,0,10"
                             utu:AutoLayout.CounterAlignment="Center"
                             NumberOfPages="3"
                             MaxVisiblePips="3"
                             Orientation="Horizontal"
-                            SelectedPageIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                             Style="{StaticResource PipsPagerStyle}" />
 
             <!-- Buttons -->
@@ -176,6 +112,8 @@ A large carousel widget, like the one on the WelcomePage with `Next` and `Previo
                         uen:Navigation.Request="-/Login"
                         Foreground="{ThemeResource PrimaryBrush}"
                         CornerRadius="4"
+                        AutomationProperties.AutomationId="SkipButton"
+                        x:Name="SkipButton"
                         Style="{StaticResource TextButtonStyle}" />
             </utu:AutoLayout>
         </utu:AutoLayout>
@@ -189,7 +127,7 @@ A large carousel widget, like the one on the WelcomePage with `Next` and `Previo
 public IState<IntIterator> Pages => State<IntIterator>.Value(this, () => new IntIterator(Enumerable.Range(0, 3).ToImmutableList()));
 ```
 
-![WelcomePage FlipViews](/doc/assets/welcome-page.png)
+![WelcomePage FlipView](/doc/assets/welcome-page.png)
 
 ### Login form
 
@@ -376,7 +314,7 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
 </utu:AutoLayout>
 ```
 
-- The [code-behind](https://github.com/unoplatform/uno.chefs/blob/be397784a5a6a7183b617531c1b6d921c15332e6/src/Chefs/Presentation/LoginModel.cs#L7-L22) for Login is just a CommandBuilder mixed with Authentication. The [code-behind for Registration](https://github.com/unoplatform/uno.chefs/blob/be397784a5a6a7183b617531c1b6d921c15332e6/src/Chefs/Presentation/RegistrationModel.cs#L10C2-L27C3) doesn't use CommandBuilder.
+- The [code-behind](https://github.com/unoplatform/uno.chefs/blob/e53fbcb60600714abbd0a93d41378b44f667fd48/Chefs/Presentation/LoginModel.cs#L7-L22) for Login is just a CommandBuilder mixed with Authentication. The [code-behind for Registration](https://github.com/unoplatform/uno.chefs/blob/e53fbcb60600714abbd0a93d41378b44f667fd48/Chefs/Presentation/RegistrationModel.cs#L10-L27) doesn't use CommandBuilder.
 
 ```csharp
 public IState<Credentials> UserCredentials => State<Credentials>.Value(this, () => new Credentials());
@@ -386,14 +324,14 @@ public ICommand Login => Command.Create(b => b.Given(UserCredentials).When(CanLo
 private bool CanLogin(Credentials userCredentials)
 {
     return userCredentials is not null &&
-            !string.IsNullOrWhiteSpace(userCredentials.Username) &&
-            !string.IsNullOrWhiteSpace(userCredentials.Password);
+           !string.IsNullOrWhiteSpace(userCredentials.Username) &&
+           !string.IsNullOrWhiteSpace(userCredentials.Password);
 }
 
 private async ValueTask DoLogin(Credentials userCredentials, CancellationToken ct)
 {
     await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string> { { "Username", userCredentials.Username! }, { "Password", userCredentials.Password! } });
-    await Navigator.NavigateViewModelAsync<MainModel>(this, qualifier: Qualifiers.ClearBackStack, cancellation: ct);
+    await NavigateToMain(ct);
 }
 ```
 
@@ -456,7 +394,7 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
 </utu:NavigationBar>
 ```
 
-- The [NotificationsPage in Chefs](https://github.com/unoplatform/uno.chefs/blob/d9e419affa5b34db2a22707e48d1e0d029899bad/src/Chefs/Views/NotificationsPage.xaml#L91-L307) is a bit heavy.
+- The [NotificationsPage in Chefs](https://github.com/unoplatform/uno.chefs/blob/d9e419affa5b34db2a22707e48d1e0d029899bad/src/Chefs/Views/NotificationsPage.xaml#L91-L307).
 
 ```xml
 <Page.Resources>
@@ -1445,66 +1383,12 @@ A share widget. The user clicks on the share button and a native sharing popup o
 </AppBarButton>
 ```
 
-- The [code-behind](https://github.com/unoplatform/uno.chefs/blob/d9e419affa5b34db2a22707e48d1e0d029899bad/src/Chefs/Presentation/RecipeDetailsModel.cs#L71-L119) is a bit heavy but needed for cross-platform sharing.
+- The [code-behind](https://github.com/unoplatform/uno.chefs/blob/e53fbcb60600714abbd0a93d41378b44f667fd48/Chefs/Presentation/RecipeDetailsModel.cs#L64C2-L67C3) calls a service which is a bit heavy but needed for cross-platform sharing.
 
 ```csharp
-public partial record RecipeDetailsModel
+public async Task Share(CancellationToken ct)
 {
-    private static readonly Guid _dtm_iid = new Guid("a5caee9b-8708-49d1-8d36-67d25a8da00c");
-
-#if WINDOWS
-    static IDataTransferManagerInterop DataTransferManagerInterop => DataTransferManager.As<IDataTransferManagerInterop>();
-#endif
-    
-    public async ValueTask Share(CancellationToken ct)
-    {
-#if WINDOWS
-        IntPtr result;
-        var hwnd = WindowNative.GetWindowHandle(App.MainWindow);
-        result = DataTransferManagerInterop.GetForWindow(hwnd, _dtm_iid);
-        DataTransferManager dataTransferManager = MarshalInterface<DataTransferManager>.FromAbi(result);
-        dataTransferManager.DataRequested += DataRequested;
-        DataTransferManagerInterop.ShowShareUIForWindow(hwnd, null);
-#else
-        var dataTransferManager = DataTransferManager.GetForCurrentView();
-        dataTransferManager.DataRequested += DataRequested;
-        DataTransferManager.ShowShareUI();
-#endif
-    }
-
-    private async void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
-    {
-        args.Request.Data.Properties.Title = $"Sharing {Recipe.Name}";
-        args.Request.Data.Properties.Description = Recipe.Details ?? "Chefs Recipe";
-        args.Request.Data.SetText(await CreateShareText());
-    }
-
-    private async ValueTask<string> CreateShareText()
-    {
-        var shareTextBuilder = new StringBuilder();
-        var steps = await Steps;
-
-        foreach (var step in steps)
-        {
-            shareTextBuilder.AppendLine($"Step {step.Number}: {step.Name}")
-                            .AppendLine($"Ingredients: {string.Join(", ", step.Ingredients ?? ImmutableList<string>.Empty)}")
-                            .AppendLine($"Description: {step.Description}")
-                            .AppendLine();
-        }
-
-        return shareTextBuilder.ToString();
-    }
-
-#if WINDOWS
-    [ComImport]
-    [Guid("3A3DCD6C-3EAB-43DC-BCDE-45671CE800C8")]
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IDataTransferManagerInterop
-    {
-        IntPtr GetForWindow([In] IntPtr appWindow, [In] ref Guid riid);
-        void ShowShareUIForWindow(IntPtr appWindow, ShareUIOptions options);
-    }
-#endif
+    await _shareService.ShareRecipe(Recipe, await Steps, ct);
 }
 ```
 
