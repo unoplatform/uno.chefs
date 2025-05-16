@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using Chefs.Services.Clients.Models;
+using Chefs.Client.Models;
 
 namespace Chefs.Data;
 

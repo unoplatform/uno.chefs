@@ -1,4 +1,4 @@
-using RecipeData = Chefs.Client.Data.Models.RecipeData;
+using RecipeData = Chefs.Client.Models.RecipeData;
 
 namespace Chefs.Business.Models;
 

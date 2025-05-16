@@ -9,7 +9,7 @@ global using System.Windows.Input;
 global using Chefs.Business.Models;
 global using Chefs.Data;
 global using Chefs.Presentation;
-global using Chefs.Client.Data.Models;
+global using Chefs.Client.Models;
 global using Chefs.Business.Services.Cookbooks;
 global using Chefs.Client.Data.MockEndpoints;
 global using Chefs.Business.Services.Notifications;

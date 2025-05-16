@@ -1,4 +1,4 @@
-using ReviewData = Chefs.Services.Clients.Models.ReviewData;
+using ReviewData = Chefs.Client.Models.ReviewData;
 
 namespace Chefs.Business.Models;
 

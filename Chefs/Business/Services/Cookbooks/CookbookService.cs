@@ -1,5 +1,5 @@
 using Chefs.Business.Services.Users;
-using Chefs.Services.Clients;
+using Chefs.Client;
 
 namespace Chefs.Business.Services.Cookbooks;
 

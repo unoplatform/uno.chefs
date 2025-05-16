@@ -1,4 +1,4 @@
-using Chefs.Services.Clients.Models;
+using Chefs.Client.Models;
 using Microsoft.UI.Xaml.Data;
 
 namespace Chefs.Converters;

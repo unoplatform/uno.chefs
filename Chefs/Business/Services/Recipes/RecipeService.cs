@@ -1,6 +1,6 @@
 using Chefs.Business.Services.Users;
-using Chefs.Services.Clients;
-using ReviewData = Chefs.Services.Clients.Models.ReviewData;
+using Chefs.Client;
+using ReviewData = Chefs.Client.Models.ReviewData;
 
 namespace Chefs.Business.Services.Recipes;
 

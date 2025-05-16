@@ -1,4 +1,4 @@
-using NotificationData = Chefs.Services.Clients.Models.NotificationData;
+using NotificationData = Chefs.Client.Models.NotificationData;
 
 namespace Chefs.Business.Models;
 

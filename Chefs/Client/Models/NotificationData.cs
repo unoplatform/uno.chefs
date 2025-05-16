@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 
-namespace Chefs.Services.Clients.Models
+namespace Chefs.Client.Models
 {
 	[global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
 #pragma warning disable CS1591
@@ -42,12 +42,12 @@ namespace Chefs.Services.Clients.Models
 		/// <summary>
 		/// Creates a new instance of the appropriate class based on discriminator value
 		/// </summary>
-		/// <returns>A <see cref="global::Chefs.Services.Clients.Models.NotificationData"/></returns>
+		/// <returns>A <see cref="global::Chefs.Client.Models.NotificationData"/></returns>
 		/// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-		public static global::Chefs.Services.Clients.Models.NotificationData CreateFromDiscriminatorValue(IParseNode parseNode)
+		public static global::Chefs.Client.Models.NotificationData CreateFromDiscriminatorValue(IParseNode parseNode)
 		{
 			_ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-			return new global::Chefs.Services.Clients.Models.NotificationData();
+			return new global::Chefs.Client.Models.NotificationData();
 		}
 
 		/// <summary>

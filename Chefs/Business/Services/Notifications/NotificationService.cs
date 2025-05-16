@@ -1,4 +1,4 @@
-using Chefs.Services.Clients;
+using Chefs.Client;
 
 namespace Chefs.Business.Services.Notifications;
 

@@ -1,4 +1,4 @@
-using NutritionData = Chefs.Services.Clients.Models.NutritionData;
+using NutritionData = Chefs.Client.Models.NutritionData;
 namespace Chefs.Business.Models;
 
 public partial record Nutrition
