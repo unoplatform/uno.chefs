@@ -1,7 +1,8 @@
+using Chefs.Business.Services.Users;
 using Chefs.Services.Clients;
 using ReviewData = Chefs.Services.Clients.Models.ReviewData;
 
-namespace Chefs.Services.Recipes;
+namespace Chefs.Business.Services.Recipes;
 
 public class RecipeService(
 	ChefsApiClient api,

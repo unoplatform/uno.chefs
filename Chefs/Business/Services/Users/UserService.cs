@@ -1,6 +1,6 @@
 using Chefs.Services.Clients;
 
-namespace Chefs.Services.Users;
+namespace Chefs.Business.Services.Users;
 
 public class UserService(
 	ChefsApiClient client,

@@ -1,4 +1,4 @@
-namespace Chefs.Services.Settings;
+namespace Chefs.Business.Services.Settings;
 
 public class SettingsService(IWritableOptions<AppConfig> chefAppOptions) : ISettingsService
 {

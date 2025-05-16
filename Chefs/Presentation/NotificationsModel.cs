@@ -1,3 +1,5 @@
+using Chefs.Business.Services.Notifications;
+
 namespace Chefs.Presentation;
 public partial record NotificationsModel
 {

@@ -1,6 +1,7 @@
+using Chefs.Business.Services.Users;
 using Chefs.Services.Clients;
 
-namespace Chefs.Services.Cookbooks;
+namespace Chefs.Business.Services.Cookbooks;
 
 public class CookbookService(ChefsApiClient client, IMessenger messenger, IUserService userService)
 	: ICookbookService

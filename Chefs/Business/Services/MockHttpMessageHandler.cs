@@ -1,7 +1,8 @@
 using System.Net;
 using System.Text;
+using Chefs.Client.Data.MockEndpoints;
 
-namespace Chefs.Services;
+namespace Chefs.Business.Services;
 
 public class MockHttpMessageHandler : HttpMessageHandler
 {

@@ -1,4 +1,4 @@
-namespace Chefs.Services.Recipes;
+namespace Chefs.Business.Services.Recipes;
 
 /// <summary>
 /// Implements recipe related methods

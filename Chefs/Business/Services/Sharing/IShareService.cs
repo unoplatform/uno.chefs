@@ -1,4 +1,4 @@
-namespace Chefs.Services.Sharing;
+namespace Chefs.Business.Services.Sharing;
 
 /// <summary>
 /// Implements content sharing related methods

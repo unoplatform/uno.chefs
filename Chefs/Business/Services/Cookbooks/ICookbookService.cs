@@ -1,4 +1,4 @@
-namespace Chefs.Services.Cookbooks;
+namespace Chefs.Business.Services.Cookbooks;
 
 public interface ICookbookService
 {

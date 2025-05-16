@@ -1,6 +1,6 @@
 using Chefs.Services.Clients;
 
-namespace Chefs.Services.Notifications;
+namespace Chefs.Business.Services.Notifications;
 
 public class NotificationService(ChefsApiClient client) : INotificationService
 {

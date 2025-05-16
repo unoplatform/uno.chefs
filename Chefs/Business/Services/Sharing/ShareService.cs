@@ -4,7 +4,7 @@ using Windows.ApplicationModel.DataTransfer;
 using WinRT;
 using WinRT.Interop;
 
-namespace Chefs.Services.Sharing;
+namespace Chefs.Business.Services.Sharing;
 
 public class ShareService() : IShareService
 {
@@ -22,7 +22,7 @@ public class ShareService() : IShareService
 		_steps = steps;
 
 #if WINDOWS
-		IntPtr result;
+		nint result;
 		var hwnd = WindowNative.GetWindowHandle(App.MainWindow);
 		result = DataTransferManagerInterop.GetForWindow(hwnd, _dtm_iid);
 		DataTransferManager dataTransferManager = MarshalInterface<DataTransferManager>.FromAbi(result);
@@ -65,8 +65,8 @@ public class ShareService() : IShareService
 	[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 	public interface IDataTransferManagerInterop
 	{
-		IntPtr GetForWindow([In] IntPtr appWindow, [In] ref Guid riid);
-		void ShowShareUIForWindow(IntPtr appWindow, ShareUIOptions options);
+		nint GetForWindow([In] nint appWindow, [In] ref Guid riid);
+		void ShowShareUIForWindow(nint appWindow, ShareUIOptions options);
 	}
 #endif
 }
