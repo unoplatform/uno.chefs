@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
-
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<!--
 			Adding NoWarn to remove build warnings
 			NU1507: Warning when there are multiple package sources when using CPM with no source mapping
