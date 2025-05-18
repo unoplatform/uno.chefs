@@ -1,6 +1,6 @@
 namespace Chefs.Services;
 
-public class MockNotificationEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
+public class MockNotificationEndpoints(ISerializer serializer) : BaseMockEndpoint(serializer)
 {
 	public string HandleNotificationsRequest(HttpRequestMessage request)
 	{

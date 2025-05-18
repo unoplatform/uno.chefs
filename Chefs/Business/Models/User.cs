@@ -5,7 +5,7 @@ public partial record User
 {
 	internal User(UserData user)
 	{
-		Id = (Guid)user.Id;
+		Id = user.Id ?? Guid.NewGuid();
 		UrlProfileImage = user.UrlProfileImage;
 		FullName = user.FullName;
 		Description = user.Description;

@@ -1,6 +1,6 @@
 namespace Chefs.Services;
 
-public class MockRecipeEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
+public class MockRecipeEndpoints(ISerializer serializer) : BaseMockEndpoint(serializer)
 {
 	public string HandleRecipesRequest(HttpRequestMessage request)
 	{

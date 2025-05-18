@@ -19,16 +19,16 @@ public class UserService(
 		return popularCreatorsData?.Select(data => new User(data)).ToImmutableList() ?? ImmutableList<User>.Empty;
 	}
 
-	public async ValueTask<User> GetCurrent(CancellationToken ct)
+	public async ValueTask<User?> GetCurrent(CancellationToken ct)
 	{
 		var currentUserData = await client.Api.User.Current.GetAsync(cancellationToken: ct);
-		return new User(currentUserData);
+		return currentUserData is { } user ? new User(currentUserData) : null;
 	}
 
-	public async ValueTask<User> GetById(Guid userId, CancellationToken ct)
+	public async ValueTask<User?> GetById(Guid userId, CancellationToken ct)
 	{
 		var userData = await client.Api.User[userId].GetAsync(cancellationToken: ct);
-		return new User(userData);
+		return userData is { } user ? new User(userData) : null;
 	}
 
 	public async ValueTask Update(User user, CancellationToken ct)

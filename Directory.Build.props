@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
 		<!--
 			Adding NoWarn to remove build warnings

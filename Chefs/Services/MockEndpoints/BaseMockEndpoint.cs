@@ -11,7 +11,13 @@ public abstract class BaseMockEndpoint(ISerializer serializer)
 			throw new Exception($"Resource {fileName} not found in assembly {assembly.FullName}");
 		}
 		using var stream = assembly.GetManifestResourceStream(resourceName);
-		using var reader = new System.IO.StreamReader(stream);
-		return serializer.FromString<T>(reader.ReadToEnd());
+
+		if (stream is not null)
+		{
+			using var reader = new System.IO.StreamReader(stream);
+			return serializer.FromString<T>(reader.ReadToEnd());
+		}
+
+		return default;
 	}
 }

@@ -4,25 +4,25 @@ using Microsoft.UI.Xaml.Data;
 namespace Chefs.Converters;
 public class FromBoolToValueConverter : IValueConverter
 {
-	public object NullValue { get; set; }
+	public object? NullValue { get; set; }
 
-	public object FalseValue { get; set; }
+	public object? FalseValue { get; set; }
 
-	public object TrueValue { get; set; }
+	public object? TrueValue { get; set; }
 
-	public object NullOrFalseValue
+	public object? NullOrFalseValue
 	{
 		get => FalseValue;
 		set => FalseValue = NullValue = value;
 	}
 
-	public object NullOrTrueValue
+	public object? NullOrTrueValue
 	{
 		get => TrueValue;
 		set => TrueValue = NullValue = value;
 	}
 
-	public object Convert(object value, Type targetType, object parameter, string language)
+	public object? Convert(object value, Type targetType, object parameter, string language)
 	{
 		if (value is null)
 		{
@@ -39,7 +39,7 @@ public class FromBoolToValueConverter : IValueConverter
 		}
 	}
 
-	public object ConvertBack(object value, Type targetType, object parameter, string language)
+	public object? ConvertBack(object value, Type targetType, object parameter, string language)
 	{
 		return value;
 	}

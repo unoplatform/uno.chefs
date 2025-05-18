@@ -5,8 +5,6 @@ namespace Chefs.Services;
 
 public class MockHttpMessageHandler : HttpMessageHandler
 {
-	private readonly string _basePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "AppData");
-
 	private readonly MockRecipeEndpoints _mockRecipeEndpoints;
 	private readonly MockUserEndpoints _mockUserEndpoints;
 	private readonly MockCookbookEndpoints _mockCookbookEndpoints;
@@ -14,10 +12,10 @@ public class MockHttpMessageHandler : HttpMessageHandler
 
 	public MockHttpMessageHandler(ISerializer serializer)
 	{
-		_mockRecipeEndpoints = new MockRecipeEndpoints(_basePath, serializer);
-		_mockUserEndpoints = new MockUserEndpoints(_basePath, serializer);
-		_mockCookbookEndpoints = new MockCookbookEndpoints(_basePath, serializer);
-		_mockNotificationEndpoints = new MockNotificationEndpoints(_basePath, serializer);
+		_mockRecipeEndpoints = new MockRecipeEndpoints(serializer);
+		_mockUserEndpoints = new MockUserEndpoints(serializer);
+		_mockCookbookEndpoints = new MockCookbookEndpoints(serializer);
+		_mockNotificationEndpoints = new MockNotificationEndpoints(serializer);
 	}
 
 	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

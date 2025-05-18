@@ -12,7 +12,7 @@ public interface IUserService
 	/// <returns>
 	/// User logged in
 	/// </returns>
-	ValueTask<User> GetCurrent(CancellationToken ct);
+	ValueTask<User?> GetCurrent(CancellationToken ct);
 
 	/// <summary>
 	/// Feed of the current user.
@@ -44,7 +44,7 @@ public interface IUserService
 	/// <returns>
 	/// User
 	/// </returns>
-	ValueTask<User> GetById(Guid userId, CancellationToken ct);
+	ValueTask<User?> GetById(Guid userId, CancellationToken ct);
 
 	// <summary>
 	// Authentication method

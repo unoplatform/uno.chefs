@@ -1,6 +1,6 @@
 namespace Chefs.Services;
 
-public class MockUserEndpoints(string basePath, ISerializer serializer) : BaseMockEndpoint(serializer)
+public class MockUserEndpoints(ISerializer serializer) : BaseMockEndpoint(serializer)
 {
 	public string HandleUsersRequest(HttpRequestMessage request)
 	{
