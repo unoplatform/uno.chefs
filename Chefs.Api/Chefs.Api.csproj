@@ -11,4 +11,8 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EmbeddedResource Include="..\AppData\*.json" LinkBase="AppData" />
+	</ItemGroup>
+
 </Project>
