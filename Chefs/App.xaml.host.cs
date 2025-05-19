@@ -178,9 +178,7 @@ public partial class App : Application
 
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>()),
-#if !IS_WASM_SKIA
 						new RouteMap("Map", View: views.FindByViewModel<MapModel>()),
-#endif
 					]),
 					new RouteMap("Notifications", View: views.FindByViewModel<NotificationsModel>()),
 					new RouteMap("Filter", View: views.FindByViewModel<FilterModel>()),

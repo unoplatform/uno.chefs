@@ -6,18 +6,7 @@
   variables:
     CI_Build: true
     SourceLinkEnabled: false
-
-  strategy:
-    maxParallel: 2
-    matrix:
-      Native:
-        UseSkiaRendering: false
-        VariantName: Native
-        PackageName: uno.platform.chefs
-      Skia:
-        UseSkiaRendering: true
-        PackageName: uno.platform.chefs.skia
-        VariantName: Skia
+    PackageName: uno.platform.chefs.skia
 
   pool:
     vmImage: 'macOS-14'

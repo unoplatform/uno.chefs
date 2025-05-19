@@ -41,7 +41,8 @@ pr:
 variables:
   # Path where packages (nuget or app packages) will be copied to.
   PackageOutputPath: $(build.artifactstagingdirectory)
-
+  VariantName: 'Skia'
+  UseSkiaRendering: 'true'
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
   IsReleaseBranch: $[or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))]
   XCODE_ROOT: '/Applications/Xcode_16.2.app'
@@ -49,7 +50,7 @@ variables:
 jobs:
 - template: build-windows.yml
 - template: build-android.yml
-- template: build-ios-catalyst.yml
+- template: build-ios.yml
 - template: build-wasm.yml
 - template: build-skia-desktop.yml
 - template: stage-uitests-ios.yml

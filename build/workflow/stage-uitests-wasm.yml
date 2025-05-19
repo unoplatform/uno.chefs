@@ -2,15 +2,7 @@ jobs:
 - job: Wasm_UITests
   displayName: 'WebAssembly UI Tests'
   container: unoplatform/wasm-build:3.0
-  strategy:
-    maxParallel: 2
-    matrix:
-      Native:
-        UseSkiaRendering: false
-        VariantName: Native
-      Skia:
-        UseSkiaRendering: true
-        VariantName: Skia
+  
   pool:
     vmImage: ubuntu-latest
 

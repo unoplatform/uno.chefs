@@ -7,16 +7,6 @@
     CI_Build: true
     SourceLinkEnabled: false
 
-  strategy:
-    maxParallel: 2
-    matrix:
-      Native:
-        UseSkiaRendering: false
-        VariantName: Native
-      Skia:
-        UseSkiaRendering: true
-        VariantName: Skia
-
   pool:
     vmImage: 'macOS-14'
 

@@ -1,14 +1,6 @@
 jobs:
 - job: Android_UITest_Build
   timeoutInMinutes: 90
-  strategy:
-    matrix:
-      Native:
-        UseSkiaRendering: false
-        VariantName: Native
-      Skia:
-        UseSkiaRendering: true
-        VariantName: Skia
   pool:
     vmImage: macOS-14
  
@@ -50,14 +42,6 @@ jobs:
       ArtifactName: Android_UITest_$(VariantName)
 
 - job: Android
-  strategy:
-    matrix:
-      Android:
-        UseSkiaRendering: false
-        VariantName: Native
-      Android_Skia:
-        UseSkiaRendering: true
-        VariantName: Skia
 
   pool:
     vmImage: windows-2022

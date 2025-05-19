@@ -9,12 +9,7 @@ namespace Chefs.UITests;
 
 public class Constants
 {
-	public readonly static string ApplicationId =
-#if HAS_SKIA_RENDERER
-		"uno.platform.chefs.skia";
-#else
-		"uno.platform.chefs";
-#endif
+	public readonly static string ApplicationId = "uno.platform.chefs.skia";
 
 	public readonly static string WebAssemblyDefaultUri = "http://localhost:51480/";
 	public readonly static string iOSAppName = ApplicationId;
