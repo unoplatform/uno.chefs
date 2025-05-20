@@ -1,4 +1,4 @@
-namespace Chefs.Client.Data.MockEndpoints;
+namespace Chefs.Client.Mock;
 
 public abstract class BaseMockEndpoint(ISerializer serializer, ILogger<BaseMockEndpoint> _logger)
 {

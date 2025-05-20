@@ -1,6 +1,6 @@
 using System.Net;
 using System.Text;
-using Chefs.Client.Data.MockEndpoints;
+using Chefs.Client.Mock;
 
 namespace Chefs.Business.Services;
 
