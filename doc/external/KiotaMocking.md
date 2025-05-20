@@ -2,7 +2,7 @@
 uid: Uno.Recipes.KiotaMocking
 ---
 
-# Mocking API Data with Kiota and HTTP Handlers
+# How to Mock Kiota API Clients
 
 ## Problem
 
@@ -46,7 +46,7 @@ The Chefs app uses the `USE_MOCKS` compile-time constant to control API mocking.
     {
         // ...endpoint setup omitted for brevity...
 
-    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
         var mockResponse = new HttpResponseMessage(HttpStatusCode.OK)
         {
