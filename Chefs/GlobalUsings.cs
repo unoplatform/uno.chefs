@@ -11,7 +11,7 @@ global using Chefs.Data;
 global using Chefs.Presentation;
 global using Chefs.Client.Models;
 global using Chefs.Business.Services.Cookbooks;
-global using Chefs.Client.Data.MockEndpoints;
+global using Chefs.Client.Mock;
 global using Chefs.Business.Services.Notifications;
 global using Chefs.Business.Services.Recipes;
 global using Chefs.Business.Services.Users;
