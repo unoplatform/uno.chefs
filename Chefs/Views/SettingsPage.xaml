@@ -88,7 +88,7 @@
 										   Text="Notifications"
 										   TextWrapping="Wrap" />
 							</utu:AutoLayout>
-							<ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							<ToggleSwitch IsOn="{Binding NotificationsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 										  Style="{StaticResource ToggleSwitchStyle}" />
 						</utu:AutoLayout>
 						<utu:Divider Foreground="{ThemeResource OutlineVariantBrush}"
@@ -102,15 +102,16 @@
 											Orientation="Horizontal"
 											CounterAxisAlignment="Center"
 											utu:AutoLayout.CounterAlignment="Center">
-								<PathIcon Data="{StaticResource Icon_Night_Mode}"
+								<PathIcon Data="{StaticResource Icon_Theme}"
 										  Foreground="{ThemeResource PrimaryBrush}" />
 								<TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
 										   Style="{StaticResource TitleMedium}"
-										   Text="Night Mode"
+										   Text="Theme"
 										   TextWrapping="Wrap" />
 							</utu:AutoLayout>
-							<ToggleSwitch IsOn="{Binding Settings.IsDark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-										  Style="{StaticResource ToggleSwitchStyle}" />
+							<ComboBox ItemsSource="{Binding ThemeOptions}"
+									  SelectedItem="{Binding Theme, Mode=TwoWay}"
+									  HorizontalAlignment="Right" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>
 				</utu:AutoLayout>

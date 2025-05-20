@@ -1,7 +1,6 @@
 using Chefs.Business.Services.Cookbooks;
 using Chefs.Business.Services.Notifications;
 using Chefs.Business.Services.Recipes;
-using Chefs.Business.Services.Settings;
 using Chefs.Business.Services.Sharing;
 using Chefs.Business.Services.Users;
 using Chefs.Client;
@@ -51,7 +50,6 @@ public partial class App : Application
 				.UseConfiguration(configure: configBuilder =>
 					configBuilder
 						.EmbeddedSource<App>()
-						.Section<AppConfig>()
 						.Section<Credentials>()
 						.Section<SearchHistory>()
 				)
@@ -69,7 +67,6 @@ public partial class App : Application
 						.AddSingleton<INotificationService, NotificationService>()
 						.AddSingleton<IRecipeService, RecipeService>()
 						.AddSingleton<IShareService, ShareService>()
-						.AddSingleton<ISettingsService, SettingsService>()
 						.AddSingleton<IUserService, UserService>();
 				})
 				.ConfigureAppConfiguration(config =>
@@ -124,14 +121,9 @@ public partial class App : Application
 			.AddJsonTypeInfo(MockEndpointContext.Default.UserData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.Guid)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ReviewData)
-			.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData);
-#endif
-
-		services
-			.AddJsonTypeInfo(AppConfigContext.Default.AppConfig)
-			.AddJsonTypeInfo(AppConfigContext.Default.DictionaryStringAppConfig)
-			.AddJsonTypeInfo(AppConfigContext.Default.String)
+			.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.LoginRequest);
+#endif
 	}
 
 	private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)

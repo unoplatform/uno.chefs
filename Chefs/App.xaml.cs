@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Text.Json;
-using Chefs.Business.Services.Settings;
-using Chefs.Client;
+using Chefs.Services;
+using Chefs.Services.Clients;
 
 #if __IOS__
 using Foundation;
@@ -46,28 +46,6 @@ public partial class App : Application
 
 		Host = await builder.NavigateAsync<ShellControl>();
 		Shell = MainWindow.Content as ShellControl;
-		await InitializeUserSettings();
-	}
-
-	private async Task InitializeUserSettings()
-	{
-		if (Host is null || MainWindow is null)
-		{
-			return;
-		}
-
-		var config = Host.Services.GetRequiredService<IOptions<AppConfig>>();
-		var settingsService = Host.Services.GetRequiredService<ISettingsService>();
-		var themeService = MainWindow.GetThemeService();
-		var appTheme = config.Value?.IsDark switch
-		{
-			true => AppTheme.Dark,
-			false => AppTheme.Light,
-			_ => AppTheme.System
-		};
-
-		await settingsService.UpdateSettings(CancellationToken.None, isDark: themeService.IsDark);
-		await themeService.SetThemeAsync(appTheme);
 	}
 
 	/// <summary>

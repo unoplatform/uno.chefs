@@ -8,6 +8,7 @@ public record AppConfig
 	public bool? IsDark { get; init; }
 	public bool? Notification { get; init; }
 	public string? AccentColor { get; init; }
+	public AppTheme Theme { get; set; } = AppTheme.System;
 }
 
 [JsonSerializable(typeof(AppConfig))]

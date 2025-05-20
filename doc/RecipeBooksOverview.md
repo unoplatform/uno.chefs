@@ -21,6 +21,7 @@ Below is a list of available recipes, organized by category. Click through to ex
 - [ToggleButton Alternate Icons](xref:Uno.Recipes.AlternateContentControlExtension)
 - [App Icons and Splash Screen](xref:Uno.Recipes.AppIcons)
 - [Customizing Status Bar Colors on Mobile](xref:Uno.Recipes.StatusBarExtension)
+- [Theme Switching](xref:Uno.Recipes.ThemeService)
 
 #### Responsive
 - [Adapting to Safe Area on Mobile](xref:Uno.Recipes.SafeArea)

@@ -21,6 +21,7 @@ public record AppConfig
     public bool? IsDark { get; init; }
     public bool? Notification { get; init; }
     public string? AccentColor { get; init; }
+    public AppTheme Theme { get; set; } = AppTheme.System;
 }
 ```
 
@@ -68,6 +69,7 @@ public async ValueTask<AppConfig> GetSettings(CancellationToken ct)
     IsDark = chefSettings.IsDark,
     Notification = chefSettings.Notification,
     AccentColor = chefSettings.AccentColor,
+    Theme = chefSettings.Theme
     };
 
     await chefAppOptions.UpdateAsync(_ => settings);
