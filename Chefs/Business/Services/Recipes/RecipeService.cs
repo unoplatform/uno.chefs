@@ -117,13 +117,6 @@ public class RecipeService(
 		return recipesData?.Where(r => r.UserId == userId).Select(x => new Recipe(x)).ToImmutableList() ?? ImmutableList<Recipe>.Empty;
 	}
 
-	public async ValueTask<Review> CreateReview(Guid recipeId, string review, CancellationToken ct)
-	{
-		var reviewData = new ReviewData { RecipeId = recipeId, Description = review };
-		var createdReviewData = await api.Api.Recipe.Review.PostAsync(reviewData, cancellationToken: ct);
-		return new Review(createdReviewData);
-	}
-
 	public IListState<Recipe> FavoritedRecipes => ListState<Recipe>.Async(this, GetFavorited);
 
 	public async ValueTask<IImmutableList<Recipe>> GetFavoritedWithPagination(uint pageSize, uint firstItemIndex, CancellationToken ct)
@@ -161,6 +154,9 @@ public class RecipeService(
 	{
 		var reviewData = review.ToData();
 		var updatedReviewData = await api.Api.Recipe.Review.Like.PostAsync(reviewData, cancellationToken: ct);
+
+		if (updatedReviewData is null) return;
+
 		var updatedReview = new Review(updatedReviewData);
 		messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
 	}
@@ -169,6 +165,9 @@ public class RecipeService(
 	{
 		var reviewData = review.ToData();
 		var updatedReviewData = await api.Api.Recipe.Review.Dislike.PostAsync(reviewData, cancellationToken: ct);
+
+		if (updatedReviewData is null) return;
+
 		var updatedReview = new Review(updatedReviewData);
 		messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
 	}

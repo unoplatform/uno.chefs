@@ -62,8 +62,5 @@ public partial record Recipe : IChefEntity
 		Category = Category.ToData(),
 		Date = Date
 	};
-	private static TimeSpan ToTimeSpan(TimeSpanObject timeSpanObject)
-	{
-		return new TimeSpan(timeSpanObject?.Ticks ?? 0);
-	}
+	private static TimeSpan ToTimeSpan(TimeSpanObject timeSpanObject) => new TimeSpan(timeSpanObject?.Ticks ?? 0);
 }

@@ -17,7 +17,7 @@
 		<UnoSingleProject>true</UnoSingleProject>
 		<!-- Display name -->
 		<ApplicationTitle>Chefs</ApplicationTitle>
-
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<!-- Comment to use native rendering -->
 		<UseSkiaRendering Condition="'$(UseSkiaRendering)'==''">true</UseSkiaRendering>
 		

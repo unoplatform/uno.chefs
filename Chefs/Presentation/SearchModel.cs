@@ -36,8 +36,6 @@ public partial record SearchModel
 
 	public IListFeed<Recipe> FromChefs => ListFeed.Async(_recipeService.GetFromChefs);
 
-	public IListFeed<string> SearchHistory => ListFeed.Async(async ct => _recipeService.GetSearchHistory());
-
 	public async ValueTask ApplyHistory(string term) => await Term.SetAsync(term);
 
 	private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)

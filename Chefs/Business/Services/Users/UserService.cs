@@ -9,7 +9,7 @@ public class UserService(
 {
 	private readonly IWritableOptions<Credentials> _credentialOptions = credentialOptions;
 
-	private IState<User> _user => State.Async(this, GetCurrent);
+	private IState<User> _user = State.Async(this, GetCurrent);
 
 	public IFeed<User> User => _user;
 

@@ -14,8 +14,7 @@ public sealed partial class ChartControl : UserControl
 
 	public SolidColorBrush CarbBrush
 	{
-		get { return (SolidColorBrush)GetValue(CarbBrushProperty); }
-		set { SetValue(CarbBrushProperty, value); }
+		get => (SolidColorBrush)GetValue(CarbBrushProperty); set => SetValue(CarbBrushProperty, value);
 	}
 
 	public static readonly DependencyProperty CarbBrushProperty =
@@ -23,8 +22,7 @@ public sealed partial class ChartControl : UserControl
 
 	public SolidColorBrush ProteinBrush
 	{
-		get { return (SolidColorBrush)GetValue(ProteinBrushProperty); }
-		set { SetValue(ProteinBrushProperty, value); }
+		get => (SolidColorBrush)GetValue(ProteinBrushProperty); set => SetValue(ProteinBrushProperty, value);
 	}
 
 	public static readonly DependencyProperty ProteinBrushProperty =
@@ -32,8 +30,7 @@ public sealed partial class ChartControl : UserControl
 
 	public SolidColorBrush FatBrush
 	{
-		get { return (SolidColorBrush)GetValue(FatBrushProperty); }
-		set { SetValue(FatBrushProperty, value); }
+		get => (SolidColorBrush)GetValue(FatBrushProperty); set => SetValue(FatBrushProperty, value);
 	}
 
 	public static readonly DependencyProperty FatBrushProperty =
@@ -43,8 +40,7 @@ public sealed partial class ChartControl : UserControl
 
 	public SolidColorBrush DataLabelBrush
 	{
-		get { return (SolidColorBrush)GetValue(DataLabelBrushProperty); }
-		set { SetValue(DataLabelBrushProperty, value); }
+		get => (SolidColorBrush)GetValue(DataLabelBrushProperty); set => SetValue(DataLabelBrushProperty, value);
 	}
 
 	public static readonly DependencyProperty DataLabelBrushProperty =
@@ -54,8 +50,7 @@ public sealed partial class ChartControl : UserControl
 
 	public SolidColorBrush TrackBackgroundBrush
 	{
-		get { return (SolidColorBrush)GetValue(TrackBackgroundBrushProperty); }
-		set { SetValue(TrackBackgroundBrushProperty, value); }
+		get => (SolidColorBrush)GetValue(TrackBackgroundBrushProperty); set => SetValue(TrackBackgroundBrushProperty, value);
 	}
 
 	public static readonly DependencyProperty TrackBackgroundBrushProperty =

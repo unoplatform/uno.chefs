@@ -113,10 +113,7 @@ public sealed partial class MapPage : Page
 		CenterOnPoint(startingPosition, 13);
 	}
 
-	private static void CenterOnPoint(MPoint point, int resolution)
-	{
-		_map!.Navigator.CenterOnAndZoomTo(point, resolution);
-	}
+	private static void CenterOnPoint(MPoint point, int resolution) => _map!.Navigator.CenterOnAndZoomTo(point, resolution);
 
 	private static void MapOnInfo(object? sender, MapInfoEventArgs e)
 	{

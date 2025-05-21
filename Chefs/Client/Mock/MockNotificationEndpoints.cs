@@ -1,6 +1,6 @@
 namespace Chefs.Client.Mock;
 
-public class MockNotificationEndpoints(string basePath, ISerializer serializer, ILogger<BaseMockEndpoint> logger) : BaseMockEndpoint(serializer, logger)
+public class MockNotificationEndpoints(ISerializer serializer, ILogger<BaseMockEndpoint> logger) : BaseMockEndpoint(serializer, logger)
 {
 	public async Task<string> HandleNotificationsRequest(HttpRequestMessage request)
 	{

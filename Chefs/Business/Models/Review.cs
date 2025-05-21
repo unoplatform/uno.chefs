@@ -11,8 +11,8 @@ public partial record Review
 		CreatedBy = reviewData.CreatedBy ?? Guid.Empty;
 		PublisherName = reviewData.PublisherName;
 		Date = reviewData.Date?.DateTime ?? DateTime.MinValue;
-		Likes = reviewData.Likes?.Where(g => g.HasValue).Select(g => g.Value).ToImmutableList() ?? ImmutableList<Guid>.Empty;
-		Dislikes = reviewData.Dislikes?.Where(g => g.HasValue).Select(g => g.Value).ToImmutableList() ?? ImmutableList<Guid>.Empty;
+		Likes = reviewData.Likes?.Trim().ToImmutableList() ?? ImmutableList<Guid>.Empty;
+		Dislikes = reviewData.Dislikes?.Trim().ToImmutableList() ?? ImmutableList<Guid>.Empty;
 		Description = reviewData.Description;
 		UrlAuthorImage = reviewData.UrlAuthorImage;
 		UserLike = reviewData.UserLike ?? false;

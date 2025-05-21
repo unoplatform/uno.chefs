@@ -39,8 +39,5 @@ public class FromBoolToValueConverter : IValueConverter
 		}
 	}
 
-	public object ConvertBack(object value, Type targetType, object parameter, string language)
-	{
-		return value;
-	}
+	public object ConvertBack(object value, Type targetType, object parameter, string language) => value;
 }

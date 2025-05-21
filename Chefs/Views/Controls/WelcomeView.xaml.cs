@@ -27,8 +27,7 @@ public sealed partial class WelcomeView : UserControl
 
 	public string ImageUrl
 	{
-		get { return (string)GetValue(ImageUrlProperty); }
-		set { SetValue(ImageUrlProperty, value); }
+		get => (string)GetValue(ImageUrlProperty); set => SetValue(ImageUrlProperty, value);
 	}
 
 	public static readonly DependencyProperty ImageUrlProperty =
@@ -38,8 +37,7 @@ public sealed partial class WelcomeView : UserControl
 
 	public string Title
 	{
-		get { return (string)GetValue(TitleProperty); }
-		set { SetValue(TitleProperty, value); }
+		get => (string)GetValue(TitleProperty); set => SetValue(TitleProperty, value);
 	}
 
 	public static readonly DependencyProperty TitleProperty =
@@ -50,8 +48,7 @@ public sealed partial class WelcomeView : UserControl
 
 	public string Description
 	{
-		get { return (string)GetValue(DescriptionProperty); }
-		set { SetValue(DescriptionProperty, value); }
+		get => (string)GetValue(DescriptionProperty); set => SetValue(DescriptionProperty, value);
 	}
 
 	public static readonly DependencyProperty DescriptionProperty =

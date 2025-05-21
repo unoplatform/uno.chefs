@@ -63,8 +63,5 @@ public partial record RecipeDetailsModel
 		await IsFavorited.UpdateAsync(s => !s);
 	}
 
-	public async Task Share(CancellationToken ct)
-	{
-		await _shareService.ShareRecipe(Recipe, await Steps, ct);
-	}
+	public async Task Share(CancellationToken ct) => await _shareService.ShareRecipe(Recipe, await Steps, ct);
 }

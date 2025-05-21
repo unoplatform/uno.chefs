@@ -16,7 +16,7 @@ public class ShareService() : IShareService
 	static IDataTransferManagerInterop DataTransferManagerInterop => DataTransferManager.As<IDataTransferManagerInterop>();
 #endif
 
-	public async Task ShareRecipe(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct)
+	public void ShareRecipe(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct)
 	{
 		_recipe = recipe;
 		_steps = steps;
@@ -34,14 +34,14 @@ public class ShareService() : IShareService
 		DataTransferManager.ShowShareUI();
 #endif
 	}
-	private async void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+	private void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
 	{
 		args.Request.Data.Properties.Title = $"Sharing {_recipe?.Name}";
 		args.Request.Data.Properties.Description = _recipe?.Details ?? "Chefs Recipe";
-		args.Request.Data.SetText(await CreateShareText());
+		args.Request.Data.SetText(CreateShareText());
 	}
 
-	private async ValueTask<string> CreateShareText()
+	private string CreateShareText()
 	{
 		var shareTextBuilder = new StringBuilder();
 

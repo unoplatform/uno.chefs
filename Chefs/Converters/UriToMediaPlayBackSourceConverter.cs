@@ -15,8 +15,5 @@ public class StringToMediaPlayBackSourceConverter : IValueConverter
 		return MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/Videos/CookingVideo.mp4"));
 	}
 
-	public object ConvertBack(object value, Type targetType, object parameter, string language)
-	{
-		throw new NotImplementedException();
-	}
+	public object ConvertBack(object value, Type targetType, object parameter, string language) => throw new NotImplementedException();
 }
