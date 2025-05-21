@@ -1,7 +1,7 @@
 <p align="center">
 	<picture>
-	  <source media="(prefers-color-scheme: dark)" srcset="oc/assets/chefslogo_dark.png">
-	  <source media="(prefers-color-scheme: light)" srcset="oc/assets/chefslogo.png">
+	  <source media="(prefers-color-scheme: dark)" srcset="doc/assets/chefslogo_dark.png">
+	  <source media="(prefers-color-scheme: light)" srcset="doc/assets/chefslogo.png">
 		<img height="300px" src="doc/assets/chefslogo.png" alt="Uno Chefs Logo">
 	</picture>
 </p>
