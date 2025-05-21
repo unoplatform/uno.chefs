@@ -1,5 +1,5 @@
-using Chefs.Services.Clients.Models;
-using StepData = Chefs.Services.Clients.Models.StepData;
+using Chefs.Client.Models;
+using StepData = Chefs.Client.Models.StepData;
 
 namespace Chefs.Business.Models;
 

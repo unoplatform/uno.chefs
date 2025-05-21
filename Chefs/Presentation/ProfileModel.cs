@@ -1,3 +1,6 @@
+using Chefs.Business.Services.Recipes;
+using Chefs.Business.Services.Users;
+
 namespace Chefs.Presentation;
 
 public partial record ProfileModel

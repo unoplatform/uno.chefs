@@ -66,5 +66,6 @@ Below is a list of available recipes, organized by category. Click through to ex
 - [Serialization](xref:Uno.Recipes.Serialization)
 - [Persistent App Settings](xref:Uno.Recipes.Configuration)
 - [Loading App Data](xref:Uno.Recipes.StorageFile)
+- [How to Mock Kiota Clients](xref:Uno.Recipes.KiotaMocking)
 
 New recipes are always cooking, so stay tuned for more!

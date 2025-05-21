@@ -1,6 +1,8 @@
 using System.Runtime.InteropServices;
 using System.Text;
-using Chefs.Services.Sharing;
+using Chefs.Business.Services.Recipes;
+using Chefs.Business.Services.Sharing;
+using Chefs.Business.Services.Users;
 using Windows.ApplicationModel.DataTransfer;
 using WinRT;
 using WinRT.Interop;

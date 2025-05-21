@@ -1,4 +1,4 @@
-using UserData = Chefs.Services.Clients.Models.UserData;
+using UserData = Chefs.Client.Models.UserData;
 namespace Chefs.Business.Models;
 
 public partial record User

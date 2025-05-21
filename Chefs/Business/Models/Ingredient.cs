@@ -1,4 +1,4 @@
-using IngredientData = Chefs.Services.Clients.Models.IngredientData;
+using IngredientData = Chefs.Client.Models.IngredientData;
 namespace Chefs.Business.Models;
 
 public record Ingredient

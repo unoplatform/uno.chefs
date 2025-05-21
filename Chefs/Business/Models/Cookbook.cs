@@ -1,5 +1,5 @@
-using CookbookData = Chefs.Services.Clients.Models.CookbookData;
-using RecipeData = Chefs.Services.Clients.Models.RecipeData;
+using CookbookData = Chefs.Client.Models.CookbookData;
+using RecipeData = Chefs.Client.Models.RecipeData;
 namespace Chefs.Business.Models;
 
 public partial record Cookbook : IChefEntity

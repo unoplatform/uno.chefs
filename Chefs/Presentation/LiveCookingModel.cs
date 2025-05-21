@@ -1,3 +1,5 @@
+using Chefs.Business.Services.Recipes;
+
 namespace Chefs.Presentation;
 
 public partial record LiveCookingParameter(Recipe Recipe, IImmutableList<Step> Steps);

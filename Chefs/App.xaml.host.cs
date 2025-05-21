@@ -1,7 +1,10 @@
-using Chefs.Services;
-using Chefs.Services.Clients;
-using Chefs.Services.Settings;
-using Chefs.Services.Sharing;
+using Chefs.Business.Services.Cookbooks;
+using Chefs.Business.Services.Notifications;
+using Chefs.Business.Services.Recipes;
+using Chefs.Business.Services.Settings;
+using Chefs.Business.Services.Sharing;
+using Chefs.Business.Services.Users;
+using Chefs.Client;
 using Chefs.Views.Flyouts;
 using Microsoft.Extensions.Configuration;
 using Uno.Extensions.Http.Kiota;
