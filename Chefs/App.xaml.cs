@@ -1,7 +1,5 @@
 using System.Diagnostics;
 using System.Text.Json;
-using Chefs.Services;
-using Chefs.Services.Clients;
 
 #if __IOS__
 using Foundation;
