@@ -29,14 +29,14 @@ Use the `Windows.Storage.StorageFile` API to read files from your app package. T
         {
             try
             {
-            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///AppData/{fileName}"));
-            var json = await FileIO.ReadTextAsync(file);
-            return serializer.FromString<T>(json);
+                var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///AppData/{fileName}"));
+                var json = await FileIO.ReadTextAsync(file);
+                return serializer.FromString<T>(json);
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
-            _logger.LogError(ex, "Failed to load {FileName}", fileName);
-            return default;
+                _logger.LogError(ex, "Failed to load {FileName}", fileName);
+                return default;
             }
         }
     }
