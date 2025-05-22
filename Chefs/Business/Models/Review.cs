@@ -35,6 +35,8 @@ public partial record Review
 	public ImmutableList<Guid>? Likes { get; init; }
 	public ImmutableList<Guid>? Dislikes { get; init; }
 	public bool UserLike { get; init; }
+	public bool IsLikedBy(Guid userId) => Likes?.Contains(userId) == true;
+	public bool IsDislikedBy(Guid userId) => Dislikes?.Contains(userId) == true;
 
 	internal ReviewData ToData() => new()
 	{

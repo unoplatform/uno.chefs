@@ -173,6 +173,11 @@ public class RecipeService(
 		messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
 	}
 
+	public async ValueTask ClearReviewReaction(Review review, CancellationToken ct)
+	{
+		await _apiClient.DeleteAsync($"reviews/{review.Id}/reaction", ct);
+	}
+
 	public async ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct)
 	{
 		var recipesData = await api.Api.Recipe.GetAsync(cancellationToken: ct);

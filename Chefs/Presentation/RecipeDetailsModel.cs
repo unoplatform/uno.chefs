@@ -48,11 +48,33 @@ public partial record RecipeDetailsModel
 		.Async(this, async ct => await _recipeService.GetReviews(Recipe.Id, ct))
 		.Observe(_messenger, r => r.Id);
 
-	public async ValueTask Like(Review review, CancellationToken ct) =>
-		await _recipeService.LikeReview(review, ct);
+	public async ValueTask Like(Review review, CancellationToken ct)
+	{
+		var userId = (await _userService.GetCurrent(ct)).Id;
 
-	public async ValueTask Dislike(Review review, CancellationToken ct) =>
-		await _recipeService.DislikeReview(review, ct);
+		if (review.IsLikedBy(userId))
+		{
+			await _recipeService.ClearReviewReaction(review, ct);
+		}
+		else
+		{
+			await _recipeService.LikeReview(review, ct);
+		}
+	}
+
+	public async ValueTask Dislike(Review review, CancellationToken ct)
+	{
+		var userId = (await _userService.GetCurrent(ct)).Id;
+
+		if (review.IsDislikedBy(userId))
+		{
+			await _recipeService.ClearReviewReaction(review, ct);
+		}
+		else
+		{
+			await _recipeService.DislikeReview(review, ct);
+		}
+	}
 
 	public async ValueTask LiveCooking(IImmutableList<Step> steps) =>
 		await _navigator.NavigateRouteAsync(this, "LiveCooking", data: new LiveCookingParameter(Recipe, steps));

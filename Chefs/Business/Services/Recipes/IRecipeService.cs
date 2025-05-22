@@ -33,6 +33,14 @@ public interface IRecipeService
 	ValueTask LikeReview(Review review, CancellationToken ct);
 
 	/// <summary>
+	/// Clear current users like/dislike recipe review
+	/// </summary>
+	/// <param name="review"></param>
+	/// <param name="ct"></param>
+	/// <returns></returns>
+	ValueTask ClearReviewReaction(Review review, CancellationToken ct);
+
+	/// <summary>
 	/// Recipes method
 	/// </summary>
 	/// <param name="ct"></param>
