@@ -112,7 +112,7 @@ public class UserController() : ChefsControllerBase
 				Password = user.Password,
 				Followers = user.Followers,
 				Following = user.Following,
-				Recipes = user.Recipes
+				Recipes = user.Recipes,
 			};
 
 			return Ok(users[userIndex]);
@@ -146,6 +146,7 @@ public class UserController() : ChefsControllerBase
 
 public class LoginRequest
 {
-	public string Email { get; set; }
-	public string Password { get; set; }
+	public required string Email { get; set; }
+
+	public required string Password { get; set; }
 }

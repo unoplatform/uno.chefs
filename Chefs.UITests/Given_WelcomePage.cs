@@ -25,8 +25,7 @@ public class Given_WelcomePage : TestBase
 		PlatformHelpers.On(
 			iOS: () => App.WaitForElement(q => q.Class("UnoSKMetalView")),
 			Android: () => App.WaitForElement(q => q.Class("UnoSKCanvasView")),
-			Browser: () => App.WaitForElement(q => q.Id("uno-canvas"))
-		);
+			Browser: () => App.WaitForElement(q => q.Id("uno-canvas")));
 #endif
 
 		TakeScreenshot("Launched");
@@ -36,8 +35,7 @@ public class Given_WelcomePage : TestBase
 			// Cannot use backdoors on iOS, AppDelegate is inaccessible
 			iOS: () => { },
 			Android: () => AssertWelcomePage(),
-			Browser: () => AssertWelcomePage()
-		);
+			Browser: () => AssertWelcomePage());
 
 		TakeScreenshot("WelcomePage");
 #else
@@ -48,7 +46,7 @@ public class Given_WelcomePage : TestBase
 
 	private void AssertWelcomePage() => App.WaitFor(() => GetCurrentPage().EndsWithIgnoreCase("WelcomePage"), timeoutMessage: "Timed out waiting for WelcomePage");
 
-	private string GetCurrentPage() => (App.InvokeGeneric("browser:SampleRunner|GetCurrentPage", "") as string) ?? string.Empty;
+	private string GetCurrentPage() => (App.InvokeGeneric("browser:SampleRunner|GetCurrentPage", string.Empty) as string) ?? string.Empty;
 
 #if !HAS_SKIA_RENDERER
 	private void Login()

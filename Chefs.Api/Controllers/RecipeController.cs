@@ -150,7 +150,7 @@ public class RecipeController() : ChefsControllerBase
 			reviewData.Date = DateTime.Now;
 			recipe.Reviews?.Add(reviewData);
 
-			return Created("", reviewData);
+			return Created(string.Empty, reviewData);
 		}
 		else
 		{
@@ -168,7 +168,6 @@ public class RecipeController() : ChefsControllerBase
 	[ProducesResponseType(typeof(ReviewData), 200)]
 	[ProducesResponseType(404)]
 	public ActionResult<ReviewData> LikeReview([FromBody] ReviewData reviewData, [FromQuery] Guid userId)
-
 	{
 		var recipes = LoadData<List<RecipeData>>(_recipesFilePath);
 		var review = recipes.SelectMany(r => r.Reviews)

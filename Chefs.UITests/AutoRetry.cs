@@ -4,8 +4,9 @@ using NUnit.Framework.Internal;
 using NUnit.Framework.Internal.Commands;
 
 namespace Chefs.UITests;
+
 /// <summary>
-/// Specifies that a test method should be rerun on failure up to the specified 
+/// Specifies that a test method should be rerun on failure up to the specified
 /// maximum number of times.
 /// </summary>
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
