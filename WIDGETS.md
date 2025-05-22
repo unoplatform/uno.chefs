@@ -27,8 +27,7 @@ A large carousel widget, like the one on the WelcomePage that uses `PipsPager` a
 - The [XAML](https://github.com/unoplatform/uno.chefs/blob/e53fbcb60600714abbd0a93d41378b44f667fd48/Chefs/Views/WelcomePage.xaml#L22-L113) is the whole WelcomePage. It's made of two `FlipView`s and then the buttons that control them. The image only `FlipView` is hidden when screen size is small.
 
 ```xml
-<utu:AutoLayout utu:SafeArea.Insets="VisibleBounds"
-                Orientation="{utu:Responsive Normal=Vertical,
+<utu:AutoLayout Orientation="{utu:Responsive Normal=Vertical,
                                              Wide=Horizontal}">
     <FlipView IsEnabled="False"
               Visibility="{utu:Responsive Normal=Collapsed,
@@ -37,15 +36,15 @@ A large carousel widget, like the one on the WelcomePage that uses `PipsPager` a
               SelectedIndex="{Binding Pages.CurrentIndex}">
         <FlipView.Items>
             <!-- First Splash image -->
-            <Image Source="ms-appx:///Assets/Welcome/Wide/first_splash_screen.jpg"
+            <Image Source="ms-appx:///Assets/splash_1.png"
                    Stretch="UniformToFill" />
 
             <!-- Second Splash image -->
-            <Image Source="ms-appx:///Assets/Welcome/Wide/second_splash_screen.jpg"
+            <Image Source="ms-appx:///Assets/splash_2.png"
                    Stretch="UniformToFill" />
 
             <!-- Third Splash image -->
-            <Image Source="ms-appx:///Assets/Welcome/Wide/third_splash_screen.jpg"
+            <Image Source="ms-appx:///Assets/splash_3.png"
                    Stretch="UniformToFill" />
         </FlipView.Items>
     </FlipView>
@@ -53,19 +52,18 @@ A large carousel widget, like the one on the WelcomePage that uses `PipsPager` a
     <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch">
         <FlipView x:Name="flipView"
                   utu:AutoLayout.PrimaryAlignment="Stretch"
-                  Background="Transparent"
                   utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
                   SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <FlipView.Items>
-                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/first_splash_screen.jpg"
+                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/splash_1.png"
                                   Title="Welcome to your App!"
                                   VerticalContentAlignment="Bottom"
                                   Description="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences." />
-                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/second_splash_screen.jpg"
+                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/splash_2.png"
                                   VerticalContentAlignment="Bottom"
                                   Title="Explore Thousands of Recipes"
                                   Description="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes." />
-                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/third_splash_screen.jpg"
+                <ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/splash_3.png"
                                   Title="Personalize Your Recipe Journey"
                                   VerticalContentAlignment="Bottom"
                                   Description="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community." />
@@ -95,14 +93,12 @@ A large carousel widget, like the one on the WelcomePage that uses `PipsPager` a
                             Content="Previous"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
                             utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
-                            Style="{StaticResource ChefsOutlinedButtonStyle}"
                             IsEnabled="{Binding Pages.Value.CanMovePrevious}" />
                     <Button HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
                             Content="Next"
                             utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
                             utu:AutoLayout.PrimaryAlignment="Stretch"
-                            Style="{StaticResource ChefsPrimaryButtonStyle}"
                             IsEnabled="{Binding Pages.Value.CanMoveNext}" />
                 </utu:AutoLayout>
                 <Button HorizontalContentAlignment="Center"
@@ -112,8 +108,6 @@ A large carousel widget, like the one on the WelcomePage that uses `PipsPager` a
                         uen:Navigation.Request="-/Login"
                         Foreground="{ThemeResource PrimaryBrush}"
                         CornerRadius="4"
-                        AutomationProperties.AutomationId="SkipButton"
-                        x:Name="SkipButton"
                         Style="{StaticResource TextButtonStyle}" />
             </utu:AutoLayout>
         </utu:AutoLayout>
@@ -121,7 +115,49 @@ A large carousel widget, like the one on the WelcomePage that uses `PipsPager` a
 </utu:AutoLayout>
 ```
 
-- The [code-behind](https://github.com/unoplatform/uno.chefs/blob/be397784a5a6a7183b617531c1b6d921c15332e6/src/Chefs/Presentation/WelcomeModel.cs#L5) only has the iterator state.
+```xml
+<UserControl x:Class="Chefs.Views.Controls.WelcomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Chefs.Views.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utu="using:Uno.Toolkit.UI"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="400">
+
+    <utu:AutoLayout CounterAxisAlignment="Center"
+                    Spacing="24">
+
+        <Image Visibility="{utu:Responsive Normal=Visible,
+                                           Wide=Collapsed}"
+               Source="{Binding ImageUrl}"
+               Height="270"
+               Stretch="UniformToFill" />
+        <utu:AutoLayout PrimaryAxisAlignment="Center"
+                        CounterAxisAlignment="Center"
+                        utu:AutoLayout.PrimaryAlignment="Stretch"
+                        Spacing="24">
+            <Image Width="160"
+                   Height="90"
+                   Source="{ThemeResource AppLogo}" />
+            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                       Style="{StaticResource TitleLarge}"
+                       Text="{Binding Title}"
+                       Padding="32,0"
+                       TextWrapping="Wrap" />
+            <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
+                       Style="{StaticResource TitleMedium}"
+                       Text="{Binding Description}"
+                       Padding="32,0"
+                       TextWrapping="Wrap" />
+        </utu:AutoLayout>
+    </utu:AutoLayout>
+</UserControl>
+```
+
+- The [code-behind](https://github.com/unoplatform/uno.chefs/blob/be397784a5a6a7183b617531c1b6d921c15332e6/src/Chefs/Presentation/WelcomeModel.cs#L5) only has the iterator state. There is also the [code-behind for the WelcomeView](https://github.com/unoplatform/uno.chefs/blob/ddc20d26f4cfc29ac548fa59342b501926fdcfa5/Chefs/Views/Controls/WelcomeView.xaml.cs#L19-L61).
 
 ```csharp
 public IState<IntIterator> Pages => State<IntIterator>.Value(this, () => new IntIterator(Enumerable.Range(0, 3).ToImmutableList()));
@@ -141,29 +177,28 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
                 PrimaryAxisAlignment="Center"
                 Padding="32">
     <Image utu:AutoLayout.CounterAlignment="Center"
-            Width="160"
-            Height="90"
-            Source="{ThemeResource ChefsLogoWithIcon}"
-            Stretch="Uniform" />
+           Width="160"
+           Height="90"
+           Source="{ThemeResource AppLogo}"
+           Stretch="Uniform" />
     <utu:AutoLayout Spacing="16"
                     PrimaryAxisAlignment="Center">
         <TextBox PlaceholderText="Username"
-                    Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-                    utu:InputExtensions.ReturnType="Next"
-                    utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
-                    IsSpellCheckEnabled="False"
-                    Text="{Binding UserCredentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                 utu:InputExtensions.ReturnType="Next"
+                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=LoginPassword}"
+                 IsSpellCheckEnabled="False"
+                 Text="{Binding UserCredentials.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <ut:ControlExtensions.Icon>
                 <PathIcon Data="{StaticResource Icon_Person_Outline}" />
             </ut:ControlExtensions.Icon>
         </TextBox>
         <PasswordBox x:Name="LoginPassword"
-                        utu:InputExtensions.ReturnType="Done"
-                        utu:CommandExtensions.Command="{Binding Login}"
-                        Password="{Binding UserCredentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        PlaceholderText="Password"
-                        Style="{StaticResource OutlinedPasswordBoxStyle}"
-                        BorderBrush="{ThemeResource OutlineVariantBrush}">
+                     utu:InputExtensions.ReturnType="Done"
+                     utu:CommandExtensions.Command="{Binding Login}"
+                     Password="{Binding UserCredentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     PlaceholderText="Password"
+                     Style="{StaticResource OutlinedPasswordBoxStyle}"
+                     BorderBrush="{ThemeResource OutlineVariantBrush}">
             <PasswordBox.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.ThemeDictionaries>
@@ -188,13 +223,12 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
                         Justify="SpaceBetween"
                         PrimaryAxisAlignment="Stretch">
             <CheckBox Content="Remember me"
-                        utu:AutoLayout.PrimaryAlignment="Auto"
-                        IsChecked="{Binding UserCredentials.SaveCredentials, Mode=TwoWay}" />
+                      utu:AutoLayout.PrimaryAlignment="Auto"
+                      IsChecked="{Binding UserCredentials.SaveCredentials, Mode=TwoWay}" />
             <Button Content="Forgot password?"
                     Style="{StaticResource TextButtonStyle}" />
         </utu:AutoLayout>
         <Button Content="Login"
-                Style="{StaticResource ChefsPrimaryButtonStyle}"
                 Command="{Binding Login}" />
     </utu:AutoLayout>
 
@@ -202,22 +236,20 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
 
     <utu:AutoLayout Spacing="8"
                     PrimaryAxisAlignment="Center">
-        <Button Content="Sign in with Apple"
-                Style="{StaticResource ChefsTonalButtonStyle}">
+        <Button Content="Sign in with Apple">
             <ut:ControlExtensions.Icon>
                 <FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
-                            Glyph="{StaticResource Icon_Apple_Brand}"
-                            FontSize="18"
-                            Foreground="{ThemeResource OnSurfaceBrush}" />
+                          Glyph="{StaticResource Icon_Apple_Brand}"
+                          FontSize="18"
+                          Foreground="{ThemeResource OnSurfaceBrush}" />
             </ut:ControlExtensions.Icon>
         </Button>
-        <Button Content="Sign in with Google"
-                Style="{StaticResource ChefsTonalButtonStyle}">
+        <Button Content="Sign in with Google">
             <ut:ControlExtensions.Icon>
                 <FontIcon Style="{StaticResource FontAwesomeBrandsFontIconStyle}"
-                            Glyph="{StaticResource Icon_Google_Brand}"
-                            FontSize="18"
-                            Foreground="{ThemeResource OnSurfaceBrush}" />
+                          Glyph="{StaticResource Icon_Google_Brand}"
+                          FontSize="18"
+                          Foreground="{ThemeResource OnSurfaceBrush}" />
             </ut:ControlExtensions.Icon>
         </Button>
     </utu:AutoLayout>
@@ -226,8 +258,8 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
                     Orientation="Horizontal"
                     Spacing="4">
         <TextBlock Text="Not a member?"
-                    Foreground="{ThemeResource OnSurfaceBrush}"
-                    Style="{StaticResource LabelLarge}" />
+                   Foreground="{ThemeResource OnSurfaceBrush}"
+                   Style="{StaticResource LabelLarge}" />
         <Button Content="Register Now"
                 uen:Navigation.Request="-/Register"
                 Style="{StaticResource TextButtonStyle}" />
@@ -242,14 +274,13 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
                 MaxWidth="500"
                 PrimaryAxisAlignment="Center"
                 Spacing="32">
-    <Image Source="{ThemeResource ChefsLogoWithIcon}"
-            Stretch="Uniform"
-            utu:AutoLayout.CounterAlignment="Center"
-            Width="160"
-            Height="90" />
+    <Image Source="{ThemeResource AppLogo}"
+           Stretch="Uniform"
+           utu:AutoLayout.CounterAlignment="Center"
+           Width="160"
+           Height="90" />
     <utu:AutoLayout Spacing="16">
         <TextBox PlaceholderText="Username"
-                    Style="{StaticResource ChefsPrimaryTextBoxStyle}"
                     utu:InputExtensions.ReturnType="Next"
                     utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationEmail}"
                     InputScope="Text"
@@ -260,22 +291,21 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
             </ut:ControlExtensions.Icon>
         </TextBox>
         <TextBox PlaceholderText="Email"
-                    Style="{StaticResource ChefsPrimaryTextBoxStyle}"
-                    x:Name="RegistrationEmail"
-                    utu:InputExtensions.ReturnType="Next"
-                    utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
-                    IsSpellCheckEnabled="False">
+                 x:Name="RegistrationEmail"
+                 utu:InputExtensions.ReturnType="Next"
+                 utu:InputExtensions.AutoFocusNextElement="{Binding ElementName=RegistrationPassword}"
+                 IsSpellCheckEnabled="False">
             <ut:ControlExtensions.Icon>
                 <PathIcon Data="{StaticResource Icon_Mail_Outline}" />
             </ut:ControlExtensions.Icon>
         </TextBox>
         <PasswordBox x:Name="RegistrationPassword"
-                        utu:InputExtensions.ReturnType="Done"
-                        utu:CommandExtensions.Command="{Binding Register}"
-                        Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        PlaceholderText="Password"
-                        Style="{StaticResource OutlinedPasswordBoxStyle}"
-                        BorderBrush="{ThemeResource OutlineVariantBrush}">
+                     utu:InputExtensions.ReturnType="Done"
+                     utu:CommandExtensions.Command="{Binding Register}"
+                     Password="{Binding Credentials.Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     PlaceholderText="Password"
+                     Style="{StaticResource OutlinedPasswordBoxStyle}"
+                     BorderBrush="{ThemeResource OutlineVariantBrush}">
             <PasswordBox.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.ThemeDictionaries>
@@ -297,16 +327,15 @@ A login/register widget, would allow the user to enter a username/e-mail and pas
         <Button HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Center"
                 Content="Sign Up"
-                Command="{Binding Register}"
-                Style="{StaticResource ChefsPrimaryButtonStyle}" />
+                Command="{Binding Register}" />
     </utu:AutoLayout>
     <utu:AutoLayout PrimaryAxisAlignment="Center"
                     Orientation="Horizontal"
                     Spacing="4"
                     CounterAxisAlignment="Center">
         <TextBlock Text="Already a member?"
-                    Foreground="{ThemeResource OnSurfaceBrush}"
-                    Style="{StaticResource LabelLarge}" />
+                   Foreground="{ThemeResource OnSurfaceBrush}"
+                   Style="{StaticResource LabelLarge}" />
         <Button Content="Login Now"
                 uen:Navigation.Request="-/Login"
                 Style="{StaticResource TextButtonStyle}" />
@@ -369,14 +398,13 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
 - The [XAML](https://github.com/unoplatform/uno.chefs/blob/d9e419affa5b34db2a22707e48d1e0d029899bad/src/Chefs/Views/HomePage.xaml#L66-L88) on the HomePage is a NavigationBar with commands.
 
 ```xml
-<utu:NavigationBar x:Name="NavBar"
-                   Style="{StaticResource ChefsNavigationBarStyle}">
+<utu:NavigationBar x:Name="NavBar">
     <utu:NavigationBar.Content>
         <Grid>
-            <Image Source="{ThemeResource ChefsAppSignature}"
-                    HorizontalAlignment="Left"
-                    Width="128"
-                    Height="40" />
+            <Image Source="{ThemeResource AppLogo}"
+                   HorizontalAlignment="Left"
+                   Width="128"
+                   Height="40" />
         </Grid>
     </utu:NavigationBar.Content>
     <utu:NavigationBar.PrimaryCommands>
@@ -406,7 +434,7 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                         Padding="16"
                         Spacing="16">
             <PathIcon Data="{StaticResource Icon_Notifications_Active}"
-                        Foreground="{ThemeResource PrimaryBrush}" />
+                      Foreground="{ThemeResource PrimaryBrush}" />
             <utu:AutoLayout utu:AutoLayout.PrimaryAlignment="Stretch"
                             Spacing="8"
                             PrimaryAxisAlignment="Center">
@@ -430,15 +458,15 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                         Width="72"
                         Height="70" />
             <TextBlock TextAlignment="Center"
-                        TextWrapping="Wrap"
-                        Text="No Notifications Yet"
-                        Foreground="{ThemeResource OnSurfaceBrush}"
-                        Style="{StaticResource TitleLarge}" />
+                       TextWrapping="Wrap"
+                       Text="No Notifications Yet"
+                       Foreground="{ThemeResource OnSurfaceBrush}"
+                       Style="{StaticResource TitleLarge}" />
             <TextBlock TextAlignment="Center"
-                        TextWrapping="Wrap"
-                        Text="Notifications about your activity, updates, and community interactions will appear here. Stay tuned for recipe inspiration, comments, likes, and more as you engage with the community."
-                        Foreground="{ThemeResource OnSurfaceBrush}"
-                        Style="{StaticResource TitleMedium}" />
+                       TextWrapping="Wrap"
+                       Text="Notifications about your activity, updates, and community interactions will appear here. Stay tuned for recipe inspiration, comments, likes, and more as you engage with the community."
+                       Foreground="{ThemeResource OnSurfaceBrush}"
+                       Style="{StaticResource TitleMedium}" />
             <Button HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Content="Close"
@@ -449,7 +477,7 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                     uen:Navigation.Request="-">
                 <ut:ControlExtensions.Icon>
                     <PathIcon Data="{StaticResource Icon_Close}"
-                                Foreground="{ThemeResource OnSecondaryContainerBrush}" />
+                              Foreground="{ThemeResource OnSecondaryContainerBrush}" />
                 </ut:ControlExtensions.Icon>
             </Button>
         </utu:AutoLayout>
@@ -474,18 +502,17 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                         Foreground="{ThemeResource OnSurfaceMediumBrush}" />
     </utu:TabBar>
     <ScrollViewer HorizontalScrollMode="Disabled"
-                    utu:AutoLayout.PrimaryAlignment="Stretch"
-                    VerticalContentAlignment="Center">
+                  utu:AutoLayout.PrimaryAlignment="Stretch"
+                  VerticalContentAlignment="Center">
         <Grid uen:Region.Attached="True"
-                uen:Region.Navigator="Visibility">
+              uen:Region.Navigator="Visibility">
 
             <!-- All Notifications -->
             <Grid Padding="0,16"
-                    uen:Region.Name="AllTab"
-                    Visibility="Visible">
-                <uer:FeedView x:Name="AllFeed"
-                                Source="{Binding Notifications}"
-                                NoneTemplate="{StaticResource EmptyTemplate}">
+                  uen:Region.Name="AllTab"
+                  Visibility="Visible">
+                <uer:FeedView Source="{Binding Notifications}"
+                              NoneTemplate="{StaticResource EmptyTemplate}">
                     <DataTemplate>
                         <utu:AutoLayout>
                             <!-- Today -->
@@ -493,14 +520,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Today"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Today"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -510,14 +537,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Yesterday"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Yesterday"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -527,14 +554,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Older"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Older"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -545,11 +572,10 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
 
             <!-- Unread -->
             <Grid Padding="0,16"
-                    uen:Region.Name="UnreadTab"
-                    Visibility="Collapsed">
-                <uer:FeedView x:Name="UnreadFeed"
-                                Source="{Binding Unread}"
-                                NoneTemplate="{StaticResource EmptyTemplate}">
+                  uen:Region.Name="UnreadTab"
+                  Visibility="Collapsed">
+                <uer:FeedView Source="{Binding Unread}"
+                              NoneTemplate="{StaticResource EmptyTemplate}">
                     <DataTemplate>
                         <utu:AutoLayout>
                             <!-- Today -->
@@ -557,14 +583,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Today"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Today"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -574,14 +600,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Yesterday"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Yesterday"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -591,14 +617,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Older"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Older"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -609,11 +635,10 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
 
             <!-- Read -->
             <Grid Padding="0,16"
-                    uen:Region.Name="ReadTab"
-                    Visibility="Collapsed">
-                <uer:FeedView x:Name="ReadFeed"
-                                Source="{Binding Read}"
-                                NoneTemplate="{StaticResource EmptyTemplate}">
+                  uen:Region.Name="ReadTab"
+                  Visibility="Collapsed">
+                <uer:FeedView Source="{Binding Read}"
+                              NoneTemplate="{StaticResource EmptyTemplate}">
                     <DataTemplate>
                         <utu:AutoLayout>
                             <!-- Today -->
@@ -621,14 +646,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Today"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Today"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Today}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -638,14 +663,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Yesterday"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Yesterday"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Yesterday}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -655,14 +680,14 @@ A TabBar that sits at the top of the page like we have in Chefs. There's the app
                                             Padding="0,16"
                                             Spacing="16">
                                 <TextBlock TextWrapping="Wrap"
-                                            Text="Older"
-                                            Foreground="{ThemeResource OnSurfaceBrush}"
-                                            Style="{StaticResource LabelLarge}" />
+                                           Text="Older"
+                                           Foreground="{ThemeResource OnSurfaceBrush}"
+                                           Style="{StaticResource LabelLarge}" />
                                 <muxc:ItemsRepeater ItemsSource="{Binding Data.Older}"
                                                     ItemTemplate="{StaticResource NotificationTemplate}">
                                     <muxc:ItemsRepeater.Layout>
                                         <muxc:StackLayout Orientation="Vertical"
-                                                            Spacing="2" />
+                                                          Spacing="2" />
                                     </muxc:ItemsRepeater.Layout>
                                 </muxc:ItemsRepeater>
                             </utu:AutoLayout>
@@ -712,17 +737,17 @@ A widget with relevant app settings, like theme switching and language switching
                         CounterAxisAlignment="Center"
                         utu:AutoLayout.CounterAlignment="Center">
             <PathIcon Data="{StaticResource Icon_Notifications_None}"
-                        Foreground="{ThemeResource PrimaryBrush}" />
+                      Foreground="{ThemeResource PrimaryBrush}" />
             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                        Style="{StaticResource TitleMedium}"
-                        Text="Notifications"
-                        TextWrapping="Wrap" />
+                       Style="{StaticResource TitleMedium}"
+                       Text="Notifications"
+                       TextWrapping="Wrap" />
         </utu:AutoLayout>
         <ToggleSwitch IsOn="{Binding Settings.Notification, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource ToggleSwitchStyle}" />
+                      Style="{StaticResource ToggleSwitchStyle}" />
     </utu:AutoLayout>
     <utu:Divider Foreground="{ThemeResource OutlineVariantBrush}"
-                    Style="{StaticResource DividerStyle}" />
+                 Style="{StaticResource DividerStyle}" />
     <utu:AutoLayout PrimaryAxisAlignment="Stretch"
                     Justify="SpaceBetween"
                     Orientation="Horizontal"
@@ -733,14 +758,14 @@ A widget with relevant app settings, like theme switching and language switching
                         CounterAxisAlignment="Center"
                         utu:AutoLayout.CounterAlignment="Center">
             <PathIcon Data="{StaticResource Icon_Night_Mode}"
-                        Foreground="{ThemeResource PrimaryBrush}" />
+                      Foreground="{ThemeResource PrimaryBrush}" />
             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                        Style="{StaticResource TitleMedium}"
-                        Text="Night Mode"
-                        TextWrapping="Wrap" />
+                       Style="{StaticResource TitleMedium}"
+                       Text="Night Mode"
+                       TextWrapping="Wrap" />
         </utu:AutoLayout>
         <ToggleSwitch IsOn="{Binding Settings.IsDark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource ToggleSwitchStyle}" />
+                      Style="{StaticResource ToggleSwitchStyle}" />
     </utu:AutoLayout>
 </utu:AutoLayout>
 ```
@@ -786,9 +811,9 @@ A TabBar with Region switching already all set up, like the left-hand TabBar Che
     </Grid.ColumnDefinitions>
 
     <Grid Grid.Row="0"
-            Grid.Column="1"
-            uen:Region.Attached="True"
-            uen:Region.Navigator="Visibility" />
+          Grid.Column="1"
+          uen:Region.Attached="True"
+          uen:Region.Navigator="Visibility" />
 
     <utu:TabBar Grid.Row="1"
                 Grid.Column="1"
@@ -873,9 +898,9 @@ An item carousel using `FeedView` like the ones on Chefs' HomePage that display 
                             HorizontalAlignment="Stretch">
                 <Border Height="144">
                     <Image HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Source="{Binding ImageUrl}"
-                            Stretch="UniformToFill" />
+                           VerticalAlignment="Center"
+                           Source="{Binding ImageUrl}"
+                           Stretch="UniformToFill" />
                 </Border>
                 <utu:AutoLayout Spacing="16"
                                 Padding="16"
@@ -883,26 +908,26 @@ An item carousel using `FeedView` like the ones on Chefs' HomePage that display 
                                 Orientation="Horizontal">
                     <utu:AutoLayout Spacing="4">
                         <TextBlock TextWrapping="Wrap"
-                                    Text="{Binding Name}"
-                                    Foreground="{ThemeResource OnSurfaceBrush}"
-                                    Style="{StaticResource TitleSmall}" />
+                                   Text="{Binding Name}"
+                                   Foreground="{ThemeResource OnSurfaceBrush}"
+                                   Style="{StaticResource TitleSmall}" />
                         <TextBlock TextWrapping="Wrap"
-                                    Text="{Binding TimeCal}"
-                                    Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                    Style="{StaticResource CaptionMedium}" />
+                                   Text="{Binding TimeCal}"
+                                   Foreground="{ThemeResource OnSurfaceMediumBrush}"
+                                   Style="{StaticResource CaptionMedium}" />
                     </utu:AutoLayout>
                     <ToggleButton Style="{StaticResource IconToggleButtonStyle}"
-                                    IsChecked="{Binding IsFavorite}"
-                                    Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+                                  IsChecked="{Binding IsFavorite}"
+                                  Command="{utu:AncestorBinding AncestorType=uer:FeedView,
                                                                 Path=DataContext.FavoriteRecipe}"
-                                    CommandParameter="{Binding}">
+                                  CommandParameter="{Binding}">
                         <ToggleButton.Content>
                             <PathIcon Data="{StaticResource Icon_Heart}"
-                                        Foreground="{ThemeResource OnSurfaceBrush}" />
+                                      Foreground="{ThemeResource OnSurfaceBrush}" />
                         </ToggleButton.Content>
                         <ut:ControlExtensions.AlternateContent>
                             <PathIcon Data="{StaticResource Icon_Heart_Filled}"
-                                        Foreground="{ThemeResource PrimaryBrush}" />
+                                      Foreground="{ThemeResource PrimaryBrush}" />
                         </ut:ControlExtensions.AlternateContent>
                     </ToggleButton>
                 </utu:AutoLayout>
@@ -915,18 +940,18 @@ An item carousel using `FeedView` like the ones on Chefs' HomePage that display 
               Source="{Binding TrendingNow}">
     <DataTemplate>
         <ScrollViewer Padding="16,0"
-                        HorizontalScrollMode="Auto"
-                        HorizontalScrollBarVisibility="Auto"
-                        VerticalScrollMode="Disabled"
-                        VerticalScrollBarVisibility="Disabled"
-                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                      HorizontalScrollMode="Auto"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollMode="Disabled"
+                      VerticalScrollBarVisibility="Disabled"
+                      utu:AutoLayout.PrimaryAlignment="Stretch">
             <muxc:ItemsRepeater ItemsSource="{Binding Data}"
                                 uen:Navigation.Request="RecipeDetails"
                                 uen:Navigation.Data="{Binding Data}"
                                 ItemTemplate="{StaticResource HomeLargeItemTemplate}">
                 <muxc:ItemsRepeater.Layout>
                     <muxc:StackLayout Orientation="Horizontal"
-                                        Spacing="8" />
+                                      Spacing="8" />
                 </muxc:ItemsRepeater.Layout>
             </muxc:ItemsRepeater>
         </ScrollViewer>
@@ -954,13 +979,12 @@ A searchbar widget. Chefs has a simple one where the search results are separate
 
 ```xml
 <TextBox utu:CommandExtensions.Command="{Binding Search}"
-         Style="{StaticResource ChefsPrimaryTextBoxStyle}"
          CornerRadius="28"
          PlaceholderText="Search"
          Text="{Binding Term, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
     <ut:ControlExtensions.Icon>
         <PathIcon Data="{StaticResource Icon_Search}"
-                    Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                  Foreground="{ThemeResource OnSurfaceMediumBrush}" />
     </ut:ControlExtensions.Icon>
 </TextBox>
 ```
@@ -996,11 +1020,11 @@ To add to the searchbar widget we could have search filters too. In Chefs they a
 <Page.Resources>
     <DataTemplate x:Key="FilterChipTemplate">
         <utu:Chip Background="{ThemeResource SurfaceBrush}"
-                    Content="{Binding}"
-                    HorizontalAlignment="Stretch"
-                    Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                    BorderThickness="1"
-                    Style="{StaticResource MaterialChipStyle}" />
+                  Content="{Binding}"
+                  HorizontalAlignment="Stretch"
+                  Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                  BorderThickness="1"
+                  Style="{StaticResource MaterialChipStyle}" />
     </DataTemplate>
 </Page.Resources>
 
@@ -1019,14 +1043,14 @@ To add to the searchbar widget we could have search filters too. In Chefs they a
             </utu:NavigationBar.MainCommand>
         </utu:NavigationBar>
         <ScrollViewer HorizontalScrollMode="Disabled"
-                        utu:AutoLayout.PrimaryAlignment="Stretch">
+                      utu:AutoLayout.PrimaryAlignment="Stretch">
             <utu:AutoLayout Padding="16"
                             Background="{ThemeResource SurfaceBrush}"
                             Spacing="32">
                 <utu:AutoLayout Spacing="16">
                     <TextBlock Style="{StaticResource TitleSmall}"
-                                Text="Recipe Categories"
-                                TextWrapping="Wrap" />
+                               Text="Recipe Categories"
+                               TextWrapping="Wrap" />
                     <!-- It's important to put the ItemsSource above the SelectedItems, because, it will otherwise fail on WASM, see this issue: https://github.com/unoplatform/uno.toolkit.ui/issues/918 -->
                     <muxc:ItemsRepeater ItemsSource="{Binding FilterGroups}"
                                         utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.FilterGroup, Mode=TwoWay}"
@@ -1045,8 +1069,8 @@ To add to the searchbar widget we could have search filters too. In Chefs they a
                 </utu:AutoLayout>
                 <utu:AutoLayout Spacing="16">
                     <TextBlock Style="{StaticResource TitleSmall}"
-                                Text="Cooking Time"
-                                TextWrapping="Wrap" />
+                               Text="Cooking Time"
+                               TextWrapping="Wrap" />
                     <muxc:ItemsRepeater ItemsSource="{Binding Times}"
                                         utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Time, Mode=TwoWay}"
                                         utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone">
@@ -1062,19 +1086,19 @@ To add to the searchbar widget we could have search filters too. In Chefs they a
                         <muxc:ItemsRepeater.ItemTemplate>
                             <DataTemplate>
                                 <utu:Chip Background="{ThemeResource SurfaceBrush}"
-                                            Content="{Binding Converter={StaticResource CookingTimeFormatter}}"
-                                            Foreground="{ThemeResource OnSurfaceVariantBrush}"
-                                            HorizontalAlignment="Stretch"
-                                            BorderThickness="1"
-                                            Style="{StaticResource MaterialChipStyle}" />
+                                          Content="{Binding Converter={StaticResource CookingTimeFormatter}}"
+                                          Foreground="{ThemeResource OnSurfaceVariantBrush}"
+                                          HorizontalAlignment="Stretch"
+                                          BorderThickness="1"
+                                          Style="{StaticResource MaterialChipStyle}" />
                             </DataTemplate>
                         </muxc:ItemsRepeater.ItemTemplate>
                     </muxc:ItemsRepeater>
                 </utu:AutoLayout>
                 <utu:AutoLayout Spacing="16">
                     <TextBlock Style="{StaticResource TitleSmall}"
-                                Text="Skill Level"
-                                TextWrapping="Wrap" />
+                               Text="Skill Level"
+                               TextWrapping="Wrap" />
                     <muxc:ItemsRepeater ItemsSource="{Binding Difficulties}"
                                         utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Difficulty, Mode=TwoWay}"
                                         utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
@@ -1092,8 +1116,8 @@ To add to the searchbar widget we could have search filters too. In Chefs they a
                 </utu:AutoLayout>
                 <utu:AutoLayout Spacing="16">
                     <TextBlock Style="{StaticResource TitleSmall}"
-                                Text="Serves"
-                                TextWrapping="Wrap" />
+                               Text="Serves"
+                               TextWrapping="Wrap" />
                     <muxc:ItemsRepeater ItemsSource="{Binding Serves}"
                                         utu:ItemsRepeaterExtensions.SelectedItem="{Binding Filter.Serves, Mode=TwoWay}"
                                         utu:ItemsRepeaterExtensions.SelectionMode="SingleOrNone"
@@ -1231,15 +1255,15 @@ The Cookbook feed has a regular layout with a different item template.
                         Height="72"
                         UriSource="{ThemeResource Empty_Box}" />
             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                        Style="{StaticResource TitleLarge}"
-                        Text="No Cookbooks Created"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                       Style="{StaticResource TitleLarge}"
+                       Text="No Cookbooks Created"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap" />
             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                        Style="{StaticResource TitleMedium}"
-                        Text="It looks like you haven't created any cookbooks yet. Cookbooks are a great way to organize your recipes into collections. "
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                       Style="{StaticResource TitleMedium}"
+                       Text="It looks like you haven't created any cookbooks yet. Cookbooks are a great way to organize your recipes into collections. "
+                       TextAlignment="Center"
+                       TextWrapping="Wrap" />
             <Button HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     uen:Navigation.Request="!CreateCookbook"
@@ -1250,8 +1274,8 @@ The Cookbook feed has a regular layout with a different item template.
                     Style="{StaticResource TextButtonStyle}">
                 <ut:ControlExtensions.Icon>
                     <PathIcon Data="{StaticResource Icon_Add}"
-                                Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-                                Foreground="{ThemeResource PrimaryBrush}" />
+                              Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+                              Foreground="{ThemeResource PrimaryBrush}" />
                 </ut:ControlExtensions.Icon>
             </Button>
         </utu:AutoLayout>
@@ -1274,13 +1298,13 @@ The Cookbook feed has a regular layout with a different item template.
                             <Border utu:AutoLayout.PrimaryAlignment="Stretch"
                                     CornerRadius="12">
                                 <Image HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Source="{Binding CookbookImages.FirstImage}"
-                                        Stretch="UniformToFill" />
+                                       VerticalAlignment="Center"
+                                       Source="{Binding CookbookImages.FirstImage}"
+                                       Stretch="UniformToFill" />
                             </Border>
 
                             <Grid RowSpacing="4"
-                                    utu:AutoLayout.PrimaryAlignment="Stretch">
+                                  utu:AutoLayout.PrimaryAlignment="Stretch">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="*" />
@@ -1289,20 +1313,20 @@ The Cookbook feed has a regular layout with a different item template.
                                         Background="{ThemeResource BackgroundBrush}"
                                         CornerRadius="12">
                                     <Image HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Source="{Binding CookbookImages.SecondImage}"
-                                            Stretch="UniformToFill"
-                                            Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
+                                           VerticalAlignment="Center"
+                                           Source="{Binding CookbookImages.SecondImage}"
+                                           Stretch="UniformToFill"
+                                           Visibility="{Binding CookbookImages.SecondImage, Converter={StaticResource NullToCollapsed}}" />
                                 </Border>
 
                                 <Grid Grid.Row="1"
-                                        utu:AutoLayout.PrimaryAlignment="Stretch"
-                                        CornerRadius="12">
+                                      utu:AutoLayout.PrimaryAlignment="Stretch"
+                                      CornerRadius="12">
                                     <Image HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Source="{Binding CookbookImages.ThirdImage}"
-                                            Stretch="UniformToFill"
-                                            Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToCollapsed}}" />
+                                           VerticalAlignment="Center"
+                                           Source="{Binding CookbookImages.ThirdImage}"
+                                           Stretch="UniformToFill"
+                                           Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToCollapsed}}" />
 
                                     <Button MinHeight="57"
                                             HorizontalAlignment="Stretch"
@@ -1315,8 +1339,8 @@ The Cookbook feed has a regular layout with a different item template.
                                             Visibility="{Binding CookbookImages.ThirdImage, Converter={StaticResource NullToVisible}}">
                                         <Button.Content>
                                             <PathIcon Data="{StaticResource Icon_Add}"
-                                                        Style="{StaticResource FontAwesomeSolidFontIconStyle}"
-                                                        Foreground="{ThemeResource OnSurfaceBrush}" />
+                                                      Style="{StaticResource FontAwesomeSolidFontIconStyle}"
+                                                      Foreground="{ThemeResource OnSurfaceBrush}" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -1326,13 +1350,13 @@ The Cookbook feed has a regular layout with a different item template.
                                         PrimaryAxisAlignment="Center"
                                         Spacing="2">
                             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                                        Style="{StaticResource TitleSmall}"
-                                        Text="{Binding Name}"
-                                        TextWrapping="NoWrap" />
+                                       Style="{StaticResource TitleSmall}"
+                                       Text="{Binding Name}"
+                                       TextWrapping="NoWrap" />
                             <TextBlock Foreground="{ThemeResource OnSurfaceMediumBrush}"
-                                        Style="{StaticResource CaptionMedium}"
-                                        Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
-                                        TextWrapping="NoWrap" />
+                                       Style="{StaticResource CaptionMedium}"
+                                       Text="{Binding PinsNumber, Converter={StaticResource StringFormatter}, ConverterParameter='{}{0} recipes'}"
+                                       TextWrapping="NoWrap" />
                         </utu:AutoLayout>
                     </utu:AutoLayout>
                 </DataTemplate>
@@ -1347,8 +1371,8 @@ The Cookbook feed has a regular layout with a different item template.
               Source="{Binding SavedCookbooks}">
     <DataTemplate>
         <ScrollViewer x:Name="RecipesScrollViewer"
-                        HorizontalScrollMode="Disabled"
-                        VerticalScrollBarVisibility="Hidden">
+                      HorizontalScrollMode="Disabled"
+                      VerticalScrollBarVisibility="Hidden">
             <muxc:ItemsRepeater Margin="0,0,0,16"
                                 uen:Navigation.Request="CookbookDetails"
                                 ItemTemplate="{StaticResource CookbookTemplate}"
@@ -1412,23 +1436,22 @@ A reviews `FeedView` widget. In Chefs we have reviews that the user can like or 
                         Height="72"
                         UriSource="{ThemeResource Empty_Recipe}" />
             <TextBlock Foreground="{ThemeResource OnSurfaceBrush}"
-                        Style="{StaticResource TitleLarge}"
-                        Text="No Reviews Yet"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                       Style="{StaticResource TitleLarge}"
+                       Text="No Reviews Yet"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap" />
         </utu:AutoLayout>
     </DataTemplate>
 </Page.Resources>
 
-<uer:FeedView x:Name="ReviewsFeed"
-              VerticalContentAlignment="Center"
+<uer:FeedView VerticalContentAlignment="Center"
               NoneTemplate="{StaticResource EmptyTemplate}"
               Source="{Binding Reviews}">
     <DataTemplate>
         <muxc:ItemsRepeater ItemsSource="{Binding Data}">
             <muxc:ItemsRepeater.Layout>
                 <muxc:StackLayout Orientation="Vertical"
-                                    Spacing="2" />
+                                  Spacing="2" />
             </muxc:ItemsRepeater.Layout>
             <muxc:ItemsRepeater.ItemTemplate>
                 <DataTemplate>
@@ -1438,17 +1461,17 @@ A reviews `FeedView` widget. In Chefs we have reviews that the user can like or 
                                     Orientation="Horizontal"
                                     Padding="16">
                         <PersonPicture Width="60"
-                                        Height="60"
-                                        ProfilePicture="{Binding UrlAuthorImage}" />
+                                       Height="60"
+                                       ProfilePicture="{Binding UrlAuthorImage}" />
                         <utu:AutoLayout Spacing="8"
                                         utu:AutoLayout.PrimaryAlignment="Stretch"
                                         PrimaryAxisAlignment="Center">
                             <TextBlock TextWrapping="Wrap"
-                                        Text="{Binding Description}"
-                                        Foreground="{ThemeResource OnSurfaceBrush}" />
+                                       Text="{Binding Description}"
+                                       Foreground="{ThemeResource OnSurfaceBrush}" />
                             <TextBlock TextWrapping="Wrap"
-                                        Text="{Binding PublisherName}"
-                                        Foreground="{ThemeResource OnSurfaceMediumBrush}" />
+                                       Text="{Binding PublisherName}"
+                                       Foreground="{ThemeResource OnSurfaceMediumBrush}" />
                             <utu:AutoLayout Spacing="{utu:Responsive Narrow=8,
                                                                         Wide=24}"
                                             Orientation="Horizontal"
@@ -1456,21 +1479,21 @@ A reviews `FeedView` widget. In Chefs we have reviews that the user can like or 
                                             Padding="{utu:Responsive Narrow='0,16,0,16',
                                                                         Wide='0,16,0,0'}">
                                 <ToggleButton HorizontalContentAlignment="Center"
-                                                VerticalContentAlignment="Center"
-                                                Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+                                              VerticalContentAlignment="Center"
+                                              Command="{utu:AncestorBinding AncestorType=uer:FeedView,
                                                                             Path=DataContext.Like}"
-                                                CommandParameter="{Binding}"
-                                                IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
+                                              CommandParameter="{Binding}"
+                                              IsChecked="{Binding UserLike, Converter={StaticResource UserLikeCheckedConverter}, Mode=TwoWay}">
                                     <ToggleButton.Content>
                                         <utu:AutoLayout Orientation="Horizontal"
                                                         Spacing="{utu:Responsive Narrow=5,
                                                                                     Wide=8}"
                                                         CounterAxisAlignment="Center">
                                             <PathIcon Data="{StaticResource Icon_Thumb_Up_Off}"
-                                                        Foreground="{ThemeResource PrimaryBrush}" />
+                                                      Foreground="{ThemeResource PrimaryBrush}" />
                                             <TextBlock Text="{Binding Likes.Count}"
-                                                        Foreground="{ThemeResource PrimaryBrush}"
-                                                        Style="{StaticResource LabelLarge}" />
+                                                       Foreground="{ThemeResource PrimaryBrush}"
+                                                       Style="{StaticResource LabelLarge}" />
                                         </utu:AutoLayout>
                                     </ToggleButton.Content>
                                     <ut:ControlExtensions.AlternateContent>
@@ -1479,29 +1502,29 @@ A reviews `FeedView` widget. In Chefs we have reviews that the user can like or 
                                                                                     Wide=8}"
                                                         CounterAxisAlignment="Center">
                                             <PathIcon Data="{StaticResource Icon_Thumb_Up}"
-                                                        Foreground="{ThemeResource PrimaryBrush}" />
+                                                      Foreground="{ThemeResource PrimaryBrush}" />
                                             <TextBlock Text="{Binding Likes.Count}"
-                                                        Foreground="{ThemeResource PrimaryBrush}"
-                                                        Style="{StaticResource LabelLarge}" />
+                                                       Foreground="{ThemeResource PrimaryBrush}"
+                                                       Style="{StaticResource LabelLarge}" />
                                         </utu:AutoLayout>
                                     </ut:ControlExtensions.AlternateContent>
                                 </ToggleButton>
                                 <ToggleButton HorizontalContentAlignment="Center"
-                                                VerticalContentAlignment="Center"
-                                                Command="{utu:AncestorBinding AncestorType=uer:FeedView,
+                                              VerticalContentAlignment="Center"
+                                              Command="{utu:AncestorBinding AncestorType=uer:FeedView,
                                                                             Path=DataContext.Dislike}"
-                                                CommandParameter="{Binding}"
-                                                IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
+                                              CommandParameter="{Binding}"
+                                              IsChecked="{Binding UserLike, Converter={StaticResource UserDislikeCheckedConverter}, Mode=TwoWay}">
                                     <ToggleButton.Content>
                                         <utu:AutoLayout Orientation="Horizontal"
                                                         Spacing="{utu:Responsive Narrow=5,
                                                                                     Wide=8}"
                                                         CounterAxisAlignment="Center">
                                             <PathIcon Data="{StaticResource Icon_Thumb_Down_Off}"
-                                                        Foreground="{ThemeResource PrimaryBrush}" />
+                                                      Foreground="{ThemeResource PrimaryBrush}" />
                                             <TextBlock Text="{Binding Dislikes.Count}"
-                                                        Foreground="{ThemeResource PrimaryBrush}"
-                                                        Style="{StaticResource LabelLarge}" />
+                                                       Foreground="{ThemeResource PrimaryBrush}"
+                                                       Style="{StaticResource LabelLarge}" />
                                         </utu:AutoLayout>
                                     </ToggleButton.Content>
                                     <ut:ControlExtensions.AlternateContent>
@@ -1509,10 +1532,10 @@ A reviews `FeedView` widget. In Chefs we have reviews that the user can like or 
                                                         Spacing="8"
                                                         CounterAxisAlignment="Center">
                                             <PathIcon Data="{StaticResource Icon_Thumb_Down}"
-                                                        Foreground="{ThemeResource PrimaryBrush}" />
+                                                      Foreground="{ThemeResource PrimaryBrush}" />
                                             <TextBlock Text="{Binding Dislikes.Count}"
-                                                        Foreground="{ThemeResource PrimaryBrush}"
-                                                        Style="{StaticResource LabelLarge}" />
+                                                       Foreground="{ThemeResource PrimaryBrush}"
+                                                       Style="{StaticResource LabelLarge}" />
                                         </utu:AutoLayout>
                                     </ut:ControlExtensions.AlternateContent>
                                 </ToggleButton>
