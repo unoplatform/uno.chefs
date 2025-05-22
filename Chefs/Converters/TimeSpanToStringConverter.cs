@@ -11,12 +11,12 @@ public class TimeSpanToStringConverter : IValueConverter
 		{
 			var ts = new TimeSpan(tso.Ticks ?? 0);
 
-			var ftm = string.Format("{0} {1}",
+			var ftm = string.Format(
+				"{0} {1}",
 				ts.Hours > 0 ? ts.ToString(@"%h' hour.'") : string.Empty,
 				ts.Minutes > 0 ? ts.ToString(@"%m' mins'") : string.Empty);
 
 			return ftm;
-
 		}
 
 		return string.Empty;

@@ -4,5 +4,5 @@ public enum FilterGroup
 {
 	Popular,
 	Trending,
-	Recent
+	Recent,
 }

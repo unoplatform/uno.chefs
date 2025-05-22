@@ -1,6 +1,4 @@
-using Chefs.Business.Services.Users;
 using Chefs.Client;
-using ReviewData = Chefs.Client.Models.ReviewData;
 
 namespace Chefs.Business.Services.Recipes;
 
@@ -75,7 +73,7 @@ public class RecipeService(
 			FilterGroup.Popular => await GetPopular(ct),
 			FilterGroup.Trending => await GetTrending(ct),
 			FilterGroup.Recent => await GetRecent(ct),
-			_ => await GetAll(ct)
+			_ => await GetAll(ct),
 		};
 
 		if (string.IsNullOrWhiteSpace(term))
@@ -132,11 +130,13 @@ public class RecipeService(
 	{
 		var currentUser = await userService.GetCurrent(ct);
 		var updatedRecipe = recipe with { IsFavorite = !recipe.IsFavorite };
-		await api.Api.Recipe.Favorited.PostAsync(q =>
+		await api.Api.Recipe.Favorited.PostAsync(
+			q =>
 		{
 			q.QueryParameters.RecipeId = updatedRecipe.Id;
 			q.QueryParameters.UserId = currentUser.Id;
-		}, cancellationToken: ct);
+		},
+			cancellationToken: ct);
 
 		if (updatedRecipe.IsFavorite)
 		{
@@ -155,7 +155,10 @@ public class RecipeService(
 		var reviewData = review.ToData();
 		var updatedReviewData = await api.Api.Recipe.Review.Like.PostAsync(reviewData, cancellationToken: ct);
 
-		if (updatedReviewData is null) return;
+		if (updatedReviewData is null)
+		{
+			return;
+		}
 
 		var updatedReview = new Review(updatedReviewData);
 		messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
@@ -166,7 +169,10 @@ public class RecipeService(
 		var reviewData = review.ToData();
 		var updatedReviewData = await api.Api.Recipe.Review.Dislike.PostAsync(reviewData, cancellationToken: ct);
 
-		if (updatedReviewData is null) return;
+		if (updatedReviewData is null)
+		{
+			return;
+		}
 
 		var updatedReview = new Review(updatedReviewData);
 		messenger.Send(new EntityMessage<Review>(EntityChange.Updated, updatedReview));
@@ -193,7 +199,10 @@ public class RecipeService(
 
 	private async Task SaveSearchHistory(string text)
 	{
-		if (_lastTextLength <= text.Length) _lastTextLength = text.Length;
+		if (_lastTextLength <= text.Length)
+		{
+			_lastTextLength = text.Length;
+		}
 
 		var searchHistory = searchOptions.Value.Searches;
 		if (!string.IsNullOrWhiteSpace(text))

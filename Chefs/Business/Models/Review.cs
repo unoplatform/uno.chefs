@@ -26,14 +26,23 @@ public partial record Review
 	}
 
 	public Guid Id { get; init; }
+
 	public Guid RecipeId { get; init; }
+
 	public string? UrlAuthorImage { get; init; }
+
 	public Guid CreatedBy { get; init; }
+
 	public string? PublisherName { get; init; }
+
 	public DateTime Date { get; init; }
+
 	public string? Description { get; init; }
+
 	public ImmutableList<Guid>? Likes { get; init; }
+
 	public ImmutableList<Guid>? Dislikes { get; init; }
+
 	public bool UserLike { get; init; }
 
 	internal ReviewData ToData() => new()
@@ -47,6 +56,6 @@ public partial record Review
 		Dislikes = Dislikes?.Cast<Guid?>().ToList(),
 		Description = Description,
 		UrlAuthorImage = UrlAuthorImage,
-		UserLike = UserLike
+		UserLike = UserLike,
 	};
 }

@@ -6,8 +6,7 @@ using NUnit.Framework.Internal.Commands;
 namespace Chefs.UITests;
 
 /// <summary>
-/// Specifies that a test method should be rerun on failure up to the specified
-/// maximum number of times.
+/// Specifies that a test method should be rerun on failure up to the specified maximum number of times.
 /// </summary>
 [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
 public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
@@ -15,7 +14,7 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 	private readonly int _tryCount;
 
 	/// <summary>
-	/// Construct a <see cref="RetryAttribute" />
+	/// Construct a <see cref="RetryAttribute"/>
 	/// </summary>
 	/// <param name="tryCount">The maximum number of times the test should be run if it fails</param>
 	public AutoRetryAttribute(int tryCount = 3) => _tryCount = tryCount;
@@ -29,7 +28,7 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 	/// <returns>The wrapped command</returns>
 	public TestCommand Wrap(TestCommand command) => new RetryCommand(command, _tryCount);
 
-	#endregion
+	#endregion IRepeatTest Members
 
 	#region Nested RetryCommand Class
 
@@ -64,8 +63,8 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 				{
 					context.CurrentResult = innerCommand.Execute(context);
 				}
-				// Commands are supposed to catch exceptions, but some don't
-				// and we want to look at restructuring the API in the future.
+				// Commands are supposed to catch exceptions, but some don't and we want to look at
+				// restructuring the API in the future.
 				catch (Exception ex)
 				{
 					if (context.CurrentResult == null)
@@ -98,5 +97,5 @@ public partial class AutoRetryAttribute : NUnitAttribute, IRepeatTest
 		}
 	}
 
-	#endregion
+	#endregion Nested RetryCommand Class
 }

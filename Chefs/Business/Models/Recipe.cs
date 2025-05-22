@@ -21,22 +21,36 @@ public partial record Recipe : IChefEntity
 		IsFavorite = recipeData.IsFavorite ?? false;
 		Nutrition = new Nutrition(recipeData?.Nutrition);
 	}
+
 	public Guid Id { get; init; }
+
 	public Guid UserId { get; init; }
+
 	public string? ImageUrl { get; init; }
+
 	public string? Name { get; init; }
+
 	public int Serves { get; init; }
+
 	public TimeSpanObject CookTime { get; init; }
+
 	public Difficulty Difficulty { get; init; }
+
 	public string? Calories { get; init; }
+
 	public string? Details { get; init; }
+
 	public Category Category { get; init; }
+
 	public DateTimeOffset Date { get; init; }
+
 	public bool IsFavorite { get; init; }
+
 	public Nutrition Nutrition { get; init; }
 
 	//remove "kcal" unit from Calories property
 	public string? CaloriesAmount => Calories?.Length > 4 ? Calories.Remove(Calories.Length - 4) : Calories;
+
 	public string TimeCal
 	{
 		get
@@ -60,7 +74,8 @@ public partial record Recipe : IChefEntity
 		Calories = Calories,
 		Details = Details,
 		Category = Category.ToData(),
-		Date = Date
+		Date = Date,
 	};
+
 	private static TimeSpan ToTimeSpan(TimeSpanObject timeSpanObject) => new TimeSpan(timeSpanObject?.Ticks ?? 0);
 }

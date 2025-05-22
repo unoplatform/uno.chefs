@@ -9,5 +9,6 @@ public record CategoryWithCount
 	}
 
 	public int Count { get; init; }
+
 	public Category Category { get; init; }
 }

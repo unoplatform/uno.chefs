@@ -1,4 +1,5 @@
 using CategoryData = Chefs.Client.Models.CategoryData;
+
 namespace Chefs.Business.Models;
 
 public partial record Category
@@ -12,14 +13,17 @@ public partial record Category
 	}
 
 	public int? Id { get; init; }
+
 	public string? UrlIcon { get; init; }
+
 	public string? Name { get; init; }
+
 	public string? Color { get; init; }
 
 	internal CategoryData ToData() => new()
 	{
 		Id = Id,
 		UrlIcon = UrlIcon,
-		Name = Name
+		Name = Name,
 	};
 }

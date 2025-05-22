@@ -24,7 +24,7 @@ public class MockHttpMessageHandler : HttpMessageHandler
 	{
 		var mockResponse = new HttpResponseMessage(HttpStatusCode.OK)
 		{
-			Content = new StringContent(await GetMockData(request), Encoding.UTF8, "application/json")
+			Content = new StringContent(await GetMockData(request), Encoding.UTF8, "application/json"),
 		};
 
 		return await Task.FromResult(mockResponse);

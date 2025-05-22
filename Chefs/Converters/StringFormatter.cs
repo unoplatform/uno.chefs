@@ -12,8 +12,15 @@ public class StringFormatter : IValueConverter
 
 	public object? Convert(object value, Type targetType, object parameter, string language)
 	{
-		if (value is null) return null;
-		if ((Format ?? parameter as string) is not { } format) return value.ToString();
+		if (value is null)
+		{
+			return null;
+		}
+
+		if ((Format ?? parameter as string) is not { } format)
+		{
+			return value.ToString();
+		}
 
 		if (value is int count)
 		{

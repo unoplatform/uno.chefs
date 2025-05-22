@@ -6,7 +6,6 @@ using Mapsui.Projections;
 using Mapsui.Providers;
 using Mapsui.Styles;
 using Mapsui.Tiling.Layers;
-using Mapsui.Utilities;
 using Mapsui.Widgets.ButtonWidgets;
 
 namespace Chefs.Views;
@@ -20,7 +19,7 @@ public sealed partial class MapPage : Page
 	{
 		new Contributor("Troyan Smith", 45.5018, -73.5566, 45),
 		new Contributor("Niki Samantha", 45.5411, -73.5770, 20),
-		new Contributor("Mike Baker", 45.5113, -73.5961, 15)
+		new Contributor("Mike Baker", 45.5113, -73.5961, 15),
 	};
 
 	private record Contributor(string? Name, double Lat, double Lng, int Recipes);
@@ -69,8 +68,8 @@ public sealed partial class MapPage : Page
 			{
 				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_pin.svg").ToString(),
 				SymbolScale = 1,
-				SymbolOffset = new RelativeOffset(new Offset(x: 0.0, y: 0.5))
-			}
+				SymbolOffset = new RelativeOffset(new Offset(x: 0.0, y: 0.5)),
+			},
 		};
 
 		_map!.Layers.Add(pinsLayer);
@@ -89,7 +88,7 @@ public sealed partial class MapPage : Page
 			Type = CalloutType.Detail,
 			MaxWidth = 120,
 			Enabled = false,
-			SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
+			SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f),
 		};
 	}
 
@@ -104,8 +103,8 @@ public sealed partial class MapPage : Page
 			Style = new SymbolStyle
 			{
 				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_circle.svg").ToString(),
-				SymbolScale = 1
-			}
+				SymbolScale = 1,
+			},
 		};
 
 		_myLocationLayer.UpdateMyLocation(startingPosition);

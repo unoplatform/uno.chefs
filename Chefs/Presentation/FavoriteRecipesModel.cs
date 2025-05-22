@@ -10,7 +10,6 @@ public partial record FavoriteRecipesModel
 	private readonly ICookbookService _cookbookService;
 	private readonly IMessenger _messenger;
 
-
 	public FavoriteRecipesModel(
 		INavigator navigator,
 		IRecipeService recipeService,

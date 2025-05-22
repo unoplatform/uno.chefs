@@ -1,6 +1,6 @@
 namespace Chefs.Client.Mock;
 
-public abstract class BaseMockEndpoint(ISerializer serializer, ILogger<BaseMockEndpoint> _logger)
+public abstract class BaseMockEndpoint(ISerializer serializer, ILogger<BaseMockEndpoint> logger)
 {
 	protected async Task<T?> LoadData<T>(string fileName)
 	{
@@ -12,7 +12,7 @@ public abstract class BaseMockEndpoint(ISerializer serializer, ILogger<BaseMockE
 		}
 		catch (Exception ex)
 		{
-			_logger.LogError(ex, "Failed to load {FileName}", fileName);
+			logger.LogError(ex, "Failed to load {FileName}", fileName);
 			return default;
 		}
 	}

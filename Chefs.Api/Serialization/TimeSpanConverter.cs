@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace Chefs.Api.Serialization;
 
 public class TimeSpanObjectConverter : JsonConverter<TimeSpan>
@@ -17,8 +15,10 @@ public class TimeSpanObjectConverter : JsonConverter<TimeSpan>
 		{
 			case JsonValueKind.String:
 				return TimeSpan.Parse(root.GetString() ?? string.Empty);
+
 			case JsonValueKind.Object when root.TryGetProperty("ticks", out var ticksElement):
 				return new TimeSpan(ticksElement.GetInt64());
+
 			default:
 				{
 					return new TimeSpan(root.GetProperty("ticks").GetInt64());

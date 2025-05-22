@@ -47,5 +47,4 @@ public class MockUserEndpoints(string basePath, ISerializer serializer, ILogger<
 
 		return serializer.ToString(users);
 	}
-
 }

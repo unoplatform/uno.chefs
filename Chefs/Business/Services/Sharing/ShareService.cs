@@ -13,6 +13,7 @@ public class ShareService() : IShareService
 
 #if WINDOWS
 	private static readonly Guid _dtm_iid = new Guid("a5caee9b-8708-49d1-8d36-67d25a8da00c");
+
 	static IDataTransferManagerInterop DataTransferManagerInterop => DataTransferManager.As<IDataTransferManagerInterop>();
 #endif
 
@@ -34,6 +35,7 @@ public class ShareService() : IShareService
 		DataTransferManager.ShowShareUI();
 #endif
 	}
+
 	private void DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
 	{
 		args.Request.Data.Properties.Title = $"Sharing {_recipe?.Name}";
@@ -66,6 +68,7 @@ public class ShareService() : IShareService
 	public interface IDataTransferManagerInterop
 	{
 		nint GetForWindow([In] nint appWindow, [In] ref Guid riid);
+
 		void ShowShareUIForWindow(nint appWindow, ShareUIOptions options);
 	}
 #endif

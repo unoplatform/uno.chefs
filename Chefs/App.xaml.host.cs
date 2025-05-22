@@ -19,15 +19,20 @@ public partial class App : Application
 			.UseToolkitNavigation()
 			.Configure(host => host
 				.UseAuthentication(auth =>
-					auth.AddCustom(custom =>
+					auth.AddCustom(
+						custom =>
 					{
 						custom
 							.Login(async (sp, dispatcher, credentials, cancellationToken) => await ProcessCredentials(credentials));
-					}, name: "CustomAuth")
-				)
+					},
+						name: "CustomAuth"))
 				.UseHttp((context, services) =>
 				{
 					services.AddTransient<MockHttpMessageHandler>();
+#pragma warning disable SA1001 // Commas should be spaced correctly
+#pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
+#pragma warning disable SA1113 // Comma should be on the same line as previous parameter
+#pragma warning disable SA1111 // Closing parenthesis should be on line of last parameter
 					services.AddKiotaClient<ChefsApiClient>(
 						context,
 						options: new EndpointOptions { Url = "http://localhost:5116" }
@@ -35,6 +40,10 @@ public partial class App : Application
 						, configure: (builder, endpoint) => builder.ConfigurePrimaryAndInnerHttpMessageHandler<MockHttpMessageHandler>()
 #endif
 					);
+#pragma warning restore SA1111 // Closing parenthesis should be on line of last parameter
+#pragma warning restore SA1113 // Comma should be on the same line as previous parameter
+#pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
+#pragma warning restore SA1001 // Commas should be spaced correctly
 				})
 #if DEBUG
 				// Switch to Development environment when running in DEBUG
@@ -51,8 +60,7 @@ public partial class App : Application
 					configBuilder
 						.EmbeddedSource<App>()
 						.Section<Credentials>()
-						.Section<SearchHistory>()
-				)
+						.Section<SearchHistory>())
 
 				// Enable localization (see appsettings.json for supported languages)
 				.UseLocalization()
@@ -71,20 +79,24 @@ public partial class App : Application
 				})
 				.ConfigureAppConfiguration(config =>
 				{
-					// Clear any launchurl to make sure we always start at beginning
-					// Deeplinking issue https://github.com/unoplatform/uno.chefs/issues/738
+					// Clear any launchurl to make sure we always start at beginning Deeplinking
+					// issue https://github.com/unoplatform/uno.chefs/issues/738
 					var appsettingsPrefix = new Dictionary<string, string?>
 							{
-								{ HostingConstants.LaunchUrlKey, "" }
+								{ HostingConstants.LaunchUrlKey, string.Empty },
 							};
 					config.AddInMemoryCollection(appsettingsPrefix);
 				})
-				.UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes,
+				.UseNavigation(
+					ReactiveViewModelMappings.ViewModelMappings,
+					RegisterRoutes,
 					configure: navConfig => navConfig with { AddressBarUpdateEnabled = false },
 					configureServices: ConfigureNavServices));
 	}
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 	private async ValueTask<IDictionary<string, string>?> ProcessCredentials(IDictionary<string, string> credentials)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 	{
 		// Check for username to simulate credential processing
 		if (!(credentials?.TryGetValue("Username", out var username) ??
@@ -98,7 +110,7 @@ public partial class App : Application
 		{
 			{ TokenCacheExtensions.AccessTokenKey, "SampleToken" },
 			{ TokenCacheExtensions.RefreshTokenKey, "RefreshToken" },
-			{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") } // Set token expiry
+			{ "Expiry", DateTime.Now.AddMinutes(5).ToString("g") }, // Set token expiry
 		};
 
 		return tokenDictionary;
@@ -151,28 +163,26 @@ public partial class App : Application
 			new ViewMap<CookbookDetailPage, CookbookDetailModel>(Data: new DataMap<Cookbook>()),
 			new ViewMap<CompletedDialog>(),
 			new ViewMap<MapPage, MapModel>(),
-			new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>())
-		);
+			new ViewMap<GenericDialog, GenericDialogModel>(Data: new DataMap<DialogInfo>()));
 
 		routes.Register(
-			new RouteMap("", View: views.FindByViewModel<ShellModel>(),
-				Nested: new RouteMap[]
-				{
+			new RouteMap(
+				string.Empty,
+				View: views.FindByViewModel<ShellModel>(),
+				Nested:
+				[
 					new RouteMap("Welcome", View: views.FindByViewModel<WelcomeModel>()),
 					new RouteMap("Login", View: views.FindByViewModel<LoginModel>()),
 					new RouteMap("Register", View: views.FindByViewModel<RegistrationModel>()),
 					new RouteMap("Main", View: views.FindByViewModel<MainModel>(), Nested:
 					[
-						#region Main Tabs
+
 						new RouteMap("Home", View: views.FindByViewModel<HomeModel>(), IsDefault: true),
 						new RouteMap("Search", View: views.FindByViewModel<SearchModel>()),
 						new RouteMap("FavoriteRecipes", View: views.FindByViewModel<FavoriteRecipesModel>()),
-						#endregion
-
 						new RouteMap("CookbookDetails", View: views.FindByViewModel<CookbookDetailModel>()),
 						new RouteMap("UpdateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
 						new RouteMap("CreateCookbook", View: views.FindByViewModel<CreateUpdateCookbookModel>()),
-
 						new RouteMap("RecipeDetails", View: views.FindByViewModel<RecipeDetailsModel>()),
 						new RouteMap("LiveCooking", View: views.FindByViewModel<LiveCookingModel>()),
 #if !IS_WASM_SKIA
@@ -185,9 +195,7 @@ public partial class App : Application
 					new RouteMap("Settings", View: views.FindByViewModel<SettingsModel>()),
 					new RouteMap("Completed", View: views.FindByView<CompletedDialog>()),
 					new RouteMap("Map", View: views.FindByViewModel<MapModel>()),
-					new RouteMap("Dialog", View: views.FindByView<GenericDialog>())
-				}
-			)
-		);
+					new RouteMap("Dialog", View: views.FindByView<GenericDialog>()),
+				]));
 	}
 }

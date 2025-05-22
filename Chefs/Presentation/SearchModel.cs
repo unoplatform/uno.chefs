@@ -22,6 +22,7 @@ public partial record SearchModel
 		.Observe(_messenger, t => t);
 
 	public IState<SearchFilter> Filter { get; }
+
 	public IListState<Recipe> Results => ListState.FromFeed(this, Feed
 		.Combine(Term, Filter)
 		.SelectAsync(Search)
@@ -38,13 +39,13 @@ public partial record SearchModel
 
 	public async ValueTask ApplyHistory(string term) => await Term.SetAsync(term);
 
-	private async ValueTask<IImmutableList<Recipe>> Search((string term, SearchFilter filter) inputs, CancellationToken ct)
+	private async ValueTask<IImmutableList<Recipe>> Search((string Term, SearchFilter Filter) inputs, CancellationToken ct)
 	{
-		var searchedRecipes = await _recipeService.Search(inputs.term, inputs.filter, ct);
-		return searchedRecipes.Where(inputs.filter.Match).ToImmutableList();
+		var searchedRecipes = await _recipeService.Search(inputs.Term, inputs.Filter, ct);
+		return searchedRecipes.Where(inputs.Filter.Match).ToImmutableList();
 	}
 
-	private bool GetSearched((SearchFilter filter, string term) inputs) => inputs.filter.HasFilter || !inputs.term.IsNullOrEmpty();
+	private bool GetSearched((SearchFilter Filter, string Term) inputs) => inputs.Filter.HasFilter || !inputs.Term.IsNullOrEmpty();
 
 	public async ValueTask SearchPopular() =>
 		await _navigator.NavigateViewModelAsync<SearchModel>(this, data: new SearchFilter(FilterGroup: FilterGroup.Popular));

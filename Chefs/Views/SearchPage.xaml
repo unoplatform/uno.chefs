@@ -154,7 +154,6 @@
 			</utu:AutoLayout>
 		</utu:AutoLayout>
 
-
 		<uer:FeedView x:Name="SearchFeed"
 					  NoneTemplate="{StaticResource EmptyTemplate}"
 					  utu:AutoLayout.PrimaryAlignment="Stretch"
@@ -169,7 +168,6 @@
 										ItemsSource="{Binding Data}"
 										Layout="{StaticResource ResponsiveGridLayout}" />
 				</ScrollViewer>
-
 			</DataTemplate>
 		</uer:FeedView>
 	</utu:AutoLayout>

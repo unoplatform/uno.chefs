@@ -5,13 +5,11 @@ namespace Chefs.Business.Services.Sharing;
 /// </summary>
 public interface IShareService
 {
-	///<summary>
+	/// <summary>
 	/// Open native sharing for a recipe and its steps
 	/// </summary>
-	/// <param name="recipe">recipe to share</param>
-	/// <param name="steps">recipe's steps</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// </returns>
+	/// <param name="recipe">Recipe to share</param>
+	/// <param name="steps">Recipe's steps</param>
+	/// <param name="ct">Cancellation token</param>
 	void ShareRecipe(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct);
 }

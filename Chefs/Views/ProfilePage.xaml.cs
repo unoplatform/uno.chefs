@@ -7,4 +7,3 @@ public sealed partial class ProfilePage : Page
 		this.InitializeComponent();
 	}
 }
-

@@ -56,7 +56,7 @@ public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMes
 			{
 				AppTheme.Light => ElementTheme.Light,
 				AppTheme.Dark => ElementTheme.Dark,
-				_ => ElementTheme.Default
+				_ => ElementTheme.Default,
 			};
 		});
 #endif

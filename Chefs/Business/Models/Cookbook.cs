@@ -1,5 +1,6 @@
 using CookbookData = Chefs.Client.Models.CookbookData;
 using RecipeData = Chefs.Client.Models.RecipeData;
+
 namespace Chefs.Business.Models;
 
 public partial record Cookbook : IChefEntity
@@ -15,13 +16,21 @@ public partial record Cookbook : IChefEntity
 		CookbookImages = new CookbookImages(cookbookData.Recipes?.ToImmutableList() ?? ImmutableList<RecipeData>.Empty);
 	}
 
-	internal Cookbook() { Recipes = ImmutableList<Recipe>.Empty; }
+	internal Cookbook()
+	{
+		Recipes = ImmutableList<Recipe>.Empty;
+	}
 
 	public Guid Id { get; init; }
+
 	public Guid UserId { get; init; }
+
 	public string? Name { get; init; }
+
 	public int PinsNumber => Recipes?.Count ?? 0;
+
 	public IImmutableList<Recipe> Recipes { get; init; }
+
 	public CookbookImages? CookbookImages { get; init; }
 
 	internal CookbookData ToData() => new()
@@ -31,7 +40,7 @@ public partial record Cookbook : IChefEntity
 		Name = Name,
 		Recipes = Recipes?
 			.Select(c => c.ToData())
-			.ToList()
+			.ToList(),
 	};
 
 	internal CookbookData ToData(IImmutableList<Recipe>? recipes) => new()
@@ -45,7 +54,7 @@ public partial record Cookbook : IChefEntity
 				.ToList()
 			: recipes
 				.Select(r => r.ToData())
-				.ToList()
+				.ToList(),
 	};
 
 	internal static CookbookData CreateData(Guid userId, string name, IImmutableList<Recipe> recipes)
@@ -55,7 +64,7 @@ public partial record Cookbook : IChefEntity
 			Id = Guid.NewGuid(),
 			Name = name,
 			UserId = userId,
-			Recipes = recipes?.Select(r => r.ToData()).ToList()
+			Recipes = recipes?.Select(r => r.ToData()).ToList(),
 		};
 	}
 

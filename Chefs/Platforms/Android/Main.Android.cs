@@ -1,9 +1,8 @@
-using System.Collections.Immutable;
 using Android.Runtime;
+
 #if !IS_ANDROID_SKIA
 using Com.Nostra13.Universalimageloader.Core;
 #endif
-using Microsoft.UI.Xaml.Media;
 
 namespace Chefs.Droid;
 
@@ -12,8 +11,7 @@ namespace Chefs.Droid;
 	Icon = "@mipmap/icon",
 	LargeHeap = true,
 	HardwareAccelerated = true,
-	Theme = "@style/AppTheme"
-)]
+	Theme = "@style/AppTheme")]
 public class Application : Microsoft.UI.Xaml.NativeApplication
 {
 	static Application()

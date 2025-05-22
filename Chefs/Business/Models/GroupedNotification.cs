@@ -13,10 +13,15 @@ public partial record GroupedNotification
 	}
 
 	public IImmutableList<Notification> Today { get; }
+
 	public bool HasTodayNotifications => Today.Any();
+
 	public IImmutableList<Notification> Yesterday { get; }
+
 	public bool HasYesterdayNotifications => Yesterday.Any();
+
 	public IImmutableList<Notification> Older { get; }
+
 	public bool HasOlderNotifications => Older.Any();
 
 	public IImmutableList<Notification> GetAll() => _all;

@@ -11,8 +11,7 @@ public sealed partial class RecipeDetailsPage : Page
 		LiveCharts.Configure(config =>
 			config
 				.HasMap<NutritionChartItem>((nutritionChartItem, point) =>
-					// here we use the index as X, and the nutrition value as Y 
-					new(point, nutritionChartItem.Value))
-		);
+					// here we use the index as X, and the nutrition value as Y
+					new(point, nutritionChartItem.Value)));
 	}
 }

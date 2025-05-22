@@ -17,7 +17,7 @@ public partial record RegistrationModel(
 		var success = await Authentication.LoginAsync(Dispatcher, new Dictionary<string, string>
 		{
 			{ "Username", username },
-			{ "Password", password }
+			{ "Password", password },
 		});
 
 		if (success)

@@ -7,10 +7,10 @@ using Microsoft.UI;
 using SkiaSharp;
 
 namespace Chefs.Views.Controls;
+
 public sealed partial class ChartControl : UserControl
 {
 	private Recipe? _recipe;
-
 
 	public SolidColorBrush CarbBrush
 	{
@@ -36,8 +36,6 @@ public sealed partial class ChartControl : UserControl
 	public static readonly DependencyProperty FatBrushProperty =
 		DependencyProperty.Register("FatBrush", typeof(SolidColorBrush), typeof(ChartControl), new PropertyMetadata(new SolidColorBrush(Colors.Black), OnBrushChanged));
 
-
-
 	public SolidColorBrush DataLabelBrush
 	{
 		get => (SolidColorBrush)GetValue(DataLabelBrushProperty); set => SetValue(DataLabelBrushProperty, value);
@@ -45,8 +43,6 @@ public sealed partial class ChartControl : UserControl
 
 	public static readonly DependencyProperty DataLabelBrushProperty =
 		DependencyProperty.Register("DataLabelBrush", typeof(SolidColorBrush), typeof(ChartControl), new PropertyMetadata(new SolidColorBrush(Colors.Black), OnBrushChanged));
-
-
 
 	public SolidColorBrush TrackBackgroundBrush
 	{
@@ -58,7 +54,10 @@ public sealed partial class ChartControl : UserControl
 
 	private static void OnBrushChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
 	{
-		if (dependencyObject is not ChartControl chartControl) return;
+		if (dependencyObject is not ChartControl chartControl)
+		{
+			return;
+		}
 
 		if (chartControl._recipe != null)
 		{
@@ -95,16 +94,16 @@ public sealed partial class ChartControl : UserControl
 	private void BuildColumnChart()
 	{
 		//Build column chart
-		var _chartdata = new NutritionChartItem[]
+		var chartdata = new NutritionChartItem[]
 		 {
-			new(nameof(Nutrition.Fat),_recipe?.Nutrition.Fat,_recipe?.Nutrition.FatBase,GetNutritionColorPaint(nameof(Nutrition.Fat))),
-			new(nameof(Nutrition.Carbs),_recipe?.Nutrition.Carbs,_recipe?.Nutrition.CarbsBase,GetNutritionColorPaint(nameof(Nutrition.Carbs))),
-			new(nameof(Nutrition.Protein),_recipe?.Nutrition.Protein,_recipe?.Nutrition.ProteinBase, GetNutritionColorPaint(nameof(Nutrition.Protein)))
+			new(nameof(Nutrition.Fat), _recipe?.Nutrition.Fat, _recipe?.Nutrition.FatBase, GetNutritionColorPaint(nameof(Nutrition.Fat))),
+			new(nameof(Nutrition.Carbs), _recipe?.Nutrition.Carbs, _recipe?.Nutrition.CarbsBase, GetNutritionColorPaint(nameof(Nutrition.Carbs))),
+			new(nameof(Nutrition.Protein), _recipe?.Nutrition.Protein, _recipe?.Nutrition.ProteinBase, GetNutritionColorPaint(nameof(Nutrition.Protein))),
 		 };
 
 		var rowSeries = new RowSeries<NutritionChartItem>
 		{
-			Values = _chartdata,
+			Values = chartdata,
 			DataLabelsPaint = new SolidColorPaint(GetSKColorFromResource(DataLabelBrush)),
 			DataLabelsPosition = DataLabelsPosition.Right,
 			DataLabelsFormatter = point => $"{point.Model!.Name} {point.Model!.ChartProgressVal}/{point.Model!.MaxValueRef}g",
@@ -113,10 +112,14 @@ public sealed partial class ChartControl : UserControl
 			MaxBarWidth = 22,
 			Padding = 1,
 
-			IsVisibleAtLegend = true
+			IsVisibleAtLegend = true,
 		}.OnPointMeasured(point =>
 		{
-			if (point.Visual is null) return;
+			if (point.Visual is null)
+			{
+				return;
+			}
+
 			point.Visual.Fill = point.Model!.ColumnColor;
 		});
 		//End
@@ -126,7 +129,7 @@ public sealed partial class ChartControl : UserControl
 		{
 			new(),
 			new(),
-			new()
+			new(),
 		};
 
 		var rowSeriesLimit = new RowSeries<NutritionChartItem>
@@ -135,7 +138,7 @@ public sealed partial class ChartControl : UserControl
 			IgnoresBarPosition = true,
 			MaxBarWidth = 22,
 			Padding = 1,
-			Fill = new SolidColorPaint(GetSKColorFromResource(TrackBackgroundBrush))
+			Fill = new SolidColorPaint(GetSKColorFromResource(TrackBackgroundBrush)),
 		};
 		//End
 
@@ -150,22 +153,22 @@ public sealed partial class ChartControl : UserControl
 		{
 			new PieSeries<int>
 			{
-				Values = new []{ 5 },
+				Values = new[]{ 5 },
 				Fill = GetNutritionColorPaint(nameof(Nutrition.Fat)),
 				InnerRadius = 60,
 			},
 			new PieSeries<int>
 			{
-				Values = new []{ 5 },
+				Values = new[]{ 5 },
 				Fill = GetNutritionColorPaint(nameof(Nutrition.Protein)),
 				InnerRadius = 60,
 			},
 			new PieSeries<int>
 			{
-				Values = new []{ 5 },
+				Values = new[]{ 5 },
 				Fill = GetNutritionColorPaint(nameof(Nutrition.Carbs)),
 				InnerRadius = 60,
-			}
+			},
 		};
 
 		pieChart.Series = c;

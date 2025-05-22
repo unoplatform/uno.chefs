@@ -15,12 +15,12 @@ public partial record NutritionChartItem
 		ColumnColor = columnColor;
 		ChartProgressVal = value;
 
-		var _val = value ?? 0;
-		var _maxValueRef = maxValueRef ?? 0;
-		var _tempValue = (_val / _maxValueRef) * 100;
+		var val = value ?? 0;
+		var maxValueRef1 = maxValueRef ?? 0;
+		var tempValue = (val / maxValueRef1) * 100;
 
-		Value = _tempValue * 10;
-		MaxValueRef = _maxValueRef;
+		Value = tempValue * 10;
+		MaxValueRef = maxValueRef1;
 	}
 
 	public string? Name { get; }

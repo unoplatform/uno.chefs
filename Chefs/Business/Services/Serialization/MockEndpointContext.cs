@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using Chefs.Client.Models;
 
 namespace Chefs.Data;
 
@@ -19,10 +18,6 @@ namespace Chefs.Data;
 [JsonSerializable(typeof(IEnumerable<RecipeData>))]
 [JsonSerializable(typeof(TimeSpanObject))]
 [JsonSerializable(typeof(LoginRequest))]
-//[JsonSerializable(typeof(List<SavedCookbooksData>))]
-//[JsonSerializable(typeof(List<SavedRecipesData>))]
-//[JsonSerializable(typeof(IEnumerable<SavedRecipesData>))]
-//[JsonSerializable(typeof(SavedRecipesData))]
 [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase, PropertyNameCaseInsensitive = true)]
 public partial class MockEndpointContext : JsonSerializerContext
 {

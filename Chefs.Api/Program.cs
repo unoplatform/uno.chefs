@@ -1,4 +1,3 @@
-using Chefs.Api.Serialization;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);

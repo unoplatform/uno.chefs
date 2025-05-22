@@ -9,5 +9,6 @@ public partial record DialogInfo
 	}
 
 	public string Title { get; init; }
+
 	public string Content { get; init; }
 }

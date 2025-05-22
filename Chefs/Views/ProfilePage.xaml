@@ -148,7 +148,6 @@
 				   Foreground="{ThemeResource OnBackgroundBrush}"
 				   Style="{StaticResource BodyLarge}" />
 
-
 		<uer:FeedView Source="{Binding Recipes}"
 					  utu:AutoLayout.PrimaryAlignment="Stretch"
 					  NoneTemplate="{StaticResource RecipeEmptyTemplate}">

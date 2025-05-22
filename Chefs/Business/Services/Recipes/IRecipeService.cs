@@ -6,173 +6,159 @@ namespace Chefs.Business.Services.Recipes;
 public interface IRecipeService
 {
 	/// <summary>
-	/// Recipes method
+	/// Retrieves all recipes from the API.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get each recipe from api
-	/// </returns>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of all recipes.</returns>
 	ValueTask<IImmutableList<Recipe>> GetAll(CancellationToken ct);
 
 	/// <summary>
-	/// Add current user dislike recipe review
+	/// Adds a dislike to the specified review.
 	/// </summary>
-	/// <param name="review">review to update</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// </returns>
+	/// <param name="review">The review to dislike.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A task representing the asynchronous operation.</returns>
 	ValueTask DislikeReview(Review review, CancellationToken ct);
 
 	/// <summary>
-	/// Add current user like recipe review
+	/// Adds a like to the specified review.
 	/// </summary>
-	/// <param name="review">review to update</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// </returns>
+	/// <param name="review">The review to like.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A task representing the asynchronous operation.</returns>
 	ValueTask LikeReview(Review review, CancellationToken ct);
 
 	/// <summary>
-	/// Recipes method
+	/// Retrieves the count of recipes created by a specific user.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get recipes count by user
-	/// </returns>
+	/// <param name="userId">The ID of the user.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>The count of recipes created by the user.</returns>
 	ValueTask<int> GetCount(Guid userId, CancellationToken ct);
 
 	/// <summary>
-	/// Favorited recipes.
+	/// Gets the list of favorited recipes.
 	/// </summary>
 	IListState<Recipe> FavoritedRecipes { get; }
 
 	/// <summary>
-	/// Recipes with a specific category
+	/// Retrieves recipes filtered by a specific category.
 	/// </summary>
-	/// <param name="categoryId">The specific category to filter recipes</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get each recipe from api filter by a category
-	/// </returns>
+	/// <param name="categoryId">The ID of the category to filter by.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of recipes in the specified category.</returns>
 	ValueTask<IImmutableList<Recipe>> GetByCategory(int categoryId, CancellationToken ct);
 
 	/// <summary>
-	/// Categories from api
+	/// Retrieves all categories from the API.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get each category from api
-	/// </returns>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of all categories.</returns>
 	ValueTask<IImmutableList<Category>> GetCategories(CancellationToken ct);
 
 	/// <summary>
-	/// Categories from api with count
+	/// Retrieves all categories along with their recipe counts.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get each category from api with their corresponding count
-	/// </returns>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of categories with their corresponding recipe counts.</returns>
 	ValueTask<IImmutableList<CategoryWithCount>> GetCategoriesWithCount(CancellationToken ct);
 
 	/// <summary>
-	/// Recipes in trending
+	/// Retrieves trending recipes.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get recipes filter in trending now
-	/// </returns>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of trending recipes.</returns>
 	ValueTask<IImmutableList<Recipe>> GetTrending(CancellationToken ct);
 
 	/// <summary>
-	/// Popular Recipes
+	/// Retrieves popular recipes.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get popular recipes filter 
-	/// </returns>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of popular recipes.</returns>
 	ValueTask<IImmutableList<Recipe>> GetPopular(CancellationToken ct);
 
 	/// <summary>
-	/// Recipes recently added
+	/// Retrieves recently added recipes.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get recent recipes or new recipes
-	/// </returns>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of recently added recipes.</returns>
 	ValueTask<IImmutableList<Recipe>> GetRecent(CancellationToken ct);
 
 	/// <summary>
-	/// Filter recipes from api
+	/// Searches for recipes based on a term and filter.
 	/// </summary>
-	/// <param name="term">The search term</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Get recipes filter by different options selected by the user
-	/// </returns>
+	/// <param name="term">The search term.</param>
+	/// <param name="filter">The filter to apply to the search.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of recipes matching the search criteria.</returns>
 	ValueTask<IImmutableList<Recipe>> Search(string term, SearchFilter filter, CancellationToken ct);
 
 	/// <summary>
-	/// Get recipe's reviews
+	/// Retrieves reviews for a specific recipe.
 	/// </summary>
-	/// <param name="recipeId">id from the recipe</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Recipe's reviews
-	/// </returns>
+	/// <param name="recipeId">The ID of the recipe.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of reviews for the recipe.</returns>
 	ValueTask<IImmutableList<Review>> GetReviews(Guid recipeId, CancellationToken ct);
 
 	/// <summary>
-	/// Get recipe's ingredients
+	/// Retrieves ingredients for a specific recipe.
 	/// </summary>
-	/// <param name="recipeId">id from the recipe</param>
-	/// <param name="ct">Recipe Guid</param>
-	/// <returns>
-	/// Recipe's ingredients
-	/// </returns>
+	/// <param name="recipeId">The ID of the recipe.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of ingredients for the recipe.</returns>
 	ValueTask<IImmutableList<Ingredient>> GetIngredients(Guid recipeId, CancellationToken ct);
 
 	/// <summary>
-	/// Save recipe 
+	/// Marks a recipe as a favorite.
 	/// </summary>
-	/// <param name="recipe"> recipe to save </param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// </returns>
+	/// <param name="recipe">The recipe to mark as favorite.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A task representing the asynchronous operation.</returns>
 	ValueTask Favorite(Recipe recipe, CancellationToken ct);
 
 	/// <summary>
-	/// Get review's steps
+	/// Retrieves steps for a specific recipe.
 	/// </summary>
-	/// <param name="recipeId">id from the recipe</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Recipe's steps
-	/// </returns>
+	/// <param name="recipeId">The ID of the recipe.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of steps for the recipe.</returns>
 	ValueTask<IImmutableList<Step>> GetSteps(Guid recipeId, CancellationToken ct);
 
 	/// <summary>
-	/// Recipes by user
+	/// Retrieves recipes created by a specific user.
 	/// </summary>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// User's recipes
-	/// </returns>
+	/// <param name="userId">The ID of the user.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of recipes created by the user.</returns>
 	ValueTask<IImmutableList<Recipe>> GetByUser(Guid userId, CancellationToken ct);
 
 	/// <summary>
-	/// Recipes favorited by the current user, supports pagination
+	/// Retrieves favorited recipes with pagination.
 	/// </summary>
-	/// <param name="pageSize">number of items to display per page</param>
-	/// <param name="firstItemIndex">index of the first item on the requested page</param>
-	/// <param name="ct"></param>
-	/// <returns>
-	/// Current user's recipes within the requested page
-	/// </returns>
+	/// <param name="pageSize">The number of items per page.</param>
+	/// <param name="firstItemIndex">The index of the first item on the requested page.</param>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of favorited recipes within the requested page.</returns>
 	ValueTask<IImmutableList<Recipe>> GetFavoritedWithPagination(uint pageSize, uint firstItemIndex, CancellationToken ct);
 
+	/// <summary>
+	/// Retrieves recommended recipes.
+	/// </summary>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of recommended recipes.</returns>
 	ValueTask<IImmutableList<Recipe>> GetRecommended(CancellationToken ct);
 
+	/// <summary>
+	/// Retrieves recipes from chefs.
+	/// </summary>
+	/// <param name="ct">Cancellation token to cancel the operation.</param>
+	/// <returns>A list of recipes from chefs.</returns>
 	ValueTask<IImmutableList<Recipe>> GetFromChefs(CancellationToken ct);
 
+	/// <summary>
+	/// Retrieves the search history.
+	/// </summary>
+	/// <returns>A list of search history terms.</returns>
 	IImmutableList<string> GetSearchHistory();
 }

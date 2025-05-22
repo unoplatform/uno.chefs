@@ -8,7 +8,10 @@ public class CertainNumberToVisible : IValueConverter
 
 	public object? Convert(object value, Type targetType, object parameter, string language)
 	{
-		if (value == null) return Visibility.Collapsed;
+		if (value == null)
+		{
+			return Visibility.Collapsed;
+		}
 
 		return Number == (int)value
 				? Visibility.Visible

@@ -1,7 +1,5 @@
 class SampleRunner {
-
 	static async init() {
-
 		if (!SampleRunner._getCurrentPage) {
 			const chefsExports = await Module.getAssemblyExports("Chefs");
 

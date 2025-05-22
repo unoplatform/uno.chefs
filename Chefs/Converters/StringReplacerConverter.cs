@@ -1,10 +1,12 @@
 using Microsoft.UI.Xaml.Data;
+
 namespace Chefs.Converters;
 
 #nullable disable
 public class StringReplacerConverter : IValueConverter
 {
 	public string OldValue { get; set; }
+
 	public string NewValue { get; set; }
 
 	public object Convert(object value, Type targetType, object parameter, string language)

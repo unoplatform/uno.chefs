@@ -1,3 +1,5 @@
 namespace Chefs.Business.Models;
 
-public interface IChefEntity { }
+public interface IChefEntity
+{
+}

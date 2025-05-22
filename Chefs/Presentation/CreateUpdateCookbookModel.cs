@@ -7,6 +7,7 @@ namespace Chefs.Presentation;
 public partial record CreateUpdateCookbookModel
 {
 	const uint DefaultPageSize = 20;
+
 	public IState<IImmutableList<Recipe>> SelectedRecipes { get; }
 
 	private readonly INavigator _navigator;
@@ -43,8 +44,8 @@ public partial record CreateUpdateCookbookModel
 			IsCreate = true;
 		}
 		SelectedRecipes = State.Value(this, () => _cookbook?.Recipes ?? ImmutableList<Recipe>.Empty);
-
 	}
+
 	public bool IsCreate { get; }
 
 	public string Title { get; }
@@ -60,8 +61,7 @@ public partial record CreateUpdateCookbookModel
 	public IListFeed<Recipe> Recipes => ListFeed
 		.PaginatedAsync(
 			async (PageRequest pageRequest, CancellationToken ct) =>
-				await _recipeService.GetFavoritedWithPagination(pageRequest.DesiredSize ?? DefaultPageSize, pageRequest.CurrentCount, ct)
-		)
+				await _recipeService.GetFavoritedWithPagination(pageRequest.DesiredSize ?? DefaultPageSize, pageRequest.CurrentCount, ct))
 		.Selection(SelectedRecipes);
 
 	public async ValueTask Submit(CancellationToken ct)

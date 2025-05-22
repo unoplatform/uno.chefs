@@ -42,8 +42,7 @@ public class CookbookService(ChefsApiClient client, IMessenger messenger, IUserS
 		await client.Api.Cookbook.Save.PostAsync(
 			cookbookData,
 			config => config.QueryParameters.UserId = currentUser.Id,
-			cancellationToken: ct
-		);
+			cancellationToken: ct);
 		messenger.Send(new EntityMessage<Cookbook>(EntityChange.Created, cookbook));
 	}
 

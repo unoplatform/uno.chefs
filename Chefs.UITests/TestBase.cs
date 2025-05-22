@@ -1,16 +1,12 @@
-using System;
-using System.IO;
 using NUnit.Framework;
 using Uno.UITest;
-using Uno.UITest.Helpers;
-using Uno.UITest.Selenium;
 using Uno.UITests.Helpers;
 
 namespace Chefs.UITests;
 
 public class TestBase
 {
-	private required IApp _app;
+	private IApp _app;
 	private DateTime _startTime;
 	private readonly string? _screenShotPath = Environment.GetEnvironmentVariable("UNO_UITEST_SCREENSHOT_PATH");
 

@@ -29,5 +29,6 @@ public record SearchFilter(
 			   (Category == null || recipe.Category.Id == Category.Id || recipe.Category.Name == Category.Name) &&
 			   (Serves == null || Serves == recipe.Serves);
 	}
+
 	private static TimeSpan ToTimeSpan(TimeSpanObject timeSpanObject) => new TimeSpan(timeSpanObject?.Ticks ?? 0);
 }

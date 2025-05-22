@@ -1,4 +1,3 @@
-using UIKit;
 using Uno.UI.Hosting;
 
 namespace Chefs.MacCatalyst;
@@ -9,8 +8,8 @@ public class EntryPoint
 	public static void Main(string[] args)
 	{
 #if !IS_UIKIT_SKIA
-			// if you want to use a different Application Delegate class from "AppDelegate"
-			// you can specify it here.
+			// if you want to use a different Application Delegate class from "AppDelegate" you can
+			// specify it here.
 			UIApplication.Main(args, null, typeof(App));
 #else
 		var host = UnoPlatformHostBuilder.Create()

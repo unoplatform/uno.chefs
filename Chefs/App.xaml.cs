@@ -1,14 +1,6 @@
-using System.Diagnostics;
-using System.Text.Json;
-
 #if __IOS__
 using Foundation;
 #endif
-using LiveChartsCore;
-using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Abstractions.Authentication;
-using Microsoft.Kiota.Http.HttpClientLibrary;
-using Uno.Extensions.Http.Kiota;
 
 namespace Chefs;
 
@@ -23,9 +15,14 @@ public partial class App : Application
 		this.InitializeComponent();
 	}
 
+#pragma warning disable CA2211 // Non-constant fields should not be visible
+#pragma warning disable SA1401 // Fields should be private
 	public static Window? MainWindow;
 
 	public static ShellControl? Shell;
+#pragma warning restore CA2211 // Non-constant fields should not be visible
+#pragma warning restore SA1401 // Fields should be private
+
 	public static IHost? Host { get; private set; }
 
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
@@ -54,9 +51,9 @@ public partial class App : Application
 		//-:cnd:noEmit
 #if true // DEBUG
 		// Logging is disabled by default for release builds, as it incurs a significant
-		// initialization cost from Microsoft.Extensions.Logging setup. If startup performance
-		// is a concern for your application, keep this disabled. If you're running on the web or
-		// desktop targets, you can use URL or command line parameters to enable it.
+		// initialization cost from Microsoft.Extensions.Logging setup. If startup performance is a
+		// concern for your application, keep this disabled. If you're running on the web or desktop
+		// targets, you can use URL or command line parameters to enable it.
 		//
 		// For more performance documentation: https://platform.uno/docs/articles/Uno-UI-Performance.html
 
@@ -79,32 +76,29 @@ public partial class App : Application
 			builder.AddFilter("Windows", LogLevel.Information);
 			builder.AddFilter("Microsoft", LogLevel.Information);
 
-			// Generic Xaml events
-			// builder.AddFilter("Microsoft.UI.Xaml", LogLevel.Debug );
+			// Generic Xaml events builder.AddFilter("Microsoft.UI.Xaml", LogLevel.Debug );
 			// builder.AddFilter("Microsoft.UI.Xaml.VisualStateGroup", LogLevel.Debug );
 			// builder.AddFilter("Microsoft.UI.Xaml.StateTriggerBase", LogLevel.Debug );
 			// builder.AddFilter("Microsoft.UI.Xaml.UIElement", LogLevel.Debug );
 			// builder.AddFilter("Microsoft.UI.Xaml.FrameworkElement", LogLevel.Trace );
 
-			// Layouter specific messages
-			// builder.AddFilter("Microsoft.UI.Xaml.Controls", LogLevel.Debug );
-			// builder.AddFilter("Microsoft.UI.Xaml.Controls.Layouter", LogLevel.Debug );
-			// builder.AddFilter("Microsoft.UI.Xaml.Controls.Panel", LogLevel.Debug );
+			// Layouter specific messages builder.AddFilter("Microsoft.UI.Xaml.Controls",
+			// LogLevel.Debug ); builder.AddFilter("Microsoft.UI.Xaml.Controls.Layouter",
+			// LogLevel.Debug ); builder.AddFilter("Microsoft.UI.Xaml.Controls.Panel",
+			// LogLevel.Debug );
 
 			// builder.AddFilter("Windows.Storage", LogLevel.Debug );
 
-			// Binding related messages
-			// builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug );
-			// builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug );
+			// Binding related messages builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug
+			// ); builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug );
 
 			// Binder memory references tracking
 			// builder.AddFilter("Uno.UI.DataBinding.BinderReferenceHolder", LogLevel.Debug );
 
-			// DevServer and HotReload related
-			// builder.AddFilter("Uno.UI.RemoteControl", LogLevel.Information);
+			// DevServer and HotReload related builder.AddFilter("Uno.UI.RemoteControl", LogLevel.Information);
 
-			// Debug JS interop
-			// builder.AddFilter("Uno.Foundation.WebAssemblyRuntime", LogLevel.Debug );
+			// Debug JS interop builder.AddFilter("Uno.Foundation.WebAssemblyRuntime",
+			// LogLevel.Debug );
 		});
 
 		global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory = factory;
@@ -115,6 +109,7 @@ public partial class App : Application
 #endif
 		//+:cnd:noEmit
 	}
+
 #if USE_UITESTS
 
 #if __IOS__
@@ -125,6 +120,8 @@ public partial class App : Application
 #if __WASM__
 	[System.Runtime.InteropServices.JavaScript.JSExport]
 #endif
+
 	public static string GetCurrentPage() => Shell?.RootFrame?.CurrentSourcePageType.ToString() ?? string.Empty;
+
 #endif
 }
