@@ -52,7 +52,12 @@ public partial class ResponsiveDrawerFlyout : Flyout, IRecipient<ThemeChangedMes
 #if WINDOWS
 		_ = DispatcherQueue.TryEnqueue(() =>
 		{
-			MainLayout.RequestedTheme = message.IsDark ? ElementTheme.Dark : ElementTheme.Light;
+			MainLayout.RequestedTheme = message.Theme switch
+			{
+				AppTheme.Light => ElementTheme.Light,
+				AppTheme.Dark => ElementTheme.Dark,
+				_ => ElementTheme.Default
+			};
 		});
 #endif
 	}
