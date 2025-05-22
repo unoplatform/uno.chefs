@@ -124,6 +124,8 @@ public partial class App : Application
 			.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.LoginRequest);
 #endif
+		services
+			.AddJsonTypeInfo(AppConfigContext.Default.String);
 	}
 
 	private void ConfigureNavServices(HostBuilderContext context, IServiceCollection services)
