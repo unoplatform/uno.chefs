@@ -110,7 +110,6 @@
 										   TextWrapping="Wrap" />
 							</utu:AutoLayout>
 							<ComboBox ItemsSource="{Binding ThemeOptions}"
-									  SelectedItem="{Binding Theme, Mode=TwoWay}"
 									  HorizontalAlignment="Right" />
 						</utu:AutoLayout>
 					</utu:AutoLayout>

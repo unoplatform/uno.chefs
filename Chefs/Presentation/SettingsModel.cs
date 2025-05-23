@@ -28,7 +28,10 @@ public partial record SettingsModel
 
 	private void OnThemeChanged(object? sender, AppTheme theme) => _messenger.Send(new ThemeChangedMessage(theme));
 
-	public IList<AppTheme> ThemeOptions => Enum.GetValues(typeof(AppTheme)).Cast<AppTheme>().ToList();
+	public IListFeed<AppTheme> ThemeOptions => State
+		.Value(this, () => Enum.GetValues(typeof(AppTheme)).Cast<AppTheme>().ToImmutableList())
+		.AsListFeed()
+		.Selection(Theme);
 
 	public IState<AppTheme> Theme => State
 		.Value(this, () => _themeService.Theme)
