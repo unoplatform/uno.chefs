@@ -49,15 +49,15 @@
 					  utu:SelectorExtensions.PipsPager="{Binding ElementName=pipsPager}"
 					  SelectedIndex="{Binding Pages.CurrentIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 				<FlipView.Items>
-					<ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/first_splash_screen.jpg"
+					<ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/first_splash_screen.png"
 									  Title="Welcome to your App!"
 									  VerticalContentAlignment="Bottom"
 									  Description="Embark on a delightful coding journey as you discover, create, and share awesome script tailored to your app and project preferences." />
-					<ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/second_splash_screen.jpg"
+					<ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/second_splash_screen.png"
 									  VerticalContentAlignment="Bottom"
 									  Title="Explore Thousands of Recipes"
 									  Description="Find your next culinary adventure or last minute lunch from our vast collection of diverse and mouth-watering recipes." />
-					<ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/third_splash_screen.jpg"
+					<ctrl:WelcomeView ImageUrl="ms-appx:///Assets/Welcome/third_splash_screen.png"
 									  Title="Personalize Your Recipe Journey"
 									  VerticalContentAlignment="Bottom"
 									  Description="Create your own recipe collections, cookbooks, follow other foodies, and share your creations with the Chefs community." />
