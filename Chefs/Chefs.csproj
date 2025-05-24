@@ -24,7 +24,7 @@
 
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-		<UseMocks Condition="'$(UseMocks)'==''">true</UseMocks>
+		<UseMocks Condition="'$(UseMocks)'==''">false</UseMocks>
 		<!--
 			If you encounter this error message:
 
