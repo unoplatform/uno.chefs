@@ -101,6 +101,13 @@
 		<Content Include="Assets\**\*.png" />
 	</ItemGroup>
 
+	<Target Name="AdjustCalabash" BeforeTargets="BeforeBuild">
+		<!-- Needs to be run as a target, as RuntimeIdentifier is set after the csproj is parsed -->
+		<PropertyGroup Condition="!$(RuntimeIdentifier.Contains('arm64'))">
+			<DefineConstants>$(DefineConstants);HAS_TESTCLOUD_AGENT</DefineConstants>
+		</PropertyGroup>
+	</Target>
+
 	<Choose>
 		<When Condition="'$(IsCanaryBranch)'=='true'">
 			<ItemGroup>
@@ -140,7 +147,7 @@
 				<MtouchUseLlvm>false</MtouchUseLlvm>
 				<!-- END Workaround -->
 			</PropertyGroup>
-			<ItemGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
+			<ItemGroup Condition="'$(IsUiAutomationMappingEnabled)'=='True' and !$(RuntimeIdentifier.Contains('arm64'))">
 				<PackageReference Include="Xamarin.TestCloud.Agent" />
 			</ItemGroup>
 		</When>

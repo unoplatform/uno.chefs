@@ -30,7 +30,7 @@ public partial class App : Application
 
 	protected override async void OnLaunched(LaunchActivatedEventArgs args)
 	{
-#if __IOS__ && !__MACCATALYST__ && USE_UITESTS
+#if __IOS__ && !__MACCATALYST__ && USE_UITESTS && HAS_TESTCLOUD_AGENT
 		Xamarin.Calabash.Start();
 #endif
 
