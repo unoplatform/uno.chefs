@@ -88,14 +88,14 @@
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								utu:FlipViewExtensions.Previous="{Binding ElementName=flipView}"
 								Style="{StaticResource ChefsOutlinedButtonStyle}"
-								IsEnabled="{Binding Pages.Value.CanMovePrevious}" />
+								Visibility="{Binding Pages.Value.CanMovePrevious}" />
 						<Button HorizontalContentAlignment="Center"
 								VerticalContentAlignment="Center"
 								Content="Next"
 								utu:FlipViewExtensions.Next="{Binding ElementName=flipView}"
 								utu:AutoLayout.PrimaryAlignment="Stretch"
 								Style="{StaticResource ChefsPrimaryButtonStyle}"
-								IsEnabled="{Binding Pages.Value.CanMoveNext}" />
+								Visibility="{Binding Pages.Value.CanMoveNext}" />
 					</utu:AutoLayout>
 					<Button HorizontalContentAlignment="Center"
 							VerticalContentAlignment="Center"
