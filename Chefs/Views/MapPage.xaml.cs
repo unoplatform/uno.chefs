@@ -1,3 +1,4 @@
+using System.Drawing;
 using BruTile.Predefined;
 using Mapsui;
 using Mapsui.Extensions;
@@ -32,7 +33,7 @@ public sealed partial class MapPage : Page
 #if HAS_UNO
 		this.Loaded += (sender, e) => InitializeMap();
 #else
-		InitializeMap();
+			InitializeMap();
 #endif
 	}
 
@@ -51,6 +52,11 @@ public sealed partial class MapPage : Page
 		_map!.Widgets.Add(new ZoomInOutWidget { Margin = new MRect(36) });
 	}
 
+	private class LayerData
+	{
+		public bool IsMapInfoLayer { get; set; }
+	}
+
 	private static void AddPinsLayer()
 	{
 		var pins = Contributors.Select(c =>
@@ -63,13 +69,13 @@ public sealed partial class MapPage : Page
 		var pinsLayer = new MemoryLayer
 		{
 			Name = "Contributor pins with callouts",
-			IsMapInfoLayer = true,
+			Tag = new LayerData { IsMapInfoLayer = true },
 			Features = new MemoryProvider(pins).Features,
 			Style = new SymbolStyle()
 			{
 				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_pin.svg").ToString(),
 				SymbolScale = 1,
-				SymbolOffset = new RelativeOffset(new Offset(x: 0.0, y: 0.5))
+				RelativeOffset = new RelativeOffset(0.0, 0.5)
 			}
 		};
 
@@ -82,14 +88,14 @@ public sealed partial class MapPage : Page
 		{
 			Title = title,
 			TitleFont = { Size = 14 },
-			TitleFontColor = Color.Black,
+			TitleFontColor = Mapsui.Styles.Color.Black,
 			Subtitle = subtitle,
 			SubtitleFont = { Size = 12 },
-			SubtitleFontColor = Color.FromArgb(97, 28, 27, 31),
+			SubtitleFontColor = Mapsui.Styles.Color.FromArgb(97, 28, 27, 31),
 			Type = CalloutType.Detail,
 			MaxWidth = 120,
 			Enabled = false,
-			SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
+			RelativeOffset = new RelativeOffset(0, SymbolStyle.DefaultHeight * 1f)
 		};
 	}
 
@@ -103,7 +109,7 @@ public sealed partial class MapPage : Page
 			CalloutText = "My location",
 			Style = new SymbolStyle
 			{
-				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_circle.svg").ToString(),
+				//Bitmap = new Bitmap { Path = "Assets.Maps.location_circle.svg" },
 				SymbolScale = 1
 			}
 		};
@@ -120,11 +126,14 @@ public sealed partial class MapPage : Page
 
 	private static void MapOnInfo(object? sender, MapInfoEventArgs e)
 	{
-		var calloutStyle = e.MapInfo?.Feature?.Styles.Where(s => s is CalloutStyle).Cast<CalloutStyle>().FirstOrDefault();
+		var layersToQuery = e.Map.Layers.Where(l => l.Tag is LayerData d && d.IsMapInfoLayer);
+		var mapInfo = e.GetMapInfo(layersToQuery);
+
+		var calloutStyle = mapInfo?.Feature?.Styles.OfType<CalloutStyle>().FirstOrDefault();
 		if (calloutStyle != null)
 		{
 			calloutStyle.Enabled = !calloutStyle.Enabled;
-			e.MapInfo?.Layer?.DataHasChanged();
+			mapInfo?.Layer?.DataHasChanged();
 		}
 	}
 }
