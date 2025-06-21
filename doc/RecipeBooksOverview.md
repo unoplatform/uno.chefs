@@ -32,6 +32,7 @@ Below is a list of available recipes, organized by category. Click through to ex
 - [Customizing Return Key for Input Controls](xref:Uno.Recipes.InputExtensions.ReturnType)
 - [Enabling Selection in ItemsRepeater Control](xref:Uno.Recipes.ItemsRepeaterExtensions)
 - [Commands for Controls Without a Command Property](xref:Uno.Recipes.CommandExtensions)
+- [Reactive Carousel Experience](xref:Uno.Recipes.ReactiveCarousel)
 
 #### Third-party Components
 - [Integrating LiveCharts Controls](xref:Uno.Recipes.LiveCharts)
