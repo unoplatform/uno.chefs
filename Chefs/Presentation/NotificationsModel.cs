@@ -17,8 +17,8 @@ public partial record NotificationsModel
 			: Option.None<GroupedNotification>());
 
 	public IFeed<GroupedNotification> Unread => Notifications.Select(group =>
-		new GroupedNotification(group.GetAll().Where(n => !n.Read).ToImmutableList()));
+		new GroupedNotification(group.GetAll().Where(n => !n.IsRead).ToImmutableList()));
 
 	public IFeed<GroupedNotification> Read => Notifications.Select(group =>
-		new GroupedNotification(group.GetAll().Where(n => n.Read).ToImmutableList()));
+		new GroupedNotification(group.GetAll().Where(n => n.IsRead).ToImmutableList()));
 }

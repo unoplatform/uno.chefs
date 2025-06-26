@@ -20,7 +20,7 @@
 
 	<Page.Resources>
 		<DataTemplate x:Key="NotificationTemplate">
-			<utu:AutoLayout Background="{Binding Read, Converter={StaticResource BoolToNotificationColor}}"
+			<utu:AutoLayout Background="{Binding IsRead, Converter={StaticResource BoolToNotificationColor}}"
 							CornerRadius="4"
 							PrimaryAxisAlignment="Center"
 							Orientation="Horizontal"

@@ -8,12 +8,12 @@ public record Notification
 	{
 		Title = notificationData.Title;
 		Description = notificationData.Description;
-		Read = notificationData.IsRead ?? false;
+		IsRead = notificationData.IsRead ?? false;
 		Date = notificationData.Date?.DateTime ?? DateTime.MinValue;
 	}
 
 	public string? Title { get; init; }
 	public string? Description { get; init; }
-	public bool Read { get; init; }
+	public bool IsRead { get; init; }
 	public DateTime Date { get; init; }
 }

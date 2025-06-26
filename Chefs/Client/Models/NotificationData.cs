@@ -62,7 +62,7 @@ namespace Chefs.Client.Models
 				{ "title", n => { Title = n.GetStringValue(); } },
 				{ "description", n => { Description = n.GetStringValue(); } },
 				{ "date", n => { Date = n.GetDateTimeOffsetValue(); } },
-				{ "read", n => { IsRead = n.GetBoolValue(); } },
+				{ "isRead", n => { IsRead = n.GetBoolValue(); } },
 			};
 		}
 
@@ -77,7 +77,7 @@ namespace Chefs.Client.Models
 			writer.WriteStringValue("title", Title);
 			writer.WriteStringValue("description", Description);
 			writer.WriteDateTimeOffsetValue("date", Date);
-			writer.WriteBoolValue("read", IsRead);
+			writer.WriteBoolValue("isRead", IsRead);
 		}
 	}
 }
