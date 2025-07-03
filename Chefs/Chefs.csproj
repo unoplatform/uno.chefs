@@ -91,7 +91,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(IsBrowserWasm) AND '$(Configuration)' == 'Release'">
-		<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
+		<WasmShellMonoRuntimeExecutionMode>Interpreter</WasmShellMonoRuntimeExecutionMode>
 		<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
 		<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
 		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
@@ -157,7 +157,7 @@
 			</PropertyGroup>
 
 			<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-				<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
+				<WasmShellMonoRuntimeExecutionMode>Interpreter</WasmShellMonoRuntimeExecutionMode>
 				<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
 				<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
 
