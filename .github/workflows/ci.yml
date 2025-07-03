@@ -46,7 +46,7 @@ jobs:
       - name: Build app
         run: |
           cd Chefs
-          dotnet build -c Release /p:UseSkiaRendering=true /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" -bl:wasm-github-ci-build.binlog
+          dotnet publish -c Release /p:UseSkiaRendering=true /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" -bl:wasm-github-ci-build.binlog
 
       - uses: actions/upload-artifact@v4
         with:
