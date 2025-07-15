@@ -1,5 +1,6 @@
 using LiveChartsCore;
 using LiveChartsCore.ConditionalDraw;
+using LiveChartsCore.Kernel.Events;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
@@ -9,9 +10,6 @@ using SkiaSharp;
 namespace Chefs.Views.Controls;
 public sealed partial class ChartControl : UserControl
 {
-	private Recipe? _recipe;
-
-
 	public SolidColorBrush CarbBrush
 	{
 		get { return (SolidColorBrush)GetValue(CarbBrushProperty); }
@@ -63,38 +61,21 @@ public sealed partial class ChartControl : UserControl
 
 	private static void OnBrushChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
 	{
-		if (dependencyObject is not ChartControl chartControl) return;
-
-		if (chartControl._recipe != null)
+		if (dependencyObject is not ChartControl chartControl)
 		{
-			chartControl.BuildColumnChart();
-			chartControl.BuildDoughnutChart();
+			return;
 		}
+
+		chartControl.BuildColumnChart();
+		chartControl.BuildDoughnutChart();
 	}
 
 	public ChartControl()
 	{
 		this.InitializeComponent();
 
-		_recipe = DataContext as Recipe;
-		if (_recipe != null)
-		{
-			BuildColumnChart();
-			BuildDoughnutChart();
-		}
-
-		DataContextChanged += OnDataContextChanged;
-	}
-
-	private void OnDataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
-	{
-		_recipe = args.NewValue as Recipe;
-
-		if (_recipe != null)
-		{
-			BuildColumnChart();
-			BuildDoughnutChart();
-		}
+		BuildColumnChart();
+		BuildDoughnutChart();
 	}
 
 	private void BuildColumnChart()
@@ -102,9 +83,18 @@ public sealed partial class ChartControl : UserControl
 		//Build column chart
 		var _chartdata = new NutritionChartItem[]
 		 {
-			new(nameof(Nutrition.Fat),_recipe?.Nutrition.Fat,_recipe?.Nutrition.FatBase,GetNutritionColorPaint(nameof(Nutrition.Fat))),
-			new(nameof(Nutrition.Carbs),_recipe?.Nutrition.Carbs,_recipe?.Nutrition.CarbsBase,GetNutritionColorPaint(nameof(Nutrition.Carbs))),
-			new(nameof(Nutrition.Protein),_recipe?.Nutrition.Protein,_recipe?.Nutrition.ProteinBase, GetNutritionColorPaint(nameof(Nutrition.Protein)))
+			new(name: nameof(Nutrition.Fat),
+				value: 30,
+				maxValueRef: 75,
+				columnColor: GetNutritionColorPaint(nameof(Nutrition.Fat))),
+			new(name: nameof(Nutrition.Carbs),
+				value: 101,
+				maxValueRef: 300,
+				columnColor: GetNutritionColorPaint(nameof(Nutrition.Carbs))),
+			new(name: nameof(Nutrition.Protein),
+				value: 30,
+				maxValueRef: 110,
+				columnColor: GetNutritionColorPaint(nameof(Nutrition.Protein)))
 		 };
 
 		var rowSeries = new RowSeries<NutritionChartItem>
@@ -117,13 +107,16 @@ public sealed partial class ChartControl : UserControl
 			IgnoresBarPosition = true,
 			MaxBarWidth = 22,
 			Padding = 1,
-
 			IsVisibleAtLegend = true
-		}.OnPointMeasured(point =>
-		{
-			if (point.Visual is null) return;
-			point.Visual.Fill = point.Model!.ColumnColor;
-		});
+		};
+
+		EventExtensions.OnPointMeasured(
+			rowSeries,
+			point =>
+			{
+				if (point.Visual is null) return;
+				point.Visual.Fill = point.Model!.ColumnColor;
+			});
 		//End
 
 		//Build column background
@@ -155,23 +148,24 @@ public sealed partial class ChartControl : UserControl
 		{
 			new PieSeries<int>
 			{
-				Values = new []{ 5 },
-				Fill = GetNutritionColorPaint(nameof(Nutrition.Fat)),
+				Values = new []{ 30 },
+			//	Fill = GetNutritionColorPaint(nameof(Nutrition.Fat)),
 				InnerRadius = 60,
 			},
 			new PieSeries<int>
 			{
-				Values = new []{ 5 },
-				Fill = GetNutritionColorPaint(nameof(Nutrition.Protein)),
+				Values = new []{ 30 },
+				//Fill = GetNutritionColorPaint(nameof(Nutrition.Protein)),
 				InnerRadius = 60,
 			},
 			new PieSeries<int>
 			{
-				Values = new []{ 5 },
-				Fill = GetNutritionColorPaint(nameof(Nutrition.Carbs)),
+				Values = new []{ 101 },
+				//Fill = GetNutritionColorPaint(nameof(Nutrition.Carbs)),
 				InnerRadius = 60,
 			}
 		};
+
 
 		pieChart.Series = c;
 	}
