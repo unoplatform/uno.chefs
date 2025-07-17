@@ -102,9 +102,18 @@ public sealed partial class ChartControl : UserControl
 		//Build column chart
 		var _chartdata = new NutritionChartItem[]
 		 {
-			new(nameof(Nutrition.Fat),_recipe?.Nutrition.Fat,_recipe?.Nutrition.FatBase,GetNutritionColorPaint(nameof(Nutrition.Fat))),
-			new(nameof(Nutrition.Carbs),_recipe?.Nutrition.Carbs,_recipe?.Nutrition.CarbsBase,GetNutritionColorPaint(nameof(Nutrition.Carbs))),
-			new(nameof(Nutrition.Protein),_recipe?.Nutrition.Protein,_recipe?.Nutrition.ProteinBase, GetNutritionColorPaint(nameof(Nutrition.Protein)))
+			new(name: nameof(Nutrition.Fat),
+				value: 30,
+				maxValueRef: 75,
+				columnColor: GetNutritionColorPaint(nameof(Nutrition.Fat))),
+			new(name: nameof(Nutrition.Carbs),
+				value: 101,
+				maxValueRef: 300,
+				columnColor: GetNutritionColorPaint(nameof(Nutrition.Carbs))),
+			new(name: nameof(Nutrition.Protein),
+				value: 30,
+				maxValueRef: 110,
+				columnColor: GetNutritionColorPaint(nameof(Nutrition.Protein)))
 		 };
 
 		var rowSeries = new RowSeries<NutritionChartItem>
