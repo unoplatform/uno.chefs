@@ -47,7 +47,7 @@ To integrate `ThemeService` in your Uno application, follow these steps:
         }
 
         public IListFeed<AppTheme> ThemeOptions => State
-            .Value(this, () => Enum.GetValues(typeof(AppTheme)).Cast<AppTheme>().ToImmutableList())
+		.Value(this, () => Enum.GetValues<AppTheme>().ToImmutableList())
             .AsListFeed()
             .Selection(Theme);
 
@@ -70,13 +70,23 @@ To integrate `ThemeService` in your Uno application, follow these steps:
 To listen for theme changes, you can subscribe to the `OnThemeChanged` event provided by the `IThemeService`. This allows you to react to theme changes in your application, such as updating UI elements or sending messages.
 
 ```csharp
-    public SettingsModel(IThemeService themeService)
+public partial record SettingsModel
+{
+    private readonly IThemeService _themeService;
+    private readonly IMessenger _messenger;
+    
+    public SettingsModel(IThemeService themeService
+                         IMessenger messenger)
     {
         _themeService = themeService;
+        _messenger = messenger;
         _themeService.ThemeChanged += OnThemeChanged; // Subscribe to theme changes
     }
 
-private void OnThemeChanged(object? sender, AppTheme theme) => _messenger.Send(new ThemeChangedMessage(theme));
+    private void OnThemeChanged(object? sender, AppTheme theme) => _messenger.Send(new ThemeChangedMessage(theme));
+
+    // Code omitted for brevity
+}
 ```
 
 **Visual Result:**
