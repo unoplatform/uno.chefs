@@ -90,13 +90,6 @@
 		<UnoSplashScreenFile Condition="'$(IsCanaryBranch)'=='true'">Assets/Splash/splash_screen_canary.svg</UnoSplashScreenFile>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$(IsBrowserWasm) AND '$(Configuration)' == 'Release'">
-		<WasmShellMonoRuntimeExecutionMode>InterpreterAndAOT</WasmShellMonoRuntimeExecutionMode>
-		<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
-		<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
-		<UnoXamlResourcesTrimming>true</UnoXamlResourcesTrimming>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<Content Include="Assets\**\*.png" />
 	</ItemGroup>
@@ -161,13 +154,12 @@
 				<WasmShellEmccLinkOptimization>false</WasmShellEmccLinkOptimization>
 				<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
 
-				<!--
-				Uncomment this block to generate a profile
-				<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>
+				
+			<!--	<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>
 				<WasmShellILLinkerEnabled>false</WasmShellILLinkerEnabled>
 				<UnoXamlResourcesTrimming>false</UnoXamlResourcesTrimming>
-				<WasmShellEnableJiterpreter>false</WasmShellEnableJiterpreter>
-				-->
+				<WasmShellEnableJiterpreter>false</WasmShellEnableJiterpreter>-->
+				
 			</PropertyGroup>
 
 			<ItemGroup>
