@@ -12,13 +12,50 @@ You need to load app data files on all platforms. Traditional file access method
 
 Use the `Windows.Storage.StorageFile` API to read files from your app package. This works the same way on all Uno Platform targets, including WASM.
 
-- Move your data files to be included as `Content` in your project, and use `StorageFile.GetFileFromApplicationUriAsync` to load them by path.
+- Move your data files to be included as `Content` in your project's output directory, and use `StorageFile.GetFileFromApplicationUriAsync` to load them by path. To make sure, you will always have the latest changes included, set the appropriate sub Property: `CopyToOutputDirectory="PreserveNewest"`.
 
     ```xml
     <ItemGroup>
-        <Content Include="AppData\*.json" />
+        <Content Include="AppData\*.json" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
     ```
+
+    - If you want to not just have these files in your app's output directory with latest changes, then also have your IDE showing them in your **Solution Explorer** and enable you editing them easily as if those would be directly nested in your specific project, you may want to also set another property on the xml element we just added: `LinkBase="AppData"` (or any other Name you want it to show to you as folder name).
+
+        So this will make the full Content Element look like this:
+
+        ```xml
+        <ItemGroup>
+         <Content Include="AppData\*.json" CopyToOutputDirectory="PreserveNewest" LinkBase="AppData" />
+        </ItemGroup>
+        ```
+
+        And in your Solution Explorer, this will show up like with the below shown grey text (VS Code) or with a Link Arrow like you may know it from .ink files on your Desktop (Visual Studio 2022).
+
+        ```markdown
+        root
+        |-AppData
+        | |-yourDataContainingFile.json
+        |-ClientApp/
+        | |-ClientApp.csproj
+        | |-AppData/ *(Linked File)*
+        |   |-yourDataContainingFile.json *(Linked File)*
+        |-ClientApp.Api/
+        | |-ClientApp.Api.csproj
+        | |-AppData/ *(Linked File)*
+        |   |-yourDataContainingFile.json *(Linked File)*
+        |-ClientApp.IntegrationTests/...
+        |-ClientApp.UITests/...
+        |-ClientApp.UnitTests/...
+        ```
+
+        > [!TIP]
+        > Another advantage of setting the LinkBase Property like shown above is, that you can do this on every project in your Solution you like to, without being required to:
+        >
+        > - duplicate the Folder or Files
+        > - if you edit a file in there, its state will always be synced
+        > [!TIP]
+        > If you may not want to have those files in your output directory of the Project, but showing up in your Solution Explorer, you can set the `CopyToOutputDirectory` property shown before, to **Never**.
 
 - Loading a JSON File Using StorageFile
 
