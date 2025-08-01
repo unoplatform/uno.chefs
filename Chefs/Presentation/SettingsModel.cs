@@ -25,9 +25,15 @@ public partial record SettingsModel
 
 		_themeService.ThemeChanged += OnThemeChanged;
 		
-		// Initialize theme from persisted settings
+		// Initialize theme from persisted settings on a background thread
+		// to avoid potential race conditions with reactive state initialization
+		_ = InitializeThemeAsync();
+	}
+
+	private async Task InitializeThemeAsync()
+	{
 		var savedTheme = Enum.TryParse<AppTheme>(_settings.Get("Theme"), out var theme) ? theme : AppTheme.System;
-		_ = Task.Run(async () => await _themeService.SetThemeAsync(savedTheme));
+		await _themeService.SetThemeAsync(savedTheme);
 	}
 
 	private void OnThemeChanged(object? sender, AppTheme theme) => _messenger.Send(new ThemeChangedMessage(theme));
