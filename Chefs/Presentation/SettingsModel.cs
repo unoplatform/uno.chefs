@@ -24,6 +24,10 @@ public partial record SettingsModel
 		_messenger = messenger;
 
 		_themeService.ThemeChanged += OnThemeChanged;
+		
+		// Initialize theme from persisted settings
+		var savedTheme = Enum.TryParse<AppTheme>(_settings.Get("Theme"), out var theme) ? theme : AppTheme.System;
+		_ = Task.Run(async () => await _themeService.SetThemeAsync(savedTheme));
 	}
 
 	private void OnThemeChanged(object? sender, AppTheme theme) => _messenger.Send(new ThemeChangedMessage(theme));
@@ -34,8 +38,12 @@ public partial record SettingsModel
 		.Selection(Theme);
 
 	public IState<AppTheme> Theme => State
-		.Value(this, () => _themeService.Theme)
-		.ForEach(async (theme, _) => await _themeService.SetThemeAsync(theme));
+		.Value(this, () => Enum.TryParse<AppTheme>(_settings.Get("Theme"), out var theme) ? theme : AppTheme.System)
+		.ForEach(async (theme, ct) => 
+		{
+			_settings.Set("Theme", theme.ToString());
+			await _themeService.SetThemeAsync(theme);
+		});
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 	public IState<bool> NotificationsEnabled => State
