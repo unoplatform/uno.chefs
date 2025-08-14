@@ -9,7 +9,7 @@
     PackageName: uno.platform.chefs.skia
 
   pool:
-    vmImage: 'macOS-14'
+    vmImage: 'macOS-15'
 
   steps:
   - checkout: self
