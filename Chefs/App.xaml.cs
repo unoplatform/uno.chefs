@@ -1,14 +1,10 @@
-using System.Diagnostics;
-using System.Text.Json;
 
 #if __IOS__
 using Foundation;
 #endif
-using LiveChartsCore;
-using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Abstractions.Authentication;
-using Microsoft.Kiota.Http.HttpClientLibrary;
-using Uno.Extensions.Http.Kiota;
+using Uno.UI.HotDesign.Client.Logic.AppFeatures;
+
+[assembly: PreviewFeature(PreviewFeature.ToolboxTemplates)]
 
 namespace Chefs;
 
@@ -18,10 +14,7 @@ public partial class App : Application
 	/// Initializes the singleton application object. This is the first line of authored code
 	/// executed, and as such is the logical equivalent of main() or WinMain().
 	/// </summary>
-	public App()
-	{
-		this.InitializeComponent();
-	}
+	public App() => this.InitializeComponent();
 
 	public static Window? MainWindow;
 
