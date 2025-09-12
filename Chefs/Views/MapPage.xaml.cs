@@ -63,13 +63,13 @@ public sealed partial class MapPage : Page
 		var pinsLayer = new MemoryLayer
 		{
 			Name = "Contributor pins with callouts",
-			IsMapInfoLayer = true,
+			Tag = new LayerData { IsMapInfoLayer = true },
 			Features = new MemoryProvider(pins).Features,
-			Style = new SymbolStyle()
+			Style = new ImageStyle()
 			{
-				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_pin.svg").ToString(),
+				Image = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_pin.svg").ToString(),
 				SymbolScale = 1,
-				SymbolOffset = new RelativeOffset(new Offset(x: 0.0, y: 0.5))
+				RelativeOffset = new RelativeOffset(x: 0.0, y: 0.5)
 			}
 		};
 
@@ -89,7 +89,7 @@ public sealed partial class MapPage : Page
 			Type = CalloutType.Detail,
 			MaxWidth = 120,
 			Enabled = false,
-			SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
+			Offset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
 		};
 	}
 
@@ -101,9 +101,9 @@ public sealed partial class MapPage : Page
 		_myLocationLayer = new MyLocationLayer(_map!)
 		{
 			CalloutText = "My location",
-			Style = new SymbolStyle
+			Style = new ImageStyle
 			{
-				ImageSource = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_circle.svg").ToString(),
+				Image = typeof(MapPage).LoadImageSource(@"Assets.Maps.location_circle.svg").ToString(),
 				SymbolScale = 1
 			}
 		};
@@ -113,18 +113,29 @@ public sealed partial class MapPage : Page
 		CenterOnPoint(startingPosition, 13);
 	}
 
-	private static void CenterOnPoint(MPoint point, int resolution)
-	{
-		_map!.Navigator.CenterOnAndZoomTo(point, resolution);
-	}
+	private static void CenterOnPoint(MPoint point, int resolution) => _map!.Navigator.CenterOnAndZoomTo(point, resolution);
 
 	private static void MapOnInfo(object? sender, MapInfoEventArgs e)
 	{
-		var calloutStyle = e.MapInfo?.Feature?.Styles.Where(s => s is CalloutStyle).Cast<CalloutStyle>().FirstOrDefault();
-		if (calloutStyle != null)
+		if (_map is Map m)
 		{
-			calloutStyle.Enabled = !calloutStyle.Enabled;
-			e.MapInfo?.Layer?.DataHasChanged();
+			var mapInfo = e.GetMapInfo(m.Layers);
+
+			var calloutStyle = mapInfo?.Feature?
+				.Styles
+				.OfType<CalloutStyle>()
+				.FirstOrDefault();
+
+			if (calloutStyle is CalloutStyle cs)
+			{
+				cs.Enabled = !cs.Enabled;
+				mapInfo.Layer?.DataHasChanged();
+			}
 		}
+	}
+
+	public class LayerData
+	{
+		public bool IsMapInfoLayer { get; set; }
 	}
 }
