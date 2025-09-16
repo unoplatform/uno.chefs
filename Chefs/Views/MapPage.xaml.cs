@@ -39,7 +39,12 @@ public sealed partial class MapPage : Page
 
 	private void InitializeMap()
 	{
-		_map = MapControl.Map;
+		if (FindName("MapControl") is not Mapsui.UI.WinUI.MapControl myMap)
+		{
+			return;
+		}
+
+		_map = myMap.Map;
 		AddBaseLayer();
 		AddPinsLayer();
 		AddMyLocationLayer();
@@ -48,12 +53,17 @@ public sealed partial class MapPage : Page
 
 	private static void AddBaseLayer()
 	{
-		_map!.Layers.Add(layers: [new TileLayer(KnownTileSources.Create(KnownTileSource.BingRoads))]);
-		_map!.Widgets.Add(new ZoomInOutWidget { Margin = new MRect(36) });
+		_map?.Layers.Add(layers: [new TileLayer(KnownTileSources.Create(KnownTileSource.BingRoads))]);
+		_map?.Widgets.Add(new ZoomInOutWidget { Margin = new MRect(36) });
 	}
 
 	private static void AddPinsLayer()
 	{
+		if (_map is null)
+		{
+			return;
+		}
+
 		var pins = Contributors.Select(c =>
 		{
 			var feature = new PointFeature(SphericalMercator.FromLonLat(c.Lng, c.Lat).ToMPoint());
@@ -73,7 +83,7 @@ public sealed partial class MapPage : Page
 			}
 		};
 
-		_map!.Layers.Add(_pinsLayer);
+		_map.Layers.Add(_pinsLayer);
 	}
 
 	private static CalloutStyle CreateCalloutStyle(string title, string subtitle)
@@ -94,10 +104,14 @@ public sealed partial class MapPage : Page
 
 	private static void AddMyLocationLayer()
 	{
-		// TODO: Get real location
-		var startingPosition = _map!.Layers.ElementAt(1).Extent!.Centroid;
+		if (_map is null)
+		{
+			return;
+		}
 
-		_myLocationLayer = new MyLocationLayer(_map!)
+		var startingPosition = _map.Layers.ElementAt(1).Extent!.Centroid;
+
+		_myLocationLayer = new MyLocationLayer(_map)
 		{
 			CalloutText = "My location",
 			Style = new CalloutStyle
@@ -109,14 +123,13 @@ public sealed partial class MapPage : Page
 		};
 
 		_myLocationLayer.UpdateMyLocation(startingPosition);
-		_map!.Layers.Add(_myLocationLayer);
+		_map?.Layers.Add(_myLocationLayer);
 		CenterOnPoint(startingPosition, 13);
 	}
 
 	private static void CenterOnPoint(MPoint point, int resolution)
-	{
-		_map!.Navigator.CenterOnAndZoomTo(point, resolution);
-	}
+		=> _map?.Navigator.CenterOnAndZoomTo(point, resolution);
+
 	private void OnMapTapped(object? sender, MapEventArgs e)
 	{
 		if (_myLocationLayer is null || _pinsLayer is null)
