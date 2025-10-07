@@ -4,6 +4,7 @@
 		<!-- which will force us to install all workloads even if not needed -->
 		<!-- To prevent that, we will pass TargetFrameworkOverride as a global property (i.e, dotnet build -p:TargetFrameworkOverride=net9.0-platform) -->
 		<!-- That way, we set TargetFrameworks property to only the needed TargetFramework -->
+		<TargetFrameworkOverride>net9.0-desktop</TargetFrameworkOverride>
 		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'!=''">$(TargetFrameworkOverride)</TargetFrameworks>
 		<TargetFrameworks Condition="'$(TargetFrameworkOverride)'==''">
 			net9.0-android;
