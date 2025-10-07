@@ -39,7 +39,15 @@ public sealed partial class MapPage : Page
 
 	private void InitializeMap()
 	{
-		_map = MapControl.Map;
+		if (FindName("MapControl") is Mapsui.UI.WinUI.MapControl mapControl)
+		{
+			_map = mapControl.Map;
+		}
+		else
+		{
+			return;
+		}
+
 		AddBaseLayer();
 		AddPinsLayer();
 		AddMyLocationLayer();
