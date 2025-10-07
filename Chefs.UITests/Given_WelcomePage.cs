@@ -22,7 +22,7 @@ public class Given_WelcomePage : TestBase
 		Helpers.Wait(seconds: 3);
 
 		PlatformHelpers.On(
-			iOS: () => App.WaitForElement(q => q.Class("UnoSKMetalView")),
+			iOS: () => App.WaitForElement(q => q.Class("Uno.UI.Runtime.Skia.AppleUIKit.UnoSKMetalView")),
 			Android: () => App.WaitForElement(q => q.Class("UnoSKCanvasView")),
 			Browser: () => App.WaitForElement(q => q.Id("uno-canvas"))
 		);
