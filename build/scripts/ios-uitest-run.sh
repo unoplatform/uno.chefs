@@ -112,10 +112,10 @@ log show --style syslog $TMP_LOG_FILEPATH > $LOG_FILEPATH_FULL
 
 if [[ ! -f $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH ]]; then
 	echo "ERROR: The test results file $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH does not exist (did nunit crash ?)"
-	return 1
+	exit 1
 fi
 
 if [[ -f $TEST_FAILED_FLAG ]]; then
 	echo "ERROR: The tests failed"
-	return 1
+	exit 1
 fi
