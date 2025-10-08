@@ -77,10 +77,10 @@
 							   Foreground="{ThemeResource OnBackgroundMediumBrush}"
 							   Style="{StaticResource BodySmall}" />
 				</utu:AutoLayout>
-				<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
+				<utu:AutoLayout Orientation="Horizontal"
+								utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
 																				 Wide=Stretch}">
-					<utu:AutoLayout Orientation="Horizontal"
-					                utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
+					<utu:AutoLayout utu:AutoLayout.PrimaryAlignment="{utu:Responsive Normal=Auto,
 																					 Wide=Stretch}"
 									Spacing="{utu:Responsive Normal=8,
 															 Wide=0}">
