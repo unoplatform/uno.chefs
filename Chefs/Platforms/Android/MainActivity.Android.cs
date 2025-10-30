@@ -11,9 +11,11 @@ namespace Chefs.Droid;
 	WindowSoftInputMode = SoftInput.AdjustNothing | SoftInput.StateHidden
 )]
 public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
+#if USE_UITESTS
+	, IMainActivityExports
+#endif  // USE_UITESTS
 {
 #if USE_UITESTS
-	[Export("GetCurrentPage")]
 	public string GetCurrentPage(string unused) => App.GetCurrentPage();
 #endif
 }
