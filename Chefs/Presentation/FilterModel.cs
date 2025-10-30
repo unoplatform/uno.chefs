@@ -14,9 +14,9 @@ public partial record FilterModel
 		Filter = State.Value(this, () => filters);
 	}
 	public IState<SearchFilter> Filter { get; }
-	public IEnumerable<FilterGroup> FilterGroups => Enum.GetValues(typeof(FilterGroup)).Cast<FilterGroup>();
-	public IEnumerable<Time> Times => Enum.GetValues(typeof(Time)).Cast<Time>();
-	public IEnumerable<Difficulty> Difficulties => Enum.GetValues(typeof(Difficulty)).Cast<Difficulty>();
+	public IEnumerable<FilterGroup> FilterGroups => Enum.GetValues<FilterGroup>();
+	public IEnumerable<Time> Times => Enum.GetValues<Time>();
+	public IEnumerable<Difficulty> Difficulties => Enum.GetValues<Difficulty>();
 	public IEnumerable<int> Serves => new int[] { 1, 2, 3, 4, 5 };
 	public IListFeed<Category> Categories => ListFeed.Async(_recipeService.GetCategories);
 
