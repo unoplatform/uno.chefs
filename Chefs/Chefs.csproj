@@ -76,6 +76,138 @@
 	  <EmbeddedResource Include="Assets\Maps\location_circle.svg" />
 	</ItemGroup>
 
+	<ItemGroup>
+
+		<TrimmerRootAssembly Include="BruTile" />
+		<TrimmerRootAssembly Include="BruTile.XmlSerializers" />
+		<TrimmerRootAssembly Include="Chefs" />
+		<TrimmerRootAssembly Include="CommonServiceLocator" />
+		<TrimmerRootAssembly Include="CommunityToolkit.Mvvm" />
+		<TrimmerRootAssembly Include="ExCSS" />
+		<TrimmerRootAssembly Include="HarfBuzzSharp" />
+		<TrimmerRootAssembly Include="LibVLCSharp" />
+		<TrimmerRootAssembly Include="LiveChartsCore" />
+		<TrimmerRootAssembly Include="LiveChartsCore.Behaviours" />
+		<TrimmerRootAssembly Include="LiveChartsCore.SkiaSharpView" />
+		<TrimmerRootAssembly Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" />
+		<TrimmerRootAssembly Include="Mapsui" />
+		<TrimmerRootAssembly Include="Mapsui.Nts" />
+		<TrimmerRootAssembly Include="Mapsui.Rendering.Skia" />
+		<TrimmerRootAssembly Include="Mapsui.Tiling" />
+		<TrimmerRootAssembly Include="Mapsui.UI.Uno.WinUI" />
+		<TrimmerRootAssembly Include="Microsoft.Bcl.AsyncInterfaces" />
+		<TrimmerRootAssembly Include="Microsoft.CSharp" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.Binder" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.CommandLine" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.FileExtensions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.Json" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Configuration.UserSecrets" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.DependencyInjection" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Diagnostics" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Diagnostics.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.FileProviders.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.FileProviders.Physical" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.FileSystemGlobbing" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Hosting" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Hosting.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Http" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Localization.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Logging" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Logging.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Logging.Configuration" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Logging.Console" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Logging.Debug" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Logging.EventLog" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Logging.EventSource" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Options" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+		<TrimmerRootAssembly Include="Microsoft.Extensions.Primitives" />
+		<TrimmerRootAssembly Include="Microsoft.Kiota.Abstractions" />
+		<TrimmerRootAssembly Include="Microsoft.Kiota.Http.HttpClientLibrary" />
+		<TrimmerRootAssembly Include="Microsoft.Kiota.Serialization.Form" />
+		<TrimmerRootAssembly Include="Microsoft.Kiota.Serialization.Json" />
+		<TrimmerRootAssembly Include="Microsoft.Kiota.Serialization.Multipart" />
+		<TrimmerRootAssembly Include="Microsoft.Kiota.Serialization.Text" />
+		<TrimmerRootAssembly Include="Microsoft.VisualBasic" />
+		<TrimmerRootAssembly Include="Microsoft.VisualBasic.Core" />
+		<TrimmerRootAssembly Include="Microsoft.Win32.Primitives" />
+		<TrimmerRootAssembly Include="Microsoft.Win32.Registry" />
+		<TrimmerRootAssembly Include="NetTopologySuite" />
+		<TrimmerRootAssembly Include="NetTopologySuite.Features" />
+		<TrimmerRootAssembly Include="NetTopologySuite.IO.GeoJSON4STJ" />
+		<TrimmerRootAssembly Include="Refit" />
+		<TrimmerRootAssembly Include="ShimSkiaSharp" />
+		<TrimmerRootAssembly Include="SkiaSharp" />
+		<TrimmerRootAssembly Include="SkiaSharp.HarfBuzz" />
+		<TrimmerRootAssembly Include="SkiaSharp.Resources" />
+		<TrimmerRootAssembly Include="SkiaSharp.SceneGraph" />
+		<TrimmerRootAssembly Include="SkiaSharp.Skottie" />
+		<TrimmerRootAssembly Include="SkiaSharp.Views.Windows" />
+		<TrimmerRootAssembly Include="Std.UriTemplate" />
+		<TrimmerRootAssembly Include="Svg.Custom" />
+		<TrimmerRootAssembly Include="Svg.Model" />
+		<TrimmerRootAssembly Include="Svg.Skia" />
+		<TrimmerRootAssembly Include="Uno" />
+		<TrimmerRootAssembly Include="Uno.Core.Extensions" />
+		<TrimmerRootAssembly Include="Uno.Core.Extensions.Collections" />
+		<TrimmerRootAssembly Include="Uno.Core.Extensions.Disposables" />
+		<TrimmerRootAssembly Include="Uno.Core.Extensions.Equality" />
+		<TrimmerRootAssembly Include="Uno.Core.Extensions.Logging" />
+		<TrimmerRootAssembly Include="Uno.Core.Extensions.Logging.Singleton" />
+		<TrimmerRootAssembly Include="Uno.Diagnostics.Eventing" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Authentication" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Authentication.UI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Configuration" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Core" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Core.UI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Hosting" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Hosting.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Http" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Http.Kiota" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Http.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Localization" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Localization.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Logging.WebAssembly.Console" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Logging.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Navigation" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Navigation.Toolkit.UI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Navigation.UI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Reactive" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Reactive.Messaging" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Reactive.UI" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Serialization" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Serialization.Http" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Serialization.Refit" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Storage" />
+		<TrimmerRootAssembly Include="Uno.Extensions.Storage.UI" />
+		<TrimmerRootAssembly Include="Uno.Fonts.Fluent" />
+		<TrimmerRootAssembly Include="Uno.Fonts.OpenSans" />
+		<TrimmerRootAssembly Include="Uno.Fonts.Roboto" />
+		<TrimmerRootAssembly Include="Uno.Foundation" />
+		<TrimmerRootAssembly Include="Uno.Foundation.Logging" />
+		<TrimmerRootAssembly Include="Uno.Material.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Themes.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Toolkit" />
+		<TrimmerRootAssembly Include="Uno.Toolkit.Skia.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Toolkit.WinUI" />
+		<TrimmerRootAssembly Include="Uno.Toolkit.WinUI.Material" />
+		<TrimmerRootAssembly Include="Uno.UI" />
+		<TrimmerRootAssembly Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" />
+		<TrimmerRootAssembly Include="Uno.UI.Composition" />
+		<TrimmerRootAssembly Include="Uno.UI.Dispatching" />
+		<TrimmerRootAssembly Include="Uno.UI.FluentTheme" />
+		<TrimmerRootAssembly Include="Uno.UI.FluentTheme.v1" />
+		<TrimmerRootAssembly Include="Uno.UI.FluentTheme.v2" />
+		<TrimmerRootAssembly Include="Uno.UI.Lottie" />
+		<TrimmerRootAssembly Include="Uno.UI.Toolkit" />
+		<TrimmerRootAssembly Include="Uno.WinUI.Graphics2DSK" />
+		<TrimmerRootAssembly Include="Uno.Xaml" />
+	</ItemGroup>
+
 	<PropertyGroup Condition="'$(Configuration)'=='Debug' or '$(IsUiAutomationMappingEnabled)'=='True'">
 		<IsUiAutomationMappingEnabled>True</IsUiAutomationMappingEnabled>
 		<DefineConstants>$(DefineConstants);USE_UITESTS</DefineConstants>
@@ -109,6 +241,10 @@
 		<!-- Needs to be run as a target, as RuntimeIdentifier is set after the csproj is parsed -->
 		<PropertyGroup Condition="!$(RuntimeIdentifier.Contains('arm64'))">
 			<DefineConstants>$(DefineConstants);HAS_TESTCLOUD_AGENT</DefineConstants>
+		</PropertyGroup>
+		<PropertyGroup Condition=" '$(RuntimeIdentifier)' != '' ">
+			<DefineConstants>$(DefineConstants);RUNTIME_IDENTIFIER_$(RuntimeIdentifier.Replace('-', '_').ToUpperInvariant())</DefineConstants>
+			<DefineConstants Condition=" $(RuntimeIdentifier.Contains('-')) ">$(DefineConstants);RUNTIME_IDENTIFIER_$(RuntimeIdentifier.Substring(0, $(RuntimeIdentifier.IndexOf('-'))).ToUpperInvariant())</DefineConstants>
 		</PropertyGroup>
 	</Target>
 
