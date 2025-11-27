@@ -12,7 +12,7 @@ You need to load app data files on all platforms. Traditional file access method
 
 Use the `Windows.Storage.StorageFile` API to read files from your app package. This works the same way on all Uno Platform targets, including WASM.
 
-- Move your data files to be included as `Content` in your project's output directory, and use `StorageFile.GetFileFromApplicationUriAsync` to load them by path. To make sure, you will always have the latest changes included, set the appropriate sub Property: `CopyToOutputDirectory="PreserveNewest"`.
+- Move your data files to be included as `Content` in your project's output directory, and use `StorageFile.GetFileFromApplicationUriAsync` to load them by path. To ensure that you will always have the latest changes included, set the appropriate Property: `CopyToOutputDirectory="PreserveNewest"`.
 
     ```xml
     <ItemGroup>
