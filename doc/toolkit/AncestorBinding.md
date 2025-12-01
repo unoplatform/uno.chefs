@@ -4,6 +4,8 @@ uid: Uno.Recipes.AncestorBinding
 
 # Binding to Elements Outside of a DataTemplate in XAML
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 It is not always possible to access elements outside of a `DataTemplate` using the `ElementName` binding. This is a common scenario when you want to bind to a property of the parent `DataContext` from within the `ItemTemplate` of something like an `ItemsControl`.

@@ -4,6 +4,8 @@ uid: Uno.Recipes.NavigateTabBar
 
 # TabBar Navigation
 
+> **UnoFeatures:** `Toolkit; Navigation` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Navigating between different sections or categories in an Uno Platform application can be challenging without an intuitive and accessible UI component.

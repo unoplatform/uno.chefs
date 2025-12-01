@@ -4,6 +4,8 @@ uid: Uno.Recipes.InputExtensions.ReturnType
 
 # Customizing Return Key for Input Controls
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 There is no cross-platform method to set the on-screen keyboard's return key for input controls like `TextBox` and `PasswordBox`. Normally, you would need to use platform conditionals to set the `ImeOptions` or the `ReturnKeyType` properties for Android and iOS, respectively.

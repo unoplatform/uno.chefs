@@ -4,6 +4,8 @@ uid: Uno.Recipes.ReactiveCarousel
 
 # Carousel
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 You need to display collections of content in an interactive, navigable format, similar to a photo carousel or image slider.

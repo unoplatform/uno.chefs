@@ -4,6 +4,8 @@ uid: Uno.Recipes.NavigationShell
 
 # Creating a Responsive Navigation Shell
 
+> **UnoFeatures:** `Toolkit;Navigation` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Creating a navigation shell that hosts multiple pages and maintains a consistent navigation experience can be challenging. Ensuring that the main navigation structure is always accessible while allowing dynamic content to be displayed requires a robust setup.

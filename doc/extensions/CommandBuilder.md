@@ -4,6 +4,8 @@ uid: Uno.Recipes.CommandBuilder
 
 # Creating Clean Commands
 
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Sometimes a `Command` property's code can get lengthy and messy, especially when there are a lot of conditions involved. Some commands even implement callbacks. It can sometimes be hard to understand what a `Command` does just by looking at the code.

@@ -4,6 +4,8 @@ uid: Uno.Recipes.PassingNavigationData
 
 # Passing Navigation Data
 
+> **UnoFeatures:** `Navigation` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Passing data between pages or view models is a common requirement in modern applications. Without a consistent and reliable method for passing data during navigation, maintaining state and user context can become challenging and error-prone.

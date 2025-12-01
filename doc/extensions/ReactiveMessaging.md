@@ -4,6 +4,8 @@ uid: Uno.Recipes.ReactiveMessaging
 
 # How to notify state changes across the app
 
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Ensuring the model is aware of state changes initiated by the service while keeping the service and the model decoupled.

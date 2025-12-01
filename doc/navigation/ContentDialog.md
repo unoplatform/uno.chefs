@@ -4,6 +4,8 @@ uid: Uno.Recipes.ContentDialog
 
 # Displaying a Custom Dialog
 
+> **UnoFeatures:** `Navigation` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 [Navigation Extensions](xref:Uno.Extensions.Navigation.Overview) currently supports [displaying a `MessageDialog`](xref:Uno.Extensions.Navigation.HowToDisplayMessageDialog). However, `MessageDialog` cannot be styled and requires a bit more work to set the text of its actions.

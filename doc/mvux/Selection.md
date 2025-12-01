@@ -2,7 +2,9 @@
 uid: Uno.Recipes.Selection
 ---
 
-# Selecting Items from a List
+# Selecting items from a list
+
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
 
 ## Problem
 
