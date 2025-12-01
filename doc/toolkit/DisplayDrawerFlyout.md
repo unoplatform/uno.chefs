@@ -3,7 +3,7 @@ uid: Uno.Recipes.DisplayDrawerFlyout
 ---
 # Using DrawerFlyout for Screen Space Management
 
-**UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
 
 ## Problem
 

@@ -4,7 +4,7 @@ uid: Uno.Recipes.LightweightStyling
 
 # Lightweight Styling for UI Elements
 
-> **UnoFeatures:** `Toolkit; Material` (add to `<UnoFeatures>` in your `.csproj`).
+> **UnoFeatures:** `Toolkit;Material` (add to `<UnoFeatures>` in your `.csproj`).
 
 ## Problem
 

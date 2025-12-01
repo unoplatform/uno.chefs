@@ -4,7 +4,7 @@ uid: Uno.Recipes.NavigateTabBar
 
 # TabBar Navigation
 
-> **UnoFeatures:** `Toolkit; Navigation` (add to `<UnoFeatures>` in your `.csproj`).
+> **UnoFeatures:** `Toolkit;Navigation` (add to `<UnoFeatures>` in your `.csproj`).
 
 ## Problem
 
