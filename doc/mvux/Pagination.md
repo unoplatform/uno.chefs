@@ -4,7 +4,7 @@ uid: Uno.Recipes.Pagination
 
 # Pagination
 
-> **UnoFeatures:** `MVUX;Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+> **UnoFeatures:** `MVUX;Toolkit;` (add to `<UnoFeatures>` in your `.csproj`).
 
 ## Problem
 
