@@ -4,6 +4,8 @@ uid: Uno.Recipes.CommandExtensions
 
 # Commands for Controls Without a Command Property
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Current controls may not always provide a `Command` property to bind to an `ICommand` in XAML. This can make it difficult to invoke commands in response to user interactions such as when a `TextBox`/`PasswordBox` enter key is pressed, a `ListViewBase`'s `ItemClick` is fired, `NavigationView.ItemInvoked`, or an `ItemsRepeater` item is tapped.

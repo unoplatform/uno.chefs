@@ -3,6 +3,8 @@ uid: Uno.Recipes.DisplayDrawerFlyout
 ---
 # Using DrawerFlyout for Screen Space Management
 
+**UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 In applications, especially on mobile, managing screen space efficiently is crucial. A common UI pattern is a drawer flyout, which can house navigation links or other content without permanently taking up screen real estate.

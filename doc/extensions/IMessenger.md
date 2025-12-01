@@ -4,6 +4,8 @@ uid: Uno.Recipes.IMessenger
 
 # Propagating Changes Across the App
 
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 In modern applications, it's essential to manage and propagate state changes across different parts of the application efficiently.

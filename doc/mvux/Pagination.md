@@ -4,6 +4,8 @@ uid: Uno.Recipes.Pagination
 
 # Pagination
 
+> **UnoFeatures:** `MVUX;Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Loading large lists all at once can hurt performance and user experience. Manually implementing pagination logic adds extra complexity and code that can be hard to maintain.

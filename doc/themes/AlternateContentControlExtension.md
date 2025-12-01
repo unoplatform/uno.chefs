@@ -4,6 +4,8 @@ uid: Uno.Recipes.AlternateContentControlExtension
 
 # ToggleButton Alternate Icons
 
+> **UnoFeatures:** `Material` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 The base `ToggleButton` control does not provide a way to switch its content when toggled. This is a common pattern in modern UIs, where a `ToggleButton` can be used to switch between two states, and the content should change accordingly.

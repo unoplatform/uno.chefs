@@ -4,6 +4,8 @@ uid: Uno.Recipes.ResourceExtensions
 
 # Page and App Level Lightweight Styles
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Applying consistent and efficient styles across an application can be challenging, especially when dealing with complex UI elements. Lightweight styling allows for a more modular and efficient approach to applying styles.

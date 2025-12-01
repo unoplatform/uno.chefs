@@ -4,6 +4,8 @@ uid: Uno.Recipes.Configuration
 
 # Persistent App Settings
 
+> **UnoFeatures:** `Configuration` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 There is a need for a uniform way to read configuration data as well as write configuration values at runtime.

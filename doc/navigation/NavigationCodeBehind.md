@@ -4,6 +4,8 @@ uid: Uno.Recipes.NavigationCodeBehind
 
 # Navigation via Code Behind
 
+> **UnoFeatures:** `Navigation` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Navigation logic can often become complex when it has to handle different states and pass data. These situations can lead to decreased readability and reusability.
