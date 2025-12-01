@@ -4,6 +4,8 @@ uid: Uno.Recipes.XamlNavigation
 
 # Navigation via XAML
 
+> **UnoFeatures:** `Navigation` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Navigating between pages often involves managing code-behind logic to handle different navigation methods as well as maintaining states, often with data that's already available in the view layer of the app. This can make the code feel bulkier than it needs to be, and it tightly couples the UI layer with navigation methods in the model.

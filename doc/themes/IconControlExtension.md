@@ -4,6 +4,8 @@ uid: Uno.Recipes.IconControlExtension
 
 # Adding Custom Icons to Controls
 
+> **UnoFeatures:** `Material` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Some controls do not offer support for custom icons, and would normally require a custom style to edit the control's template to support `IconElement`s.

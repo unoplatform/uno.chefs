@@ -4,6 +4,8 @@ uid: Uno.Recipes.ExtendedSplashScreen
 
 # Extending Splash Screen Duration for Custom Loading
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 When an application is launched, it may take some time for the user interface to fully load, especially if the application is complex or requires significant resources. This can lead to a blank or unresponsive screen, which can be confusing or frustrating for the user.

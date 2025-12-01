@@ -4,6 +4,8 @@ uid: Uno.Recipes.Selection
 
 # Selecting Items from a List
 
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Selecting items from dynamic lists can be tricky, especially when using paginated data. Doing it manually often adds extra code and makes things more complicated.

@@ -4,6 +4,8 @@ uid: Uno.Recipes.ReactiveSearch
 
 # Building a Real-Time Search
 
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Displaying live search results as the user types is a common feature in modern applications. This requires updating the search results every time the search term changes, either per key-press or on submission. Without a proper mechanism, managing this can be complex and inefficient.

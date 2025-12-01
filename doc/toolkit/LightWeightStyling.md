@@ -4,6 +4,8 @@ uid: Uno.Recipes.LightweightStyling
 
 # Lightweight Styling for UI Elements
 
+> **UnoFeatures:** `Toolkit;Material` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Applying consistent and efficient styles across an application can be challenging, especially when dealing with complex UI elements. Lightweight styling allows for a more modular and efficient approach to applying styles. [Lightweight Styling.](learn.microsoft.com/en-us/windows/apps/develop/platform/xaml/xaml-styles#lightweight-styling)

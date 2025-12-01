@@ -4,6 +4,8 @@ uid: Uno.Recipes.ImplicitCommands
 
 # Implicit Commands
 
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Implementing commands requires custom implementations of the ICommand interface as well as handling `INotifyPropertyChanged` and other events manually which adds boilerplate code and complexity. These challenges can make command handling cumbersome, especially for asynchronous operations.

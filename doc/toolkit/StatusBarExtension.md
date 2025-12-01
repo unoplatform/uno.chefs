@@ -4,6 +4,8 @@ uid: Uno.Recipes.StatusBarExtension
 
 # Customizing Status Bar Colors on Mobile
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 iOS and Android provide default appearances for the status bar, but developers often need to customize it to match their app's design or theme.
