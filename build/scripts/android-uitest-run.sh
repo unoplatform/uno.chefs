@@ -26,7 +26,35 @@ export UNO_UITEST_NUNIT_VERSION=3.12.0
 export UNO_UITEST_NUGET_URL=https://dist.nuget.org/win-x86-commandline/v5.7.0/nuget.exe
 export UNO_ORIGINAL_TEST_RESULTS=$BUILD_SOURCESDIRECTORY/build/android-uitest-results-$VARIANT_NAME.xml
 export UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH=$UNO_ORIGINAL_TEST_RESULTS
-export UNO_UITEST_ANDROIDAPK_PATH=$BUILD_SOURCESDIRECTORY/build/Android_UITest_$VARIANT_NAME/android-uitest/$APK_NAME-Signed.apk
+
+# Prefer the signed APK from build artifacts (Windows job) when available,
+# otherwise fall back to the unsigned APK published locally by the UITest job (macOS agent).
+APK_FROM_ARTIFACT="$(ls "$BUILD_SOURCESDIRECTORY/build/Android_UITest_${VARIANT_NAME}/android-uitest/"*-Signed.apk 2>/dev/null | head -n 1 || true)"
+APK_FROM_LOCAL="$(ls $BUILD_SOURCESDIRECTORY/Chefs/bin/Release/net9.0-android/android-x64/publish/*.apk 2>/dev/null | head -n 1 || true)"
+
+if [ -f "$APK_FROM_ARTIFACT" ]; then
+  export UNO_UITEST_ANDROIDAPK_PATH="$APK_FROM_ARTIFACT"
+elif [ -f "$APK_FROM_LOCAL" ]; then
+  export UNO_UITEST_ANDROIDAPK_PATH="$APK_FROM_LOCAL"
+else
+  echo "ERROR: APK not found (neither $APK_FROM_ARTIFACT nor a local publish APK)."
+  exit 1
+fi
+
+echo "Using APK: $UNO_UITEST_ANDROIDAPK_PATH"
+
+# .NET 9 UITest workaround (maui#31072): ensure assemblies.blob exists inside the APK
+# UITest sometimes refuses to run if no assemblies store is present.
+# Related issue: https://github.com/dotnet/maui/issues/31072
+command -v zip >/dev/null || { echo "ERROR: 'zip' not found on PATH"; exit 1; }
+(
+  set -e
+  tmpdir="$(mktemp -d)"
+  touch "$tmpdir/assemblies.blob"
+  (cd "$tmpdir" && zip -q "$UNO_UITEST_ANDROIDAPK_PATH" assemblies.blob)
+  rm -rf "$tmpdir"
+)
+
 export UNO_EMULATOR_INSTALLED=$BUILD_SOURCESDIRECTORY/build/.emulator_started
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UITEST_TEST_TIMEOUT=60m
@@ -167,10 +195,12 @@ $ANDROID_HOME/platform-tools/adb shell logcat -d > $UNO_UITEST_SCREENSHOT_PATH/a
 
 if [[ ! -f $UNO_ORIGINAL_TEST_RESULTS ]]; then
 	echo "ERROR: The test results file $UNO_ORIGINAL_TEST_RESULTS does not exist (did nunit crash ?)"
-	return 1
+	# Cleanly fails the job
+	exit 1
 fi
 
 if [[ -f $TEST_FAILED_FLAG ]]; then
 	echo "ERROR: The tests failed"
-	return 1
+	# Cleanly fails the job
+	exit 1
 fi

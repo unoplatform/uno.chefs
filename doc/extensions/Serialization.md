@@ -4,6 +4,8 @@ uid: Uno.Recipes.Serialization
 
 # Serialization
 
+> **UnoFeatures:** `Serialization` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Accessing the serialized and deserialized representation of an object can be important for dynamic, data-rich applications. Currently, there is no shared abstract contract between serializers for different data formats (JSON, XML, etc.). As such, it can be difficult to inject an abstraction of a serializer object as a dependency into your view models or services.

@@ -4,6 +4,8 @@ uid: Uno.Recipes.InputExtensions.Focus
 
 # Navigating Between Input Controls with the Keyboard
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 There is no easy way to denote the next control to receive focus when the Enter key is pressed while entering input in a control such as a `TextBox` or `PasswordBox`.

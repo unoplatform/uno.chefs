@@ -4,6 +4,8 @@ uid: Uno.Recipes.ItemsRepeaterExtensions
 
 # Enabling Selection in ItemsRepeater Control
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 While the [`ItemsRepeater` control](https://learn.microsoft.com/en-us/windows/apps/design/controls/items-repeater) provides a flexible system for creating custom layouts, it lacks built-in support for common selection policies. For example, the `ListView` control has built-in support for single and multiple selection modes, but the ItemsRepeater control does not.

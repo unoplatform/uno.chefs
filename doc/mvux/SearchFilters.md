@@ -4,6 +4,8 @@ uid: Uno.Recipes.SearchFilters
 
 # Filtering Search Results
 
+> **UnoFeatures:** `MVUX` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Filtering search results requires updating the displayed results every time the filters are changed. Managing each filter's state and updating the results accordingly can prove to be quite difficult.

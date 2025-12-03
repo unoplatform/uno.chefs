@@ -4,6 +4,8 @@ uid: Uno.Recipes.SafeArea
 
 # Adapting to Safe Area on Mobile
 
+> **UnoFeatures:** `Toolkit` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 In a mobile platform context, UI elements can be obscured by device-specific features like status bars, rounded corners, notches, or soft-input panels like on-screen keyboards. Certain content, such as readable text or interactive controls, needs to stay within the visible screen area to ensure usability.

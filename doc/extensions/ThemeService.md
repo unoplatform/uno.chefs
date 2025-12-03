@@ -4,6 +4,8 @@ uid: Uno.Recipes.ThemeService
 
 # How to Handle Theme Switching
 
+> **UnoFeatures:** `Hosting` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 Currently, there is no way to switch application themes at runtime from any layer, including view models. There is also a need to have a way to store the current theme and be able to initialize the app to the persisted theme preference.
