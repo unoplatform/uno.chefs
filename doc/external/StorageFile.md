@@ -62,6 +62,9 @@ Use the `Windows.Storage.StorageFile` API to read files from your app package. T
     > [!NOTE]
     > This sample utilizes `ISerializer` from Uno Extensions Serialization to deserialize the JSON content into a strongly-typed object.
     > See the [Serialization documentation](xref:Uno.Recipes.Serialization) for more details and the [Walkthrough: Serialize JSON with Source Generators](xref:Uno.Extensions.Serialization.HowTo) for guidance on setting it up.
+    > [!TIP]
+    > Alternatively to `StorageFile`, you can use [`IStorage` from Uno Extensions Storage](xref:Uno.Extensions.Storage.Overview), which not only allows you to replace it with only one simple call to `IStorage.ReadPackageFileAsync<TData>(string path)` to get the same result with build-in serialization support, but also to provide your own `ISerializer` implementation if needed.
+
 - Using `LoadData` in `MockRecipeEndpoints`
 
     ```csharp
