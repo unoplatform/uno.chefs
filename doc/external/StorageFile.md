@@ -20,44 +20,22 @@ Use the `Windows.Storage.StorageFile` API to read files from your app package. T
     </ItemGroup>
     ```
 
-    - If you want to not just have these files in your app's output directory with latest changes, then also have your IDE showing them in your **Solution Explorer** and enable you editing them easily as if those would be directly nested in your specific project, you may want to also set another property on the xml element we just added: `LinkBase="AppData"` (or any other Name you want it to show to you as folder name).
+- To also display these files in your Solution Explorer, add `LinkBase="AppData"`:
 
-        So this will make the full Content Element look like this:
+    ```xml
+    <ItemGroup>
+        <Content Include="AppData\*.json" CopyToOutputDirectory="PreserveNewest" LinkBase="AppData" />
+    </ItemGroup>
+    ```
 
-        ```xml
-        <ItemGroup>
-         <Content Include="AppData\*.json" CopyToOutputDirectory="PreserveNewest" LinkBase="AppData" />
-        </ItemGroup>
-        ```
+    ![VS Code Solution Explorer showing linked AppData files with 'external file links' note](../assets/appdata-linkbase-solution-explorer.png)
 
-        And in your Solution Explorer, this will show up like with the below shown grey text (VS Code) or with a Link Arrow like you may know it from .ink files on your Desktop (Visual Studio 2022).
+    > [!TIP]
+    > Using `LinkBase` allows multiple projects in your solution to reference the same files without duplication while keeping them synchronized across all projects.
+    >
+    > See [MSBuild LinkBase documentation](https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props#linkbase) for details.
 
-        ```markdown
-        root
-        |-AppData
-        | |-yourDataContainingFile.json
-        |-ClientApp/
-        | |-ClientApp.csproj
-        | |-AppData/ *(Linked File)*
-        |   |-yourDataContainingFile.json *(Linked File)*
-        |-ClientApp.Api/
-        | |-ClientApp.Api.csproj
-        | |-AppData/ *(Linked File)*
-        |   |-yourDataContainingFile.json *(Linked File)*
-        |-ClientApp.IntegrationTests/...
-        |-ClientApp.UITests/...
-        |-ClientApp.UnitTests/...
-        ```
-
-        > [!TIP]
-        > Another advantage of setting the LinkBase Property like shown above is, that you can do this on every project in your Solution you like to, without being required to:
-        >
-        > - duplicate the Folder or Files
-        > - if you edit a file in there, its state will always be synced
-        > [!TIP]
-        > If you may not want to have those files in your output directory of the Project, but showing up in your Solution Explorer, you can set the `CopyToOutputDirectory` property shown before, to **Never**.
-
-- Loading a JSON File Using StorageFile
+- Loading a JSON File Using `StorageFile`
 
     ```csharp
     public abstract class BaseMockEndpoint(ISerializer serializer, ILogger<BaseMockEndpoint> _logger)
