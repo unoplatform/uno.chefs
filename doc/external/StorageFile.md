@@ -4,6 +4,8 @@ uid: Uno.Recipes.StorageFile
 
 # Loading App Data
 
+> **UnoFeatures:** `Serialization` (add to `<UnoFeatures>` in your `.csproj`).
+
 ## Problem
 
 You need to load app data files on all platforms. Traditional file access methods (`System.IO.File.Read*`, `EmbeddedResource`) do not work for Content files on WASM.
@@ -57,6 +59,9 @@ Use the `Windows.Storage.StorageFile` API to read files from your app package. T
     }
     ```
 
+    > [!NOTE]
+    > This sample utilizes `ISerializer` from Uno Extensions Serialization to deserialize the JSON content into a strongly-typed object.
+    > See the [Serialization documentation](xref:Uno.Recipes.Serialization) for more details and the [Walkthrough: Serialize JSON with Source Generators](xref:Uno.Extensions.Serialization.HowTo) for guidance on setting it up.
 - Using `LoadData` in `MockRecipeEndpoints`
 
     ```csharp
