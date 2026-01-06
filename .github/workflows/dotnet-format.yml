@@ -17,7 +17,5 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 9.0.x
-    - name: Restore dependencies
-      run: dotnet restore Chefs.sln
     - name: dotnet format
-      run: dotnet format Chefs.sln --verify-no-changes --verbosity diagnostic
+      run: dotnet format Chefs.sln --verify-no-changes --no-restore --verbosity diagnostic
