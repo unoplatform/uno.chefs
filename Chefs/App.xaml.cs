@@ -14,12 +14,15 @@ namespace Chefs;
 
 public partial class App : Application
 {
+	private readonly bool _exitAfterLaunching;
+
 	/// <summary>
 	/// Initializes the singleton application object. This is the first line of authored code
 	/// executed, and as such is the logical equivalent of main() or WinMain().
 	/// </summary>
-	public App()
+	public App(bool exitAfterLaunching = false)
 	{
+		this._exitAfterLaunching = exitAfterLaunching;
 		this.InitializeComponent();
 	}
 
@@ -44,6 +47,11 @@ public partial class App : Application
 
 		Host = await builder.NavigateAsync<ShellControl>();
 		Shell = MainWindow.Content as ShellControl;
+
+		if (_exitAfterLaunching)
+		{
+			Exit();
+		}
 	}
 
 	/// <summary>
