@@ -2,9 +2,9 @@
 uid: Uno.Chefs.Overview
 ---
 
-# Overview
+# Uno Chefst Sample App Overview
 
-**Uno Chefs** is a modern, interactive recipe app built to show what Uno Platform can really do in a real-world, production-ready application.
+**Uno Chefs** is a modern, interactive recipe app built to show what Uno Platform can really do in a real-world, production-ready, cross-platform application.
 
 With Uno Chefs, you can dive into a world of cooking inspiration! Register, log in, and start exploring recipes with step-by-step instructions and video tutorials. You’ll be able to check nutritional info through charts, check reviews, favorite your top picks, and filter results to match your taste.
 
