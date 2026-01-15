@@ -41,12 +41,12 @@ public partial class App : Application
 				.UseEnvironment(Environments.Development)
 #endif
 				// Temporary until uno loggig is fixed in extensions.
-				//.UseLogging(configure: (context, logBuilder) =>
-				//{
-				//	// Configure log levels for different categories of logging
-				//	logBuilder.SetMinimumLevel(
-				//		context.HostingEnvironment.IsDevelopment() ? LogLevel.Information : LogLevel.Warning);
-				//}, enableUnoLogging: true)
+				.UseLogging(configure: (context, logBuilder) =>
+				{
+					// Configure log levels for different categories of logging
+					logBuilder.SetMinimumLevel(
+						context.HostingEnvironment.IsDevelopment() ? LogLevel.Information : LogLevel.Warning);
+				}, enableUnoLogging: true)
 				.UseConfiguration(configure: configBuilder =>
 					configBuilder
 						.EmbeddedSource<App>()
@@ -120,6 +120,7 @@ public partial class App : Application
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListReviewData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.UserData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.Guid)
+			.AddJsonTypeInfo(MockEndpointContext.Default.ListGuid)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ReviewData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.IEnumerableRecipeData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.LoginRequest);
