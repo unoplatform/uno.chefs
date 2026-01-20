@@ -13,7 +13,7 @@ fi
 
 export BUILDCONFIGURATION=Release
 export UNO_UITEST_PLATFORM=Android
-export ANDROID_SIMULATOR_APILEVEL=28
+export ANDROID_SIMULATOR_APILEVEL=34
 
 
 export UNO_UITEST_ANDROID_PROJECT_PATH=$BUILD_SOURCESDIRECTORY/Chefs
@@ -113,7 +113,6 @@ if [[ ! -f $AVD_CONFIG_FILE ]];
 then
 	# Install AVD files
 	install_android_sdk $ANDROID_SIMULATOR_APILEVEL
-	install_android_sdk 34
 	install_android_sdk 35
 
 	if [[ -f $ANDROID_HOME/platform-tools/platform-tools/adb ]]
