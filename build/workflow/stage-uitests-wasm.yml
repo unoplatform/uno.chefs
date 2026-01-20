@@ -14,7 +14,7 @@ jobs:
 
   - template: templates/dotnet-install-linux.yml
     parameters:
-      UnoCheckParameters: '--tfm net9.0-browserwasm'
+      UnoCheckParameters: '--tfm net10.0-browserwasm'
 
   - bash: |
       bash build/scripts/wasm-uitest-run.sh
@@ -30,7 +30,7 @@ jobs:
     displayName: 'Publish Binaries'
     retryCountOnTaskFailure: 3
     inputs:
-      SourceFolder: Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot
+      SourceFolder: Chefs/bin/Release/net10.0-browserwasm/publish/wwwroot
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/wwwroot
 
