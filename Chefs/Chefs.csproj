@@ -15,16 +15,20 @@
 		<OutputType>Exe</OutputType>
 		<UnoSingleProject>true</UnoSingleProject>
 		<!-- Display name -->
-		<ApplicationTitle>Chefs</ApplicationTitle>
+		<ApplicationTitle>Chefs$(ApplicationTitleVendorSuffix)</ApplicationTitle>
 		
 		<!-- App Identifier -->
-		<ApplicationId>uno.platform.chefs.skia</ApplicationId>
+		<ApplicationId>uno.platform.chefs.skia$(ApplicationIdVendorSuffix)</ApplicationId>
 
 		<ApplicationId Condition="'$(IsCanaryBranch)'=='true'">$(ApplicationId)-canary</ApplicationId>
 
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 		<UseMocks Condition="'$(UseMocks)'==''">true</UseMocks>
+		<IsAotCompatible>true</IsAotCompatible>
+		<PublishAot Condition=" '$(SkiaPublishAot)' == 'true' And $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">true</PublishAot>
+		<PublishAot Condition=" '$(SkiaPublishAot)' == 'true' And $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">true</PublishAot>
+		<PublishAot Condition=" '$(PublishAot)' == '' And '$(SkiaPublishAot)' != '' ">$(SkiaPublishAot)</PublishAot>
 		<!--
 			If you encounter this error message:
 
