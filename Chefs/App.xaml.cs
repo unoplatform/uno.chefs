@@ -48,6 +48,8 @@ public partial class App : Application
 		Host = await builder.NavigateAsync<ShellControl>();
 		Shell = MainWindow.Content as ShellControl;
 
+		this.Log().LogWarning("Chefs App Finished Launching");
+
 		if (_exitAfterLaunching)
 		{
 			Exit();
