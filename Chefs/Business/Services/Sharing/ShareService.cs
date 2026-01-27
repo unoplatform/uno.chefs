@@ -6,7 +6,7 @@ using WinRT.Interop;
 
 namespace Chefs.Business.Services.Sharing;
 
-public class ShareService() : IShareService
+public class ShareService(ILogger<ShareService> logger) : IShareService
 {
 	private Recipe? _recipe;
 	private IImmutableList<Step>? _steps;
@@ -17,6 +17,19 @@ public class ShareService() : IShareService
 #endif
 
 	public async Task ShareRecipe(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct)
+	{
+		try
+		{
+			await ShareRecipeCore(recipe, steps, ct);
+		}
+		catch (Exception ex)
+		{
+			logger.LogError(ex, "Failed to share recipe");
+			throw;
+		}
+	}
+
+	private async Task ShareRecipeCore(Recipe recipe, IImmutableList<Step> steps, CancellationToken ct)
 	{
 		_recipe = recipe;
 		_steps = steps;
