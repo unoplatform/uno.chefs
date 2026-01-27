@@ -105,10 +105,10 @@ public class RecipeService(
 
 	private async ValueTask<IImmutableList<CategoryWithCount>> GetCategoriesWithCountCore(CancellationToken ct)
 	{
-		var categories = await GetCategories(ct);
+		var categories = await GetCategoriesCore(ct);
 		var tasks = categories.Select(async category =>
 		{
-			var recipesByCategory = await GetByCategory(category.Id ?? 0, ct);
+			var recipesByCategory = await GetByCategoryCore(category.Id ?? 0, ct);
 			return new CategoryWithCount(recipesByCategory.Count, category);
 		});
 
@@ -190,10 +190,10 @@ public class RecipeService(
 	{
 		var recipesToSearch = filter.FilterGroup switch
 		{
-			FilterGroup.Popular => await GetPopular(ct),
-			FilterGroup.Trending => await GetTrending(ct),
-			FilterGroup.Recent => await GetRecent(ct),
-			_ => await GetAll(ct)
+			FilterGroup.Popular => await GetPopularCore(ct),
+			FilterGroup.Trending => await GetTrendingCore(ct),
+			FilterGroup.Recent => await GetRecentCore(ct),
+			_ => await GetAllCore(ct)
 		};
 
 		if (string.IsNullOrWhiteSpace(term))
