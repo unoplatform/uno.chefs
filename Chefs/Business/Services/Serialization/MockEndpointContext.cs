@@ -3,6 +3,7 @@ using Chefs.Client.Models;
 
 namespace Chefs.Data;
 
+[JsonSerializable(typeof(Dictionary<string, SearchHistory>))]
 [JsonSerializable(typeof(List<CookbookData>))]
 [JsonSerializable(typeof(CookbookData))]
 [JsonSerializable(typeof(RecipeData))]
