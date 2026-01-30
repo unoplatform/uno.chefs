@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using ReviewData = Chefs.Client.Models.ReviewData;
 
 namespace Chefs.Business.Models;
@@ -32,9 +33,21 @@ public partial record Review
 	public string? PublisherName { get; init; }
 	public DateTime Date { get; init; }
 	public string? Description { get; init; }
-	public ImmutableList<Guid>? Likes { get; init; }
-	public ImmutableList<Guid>? Dislikes { get; init; }
 	public bool UserLike { get; init; }
+
+	public ImmutableList<Guid>? Likes
+	{
+		[DynamicDependency("Count", typeof(ImmutableList<Guid>))]
+		get;
+		init;
+	}
+
+	public ImmutableList<Guid>? Dislikes
+	{
+		[DynamicDependency("Count", typeof(ImmutableList<Guid>))]
+		get;
+		init;
+	}
 
 	internal ReviewData ToData() => new()
 	{
