@@ -1,15 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Uno.UITest.Helpers.Queries;
 
 namespace Chefs.UITests;
 
 public class Constants
 {
-	public readonly static string ApplicationId = "uno.platform.chefs.skia";
+	private const string DefaultApplicationId = "uno.platform.chefs.skia";
+	private const string AppIdEnvVar = "UNO_UITEST_APP_ID";
+
+	public readonly static string ApplicationId =
+		Environment.GetEnvironmentVariable(AppIdEnvVar) ?? DefaultApplicationId;
 
 	public readonly static string WebAssemblyDefaultUri = "http://localhost:51480/";
 	public readonly static string iOSAppName = ApplicationId;
