@@ -11,9 +11,11 @@ else
 	export APK_NAME="uno.platform.chefs.skia"
 fi
 
+export UNO_UITEST_APP_ID="$APK_NAME"
+
 export BUILDCONFIGURATION=Release
 export UNO_UITEST_PLATFORM=Android
-export ANDROID_SIMULATOR_APILEVEL=28
+export ANDROID_SIMULATOR_APILEVEL=34
 
 
 export UNO_UITEST_ANDROID_PROJECT_PATH=$BUILD_SOURCESDIRECTORY/Chefs
@@ -96,7 +98,7 @@ install_android_sdk() {
 
 		echo "y" | $LATEST_CMDLINE_TOOLS_PATH/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install 'tools'| tr '\r' '\n' | uniq
 		echo "y" | $LATEST_CMDLINE_TOOLS_PATH/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install 'platform-tools'  | tr '\r' '\n' | uniq
-		echo "y" | $LATEST_CMDLINE_TOOLS_PATH/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install 'build-tools;35.0.0' | tr '\r' '\n' | uniq
+		echo "y" | $LATEST_CMDLINE_TOOLS_PATH/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install 'build-tools;36.0.0' | tr '\r' '\n' | uniq
 		echo "y" | $LATEST_CMDLINE_TOOLS_PATH/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install 'extras;android;m2repository' | tr '\r' '\n' | uniq
 	fi
 	
@@ -115,6 +117,7 @@ then
 	install_android_sdk $ANDROID_SIMULATOR_APILEVEL
 	install_android_sdk 34
 	install_android_sdk 35
+	install_android_sdk 36
 
 	if [[ -f $ANDROID_HOME/platform-tools/platform-tools/adb ]]
 	then
