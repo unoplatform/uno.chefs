@@ -17,11 +17,6 @@ jobs:
   - template: templates/canary-updater.yml
 
   - bash: |
-      dotnet workload restore $(build.sourcesdirectory)/Chefs/Chefs.csproj
-    displayName: Restore Android workloads
-    retryCountOnTaskFailure: 3
-
-  - bash: |
       chmod +x $(build.sourcesdirectory)/build/scripts/android-uitest-build.sh
       $(build.sourcesdirectory)/build/scripts/android-uitest-build.sh
     displayName: Build Android App for UI Tests
