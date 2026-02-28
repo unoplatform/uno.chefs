@@ -43,6 +43,39 @@ fi
 
 echo "Using APK: $UNO_UITEST_ANDROIDAPK_PATH"
 
+# .NET 9 UITest workaround (maui#31072): Xamarin.UITest checks for assemblies.blob
+# inside the APK to verify .NET assemblies are bundled. Modern .NET 9 Android apps
+# no longer include this file, so we inject a dummy one. We must then zipalign and
+# re-sign the APK so that APK Signature Scheme v2/v3 remains valid (required on API 30+).
+BUILD_TOOLS_PATH="$ANDROID_SDK_ROOT/build-tools/35.0.0"
+command -v zip >/dev/null || { echo "ERROR: 'zip' not found on PATH"; exit 1; }
+(
+  set -e
+  tmpdir="$(mktemp -d)"
+  touch "$tmpdir/assemblies.blob"
+  (cd "$tmpdir" && zip -q "$UNO_UITEST_ANDROIDAPK_PATH" assemblies.blob)
+  rm -rf "$tmpdir"
+
+  # zipalign the modified APK (required before apksigner)
+  ALIGNED_APK="${UNO_UITEST_ANDROIDAPK_PATH%.apk}-aligned.apk"
+  "$BUILD_TOOLS_PATH/zipalign" -f 4 "$UNO_UITEST_ANDROIDAPK_PATH" "$ALIGNED_APK"
+  mv "$ALIGNED_APK" "$UNO_UITEST_ANDROIDAPK_PATH"
+
+  # Re-sign with a debug key so APK Signature Scheme v2/v3 is valid
+  DEBUG_KEYSTORE="$HOME/.android/debug.keystore"
+  if [ ! -f "$DEBUG_KEYSTORE" ]; then
+    keytool -genkey -v -keystore "$DEBUG_KEYSTORE" -storepass android \
+      -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 \
+      -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+  fi
+  "$BUILD_TOOLS_PATH/apksigner" sign \
+    --ks "$DEBUG_KEYSTORE" \
+    --ks-pass pass:android \
+    --ks-key-alias androiddebugkey \
+    --key-pass pass:android \
+    "$UNO_UITEST_ANDROIDAPK_PATH"
+)
+
 export UNO_EMULATOR_INSTALLED=$BUILD_SOURCESDIRECTORY/build/.emulator_started
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UITEST_TEST_TIMEOUT=60m
