@@ -43,18 +43,6 @@ fi
 
 echo "Using APK: $UNO_UITEST_ANDROIDAPK_PATH"
 
-# .NET 9 UITest workaround (maui#31072): ensure assemblies.blob exists inside the APK
-# UITest sometimes refuses to run if no assemblies store is present.
-# Related issue: https://github.com/dotnet/maui/issues/31072
-command -v zip >/dev/null || { echo "ERROR: 'zip' not found on PATH"; exit 1; }
-(
-  set -e
-  tmpdir="$(mktemp -d)"
-  touch "$tmpdir/assemblies.blob"
-  (cd "$tmpdir" && zip -q "$UNO_UITEST_ANDROIDAPK_PATH" assemblies.blob)
-  rm -rf "$tmpdir"
-)
-
 export UNO_EMULATOR_INSTALLED=$BUILD_SOURCESDIRECTORY/build/.emulator_started
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UITEST_TEST_TIMEOUT=60m
@@ -191,7 +179,7 @@ fi
 cp $UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH $BASE_ARTIFACTS_PATH
 
 ## Dump the emulator's system log
-$ANDROID_HOME/platform-tools/adb shell logcat -d > $UNO_UITEST_SCREENSHOT_PATH/android-device-log.txt
+$ANDROID_HOME/platform-tools/adb shell logcat -d | tee $UNO_UITEST_SCREENSHOT_PATH/android-device-log.txt
 
 if [[ ! -f $UNO_ORIGINAL_TEST_RESULTS ]]; then
 	echo "ERROR: The test results file $UNO_ORIGINAL_TEST_RESULTS does not exist (did nunit crash ?)"
