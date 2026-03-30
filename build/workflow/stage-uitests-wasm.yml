@@ -7,6 +7,8 @@ jobs:
     vmImage: ubuntu-latest
 
   steps:
+  - template: templates/host-cleanup-linux.yml
+
   - task: NodeTool@0
     inputs:
       versionSource: 'spec'
