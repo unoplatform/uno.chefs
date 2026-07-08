@@ -108,6 +108,7 @@ public partial class App : Application
 	{
 #if USE_MOCKS
 		services
+			.AddJsonTypeInfo(MockEndpointContext.Default.DictionaryStringSearchHistory)
 			.AddJsonTypeInfo(MockEndpointContext.Default.ListCookbookData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.CookbookData)
 			.AddJsonTypeInfo(MockEndpointContext.Default.RecipeData)
