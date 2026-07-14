@@ -25,7 +25,6 @@
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 		<UseMocks Condition="'$(UseMocks)'==''">true</UseMocks>
-		<IsAotCompatible>true</IsAotCompatible>
 		<PublishAot Condition=" '$(SkiaPublishAot)' == 'true' And $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">true</PublishAot>
 		<PublishAot Condition=" '$(SkiaPublishAot)' == 'true' And $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">true</PublishAot>
 		<PublishAot Condition=" '$(PublishAot)' == '' And '$(SkiaPublishAot)' != '' ">$(SkiaPublishAot)</PublishAot>
