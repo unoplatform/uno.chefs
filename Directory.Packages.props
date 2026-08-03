@@ -3,6 +3,11 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <!-- Aspire 9.x targets net9.0, matching this repo. The matching
+         Aspire.AppHost.Sdk version is declared in Chefs.AppHost.csproj —
+         MSBuild SDK references are outside Central Package Management, so the
+         two must be bumped together. -->
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.5.2" />
     <PackageVersion Include="coverlet.collector" Version="3.2.0" />
     <PackageVersion Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc4.5" />
     <PackageVersion Include="Mapsui.Uno.WinUI" Version="5.0.0" />
