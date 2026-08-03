@@ -190,17 +190,19 @@ fi
 #                    into this same docs site, so it is the authoritative source
 #                    for anything Chefs demonstrates).
 # `microsoft-learn`— .NET / ASP.NET Core / Aspire reference.
-#
-# studio.live also registers a `uno-app` stdio server via `dotnet dnx`; that is
-# a .NET 10 SDK command and this container is on the .NET 9 SDK (matching the
-# repo's net9.0-* TFMs), so it is deliberately omitted.
+# `uno-app`        — Uno app tooling over stdio. `dotnet dnx` is a .NET 10 SDK
+#                    command, so this only became available when the repo moved
+#                    off net9.0.
 # ---------------------------------------------------------------------------
-echo "Registering documentation MCP servers for Claude: uno, microsoft-learn."
+echo "Registering MCP servers for Claude: uno, microsoft-learn, uno-app."
 
 claude mcp remove uno || true
 claude mcp add --scope user --transport http uno https://mcp.platform.uno/v1 || true
 claude mcp remove microsoft-learn || true
 claude mcp add --scope user --transport http microsoft-learn https://learn.microsoft.com/api/mcp || true
+claude mcp remove uno-app || true
+claude mcp add --scope user --transport stdio uno-app \
+  -- dotnet dnx -y uno.devserver --mcp-app --solution-dir "$WORKSPACE" || true
 
 echo "Claude MCP registration complete. Verify with: claude mcp list"
 
@@ -216,10 +218,16 @@ COPILOT_MCP_CONFIG="$COPILOT_DIR/mcp-config.json"
 if [ -n "${GH_TOKEN:-}" ]; then
   MCP_SERVERS=$(jq -n \
     --arg gh_token "$GH_TOKEN" \
+    --arg workspace "$WORKSPACE" \
     '{
       "mcpServers": {
         "uno": { "type": "http", "url": "https://mcp.platform.uno/v1" },
         "microsoft-learn": { "type": "http", "url": "https://learn.microsoft.com/api/mcp" },
+        "uno-app": {
+          "type": "stdio",
+          "command": "dotnet",
+          "args": ["dnx", "-y", "uno.devserver", "--mcp-app", "--solution-dir", $workspace]
+        },
         "github": {
           "type": "stdio",
           "command": "npx",
@@ -228,15 +236,22 @@ if [ -n "${GH_TOKEN:-}" ]; then
         }
       }
     }')
-  echo "Copilot MCPs: uno, microsoft-learn, github"
+  echo "Copilot MCPs: uno, microsoft-learn, uno-app, github"
 else
-  MCP_SERVERS='{
-    "mcpServers": {
-      "uno": { "type": "http", "url": "https://mcp.platform.uno/v1" },
-      "microsoft-learn": { "type": "http", "url": "https://learn.microsoft.com/api/mcp" }
-    }
-  }'
-  echo "Copilot MCPs: uno, microsoft-learn (GitHub MCP skipped — no GH_TOKEN)"
+  MCP_SERVERS=$(jq -n \
+    --arg workspace "$WORKSPACE" \
+    '{
+      "mcpServers": {
+        "uno": { "type": "http", "url": "https://mcp.platform.uno/v1" },
+        "microsoft-learn": { "type": "http", "url": "https://learn.microsoft.com/api/mcp" },
+        "uno-app": {
+          "type": "stdio",
+          "command": "dotnet",
+          "args": ["dnx", "-y", "uno.devserver", "--mcp-app", "--solution-dir", $workspace]
+        }
+      }
+    }')
+  echo "Copilot MCPs: uno, microsoft-learn, uno-app (GitHub MCP skipped — no GH_TOKEN)"
 fi
 
 if [ -f "$COPILOT_MCP_CONFIG" ]; then
@@ -412,8 +427,8 @@ echo " Uno Chefs devcontainer ready"
 echo "==============================================================="
 echo "  Aspire (API + apps):  dotnet run --project Chefs.AppHost"
 echo "  API only:             dotnet run --project Chefs.Api"
-echo "  Desktop:              dotnet run --project Chefs -f net9.0-desktop"
-echo "  WebAssembly:          dotnet run --project Chefs -f net9.0-browserwasm"
+echo "  Desktop:              dotnet run --project Chefs -f net10.0-desktop"
+echo "  WebAssembly:          dotnet run --project Chefs -f net10.0-browserwasm"
 echo ""
 echo "  Remember -p:TargetFrameworkOverride=<tfm> for one-off builds; see CLAUDE.md."
 echo "==============================================================="

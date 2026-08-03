@@ -130,7 +130,7 @@ server=/aka.ms/${UPSTREAM_DNS}
 
 # Android SDK tooling — sdkmanager downloads build-tools/platforms from
 # dl.google.com, developer.android.com hosts the cmdline-tools redirects, and
-# maven.google.com serves the AndroidX artifacts a net9.0-android build resolves.
+# maven.google.com serves the AndroidX artifacts a net10.0-android build resolves.
 server=/dl.google.com/${UPSTREAM_DNS}
 server=/developer.android.com/${UPSTREAM_DNS}
 server=/maven.google.com/${UPSTREAM_DNS}

@@ -16,7 +16,7 @@ export UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH=$UNO_ORIGINAL_TEST_RESULTS
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UNO_UITEST_SIMULATOR_VERSION="com.apple.CoreSimulator.SimRuntime.iOS-18-5"
 export UNO_UITEST_SIMULATOR_NAME="iPad (10th generation)"
-export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net9.0/Chefs.UITests.dll
+export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net10.0/Chefs.UITests.dll
 
 export UITEST_TEST_TIMEOUT=120m
 
@@ -77,7 +77,7 @@ sudo chmod -R +x $UNO_UITEST_IOSBUNDLE_PATH
 
 cd $UNO_UITEST_PROJECT_PATH
 
-dotnet build /r /p:TargetFrameworkOverride=net9.0-android "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
+dotnet build /r /p:TargetFrameworkOverride=net10.0-android "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
 
 ## Run tests
 if dotnet test $UNO_UITEST_BINARY \

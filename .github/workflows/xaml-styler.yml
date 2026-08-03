@@ -16,8 +16,14 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4.0.1
       with:
-        dotnet-version: 8.0.100
-    - name: Install XAML Styler 
-      run: dotnet tool update --global XamlStyler.Console
+        # XamlStyler.Console still ships a net8.0 tool asset, but its
+        # runtimeconfig sets rollForward: Major, so it runs fine on the .NET 10
+        # runtime — no separate .NET 8 install needed just for this gate.
+        dotnet-version: 10.0.100
+    - name: Install XAML Styler
+      # Pinned so a XamlStyler release cannot turn this gate red without a
+      # deliberate bump. Keep in step with the version in CONTRIBUTING.md, so
+      # local formatting matches what CI verifies.
+      run: dotnet tool update --global XamlStyler.Console --version 3.2501.8
     - name: Verify XAML Styling
       run: xstyler -r -l Verbose -c xaml-styler.json -d "Chefs" --passive

@@ -50,8 +50,8 @@ builder.AddExecutable(
 		[
 			"run",
 			"--project", "Chefs/Chefs.csproj",
-			"--framework", "net9.0-browserwasm",
-			"--property:TargetFrameworkOverride=net9.0-browserwasm",
+			"--framework", "net10.0-browserwasm",
+			"--property:TargetFrameworkOverride=net10.0-browserwasm",
 			"--property:UseMocks=false",
 			"--launch-profile", "Chefs (WebAssembly)",
 		])
@@ -72,8 +72,8 @@ builder.AddExecutable(
 		[
 			"run",
 			"--project", "Chefs/Chefs.csproj",
-			"--framework", "net9.0-desktop",
-			"--property:TargetFrameworkOverride=net9.0-desktop",
+			"--framework", "net10.0-desktop",
+			"--property:TargetFrameworkOverride=net10.0-desktop",
 			"--property:UseMocks=false",
 		])
 	// Skia desktop needs an X server. In the devcontainer DISPLAY is set

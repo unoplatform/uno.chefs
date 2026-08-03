@@ -14,7 +14,7 @@ on:
 jobs:
   build_and_deploy_job_azure_static_apps:
     env:
-      DIST_PATH: Chefs/bin/Release/net9.0-browserwasm/wwwroot
+      DIST_PATH: Chefs/bin/Release/net10.0-browserwasm/wwwroot
 
     if: github.event_name == 'pull_request' && github.event.action != 'closed'
     runs-on: ubuntu-latest
@@ -29,10 +29,10 @@ jobs:
       - name: Free disk space (Linux)
         uses: ./.github/actions/host-cleanup-linux
 
-      - name: Setup dotnet 9.0.101
+      - name: Setup dotnet 10.0.100
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: '9.0.101'
+          dotnet-version: '10.0.100'
 
       - uses: dotnet/nbgv@f088059084cb5d872e9d1a994433ca6440c2bf72 # v0.4.2
         id: nbgv
@@ -43,13 +43,13 @@ jobs:
       - name: Install .NET Workloads
         shell: pwsh
         run: |
-          & dotnet tool install --global --version 1.28.3 uno.check
+          & dotnet tool install --global --version 1.34.1 uno.check
           & ~/.dotnet/tools/uno-check --ci --fix --non-interactive --verbose --skip openjdk 
 
       - name: Build app
         run: |
           cd Chefs
-          dotnet build -c Release /p:UseSkiaRendering=true /p:TargetFramework=net9.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" -bl:wasm-github-ci-build.binlog
+          dotnet build -c Release /p:UseSkiaRendering=true /p:TargetFramework=net10.0-browserwasm "/p:Version=${{ steps.nbgv.outputs.SemVer2 }}" -bl:wasm-github-ci-build.binlog
 
       - uses: actions/upload-artifact@v4
         with:
