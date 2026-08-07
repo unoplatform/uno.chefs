@@ -44,7 +44,9 @@ jobs:
         shell: pwsh
         run: |
           & dotnet tool install --global --version 1.34.1 uno.check
-          & ~/.dotnet/tools/uno-check --ci --fix --non-interactive --verbose --skip openjdk 
+          # androidsdk/androidemulator are skipped: this job only builds the WASM head, and the
+          # Android SDK auto-install crashes in the wasm-build container (no user name available).
+          & ~/.dotnet/tools/uno-check --ci --fix --non-interactive --verbose --skip openjdk --skip androidsdk --skip androidemulator
 
       - name: Build app
         run: |

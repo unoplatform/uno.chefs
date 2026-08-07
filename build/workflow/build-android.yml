@@ -84,7 +84,10 @@ jobs:
 
   - script: |
       cd $(build.sourcesdirectory)/Chefs
-      dotnet publish -f:net10.0-android /p:TargetFrameworkOverride=net10.0-android -c:Release -p:UseSkiaRendering=$(UseSkiaRendering) "/p:InformationalVersion=%NBGV_InformationalVersion%" /p:AndroidSigningKeyStore=$(keyStore.secureFilePath) /p:AndroidSigningStorePass=$(AndroidSigningStorePass) /p:AndroidSigningKeyPass=$(AndroidSigningKeyPass) /p:AndroidSigningKeyAlias=$(AndroidSigningKeyAlias) /p:AndroidKeyStore=true /bl:$(build.artifactstagingdirectory)/logs/build-android.binlog 
+      rem UseDefaultPublishRuntimeIdentifier=false keeps the SDK from adding the host RID (win-x64) to the
+      rem android restore, which fails with NU1102 since desktop Mono runtime packs are no longer published.
+      rem See https://github.com/dotnet/android/issues/10722
+      dotnet publish -f:net10.0-android /p:TargetFrameworkOverride=net10.0-android -c:Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:UseDefaultPublishRuntimeIdentifier=false "/p:InformationalVersion=%NBGV_InformationalVersion%" /p:AndroidSigningKeyStore=$(keyStore.secureFilePath) /p:AndroidSigningStorePass=$(AndroidSigningStorePass) /p:AndroidSigningKeyPass=$(AndroidSigningKeyPass) /p:AndroidSigningKeyAlias=$(AndroidSigningKeyAlias) /p:AndroidKeyStore=true /bl:$(build.artifactstagingdirectory)/logs/build-android.binlog
     displayName: 'Build Android'
     retryCountOnTaskFailure: 3
 

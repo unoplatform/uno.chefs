@@ -2,7 +2,8 @@ jobs:
 - job: Skia_Desktop
   timeoutInMinutes: 90
   pool:
-    vmImage: windows-2022
+    # VS 2026 image: the .NET 10 SDK requires MSBuild 18, which VS 2022 images don't have
+    vmImage: windows-2025-vs2026
 
   steps:
   - checkout: self
