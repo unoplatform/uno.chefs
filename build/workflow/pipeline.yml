@@ -45,7 +45,7 @@ variables:
   UseSkiaRendering: 'true'
   IsCanaryBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/canaries/')]
   IsReleaseBranch: $[or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/heads/feature/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))]
-  XCODE_ROOT: '/Applications/Xcode_16.4.app'
+  XCODE_ROOT: '/Applications/Xcode_26.0.1.app'
 
 jobs:
 - template: build-windows.yml
