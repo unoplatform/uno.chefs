@@ -77,7 +77,7 @@ sudo chmod -R +x $UNO_UITEST_IOSBUNDLE_PATH
 
 cd $UNO_UITEST_PROJECT_PATH
 
-dotnet build /r /p:TargetFrameworkOverride=net10.0-android "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
+dotnet build /r /p:TargetFrameworkOverride=net10.0-ios "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
 
 ## Run tests
 if dotnet test $UNO_UITEST_BINARY \
