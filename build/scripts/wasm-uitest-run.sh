@@ -12,19 +12,19 @@ export UNO_UITEST_PLATFORM=Browser
 export UNO_UITEST_PROJECT=$BUILD_SOURCESDIRECTORY/Chefs.UITests/Chefs.UITests.csproj
 export UNO_UITEST_LOGFILE=$BASE_ARTIFACTS_PATH/nunit-log.txt
 export UNO_UITEST_WASM_PROJECT=$BUILD_SOURCESDIRECTORY/Chefs
-export UNO_UITEST_WASM_OUTPUT_PATH=$BUILD_SOURCESDIRECTORY/Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot/
+export UNO_UITEST_WASM_OUTPUT_PATH=$BUILD_SOURCESDIRECTORY/Chefs/bin/Release/net10.0-browserwasm/publish/wwwroot/
 export UNO_UITEST_NUNIT_VERSION=3.11.1
 export UNO_UITEST_NUGET_URL=https://dist.nuget.org/win-x86-commandline/v5.7.0/nuget.exe
 export UNO_ORIGINAL_TEST_RESULTS=$BUILD_SOURCESDIRECTORY/build/wasm-uitest-results-$VARIANT_NAME.xml
 export UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH=$UNO_ORIGINAL_TEST_RESULTS
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UITEST_TEST_TIMEOUT=60m
-export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net9.0/Chefs.UITests.dll
+export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net10.0/Chefs.UITests.dll
 TEST_FAILED_FLAG=.tests-failed
 
 cd $UNO_UITEST_WASM_PROJECT
 
-dotnet publish /r /p:Configuration=Release /p:TargetFrameworkOverride=net9.0-browserwasm /p:TargetFramework=net9.0-browserwasm "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:IsUiAutomationMappingEnabled=True /bl:$BASE_ARTIFACTS_PATH/wasm-uitest-$VARIANT_NAME.binlog
+dotnet publish /r /p:Configuration=Release /p:TargetFrameworkOverride=net10.0-browserwasm /p:TargetFramework=net10.0-browserwasm "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:IsUiAutomationMappingEnabled=True /bl:$BASE_ARTIFACTS_PATH/wasm-uitest-$VARIANT_NAME.binlog
 cd $BUILD_SOURCESDIRECTORY/build
 mkdir -p tools
 

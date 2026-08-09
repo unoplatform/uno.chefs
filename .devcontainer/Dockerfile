@@ -1,7 +1,12 @@
-# .NET 9 SDK — matches the net9.0-* target frameworks in Chefs.csproj and the
-# Aspire 9.x AppHost. Do not bump to sdk:10.0 without also moving the repo's
-# TFMs; the net9.0-android/-ios workloads are not carried by the 10.0 image.
-FROM mcr.microsoft.com/dotnet/sdk:9.0
+# .NET 10 SDK — matches the net10.0-* target frameworks in Chefs.csproj and the
+# Aspire 13.x AppHost.
+#
+# Note this is **Ubuntu 24.04**, not Debian: .NET 10 dropped the Debian-based
+# default that .NET 9 shipped (there is no 10.0-trixie/-bookworm tag). That
+# changes two things below — the Microsoft package repo path, and the browser
+# install, since Ubuntu's `chromium` apt package is a snap shim that cannot
+# work inside a container.
+FROM mcr.microsoft.com/dotnet/sdk:10.0
 
 ARG TZ
 ENV TZ="$TZ"
@@ -49,12 +54,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   zenity \
   dbus \
   dbus-user-session \
-  # Chefs.UITests drives WebAssembly through Selenium. Debian's chromium +
-  # chromium-driver are version-matched by the distro, which avoids the
-  # chromedriver/Chrome version skew the CI scripts work around by pinning
-  # npm chromedriver@127 + puppeteer.
-  chromium \
-  chromium-driver \
   # SSH client (WSL host terminal)
   openssh-client \
   # Misc
@@ -64,7 +63,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # ---------------------------------------------------------------------------
-# GitHub CLI (not in bookworm defaults)
+# GitHub CLI (not in the base image's default sources)
 # ---------------------------------------------------------------------------
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
       | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -80,6 +79,40 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
   && apt-get install -y --no-install-recommends nodejs \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# ---------------------------------------------------------------------------
+# Chrome + chromedriver for Chefs.UITests on the Browser platform.
+#
+# Not `apt install chromium`: on Ubuntu that package is a transitional shim
+# that installs the Chromium *snap*, which cannot run in a container (no
+# snapd). Chrome for Testing publishes plain zips where the browser and driver
+# are built from the same revision, so they are matched by construction —
+# no repeat of the chromedriver/Chrome skew the CI scripts pin around.
+#
+# Resolved at build time from the Stable channel rather than pinned, so a
+# rebuild picks up current Chrome. Pin CHROME_FOR_TESTING_VERSION if you need
+# a reproducible image.
+#
+# linux64 only — Chrome for Testing publishes no arm64 Linux build. On arm64
+# the layer is skipped and the WASM UI tests are simply unavailable; every
+# other capability of this image still works.
+# ---------------------------------------------------------------------------
+ARG CHROME_FOR_TESTING_VERSION=Stable
+RUN if [ "$(dpkg --print-architecture)" = "amd64" ]; then \
+      set -eux; \
+      META=https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json; \
+      CH=$(curl -fsSL "$META" | jq -r ".channels[\"${CHROME_FOR_TESTING_VERSION}\"].downloads.chrome[]   | select(.platform==\"linux64\") | .url"); \
+      DR=$(curl -fsSL "$META" | jq -r ".channels[\"${CHROME_FOR_TESTING_VERSION}\"].downloads.chromedriver[] | select(.platform==\"linux64\") | .url"); \
+      curl -fsSL -o /tmp/chrome.zip "$CH" && curl -fsSL -o /tmp/chromedriver.zip "$DR"; \
+      unzip -q /tmp/chrome.zip -d /opt && unzip -q /tmp/chromedriver.zip -d /opt; \
+      rm /tmp/chrome.zip /tmp/chromedriver.zip; \
+      chmod +x /opt/chrome-linux64/chrome /opt/chromedriver-linux64/chromedriver; \
+      ln -sf /opt/chrome-linux64/chrome /usr/local/bin/chrome; \
+      ln -sf /opt/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver; \
+      npx --yes playwright install-deps chromium; \
+    else \
+      echo "Skipping Chrome for Testing: no linux64 build for $(dpkg --print-architecture)"; \
+    fi
 
 # ---------------------------------------------------------------------------
 # git-delta (better diffs)
@@ -162,7 +195,7 @@ RUN curl -fsSL https://gh.io/copilot-install | bash -s -- ${COPILOT_CLI_VERSION}
 
 # ---------------------------------------------------------------------------
 # Microsoft Build of OpenJDK 21 — required by the Android SDK tooling chain
-# (sdkmanager, aapt2, d8) for `-f net9.0-android` builds. Installed manually
+# (sdkmanager, aapt2, d8) for `-f net10.0-android` builds. Installed manually
 # because uno-check does not provision a JDK on Linux.
 # ---------------------------------------------------------------------------
 USER root
@@ -180,7 +213,7 @@ RUN . /etc/os-release && \
   apt-get clean && rm -rf /var/lib/apt/lists/* && \
   # msopenjdk-21 installs to /usr/lib/jvm/msopenjdk-21-<arch>. Resolve the real
   # directory by walking from `javac` and pin an arch-agnostic symlink, because
-  # mcr.microsoft.com/dotnet/sdk:9.0 is multi-arch (this image may be built on
+  # mcr.microsoft.com/dotnet/sdk:10.0 is multi-arch (this image may be built on
   # Apple Silicon).
   ln -sfn "$(dirname "$(dirname "$(readlink -f "$(command -v javac)")")")" \
     /usr/lib/jvm/msopenjdk-21-current
@@ -189,8 +222,8 @@ ENV JAVA_HOME=/usr/lib/jvm/msopenjdk-21-current
 ENV PATH=${JAVA_HOME}/bin:${PATH}
 
 # ---------------------------------------------------------------------------
-# .NET workloads — wasm-tools for net9.0-browserwasm, android for
-# net9.0-android. There is no emulator in this image (see .devcontainer/README);
+# .NET workloads — wasm-tools for net10.0-browserwasm, android for
+# net10.0-android. There is no emulator in this image (see .devcontainer/README);
 # `android` is here so the TFM compiles, not so it can be deployed.
 # ---------------------------------------------------------------------------
 RUN dotnet workload install wasm-tools android
@@ -214,25 +247,25 @@ ENV PATH=${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/cmdline-tools/latest/bin
 
 USER ${USERNAME}
 ENV PATH="${PATH}:/home/${USERNAME}/.dotnet/tools"
-RUN dotnet tool install --global uno.check --version 1.28.3
+RUN dotnet tool install --global uno.check --version 1.34.1
 USER root
 RUN mkdir -p ${ANDROID_HOME} && chown -R ${USERNAME}:${USERNAME} ${ANDROID_HOME} && \
   uno-check -v --ci --non-interactive --fix \
     --skip xcode --skip gtk3 --skip vswin --skip vswinworkloads --skip unosdk \
     --skip dotnetnewunotemplates --skip vsmac --skip openjdk --skip androidemulator \
-    --tfm net9.0-desktop --tfm net9.0-browserwasm --tfm net9.0-android \
+    --tfm net10.0-desktop --tfm net10.0-browserwasm --tfm net10.0-android \
     || true
 RUN chown -R ${USERNAME}:${USERNAME} ${ANDROID_HOME}
 
 # ---------------------------------------------------------------------------
 # Chefs.UITests (Browser platform) — Uno.UITest.Selenium resolves the driver
-# from a *directory* and the browser from a *binary path*. Debian installs
-# chromedriver at /usr/bin/chromedriver, so the driver directory is /usr/bin.
+# from a *directory* and the browser from a *binary path*, which is why these
+# two point at different kinds of location.
 # UNO_UITEST_PLATFORM / UNO_UITEST_TARGETURI stay unset: they are per-run
 # choices, see .devcontainer/README.md.
 # ---------------------------------------------------------------------------
-ENV UNO_UITEST_DRIVERPATH_CHROME=/usr/bin
-ENV UNO_UITEST_CHROME_BINARY_PATH=/usr/bin/chromium
+ENV UNO_UITEST_DRIVERPATH_CHROME=/opt/chromedriver-linux64
+ENV UNO_UITEST_CHROME_BINARY_PATH=/opt/chrome-linux64/chrome
 
 # ---------------------------------------------------------------------------
 # Neutralise VS Code git-credential forwarding

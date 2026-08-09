@@ -3,11 +3,11 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <!-- Aspire 9.x targets net9.0, matching this repo. The matching
+    <!-- Aspire 13.x targets net10.0, matching this repo. The matching
          Aspire.AppHost.Sdk version is declared in Chefs.AppHost.csproj —
          MSBuild SDK references are outside Central Package Management, so the
          two must be bumped together. -->
-    <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.5.2" />
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="13.4.6" />
     <PackageVersion Include="coverlet.collector" Version="3.2.0" />
     <PackageVersion Include="LiveChartsCore.SkiaSharpView.Uno.WinUI" Version="2.0.0-rc4.5" />
     <PackageVersion Include="Mapsui.Uno.WinUI" Version="5.0.0" />
@@ -17,10 +17,14 @@
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="NUnit" Version="3.13.3" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.4.2" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="8.1.1" />
+    <!-- 10.x is the first line built against Microsoft.OpenApi 2.x, which
+         Microsoft.AspNetCore.OpenApi 10.x brings in. Staying on 8.x here fails
+         to compile: OpenApiInfo moved out of the Microsoft.OpenApi.Models
+         namespace in OpenApi 2.0. -->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
     <PackageVersion Include="Xamarin.UITest" Version="4.4.2" />
     <PackageVersion Include="System.Private.Uri" Version="4.3.2" />
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.10" />
     <PackageVersion Include="Xamarin.TestCloud.Agent" Version="0.23.2" />
   </ItemGroup>
 </Project>

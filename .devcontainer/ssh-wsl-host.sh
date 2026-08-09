@@ -3,7 +3,7 @@
 # sshd is bound to the WSL eth0 IP — not exposed to Windows host or LAN.
 #
 # Useful from inside this container for the things it deliberately cannot do:
-# running the Windows-only net9.0-windows10.0.19041 build, launching an Android
+# running the Windows-only net10.0-windows10.0.19041 build, launching an Android
 # emulator (no /dev/kvm here), or driving iOS from a paired Mac.
 #
 # Auth uses a dedicated ed25519 key bind-mounted at /etc/devcontainer-ssh/

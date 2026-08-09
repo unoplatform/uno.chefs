@@ -1,5 +1,7 @@
 using Chefs.Api.Serialization;
-using Microsoft.OpenApi.Models;
+// Microsoft.OpenApi 2.x (pulled in by Microsoft.AspNetCore.OpenApi 10.x) hosts
+// OpenApiInfo directly in this namespace; it used to live in .Models.
+using Microsoft.OpenApi;
 
 const string DevelopmentCorsPolicy = "DevelopmentCors";
 

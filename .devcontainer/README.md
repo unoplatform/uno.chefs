@@ -13,12 +13,16 @@ orchestrates the lot through an **Aspire** AppHost.
 
 | | |
 |---|---|
-| Base | `mcr.microsoft.com/dotnet/sdk:9.0` — matches the repo's `net9.0-*` TFMs |
+| Base | `mcr.microsoft.com/dotnet/sdk:10.0` (Ubuntu 24.04) — matches the repo's `net10.0-*` TFMs |
 | Workloads | `wasm-tools`, `android` (+ Microsoft OpenJDK 21, Android SDK via `uno-check`) |
 | Uno desktop deps | GTK3, WebKit2GTK, LibVLC (`MediaPlayerElement`), fontconfig (SkiaSharp), Xvfb |
-| UI tests | Debian `chromium` + `chromium-driver`, version-matched by the distro |
-| Agents | Claude Code, GitHub Copilot CLI, `uno` + `microsoft-learn` MCP servers |
+| UI tests | Chrome for Testing (browser + matching chromedriver), amd64 only |
+| Agents | Claude Code, GitHub Copilot CLI, `uno` + `uno-app` + `microsoft-learn` MCP servers |
 | Network | dnsmasq DNS allowlist (`init-firewall.sh`) |
+
+> .NET 10 images are **Ubuntu**-based; .NET 9's were Debian. That is why the
+> browser is Chrome for Testing rather than the distro `chromium` package —
+> Ubuntu's is a snap shim that cannot run in a container.
 
 ## First run
 
@@ -49,8 +53,8 @@ dotnet run --project Chefs.AppHost          # dashboard at http://localhost:1888
 dotnet run --project Chefs.Api              # http://localhost:5116, Swagger at /swagger
 
 # Client heads directly (mock data — the default)
-dotnet run --project Chefs -f net9.0-desktop
-dotnet run --project Chefs -f net9.0-browserwasm
+dotnet run --project Chefs -f net10.0-desktop
+dotnet run --project Chefs -f net10.0-browserwasm
 ```
 
 Ports 5116, 18888, 51480 and 5000 are forwarded to the host.
@@ -77,16 +81,17 @@ startup when no Docker daemon is present; it is harmless.
 
 ### WebAssembly UI tests
 
-`chromium` and `chromium-driver` are installed and `UNO_UITEST_DRIVERPATH_CHROME`
-/ `UNO_UITEST_CHROME_BINARY_PATH` are already set. The per-run variables are not:
+Chrome for Testing is installed under `/opt` (browser and chromedriver built from
+the same revision, so they cannot drift) and `UNO_UITEST_DRIVERPATH_CHROME` /
+`UNO_UITEST_CHROME_BINARY_PATH` are already set. The per-run variables are not:
 
 ```bash
 dotnet publish Chefs/Chefs.csproj -c Release \
-  -p:TargetFrameworkOverride=net9.0-browserwasm \
+  -p:TargetFrameworkOverride=net10.0-browserwasm \
   -p:IsUiAutomationMappingEnabled=True
 
 dotnet tool install -g dotnet-serve
-dotnet serve -p 5000 -d Chefs/bin/Release/net9.0-browserwasm/publish/wwwroot/ &
+dotnet serve -p 5000 -d Chefs/bin/Release/net10.0-browserwasm/publish/wwwroot/ &
 
 UNO_UITEST_PLATFORM=Browser \
 UNO_UITEST_TARGETURI=http://localhost:5000 \
@@ -99,11 +104,13 @@ UNO_UITEST_TARGETURI=http://localhost:5000 \
 ## What this container deliberately does not do
 
 - **No Android emulator.** No `/dev/kvm`, no `--privileged`, no emulator system
-  images. `-f net9.0-android` compiles; deploying needs a device or emulator on
+  images. `-f net10.0-android` compiles; deploying needs a device or emulator on
   the host — use the *WSL Host* terminal profile to reach it.
-- **No iOS or Windows heads.** `net9.0-ios` needs macOS + Xcode;
-  `net9.0-windows10.0.19041` needs Windows. Same escape hatch.
+- **No iOS or Windows heads.** `net10.0-ios` needs macOS + Xcode;
+  `net10.0-windows10.0.19041` needs Windows. Same escape hatch.
 - **No Docker.** Nothing in this repo's Aspire graph needs it.
+- **No WASM UI tests on arm64.** Chrome for Testing ships no arm64 Linux build,
+  so that layer is skipped on Apple Silicon; everything else still works.
 
 ## The DNS allowlist
 

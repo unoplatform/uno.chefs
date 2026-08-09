@@ -17,18 +17,20 @@ No CI job builds `Chefs.sln`; every pipeline targets `Chefs/Chefs.csproj` direct
 
 ## Build & run
 
-The Uno.Sdk version is pinned in `global.json`. Packages use Central Package Management (`Directory.Packages.props`), but most dependencies come from `<UnoFeatures>` in `Chefs/Chefs.csproj` rather than explicit `PackageReference`s — add capabilities there first.
+The repo targets **.NET 10** and needs the .NET 10 SDK. The Uno.Sdk version is pinned in `global.json` — note it is parsed by the .NET 10 CLI on *every* `dotnet` invocation, so a malformed `global.json` breaks the toolchain wholesale rather than just SDK resolution.
+
+Packages use Central Package Management (`Directory.Packages.props`), but most dependencies come from `<UnoFeatures>` in `Chefs/Chefs.csproj` rather than explicit `PackageReference`s — add capabilities there first.
 
 ### Always constrain the target framework
 
 `Chefs.csproj` cross-targets five TFMs. Passing `-f`/`-p:TargetFramework` alone still *restores* all of them, forcing every workload to be installed. Pass `TargetFrameworkOverride` as a global property instead:
 
 ```bash
-dotnet build Chefs/Chefs.csproj -p:TargetFrameworkOverride=net9.0-desktop
-dotnet run --project Chefs -f net9.0-desktop
+dotnet build Chefs/Chefs.csproj -p:TargetFrameworkOverride=net10.0-desktop
+dotnet run --project Chefs -f net10.0-desktop
 ```
 
-Valid values: `net9.0-desktop`, `net9.0-browserwasm`, `net9.0-windows10.0.19041`, `net9.0-android`, `net9.0-ios`.
+Valid values: `net10.0-desktop`, `net10.0-browserwasm`, `net10.0-windows10.0.19041`, `net10.0-android`, `net10.0-ios`.
 
 For IDE work, copy `crosstargeting_override.props.sample` to `crosstargeting_override.props` (imported by `Directory.Build.props`) and uncomment only the platforms you need.
 
@@ -38,7 +40,7 @@ For IDE work, copy `crosstargeting_override.props.sample` to `crosstargeting_ove
 
 ```bash
 dotnet run --project Chefs.Api      # http://localhost:5116, Swagger UI at /swagger
-dotnet build Chefs/Chefs.csproj -p:TargetFrameworkOverride=net9.0-desktop -p:UseMocks=false
+dotnet build Chefs/Chefs.csproj -p:TargetFrameworkOverride=net10.0-desktop -p:UseMocks=false
 ```
 
 The endpoint URL is hardcoded in `App.xaml.host.cs` — which is why anything launching the API must pin port 5116.
@@ -47,7 +49,7 @@ The endpoint URL is hardcoded in `App.xaml.host.cs` — which is why anything la
 
 `dotnet run --project Chefs.AppHost` starts `Chefs.Api` on the pinned port plus the dashboard on `http://localhost:18888`, and registers `chefs-wasm` / `chefs-desktop` as **explicit-start** resources — they stay stopped until clicked, then build with `-p:UseMocks=false` against the live API.
 
-Aspire is 9.x (not 13.x): 13.x AppHosts target `net10.0` and this repo is on .NET 9. The `Aspire.AppHost.Sdk` version lives in `Chefs.AppHost.csproj` because MSBuild SDK references are outside Central Package Management, while `Aspire.Hosting.AppHost` is in `Directory.Packages.props` — bump both together.
+Aspire is 13.x, the `net10.0` line. The `Aspire.AppHost.Sdk` version lives in `Chefs.AppHost.csproj` because MSBuild SDK references are outside Central Package Management, while `Aspire.Hosting.AppHost` is in `Directory.Packages.props` — bump both together.
 
 There are no container resources, so no Docker is required; DCP's `Could not harvest all abandoned containers` startup warning is harmless. `Chefs.Api` enables a permissive CORS policy **in Development only**, because the WebAssembly head calls it cross-origin (`:51480` → `:5116`).
 
