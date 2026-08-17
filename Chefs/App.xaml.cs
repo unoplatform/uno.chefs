@@ -41,6 +41,7 @@ public partial class App : Application
 		ConfigureAppBuilder(builder);
 		MainWindow = builder.Window;
 
+
 #if DEBUG
 		MainWindow.UseStudio();
 #endif
