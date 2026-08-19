@@ -35,9 +35,16 @@
 			<Setter.Value>
 				<DataTemplate>
 					<Grid>
-						<TextBlock Text="An error occurred."
-								   VerticalAlignment="Center"
-								   HorizontalAlignment="Center" />
+						<StackPanel Margin="{utu:Responsive Normal='16,0,16,16',
+															Wide='40,0,40,40'}"
+									HorizontalAlignment="Left"
+									VerticalAlignment="Top">
+							<TextBlock IsTextSelectionEnabled="True">
+								<Run Text="An error occurred:" />
+								<LineBreak />
+								<Run Text="{Binding Message}" />
+							</TextBlock>
+						</StackPanel>
 					</Grid>
 				</DataTemplate>
 			</Setter.Value>
@@ -212,9 +219,16 @@
 			<Setter.Value>
 				<DataTemplate>
 					<Grid Background="Red">
-						<TextBlock Text="An error occurred."
-								   VerticalAlignment="Center"
-								   HorizontalAlignment="Center" />
+						<StackPanel Margin="{utu:Responsive Normal='16,0,16,16',
+															Wide='40,0,40,40'}"
+									HorizontalAlignment="Left"
+									VerticalAlignment="Top">
+							<TextBlock IsTextSelectionEnabled="True">
+								<Run Text="An error occurred:" />
+								<LineBreak />
+								<Run Text="{Binding Message}" />
+							</TextBlock>
+						</StackPanel>
 					</Grid>
 				</DataTemplate>
 			</Setter.Value>
