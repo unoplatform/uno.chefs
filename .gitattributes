@@ -3,3 +3,10 @@
 ###############################################################################
 * text=auto
 *.sh text eol=lf
+
+###############################################################################
+# Docker chokes on CRLF line continuations, and the dev container image is
+# built from a WSL checkout where `text=auto` would otherwise apply the host's
+# native endings.
+###############################################################################
+Dockerfile text eol=lf

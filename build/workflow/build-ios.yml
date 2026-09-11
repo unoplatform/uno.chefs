@@ -17,7 +17,7 @@ jobs:
 
   - template: templates/dotnet-install-mac.yml
     parameters:
-      UnoCheckParameters: '--tfm net9.0-ios'
+      UnoCheckParameters: '--tfm net10.0-ios'
 
   - template: templates/canary-updater.yml
 
@@ -34,7 +34,7 @@ jobs:
     displayName: 'Publish Binaries'
     retryCountOnTaskFailure: 3
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/net9.0-ios/iossimulator-x64/Chefs.app
+      SourceFolder: $(build.sourcesdirectory)/Chefs/bin/Release/net10.0-ios/iossimulator-x64/Chefs.app
       Contents: '**'
       TargetFolder: $(build.artifactstagingdirectory)/ios-uitest/Chefs.app
       CleanTargetFolder: false
@@ -111,7 +111,7 @@ jobs:
 
   - template: templates/dotnet-install-mac.yml
     parameters:
-      UnoCheckParameters: '--tfm net9.0-ios'
+      UnoCheckParameters: '--tfm net10.0-ios'
 
   - template: templates/canary-updater.yml
   - template: templates/gitversion.yml
@@ -119,8 +119,8 @@ jobs:
   - bash: |
       cd $(build.sourcesdirectory)/Chefs
       echo "BUILD_SOURCEBRANCH: $BUILD_SOURCEBRANCH"
-      dotnet publish -f net9.0-ios /p:TargetFrameworkOverride=net9.0-ios -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/logs/build-net9.0-ios.binlog "/p:InformationalVersion=$NBGV_InformationalVersion" 
-    displayName: Build project for Release - net9.0-ios
+      dotnet publish -f net10.0-ios /p:TargetFrameworkOverride=net10.0-ios -c Release -p:UseSkiaRendering=$(UseSkiaRendering) /p:ArchiveOnBuild=true /bl:$(build.artifactstagingdirectory)/logs/build-net10.0-ios.binlog "/p:InformationalVersion=$NBGV_InformationalVersion" 
+    displayName: Build project for Release - net10.0-ios
     retryCountOnTaskFailure: 3
 
   - task: CopyFiles@2
