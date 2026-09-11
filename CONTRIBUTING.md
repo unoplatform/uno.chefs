@@ -24,7 +24,13 @@ The [XAML Styler](https://github.com/Xavalon/XamlStyler/wiki) tool is used to au
 
 For the Visual Studio extension, make sure to set the [External Configuration File](https://github.com/Xavalon/XamlStyler/wiki/XAML-Styler-Configuration#external-configuration-file) within the extension settings to point to the [`xaml-styler.json`](https://github.com/unoplatform/uno.chefs/blob/main/xaml-styler.json) file.
 
-For the dotnet CLI tool, make sure to provide the path for the `xaml-styler.json` file in the `--config` argument. The following command will format all XAML files in the `Chefs` folder:
+For the dotnet CLI tool, install the same version CI pins — formatting output can differ between XamlStyler releases, so an unpinned local install can disagree with the build:
+
+```bash
+dotnet tool update --global XamlStyler.Console --version 3.2501.8
+```
+
+Then provide the path for the `xaml-styler.json` file in the `--config` argument. The following command will format all XAML files in the `Chefs` folder:
 
 ```bash
 xstyler --recursive --config xaml-styler.json --directory Chefs

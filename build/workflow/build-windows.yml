@@ -1,7 +1,8 @@
 jobs:
 - job: Windows
   pool:
-    vmImage: windows-2022
+    # VS 2026 image: the .NET 10 SDK requires MSBuild 18, which VS 2022 images don't have
+    vmImage: windows-2025-vs2026
 
   steps:
   - checkout: self
@@ -21,7 +22,7 @@ jobs:
       msbuildLocationMethod: version
       msbuildVersion: latest
       msbuildArchitecture: x64
-      msbuildArguments: /r /t:Publish /m /v:m /p:TargetFramework=net9.0-windows10.0.19041 /p:TargetFrameworkOverride=net9.0-windows10.0.19041 /p:Configuration=Release /p:GenerateAppxPackageOnBuild=true /detailedsummary /bl:$(build.artifactstagingdirectory)/logs/build-winappsdk.binlog
+      msbuildArguments: /r /t:Publish /m /v:m /p:TargetFramework=net10.0-windows10.0.19041 /p:TargetFrameworkOverride=net10.0-windows10.0.19041 /p:Configuration=Release /p:GenerateAppxPackageOnBuild=true /detailedsummary /bl:$(build.artifactstagingdirectory)/logs/build-winappsdk.binlog
       clean: false
       restoreNugetPackages: false
       logProjectEvents: false
@@ -30,7 +31,7 @@ jobs:
   - task: CopyFiles@2
     displayName: Copy WinAppSDK output
     inputs:
-      SourceFolder: Chefs/bin/Release/net9.0-windows10.0.19041/AppPackages
+      SourceFolder: Chefs/bin/Release/net10.0-windows10.0.19041/AppPackages
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)/bin
 

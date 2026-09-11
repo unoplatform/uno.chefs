@@ -30,7 +30,7 @@ export UNO_UITEST_RUNTIMETESTS_RESULTS_FILE_PATH=$UNO_ORIGINAL_TEST_RESULTS
 # Prefer the signed APK from build artifacts (Windows job) when available,
 # otherwise fall back to the unsigned APK published locally by the UITest job (macOS agent).
 APK_FROM_ARTIFACT="$(ls "$BUILD_SOURCESDIRECTORY/build/Android_UITest_${VARIANT_NAME}/android-uitest/"*-Signed.apk 2>/dev/null | head -n 1 || true)"
-APK_FROM_LOCAL="$(ls $BUILD_SOURCESDIRECTORY/Chefs/bin/Release/net9.0-android/android-x64/publish/*.apk 2>/dev/null | head -n 1 || true)"
+APK_FROM_LOCAL="$(ls $BUILD_SOURCESDIRECTORY/Chefs/bin/Release/net10.0-android/android-x64/publish/*.apk 2>/dev/null | head -n 1 || true)"
 
 if [ -f "$APK_FROM_ARTIFACT" ]; then
   export UNO_UITEST_ANDROIDAPK_PATH="$APK_FROM_ARTIFACT"
@@ -58,7 +58,7 @@ command -v zip >/dev/null || { echo "ERROR: 'zip' not found on PATH"; exit 1; }
 export UNO_EMULATOR_INSTALLED=$BUILD_SOURCESDIRECTORY/build/.emulator_started
 export UNO_TESTS_RESPONSE_FILE=$BUILD_SOURCESDIRECTORY/build/nunit.response
 export UITEST_TEST_TIMEOUT=60m
-export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net9.0/Chefs.UITests.dll
+export UNO_UITEST_BINARY=$BUILD_SOURCESDIRECTORY/Chefs.UITests/bin/Release/net10.0/Chefs.UITests.dll
 
 
 mkdir -p $UNO_UITEST_SCREENSHOT_PATH
@@ -168,7 +168,7 @@ cp $UNO_UITEST_ANDROIDAPK_PATH $BASE_ARTIFACTS_PATH
 
 cd $UNO_UITEST_PROJECT_PATH
 
-dotnet build /r /p:TargetFrameworkOverride=net9.0-android "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
+dotnet build /r /p:TargetFrameworkOverride=net10.0-android "/p:UseSkiaRendering=$USE_SKIA_RENDERING" /p:Configuration=Release
 
 ## Run tests
 if dotnet test $UNO_UITEST_BINARY \
