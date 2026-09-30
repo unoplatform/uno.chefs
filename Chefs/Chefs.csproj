@@ -131,7 +131,7 @@
 	</Choose>
 
 	<Choose>
-		<When Condition="$(IsAndroid) or $(IsIOSOrCatalyst)">
+		<When Condition="$(IsAndroid) or $(IsIOS)">
 			<ItemGroup>
 				<IncludeXamlNamespaces Include="mobile" />
 				<ExcludeXamlNamespaces Include="not_mobile" />
