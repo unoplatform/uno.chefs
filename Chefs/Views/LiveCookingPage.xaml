@@ -57,8 +57,8 @@
 												 MinItemSpacing="16" />
 
 							<not_win:FlowLayout LineAlignment="Center"
-												MinColumnSpacing="16"
-												MinRowSpacing="12" />
+												MinItemSpacing="16"
+												LineSpacing="12" />
 						</muxc:ItemsRepeater.Layout>
 						<muxc:ItemsRepeater.ItemTemplate>
 							<DataTemplate>
