@@ -26,6 +26,9 @@
 		     The .NET SDK's default (10.0.19041.57) ships WinRT.Runtime 2.2, and the Windows build fails with CS1705. -->
 		<WindowsSdkPackageVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.87</WindowsSdkPackageVersion>
 
+		<!-- 8.0.0-dev.126 no longer pulls Uno.UI.Lottie into Navigation.Toolkit (unoplatform/uno.extensions#3263); Uno.Sdk 7.0.0-dev.89 pins dev.118. -->
+		<UnoExtensionsVersion>8.0.0-dev.126</UnoExtensionsVersion>
+
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 		<UseMocks Condition="'$(UseMocks)'==''">true</UseMocks>
