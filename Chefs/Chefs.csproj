@@ -22,6 +22,10 @@
 
 		<ApplicationId Condition="'$(IsCanaryBranch)'=='true'">$(ApplicationId)-canary</ApplicationId>
 
+		<!-- Uno Platform 7's Toolkit and Extensions are built against this Windows SDK projection (WinRT.Runtime 2.3).
+		     The .NET SDK's default (10.0.19041.57) ships WinRT.Runtime 2.2, and the Windows build fails with CS1705. -->
+		<WindowsSdkPackageVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.87</WindowsSdkPackageVersion>
+
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 		<UseMocks Condition="'$(UseMocks)'==''">true</UseMocks>
