@@ -4,10 +4,12 @@ jobs:
   container: unoplatform/wasm-build:3.0
   
   pool:
-    vmImage: ubuntu-latest
+    vmImage: ubuntu-24.04
 
   steps:
   - template: templates/host-cleanup-linux.yml
+    parameters:
+      target: host
 
   - task: NodeTool@0
     inputs:
