@@ -3,7 +3,7 @@ jobs:
 
   timeoutInMinutes: 90
   pool:
-    vmImage: ubuntu-latest
+    vmImage: ubuntu-24.04
 
   container: unoplatform/wasm-build:3.0
 
@@ -17,6 +17,8 @@ jobs:
     persistCredentials: true
 
   - template: templates/host-cleanup-linux.yml
+    parameters:
+      target: host
 
   - task: UseDotNet@2
     retryCountOnTaskFailure: 3
