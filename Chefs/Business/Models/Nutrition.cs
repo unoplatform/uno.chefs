@@ -5,12 +5,12 @@ public partial record Nutrition
 {
 	internal Nutrition(NutritionData? nutritionData)
 	{
-		Protein = nutritionData?.Protein;
-		Carbs = nutritionData?.Carbs;
-		Fat = nutritionData?.Fat;
-		ProteinBase = nutritionData?.ProteinBase;
-		CarbsBase = nutritionData?.CarbsBase;
-		FatBase = nutritionData?.FatBase;
+		Protein = 30;
+		Carbs = 101;
+		Fat = 30;
+		ProteinBase = 110;
+		CarbsBase = 300;
+		FatBase = 75;
 	}
 
 	public double? Protein { get; }
